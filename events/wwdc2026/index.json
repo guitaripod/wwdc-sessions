@@ -2,7 +2,7 @@
   "event": "wwdc2026",
   "name": "WWDC26",
   "year": 2026,
-  "sessionCount": 116,
+  "sessionCount": 117,
   "sessions": [
     {
       "id": "wwdc2026-101",
@@ -64,7 +64,7 @@
         "sotu 2026"
       ],
       "hasTranscript": true,
-      "transcriptWordCount": 9222,
+      "transcriptWordCount": 9220,
       "availableLanguages": [
         "eng",
         "fra",
@@ -170,7 +170,7 @@
         "sotu 2026"
       ],
       "hasTranscript": true,
-      "transcriptWordCount": 9222,
+      "transcriptWordCount": 9220,
       "availableLanguages": [
         "eng",
         "fra",
@@ -560,7 +560,7 @@
         "spa",
         "zho"
       ],
-      "resourceCount": 2,
+      "resourceCount": 5,
       "codeSnippetCount": 8,
       "path": "sessions/wwdc2026/209-what-s-new-in-wallet/",
       "description": "Explore the newest design updates and developer tools for Apple Wallet passes. Refresh your passes with beautiful new styles for rich, vibrant designs. Discover new barcode formats and a flexible pass actions API. Meet Pass Designer and Pass Builder, powerful tools that simplify designing, personalizing, and distributing your passes at scale."
@@ -722,7 +722,7 @@
         "web"
       ],
       "hasTranscript": true,
-      "transcriptWordCount": 2118,
+      "transcriptWordCount": 2127,
       "availableLanguages": [
         "eng",
         "fra",
@@ -2568,7 +2568,7 @@
         "spa",
         "zho"
       ],
-      "resourceCount": 2,
+      "resourceCount": 4,
       "codeSnippetCount": 11,
       "path": "sessions/wwdc2026/282-discover-the-spatial-preview-framework/",
       "description": "Check out how the new Spatial Preview framework brings content from your Mac directly into visionOS. Discover how to build dynamic workflows with live-syncing and bidirectional editing across both platforms. Learn about the SpatialPreview API, device discovery, 2D and 3D session integration, and new Quick Look capabilities to elevate your Mac apps spatially."
@@ -2615,7 +2615,7 @@
         "spa",
         "zho"
       ],
-      "resourceCount": 4,
+      "resourceCount": 5,
       "codeSnippetCount": 5,
       "path": "sessions/wwdc2026/283-explore-enhancements-to-visionos-object-tracking/",
       "description": "Find out how visionOS is advancing object tracking and spatial accessory input. Discover new ways to track moving and handheld objects, allowing you to bridge the physical and digital worlds. Learn about new supported classes of spatial accessories and what is needed to build your own custom accessories to enable unique interaction models in your apps."
@@ -4763,6 +4763,39 @@
       "codeSnippetCount": 0,
       "path": "sessions/wwdc2026/394-get-ready-for-wwdc26/",
       "description": "Get the inside track on everything Apple has to offer — and make the most of every session, lab, and moment."
+    },
+    {
+      "id": "wwdc2026-397",
+      "event": "wwdc2026",
+      "year": 2026,
+      "eventContentId": 397,
+      "title": "Dub Dub Daily: Day 2",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2026/397",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/397",
+      "duration": 352,
+      "publishedAt": "2026-06-09T07:00:00-07:00",
+      "platforms": [],
+      "primaryTopic": "Essentials",
+      "topics": [
+        "Essentials"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1166,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2026/397-dub-dub-daily-day-2/",
+      "description": "The biggest announcements of WWDC26, all in one place. Catch up on everything revealed, go deeper on the themes shaping this year’s conference, and hear from a special guest joining us to break it all down."
     },
     {
       "id": "wwdc2026-403",

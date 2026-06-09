@@ -1,6 +1,6 @@
 # Essentials
 
-183 sessions across all events.
+184 sessions across all events.
 
 
 ### Meet with Apple
@@ -11,6 +11,7 @@
 
 - [Announcing Apple’s next big step for Siri and iPhone](../sessions/wwdc2026/121-announcing-apple-s-next-big-step-for-siri-and-iphone/README.md)
 - [Design intuitive search experiences](../sessions/wwdc2026/292-design-intuitive-search-experiences/README.md)
+- [Dub Dub Daily: Day 2](../sessions/wwdc2026/397-dub-dub-daily-day-2/README.md)
 - [Get ready for WWDC26](../sessions/wwdc2026/394-get-ready-for-wwdc26/README.md)
 - [Keynote](../sessions/wwdc2026/101-keynote/README.md)
 - [Keynote (ASL)](../sessions/wwdc2026/111-keynote-asl/README.md)

@@ -4,7 +4,7 @@ event: "wwdc2026"
 title: "Platforms State of the Union (ASL)"
 url: "https://developer.apple.com/videos/play/wwdc2026/112"
 language: "eng"
-words: 9222
+words: 9220
 ---
 
 # Platforms State of the Union (ASL) — Transcript
@@ -81,7 +81,7 @@ words: 9222
 
 **[26:34]** And we’re providing a skill for coding agents that will help you find and fix common resizability issues. Now, instead of designing for specific devices and orientations, you’re designing for a dynamic range of sizes and aspect ratios. To provide the best experience when using iPhone Mirroring, update your app to be able to adapt and support any size. Resizable simulator, Previews, and iPhone Mirroring all make it easy to ensure your app is as dynamic and flexible as possible. Next, let’s talk about SwiftUI. Here's Franck. SwiftUI is the best way to build apps for any Apple device. We designed SwiftUI to capture everything we know about building great apps on our platforms.
 
-**[27:21]** It gracefully handles the complexities of layout, animation, and platform integration so you can focus on what makes your app yours. And as new capabilities like Liquid Glass are added, apps get these features easily because they’re designed with SwiftUI in mind. New apps like The Goat are built with SwiftUI because they want to feel truly at home on Apple platforms. The Goat is a game development environment that brings the open source Godot engine to Apple devices. It started on iPad, expanded to iPhone, and when the time came to bring it to Mac, it felt completely natural. And apps that previously used cross-platform or web technologies like Notion are migrating their user interface to SwiftUI
+**[27:21]** It gracefully handles the complexities of layout, animation, and platform integration so you can focus on what makes your app yours. And as new capabilities like Liquid Glass are added, apps get these features easily because they’re designed with SwiftUI in mind. New apps like Xogot are built with SwiftUI because they want to feel truly at home on Apple platforms. Xogot is a game development environment that brings the open source Godot engine to Apple devices. It started on iPad, expanded to iPhone, and when the time came to bring it to Mac, it felt completely natural. And apps that previously used cross-platform or web technologies like Notion are migrating their user interface to SwiftUI
 
 **[28:10]** because they want a level of performance and UI consistency that other technologies can’t deliver. With powerful agentic coding tools, porting code to Swift has never been easier. Of course, we reach for SwiftUI ourselves whenever we build apps. For example, SwiftUI made it easy to build a new Siri app by enabling us to share code across all our platforms and Creator Studio apps like Logic Pro, build new features with SwiftUI for high performance and cross-platform support. Since we rely on SwiftUI ourselves, every improvement we make for our own apps becomes an improvement for your apps too.
 

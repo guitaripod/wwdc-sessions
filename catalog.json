@@ -2,15 +2,15 @@
   "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/catalog.schema.json",
   "schemaVersion": 1,
   "builderVersion": 2,
-  "generatedAt": "2026-06-09T10:00:50+00:00",
-  "sourceUpdated": "2026-06-08T19:35:49-07:00",
+  "generatedAt": "2026-06-09T19:46:29+00:00",
+  "sourceUpdated": "2026-06-09T09:50:47-07:00",
   "source": "Apple WWDC developer-video feeds (resolved via api2024.wwdc.io)",
   "rawBase": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master",
   "license": "Content © Apple Inc. Tooling under MIT (see LICENSE/NOTICE).",
   "counts": {
     "events": 15,
-    "sessions": 1630,
-    "transcripts": 1525
+    "sessions": 1625,
+    "transcripts": 1526
   },
   "links": {
     "events": "events.json",
@@ -28,8 +28,8 @@
       "name": "WWDC26",
       "year": 2026,
       "startTime": "2026-06-08T10:00:00-07:00",
-      "sessionCount": 116,
-      "transcriptCount": 112,
+      "sessionCount": 117,
+      "transcriptCount": 113,
       "index": "events/wwdc2026/index.md",
       "indexJSON": "events/wwdc2026/index.json"
     },
@@ -88,7 +88,7 @@
       "name": "WWDC21",
       "year": 2021,
       "startTime": "2021-06-07T10:00:00-07:00",
-      "sessionCount": 224,
+      "sessionCount": 218,
       "transcriptCount": 199,
       "index": "events/wwdc2021/index.md",
       "indexJSON": "events/wwdc2021/index.json"
@@ -511,7 +511,7 @@
         "sotu 2026"
       ],
       "hasTranscript": true,
-      "transcriptWordCount": 9222,
+      "transcriptWordCount": 9220,
       "availableLanguages": [
         "eng",
         "fra",
@@ -617,7 +617,7 @@
         "sotu 2026"
       ],
       "hasTranscript": true,
-      "transcriptWordCount": 9222,
+      "transcriptWordCount": 9220,
       "availableLanguages": [
         "eng",
         "fra",
@@ -1007,7 +1007,7 @@
         "spa",
         "zho"
       ],
-      "resourceCount": 2,
+      "resourceCount": 5,
       "codeSnippetCount": 8,
       "path": "sessions/wwdc2026/209-what-s-new-in-wallet/",
       "description": "Explore the newest design updates and developer tools for Apple Wallet passes. Refresh your passes with beautiful new styles for rich, vibrant designs. Discover new barcode formats and a flexible pass actions API. Meet Pass Designer and Pass Builder, powerful tools that simplify designing, personalizing, and distributing your passes at scale."
@@ -1169,7 +1169,7 @@
         "web"
       ],
       "hasTranscript": true,
-      "transcriptWordCount": 2118,
+      "transcriptWordCount": 2127,
       "availableLanguages": [
         "eng",
         "fra",
@@ -3015,7 +3015,7 @@
         "spa",
         "zho"
       ],
-      "resourceCount": 2,
+      "resourceCount": 4,
       "codeSnippetCount": 11,
       "path": "sessions/wwdc2026/282-discover-the-spatial-preview-framework/",
       "description": "Check out how the new Spatial Preview framework brings content from your Mac directly into visionOS. Discover how to build dynamic workflows with live-syncing and bidirectional editing across both platforms. Learn about the SpatialPreview API, device discovery, 2D and 3D session integration, and new Quick Look capabilities to elevate your Mac apps spatially."
@@ -3062,7 +3062,7 @@
         "spa",
         "zho"
       ],
-      "resourceCount": 4,
+      "resourceCount": 5,
       "codeSnippetCount": 5,
       "path": "sessions/wwdc2026/283-explore-enhancements-to-visionos-object-tracking/",
       "description": "Find out how visionOS is advancing object tracking and spatial accessory input. Discover new ways to track moving and handheld objects, allowing you to bridge the physical and digital worlds. Learn about new supported classes of spatial accessories and what is needed to build your own custom accessories to enable unique interaction models in your apps."
@@ -5210,6 +5210,39 @@
       "codeSnippetCount": 0,
       "path": "sessions/wwdc2026/394-get-ready-for-wwdc26/",
       "description": "Get the inside track on everything Apple has to offer — and make the most of every session, lab, and moment."
+    },
+    {
+      "id": "wwdc2026-397",
+      "event": "wwdc2026",
+      "year": 2026,
+      "eventContentId": 397,
+      "title": "Dub Dub Daily: Day 2",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2026/397",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/397",
+      "duration": 352,
+      "publishedAt": "2026-06-09T07:00:00-07:00",
+      "platforms": [],
+      "primaryTopic": "Essentials",
+      "topics": [
+        "Essentials"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1166,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2026/397-dub-dub-daily-day-2/",
+      "description": "The biggest announcements of WWDC26, all in one place. Catch up on everything revealed, go deeper on the themes shaping this year’s conference, and hear from a special guest joining us to break it all down."
     },
     {
       "id": "wwdc2026-403",
@@ -36202,29 +36235,6 @@
       "description": "Discover how Vision can provide expert image recognition and analysis in your app to extract information from documents, recognize text in multiple languages, and identify barcodes. We’ll explore the latest updates to Text Recognition and Barcode Detection, show you how to bring all these tools together with Core ML, and help your app make greater sense of the world through images or the live camera. To learn more about Vision, watch “Detect people, faces, and poses using Vision” from WWDC21 as well as “Explore Computer Vision APIs” from WWDC20. For further understanding of all that Vision has to offer, watch “Detect people, faces, and poses using Vision” from WWDC21 as well as “Explore Computer Vision APIs” from WWDC20."
     },
     {
-      "id": "wwdc2021-100435",
-      "event": "wwdc2021",
-      "year": 2021,
-      "eventContentId": 100435,
-      "title": "Music makers",
-      "type": "Article",
-      "url": "https://developer.apple.com/news/?id=awmkb4os",
-      "sosumiURL": "https://sosumi.ai/news/?id=awmkb4os",
-      "duration": null,
-      "publishedAt": "2021-06-08T05:00:31-07:00",
-      "platforms": [],
-      "primaryTopic": null,
-      "topics": [],
-      "keywords": [],
-      "hasTranscript": false,
-      "transcriptWordCount": 0,
-      "availableLanguages": [],
-      "resourceCount": 0,
-      "codeSnippetCount": 0,
-      "path": "sessions/wwdc2021/100435-music-makers/",
-      "description": "An immersive app doesn’t just look or feel great: It has to sound amazing, too. We asked several of our Apple Design Award-nominated developers to share their philosophy around making music, audio design, and sound. (And occasionally frogs.)"
-    },
-    {
       "id": "wwdc2021-10044",
       "event": "wwdc2021",
       "year": 2021,
@@ -44445,34 +44455,6 @@
       "description": "Focus can help people move through your app efficiently, whether they’re using the keyboard, Siri Remote, Apple Watch Digital Crown, or accessibility features. Find an interaction within your app and show us how you would use the SwiftUI Focus APIs to fine-tune that interaction."
     },
     {
-      "id": "wwdc2021-10332",
-      "event": "wwdc2021",
-      "year": 2021,
-      "eventContentId": 10332,
-      "title": "Challenge: Large Text",
-      "type": "Article",
-      "url": "https://developer.apple.com/news/?id=w6r26g7r",
-      "sosumiURL": "https://sosumi.ai/news/?id=w6r26g7r",
-      "duration": null,
-      "publishedAt": "2021-06-08T05:00:54-07:00",
-      "platforms": [],
-      "primaryTopic": null,
-      "topics": [],
-      "keywords": [
-        "accessibility",
-        "challenge",
-        "wednesday",
-        "wwdc21"
-      ],
-      "hasTranscript": false,
-      "transcriptWordCount": 0,
-      "availableLanguages": [],
-      "resourceCount": 0,
-      "codeSnippetCount": 0,
-      "path": "sessions/wwdc2021/10332-challenge-large-text/",
-      "description": "Design for large text sizes by modifying the user interface of a simple app."
-    },
-    {
       "id": "wwdc2021-10333",
       "event": "wwdc2021",
       "year": 2021,
@@ -44529,34 +44511,6 @@
       "codeSnippetCount": 0,
       "path": "sessions/wwdc2021/10334-challenge-voiceover-maze/",
       "description": "Navigate to the end of a dark maze using VoiceOver as your guide."
-    },
-    {
-      "id": "wwdc2021-10336",
-      "event": "wwdc2021",
-      "year": 2021,
-      "eventContentId": 10336,
-      "title": "Challenge: Create a musical instrument in Swift Playgrounds",
-      "type": "Article",
-      "url": "https://developer.apple.com/news/?id=4d6dmoaj",
-      "sosumiURL": "https://sosumi.ai/news/?id=4d6dmoaj",
-      "duration": null,
-      "publishedAt": "2021-06-08T05:00:34-07:00",
-      "platforms": [],
-      "primaryTopic": null,
-      "topics": [],
-      "keywords": [
-        "challenge",
-        "get started",
-        "wednesday",
-        "wwdc21"
-      ],
-      "hasTranscript": false,
-      "transcriptWordCount": 0,
-      "availableLanguages": [],
-      "resourceCount": 0,
-      "codeSnippetCount": 0,
-      "path": "sessions/wwdc2021/10336-challenge-create-a-musical-instrument-in-swift-playgrounds/",
-      "description": "The first part to composing a musical masterpiece? Making your own instrument from scratch! In this challenge, you’ll use graphical tools to create a musical instrument that will leave your audience floored (and waiting for an encore)!"
     },
     {
       "id": "wwdc2021-10337",
@@ -44738,41 +44692,6 @@
       "description": "Explore Xcode's new documentation features and learn how to add documentation to your own framework or package — or to your favorite open source project."
     },
     {
-      "id": "wwdc2021-10419",
-      "event": "wwdc2021",
-      "year": 2021,
-      "eventContentId": 10419,
-      "title": "Challenge: Design multi-step Shortcuts",
-      "type": "Article",
-      "url": "https://developer.apple.com/news/?id=w9yusprl",
-      "sosumiURL": "https://sosumi.ai/news/?id=w9yusprl",
-      "duration": null,
-      "publishedAt": "2021-06-08T05:00:35-07:00",
-      "platforms": [
-        "iOS",
-        "iPadOS",
-        "macOS",
-        "watchOS"
-      ],
-      "primaryTopic": null,
-      "topics": [],
-      "keywords": [
-        "challenge",
-        "design",
-        "shortcut",
-        "shortcuts",
-        "wednesday",
-        "wwdc21"
-      ],
-      "hasTranscript": false,
-      "transcriptWordCount": 0,
-      "availableLanguages": [],
-      "resourceCount": 0,
-      "codeSnippetCount": 0,
-      "path": "sessions/wwdc2021/10419-challenge-design-multi-step-shortcuts/",
-      "description": "The best shortcuts help us get repetitive things done more easily: Develop a multi-step shortcut for designer or programmer productivity."
-    },
-    {
       "id": "wwdc2021-10456",
       "event": "wwdc2021",
       "year": 2021,
@@ -44826,29 +44745,6 @@
       "description": "Whether your game is divided into chapters, levels, or challenges, you can use achievements to help progress your narrative in unique and interesting ways. In this challenge — our series finale — we invite you to create a series of achievements that tell a story and encourage people to complete a set of tasks."
     },
     {
-      "id": "wwdc2021-10590",
-      "event": "wwdc2021",
-      "year": 2021,
-      "eventContentId": 10590,
-      "title": "Challenge: Achievement Unlocked – Title Teasers",
-      "type": "Article",
-      "url": "https://developer.apple.com/news/?id=jk5glh6l",
-      "sosumiURL": "https://sosumi.ai/news/?id=jk5glh6l",
-      "duration": null,
-      "publishedAt": "2021-06-08T05:00:28-07:00",
-      "platforms": [],
-      "primaryTopic": null,
-      "topics": [],
-      "keywords": [],
-      "hasTranscript": false,
-      "transcriptWordCount": 0,
-      "availableLanguages": [],
-      "resourceCount": 0,
-      "codeSnippetCount": 0,
-      "path": "sessions/wwdc2021/10590-challenge-achievement-unlocked-title-teasers/",
-      "description": "Some achievements can pique a player's interest into exploring something new in your app — even if the achievement only has its locked text visible. We challenge you to write a Title Teaser achievement that gets people excited about what they might uncover."
-    },
-    {
       "id": "wwdc2021-110120",
       "event": "wwdc2021",
       "year": 2021,
@@ -44872,31 +44768,6 @@
       "codeSnippetCount": 0,
       "path": "sessions/wwdc2021/110120-challenge-prototype-with-swiftui/",
       "description": "While SwiftUI is a powerful framework, one of its key features is its simplicity. Designers with very little knowledge of code can easily create prototypes with human-readable syntax and interactive Xcode Previews. In this Challenge, we invite you to say “hello, world” with a brilliant SwiftUI-based prototype."
-    },
-    {
-      "id": "wwdc2021-110121",
-      "event": "wwdc2021",
-      "year": 2021,
-      "eventContentId": 110121,
-      "title": "Challenge: Throwback with SwiftUI",
-      "type": "Article",
-      "url": "https://developer.apple.com/news/?id=5qbbn6ut",
-      "sosumiURL": "https://sosumi.ai/news/?id=5qbbn6ut",
-      "duration": null,
-      "publishedAt": "2021-06-08T05:55:30-07:00",
-      "platforms": [],
-      "primaryTopic": "SwiftUI & UI Frameworks",
-      "topics": [
-        "SwiftUI & UI Frameworks"
-      ],
-      "keywords": [],
-      "hasTranscript": false,
-      "transcriptWordCount": 0,
-      "availableLanguages": [],
-      "resourceCount": 0,
-      "codeSnippetCount": 0,
-      "path": "sessions/wwdc2021/110121-challenge-throwback-with-swiftui/",
-      "description": "Whether you’ve been coding for 40 years, you’re new to the SwiftUI scene, or you’re a designer — everyone loves a good throwback. Give in to the nostalgia and imagine what your app might look like if designed for the Mac or iPhone interfaces of yesteryear."
     },
     {
       "id": "wwdc2021-110127",

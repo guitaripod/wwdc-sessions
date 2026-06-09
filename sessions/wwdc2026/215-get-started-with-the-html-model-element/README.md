@@ -21,7 +21,7 @@ Learn how the model element brings interactive 3D content to your websites — n
 ## Transcript
 
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
-(2,118 words)
+(2,127 words)
 
 ## Documentation & Resources
 

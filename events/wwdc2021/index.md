@@ -1,6 +1,6 @@
 # WWDC21 Sessions
 
-224 sessions · 199 with transcripts.
+218 sessions · 199 with transcripts.
 
 ## AI & Machine Learning
 
@@ -358,7 +358,6 @@
 - [Build a workout app for Apple Watch](../../sessions/wwdc2021/10009-build-a-workout-app-for-apple-watch/README.md) · 📝
 - [Build apps that share data through CloudKit and Core Data](../../sessions/wwdc2021/10015-build-apps-that-share-data-through-cloudkit-and-core-data/README.md) · 📝
 - [Challenge: Prototype with SwiftUI](../../sessions/wwdc2021/110120-challenge-prototype-with-swiftui/README.md)
-- [Challenge: Throwback with SwiftUI](../../sessions/wwdc2021/110121-challenge-throwback-with-swiftui/README.md)
 - [Craft search experiences in SwiftUI](../../sessions/wwdc2021/10176-craft-search-experiences-in-swiftui/README.md) · 📝
 - [Create accessible experiences for watchOS](../../sessions/wwdc2021/10223-create-accessible-experiences-for-watchos/README.md) · 📝
 - [Customize and resize sheets in UIKit](../../sessions/wwdc2021/10063-customize-and-resize-sheets-in-uikit/README.md) · 📝
@@ -421,22 +420,17 @@
 
 ## Uncategorized
 
-- [Challenge: Achievement Unlocked – Title Teasers](../../sessions/wwdc2021/10590-challenge-achievement-unlocked-title-teasers/README.md)
 - [Challenge: Achievement Unlocked — Series Finale](../../sessions/wwdc2021/10577-challenge-achievement-unlocked-series-finale/README.md)
-- [Challenge: Create a musical instrument in Swift Playgrounds](../../sessions/wwdc2021/10336-challenge-create-a-musical-instrument-in-swift-playgrounds/README.md)
 - [Challenge: Create amazing documentation](../../sessions/wwdc2021/10350-challenge-create-amazing-documentation/README.md)
 - [Challenge: Create an engaging tutorial](../../sessions/wwdc2021/10342-challenge-create-an-engaging-tutorial/README.md)
 - [Challenge: Create fun visual effects in Swift Playgrounds](../../sessions/wwdc2021/10337-challenge-create-fun-visual-effects-in-swift-playgrounds/README.md)
-- [Challenge: Design multi-step Shortcuts](../../sessions/wwdc2021/10419-challenge-design-multi-step-shortcuts/README.md)
 - [Challenge: Explore spatial audio soundscapes](../../sessions/wwdc2021/10326-challenge-explore-spatial-audio-soundscapes/README.md)
 - [Challenge: Focus on Focus APIs in SwiftUI](../../sessions/wwdc2021/10329-challenge-focus-on-focus-apis-in-swiftui/README.md)
 - [Challenge: Framework Freestyle](../../sessions/wwdc2021/10456-challenge-framework-freestyle/README.md)
-- [Challenge: Large Text](../../sessions/wwdc2021/10332-challenge-large-text/README.md)
 - [Challenge: Memgraph Capture the Flag](../../sessions/wwdc2021/10341-challenge-memgraph-capture-the-flag/README.md)
 - [Challenge: Voice Control Synonyms](../../sessions/wwdc2021/10333-challenge-voice-control-synonyms/README.md)
 - [Coding & Design Challenges](../../sessions/wwdc2021/101044-coding-design-challenges/README.md)
 - [Fine-tune your App Transport Security settings](../../sessions/wwdc2021/10281-fine-tune-your-app-transport-security-settings/README.md)
-- [Music makers](../../sessions/wwdc2021/100435-music-makers/README.md)
 - [Rewatch the Keynote](../../sessions/wwdc2021/110127-rewatch-the-keynote/README.md)
 - [The music of WWDC21](../../sessions/wwdc2021/110139-the-music-of-wwdc21/README.md)
 

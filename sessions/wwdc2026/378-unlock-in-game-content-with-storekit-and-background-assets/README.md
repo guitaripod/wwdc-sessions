@@ -53,7 +53,7 @@ Unlock native Apple In-App Purchases for your Unity game with the new StoreKit p
 
 ```bash
 # Convert a Steam depot to an asset pack manifest
-xcrun ba-package convert --asset-pack-id voice-english --l en-US --on-demand voice-english.vdf -o voice-english.json
+xcrun ba-package convert --asset-pack-id voice-english -l en-US --on-demand voice-english.vdf -o voice-english.json
 ```
 
 ### Convert an asset pack manifest to an asset pack archive — [3:28]

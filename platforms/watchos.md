@@ -1,6 +1,6 @@
 # watchOS Sessions
 
-666 sessions.
+665 sessions.
 
 - [Get ready for the Swift Student Challenge](../sessions/meet-with-apple/263-get-ready-for-the-swift-student-challenge/README.md) — Meet with Apple
 - [Q&A: Swift concurrency](../sessions/meet-with-apple/276-q-a-swift-concurrency/README.md) — Meet with Apple
@@ -357,7 +357,6 @@
 - [Build a workout app for Apple Watch](../sessions/wwdc2021/10009-build-a-workout-app-for-apple-watch/README.md) — WWDC21
 - [Build apps that share data through CloudKit and Core Data](../sessions/wwdc2021/10015-build-apps-that-share-data-through-cloudkit-and-core-data/README.md) — WWDC21
 - [Build interactive tutorials using DocC](../sessions/wwdc2021/10235-build-interactive-tutorials-using-docc/README.md) — WWDC21
-- [Challenge: Design multi-step Shortcuts](../sessions/wwdc2021/10419-challenge-design-multi-step-shortcuts/README.md) — WWDC21
 - [Connect Bluetooth devices to Apple Watch](../sessions/wwdc2021/10005-connect-bluetooth-devices-to-apple-watch/README.md) — WWDC21
 - [Craft search experiences in SwiftUI](../sessions/wwdc2021/10176-craft-search-experiences-in-swiftui/README.md) — WWDC21
 - [Create accessible experiences for watchOS](../sessions/wwdc2021/10223-create-accessible-experiences-for-watchos/README.md) — WWDC21

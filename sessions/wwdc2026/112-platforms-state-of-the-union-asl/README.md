@@ -21,7 +21,7 @@ Discover the newest advancements on Apple platforms.
 ## Transcript
 
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
-(9,222 words)
+(9,220 words)
 
 ## Video
 

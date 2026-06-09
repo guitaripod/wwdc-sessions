@@ -1,6 +1,6 @@
 # macOS Sessions
 
-1154 sessions.
+1153 sessions.
 
 - [Get ready for the Swift Student Challenge](../sessions/meet-with-apple/263-get-ready-for-the-swift-student-challenge/README.md) — Meet with Apple
 - [Q&A: Swift concurrency](../sessions/meet-with-apple/276-q-a-swift-concurrency/README.md) — Meet with Apple
@@ -640,7 +640,6 @@
 - [Build interfaces with style](../sessions/wwdc2021/10196-build-interfaces-with-style/README.md) — WWDC21
 - [Capture and process ProRAW images](../sessions/wwdc2021/10160-capture-and-process-proraw-images/README.md) — WWDC21
 - [Capture high-quality photos using video formats](../sessions/wwdc2021/10247-capture-high-quality-photos-using-video-formats/README.md) — WWDC21
-- [Challenge: Design multi-step Shortcuts](../sessions/wwdc2021/10419-challenge-design-multi-step-shortcuts/README.md) — WWDC21
 - [Classify hand poses and actions with Create ML](../sessions/wwdc2021/10039-classify-hand-poses-and-actions-with-create-ml/README.md) — WWDC21
 - [Coordinate media experiences with Group Activities](../sessions/wwdc2021/10225-coordinate-media-experiences-with-group-activities/README.md) — WWDC21
 - [Coordinate media playback in Safari with Group Activities](../sessions/wwdc2021/10189-coordinate-media-playback-in-safari-with-group-activities/README.md) — WWDC21

@@ -1,6 +1,6 @@
 # iOS Sessions
 
-1354 sessions.
+1353 sessions.
 
 - [Get ready for the Swift Student Challenge](../sessions/meet-with-apple/263-get-ready-for-the-swift-student-challenge/README.md) — Meet with Apple
 - [Q&A: Swift concurrency](../sessions/meet-with-apple/276-q-a-swift-concurrency/README.md) — Meet with Apple
@@ -713,7 +713,6 @@
 - [Build light and fast App Clips](../sessions/wwdc2021/10013-build-light-and-fast-app-clips/README.md) — WWDC21
 - [Capture and process ProRAW images](../sessions/wwdc2021/10160-capture-and-process-proraw-images/README.md) — WWDC21
 - [Capture high-quality photos using video formats](../sessions/wwdc2021/10247-capture-high-quality-photos-using-video-formats/README.md) — WWDC21
-- [Challenge: Design multi-step Shortcuts](../sessions/wwdc2021/10419-challenge-design-multi-step-shortcuts/README.md) — WWDC21
 - [Challenge: Framework Freestyle](../sessions/wwdc2021/10456-challenge-framework-freestyle/README.md) — WWDC21
 - [Classify hand poses and actions with Create ML](../sessions/wwdc2021/10039-classify-hand-poses-and-actions-with-create-ml/README.md) — WWDC21
 - [Coordinate media experiences with Group Activities](../sessions/wwdc2021/10225-coordinate-media-experiences-with-group-activities/README.md) — WWDC21

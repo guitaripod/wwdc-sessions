@@ -25,6 +25,12 @@ Check out how the new Spatial Preview framework brings content from your Mac dir
 
 ## Documentation & Resources
 
+- [Bridging an application’s custom USD runtime to Spatial Preview](https://developer.apple.com/documentation/SpatialPreview/bridging-an-external-usd-runtime-to-spatial-preview) _documentation_
+  - Markdown (sosumi.ai): https://sosumi.ai/documentation/SpatialPreview/bridging-an-external-usd-runtime-to-spatial-preview
+  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/SpatialPreview/bridging-an-external-usd-runtime-to-spatial-preview.json
+- [Working with content from your Mac app using Spatial Preview](https://developer.apple.com/documentation/SpatialPreview/working-with-content-from-your-mac-app-using-spatial-preview) _documentation_
+  - Markdown (sosumi.ai): https://sosumi.ai/documentation/SpatialPreview/working-with-content-from-your-mac-app-using-spatial-preview
+  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/SpatialPreview/working-with-content-from-your-mac-app-using-spatial-preview.json
 - [Reducing the rendering cost of RealityKit content on visionOS](https://developer.apple.com/documentation/visionOS/reducing-the-rendering-cost-of-RealityKit-content-on-visionOS) _documentation_
   - Markdown (sosumi.ai): https://sosumi.ai/documentation/visionOS/reducing-the-rendering-cost-of-RealityKit-content-on-visionOS
   - DocC JSON: https://developer.apple.com/tutorials/data/documentation/visionOS/reducing-the-rendering-cost-of-RealityKit-content-on-visionOS.json

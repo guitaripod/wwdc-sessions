@@ -25,10 +25,17 @@ Explore the newest design updates and developer tools for Apple Wallet passes. R
 
 ## Documentation & Resources
 
+- [Pass Designer](https://developer.apple.com/pass-designer) _guide_
+  - Markdown (sosumi.ai): https://sosumi.ai/pass-designer
+- [Creating a pass with Pass Designer](https://developer.apple.com/documentation/walletpasses/creating-a-pass-with-pass-designer) _documentation_
+  - Markdown (sosumi.ai): https://sosumi.ai/documentation/walletpasses/creating-a-pass-with-pass-designer
+  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/walletpasses/creating-a-pass-with-pass-designer.json
 - [Pass Builder](https://github.com/apple/pass-builder) _guide_
-- [Wallet](https://developer.apple.com/documentation/PassKit/wallet) _documentation_
-  - Markdown (sosumi.ai): https://sosumi.ai/documentation/PassKit/wallet
-  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/PassKit/wallet.json
+- [Pass.Barcodes](https://developer.apple.com/documentation/WalletPasses/Pass/Barcodes-data.dictionary) _documentation_
+  - Markdown (sosumi.ai): https://sosumi.ai/documentation/WalletPasses/Pass/Barcodes-data.dictionary
+  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/WalletPasses/Pass/Barcodes-data.dictionary.json
+- [Learn more about Pass Designer](https://developer.apple.com/pass-designer/) _documentation_
+  - Markdown (sosumi.ai): https://sosumi.ai/pass-designer/
 
 ## Code Snippets
 

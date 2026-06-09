@@ -106,18 +106,40 @@
   ],
   "resources": [
     {
+      "title": "Pass Designer",
+      "url": "https://developer.apple.com/pass-designer",
+      "type": "guide",
+      "description": "Use Pass Designer on macOS to create and style Wallet passes, then export templates to personalize, sign, and distribute with Pass Builder.",
+      "sosumiURL": "https://sosumi.ai/pass-designer"
+    },
+    {
+      "title": "Creating a pass with Pass Designer",
+      "url": "https://developer.apple.com/documentation/walletpasses/creating-a-pass-with-pass-designer",
+      "type": "documentation",
+      "description": "Use Pass Designer on macOS, to create, style, and export Wallet passes as template files to sign and distribute with Pass Builder.",
+      "sosumiURL": "https://sosumi.ai/documentation/walletpasses/creating-a-pass-with-pass-designer",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/walletpasses/creating-a-pass-with-pass-designer.json"
+    },
+    {
       "title": "Pass Builder",
       "url": "https://github.com/apple/pass-builder",
       "type": "guide",
       "description": "A Swift library and command-line tool for creating, validating, and signing Apple Wallet passes."
     },
     {
-      "title": "Wallet",
-      "url": "https://developer.apple.com/documentation/PassKit/wallet",
+      "title": "Pass.Barcodes",
+      "url": "https://developer.apple.com/documentation/WalletPasses/Pass/Barcodes-data.dictionary",
       "type": "documentation",
-      "description": "Manage tickets, boarding passes, payment cards and other passes in the Wallet app.",
-      "sosumiURL": "https://sosumi.ai/documentation/PassKit/wallet",
-      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/PassKit/wallet.json"
+      "description": "An array of barcode objects on a Pass.",
+      "sosumiURL": "https://sosumi.ai/documentation/WalletPasses/Pass/Barcodes-data.dictionary",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WalletPasses/Pass/Barcodes-data.dictionary.json"
+    },
+    {
+      "title": "Learn more about Pass Designer",
+      "url": "https://developer.apple.com/pass-designer/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/pass-designer/"
     }
   ],
   "path": "sessions/wwdc2026/209-what-s-new-in-wallet/",

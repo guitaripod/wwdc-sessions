@@ -25,13 +25,17 @@ Find out how visionOS is advancing object tracking and spatial accessory input. 
 
 ## Documentation & Resources
 
+- [Implementing object tracking in your app](https://developer.apple.com/documentation/visionOS/implementing-object-tracking-in-your-app) _documentation_
+  - Markdown (sosumi.ai): https://sosumi.ai/documentation/visionOS/implementing-object-tracking-in-your-app
+  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/visionOS/implementing-object-tracking-in-your-app.json
 - [Working with generic spatial accessories](https://developer.apple.com/documentation/visionOS/working-with-generic-spatial-accessories) _documentation_
   - Markdown (sosumi.ai): https://sosumi.ai/documentation/visionOS/working-with-generic-spatial-accessories
   - DocC JSON: https://developer.apple.com/tutorials/data/documentation/visionOS/working-with-generic-spatial-accessories.json
 - [Preparing spatial accessories for tracking in your visionOS app](https://developer.apple.com/documentation/ARKit/preparing-spatial-accessories-for-tracking-in-your-visionos-app) _documentation_
   - Markdown (sosumi.ai): https://sosumi.ai/documentation/ARKit/preparing-spatial-accessories-for-tracking-in-your-visionos-app
   - DocC JSON: https://developer.apple.com/tutorials/data/documentation/ARKit/preparing-spatial-accessories-for-tracking-in-your-visionos-app.json
-- [Spatial accessory design guidelines for Apple devices (section 20)](https://at.apple.com/vzqbpy) _documentation_
+- [Spatial accessory design guidelines for Apple devices (check section 20)](https://developer.apple.com/accessories/Accessory-Design-Guidelines.pdf#page=135) _documentation_
+  - Markdown (sosumi.ai): https://sosumi.ai/accessories/Accessory-Design-Guidelines.pdf#page=135
 - [Exploring object tracking with ARKit](https://developer.apple.com/documentation/visionOS/exploring_object_tracking_with_arkit) _samplecode_
   - Markdown (sosumi.ai): https://sosumi.ai/documentation/visionOS/exploring_object_tracking_with_arkit
   - DocC JSON: https://developer.apple.com/tutorials/data/documentation/visionOS/exploring_object_tracking_with_arkit.json

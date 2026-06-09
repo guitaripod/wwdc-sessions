@@ -56,7 +56,7 @@
       "title": "Convert a Steam depot to an asset pack manifest",
       "language": "bash",
       "startTimeSeconds": 207,
-      "code": "# Convert a Steam depot to an asset pack manifest\nxcrun ba-package convert --asset-pack-id voice-english --l en-US --on-demand voice-english.vdf -o voice-english.json"
+      "code": "# Convert a Steam depot to an asset pack manifest\nxcrun ba-package convert --asset-pack-id voice-english -l en-US --on-demand voice-english.vdf -o voice-english.json"
     },
     {
       "title": "Convert an asset pack manifest to an asset pack archive",

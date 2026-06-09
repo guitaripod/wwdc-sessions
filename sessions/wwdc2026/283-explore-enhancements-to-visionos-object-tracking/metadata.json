@@ -85,6 +85,14 @@
   ],
   "resources": [
     {
+      "title": "Implementing object tracking in your app",
+      "url": "https://developer.apple.com/documentation/visionOS/implementing-object-tracking-in-your-app",
+      "type": "documentation",
+      "description": "Create engaging interactions by training models to recognize and track real-world objects in people’s surroundings.",
+      "sosumiURL": "https://sosumi.ai/documentation/visionOS/implementing-object-tracking-in-your-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/visionOS/implementing-object-tracking-in-your-app.json"
+    },
+    {
       "title": "Working with generic spatial accessories",
       "url": "https://developer.apple.com/documentation/visionOS/working-with-generic-spatial-accessories",
       "type": "documentation",
@@ -101,10 +109,11 @@
       "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ARKit/preparing-spatial-accessories-for-tracking-in-your-visionos-app.json"
     },
     {
-      "title": "Spatial accessory design guidelines for Apple devices (section 20)",
-      "url": "https://at.apple.com/vzqbpy",
+      "title": "Spatial accessory design guidelines for Apple devices (check section 20)",
+      "url": "https://developer.apple.com/accessories/Accessory-Design-Guidelines.pdf#page=135",
       "type": "documentation",
-      "description": null
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/accessories/Accessory-Design-Guidelines.pdf#page=135"
     },
     {
       "title": "Exploring object tracking with ARKit",
