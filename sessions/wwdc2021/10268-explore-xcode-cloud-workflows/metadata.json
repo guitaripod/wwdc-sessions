@@ -1,0 +1,99 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10268",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10268,
+  "title": "Explore Xcode Cloud workflows",
+  "description": "Learn how Xcode Cloud workflows can help you and your team automate building, analyzing, testing, archiving, and distributing your apps and frameworks. They are flexible, extensible, and can be configured around your team’s development and distribution process. Find out the basics of Xcode Cloud Workflows, discover how to configure them from end to end, and check out recommended workflows to get you started with Apple’s continuous integration system. To get the most out of this session, we recommend first watching “Meet Xcode Cloud” from WWDC21.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10268",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10268",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "app store connect",
+    "build",
+    "ci",
+    "continuous integration",
+    "distribution",
+    "testflight",
+    "testing",
+    "workflows",
+    "xcode",
+    "xcode cloud"
+  ],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 1429,
+  "hasTranscript": true,
+  "transcriptWordCount": 3869,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10268/4/D11A0D51-DD10-4E50-932B-03643B47BF07/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10268/4/D11A0D51-DD10-4E50-932B-03643B47BF07/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10268/4/D11A0D51-DD10-4E50-932B-03643B47BF07/downloads/wwdc2021-10268_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10268/4/D11A0D51-DD10-4E50-932B-03643B47BF07/downloads/wwdc2021-10268_hd.mp4",
+    "duration": 1429
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Xcode Cloud workflow reference",
+      "url": "https://developer.apple.com/documentation/Xcode/Xcode-Cloud-Workflow-Reference",
+      "type": "documentation",
+      "description": "Configure metadata, start conditions, actions, post-actions, and more to create custom Xcode Cloud workflows.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/Xcode-Cloud-Workflow-Reference",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/Xcode-Cloud-Workflow-Reference.json"
+    },
+    {
+      "title": "Developing a workflow strategy for Xcode Cloud",
+      "url": "https://developer.apple.com/documentation/Xcode/Developing-a-Workflow-Strategy-for-Xcode-Cloud",
+      "type": "documentation",
+      "description": "Review how you can best create custom Xcode Cloud workflows to refine your continuous integration and delivery practice.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/Developing-a-Workflow-Strategy-for-Xcode-Cloud",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/Developing-a-Workflow-Strategy-for-Xcode-Cloud.json"
+    },
+    {
+      "title": "Configuring your first Xcode Cloud workflow",
+      "url": "https://developer.apple.com/documentation/Xcode/Configuring-Your-First-Xcode-Cloud-Workflow",
+      "type": "documentation",
+      "description": "Set up your project or workspace to use Xcode Cloud and adopt continuous integration and delivery.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/Configuring-Your-First-Xcode-Cloud-Workflow",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/Configuring-Your-First-Xcode-Cloud-Workflow.json"
+    },
+    {
+      "title": "Xcode Cloud",
+      "url": "https://developer.apple.com/documentation/Xcode/Xcode-Cloud",
+      "type": "documentation",
+      "description": "Automatically build, test, and distribute your apps with Xcode Cloud to verify changes and create high-quality apps.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/Xcode-Cloud",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/Xcode-Cloud.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10268-explore-xcode-cloud-workflows/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10268-explore-xcode-cloud-workflows/metadata.json",
+    "readme": "sessions/wwdc2021/10268-explore-xcode-cloud-workflows/README.md",
+    "transcript": "sessions/wwdc2021/10268-explore-xcode-cloud-workflows/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10268-explore-xcode-cloud-workflows/transcript.json"
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-275",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 275,
+  "title": "Code-along: Add persistence with SwiftData",
+  "description": "Experience SwiftData in action as we add persistence to an existing app. We’ll show you how to define your data models and seamlessly integrate persistent data with SwiftUI. You’ll also learn foundational skills for managing your app’s state using this expressive, declarative API.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/275",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/275",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "screenshots"
+  ],
+  "topics": [
+    "Swift",
+    "SwiftUI & UI Frameworks",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1355,
+  "hasTranscript": true,
+  "transcriptWordCount": 3133,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/275/4/7c64f887-3c3c-4bdf-8472-72d6b96f8e3d/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/275/4/7c64f887-3c3c-4bdf-8472-72d6b96f8e3d/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/275/4/7c64f887-3c3c-4bdf-8472-72d6b96f8e3d/downloads/wwdc2026-275_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/275/4/7c64f887-3c3c-4bdf-8472-72d6b96f8e3d/downloads/wwdc2026-275_hd.mp4",
+    "duration": 1355
+  },
+  "codeSnippets": [
+    {
+      "title": "Convert Activity to a persistent model with @Model",
+      "language": "swift",
+      "startTimeSeconds": 219,
+      "code": "import Foundation\nimport SwiftData\n\n// SwiftData automatically generates Observable conformance\n@Model\nclass Activity {\n    var name: String\n    var isComplete: Bool = false\n    var dateCreated = Date.now\n    var dateEdited = Date.now\n}"
+    },
+    {
+      "title": "Add Codable conformance to TripCollection",
+      "language": "swift",
+      "startTimeSeconds": 366,
+      "code": "enum TripCollection: String, CaseIterable, RawRepresentable, Codable {\n    case springEscapes\n    case summerVibes\n    case fallGetaways\n    case winterRetreats\n}"
+    },
+    {
+      "title": "Set up model relationships between Trip, TripImage, and Activity",
+      "language": "swift",
+      "startTimeSeconds": 632,
+      "code": "import Foundation\nimport SwiftData\n\n@Model\nclass Trip {\n    var name: String\n    var collection: TripCollection\n\n    var photo: TripImage\n    var thumbnailData: Data?\n\n    @Relationship(deleteRule: .cascade, inverse: \\Activity.trip)\n    var activities: [Activity] = []\n\n    private(set) var creationDate = Date.now\n    var subtitle: String?\n    var isComplete: Bool = false\n}"
+    },
+    {
+      "title": "Enable interoperability between your schema and SwiftUI views",
+      "language": "swift",
+      "startTimeSeconds": 801,
+      "code": "import SwiftUI\nimport SwiftData\n\n@main\nstruct WishlistApp: App {\n    let container: ModelContainer = {\n        do {\n            let modelContainer = try ModelContainer(for: Trip.self, Activity.self, TripImage.self, Goal.self, TripGoal.self, ActivityGoal.self)\n            try SampleData.seedIfNeeded(in: modelContainer.mainContext)\n            return modelContainer\n        } catch {\n            fatalError(\"Could not create model container: \\(error)\")\n        }\n    }()\n\n    var body: some Scene {\n        WindowGroup {\n            ContentView()\n                .preferredColorScheme(.dark)\n        }\n        .modelContainer(container)\n    }\n}"
+    },
+    {
+      "title": "Fetch achieved and upcoming goals",
+      "language": "swift",
+      "startTimeSeconds": 987,
+      "code": "@Query(filter: #Predicate<Goal> { $0.isAchieved }, sort: \\Goal.dateAchieved, order: .reverse)\nprivate var achievedGoals: [Goal]\n\n@Query(filter: #Predicate<Goal> { !$0.isAchieved }, sort: \\Goal.sortOrder)\nprivate var upcomingGoals: [Goal]"
+    },
+    {
+      "title": "Fetch recent trips",
+      "language": "swift",
+      "startTimeSeconds": 1009,
+      "code": "import SwiftUI\nimport SwiftData\n\nstruct RecentTripsPageView: View {\n    // Fetch most recent trips in reverse chronological order\n    @Query(FetchDescriptor<Trip>(sortBy: [SortDescriptor(\\Trip.creationDate, order: .reverse)], fetchLimit: 5))\n    private var trips: [Trip]\n\n    @Namespace private var namespace\n\n    var body: some View {\n        TabView {\n            ForEach(trips) { trip in\n                NavigationLink {\n                    TripDetailView(trip: trip)\n                        .navigationTransition(\n                            .zoom(sourceID: trip.id, in: namespace))\n                } label: {\n                    TripImageView(trip: trip)\n                        .overlay(alignment: .bottomLeading) {\n                            VStack(alignment: .leading) {\n                                Text(\"RECENTLY ADDED\")\n                                    .font(.subheadline)\n                                    .fontWeight(.bold)\n                                    .foregroundStyle(.limeGreen)\n\n                                Text(trip.name)\n                                    .font(.title)\n                                    .fontWidth(.expanded)\n                                    .fontWeight(.medium)\n                                    .foregroundStyle(.primary)\n                            }\n                            .padding(.horizontal)\n                            .padding(.bottom, 54)\n                        }\n                        .matchedTransitionSource(id: trip.id, in: namespace)\n                }\n                .buttonStyle(.plain)\n            }\n        }\n        .tabViewStyle(.page)\n        .containerRelativeFrame([.horizontal, .vertical]) { length, axis in\n            if axis == .vertical {\n                return length / 1.3\n            } else {\n                return length\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Dynamically construct a query in the initializer of TripCollectionView",
+      "language": "swift",
+      "startTimeSeconds": 1046,
+      "code": "init(tripCollection: TripCollection, cardSize: TripCard.Size, namespace: Namespace.ID) {\n    _trips = Query(filter: #Predicate<Trip> { $0.collection == tripCollection }, sort: \\Trip.name)\n    self.tripCollection = tripCollection\n    self.cardSize = cardSize\n    self.namespace = namespace\n}"
+    },
+    {
+      "title": "Search for trips and activities by name",
+      "language": "swift",
+      "startTimeSeconds": 1093,
+      "code": "import SwiftUI\nimport SwiftData\n\nprivate struct SearchResultsListView: View {\n    @Query(sort: \\Trip.name) private var trips: [Trip]\n    @Query(sort: \\Activity.name) private var activities: [Activity]\n\n    var searchText: String\n    var namespace: Namespace.ID\n\n    init(searchText: String, namespace: Namespace.ID) {\n        self.searchText = searchText\n        self.namespace = namespace\n\n        if searchText.isEmpty {\n            _trips = Query(FetchDescriptor(sortBy: [SortDescriptor(\\Trip.creationDate, order: .reverse)], fetchLimit: 3))\n            _activities = Query(filter: #Predicate<Activity> { _ in false })\n        } else {\n            // All trips whose name matches searchText, sorted lexicographically\n            let tripSearchPredicate = #Predicate<Trip> { $0.name.localizedStandardContains(searchText) }\n            _trips = Query(filter: tripSearchPredicate, sort: \\Trip.name)\n            // All matching activities that belong to a trip\n            let activitySearchPredicate = #Predicate<Activity> { $0.trip != nil && $0.name.localizedStandardContains(searchText) }\n            _activities = Query(filter: activitySearchPredicate, sort: \\Activity.name)\n        }\n    }\n\n    var body: some View {\n        List {\n            if !trips.isEmpty {\n                TripSearchSectionView(trips: trips, namespace: namespace, title: searchText.isEmpty ? \"Recent Trips\" : \"Trips\")\n            }\n\n            if !activities.isEmpty {\n                ActivitySearchSectionView(activities: activities)\n            }\n        }\n        .overlay {\n            if trips.isEmpty && activities.isEmpty {\n                ContentUnavailableView(\n                    \"No results for “\\(searchText)”\",\n                    systemImage: \"magnifyingglass\",\n                    description: Text(\"Check spelling or try a new search.\")\n                )\n            }\n        }\n        .listStyle(.plain)\n    }\n}"
+    },
+    {
+      "title": "Capture and report errors from ActivityItemView",
+      "language": "swift",
+      "startTimeSeconds": 1182,
+      "code": "var body: some View {\n    HStack(alignment: .firstTextBaseline, spacing: 17) {\n        Group {\n            if isEditing {\n                rowContentWhenEditing\n            } else {\n                rowContentWhenNotEditing\n            }\n        }\n        .transition(.opacity.animation(.snappy))\n        .animation(.snappy, value: isEditing)\n    }\n    .onDisappear {\n        do {\n            try updateGoalAchievements()\n        } catch {\n            updateError = error\n            reportError(error)\n        }\n    }\n    .alert(error: $updateError) {\n        // Customize the presentation of the error\n    }\n}"
+    },
+    {
+      "title": "Update dateEdited and propagate side effects on property changes",
+      "language": "swift",
+      "startTimeSeconds": 1264,
+      "code": "init(activity: Activity, isLast: Bool, isEditing: Bool) {\n    activity.token = withContinuousObservation(options: .didSet) { event in\n        _ = activity.name\n        _ = activity.isComplete\n\n        if event.matches(\\Activity.name) {\n            activity.dateEdited = .now\n        }\n\n        if event.matches(\\Activity.isComplete) {\n            activity.dateEdited = .now\n            activity.trip?.isComplete = activity.trip?.activities.isEmpty == false\n            && activity.trip?.activities.allSatisfy { $0.isComplete } == true\n        }\n    }\n    self.activity = activity\n    self.isLast = isLast\n    self.isEditing = isEditing\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Wishlist: Planning travel in a SwiftUI app",
+      "url": "https://developer.apple.com/documentation/SwiftUI/wishlist-planning-travel-in-a-swiftui-app",
+      "type": "documentation",
+      "description": "Build a travel planning app that organizes trips into collections",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/wishlist-planning-travel-in-a-swiftui-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/wishlist-planning-travel-in-a-swiftui-app.json"
+    },
+    {
+      "title": "SwiftData",
+      "url": "https://developer.apple.com/documentation/SwiftData",
+      "type": "documentation",
+      "description": "Write your model code declaratively to add managed persistence and efficient",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftData",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftData.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/275-code-along-add-persistence-with-swiftdata/",
+  "files": {
+    "metadata": "sessions/wwdc2026/275-code-along-add-persistence-with-swiftdata/metadata.json",
+    "readme": "sessions/wwdc2026/275-code-along-add-persistence-with-swiftdata/README.md",
+    "transcript": "sessions/wwdc2026/275-code-along-add-persistence-with-swiftdata/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/275-code-along-add-persistence-with-swiftdata/transcript.json"
+  }
+}

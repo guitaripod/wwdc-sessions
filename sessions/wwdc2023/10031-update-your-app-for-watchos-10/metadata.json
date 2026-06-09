@@ -1,0 +1,116 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10031",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10031,
+  "title": "Update your app for watchOS 10",
+  "description": "Join us as we update an Apple Watch app to take advantage of the latest features in watchOS 10. In this code-along, we’ll show you how to use the latest SwiftUI APIs to maximize glanceability and reorient app navigation around the Digital Crown.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10031",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10031",
+  "type": "Video",
+  "publishedAt": "2023-06-07T08:00:00-07:00",
+  "platforms": [
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 815,
+  "hasTranscript": true,
+  "transcriptWordCount": 1747,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10031/4/365BFCEA-3567-4F2E-85DC-D6DF144F9B5C/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10031/4/365BFCEA-3567-4F2E-85DC-D6DF144F9B5C/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10031/4/365BFCEA-3567-4F2E-85DC-D6DF144F9B5C/downloads/wwdc2023-10031_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10031/4/365BFCEA-3567-4F2E-85DC-D6DF144F9B5C/downloads/wwdc2023-10031_hd.mp4",
+    "duration": 815
+  },
+  "codeSnippets": [
+    {
+      "title": "NavigationSplitView",
+      "language": "swift",
+      "startTimeSeconds": 242,
+      "code": "NavigationSplitView {\n    List(backyardsData.backyards, selection: $selectedBackyard) { backyard in\n        BackyardCell(backyard: backyard)\n    }\n    .listStyle(.carousel)\n} detail: {\n    if let selectedBackyard {\n        BackyardView(backyard: selectedBackyard)\n    } else {\n        BackyardUnavailableView()\n    }\n}"
+    },
+    {
+      "title": "Vertical TabView",
+      "language": "swift",
+      "startTimeSeconds": 378,
+      "code": "TabView {\n    TodayView()\n        .navigationTitle(\"Today\")\n    HabitatGaugeView(level: $waterLevel, habitatType: .water, tintColor: .blue)\n        .navigationTitle(\"Water\")\n    HabitatGaugeView(level: $foodLevel, habitatType: .food, tintColor: .green)\n        .navigationTitle(\"Food\")\n    List {\n        VisitorView()\n            .navigationTitle(\"Visitors\")\n    }\n}\n.tabViewStyle(.verticalPage)"
+    },
+    {
+      "title": "Add refill button to Toolbar",
+      "language": "swift",
+      "startTimeSeconds": 517,
+      "code": ".toolbar {\n    ToolbarItemGroup(placement: .bottomBar) {\n        Spacer()\n        Button {\n            level = Int(min(100, Double(level) + 5))\n        } label: {\n            Label(\"Add\", systemImage: \"plus\")\n        }\n    }\n}"
+    },
+    {
+      "title": "HabitatGaugeView background color function and variables",
+      "language": "swift",
+      "startTimeSeconds": 588,
+      "code": "func backgroundColor(_ level: Int, for type: HabitatType) -> Color {\n    let color: Color = type == .food ? .green : .blue\n    return level < 40 ? .red : color\n}\n\nvar waterColor: Color {\n    backgroundColor(waterLevel, for: .water)\n}\n\nvar foodColor: Color {\n    backgroundColor(foodLevel, for: .food)\n}"
+    },
+    {
+      "title": ".containerBackground within TabView",
+      "language": "swift",
+      "startTimeSeconds": 610,
+      "code": "TabView {\n    TodayView()\n        .navigationTitle(\"Today\")\n        .containerBackground(Color.accentColor.gradient, for: .tabView)\n    HabitatGaugeView(level: $waterLevel, habitatType: .water, tintColor: waterColor)\n        .navigationTitle(\"Water\")\n        .containerBackground(waterColor.gradient, for: .tabView)\n    HabitatGaugeView(level: $foodLevel, habitatType: .food, tintColor: foodColor)\n        .navigationTitle(\"Food\")\n        .containerBackground(foodColor.gradient, for: .tabView)\n    List {\n        VisitorView()\n            .navigationTitle(\"Visitors\")\n            .containerBackground(Color.accentColor.gradient, for: .tabView)\n    }\n}\n.tabViewStyle(.verticalPage)\n.environmentObject(backyard)\n.navigationTitle(backyard.displayName)"
+    },
+    {
+      "title": "Add material to the backyard name",
+      "language": "swift",
+      "startTimeSeconds": 698,
+      "code": ".foregroundStyle(.secondary)\n.background(Material.ultraThin, in: RoundedRectangle(cornerRadius: 7))"
+    },
+    {
+      "title": "Visitor score overlay with materials",
+      "language": "swift",
+      "startTimeSeconds": 735,
+      "code": ".overlay(alignment: .topTrailing) {\n    Text(\"\\(backyard.visitorScore)\")\n        .frame(width: 25, height: 25)\n        .foregroundStyle(.secondary)\n        .background(.ultraThinMaterial, in: .circle)\n        .padding(.top, 5)\n}"
+    },
+    {
+      "title": "Light materials",
+      "language": "swift",
+      "startTimeSeconds": 740,
+      "code": ".environment(\\.colorScheme, .light)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Updating your app and widgets for watchOS 10",
+      "url": "https://developer.apple.com/documentation/watchOS-Apps/updating-your-app-and-widgets-for-watchos-10",
+      "type": "samplecode",
+      "description": "Integrate SwiftUI elements and watch-specific features, and build widgets for the Smart Stack.",
+      "sosumiURL": "https://sosumi.ai/documentation/watchOS-Apps/updating-your-app-and-widgets-for-watchos-10",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/watchOS-Apps/updating-your-app-and-widgets-for-watchos-10.json"
+    },
+    {
+      "title": "Human Interface Guidelines: watchOS",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/designing-for-watchos",
+      "type": "documentation",
+      "description": "When people glance at their Apple Watch, they know they can access essential information and perform simple, timely tasks whether they’re stationary or in motion.",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/designing-for-watchos"
+    }
+  ],
+  "path": "sessions/wwdc2023/10031-update-your-app-for-watchos-10/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10031-update-your-app-for-watchos-10/metadata.json",
+    "readme": "sessions/wwdc2023/10031-update-your-app-for-watchos-10/README.md",
+    "transcript": "sessions/wwdc2023/10031-update-your-app-for-watchos-10/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10031-update-your-app-for-watchos-10/transcript.json"
+  }
+}

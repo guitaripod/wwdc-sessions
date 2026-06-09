@@ -1,0 +1,83 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2018-804",
+  "event": "wwdc2018",
+  "eventName": "WWDC18",
+  "year": 2018,
+  "eventContentId": 804,
+  "title": "The Life of a Button",
+  "description": "An in-depth exploration of essential interaction, visual and sound design principles and techniques through the design of a simple button.",
+  "url": "https://developer.apple.com/videos/play/wwdc2018/804",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2018/804",
+  "type": "Video",
+  "publishedAt": "2018-06-07T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "color",
+    "composition",
+    "copy",
+    "design",
+    "editorial",
+    "interaction",
+    "interactive",
+    "layout",
+    "shape",
+    "sound",
+    "ui",
+    "ux"
+  ],
+  "topics": [
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 2158,
+  "hasTranscript": true,
+  "transcriptWordCount": 4847,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/804hwsr1us28uuau99o/804/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/804hwsr1us28uuau99o/804/804_sd_the_life_of_a_button.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/804hwsr1us28uuau99o/804/804_hd_the_life_of_a_button.mp4",
+    "duration": 2158
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Explore the Human Interface Guidelines",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/"
+    },
+    {
+      "title": "UIButton",
+      "url": "https://developer.apple.com/documentation/UIKit/UIButton",
+      "type": "documentation",
+      "description": "A control that executes your custom code in response to user interactions.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UIButton",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UIButton.json"
+    }
+  ],
+  "path": "sessions/wwdc2018/804-the-life-of-a-button/",
+  "files": {
+    "metadata": "sessions/wwdc2018/804-the-life-of-a-button/metadata.json",
+    "readme": "sessions/wwdc2018/804-the-life-of-a-button/README.md",
+    "transcript": "sessions/wwdc2018/804-the-life-of-a-button/transcript.md",
+    "transcriptJSON": "sessions/wwdc2018/804-the-life-of-a-button/transcript.json"
+  }
+}

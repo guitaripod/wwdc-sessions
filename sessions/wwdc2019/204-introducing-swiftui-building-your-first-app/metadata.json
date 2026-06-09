@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-204",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 204,
+  "title": "Introducing SwiftUI: Building Your First App",
+  "description": "See SwiftUI in action! Watch as engineers from the SwiftUI team build a fully-functioning app from scratch. Understand the philosophy driving this new framework and learn about the benefits of declarative-style programming. Take a look under the hood to understand how SwiftUI operates and learn how SwiftUI and Xcode 11 work together to help you to build great apps, faster.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/204",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/204",
+  "type": "Video",
+  "publishedAt": "2019-06-04T11:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "better apps faster",
+    "canvas",
+    "control",
+    "declarative",
+    "previews",
+    "view"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 3256,
+  "hasTranscript": true,
+  "transcriptWordCount": 7871,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/204isgnpbqud244/204/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/204isgnpbqud244/204/204_sd_introducing_swiftui_building_your_first_app.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/204isgnpbqud244/204/204_hd_introducing_swiftui_building_your_first_app.mp4",
+    "duration": 3256
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/204-introducing-swiftui-building-your-first-app/",
+  "files": {
+    "metadata": "sessions/wwdc2019/204-introducing-swiftui-building-your-first-app/metadata.json",
+    "readme": "sessions/wwdc2019/204-introducing-swiftui-building-your-first-app/README.md",
+    "transcript": "sessions/wwdc2019/204-introducing-swiftui-building-your-first-app/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/204-introducing-swiftui-building-your-first-app/transcript.json"
+  }
+}

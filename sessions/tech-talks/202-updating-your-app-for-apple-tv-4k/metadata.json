@@ -1,0 +1,65 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-202",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2017,
+  "eventContentId": 202,
+  "title": "Updating Your App for Apple TV 4K",
+  "description": "Learn how to update your app for Apple TV 4K, including how to take advantage of new capabilities such as retina image support, HDR video, and the new motion capabilities of the Siri Remote.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/202",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/202",
+  "type": "Video",
+  "publishedAt": "2017-09-12T10:00:00-07:00",
+  "platforms": [
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 169,
+  "hasTranscript": true,
+  "transcriptWordCount": 360,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tutorials/20170912/202uhvrcg65c7/updating_your_app_for_apple_tv_4k/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tutorials/20170912/202uhvrcg65c7/updating_your_app_for_apple_tv_4k/updating_your_app_for_apple_tv_4k_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tutorials/20170912/202uhvrcg65c7/updating_your_app_for_apple_tv_4k/updating_your_app_for_apple_tv_4k_hd.mp4",
+    "duration": 169
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "App Programming Guide for tvOS",
+      "url": "https://developer.apple.com/library/content/documentation/General/Conceptual/AppleTV_PG/",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/library/content/documentation/General/Conceptual/AppleTV_PG/"
+    },
+    {
+      "title": "Human Interface Guidelines: Designing for tvOS",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/designing-for-tvos",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/designing-for-tvos"
+    }
+  ],
+  "path": "sessions/tech-talks/202-updating-your-app-for-apple-tv-4k/",
+  "files": {
+    "metadata": "sessions/tech-talks/202-updating-your-app-for-apple-tv-4k/metadata.json",
+    "readme": "sessions/tech-talks/202-updating-your-app-for-apple-tv-4k/README.md",
+    "transcript": "sessions/tech-talks/202-updating-your-app-for-apple-tv-4k/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/202-updating-your-app-for-apple-tv-4k/transcript.json"
+  }
+}

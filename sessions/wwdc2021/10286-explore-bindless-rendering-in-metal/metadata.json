@@ -1,0 +1,192 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10286",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10286,
+  "title": "Explore bindless rendering in Metal",
+  "description": "Unleash the full potential of your shaders and implement modern rendering techniques by adding Argument Buffers to adopt bindless rendering. Learn how to make your entire scene and resources available to the GPU to make the most out of raytracing and rasterization pipelines.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10286",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10286",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "3d graphics",
+    "game",
+    "game dev",
+    "game developer",
+    "metal",
+    "metal shading language",
+    "metal tools",
+    "proapps",
+    "raytracing"
+  ],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1272,
+  "hasTranscript": true,
+  "transcriptWordCount": 3397,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10286/7/76356517-0CAC-4E8D-81E3-B42DCE552D15/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10286/7/76356517-0CAC-4E8D-81E3-B42DCE552D15/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10286/7/76356517-0CAC-4E8D-81E3-B42DCE552D15/downloads/wwdc2021-10286_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10286/7/76356517-0CAC-4E8D-81E3-B42DCE552D15/downloads/wwdc2021-10286_hd.mp4",
+    "duration": 1272
+  },
+  "codeSnippets": [
+    {
+      "title": "Simple Intersection Kernel 2",
+      "language": "objectivec",
+      "startTimeSeconds": 7,
+      "code": "if(i.type == intersection_type::triangle)\n{\n  constant Instance& inst     = get_instance(i);\n  constant Mesh&     mesh     = get_mesh(inst, i);\n  constant Material& material = get_material(inst, i);\n\n  color = shade_pixel(mesh, material, i);\n}   \n\noutImage.write(color, tid);"
+    },
+    {
+      "title": "PBR fragment shading requires several textures",
+      "language": "objectivec",
+      "startTimeSeconds": 8,
+      "code": "fragment half4 pbrFragment(ColorInOut in [[stage_in]],\n                           texture2d< float > albedo    [[texture(0)]],\n                           texture2d< float > roughness [[texture(1)]],\n                           texture2d< float > metallic  [[texture(2)]],\n                           texture2d< float > occlusion [[texture(3)]])\n{\t\n\thalf4 color = calculateShading(in, albedo, roughness, metallic, occlusion);\n\treturn color;\n}"
+    },
+    {
+      "title": "Bindless makes all textures available via AB navigation",
+      "language": "objectivec",
+      "startTimeSeconds": 9,
+      "code": "fragment half4 pbrFragmentBindless(ColorInOut in [[stage_in]], \n                                   device const Scene* pScene [[buffer(0)]])\n{\n\tdevice const Instance& instance = pScene->instances[in.instance_id];\n\tdevice const Material& material = pScene->materials[instance.material_id];\n\n\thalf4 color = calculateShading(in, material);\n\n\treturn color;\n}"
+    },
+    {
+      "title": "Simple Intersection Kernel 1",
+      "language": "objectivec",
+      "startTimeSeconds": 108,
+      "code": "if (intersection.type == intersection_type::triangle) \n{\n  // solid blue triangle\n  color = float4(0.0f, 0.0f, 1.0f, 1.0f);\n}   \n\noutImage.write(color, tid);"
+    },
+    {
+      "title": "Encoder creation",
+      "language": "objectivec",
+      "startTimeSeconds": 693,
+      "code": "struct Instance\n{\n    constant Mesh*     pMesh            [[id(0)]];\n    constant Material* pMaterial        [[id(1)]];\n    constant float4x4  modelTransform   [[id(2)]];\n};"
+    },
+    {
+      "title": "Encoder via reflection",
+      "language": "objectivec",
+      "startTimeSeconds": 710,
+      "code": "// Shader code references scene\nkernel void RTReflections( constant Scene* pScene [[buffer(0)]] );"
+    },
+    {
+      "title": "Argument Buffers referenced indirectly",
+      "language": "objectivec",
+      "startTimeSeconds": 788,
+      "code": "MTLArgumentDescriptor* meshArg \n= [MTLArgumentDescriptor argumentDescriptor];\n\nmeshArg.index    = 0;\nmeshArg.dataType = MTLDataTypePointer;\nmeshArg.access   = MTLArgumentAccessReadOnly;\n\n// Declare all other arguments (material and transform)\n\nid<MTLArgumentEncoder> instanceEncoder \n= [device newArgumentEncoderWithArguments:@[meshArg, \n                                            materialArg, \n                                            transformArg]];"
+    },
+    {
+      "title": "Navigation 1",
+      "language": "objectivec",
+      "startTimeSeconds": 970,
+      "code": "// Instance and Mesh\n\nconstant Instance& instance = pScene->instances[intersection.instance_id];\nconstant Mesh&     mesh     = instance.mesh[intersection.geometry_id];\n\n// Primitive indices\n\nushort3 indices; // assuming 16-bit indices, use uint3 for 32-bit\n\nindices.x = mesh.indices[ intersection.primitive_id * 3 + 0 ];\nindices.y = mesh.indices[ intersection.primitive_id * 3 + 1 ];\nindices.z = mesh.indices[ intersection.primitive_id * 3 + 2 ];"
+    },
+    {
+      "title": "Navigation 2",
+      "language": "objectivec",
+      "startTimeSeconds": 1003,
+      "code": "// Vertex data\n\npacked_float3 n0 = mesh.normals[ indices.x ];\npacked_float3 n1 = mesh.normals[ indices.y ];\npacked_float3 n2 = mesh.normals[ indices.z ];\n\n// Interpolate attributes\n\nfloat3 barycentrics = calculateBarycentrics(intersection);\nfloat3 normal       = weightedSum(n0, n1, n2, barycentrics);"
+    },
+    {
+      "title": "Simple Intersection Kernel",
+      "language": "objectivec",
+      "startTimeSeconds": 1035,
+      "code": "if(i.type == intersection_type::triangle)\n{\n  constant Instance& inst     = get_instance(i);\n  constant Mesh&     mesh     = get_mesh(inst, i);\n  constant Material& material = get_material(inst, i);\n\n  color = shade_pixel(mesh, material, i);\n}   \n\noutImage.write(color, tid);"
+    },
+    {
+      "title": "PBR fragment shading requires several textures",
+      "language": "objectivec",
+      "startTimeSeconds": 1170,
+      "code": "fragment half4 pbrFragment(ColorInOut in [[stage_in]],\n                           texture2d< float > albedo    [[texture(0)]],\n                           texture2d< float > roughness [[texture(1)]],\n                           texture2d< float > metallic  [[texture(2)]],\n                           texture2d< float > occlusion [[texture(3)]])\n{\t\n\thalf4 color = calculateShading(in, albedo, roughness, metallic, occlusion);\n\n  return color;\n}"
+    },
+    {
+      "title": "Bindless makes all textures available via AB navigation",
+      "language": "objectivec",
+      "startTimeSeconds": 1188,
+      "code": "fragment half4 pbrFragmentBindless(ColorInOut in [[stage_in]], \n                                   device const Scene* pScene [[buffer(0)]])\n{\n\tdevice const Instance& instance = pScene->instances[in.instance_id];\n\tdevice const Material& material = pScene->materials[instance.material_id];\n\n\thalf4 color = calculateShading(in, material);\n\n\treturn color;\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Rendering reflections in real time using ray tracing",
+      "url": "https://developer.apple.com/documentation/Metal/rendering-reflections-in-real-time-using-ray-tracing",
+      "type": "samplecode",
+      "description": "Implement realistic real-time lighting by dynamically generating reflection maps",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/rendering-reflections-in-real-time-using-ray-tracing",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/rendering-reflections-in-real-time-using-ray-tracing.json"
+    },
+    {
+      "title": "Applying realistic material and lighting effects to entities",
+      "url": "https://developer.apple.com/documentation/RealityKit/applying-realistic-material-and-lighting-effects-to-entities",
+      "type": "documentation",
+      "description": "Enhance the appearance of objects in a RealityKit scene with Physically Based Rendering",
+      "sosumiURL": "https://sosumi.ai/documentation/RealityKit/applying-realistic-material-and-lighting-effects-to-entities",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/RealityKit/applying-realistic-material-and-lighting-effects-to-entities.json"
+    },
+    {
+      "title": "Accelerating ray tracing using Metal",
+      "url": "https://developer.apple.com/documentation/metal/metal_sample_code_library/accelerating_ray_tracing_using_metal",
+      "type": "samplecode",
+      "description": "Implement ray-traced rendering using GPU-based parallel processing.",
+      "sosumiURL": "https://sosumi.ai/documentation/metal/metal_sample_code_library/accelerating_ray_tracing_using_metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/metal/metal_sample_code_library/accelerating_ray_tracing_using_metal.json"
+    },
+    {
+      "title": "Managing groups of resources with argument buffers",
+      "url": "https://developer.apple.com/documentation/metal/buffers/managing_groups_of_resources_with_argument_buffers",
+      "type": "documentation",
+      "description": "Create argument buffers to organize related resources.",
+      "sosumiURL": "https://sosumi.ai/documentation/metal/buffers/managing_groups_of_resources_with_argument_buffers",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/metal/buffers/managing_groups_of_resources_with_argument_buffers.json"
+    },
+    {
+      "title": "Metal Feature Set Tables",
+      "url": "https://developer.apple.com/metal/Metal-Feature-Set-Tables.pdf",
+      "type": "guide",
+      "description": "Features, limits, and capabilities of Metal.",
+      "sosumiURL": "https://sosumi.ai/metal/Metal-Feature-Set-Tables.pdf"
+    },
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    },
+    {
+      "title": "Metal Shading Language Specification",
+      "url": "https://developer.apple.com/metal/metal-shading-language-specification.pdf",
+      "type": "guide",
+      "description": "The Metal shading language is used to write graphics and compute functions that are executed on the GPU. Version 2.0 of the Metal shading language adds new features such as Raster Order Groups, Indirect Argument Buffers, Arrays of Samplers, Uniform Types, and much more.",
+      "sosumiURL": "https://sosumi.ai/metal/metal-shading-language-specification.pdf"
+    }
+  ],
+  "path": "sessions/wwdc2021/10286-explore-bindless-rendering-in-metal/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10286-explore-bindless-rendering-in-metal/metadata.json",
+    "readme": "sessions/wwdc2021/10286-explore-bindless-rendering-in-metal/README.md",
+    "transcript": "sessions/wwdc2021/10286-explore-bindless-rendering-in-metal/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10286-explore-bindless-rendering-in-metal/transcript.json"
+  }
+}

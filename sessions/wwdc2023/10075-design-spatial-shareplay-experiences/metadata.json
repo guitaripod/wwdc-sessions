@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10075",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10075,
+  "title": "Design spatial SharePlay experiences",
+  "description": "Explore the types of shared activities you can create in your visionOS apps and find out how your apps can use Spatial Persona templates to support meaningful interactions between people. Discover how to design your UI around a shared context, handle immersive content in a shared activity, and more.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10075",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10075",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [
+    "group activities"
+  ],
+  "topics": [
+    "Spatial Computing",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 986,
+  "hasTranscript": true,
+  "transcriptWordCount": 2425,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10075/4/9C508675-D44A-4BF5-80F3-5B49CF10C722/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10075/4/9C508675-D44A-4BF5-80F3-5B49CF10C722/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10075/4/9C508675-D44A-4BF5-80F3-5B49CF10C722/downloads/wwdc2023-10075_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10075/4/9C508675-D44A-4BF5-80F3-5B49CF10C722/downloads/wwdc2023-10075_hd.mp4",
+    "duration": 986
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2023/10075-design-spatial-shareplay-experiences/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10075-design-spatial-shareplay-experiences/metadata.json",
+    "readme": "sessions/wwdc2023/10075-design-spatial-shareplay-experiences/README.md",
+    "transcript": "sessions/wwdc2023/10075-design-spatial-shareplay-experiences/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10075-design-spatial-shareplay-experiences/transcript.json"
+  }
+}

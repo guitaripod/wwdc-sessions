@@ -1,0 +1,67 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-710",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 710,
+  "title": "What's New in Apple File Systems",
+  "description": "Learn about what's new in file system technology, including changes to file system layout and imaging technologies. If you are affected by the new Read Only System Volume, this is a session you will not want to miss.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/710",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/710",
+  "type": "Video",
+  "publishedAt": "2019-06-05T16:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "apfs",
+    "file",
+    "hfs"
+  ],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 2047,
+  "hasTranscript": true,
+  "transcriptWordCount": 4379,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/710aunvynji5emrl/710/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/710aunvynji5emrl/710/710_sd_whats_new_in_apple_file_systems.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/710aunvynji5emrl/710/710_hd_whats_new_in_apple_file_systems.mp4",
+    "duration": 2047
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "About Apple File System",
+      "url": "https://developer.apple.com/documentation/Foundation/about-apple-file-system",
+      "type": "documentation",
+      "description": "Use high-level APIs to get the most out of Apple File System.",
+      "sosumiURL": "https://sosumi.ai/documentation/Foundation/about-apple-file-system",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Foundation/about-apple-file-system.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/710-what-s-new-in-apple-file-systems/",
+  "files": {
+    "metadata": "sessions/wwdc2019/710-what-s-new-in-apple-file-systems/metadata.json",
+    "readme": "sessions/wwdc2019/710-what-s-new-in-apple-file-systems/README.md",
+    "transcript": "sessions/wwdc2019/710-what-s-new-in-apple-file-systems/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/710-what-s-new-in-apple-file-systems/transcript.json"
+  }
+}

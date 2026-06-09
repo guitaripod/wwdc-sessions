@@ -1,0 +1,99 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10097",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10097,
+  "title": "Advances in UICollectionView",
+  "description": "Learn about new features of UICollectionView that make it easier to use and unlock powerful new functionality. We'll show you how to use section snapshots with your diffable data source to create outlines that can expand and collapse, and introduce you to building lists with compositional layout to create UITableView-like interfaces with a collection view. And discover modern techniques for dequeuing cells and configuring their content and styling. To get the most out of this session, you should have a basic understanding of compositional layouts. Watch “Advances in Collection View Layout” from WWDC19 for more information.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10097",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10097",
+  "type": "Video",
+  "publishedAt": "2020-06-23T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "cell",
+    "collection",
+    "layout",
+    "table",
+    "tableview",
+    "uicollectionview",
+    "uitableview"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 595,
+  "hasTranscript": true,
+  "transcriptWordCount": 1382,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10097/3/CE693EFF-2BF8-4B42-B483-04F69015A601/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10097/3/CE693EFF-2BF8-4B42-B483-04F69015A601/wwdc2020_10097_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10097/3/CE693EFF-2BF8-4B42-B483-04F69015A601/wwdc2020_10097_hd.mp4",
+    "duration": 595
+  },
+  "codeSnippets": [
+    {
+      "title": "UICollectionViewCompositionalLayout Lists",
+      "language": "swift",
+      "startTimeSeconds": 375,
+      "code": "let configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)\nlet layout = UICollectionViewCompositionalLayout.list(using: configuration)"
+    },
+    {
+      "title": "Cell Registration",
+      "language": "swift",
+      "startTimeSeconds": 453,
+      "code": "// Example of using new iOS 14 cell registration\n\nlet reg = UICollectionView.CellRegistration<MyCell, ViewModel> { cell, indexPath, model in\n   // configure cell content \n}\n\nlet dataSource = UICollectionViewDiffableDataSource<S,I>(collectionView: collectionView) {\n                     collectionView, indexPath, item -> UICollectionViewCell in\n   return collectionView.dequeueConfiguredReusableCell(using: reg, for: indexPath, item: item)\n}"
+    },
+    {
+      "title": ".cell Content Configuration",
+      "language": "swift",
+      "startTimeSeconds": 512,
+      "code": "var contentConfiguration = UIListContentConfiguration.cell()\ncontentConfiguration.image = UIImage(systemName:\"hammer\")\ncontentConfiguration.text = \"Ready. Set. Code\"\ncell.contentConfiguration = contentConfiguration"
+    },
+    {
+      "title": ".valueCell Content Configuration",
+      "language": "swift",
+      "startTimeSeconds": 518,
+      "code": "var contentConfiguration = UIListContentConfiguration.valueCell()\ncontentConfiguration.image = UIImage(systemName:\"hammer\")\ncontentConfiguration.text = \"Ready. Set. Code.\"\ncontentConfiguration.secondaryText = \"#WWDC20\"\ncell.contentConfiguration = contentConfiguration"
+    },
+    {
+      "title": ".subtitleCell Content Configuration",
+      "language": "swift",
+      "startTimeSeconds": 524,
+      "code": "var contentConfiguration = UIListContentConfiguration.subtitleCell()\ncontentConfiguration.image = UIImage(systemName:\"hammer\")\ncontentConfiguration.text = \"Ready. Set. Code.\"\ncontentConfiguration.secondaryText = \"#WWDC20\"\ncell.contentConfiguration = contentConfiguration"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Implementing modern collection views",
+      "url": "https://developer.apple.com/documentation/UIKit/implementing-modern-collection-views",
+      "type": "samplecode",
+      "description": "Bring compositional layouts to your app and simplify updating your user interface with diffable data sources.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/implementing-modern-collection-views",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/implementing-modern-collection-views.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10097-advances-in-uicollectionview/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10097-advances-in-uicollectionview/metadata.json",
+    "readme": "sessions/wwdc2020/10097-advances-in-uicollectionview/README.md",
+    "transcript": "sessions/wwdc2020/10097-advances-in-uicollectionview/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10097-advances-in-uicollectionview/transcript.json"
+  }
+}

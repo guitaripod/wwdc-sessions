@@ -1,0 +1,78 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10304",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10304,
+  "title": "Integrate with motorized iPhone stands using DockKit",
+  "description": "Discover how you can create incredible photo and video experiences in your camera app when integrating with DockKit-compatible motorized stands. We’ll show how your app can automatically track subjects in live video across a 360-degree field of view, take direct control of the stand to customize framing, directly control the motors, and provide your own inference model for tracking other objects. Finally, we’ll demonstrate how to create a sense of emotion through dynamic device animations. To learn more techniques for image tracking, check out “Detect animal poses in Vision” from WWDC23 and \"Classify hand poses and actions with Create ML” from WWDC21.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10304",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10304",
+  "type": "Video",
+  "publishedAt": "2023-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "AI & Machine Learning",
+    "Photos & Camera"
+  ],
+  "primaryTopic": "Photos & Camera",
+  "duration": 1055,
+  "hasTranscript": true,
+  "transcriptWordCount": 2485,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10304/4/F0FF6E30-0DEE-40FF-B969-616952919D33/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10304/4/F0FF6E30-0DEE-40FF-B969-616952919D33/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10304/4/F0FF6E30-0DEE-40FF-B969-616952919D33/downloads/wwdc2023-10304_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10304/4/F0FF6E30-0DEE-40FF-B969-616952919D33/downloads/wwdc2023-10304_hd.mp4",
+    "duration": 1055
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "DockKit",
+      "url": "https://developer.apple.com/documentation/DockKit",
+      "type": "documentation",
+      "description": "Interact with accessories that track subjects on camera as they move around.",
+      "sosumiURL": "https://sosumi.ai/documentation/DockKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/DockKit.json"
+    },
+    {
+      "title": "Create ML",
+      "url": "https://developer.apple.com/documentation/CreateML",
+      "type": "documentation",
+      "description": "Create machine learning models for use in your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/CreateML",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CreateML.json"
+    },
+    {
+      "title": "Vision",
+      "url": "https://developer.apple.com/documentation/Vision",
+      "type": "documentation",
+      "description": "Analyze image and video content in your app using computer vision algorithms for object detection, text recognition, and image segmentation.",
+      "sosumiURL": "https://sosumi.ai/documentation/Vision",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Vision.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10304-integrate-with-motorized-iphone-stands-using-dockkit/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10304-integrate-with-motorized-iphone-stands-using-dockkit/metadata.json",
+    "readme": "sessions/wwdc2023/10304-integrate-with-motorized-iphone-stands-using-dockkit/README.md",
+    "transcript": "sessions/wwdc2023/10304-integrate-with-motorized-iphone-stands-using-dockkit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10304-integrate-with-motorized-iphone-stands-using-dockkit/transcript.json"
+  }
+}

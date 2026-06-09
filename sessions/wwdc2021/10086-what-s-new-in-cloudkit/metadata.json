@@ -1,0 +1,171 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10086",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10086,
+  "title": "What's new in CloudKit",
+  "description": "CloudKit provides a secure, convenient, and reliable cloud database for your apps — and it’s only getting better. Discover how you can unravel your threads with support for async/await and convenience API additions. We’ll also show you how to encourage collaboration between people using your app through sharing entire record zones of data, and explore how to adopt CloudKit features like encrypted values and help protect sensitive data within your app. To get the most out of this session, we recommend being familiar with CloudKit and its operations on containers, as well as a basic understanding of record and data types.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10086",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10086",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "cloud",
+    "database",
+    "encrypted",
+    "encryption",
+    "fields",
+    "hierarchical",
+    "privacy",
+    "record",
+    "security",
+    "share",
+    "sharing",
+    "storage",
+    "zone"
+  ],
+  "topics": [
+    "Essentials",
+    "Privacy & Security",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 1609,
+  "hasTranscript": true,
+  "transcriptWordCount": 3749,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10086/3/0126BD48-6C5E-4D8C-9464-DA85CFDF193B/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10086/3/0126BD48-6C5E-4D8C-9464-DA85CFDF193B/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10086/3/0126BD48-6C5E-4D8C-9464-DA85CFDF193B/downloads/wwdc2021-10086_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10086/3/0126BD48-6C5E-4D8C-9464-DA85CFDF193B/downloads/wwdc2021-10086_hd.mp4",
+    "duration": 1609
+  },
+  "codeSnippets": [
+    {
+      "title": "CloudKit: Existing convenience API",
+      "language": "swift",
+      "startTimeSeconds": 214,
+      "code": "// Sample code using existing Convenience API\n\n/// Delete the last person record.\n/// - Parameter completionHandler: An optional handler to process completion `success` or `failure`.\nfunc deleteLastPerson(completionHandler: ((Result<Void, Error>) -> Void)? = nil) {\n    database.delete(withRecordID: lastPersonRecordId) { recordId, error in\n        if let recordId = recordId {\n            os_log(\"Record with ID \\(recordId.recordName) was deleted.\")\n        }\n        if let error = error {\n            self.reportError(error)\n            // If there is a completion handler, pass along the error here.\n            completionHandler?(.failure(error))\n        } else {\n            // If there is a completion handler, like during tests, call it back now.\n            completionHandler?(.success(()))\n        }\n    }\n}"
+    },
+    {
+      "title": "CloudKit: Async convenience API",
+      "language": "swift",
+      "startTimeSeconds": 244,
+      "code": "// Sample code updated to CloudKit Async API\n\n/// Delete the last person record.\nfunc deleteLastPerson() async throws {\n    do {\n        let recordId = try await database.deleteRecord(with: lastPersonRecordId)\n        os_log(\"Record with ID \\(recordId.recordName) was deleted.\")\n    } catch {\n        self.reportError(error)\n        throw error\n    }\n}"
+    },
+    {
+      "title": "CloudKit: Existing completion blocks",
+      "language": "swift",
+      "startTimeSeconds": 339,
+      "code": "// Error reporting in CKFetchRecordsOperation\n\nextension CKFetchRecordsOperation {\n    var perRecordCompletionBlock: ((CKRecord?, CKRecord.ID?, Error?) -> Void)?\n\n    var fetchRecordsCompletionBlock: (([CKRecord.ID : CKRecord]?, Error?) -> Void)?\n}\n\n\nfetchRecordsOp.perRecordCompletionBlock = { record, recordID, error in\n    // error is CKError.unknownItem. \n}\n\nfetchRecordsOp.fetchRecordsCompletionBlock = { recordsByRecordID, operationError in\n    // operationError is CKError.partialFailure.\n    // operationError.partialErrorsByItemID[missingRecordID] is CKError.unknownItem.\n}"
+    },
+    {
+      "title": "CloudKit: Result type completion blocks",
+      "language": "swift",
+      "startTimeSeconds": 395,
+      "code": "// Error reporting in CKFetchRecordsOperation\n\nextension CKFetchRecordsOperation {\n    var perRecordResultBlock: ((CKRecord.ID, Result<CKRecord, Error>) -> Void)?\n\n    var fetchRecordsResultBlock: ((Result<Void, Error>) -> Void)?\n}\n\n\nfetchRecordsOp.perRecordResultBlock = { recordID, result in\n    // result is .failure(CKError.unknownItem) or .success(record).\n}\n\nfetchRecordsOp.fetchRecordsResultBlock = { result in\n    // result is .success.\n}"
+    },
+    {
+      "title": "CloudKit: Delete single item",
+      "language": "swift",
+      "startTimeSeconds": 554,
+      "code": "// Single item delete\n\nfunc deleteLastPerson() async throws {\n    do {\n        let recordId = try await database.deleteRecord(with: lastPersonRecordId)\n        os_log(\"Record with ID \\(recordId.recordName) was deleted.\")\n    } catch {\n        self.reportError(error)\n        throw error\n    }\n}"
+    },
+    {
+      "title": "CloudKit: Delete batch",
+      "language": "swift",
+      "startTimeSeconds": 577,
+      "code": "// Batched modifications\n\nfunc deleteLastPeople() async throws {\n    do {\n        let recordIds = [lastPersonRecordId, penultimatePersonRecordId]\n        let (_, deleteResults) = try await database.modifyRecords(deleting: recordIds)\n        for (recordId, deleteResult) in deleteResults {\n            switch deleteResult {\n            case .failure(let error):\n                self.reportError(error, itemId: recordId)\n            case .success:\n                os_log(\"Record with ID \\(recordId.recordName) was deleted.\")\n            }\n        }\n    } catch let operationError {\n        self.reportError(operationError)\n        throw operationError\n    }\n}"
+    },
+    {
+      "title": "CloudKit: Encrypted values",
+      "language": "swift",
+      "startTimeSeconds": 823,
+      "code": "extension CKRecord {\n    @NSCopying open var encryptedValues: CKRecordKeyValueSetting { get }\n}"
+    },
+    {
+      "title": "CloudKit: Using encrypted values",
+      "language": "swift",
+      "startTimeSeconds": 869,
+      "code": "// Device 1: Encrypt data before calling CKModifyRecordsOperation.\n\nmyRecord.encryptedValues[\"encryptedStringField\"] = \"Sensitive value\"\n\n// Device 2: Decrypt data after calling CKFetchRecordsOperation.\n\nlet decryptedString = myRecord.encryptedValues[\"encryptedStringField\"] as? String"
+    },
+    {
+      "title": "CloudKit: Account status",
+      "language": "swift",
+      "startTimeSeconds": 995,
+      "code": "open func accountStatus(completionHandler: @escaping (CKAccountStatus, Error?) -> Void)"
+    },
+    {
+      "title": "CloudKit: CKAccountStatus",
+      "language": "swift",
+      "startTimeSeconds": 1006,
+      "code": "public enum CKAccountStatus : Int {\n    case couldNotDetermine\n    case available\n    case restricted\n    case noAccount\n    case temporarilyUnavailable\n}"
+    },
+    {
+      "title": "CloudKit: Setup a record hierarchy",
+      "language": "swift",
+      "startTimeSeconds": 1270,
+      "code": "// Share a record hierarchy\n\n\nlet zone = CKRecordZone(zoneName: \"MyZone\")\n\n// Save zone...\n\nlet fileRecordA = CKRecord(recordType: \"File\", recordID: CKRecord.ID(zoneID: zone.zoneID))\nlet fileRecordB = CKRecord(recordType: \"File\", recordID: CKRecord.ID(zoneID: zone.zoneID))\nlet folderRecord = CKRecord(recordType: \"Folder\", recordID: CKRecord.ID(zoneID: zone.zoneID))\n\nfileRecordA.setParent(folderRecord)\nfileRecordB.setParent(folderRecord)\n\n// Save records..."
+    },
+    {
+      "title": "CloudKit: Record Hierarchy, Share",
+      "language": "swift",
+      "startTimeSeconds": 1301,
+      "code": "// Share a record hierarchy\n\n\nlet share = CKShare(rootRecord: folderRecord)\n\ndo {\n    let (saveResults, _) = try await database.modifyRecords(saving: [folderRecord, share])\n    for (recordID, saveResult) in saveResults { \n        // Handle per-record result.\n    }\n} catch let operationError { \n    // Handle operation error.\n}"
+    },
+    {
+      "title": "CloudKit: Share a Record Zone",
+      "language": "swift",
+      "startTimeSeconds": 1371,
+      "code": "// Share a record zone\n\n\nlet zone = CKRecordZone(zoneName: \"MyZone\")\n\n// Save zone... \n\nlet share = CKShare(recordZoneID: zone.zoneID)\n\ndo {\n    let (saveResults, _) = try await database.modifyRecords(saving: [share])\n    for (recordID, saveResult) in saveResults { \n        // Handle per-record result.\n    }\n} catch let operationError { \n    // Handle operation error.\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "CloudKit Samples: Encryption",
+      "url": "https://github.com/apple/cloudkit-sample-encryption",
+      "type": "samplecode",
+      "description": "This project demonstrates using encrypted values with CloudKit and iCloud containers."
+    },
+    {
+      "title": "CloudKit Samples: Private Database",
+      "url": "https://github.com/apple/cloudkit-sample-privatedb",
+      "type": "samplecode",
+      "description": "This buildable (and testable) Xcode project demonstrates a simple use of the CloudKit Private Database."
+    },
+    {
+      "title": "CloudKit",
+      "url": "https://developer.apple.com/documentation/CloudKit",
+      "type": "documentation",
+      "description": "Store structured app and user data in iCloud containers that all users of your app can share.",
+      "sosumiURL": "https://sosumi.ai/documentation/CloudKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CloudKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10086-what-s-new-in-cloudkit/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10086-what-s-new-in-cloudkit/metadata.json",
+    "readme": "sessions/wwdc2021/10086-what-s-new-in-cloudkit/README.md",
+    "transcript": "sessions/wwdc2021/10086-what-s-new-in-cloudkit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10086-what-s-new-in-cloudkit/transcript.json"
+  }
+}

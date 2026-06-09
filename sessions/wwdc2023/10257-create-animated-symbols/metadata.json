@@ -1,0 +1,57 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10257",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10257,
+  "title": "Create animated symbols",
+  "description": "Discover animation presets and learn how to use them with SF Symbols and custom symbols. We’ll show you how to experiment with different options and configurations to find the perfect animation for your app. Learn how to update custom symbols for animation using annotation features, find out how to modify your custom symbols with symbol components, and explore the redesigned export process to help keep symbols looking great on all platforms. To get the most out of this session, check out “What’s new in SF Symbols 5” from WWDC23.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10257",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10257",
+  "type": "Video",
+  "publishedAt": "2023-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services",
+    "SwiftUI & UI Frameworks",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 1084,
+  "hasTranscript": true,
+  "transcriptWordCount": 2887,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10257/4/8BAB2E01-3308-47DF-AF21-49268DE79899/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10257/4/8BAB2E01-3308-47DF-AF21-49268DE79899/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10257/4/8BAB2E01-3308-47DF-AF21-49268DE79899/downloads/wwdc2023-10257_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10257/4/8BAB2E01-3308-47DF-AF21-49268DE79899/downloads/wwdc2023-10257_hd.mp4",
+    "duration": 1084
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2023/10257-create-animated-symbols/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10257-create-animated-symbols/metadata.json",
+    "readme": "sessions/wwdc2023/10257-create-animated-symbols/README.md",
+    "transcript": "sessions/wwdc2023/10257-create-animated-symbols/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10257-create-animated-symbols/transcript.json"
+  }
+}

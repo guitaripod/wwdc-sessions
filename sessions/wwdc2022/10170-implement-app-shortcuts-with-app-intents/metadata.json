@@ -1,0 +1,129 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10170",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10170,
+  "title": "Implement App Shortcuts with App Intents",
+  "description": "Discover how you can create Shortcuts in your app with zero user setup. We'll show you how App Intents can help you present custom Shortcuts views, and explore how you can add support for parameterized phrases to allow people to quickly express their intent. We'll also share how you can make your App Shortcuts discoverable with a Siri Tip, and Shortcuts links. To get the most out of this session, we recommend a basic familiarity with SwiftUI.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10170",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10170",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1403,
+  "hasTranscript": true,
+  "transcriptWordCount": 3644,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10170/3/30D42D9F-AF97-4B32-B470-C0A9B4D8C279/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10170/3/30D42D9F-AF97-4B32-B470-C0A9B4D8C279/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10170/3/30D42D9F-AF97-4B32-B470-C0A9B4D8C279/downloads/wwdc2022-10170_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10170/3/30D42D9F-AF97-4B32-B470-C0A9B4D8C279/downloads/wwdc2022-10170_hd.mp4",
+    "duration": 1403
+  },
+  "codeSnippets": [
+    {
+      "title": "Implement an AppIntent",
+      "language": "swift",
+      "startTimeSeconds": 223,
+      "code": "// StartMeditationIntent creates a meditation session.\n\nimport AppIntents\n\nstruct StartMeditationIntent: AppIntent {\n    static let title: LocalizedStringResource = \"Start Meditation Session\"\n\n    func perform() async throws -> some IntentResult & ProvidesDialog {\n        await MeditationService.startDefaultSession()\n        return .result(dialog: \"Okay, starting a meditation session.\")\n    }\n}"
+    },
+    {
+      "title": "Create an AppShortcutsProvider",
+      "language": "swift",
+      "startTimeSeconds": 331,
+      "code": "// An AppShortcut turns an Intent into a full fledged shortcut\n// AppShortcuts are returned from a struct that implements the AppShortcuts\n// protocol\n\nimport AppIntents\n\nstruct MeditationShortcuts: AppShortcutsProvider {\n    static var appShortcuts: [AppShortcut] {\n        AppShortcut(\n            intent: StartMeditationIntent(),\n            phrases: [\"Start a \\(.applicationName)\"]\n        )\n    }\n}"
+    },
+    {
+      "title": "Provide multiple phrases",
+      "language": "swift",
+      "startTimeSeconds": 395,
+      "code": "// An AppShortcut turns an Intent into a full fledged shortcut\n// AppShortcuts are returned from a struct that implements the AppShortcuts\n// protocol\n\nimport AppIntents\n\nstruct MeditationShortcuts: AppShortcutsProvider {\n    static var appShortcuts: [AppShortcut] {\n        AppShortcut(\n            intent: StartMeditationIntent(),\n            phrases: [\n                \"Start a \\(.applicationName)\",\n                \"Begin \\(.applicationName)\",\n                \"Meditate with \\(.applicationName)\",\n                \"Start a session with \\(.applicationName)\"\n            ]\n        )\n    }\n}"
+    },
+    {
+      "title": "Provide a dialog and snippet view",
+      "language": "swift",
+      "startTimeSeconds": 534,
+      "code": "// Custom views give your intent more personality\n// and can convey more information\n\nfunc perform() async throws -> some ProvidesDialog & ShowsSnippetView {\n    await MeditationService.startDefaultSession()\n\n    return .result(\n        dialog: \"Okay, starting a meditation session.\",\n        view: MeditationSnippetView()\n    )\n}"
+    },
+    {
+      "title": "Implement an AppEntity",
+      "language": "swift",
+      "startTimeSeconds": 609,
+      "code": "// An entity is a type that can be used as a parameter\n// for an AppIntent.\n\nimport AppIntents\n\nstruct MeditationSession: AppEntity {\n    let id: UUID\n    let name: LocalizedStringResource\n\n    static var typeDisplayName: LocalizedStringResource = \"Meditation Session\"\n    var displayRepresentation: AppIntents.DisplayRepresentation {\n        DisplayRepresentation(title: name)\n    }\n\n    static var defaultQuery = MeditationSessionQuery()\n}"
+    },
+    {
+      "title": "Query for entities",
+      "language": "swift",
+      "startTimeSeconds": 655,
+      "code": "// Queries allow the App Intents framework to\n// look up your entities by their identifier\n\nstruct MeditationSessionQuery: EntityQuery {\n    func entities(for identifiers: [UUID]) async throws -> [MeditationSession] {\n        return identifiers.compactMap { SessionManager.session(for: $0) }\n    }\n}"
+    },
+    {
+      "title": "Define a parameter",
+      "language": "swift",
+      "startTimeSeconds": 676,
+      "code": "// Adding a parameter to an intent allows you to prompt the user\n// to provide a value for the parameter\n\nstruct StartMeditationIntent: AppIntent {\n\n    @Parameter(title: \"Session Type\")\n    var sessionType: SessionType?\n\n    // ...\n\n}"
+    },
+    {
+      "title": "Prompt for values",
+      "language": "swift",
+      "startTimeSeconds": 795,
+      "code": "// Prompting for values can be done by calling methods\n// on the property's wrapper type.\n\nfunc perform() async throws -> some ProvidesDialog {\n    let sessionToRun = self.session ?? try await $session.requestDisambiguation(\n           among: SessionManager.allSessions,\n           dialog: IntentDialog(\"What session would you like?\")\n       )\n    }\n    await MeditationService.start(session: sessionToRun)\n    return .result(\n       dialog: \"Okay, starting a \\(sessionToRun.name) meditation session.\"\n    )\n}"
+    },
+    {
+      "title": "Implement suggestedEntities()",
+      "language": "swift",
+      "startTimeSeconds": 971,
+      "code": "// Queries can provide suggested values for your Entity\n// that serve as parameters for App Shortcuts\n\nstruct MeditationSessionQuery: EntityQuery {\n    func entities(for identifiers: [UUID]) async throws -> [MeditationSession] {\n        return identifiers.compactMap { SessionManager.session(for: $0) }\n    }\n\n    func suggestedEntities() async throws -> [MeditationSession] {\n        return SessionManager.allSessions\n    }\n}"
+    },
+    {
+      "title": "Update App Shortcut parameters",
+      "language": "swift",
+      "startTimeSeconds": 994,
+      "code": "// Your app must notify App Intents when your values change\n// This is typically best done in your app’s model layer\n\nclass SessionModel {\n    @Published\n    var sessions: [MeditationSession] = []\n    private var cancellable: AnyCancellable?\n\n    init() {\n        self.cancellable = $sessions.sink { _ in\n            MeditationShortcuts.updateAppShortcutParameters()\n        }\n    }\n\n    // ...\n\n}"
+    },
+    {
+      "title": "Add parameterized phrases",
+      "language": "swift",
+      "startTimeSeconds": 1029,
+      "code": "// Phrases can also contain a single parameter reference\n\nimport AppIntents\n\nstruct MeditationShortcuts: AppShortcutsProvider {\n    static var appShortcuts: [AppShortcut] {\n        AppShortcut(\n            intent: StartMeditationIntent(),\n            phrases: [\n                \"Start a \\(.applicationName)\",\n                \"Begin \\(.applicationName)\",\n                \"Meditate with \\(.applicationName)\",\n                \"Start a \\(\\.$session) session with \\(.applicationName)\",\n                \"Begin a \\(\\.$session) session with \\(.applicationName)\",\n                \"Meditate on \\(\\.$session) with \\(.applicationName)\"\n            ]\n        )\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "App Intents",
+      "url": "https://developer.apple.com/documentation/AppIntents",
+      "type": "documentation",
+      "description": "Make content and actions discoverable by Apple Intelligence and support system experiences like Siri, Spotlight, Shortcuts, and widgets.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10170-implement-app-shortcuts-with-app-intents/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10170-implement-app-shortcuts-with-app-intents/metadata.json",
+    "readme": "sessions/wwdc2022/10170-implement-app-shortcuts-with-app-intents/README.md",
+    "transcript": "sessions/wwdc2022/10170-implement-app-shortcuts-with-app-intents/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10170-implement-app-shortcuts-with-app-intents/transcript.json"
+  }
+}

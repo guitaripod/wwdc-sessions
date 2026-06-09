@@ -1,0 +1,89 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-702",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2018,
+  "eventContentId": 702,
+  "title": "What's New in Core NFC",
+  "description": "Background reading of NFC tags is a new feature for iPhone XS, iPhone XS Max, and iPhone XR. Learn how to associate your app with an NFC tag to make it even easier for people to benefit from the NFC capabilities of new iPhones.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/702",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/702",
+  "type": "Video",
+  "publishedAt": "2018-09-12T11:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "nfc"
+  ],
+  "topics": [
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 372,
+  "hasTranscript": true,
+  "transcriptWordCount": 774,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tutorials/20180912/702jaaopvi9pptas/whats_new_in_core_nfc/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tutorials/20180912/702jaaopvi9pptas/whats_new_in_core_nfc/whats_new_in_core_nfc_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tutorials/20180912/702jaaopvi9pptas/whats_new_in_core_nfc/whats_new_in_core_nfc_hd.mp4",
+    "duration": 372
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Universal Links for Developers",
+      "url": "https://developer.apple.com/ios/universal-links/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/ios/universal-links/"
+    },
+    {
+      "title": "NFC Forum",
+      "url": "https://nfc-forum.org/",
+      "type": "documentation",
+      "description": "NFC Standards"
+    },
+    {
+      "title": "2017 Introducing CoreNFC",
+      "url": "https://developer.apple.com/videos/play/wwdc2017/718/",
+      "type": "documentation",
+      "description": "Intro to CoreNFC video",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2017/718/"
+    },
+    {
+      "title": "CoreNFC Tag Reading",
+      "url": "https://developer.apple.com/sample-code/wwdc/2017/CoreNFC-Tag-Reading.zip",
+      "type": "samplecode",
+      "description": "Shows how to integrate Core NFC Framework into your application to enable NFC tag reading.",
+      "sosumiURL": "https://sosumi.ai/sample-code/wwdc/2017/CoreNFC-Tag-Reading.zip"
+    },
+    {
+      "title": "Core NFC",
+      "url": "https://developer.apple.com/documentation/CoreNFC",
+      "type": "documentation",
+      "description": "Detect NFC tags, read messages that contain NDEF data, and save data to writable tags.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreNFC",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreNFC.json"
+    }
+  ],
+  "path": "sessions/tech-talks/702-what-s-new-in-core-nfc/",
+  "files": {
+    "metadata": "sessions/tech-talks/702-what-s-new-in-core-nfc/metadata.json",
+    "readme": "sessions/tech-talks/702-what-s-new-in-core-nfc/README.md",
+    "transcript": "sessions/tech-talks/702-what-s-new-in-core-nfc/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/702-what-s-new-in-core-nfc/transcript.json"
+  }
+}

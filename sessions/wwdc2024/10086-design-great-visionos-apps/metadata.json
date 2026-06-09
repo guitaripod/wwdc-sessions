@@ -1,0 +1,68 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2024-10086",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10086,
+  "title": "Design great visionOS apps",
+  "description": "Find out how to create compelling spatial computing apps by embracing immersion, designing for eyes and hands, and taking advantage of depth, scale, and space. We’ll share several examples of great visionOS apps and explore how their designers approached creating new experiences for the platform.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10086",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10086",
+  "type": "Video",
+  "publishedAt": "2024-06-10T14:00:00-07:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games",
+    "Spatial Computing",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 1143,
+  "hasTranscript": true,
+  "transcriptWordCount": 3096,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10086/4/6FE0562D-9F68-4D33-93C8-EC567EB5E873/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10086/4/6FE0562D-9F68-4D33-93C8-EC567EB5E873/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10086/4/6FE0562D-9F68-4D33-93C8-EC567EB5E873/downloads/wwdc2024-10086_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10086/4/6FE0562D-9F68-4D33-93C8-EC567EB5E873/downloads/wwdc2024-10086_hd.mp4",
+    "duration": 1143
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Forum: Design",
+      "url": "https://developer.apple.com/forums/topics/design?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/design?cid=vf-a-0010"
+    },
+    {
+      "title": "Designing for visionOS",
+      "url": "https://developer.apple.com/design/Human-Interface-Guidelines/designing-for-visionos",
+      "type": "documentation",
+      "description": "When people wear Apple Vision Pro, they enter an infinite 3D space where they can engage with your app or game while staying connected to their surroundings.",
+      "sosumiURL": "https://sosumi.ai/design/Human-Interface-Guidelines/designing-for-visionos"
+    }
+  ],
+  "path": "sessions/wwdc2024/10086-design-great-visionos-apps/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10086-design-great-visionos-apps/metadata.json",
+    "readme": "sessions/wwdc2024/10086-design-great-visionos-apps/README.md",
+    "transcript": "sessions/wwdc2024/10086-design-great-visionos-apps/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10086-design-great-visionos-apps/transcript.json"
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10142",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10142,
+  "title": "Explore testing in-app purchases",
+  "description": "Learn how you can test in-app purchases throughout development with StoreKit Testing in Xcode, App Store sandbox, and TestFlight. Explore how each tool functions and how you can combine them to build the right workflow for testing your apps and games. We’ll also share a sneak preview of how you can test Family Sharing for in-app purchases & subscriptions in the App Store sandbox.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10142",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10142",
+  "type": "Video",
+  "publishedAt": "2023-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Store, Distribution & Marketing",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1177,
+  "hasTranscript": true,
+  "transcriptWordCount": 2475,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10142/4/D77D9908-4DAF-4E7C-92F7-0FC31264D914/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10142/4/D77D9908-4DAF-4E7C-92F7-0FC31264D914/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10142/4/D77D9908-4DAF-4E7C-92F7-0FC31264D914/downloads/wwdc2023-10142_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10142/4/D77D9908-4DAF-4E7C-92F7-0FC31264D914/downloads/wwdc2023-10142_hd.mp4",
+    "duration": 1177
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Turn on Family Sharing for in-app purchases",
+      "url": "https://developer.apple.com/help/app-store-connect/configure-in-app-purchase-settings/turn-on-family-sharing-for-in-app-purchases",
+      "type": "documentation",
+      "description": "Apps that offer auto-renewable subscriptions and nonconsumable in-app purchases can enable Family Sharing, which will allow users to share their purchase with up to five additional family members.",
+      "sosumiURL": "https://sosumi.ai/help/app-store-connect/configure-in-app-purchase-settings/turn-on-family-sharing-for-in-app-purchases"
+    },
+    {
+      "title": "Testing failing subscription renewals and In-App Purchases",
+      "url": "https://developer.apple.com/documentation/StoreKit/testing-failing-subscription-renewals-and-in-app-purchases",
+      "type": "documentation",
+      "description": "Verify that your app handles failed subscription renewals that are in the billing retry or billing grace period states, as well as failed In-App Purchases.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/testing-failing-subscription-renewals-and-in-app-purchases",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/testing-failing-subscription-renewals-and-in-app-purchases.json"
+    },
+    {
+      "title": "Message",
+      "url": "https://developer.apple.com/documentation/StoreKit/Message",
+      "type": "documentation",
+      "description": "An instance for receiving and displaying App Store messages in your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/Message",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/Message.json"
+    },
+    {
+      "title": "App Store Server Notifications",
+      "url": "https://developer.apple.com/documentation/appstoreservernotifications",
+      "type": "documentation",
+      "description": "Monitor in-app purchase events in real time with server notifications from the App Store.",
+      "sosumiURL": "https://sosumi.ai/documentation/appstoreservernotifications",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/appstoreservernotifications.json"
+    },
+    {
+      "title": "Testing In-App Purchases with sandbox",
+      "url": "https://developer.apple.com/documentation/StoreKit/testing-in-app-purchases-with-sandbox",
+      "type": "documentation",
+      "description": "Test your implementation of In-App Purchases using real product information and server-to-server transactions in the sandbox environment.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/testing-in-app-purchases-with-sandbox",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/testing-in-app-purchases-with-sandbox.json"
+    },
+    {
+      "title": "Setting up StoreKit Testing in Xcode",
+      "url": "https://developer.apple.com/documentation/Xcode/setting-up-storekit-testing-in-xcode",
+      "type": "documentation",
+      "description": "Prepare your test environment to test in-app purchases with data you configure locally.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/setting-up-storekit-testing-in-xcode",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/setting-up-storekit-testing-in-xcode.json"
+    },
+    {
+      "title": "Testing at all stages of development with Xcode and the sandbox",
+      "url": "https://developer.apple.com/documentation/StoreKit/testing-at-all-stages-of-development-with-xcode-and-the-sandbox",
+      "type": "documentation",
+      "description": "Verify your implementation of In-App Purchases by testing your code throughout its development.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/testing-at-all-stages-of-development-with-xcode-and-the-sandbox",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/testing-at-all-stages-of-development-with-xcode-and-the-sandbox.json"
+    },
+    {
+      "title": "Submit feedback",
+      "url": "http://feedbackassistant.apple.com",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Beta Testing Made Simple",
+      "url": "https://developer.apple.com/testflight/",
+      "type": "documentation",
+      "description": "Beta Testing Made Simple",
+      "sosumiURL": "https://sosumi.ai/testflight/"
+    }
+  ],
+  "path": "sessions/wwdc2023/10142-explore-testing-in-app-purchases/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10142-explore-testing-in-app-purchases/metadata.json",
+    "readme": "sessions/wwdc2023/10142-explore-testing-in-app-purchases/README.md",
+    "transcript": "sessions/wwdc2023/10142-explore-testing-in-app-purchases/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10142-explore-testing-in-app-purchases/transcript.json"
+  }
+}

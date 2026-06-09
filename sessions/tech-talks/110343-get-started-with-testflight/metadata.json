@@ -1,0 +1,75 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-110343",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2022,
+  "eventContentId": 110343,
+  "title": "Get started with TestFlight",
+  "description": "Discover how you can use TestFlight to improve your app experience and ready it for release on the App Store. We’ll take you through an overview of TestFlight, including how to invite testers and provide information to them about testing. We’ll also provide best practices for receiving feedback and explore how you can get the most out of the testing process.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/110343",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110343",
+  "type": "Video",
+  "publishedAt": "2022-12-01T10:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 1440,
+  "hasTranscript": true,
+  "transcriptWordCount": 3578,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/110343/6/658F020E-F5F9-47B3-A67E-6EB7BBF329FE/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/tech-talks/110343/6/658F020E-F5F9-47B3-A67E-6EB7BBF329FE/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/110343/6/658F020E-F5F9-47B3-A67E-6EB7BBF329FE/downloads/tech-talks-110343_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/110343/6/658F020E-F5F9-47B3-A67E-6EB7BBF329FE/downloads/tech-talks-110343_hd.mp4",
+    "duration": 1440
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Enter test information for external testing",
+      "url": "https://help.apple.com/app-store-connect/#/deva50a6ab41",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Get started with TestFlight",
+      "url": "https://testflight.apple.com/",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "Beta Testing Made Simple",
+      "url": "https://developer.apple.com/testflight/",
+      "type": "documentation",
+      "description": "Beta Testing Made Simple",
+      "sosumiURL": "https://sosumi.ai/testflight/"
+    }
+  ],
+  "path": "sessions/tech-talks/110343-get-started-with-testflight/",
+  "files": {
+    "metadata": "sessions/tech-talks/110343-get-started-with-testflight/metadata.json",
+    "readme": "sessions/tech-talks/110343-get-started-with-testflight/README.md",
+    "transcript": "sessions/tech-talks/110343-get-started-with-testflight/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/110343-get-started-with-testflight/transcript.json"
+  }
+}

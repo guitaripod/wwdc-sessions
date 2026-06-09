@@ -1,0 +1,145 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-403",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 403,
+  "title": "Learn about Apple Immersive Video technologies",
+  "description": "Explore the capabilities of Apple Immersive Video and Apple Spatial Audio Format technologies to create truly immersive experiences. Meet the new ImmersiveMediaSupport framework, which offers functionality to read and write the necessary metadata for enabling Apple Immersive Video. Learn guidelines for encoding and publishing Apple Immersive Video content in standalone files for playback or streaming via HLS. To get the most out of this session, we recommend first watching “Explore video experiences for visionOS.”",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/403",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/403",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Audio & Video",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 890,
+  "hasTranscript": true,
+  "transcriptWordCount": 2044,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/403/4/ef519281-1213-4ddf-892a-ca33ae288ef1/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/403/4/ef519281-1213-4ddf-892a-ca33ae288ef1/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/403/4/ef519281-1213-4ddf-892a-ca33ae288ef1/downloads/wwdc2025-403_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/403/4/ef519281-1213-4ddf-892a-ca33ae288ef1/downloads/wwdc2025-403_hd.mp4",
+    "duration": 890
+  },
+  "codeSnippets": [
+    {
+      "title": "Read VenueDescriptor from AIVU file",
+      "language": "swift",
+      "startTimeSeconds": 383,
+      "code": "func readAIMEData(from aivuFile: URL) async throws -> VenueDescriptor? {\n    let avAsset = AVURLAsset(url: aivuFile)\n    let metadata = try await avAsset.load(.metadata)\n    let aimeData = metadata.filter({ $0.identifier == .quickTimeMetadataAIMEData }).first\n    if let dataValue = try await aimeData.load(.value) as? NSData {\n        return try await VenueDescriptor(aimeData: dataValue as Data)\n    }\n    return nil\n}"
+    },
+    {
+      "title": "Read PresentationDescriptor from AIVU playback",
+      "language": "swift",
+      "startTimeSeconds": 410,
+      "code": "func presentation(timedMetadata: [AVTimedMetadataGroup]) async throws ->   \n[PresentationDescriptor] {\n    var presentations: [PresentationDescriptor] = [] \n    for group in timedMetadata {\n        for metadata in group.items {\n            if metadata.identifier == .quickTimeMetadataPresentationImmersiveMedia {\n                let data = try await metadata.load(.dataValue) {\n                    presentations.append(\n                        try JSONDecoder().decode(PresentationDescriptor.self, from: data)\n                    )\n                }\n            }\n        }\n    }\n    return presentations\n}"
+    },
+    {
+      "title": "Create AVMetadataItem from VenueDescriptor",
+      "language": "swift",
+      "startTimeSeconds": 472,
+      "code": "func getMetadataItem(from metadata: VenueDescriptor) async throws -> AVMetadataItem {\n    let aimeData = try await metadata.aimeData\n    let aimeMetadataItem = AVMutableMetadataItem()\n    aimeMetadataItem.identifier = .quickTimeMetadataAIMEData\n    aimeMetadataItem.dataType = String(kCMMetadataBaseDataType_RawData)\n    aimeMetadataItem.value = aimeData as NSData\n\n    return aimeMetadataItem\n}"
+    },
+    {
+      "title": "Create timed AVMetadataItem from PresentationDescriptorReader",
+      "language": "swift",
+      "startTimeSeconds": 482,
+      "code": "func getMetadataItem(reader: PresentationDescriptorReader, \n                     time: CMTime, frameDuration: CMTime) -> AVMetadataItem? {\n    let commands = reader.outputPresentationCommands(for: time) ?? []\n    if commands.isEmpty { return nil }\n\n    let descriptor = PresentationDescriptor(commands: commands)\n    let encodedData = try JSONEncoder().encode(descriptor)\n    let presentationMetadata = AVMutableMetadataItem()\n    presentationMetadata.identifier = .quickTimeMetadataPresentationImmersiveMedia\n    presentationMetadata.dataType = String(kCMMetadataBaseDataType_RawData)\n    presentationMetadata.value = encodedData as NSData\n    presentationMetadata.time = time\n    presentationMetadata.duration = frameDuration\n\n    return presentationMetadata\n}"
+    },
+    {
+      "title": "Validate AIVU file",
+      "language": "swift",
+      "startTimeSeconds": 500,
+      "code": "func validAIVU(file aivuFile: URL) async throws -> Bool { \n    return try await AIVUValidator.validate(url: aivuFile)\n}"
+    },
+    {
+      "title": "Save AIME file",
+      "language": "swift",
+      "startTimeSeconds": 571,
+      "code": "let aimeFile = FileManager.default.temporaryDirectory.appendingPathComponent(\"primary.aime\")\ntry? await venueDescriptor.save(to: aimeFile)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Immersive Media Support",
+      "url": "https://developer.apple.com/documentation/ImmersiveMediaSupport",
+      "type": "documentation",
+      "description": "Read and write essential Apple Immersive Video metadata.",
+      "sosumiURL": "https://sosumi.ai/documentation/ImmersiveMediaSupport",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ImmersiveMediaSupport.json"
+    },
+    {
+      "title": "Authoring Apple Immersive Video",
+      "url": "https://developer.apple.com/documentation/ImmersiveMediaSupport/authoring-apple-immersive-video",
+      "type": "samplecode",
+      "description": "Prepare and package immersive video content for delivery.",
+      "sosumiURL": "https://sosumi.ai/documentation/ImmersiveMediaSupport/authoring-apple-immersive-video",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ImmersiveMediaSupport/authoring-apple-immersive-video.json"
+    },
+    {
+      "title": "What's new in HTTP Live Streaming",
+      "url": "https://developer.apple.com/streaming/Whats-new-HLS.pdf",
+      "type": "documentation",
+      "description": "WWDC25 Updates to HTTP Live Streaming (HLS) specification",
+      "sosumiURL": "https://sosumi.ai/streaming/Whats-new-HLS.pdf"
+    },
+    {
+      "title": "AVPlayerItemMetadataOutput",
+      "url": "https://developer.apple.com/documentation/AVFoundation/AVPlayerItemMetadataOutput",
+      "type": "documentation",
+      "description": "An object that vends collections of metadata items that a player item’s tracks carry.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/AVPlayerItemMetadataOutput",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/AVPlayerItemMetadataOutput.json"
+    },
+    {
+      "title": "Core Media",
+      "url": "https://developer.apple.com/documentation/CoreMedia",
+      "type": "documentation",
+      "description": "Represent time-based audio-visual assets with essential data types.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreMedia",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreMedia.json"
+    },
+    {
+      "title": "HTTP Live Streaming (HLS) authoring specification for Apple devices",
+      "url": "https://developer.apple.com/documentation/HTTP-Live-Streaming/hls-authoring-specification-for-apple-devices",
+      "type": "documentation",
+      "description": "Learn the requirements for live and on-demand audio and video content delivery using",
+      "sosumiURL": "https://sosumi.ai/documentation/HTTP-Live-Streaming/hls-authoring-specification-for-apple-devices",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HTTP-Live-Streaming/hls-authoring-specification-for-apple-devices.json"
+    },
+    {
+      "title": "AVFoundation",
+      "url": "https://developer.apple.com/documentation/AVFoundation",
+      "type": "documentation",
+      "description": "Work with audiovisual assets, control device cameras, process audio, and configure system audio interactions.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/403-learn-about-apple-immersive-video-technologies/",
+  "files": {
+    "metadata": "sessions/wwdc2025/403-learn-about-apple-immersive-video-technologies/metadata.json",
+    "readme": "sessions/wwdc2025/403-learn-about-apple-immersive-video-technologies/README.md",
+    "transcript": "sessions/wwdc2025/403-learn-about-apple-immersive-video-technologies/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/403-learn-about-apple-immersive-video-technologies/transcript.json"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10247",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10247,
+  "title": "Capture high-quality photos using video formats",
+  "description": "Your app can take full advantage of the powerful camera systems on iPhone by using the AVCapture APIs. Learn how to choose the most appropriate photo or video formats for your use cases while balancing the trade-offs between photo quality and delivery speed. Discover some powerful new algorithms which can help you deliver greatly improved photo quality when you use video formats in your app. To learn more about improvements in AVCapture, be sure to also see the \"What's new in camera capture\" video.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10247",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10247",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "avcapture",
+    "camera",
+    "photography",
+    "video"
+  ],
+  "topics": [
+    "Photos & Camera"
+  ],
+  "primaryTopic": "Photos & Camera",
+  "duration": 879,
+  "hasTranscript": true,
+  "transcriptWordCount": 2373,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10247/10/1D70E20D-6FE1-4770-9932-4BC4F4C4F7BA/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10247/10/1D70E20D-6FE1-4770-9932-4BC4F4C4F7BA/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10247/10/1D70E20D-6FE1-4770-9932-4BC4F4C4F7BA/downloads/wwdc2021-10247_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10247/10/1D70E20D-6FE1-4770-9932-4BC4F4C4F7BA/downloads/wwdc2021-10247_hd.mp4",
+    "duration": 879
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Capture setup",
+      "url": "https://developer.apple.com/documentation/AVFoundation/capture-setup",
+      "type": "documentation",
+      "description": "Configure built-in cameras and microphones, and external capture devices, for media capture.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/capture-setup",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/capture-setup.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10247-capture-high-quality-photos-using-video-formats/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10247-capture-high-quality-photos-using-video-formats/metadata.json",
+    "readme": "sessions/wwdc2021/10247-capture-high-quality-photos-using-video-formats/README.md",
+    "transcript": "sessions/wwdc2021/10247-capture-high-quality-photos-using-video-formats/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10247-capture-high-quality-photos-using-video-formats/transcript.json"
+  }
+}

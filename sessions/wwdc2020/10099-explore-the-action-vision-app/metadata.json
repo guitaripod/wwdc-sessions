@@ -1,0 +1,97 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10099",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10099,
+  "title": "Explore the Action & Vision app",
+  "description": "It's now easy to create an app for fitness or sports coaching that takes advantage of machine learning — and to prove it, we built our own. Learn how we designed the Action & Vision app using Object Detection and Action Classification in Create ML along with the new Body Pose Estimation, Trajectory Detection, and Contour Detection features in the Vision framework. Explore how you can create an immersive application for gameplay or training from setup to analysis and feedback. And follow along in Xcode with a full sample project. To get the most out of this session, you should have familiarity with the Vision framework and Create ML’s Action Classifier tools. To learn more, we recommend watching “Build an Action Classifier with Create ML,” “Explore Computer Vision APIs,” and “Detect Body and Hand Pose with Vision.” We also recommend exploring the Action & Vision sample project to learn more about adopting these technologies. Whether you are building a fitness coaching app, or exploring new ways of interacting, consider the incredible features that you can build by combining machine learning with the rich set of computer vision features. By bringing Create ML, Core ML, and Vision API together, there's almost no end to the magic you can bring to your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10099",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10099",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "action class",
+    "bean bag toss",
+    "body pose",
+    "camera",
+    "contour",
+    "core ml",
+    "cornhole",
+    "create ml",
+    "machine learning",
+    "object detection",
+    "trajectory",
+    "vision"
+  ],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 2187,
+  "hasTranscript": true,
+  "transcriptWordCount": 6333,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10099/2/18D72394-029C-4CB4-9420-4185493C4D77/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10099/2/18D72394-029C-4CB4-9420-4185493C4D77/wwdc2020_10099_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10099/2/18D72394-029C-4CB4-9420-4185493C4D77/wwdc2020_10099_sd.mp4",
+    "duration": 2187
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Sample video for Action & Vision app",
+      "url": "https://developer.apple.com/sample-code/ml/sample-mov.zip",
+      "type": "download",
+      "description": "Sample video of bean bag toss game for testing the Action & Vision sample code project.",
+      "sosumiURL": "https://sosumi.ai/sample-code/ml/sample-mov.zip"
+    },
+    {
+      "title": "Building a feature-rich app for sports analysis",
+      "url": "https://developer.apple.com/documentation/Vision/building-a-feature-rich-app-for-sports-analysis",
+      "type": "samplecode",
+      "description": "Detect and classify human activity in real time using computer vision and machine learning.",
+      "sosumiURL": "https://sosumi.ai/documentation/Vision/building-a-feature-rich-app-for-sports-analysis",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Vision/building-a-feature-rich-app-for-sports-analysis.json"
+    },
+    {
+      "title": "Create ML",
+      "url": "https://developer.apple.com/documentation/CreateML",
+      "type": "documentation",
+      "description": "Create machine learning models for use in your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/CreateML",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CreateML.json"
+    },
+    {
+      "title": "Vision",
+      "url": "https://developer.apple.com/documentation/Vision",
+      "type": "documentation",
+      "description": "Analyze image and video content in your app using computer vision algorithms for object detection, text recognition, and image segmentation.",
+      "sosumiURL": "https://sosumi.ai/documentation/Vision",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Vision.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10099-explore-the-action-vision-app/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10099-explore-the-action-vision-app/metadata.json",
+    "readme": "sessions/wwdc2020/10099-explore-the-action-vision-app/README.md",
+    "transcript": "sessions/wwdc2020/10099-explore-the-action-vision-app/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10099-explore-the-action-vision-app/transcript.json"
+  }
+}

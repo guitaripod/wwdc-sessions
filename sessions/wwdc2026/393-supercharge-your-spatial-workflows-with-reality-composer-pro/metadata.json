@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-393",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 393,
+  "title": "Supercharge your spatial workflows with Reality Composer Pro 3",
+  "description": "Discover how to build rich interactivity and stunning visual effects entirely within Reality Composer Pro using its powerful suite of graph-based tools. Learn to craft dynamic materials with Shader Graph, blend skeletal animations with Animation Graph, and simulate particle effects with Compute Graph. Go further by wiring up app interactivity with Script Graph, coordinating scene events with Sequencer, and designing intelligent NPC behaviors with Behavior Trees — all without leaving the editor.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/393",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/393",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "3d",
+    "3d content",
+    "animation",
+    "augmented reality",
+    "behavior tree",
+    "compute graph",
+    "environment",
+    "game",
+    "navigation",
+    "navigation mesh",
+    "particle effects",
+    "reality",
+    "reality composer pro",
+    "realitykit",
+    "scene",
+    "script graph",
+    "shader graph",
+    "spatial computing",
+    "usdz",
+    "visionos"
+  ],
+  "topics": [
+    "Graphics & Games",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 1312,
+  "hasTranscript": true,
+  "transcriptWordCount": 3391,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/393/4/e68b947f-f7f3-49b5-b959-7a70fd9899c3/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/393/4/e68b947f-f7f3-49b5-b959-7a70fd9899c3/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/393/4/e68b947f-f7f3-49b5-b959-7a70fd9899c3/downloads/wwdc2026-393_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/393/4/e68b947f-f7f3-49b5-b959-7a70fd9899c3/downloads/wwdc2026-393_hd.mp4",
+    "duration": 1312
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2026/393-supercharge-your-spatial-workflows-with-reality-composer-pro/",
+  "files": {
+    "metadata": "sessions/wwdc2026/393-supercharge-your-spatial-workflows-with-reality-composer-pro/metadata.json",
+    "readme": "sessions/wwdc2026/393-supercharge-your-spatial-workflows-with-reality-composer-pro/README.md",
+    "transcript": "sessions/wwdc2026/393-supercharge-your-spatial-workflows-with-reality-composer-pro/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/393-supercharge-your-spatial-workflows-with-reality-composer-pro/transcript.json"
+  }
+}

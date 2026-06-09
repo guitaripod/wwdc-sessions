@@ -1,0 +1,51 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-258",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 258,
+  "title": "Architecting Your App for Multiple Windows",
+  "description": "Dive into the details about what it means to support multitasking in iOS 13. Understand how previous best practices fit together with new ideas. Learn the nuances of structuring your application to support multiple windows, and how to instantiate your UI, handle windows coming and going, and manage your app’s underlying window resources.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/258",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/258",
+  "type": "Video",
+  "publishedAt": "2019-06-07T15:20:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 929,
+  "hasTranscript": true,
+  "transcriptWordCount": 2419,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/258ggtahutefvsda35yt/258/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/258ggtahutefvsda35yt/258/258_sd_architecting_your_app_for_multiple_windows.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/258ggtahutefvsda35yt/258/258_hd_architecting_your_app_for_multiple_windows.mp4",
+    "duration": 929
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/258-architecting-your-app-for-multiple-windows/",
+  "files": {
+    "metadata": "sessions/wwdc2019/258-architecting-your-app-for-multiple-windows/metadata.json",
+    "readme": "sessions/wwdc2019/258-architecting-your-app-for-multiple-windows/README.md",
+    "transcript": "sessions/wwdc2019/258-architecting-your-app-for-multiple-windows/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/258-architecting-your-app-for-multiple-windows/transcript.json"
+  }
+}

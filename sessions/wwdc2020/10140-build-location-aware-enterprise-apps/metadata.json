@@ -1,0 +1,108 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10140",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10140,
+  "title": "Build location-aware enterprise apps",
+  "description": "Develop location-aware enterprise apps for your business and personalize your employee’s everyday experience. Learn how Apple built the Caffe Macs app for its on-campus cafeterias using iBeacons and Location Services and how you can apply these tools and frameworks to your own apps, while preserving employee privacy. From there, discover how you can use localization to deliver a great experience for your international employees.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10140",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10140",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "core location",
+    "enterprise",
+    "ibeacon",
+    "internationalization",
+    "localization"
+  ],
+  "topics": [
+    "Accessibility & Inclusion",
+    "Maps & Location",
+    "Business & Education"
+  ],
+  "primaryTopic": "Business & Education",
+  "duration": 856,
+  "hasTranscript": true,
+  "transcriptWordCount": 2283,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10140/5/C86424DC-C2CF-464A-BDCE-35C9B4476E4B/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10140/5/C86424DC-C2CF-464A-BDCE-35C9B4476E4B/wwdc2020_10140_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10140/5/C86424DC-C2CF-464A-BDCE-35C9B4476E4B/wwdc2020_10140_hd.mp4",
+    "duration": 856
+  },
+  "codeSnippets": [
+    {
+      "title": "Preferences: User-defined Preferred Location",
+      "language": "swift",
+      "startTimeSeconds": 208,
+      "code": "// Storing the user’s preference using UserDefaults\n\nUserDefaults.standard.set(defaultLocation.id, forKey: \"defaultLocationId\")\n\nlet defaultLocationId = UserDefaults.standard.integer(forKey: \"defaultLocationId\")"
+    },
+    {
+      "title": "Location Services: Requesting Authorization",
+      "language": "swift",
+      "startTimeSeconds": 374,
+      "code": "// Add NSLocationWhenInUseUsageDescription to your Info.plist \n// e.g. “Location is required for placing orders while using the app.\"\n\nlocationManager.requestWhenInUseAuthorization()\n\nfunc locationManager(\n    _ manager: CLLocationManager,\n    didChangeAuthorization status: CLAuthorizationStatus) {\n\n    switch status {\n    case .restricted, .denied: \n        disableLocationFeatures()\n\n    case .authorizedWhenInUse, .authorizedAlways: \n        enableLocationFeatures()\n\n    case .notDetermined: // The user hasn’t chosen an authorization status\n    }\n}"
+    },
+    {
+      "title": "Location Services: Determining Device Support",
+      "language": "swift",
+      "startTimeSeconds": 422,
+      "code": "if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {\n    // Supports region monitoring to detect beacon regions\n}\n\nif CLLocationManager.isRangingAvailable() {\n    // Supports obtaining the relative distance to a nearby iBeacon device\n}"
+    },
+    {
+      "title": "Stage 1: Region Monitoring",
+      "language": "swift",
+      "startTimeSeconds": 534,
+      "code": "// Stage 1: Region Monitoring\n\nfunc monitorBeacons() {\n    if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {\n\n        let constraint = CLBeaconIdentityConstraint(uuid: proximityUUID)\n\n        let beaconRegion = CLBeaconRegion(\n            beaconIdentityConstraint: constraint,\n            identifier: beaconID\n        )\n\n        self.locationManager.startMonitoring(for: beaconRegion)\n    }\n}"
+    },
+    {
+      "title": "Stage 2: Beacon Ranging",
+      "language": "swift",
+      "startTimeSeconds": 570,
+      "code": "// Stage 2: Beacon Ranging\n\nfunc locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {\n    guard let region = region as? CLBeaconRegion,\n        CLLocationManager.isRangingAvailable()\n        else { return }\n\n    let constraint = CLBeaconIdentityConstraint(uuid: region.uuid)\n    manager.startRangingBeacons(satisfying: constraint)\n    beaconsToRange.append(region)\n}\n\nfunc locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {\n\n}"
+    },
+    {
+      "title": "Stage 2: Beacon Ranging",
+      "language": "swift",
+      "startTimeSeconds": 609,
+      "code": "// Stage 2: Beacon Ranging\n\nfunc locationManager(\n    _ manager: CLLocationManager,\n    didRangeBeacons beacons: [CLBeacon],\n    in region: CLBeaconRegion) {\n\n    guard let nearestBeacon = beacons.first else { return }\n    let major = CLBeaconMajorValue(truncating: nearestBeacon.major)\n    let minor = CLBeaconMinorValue(truncating: nearestBeacon.major)\n\n    switch nearestBeacon.proximity {\n    case .near, .immediate:\n        displayInformation(for: major, and: minor)\n\n    default:\n        handleUnknownOrFarBeacon(for: major, and: minor)\n    }\n}"
+    },
+    {
+      "title": "Formatting Dates",
+      "language": "swift",
+      "startTimeSeconds": 692,
+      "code": "// Formatting Dates\nlet dateFormatter = DateFormatter()\ndateFormatter.dateStyle = .medium\ndateFormatter.timeStyle = .short\ndateFormatter.string(from: Date())\n// \"Jun 25, 2020 at 9:41 AM\""
+    },
+    {
+      "title": "Configuring the Format of Currency",
+      "language": "swift",
+      "startTimeSeconds": 761,
+      "code": "// Configuring the Format of Currency\nlet formatter = NumberFormatter()\nformatter.currencyCode = \"CAD\"\nformatter.numberStyle = .currency\nformatter.string(from: amount)\n// \"CA$1.00\""
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2020/10140-build-location-aware-enterprise-apps/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10140-build-location-aware-enterprise-apps/metadata.json",
+    "readme": "sessions/wwdc2020/10140-build-location-aware-enterprise-apps/README.md",
+    "transcript": "sessions/wwdc2020/10140-build-location-aware-enterprise-apps/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10140-build-location-aware-enterprise-apps/transcript.json"
+  }
+}

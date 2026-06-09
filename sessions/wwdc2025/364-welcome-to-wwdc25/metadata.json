@@ -1,0 +1,56 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-364",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 364,
+  "title": "Welcome to WWDC25",
+  "description": "There’s so much to dive into at WWDC25. Here’s a quick guide to help get you started.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/364",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/364",
+  "type": "Special Event",
+  "publishedAt": "2025-06-09T12:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Essentials"
+  ],
+  "primaryTopic": "Essentials",
+  "duration": 152,
+  "hasTranscript": true,
+  "transcriptWordCount": 419,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/364/5/10be61a4-993c-4cbd-8e29-e70070ef347c/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/364/5/10be61a4-993c-4cbd-8e29-e70070ef347c/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/364/5/10be61a4-993c-4cbd-8e29-e70070ef347c/downloads/wwdc2025-364_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/364/5/10be61a4-993c-4cbd-8e29-e70070ef347c/downloads/wwdc2025-364_hd.mp4",
+    "duration": 152
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2025/364-welcome-to-wwdc25/",
+  "files": {
+    "metadata": "sessions/wwdc2025/364-welcome-to-wwdc25/metadata.json",
+    "readme": "sessions/wwdc2025/364-welcome-to-wwdc25/README.md",
+    "transcript": "sessions/wwdc2025/364-welcome-to-wwdc25/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/364-welcome-to-wwdc25/transcript.json"
+  }
+}

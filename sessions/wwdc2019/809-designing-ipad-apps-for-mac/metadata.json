@@ -1,0 +1,113 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-809",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 809,
+  "title": "Designing iPad Apps for Mac",
+  "description": "Discover how you can create a great Mac experience with your iPad app. Learn about essential techniques for adapting your iPad app's layout and architecture for Mac, considerations for type and color, and how you can take advantage of macOS interfaces such as the menu bar, sidebar and window toolbar.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/809",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/809",
+  "type": "Video",
+  "publishedAt": "2019-06-04T17:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "catalyst",
+    "mac catalyst",
+    "project catalyst"
+  ],
+  "topics": [
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 1818,
+  "hasTranscript": true,
+  "transcriptWordCount": 4288,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/809fdcsntdrt6yhjk/809/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/809fdcsntdrt6yhjk/809/809_sd_designing_ipad_apps_for_mac.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/809fdcsntdrt6yhjk/809/809_hd_designing_ipad_apps_for_mac.mp4",
+    "duration": 1818
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Layout",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/layout",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/layout"
+    },
+    {
+      "title": "Human Interface Guidelines: Keyboards",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/keyboards",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/keyboards"
+    },
+    {
+      "title": "Human Interface Guidelines: The menu bar",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/the-menu-bar",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/the-menu-bar"
+    },
+    {
+      "title": "Human Interface Guidelines: Pointing devices",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/pointing-devices",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/pointing-devices"
+    },
+    {
+      "title": "Learn more about designing app icons for macOS",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/macos/icons-and-images/app-icon/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/macos/icons-and-images/app-icon/"
+    },
+    {
+      "title": "Human Interface Guidelines: Materials",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/materials",
+      "type": "documentation",
+      "description": "A material is a visual effect that creates a sense of depth, layering, and hierarchy between foreground and background elements.",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/materials"
+    },
+    {
+      "title": "Human Interface Guidelines: Dark Mode",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/dark-mode",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/dark-mode"
+    },
+    {
+      "title": "Human Interface Guidelines: Multitasking",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/multitasking",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/multitasking"
+    }
+  ],
+  "path": "sessions/wwdc2019/809-designing-ipad-apps-for-mac/",
+  "files": {
+    "metadata": "sessions/wwdc2019/809-designing-ipad-apps-for-mac/metadata.json",
+    "readme": "sessions/wwdc2019/809-designing-ipad-apps-for-mac/README.md",
+    "transcript": "sessions/wwdc2019/809-designing-ipad-apps-for-mac/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/809-designing-ipad-apps-for-mac/transcript.json"
+  }
+}

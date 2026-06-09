@@ -1,0 +1,162 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10063",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10063,
+  "title": "Customize and resize sheets in UIKit",
+  "description": "Discover how you can create a layered and customized sheet experience in UIKit. We’ll explore how you can build a non-modal experience in your app to allow interaction with content both in a sheet and behind the sheet at the same time. We’ll also take you through sheet size customization, revealing or hiding grabber controls, and adapting between popovers and customized sheets in your app. To get the most out of this session, we recommend watching the Presentations portion of “Modernizing Your UI for iOS 13” from WWDC19 beginning at 9:45.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10063",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10063",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [
+    "card",
+    "presentation"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 732,
+  "hasTranscript": true,
+  "transcriptWordCount": 1980,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10063/8/0D794296-1707-4A1D-8CBB-B2CAFEA82AAC/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10063/8/0D794296-1707-4A1D-8CBB-B2CAFEA82AAC/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10063/8/0D794296-1707-4A1D-8CBB-B2CAFEA82AAC/downloads/wwdc2021-10063_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10063/8/0D794296-1707-4A1D-8CBB-B2CAFEA82AAC/downloads/wwdc2021-10063_hd.mp4",
+    "duration": 732
+  },
+  "codeSnippets": [
+    {
+      "title": "Get a sheet",
+      "language": "swift",
+      "startTimeSeconds": 1,
+      "code": "if let sheet = viewController.sheetPresentationController {\n    // Customize the sheet\n}\npresent(viewController, animated: true)"
+    },
+    {
+      "title": "Detents (large only)",
+      "language": "swift",
+      "startTimeSeconds": 2,
+      "code": "if let sheet = picker.sheetPresentationController {\n    sheet.detents = [.large()]\n}\npresent(picker, animated: true)"
+    },
+    {
+      "title": "Detents (medium and large)",
+      "language": "swift",
+      "startTimeSeconds": 3,
+      "code": "if let sheet = picker.sheetPresentationController {\n    sheet.detents = [.medium(), .large()]\n}\npresent(picker, animated: true)"
+    },
+    {
+      "title": "Detents (medium only)",
+      "language": "swift",
+      "startTimeSeconds": 4,
+      "code": "if let sheet = picker.sheetPresentationController {\n    sheet.detents = [.medium()]\n}\npresent(picker, animated: true)"
+    },
+    {
+      "title": "Present image picker in a standard sheet",
+      "language": "swift",
+      "startTimeSeconds": 5,
+      "code": "func showImagePicker() {\n    let picker = PHPickerViewController()\n    picker.delegate = self\n    present(picker, animated: true)\n}\n\nfunc picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {\n    // assign result to imageView.image\n    dismiss(animated: true)\n}"
+    },
+    {
+      "title": "Present at medium detent, and don’t dismiss automatically",
+      "language": "swift",
+      "startTimeSeconds": 6,
+      "code": "func showImagePicker() {\n    let picker = PHPickerViewController()\n    picker.delegate = self\n    if let sheet = picker.sheetPresentationController {\n        sheet.detents = [.medium(), .large()]\n    }\n    present(picker, animated: true)\n}\n\nfunc picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {\n    // assign result to imageView.image\n}"
+    },
+    {
+      "title": "Prevent scrolling from expanding the sheet",
+      "language": "swift",
+      "startTimeSeconds": 7,
+      "code": "func showImagePicker() {\n    let picker = PHPickerViewController()\n    picker.delegate = self\n    if let sheet = picker.sheetPresentationController {\n        sheet.detents = [.medium(), .large()]\n        sheet.prefersScrollingExpandsWhenScrolledToEdge = false\n    }\n    present(picker, animated: true)\n}\n\nfunc picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {\n    // assign result to imageView.image\n}"
+    },
+    {
+      "title": "Select medium detent when a photo is picked",
+      "language": "swift",
+      "startTimeSeconds": 8,
+      "code": "func showImagePicker() {\n    let picker = PHPickerViewController()\n    picker.delegate = self\n    if let sheet = picker.sheetPresentationController {\n        sheet.detents = [.medium(), .large()]\n        sheet.prefersScrollingExpandsWhenScrolledToEdge = false\n    }\n    present(picker, animated: true)\n}\n\nfunc picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {\n    // assign result to imageView.image\n    if let sheet = picker.sheetPresentationController {\n        sheet.selectedDetentIdentifier = .medium\n    }\n}"
+    },
+    {
+      "title": "Animate selection of medium detent",
+      "language": "swift",
+      "startTimeSeconds": 9,
+      "code": "func showImagePicker() {\n    let picker = PHPickerViewController()\n    picker.delegate = self\n    if let sheet = picker.sheetPresentationController {\n        sheet.detents = [.medium(), .large()]\n        sheet.prefersScrollingExpandsWhenScrolledToEdge = false\n    }\n    present(picker, animated: true)\n}\n\nfunc picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {\n    // assign result to imageView.image\n    if let sheet = picker.sheetPresentationController {\n        sheet.animateChanges {\n            sheet.selectedDetentIdentifier = .medium\n        }\n    }\n}"
+    },
+    {
+      "title": "Remove dimming at medium detent",
+      "language": "swift",
+      "startTimeSeconds": 10,
+      "code": "func showImagePicker() {\n    let picker = PHPickerViewController()\n    picker.delegate = self\n    if let sheet = picker.sheetPresentationController {\n        sheet.detents = [.medium(), .large()]\n        sheet.prefersScrollingExpandsWhenScrolledToEdge = false\n        sheet.smallestUndimmedDetentIdentifier = .medium\n    }\n    present(picker, animated: true)\n}\n\nfunc picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {\n    // assign result to imageView.image\n    if let sheet = picker.sheetPresentationController {\n        sheet.animateChanges {\n            sheet.selectedDetentIdentifier = .medium\n        }\n    }\n}"
+    },
+    {
+      "title": "iPhone in landscape",
+      "language": "swift",
+      "startTimeSeconds": 11,
+      "code": "if let sheet = fontPicker.sheetPresentationController {\n    sheet.prefersEdgeAttachedInCompactHeight = true\n    sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true\n}\npresent(fontPicker, animated: true)"
+    },
+    {
+      "title": "Show a grabber",
+      "language": "swift",
+      "startTimeSeconds": 12,
+      "code": "if let sheet = fontPicker.sheetPresentationController {\n    sheet.prefersGrabberVisible = true\n}\npresent(fontPicker, animated: true)"
+    },
+    {
+      "title": "Customize the corner radius",
+      "language": "swift",
+      "startTimeSeconds": 13,
+      "code": "if let sheet = fontPicker.sheetPresentationController {\n    sheet.preferredCornerRadius = 20.0\n}\npresent(fontPicker, animated: true)"
+    },
+    {
+      "title": "Adapt a popover to a customized sheet",
+      "language": "swift",
+      "startTimeSeconds": 14,
+      "code": "func showImagePicker(_ sender: UIBarButtonItem) {\n    let picker = PHPickerViewController()\n    picker.delegate = self\n    picker.modalPresentationStyle = .popover\n    if let popover = picker.popoverPresentationController {\n        popover.barButtonItem = sender\n\n        let sheet = popover.adaptiveSheetPresentationController\n        sheet.detents = [.medium(), .large()]\n        sheet.prefersScrollingExpandsWhenScrolledToEdge = false\n        sheet.smallestUndimmedDetentIdentifier = .medium\n    }\n    present(picker, animated: true)\n}"
+    },
+    {
+      "title": "Be consistent when using adaptiveSheetPresentationController",
+      "language": "swift",
+      "startTimeSeconds": 15,
+      "code": "func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {\n    // assign result to imageView.image\n    if let sheet = picker.popoverPresentationController?.adaptiveSheetPresentationController {\n        sheet.animateChanges {\n            sheet.selectedDetentIdentifier = .medium\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Customizing and resizing sheets in UIKit",
+      "url": "https://developer.apple.com/documentation/UIKit/customizing-and-resizing-sheets-in-uikit",
+      "type": "samplecode",
+      "description": "Discover how to create a layered and customized sheet experience in UIKit.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/customizing-and-resizing-sheets-in-uikit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/customizing-and-resizing-sheets-in-uikit.json"
+    },
+    {
+      "title": "UIKit",
+      "url": "https://developer.apple.com/documentation/UIKit",
+      "type": "documentation",
+      "description": "Construct and manage a graphical, event-driven user interface for your iOS, iPadOS, or tvOS app.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10063-customize-and-resize-sheets-in-uikit/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10063-customize-and-resize-sheets-in-uikit/metadata.json",
+    "readme": "sessions/wwdc2021/10063-customize-and-resize-sheets-in-uikit/README.md",
+    "transcript": "sessions/wwdc2021/10063-customize-and-resize-sheets-in-uikit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10063-customize-and-resize-sheets-in-uikit/transcript.json"
+  }
+}

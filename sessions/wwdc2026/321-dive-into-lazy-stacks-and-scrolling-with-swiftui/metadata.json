@@ -1,0 +1,225 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-321",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 321,
+  "title": "Dive into lazy stacks and scrolling with SwiftUI",
+  "description": "Discover the inner workings of lazy stacks in SwiftUI. We’ll explore how LazyVStack and LazyHStack estimate sizes, lazily load subviews, and prefetch content to deliver smooth scrolling experiences. We’ll also cover advanced performance optimizations, state management best practices, and tips for precise programmatic scrolling. To get the most out of this session, we recommend basic familiarity with SwiftUI layout using stacks.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/321",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/321",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "screenshots"
+  ],
+  "topics": [
+    "Design",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1270,
+  "hasTranscript": true,
+  "transcriptWordCount": 3326,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/321/5/78830752-d07d-4d89-aeab-94405c084de9/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/321/5/78830752-d07d-4d89-aeab-94405c084de9/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/321/5/78830752-d07d-4d89-aeab-94405c084de9/downloads/wwdc2026-321_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/321/5/78830752-d07d-4d89-aeab-94405c084de9/downloads/wwdc2026-321_hd.mp4",
+    "duration": 1270
+  },
+  "codeSnippets": [
+    {
+      "title": "Origami app",
+      "language": "swift",
+      "startTimeSeconds": 83,
+      "code": "// Origami app\n\nstruct ContentView: View {\n    var body: some View {\n        ScrollView {\n            LazyVStack {\n                ForEach(steps) { step in\n                    StepView(step: step)\n                }\n            }\n        }\n    }\n}\n\nstruct StepView: View { /* ... */ }"
+    },
+    {
+      "title": "Horizontally scrolling showcase",
+      "language": "swift",
+      "startTimeSeconds": 311,
+      "code": "// Horizontally scrolling showcase\n\nstruct ContentView: View {\n    var body: some View {\n        ScrollView {\n            LazyVStack {\n                ForEach(steps) { step in\n                    StepView(step: step)\n                }\n                Showcase()\n            }\n        }\n    }\n}\n\nstruct StepView: View { /* ... */ }\n\nstruct Showcase: View {\n    var body: some View {\n        ScrollView(.horizontal) {\n            LazyHStack {\n                ForEach(photos) { photo in\n                    PhotoView(photo: photo)\n                }\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Showcase section",
+      "language": "swift",
+      "startTimeSeconds": 390,
+      "code": "// Showcase section\n\nstruct ContentView: View {\n    var body: some View {\n        ScrollView {\n            LazyVStack(pinnedViews: [.sectionHeaders]) {\n                ForEach(steps) { step in\n                    StepView(step: step)\n                }\n                Showcase()\n            }\n        }\n    }\n}\n\nstruct StepView: View { /* ... */ }\n\nstruct Showcase: View {\n    var body: some View {\n        Section {\n            ForEach(photos) { photo in\n                PhotoView(photo: photo)\n            }\n        } header: { /* ... */ }\n    }\n}"
+    },
+    {
+      "title": "Scroll effect",
+      "language": "swift",
+      "startTimeSeconds": 424,
+      "code": "// Scroll effect\n\nstruct ContentView: View { /* ... */ }\n\nstruct StepView: View { /* ... */ }\n\nstruct Showcase: View {\n    var body: some View {\n        Section {\n            ForEach(photos) { photo in\n                PhotoView(photo: photo)\n                    .scrollTransition { effect, phase in\n                        effect\n                            .rotationEffect(.degrees(phase.value * 20))\n                            .scaleEffect(1 + phase.value * 0.2)\n                    }\n            }\n        } header: { /* ... */ }\n    }\n}"
+    },
+    {
+      "title": "Scroll effect",
+      "language": "swift",
+      "startTimeSeconds": 456,
+      "code": "// Scroll effect\n\nstruct ContentView: View { /* ... */ }\n\nstruct StepView: View { /* ... */ }\n\nstruct Showcase: View {\n    var body: some View {\n        Section {\n            ForEach(photos) { photo in\n                PhotoView(photo: photo)\n                    .scrollTransition { effect, phase in\n                        effect\n                            .scaleEffect(1 - abs(phase.value) * 0.1)\n                    }\n            }\n        } header: { /* ... */ }\n    }\n}"
+    },
+    {
+      "title": "Scroll to Showcase button",
+      "language": "swift",
+      "startTimeSeconds": 500,
+      "code": "// Absolute offset\n\nstruct ContentView: View {\n    @State var isScrollToShowcaseVisible = false\n\n    var body: some View {\n        ScrollView { /* ... */ }\n            .overlay(alignment: .bottom) { /* ... */ }\n            .onScrollGeometryChange(for: Bool.self) { geo in\n                geo.contentOffset.y <= 100\n            } action: { _, newValue in\n                self.isScrollToShowcaseVisible = newValue\n            }\n    }\n}"
+    },
+    {
+      "title": "Scroll to Showcase button",
+      "language": "swift",
+      "startTimeSeconds": 531,
+      "code": "// Absolute offset\n\nstruct ContentView: View {\n    @State var isScrollToShowcaseVisible = false\n\n    var body: some View {\n        ScrollView { /* ... */ }\n            .overlay(alignment: .bottom) { /* ... */ }\n            .onScrollTargetVisibilityChange(\n                idType: Step.ID.self,\n                threshold: 0.8\n            ) { visibleIDs in\n                isScrollToShowcaseVisible = shouldShowScrollButton(visibleIDs: visibleIDs)\n            }\n    }\n}"
+    },
+    {
+      "title": "One resolved subview",
+      "language": "swift",
+      "startTimeSeconds": 569,
+      "code": "// Origami\n\nstruct ContentView: View {\n    var body: some View {\n        ScrollView {\n            LazyVStack {\n                ForEach(steps) { step in\n                    StepView(step: step)\n                }\n            }\n        }\n    }\n}\n\nstruct StepView: View { /* ... */ }"
+    },
+    {
+      "title": "Multiple resolved subviews",
+      "language": "swift",
+      "startTimeSeconds": 603,
+      "code": "// Multiple subviews\n\nstruct ContentView: View { /* ... */ }\n\nstruct StepView: View {\n    let step: Step\n\n    var body: some View {\n        StepDiagram(/* ... */)\n        StepInstructions(/* ... */)\n    }\n}"
+    },
+    {
+      "title": "Dynamic number of subviews",
+      "language": "swift",
+      "startTimeSeconds": 652,
+      "code": "// Dynamic number of views\n\nstruct ContentView: View { /* ... */ }\n\nstruct StepView: View {\n    let step: Step\n\n    @Environment(\\.detailLevel) var detailLevel\n\n    var body: some View {\n        if step.isVisible(in: detailLevel) {\n            VStack { /* ... */ }\n        }\n    }\n}"
+    },
+    {
+      "title": "Filtering on the view level",
+      "language": "swift",
+      "startTimeSeconds": 706,
+      "code": "// Dynamic number of views\n\nstruct ContentView: View { /* ... */ }\n\nstruct StepView: View {\n    let step: Step\n\n    @Environment(\\.detailLevel) var detailLevel\n    @Environment(\\.writingStyle) var writingStyle\n\n    var body: some View {\n        if step.isVisible(in: detailLevel) { /* ... */ }\n    }\n}"
+    },
+    {
+      "title": "Filtering on the data level",
+      "language": "swift",
+      "startTimeSeconds": 735,
+      "code": "// Filter at the data level\n\nstruct ContentView: View {\n    @Query var steps: [Step]\n\n    init(detailLevel: DetailLevel) {\n        _steps = Query(filter: #Predicate<Step> { step in\n            step.detailLevel >= detailLevel\n        })\n    }\n\n    var body: some View { /* ... */ }\n}\n\nstruct StepView: View { /* ... */ }"
+    },
+    {
+      "title": "Optional unwrapping",
+      "language": "swift",
+      "startTimeSeconds": 755,
+      "code": "// Optional unwrapping\n\nstruct ContentView: View { /* ... */ }\n\nstruct StepView: View {\n    let step: Step\n\n    @Environment(\\.apiToken) var token\n\n    var body: some View {\n        if let token { /* ... */ }\n    }\n}"
+    },
+    {
+      "title": "Optional unwrapping",
+      "language": "swift",
+      "startTimeSeconds": 768,
+      "code": "// Optional unwrapping\n\nstruct ContentView: View { /* ... */ }\n\nstruct StepView: View {\n    let step: Step\n\n    @Environment(NetworkClient.self) var networkClient\n\n    var body: some View { /* ... */ }\n}"
+    },
+    {
+      "title": "Loading more content",
+      "language": "swift",
+      "startTimeSeconds": 928,
+      "code": "// Loading more content\n\nstruct Showcase: View {\n    @State var pager = ShowcasePager()\n\n    var body: some View {\n        ForEach(pager.pages) { page in\n            PageView(page: page)\n        }\n        if !pager.atEnd {\n            ProgressView()\n                .progressViewStyle(.circular)\n                .onAppear {\n                    pager.fetchPage()\n                }\n        }\n    }\n}"
+    },
+    {
+      "title": "Setting up lazy stack subview in onAppear",
+      "language": "swift",
+      "startTimeSeconds": 953,
+      "code": "// onAppear\n\nstruct StepView: View {\n    let id: Step.ID\n    @State var viewModel = StepViewModel()\n\n    var body: some View {\n        VStack {\n            if let content = viewModel.content { /* ... */ }\n        }\n        .onAppear {\n            viewModel.configure(with: id)\n        }\n    }\n}"
+    },
+    {
+      "title": "Lazy stack subview ready before onAppear",
+      "language": "swift",
+      "startTimeSeconds": 974,
+      "code": "// onAppear\n\nstruct StepView: View {\n    @State var viewModel: StepViewModel\n\n    init(id: Step.ID) {\n        _viewModel = State(initialValue: StepViewModel(id: id))\n    }\n\n    var body: some View { /* ... */ }\n}"
+    },
+    {
+      "title": "Loading diagram with task modifier",
+      "language": "swift",
+      "startTimeSeconds": 983,
+      "code": "// Diagram loading\n\nstruct StepView: View {\n    let step: Step\n    @State var diagramLoader = DiagramLoader()\n\n    @State var diagram: Diagram?\n\n    var body: some View {\n        VStack { /* ... */ }\n            .task {\n                diagram = await diagramLoader.loadDiagram(id: step.id)\n            }\n    }\n}"
+    },
+    {
+      "title": "Loading diagram in initializer",
+      "language": "swift",
+      "startTimeSeconds": 1000,
+      "code": "// Diagram loading\n\nstruct StepView: View {\n    let step: Step\n    @State var diagramLoader: DiagramLoader\n\n    init(step: Step) {\n        self.step = step\n        _diagramLoader = State(initialValue: DiagramLoader(id: step.id))\n    }\n\n    var body: some View { /* ... */ }\n}\n\n@Observable\nclass DiagramLoader { /* ... */ }"
+    },
+    {
+      "title": "Highlight @State variable",
+      "language": "swift",
+      "startTimeSeconds": 1036,
+      "code": "// Highlighting\n\nstruct ContentView: View { /* ... */ }\n\nstruct StepView: View {\n    let step: Step\n    @State var isHighlighted = false\n\n    var body: some View { /* ... */ }\n}"
+    },
+    {
+      "title": "Highlight @Binding",
+      "language": "swift",
+      "startTimeSeconds": 1053,
+      "code": "// Highlighting\n\nstruct ContentView: View {\n    @State var highlighted: Set<Step.ID> = []\n\n    var body: some View { /* ... */ }\n}\n\nstruct StepView: View {\n    let step: Step\n    @Binding var highlighted: Set<Step.ID>\n\n    var body: some View { /* ... */ }\n}"
+    },
+    {
+      "title": "Programmatically scroll to showcase",
+      "language": "swift",
+      "startTimeSeconds": 1078,
+      "code": "// Programmatically scroll to showcase\n\nstruct ContentView: View {\n    @State var scrollPosition = ScrollPosition()\n\n    var body: some View {\n        ScrollView { /* ... */ }\n            .scrollPosition($scrollPosition)\n            .overlay(alignment: .bottom) {\n                Button {\n                    scrollToShowcase()\n                } label: { /* ... */ }\n            }\n    }\n\n    func scrollToShowcase() {\n        withAnimation {\n            scrollPosition.scrollTo(id: \"showcase-header\")\n        }\n    }\n}"
+    },
+    {
+      "title": "Dynamic number of views",
+      "language": "swift",
+      "startTimeSeconds": 1104,
+      "code": "// Dynamic number of views\n\nstruct ContentView: View { /* ... */ }\n\nstruct StepView: View {\n    let step: Step\n\n    @Environment(\\.detailLevel) var detailLevel\n\n    var body: some View {\n        if step.isVisible(in: detailLevel) { /* ... */ }\n    }\n}"
+    },
+    {
+      "title": "Filter at the data level",
+      "language": "swift",
+      "startTimeSeconds": 1133,
+      "code": "// Filter at the data level\n\nstruct ContentView: View {\n    @Query var steps: [Step]\n\n    init(detailLevel: DetailLevel) {\n        _steps = Query(filter: #Predicate<Step> { step in\n            step.detailLevel >= detailLevel\n        })\n    }\n\n    var body: some View { /* ... */ }\n}\n\nstruct StepView: View { /* ... */ }"
+    },
+    {
+      "title": "Using onGeometryChange in lazy stack subview",
+      "language": "swift",
+      "startTimeSeconds": 1156,
+      "code": "// Don't change layout after views appear\n\nstruct ContentView: View { /* ... */ }\n\nstruct StepView: View {\n    let step: Step\n    @State var subtitleHeight: CGFloat?\n\n    var body: some View {\n        VStack {\n            StepDiagram(diagram: step.diagram)\n                .frame(height: diagramHeight(subtitleHeight: subtitleHeight))\n            Title(step.title)\n            Subtitle(step.subtitle)\n                .onGeometryChange(for: CGFloat.self, of: \\.size.height) { _, value in\n                    subtitleHeight = value\n                }\n        }\n    }\n}"
+    },
+    {
+      "title": "Using custom layout in lazy stack subview",
+      "language": "swift",
+      "startTimeSeconds": 1157,
+      "code": "// Don't change layout after views appear\n\nstruct ContentView: View { /* ... */ }\n\nstruct StepView: View {\n    let step: Step\n\n    var body: some View {\n        StepLayout {\n            StepDiagram(diagram: step.diagram)\n            Title(step.title)\n            Subtitle(step.subtitle)\n        }\n    }\n}\n\nstruct StepLayout: Layout { /* ... */ }"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Grouping data with lazy stack views",
+      "url": "https://developer.apple.com/documentation/SwiftUI/Grouping-Data-with-Lazy-Stack-Views",
+      "type": "documentation",
+      "description": "Split content into logical sections inside lazy stack views.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/Grouping-Data-with-Lazy-Stack-Views",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/Grouping-Data-with-Lazy-Stack-Views.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/321-dive-into-lazy-stacks-and-scrolling-with-swiftui/",
+  "files": {
+    "metadata": "sessions/wwdc2026/321-dive-into-lazy-stacks-and-scrolling-with-swiftui/metadata.json",
+    "readme": "sessions/wwdc2026/321-dive-into-lazy-stacks-and-scrolling-with-swiftui/README.md",
+    "transcript": "sessions/wwdc2026/321-dive-into-lazy-stacks-and-scrolling-with-swiftui/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/321-dive-into-lazy-stacks-and-scrolling-with-swiftui/transcript.json"
+  }
+}

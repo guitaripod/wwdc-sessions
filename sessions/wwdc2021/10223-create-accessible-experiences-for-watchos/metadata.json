@@ -1,0 +1,174 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10223",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10223,
+  "title": "Create accessible experiences for watchOS",
+  "description": "Discover how you can build a top-notch accessibility experience for watchOS when you support features like larger text sizes, VoiceOver, and AssistiveTouch. We’ll take you through adding visual and motor accessibility support to a SwiftUI app built for watchOS, including best practices around API integration, experience, and more.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10223",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10223",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "watchOS"
+  ],
+  "keywords": [
+    "🧋",
+    "accessibility",
+    "accessibilityadjustableaction",
+    ".accessibilityelement",
+    "accessibility extra large",
+    "accessibilitylabel",
+    "accessibility label",
+    "accessibilityrespondstouserinteraction",
+    "accessible element",
+    "assistive technology",
+    "assistivetouch",
+    "assistivetouch cursor",
+    "assistivetouch cursor frame",
+    "assitivetouch action menu",
+    "bold text",
+    "clench",
+    "complications",
+    "cursor",
+    "cursor frame",
+    "custom actions",
+    "double-clench",
+    "double-pinch",
+    "dwell control",
+    "dynamic notifications",
+    "dynamic type",
+    "element grouping",
+    "focusable elements",
+    "hand gestures",
+    "hand motions",
+    "large accessibility text",
+    "large text sizes",
+    "motion pointer",
+    "onscreen pointer",
+    "pinch",
+    "reduce motion",
+    "swiftui",
+    "system text size",
+    "text styles",
+    "truncating text",
+    "voiceover",
+    "watchos",
+    "wrap text",
+    "wwbubbletea",
+    "wwdaisy"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "Accessibility & Inclusion"
+  ],
+  "primaryTopic": "Accessibility & Inclusion",
+  "duration": 1406,
+  "hasTranscript": true,
+  "transcriptWordCount": 3391,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10223/6/F4C83469-5B64-46D0-9FC6-F2EC7AC47414/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10223/6/F4C83469-5B64-46D0-9FC6-F2EC7AC47414/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10223/6/F4C83469-5B64-46D0-9FC6-F2EC7AC47414/downloads/wwdc2021-10223_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10223/6/F4C83469-5B64-46D0-9FC6-F2EC7AC47414/downloads/wwdc2021-10223_hd.mp4",
+    "duration": 1406
+  },
+  "codeSnippets": [
+    {
+      "title": "Dynamic Type for PlantView",
+      "language": "swift",
+      "startTimeSeconds": 288,
+      "code": "struct PlantView: View {\n    @Binding var plant: Plant\n\n    var body: some View {\n        VStack(alignment: .leading) {\n            Text(plant.name)\n                .font(.title3)\n            HStack() {\n                PlantImage(plant: plant)\n                PlantTaskList(plant: $plant)\n            }\n            PlantTaskButtons(plant: $plant)\n        }\n    }\n}"
+    },
+    {
+      "title": "Line limits for PlantTaskLabel",
+      "language": "swift",
+      "startTimeSeconds": 300,
+      "code": "struct PlantTaskLabel: View {\n    let task: PlantTask\n    @Binding var plant: Plant\n\n    var body: some View {\n        HStack {\n            Image(systemName: task.systemImageName)\n                .imageScale(.small)\n            Text(plant.stringForTask(task: task))\n        }\n        .lineLimit(3)\n        .font(.caption2)\n    }\n}"
+    },
+    {
+      "title": "Alternate layouts for PlantContainerView",
+      "language": "swift",
+      "startTimeSeconds": 348,
+      "code": "struct PlantContainerView: View {\n    @Environment(\\.sizeCategory) var sizeCategory\n    @Binding var plant: Plant\n\n    var body: some View {\n        if sizeCategory < .extraExtraLarge {\n            PlantViewHorizontal(plant: $plant)\n        } else {\n            PlantViewVertical(plant: $plant)\n        }\n    }\n}"
+    },
+    {
+      "title": "Element grouping for PlantCellView",
+      "language": "swift",
+      "startTimeSeconds": 536,
+      "code": "struct PlantCellView: View {\n    @EnvironmentObject var plantData: PlantData\n    var plant: Plant\n\n    var plantIndex: Int {\n        plantData.plants.firstIndex(where: { $0.id == plant.id })!\n    }\n\n    var body: some View {\n        NavigationLink(destination: PlantEditView(plant: plant).environmentObject(plantData)) {\n            PlantContainerView(plant: $plantData.plants[plantIndex])\n                .padding()\n        }\n    }\n}"
+    },
+    {
+      "title": "Accessibility labels for PlantTaskLabel",
+      "language": "swift",
+      "startTimeSeconds": 578,
+      "code": "struct PlantTaskLabel: View {\n    let task: PlantTask\n    @Binding var plant: Plant\n\n    var body: some View {\n        HStack {\n            Image(systemName: task.systemImageName)\n                .imageScale(.small)\n            Text(plant.stringForTask(task: task))\n                .accessibilityLabel(plant.accessibilityStringForTask(task: task))\n        }\n        .lineLimit(3)\n        .font(.caption2)\n    }\n}"
+    },
+    {
+      "title": "Accessibility labels for PlantButton",
+      "language": "swift",
+      "startTimeSeconds": 603,
+      "code": "struct PlantButton: View {\n    let task: PlantTask\n    let action: () -> Void\n    @State private var isTapped: Bool = false\n\n    var body: some View {\n        Button(action: {\n            self.isTapped.toggle()\n            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {\n                self.isTapped.toggle()\n            }\n            action()\n        }) {\n            Image(systemName: task.systemImageFillName)\n                .foregroundColor(task.color)\n                .scaleEffect(isTapped ? 1.5 : 1)\n                .animation(nil, value: 0)\n                .rotationEffect(.degrees(isTapped ? 360 : 0))\n                .animation(.spring(), value: 0)\n                .imageScale(.large)\n        }\n        .buttonStyle(BorderedButtonStyle())\n        .accessibilityLabel(\"Log \\(task.name)\")\n    }\n}"
+    },
+    {
+      "title": "Custom control accessibility for PlantTaskFrequency",
+      "language": "swift",
+      "startTimeSeconds": 667,
+      "code": "struct PlantTaskFrequency: View {\n    let task: PlantTask\n    @Binding var plant: Plant\n    let increment: () -> Void\n    let decrement: () -> Void\n\n    var value: Int {\n        switch task {\n        case .water:\n            return plant.wateringFrequency\n        case .fertilize:\n            return plant.fertilizingFrequency\n        default:\n            return 0\n        }\n    }\n\n    var body: some View {\n        Section(header: Text(\"\\(task.name) frequency in days\"), content: {\n            CustomCounter(value: value, increment: increment, decrement: decrement)\n                .accessibilityElement()\n                .accessibilityAdjustableAction { direction in\n                    switch direction {\n                    case .increment:\n                        increment()\n                    case .decrement:\n                        decrement()\n                    default:\n                        break\n                    }\n                }\n                .accessibilityLabel(\"\\(task.name) frequency\")\n                .accessibilityValue(\"\\(value) days\")\n        })\n    }\n}"
+    },
+    {
+      "title": "Make static element focusable",
+      "language": "swift",
+      "startTimeSeconds": 1190,
+      "code": "struct FreeDrinkView: View {\n    @State var didCancel = false\n    @State var didAccept = false\n    @State var showDetail = false\n\n    var body: some View {\n        VStack(spacing:10) {\n            FreeDrinkTitleView()\n\n            FreeDrinkInfoView()\n                .accessibilityRespondsToUserInteraction(true)\n\n            HStack {\n                CancelButton(buttonTapped: $didCancel)\n                AcceptButton(buttonTapped: $didAccept)\n            }\n        }\n        .onTapGesture {\n            showDetail.toggle()\n        }\n        .sheet(isPresented: $showDetail, onDismiss: dismiss) {\n            DrinkDetailModalView()\n        }\n    }\n}"
+    },
+    {
+      "title": "AssistiveTouch cursor frame",
+      "language": "swift",
+      "startTimeSeconds": 1272,
+      "code": "struct DrinkView: View {\n    var currentDrink:DrinkInfo\n\n    var body: some View {\n        HStack(alignment: .firstTextBaseline) {\n            DrinkInfoView(drink:currentDrink)\n\n            Spacer()\n\n            NavigationLink(destination: EditView()) {\n                Image(systemName: \"ellipsis\")\n                    .symbolVariant(.circle)\n            }\n            .contentShape(Circle().scale(1.5))\n        }\n    }\n}"
+    },
+    {
+      "title": "AssistiveTouch Action Menu",
+      "language": "swift",
+      "startTimeSeconds": 1368,
+      "code": "PlantContainerView(plant: plant)\n    .padding()\n    .accessibilityElement(children: .combine)\n    .accessibilityAction {\n        // Edit action\n    } label: {\n        Label(\"Edit\", systemImage: \"ellipsis.circle\")\n    }"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Create accessible experiences for watchOS",
+      "url": "https://developer.apple.com/documentation/watchOS-Apps/create-accessible-experiences-for-watchos",
+      "type": "samplecode",
+      "description": "Learn how to make your watchOS app more accessible.",
+      "sosumiURL": "https://sosumi.ai/documentation/watchOS-Apps/create-accessible-experiences-for-watchos",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/watchOS-Apps/create-accessible-experiences-for-watchos.json"
+    },
+    {
+      "title": "Accessibility for Developers",
+      "url": "https://developer.apple.com/accessibility/",
+      "type": "guide",
+      "description": "Collection of Accessibility resources for macOS, iOS, watchOS, and tvOS.",
+      "sosumiURL": "https://sosumi.ai/accessibility/"
+    }
+  ],
+  "path": "sessions/wwdc2021/10223-create-accessible-experiences-for-watchos/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10223-create-accessible-experiences-for-watchos/metadata.json",
+    "readme": "sessions/wwdc2021/10223-create-accessible-experiences-for-watchos/README.md",
+    "transcript": "sessions/wwdc2021/10223-create-accessible-experiences-for-watchos/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10223-create-accessible-experiences-for-watchos/transcript.json"
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10080",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10080,
+  "title": "Build spatial experiences with RealityKit",
+  "description": "Discover how RealityKit can bring your apps into a new dimension. Get started with RealityKit entities, components, and systems, and learn how you can add 3D models and effects to your app on visionOS. We’ll also take you through the RealityView API and demonstrate how to add 3D objects to windows, volumes, and spaces to make your apps more immersive. And we’ll explore combining RealityKit with spatial input, animation, and spatial audio.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10080",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10080",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Essentials",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 1652,
+  "hasTranscript": true,
+  "transcriptWordCount": 3937,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10080/4/285DEB34-9EE6-466F-8F33-BF04E334E215/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10080/4/285DEB34-9EE6-466F-8F33-BF04E334E215/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10080/4/285DEB34-9EE6-466F-8F33-BF04E334E215/downloads/wwdc2023-10080_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10080/4/285DEB34-9EE6-466F-8F33-BF04E334E215/downloads/wwdc2023-10080_hd.mp4",
+    "duration": 1652
+  },
+  "codeSnippets": [
+    {
+      "title": "Model3D",
+      "language": "swift",
+      "startTimeSeconds": 220,
+      "code": "import SwiftUI\nimport RealityKit\n\nstruct GlobeModule: View {\n    var body: some View {\n        Model3D(named: \"Globe\") { model in\n            model\n                .resizable()\n                .scaledToFit()\n        } placeholder: {\n          \tProgressView()\n        }\n    }\n}"
+    },
+    {
+      "title": "Volumetric window",
+      "language": "swift",
+      "startTimeSeconds": 352,
+      "code": "import SwiftUI\nimport RealityKit\n\n// Define a volumetric window.\nstruct WorldApp: App {\n    var body: some SwiftUI.Scene {\n        // ...\n\n        WindowGroup(id: \"planet-earth\") {\n            Model3D(named: \"Globe\")\n        }\n        .windowStyle(.volumetric)\n        .defaultSize(width: 0.8, height: 0.8, depth: 0.8, in: .meters)\n    }\n}"
+    },
+    {
+      "title": "ImmersiveSpace",
+      "language": "swift",
+      "startTimeSeconds": 451,
+      "code": "import SwiftUI\nimport RealityKit\n\n// Define a immersive space.\nstruct WorldApp: App {\n    var body: some SwiftUI.Scene {\n        // ...\n\n        ImmersiveSpace(id: \"objects-in-orbit\") {\n            RealityView { content in\n                // ...\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "RealityView",
+      "language": "swift",
+      "startTimeSeconds": 760,
+      "code": "import SwiftUI\nimport RealityKit\n\nstruct Orbit: View {\n    let earth: Entity\n\n    var body: some View {\n        RealityView { content in\n            content.add(earth)\n        }\n    }\n}"
+    },
+    {
+      "title": "RealityView asynchronous loading and entity positioning",
+      "language": "swift",
+      "startTimeSeconds": 774,
+      "code": "import SwiftUI\nimport RealityKit\n\nstruct Orbit: View {\n    var body: some View {\n        RealityView { content in\n            async let earth = ModelEntity(named: \"Earth\")\n            async let moon = ModelEntity(named: \"Moon\")\n\n            if let earth = try? await earth, let moon = try? await moon {\n                content.add(earth)\n                content.add(moon)\n                moon.position = [0.5, 0, 0]\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Earth rotation",
+      "language": "swift",
+      "startTimeSeconds": 834,
+      "code": "import SwiftUI\nimport RealityKit\n\nstruct RotatedModel: View {\n    var entity: Entity\n    var rotation: Rotation3D\n\n    var body: some View {\n        RealityView { content in\n            content.add(entity)\n        } update: { content in\n            entity.orientation = .init(rotation)\n        }\n   }\n}"
+    },
+    {
+      "title": "Converting co-ordinate spaces",
+      "language": "swift",
+      "startTimeSeconds": 867,
+      "code": "import SwiftUI\nimport RealityKit\n\nstruct ResizableModel: View {\n    var body: some View {\n        GeometryReader3D { geometry in\n            RealityView { content in\n                if let earth = try? await ModelEntity(named: \"Earth\") {\n                    let bounds = content.convert(geometry.frame(in: .local),\n                                                 from: .local, to: content)\n                    let minExtent = bounds.extents.min()\n                    earth.scale = [minExtent, minExtent, minExtent]\n                }\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Play an animation",
+      "language": "swift",
+      "startTimeSeconds": 896,
+      "code": "import SwiftUI\nimport RealityKit\n\nstruct AnimatedModel: View {\n    @State var subscription: EventSubscription? \n\n    var body: some View {\n        RealityView { content in\n            if let moon = try? await Entity(named: \"Moon\"),\n               let animation = moon.availableAnimations.first {\n                moon.playAnimation(animation)\n                content.add(moon)\n            }\n            subscription = content.subscribe(to: AnimationEvents.PlaybackCompleted.self) {\n                // ...\n            }\n       }\n   }\n}"
+    },
+    {
+      "title": "Adding a drag gesture",
+      "language": "swift",
+      "startTimeSeconds": 1111,
+      "code": "import SwiftUI\nimport RealityKit\n\nstruct DraggableModel: View {\n    var earth: Entity\n\n    var body: some View {\n        RealityView { content in\n            content.add(earth)\n        }\n        .gesture(DragGesture()\n            .targetedToEntity(earth)\n            .onChanged { value in\n                earth.position = value.convert(value.location3D,\n                                               from: .local, to: earth.parent!)\n            })\n    }\n}"
+    },
+    {
+      "title": "Playing a transform animation",
+      "language": "swift",
+      "startTimeSeconds": 1220,
+      "code": "// Playing a transform animation\nlet orbit = OrbitAnimation(name: \"Orbit\",\n                           duration: 30,\n                           axis: [0, 1, 0],\n                           startTransform: moon.transform,\n                           bindTarget: .transform,\n                           repeatMode: .repeat)\n\nif let animation = try? AnimationResource.generate(with: orbit) {\n    moon.playAnimation(animation)\n}"
+    },
+    {
+      "title": "Adding audio",
+      "language": "swift",
+      "startTimeSeconds": 1332,
+      "code": "// Create an empty entity to act as an audio source.\nlet audioSource = Entity()\n\n// Configure the audio source to project sound out in a tight beam.\naudioSource.spatialAudio = SpatialAudioComponent(directivity: .beam(focus: 0.75))\n\n// Change the orientation of the audio source (rotate 180º around the Y axis).\naudioSource.orientation = .init(angle: .pi, axis: [0, 1, 0])\n\n// Add the audio source to a parent entity, and play a looping sound on it.\nif let audio = try? await AudioFileResource(named: \"SatelliteLoop\",\n                                            configuration: .init(shouldLoop: true)) {\n    satellite.addChild(audioSource)\n    audioSource.playAudio(audio)\n}"
+    },
+    {
+      "title": "Defining a custom component",
+      "language": "swift",
+      "startTimeSeconds": 1427,
+      "code": "import RealityKit\n\n// Components are data attached to an Entity.\nstruct TraceComponent: Component {\n    var mesh = TraceMesh()\n}\n\n// Entities contain components, identified by the component’s type.\nfunc updateTrace(for entity: Entity) {\n    var component = entity.components[TraceComponent.self] ?? TraceComponent()\n    component.update()\n    entity.components[TraceComponent.self] = component\n}\n\n// Codable components can be added to entities in Reality Composer Pro.\nstruct PointOfInterestComponent: Component, Codable {\n    var name = \"\"\n}"
+    },
+    {
+      "title": "Defining a system",
+      "language": "swift",
+      "startTimeSeconds": 1491,
+      "code": "import SwiftUI\nimport RealityKit\n\n// Systems supply logic and behavior.\nstruct TraceSystem: System {\n    static let query = EntityQuery(where: .has(TraceComponent.self))\n\n    init(scene: Scene) {\n        // ...\n    }\n\n    func update(context: SceneUpdateContext) {\n         // Systems often act on all entities matching certain conditions.\n        for entity in context.entities(Self.query, updatingSystemWhen: .rendering) {\n            addCurrentPositionToTrace(entity)\n        }\n    }\n}\n\n// Systems run on all RealityKit content in your app once registered.\nstruct MyApp: App {\n    init() {\n        TraceSystem.registerSystem()\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Hello World",
+      "url": "https://developer.apple.com/documentation/visionOS/World",
+      "type": "documentation",
+      "description": "Use windows, volumes, and immersive spaces to teach people about the Earth.",
+      "sosumiURL": "https://sosumi.ai/documentation/visionOS/World",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/visionOS/World.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10080-build-spatial-experiences-with-realitykit/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10080-build-spatial-experiences-with-realitykit/metadata.json",
+    "readme": "sessions/wwdc2023/10080-build-spatial-experiences-with-realitykit/README.md",
+    "transcript": "sessions/wwdc2023/10080-build-spatial-experiences-with-realitykit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10080-build-spatial-experiences-with-realitykit/transcript.json"
+  }
+}

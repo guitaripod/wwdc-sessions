@@ -1,0 +1,114 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-110336",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2023,
+  "eventContentId": 110336,
+  "title": "Implement Apple Pay and order management",
+  "description": "Apple Pay provides an easy and secure way for people to make payments in your iOS, iPadOS, and watchOS apps as well as on the web. We'll take you through the entire Apple Pay implementation workflow – including how you can signal support for Apple Pay, request payment and handling updates, and add order details at the end of a payment flow to help people track their purchases.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/110336",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110336",
+  "type": "Video",
+  "publishedAt": "2023-02-01T08:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1044,
+  "hasTranscript": true,
+  "transcriptWordCount": 3148,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/110336/5/09F28C6C-5EAC-4617-BBE5-D7493276AF00/cmaf.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/110336/5/09F28C6C-5EAC-4617-BBE5-D7493276AF00/downloads/tech-talks-110336_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/110336/5/09F28C6C-5EAC-4617-BBE5-D7493276AF00/downloads/tech-talks-110336_hd.mp4",
+    "duration": 1044
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Example Order Packages",
+      "url": "https://developer.apple.com/documentation/WalletOrders/example-order-packages",
+      "type": "documentation",
+      "description": "Edit, build, and add example order packages to Wallet.",
+      "sosumiURL": "https://sosumi.ai/documentation/WalletOrders/example-order-packages",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WalletOrders/example-order-packages.json"
+    },
+    {
+      "title": "ApplePayPaymentRequest",
+      "url": "https://developer.apple.com/documentation/ApplePayontheWeb/ApplePayPaymentRequest",
+      "type": "documentation",
+      "description": "A request for payment, which includes information about payment-processing capabilities, the payment amount, and shipping information.",
+      "sosumiURL": "https://sosumi.ai/documentation/ApplePayontheWeb/ApplePayPaymentRequest",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ApplePayontheWeb/ApplePayPaymentRequest.json"
+    },
+    {
+      "title": "Wallet Orders",
+      "url": "https://developer.apple.com/documentation/WalletOrders",
+      "type": "documentation",
+      "description": "Create, distribute, and update orders in Wallet.",
+      "sosumiURL": "https://sosumi.ai/documentation/WalletOrders",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WalletOrders.json"
+    },
+    {
+      "title": "Apple Pay on the Web Interactive Demo",
+      "url": "https://applepaydemo.apple.com",
+      "type": "guide",
+      "description": "Try configuring an Apple Pay JS button and then making a test transaction."
+    },
+    {
+      "title": "Apple Pay on the Web",
+      "url": "https://developer.apple.com/documentation/apple_pay_on_the_web",
+      "type": "documentation",
+      "description": "Support Apple Pay on your website with JavaScript-based APIs.",
+      "sosumiURL": "https://sosumi.ai/documentation/apple_pay_on_the_web",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/apple_pay_on_the_web.json"
+    },
+    {
+      "title": "Apple Pay",
+      "url": "https://developer.apple.com/documentation/passkit/apple_pay",
+      "type": "documentation",
+      "description": "Request and process Apple Pay payments in your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/passkit/apple_pay",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/passkit/apple_pay.json"
+    },
+    {
+      "title": "Apple Pay JS",
+      "url": "https://developer.apple.com/documentation/apple_pay_on_the_web",
+      "type": "documentation",
+      "description": "Use JavaScript to incorporate Apple Pay into your websites.",
+      "sosumiURL": "https://sosumi.ai/documentation/apple_pay_on_the_web",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/apple_pay_on_the_web.json"
+    },
+    {
+      "title": "Human Interface Guidelines: Apple Pay",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/apple-pay/",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/apple-pay/"
+    }
+  ],
+  "path": "sessions/tech-talks/110336-implement-apple-pay-and-order-management/",
+  "files": {
+    "metadata": "sessions/tech-talks/110336-implement-apple-pay-and-order-management/metadata.json",
+    "readme": "sessions/tech-talks/110336-implement-apple-pay-and-order-management/README.md",
+    "transcript": "sessions/tech-talks/110336-implement-apple-pay-and-order-management/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/110336-implement-apple-pay-and-order-management/transcript.json"
+  }
+}

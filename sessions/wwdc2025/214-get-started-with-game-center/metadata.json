@@ -1,0 +1,132 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-214",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 214,
+  "title": "Get started with Game Center",
+  "description": "Explore the features of Game Center and learn how to get started. We’ll show you best practices for implementing achievements, challenges, leaderboards, and activities to maximize your game’s discoverability, attract new players, and increase engagement. To get the most out of this session, we also recommend watching “Engage players with the Apple Games app”.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/214",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/214",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1776,
+  "hasTranscript": true,
+  "transcriptWordCount": 4350,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/214/5/c6c0d647-5ddc-44aa-869b-d27b44774678/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/214/5/c6c0d647-5ddc-44aa-869b-d27b44774678/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/214/5/c6c0d647-5ddc-44aa-869b-d27b44774678/downloads/wwdc2025-214_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/214/5/c6c0d647-5ddc-44aa-869b-d27b44774678/downloads/wwdc2025-214_hd.mp4",
+    "duration": 1776
+  },
+  "codeSnippets": [
+    {
+      "title": "Initialize GameKit",
+      "language": "swift",
+      "startTimeSeconds": 257,
+      "code": "GKLocalPlayer.local.authenticateHandler = { _, error in\n    print(\"\\(GKLocalPlayer.local.alias) is ready to play!\")\n}"
+    },
+    {
+      "title": "Initialize GameKit (Unity)",
+      "language": "csharp",
+      "startTimeSeconds": 269,
+      "code": "var player = await GKLocalPlayer.Authenticate();\nDebug.Log($\"{player.alias} is ready to play!\");"
+    },
+    {
+      "title": "Submit score to challenge",
+      "language": "swift",
+      "startTimeSeconds": 787,
+      "code": "// Submit score\n\nGKLeaderboard.submitScore(points, \n         context: 0, \n         player: GKLocalPlayer.local,\n         leaderboardIDs: [\"thecoast.lb.capecod\"])"
+    },
+    {
+      "title": "Activity properties",
+      "language": "swift",
+      "startTimeSeconds": 1224,
+      "code": "// Activity properties \n\nextension AppDelegate: GKLocalPlayerListener {\n\n    func player(_ player: GKPlayer, wantsToPlay activity: GKGameActivity) async -> Bool {\n        let activityId = activity.activityDefinition.identifier\n\n        if activityId == \"thecoast.activity\" {\n            let level = activity.properties[\"level\"]\n\n            if level == \"capecod\" {\n                startCapeCod(activity)\n            }\n        }\n\n        return true\n    }\n\n}"
+    },
+    {
+      "title": "Managing score submission with activity",
+      "language": "swift",
+      "startTimeSeconds": 1248,
+      "code": "// Managing score submission with activity \n\nclass GameplayManager {\n    let activity: GKGameActivity\n    let leaderboard: GKLeaderboard\n\n    init(activity: GKGameActivity, leaderboard: GKLeaderboard) {\n        self.activity = activity\n        self.leaderboard = leaderboard\n\n        activity.start()\n    }\n\n    func setScore(_ newScore: Int) {\n        activity.setScore(on: leaderboard, to: newScore)\n    }\n\n    deinit {\n        activity.end()\n    }\n}"
+    },
+    {
+      "title": "Access the Party Code",
+      "language": "swift",
+      "startTimeSeconds": 1355,
+      "code": "extension AppDelegate: GKLocalPlayerListener {\n    func player(_ player: GKPlayer, wantsToPlay activity: GKGameActivity) async -> Bool {\n        let activityId = activity.activityDefinition.identifier\n\n        if activityId == \"thecoast.multiplayer\" {\n            startMultiplayer(partyCode: activity.partyCode)\n        }\n\n        return true\n    }\n}"
+    },
+    {
+      "title": "Game Center Matchmaking",
+      "language": "swift",
+      "startTimeSeconds": 1368,
+      "code": "let match = try await activity.findMatch()"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Creating engaging challenges from leaderboards",
+      "url": "https://developer.apple.com/documentation/GameKit/creating-engaging-challenges-from-leaderboards",
+      "type": "documentation",
+      "description": "Encourage friendly competition by adding challenges to your game.",
+      "sosumiURL": "https://sosumi.ai/documentation/GameKit/creating-engaging-challenges-from-leaderboards",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/GameKit/creating-engaging-challenges-from-leaderboards.json"
+    },
+    {
+      "title": "Creating activities for your game",
+      "url": "https://developer.apple.com/documentation/GameKit/creating-activities-for-your-game",
+      "type": "documentation",
+      "description": "Use activities to surface game content to players and encourage them to connect",
+      "sosumiURL": "https://sosumi.ai/documentation/GameKit/creating-activities-for-your-game",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/GameKit/creating-activities-for-your-game.json"
+    },
+    {
+      "title": "Game Center overview",
+      "url": "https://developer.apple.com/game-center/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/game-center/"
+    },
+    {
+      "title": "Apple Unity Plug-Ins on GitHub",
+      "url": "https://github.com/apple/unityplugins",
+      "type": "download",
+      "description": null
+    },
+    {
+      "title": "Human Interface Guidelines: Game Center",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/game-center",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/game-center"
+    }
+  ],
+  "path": "sessions/wwdc2025/214-get-started-with-game-center/",
+  "files": {
+    "metadata": "sessions/wwdc2025/214-get-started-with-game-center/metadata.json",
+    "readme": "sessions/wwdc2025/214-get-started-with-game-center/README.md",
+    "transcript": "sessions/wwdc2025/214-get-started-with-game-center/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/214-get-started-with-game-center/transcript.json"
+  }
+}

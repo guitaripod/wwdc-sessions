@@ -1,0 +1,146 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10065",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10065,
+  "title": "Plug-in and play: Add Apple frameworks to your Unity game projects",
+  "description": "Help make your Unity app or game an even better experience on Apple platforms. Learn how you can add Apple technologies directly to your projects with six plug-ins: Apple.Core, Game Center, Game Controller, Accessibility, Core Haptics, and PHASE. We'll show you how you can add new gameplay mechanics, make your games more accessible, and tap into the latest Apple features and services.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10065",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10065",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "game center",
+    "game controller",
+    "game controllers",
+    "game dev",
+    "game developer",
+    "haptic",
+    "haptics",
+    "phase",
+    "plugin",
+    "plug-in",
+    "plugins",
+    "unity",
+    "unity plug-ins"
+  ],
+  "topics": [
+    "Accessibility & Inclusion",
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1601,
+  "hasTranscript": true,
+  "transcriptWordCount": 3698,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10065/5/C221E77C-502C-47CD-B0C4-9091B529DD77/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10065/5/C221E77C-502C-47CD-B0C4-9091B529DD77/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10065/5/C221E77C-502C-47CD-B0C4-9091B529DD77/downloads/wwdc2022-10065_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10065/5/C221E77C-502C-47CD-B0C4-9091B529DD77/downloads/wwdc2022-10065_hd.mp4",
+    "duration": 1601
+  },
+  "codeSnippets": [
+    {
+      "title": "Game Center - Example game manager component - C#",
+      "language": "csharp",
+      "startTimeSeconds": 542,
+      "code": "using Apple.GameKit;\n\npublic class GameManager : MonoBehaviour\n{\n    private GKLocalPlayer _localPlayer;\n\n    private async Task Start()\n    {\n        try\n        {\n            _localPlayer = await GKLocalPlayer.Authenticate();\n        }\n        catch (Exception exception)\n        {\n            // Handle exception...\n        }\n    }\n}"
+    },
+    {
+      "title": "Game Center - Example game manager component continued - C#",
+      "language": "csharp",
+      "startTimeSeconds": 563,
+      "code": "try\n{\n    _localPlayer = await GKLocalPlayer.Authenticate();\n\n    if (_localPlayer.IsUnderage)\n    {\n        // Hide explicit game content.\n    }\n\n    if (_localPlayer.IsMultiplayerGamingRestricted)\n    {\n        // Disable multiplayer game features.\n    }\n\n    if (_localPlayer.IsPersonalizedCommunicationRestricted)\n    {\n        // Disable in-game communication UI.\n    }\n}"
+    },
+    {
+      "title": "Game Controller - Example input manager component - C#",
+      "language": "csharp",
+      "startTimeSeconds": 791,
+      "code": "using Apple.GameController;\n\npublic class InputManager : MonoBehaviour\n{\n    void Start()\n    {\n        // Initialize the Game Controller service\n        GCControllerService.Initialize();\n\n        // Check for connected controllers\n        var controllers = GCControllerService.GetConnectedControllers();\n        foreach (GCController controller in controllers)\n        {\n            // Handle controllers\n        }\n\n        // Set up callbacks to handle connected/disconnected controllers\n        GCControllerService.ControllerConnected    += _onControllerConnected;\n        GCControllerService.ControllerDisconnected += _onControllerDisconnected;\n    }\n}"
+    },
+    {
+      "title": "Game Controller - polling and input handling - C#",
+      "language": "csharp",
+      "startTimeSeconds": 830,
+      "code": "foreach (GCController controller in _myConnectedControllers)\n{\n    controller.Poll();\n\n    // Check the 'South' button ('A' button on most controllers)\n    if (controller.GetButton(GCControllerInputName.ButtonSouth))\n    {\n        //Handle button pressed\n    }\n\n    // Check other controller inputs…\n}"
+    },
+    {
+      "title": "Core Haptics - Example haptics component - C#",
+      "language": "csharp",
+      "startTimeSeconds": 1230,
+      "code": "using Apple.CoreHaptics;\n\npublic class Haptics : MonoBehaviour\n{\n    private CHHapticEngine _hapticEngine;\n    private CHHapticPatternPlayer _hapticPlayer;\n    [SerializeField] private AHAPAsset _hapticAsset;\n\n    private void PrepareHaptics()\n    {\n        _hapticEngine = new CHHapticEngine();\n        _hapticEngine.Start();\n        _hapticPlayer = _hapticEngine.MakePlayer(_hapticAsset.GetPattern());\n    }\n\n    private void Play()\n    {\n        _hapticPlayer.Start();\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Apple Unity Plug-Ins on GitHub",
+      "url": "https://github.com/apple/unityplugins",
+      "type": "download",
+      "description": null
+    },
+    {
+      "title": "Delivering Rich App Experiences with Haptics",
+      "url": "https://developer.apple.com/documentation/CoreHaptics/delivering-rich-app-experiences-with-haptics",
+      "type": "samplecode",
+      "description": "Enhance your app’s experience by incorporating haptic and sound feedback into key interactive moments.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreHaptics/delivering-rich-app-experiences-with-haptics",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreHaptics/delivering-rich-app-experiences-with-haptics.json"
+    },
+    {
+      "title": "Accessibility",
+      "url": "https://developer.apple.com/documentation/swiftui/view-accessibility",
+      "type": "documentation",
+      "description": "Make your SwiftUI apps accessible to everyone, including people with disabilities.",
+      "sosumiURL": "https://sosumi.ai/documentation/swiftui/view-accessibility",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/swiftui/view-accessibility.json"
+    },
+    {
+      "title": "PHASE",
+      "url": "https://developer.apple.com/documentation/PHASE",
+      "type": "documentation",
+      "description": "Create dynamic audio experiences in your game or app that react to events and cues in the environment.",
+      "sosumiURL": "https://sosumi.ai/documentation/PHASE",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/PHASE.json"
+    },
+    {
+      "title": "Human Interface Guidelines: Game Center",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/game-center",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/game-center"
+    },
+    {
+      "title": "Game Controller",
+      "url": "https://developer.apple.com/documentation/GameController",
+      "type": "documentation",
+      "description": "Support hardware game controllers in your game.",
+      "sosumiURL": "https://sosumi.ai/documentation/GameController",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/GameController.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10065-plug-in-and-play-add-apple-frameworks-to-your-unity-game-pro/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10065-plug-in-and-play-add-apple-frameworks-to-your-unity-game-pro/metadata.json",
+    "readme": "sessions/wwdc2022/10065-plug-in-and-play-add-apple-frameworks-to-your-unity-game-pro/README.md",
+    "transcript": "sessions/wwdc2022/10065-plug-in-and-play-add-apple-frameworks-to-your-unity-game-pro/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10065-plug-in-and-play-add-apple-frameworks-to-your-unity-game-pro/transcript.json"
+  }
+}

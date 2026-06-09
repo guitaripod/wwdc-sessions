@@ -1,0 +1,93 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10650",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10650,
+  "title": "Sync a Core Data store with the CloudKit public database",
+  "description": "Discover how Core Data can help you adopt the CloudKit public database in your app with as little as one line of code. Learn how to easily manage the flow of data through your app and in and out of CloudKit. We’ll show you how to combine the complementary power of Core Data and the CloudKit public database to allow people to access — and contribute to — data, such as high scores or application templates. To familiarize yourself with the CloudKit Database, check out our “CKDatabase” documentation, and to learn more about CloudKit integration, read “Mirroring a Core Data Store with CloudKit.”",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10650",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10650",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "canmodifymanagedobjects",
+    "canupdaterecordformanageddata",
+    "cdmr",
+    "ckfetchrecordzonechangesoperation",
+    "ckqueryoperation",
+    "deleting objects in the public database",
+    "derived objects",
+    "import",
+    "nspersistentcloudkitcontaineroptions",
+    "persistent container",
+    "private database",
+    "public database",
+    "record modify",
+    "schema"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 1098,
+  "hasTranscript": true,
+  "transcriptWordCount": 3293,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10650/4/C47E2A5A-4327-4EAC-A879-3B8FD7904A58/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10650/4/C47E2A5A-4327-4EAC-A879-3B8FD7904A58/wwdc2020_10650_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10650/4/C47E2A5A-4327-4EAC-A879-3B8FD7904A58/wwdc2020_10650_hd.mp4",
+    "duration": 1098
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Synchronizing a local store to the cloud",
+      "url": "https://developer.apple.com/documentation/CoreData/synchronizing-a-local-store-to-the-cloud",
+      "type": "samplecode",
+      "description": "Share data between a user’s devices and other iCloud users.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreData/synchronizing-a-local-store-to-the-cloud",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreData/synchronizing-a-local-store-to-the-cloud.json"
+    },
+    {
+      "title": "Mirroring a Core Data store with CloudKit",
+      "url": "https://developer.apple.com/documentation/CoreData/mirroring-a-core-data-store-with-cloudkit",
+      "type": "documentation",
+      "description": "Back user interfaces with a local replica of a CloudKit private database.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreData/mirroring-a-core-data-store-with-cloudkit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreData/mirroring-a-core-data-store-with-cloudkit.json"
+    },
+    {
+      "title": "CKDatabase",
+      "url": "https://developer.apple.com/documentation/CloudKit/CKDatabase",
+      "type": "documentation",
+      "description": "An object that represents a collection of record zones and subscriptions.",
+      "sosumiURL": "https://sosumi.ai/documentation/CloudKit/CKDatabase",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CloudKit/CKDatabase.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10650-sync-a-core-data-store-with-the-cloudkit-public-database/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10650-sync-a-core-data-store-with-the-cloudkit-public-database/metadata.json",
+    "readme": "sessions/wwdc2020/10650-sync-a-core-data-store-with-the-cloudkit-public-database/README.md",
+    "transcript": "sessions/wwdc2020/10650-sync-a-core-data-store-with-the-cloudkit-public-database/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10650-sync-a-core-data-store-with-the-cloudkit-public-database/transcript.json"
+  }
+}

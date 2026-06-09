@@ -1,0 +1,84 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10245",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10245,
+  "title": "Design for spatial interaction",
+  "description": "Discover the principles for creating intuitive physical interactions between two or more devices, as demonstrated by Apple designers who worked on features for iPhone, HomePod mini, and AirTag. Explore how you can apply these patterns to your own app when designing features for Apple platforms, and help people using your app interact more directly with their surroundings.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10245",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10245",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "airtag",
+    "homepod mini",
+    "nearby interaction",
+    "proximity",
+    "share sheet",
+    "u1"
+  ],
+  "topics": [
+    "Spatial Computing",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 1105,
+  "hasTranscript": true,
+  "transcriptWordCount": 3071,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10245/8/3C4EE68C-F0FF-4ECE-ADF0-6419DCDE9C00/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10245/8/3C4EE68C-F0FF-4ECE-ADF0-6419DCDE9C00/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10245/8/3C4EE68C-F0FF-4ECE-ADF0-6419DCDE9C00/downloads/wwdc2021-10245_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10245/8/3C4EE68C-F0FF-4ECE-ADF0-6419DCDE9C00/downloads/wwdc2021-10245_hd.mp4",
+    "duration": 1105
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Nearby interactions",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/nearby-interactions",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/nearby-interactions"
+    },
+    {
+      "title": "Nearby Interactions with U1",
+      "url": "https://developer.apple.com/nearby-interaction/",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/nearby-interaction/"
+    },
+    {
+      "title": "Nearby Interaction",
+      "url": "https://developer.apple.com/documentation/NearbyInteraction",
+      "type": "documentation",
+      "description": "Locate and interact with nearby devices using identifiers, distance, and direction.",
+      "sosumiURL": "https://sosumi.ai/documentation/NearbyInteraction",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/NearbyInteraction.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10245-design-for-spatial-interaction/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10245-design-for-spatial-interaction/metadata.json",
+    "readme": "sessions/wwdc2021/10245-design-for-spatial-interaction/README.md",
+    "transcript": "sessions/wwdc2021/10245-design-for-spatial-interaction/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10245-design-for-spatial-interaction/transcript.json"
+  }
+}

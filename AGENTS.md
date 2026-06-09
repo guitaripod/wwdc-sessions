@@ -4,60 +4,61 @@ A knowledge base of **Apple WWDC developer sessions** (WWDC 2014-2026, plus Tech
 with Apple), structured for direct consumption by AI agents. Free, non-commercial, and
 complementary to Apple's official material — every session links back to developer.apple.com.
 
-**1617 sessions · 1525 transcripts · 15 events ·
+**1630 sessions · 1525 transcripts · 15 events ·
 19 topics.**
 
 ## Layout
 
 ```
-catalog.json                     Master index — START HERE. Provenance, counts, every session.
+catalog.json                     Master index — START HERE. Provenance, counts, rawBase, every session.
 events.json                      Per-event summaries and counts.
-topics.json                      Topic -> session ids across all years.
+topics.json                      Topic -> sessions (id, path, title) across all years.
 llms.txt                         llms.txt-format index.
-schema/catalog.schema.json       JSON Schema for catalog.json.
-schema/session.schema.json       JSON Schema for sessions/*/metadata.json.
-sessions/<event>/<id>/
+schema/                          JSON Schema for catalog, session, events, topics, transcript.
+sessions/<event>/<n>-<title-slug>/
   metadata.json                  Structured: platforms, topics, keywords, code snippets,
                                  resources (with sosumi.ai + DocC endpoints), media, languages.
   README.md                      Rendered page with YAML frontmatter.
   transcript.md                  Timecoded transcript prose (when available).
-  transcript.json                Machine transcript: { "segments": [{ "start", "text" }] }.
+  transcript.json                { id, language, source, wordCount, segments:[{start, text}] }.
 events/<event>/index.md          Per-event sessions grouped by topic.
+events/<event>/index.json        Per-event machine slice (full records) — fetch one year without the full catalog.
 topics/<slug>.md                 Per-topic index across events.
 platforms/<slug>.md              Per-platform index.
 ```
 
-## Path templates
+## Locating a session — do not derive paths from the id
 
-Every path is derivable from a session `id` (Apple's stable `wwdc<year>-<n>` form):
+Every catalog/events record carries an exact relative `path` (e.g.
+`sessions/wwdc2026/298-meet-the-evaluations-framework/`); the leaf is `<eventContentId>-<title-slug>`.
+To fetch a file, join the catalog's `rawBase` with `path` + filename:
 
 ```
-sessions/<event>/<id>/metadata.json
-sessions/<event>/<id>/transcript.json
+<rawBase>/<path>metadata.json
+<rawBase>/<path>transcript.json
 ```
 
-`<event>` is the `event` field on each catalog record (e.g. `wwdc2026`, `tech-talks`). Do not
-guess paths — every catalog record carries an exact `path`, and each metadata.json carries a
-`files` map.
+`metadata.json` also carries a `files` map with every relative file path. The numeric prefix of the
+leaf is Apple's stable session id, mirroring the video URL `developer.apple.com/videos/play/<event>/<n>`.
 
 ## Recommended access patterns
 
 1. **Whole map:** fetch `catalog.json`. Filter `sessions[]` by `year`, `event`, `topics`,
    `platforms`, `keywords`, or `hasTranscript`.
-2. **One talk:** read `sessions/<event>/<id>/transcript.md` (prose) or `transcript.json`
-   (`segments[]` with second-precise `start` times for citation).
-3. **Structured detail:** `sessions/<event>/<id>/metadata.json` — code snippets carry full source;
-   resources carry `url`, `sosumiURL`, and `doccJSON`.
-4. **Apple docs behind a session:** prefer each resource's `sosumiURL` (clean Markdown). See below.
-5. **Subject filtering:** `topics.json` / `topics/`, or the `keywords` array per session.
+2. **One year/topic without the full catalog:** `events/<event>/index.json` or `topics.json`.
+3. **One talk:** read `<path>transcript.md` (prose) or `transcript.json` (`segments[]` with
+   second-precise `start` times for citation; `source` is the canonical Apple URL).
+4. **Structured detail:** `<path>metadata.json` — code snippets carry full source; resources carry
+   `url`, `sosumiURL`, and `doccJSON`.
+5. **Apple docs behind a session:** prefer each resource's `sosumiURL` (clean Markdown). See below.
 
 ## Apple documentation as Markdown (Sosumi)
 
 Apple's docs are JavaScript-rendered and mostly invisible to agents. To read any
 `developer.apple.com` page as Markdown, swap the host to `sosumi.ai`:
 
-- `https://developer.apple.com/documentation/swiftui/observable`
-  -> `https://sosumi.ai/documentation/swiftui/observable`
+- `https://developer.apple.com/documentation/swiftui/state`
+  -> `https://sosumi.ai/documentation/swiftui/state`
 
 Each resource in `metadata.json` precomputes this as `sosumiURL`, and every session has its own
 `sosumiURL`. Sosumi also exposes an MCP server at `https://sosumi.ai/mcp`. It is an on-demand
@@ -75,25 +76,27 @@ the session's `sosumiURL` or Apple's feed.
 |---|---|---|---|
 | WWDC26 | wwdc2026 | 116 | 112 |
 | WWDC25 | wwdc2025 | 122 | 120 |
-| Meet with Apple | meet-with-apple | 45 | 45 |
+| Meet with Apple | meet-with-apple | 51 | 45 |
 | WWDC24 | wwdc2024 | 123 | 123 |
 | WWDC23 | wwdc2023 | 181 | 181 |
 | WWDC22 | wwdc2022 | 205 | 184 |
 | WWDC21 | wwdc2021 | 224 | 199 |
 | WWDC20 | wwdc2020 | 244 | 206 |
-| WWDC19 | wwdc2019 | 153 | 152 |
+| WWDC19 | wwdc2019 | 159 | 152 |
 | WWDC18 | wwdc2018 | 38 | 38 |
 | WWDC17 | wwdc2017 | 36 | 36 |
 | Tech Talks | tech-talks | 96 | 95 |
-| WWDC16 | wwdc2016 | 16 | 16 |
+| WWDC16 | wwdc2016 | 17 | 16 |
 | WWDC15 | wwdc2015 | 12 | 12 |
 | WWDC14 | wwdc2014 | 6 | 6 |
 
 ## Raw fetch base
 
-`https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/<path>` — e.g. `https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/catalog.json`.
+`rawBase` in catalog.json = `https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master`. Join as `https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/<path>`.
 
 ## Provenance
 
 All session content is © Apple Inc., sourced from Apple's public developer-video feeds. This index
-is regenerated by `scripts/build.py` and validated by `scripts/validate.py`.
+is regenerated by `scripts/build.py` and validated by `scripts/validate.py`. WWDC and Apple are
+trademarks of Apple Inc.; this project is an independent index and is not affiliated with,
+authorized, or endorsed by Apple Inc.

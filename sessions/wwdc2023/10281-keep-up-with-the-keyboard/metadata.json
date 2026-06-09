@@ -1,0 +1,126 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10281",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10281,
+  "title": "Keep up with the keyboard",
+  "description": "Each year, the keyboard evolves to support an increasing range of languages, sizes, and features. Discover how you can design your app to keep up with the keyboard, regardless of how it appears on a device. We’ll show you how to create frictionless text entry and share important architectural changes to help you understand how the keyboard works within the system.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10281",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10281",
+  "type": "Video",
+  "publishedAt": "2023-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "inline predictions",
+    "keyboard layout guide"
+  ],
+  "topics": [
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 937,
+  "hasTranscript": true,
+  "transcriptWordCount": 2717,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10281/5/28D03695-D3A4-41FB-9F95-B97A11BF249B/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10281/5/28D03695-D3A4-41FB-9F95-B97A11BF249B/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10281/5/28D03695-D3A4-41FB-9F95-B97A11BF249B/downloads/wwdc2023-10281_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10281/5/28D03695-D3A4-41FB-9F95-B97A11BF249B/downloads/wwdc2023-10281_hd.mp4",
+    "duration": 937
+  },
+  "codeSnippets": [
+    {
+      "title": "Keyboard layout guide",
+      "language": "swift",
+      "startTimeSeconds": 381,
+      "code": "view.keyboardLayoutGuide.topAnchor.constraint(equalTo: textView.bottomAnchor).isActive = true"
+    },
+    {
+      "title": "usesBottomSafeArea",
+      "language": "swift",
+      "startTimeSeconds": 476,
+      "code": "// Example of using usesBottomSafeArea to create keyboard and text view aligned with safe area\n\nview.keyboardLayoutGuide.usesBottomSafeArea = false\n\ntextField.topAnchor.constraint(equalToSystemSpacingBelow: backdrop.topAnchor, multiplier: 1.0).isActive = true\n\nview.keyboardLayoutGuide.topAnchor.constraint(greaterThanOrEqualToSystemSpacingBelow: textField.bottomAnchor, multiplier: 1.0).isActive = true\n\nview.keyboardLayoutGuide.topAnchor.constraint(equalTo: backdrop.bottomAnchor).isActive = true\n\nview.safeAreaLayoutGuide.bottomAnchor.constraint(greaterThanOrEqualTo: textField.bottomAnchor).isActive = true"
+    },
+    {
+      "title": "Keyboard dismiss padding",
+      "language": "swift",
+      "startTimeSeconds": 580,
+      "code": "var dismissPadding = aboveKeyboardView.bounds.size.height\n\nview.keyboardLayoutGuide.keyboardDismissPadding = dismissPadding"
+    },
+    {
+      "title": "Handle willShow or hideKeyboard notifications",
+      "language": "swift",
+      "startTimeSeconds": 731,
+      "code": "func handleWillShowOrHideKeyboardNotification(notification: NSNotification) {\n    // Retrieve the UIScreen object from the notification (Added iOS 16.1)\n    guard let screen = notification.object as? UIScreen else { return }\n\n    // Determine if the notification’s screen corresponds to your view’s screen\n    guard(screen.isEqual(view.window?.screen)) else { return }\n\n    // Calculate intersection with keyboard\n    let endFrameKey = UIResponder.keyboardFrameEndUserInfoKey\n\n    // Get the ending screen position of the keyboard\n    guard let keyboardFrameEnd = userInfo[endFrameKey] as? CGRect else { return }\n\n    let fromCoordinateSpace: UICoordinateSpace = screen.coordinateSpace\n    let toCoordinateSpace: UICoordinateSpace = view\n\n    // Convert from the screen coordinate space to your local coordinate space\n    let convertedKeyboardFrameEnd = fromCoordinateSpace.convert(keyboardFrameEnd, to: toCoordinateSpace)\n\n    // Calculate offset for view adjustment\n    var bottomOffset = view.safeAreaInsets.bottom\n\n    // Get the intersection between the keyboard's frame and the view's bounds\n    let viewIntersection = view.bounds.intersection(convertedKeyboardFrameEnd)\n\n    // Check whether the keyboard intersects your view before adjusting your offset.\n    if !viewIntersection.isEmpty {\n        // Set the offset to the height of the intersection\n        bottomOffset = viewIntersection.size.height\n    }\n\n    // Use the new offset to adjust your UI\n    movingBottomConstraint.constant = bottomOffset\n\n    // Adjust view layouts and animate using information in notification\n\n    ...\n\n}"
+    },
+    {
+      "title": "Inline predictions",
+      "language": "swift",
+      "startTimeSeconds": 878,
+      "code": "@MainActor public protocol UITextInputTraits : NSObjectProtocol {\n    // Controls whether inline text prediction is enabled or disabled during typing\n    @available(iOS, introduced: 17.0)\n    optional var inlinePredictionType: UITextInlinePredictionType { get set }\n}\n\npublic enum UITextInlinePredictionType : Int, @unchecked Sendable {\n    case `default` = 0\n    case no = 1\n    case yes = 2\n}\n\nlet textView = UITextView(frame: frame)\ntextView.inlinePredictionType = .yes"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Adding a search interface to your app",
+      "url": "https://developer.apple.com/documentation/SwiftUI/Adding-a-search-interface-to-your-app",
+      "type": "documentation",
+      "description": "Present an interface that people can use to search for content in your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/Adding-a-search-interface-to-your-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/Adding-a-search-interface-to-your-app.json"
+    },
+    {
+      "title": "FocusState",
+      "url": "https://developer.apple.com/documentation/SwiftUI/FocusState",
+      "type": "documentation",
+      "description": "A property wrapper type that can read and write a value that SwiftUI updates",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/FocusState",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/FocusState.json"
+    },
+    {
+      "title": "SafeAreaRegions",
+      "url": "https://developer.apple.com/documentation/SwiftUI/SafeAreaRegions",
+      "type": "documentation",
+      "description": "A set of symbolic safe area regions.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/SafeAreaRegions",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/SafeAreaRegions.json"
+    },
+    {
+      "title": "Human Interface Guidelines: Keyboards",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/keyboards",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/keyboards"
+    },
+    {
+      "title": "Adjusting your layout with keyboard layout guide",
+      "url": "https://developer.apple.com/documentation/UIKit/adjusting-your-layout-with-keyboard-layout-guide",
+      "type": "documentation",
+      "description": "Respond dynamically to keyboard movement by using the tracking features of the keyboard layout guide.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/adjusting-your-layout-with-keyboard-layout-guide",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/adjusting-your-layout-with-keyboard-layout-guide.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10281-keep-up-with-the-keyboard/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10281-keep-up-with-the-keyboard/metadata.json",
+    "readme": "sessions/wwdc2023/10281-keep-up-with-the-keyboard/README.md",
+    "transcript": "sessions/wwdc2023/10281-keep-up-with-the-keyboard/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10281-keep-up-with-the-keyboard/transcript.json"
+  }
+}

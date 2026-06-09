@@ -1,0 +1,65 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2014-602",
+  "event": "wwdc2014",
+  "eventName": "WWDC14",
+  "year": 2014,
+  "eventContentId": 602,
+  "title": "Ingredients of Great Games",
+  "description": "Kick off the game development sessions of WWDC 2014 by gaining insight into the key ingredients needed to create a great game for iOS. Understand the importance of harnessing the full capabilities of the platform to create a richer gameplay experience. Get practical guidance about game production and distribution, and learn the design and platform conventions that will make your game even more engaging.",
+  "url": "https://developer.apple.com/videos/play/wwdc2014/602",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2014/602",
+  "type": "Video",
+  "publishedAt": "2014-06-03T15:15:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "2d",
+    "3d",
+    "engagement",
+    "friction",
+    "game",
+    "graphics",
+    "metal",
+    "nsurlsession",
+    "opengl",
+    "scenekit",
+    "spritekit"
+  ],
+  "topics": [
+    "Design",
+    "Developer Tools",
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 3393,
+  "hasTranscript": true,
+  "transcriptWordCount": 9240,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2014/602xx0qpmdkc2ki/602/ipad_c.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2014/602xx0qpmdkc2ki/602/602_sd_ingredients_of_great_games.mov",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2014/602xx0qpmdkc2ki/602/602_hd_ingredients_of_great_games.mov",
+    "duration": 3393
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2014/602-ingredients-of-great-games/",
+  "files": {
+    "metadata": "sessions/wwdc2014/602-ingredients-of-great-games/metadata.json",
+    "readme": "sessions/wwdc2014/602-ingredients-of-great-games/README.md",
+    "transcript": "sessions/wwdc2014/602-ingredients-of-great-games/transcript.md",
+    "transcriptJSON": "sessions/wwdc2014/602-ingredients-of-great-games/transcript.json"
+  }
+}

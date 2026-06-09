@@ -1,0 +1,127 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10156",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10156,
+  "title": "Explore SwiftUI animation",
+  "description": "Explore SwiftUI’s powerful animation capabilities and find out how these features work together to produce impressive visual effects. Learn how SwiftUI refreshes the rendering of a view, determines what to animate, interpolates values over time, and propagates context for the current transaction.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10156",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10156",
+  "type": "Video",
+  "publishedAt": "2023-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1801,
+  "hasTranscript": true,
+  "transcriptWordCount": 3832,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10156/4/9C42B457-119B-4939-B635-598E91D22BD6/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10156/4/9C42B457-119B-4939-B635-598E91D22BD6/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10156/4/9C42B457-119B-4939-B635-598E91D22BD6/downloads/wwdc2023-10156_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10156/4/9C42B457-119B-4939-B635-598E91D22BD6/downloads/wwdc2023-10156_hd.mp4",
+    "duration": 1801
+  },
+  "codeSnippets": [
+    {
+      "title": "Pet Avatar - Unanimated",
+      "language": "swift",
+      "startTimeSeconds": 134,
+      "code": "struct Avatar: View {\n    var pet: Pet\n    @State private var selected: Bool = false\n\n    var body: some View {\n        Image(pet.type)\n            .scaleEffect(selected ? 1.5 : 1.0)\n            .onTapGesture {\n                selected.toggle()\n            }\n    }\n}"
+    },
+    {
+      "title": "Pet Avatar - Animated",
+      "language": "swift",
+      "startTimeSeconds": 253,
+      "code": "struct Avatar: View {\n    var pet: Pet\n    @State private var selected: Bool = false\n\n    var body: some View {\n        Image(pet.type)\n            .scaleEffect(selected ? 1.5 : 1.0)\n            .onTapGesture {\n                withAnimation {\n                    selected.toggle()\n                }\n            }\n    }\n}"
+    },
+    {
+      "title": "Pet Avatar - Explicit Animation",
+      "language": "swift",
+      "startTimeSeconds": 709,
+      "code": "struct Avatar: View {\n    var pet: Pet\n    @State private var selected: Bool = false\n\n    var body: some View {\n        Image(pet.type)\n            .scaleEffect(selected ? 1.5 : 1.0)\n            .onTapGesture {\n                withAnimation(.bouncy) {\n                    selected.toggle()\n                }\n            }\n    }\n}"
+    },
+    {
+      "title": "UnitCurve Model",
+      "language": "swift",
+      "startTimeSeconds": 768,
+      "code": "let curve = UnitCurve(\n    startControlPoint: UnitPoint(x: 0.25, y: 0.1),\n    endControlPoint: UnitPoint(x: 0.25, y: 1))\ncurve.value(at: 0.25)\ncurve.velocity(at: 0.25)"
+    },
+    {
+      "title": "Spring Model",
+      "language": "swift",
+      "startTimeSeconds": 836,
+      "code": "let spring = Spring(duration: 1.0, bounce: 0)\nspring.value(target: 1, time: 0.25)\nspring.velocity(target: 1, time: 0.25)"
+    },
+    {
+      "title": "MyLinearAnimation",
+      "language": "swift",
+      "startTimeSeconds": 1045,
+      "code": "struct MyLinearAnimation: CustomAnimation {\n    var duration: TimeInterval\n\n    func animate<V: VectorArithmetic>(\n        value: V,\n        time: TimeInterval,\n        context: inout AnimationContext<V>\n    ) -> V? {\n        if time <= duration {\n            value.scaled(by: time / duration)\n        } else {\n            nil // animation has finished\n        }\n    }\n}"
+    },
+    {
+      "title": "MyLinearAnimation with Velocity",
+      "language": "swift",
+      "startTimeSeconds": 1190,
+      "code": "struct MyLinearAnimation: CustomAnimation {\n    var duration: TimeInterval\n\n    func animate<V: VectorArithmetic>(\n        value: V, time: TimeInterval, context: inout AnimationContext<V>\n    ) -> V? {\n        if time <= duration {\n            value.scaled(by: time / duration)\n        } else {\n            nil // animation has finished\n        }\n    }\n\n    func velocity<V: VectorArithmetic>(\n        value: V, time: TimeInterval, context: AnimationContext<V>\n    ) -> V? {\n        value.scaled(by: 1.0 / duration)\n    }\n}"
+    },
+    {
+      "title": "Pet Avatar - Animation Modifier",
+      "language": "swift",
+      "startTimeSeconds": 1364,
+      "code": "struct Avatar: View {\n    var pet: Pet\n    @Binding var selected: Bool\n\n    var body: some View {\n        Image(pet.type)\n            .scaleEffect(selected ? 1.5 : 1.0)\n            .animation(.bouncy, value: selected)\n            .onTapGesture {\n                selected.toggle()\n            }\n    }\n}"
+    },
+    {
+      "title": "Pet Avatar - Multiple Animation Modifiers",
+      "language": "swift",
+      "startTimeSeconds": 1424,
+      "code": "struct Avatar: View {\n    var pet: Pet\n    @Binding var selected: Bool\n\n    var body: some View {\n        Image(pet.type)\n            .shadow(radius: selected ? 12 : 8)\n            .animation(.smooth, value: selected)\n            .scaleEffect(selected ? 1.5 : 1.0)\n            .animation(.bouncy, value: selected)\n            .onTapGesture {\n                selected.toggle()\n            }\n    }\n}"
+    },
+    {
+      "title": "Generic Avatar - Scoped Animation Modifiers",
+      "language": "swift",
+      "startTimeSeconds": 1520,
+      "code": "struct Avatar<Content: View>: View {\n    var content: Content\n    @Binding var selected: Bool\n\n    var body: some View {\n        content\n            .animation(.smooth) {\n                $0.shadow(radius: selected ? 12 : 8)\n            }\n            .animation(.bouncy) {\n                $0.scaleEffect(selected ? 1.5 : 1.0)\n            }\n            .onTapGesture {\n                selected.toggle()\n            }\n    }\n}"
+    },
+    {
+      "title": "Pet Avatar - Transaction Modifier",
+      "language": "swift",
+      "startTimeSeconds": 1725,
+      "code": "struct Avatar: View {\n    var pet: Pet\n    @Binding var selected: Bool\n\n    var body: some View {\n        Image(pet.type)\n            .scaleEffect(selected ? 1.5 : 1.0)\n            .transaction(value: selected) {\n                $0.animation = $0.avatarTapped\n                    ? .bouncy : .smooth\n            }\n            .onTapGesture {\n                withTransaction(\\.avatarTapped, true) {\n                    selected.toggle()\n                }\n            }\n    }\n}\n\nprivate struct AvatarTappedKey: TransactionKey {\n    static let defaultValue = false\n}\n\nextension Transaction {\n    var avatarTapped: Bool {\n        get { self[AvatarTappedKey.self] }\n        set { self[AvatarTappedKey.self] = newValue }\n    }\n}"
+    },
+    {
+      "title": "Generic Avatar - Scoped Transaction Modifier",
+      "language": "swift",
+      "startTimeSeconds": 1738,
+      "code": "struct Avatar<Content: View>: View {\n    var content: Content\n    @Binding var selected: Bool\n\n    var body: some View {\n        content\n            .transaction {\n                $0.animation = $0.avatarTapped\n                    ? .bouncy : .smooth\n            } body: {\n                $0.scaleEffect(selected ? 1.5 : 1.0)\n            }\n            .onTapGesture {\n                withTransaction(\\.avatarTapped, true) {\n                    selected.toggle()\n                }\n            }\n    }\n}\n\nprivate struct AvatarTappedKey: TransactionKey {\n    static let defaultValue = false\n}\n\nextension Transaction {\n    var avatarTapped: Bool {\n        get { self[AvatarTappedKey.self] }\n        set { self[AvatarTappedKey.self] = newValue }\n    }\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2023/10156-explore-swiftui-animation/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10156-explore-swiftui-animation/metadata.json",
+    "readme": "sessions/wwdc2023/10156-explore-swiftui-animation/README.md",
+    "transcript": "sessions/wwdc2023/10156-explore-swiftui-animation/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10156-explore-swiftui-animation/transcript.json"
+  }
+}

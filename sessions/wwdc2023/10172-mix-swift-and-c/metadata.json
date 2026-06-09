@@ -1,0 +1,152 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10172",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10172,
+  "title": "Mix Swift and C++",
+  "description": "Learn how you can use Swift in your C++ and Objective-C++ projects to make your code safer, faster, and easier to develop. We’ll show you how to use C++ and Swift APIs to incrementally incorporate Swift into your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10172",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10172",
+  "type": "Video",
+  "publishedAt": "2023-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 1065,
+  "hasTranscript": true,
+  "transcriptWordCount": 2396,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10172/4/58243B95-F51E-4E6A-96C8-B85E8102E450/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10172/4/58243B95-F51E-4E6A-96C8-B85E8102E450/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10172/4/58243B95-F51E-4E6A-96C8-B85E8102E450/downloads/wwdc2023-10172_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10172/4/58243B95-F51E-4E6A-96C8-B85E8102E450/downloads/wwdc2023-10172_hd.mp4",
+    "duration": 1065
+  },
+  "codeSnippets": [
+    {
+      "title": "Calling a C++ method from Swift",
+      "language": "swift",
+      "startTimeSeconds": 250,
+      "code": "func loadImage(_ image: UIImage) {\n    // Load an image into the shared C++ class.\n    CxxImageEngine.shared.pointee.loadImage(image)\n}"
+    },
+    {
+      "title": "Import a C++ framework",
+      "language": "swift",
+      "startTimeSeconds": 260,
+      "code": "import CxxImageKit"
+    },
+    {
+      "title": "Import the Generated Header",
+      "language": "swift",
+      "startTimeSeconds": 285,
+      "code": "#import \"SampleApp-Swift.h\""
+    },
+    {
+      "title": "Calling a Swift method in C++",
+      "language": "swift",
+      "startTimeSeconds": 297,
+      "code": "- (IBAction)openPhotoLibrary:(UIButton *)sender {\n    // Construct SwiftUI view\n    SampleApp::ImagePicker::init().present(self);\n}"
+    },
+    {
+      "title": "Using the SWIFT_COMPUTED_PROPERTY attribute",
+      "language": "cpp",
+      "startTimeSeconds": 502,
+      "code": "int  getValue() const SWIFT_COMPUTED_PROPERTY;\nvoid setValue(int newValue);"
+    },
+    {
+      "title": "Using the SWIFT_SHARED_REFERENCE attribute",
+      "language": "cpp",
+      "startTimeSeconds": 522,
+      "code": "struct SWIFT_SHARED_REFERENCE(retain, release) CxxReferenceType;"
+    },
+    {
+      "title": "Using the SWIFT_RETURNS_INDEPENDENT_VALUE attribute",
+      "language": "cpp",
+      "startTimeSeconds": 532,
+      "code": "SWIFT_RETURNS_INDEPENDENT_VALUE \nstd::string_view networkName() const;"
+    },
+    {
+      "title": "Using a for-loop to iterate over a C++ std::vector in Swift",
+      "language": "swift",
+      "startTimeSeconds": 645,
+      "code": "// Get every image out of the shared C++ class.\nfor image in CxxImageEngine.shared.pointee.getImages() {\n    let uiImage = CxxImageEngine.shared.pointee.uiImageFrom(image)\n    UIImageWriteToSavedPhotosAlbum(uiImage, nil, nil, nil)\n}"
+    },
+    {
+      "title": "Import swift/bridging",
+      "language": "cpp",
+      "startTimeSeconds": 834,
+      "code": "#import <swift/bridging>"
+    },
+    {
+      "title": "Applying the SWIFT_SHARED_REFERENCE attribute to CxxImageEngine",
+      "language": "cpp",
+      "startTimeSeconds": 841,
+      "code": "struct SWIFT_SHARED_REFERENCE(IKRetain, IKRelease) CxxImageEngine {\n    // ...\n};"
+    },
+    {
+      "title": "Applying the SWIFT_COMPUTED_PROPERTY attribute to getImages",
+      "language": "cpp",
+      "startTimeSeconds": 893,
+      "code": "/// \\returns all images that have been loaded into the engine. Includes any modifications that were\n/// applied to the images.\nSWIFT_COMPUTED_PROPERTY\ninline std::vector<Image *_Nonnull> getImages() const;"
+    },
+    {
+      "title": "Updated for-loop using the \"images\" computed property",
+      "language": "swift",
+      "startTimeSeconds": 906,
+      "code": "// Get every image out of the shared C++ class.\nfor image in CxxImageEngine.shared.pointee.images {\n    let uiImage = CxxImageEngine.shared.pointee.uiImageFrom(image)\n    UIImageWriteToSavedPhotosAlbum(uiImage, nil, nil, nil)\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Mixing Swift and C++",
+      "url": "https://swift.org/documentation/cxx-interop",
+      "type": "documentation",
+      "description": "This document is the reference guide describing how to mix Swift and C++. It describes how C++ APIs get imported into Swift, and provides examples showing how various C++ APIs can be used in Swift. It also describes how Swift APIs get exposed to C++, and provides examples showing how the exposed Swift APIs can be used from C++."
+    },
+    {
+      "title": "Calling APIs Across Language Boundaries",
+      "url": "https://developer.apple.com/documentation/Swift/CallingAPIsAcrossLanguageBoundaries",
+      "type": "samplecode",
+      "description": "Use a variety of C++ APIs in Swift – and vice-versa – across multiple targets and frameworks in an Xcode project.",
+      "sosumiURL": "https://sosumi.ai/documentation/Swift/CallingAPIsAcrossLanguageBoundaries",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Swift/CallingAPIsAcrossLanguageBoundaries.json"
+    },
+    {
+      "title": "Mixing Languages in an Xcode project",
+      "url": "https://developer.apple.com/documentation/Swift/MixingLanguagesInAnXcodeProject",
+      "type": "samplecode",
+      "description": "Use C++ APIs in Swift – and Swift APIs in C++ – in a single framework target, and consume the framework’s APIs in a separate app target.",
+      "sosumiURL": "https://sosumi.ai/documentation/Swift/MixingLanguagesInAnXcodeProject",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Swift/MixingLanguagesInAnXcodeProject.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10172-mix-swift-and-c/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10172-mix-swift-and-c/metadata.json",
+    "readme": "sessions/wwdc2023/10172-mix-swift-and-c/README.md",
+    "transcript": "sessions/wwdc2023/10172-mix-swift-and-c/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10172-mix-swift-and-c/transcript.json"
+  }
+}

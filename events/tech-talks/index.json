@@ -1,0 +1,3794 @@
+{
+  "event": "tech-talks",
+  "name": "Tech Talks",
+  "year": 2017,
+  "sessionCount": 96,
+  "sessions": [
+    {
+      "id": "tech-talks-10001",
+      "event": "tech-talks",
+      "year": 2020,
+      "eventContentId": 10001,
+      "title": "Explore Live GPU Profiling with Metal Counters",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/10001",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10001",
+      "duration": 806,
+      "publishedAt": "2020-10-21T10:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2011,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 6,
+      "path": "sessions/tech-talks/10001-explore-live-gpu-profiling-with-metal-counters/",
+      "description": "Take advantage of the Metal Counters API for GPU profiling in macOS Big Sur and iOS 14. This API provides access at runtime to low-level GPU profiling information, which was previously available only through offline tools in Xcode and Instruments. Metal Counters accelerate the optimization process by giving you access to important GPU information, helping you fine-tune your app's performance to create faster and more fluid apps and gaming experiences. Learn to collect and parse these low-level GPU timestamps and use the in-depth information to help with performance tuning in Metal."
+    },
+    {
+      "id": "tech-talks-10023",
+      "event": "tech-talks",
+      "year": 2020,
+      "eventContentId": 10023,
+      "title": "Support Apple Pro Display XDR in your apps",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/10023",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10023",
+      "duration": 1644,
+      "publishedAt": "2020-11-17T10:00:00-08:00",
+      "platforms": [
+        "macOS"
+      ],
+      "primaryTopic": "Audio & Video",
+      "topics": [
+        "Audio & Video"
+      ],
+      "keywords": [
+        "display",
+        "display p3"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 3564,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/10023-support-apple-pro-display-xdr-in-your-apps/",
+      "description": "Apple Pro Display XDR is a high grade reference monitor designed for professional workflows such as video editing, photography, 3D animation and game development. Discover how you can use underlying technology and framework-level support to improve your professional workflows for content authoring. Learn how to make your workflows more capable and more accurate using Pro Display XDR reference modes and macOS color management tools. And explore best practices and tips to make your reference workflows true to life."
+    },
+    {
+      "id": "tech-talks-10067",
+      "event": "tech-talks",
+      "year": 2022,
+      "eventContentId": 10067,
+      "title": "Bring desktop class sync to iOS with FileProvider",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/10067",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10067",
+      "duration": 627,
+      "publishedAt": "2022-10-11T06:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ],
+      "primaryTopic": "System Services",
+      "topics": [
+        "System Services"
+      ],
+      "keywords": [
+        "cloud",
+        "download",
+        "fileprovider",
+        "file provider",
+        "files",
+        "filesystem",
+        "file system",
+        "sync",
+        "synchronization",
+        "synchronize",
+        "upload"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 1483,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 4,
+      "codeSnippetCount": 4,
+      "path": "sessions/tech-talks/10067-bring-desktop-class-sync-to-ios-with-fileprovider/",
+      "description": "Discover how you can sync files faster and more efficiently within your iPhone and iPad apps when you create a File Provider extension. Sync up with the File Provider team and learn how to build a modern File Provider for iOS. We’ll show you how to architect your app to support seamless file sync, uploads, and downloads. And we’ll explore how you can go stateless and fortify your file provider against unexpected conditions. To get the most out of this session, we recommend having experience with File Providers on macOS."
+    },
+    {
+      "id": "tech-talks-10100",
+      "event": "tech-talks",
+      "year": 2021,
+      "eventContentId": 10100,
+      "title": "Explore and manipulate data in Swift with TabularData",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/10100",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10100",
+      "duration": 1428,
+      "publishedAt": "2021-12-07T10:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ],
+      "primaryTopic": "Swift",
+      "topics": [
+        "AI & Machine Learning",
+        "Swift"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 4608,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/10100-explore-and-manipulate-data-in-swift-with-tabulardata/",
+      "description": "Discover how you can use the TabularData framework to load, explore, and manipulate unstructured data in Swift — whether you need to pre-process data for a machine learning task or digest data on-the-fly in your app. Learn how this framework can help you handle large datasets, join multiple tables of data together, and filter data programmatically. We'll also show you how a DataFrame can be used to drive all the data-centric features of your app."
+    },
+    {
+      "id": "tech-talks-10168",
+      "event": "tech-talks",
+      "year": 2023,
+      "eventContentId": 10168,
+      "title": "Migrate custom intents to App Intents",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/10168",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10168",
+      "duration": 1040,
+      "publishedAt": "2023-02-01T08:00:00-08:00",
+      "platforms": [],
+      "primaryTopic": "App Services",
+      "topics": [
+        "App Services"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2930,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/10168-migrate-custom-intents-to-app-intents/",
+      "description": "Learn how you can easily convert your existing custom intents to App Intents. We'll take you through the conversion of your intents to Swift and discuss how you can improve discoverability of your app features when you create App Shortcuts. To learn more about App Intents, watch \"Implement App Shortcuts with App Intents\" and \"Dive into App Intents\" from WWDC22."
+    },
+    {
+      "id": "tech-talks-10580",
+      "event": "tech-talks",
+      "year": 2021,
+      "eventContentId": 10580,
+      "title": "Metal Compute on MacBook Pro",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/10580",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10580",
+      "duration": 1424,
+      "publishedAt": "2021-12-07T10:00:00-08:00",
+      "platforms": [
+        "macOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [
+        "apple silicon",
+        "cuda",
+        "metal",
+        "metal shading language",
+        "metal tools",
+        "opencl",
+        "performance",
+        "proapps",
+        "tips and tricks"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 3763,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/10580-metal-compute-on-macbook-pro/",
+      "description": "Discover how you can take advantage of Metal compute on the latest MacBook Pro. Learn the fundamental principles of high-performance Metal compute and find out how you can take advantage of the framework to create better workflows for your development process and even better apps for creative pros."
+    },
+    {
+      "id": "tech-talks-10696",
+      "event": "tech-talks",
+      "year": 2020,
+      "eventContentId": 10696,
+      "title": "Uniform Type Identifiers — a reintroduction",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/10696",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10696",
+      "duration": 1466,
+      "publishedAt": "2020-11-17T10:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "watchOS"
+      ],
+      "primaryTopic": "System Services",
+      "topics": [
+        "System Services"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 3896,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/10696-uniform-type-identifiers-a-reintroduction/",
+      "description": "Ever wonder how the system decides what app should open a given file? Explore the Uniform Type Identifiers framework, which helps you simplify the process for supporting standard or proprietary file formats in your app. You’ll learn how to use the new framework and Xcode to declare the types your app supports, discover how to boost performance when you adopt UTTypes, and review the latest platform APIs that support UTTypes."
+    },
+    {
+      "id": "tech-talks-10854",
+      "event": "tech-talks",
+      "year": 2020,
+      "eventContentId": 10854,
+      "title": "Integrate SiriKit Media Intents with HomePod",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/10854",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10854",
+      "duration": 2369,
+      "publishedAt": "2020-10-21T10:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "App Services",
+      "topics": [
+        "App Services"
+      ],
+      "keywords": [
+        "homepod",
+        "siri",
+        "sirikit",
+        "sirikit media intents"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 6442,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 2,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/10854-integrate-sirikit-media-intents-with-homepod/",
+      "description": "Bring your music service to HomePod and help users enjoy your content hands-free throughout their home. Discover how to build a great integration from start to finish. We'll take you through how Media Intents work, configuring your app as a preferred music service on HomePod and integrating directly with your cloud backend, providing a personalized playback experience for individual accounts with the help of voice recognition (where available), and more. To learn more about Media Intents, check out \"Expand your SiriKit Media Intents to more platforms\" from WWDC20."
+    },
+    {
+      "id": "tech-talks-10855",
+      "event": "tech-talks",
+      "year": 2020,
+      "eventContentId": 10855,
+      "title": "Explore UI animation hitches and the render loop",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/10855",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10855",
+      "duration": 714,
+      "publishedAt": "2020-12-21T00:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Developer Tools",
+      "topics": [
+        "Developer Tools"
+      ],
+      "keywords": [
+        "ui animation hitches",
+        "xcode"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 2035,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/10855-explore-ui-animation-hitches-and-the-render-loop/",
+      "description": "Explore how you can improve the performance of your app's user interface by identifying scrolling and animation hitches in your app. We'll take you through how hitches happen in the render loop, and explain how to measure hitch time ratio and fix the issues that most impact people using your app."
+    },
+    {
+      "id": "tech-talks-10856",
+      "event": "tech-talks",
+      "year": 2020,
+      "eventContentId": 10856,
+      "title": "Find and fix hitches in the commit phase",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/10856",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10856",
+      "duration": 682,
+      "publishedAt": "2020-12-21T00:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Developer Tools",
+      "topics": [
+        "Developer Tools"
+      ],
+      "keywords": [
+        "animation hitches",
+        "commit phase",
+        "hitches",
+        "xcode"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 1641,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/10856-find-and-fix-hitches-in-the-commit-phase/",
+      "description": "Discover how to render smoother animations in your app by troubleshooting the commit phase of your render loop. Dive into the mechanics of this phase, and learn how to use Instruments to uncover the source of hitches in your app, eliminate them, and avoid them outright."
+    },
+    {
+      "id": "tech-talks-10857",
+      "event": "tech-talks",
+      "year": 2020,
+      "eventContentId": 10857,
+      "title": "Demystify and eliminate hitches in the render phase",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/10857",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10857",
+      "duration": 1164,
+      "publishedAt": "2020-12-21T00:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Developer Tools",
+      "topics": [
+        "Developer Tools"
+      ],
+      "keywords": [
+        "animation hitches",
+        "hitches",
+        "render phase",
+        "xcode"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 3166,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 1,
+      "path": "sessions/tech-talks/10857-demystify-and-eliminate-hitches-in-the-render-phase/",
+      "description": "When you implement complex view hierarchies in your app, you may run into animation hitches. Demystify how your views are turned into pixels during the render phase, and learn how to use Instruments to uncover issues in this part of the render loop. Discover how to eliminate offscreen passes and leverage Xcode optimization opportunities in order to provide a great experience when using your app."
+    },
+    {
+      "id": "tech-talks-10858",
+      "event": "tech-talks",
+      "year": 2020,
+      "eventContentId": 10858,
+      "title": "Discover Metal enhancements for A14 Bionic",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/10858",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10858",
+      "duration": 1737,
+      "publishedAt": "2020-10-21T10:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Developer Tools",
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 4225,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 2,
+      "codeSnippetCount": 7,
+      "path": "sessions/tech-talks/10858-discover-metal-enhancements-for-a14-bionic/",
+      "description": "Explore how Metal is bringing sophisticated rendering and powerful compute features to A14 Bionic. We’ll take you through the Metal capabilities delivered in the Apple GPU Family 7 feature set, including new texture addressing modes, fast SIMD reduction and matrix multiplication operations, and a deep dive into implementing a visibility buffer using barycentric coordinates and primitive ID."
+    },
+    {
+      "id": "tech-talks-10865",
+      "event": "tech-talks",
+      "year": 2020,
+      "eventContentId": 10865,
+      "title": "What can you do on an Apple silicon Mac?",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/10865",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10865",
+      "duration": 154,
+      "publishedAt": "2020-11-10T13:00:00-08:00",
+      "platforms": [
+        "macOS"
+      ],
+      "primaryTopic": "Developer Tools",
+      "topics": [
+        "Developer Tools"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 445,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/10865-what-can-you-do-on-an-apple-silicon-mac/",
+      "description": "Learn how developers updated their apps for Apple silicon Macs and began taking advantage of the advanced capabilities of the Apple M1 chip."
+    },
+    {
+      "id": "tech-talks-10868",
+      "event": "tech-talks",
+      "year": 2021,
+      "eventContentId": 10868,
+      "title": "Subscription offer codes",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/10868",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10868",
+      "duration": 1752,
+      "publishedAt": "2021-03-10T10:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "App Store, Distribution & Marketing",
+      "topics": [
+        "App Store, Distribution & Marketing"
+      ],
+      "keywords": [
+        "in-app purchases",
+        "subscription",
+        "subscription business model",
+        "subscription marketing"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 4353,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 5,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/10868-subscription-offer-codes/",
+      "description": "Subscription offer codes can help you acquire, retain, and win back subscribers as you grow your business. Learn about configuration options, creating a great experience, and measuring redemptions. We’ll explore how to set up customer eligibility, territory, price, and expiration in App Store Connect. And we'll take you through managing your offers, integrating them into your application and backend systems, and measuring performance."
+    },
+    {
+      "id": "tech-talks-10874",
+      "event": "tech-talks",
+      "year": 2021,
+      "eventContentId": 10874,
+      "title": "Get the most out of CloudKit Sharing",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/10874",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10874",
+      "duration": 744,
+      "publishedAt": "2021-12-07T10:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "watchOS"
+      ],
+      "primaryTopic": "System Services",
+      "topics": [
+        "System Services"
+      ],
+      "keywords": [
+        "ckshare",
+        "cloudkit sharing",
+        "hierarchical",
+        "sharing",
+        "sharing sample app",
+        "zone"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 1754,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 1,
+      "codeSnippetCount": 11,
+      "path": "sessions/tech-talks/10874-get-the-most-out-of-cloudkit-sharing/",
+      "description": "Discover how apps can use CloudKit to share records with others. We'll show you how to encourage collaboration between people using your app and support those interactions with Apple frameworks. Learn how to create and manage shares, explore sharing options like public permissions, and find out how you can use zone sharing in iOS 15 and macOS Monterey to share entire record zones of data. To get the most out of this session, we recommend being familiar with CloudKit and a basic understanding of record and data types."
+    },
+    {
+      "id": "tech-talks-10876",
+      "event": "tech-talks",
+      "year": 2021,
+      "eventContentId": 10876,
+      "title": "Discover advances in Metal for A15 Bionic",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/10876",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10876",
+      "duration": 1411,
+      "publishedAt": "2021-09-16T00:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Developer Tools",
+        "Graphics & Games"
+      ],
+      "keywords": [
+        "2d graphics",
+        "3d graphics",
+        "games",
+        "image processing",
+        "metal",
+        "metal compute",
+        "metal shading language",
+        "rendering techniques",
+        "simd"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 3522,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/10876-discover-advances-in-metal-for-a15-bionic/",
+      "description": "Discover how you can elevate your apps and games with Metal and the A15 Bionic. We'll help you take advantage of Apple GPU family 8 with the latest Metal features: Learn how to save memory with Lossy Compression, dive into complex shadow mapping techniques with Sparse Depth and Stencil Textures, and process images faster with SIMD Shuffle and Fill instructions."
+    },
+    {
+      "id": "tech-talks-10884",
+      "event": "tech-talks",
+      "year": 2021,
+      "eventContentId": 10884,
+      "title": "Meet Apple Watch Series 7",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/10884",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10884",
+      "duration": 911,
+      "publishedAt": "2021-10-29T00:00:00-07:00",
+      "platforms": [
+        "watchOS"
+      ],
+      "primaryTopic": "Design",
+      "topics": [
+        "SwiftUI & UI Frameworks",
+        "Design"
+      ],
+      "keywords": [
+        "⌚️",
+        "always-on",
+        "scenepadding",
+        "watchos 8"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 1885,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/10884-meet-apple-watch-series-7/",
+      "description": "Apple Watch Series 7 introduces new device sizes and a display that features a subtle wraparound effect. Learn how you can adapt your watchOS app design to look great on all screen sizes: We'll show you how to take advantage of a larger content area, create clearer hierarchy using color and typography, and improve glanceability in your app by creating better navigation."
+    },
+    {
+      "id": "tech-talks-10885",
+      "event": "tech-talks",
+      "year": 2021,
+      "eventContentId": 10885,
+      "title": "Tips for preventing common review issues",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/10885",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10885",
+      "duration": 754,
+      "publishedAt": "2021-12-06T10:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "watchOS"
+      ],
+      "primaryTopic": "App Store, Distribution & Marketing",
+      "topics": [
+        "App Store, Distribution & Marketing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2226,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/10885-tips-for-preventing-common-review-issues/",
+      "description": "Prepare your app for review with these tips from the App Review team. Learn how to prevent the most common issues and discover best practices for an easy and straightforward review experience."
+    },
+    {
+      "id": "tech-talks-10886",
+      "event": "tech-talks",
+      "year": 2022,
+      "eventContentId": 10886,
+      "title": "Get started with custom product pages",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/10886",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10886",
+      "duration": 1183,
+      "publishedAt": "2022-01-19T08:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "watchOS"
+      ],
+      "primaryTopic": "App Store, Distribution & Marketing",
+      "topics": [
+        "Developer Tools",
+        "App Store, Distribution & Marketing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2636,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 2,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/10886-get-started-with-custom-product-pages/",
+      "description": "Learn how you can create additional versions of your App Store product page and showcase different features or content within your app. We'll explore how you can create pages for a specific aspect of your app or a specific audience, show you how to set it up in App Store Connect, and highlight strategies for success."
+    },
+    {
+      "id": "tech-talks-10887",
+      "event": "tech-talks",
+      "year": 2021,
+      "eventContentId": 10887,
+      "title": "Support customers with StoreKit 2 and App Store Server API",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/10887",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10887",
+      "duration": 2438,
+      "publishedAt": "2021-12-07T10:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "watchOS"
+      ],
+      "primaryTopic": "App Store, Distribution & Marketing",
+      "topics": [
+        "Developer Tools",
+        "App Store, Distribution & Marketing"
+      ],
+      "keywords": [
+        "app store server api",
+        "storekit",
+        "storekit 2"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 6696,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 7,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/10887-support-customers-with-storekit-2-and-app-store-server-api/",
+      "description": "Discover how you can use StoreKit 2, App Store Server API, and App Store Server Notifications to create great in-app purchase experiences for your customers and offer support and refunds. We’ll explore implementation approaches, provide best practices and take you through customer management and managing refunds."
+    },
+    {
+      "id": "tech-talks-10888",
+      "event": "tech-talks",
+      "year": 2022,
+      "eventContentId": 10888,
+      "title": "Get started with product page optimization",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/10888",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10888",
+      "duration": 1690,
+      "publishedAt": "2022-01-19T08:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "watchOS"
+      ],
+      "primaryTopic": "App Store, Distribution & Marketing",
+      "topics": [
+        "Developer Tools",
+        "App Store, Distribution & Marketing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 4105,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 2,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/10888-get-started-with-product-page-optimization/",
+      "description": "Help make your App Store product page even more relevant and effective with product page optimization. We’ll explore details of the feature, take you through the setup process in App Store Connect including how to test different app icons, screenshots and app previews, and share testing strategies to help you get started with your product page optimization efforts."
+    },
+    {
+      "id": "tech-talks-10890",
+      "event": "tech-talks",
+      "year": 2022,
+      "eventContentId": 10890,
+      "title": "Deploy iOS 15 in your organization",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/10890",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10890",
+      "duration": 1741,
+      "publishedAt": "2022-01-19T08:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "Business & Education",
+      "topics": [
+        "Business & Education"
+      ],
+      "keywords": [
+        "deployment",
+        "device management",
+        "enterprise",
+        "ios 15"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 4644,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 5,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/10890-deploy-ios-15-in-your-organization/",
+      "description": "Discover the latest platform changes for deploying iOS 15 and iPadOS 15 in your business or education organization. Learn about deploying both organization-owned and personally-owned iPhone and iPad devices. Explore fundamentals and new updates for deployment workflows including enrollment, ongoing management, content distribution, and re-deployment."
+    },
+    {
+      "id": "tech-talks-10891",
+      "event": "tech-talks",
+      "year": 2022,
+      "eventContentId": 10891,
+      "title": "Prepare your organization for macOS Monterey",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/10891",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10891",
+      "duration": 1920,
+      "publishedAt": "2022-01-19T08:00:00-08:00",
+      "platforms": [
+        "macOS"
+      ],
+      "primaryTopic": "Business & Education",
+      "topics": [
+        "Business & Education"
+      ],
+      "keywords": [
+        "deployment",
+        "device management",
+        "enterprise",
+        "macos monterey"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 5130,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 4,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/10891-prepare-your-organization-for-macos-monterey/",
+      "description": "Discover the latest platform changes for deploying macOS Monterey in your business or education organization. Learn about changes to initial enrollment, ongoing management, and return to service including managing software updates and the new Erase All Content and Settings feature for macOS."
+    },
+    {
+      "id": "tech-talks-10892",
+      "event": "tech-talks",
+      "year": 2022,
+      "eventContentId": 10892,
+      "title": "Explore unlisted app distribution",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/10892",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10892",
+      "duration": 921,
+      "publishedAt": "2022-02-07T00:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ],
+      "primaryTopic": "App Store, Distribution & Marketing",
+      "topics": [
+        "Business & Education",
+        "App Store, Distribution & Marketing"
+      ],
+      "keywords": [
+        "distribution",
+        "education",
+        "enrollment",
+        "enterprise",
+        "unlisted"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 2243,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 5,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/10892-explore-unlisted-app-distribution/",
+      "description": "Discover a new way you can distribute apps to limited audiences on the App Store. We’ll take you through the differences between using unlisted distribution and standard distribution on the App Store, show you how to share apps with a direct link, and more."
+    },
+    {
+      "id": "tech-talks-110147",
+      "event": "tech-talks",
+      "year": 2021,
+      "eventContentId": 110147,
+      "title": "Tune CPU job scheduling for Apple silicon games",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/110147",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110147",
+      "duration": 2107,
+      "publishedAt": "2021-12-07T10:00:00-08:00",
+      "platforms": [
+        "macOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 4343,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/110147-tune-cpu-job-scheduling-for-apple-silicon-games/",
+      "description": "Graphically-intensive games can be very demanding on hardware resources, requiring hundreds or even thousands of CPU jobs to be processed every frame. We’ll show you how you can organize those jobs to maximize CPU efficiency and performance on the M1, M1 Pro, and M1 Max chips. Learn how you can fine-tune your games to deliver a better overall experience to your players."
+    },
+    {
+      "id": "tech-talks-110148",
+      "event": "tech-talks",
+      "year": 2022,
+      "eventContentId": 110148,
+      "title": "Build and deploy Safari Extensions for iOS",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/110148",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110148",
+      "duration": 1497,
+      "publishedAt": "2022-01-19T08:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ],
+      "primaryTopic": "Safari & Web",
+      "topics": [
+        "Safari & Web"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 3784,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/110148-build-and-deploy-safari-extensions-for-ios/",
+      "description": "Safari web extensions for iOS use standard web technologies to provide powerful browser customizations. Learn how you can build an extension that works for iPhone and iPad, and discover how you can publish your extension on the App Store."
+    },
+    {
+      "id": "tech-talks-110150",
+      "event": "tech-talks",
+      "year": 2022,
+      "eventContentId": 110150,
+      "title": "Get started with custom offer codes",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/110150",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110150",
+      "duration": 1021,
+      "publishedAt": "2022-04-21T10:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "watchOS"
+      ],
+      "primaryTopic": "App Store, Distribution & Marketing",
+      "topics": [
+        "Business & Education",
+        "Developer Tools",
+        "App Store, Distribution & Marketing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2566,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/110150-get-started-with-custom-offer-codes/",
+      "description": "Discover how you can complement existing offer codes campaigns with custom, repeatable codes to provide even more flexibility to acquire and retain subscribers. We'll take you through the latest enhancements to offer codes, provide engineering guidance, explore best practices, and show you how to create new codes for your subscriptions."
+    },
+    {
+      "id": "tech-talks-110151",
+      "event": "tech-talks",
+      "year": 2022,
+      "eventContentId": 110151,
+      "title": "Optimize subscriptions for success: acquisition",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/110151",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110151",
+      "duration": 1172,
+      "publishedAt": "2022-04-21T10:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "watchOS"
+      ],
+      "primaryTopic": "App Store, Distribution & Marketing",
+      "topics": [
+        "Business & Education",
+        "Developer Tools",
+        "App Store, Distribution & Marketing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2906,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/110151-optimize-subscriptions-for-success-acquisition/",
+      "description": "Learn how you can acquire subscribers and grow your business using App Store features. We'll explore subscriber acquisition strategies, share implementation best practices, and show you how to integrate these processes into your app for success."
+    },
+    {
+      "id": "tech-talks-110152",
+      "event": "tech-talks",
+      "year": 2022,
+      "eventContentId": 110152,
+      "title": "Write clear purpose strings",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/110152",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110152",
+      "duration": 637,
+      "publishedAt": "2022-12-01T10:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "watchOS"
+      ],
+      "primaryTopic": "App Store, Distribution & Marketing",
+      "topics": [
+        "App Store, Distribution & Marketing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1743,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 3,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/110152-write-clear-purpose-strings/",
+      "description": "Learn how to write clear and succinct purpose strings to help people understand why your app needs access to protected resources like their camera, location, and health data. We’ll take you through best practices to help craft concise purpose strings and show you how you can improve wording in permission requests."
+    },
+    {
+      "id": "tech-talks-110336",
+      "event": "tech-talks",
+      "year": 2023,
+      "eventContentId": 110336,
+      "title": "Implement Apple Pay and order management",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/110336",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110336",
+      "duration": 1044,
+      "publishedAt": "2023-02-01T08:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ],
+      "primaryTopic": "App Services",
+      "topics": [
+        "App Services"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 3148,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 8,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/110336-implement-apple-pay-and-order-management/",
+      "description": "Apple Pay provides an easy and secure way for people to make payments in your iOS, iPadOS, and watchOS apps as well as on the web. We'll take you through the entire Apple Pay implementation workflow – including how you can signal support for Apple Pay, request payment and handling updates, and add order details at the end of a payment flow to help people track their purchases."
+    },
+    {
+      "id": "tech-talks-110337",
+      "event": "tech-talks",
+      "year": 2022,
+      "eventContentId": 110337,
+      "title": "Discover Reference Mode",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/110337",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110337",
+      "duration": 770,
+      "publishedAt": "2022-10-11T06:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Audio & Video",
+        "Photos & Camera",
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2095,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/110337-discover-reference-mode/",
+      "description": "Learn how you can match color requirements in demanding pro workflows using Reference Mode on the 12.9-inch iPad Pro with Liquid Retina XDR display. We'll show you how Reference Mode enables you to represent color accurately and provide consistent image representation in workflows like review and approval, compositing, and color grading. We'll also go over APIs to use with Reference Mode, explore its capabilities and supported media formats, and discover how Reference Mode enhances Sidecar."
+    },
+    {
+      "id": "tech-talks-110338",
+      "event": "tech-talks",
+      "year": 2023,
+      "eventContentId": 110338,
+      "title": "Add SharePlay to your multiplayer game with Game Center",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/110338",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110338",
+      "duration": 277,
+      "publishedAt": "2023-02-01T08:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 632,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/110338-add-shareplay-to-your-multiplayer-game-with-game-center/",
+      "description": "Learn how to let your players jump into games with friends they're on FaceTime calls with, using SharePlay. We'll show you how easy it is to turn on SharePlay support if you are already using the Game Center multiplayer UI. And if you’ve built a custom interface, we’ll give you the few lines of code you need to support SharePlay."
+    },
+    {
+      "id": "tech-talks-110339",
+      "event": "tech-talks",
+      "year": 2023,
+      "eventContentId": 110339,
+      "title": "Discover Metal Performance HUD",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/110339",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110339",
+      "duration": 404,
+      "publishedAt": "2023-02-01T08:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Developer Tools",
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1156,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/110339-discover-metal-performance-hud/",
+      "description": "Get to know the new heads-up display panel built to help you analyze graphics performance in real time. Metal Performance HUD displays key graphics statistics so you can monitor, log, and identify tough-to-spot performance problems."
+    },
+    {
+      "id": "tech-talks-110343",
+      "event": "tech-talks",
+      "year": 2022,
+      "eventContentId": 110343,
+      "title": "Get started with TestFlight",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/110343",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110343",
+      "duration": 1440,
+      "publishedAt": "2022-12-01T10:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "watchOS"
+      ],
+      "primaryTopic": "App Store, Distribution & Marketing",
+      "topics": [
+        "App Store, Distribution & Marketing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 3578,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 3,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/110343-get-started-with-testflight/",
+      "description": "Discover how you can use TestFlight to improve your app experience and ready it for release on the App Store. We’ll take you through an overview of TestFlight, including how to invite testers and provide information to them about testing. We’ll also provide best practices for receiving feedback and explore how you can get the most out of the testing process."
+    },
+    {
+      "id": "tech-talks-110345",
+      "event": "tech-talks",
+      "year": 2022,
+      "eventContentId": 110345,
+      "title": "Explore Family Sharing for In-App Purchases",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/110345",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110345",
+      "duration": 1324,
+      "publishedAt": "2022-12-01T10:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ],
+      "primaryTopic": "App Store, Distribution & Marketing",
+      "topics": [
+        "App Store, Distribution & Marketing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2953,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 5,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/110345-explore-family-sharing-for-in-app-purchases/",
+      "description": "Family Sharing for In-App Purchases lets people share their auto-renewable subscriptions and non-consumables with up to five additional family members, helping you attract new subscribers, increase user engagement, and improve retention. We’ll review how you can enable this feature in App Store Connect, provide best practices when using the feature with StoreKit and App Store Server Notifications, and help you deliver a great In-App Purchase experience."
+    },
+    {
+      "id": "tech-talks-110347",
+      "event": "tech-talks",
+      "year": 2022,
+      "eventContentId": 110347,
+      "title": "Get started with in-app events",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/110347",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110347",
+      "duration": 1385,
+      "publishedAt": "2022-12-01T10:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "App Store, Distribution & Marketing",
+      "topics": [
+        "App Store, Distribution & Marketing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 3512,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 3,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/110347-get-started-with-in-app-events/",
+      "description": "Discover how you can highlight your app or game’s content on the App Store. We'll take you through the in-app events feature and provide recommendations, tips, and best practices for helping people discover content and events within your app."
+    },
+    {
+      "id": "tech-talks-110349",
+      "event": "tech-talks",
+      "year": 2023,
+      "eventContentId": 110349,
+      "title": "Make the most of product page optimization",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/110349",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110349",
+      "duration": 1126,
+      "publishedAt": "2023-02-28T08:30:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "App Store, Distribution & Marketing",
+      "topics": [
+        "Business & Education",
+        "App Store, Distribution & Marketing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2760,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 2,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/110349-make-the-most-of-product-page-optimization/",
+      "description": "Learn how to get more from your product page optimization tests. We’ll explore best practices, provide data-based recommendations, and share success stories from developers who have used product page optimization to make their App Store product pages even more relevant and effective."
+    },
+    {
+      "id": "tech-talks-110350",
+      "event": "tech-talks",
+      "year": 2022,
+      "eventContentId": 110350,
+      "title": "Manage auto-renewable subscription pricing in App Store Connect",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/110350",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110350",
+      "duration": 677,
+      "publishedAt": "2022-11-02T00:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "App Store, Distribution & Marketing",
+      "topics": [
+        "App Store, Distribution & Marketing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1586,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 2,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/110350-manage-auto-renewable-subscription-pricing-in-app-store-conn/",
+      "description": "Discover how you can use App Store Connect to manage prices for your auto-renewable subscriptions. We'll provide guidance to help you plan subscription price increases and decreases, show you how to remove preserved pricing, and explore how to edit upcoming price changes."
+    },
+    {
+      "id": "tech-talks-110352",
+      "event": "tech-talks",
+      "year": 2022,
+      "eventContentId": 110352,
+      "title": "Do more with less data",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/110352",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110352",
+      "duration": 580,
+      "publishedAt": "2022-12-01T10:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "watchOS"
+      ],
+      "primaryTopic": "App Store, Distribution & Marketing",
+      "topics": [
+        "Privacy & Security",
+        "App Store, Distribution & Marketing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1476,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 3,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/110352-do-more-with-less-data/",
+      "description": "Great apps do more for people while collecting less data. Learn how three simple tips from the App Review team can help you build great experiences while minimizing data collection."
+    },
+    {
+      "id": "tech-talks-110353",
+      "event": "tech-talks",
+      "year": 2022,
+      "eventContentId": 110353,
+      "title": "Meet high-performance MapKit JS",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/110353",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110353",
+      "duration": 543,
+      "publishedAt": "2022-12-01T10:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ],
+      "primaryTopic": "Maps & Location",
+      "topics": [
+        "Maps & Location"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1112,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 1,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/110353-meet-high-performance-mapkit-js/",
+      "description": "MapKit JS provides a JavaScript API to embed interactive Apple Maps directly into your webpages or apps across different platforms and operating systems, including iOS and Android. Learn about the latest features to help improve load performance and make your web and native apps more responsive and faster — all while giving you more control."
+    },
+    {
+      "id": "tech-talks-110356",
+      "event": "tech-talks",
+      "year": 2023,
+      "eventContentId": 110356,
+      "title": "What's new for enterprise developers",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/110356",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110356",
+      "duration": 2111,
+      "publishedAt": "2023-02-01T08:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Business & Education",
+      "topics": [
+        "Business & Education"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 5223,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/110356-what-s-new-for-enterprise-developers/",
+      "description": "Discover how you can build compelling apps for your business on iOS, iPadOS, macOS, and watchOS. We'll take you through a curated overview of the latest updates to Apple platforms and explore relevant features that you can use to create engaging enterprise apps to transform workflows, inform business decisions, and boost employee productivity."
+    },
+    {
+      "id": "tech-talks-110358",
+      "event": "tech-talks",
+      "year": 2023,
+      "eventContentId": 110358,
+      "title": "Get started with app discovery and marketing",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/110358",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110358",
+      "duration": 1343,
+      "publishedAt": "2023-02-28T08:30:00-08:00",
+      "platforms": [],
+      "primaryTopic": "App Store, Distribution & Marketing",
+      "topics": [
+        "Business & Education",
+        "App Store, Distribution & Marketing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 3441,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 4,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/110358-get-started-with-app-discovery-and-marketing/",
+      "description": "Learn how you can improve the discovery of your app on the App Store. We’ll explore the different ways people find apps on the App Store and show you how to make your own app more discoverable. Discover the elements of a great product page, the role of search, referral traffic, and promotional features you can use to encourage new downloads."
+    },
+    {
+      "id": "tech-talks-110361",
+      "event": "tech-talks",
+      "year": 2023,
+      "eventContentId": 110361,
+      "title": "Make the most of custom product pages",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/110361",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110361",
+      "duration": 1013,
+      "publishedAt": "2023-02-28T08:30:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "App Store, Distribution & Marketing",
+      "topics": [
+        "Business & Education",
+        "App Store, Distribution & Marketing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2335,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 3,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/110361-make-the-most-of-custom-product-pages/",
+      "description": "Discover how you can maximize the effectiveness of your custom product pages on the App Store. We’ll cover best practices, provide data-based recommendations, and share success stories from developers who have used custom product pages to reach specific audiences."
+    },
+    {
+      "id": "tech-talks-110364",
+      "event": "tech-talks",
+      "year": 2023,
+      "eventContentId": 110364,
+      "title": "Explore App Store pricing upgrades",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/110364",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110364",
+      "duration": 1735,
+      "publishedAt": "2023-05-02T07:00:00-07:00",
+      "platforms": [],
+      "primaryTopic": "App Store, Distribution & Marketing",
+      "topics": [
+        "App Store, Distribution & Marketing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 4360,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 4,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/110364-explore-app-store-pricing-upgrades/",
+      "description": "Learn about the newest pricing capabilities available on the App Store. We’ll walk through enhanced global pricing, new tools to manage pricing by storefront, additional price points, and global equalization. We’ll also share configuration examples."
+    },
+    {
+      "id": "tech-talks-110365",
+      "event": "tech-talks",
+      "year": 2023,
+      "eventContentId": 110365,
+      "title": "Measure and improve acquisition with App Analytics",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/110365",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110365",
+      "duration": 1211,
+      "publishedAt": "2023-05-03T07:00:00-07:00",
+      "platforms": [],
+      "primaryTopic": "App Store, Distribution & Marketing",
+      "topics": [
+        "App Store, Distribution & Marketing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 3128,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 4,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/110365-measure-and-improve-acquisition-with-app-analytics/",
+      "description": "Learn how App Analytics can help you better understand user acquisition, so you can make data‑informed decisions. Explore ways to find out where your users are coming from and review definitions of key metrics. We’ll also discuss how peer group benchmarks and other features can help improve your acquisition strategy."
+    },
+    {
+      "id": "tech-talks-110366",
+      "event": "tech-talks",
+      "year": 2023,
+      "eventContentId": 110366,
+      "title": "Use Game Center to boost discovery and engagement",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/110366",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110366",
+      "duration": 1218,
+      "publishedAt": "2023-05-03T07:00:00-07:00",
+      "platforms": [],
+      "primaryTopic": "App Store, Distribution & Marketing",
+      "topics": [
+        "App Store, Distribution & Marketing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2959,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 4,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/110366-use-game-center-to-boost-discovery-and-engagement/",
+      "description": "Explore how Game Center, Apple’s social gaming network, helps players discover and engage with your game. Learn about Game Center and App Store features that can help you connect with new players and keep them coming back, as well as Apple technologies designed to deliver powerful gameplay experiences."
+    },
+    {
+      "id": "tech-talks-111369",
+      "event": "tech-talks",
+      "year": 2024,
+      "eventContentId": 111369,
+      "title": "Connect your project to Xcode Cloud",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/111369",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111369",
+      "duration": 484,
+      "publishedAt": "2024-02-08T08:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Developer Tools",
+      "topics": [
+        "Developer Tools"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1284,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 2,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/111369-connect-your-project-to-xcode-cloud/",
+      "description": "Unlock the benefits of continuous integration and delivery in Xcode Cloud with source code management tools. Learn how to set up Xcode Cloud with a self-hosted source control management provider like GitHub Enterprise, troubleshoot common issues, and explore key project maintenance tips."
+    },
+    {
+      "id": "tech-talks-111372",
+      "event": "tech-talks",
+      "year": 2023,
+      "eventContentId": 111372,
+      "title": "Bring your high-end game to iPhone 15 Pro",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/111372",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111372",
+      "duration": 1017,
+      "publishedAt": "2023-11-09T08:00:00-08:00",
+      "platforms": [
+        "iOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2522,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 1,
+      "codeSnippetCount": 2,
+      "path": "sessions/tech-talks/111372-bring-your-high-end-game-to-iphone-15-pro/",
+      "description": "Discover how the power of A17 Pro can help you maximize your game on iPhone 15 Pro and iPhone 15 Pro Max. We’ll share best practices and technical resources, and explore ways to optimize game performance, input, and asset management."
+    },
+    {
+      "id": "tech-talks-111373",
+      "event": "tech-talks",
+      "year": 2023,
+      "eventContentId": 111373,
+      "title": "Learn performance best practices for Metal shaders",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/111373",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111373",
+      "duration": 1560,
+      "publishedAt": "2023-11-09T08:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 3514,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/111373-learn-performance-best-practices-for-metal-shaders/",
+      "description": "Discover how you can improve Metal shader performance using some of the latest advancements in Apple GPUs. Learn to reduce a shader’s execution time by configuring function constants, and investigate ways to increase compiler optimization with function groups. Find out how to save run time by improving the shader’s execution and ability to use resources in parallel. Explore the Apple family 9 GPU features and take advantage of hardware acceleration for ray tracing."
+    },
+    {
+      "id": "tech-talks-111374",
+      "event": "tech-talks",
+      "year": 2023,
+      "eventContentId": 111374,
+      "title": "Discover new Metal profiling tools for M3 and A17 Pro",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/111374",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111374",
+      "duration": 2036,
+      "publishedAt": "2023-11-09T08:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 4532,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/111374-discover-new-metal-profiling-tools-for-m3-and-a17-pro/",
+      "description": "Learn how the new profiling tools in Xcode 15 can help you achieve the best Metal performance on Apple family 9 GPUs. Discover how to use shader cost graphs, performance heat maps, and shader execution history tools to profile and optimize your Metal code. Find out how to use new GPU counters to optimize GPU occupancy and ray-tracing performance."
+    },
+    {
+      "id": "tech-talks-111375",
+      "event": "tech-talks",
+      "year": 2023,
+      "eventContentId": 111375,
+      "title": "Explore GPU advancements in M3 and A17 Pro",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/111375",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111375",
+      "duration": 1749,
+      "publishedAt": "2023-11-09T08:00:00-08:00",
+      "platforms": [
+        "macOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 3942,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/111375-explore-gpu-advancements-in-m3-and-a17-pro/",
+      "description": "Learn how Dynamic Caching, the next-generation shader core, hardware-accelerated ray tracing, and hardware-accelerated mesh shading of Apple family 9 GPUs can improve the performance of your Metal apps and games."
+    },
+    {
+      "id": "tech-talks-111376",
+      "event": "tech-talks",
+      "year": 2023,
+      "eventContentId": 111376,
+      "title": "Meet rule-based matchmaking in Game Center",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/111376",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111376",
+      "duration": 1026,
+      "publishedAt": "2023-11-09T08:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2462,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 5,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/111376-meet-rule-based-matchmaking-in-game-center/",
+      "description": "Learn how to incorporate the new rule-based matchmaking feature into your real-time multiplayer games. Discover how you can provide customized and flexible matchmaking to improve the quality of player matches and create a more fun and engaging experience for all players."
+    },
+    {
+      "id": "tech-talks-111377",
+      "event": "tech-talks",
+      "year": 2023,
+      "eventContentId": 111377,
+      "title": "Manage Game Center with the App Store Connect API",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/111377",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111377",
+      "duration": 716,
+      "publishedAt": "2023-12-07T09:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Developer Tools",
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1801,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/111377-manage-game-center-with-the-app-store-connect-api/",
+      "description": "Discover how you can use the App Store Connect API to automate your Game Center configurations outside of App Store Connect on the web. Find out how the API can help you create achievements and leaderboards and share them between related games using groups. And learn how to enable and configure matchmaking in multiplayer games."
+    },
+    {
+      "id": "tech-talks-111378",
+      "event": "tech-talks",
+      "year": 2024,
+      "eventContentId": 111378,
+      "title": "Adapt to changing network conditions",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/111378",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111378",
+      "duration": 536,
+      "publishedAt": "2024-02-08T08:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "watchOS"
+      ],
+      "primaryTopic": "System Services",
+      "topics": [
+        "System Services"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1331,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/111378-adapt-to-changing-network-conditions/",
+      "description": "Apple devices can connect to multiple networks at the same time. Learn how your app can automatically select the best one for an optimal experience. Explore the different types of networks and review their characteristics. And discover how to use URLSession and Network framework to best describe your needs, so the system can intelligently choose the best interface for your app at all times."
+    },
+    {
+      "id": "tech-talks-111381",
+      "event": "tech-talks",
+      "year": 2024,
+      "eventContentId": 111381,
+      "title": "Get started with Apple Pay on the Web",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/111381",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111381",
+      "duration": 1368,
+      "publishedAt": "2024-02-08T08:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "visionOS"
+      ],
+      "primaryTopic": "Safari & Web",
+      "topics": [
+        "App Services",
+        "Safari & Web"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 3887,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 6,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/111381-get-started-with-apple-pay-on-the-web/",
+      "description": "Adding Apple Pay to your website elevates your customer experience. Learn how to present Apple Pay as a payment option, validate your merchant session, and authenticate and process payments. You’ll also find out how to configure your environment, set up transactions using the Apple Pay demo site, and test your implementation."
+    },
+    {
+      "id": "tech-talks-111384",
+      "event": "tech-talks",
+      "year": 2023,
+      "eventContentId": 111384,
+      "title": "Discover the Journaling Suggestions API",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/111384",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111384",
+      "duration": 845,
+      "publishedAt": "2023-12-07T09:00:00-08:00",
+      "platforms": [
+        "iOS"
+      ],
+      "primaryTopic": "App Services",
+      "topics": [
+        "Health & Fitness",
+        "Photos & Camera",
+        "Swift",
+        "App Services"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2014,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/111384-discover-the-journaling-suggestions-api/",
+      "description": "Find out how the new Journaling Suggestions API can help people reflect on the small moments and big events in their lives though your app — all while protecting their privacy. Learn how to leverage the API to retrieve assets and metadata for journaling suggestions, invoke a picker on top of the app, let people save suggested content, and more."
+    },
+    {
+      "id": "tech-talks-111386",
+      "event": "tech-talks",
+      "year": 2024,
+      "eventContentId": 111386,
+      "title": "Improve your subscriber retention with App Store features",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/111386",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111386",
+      "duration": 1918,
+      "publishedAt": "2024-02-14T15:00:00-08:00",
+      "platforms": [],
+      "primaryTopic": "App Store, Distribution & Marketing",
+      "topics": [
+        "App Store, Distribution & Marketing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 4698,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/111386-improve-your-subscriber-retention-with-app-store-features/",
+      "description": "Learn how to minimize churn and win back subscribers on the App Store. Explore App Store data, review different types of subscriber churn, discover tools you can use to enhance your retention efforts, and learn implementation best practices."
+    },
+    {
+      "id": "tech-talks-111427",
+      "event": "tech-talks",
+      "year": 2026,
+      "eventContentId": 111427,
+      "title": "Discover the Apple Design Resources",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/111427",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111427",
+      "duration": 334,
+      "publishedAt": "2026-01-06T08:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Design",
+      "topics": [
+        "Design"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 946,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 2,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/111427-discover-the-apple-design-resources/",
+      "description": "Learn to bring your ideas to life with the Apple Design Resources. In this overview, we’ll explore the resources Apple has to offer, show you how to access them, and share quick and helpful tips for new designers."
+    },
+    {
+      "id": "tech-talks-111428",
+      "event": "tech-talks",
+      "year": 2026,
+      "eventContentId": 111428,
+      "title": "Meet agentic coding in Xcode",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/111428",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111428",
+      "duration": 263,
+      "publishedAt": "2026-02-03T09:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Developer Tools",
+      "topics": [
+        "Developer Tools"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 626,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 3,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/111428-meet-agentic-coding-in-xcode/",
+      "description": "Discover how Xcode 26.3 seamlessly integrates coding agents like OpenAI Codex and Claude Agent to work together on complex, multi-step tasks. Learn how Xcode enables coding agents to build projects, run tests, and search Apple documentation – all through the Model Context Protocol."
+    },
+    {
+      "id": "tech-talks-111431",
+      "event": "tech-talks",
+      "year": 2026,
+      "eventContentId": 111431,
+      "title": "Boost your graphics performance with the M5 and A19 GPUs",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/111431",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111431",
+      "duration": 2108,
+      "publishedAt": "2026-03-20T00:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "AI & Machine Learning",
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 4720,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/111431-boost-your-graphics-performance-with-the-m5-and-a19-gpus/",
+      "description": "Take a deep dive into the advanced graphics features of the M5 and A19 GPUs. Learn how to greatly accelerate graphics workloads for games and improve pro workflows for apps. Plus, find out how to get the best performance possible by using brand-new profiling tools to tune your apps for M5 GPUs."
+    },
+    {
+      "id": "tech-talks-111432",
+      "event": "tech-talks",
+      "year": 2026,
+      "eventContentId": 111432,
+      "title": "Accelerate your machine learning workloads with the M5 and A19 GPUs",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/111432",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111432",
+      "duration": 2066,
+      "publishedAt": "2026-03-20T00:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "macOS"
+      ],
+      "primaryTopic": "AI & Machine Learning",
+      "topics": [
+        "Graphics & Games",
+        "AI & Machine Learning"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 5586,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 1,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/111432-accelerate-your-machine-learning-workloads-with-the-m5-and-a/",
+      "description": "Discover how to take advantage of the M5 and A19 GPUs to accelerate machine learning. Find out how to use the Neural Accelerators inside each GPU core to perform accelerated tensor and matrix operations for AI training and inference, and learn how to optimize performance using the Metal debugger and Metal system trace."
+    },
+    {
+      "id": "tech-talks-111433",
+      "event": "tech-talks",
+      "year": 2026,
+      "eventContentId": 111433,
+      "title": "Prepare your app for Accessibility Nutrition Labels",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/111433",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111433",
+      "duration": 2090,
+      "publishedAt": "2026-04-22T08:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Accessibility & Inclusion",
+      "topics": [
+        "Accessibility & Inclusion"
+      ],
+      "keywords": [
+        "accessibility",
+        "inclusion",
+        "nutrition label"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 3216,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 3,
+      "codeSnippetCount": 19,
+      "path": "sessions/tech-talks/111433-prepare-your-app-for-accessibility-nutrition-labels/",
+      "description": "Learn how to prepare your app for Accessibility Nutrition Labels by supporting essential accessibility features. Discover how you can enhance interaction methods like VoiceOver and Voice Control by properly configuring accessibility labels, traits, and values for custom controls and gestures. Find out how you can support larger text sizes using Dynamic Type, and prevent content truncation with flexible layouts. And learn how to make your app design more inclusive by adopting Dark Mode, responding to preferences like Differentiate Without Color, and ensuring sufficient contrast."
+    },
+    {
+      "id": "tech-talks-201",
+      "event": "tech-talks",
+      "year": 2017,
+      "eventContentId": 201,
+      "title": "Building Apps for iPhone X",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/201",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/201",
+      "duration": 815,
+      "publishedAt": "2017-09-12T10:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "SwiftUI & UI Frameworks",
+      "topics": [
+        "SwiftUI & UI Frameworks"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2271,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 2,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/201-building-apps-for-iphone-x/",
+      "description": "iPhone X has a beautiful new screen that will make your app look great. You may need to make some changes in your app to accommodate the new screen's size and rounded corners. Learn about some common pitfalls and see how you can take advantage of iOS 11's Safe Area and layout guides to make sure your app looks the best it can."
+    },
+    {
+      "id": "tech-talks-202",
+      "event": "tech-talks",
+      "year": 2017,
+      "eventContentId": 202,
+      "title": "Updating Your App for Apple TV 4K",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/202",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/202",
+      "duration": 169,
+      "publishedAt": "2017-09-12T10:00:00-07:00",
+      "platforms": [
+        "tvOS"
+      ],
+      "primaryTopic": "SwiftUI & UI Frameworks",
+      "topics": [
+        "SwiftUI & UI Frameworks"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 360,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 2,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/202-updating-your-app-for-apple-tv-4k/",
+      "description": "Learn how to update your app for Apple TV 4K, including how to take advantage of new capabilities such as retina image support, HDR video, and the new motion capabilities of the Siri Remote."
+    },
+    {
+      "id": "tech-talks-203",
+      "event": "tech-talks",
+      "year": 2017,
+      "eventContentId": 203,
+      "title": "Updating for Apple Watch Series 3",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/203",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/203",
+      "duration": 742,
+      "publishedAt": "2017-09-12T10:00:00-07:00",
+      "platforms": [
+        "watchOS"
+      ],
+      "primaryTopic": "System Services",
+      "topics": [
+        "Health & Fitness",
+        "System Services"
+      ],
+      "keywords": [
+        "🥃",
+        "⌚️",
+        "cmaltimeter"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 1741,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 3,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/203-updating-for-apple-watch-series-3/",
+      "description": "Apple Watch Series 3 makes it easier to stay connected, even when away from your phone. Learn how to keep your app responsive over cellular connections using URLSession. Find out how to optimize your Watch app networking code to ensure that your app is always up to date and ready for use. Discover how to leverage Core Motion data from the new barometric altimeter for displaying relative altitude changes."
+    },
+    {
+      "id": "tech-talks-204",
+      "event": "tech-talks",
+      "year": 2017,
+      "eventContentId": 204,
+      "title": "iOS Storage Best Practices",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/204",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/204",
+      "duration": 533,
+      "publishedAt": "2017-09-12T10:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "System Services",
+      "topics": [
+        "System Services"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1424,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 4,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/204-ios-storage-best-practices/",
+      "description": "Learn tips for keeping your app's on-disk storage as organized and optimized as possible. See how to enable direct access to documents in your app using the new Files app in iOS 11. Gain insights into how to take inventory of your app's files and make the most of the storage capacity available to your app."
+    },
+    {
+      "id": "tech-talks-205",
+      "event": "tech-talks",
+      "year": 2017,
+      "eventContentId": 205,
+      "title": "Ensuring Beautiful Rich Links",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/205",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/205",
+      "duration": 331,
+      "publishedAt": "2017-12-21T10:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ],
+      "primaryTopic": "Safari & Web",
+      "topics": [
+        "Safari & Web"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 933,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/205-ensuring-beautiful-rich-links/",
+      "description": "Website links received in Messages can be made vastly more inviting than a simple text URL. By providing small amounts of metadata in your web pages, links to your website can include rich content such as icons, images and even video. Learn how visitors to your website can share links that look as good as your website."
+    },
+    {
+      "id": "tech-talks-206",
+      "event": "tech-talks",
+      "year": 2017,
+      "eventContentId": 206,
+      "title": "QR Code Recognition on iOS 11",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/206",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/206",
+      "duration": 556,
+      "publishedAt": "2017-12-21T10:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "Photos & Camera",
+      "topics": [
+        "Photos & Camera"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1304,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/206-qr-code-recognition-on-ios-11/",
+      "description": "iOS 11 provides built-in support to detect and handle QR codes. Discover the supported QR code types, how each type is handled by built-in Camera and Safari apps, and how Universal Links can seamlessly send users to your app when scanning your QR codes."
+    },
+    {
+      "id": "tech-talks-207",
+      "event": "tech-talks",
+      "year": 2018,
+      "eventContentId": 207,
+      "title": "Building Apps for iPhone XS, iPhone XS Max, and iPhone XR",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/207",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/207",
+      "duration": 541,
+      "publishedAt": "2018-09-12T11:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "SwiftUI & UI Frameworks",
+      "topics": [
+        "SwiftUI & UI Frameworks"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1529,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/207-building-apps-for-iphone-xs-iphone-xs-max-and-iphone-xr/",
+      "description": "If your app has already adopted safe area insets, there's not much you will need to do to update your app for iPhone XS, iPhone XS Max, and iPhone XR. Learn how to set a collection view’s section inset reference to the safe area with no code changes. Hear about an API change unique to iPhone XS Max, iPhone XR. Make sure your full-screen app is scaled correctly by using the proper number of points and the correct resolution. Defend against some common pitfalls to ensure your app provides its full feature-set to all of your customers while maintaining best practices that will save you time and effort in the future."
+    },
+    {
+      "id": "tech-talks-208",
+      "event": "tech-talks",
+      "year": 2018,
+      "eventContentId": 208,
+      "title": "Developing Complications for Apple Watch Series 4",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/208",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/208",
+      "duration": 713,
+      "publishedAt": "2018-09-12T11:00:00-07:00",
+      "platforms": [
+        "watchOS"
+      ],
+      "primaryTopic": "App Services",
+      "topics": [
+        "SwiftUI & UI Frameworks",
+        "App Services"
+      ],
+      "keywords": [
+        "🥃",
+        "⌚️",
+        "50",
+        "bezel",
+        "circular",
+        "clock kit",
+        "rectangular",
+        "timeline"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 1771,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 4,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/208-developing-complications-for-apple-watch-series-4/",
+      "description": "Complications allow people to quickly glance and stay connected with your app on the watch face throughout their day. The new Infograph and Infograph Modular watch faces on Apple Watch Series 4 allow all new ways to create engaging, full-color complications. Learn about the new complication families and how to create complications that take advantage of the incredible new display of Apple Watch Series 4."
+    },
+    {
+      "id": "tech-talks-209",
+      "event": "tech-talks",
+      "year": 2018,
+      "eventContentId": 209,
+      "title": "Bringing Your Apps to the New iPad Pro",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/209",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/209",
+      "duration": 527,
+      "publishedAt": "2018-10-30T10:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "SwiftUI & UI Frameworks",
+      "topics": [
+        "SwiftUI & UI Frameworks"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1487,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/209-bringing-your-apps-to-the-new-ipad-pro/",
+      "description": "Take advantage of the all-screen design of the new iPad Pro by building your app with the iOS 12.1 SDK and making sure it appears correctly with the display's rounded corners and home indicator. Learn about the new common inset compatibility mode and what it means for apps running in multitasking mode. Find out how to provide support for Face ID and for the second generation Apple Pencil with its double-tap feature."
+    },
+    {
+      "id": "tech-talks-210",
+      "event": "tech-talks",
+      "year": 2019,
+      "eventContentId": 210,
+      "title": "What's New in Sharing",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/210",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/210",
+      "duration": 395,
+      "publishedAt": "2019-11-20T00:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "App Services",
+      "topics": [
+        "SwiftUI & UI Frameworks",
+        "App Services"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1006,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/210-what-s-new-in-sharing/",
+      "description": "The Share Sheet provides a convenient way to share information from your current context with other apps, people, and services. Discover the details on using the Link Presentation framework to present shared URLs in a rich and consistent way, how to create a Share Extension configured to recommend recipients managed by your messaging app in the Share Sheet UI, and learn best practices for ensuring your users sharing experience is optimized for all platforms."
+    },
+    {
+      "id": "tech-talks-301",
+      "event": "tech-talks",
+      "year": 2019,
+      "eventContentId": 301,
+      "title": "Introducing Extensible Enterprise SSO",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/301",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/301",
+      "duration": 1113,
+      "publishedAt": "2019-09-10T00:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ],
+      "primaryTopic": "System Services",
+      "topics": [
+        "Business & Education",
+        "Privacy & Security",
+        "Safari & Web",
+        "System Services"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2945,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/301-introducing-extensible-enterprise-sso/",
+      "description": "Single Sign-on ensures your enterprise can implement modern authentication methods without sacrificing ease of use. Learn how to use the Authentication Services framework to expose your redirect and credential SSO services in Safari and native apps on macOS Catalina, iPadOS 13, and iOS 13. Whether you're building your own extension or looking to deploy one internally, you'll learn everything you need to know about extension creation, deployment, and configuration, to use within your own native apps."
+    },
+    {
+      "id": "tech-talks-401",
+      "event": "tech-talks",
+      "year": 2017,
+      "eventContentId": 401,
+      "title": "Web Inspector Walkthrough",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/401",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/401",
+      "duration": 353,
+      "publishedAt": "2017-12-21T10:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS"
+      ],
+      "primaryTopic": "Safari & Web",
+      "topics": [
+        "Developer Tools",
+        "Safari & Web"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 759,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/401-web-inspector-walkthrough/",
+      "description": "Web Inspector is packed with features designed to make inspection, debugging and delivery of your web content a breeze. Get an overview of the latest features including major layouts, tabs, buttons, and other capabilities that make Web Inspector a powerful web development tool."
+    },
+    {
+      "id": "tech-talks-402",
+      "event": "tech-talks",
+      "year": 2017,
+      "eventContentId": 402,
+      "title": "Using Web Inspector with tvOS Apps",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/402",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/402",
+      "duration": 241,
+      "publishedAt": "2017-12-21T10:00:00-08:00",
+      "platforms": [
+        "macOS",
+        "tvOS"
+      ],
+      "primaryTopic": "Developer Tools",
+      "topics": [
+        "Safari & Web",
+        "SwiftUI & UI Frameworks",
+        "Developer Tools"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 537,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/402-using-web-inspector-with-tvos-apps/",
+      "description": "With Web Inspector, you can debug web content on several Apple platforms, including tvOS. This video introduces you to Web Inspector's powerful debugging capabilities, and takes you through the features designed to accelerate debugging of TVML content in your tvOS app."
+    },
+    {
+      "id": "tech-talks-501",
+      "event": "tech-talks",
+      "year": 2017,
+      "eventContentId": 501,
+      "title": "Authoring 4K and HDR HLS Streams",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/501",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/501",
+      "duration": 225,
+      "publishedAt": "2017-09-12T10:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "tvOS"
+      ],
+      "primaryTopic": "Audio & Video",
+      "topics": [
+        "Audio & Video"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 484,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 1,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/501-authoring-4k-and-hdr-hls-streams/",
+      "description": "4K and HDR technologies enable the creation of amazing cinematic video experiences and stunning picture quality. Learn about how to support these new formats, and how to properly author your playlists to enable playback of these types of streams."
+    },
+    {
+      "id": "tech-talks-502",
+      "event": "tech-talks",
+      "year": 2017,
+      "eventContentId": 502,
+      "title": "An Introduction to HDR Video",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/502",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/502",
+      "duration": 398,
+      "publishedAt": "2017-09-12T10:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS"
+      ],
+      "primaryTopic": "Audio & Video",
+      "topics": [
+        "Audio & Video"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 924,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/502-an-introduction-to-hdr-video/",
+      "description": "Dolby Vision and HDR10 enable amazing new video viewing experiences with a wider color gamut and deeper contrast. Learn how this new technology works, and what the differences are between Dolby Vision and HDR10."
+    },
+    {
+      "id": "tech-talks-503",
+      "event": "tech-talks",
+      "year": 2017,
+      "eventContentId": 503,
+      "title": "Introduction to AVDisplayManager",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/503",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/503",
+      "duration": 380,
+      "publishedAt": "2017-10-30T10:00:00-07:00",
+      "platforms": [
+        "tvOS"
+      ],
+      "primaryTopic": "Audio & Video",
+      "topics": [
+        "Audio & Video"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 832,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 1,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/503-introduction-to-avdisplaymanager/",
+      "description": "Starting with tvOS 11.2, Apple TV 4K can automatically switch video display modes to match the native frame rate and dynamic range of video content. With tvOS 11.3, Apple TV (4th generation) can also automatically switch video display modes to match native frame rate. Learn how to make sure your app and video content are ready to support this capability using AVDisplayManager and AVDisplayCriteria."
+    },
+    {
+      "id": "tech-talks-504",
+      "event": "tech-talks",
+      "year": 2019,
+      "eventContentId": 504,
+      "title": "Apple TV Distribution Program Overview",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/504",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/504",
+      "duration": 249,
+      "publishedAt": "2019-05-10T00:00:00-07:00",
+      "platforms": [
+        "tvOS"
+      ],
+      "primaryTopic": "Audio & Video",
+      "topics": [
+        "Audio & Video"
+      ],
+      "keywords": [
+        "apple tv",
+        "apple tv app",
+        "apple tv distribution program",
+        "apple tv set top box",
+        "authentication",
+        "authentication context",
+        "set top box",
+        "set top box api",
+        "set top box apis",
+        "set top box authentication overview",
+        "single sign on",
+        "sso",
+        "stb",
+        "stb api",
+        "tv",
+        "tv",
+        "video subscriber account",
+        "video subscriber account framework",
+        "vsa",
+        "zero sign on",
+        "zso"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 615,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 1,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/504-apple-tv-distribution-program-overview/",
+      "description": "Learn about the Apple TV Distribution Program and the engineering requirements and business benefits that come with enrollment. Familiarize yourself with the authentication context, VideoSubscriberAccount framework, and the Set Top Box APIs."
+    },
+    {
+      "id": "tech-talks-505",
+      "event": "tech-talks",
+      "year": 2019,
+      "eventContentId": 505,
+      "title": "Apple TV Authentication Context",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/505",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/505",
+      "duration": 327,
+      "publishedAt": "2019-05-10T00:01:00-07:00",
+      "platforms": [
+        "tvOS"
+      ],
+      "primaryTopic": "Audio & Video",
+      "topics": [
+        "Audio & Video"
+      ],
+      "keywords": [
+        "apple tv",
+        "apple tv app",
+        "apple tv distribution program",
+        "apple tv set top box",
+        "authentication",
+        "authentication context",
+        "set top box",
+        "set top box api",
+        "set top box apis",
+        "set top box authentication overview",
+        "single sign on",
+        "sso",
+        "stb",
+        "stb api",
+        "tv",
+        "tv",
+        "video subscriber account",
+        "video subscriber account framework",
+        "vsa",
+        "zero sign on",
+        "zso"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 791,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 1,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/505-apple-tv-authentication-context/",
+      "description": "Learn about the Apple TV authentication context, what it does, and how to start building this web service. Learn how the authentication context fits into the development for the Apple TV Distribution Program."
+    },
+    {
+      "id": "tech-talks-506",
+      "event": "tech-talks",
+      "year": 2019,
+      "eventContentId": 506,
+      "title": "Apple TV Set Top Box APIs",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/506",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/506",
+      "duration": 187,
+      "publishedAt": "2019-05-10T00:02:00-07:00",
+      "platforms": [
+        "tvOS"
+      ],
+      "primaryTopic": "Audio & Video",
+      "topics": [
+        "Audio & Video"
+      ],
+      "keywords": [
+        "apple tv",
+        "apple tv app",
+        "apple tv distribution program",
+        "apple tv set top box",
+        "authentication",
+        "authentication context",
+        "set top box",
+        "set top box api",
+        "set top box apis",
+        "set top box authentication overview",
+        "single sign on",
+        "sso",
+        "stb",
+        "stb api",
+        "tv",
+        "tv",
+        "video subscriber account",
+        "video subscriber account framework",
+        "vsa",
+        "zero sign on",
+        "zso"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 514,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 1,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/506-apple-tv-set-top-box-apis/",
+      "description": "Learn about the Set Top Box APIs, what they do, and how they help make the Apple TV setup easier for your customers. Learn how this framework fits into the development for the Apple TV Distribution Program."
+    },
+    {
+      "id": "tech-talks-507",
+      "event": "tech-talks",
+      "year": 2019,
+      "eventContentId": 507,
+      "title": "Apple TV VSA Framework",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/507",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/507",
+      "duration": 121,
+      "publishedAt": "2019-05-10T00:03:00-07:00",
+      "platforms": [
+        "tvOS"
+      ],
+      "primaryTopic": "Audio & Video",
+      "topics": [
+        "Audio & Video"
+      ],
+      "keywords": [
+        "apple tv",
+        "apple tv app",
+        "apple tv distribution program",
+        "apple tv set top box",
+        "authentication",
+        "authentication context",
+        "set top box",
+        "set top box api",
+        "set top box apis",
+        "set top box authentication overview",
+        "single sign on",
+        "sso",
+        "stb",
+        "stb api",
+        "tv",
+        "tv",
+        "video subscriber account",
+        "video subscriber account framework",
+        "vsa",
+        "zero sign on",
+        "zso"
+      ],
+      "hasTranscript": false,
+      "transcriptWordCount": 0,
+      "availableLanguages": [
+        "kor",
+        "zho"
+      ],
+      "resourceCount": 1,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/507-apple-tv-vsa-framework/",
+      "description": "Learn about the VideoSubscriberAccount framework, what it does, and how to integrate this framework with your app. Learn how this framework fits into the development for the Apple TV Distribution Program."
+    },
+    {
+      "id": "tech-talks-508",
+      "event": "tech-talks",
+      "year": 2019,
+      "eventContentId": 508,
+      "title": "Apple TV App and Universal Search Video Integration - Part 1",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/508",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/508",
+      "duration": 921,
+      "publishedAt": "2019-07-25T00:00:00-07:00",
+      "platforms": [
+        "tvOS"
+      ],
+      "primaryTopic": "Audio & Video",
+      "topics": [
+        "Audio & Video"
+      ],
+      "keywords": [
+        "apple tv",
+        "apple tv app",
+        "metadata feeds",
+        "tv",
+        "tv app",
+        "tv provider",
+        "universal search",
+        "universal services",
+        "video integration"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 2837,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/508-apple-tv-app-and-universal-search-video-integration-part-1/",
+      "description": "This video provides a feature overview of the Apple TV App and Universal Search services, and introduces how 3rd party video services integrate with them through metadata feeds. Requirements for providing metadata about your movies, tv shows, and sporting events are detailed — in addition how to control the presentation of your video service for your content in the Apple TV App. To help get you started with the development of metadata feeds, tools and resources available are also covered."
+    },
+    {
+      "id": "tech-talks-509",
+      "event": "tech-talks",
+      "year": 2019,
+      "eventContentId": 509,
+      "title": "Apple TV App and Universal Search Video Integration - Part 2",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/509",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/509",
+      "duration": 355,
+      "publishedAt": "2019-07-25T00:00:00-07:00",
+      "platforms": [
+        "tvOS"
+      ],
+      "primaryTopic": "Audio & Video",
+      "topics": [
+        "Audio & Video"
+      ],
+      "keywords": [
+        "apple tv",
+        "apple tv app",
+        "metadata feeds",
+        "tv",
+        "tv app",
+        "tv provider",
+        "universal search",
+        "universal services",
+        "video integration"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 1114,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/509-apple-tv-app-and-universal-search-video-integration-part-2/",
+      "description": "Get an overview of the client-side integration required for 3rd party applications that are participating with the Apple TV App. Learn about onboarding and testing. See how to register subscriptions for your customers, report playback data as content is watched in your applications, and support deep-linking to your video content."
+    },
+    {
+      "id": "tech-talks-601",
+      "event": "tech-talks",
+      "year": 2017,
+      "eventContentId": 601,
+      "title": "Face Tracking with ARKit",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/601",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/601",
+      "duration": 445,
+      "publishedAt": "2017-09-12T10:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "Spatial Computing",
+      "topics": [
+        "Spatial Computing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1131,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 2,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/601-face-tracking-with-arkit/",
+      "description": "ARKit and iPhone X enable a revolutionary capability for robust face tracking in AR apps. See how your app can detect the position, topology, and expression of the user’s face, all with high accuracy and in real time. Learn about applying live selfie effects and see how to use facial expressions to drive a 3D character."
+    },
+    {
+      "id": "tech-talks-602",
+      "event": "tech-talks",
+      "year": 2017,
+      "eventContentId": 602,
+      "title": "Metal 2 on A11 - Overview",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/602",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/602",
+      "duration": 970,
+      "publishedAt": "2017-09-12T10:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2277,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 4,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/602-metal-2-on-a11-overview/",
+      "description": "The seamless integration of Metal 2 with the A11 Bionic chip lets your apps and games realize entirely new levels of performance and capability. Get introduced to powerful new API features and GPU-driven capabilities of Metal 2 on A11, including imageblocks, tile shading, enhancements to raster order groups, imageblock sample coverage control, and threadgroup sharing. Understand the architecture of the Apple-designed A11 GPU and see how it creates opportunities for advances in rendering, compute, and machine learning techniques."
+    },
+    {
+      "id": "tech-talks-603",
+      "event": "tech-talks",
+      "year": 2017,
+      "eventContentId": 603,
+      "title": "Metal 2 on A11 - Imageblocks",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/603",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/603",
+      "duration": 628,
+      "publishedAt": "2017-09-12T10:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1683,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 3,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/603-metal-2-on-a11-imageblocks/",
+      "description": "Imageblocks enable Metal 2 apps to define and manipulate custom per-pixel data structures in the high-bandwidth tile memory of the A11 GPU. Learn how imageblocks can pass data between the fragment and tile stages of a render pass and unlock sophisticated rendering techniques such as approximate order-independent transparency."
+    },
+    {
+      "id": "tech-talks-604",
+      "event": "tech-talks",
+      "year": 2017,
+      "eventContentId": 604,
+      "title": "Metal 2 on A11 - Tile Shading",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/604",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/604",
+      "duration": 584,
+      "publishedAt": "2017-09-12T10:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1518,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 3,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/604-metal-2-on-a11-tile-shading/",
+      "description": "Tile shading is a new Metal 2 pipeline stage allowing apps to combine rendering and compute operations into a single render pass while sharing imageblock data and threadgroup memory. Understand how to create a tile shading pipeline, and see how it leverages the high-bandwidth tile memory of the A11 GPU."
+    },
+    {
+      "id": "tech-talks-605",
+      "event": "tech-talks",
+      "year": 2017,
+      "eventContentId": 605,
+      "title": "Metal 2 on A11 - Raster Order Groups",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/605",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/605",
+      "duration": 656,
+      "publishedAt": "2017-09-12T10:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1832,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 3,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/605-metal-2-on-a11-raster-order-groups/",
+      "description": "Raster order groups allow Metal 2 apps to precisely control the order of parallel fragment shader threads accessing the same pixel coordinates. Learn how A11 extends raster order groups with support for multiple groups and adds new capabilities for accessing threadgroup memory. See how you can improve the performance of single pass deferred shading and order independent transparency."
+    },
+    {
+      "id": "tech-talks-606",
+      "event": "tech-talks",
+      "year": 2017,
+      "eventContentId": 606,
+      "title": "Metal 2 on A11 - Imageblock Sample Coverage Control",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/606",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/606",
+      "duration": 796,
+      "publishedAt": "2017-09-12T10:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2008,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 1,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/606-metal-2-on-a11-imageblock-sample-coverage-control/",
+      "description": "Imageblock sample coverage control provides access to multisample tracking data within a tile shader, enabling development of custom MSAA resolve algorithms and more. Understand how the A11 GPU tracks unique samples, then explore an example that optimizes rendering of dense geometry through surface aggregation."
+    },
+    {
+      "id": "tech-talks-608",
+      "event": "tech-talks",
+      "year": 2019,
+      "eventContentId": 608,
+      "title": "Metal Enhancements for A13 Bionic",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/608",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/608",
+      "duration": 2148,
+      "publishedAt": "2019-09-10T00:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 5715,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 1,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/608-metal-enhancements-for-a13-bionic/",
+      "description": "Metal brings powerful API features and GPU-driven capabilities to A13 Bionic including sparse textures, vertex amplification, Tier 2 argument buffers, ASTC HDR, and more. Understand the architectural improvements of the Apple-designed A13 Bionic and learn how the latest Metal enhancements advance the state of the art for modern apps and games."
+    },
+    {
+      "id": "tech-talks-702",
+      "event": "tech-talks",
+      "year": 2018,
+      "eventContentId": 702,
+      "title": "What's New in Core NFC",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/702",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/702",
+      "duration": 372,
+      "publishedAt": "2018-09-12T11:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "App Services",
+      "topics": [
+        "App Services"
+      ],
+      "keywords": [
+        "nfc"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 774,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 5,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/702-what-s-new-in-core-nfc/",
+      "description": "Background reading of NFC tags is a new feature for iPhone XS, iPhone XS Max, and iPhone XR. Learn how to associate your app with an NFC tag to make it even easier for people to benefit from the NFC capabilities of new iPhones."
+    },
+    {
+      "id": "tech-talks-703",
+      "event": "tech-talks",
+      "year": 2018,
+      "eventContentId": 703,
+      "title": "GDPR & CloudKit",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/703",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/703",
+      "duration": 812,
+      "publishedAt": "2018-09-12T11:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Privacy & Security",
+      "topics": [
+        "System Services",
+        "Privacy & Security"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2042,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 1,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/703-gdpr-cloudkit/",
+      "description": "The General Data Protection Regulation (GDPR) is a European Union regulation that requires developers to give users visibility and control over the personal data you store on their behalf. Learn how to use new and existing CloudKit APIs to build privacy into your apps and make sure customers can exercise their GDPR rights."
+    },
+    {
+      "id": "tech-talks-801",
+      "event": "tech-talks",
+      "year": 2017,
+      "eventContentId": 801,
+      "title": "Designing for iPhone X",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/801",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/801",
+      "duration": 770,
+      "publishedAt": "2017-09-12T10:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "Design",
+      "topics": [
+        "Audio & Video",
+        "SwiftUI & UI Frameworks",
+        "Design"
+      ],
+      "keywords": [
+        "design",
+        "ios",
+        "ios 11",
+        "layout",
+        "ui",
+        "uikit",
+        "user experience",
+        "user interface",
+        "visual design"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 1721,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 1,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/801-designing-for-iphone-x/",
+      "description": "iPhone X features an all-screen Super Retina display, providing more space to display content and create deeply immersive experiences. Learn how to design your app or game to look and feel great on iPhone X, and all iOS devices."
+    },
+    {
+      "id": "tech-talks-802",
+      "event": "tech-talks",
+      "year": 2018,
+      "eventContentId": 802,
+      "title": "Designing for Apple Watch Series 4",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/802",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/802",
+      "duration": 566,
+      "publishedAt": "2018-09-12T11:00:00-07:00",
+      "platforms": [
+        "watchOS"
+      ],
+      "primaryTopic": "Design",
+      "topics": [
+        "Design"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1367,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 2,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/802-designing-for-apple-watch-series-4/",
+      "description": "Apple Watch Series 4 provides new opportunities for designers and developers to do more with their apps. Series 4 watches have new displays with larger dimensions, and other enhancements that allow developers to deliver richer and more immersive experiences."
+    },
+    {
+      "id": "tech-talks-803",
+      "event": "tech-talks",
+      "year": 2018,
+      "eventContentId": 803,
+      "title": "Designing for Subscription Success",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/803",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/803",
+      "duration": 552,
+      "publishedAt": "2018-09-12T11:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "tvOS"
+      ],
+      "primaryTopic": "App Store, Distribution & Marketing",
+      "topics": [
+        "Design",
+        "App Store, Distribution & Marketing"
+      ],
+      "keywords": [
+        "design",
+        "design best practices",
+        "design patterns",
+        "sampling",
+        "subscription",
+        "subscriptions"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 1397,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 2,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/803-designing-for-subscription-success/",
+      "description": "Providing a great subscription experience within your app makes it easier to acquire new subscribers. Learn how to more clearly communicate the value of your subscriptions, streamline your sign up flow, and make subscriptions appealing and effortless."
+    }
+  ]
+}

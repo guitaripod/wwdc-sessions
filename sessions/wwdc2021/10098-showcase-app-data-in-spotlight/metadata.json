@@ -1,0 +1,120 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10098",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10098,
+  "title": "Showcase app data in Spotlight",
+  "description": "Discover how Core Data can surface data from your app in Spotlight with as little as two lines of code. Learn how to make that data discoverable in Spotlight search and to customize how it is presented to people on device. Lastly, we’ll show you how to implement full-text search within your app, driven completely with the data indexed by Spotlight.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10098",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10098",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "app data in spotlight",
+    "attributeset",
+    "coredata",
+    "core data",
+    "cssearchableitemattributeset",
+    "cssearchqueryobject",
+    "define attribute set",
+    "forstorewith:coordinator",
+    "indexing event loop",
+    "index update notifications",
+    "nscoredata",
+    "nscoredatacorespotlightdelegate",
+    "nscoredatacorespotlightdelegate.indexdidupdatenotification",
+    "nsexpression",
+    "query string",
+    "search my app in spotlight",
+    "search query",
+    "spotlight",
+    "spotlight display name",
+    "spotlightindexer",
+    "spotlight search",
+    "startspotlightindexing",
+    "stopspotlightindexing",
+    "tag",
+    "tags app"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 993,
+  "hasTranscript": true,
+  "transcriptWordCount": 2198,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10098/5/E1444CD9-0588-4D3B-8AFA-EB590BA9CD23/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10098/5/E1444CD9-0588-4D3B-8AFA-EB590BA9CD23/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10098/5/E1444CD9-0588-4D3B-8AFA-EB590BA9CD23/downloads/wwdc2021-10098_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10098/5/E1444CD9-0588-4D3B-8AFA-EB590BA9CD23/downloads/wwdc2021-10098_hd.mp4",
+    "duration": 993
+  },
+  "codeSnippets": [
+    {
+      "title": "Creating a NSCoreDataCoreSpotlightDelegate",
+      "language": "swift",
+      "startTimeSeconds": 160,
+      "code": "let spotlightDelegate = NSCoreDataCoreSpotlightDelegate(forStoreWith: description,\n                                                        coordinator: coordinator)\nspotlightDelegate.startSpotlightIndexing()"
+    },
+    {
+      "title": "Adding a NSCoreDataCoreSpotlightDelegate to a CoreDataStack",
+      "language": "swift",
+      "startTimeSeconds": 324,
+      "code": "import Foundation\nimport CoreData\n\nclass CoreDataStack {\n    private (set) var spotlightIndexer: TagsSpotlightDelegate?\n\n    lazy var persistentContainer: NSPersistentContainer = {\n        let container = NSPersistentContainer(name: \"Tags\")\n\n        guard let description = container.persistentStoreDescriptions.first else {\n            fatalError(\"###\\(#function): Failed to retrieve a persistent store description.\")\n        }\n\n        description.type = NSSQLiteStoreType\n        description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)\n        description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)\n\n        container.loadPersistentStores(completionHandler: { (_, error) in\n            guard let error = error as NSError? else { return }\n            fatalError(\"###\\(#function): Failed to load persistent stores:\\(error)\")\n        })\n\n        spotlightIndexer = TagsSpotlightDelegate(forStoreWith: description,\n                                                 coordinator: container.persistentStoreCoordinator)\n\n        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy\n\n        container.viewContext.automaticallyMergesChangesFromParent = true\n        do {\n            try container.viewContext.setQueryGenerationFrom(.current)\n        } catch {\n            fatalError(\"###\\(#function): Failed to pin viewContext to the current generation:\\(error)\")\n        }\n\n        return container\n    }()\n}"
+    },
+    {
+      "title": "Creating TagsSpotlightDelegate",
+      "language": "swift",
+      "startTimeSeconds": 384,
+      "code": "class TagsSpotlightDelegate: NSCoreDataCoreSpotlightDelegate {\n    override func domainIdentifier() -> String {\n        return \"com.example.apple-samplecode.tags\"\n    }\n\n    override func indexName() -> String? {\n        return \"tags-index\"\n    }\n\n    override func attributeSet(for object: NSManagedObject) -> CSSearchableItemAttributeSet? {\n        if let photo = object as? Photo {\n            let attributeSet = CSSearchableItemAttributeSet(contentType: .image)\n            attributeSet.identifier = photo.uniqueName\n            attributeSet.displayName = photo.userSpecifiedName\n            attributeSet.thumbnailData = photo.thumbnail?.data\n            for case let tag as Tag in photo.tags ?? [] {\n                if let name = tag.name {\n                    if attributeSet.keywords != nil {\n                        attributeSet.keywords?.append(name)\n                    } else {\n                        attributeSet.keywords = [name]\n                    }\n                }\n            }\n            return attributeSet\n        } else if let object as? Tag {\n            let attributeSet = CSSearchableItemAttributeSet(contentType: .text)\n            attributeSet.displayName = tag.name\n            return attributeSet\n        }\n        return nil\n    }\n}"
+    },
+    {
+      "title": "Customizing PhotosViewController with Spotlight delegate functionality",
+      "language": "swift",
+      "startTimeSeconds": 591,
+      "code": "class PhotosViewController: UICollectionViewController {\n    @IBOutlet var generateDefaultPhotosItem: UIBarButtonItem!\n    @IBOutlet var deleteSpotlightIndexItem: UIBarButtonItem!\n    @IBOutlet var startStopIndexingItem: UIBarButtonItem!\n\n    private var isTagging = false\n    private var spotlightFoundItems = [CSSearchableItem]()\n    private static let defaultSectionNumber = 0\n    private var searchQuery: CSSearchQuery?\n    var spotlightUpdateObserver: NSObjectProtocol?\n\n    private lazy var spotlightIndexer: TagsSpotlightDelegate = {\n        let appDelegate = UIApplication.shared.delegate as? AppDelegate\n        return appDelegate!.coreDataStack.spotlightIndexer!\n    }()\n\n    override func viewDidLoad() {\n        super.viewDidLoad()\n\n        // ...\n\n        toggleSpotlightIndexing(enabled: true)\n    }\n\n    @IBAction func deleteSpotlightIndex(_ sender: Any) {\n        toggleSpotlightIndexing(enabled: false)\n\n        spotlightIndexer.deleteSpotlightIndex(completionHandler: { (error) in\n            if let err = error {\n                print(\"Encountered error while deleting Spotlight index data, \\(err.localizedDescription)\")\n            } else {\n                print(\"Finished deleting Spotlight index data.\")\n            }\n        })\n    }\n\n    @IBAction func toggleSpotlightIndexingEnabled(_ sender: Any) {\n        if spotlightIndexer.isIndexingEnabled == true {\n            toggleSpotlightIndexing(enabled: false)\n        } else {\n            toggleSpotlightIndexing(enabled: true)\n        }\n    }\n\n    private func toggleSpotlightIndexing(enabled: Bool) {\n        if enabled {\n            spotlightIndexer.startSpotlightIndexing()\n            startStopIndexingItem.image = UIImage(systemName: \"pause\")\n        } else {\n            spotlightIndexer.stopSpotlightIndexing()\n            startStopIndexingItem.image = UIImage(systemName: \"play\")\n        }\n\n        let center = NotificationCenter.default\n        if spotlightIndexer.isIndexingEnabled && spotlightUpdateObserver == nil {\n            let queue = OperationQueue.main\n            spotlightUpdateObserver = center.addObserver(forName: NSCoreDataCoreSpotlightDelegate.indexDidUpdateNotification,\n                                                         object: nil,\n                                                         queue: queue) { (notification) in\n                let userInfo = notification.userInfo\n                let storeID = userInfo?[NSStoreUUIDKey] as? String\n                let token = userInfo?[NSPersistentHistoryTokenKey] as? NSPersistentHistoryToken\n                if let storeID = storeID, let token = token {\n                    print(\"Store with identifier \\(storeID) has completed \",\n                          \"indexing and has processed history token up through \\(String(describing: token)).\")\n                }\n            }\n        } else {\n            if spotlightUpdateObserver == nil {\n                return\n            }\n            center.removeObserver(spotlightUpdateObserver as Any)\n        }\n    }\n}"
+    },
+    {
+      "title": "Adding full-text search to PhotosViewController",
+      "language": "swift",
+      "startTimeSeconds": 793,
+      "code": "extension PhotosViewController: UISearchResultsUpdating {\n    func updateSearchResults(for searchController: UISearchController) {\n        guard let userInput = searchController.searchBar.text, !userInput.isEmpty else {\n            dataProvider.performFetch(predicate: nil)\n            reloadCollectionView()\n            return\n        }\n\n        let escapedString = userInput.replacingOccurrences(of: \"\\\\\", with: \"\\\\\\\\\").replacingOccurrences(of: \"\\\"\", with: \"\\\\\\\"\")\n        let queryString = \"(keywords == \\\"\" + escapedString + \"*\\\"cwdt)\"\n\n        searchQuery = CSSearchQuery(queryString: queryString, attributes: [\"displayName\", \"keywords\"])\n\n        // Set a handler for results. This will be a called 0 or more times.\n        searchQuery?.foundItemsHandler = { items in\n            DispatchQueue.main.async {\n                self.spotlightFoundItems += items\n            }\n        }\n\n        // Set a completion handler. This will be called once.\n        searchQuery?.completionHandler = { error in\n            guard error == nil else {\n                print(\"CSSearchQuery completed with error: \\(error!).\")\n                return\n            }\n\n            DispatchQueue.main.async {\n                self.dataProvider.performFetch(searchableItems: self.spotlightFoundItems)\n                self.reloadCollectionView()\n                self.spotlightFoundItems.removeAll()\n            }\n        }\n\n        // Start the query.\n        searchQuery?.start()\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Showcase App Data in Spotlight",
+      "url": "https://developer.apple.com/documentation/CoreData/showcase-app-data-in-spotlight",
+      "type": "samplecode",
+      "description": "Index app data so users can find it by using Spotlight search.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreData/showcase-app-data-in-spotlight",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreData/showcase-app-data-in-spotlight.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10098-showcase-app-data-in-spotlight/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10098-showcase-app-data-in-spotlight/metadata.json",
+    "readme": "sessions/wwdc2021/10098-showcase-app-data-in-spotlight/README.md",
+    "transcript": "sessions/wwdc2021/10098-showcase-app-data-in-spotlight/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10098-showcase-app-data-in-spotlight/transcript.json"
+  }
+}

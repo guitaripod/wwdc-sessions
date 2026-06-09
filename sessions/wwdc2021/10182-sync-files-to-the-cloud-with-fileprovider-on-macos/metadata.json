@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10182",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10182,
+  "title": "Sync files to the cloud with FileProvider on macOS",
+  "description": "Find out how you can use the FileProvider framework to build a comprehensive cloud sync solution. We’ll show you how to approach building a file provider extension, and explore how you can effortlessly integrate your extension with file system features such as safe save, disk space management, Finder integration and more.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10182",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10182",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 1069,
+  "hasTranscript": true,
+  "transcriptWordCount": 2486,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10182/5/9EA118F5-E717-489F-816F-8BF659B0D8AF/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10182/5/9EA118F5-E717-489F-816F-8BF659B0D8AF/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10182/5/9EA118F5-E717-489F-816F-8BF659B0D8AF/downloads/wwdc2021-10182_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10182/5/9EA118F5-E717-489F-816F-8BF659B0D8AF/downloads/wwdc2021-10182_hd.mp4",
+    "duration": 1069
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Replicated File Provider extension",
+      "url": "https://developer.apple.com/documentation/FileProvider/replicated-file-provider-extension",
+      "type": "documentation",
+      "description": "Build a File Provider extension that syncs the local copies of your files with your remote storage.",
+      "sosumiURL": "https://sosumi.ai/documentation/FileProvider/replicated-file-provider-extension",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/FileProvider/replicated-file-provider-extension.json"
+    },
+    {
+      "title": "Synchronizing files using file provider extensions",
+      "url": "https://developer.apple.com/documentation/FileProvider/synchronizing-files-using-file-provider-extensions",
+      "type": "samplecode",
+      "description": "Make remote files available in macOS and iOS, and synchronize their states by using file provider extensions.",
+      "sosumiURL": "https://sosumi.ai/documentation/FileProvider/synchronizing-files-using-file-provider-extensions",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/FileProvider/synchronizing-files-using-file-provider-extensions.json"
+    },
+    {
+      "title": "File Provider",
+      "url": "https://developer.apple.com/documentation/FileProvider",
+      "type": "documentation",
+      "description": "An extension other apps use to access files and folders managed by your app and synced with a remote storage.",
+      "sosumiURL": "https://sosumi.ai/documentation/FileProvider",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/FileProvider.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10182-sync-files-to-the-cloud-with-fileprovider-on-macos/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10182-sync-files-to-the-cloud-with-fileprovider-on-macos/metadata.json",
+    "readme": "sessions/wwdc2021/10182-sync-files-to-the-cloud-with-fileprovider-on-macos/README.md",
+    "transcript": "sessions/wwdc2021/10182-sync-files-to-the-cloud-with-fileprovider-on-macos/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10182-sync-files-to-the-cloud-with-fileprovider-on-macos/transcript.json"
+  }
+}

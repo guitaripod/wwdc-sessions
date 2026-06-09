@@ -1,0 +1,47 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10675",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10675,
+  "title": "Augment reality",
+  "description": null,
+  "url": "https://developer.apple.com/news/?id=pwa22b4z",
+  "sosumiURL": "https://sosumi.ai/news/?id=pwa22b4z",
+  "type": "Article",
+  "publishedAt": "2020-06-22T00:00:02-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games",
+    "Spatial Computing"
+  ],
+  "primaryTopic": null,
+  "duration": null,
+  "hasTranscript": false,
+  "transcriptWordCount": 0,
+  "availableLanguages": [],
+  "media": {},
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "ARKit",
+      "url": "https://developer.apple.com/documentation/ARKit",
+      "type": "documentation",
+      "description": "Integrate hardware sensing features to produce augmented reality apps and games.",
+      "sosumiURL": "https://sosumi.ai/documentation/ARKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ARKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10675-augment-reality/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10675-augment-reality/metadata.json",
+    "readme": "sessions/wwdc2020/10675-augment-reality/README.md"
+  }
+}

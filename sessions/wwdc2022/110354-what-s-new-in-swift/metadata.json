@@ -1,0 +1,346 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-110354",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 110354,
+  "title": "What's new in Swift",
+  "description": "Join us for an update on Swift. We'll take you through performance improvements, explore more secure and extensible Swift packages, and share advancements in Swift concurrency. We'll also introduce you to Swift Regex, better generics, and other tools built into the language to help you write more flexible & expressive code.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/110354",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/110354",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Essentials",
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 2296,
+  "hasTranscript": true,
+  "transcriptWordCount": 6283,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110354/5/BFF5625D-B11D-4C9D-B82B-E7A89A669475/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110354/5/BFF5625D-B11D-4C9D-B82B-E7A89A669475/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110354/5/BFF5625D-B11D-4C9D-B82B-E7A89A669475/downloads/wwdc2022-110354_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110354/5/BFF5625D-B11D-4C9D-B82B-E7A89A669475/downloads/wwdc2022-110354_hd.mp4",
+    "duration": 2296
+  },
+  "codeSnippets": [
+    {
+      "title": "Command plugins",
+      "language": "swift",
+      "startTimeSeconds": 439,
+      "code": "@main struct MyPlugin: CommandPlugin {\n\n    func performCommand(context: PluginContext, arguments: [String]) throws {\n        let process = try Process.run(doccExec, arguments: doccArgs)\n        process.waitUntilExit()\n    }\n\n}"
+    },
+    {
+      "title": "Build tool plugins",
+      "language": "swift",
+      "startTimeSeconds": 514,
+      "code": "import PackagePlugin\n\n@main struct MyCoolPlugin: BuildToolPlugin {\n    func createBuildCommands(context: TargetBuildContext) throws -> [Command] {\n        // Run some command\n    }\n}"
+    },
+    {
+      "title": "Implementing a build tool plugin",
+      "language": "swift",
+      "startTimeSeconds": 519,
+      "code": "import PackagePlugin\n\n@main struct MyCoolPlugin: BuildToolPlugin {\n    func createBuildCommands(context: TargetBuildContext) throws -> [Command] {\n\n        let generatedSources = context.pluginWorkDirectory.appending(\"GeneratedSources\")\n\n        return [\n            .buildCommand(\n                displayName: \"Running MyTool\",\n                executable: try context.tool(named: \"mycooltool\").path,\n                arguments: [\"create\"],\n                outputFilesDirectory: generatedSources)\n        ]\n    }\n}"
+    },
+    {
+      "title": "Module disambiguation with module aliases",
+      "language": "swift",
+      "startTimeSeconds": 563,
+      "code": "let package = Package(\n        name: \"MyStunningApp\",\n        dependencies: [\n            .package(url: \"https://.../swift-metrics.git\"),\n            .package(url: \"https://.../swift-log.git\")\n        ],\n        products: [\n            .executable(name: \"MyStunningApp\", targets: [\"MyStunningApp\"])\n        ],\n        targets: [\n            .executableTarget(\n                name: \"MyStunningApp\",\n                dependencies: [\n                    .product(name: \"Logging\", \n                             package: \"swift-log\"),\n                    .product(name: \"Metrics\", \n                             package: \"swift-metrics\",\n                             moduleAliases: [\"Logging\": \"MetricsLogging\"]),\n  ])])"
+    },
+    {
+      "title": "Distinguishing between modules with the same name",
+      "language": "swift",
+      "startTimeSeconds": 582,
+      "code": "// MyStunningApp\n\nimport Logging           // from swift-log\nimport MetricsLogging    // from swift-metrics\n\nlet swiftLogger = Logging.Logger()\n\nlet metricsLogger = MetricsLogging.Logger()"
+    },
+    {
+      "title": "Example set of protocols",
+      "language": "swift",
+      "startTimeSeconds": 669,
+      "code": "public protocol NonEmptyProtocol: Collection\n    where Element == C.Element, \n        Index == C.Index {\n    associatedtype C: Collection\n}\n\npublic protocol MultiPoint {\n    associatedtype C: CoordinateSystem\n    typealias P = Self.C.P\n\n    associatedtype X: NonEmptyProtocol \n        where X.C: NonEmptyProtocol, \n            X.Element == Self.P\n}\n\npublic protocol CoordinateSystem {\n    associatedtype P: Point where Self.P.C == Self\n    associatedtype S: Size where Self.S.C == Self\n    associatedtype L: Line where Self.L.C == Self\n    associatedtype B: BoundingBox where Self.B.C == Self\n}\n\npublic protocol Line: MultiPoint {}\n\npublic protocol Size {\n    associatedtype C: CoordinateSystem where Self.C.S == Self\n}\n\npublic protocol BoundingBox {\n    associatedtype C: CoordinateSystem\n    typealias P = Self.C.P\n    typealias S = Self.C.S\n}\n\npublic protocol Point {\n    associatedtype C: CoordinateSystem where Self.C.P == Self\n}"
+    },
+    {
+      "title": "Memory safety in Swift",
+      "language": "swift",
+      "startTimeSeconds": 794,
+      "code": "var numbers = [3, 2, 1]\n\nnumbers.removeAll(where: { number in\n    number == numbers.count \n})"
+    },
+    {
+      "title": "Thread safety in Swift",
+      "language": "swift",
+      "startTimeSeconds": 850,
+      "code": "var numbers = [3, 2, 1]\n\nTask { numbers.append(0) } \n\nnumbers.removeLast()"
+    },
+    {
+      "title": "A distributed actor player and a distributed function",
+      "language": "swift",
+      "startTimeSeconds": 954,
+      "code": "distributed actor Player {\n\n    var ai: PlayerBotAI?\n    var gameState: GameState\n\n    distributed func makeMove() -> GameMove {\n        return ai.decideNextMove(given: &gameState)\n    }\n}"
+    },
+    {
+      "title": "A distributed actor call",
+      "language": "swift",
+      "startTimeSeconds": 980,
+      "code": "func endOfRound(players: [Player]) async throws {\n    // Have each of the players make their move\n    for player in players {\n        let move = try await player.makeMove()\n    }\n}"
+    },
+    {
+      "title": "Optional unwrapping",
+      "language": "swift",
+      "startTimeSeconds": 1212,
+      "code": "if let mailmapURL = mailmapURL {\n\n    mailmapLines = try String(contentsOf: mailmapURL).split(separator: \"\\n\")\n\n}"
+    },
+    {
+      "title": "Optional unwrapping with long variable names",
+      "language": "swift",
+      "startTimeSeconds": 1229,
+      "code": "if let workingDirectoryMailmapURL = workingDirectoryMailmapURL {\n\n    mailmapLines = try String(contentsOf: workingDirectoryMailmapURL).split(separator: \"\\n\")\n\n}"
+    },
+    {
+      "title": "Cryptic abbreviated variable names",
+      "language": "swift",
+      "startTimeSeconds": 1235,
+      "code": "if let wdmu = workingDirectoryMailmapURL {\n\n    mailmapLines = try String(contentsOf: wdmu).split(separator: \"\\n\")\n\n}"
+    },
+    {
+      "title": "Unwrapping optionals in Swift 5.7",
+      "language": "swift",
+      "startTimeSeconds": 1246,
+      "code": "if let workingDirectoryMailmapURL {\n\n    mailmapLines = try String(contentsOf: workingDirectoryMailmapURL).split(separator: \"\\n\")\n\n}\n\nguard let workingDirectoryMailmapURL else { return }\n\nmailmapLines = try String(contentsOf: workingDirectoryMailmapURL).split(separator: \"\\n\")"
+    },
+    {
+      "title": "Closure type inference",
+      "language": "swift",
+      "startTimeSeconds": 1267,
+      "code": "let entries = mailmapLines.compactMap { line in\n\n    try? parseLine(line)\n\n}\n\nfunc parseLine(_ line: Substring) throws -> MailmapEntry { … }"
+    },
+    {
+      "title": "Type inference for complicated closures",
+      "language": "swift",
+      "startTimeSeconds": 1293,
+      "code": "let entries = mailmapLines.compactMap { line in\n    do {        \n        return try parseLine(line)\n    }\n    catch {\n        logger.warn(\"Mailmap error: \\(error)\")\n        return nil\n    }\n}\n\n\nfunc parseLine(_ line: Substring) throws -> MailmapEntry { … }"
+    },
+    {
+      "title": "Mismatches that are harmless in C...",
+      "language": "swift",
+      "startTimeSeconds": 1335,
+      "code": "// Mismatches that are harmless in C…\nint mailmap_get_size(mailmap_t *map);\nvoid mailmap_truncate(mailmap_t *map, unsigned *sizeInOut);\n\nvoid remove_duplicates(mailmap_t *map) {\n    int size = mailmap_get_size(map);\n    size -= move_duplicates_to_end(map);\n    mailmap_truncate(map, &size);\n}\n\n\n// …cause problems in Swift.\nfunc removeDuplicates(from map: UnsafeMutablePointer<mailmap_t>) {\n    var size = mailmap_get_size(map)\n    size -= moveDuplicatesToEnd(map)\n    mailmap_truncate(map, &size)\n}"
+    },
+    {
+      "title": "Better interoperability with C-family code",
+      "language": "swift",
+      "startTimeSeconds": 1353,
+      "code": "func removeDuplicates(from map: UnsafeMutablePointer<mailmap_t>) {\n    var size = mailmap_get_size(map)\n    size -= moveDuplicatesToEnd(map)\n    withUnsafeMutablePointer(to: &size) { signedSizePtr in\n        signedSizePtr.withMemoryRebound(to: UInt32.self, capacity: 1) { unsignedSizePtr in\n            mailmap_truncate(map, unsignedSizePtr)\n        }\n    }\n}"
+    },
+    {
+      "title": "String parsing is hard",
+      "language": "swift",
+      "startTimeSeconds": 1421,
+      "code": "func parseLine(_ line: Substring) throws -> MailmapEntry {\n    func trim(_ str: Substring) -> Substring {\n        String(str).trimmingCharacters(in: .whitespacesAndNewlines)[...]\n    }\n\n    let activeLine = trim(line[..<(line.firstIndex(of: \"#\") ?? line.endIndex)])\n    guard let nameEnd = activeLine.firstIndex(of: \"<\"),\n          let emailEnd = activeLine[nameEnd...].firstIndex(of: \">\"),\n          trim(activeLine[activeLine.index(after: emailEnd)...]).isEmpty else {\n        throw MailmapError.badLine\n    }\n\n    let name = nameEnd == activeLine.startIndex ? nil : trim(activeLine[..<nameEnd])\n    let email = activeLine[activeLine.index(after: nameEnd)..<emailEnd]\n\n    return MailmapEntry(name: name, email: email)\n}"
+    },
+    {
+      "title": "String parsing is still hard with better indexing",
+      "language": "swift",
+      "startTimeSeconds": 1445,
+      "code": "func parseLine(_ line: Substring) throws -> MailmapEntry {\n    func trim(_ str: Substring) -> Substring {\n        String(str).trimmingCharacters(in: .whitespacesAndNewlines)[...]\n    }\n\n    let activeLine = trim(line[..<(line.firstIndex(of: \"#\") ?? line.endIndex)])\n    guard let nameEnd = activeLine.firstIndex(of: \"<\"),\n          let emailEnd = activeLine[nameEnd...].firstIndex(of: \">\"),\n          trim(activeLine[(emailEnd + 1)...]).isEmpty else {\n        throw MailmapError.badLine\n    }\n\n    let name = nameEnd == activeLine.startIndex ? nil : trim(activeLine[..<nameEnd])\n    let email = activeLine[(nameEnd + 1)..<emailEnd]\n\n    return MailmapEntry(name: name, email: email)\n}"
+    },
+    {
+      "title": "What's the problem?",
+      "language": "swift",
+      "startTimeSeconds": 1460,
+      "code": "let line = \"Becca Royal-Gordon <beccarg@apple.com>       # Comment\"\n\nfunc parseLine(_ line: Substring) throws -> MailmapEntry {\n    func trim(_ str: Substring) -> Substring {\n        String(str).trimmingCharacters(in: .whitespacesAndNewlines)[...]\n    }\n\n    let activeLine = trim(line[..<(line.firstIndex(of: \"#\") ?? line.endIndex)])\n    guard let nameEnd = activeLine.firstIndex(of: \"<\"),\n          let emailEnd = activeLine[nameEnd...].firstIndex(of: \">\"),\n          trim(activeLine[activeLine.index(after: emailEnd)...]).isEmpty else {\n        throw MailmapError.badLine\n    }\n\n    let name = nameEnd == activeLine.startIndex ? nil : trim(activeLine[..<nameEnd])\n    let email = activeLine[activeLine.index(after: nameEnd)..<emailEnd]\n\n    return MailmapEntry(name: name, email: email)\n}"
+    },
+    {
+      "title": "Drawing a picture",
+      "language": "swift",
+      "startTimeSeconds": 1495,
+      "code": "\"Becca Royal-Gordon <beccarg@apple.com>       # Comment\"\n\n/  space name space <      email      > space # or EOL /\n/  \\h* ( [^<#]+? )?? \\h* < ( [^>#]+ ) > \\h* (?: #|\\Z)  /"
+    },
+    {
+      "title": "Swift Regex using a literal",
+      "language": "swift",
+      "startTimeSeconds": 1510,
+      "code": "func parseLine(_ line: Substring) throws -> MailmapEntry {\n\n    let regex = /\\h*([^<#]+?)??\\h*<([^>#]+)>\\h*(?:#|\\Z)/\n\n    guard let match = line.prefixMatch(of: regex) else {\n        throw MailmapError.badLine\n    }\n\n    return MailmapEntry(name: match.1, email: match.2)\n}"
+    },
+    {
+      "title": "Did a cat walk across your keyboard?",
+      "language": "swift",
+      "startTimeSeconds": 1546,
+      "code": "/\\h*([^<#]+?)??\\h*<([^>#]+)>\\h*(?:#|\\Z)/"
+    },
+    {
+      "title": "Regex builder",
+      "language": "swift",
+      "startTimeSeconds": 1594,
+      "code": "import RegexBuilder\n\nlet regex = Regex {\n    ZeroOrMore(.horizontalWhitespace)\n\n    Optionally {\n        Capture(OneOrMore(.noneOf(\"<#\")))\n    }\n        .repetitionBehavior(.reluctant)\n\n    ZeroOrMore(.horizontalWhitespace)\n\n    \"<\"\n    Capture(OneOrMore(.noneOf(\">#\")))\n    \">\"\n\n    ZeroOrMore(.horizontalWhitespace)\n    ChoiceOf {\n       \"#\"\n       Anchor.endOfSubjectBeforeNewline\n    }\n}"
+    },
+    {
+      "title": "Turn a regex into a reusable component",
+      "language": "swift",
+      "startTimeSeconds": 1625,
+      "code": "struct MailmapLine: RegexComponent {\n    @RegexComponentBuilder\n    var regex: Regex<(Substring, Substring?, Substring)> {\n        ZeroOrMore(.horizontalWhitespace)\n\n        Optionally {\n            Capture(OneOrMore(.noneOf(\"<#\")))\n        }\n            .repetitionBehavior(.reluctant)\n\n        ZeroOrMore(.horizontalWhitespace)\n\n        \"<\"\n        Capture(OneOrMore(.noneOf(\">#\")))\n        \">\"\n\n        ZeroOrMore(.horizontalWhitespace)\n        ChoiceOf {\n           \"#\"\n            Anchor.endOfSubjectBeforeNewline\n        }\n    }\n}"
+    },
+    {
+      "title": "Use regex literals within a builder",
+      "language": "swift",
+      "startTimeSeconds": 1650,
+      "code": "struct MailmapLine: RegexComponent {\n    @RegexComponentBuilder\n    var regex: Regex<(Substring, Substring?, Substring)> {\n        ZeroOrMore(.horizontalWhitespace)\n\n        Optionally {\n            Capture(OneOrMore(.noneOf(\"<#\")))\n        }\n            .repetitionBehavior(.reluctant)\n\n        ZeroOrMore(.horizontalWhitespace)\n\n        \"<\" \n        Capture(OneOrMore(.noneOf(\">#\")))\n        \">\" \n\n        ZeroOrMore(.horizontalWhitespace)\n        /#|\\Z/\n   }\n}"
+    },
+    {
+      "title": "Use Date parsers within Regex builders",
+      "language": "swift",
+      "startTimeSeconds": 1659,
+      "code": "struct DatedMailmapLine: RegexComponent {\n    @RegexComponentBuilder\n    var regex: Regex<(Substring, Substring?, Substring, Date)> {\n        ZeroOrMore(.horizontalWhitespace)\n\n        Optionally {\n            Capture(OneOrMore(.noneOf(\"<#\")))\n        }\n            .repetitionBehavior(.reluctant)\n\n        ZeroOrMore(.horizontalWhitespace)\n\n        \"<\" \n        Capture(OneOrMore(.noneOf(\">#\")))\n        \">\" \n\n        ZeroOrMore(.horizontalWhitespace)\n\n        Capture(.iso8601.year().month().day())\n\n        ZeroOrMore(.horizontalWhitespace)\n        /#|\\Z/\n   }\n}"
+    },
+    {
+      "title": "Matching methods and strongly type captures in Regex",
+      "language": "swift",
+      "startTimeSeconds": 1669,
+      "code": "func parseLine(_ line: Substring) throws -> MailmapEntry {\n\n    let regex = /\\h*([^<#]+?)??\\h*<([^>#]+)>\\h*(?:#|\\Z)/\n    // or let regex = MailmapLine()\n\n    guard let match = line.prefixMatch(of: regex) else {\n        throw MailmapError.badLine\n    }\n\n    return MailmapEntry(name: match.1, email: match.2)\n}"
+    },
+    {
+      "title": "A use case for protocols",
+      "language": "swift",
+      "startTimeSeconds": 1742,
+      "code": "/// Used in the commit list UI\nstruct HashedMailmap {\n    var replacementNames: [String: String] = [:]\n}\n\n/// Used in the mailmap editor UI\nstruct OrderedMailmap {\n    var entries: [MailmapEntry] = []\n}\n\nprotocol Mailmap {\n    mutating func addEntry(_ entry: MailmapEntry)\n}\n\nextension HashedMailmap: Mailmap { … }\nextension OrderedMailmap: Mailmap { … }"
+    },
+    {
+      "title": "Using the Mailmap protocol",
+      "language": "swift",
+      "startTimeSeconds": 1766,
+      "code": "func addEntries1<Map: Mailmap>(_ entries: Array<MailmapEntry>, to mailmap: inout Map) {\n    for entry in entries {\n        mailmap.addEntry(entry)\n    }\n}\n\nfunc addEntries2(_ entries: Array<MailmapEntry>, to mailmap: inout Mailmap) {\n    for entry in entries {\n        mailmap.addEntry(entry)\n    }\n}"
+    },
+    {
+      "title": "`Mailmap` and `any Mailmap`",
+      "language": "swift",
+      "startTimeSeconds": 1865,
+      "code": "func addEntries1<Map: Mailmap>(_ entries: Array<MailmapEntry>, to mailmap: inout Map) {\n    for entry in entries {\n        mailmap.addEntry(entry)\n    }\n}\n\nfunc addEntries2(_ entries: Array<MailmapEntry>, to mailmap: inout any Mailmap) {\n    for entry in entries {\n        mailmap.addEntry(entry)\n    }\n}"
+    },
+    {
+      "title": "Improvements to `any` types",
+      "language": "swift",
+      "startTimeSeconds": 1877,
+      "code": "extension Mailmap {\n    mutating func mergeEntries<Other: Mailmap>(from other: Other) { … }\n}\n\nfunc mergeMailmaps(_ a: any Mailmap, _ b: any Mailmap) -> any Mailmap {\n    var copy = a\n    copy.mergeEntries(from: b)\n    return a\n}"
+    },
+    {
+      "title": "More improvements to `any` types",
+      "language": "swift",
+      "startTimeSeconds": 1941,
+      "code": "protocol Mailmap: Equatable {\n    mutating func addEntry(_ entry: MailmapEntry)\n}\n\nfunc addEntries2(_ entries: Array<MailmapEntry>, to mailmap: inout any Mailmap) {\n    for entry in entries {\n        mailmap.addEntry(entry)\n    }\n}"
+    },
+    {
+      "title": "Using Collection as an `any` type",
+      "language": "swift",
+      "startTimeSeconds": 1974,
+      "code": "protocol Mailmap: Equatable {\n    mutating func addEntry(_ entry: MailmapEntry)\n}\n\nfunc addEntries2(_ entries: any Collection<MailmapEntry>, to mailmap: inout any Mailmap) {\n    for entry in entries {\n        mailmap.addEntry(entry)\n    }\n}"
+    },
+    {
+      "title": "Primary associated types",
+      "language": "swift",
+      "startTimeSeconds": 1984,
+      "code": "protocol Collection<Element>: Sequence {\n    associatedtype Index: Comparable\n    associatedtype Iterator: IteratorProtocol<Element>\n    associatedtype SubSequence: Collection<Element>\n                                    where SubSequence.Index == Index,\n                                          SubSequence.SubSequence == SubSequence\n\n    associatedtype Element\n}"
+    },
+    {
+      "title": "Using primary associated types in Collection",
+      "language": "swift",
+      "startTimeSeconds": 2022,
+      "code": "func addEntries1<Entries: Collection<MailmapEntry>, Map: Mailmap>(_ entries: Entries, to mailmap: inout Map) {\n    for entry in entries {\n        mailmap.addEntry(entry)\n    }\n}\n\nfunc addEntries2(_ entries: any Collection<MailmapEntry>, to mailmap: inout any Mailmap) {\n    for entry in entries {\n        mailmap.addEntry(entry)\n    }\n}\n\nextension Collection<MailmapEntry> { … }"
+    },
+    {
+      "title": "Example of type erasing wrappers",
+      "language": "swift",
+      "startTimeSeconds": 2075,
+      "code": "struct AnySprocket: Sprocket {\n    private class Base { … }\n    private class Box<S: Sprocket>: Base { … }\n    private var box: Base\n\n    // …dozens of lines of code you hate\n    // having to maintain…\n}"
+    },
+    {
+      "title": "Replace boxes with built-in `any` types",
+      "language": "swift",
+      "startTimeSeconds": 2078,
+      "code": "struct AnySprocket: Sprocket {\n    private var box: any Sprocket\n\n    // …fewer lines of code you hate\n    // having to maintain…\n}"
+    },
+    {
+      "title": "Or try type aliases",
+      "language": "swift",
+      "startTimeSeconds": 2084,
+      "code": "typealias AnySprocket = any Sprocket"
+    },
+    {
+      "title": "`any` types have important limitations",
+      "language": "swift",
+      "startTimeSeconds": 2109,
+      "code": "protocol Mailmap: Equatable {\n    mutating func addEntry(_ entry: MailmapEntry)\n}\n\nfunc areMailmapsIdentical(_ a: any Mailmap, _ b: any Mailmap) -> Bool {\n    return a == b\n}"
+    },
+    {
+      "title": "Using generic types vs. `any` types",
+      "language": "swift",
+      "startTimeSeconds": 2144,
+      "code": "func addEntries1<Entries: Collection<MailmapEntry>, Map: Mailmap>(_ entries: Entries, to mailmap: inout Map) {\n    for entry in entries {\n        mailmap.addEntry(entry)\n    }\n}\n\nfunc addEntries2(_ entries: any Collection<MailmapEntry>, to mailmap: inout any Mailmap) {\n    for entry in entries {\n        mailmap.addEntry(entry)\n    }\n}"
+    },
+    {
+      "title": "`some Mailmap` and `any Mailmap`",
+      "language": "swift",
+      "startTimeSeconds": 2200,
+      "code": "func addEntries1<Entries: Collection<MailmapEntry>>(_ entries: Entries, to mailmap: inout some Mailmap) {\n    for entry in entries {\n        mailmap.addEntry(entry)\n    }\n}\n\nfunc addEntries2(_ entries: any Collection<MailmapEntry>, to mailmap: inout any Mailmap) {\n    for entry in entries {\n        mailmap.addEntry(entry)\n    }\n}"
+    },
+    {
+      "title": "`some Mailmap` and `any Mailmap` with Collection and primary associated types",
+      "language": "swift",
+      "startTimeSeconds": 2210,
+      "code": "func addEntries1(_ entries: some Collection<MailmapEntry>, to mailmap: inout some Mailmap) {\n    for entry in entries {\n        mailmap.addEntry(entry)\n    }\n}\n\nfunc addEntries2(_ entries: any Collection<MailmapEntry>, to mailmap: inout any Mailmap) {\n    for entry in entries {\n        mailmap.addEntry(entry)\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Celebrating learning experiences from the 2021 Swift Mentorship Program",
+      "url": "https://www.swift.org/blog/mentorship-2022/",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "Contribute to Swift",
+      "url": "https://www.swift.org/contributing/",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "Swift Mentorship Program",
+      "url": "https://swift.org/mentorship/",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Diversity in Swift",
+      "url": "https://swift.org/diversity/",
+      "type": "documentation",
+      "description": null
+    }
+  ],
+  "path": "sessions/wwdc2022/110354-what-s-new-in-swift/",
+  "files": {
+    "metadata": "sessions/wwdc2022/110354-what-s-new-in-swift/metadata.json",
+    "readme": "sessions/wwdc2022/110354-what-s-new-in-swift/README.md",
+    "transcript": "sessions/wwdc2022/110354-what-s-new-in-swift/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/110354-what-s-new-in-swift/transcript.json"
+  }
+}

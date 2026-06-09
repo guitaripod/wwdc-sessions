@@ -1,0 +1,63 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-235",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 235,
+  "title": "Learn more about Declarative Web Push",
+  "description": "Learn how Declarative Web Push can help you deliver notifications more reliably. Find out how to build on existing standards to be more efficient and transparent by design while retaining backwards compatibility with original Web Push.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/235",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/235",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "service workers"
+  ],
+  "topics": [
+    "Safari & Web"
+  ],
+  "primaryTopic": "Safari & Web",
+  "duration": 1167,
+  "hasTranscript": true,
+  "transcriptWordCount": 2691,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/235/4/03c1e705-ee7b-4731-9b16-f7a1a7607546/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/235/4/03c1e705-ee7b-4731-9b16-f7a1a7607546/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/235/4/03c1e705-ee7b-4731-9b16-f7a1a7607546/downloads/wwdc2025-235_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/235/4/03c1e705-ee7b-4731-9b16-f7a1a7607546/downloads/wwdc2025-235_hd.mp4",
+    "duration": 1167
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Meet Declarative Web Push",
+      "url": "https://webkit.org/blog/16535/meet-declarative-web-push/",
+      "type": "guide",
+      "description": "Declarative Web Push is more energy efficient and more private by design. It is easier for you, the web developer to use. And it’s backwards compatible with existing Web Push notifications."
+    }
+  ],
+  "path": "sessions/wwdc2025/235-learn-more-about-declarative-web-push/",
+  "files": {
+    "metadata": "sessions/wwdc2025/235-learn-more-about-declarative-web-push/metadata.json",
+    "readme": "sessions/wwdc2025/235-learn-more-about-declarative-web-push/README.md",
+    "transcript": "sessions/wwdc2025/235-learn-more-about-declarative-web-push/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/235-learn-more-about-declarative-web-push/transcript.json"
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-901",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 901,
+  "title": "What's New in Core Bluetooth",
+  "description": "Learn how to adopt privacy-enhancing changes in Core Bluetooth. Discover new possibilities with LE 2Mbps, advertising extensions, BR/EDR, and dual-mode devices. Understand how to debug your Core Bluetooth communication with the improvements to PacketLogger.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/901",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/901",
+  "type": "Video",
+  "publishedAt": "2019-06-07T15:20:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "accessories",
+    "accessory",
+    "ancs",
+    "ble",
+    "bleutooth",
+    "bluetooth",
+    "bluetooth 5",
+    "bluetooth low energy",
+    "br/edr",
+    "bt",
+    "btle",
+    "cbcentral",
+    "cbperipheral",
+    "central",
+    "characteristic",
+    "classic",
+    "corebluetooth",
+    "core bluetooth",
+    "gatt",
+    "l2cap",
+    "mfi",
+    "packetlogger",
+    "peripheral",
+    "privacy",
+    "service",
+    "throughput",
+    "wireless"
+  ],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 1875,
+  "hasTranscript": true,
+  "transcriptWordCount": 4272,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/901myoscpux9y7nry55/901/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/901myoscpux9y7nry55/901/901_sd_whats_new_in_core_bluetooth.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/901myoscpux9y7nry55/901/901_hd_whats_new_in_core_bluetooth.mp4",
+    "duration": 1875
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Using Core Bluetooth Classic",
+      "url": "https://developer.apple.com/documentation/CoreBluetooth/using-core-bluetooth-classic",
+      "type": "samplecode",
+      "description": "Discover and communicate with a Bluetooth Classic device by using the Core Bluetooth APIs.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreBluetooth/using-core-bluetooth-classic",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreBluetooth/using-core-bluetooth-classic.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/901-what-s-new-in-core-bluetooth/",
+  "files": {
+    "metadata": "sessions/wwdc2019/901-what-s-new-in-core-bluetooth/metadata.json",
+    "readme": "sessions/wwdc2019/901-what-s-new-in-core-bluetooth/README.md",
+    "transcript": "sessions/wwdc2019/901-what-s-new-in-core-bluetooth/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/901-what-s-new-in-core-bluetooth/transcript.json"
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-268",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 268,
+  "title": "Profile, fix, and verify: Improve app responsiveness with Instruments",
+  "description": "Tackle app responsiveness issues with a clear workflow. Explore the Swift Concurrency instrument, Time Profiler, and System Trace to pinpoint bottlenecks. Discover how to use top functions and run comparisons to measure your improvements and confirm your fixes. And learn about other enhancements in Instruments which make each iteration of this cycle faster than ever, so you can deliver a smoother user experience in less time.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/268",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/268",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Swift",
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 1603,
+  "hasTranscript": true,
+  "transcriptWordCount": 3825,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/268/4/7d94575d-e65b-4033-811f-199586ac587a/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/268/4/7d94575d-e65b-4033-811f-199586ac587a/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/268/4/7d94575d-e65b-4033-811f-199586ac587a/downloads/wwdc2026-268_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/268/4/7d94575d-e65b-4033-811f-199586ac587a/downloads/wwdc2026-268_hd.mp4",
+    "duration": 1603
+  },
+  "codeSnippets": [
+    {
+      "title": "Add signpost interval around Lasso Selection",
+      "language": "swift",
+      "startTimeSeconds": 341,
+      "code": "// Add signpost interval around Lasso Selection\n\nimport os.signpost\n\nlet signposter = OSSignposter(subsystem: “Demo App\", category: .pointsOfInterest)\nvar lassoIntervalState: OSSignpostIntervalState? = nil\n\nfunc lassoSelectionUpdated() {\n    lassoIntervalState = signposter.beginInterval(\"Lasso Selection\")\n    // Update selection in canvas…\n}\n\nfunc lassoSelectionEnded() {\n    // Finalize lasso selection...\n    signposter.endInterval(\"Lasso Selection\", lassoIntervalState!)\n}"
+    },
+    {
+      "title": "Existentials",
+      "language": "swift",
+      "startTimeSeconds": 731,
+      "code": "// Existentials\n\nprotocol Foo { }\n\nstruct TypeA: Foo { }\nstruct TypeB: Foo { }\n\nfunc bar(_ foo: any Foo) {\n\n}"
+    },
+    {
+      "title": "Concrete Types",
+      "language": "swift",
+      "startTimeSeconds": 759,
+      "code": "// Concrete types\n\nprotocol Foo { }\n\nstruct TypeA: Foo { }\nstruct TypeB: Foo { }\n\nfunc bar(_ a: TypeA) {\n\n}\n\nfunc bar(_ b: TypeB) {\n\n}"
+    },
+    {
+      "title": "Concrete Types + Generics",
+      "language": "swift",
+      "startTimeSeconds": 766,
+      "code": "// Concrete types\n\nprotocol Foo { }\n\nstruct TypeA: Foo { }\nstruct TypeB: Foo { }\n\nfunc bar(_ a: TypeA) {\n\n}\n\nfunc bar(_ b: TypeB) {\n\n}\n\n// Generics\n\nprotocol Foo { }\n\nstruct TypeA: Foo { }\nstruct TypeB: Foo { }\n\nfunc bar<T: Foo>(_ generic: T) {\n\n}"
+    },
+    {
+      "title": "Concrete Types + Generics + Enums",
+      "language": "swift",
+      "startTimeSeconds": 769,
+      "code": "// Concrete types\n\nprotocol Foo { }\n\nstruct TypeA: Foo { }\nstruct TypeB: Foo { }\n\nfunc bar(_ a: TypeA) {\n\n}\n\nfunc bar(_ b: TypeB) {\n\n}\n\n// Generics\n\nprotocol Foo { }\n\nstruct TypeA: Foo { }\nstruct TypeB: Foo { }\n\nfunc bar<T: Foo>(_ generic: T) {\n\n}\n\n// Enums\n\nenum Foo {\n    case a(TypeA)\n    case b(TypeB)\n}\n\nstruct TypeA { }\nstruct TypeB { }\n\nfunc bar(_ enum: Foo) {\n\n}"
+    },
+    {
+      "title": "Thumbnail Rendering",
+      "language": "swift",
+      "startTimeSeconds": 1104,
+      "code": "// Thumbnail rendering\n\nlet drawingData = note.drawingData\nlet canvasImages = note.decodeCanvas()\nthumbnail = await Task(name: \"Render Thumbnail\") {\n    await renderThumbnail(drawingData: drawingData, canvasImages: canvasImages, size: CGSize(width: 300, height: 240))\n}.value"
+    },
+    {
+      "title": "Thumbnail Rendering Off Main Actor",
+      "language": "swift",
+      "startTimeSeconds": 1109,
+      "code": "// Thumbnail rendering off Main Actor\n\nlet drawingData = note.drawingData\nlet canvasImages = note.decodeCanvas()\nthumbnail = await Task(name: \"Render Thumbnail\") { @concurrent in\n    await renderThumbnail(drawingData: drawingData, canvasImages: canvasImages, size: CGSize(width: 300, height: 240))\n}.value"
+    },
+    {
+      "title": "File Saving",
+      "language": "swift",
+      "startTimeSeconds": 1452,
+      "code": "// File saving\n\nlet encoder = PropertyListEncoder()\nencoder.outputFormat = .binary\nguard let data = try? encoder.encode(snapshots) else { return }\nlet id = signposter.beginInterval(\"Writing To File\")\ntry? data.write(to: fileURL, options: .atomic)\nsignposter.endInterval(\"Writing To File\", id)"
+    },
+    {
+      "title": "File Saving off Main thread",
+      "language": "swift",
+      "startTimeSeconds": 1465,
+      "code": "// File saving\n\nTask { @concurrent in\n\tlet encoder = PropertyListEncoder()\n\tencoder.outputFormat = .binary\n\tguard let data = try? encoder.encode(snapshots) else { return }\n\tlet id = signposter.beginInterval(\"Writing To File\")\n\ttry? data.write(to: fileURL, options: .atomic)\n\tsignposter.endInterval(\"Writing To File\", id)\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Analyzing CPU profiles with call tree views",
+      "url": "https://developer.apple.com/documentation/Xcode/analyzing-cpu-profiles-with-call-tree-views",
+      "type": "documentation",
+      "description": "Use call tree visualizations to find performance bottlenecks in Instruments.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/analyzing-cpu-profiles-with-call-tree-views",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/analyzing-cpu-profiles-with-call-tree-views.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/268-profile-fix-and-verify-improve-app-responsiveness-with-instr/",
+  "files": {
+    "metadata": "sessions/wwdc2026/268-profile-fix-and-verify-improve-app-responsiveness-with-instr/metadata.json",
+    "readme": "sessions/wwdc2026/268-profile-fix-and-verify-improve-app-responsiveness-with-instr/README.md",
+    "transcript": "sessions/wwdc2026/268-profile-fix-and-verify-improve-app-responsiveness-with-instr/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/268-profile-fix-and-verify-improve-app-responsiveness-with-instr/transcript.json"
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10265",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10265,
+  "title": "Immerse your app in Spatial Audio",
+  "description": "Discover how spatial audio can help you provide a theater-like experience for media in your apps and on the web. We’ll show you how you can easily bring immersive audio to those listening with compatible hardware, and how to automatically deliver different listening experiences depending on someone’s bandwidth or connection — all with little to no change to your code. And gain recommendations on how you can tailor the experience in your app and use spatial audio to tell stories in new, exciting ways.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10265",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10265",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "atmos",
+    "audio",
+    "dolby",
+    "multichannel",
+    "multi channel",
+    "spatial",
+    "spatial audio"
+  ],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 1097,
+  "hasTranscript": true,
+  "transcriptWordCount": 2433,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10265/4/9BD45E56-F096-4BDD-AAFA-CF90B0501E1B/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10265/4/9BD45E56-F096-4BDD-AAFA-CF90B0501E1B/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10265/4/9BD45E56-F096-4BDD-AAFA-CF90B0501E1B/downloads/wwdc2021-10265_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10265/4/9BD45E56-F096-4BDD-AAFA-CF90B0501E1B/downloads/wwdc2021-10265_hd.mp4",
+    "duration": 1097
+  },
+  "codeSnippets": [
+    {
+      "title": "Spatialization Formats",
+      "language": "swift",
+      "startTimeSeconds": 415,
+      "code": "public struct AVAudioSpatializationFormats : OptionSet {\n\n    public init(rawValue: UInt)\n\n\n    public static var monoAndStereo: AVAudioSpatializationFormats { get }\n\n    public static var multichannel: AVAudioSpatializationFormats { get }\n\n    public static var monoStereoAndMultichannel: AVAudioSpatializationFormats { get }\n}"
+    },
+    {
+      "title": "AVPlayerItem and AVSampleBufferAudioRenderer",
+      "language": "swift",
+      "startTimeSeconds": 441,
+      "code": "@available(macOS 11.0, *)\nvar allowedAudioSpatializationFormats: Int32"
+    },
+    {
+      "title": "Spatial audio availability",
+      "language": "swift",
+      "startTimeSeconds": 501,
+      "code": "@available(iOS 6.0, *)\nclass AVAudioSessionPortDescription : NSObject {\n\n  @available(iOS 15.0, *)\n  var isSpatialAudioEnabled: Bool { get }\n\n }"
+    },
+    {
+      "title": "Spatial audio availability",
+      "language": "swift",
+      "startTimeSeconds": 515,
+      "code": "extension AVAudioSession {\n  @available(iOS 15.0, *)\n  class let spatialPlaybackCapabilitiesChangedNotification: NSNotification.Name\n}\n\n@available(iOS 15.0, *)\nlet AVAudioSessionSpatialAudioEnabledKey: String"
+    },
+    {
+      "title": "Control center integration",
+      "language": "swift",
+      "startTimeSeconds": 541,
+      "code": "extension AVAudioSession {\n  @available(iOS 15.0, *)\n  func setSupportsMultichannelContent(_ inValue: Bool) throws\n  @available(iOS 15.0, *)\n  var supportsMultichannelContent: Bool { get }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Core Audio",
+      "url": "https://developer.apple.com/documentation/CoreAudio",
+      "type": "documentation",
+      "description": "Use the Core Audio framework to interact with device’s audio hardware.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreAudio",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreAudio.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10265-immerse-your-app-in-spatial-audio/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10265-immerse-your-app-in-spatial-audio/metadata.json",
+    "readme": "sessions/wwdc2021/10265-immerse-your-app-in-spatial-audio/README.md",
+    "transcript": "sessions/wwdc2021/10265-immerse-your-app-in-spatial-audio/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10265-immerse-your-app-in-spatial-audio/transcript.json"
+  }
+}

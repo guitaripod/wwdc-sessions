@@ -1,0 +1,104 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10002",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10002,
+  "title": "What's new in watchOS 8",
+  "description": "watchOS 8 brings all-new opportunities to keep people up to date on their watch face. With new APIs for the Always-On Retina display and updating complications from Bluetooth devices and background delivery of HealthKit data, it's never been easier to keep your app up to date. Learn about region-based user notifications to leverage location in your app. Explore all the new enhancements to SwiftUI and watchOS that will get you excited to build your next Watch app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10002",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10002",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "watchOS"
+  ],
+  "keywords": [
+    "🥃",
+    "⌚️",
+    "altimeter",
+    "always-on",
+    "bluetooth",
+    "healthkit",
+    "isluminancereduced",
+    "location button",
+    "luminance reduced",
+    "respiratory rate",
+    "timeline"
+  ],
+  "topics": [
+    "Essentials",
+    "Health & Fitness",
+    "SwiftUI & UI Frameworks",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 1186,
+  "hasTranscript": true,
+  "transcriptWordCount": 2702,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10002/4/6AE5C57E-FF72-4A1C-B627-40969B18D70D/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10002/4/6AE5C57E-FF72-4A1C-B627-40969B18D70D/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10002/4/6AE5C57E-FF72-4A1C-B627-40969B18D70D/downloads/wwdc2021-10002_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10002/4/6AE5C57E-FF72-4A1C-B627-40969B18D70D/downloads/wwdc2021-10002_hd.mp4",
+    "duration": 1186
+  },
+  "codeSnippets": [
+    {
+      "title": "isLuminanceReduced Environment Property",
+      "language": "swift",
+      "startTimeSeconds": 169,
+      "code": "@Environment(\\.isLuminanceReduced) var isLuminanceReduced"
+    },
+    {
+      "title": "isLuminanceReduced ContentView Preview",
+      "language": "swift",
+      "startTimeSeconds": 181,
+      "code": "ContentView().environment(\\.isLuminanceReduced, true)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "UNLocationNotificationTrigger",
+      "url": "https://developer.apple.com/documentation/UserNotifications/UNLocationNotificationTrigger",
+      "type": "documentation",
+      "description": "A trigger condition that causes the system to deliver a notification when the user’s device enters or exits a geographic region you specify.",
+      "sosumiURL": "https://sosumi.ai/documentation/UserNotifications/UNLocationNotificationTrigger",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UserNotifications/UNLocationNotificationTrigger.json"
+    },
+    {
+      "title": "Updating watchOS apps with timelines",
+      "url": "https://developer.apple.com/documentation/watchOS-Apps/updating-watchos-apps-with-timelines",
+      "type": "guide",
+      "description": "Seamlessly schedule updates to your user interface, even while it’s inactive.",
+      "sosumiURL": "https://sosumi.ai/documentation/watchOS-Apps/updating-watchos-apps-with-timelines",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/watchOS-Apps/updating-watchos-apps-with-timelines.json"
+    },
+    {
+      "title": "Designing your app for the Always On state",
+      "url": "https://developer.apple.com/documentation/watchOS-Apps/designing-your-app-for-the-always-on-state",
+      "type": "guide",
+      "description": "Customize your watchOS app’s user interface for continuous display.",
+      "sosumiURL": "https://sosumi.ai/documentation/watchOS-Apps/designing-your-app-for-the-always-on-state",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/watchOS-Apps/designing-your-app-for-the-always-on-state.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10002-what-s-new-in-watchos-8/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10002-what-s-new-in-watchos-8/metadata.json",
+    "readme": "sessions/wwdc2021/10002-what-s-new-in-watchos-8/README.md",
+    "transcript": "sessions/wwdc2021/10002-what-s-new-in-watchos-8/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10002-what-s-new-in-watchos-8/transcript.json"
+  }
+}

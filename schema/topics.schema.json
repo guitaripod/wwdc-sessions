@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/topics.schema.json",
+  "title": "WWDC Topics Index",
+  "description": "Sessions grouped by Apple topic, across all events: topics.json.",
+  "type": "object",
+  "required": ["schemaVersion", "topics"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "type": "integer" },
+    "topics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["topic", "slug", "sessionCount", "sessions"],
+        "properties": {
+          "topic": { "type": "string" },
+          "slug": { "type": "string" },
+          "sessionCount": { "type": "integer" },
+          "sessions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "path", "title"],
+              "properties": {
+                "id": { "type": "string" },
+                "path": { "type": "string" },
+                "title": { "type": ["string", "null"] },
+                "event": { "type": "string" },
+                "hasTranscript": { "type": "boolean" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

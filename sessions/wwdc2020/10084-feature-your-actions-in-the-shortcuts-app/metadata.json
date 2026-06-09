@@ -1,0 +1,59 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10084",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10084,
+  "title": "Feature your actions in the Shortcuts app",
+  "description": "Learn foolproof ways to surface your app’s actions in the Shortcuts app — and help people quickly set up powerful, personalized shortcuts using system intelligence. We’ll detail how to configure your intents to appear in the new Automation Suggestions, explore how the system surfaces your app's actions for people based on their everyday app usage, and show you how you can make sure your app appears in all the right places within the Shortcuts app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10084",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10084",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "intents",
+    "intentsui",
+    "shortcuts",
+    "shortcuts app",
+    "siri",
+    "sirikit"
+  ],
+  "topics": [
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 609,
+  "hasTranscript": true,
+  "transcriptWordCount": 1731,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10084/4/E5265AB0-710D-4449-B77E-B49C282280C3/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10084/4/E5265AB0-710D-4449-B77E-B49C282280C3/wwdc2020_10084_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10084/4/E5265AB0-710D-4449-B77E-B49C282280C3/wwdc2020_10084_hd.mp4",
+    "duration": 609
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2020/10084-feature-your-actions-in-the-shortcuts-app/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10084-feature-your-actions-in-the-shortcuts-app/metadata.json",
+    "readme": "sessions/wwdc2020/10084-feature-your-actions-in-the-shortcuts-app/README.md",
+    "transcript": "sessions/wwdc2020/10084-feature-your-actions-in-the-shortcuts-app/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10084-feature-your-actions-in-the-shortcuts-app/transcript.json"
+  }
+}

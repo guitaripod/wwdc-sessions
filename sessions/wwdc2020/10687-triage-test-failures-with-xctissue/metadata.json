@@ -1,0 +1,87 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10687",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10687,
+  "title": "Triage test failures with XCTIssue",
+  "description": "Put your test failures to work: Learn how to triage and diagnose uncaught issues in your app using the latest testing APIs in Xcode. We’ll show you how to help ease your testing workflow and put failures into context to help you deliver the best quality product. For more information on designing your tests to improve triaging, see “Write tests to fail.” And check out the latest improvements to Xcode’s testing workflow by watching “Get your test results faster”, “Handle interruptions and alerts in UI tests”, and “XCTSkip your tests.”",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10687",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10687",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "test",
+    "test failure",
+    "testing",
+    "xcode",
+    "xctest",
+    "xctissue"
+  ],
+  "topics": [
+    "Swift",
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 758,
+  "hasTranscript": true,
+  "transcriptWordCount": 2019,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10687/4/9416FDA9-FC21-48ED-BBCC-ABF5C5A9B0DA/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10687/4/9416FDA9-FC21-48ED-BBCC-ABF5C5A9B0DA/wwdc2020_10687_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10687/4/9416FDA9-FC21-48ED-BBCC-ABF5C5A9B0DA/wwdc2020_10687_hd.mp4",
+    "duration": 758
+  },
+  "codeSnippets": [
+    {
+      "title": "Implement a custom test assertion using XCTIssue",
+      "language": "swift",
+      "startTimeSeconds": 592,
+      "code": "func assertSomething(about data: Data,\n                         file: StaticString = #filePath,\n                         line: UInt = #line) {\n\n        // Call out to custom validation function.\n        if !isValid(data) {\n\n            // Create issue, declare with var for mutability.\n            var issue = XCTIssue(type: .assertionFailure, compactDescription: \"Invalid data\")\n\n            // Attach the invalid data.\n            issue.add(XCTAttachment(data: data))\n\n            // Capture the call site location as the point of failure.\n            let location = XCTSourceCodeLocation(filePath: file, lineNumber: line)\n            issue.sourceCodeContext = XCTSourceCodeContext(location: location)\n\n            // Record the issue.\n            self.record(issue)\n        }\n    }"
+    },
+    {
+      "title": "Override record(_ issue:) for observation",
+      "language": "swift",
+      "startTimeSeconds": 672,
+      "code": "override func record(_ issue: XCTIssue) {\n\n    // Observe, introspect, log, etc.:\n    if shouldLog(issue) {\n        print(\"I just observed an issue!\")\n    }\n\n    // Don't forget to call super!\n    super.record(issue)\n}"
+    },
+    {
+      "title": "Override record(_ issue:) to suppress failures",
+      "language": "swift",
+      "startTimeSeconds": 690,
+      "code": "override func record(_ issue: XCTIssue) {\n\n    // If you don't want to record it, just return.\n    if shouldSuppress(issue) {\n        return\n    }\n\n    // Otherwise pass it to super.\n    super.record(issue)\n}"
+    },
+    {
+      "title": "Override record(_ issue:) to add an attachment",
+      "language": "swift",
+      "startTimeSeconds": 699,
+      "code": "override func record(_ issue: XCTIssue) {\n\n    // Redeclare using var to enable mutation.\n    var issue = issue\n\n    // Add a simple attachment.\n    issue.add(XCTAttachment(string: \"hello\"))\n\n    // Pass it to super.\n    super.record(issue)\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2020/10687-triage-test-failures-with-xctissue/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10687-triage-test-failures-with-xctissue/metadata.json",
+    "readme": "sessions/wwdc2020/10687-triage-test-failures-with-xctissue/README.md",
+    "transcript": "sessions/wwdc2020/10687-triage-test-failures-with-xctissue/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10687-triage-test-failures-with-xctissue/transcript.json"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10276",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10276,
+  "title": "Use the camera for keyboard input in your app",
+  "description": "Learn how you can support Live Text and intelligently pull information from the camera to fill out forms and text fields in your app. We’ll show you how to apply content filtering to capture the correct information when someone uses the camera as keyboard input and apply it to a relevant UITextField, helping your app input data like phone numbers, addresses, and flight information. And we’ll explore how you can create a custom interface, extend other controls like UIImageViews to support this capability, and more. For more on supporting Autofill in your app, we recommend watching “Autofill everywhere” from WWDC20 and “The Keys to a Better Text Input Experience” from WWDC17.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10276",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10276",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "camera",
+    "input",
+    "keyboard",
+    "keyboard as input",
+    "ocr",
+    "text recognition"
+  ],
+  "topics": [
+    "Photos & Camera"
+  ],
+  "primaryTopic": "Photos & Camera",
+  "duration": 694,
+  "hasTranscript": true,
+  "transcriptWordCount": 1861,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10276/3/35E33348-1E17-4FF5-92BB-618ED251B0EC/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10276/3/35E33348-1E17-4FF5-92BB-618ED251B0EC/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10276/3/35E33348-1E17-4FF5-92BB-618ED251B0EC/downloads/wwdc2021-10276_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10276/3/35E33348-1E17-4FF5-92BB-618ED251B0EC/downloads/wwdc2021-10276_hd.mp4",
+    "duration": 694
+  },
+  "codeSnippets": [
+    {
+      "title": "Filtering text field input",
+      "language": "swift",
+      "startTimeSeconds": 213,
+      "code": "phone.keyboardType = .phonePad\nphone.autocorrectionType = .no\n\naddress.textContentType = .fullStreetAddress"
+    },
+    {
+      "title": "Custom action to capture text from camera",
+      "language": "swift",
+      "startTimeSeconds": 307,
+      "code": "let textFromCamera = UIAction.captureTextFromCamera(responder: self.notes, identifier: nil)"
+    },
+    {
+      "title": "Adding custom UIAction for capture text to a menu",
+      "language": "swift",
+      "startTimeSeconds": 341,
+      "code": "let textFromCamera = UIAction.captureTextFromCamera(responder: self.notes, identifier: nil)\n\nlet choosePhotoOrVideo = UIAction(…)\nlet takePhotoOrVideo = UIAction(…)\nlet scanDocuments = UIAction(…)\n\nlet cameraMenu = UIMenu(children: [choosePhotoOrVideo, takePhotoOrVideo, scanDocuments, textFromCamera])\n\nlet menuToolbarItem = UIBarButtonItem(title: nil, image: UIImage(systemName: \"camera.badge.ellipsis\"), primaryAction: nil, menu: cameraMenu)"
+    },
+    {
+      "title": "Implementing UIKeyInput on a custom image view",
+      "language": "swift",
+      "startTimeSeconds": 599,
+      "code": "class HeadlineImageView: UIImageView, UIKeyInput {\n    var headlineLabel: UILabel = UILabel()\n    var hasText: Bool = false\n\n    override init(image: UIImage?) {\n        super.init(image: image)\n        initializeLabel()\n    }\n\n    func insertText(_ text: String) {\n        headlineLabel.text = text\n    }\n\n    func deleteBackward() { }\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2021/10276-use-the-camera-for-keyboard-input-in-your-app/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10276-use-the-camera-for-keyboard-input-in-your-app/metadata.json",
+    "readme": "sessions/wwdc2021/10276-use-the-camera-for-keyboard-input-in-your-app/README.md",
+    "transcript": "sessions/wwdc2021/10276-use-the-camera-for-keyboard-input-in-your-app/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10276-use-the-camera-for-keyboard-input-in-your-app/transcript.json"
+  }
+}

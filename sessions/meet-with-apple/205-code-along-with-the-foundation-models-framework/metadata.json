@@ -1,0 +1,68 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "meet-with-apple-205",
+  "event": "meet-with-apple",
+  "eventName": "Meet with Apple",
+  "year": 2025,
+  "eventContentId": 205,
+  "title": "Code along with the Foundation Models framework",
+  "description": "Get hands-on experience using the Foundation Models framework to access Apple’s on-device LLM. In this online session, you can code along with us as we build generative AI features into a sample app live in Xcode. We’ll guide you through implementing core features like basic text generation, as well as advanced topics like guided generation for structured data output, streaming responses for dynamic UI updates, and tool calling to retrieve data or take an action. To actively code along, you’ll need a Mac with Apple silicon that supports Apple Intelligence running the latest release of macOS Tahoe 26 and Xcode 26.",
+  "url": "https://developer.apple.com/videos/play/meet-with-apple/205",
+  "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/205",
+  "type": "Video",
+  "publishedAt": "2025-09-15T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Swift",
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 6217,
+  "hasTranscript": true,
+  "transcriptWordCount": 14444,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/205/3/b41da943-6d91-470f-8ce0-9e7d8d46db4f/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/205/3/b41da943-6d91-470f-8ce0-9e7d8d46db4f/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/205/3/b41da943-6d91-470f-8ce0-9e7d8d46db4f/downloads/meet-with-apple-205_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/205/3/b41da943-6d91-470f-8ce0-9e7d8d46db4f/downloads/meet-with-apple-205_hd.mp4",
+    "duration": 6217
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Foundation Models Code-Along Project Files",
+      "url": "https://developer.apple.com/events/resources/code-along-205/downloads/code-along-205.zip",
+      "type": "download",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/events/resources/code-along-205/downloads/code-along-205.zip"
+    },
+    {
+      "title": "Foundation Models Code-Along Instructions",
+      "url": "https://developer.apple.com/events/resources/code-along-205/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/events/resources/code-along-205/"
+    }
+  ],
+  "path": "sessions/meet-with-apple/205-code-along-with-the-foundation-models-framework/",
+  "files": {
+    "metadata": "sessions/meet-with-apple/205-code-along-with-the-foundation-models-framework/metadata.json",
+    "readme": "sessions/meet-with-apple/205-code-along-with-the-foundation-models-framework/README.md",
+    "transcript": "sessions/meet-with-apple/205-code-along-with-the-foundation-models-framework/transcript.md",
+    "transcriptJSON": "sessions/meet-with-apple/205-code-along-with-the-foundation-models-framework/transcript.json"
+  }
+}

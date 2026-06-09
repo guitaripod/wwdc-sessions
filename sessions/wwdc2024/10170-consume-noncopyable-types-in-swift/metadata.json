@@ -1,0 +1,193 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2024-10170",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10170,
+  "title": "Consume noncopyable types in Swift",
+  "description": "Get started with noncopyable types in Swift. Discover what copying means in Swift, when you might want to use a noncopyable type, and how value ownership lets you state your intentions clearly.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10170",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10170",
+  "type": "Video",
+  "publishedAt": "2024-06-13T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 1341,
+  "hasTranscript": true,
+  "transcriptWordCount": 3081,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10170/4/993789F1-AF44-4E20-8C66-BF59DAC6C1F6/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10170/4/993789F1-AF44-4E20-8C66-BF59DAC6C1F6/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10170/4/993789F1-AF44-4E20-8C66-BF59DAC6C1F6/downloads/wwdc2024-10170_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10170/4/993789F1-AF44-4E20-8C66-BF59DAC6C1F6/downloads/wwdc2024-10170_hd.mp4",
+    "duration": 1341
+  },
+  "codeSnippets": [
+    {
+      "title": "Player as a struct",
+      "language": "swift",
+      "startTimeSeconds": 52,
+      "code": "struct Player {\n  var icon: String\n}\n\nfunc test() {\n  let player1 = Player(icon: \"🐸\")\n  var player2 = player1\n  player2.icon = \"🚚\"\n  assert(player1.icon == \"🐸\")\n}"
+    },
+    {
+      "title": "Player as a class",
+      "language": "swift",
+      "startTimeSeconds": 115,
+      "code": "class PlayerClass {\n  var icon: String\n  init(_ icon: String) { self.icon = icon }\n}\n\nfunc test() {\n  let player1 = PlayerClass(\"🐸\")\n  let player2 = player1\n  player2.icon = \"🚚\"\n  assert(player1.icon == \"🐸\")\n}"
+    },
+    {
+      "title": "Deeply copying a PlayerClass",
+      "language": "swift",
+      "startTimeSeconds": 180,
+      "code": "class PlayerClass {\n  var data: Icon\n  init(_ icon: String) { self.data = Icon(icon) }\n\n  init(from other: PlayerClass) {\n    self.data = Icon(from: other.data)\n  } \n}\n\nfunc test() {\n  let player1 = PlayerClass(\"🐸\")\n  var player2 = player1\n  player2 = PlayerClass(from: player2)\n  player2.data.icon = \"🚚\"\n  assert(player1.data.icon == \"🐸\")\n}\n\nstruct Icon {\n  var icon: String\n  init(_ icon: String) { self.icon = icon }\n  init(from other: Icon) { self.icon = other.icon }\n}"
+    },
+    {
+      "title": "Copyable BankTransfer",
+      "language": "swift",
+      "startTimeSeconds": 310,
+      "code": "class BankTransfer {\n  var complete = false\n\n  func run() {\n    assert(!complete)\n    // .. do it ..\n    complete = true\n  }\n\n  deinit {\n    if !complete { cancel() }\n  }\n\n  func cancel() { /* ... */ }\n}\n\nfunc schedule(_ transfer: BankTransfer,\n              _ delay: Duration) async throws {\n\n  if delay < .seconds(1) {\n    transfer.run()\n  }\n\n  try await Task.sleep(for: delay)\n  transfer.run()\n}\n\nfunc startPayment() async {\n  let payment = BankTransfer()\n  log.append(payment)\n  try? await schedule(payment, .seconds(3))\n}\n\nlet log = Log()\n\nfinal class Log: Sendable {\n  func append(_ transfer: BankTransfer) { /* ... */ }\n}"
+    },
+    {
+      "title": "Copying FloppyDisk",
+      "language": "swift",
+      "startTimeSeconds": 466,
+      "code": "struct FloppyDisk: ~Copyable {}\n\nfunc copyFloppy() {\n  let system = FloppyDisk()\n  let backup = consume system\n  load(system)\n  // ...\n}\n\nfunc load(_ disk: borrowing FloppyDisk) {}"
+    },
+    {
+      "title": "Missing ownership for FloppyDisk",
+      "language": "swift",
+      "startTimeSeconds": 498,
+      "code": "struct FloppyDisk: ~Copyable { }\n\nfunc newDisk() -> FloppyDisk {\n  let result = FloppyDisk()\n  format(result)\n  return result\n}\n\nfunc format(_ disk: FloppyDisk) {\n  // ...\n}"
+    },
+    {
+      "title": "Consuming ownership",
+      "language": "swift",
+      "startTimeSeconds": 540,
+      "code": "struct FloppyDisk: ~Copyable { }\n\nfunc newDisk() -> FloppyDisk {\n  let result = FloppyDisk()\n  format(result)\n  return result\n}\n\nfunc format(_ disk: consuming FloppyDisk) {\n  // ...\n}"
+    },
+    {
+      "title": "Borrowing ownership",
+      "language": "swift",
+      "startTimeSeconds": 566,
+      "code": "struct FloppyDisk: ~Copyable { }\n\nfunc newDisk() -> FloppyDisk {\n  let result = FloppyDisk()\n  format(result)\n  return result\n}\n\nfunc format(_ disk: borrowing FloppyDisk) {\n  var tempDisk = disk\n  // ...\n}"
+    },
+    {
+      "title": "Inout ownership",
+      "language": "swift",
+      "startTimeSeconds": 595,
+      "code": "struct FloppyDisk: ~Copyable { }\n\nfunc newDisk() -> FloppyDisk {\n  var result = FloppyDisk()\n  format(&result)\n  return result\n}\n\nfunc format(_ disk: inout FloppyDisk) {\n  var tempDisk = disk\n  // ...\n  disk = tempDisk\n}"
+    },
+    {
+      "title": "Noncopyable BankTransfer",
+      "language": "swift",
+      "startTimeSeconds": 628,
+      "code": "struct BankTransfer: ~Copyable {\n  consuming func run() {\n    // .. do it ..\n    discard self\n  }\n\n  deinit {\n    cancel()\n  }\n\n  consuming func cancel() {\n    // .. do the cancellation ..\n    discard self\n  }\n}"
+    },
+    {
+      "title": "Schedule function for noncopyable BankTransfer",
+      "language": "swift",
+      "startTimeSeconds": 670,
+      "code": "func schedule(_ transfer: consuming BankTransfer,\n              _ delay: Duration) async throws {\n\n  if delay < .seconds(1) {\n    transfer.run()\n    return\n  }\n\n  try await Task.sleep(for: delay)\n  transfer.run()\n}"
+    },
+    {
+      "title": "Overview of conformance constraints",
+      "language": "swift",
+      "startTimeSeconds": 732,
+      "code": "struct Command { }\n\nprotocol Runnable {\n  consuming func run()\n}\n\nextension Command: Runnable {\n  func run() { /* ... */ }\n}\n\nfunc execute1<T>(_ t: T) {}\n\nfunc execute2<T>(_ t: T) \n  where T: Runnable {\n  t.run()\n}\n\nfunc test(_ cmd: Command, _ str: String) {\n  execute1(cmd)\n  execute1(str)\n\n  execute2(cmd)\n  execute2(str) // expected error: 'execute2' requires that 'String' conform to 'Runnable'\n}"
+    },
+    {
+      "title": "Noncopyable generics: 'execute' function",
+      "language": "swift",
+      "startTimeSeconds": 950,
+      "code": "protocol Runnable: ~Copyable {\n  consuming func run()\n}\n\nstruct Command: Runnable {\n  func run() { /* ... */ }\n}\n\nstruct BankTransfer: ~Copyable, Runnable {\n  consuming func run() { /* ... */ }\n}\n\nfunc execute2<T>(_ t: T)\n  where T: Runnable {\n  t.run()\n}\n\nfunc execute3<T>(_ t: consuming T)\n  where T: Runnable,\n        T: ~Copyable {\n  t.run()\n}\n\nfunc test() {\n  execute2(Command())\n  execute2(BankTransfer()) // expected error: 'execute2' requires that 'BankTransfer' conform to 'Copyable'\n\n  execute3(Command())\n  execute3(BankTransfer())\n}"
+    },
+    {
+      "title": "Conditionally Copyable",
+      "language": "swift",
+      "startTimeSeconds": 1085,
+      "code": "struct Job<Action: Runnable & ~Copyable>: ~Copyable {\n  var action: Action?\n}\n\nfunc runEndlessly(_ job: consuming Job<Command>) {\n  while true {\n    let current = copy job\n    current.action?.run()\n  }\n}\n\nextension Job: Copyable where Action: Copyable {}\n\nprotocol Runnable: ~Copyable {\n  consuming func run()\n}\n\nstruct Command: Runnable {\n  func run() { /* ... */ }\n}"
+    },
+    {
+      "title": "Extensions of types with noncopyable generic parameters",
+      "language": "swift",
+      "startTimeSeconds": 1167,
+      "code": "extension Job {\n  func getAction() -> Action? {\n    return action\n  }\n}\n\nfunc inspectCmd(_ cmdJob: Job<Command>) {\n  let _ = cmdJob.getAction()\n  let _ = cmdJob.getAction()\n}\n\nfunc inspectXfer(_ transferJob: borrowing Job<BankTransfer>) {\n  let _ = transferJob.getAction() // expected error: method 'getAction' requires that 'BankTransfer' conform to 'Copyable'\n}\n\n\nstruct Job<Action: Runnable & ~Copyable>: ~Copyable {\n  var action: Action?\n}\n\nextension Job: Copyable where Action: Copyable {}\n\nprotocol Runnable: ~Copyable {\n  consuming func run()\n}\n\nstruct Command: Runnable {\n  func run() { /* ... */ }\n}\n\nstruct BankTransfer: ~Copyable, Runnable {\n  consuming func run() { /* ... */ }\n}"
+    },
+    {
+      "title": "Cancellable for Jobs with Copyable actions",
+      "language": "swift",
+      "startTimeSeconds": 1214,
+      "code": "protocol Cancellable {\n  mutating func cancel()\n}\n\nextension Job: Cancellable {\n  mutating func cancel() {\n    action = nil\n  }\n}"
+    },
+    {
+      "title": "Cancellable for all Jobs",
+      "language": "swift",
+      "startTimeSeconds": 1260,
+      "code": "protocol Cancellable: ~Copyable {\n  mutating func cancel()\n}\n\nextension Job: Cancellable where Action: ~Copyable {\n  mutating func cancel() {\n    action = nil\n  }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Copyable",
+      "url": "https://developer.apple.com/documentation/Swift/Copyable",
+      "type": "documentation",
+      "description": "A type whose values can be implicitly or explicitly copied.",
+      "sosumiURL": "https://sosumi.ai/documentation/Swift/Copyable",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Swift/Copyable.json"
+    },
+    {
+      "title": "Swift Evolution: Noncopyable Standard Library Primitives",
+      "url": "https://github.com/apple/swift-evolution/blob/main/proposals/0437-noncopyable-stdlib-primitives.md",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Swift Evolution: Borrowing and consuming pattern matching for noncopyable types",
+      "url": "https://github.com/apple/swift-evolution/blob/main/proposals/0432-noncopyable-switch.md",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Swift Evolution: Noncopyable Generics",
+      "url": "https://github.com/apple/swift-evolution/blob/main/proposals/0427-noncopyable-generics.md",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Forum: Programming Languages",
+      "url": "https://developer.apple.com/forums/topics/programming-languages-topic?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/programming-languages-topic?cid=vf-a-0010"
+    }
+  ],
+  "path": "sessions/wwdc2024/10170-consume-noncopyable-types-in-swift/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10170-consume-noncopyable-types-in-swift/metadata.json",
+    "readme": "sessions/wwdc2024/10170-consume-noncopyable-types-in-swift/README.md",
+    "transcript": "sessions/wwdc2024/10170-consume-noncopyable-types-in-swift/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10170-consume-noncopyable-types-in-swift/transcript.json"
+  }
+}

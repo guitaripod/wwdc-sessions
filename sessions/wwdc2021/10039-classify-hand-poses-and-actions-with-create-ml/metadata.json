@@ -1,0 +1,113 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10039",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10039,
+  "title": "Classify hand poses and actions with Create ML",
+  "description": "With Create ML, your app’s ability to understand the expressiveness of the human hand has never been easier. Discover how you can build off the support for Hand Pose Detection in Vision and train custom Hand Pose and Hand Action classifiers using the Create ML app and framework. Learn how simple it is to collect data, train a model, and integrate it with Vision, Camera, and ARKit to create a fun, entertaining app experience. To learn more about Create ML and related concepts around model training, check out “Build an Action Classifier with Create ML” from WWDC20. And don’t miss “Build dynamic iOS apps with the Create ML framework” to learn how your models can be trained on-the-fly and on device from within your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10039",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10039",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "ai",
+    "body pose",
+    "core ml",
+    "create ml",
+    "fitness",
+    "hand action classification",
+    "hand pose",
+    "hand pose classification",
+    "machine learning",
+    "vision"
+  ],
+  "topics": [
+    "Spatial Computing",
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1609,
+  "hasTranscript": true,
+  "transcriptWordCount": 4311,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10039/6/21ABF0C5-D90C-4198-9791-027910A0EE4A/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10039/6/21ABF0C5-D90C-4198-9791-027910A0EE4A/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10039/6/21ABF0C5-D90C-4198-9791-027910A0EE4A/downloads/wwdc2021-10039_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10039/6/21ABF0C5-D90C-4198-9791-027910A0EE4A/downloads/wwdc2021-10039_hd.mp4",
+    "duration": 1609
+  },
+  "codeSnippets": [
+    {
+      "title": "Detecting hands in a frame",
+      "language": "swift",
+      "startTimeSeconds": 571,
+      "code": "func session(_ session: ARSession, didUpdate frame: ARFrame) {\n\n    let pixelBuffer = frame.capturedImage \n    let handPoseRequest = VNDetectHumanHandPoseRequest()\n    handPoseRequest.maximumHandCount = 1\n    handPoseRequest.revision = VNDetectHumanHandPoseRequestRevision1\n\n    let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:])\n    do { \n        try handler.perform([humanBodyPoseRequest]) \n    } catch {\n        assertionFailure(\"Human Pose Request failed: \\(error)\")\n    }\n\n    guard let handPoses = request.results, !handPoses.isEmpty else {\n        // No effects to draw, so clear out current graphics\n        return\n    }\n    let handObservation = handPoses.first"
+    },
+    {
+      "title": "Predicting hand pose",
+      "language": "swift",
+      "startTimeSeconds": 663,
+      "code": "if frameCounter % handPosePredictionInterval == 0 {\n\n    guard let keypointsMultiArray = try? handObservation.keypointsMultiArray() \nelse { fatalError() }\n    let handPosePrediction = try model.prediction(poses: keypointsMultiArray)\n    let confidence = handPosePrediction.labelProbabilities[handPosePrediction.label]!\n\n    if confidence > 0.9 {\n       renderHandPoseEffect(name: handPosePrediction.label)\n    }\n}\n\nfunc renderHandPoseEffect(name: String) {\n\tswitch name {\n        case \"One\": \n            if effectNode == nil {\n               effectNode = addParticleNode(for: .one)\n            }\n        default:\n\t\t\tremoveAllParticleNode()\n\t}\n}"
+    },
+    {
+      "title": "Getting tip of index finger to use as anchor",
+      "language": "swift",
+      "startTimeSeconds": 745,
+      "code": "let landmarkConfidenceThreshold: Float = 0.2\n\nlet indexFingerName = VNHumanHandPoseObservation.JointName.indexTip\n\nlet width = viewportSize.width\nlet height = viewportSize.height\n\nif let indexFingerPoint = try? observation.recognizedPoint(indexFingerName),\n   indexFingerPoint.confidence > landmarkConfidenceThreshold {\n\n    let normalizedLocation = indexFingerPoint.location\n    indexFingerTipLocation = CGPoint((x: normalizedLocation.x * width,\n                                      y: normalizedLocation.y * height))\n} else {\n    indexFingerTipLocation = nil\n}"
+    },
+    {
+      "title": "Getting hand chirality",
+      "language": "swift",
+      "startTimeSeconds": 947,
+      "code": "// Working with chirality\n\nlet handPoseRequest = VNDetectHumanHandPoseRequest()\ntry handler.perform([handPoseRequest])\nlet detectedHandPoses = handPoseRequest.results!\n\nfor hand in detectedHandPoses where hand.chirality == .right {\n    // Take action on every right hand, or prune the results\n}"
+    },
+    {
+      "title": "Hand action classification by accumulating queue of hand poses",
+      "language": "swift",
+      "startTimeSeconds": 1336,
+      "code": "var queue = [MLMultiArray]()\n// . . .\nframeCounter += 1\nif frameCounter % 2 == 0 {\n    let hands: [(MLMultiArray, VNHumanHandPoseObservation.Chirality)] = getHands()\n    for (pose, chirality) in hands where chirality == .right {\n        queue.append(pose)\n        queue = Array(queue.suffix(queueSize))\n        queueSamplingCounter += 1\n        if queue.count == queueSize && queueSamplingCounter % queueSamplingCount == 0 {\n            let poses = MLMultiArray(concatenating: queue, axis: 0, dataType: .float32)\n            let prediction = try? handActionModel?.prediction(poses: poses)\n            guard let label = prediction?.label, \n              let confidence = prediction?.labelProbabilities[label] else { continue }\n            if confidence > handActionConfidenceThreshold {\n                DispatchQueue.main.async {\n                    self.renderer?.renderHandActionEffect(name: label)\n                }\n            }\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Create ML",
+      "url": "https://developer.apple.com/documentation/CreateML",
+      "type": "documentation",
+      "description": "Create machine learning models for use in your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/CreateML",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CreateML.json"
+    },
+    {
+      "title": "Vision",
+      "url": "https://developer.apple.com/documentation/Vision",
+      "type": "documentation",
+      "description": "Analyze image and video content in your app using computer vision algorithms for object detection, text recognition, and image segmentation.",
+      "sosumiURL": "https://sosumi.ai/documentation/Vision",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Vision.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10039-classify-hand-poses-and-actions-with-create-ml/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10039-classify-hand-poses-and-actions-with-create-ml/metadata.json",
+    "readme": "sessions/wwdc2021/10039-classify-hand-poses-and-actions-with-create-ml/README.md",
+    "transcript": "sessions/wwdc2021/10039-classify-hand-poses-and-actions-with-create-ml/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10039-classify-hand-poses-and-actions-with-create-ml/transcript.json"
+  }
+}

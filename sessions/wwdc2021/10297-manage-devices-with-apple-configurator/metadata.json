@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10297",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10297,
+  "title": "Manage devices with Apple Configurator",
+  "description": "Apple Configurator is now more capable than ever. Whether you’re provisioning iOS, iPadOS, and tvOS devices in your organization or servicing existing macOS devices, learn how Apple Configurator can help with key workflows. And, coming to iPhone in iOS 15, discover how you can bring Automated Device Enrollment to even more macOS devices.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10297",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10297",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Store, Distribution & Marketing",
+    "Business & Education"
+  ],
+  "primaryTopic": "Business & Education",
+  "duration": 592,
+  "hasTranscript": true,
+  "transcriptWordCount": 1267,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10297/5/42EFFB92-E098-4A61-AC2C-F645C909C1EE/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10297/5/42EFFB92-E098-4A61-AC2C-F645C909C1EE/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10297/5/42EFFB92-E098-4A61-AC2C-F645C909C1EE/downloads/wwdc2021-10297_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10297/5/42EFFB92-E098-4A61-AC2C-F645C909C1EE/downloads/wwdc2021-10297_hd.mp4",
+    "duration": 592
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Apple Configurator 2 User Guide",
+      "url": "https://support.apple.com/guide/apple-configurator-2/",
+      "type": "guide",
+      "description": "Apple Configurator 2 User Guide"
+    }
+  ],
+  "path": "sessions/wwdc2021/10297-manage-devices-with-apple-configurator/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10297-manage-devices-with-apple-configurator/metadata.json",
+    "readme": "sessions/wwdc2021/10297-manage-devices-with-apple-configurator/README.md",
+    "transcript": "sessions/wwdc2021/10297-manage-devices-with-apple-configurator/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10297-manage-devices-with-apple-configurator/transcript.json"
+  }
+}

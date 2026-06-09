@@ -1,0 +1,60 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10009",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10009,
+  "title": "What’s new in iPad app design",
+  "description": "Discover the latest updates in iPad app design. We’ll take you through improvements to search, navigation bars, edit menus, multi-selection, and more. Learn how you can make your app both more powerful and easier to use when you incorporate customizable toolbars, multi-column tables, and find and replace.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10009",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10009",
+  "type": "Video",
+  "publishedAt": "2022-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "customization",
+    "productivity",
+    "screen size",
+    "search",
+    "sidebar",
+    "split view",
+    "toolbar"
+  ],
+  "topics": [
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 1088,
+  "hasTranscript": true,
+  "transcriptWordCount": 2731,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10009/5/22B7E083-47EE-4292-AD3E-6622DA2DF064/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10009/5/22B7E083-47EE-4292-AD3E-6622DA2DF064/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10009/5/22B7E083-47EE-4292-AD3E-6622DA2DF064/downloads/wwdc2022-10009_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10009/5/22B7E083-47EE-4292-AD3E-6622DA2DF064/downloads/wwdc2022-10009_hd.mp4",
+    "duration": 1088
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2022/10009-what-s-new-in-ipad-app-design/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10009-what-s-new-in-ipad-app-design/metadata.json",
+    "readme": "sessions/wwdc2022/10009-what-s-new-in-ipad-app-design/README.md",
+    "transcript": "sessions/wwdc2022/10009-what-s-new-in-ipad-app-design/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10009-what-s-new-in-ipad-app-design/transcript.json"
+  }
+}

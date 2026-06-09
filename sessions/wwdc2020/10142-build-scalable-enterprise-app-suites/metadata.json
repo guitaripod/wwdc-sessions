@@ -1,0 +1,80 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10142",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10142,
+  "title": "Build scalable enterprise app suites",
+  "description": "Learn how to build focused enterprise apps that work well together. In this session, we’ll introduce you to Apple Retail’s suite of enterprise apps, which help employees interact with customers, track operations, manage stores, and stay connected. Discover how Apple Retail created a unified set of apps by adopting Swift Packages and testing for app scalability. And explore how managing apps in production with configurations can help tailor app suites to different regions and locations.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10142",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10142",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "enterprise",
+    "swift packages",
+    "testing"
+  ],
+  "topics": [
+    "Business & Education"
+  ],
+  "primaryTopic": "Business & Education",
+  "duration": 916,
+  "hasTranscript": true,
+  "transcriptWordCount": 2488,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10142/6/570BD5D0-7BC7-4D3A-A1EC-E67D13CD87E0/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10142/6/570BD5D0-7BC7-4D3A-A1EC-E67D13CD87E0/wwdc2020_10142_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10142/6/570BD5D0-7BC7-4D3A-A1EC-E67D13CD87E0/wwdc2020_10142_hd.mp4",
+    "duration": 916
+  },
+  "codeSnippets": [
+    {
+      "title": "App Groups",
+      "language": "swift",
+      "startTimeSeconds": 122,
+      "code": "let sharedDefaults = UserDefaults(suiteName: “group.com.apple.myappgroup\")!\n\nsharedDefaults.set(\"My Cool Value\", forKey: \"MyKeyName\")\n\nlet myKeyNameValue = sharedDefaults.string(forKey: \"MyKeyName\")"
+    },
+    {
+      "title": "BarcodeScannerViewController",
+      "language": "swift",
+      "startTimeSeconds": 304,
+      "code": "import RetailScanner\n\nlet scanOptions = BarcodeScanOptions()\nscanOptions.scanRegion = .regular\nscanOptions.shouldAddSupplementaryView = false\nscanOptions.shouldShowBarcodeDetector = true\n\nlet barcodeViewController = BarcodeScannerViewController(scanOptions: scanOptions)\nbarcodeViewController.delegate = self"
+    },
+    {
+      "title": "OCRScannerViewController",
+      "language": "swift",
+      "startTimeSeconds": 329,
+      "code": "import RetailScanner\n\nlet scanOptions = OCRScanOptions(\n    scanRegion: .custom(CGSize(width: 400, height: 100)),\n    accessibilityBehavior: .vibrate,\n    shouldAddSupplementaryView: true,\n    validation: nil, \n    shouldShowResultView: true\n)\nscanOptions.recognitionLevel = .fast\n\nlet ocrViewController = OCRScannerViewController(\n    scanOptions: scanOptions\n)\nocrViewController.delegate = self"
+    },
+    {
+      "title": "Config-driven UI - Client based configuration hosted by server",
+      "language": "swift",
+      "startTimeSeconds": 746,
+      "code": "func configuredCellForLabel(for customerInfoField: CustomerInfoField, at indexPath: IndexPath) -> UITableViewCell { . . . }\n\n\n\nfunc configuredCellForPhoneNumber(for customerInfoField: CustomerInfoField, at indexPath: IndexPath) -> UITableViewCell { . . . }"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2020/10142-build-scalable-enterprise-app-suites/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10142-build-scalable-enterprise-app-suites/metadata.json",
+    "readme": "sessions/wwdc2020/10142-build-scalable-enterprise-app-suites/README.md",
+    "transcript": "sessions/wwdc2020/10142-build-scalable-enterprise-app-suites/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10142-build-scalable-enterprise-app-suites/transcript.json"
+  }
+}

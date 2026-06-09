@@ -1,0 +1,60 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-803",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 803,
+  "title": "Designing Great ML Experiences",
+  "description": "Machine learning enables new experiences that understand what we say, suggest things that we may love, and allow us to express ourselves in new, rich ways. Machine learning can make existing experiences better by automating mundane tasks and improving the accuracy and speed of interactions. Learn how to incorporate ML experiences into your apps, and gain practical approaches to designing user interfaces that feel effortlessly helpful.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/803",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/803",
+  "type": "Video",
+  "publishedAt": "2019-06-07T11:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "AI & Machine Learning",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 3465,
+  "hasTranscript": true,
+  "transcriptWordCount": 8668,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/803acsrw3066p43dqm/803/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/803acsrw3066p43dqm/803/803_sd_designing_great_ml_experiences.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/803acsrw3066p43dqm/803/803_hd_designing_great_ml_experiences.mp4",
+    "duration": 3465
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Machine learning",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/machine-learning",
+      "type": "documentation",
+      "description": "Machine learning enables apps and games to learn from data and usage patterns, letting you improve existing experiences and create engaging new ones.",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/machine-learning"
+    }
+  ],
+  "path": "sessions/wwdc2019/803-designing-great-ml-experiences/",
+  "files": {
+    "metadata": "sessions/wwdc2019/803-designing-great-ml-experiences/metadata.json",
+    "readme": "sessions/wwdc2019/803-designing-great-ml-experiences/README.md",
+    "transcript": "sessions/wwdc2019/803-designing-great-ml-experiences/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/803-designing-great-ml-experiences/transcript.json"
+  }
+}

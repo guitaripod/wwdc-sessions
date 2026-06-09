@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10076",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10076,
+  "title": "Design for spatial user interfaces",
+  "description": "Learn how to design great interfaces for spatial computing apps. We’ll share how your existing screen-based knowledge easily translates into creating great experiences for visionOS. Explore guidelines for UI components, materials, and typography and find out how you can design experiences that are familiar, legible, and easy to use.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10076",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10076",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Spatial Computing",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 1361,
+  "hasTranscript": true,
+  "transcriptWordCount": 3521,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10076/4/1C3E0256-50B2-4992-AAE6-CF8A3479272E/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10076/4/1C3E0256-50B2-4992-AAE6-CF8A3479272E/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10076/4/1C3E0256-50B2-4992-AAE6-CF8A3479272E/downloads/wwdc2023-10076_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10076/4/1C3E0256-50B2-4992-AAE6-CF8A3479272E/downloads/wwdc2023-10076_hd.mp4",
+    "duration": 1361
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2023/10076-design-for-spatial-user-interfaces/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10076-design-for-spatial-user-interfaces/metadata.json",
+    "readme": "sessions/wwdc2023/10076-design-for-spatial-user-interfaces/README.md",
+    "transcript": "sessions/wwdc2023/10076-design-for-spatial-user-interfaces/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10076-design-for-spatial-user-interfaces/transcript.json"
+  }
+}

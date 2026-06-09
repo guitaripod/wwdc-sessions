@@ -1,0 +1,83 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10309",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10309,
+  "title": "Design widgets for the Smart Stack on Apple Watch",
+  "description": "Bring your widgets to watchOS with the new Smart Stack. We’ll show you how to use standard design layouts, color and iconography, and signal-based relevancy to ensure your app’s widgets are glanceable, distinctive and smart. When you’re ready to make your own, watch this code-along: \"Build widgets for the Smart Stack on watchOS\"",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10309",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10309",
+  "type": "Video",
+  "publishedAt": "2023-06-07T08:00:00-07:00",
+  "platforms": [
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 746,
+  "hasTranscript": true,
+  "transcriptWordCount": 1959,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10309/4/21D925C8-2EE0-4C96-9C68-96174159990A/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10309/4/21D925C8-2EE0-4C96-9C68-96174159990A/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10309/4/21D925C8-2EE0-4C96-9C68-96174159990A/downloads/wwdc2023-10309_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10309/4/21D925C8-2EE0-4C96-9C68-96174159990A/downloads/wwdc2023-10309_hd.mp4",
+    "duration": 746
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "WidgetKit",
+      "url": "https://developer.apple.com/documentation/WidgetKit",
+      "type": "documentation",
+      "description": "Extend the reach of your app by creating widgets, watch complications, Live Activities, and controls.",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit.json"
+    },
+    {
+      "title": "Keeping a widget up to date",
+      "url": "https://developer.apple.com/documentation/WidgetKit/Keeping-a-Widget-Up-To-Date",
+      "type": "documentation",
+      "description": "Plan your widget’s timeline to show timely, relevant information using",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit/Keeping-a-Widget-Up-To-Date",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit/Keeping-a-Widget-Up-To-Date.json"
+    },
+    {
+      "title": "Human Interface Guidelines: Widgets",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/widgets",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/widgets"
+    },
+    {
+      "title": "Apple Design Resources",
+      "url": "https://developer.apple.com/design/resources/",
+      "type": "download",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/resources/"
+    }
+  ],
+  "path": "sessions/wwdc2023/10309-design-widgets-for-the-smart-stack-on-apple-watch/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10309-design-widgets-for-the-smart-stack-on-apple-watch/metadata.json",
+    "readme": "sessions/wwdc2023/10309-design-widgets-for-the-smart-stack-on-apple-watch/README.md",
+    "transcript": "sessions/wwdc2023/10309-design-widgets-for-the-smart-stack-on-apple-watch/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10309-design-widgets-for-the-smart-stack-on-apple-watch/transcript.json"
+  }
+}

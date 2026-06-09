@@ -1,0 +1,98 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10189",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10189,
+  "title": "Secure your app: threat modeling and anti-patterns",
+  "description": "It's more important than ever to consider vulnerabilities and potential threats and recognize where you should apply safeguards in your app. Understand how to identify potential risks through threat modeling and how to avoid common anti-patterns. Learn coding techniques and how to take advantage of platform-supplied protections to help you mitigate risk and protect people while they're using your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10189",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10189",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "data",
+    "privacy",
+    "protection",
+    "security",
+    "trust"
+  ],
+  "topics": [
+    "Privacy & Security"
+  ],
+  "primaryTopic": "Privacy & Security",
+  "duration": 2289,
+  "hasTranscript": true,
+  "transcriptWordCount": 6448,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10189/4/164A0FEB-D524-40E7-89C9-A40F22CAA89C/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10189/4/164A0FEB-D524-40E7-89C9-A40F22CAA89C/wwdc2020_10189_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10189/4/164A0FEB-D524-40E7-89C9-A40F22CAA89C/wwdc2020_10189_hd.mp4",
+    "duration": 2289
+  },
+  "codeSnippets": [
+    {
+      "title": "Path traversal",
+      "language": "swift",
+      "startTimeSeconds": 994,
+      "code": "func handleIncomingFile(_ incomingResourceURL: URL, with name: String, from fromID: String) {\n    guard\n         case let safeFileName = name.lastPathComponent, \n         safeFileName.count > 0,\n         safeFileName != \"..\", safeFileName != \".\" else { return }\n\n    let destinationFileURL = URL(fileURLWithPath: NSTemporaryDirectory())\n                                 .appendingPathComponent(safeFileName)\n\n    // Copy the file into a temporary directory\n    try! FileManager.default.copyItem(at: incomingResourceURL, to: destinationFileURL)\n\n}"
+    },
+    {
+      "title": "State management",
+      "language": "swift",
+      "startTimeSeconds": 1346,
+      "code": "func handleSessionInviteAccepted(with message: RemoteMessage, from fromID: String) {\n    guard session = sessionsByIdentifier[message.sessionIdentifier],\n          session.state == .inviting,\n          session.invitedFromIdentifiers.contains(fromID) else { return }\n\n    session.state = .connected\n    session.setupSocket(to: fromID) { socket in\n        cameraController.send(to: socket)\n    }\n}"
+    },
+    {
+      "title": "Safe dynamic allowedClasses",
+      "language": "objectivec",
+      "startTimeSeconds": 1856,
+      "code": "NSSet *classesWhichConformToProtocol(Protocol *protocol) {\n    NSMutableSet *conformingClasses = [NSMutableSet set];\n\n    unsigned int classesCount = 0;\n    Class *classes = objc_copyClassList(&classesCount);\n    if (classes != NULL) {\n        for (unsigned int i = 0; i < classesCount; i++) {\n            if (class_conformsToProtocol(classes[i], protocol)) {\n                [conformingClasses addObject: classes[i]];\n            }\n        }\n        free(classes);\n    }\n    return conformingClasses;\n}"
+    },
+    {
+      "title": "Buffer overflows",
+      "language": "objectivec",
+      "startTimeSeconds": 2063,
+      "code": "@implementation\n- (BOOL)unpackTeaClubRecord:(CKRecord *)record {\n    ...\n    NSData *data = [record objectForKey:@\"uuid\"];\n    if (data == nil ||\n        ![data isKindOfClass:[NSData class]] ||\n        data.length != sizeof(_uuid)) {\n        return NO;\n    }\n    memcpy(&_uuid, data.bytes, data.length);\n    ..."
+    },
+    {
+      "title": "Integer overflows",
+      "language": "objectivec",
+      "startTimeSeconds": 2166,
+      "code": "@implementation\n- (BOOL)unpackTeaClubRecord:(CKRecord *)record {\n    ...\n    NSData *name = [record objectForKey:@\"name\"];\n    int32_t count = [[record objectForKey:@\"nameCount\"] unsignedIntegerValue];\n    int32_t byteCount = 0;\n    if (name == nil ||\n        ![name isKindOfClass:[NSData class]] ||\n        os_mul_overflow(count, sizeof(unichar), &byteCount) ||\n        name.length != byteCount) {\n        return NO;\n    }\n    _name = [[NSString alloc] initWithCharacters:name.bytes \n                                          length:count];\n    ..."
+    }
+  ],
+  "resources": [
+    {
+      "title": "iOS Security White Paper",
+      "url": "https://www.apple.com/business/docs/iOS_Security_Guide.pdf",
+      "type": "documentation",
+      "description": "Apple designed the iOS platform with security at its core. This document provides details about how security technology and features are implemented within the iOS platform. It will also help organizations combine iOS platform security technology and features with their own policies and procedures to meet their specific security needs."
+    }
+  ],
+  "path": "sessions/wwdc2020/10189-secure-your-app-threat-modeling-and-anti-patterns/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10189-secure-your-app-threat-modeling-and-anti-patterns/metadata.json",
+    "readme": "sessions/wwdc2020/10189-secure-your-app-threat-modeling-and-anti-patterns/README.md",
+    "transcript": "sessions/wwdc2020/10189-secure-your-app-threat-modeling-and-anti-patterns/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10189-secure-your-app-threat-modeling-and-anti-patterns/transcript.json"
+  }
+}

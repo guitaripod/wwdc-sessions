@@ -1,0 +1,150 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10116",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10116,
+  "title": "Meet CKTool JS",
+  "description": "Discover how you can manage and automate your iCloud containers using CKTool JS. We’ll show you how to configure CKTool JS to manage your containers’ schemas, modify records with ease, and manipulate data on the fly. We’ll also explore how you can integrate CKTool JS into your automation and tooling workflows. To get the most out of this session, we recommend familiarity with CloudKit schemas, JavaScript, and npm.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10116",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10116",
+  "type": "Video",
+  "publishedAt": "2022-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Safari & Web",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 944,
+  "hasTranscript": true,
+  "transcriptWordCount": 2446,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10116/5/1DD917FC-5154-4B41-93E7-4D8731FB6D2E/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10116/5/1DD917FC-5154-4B41-93E7-4D8731FB6D2E/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10116/5/1DD917FC-5154-4B41-93E7-4D8731FB6D2E/downloads/wwdc2022-10116_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10116/5/1DD917FC-5154-4B41-93E7-4D8731FB6D2E/downloads/wwdc2022-10116_hd.mp4",
+    "duration": 944
+  },
+  "codeSnippets": [
+    {
+      "title": "Create security and default arguments objects",
+      "language": "javascript",
+      "startTimeSeconds": 403,
+      "code": "// Create security object and setup default args\n\nconst { CKEnvironment } = require(\"@apple/cktool.database\");\n\nconst security = {\n    \"ManagementTokenAuth\": \"<YOUR_MANAGEMENT_TOKEN>\",\n    \"UserTokenAuth\": \"<YOUR_USER_TOKEN>\"\n};\n\nconst defaultArgs = {\n    \"teamId\": \"<YOUR_TEAM_ID>\",\n    \"containerId\": \"<YOUR_CONTAINER_ID>\",\n    \"environment\": CKEnvironment.DEVELOPMENT\n};"
+    },
+    {
+      "title": "Create configuration and API objects",
+      "language": "javascript",
+      "startTimeSeconds": 437,
+      "code": "// Create configuration and API objects\n\nconst { createConfiguration } = require(\"@apple/cktool.target.nodejs\");\nconst { PromisesApi } = require(\"@apple/cktool.database\");\n\nconst configuration = createConfiguration();\nconst api = new PromisesApi({\n    \"configuration\": configuration,\n    \"security\": security\n});"
+    },
+    {
+      "title": "Reset to production and import schema",
+      "language": "javascript",
+      "startTimeSeconds": 600,
+      "code": "// Create a function to apply a schema\n\nconst { File } = require(\"@apple/cktool.target.nodejs\");\nconst fs = require(\"fs/promises\");\nconst path = require(\"path\");\n\nconst importMySchema = async () => {\n    const schemaPath = \"<YOUR_SCHEMA_FILE>.ckdb\";\n    const buffer = await fs.readFile(schemaPath);\n    const file = new File([buffer], schemaPath);\n    await api.importSchema({ ...defaultArgs, \"file\": file });\n}\n\n// Chain the calls\napi.resetToProduction(defaultArgs)\n  .then(() => importMySchema());"
+    },
+    {
+      "title": "Factory functions",
+      "language": "javascript",
+      "startTimeSeconds": 696,
+      "code": "// Create fields with factory functions.\n\nconst {\n    makeRecordFieldValue\n} = require(\"@apple/cktool.database\");\n\nconst value = makeRecordFieldValue.int64(2007);"
+    },
+    {
+      "title": "Create database arguments object",
+      "language": "javascript",
+      "startTimeSeconds": 722,
+      "code": "// Create a database arguments object.\n\nconst {\n    CKDatabaseType, CKEnvironment\n} = require(\"@apple/cktool.database\");\n\nconst databaseArgs = {\n    \"containerID\": \"<YOUR_CONTAINER_ID>\",\n    \"environment\": CKEnvironment.DEVELOPMENT,\n    \"databaseType\": CKDatabaseType.PRIVATE,\n    \"zoneName\": \"_defaultZone\"\n};"
+    },
+    {
+      "title": "Query for records",
+      "language": "javascript",
+      "startTimeSeconds": 736,
+      "code": "// Define helper function for querying records\n\nconst { CKDBQueryFilterType } = require(\"@apple/cktool.database\");\nconst countryQueryRecordForCountryCode3 = async (countryCode3) => {\n    const response = await api.queryRecords({\n        ...databaseArgs,\n        \"body\": {\n            \"query\": {\n                \"recordType\": \"Countries\",\n                \"filters\": [{\n                    \"fieldName\": \"isoCode3\",\n                    \"fieldValue\": makeRecordFieldValue.string(countryCode3),\n                    \"type\": CKDBQueryFilterType.EQUALS\n                }]\n            }\n        }\n    });\n    return response.result.records[0];\n}"
+    },
+    {
+      "title": "Create field values",
+      "language": "javascript",
+      "startTimeSeconds": 778,
+      "code": "// Define a helper function for creating field values\n\nconst {\n    makeRecordFieldValue, CKDBRecordReferenceAction\n} = require(\"@apple/cktool.database\");\n\nconst makeCoinFieldValues = ({ countryRecordName, issueYear, nominalValue }) => ({\n    \"country\": makeRecordFieldValue.reference({\n        recordName: countryRecordName,\n        action: CKDBRecordReferenceAction.DELETE_SELF\n    }),\n    \"issueYear\": makeRecordFieldValue.int64(issueYear),\n    \"nominalValue\": makeRecordFieldValue.double(nominalValue)\n});"
+    },
+    {
+      "title": "Create a record",
+      "language": "javascript",
+      "startTimeSeconds": 806,
+      "code": "// Define helper method for creating coins\n\nconst coinCreateRecord = async (fields) => {\n    const response = await api.createRecord({\n        ...databaseArgs,\n        \"body\": {\n            \"recordType\": \"Coins\",\n            \"fields\": fields\n        },\n    });\n    return response.result.record;\n}"
+    },
+    {
+      "title": "Call record creation helper method",
+      "language": "javascript",
+      "startTimeSeconds": 828,
+      "code": "// Call coin creation method with field values\n\nconst countryRecord = await countryQueryRecordForCountryCode3(\"USA\");\n\nconst coinRecord1 = await coinCreateRecord(\n    makeCoinFieldValues({\n        \"countryRecordName\": countryRecord.recordName,\n        \"issueYear\": 2007,\n        \"nominalValue\": 0.10\n    })\n);"
+    },
+    {
+      "title": "Define update record helper function",
+      "language": "javascript",
+      "startTimeSeconds": 856,
+      "code": "// Define helper method for updating coins.\n// Note that recordChangeTag is required\n\nconst coinUpdate =\n    async (recordName, recordChangeTag, fields) => {\n        const response = await api.updateRecord({\n            ...databaseArgs,\n            \"recordName\": recordName,\n            \"body\": {\n                \"recordType\": \"Coins\",\n                \"recordChangeTag\": recordChangeTag,\n                \"fields\": fields\n            }\n        });\n        return response.result.record;\n    }"
+    },
+    {
+      "title": "Update a record with field values",
+      "language": "javascript",
+      "startTimeSeconds": 884,
+      "code": "// Call coin updating method with field values.\n// Note that the recordChangeTag of the record\n// to update is passed to the coin update function.\n\nconst countryRecord = await countryQueryRecordForCountryCode3(\"USA\");\nconst updatedCoinRecord1 = await coinUpdate(\n    coinRecord1.recordName,\n    coinRecord1.recordChangeTag,\n    makeCoinFieldValues({\n        \"countryRecordName\": countryRecord.recordName,\n        \"issueYear\": 2010,\n        \"nominalValue\": 0.10\n    });\n);"
+    },
+    {
+      "title": "Delete a record",
+      "language": "javascript",
+      "startTimeSeconds": 897,
+      "code": "// Deleting a record\n\nawait api.deleteRecord({\n    ...databaseArgs,\n   \"recordName\": coinRecord1.recordName\n});"
+    }
+  ],
+  "resources": [
+    {
+      "title": "CloudKit Samples: Tooling",
+      "url": "https://github.com/apple/sample-cloudkit-tooling",
+      "type": "samplecode",
+      "description": "These sample projects demonstrate the use of CKTool JS and cktool."
+    },
+    {
+      "title": "CKTool JS",
+      "url": "https://developer.apple.com/documentation/CKToolJS",
+      "type": "documentation",
+      "description": "Manage your CloudKit containers and databases from JavaScript.",
+      "sosumiURL": "https://sosumi.ai/documentation/CKToolJS",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CKToolJS.json"
+    },
+    {
+      "title": "Integrating a Text-Based Schema into Your Workflow",
+      "url": "https://developer.apple.com/documentation/CloudKit/integrating-a-text-based-schema-into-your-workflow",
+      "type": "documentation",
+      "description": "Define and update your schema with the CloudKit Schema Language.",
+      "sosumiURL": "https://sosumi.ai/documentation/CloudKit/integrating-a-text-based-schema-into-your-workflow",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CloudKit/integrating-a-text-based-schema-into-your-workflow.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10116-meet-cktool-js/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10116-meet-cktool-js/metadata.json",
+    "readme": "sessions/wwdc2022/10116-meet-cktool-js/README.md",
+    "transcript": "sessions/wwdc2022/10116-meet-cktool-js/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10116-meet-cktool-js/transcript.json"
+  }
+}

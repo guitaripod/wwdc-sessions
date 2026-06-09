@@ -1,0 +1,62 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10202",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10202,
+  "title": "Explore materials in Reality Composer Pro",
+  "description": "Learn how Reality Composer Pro can help you alter the appearance of your 3D objects using RealityKit materials. We’ll introduce you to MaterialX and physically-based (PBR) shaders, show you how to design dynamic materials using the shader graph editor, and explore adding custom inputs to a material so that you can control it in your visionOS app. To get the most out of this session, we recommend first watching “Meet Reality Composer Pro.” Once you’re ready to learn how you can incorporate your models and materials into an Xcode project, check out \"Work with Reality Composer Pro content in Xcode.\"",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10202",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10202",
+  "type": "Video",
+  "publishedAt": "2023-06-07T08:00:00-07:00",
+  "platforms": [
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 1214,
+  "hasTranscript": true,
+  "transcriptWordCount": 3409,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10202/5/7DF5114E-91B3-4A42-AF97-D01AC560E3AB/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10202/5/7DF5114E-91B3-4A42-AF97-D01AC560E3AB/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10202/5/7DF5114E-91B3-4A42-AF97-D01AC560E3AB/downloads/wwdc2023-10202_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10202/5/7DF5114E-91B3-4A42-AF97-D01AC560E3AB/downloads/wwdc2023-10202_hd.mp4",
+    "duration": 1214
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Diorama",
+      "url": "https://developer.apple.com/documentation/visionOS/diorama",
+      "type": "documentation",
+      "description": "Design scenes for your visionOS app using Reality Composer Pro.",
+      "sosumiURL": "https://sosumi.ai/documentation/visionOS/diorama",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/visionOS/diorama.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10202-explore-materials-in-reality-composer-pro/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10202-explore-materials-in-reality-composer-pro/metadata.json",
+    "readme": "sessions/wwdc2023/10202-explore-materials-in-reality-composer-pro/README.md",
+    "transcript": "sessions/wwdc2023/10202-explore-materials-in-reality-composer-pro/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10202-explore-materials-in-reality-composer-pro/transcript.json"
+  }
+}

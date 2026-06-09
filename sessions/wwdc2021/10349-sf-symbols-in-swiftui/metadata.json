@@ -1,0 +1,144 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10349",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10349,
+  "title": "SF Symbols in SwiftUI",
+  "description": "Discover how you can incorporate SF Symbols into your SwiftUI app. We’ll explore basic techniques for presenting symbols, customizing their size, and showing different variants. We’ll also take you through the latest updates to symbol colorization and help you pick the right tool for your app’s needs.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10349",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10349",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 657,
+  "hasTranscript": true,
+  "transcriptWordCount": 1755,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10349/4/5C81F023-9887-405D-AF78-7FBD8FACEDEF/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10349/4/5C81F023-9887-405D-AF78-7FBD8FACEDEF/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10349/4/5C81F023-9887-405D-AF78-7FBD8FACEDEF/downloads/wwdc2021-10349_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10349/4/5C81F023-9887-405D-AF78-7FBD8FACEDEF/downloads/wwdc2021-10349_hd.mp4",
+    "duration": 657
+  },
+  "codeSnippets": [
+    {
+      "title": "Creating Symbols",
+      "language": "swift",
+      "startTimeSeconds": 45,
+      "code": "// System symbol image\nImage(systemName: \"heart\")\n\n// System symbol label\nLabel(\"Heart\", systemImage: \"heart\")\n\n// Custom symbol image\nImage(\"queen.heart\")\n\n// Custom symbol label\nLabel(\"Queen of Hearts\", image: \"queen.heart\")"
+    },
+    {
+      "title": "Accessibility Label",
+      "language": "swift",
+      "startTimeSeconds": 153,
+      "code": "Image(systemName: \"heart\")\n    .accessibilityLabel(\"Ace of Hearts\")\n\nImage(systemName: \"person.circle\")\n    .accessibilityLabel(\"Profile\")\n\nImage(\"queen.heart\")\n\n// Localizeable.strings\n\"queen.heart\" = \"Queen of Hearts\";"
+    },
+    {
+      "title": "Symbol in Text",
+      "language": "swift",
+      "startTimeSeconds": 179,
+      "code": "Text(\"\"\"\n    Thalia, Paul, and\n    3 others \\(Image(systemName: \"chevron.forward\"))\n\"\"\")"
+    },
+    {
+      "title": "Customizing Color",
+      "language": "swift",
+      "startTimeSeconds": 194,
+      "code": "Label(\"Heart\", systemImage: \"heart\")\n\nLabel(\"Heart\", systemImage: \"heart\")\n    .foregroundStyle(.red)\n\nLabel(\"Heart\", systemImage: \"heart\")\n    .foregroundStyle(.tint)\n\nLabel(\"Heart\", systemImage: \"heart\")\n    .foregroundStyle(.secondary)"
+    },
+    {
+      "title": "Customizing Font",
+      "language": "swift",
+      "startTimeSeconds": 231,
+      "code": "Label(\"Heart\", systemImage: \"heart\")\n    .font(.body)\n\nLabel(\"Heart\", systemImage: \"heart\")\n    .font(.caption)\n\nLabel(\"Heart\", systemImage: \"heart\")\n    .font(.system(size: 10))"
+    },
+    {
+      "title": "Customizing Scale",
+      "language": "swift",
+      "startTimeSeconds": 248,
+      "code": "Label(\"Heart\", systemImage: \"heart\")\n    .imageScale(.large)\n\nLabel(\"Heart\", systemImage: \"heart\")\n    .imageScale(.medium)\n\nLabel(\"Heart\", systemImage: \"heart\")\n    .imageScale(.small)"
+    },
+    {
+      "title": "Customizing Variants",
+      "language": "swift",
+      "startTimeSeconds": 263,
+      "code": "TabView {\n    Text(\"Cards\").tabItem {\n        Label(\"Cards\", systemImage: \"rectangle.portrait.on.rectangle.portrait\")\n    }\n    Text(\"Rules\").tabItem {\n        Label(\"Rules\", systemImage: \"character.book.closed\")\n    }\n    Text(\"Profile\").tabItem {\n        Label(\"Profile\", systemImage: \"person.circle\")\n    }\n    Text(\"Magic\").tabItem {\n        Label(\"Magic\", systemImage: \"sparkles\")\n    }\n}"
+    },
+    {
+      "title": "Monochrome",
+      "language": "swift",
+      "startTimeSeconds": 312,
+      "code": "List {\n    Label(\"Ace of Hearts\", systemImage: \"suit.heart\")\n    Label(\"Ace of Spades\", systemImage: \"suit.spade\")\n    Label(\"Ace of Diamonds\", systemImage: \"suit.diamond\")\n    Label(\"Ace of Clubs\", systemImage: \"suit.club\")\n    Label(\"Queen of Hearts\", image: \"queen.heart\")\n}\n.symbolVariant(.fill)"
+    },
+    {
+      "title": "Multicolor",
+      "language": "swift",
+      "startTimeSeconds": 401,
+      "code": "List {\n    Label(\"Ace of Hearts\", systemImage: \"suit.heart\")\n    Label(\"Ace of Spades\", systemImage: \"suit.spade\")\n    Label(\"Ace of Diamonds\", systemImage: \"suit.diamond\")\n    Label(\"Ace of Clubs\", systemImage: \"suit.club\")\n    Label(\"Queen of Hearts\", image: \"queen.heart\")\n}\n.symbolVariant(.fill)\n.symbolRenderingMode(.multicolor)"
+    },
+    {
+      "title": "Hierarchical Rendering Mode",
+      "language": "swift",
+      "startTimeSeconds": 430,
+      "code": "HStack {\n    Button(action: {}) {\n        Image(systemName: \"square.3.stack.3d.top.fill\")\n    }\n    Button(action: {}) {\n        Image(systemName: \"square.3.stack.3d.bottom.fill\")\n    }\n}\n.symbolRenderingMode(.hierarchical)"
+    },
+    {
+      "title": "Palette Rendering Mode",
+      "language": "swift",
+      "startTimeSeconds": 470,
+      "code": "Button(action: {}) {\n    Image(systemName: \"arrow.uturn.backward\")\n}\n.symbolVariant(.circle.fill)\n.foregroundStyle(.white, .yellow, .red)"
+    },
+    {
+      "title": "Advanced Foreground Styles",
+      "language": "swift",
+      "startTimeSeconds": 540,
+      "code": "Button(action: {}) {\n    Image(systemName: \"arrow.uturn.backward\")\n}\n.symbolVariant(.circle.fill)\n.foregroundStyle(.white, .red)\n\nButton(action: {}) {\n    Image(systemName: \"arrow.uturn.backward\")\n}\n.symbolVariant(.circle.fill)\n.foregroundStyle(.white, .secondary)\n\nButton(action: {}) {\n    Image(systemName: \"arrow.uturn.backward\")\n}\n.symbolVariant(.circle.fill)\n.foregroundStyle(.red, .regularMaterial)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Download SF Symbols",
+      "url": "https://developer.apple.com/sf-symbols/",
+      "type": "download",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/sf-symbols/"
+    },
+    {
+      "title": "Human Interface Guidelines: SF Symbols",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/sf-symbols",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/sf-symbols"
+    }
+  ],
+  "path": "sessions/wwdc2021/10349-sf-symbols-in-swiftui/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10349-sf-symbols-in-swiftui/metadata.json",
+    "readme": "sessions/wwdc2021/10349-sf-symbols-in-swiftui/README.md",
+    "transcript": "sessions/wwdc2021/10349-sf-symbols-in-swiftui/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10349-sf-symbols-in-swiftui/transcript.json"
+  }
+}

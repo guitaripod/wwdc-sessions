@@ -1,0 +1,125 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-312",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 312,
+  "title": "Meet the Now Playing framework",
+  "description": "Get a first look at Now Playing — a Swift framework that connects your app’s media playback to system surfaces like the Lock Screen, Control Center, Dynamic Island, and CarPlay. Discover how to publish playback state and respond to commands using its observable API. Explore remote playback sessions, a new capability that lets your app represent media playing on external devices and bring full playback controls to those same system surfaces.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/312",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/312",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 756,
+  "hasTranscript": true,
+  "transcriptWordCount": 1735,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/312/5/3f128d25-f1c6-49d3-a9c0-0bdc22af5f95/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/312/5/3f128d25-f1c6-49d3-a9c0-0bdc22af5f95/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/312/5/3f128d25-f1c6-49d3-a9c0-0bdc22af5f95/downloads/wwdc2026-312_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/312/5/3f128d25-f1c6-49d3-a9c0-0bdc22af5f95/downloads/wwdc2026-312_hd.mp4",
+    "duration": 756
+  },
+  "codeSnippets": [
+    {
+      "title": "Existing PlayerModel implementation",
+      "language": "swift",
+      "startTimeSeconds": 117,
+      "code": "import Observation\n\n@Observable\nfinal class PlayerModel {\n    let player: SoundPlayer\n    var sound: Sound { player.currentSound }\n\n    init(player: SoundPlayer) {\n        self.player = player\n    }\n}"
+    },
+    {
+      "title": "Adopt MediaSessionRepresentable",
+      "language": "swift",
+      "startTimeSeconds": 126,
+      "code": "import NowPlaying\n\nextension PlayerModel: MediaSessionRepresentable {\n    var id: String { \"ambient-sound-session\" }\n\n    var content: (any MediaContentRepresentable)? {\n        return GenericContent(\n            id: sound.id,\n            title: sound.name,\n            subtitle: sound.description,\n            type: .audio,\n            duration: .live,\n            artwork: Artwork(id: sound.id) { size in\n                let data = try await self.artworkData(size: size)\n                return try ArtworkRepresentation(data: data)\n            }\n        )\n    }\n\n    var playbackSnapshot: MediaPlaybackSnapshot? {\n        MediaPlaybackSnapshot(\n            state: player.isPlaying ? .playing() : .paused\n        )\n    }\n\n    var commands: [MediaCommand] {[\n        .play { self.player.play() },\n        .pause { self.player.pause() },\n        .previous { self.player.previous() },\n        .next { self.player.next() }\n    ]}\n}"
+    },
+    {
+      "title": "MediaSession initialization",
+      "language": "swift",
+      "startTimeSeconds": 271,
+      "code": "import NowPlaying\n\nstruct PlayerController {\n    let player: SoundPlayer\n    let model: PlayerModel\n    let session: MediaSession<PlayerModel>\n\n    init() {\n        self.player = SoundPlayer()\n        self.model = PlayerModel(player: player)\n        self.session = MediaSession(model)\n    }\n}"
+    },
+    {
+      "title": "App extension entry point",
+      "language": "swift",
+      "startTimeSeconds": 402,
+      "code": "import ExtensionFoundation\nimport NowPlaying\n\n@main\nfinal class SampleAppExtension: @MainActor RemoteMediaSessionExtension {\n    var configuration: some AppExtensionConfiguration {\n        RemoteMediaSessionExtensionConfiguration(extension: self)\n    }\n\n    var extensionPoint: AppExtensionPoint {\n        AppExtensionPoint.Identifier(host: \"com.apple.nowplaying\", name: \"remote-media\")\n    }\n\n    func session(_ state: RemotePlayerState) async throws -> RemotePlayerModel {\n        RemotePlayerModel(state: state)\n    }\n}"
+    },
+    {
+      "title": "Existing RemotePlayerModel implementation",
+      "language": "swift",
+      "startTimeSeconds": 443,
+      "code": "import Observation\n\n@Observable\n@MainActor\nfinal class RemotePlayerModel {\n    let client: ServerClient\n    var state: RemotePlayerState\n\n    init(state: RemotePlayerState) {\n        self.client = ServerClient(sessionID: state.sessionID)\n        self.state = state\n    }\n}"
+    },
+    {
+      "title": "Adopt RemoteMediaSessionRepresentable in app extension",
+      "language": "swift",
+      "startTimeSeconds": 460,
+      "code": "import NowPlaying\n\nextension RemotePlayerModel: @MainActor RemoteMediaSessionRepresentable {\n    var id: String { state.sessionID }\n\n    var content: (any MediaContentRepresentable)? {\n        GenericContent(\n            id: state.sound.id,\n            title: state.sound.name,\n            subtitle: state.sound.description,\n            type: .audio,\n            duration: .live,\n            artwork: Artwork(id: state.sound.id) { size in\n                let data = try await self.artworkData(size: size)\n                return try ArtworkRepresentation(data: data)\n            }\n        )\n    }\n\n    var playbackSnapshot: MediaPlaybackSnapshot? {\n        MediaPlaybackSnapshot(\n            state: state.isPlaying ? .playing() : .paused\n        )\n    }\n\n    var commands: [MediaCommand] {[\n        .play { try await self.client.send(.play) },\n        .pause { try await self.client.send(.pause) },\n        .previous { try await self.client.send(.previous) },\n        .next { try await self.client.send(.next) }\n    ]}\n\n    var devices: [MediaDevice] {\n        state.devices.map { device in\n            MediaDevice(\n                id: device.id,\n                name: device.name,\n                type: .speaker,\n                capabilities: [\n                    .absoluteVolume(device.volume) { volume in\n                        // send volume change to server\n                    }\n                ]\n            )\n        }\n    }\n\n    func update(_ state: RemotePlayerState) {\n        self.state = state\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Routing media to third-party devices",
+      "url": "https://developer.apple.com/documentation/AVSystemRouting/routing-media-to-third-party-devices",
+      "type": "documentation",
+      "description": "Respond to routing events and control playback on a TV, speaker, or other media device.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVSystemRouting/routing-media-to-third-party-devices",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVSystemRouting/routing-media-to-third-party-devices.json"
+    },
+    {
+      "title": "Publishing remote media sessions",
+      "url": "https://developer.apple.com/documentation/NowPlaying/publishing-remote-media-sessions",
+      "type": "documentation",
+      "description": "Show media from an external device on the Lock Screen and Control Center.",
+      "sosumiURL": "https://sosumi.ai/documentation/NowPlaying/publishing-remote-media-sessions",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/NowPlaying/publishing-remote-media-sessions.json"
+    },
+    {
+      "title": "Publishing media sessions",
+      "url": "https://developer.apple.com/documentation/NowPlaying/publishing-media-sessions",
+      "type": "documentation",
+      "description": "Show your app’s media on the Lock Screen and Control Center.",
+      "sosumiURL": "https://sosumi.ai/documentation/NowPlaying/publishing-media-sessions",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/NowPlaying/publishing-media-sessions.json"
+    },
+    {
+      "title": "Setting up a remote notification server",
+      "url": "https://developer.apple.com/documentation/UserNotifications/setting-up-a-remote-notification-server",
+      "type": "documentation",
+      "description": "Generate notifications and push them to user devices.",
+      "sosumiURL": "https://sosumi.ai/documentation/UserNotifications/setting-up-a-remote-notification-server",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UserNotifications/setting-up-a-remote-notification-server.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/312-meet-the-now-playing-framework/",
+  "files": {
+    "metadata": "sessions/wwdc2026/312-meet-the-now-playing-framework/metadata.json",
+    "readme": "sessions/wwdc2026/312-meet-the-now-playing-framework/README.md",
+    "transcript": "sessions/wwdc2026/312-meet-the-now-playing-framework/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/312-meet-the-now-playing-framework/transcript.json"
+  }
+}

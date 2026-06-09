@@ -1,0 +1,124 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10049",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10049,
+  "title": "Add intelligence to your widgets",
+  "description": "Discover how to you can add intelligence to your widgets in Smart Stacks. We'll show you how to use the new Widget Suggestions API in tandem with Smart Rotate to create more valuable widget experiences for people throughout the day. Whether you inform the system of new, timely information or teach the system to learn common patterns, adopting these APIs can help people discover your widget and allows you to influence how the system surfaces content from your app around system spaces.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10049",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10049",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "annotating relevance",
+    "app donation",
+    "behavioral pattern",
+    "behavioral relevance",
+    "configuration intent",
+    "donate",
+    "donate new array",
+    "donate to the system",
+    "duration",
+    "glanceable",
+    "ininteraction",
+    "inrelevanceprovider",
+    "inrelevantshortcut",
+    "insert new widget into smart stack",
+    "insert widget into stack",
+    "intelligent widget",
+    "intent-configured widget",
+    "intent is eligible for widget",
+    "ipad home screen widget",
+    "proactive information",
+    "relevance signal",
+    "scroll to a widget",
+    "siri watch face",
+    "smart rotate",
+    "smart stack",
+    "static widget",
+    "suggestion ui",
+    "time-based relevance",
+    "timelineentryrelevance",
+    "timely",
+    "user behavior",
+    "widgetkind",
+    "widget suggestion"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1164,
+  "hasTranscript": true,
+  "transcriptWordCount": 3239,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10049/5/79001019-5F3C-4B12-A9F7-01FCE02A0381/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10049/5/79001019-5F3C-4B12-A9F7-01FCE02A0381/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10049/5/79001019-5F3C-4B12-A9F7-01FCE02A0381/downloads/wwdc2021-10049_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10049/5/79001019-5F3C-4B12-A9F7-01FCE02A0381/downloads/wwdc2021-10049_hd.mp4",
+    "duration": 1164
+  },
+  "codeSnippets": [
+    {
+      "title": "Donate INRelevantShortcuts for Widget Suggestions",
+      "language": "swift",
+      "startTimeSeconds": 554,
+      "code": "// Donate INRelevantShortcut for Widget Suggestions in app\n// User has just made a purchase\n\nvar relevantShortcuts: [INRelevantShortcut] = []\n\nlet intent = ViewRecentPurchasesIntent()\nintent.card = Card(identifier: card.identifier)\nintent.category = .all\n\nif let shortcut = INShortcut(intent: intent) {\n    let relevantShortcut = INRelevantShortcut(shortcut: shortcut)\n    relevantShortcut.shortcutRole = .information\n    relevantShortcut.widgetKind = “CardRecentPurchasesWidget”\n\n    let dateProvider = INDateRelevanceProvider(start: Date(), \n                                               end: Date(timeIntervalSinceNow: 1800))\n    relevantShortcut.relevanceProviders = [dateProvider]\n\n    relevantShortcuts.append(relevantShortcut)\n}\n\nINRelevantShortcutStore.default.setRelevantShortcuts(relevantShortcuts) { (error) in\n    if let error = error {\n        print(\"Failed to set relevant shortcuts. \\(error))\")\n    } else {\n        print(\"Relevant shortcuts set.\")\n    }\n}"
+    },
+    {
+      "title": "Adopting TimelineEntryRelevance for Smart Rotate",
+      "language": "swift",
+      "startTimeSeconds": 755,
+      "code": "// Appending TimelineEntryRelevance to a TimelineEntry in widget extension for Smart Rotate\n\nstruct CardRecentPurchasesEntry: TimelineEntry {\n    let date: Date\n    let relevance: TimelineEntryRelevance?\n    let card: IntentCard?\n    let category: PurchaseCategory\n}\n\nlet relevance = TimelineEntryRelevance(score: 16.29, duration: 1800)\nlet entry = CardRecentPurchasesEntry(date: Date(), relevance: relevance, card: card,\n                                     category: category)"
+    },
+    {
+      "title": "Donate INIntents through INInteraction for Widget Suggestions and Smart Rotations",
+      "language": "swift",
+      "startTimeSeconds": 1021,
+      "code": "// Donate INIntent in a card's purchases list in the app\n\n.onAppear {\n    let intent = ViewRecentPurchasesIntent()\n    intent.card = Card(identifier: card.id.uuidString, displayString: card.name)\n    intent.category = .all\n\n    let interaction = INInteraction(intent: intent, response: nil)\n    interaction.donate { error in\n        if let error = error {\n            print(error.localizedDescription)\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "TimelineEntry",
+      "url": "https://developer.apple.com/documentation/WidgetKit/TimelineEntry",
+      "type": "documentation",
+      "description": "A type that specifies the date to display a widget, and, optionally,",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit/TimelineEntry",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit/TimelineEntry.json"
+    },
+    {
+      "title": "Making a configurable widget",
+      "url": "https://developer.apple.com/documentation/WidgetKit/Making-a-Configurable-Widget",
+      "type": "documentation",
+      "description": "Give people the option to customize their widgets by adding a custom app intent",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit/Making-a-Configurable-Widget",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit/Making-a-Configurable-Widget.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10049-add-intelligence-to-your-widgets/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10049-add-intelligence-to-your-widgets/metadata.json",
+    "readme": "sessions/wwdc2021/10049-add-intelligence-to-your-widgets/README.md",
+    "transcript": "sessions/wwdc2021/10049-add-intelligence-to-your-widgets/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10049-add-intelligence-to-your-widgets/transcript.json"
+  }
+}

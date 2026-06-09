@@ -1,0 +1,278 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2024-10169",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10169,
+  "title": "Migrate your app to Swift 6",
+  "description": "Experience Swift 6 migration in action as we update an existing sample app. Learn how to migrate incrementally, module by module, and how the compiler helps you identify code that’s at risk of data races. Discover different techniques for ensuring clear isolation boundaries and eliminating concurrent access to shared mutable state.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10169",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10169",
+  "type": "Video",
+  "publishedAt": "2024-06-10T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 2508,
+  "hasTranscript": true,
+  "transcriptWordCount": 6091,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10169/6/4E4B2CB2-ABE3-49B7-AA2B-D97C6BF13B49/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10169/6/4E4B2CB2-ABE3-49B7-AA2B-D97C6BF13B49/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10169/6/4E4B2CB2-ABE3-49B7-AA2B-D97C6BF13B49/downloads/wwdc2024-10169_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10169/6/4E4B2CB2-ABE3-49B7-AA2B-D97C6BF13B49/downloads/wwdc2024-10169_hd.mp4",
+    "duration": 2508
+  },
+  "codeSnippets": [
+    {
+      "title": "Recaffeinater and CaffeineThresholdDelegate",
+      "language": "swift",
+      "startTimeSeconds": 548,
+      "code": "//Define Recaffeinator class\nclass Recaffeinater: ObservableObject {\n    @Published var recaffeinate: Bool = false\n    var minimumCaffeine: Double = 0.0\n}\n\n//Add protocol to notify if caffeine level is dangerously low\nextension Recaffeinater: CaffeineThresholdDelegate {\n    public func caffeineLevel(at level: Double) {\n        if level < minimumCaffeine {\n            // TODO: alert user to drink more coffee!\n        }\n    }\n}"
+    },
+    {
+      "title": "Add @MainActor to isolate the Recaffeinator",
+      "language": "swift",
+      "startTimeSeconds": 566,
+      "code": "//Isolate the Recaffeinater class to the main actor\n@MainActor\nclass Recaffeinater: ObservableObject {\n    @Published var recaffeinate: Bool = false\n    var minimumCaffeine: Double = 0.0\n}"
+    },
+    {
+      "title": "Warning in the protocol implementation",
+      "language": "swift",
+      "startTimeSeconds": 578,
+      "code": "//warning: Main actor-isolated instance method 'caffeineLevel(at:)' cannot be used to satisfy nonisolated protocol requirement\npublic func caffeineLevel(at level: Double) {\n      if level < minimumCaffeine {\n          // TODO: alert user to drink more coffee!\n      }\n}"
+    },
+    {
+      "title": "Understanding why the warning is there",
+      "language": "swift",
+      "startTimeSeconds": 599,
+      "code": "//This class is guaranteed on the main actor...\n@MainActor\nclass Recaffeinater: ObservableObject {\n    @Published var recaffeinate: Bool = false\n    var minimumCaffeine: Double = 0.0\n}\n\n//...but this protocol is not\nextension Recaffeinater: CaffeineThresholdDelegate {\n    public func caffeineLevel(at level: Double) {\n        if level < minimumCaffeine {\n            // TODO: alert user to drink more coffee!\n        }\n    }\n}"
+    },
+    {
+      "title": "A warning on the logger variable",
+      "language": "swift",
+      "startTimeSeconds": 779,
+      "code": "//var 'logger' is not concurrency-safe because it is non-isolated global shared mutable state; this is an error in the Swift 6 language mode\nvar logger = Logger(\n    subsystem:\n        \"com.example.apple-samplecode.Coffee-Tracker.watchkitapp.watchkitextension.ContentView\",\n    category: \"Root View\")"
+    },
+    {
+      "title": "Option 1: Convert 'logger' to a 'let' constant",
+      "language": "swift",
+      "startTimeSeconds": 818,
+      "code": "//Option 1: Convert 'logger' to a 'let' constant to make 'Sendable' shared state immutable\nlet logger = Logger(\n    subsystem:\n        \"com.example.apple-samplecode.Coffee-Tracker.watchkitapp.watchkitextension.ContentView\",\n    category: \"Root View\")"
+    },
+    {
+      "title": "Option 2: Isolate 'logger' it to the main actor",
+      "language": "swift",
+      "startTimeSeconds": 860,
+      "code": "//Option 2: Annotate 'logger' with '@MainActor' if property should only be accessed from the main actor\n@MainActor var logger = Logger(\n    subsystem:\n        \"com.example.apple-samplecode.Coffee-Tracker.watchkitapp.watchkitextension.ContentView\",\n    category: \"Root View\")"
+    },
+    {
+      "title": "Option 3: Mark it nonisolated(unsafe)",
+      "language": "swift",
+      "startTimeSeconds": 898,
+      "code": "//Option 3: Disable concurrency-safety checks if accesses are protected by an external synchronization mechanism\nnonisolated(unsafe) var logger = Logger(\n    subsystem:\n        \"com.example.apple-samplecode.Coffee-Tracker.watchkitapp.watchkitextension.ContentView\",\n    category: \"Root View\")"
+    },
+    {
+      "title": "The right answer",
+      "language": "swift",
+      "startTimeSeconds": 943,
+      "code": "//Option 1: Convert 'logger' to a 'let' constant to make 'Sendable' shared state immutable\nlet logger = Logger(\n    subsystem:\n        \"com.example.apple-samplecode.Coffee-Tracker.watchkitapp.watchkitextension.ContentView\",\n    category: \"Root View\")"
+    },
+    {
+      "title": "scheduleBackgroundRefreshTasks() has two warnings",
+      "language": "swift",
+      "startTimeSeconds": 1023,
+      "code": "func scheduleBackgroundRefreshTasks() {\n\n    scheduleLogger.debug(\"Scheduling a background task.\")\n\n    // Get the shared extension object.\n    let watchExtension = WKApplication.shared() //warning: Call to main actor-isolated class method 'shared()' in a synchronous nonisolated context\n\n    // If there is a complication on the watch face, the app should get at least four\n    // updates an hour. So calculate a target date 15 minutes in the future.\n    let targetDate = Date().addingTimeInterval(15.0 * 60.0)\n\n    // Schedule the background refresh task.\n    watchExtension.scheduleBackgroundRefresh(withPreferredDate: targetDate, userInfo: nil) { //warning: Call to main actor-isolated instance method 'scheduleBackgroundRefresh(withPreferredDate:userInfo:scheduledCompletion:)' in a synchronous nonisolated context\n        error in\n\n        // Check for errors.\n        if let error {\n            scheduleLogger.error(\n                \"An error occurred while scheduling a background refresh task: \\(error.localizedDescription)\"\n            )\n            return\n        }\n\n        scheduleLogger.debug(\"Task scheduled!\")\n    }\n}"
+    },
+    {
+      "title": "Annotate function with @MainActor",
+      "language": "swift",
+      "startTimeSeconds": 1077,
+      "code": "@MainActor func scheduleBackgroundRefreshTasks() {\n\n    scheduleLogger.debug(\"Scheduling a background task.\")\n\n    // Get the shared extension object.\n    let watchExtension = WKApplication.shared()\n\n    // If there is a complication on the watch face, the app should get at least four\n    // updates an hour. So calculate a target date 15 minutes in the future.\n    let targetDate = Date().addingTimeInterval(15.0 * 60.0)\n\n    // Schedule the background refresh task.\n    watchExtension.scheduleBackgroundRefresh(withPreferredDate: targetDate, userInfo: nil) {\n        error in\n\n        // Check for errors.\n        if let error {\n            scheduleLogger.error(\n                \"An error occurred while scheduling a background refresh task: \\(error.localizedDescription)\"\n            )\n            return\n        }\n\n        scheduleLogger.debug(\"Task scheduled!\")\n    }\n}"
+    },
+    {
+      "title": "Revisiting the Recaffeinater",
+      "language": "swift",
+      "startTimeSeconds": 1335,
+      "code": "//This class is guaranteed on the main actor...\n@MainActor\nclass Recaffeinater: ObservableObject {\n    @Published var recaffeinate: Bool = false\n    var minimumCaffeine: Double = 0.0\n}\n\n//...but this protocol is not\n//warning: Main actor-isolated instance method 'caffeineLevel(at:)' cannot be used to satisfy nonisolated protocol requirement\nextension Recaffeinater: CaffeineThresholdDelegate {\n    public func caffeineLevel(at level: Double) {\n        if level < minimumCaffeine {\n            // TODO: alert user to drink more coffee!\n        }\n    }\n}"
+    },
+    {
+      "title": "Option 1: Mark function as nonisolated",
+      "language": "swift",
+      "startTimeSeconds": 1346,
+      "code": "//error: Main actor-isolated property 'minimumCaffeine' can not be referenced from a non-isolated context\nnonisolated public func caffeineLevel(at level: Double) {\n    if level < minimumCaffeine {\n        // TODO: alert user to drink more coffee!\n    }\n}"
+    },
+    {
+      "title": "Option 1b: Wrap functionality in a Task",
+      "language": "swift",
+      "startTimeSeconds": 1387,
+      "code": "nonisolated public func caffeineLevel(at level: Double) {\n    Task { @MainActor in\n      if level < minimumCaffeine {\n        // TODO: alert user to drink more coffee!\n    \t}\n    }\n}"
+    },
+    {
+      "title": "Option 1c: Explore options to update the protocol",
+      "language": "swift",
+      "startTimeSeconds": 1414,
+      "code": "public protocol CaffeineThresholdDelegate: AnyObject {\n    func caffeineLevel(at level: Double)\n}"
+    },
+    {
+      "title": "Option 1d: Instead of wrapping it in a Task, use `MainActor.assumeisolated`",
+      "language": "swift",
+      "startTimeSeconds": 1455,
+      "code": "nonisolated public func caffeineLevel(at level: Double) {\n    MainActor.assumeIsolated {\n        if level < minimumCaffeine {\n            // TODO: alert user to drink more coffee!\n        }\n    }\n}"
+    },
+    {
+      "title": "`@preconcurrency` as a shorthand for assumeIsolated",
+      "language": "swift",
+      "startTimeSeconds": 1521,
+      "code": "extension Recaffeinater: @preconcurrency CaffeineThresholdDelegate {\n    public func caffeineLevel(at level: Double) {\n        if level < minimumCaffeine {\n            // TODO: alert user to drink more coffee!\n        }\n    }\n}"
+    },
+    {
+      "title": "Add `@MainActor` to the delegate protocol in CoffeeKit",
+      "language": "swift",
+      "startTimeSeconds": 1602,
+      "code": "@MainActor\npublic protocol CaffeineThresholdDelegate: AnyObject {\n    func caffeineLevel(at level: Double)\n}"
+    },
+    {
+      "title": "A new warning",
+      "language": "swift",
+      "startTimeSeconds": 1610,
+      "code": "//warning: @preconcurrency attribute on conformance to 'CaffeineThresholdDelegate' has no effect\nextension Recaffeinater: @preconcurrency CaffeineThresholdDelegate {\n    public func caffeineLevel(at level: Double) {\n        if level < minimumCaffeine {\n            // TODO: alert user to drink more coffee!\n        }\n    }\n}"
+    },
+    {
+      "title": "Remove @preconcurrency",
+      "language": "swift",
+      "startTimeSeconds": 1629,
+      "code": "extension Recaffeinater: CaffeineThresholdDelegate {\n    public func caffeineLevel(at level: Double) {\n        if level < minimumCaffeine {\n            // TODO: alert user to drink more coffee!\n        }\n    }\n}"
+    },
+    {
+      "title": "Global variables in CoffeeKit are marked as `var`",
+      "language": "swift",
+      "startTimeSeconds": 1796,
+      "code": "//warning: Var 'hkLogger' is not concurrency-safe because it is non-isolated global shared mutable state\nprivate var hkLogger = Logger(\n    subsystem:\n        \"com.example.apple-samplecode.Coffee-Tracker.watchkitapp.watchkitextension.HealthKitController\",\n    category: \"HealthKit\")\n\n// The key used to save and load anchor objects from user defaults.\n//warning: Var 'anchorKey' is not concurrency-safe because it is non-isolated global shared mutable state\nprivate var anchorKey = \"anchorKey\"\n\n// The HealthKit store.\n// warning: Var 'store' is not concurrency-safe because it is non-isolated global shared mutable state\nprivate var store = HKHealthStore()\n// warning: Var 'isAvailable' is not concurrency-safe because it is non-isolated global shared mutable state\nprivate var isAvailable = HKHealthStore.isHealthDataAvailable()\n\n// Caffeine types, used to read and write caffeine samples.\n// warning: Var 'caffeineType' is not concurrency-safe because it is non-isolated global shared mutable state\nprivate var caffeineType = HKObjectType.quantityType(forIdentifier: .dietaryCaffeine)!\n// warning: Var 'types' is not concurrency-safe because it is non-isolated global shared mutable state\nprivate var types: Set<HKSampleType> = [caffeineType]\n\n// Milligram units.\n// warning: Var 'miligrams' is not concurrency-safe because it is non-isolated global shared mutable state\ninternal var miligrams = HKUnit.gramUnit(with: .milli)"
+    },
+    {
+      "title": "Change all global variables to `let`",
+      "language": "swift",
+      "startTimeSeconds": 1819,
+      "code": "private let hkLogger = Logger(\n    subsystem:\n        \"com.example.apple-samplecode.Coffee-Tracker.watchkitapp.watchkitextension.HealthKitController\",\n    category: \"HealthKit\")\n\n// The key used to save and load anchor objects from user defaults.\nprivate let anchorKey = \"anchorKey\"\n\n// The HealthKit store.\nprivate let store = HKHealthStore()\nprivate let isAvailable = HKHealthStore.isHealthDataAvailable()\n\n// Caffeine types, used to read and write caffeine samples.\nprivate let caffeineType = HKObjectType.quantityType(forIdentifier: .dietaryCaffeine)!\nprivate let types: Set<HKSampleType> = [caffeineType]\n\n// Milligram units.\ninternal let miligrams = HKUnit.gramUnit(with: .milli)"
+    },
+    {
+      "title": "Warning 1: Sending arrays in `drinksUpdated()`",
+      "language": "swift",
+      "startTimeSeconds": 1838,
+      "code": "// warning: Sending 'self.currentDrinks' risks causing data races\n// Sending main actor-isolated 'self.currentDrinks' to actor-isolated instance method 'save' risks causing data races between actor-isolated and main actor-isolated uses\nawait store.save(currentDrinks)"
+    },
+    {
+      "title": "Looking at Drink struct",
+      "language": "swift",
+      "startTimeSeconds": 1924,
+      "code": "// The record of a single drink.\npublic struct Drink: Hashable, Codable {\n\n    // The amount of caffeine in the drink.\n    public let mgCaffeine: Double\n\n    // The date when the drink was consumed.\n    public let date: Date\n\n    // A globally unique identifier for the drink.\n    public let uuid: UUID\n\n    public let type: DrinkType?\n\n    public var latitude, longitude: Double?\n\n    // The drink initializer.\n    public init(type: DrinkType, onDate date: Date, uuid: UUID = UUID()) {\n        self.mgCaffeine = type.mgCaffeinePerServing\n        self.date = date\n        self.uuid = uuid\n        self.type = type\n    }\n\n    internal init(from sample: HKQuantitySample) {\n        self.mgCaffeine = sample.quantity.doubleValue(for: miligrams)\n        self.date = sample.startDate\n        self.uuid = sample.uuid\n        self.type = nil\n    }\n\n    // Calculate the amount of caffeine remaining at the provided time,\n    // based on a 5-hour half life.\n    public func caffeineRemaining(at targetDate: Date) -> Double {\n        // Calculate the number of half-life time periods (5-hour increments)\n        let intervals = targetDate.timeIntervalSince(date) / (60.0 * 60.0 * 5.0)\n        return mgCaffeine * pow(0.5, intervals)\n    }\n}"
+    },
+    {
+      "title": "Mark `Drink` struct as Sendable",
+      "language": "swift",
+      "startTimeSeconds": 2009,
+      "code": "// The record of a single drink.\npublic struct Drink: Hashable, Codable, Sendable {\n  //...\n}"
+    },
+    {
+      "title": "Another type that isn't Sendable",
+      "language": "swift",
+      "startTimeSeconds": 2015,
+      "code": "// warning: Stored property 'type' of 'Sendable'-conforming struct 'Drink' has non-sendable type 'DrinkType?'\npublic let type: DrinkType?"
+    },
+    {
+      "title": "Using nonisolated(unsafe)",
+      "language": "swift",
+      "startTimeSeconds": 2068,
+      "code": "nonisolated(unsafe)\npublic let type: DrinkType?"
+    },
+    {
+      "title": "Undo that change",
+      "language": "swift",
+      "startTimeSeconds": 2085,
+      "code": "public let type: DrinkType?"
+    },
+    {
+      "title": "Change DrinkType to be Sendable",
+      "language": "swift",
+      "startTimeSeconds": 2104,
+      "code": "// Define the types of drinks supported by Coffee Tracker.\npublic enum DrinkType: Int, CaseIterable, Identifiable, Codable, Sendable {\n  //...\n}"
+    },
+    {
+      "title": "CoreLocation using AsyncSequence",
+      "language": "swift",
+      "startTimeSeconds": 2195,
+      "code": "//Create a new drink to add to the array.\nvar drink = Drink(type: type, onDate: date)\n\ndo {\n  //error: 'CLLocationUpdate' is only available in watchOS 10.0 or newer\n  for try await update in CLLocationUpdate.liveUpdates() {\n    guard let coord = update.location else {\n      logger.info( \"Update received but no location, \\(update.location)\")\n      break\n    }\n    drink.latitude = coord.coordinate.latitude\n    drink.longitude = coord.coordinate.longitude\n  } catch {\n\n  }"
+    },
+    {
+      "title": "Create a CoffeeLocationDelegate",
+      "language": "swift",
+      "startTimeSeconds": 2290,
+      "code": "class CoffeeLocationDelegate: NSObject, CLLocationManagerDelegate {\n  var location: CLLocation?\n  var manager: CLLocationManager!\n\n  var latitude: CLLocationDegrees? { location?.coordinate.latitude } \n  var longitude: CLLocationDegrees? { location?.coordinate.longitude }\n\n  override init () {\n    super.init()\n    manager = CLLocationManager()\n    manager.delegate = self\n    manager.startUpdatingLocation()\n  }\n\n  func locationManager (\n    _ manager: CLLocationManager, \n    didUpdateLocations locations: [CLLocation]\n  ) {\n      self.location = locations. last\n  }\n}"
+    },
+    {
+      "title": "Put the CoffeeLocationDelegate on the main actor",
+      "language": "swift",
+      "startTimeSeconds": 2372,
+      "code": "@MainActor\nclass CoffeeLocationDelegate: NSObject, CLLocationManagerDelegate {\n  var location: CLLocation?\n  var manager: CLLocationManager!\n\n  var latitude: CLLocationDegrees? { location?.coordinate.latitude } \n  var longitude: CLLocationDegrees? { location?.coordinate.longitude }\n\n  override init () {\n    super.init()\n    // This CLLocationManager will be initialized on the main thread\n    manager = CLLocationManager()\n    manager.delegate = self\n    manager.startUpdatingLocation()\n  }\n\n  // error: Main actor-isolated instance method 'locationManager_:didUpdateLocations:)' cannot be used to satisfy nonisolated protocol requirement\n  func locationManager (\n    _ manager: CLLocationManager, \n    didUpdateLocations locations: [CLLocation]\n  ) {\n      self.location = locations. last\n  }\n}"
+    },
+    {
+      "title": "Update the locationManager function",
+      "language": "swift",
+      "startTimeSeconds": 2406,
+      "code": "nonisolated func locationManager (\n  _ manager: CLLocationManager, \n  didUpdateLocations locations: [CLLocation]\n) {\n    MainActor.assumeIsolated { self.location = locations. last }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Swift Migration Guide",
+      "url": "https://www.swift.org/migration/documentation/migrationguide/",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Updating an app to use strict concurrency",
+      "url": "https://developer.apple.com/documentation/Swift/updating-an-app-to-use-strict-concurrency",
+      "type": "samplecode",
+      "description": "Use this code to follow along with a guide to migrating your code to take advantage of the full concurrency protection that the Swift 6 language mode provides.",
+      "sosumiURL": "https://sosumi.ai/documentation/Swift/updating-an-app-to-use-strict-concurrency",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Swift/updating-an-app-to-use-strict-concurrency.json"
+    },
+    {
+      "title": "Forum: Programming Languages",
+      "url": "https://developer.apple.com/forums/topics/programming-languages-topic?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/programming-languages-topic?cid=vf-a-0010"
+    }
+  ],
+  "path": "sessions/wwdc2024/10169-migrate-your-app-to-swift-6/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10169-migrate-your-app-to-swift-6/metadata.json",
+    "readme": "sessions/wwdc2024/10169-migrate-your-app-to-swift-6/README.md",
+    "transcript": "sessions/wwdc2024/10169-migrate-your-app-to-swift-6/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10169-migrate-your-app-to-swift-6/transcript.json"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10206",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10206,
+  "title": "Designed for iPad",
+  "description": "Discover the building blocks for designing a great iPad app: Learn how to minimize use of modal interfaces and leverage the new sidebar to increase efficiency by streamlining navigation and facilitating powerful drag and drop interactions. See how to take advantage of iPad’s versatile interaction opportunities by supporting multitouch, pencil, keyboard, and trackpad. And create adaptive layouts that respond to all size classes and orientation to support a great multitasking experience. These techniques will not only improve your iPad app — they’ll make it easier to create a Mac Catalyst app that truly feels right at home on macOS.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10206",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10206",
+  "type": "Video",
+  "publishedAt": "2020-06-23T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 1746,
+  "hasTranscript": true,
+  "transcriptWordCount": 5159,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10206/4/AC4BAFCF-A06F-447C-B8C9-DF858FB6EB07/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10206/4/AC4BAFCF-A06F-447C-B8C9-DF858FB6EB07/wwdc2020_10206_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10206/4/AC4BAFCF-A06F-447C-B8C9-DF858FB6EB07/wwdc2020_10206_hd.mp4",
+    "duration": 1746
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Explore the Human Interface Guidelines",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/"
+    }
+  ],
+  "path": "sessions/wwdc2020/10206-designed-for-ipad/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10206-designed-for-ipad/metadata.json",
+    "readme": "sessions/wwdc2020/10206-designed-for-ipad/README.md",
+    "transcript": "sessions/wwdc2020/10206-designed-for-ipad/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10206-designed-for-ipad/transcript.json"
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-222",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 222,
+  "title": "Meet the new MetricKit",
+  "description": "Find and fix performance problems faster than ever. Join us to explore how MetricKit equips you with vital performance metrics and actionable diagnostics to help you understand exactly where your app has opportunities for improvements. We’ll also cover how to intersect your app’s metrics and diagnostics by app state by using the StateReporting framework, providing you with the full picture to investigate optimizations in your app’s experience.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/222",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/222",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 1063,
+  "hasTranscript": true,
+  "transcriptWordCount": 2668,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/222/4/86b76599-f095-4bd8-8004-f1dbd1bacb84/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/222/4/86b76599-f095-4bd8-8004-f1dbd1bacb84/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/222/4/86b76599-f095-4bd8-8004-f1dbd1bacb84/downloads/wwdc2026-222_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/222/4/86b76599-f095-4bd8-8004-f1dbd1bacb84/downloads/wwdc2026-222_hd.mp4",
+    "duration": 1063
+  },
+  "codeSnippets": [
+    {
+      "title": "Receive metrics from MetricKit",
+      "language": "swift",
+      "startTimeSeconds": 299,
+      "code": "// Receive metrics from MetricKit\n\nimport MetricKit\n\nlet manager = MetricManager()\n\nfor await report in manager.metricReports {\n    processReport(report)\n}"
+    },
+    {
+      "title": "Send your metrics to the server",
+      "language": "swift",
+      "startTimeSeconds": 325,
+      "code": "// Send your metrics to the server\n\nimport MetricKit\n\nfor await report in manager.metricReports {\n    let jsonData = try JSONEncoder().encode(report)\n    sendToServer(jsonData)\n}"
+    },
+    {
+      "title": "Access your performance metrics",
+      "language": "swift",
+      "startTimeSeconds": 344,
+      "code": "// Access your performance metrics\n\nimport MetricKit\n\nfor await report in manager.metricReports {\n    let intervalEntries = report.intervalEntries\n    let fullDayEntry = intervalEntries.fullDayEntry\n\n    for entry in intervalEntries {\n        let memoryMetrics = entry.values.filter { $0.metricGroup == .memory }\n\n        for metric in memoryMetrics {\n            switch metric {\n            case .peakMemory(let peak):\n                processPeakMemory(peak)\n            default: break\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Receive diagnostics",
+      "language": "swift",
+      "startTimeSeconds": 539,
+      "code": "// Receive diagnostics\n\nimport MetricKit\n\nlet manager = MetricManager()\n\nfor await report in manager.diagnosticReports {\n    processReport(report)\n}"
+    },
+    {
+      "title": "Send your diagnostic data to the server",
+      "language": "swift",
+      "startTimeSeconds": 554,
+      "code": "// Send your diagnostic data to the server\n\nimport MetricKit\n\nfor await report in manager.diagnosticReports {\n    let jsonData = try JSONEncoder().encode(report)\n    sendToServer(jsonData)\n}"
+    },
+    {
+      "title": "Access your diagnostic data",
+      "language": "swift",
+      "startTimeSeconds": 579,
+      "code": "// Access your diagnostic data\n\nimport MetricKit\n\nfor await report in manager.diagnosticReports {\n    switch report.result {\n    case .crash(let crash):\n        let backtrace = crash.callStackTree\n        let reason = crash.terminationReason\n        let category = crash.terminationCategory\n        processCrash(backtrace: backtrace, reason: reason, category: category)\n    case .hang(let hang):\n        processHangDiagnostic(hang)\n    default: break\n    }\n}"
+    },
+    {
+      "title": "Receive MetricKit data with states",
+      "language": "swift",
+      "startTimeSeconds": 837,
+      "code": "// Receive MetricKit data with states\n\nimport MetricKit\nimport StateReporting\n\nlet domain = StateReportingDomain(\"com.metrickitsample.tabs\")\nlet manager = MetricManager(enabledStateReportingDomains: [domain])\n\n\n// Report transitions throughout the app\n\nlet reporter = StateReporter.reporter(for: domain.rawValue)\nreporter.reportTransition(to: \"Reports\")"
+    },
+    {
+      "title": "Define custom structured types",
+      "language": "swift",
+      "startTimeSeconds": 861,
+      "code": "// Define custom structured types\n\nimport StateReporting\n\n@ReportableMetadata\nstruct ViewConfiguration {\n    let listSize: String\n    let isSorted: Bool\n}\n\nlet reporter = StateReporter.reporter(\n    for: domain.rawValue,\n    stableMetadata: ViewConfiguration.self\n)\n\nreporter.reportTransition(\n    to: \"Reports\",\n    stableMetadata: ViewConfiguration(listSize: \"large\", isSorted: false)\n)"
+    },
+    {
+      "title": "Send encoded metric reports to the server",
+      "language": "swift",
+      "startTimeSeconds": 929,
+      "code": "// Send encoded metric reports to the server\n\nimport MetricKit\n\nfor await report in manager.metricReports {\n    let encoder = JSONEncoder()\n\n    let formatKey = MetricReport.encodingFormatKey\n    encoder.userInfo[formatKey] = MetricReport.EncodingFormat.byStateReportingDomain\n\n    let jsonData = try encoder.encode(report)\n    sendToServer(jsonData)\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Getting started with StateReporting",
+      "url": "https://developer.apple.com/documentation/StateReporting/getting-started-with-statereporting",
+      "type": "documentation",
+      "description": "Define reportable metadata types, obtain a state reporter for your domain, and report transitions at the right call sites in your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/StateReporting/getting-started-with-statereporting",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StateReporting/getting-started-with-statereporting.json"
+    },
+    {
+      "title": "Analyzing app performance with MetricKit",
+      "url": "https://developer.apple.com/documentation/MetricKit/analyzing-app-performance-with-metrickit",
+      "type": "documentation",
+      "description": "Work with the metric values, diagnostic data, and environments in MetricKit reports.",
+      "sosumiURL": "https://sosumi.ai/documentation/MetricKit/analyzing-app-performance-with-metrickit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MetricKit/analyzing-app-performance-with-metrickit.json"
+    },
+    {
+      "title": "Monitoring app performance with MetricKit",
+      "url": "https://developer.apple.com/documentation/MetricKit/monitoring-app-performance-with-metrickit",
+      "type": "documentation",
+      "description": "Receive daily performance and diagnostic reports from real device usage.",
+      "sosumiURL": "https://sosumi.ai/documentation/MetricKit/monitoring-app-performance-with-metrickit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MetricKit/monitoring-app-performance-with-metrickit.json"
+    },
+    {
+      "title": "Track performance by app state using MetricKit",
+      "url": "https://developer.apple.com/documentation/MetricKit/track-performance-by-app-state-using-metrickit",
+      "type": "samplecode",
+      "description": "Collect performance metrics, diagnostic reports, and experiment data related to your app’s current state using the MetricKit framework.",
+      "sosumiURL": "https://sosumi.ai/documentation/MetricKit/track-performance-by-app-state-using-metrickit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MetricKit/track-performance-by-app-state-using-metrickit.json"
+    },
+    {
+      "title": "MetricKit",
+      "url": "https://developer.apple.com/documentation/MetricKit",
+      "type": "documentation",
+      "description": "Measure your app’s performance using daily metric and diagnostic reports from real users.",
+      "sosumiURL": "https://sosumi.ai/documentation/MetricKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MetricKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/222-meet-the-new-metrickit/",
+  "files": {
+    "metadata": "sessions/wwdc2026/222-meet-the-new-metrickit/metadata.json",
+    "readme": "sessions/wwdc2026/222-meet-the-new-metrickit/README.md",
+    "transcript": "sessions/wwdc2026/222-meet-the-new-metrickit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/222-meet-the-new-metrickit/transcript.json"
+  }
+}

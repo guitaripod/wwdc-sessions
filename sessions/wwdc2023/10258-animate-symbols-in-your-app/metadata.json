@@ -1,0 +1,160 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10258",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10258,
+  "title": "Animate symbols in your app",
+  "description": "Bring delight to your app with animated symbols. Explore the new Symbols framework, which features a unified API to create and configure symbol effects. Learn how SwiftUI, AppKit, and UIKit make it easy to animate symbols in user interfaces. Discover tips and tricks to seamlessly integrate the new animations alongside other app content. To get the most from this session, we recommend first watching “What’s new in SF Symbols 5.”",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10258",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10258",
+  "type": "Video",
+  "publishedAt": "2023-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services",
+    "Design",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1027,
+  "hasTranscript": true,
+  "transcriptWordCount": 1989,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10258/4/F5972AFA-C206-4702-9005-E146CE71FC29/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10258/4/F5972AFA-C206-4702-9005-E146CE71FC29/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10258/4/F5972AFA-C206-4702-9005-E146CE71FC29/downloads/wwdc2023-10258_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10258/4/F5972AFA-C206-4702-9005-E146CE71FC29/downloads/wwdc2023-10258_hd.mp4",
+    "duration": 1027
+  },
+  "codeSnippets": [
+    {
+      "title": "Symbol effects in SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 362,
+      "code": "// Symbol effects in SwiftUI\n\nImage(systemName: \"wifi.router\")\n    .symbolEffect(.variableColor.iterative.reversing)\n    .symbolEffect(.scale.up)"
+    },
+    {
+      "title": "Symbol effects in AppKit and UIKit",
+      "language": "swift",
+      "startTimeSeconds": 362,
+      "code": "let imageView: NSImageView = ...\n\nimageView.addSymbolEffect(.variableColor.iterative.reversing)\nimageView.addSymbolEffect(.scale.up)"
+    },
+    {
+      "title": "Indefinite symbol effects in SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 409,
+      "code": "struct ContentView: View {\n    @State var isConnectingToInternet: Bool = true\n\n    var body: some View {\n        Image(systemName: \"wifi.router\")\n            .symbolEffect(\n                .variableColor.iterative.reversing,\n                isActive: isConnectingToInternet\n            )\n    }\n}"
+    },
+    {
+      "title": "Indefinite symbol effects in AppKit and UIKit",
+      "language": "swift",
+      "startTimeSeconds": 429,
+      "code": "let imageView: NSImageView = ...\n\nimageView.addSymbolEffect(.variableColor.iterative.reversing)\n\n// Later, remove the effect\nimageView.removeSymbolEffect(ofType: .variableColor)"
+    },
+    {
+      "title": "Discrete symbol effects in SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 506,
+      "code": "struct ContentView: View {\n    @State var bounceValue: Int = 0\n\n    var body: some View {\n        VStack {\n            Image(systemName: \"antenna.radiowaves.left.and.right\")\n                .symbolEffect(\n                    .bounce,\n                    options: .repeat(2),\n                    value: bounceValue\n                )\n\n            Button(\"Animate\") {\n                bounceValue += 1\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Discrete symbol effects in AppKit and UIKit",
+      "language": "swift",
+      "startTimeSeconds": 506,
+      "code": "let imageView: NSImageView = ...\n\n// Bounce\nimageView.addSymbolEffect(.bounce, options: .repeat(2))"
+    },
+    {
+      "title": "Content transition symbol effects in SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 580,
+      "code": "struct ContentView: View {\n    @State var isPaused: Bool = false\n\n    var body: some View {\n        Button {\n            isPaused.toggle()\n        } label: {\n            Image(systemName: isPaused ? \"pause.fill\" : \"play.fill\")\n                .contentTransition(.symbolEffect(.replace.offUp))\n        }\n    }\n}"
+    },
+    {
+      "title": "Content transition symbol effects in AppKit and UIKit",
+      "language": "swift",
+      "startTimeSeconds": 597,
+      "code": "let imageView: UIImageView = ...\nimageView.image = UIImage(systemName: \"play.fill\")\n\n// Change the image with a Replace effect\nlet pauseImage = UIImage(systemName: \"pause.fill\")!\nimageView.setSymbolImage(pauseImage, contentTransition: .replace.offUp)"
+    },
+    {
+      "title": "Indefinite Appear and Disappear symbol effects in SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 674,
+      "code": "struct ContentView: View {\n    @State var isMoonHidden: Bool = false\n\n    var body: some View {\n        HStack {\n            RoundedRectangle(cornerRadius: 5)\n\n            Image(systemName: \"moon.stars\")\n               .symbolEffect(.disappear, isActive: isMoonHidden)\n\n            Circle()\n        }\n    }\n}"
+    },
+    {
+      "title": "Indefinite Appear and Disappear symbol effects in AppKit and UIKit",
+      "language": "swift",
+      "startTimeSeconds": 690,
+      "code": "let imageView: UIImageView = ...\nimageView.image = UIImage(systemName: \"moon.stars\")\n\nimageView.addSymbolEffect(.disappear)\n// Re-appear the symbol\nimageView.addSymbolEffect(.appear)"
+    },
+    {
+      "title": "Transition symbol effects in SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 758,
+      "code": "struct ContentView: View {\n    @State var isMoonHidden: Bool = false\n\n    var body: some View {\n        HStack {\n            RoundedRectangle(cornerRadius: 5)\n\n            if !isMoonHidden {\n                Image(systemName: \"moon.stars\")\n                    .transition(.symbolEffect(.disappear.down))\n            }\n\n            Circle()\n        }\n    }\n}"
+    },
+    {
+      "title": "Appear and Disappear symbol effects in UIKit with completion handler",
+      "language": "swift",
+      "startTimeSeconds": 779,
+      "code": "let imageView: UIImageView = ...\nimageView.image = UIImage(systemName: \"moon.stars\")\n\nimageView.addSymbolEffect(.disappear) { context in\n    if let imageView = context.sender as? UIImageView, context.isFinished {\n        imageView.removeFromSuperview()\n    } \n}"
+    },
+    {
+      "title": "Symbol effect propagation in SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 859,
+      "code": "VStack {\n    Image(systemName: \"figure.walk\")\n        .symbolEffectsRemoved()\n    Image(systemName: \"car\")\n    Image(systemName: \"tram\")\n}\n.symbolEffect(.pulse)"
+    },
+    {
+      "title": "Effects without animation in SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 895,
+      "code": "struct ContentView: View {\n    @State var isScaledUp: Bool = false\n\n    var body: some View {\n        Image(systemName: \"iphone.radiowaves.left.and.right\")\n            .symbolEffect(.scale.up, isActive: isScaledUp)\n            .onAppear {\n                var transaction = Transaction()\n                transaction.disablesAnimations = true\n                withTransaction(transaction) {\n                    isScaledUp = true\n                }\n            }\n    }\n}"
+    },
+    {
+      "title": "Effects without animation in AppKit and UIKit",
+      "language": "swift",
+      "startTimeSeconds": 906,
+      "code": "// Effects without animation in AppKit and UIKit\n\nlet imageView: UIImageView = ...\nimageView.image = UIImage(systemName: \"iphone.radiowaves.left.and.right\")\n\nimageView.addSymbolEffect(.disappear, animated: false)"
+    },
+    {
+      "title": "Variable value animations in SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 944,
+      "code": "struct ContentView: View {\n    @State var signalLevel: Double = 0.5\n\n    var body: some View {\n        Image(systemName: \"wifi\", variableValue: signalLevel)\n    }\n}"
+    },
+    {
+      "title": "Variable value animations in AppKit and UIKit",
+      "language": "swift",
+      "startTimeSeconds": 967,
+      "code": "let imageView: UIImageView = ...\nimageView.image = UIImage(systemName: \"wifi\", variableValue: 1.0)\n\n// Animate to a different Wi-Fi level\nlet currentSignalImage = UIImage(\n    systemName: \"wifi\",\n    variableValue: signalLevel\n)!\nimageView.setSymbolImage(currentSignalImage, contentTransition: .automatic)"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2023/10258-animate-symbols-in-your-app/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10258-animate-symbols-in-your-app/metadata.json",
+    "readme": "sessions/wwdc2023/10258-animate-symbols-in-your-app/README.md",
+    "transcript": "sessions/wwdc2023/10258-animate-symbols-in-your-app/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10258-animate-symbols-in-your-app/transcript.json"
+  }
+}

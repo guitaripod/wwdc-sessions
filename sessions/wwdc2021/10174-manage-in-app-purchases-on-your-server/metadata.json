@@ -1,0 +1,111 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10174",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10174,
+  "title": "Manage in-app purchases on your server",
+  "description": "Discover the latest updates to managing in-app purchases on your server. Explore how you can use servers to track status changes, handle refunds, and manage subscriber status. Learn about App Store server APIs around status and in-app purchase transactions, and find out how App Store server notifications can help you track more customer lifecycle events. We’ll also take you through managing Family Sharing for in-app purchases, and the latest improvements to testing in-app purchases in the sandbox environment.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10174",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10174",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "games",
+    "storekit"
+  ],
+  "topics": [
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 2023,
+  "hasTranscript": true,
+  "transcriptWordCount": 5369,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10174/3/CF8F96B8-0719-405C-815A-25E67736D5F4/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10174/3/CF8F96B8-0719-405C-815A-25E67736D5F4/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10174/3/CF8F96B8-0719-405C-815A-25E67736D5F4/downloads/wwdc2021-10174_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10174/3/CF8F96B8-0719-405C-815A-25E67736D5F4/downloads/wwdc2021-10174_hd.mp4",
+    "duration": 2023
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "App Store Server API",
+      "url": "https://developer.apple.com/documentation/AppStoreServerAPI",
+      "type": "documentation",
+      "description": "Manage your customers’ App Store transactions from your server.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreServerAPI",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreServerAPI.json"
+    },
+    {
+      "title": "Introducing StoreKit 2",
+      "url": "https://developer.apple.com/storekit/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/storekit/"
+    },
+    {
+      "title": "Human Interface Guidelines: In-app purchase",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/in-app-purchase",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/in-app-purchase"
+    },
+    {
+      "title": "In-app purchase overview",
+      "url": "https://developer.apple.com/in-app-purchase/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/in-app-purchase/"
+    },
+    {
+      "title": "App Store Server Notifications",
+      "url": "https://developer.apple.com/documentation/appstoreservernotifications",
+      "type": "documentation",
+      "description": "Monitor in-app purchase events in real time with server notifications from the App Store.",
+      "sosumiURL": "https://sosumi.ai/documentation/appstoreservernotifications",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/appstoreservernotifications.json"
+    },
+    {
+      "title": "Auto-renewable subscriptions overview",
+      "url": "https://developer.apple.com/app-store/subscriptions/",
+      "type": "documentation",
+      "description": "Auto-Renewable Subscriptions",
+      "sosumiURL": "https://sosumi.ai/app-store/subscriptions/"
+    },
+    {
+      "title": "StoreKit",
+      "url": "https://developer.apple.com/documentation/StoreKit",
+      "type": "documentation",
+      "description": "Support In-App Purchases and interactions with the App Store.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10174-manage-in-app-purchases-on-your-server/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10174-manage-in-app-purchases-on-your-server/metadata.json",
+    "readme": "sessions/wwdc2021/10174-manage-in-app-purchases-on-your-server/README.md",
+    "transcript": "sessions/wwdc2021/10174-manage-in-app-purchases-on-your-server/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10174-manage-in-app-purchases-on-your-server/transcript.json"
+  }
+}

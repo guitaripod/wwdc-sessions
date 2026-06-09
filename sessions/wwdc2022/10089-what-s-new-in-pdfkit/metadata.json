@@ -1,0 +1,84 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10089",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10089,
+  "title": "What's new in PDFKit",
+  "description": "Discover PDFKit — a full-featured framework that helps your app view, edit, and save PDF documents. We'll take you through the latest features in PDFKit, including support for live text and forms, creating PDFs from images, building interactive overlays, and saving annotations.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10089",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10089",
+  "type": "Video",
+  "publishedAt": "2022-06-10T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "pencilkit",
+    "pencil kit"
+  ],
+  "topics": [
+    "Essentials",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 821,
+  "hasTranscript": true,
+  "transcriptWordCount": 2088,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10089/3/473B1E55-B2A6-42BB-AA96-EE2599D6E779/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10089/3/473B1E55-B2A6-42BB-AA96-EE2599D6E779/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10089/3/473B1E55-B2A6-42BB-AA96-EE2599D6E779/downloads/wwdc2022-10089_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10089/3/473B1E55-B2A6-42BB-AA96-EE2599D6E779/downloads/wwdc2022-10089_hd.mp4",
+    "duration": 821
+  },
+  "codeSnippets": [
+    {
+      "title": "Implementing the overlay protocol",
+      "language": "swift",
+      "startTimeSeconds": 414,
+      "code": "class Coordinator: NSObject, PDFPageOverlayViewProvider {\n\n    var pageToViewMapping = [PDFPage: UIView]()\n\n    func pdfView(_ view: PDFView, overlayViewFor page: PDFPage) -> UIView? {\n        var resultView: PKCanvasView? = nil\n\n        if let overlayView = pageToViewMapping[page] {\n            resultView = overlayView\n        } else {\n            let canvasView = PKCanvasView(frame: .zero)\n            canvasView.drawingPolicy = .anyInput\n            canvasView.tool = PKInkingTool(.pen, color: .systemYellow, width: 20)\n            canvasView.backgroundColor = UIColor.clear\n            pageToViewMapping[page] = canvasView\n            resultView = canvasView\n        }\n\n        // If we have stored a drawing on the page, set it on the canvas\n        let page = page as! MyPDFPage\n        if let drawing = page.drawing {\n            resultView?.drawing = drawing;\n        }\n        return resultView\n    }\n\n    func pdfView(_ pdfView: PDFView, willEndDisplayingOverlayView\n        overlayView: UIView, for page: PDFPage) {\n        let overlayView = overlayView as! PKCanvasView\n        let page = page as! MyPDFPage\n        page.drawing = overlayView.drawing\n        pageToViewMapping.removeValue(forKey: page)\n    }\n}"
+    },
+    {
+      "title": "Create a subclass of PDFAnnotation",
+      "language": "swift",
+      "startTimeSeconds": 622,
+      "code": "// Implement a subclass with a drawing override\n\nclass MyPDFAnnotation: PDFAnnotation {\n\n    override func draw(with box: PDFDisplayBox, in context: CGContext) {\n        UIGraphicsPushContext(context)\n        context.saveGState()\n\n        let page = self.page as! MyPDFPage\n        if let drawing = page.drawing {\n            let image = drawing.image(from: drawing.bounds, scale: 1)\n            image.draw(in: drawing.bounds)\n        }\n\n        context.restoreGState()\n        UIGraphicsPopContext()\n    }\n}"
+    },
+    {
+      "title": "Add annotations to your document when saving",
+      "language": "swift",
+      "startTimeSeconds": 635,
+      "code": "override func contents(forType typeName: String) throws -> Any {\n\n    if let pdfDocument = pdfDocument {\n\n        // Go through all pages in the document\n        for i in 0...pdfDocument.pageCount-1 {\n            if let page = pdfDocument.page(at: i) {                       \n                if let drawing = (page as! MyPDFPage).drawing {\n\n                    // Create an annotation of our custom subclass\n                    let newAnnotation = MyPDFAnnotation(bounds: drawing.bounds,\n                                                        forType: .stamp, withProperties: nil)\n\n                    // Add our custom data\n                    let codedData = try! NSKeyedArchiver.archivedData(withRootObject: drawing,\n                                                                      requiringSecureCoding: true)\n                    newAnnotation.setValue(codedData,\n                                           forAnnotationKey: PDFAnnotationKey(rawValue: \"drawingData\"))\n\n                    // Add our annotation to the page\n                    page.addAnnotation(newAnnotation)\n                }\n            }\n        }\n\n        // -- Option #1: Save the document to a data representation\n        if let resultData = pdfDocument.dataRepresentation() {\n            return resultData\n        }\n\n        // -- Option #2: Save the document to a data representation and \"burn in\" annotations\n        let options = [PDFDocumentWriteOption.burnInAnnotationsOption: true]\n        if let resultData = pdfDocument.dataRepresentation(options: options) {\n            return resultData\n        }\n    }\n\n    // Fall through to returning empty data\n    return Data()\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "PDFAnnotationWidgetsAdvanced",
+      "url": "https://developer.apple.com/sample-code/wwdc/2017/PDFAnnotationWidgetsAdvanced.zip",
+      "type": "samplecode",
+      "description": "Demonstrates how to use PDFKit to add widgets (interactive form elements) to your own PDF document.",
+      "sosumiURL": "https://sosumi.ai/sample-code/wwdc/2017/PDFAnnotationWidgetsAdvanced.zip"
+    }
+  ],
+  "path": "sessions/wwdc2022/10089-what-s-new-in-pdfkit/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10089-what-s-new-in-pdfkit/metadata.json",
+    "readme": "sessions/wwdc2022/10089-what-s-new-in-pdfkit/README.md",
+    "transcript": "sessions/wwdc2022/10089-what-s-new-in-pdfkit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10089-what-s-new-in-pdfkit/transcript.json"
+  }
+}

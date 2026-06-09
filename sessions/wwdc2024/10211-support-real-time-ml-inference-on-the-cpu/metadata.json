@@ -1,0 +1,125 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2024-10211",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10211,
+  "title": "Support real-time ML inference on the CPU",
+  "description": "Discover how you can use BNNSGraph to accelerate the execution of your machine learning model on the CPU. We will show you how to use BNNSGraph to compile and execute a machine learning model on the CPU and share how it provides real-time guarantees such as no runtime memory allocation and single-threaded running for audio or signal processing models.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10211",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10211",
+  "type": "Video",
+  "publishedAt": "2024-06-11T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "bnns",
+    "machine learning"
+  ],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1203,
+  "hasTranscript": true,
+  "transcriptWordCount": 2901,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10211/4/1410E4EC-04F1-4A67-B7A5-F31E500B8306/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10211/4/1410E4EC-04F1-4A67-B7A5-F31E500B8306/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10211/4/1410E4EC-04F1-4A67-B7A5-F31E500B8306/downloads/wwdc2024-10211_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10211/4/1410E4EC-04F1-4A67-B7A5-F31E500B8306/downloads/wwdc2024-10211_hd.mp4",
+    "duration": 1203
+  },
+  "codeSnippets": [
+    {
+      "title": "Create the graph",
+      "language": "cpp",
+      "startTimeSeconds": 1,
+      "code": "// Get the path to the mlmodelc.\n        NSBundle *main = [NSBundle mainBundle];\n        NSString *mlmodelc_path = [main pathForResource:@\"bitcrusher\"\n                                                 ofType:@\"mlmodelc\"];\n\n        // Specify single-threaded execution.\n        bnns_graph_compile_options_t options = BNNSGraphCompileOptionsMakeDefault();\n        BNNSGraphCompileOptionsSetTargetSingleThread(options, true);\n\n        // Compile the BNNSGraph.\n        bnns_graph_t graph = BNNSGraphCompileFromFile(mlmodelc_path.UTF8String,\n                                                      NULL, options);\n        assert(graph.data);\n        BNNSGraphCompileOptionsDestroy(options);"
+    },
+    {
+      "title": "Create context and workspace",
+      "language": "cpp",
+      "startTimeSeconds": 2,
+      "code": "// Create the context.\n        context = BNNSGraphContextMake(graph);\n        assert(context.data);\n\n        // Set the argument type.\n        BNNSGraphContextSetArgumentType(context, BNNSGraphArgumentTypePointer);\n\n        // Specify the dynamic shape.\n        uint64_t shape[] = {mMaxFramesToRender, 1, 1};\n        bnns_graph_shape_t shapes[] = {\n            (bnns_graph_shape_t) {.rank = 3, .shape = shape},\n            (bnns_graph_shape_t) {.rank = 3, .shape = shape}\n        };\n        BNNSGraphContextSetDynamicShapes(context, NULL, 2, shapes);\n\n        // Create the workspace.\n        workspace_size = BNNSGraphContextGetWorkspaceSize(context, NULL) + NSPageSize();\n        workspace = (char *)aligned_alloc(NSPageSize(), workspace_size);"
+    },
+    {
+      "title": "Calculate indices",
+      "language": "cpp",
+      "startTimeSeconds": 3,
+      "code": "// Calculate indices into the arguments array.\n        dst_index = BNNSGraphGetArgumentPosition(graph, NULL, \"dst\");\n        src_index = BNNSGraphGetArgumentPosition(graph, NULL, \"src\");\n        resolution_index = BNNSGraphGetArgumentPosition(graph, NULL, \"resolution\");\n        saturationGain_index = BNNSGraphGetArgumentPosition(graph, NULL, \"saturationGain\");\n        dryWet_index = BNNSGraphGetArgumentPosition(graph, NULL, \"dryWet\");"
+    },
+    {
+      "title": "Execute graph",
+      "language": "cpp",
+      "startTimeSeconds": 4,
+      "code": "// Set the size of the first dimension.\n            BNNSGraphContextSetBatchSize(context, NULL, frameCount);\n\n            // Specify the direct pointer to the output buffer.\n            arguments[dst_index] = {\n                .data_ptr = outputBuffers[channel],\n                .data_ptr_size = frameCount * sizeof(outputBuffers[channel][0])\n            };\n\n            // Specify the direct pointer to the input buffer.\n            arguments[src_index] = {\n                .data_ptr = (float *)inputBuffers[channel],\n                .data_ptr_size = frameCount * sizeof(inputBuffers[channel][0])\n            };\n\n            // Specify the direct pointer to the resolution scalar parameter.\n            arguments[resolution_index] = {\n                .data_ptr = &mResolution,\n                .data_ptr_size = sizeof(float)\n            };\n\n            // Specify the direct pointer to the saturation gain scalar parameter.\n            arguments[saturationGain_index] = {\n                .data_ptr = &mSaturationGain,\n                .data_ptr_size = sizeof(float)\n            };\n\n            // Specify the direct pointer to the mix scalar parameter.\n            arguments[dryWet_index] = {\n                .data_ptr = &mMix,\n                .data_ptr_size = sizeof(float)\n            };\n\n            // Execute the function.\n            BNNSGraphContextExecute(context, NULL,\n                                    5, arguments,\n                                    workspace_size, workspace);"
+    },
+    {
+      "title": "Declare buffers",
+      "language": "swift",
+      "startTimeSeconds": 5,
+      "code": "// Create source buffer that represents a pure sine wave.\n    let srcChartData: UnsafeMutableBufferPointer<Float> = {\n        let buffer = UnsafeMutableBufferPointer<Float>.allocate(capacity: sampleCount)\n\n        for i in 0 ..< sampleCount {\n            buffer[i] = sin(Float(i) / ( Float(sampleCount) / .pi) * 4)\n        }\n\n        return buffer\n    }()\n\n    // Create destination buffer.\n    let dstChartData = UnsafeMutableBufferPointer<Float>.allocate(capacity: sampleCount)\n\n    // Create scalar parameter buffer for resolution.\n    let resolutionValue = UnsafeMutableBufferPointer<Float>.allocate(capacity: 1)\n\n    // Create scalar parameter buffer for resolution.\n    let saturationGainValue = UnsafeMutableBufferPointer<Float>.allocate(capacity: 1)\n\n    // Create scalar parameter buffer for resolution.\n    let mixValue = UnsafeMutableBufferPointer<Float>.allocate(capacity: 1)"
+    },
+    {
+      "title": "Declare indices",
+      "language": "swift",
+      "startTimeSeconds": 6,
+      "code": "// Declare BNNSGraph objects.\n    let graph: bnns_graph_t\n    let context: bnns_graph_context_t\n\n    // Declare workspace.\n    let workspace: UnsafeMutableRawBufferPointer\n\n    // Create the indices into the arguments array.\n    let dstIndex: Int\n    let srcIndex: Int\n    let resolutionIndex: Int\n    let saturationGainIndex: Int\n    let dryWetIndex: Int"
+    },
+    {
+      "title": "Create graph and context",
+      "language": "swift",
+      "startTimeSeconds": 7,
+      "code": "// Get the path to the mlmodelc.\n        guard let fileName = Bundle.main.url(\n            forResource: \"bitcrusher\",\n            withExtension: \"mlmodelc\")?.path() else {\n            fatalError(\"Unable to load model.\")\n        }\n\n        // Compile the BNNSGraph.\n        graph = BNNSGraphCompileFromFile(fileName, nil,\n                                         BNNSGraphCompileOptionsMakeDefault())\n\n        // Create the context.\n        context = BNNSGraphContextMake(graph)\n\n        // Verify graph and context.\n        guard graph.data != nil && context.data != nil else { fatalError()}"
+    },
+    {
+      "title": "Finish initialization",
+      "language": "swift",
+      "startTimeSeconds": 8,
+      "code": "// Set the argument type.\n        BNNSGraphContextSetArgumentType(context, BNNSGraphArgumentTypePointer)\n\n        // Set the size of the first dimension.\n        BNNSGraphContextSetBatchSize(context, nil, UInt64(sampleCount))\n\n        // Create the workspace.\n        workspace = .allocate(byteCount: BNNSGraphContextGetWorkspaceSize(context, nil),\n                              alignment: NSPageSize())\n\n        // Calculate indices into the arguments array.\n        dstIndex = BNNSGraphGetArgumentPosition(graph, nil, \"dst\")\n        srcIndex = BNNSGraphGetArgumentPosition(graph, nil, \"src\")\n        resolutionIndex = BNNSGraphGetArgumentPosition(graph, nil, \"resolution\")\n        saturationGainIndex = BNNSGraphGetArgumentPosition(graph, nil, \"saturationGain\")\n        dryWetIndex = BNNSGraphGetArgumentPosition(graph, nil, \"dryWet\")"
+    },
+    {
+      "title": "Create arguments array",
+      "language": "swift",
+      "startTimeSeconds": 9,
+      "code": "// Copy slider values to scalar parameter buffers.\n        resolutionValue.initialize(repeating: resolution.value)\n        saturationGainValue.initialize(repeating: saturationGain.value)\n        mixValue.initialize(repeating: mix.value)\n\n        // Specify output and input arguments.\n        var arguments = [(dstChartData, dstIndex),\n                         (srcChartData, srcIndex),\n                         (resolutionValue, resolutionIndex),\n                         (saturationGainValue, saturationGainIndex),\n                         (mixValue, dryWetIndex)]\n            .sorted { a, b in\n                a.1 < b.1\n            }\n            .map {\n                var argument = bnns_graph_argument_t()\n\n                argument.data_ptr = UnsafeMutableRawPointer(mutating: $0.0.baseAddress!)\n                argument.data_ptr_size = $0.0.count * MemoryLayout<Float>.stride\n\n                return argument\n            }"
+    },
+    {
+      "title": "Execute graph",
+      "language": "swift",
+      "startTimeSeconds": 10,
+      "code": "// Execute the function.\n        BNNSGraphContextExecute(context,\n                                nil,\n                                arguments.count, &arguments,"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Forum: Machine Learning and AI",
+      "url": "https://developer.apple.com/forums/topics/machine-learning-and-ai?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/machine-learning-and-ai?cid=vf-a-0010"
+    }
+  ],
+  "path": "sessions/wwdc2024/10211-support-real-time-ml-inference-on-the-cpu/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10211-support-real-time-ml-inference-on-the-cpu/metadata.json",
+    "readme": "sessions/wwdc2024/10211-support-real-time-ml-inference-on-the-cpu/README.md",
+    "transcript": "sessions/wwdc2024/10211-support-real-time-ml-inference-on-the-cpu/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10211-support-real-time-ml-inference-on-the-cpu/transcript.json"
+  }
+}

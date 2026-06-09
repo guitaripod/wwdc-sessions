@@ -1,0 +1,70 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10005",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10005,
+  "title": "What's new in HealthKit",
+  "description": "Bring the latest HealthKit features to your health & fitness app. We'll show you how to capture more detailed sleep data through sleep stages, track swim-bike-run and interval workouts with the enhanced Workout API, and save vision prescriptions — including an image of the physical prescription — directly to HealthKit while preserving privacy.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10005",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10005",
+  "type": "Video",
+  "publishedAt": "2022-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Health & Fitness"
+  ],
+  "primaryTopic": "Health & Fitness",
+  "duration": 1465,
+  "hasTranscript": true,
+  "transcriptWordCount": 2943,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10005/4/55C7CDFC-2E36-4AC0-8E77-7327EBD9E0E9/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10005/4/55C7CDFC-2E36-4AC0-8E77-7327EBD9E0E9/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10005/4/55C7CDFC-2E36-4AC0-8E77-7327EBD9E0E9/downloads/wwdc2022-10005_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10005/4/55C7CDFC-2E36-4AC0-8E77-7327EBD9E0E9/downloads/wwdc2022-10005_hd.mp4",
+    "duration": 1465
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: HealthKit",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/healthkit/overview/",
+      "type": "documentation",
+      "description": "Get in-depth information and UI resources for designing great Health apps.",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/healthkit/overview/"
+    },
+    {
+      "title": "HealthKit",
+      "url": "https://developer.apple.com/documentation/HealthKit",
+      "type": "documentation",
+      "description": "Access and share health and fitness data while maintaining the user’s privacy and control.",
+      "sosumiURL": "https://sosumi.ai/documentation/HealthKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HealthKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10005-what-s-new-in-healthkit/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10005-what-s-new-in-healthkit/metadata.json",
+    "readme": "sessions/wwdc2022/10005-what-s-new-in-healthkit/README.md",
+    "transcript": "sessions/wwdc2022/10005-what-s-new-in-healthkit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10005-what-s-new-in-healthkit/transcript.json"
+  }
+}

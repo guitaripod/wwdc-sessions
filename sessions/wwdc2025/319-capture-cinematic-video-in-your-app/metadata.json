@@ -1,0 +1,259 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-319",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 319,
+  "title": "Capture cinematic video in your app",
+  "description": "Discover how the Cinematic Video API enables your app to effortlessly capture cinema-style videos. We’ll cover how to configure a Cinematic capture session and introduce the fundamentals of building a video capture UI. We’ll also explore advanced Cinematic features such as applying a depth of field effect to achieve both tracking and rack focus.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/319",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/319",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "camera",
+    "capture",
+    "cinematic"
+  ],
+  "topics": [
+    "Photos & Camera",
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 1107,
+  "hasTranscript": true,
+  "transcriptWordCount": 2532,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/319/4/55797f51-c074-44e8-85fe-5aaa0780ba91/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/319/4/55797f51-c074-44e8-85fe-5aaa0780ba91/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/319/4/55797f51-c074-44e8-85fe-5aaa0780ba91/downloads/wwdc2025-319_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/319/4/55797f51-c074-44e8-85fe-5aaa0780ba91/downloads/wwdc2025-319_hd.mp4",
+    "duration": 1107
+  },
+  "codeSnippets": [
+    {
+      "title": "Select a video device",
+      "language": "swift",
+      "startTimeSeconds": 266,
+      "code": "// Select a video device\n\nlet deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualWideCamera], mediaType: .video, position: .back)\n\nguard let camera = deviceDiscoverySession.devices.first else {\n    print(\"Failed to find the capture device\")\n    return\n}"
+    },
+    {
+      "title": "Select a format that supports Cinematic Video capture",
+      "language": "swift",
+      "startTimeSeconds": 307,
+      "code": "// Select a format that supports Cinematic Video capture\n\nfor format in camera.formats {\n\n    if format.isCinematicVideoCaptureSupported {\n\n       try! camera.lockForConfiguration()\n       camera.activeFormat = format\n       camera.unlockForConfiguration()\n\n       break\n    }\n\n}"
+    },
+    {
+      "title": "Select a microphone",
+      "language": "swift",
+      "startTimeSeconds": 351,
+      "code": "// Select a microphone\n\nlet audioDeviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes [.microphone], mediaType: .audio, position: .unspecified)\n\nguard let microphone = audioDeviceDiscoverySession.devices.first else {\n    print(\"Failed to find a microphone\")\n    return\n}"
+    },
+    {
+      "title": "Add devices to input & add inputs to the capture session & enable Cinematic Video capture",
+      "language": "swift",
+      "startTimeSeconds": 360,
+      "code": "// Add devices to inputs\n\nlet videoInput = try! AVCaptureDeviceInput(device: camera)\nguard captureSession.canAddInput(videoInput) else {\n    print(\"Can't add the video input to the session\")\n    return\n}\n\nlet audioInput = try! AVCaptureDeviceInput(device: microphone)\nguard captureSession.canAddInput(audioInput) else {\n    print(\"Can't add the audio input to the session\")\n    return\n}\n\n// Add inputs to the capture session\n\ncaptureSession.addInput(videoInput)\ncaptureSession.addInput(audioInput)\n\n// Enable Cinematic Video capture\n\nif (videoInput.isCinematicVideoCaptureSupported) {\n  videoInput.isCinematicVideoCaptureEnabled = true\n}"
+    },
+    {
+      "title": "Capture spatial audio",
+      "language": "swift",
+      "startTimeSeconds": 377,
+      "code": "// Configure spatial audio\n\nif audioInput.isMultichannelAudioModeSupported(.firstOrderAmbisonics) {\n    audioInput.multichannelAudioMode = .firstOrderAmbisonics\n}"
+    },
+    {
+      "title": "Add outputs to the session & configure video stabilization & associate the preview layer with the capture session",
+      "language": "swift",
+      "startTimeSeconds": 393,
+      "code": "// Add outputs to the session\n\nlet movieFileOutput = AVCaptureMovieFileOutput()\nguard captureSession.canAddOutput(movieFileOutput) else {\n    print(\"Can't add the movie file output to the session\")\n    return\n}\ncaptureSession.addOutput(movieFileOutput)\n\n\n// Configure video stabilization\n\nif let connection = movieFileOutput.connection(with: .video), \n    connection.isVideoStabilizationSupported {\n    connection.preferredVideoStabilizationMode = .cinematicExtendedEnhanced\n}\n\n// Add a preview layer as the view finder\n\nlet previewLayer = AVCaptureVideoPreviewLayer()\npreviewLayer.session = captureSession"
+    },
+    {
+      "title": "Display the preview layer with SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 431,
+      "code": "// Display the preview layer with SwiftUI\n\nstruct CameraPreviewView: UIViewRepresentable {\n\n    func makeUIView(context: Context) -> PreviewView {\n        return PreviewView()\n    }\n\n    class CameraPreviewUIView: UIView {\n\n\t\t\toverride class var layerClass: AnyClass {\n    \t\tAVCaptureVideoPreviewLayer.self\n\t\t\t}\n\n\t\t\tvar previewLayer: AVCaptureVideoPreviewLayer {\n  \t  \tlayer as! AVCaptureVideoPreviewLayer\n\t\t\t}\n\n\t\t\t...\n\t\t}\n\n...\n}"
+    },
+    {
+      "title": "Display the preview layer with SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 474,
+      "code": "// Display the preview layer with SwiftUI\n\n@MainActor\nstruct CameraView: View {       \n\n    var body: some View {\n        ZStack {\n            CameraPreviewView()  \n          \tCameraControlsView()\n        }\n    }\n}"
+    },
+    {
+      "title": "Adjust bokeh strength with simulated aperture",
+      "language": "swift",
+      "startTimeSeconds": 485,
+      "code": "// Adjust bokeh strength with simulated aperture\n\n\nopen class AVCaptureDeviceInput : AVCaptureInput {\n\n\topen var simulatedAperture: Float\n\n\t...\n\n}"
+    },
+    {
+      "title": "Find min, max, and default simulated aperture",
+      "language": "swift",
+      "startTimeSeconds": 520,
+      "code": "// Adjust bokeh strength with simulated aperture\n\n\nextension AVCaptureDeviceFormat {\n\n\topen var minSimulatedAperture: Float { get }\n\n\topen var maxSimulatedAperture: Float { get }\n\n\topen var defaultSimulatedAperture: Float { get }\n\n\t...\n\n}"
+    },
+    {
+      "title": "Add a metadata output",
+      "language": "swift",
+      "startTimeSeconds": 552,
+      "code": "// Add a metadata output\n\nlet metadataOutput = AVCaptureMetadataOutput()\n\nguard captureSession.canAddOutput(metadataOutput) else {\n    print(\"Can't add the metadata output to the session\")\n    return\n}\ncaptureSession.addOutput(metadataOutput)\n\nmetadataOutput.metadataObjectTypes = metadataOutput.requiredMetadataObjectTypesForCinematicVideoCapture\n\nmetadataOutput.setMetadataObjectsDelegate(self, queue: sessionQueue)"
+    },
+    {
+      "title": "Update the observed manager object",
+      "language": "swift",
+      "startTimeSeconds": 590,
+      "code": "// Update the observed manager object\n\nfunc metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {\n\n   self.metadataManager.metadataObjects = metadataObjects\n\n}\n\n// Pass metadata to SwiftUI\n\n@Observable\nclass CinematicMetadataManager {\n\n    var metadataObjects: [AVMetadataObject] = []\n\n}"
+    },
+    {
+      "title": "Observe changes and update the view",
+      "language": "swift",
+      "startTimeSeconds": 612,
+      "code": "// Observe changes and update the view\n\nstruct FocusOverlayView : View {\n\n    var body: some View {\n\n\t        ForEach(\n\t      metadataManager.metadataObjects, id:\\.objectID)\n\t\t  \t{ metadataObject in\n\n    \t\t  rectangle(for: metadataObject)\n\n\t\t\t  }\n\t\t}\n}"
+    },
+    {
+      "title": "Make a rectangle for a metadata",
+      "language": "swift",
+      "startTimeSeconds": 618,
+      "code": "// Make a rectangle for a metadata\n\nprivate func rectangle(for metadata: AVMetadataObjects) -> some View {\n\n    let transformedRect = previewLayer.layerRectConverted(fromMetadataOutputRect: metadata.bounds)\n\n    return Rectangle()\n        .frame(width:transformedRect.width,\n               height:transformedRect.height)\n        .position(\n            x:transformedRect.midX,\n            y:transformedRect.midY)\n}"
+    },
+    {
+      "title": "Focus methods",
+      "language": "swift",
+      "startTimeSeconds": 653,
+      "code": "open func setCinematicVideoTrackingFocus(detectedObjectID: Int, focusMode: AVCaptureDevice.CinematicVideoFocusMode)\n\nopen func setCinematicVideoTrackingFocus(at point: CGPoint, focusMode: AVCaptureDevice.CinematicVideoFocusMode)\n\nopen func setCinematicVideoFixedFocus(at point: CGPoint, focusMode: AVCaptureDevice.CinematicVideoFocusMode)"
+    },
+    {
+      "title": "Focus method 1 & CinematicVideoFocusMode",
+      "language": "swift",
+      "startTimeSeconds": 659,
+      "code": "// Focus methods\n\nopen func setCinematicVideoTrackingFocus(detectedObjectID: Int, focusMode: AVCaptureDevice.CinematicVideoFocusMode)\n\n\npublic enum CinematicVideoFocusMode : Int, @unchecked Sendable {\n\n    case none = 0\n\n    case strong = 1\n\n    case weak = 2\n}\n\nextension AVMetadataObject {\n\n   open var cinematicVideoFocusMode: Int32 { get }\n\n}"
+    },
+    {
+      "title": "Focus method no.2",
+      "language": "swift",
+      "startTimeSeconds": 739,
+      "code": "// Focus method no.2\n\nopen func setCinematicVideoTrackingFocus(at point: CGPoint, focusMode: AVCaptureDevice.CinematicVideoFocusMode)"
+    },
+    {
+      "title": "Focus method no.3",
+      "language": "swift",
+      "startTimeSeconds": 761,
+      "code": "// Focus method no.3\n\nopen func setCinematicVideoFixedFocus(at point: CGPoint, focusMode: AVCaptureDevice.CinematicVideoFocusMode)"
+    },
+    {
+      "title": "Create the spatial tap gesture",
+      "language": "swift",
+      "startTimeSeconds": 834,
+      "code": "var body: some View {\n\nlet spatialTapGesture = SpatialTapGesture()\n    .onEnded { event in\n        Task {\n            await camera.focusTap(at: event.location)\n        }\n     }\n\n...\n}"
+    },
+    {
+      "title": "Simulate a long press gesture with a drag gesture",
+      "language": "swift",
+      "startTimeSeconds": 855,
+      "code": "@State private var pressLocation: CGPoint = .zero\n@State private var isPressing = false\nprivate let longPressDuration: TimeInterval = 0.3\n\nvar body: some View {\n\n  ...\n\n\tlet longPressGesture = DragGesture(minimumDistance: 0).onChanged { value in\n\t\tif !isPressing {\n\t\t\tisPressing = true\n\t\t\tpressLocation = value.location\n\t\t\tstartLoopPressTimer()\n\t\t}\n\t}.onEnded { _ in\n\t\tisPressing = false\n\t}\n\n\t...\n\n}\n\nprivate func startLoopPressTimer() {\n\tDispatchQueue.main.asyncAfter(deadline: .now() + longPressDuration) {\n\t\tif isPressing {\n\t\t\tTask {\n\t\t\t\tawait camera.focusLongPress(at: pressLocation)\n\t\t\t}\n\t\t}\n\t}\n}"
+    },
+    {
+      "title": "Create a rectangle view to receive gestures.",
+      "language": "swift",
+      "startTimeSeconds": 876,
+      "code": "var body: some View {\n\nlet spatialTapGesture = ...\nlet longPressGesture = ...\n\nZStack {\n  ForEach(\n    metadataManager.metadataObjects,\n    id:\\.objectID)\n  { metadataObject in\n\n    rectangle(for: metadataObject)\n\n  }\n  Rectangle()\n      .fill(Color.clear)\n      .contentShape(Rectangle())\n      .gesture(spatialTapGesture)\n  .gesture(longPressGesture)}\n\n  }\n}"
+    },
+    {
+      "title": "Create the rectangle view",
+      "language": "swift",
+      "startTimeSeconds": 903,
+      "code": "private func rectangle(for metadata: AVMetadataObject) -> some View {\n\n    let transformedRect = previewLayer.layerRectConverted(fromMetadataOutputRect: metadata.bounds)\n    var color: Color\n    var strokeStyle: StrokeStyle\n\n    switch metadata.focusMode {\n    case .weak:\n        color = .yellow\n        strokeStyle = StrokeStyle(lineWidth: 2, dash: [5,4])\n    case .strong:\n        color = .yellow\n        strokeStyle = StrokeStyle(lineWidth: 2)\n    case .none:\n        color = .white\n        strokeStyle = StrokeStyle(lineWidth: 2)\n    }\n\n    return Rectangle()\n        .stroke(color, style: strokeStyle)\n        .contentShape(Rectangle())\n        .frame(width: transformedRect.width, height: transformedRect.height)\n        .position(x: transformedRect.midX, \n                  y: transformedRect.midY)\n}"
+    },
+    {
+      "title": "Implement focusTap",
+      "language": "swift",
+      "startTimeSeconds": 930,
+      "code": "func focusTap(at point:CGPoint) {\n\n   try! camera.lockForConfiguration()\n\n    if let metadataObject = findTappedMetadataObject(at: point) {\n        if metadataObject.cinematicVideoFocusMode == .weak {\n            camera.setCinematicVideoTrackingFocus(detectedObjectID: metadataObject.objectID, focusMode: .strong)\n\n        }\n        else {\n            camera.setCinematicVideoTrackingFocus(detectedObjectID: metadataObject.objectID, focusMode: .weak)\n        }\n    }\n    else {\n        let transformedPoint = previewLayer.metadataOutputRectConverted(fromLayerRect: CGRect(origin:point, size:.zero)).origin\n        camera.setCinematicVideoTrackingFocus(at: transformedPoint, focusMode: .weak)\n    }\n\n    camera.unlockForConfiguration()\n}"
+    },
+    {
+      "title": "Implement findTappedMetadataObject",
+      "language": "swift",
+      "startTimeSeconds": 942,
+      "code": "private func findTappedMetadataObject(at point: CGPoint) -> AVMetadataObject? {\n\n    var metadataObjectToReturn: AVMetadataObject?\n\n    for metadataObject in metadataObjectsArray {\n        let layerRect = previewLayer.layerRectConverted(fromMetadataOutputRect: metadataObject.bounds)\n        if layerRect.contains(point) {\n            metadataObjectToReturn = metadataObject\n            break\n        }\n    }\n\n    return metadataObjectToReturn\n}"
+    },
+    {
+      "title": "focusTap implementation continued",
+      "language": "swift",
+      "startTimeSeconds": 961,
+      "code": "func focusTap(at point:CGPoint) {\n\n   try! camera.lockForConfiguration()\n\n    if let metadataObject = findTappedMetadataObject(at: point) {\n        if metadataObject.cinematicVideoFocusMode == .weak {\n            camera.setCinematicVideoTrackingFocus(detectedObjectID: metadataObject.objectID, focusMode: .strong)\n\n        }\n        else {\n            camera.setCinematicVideoTrackingFocus(detectedObjectID: metadataObject.objectID, focusMode: .weak)\n        }\n    }\n    else {\n        let transformedPoint = previewLayer.metadataOutputRectConverted(fromLayerRect: CGRect(origin:point, size:.zero)).origin\n        camera.setCinematicVideoTrackingFocus(at: transformedPoint, focusMode: .weak)\n    }\n\n    camera.unlockForConfiguration()\n}"
+    },
+    {
+      "title": "Implement focusLongPress",
+      "language": "swift",
+      "startTimeSeconds": 983,
+      "code": "func focusLongPress(at point:CGPoint) {\n\n   try! camera.lockForConfiguration()\n\n   let transformedPoint = previewLayer.metadataOutputRectConverted(fromLayerRect:CGRect(origin: point, size: CGSizeZero)).origin\n       camera.setCinematicVideoFixedFocus(at: pointInMetadataOutputSpace, focusMode: .strong)\n\n    camera.unlockForConfiguration()\n}"
+    },
+    {
+      "title": "Introduce cinematicVideoCaptureSceneMonitoringStatuses",
+      "language": "swift",
+      "startTimeSeconds": 1030,
+      "code": "extension AVCaptureDevice {\n\n   open var cinematicVideoCaptureSceneMonitoringStatuses: Set<AVCaptureSceneMonitoringStatus> { get }\n\n}\n\nextension AVCaptureSceneMonitoringStatus {\n\n   public static let notEnoughLight: AVCaptureSceneMonitoringStatus\n\n}"
+    },
+    {
+      "title": "KVO handler for cinematicVideoCaptureSceneMonitoringStatuses",
+      "language": "swift",
+      "startTimeSeconds": 1062,
+      "code": "private var observation: NSKeyValueObservation?\n\nobservation = camera.observe(\\.cinematicVideoCaptureSceneMonitoringStatuses, options: [.new, .old]) { _, value in\n\n    if let newStatuses = value.newValue {\n        if newStatuses.contains(.notEnoughLight) {\n            // Update UI (e.g., \"Not enough light\")\n        }\n        else if newStatuses.count == 0 {\n            // Back to normal.\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Capturing Cinematic video",
+      "url": "https://developer.apple.com/documentation/AVFoundation/capturing-cinematic-video",
+      "type": "samplecode",
+      "description": "Capture video with an adjustable depth of field and focus points.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/capturing-cinematic-video",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/capturing-cinematic-video.json"
+    },
+    {
+      "title": "Cinematic",
+      "url": "https://developer.apple.com/documentation/Cinematic",
+      "type": "documentation",
+      "description": "Integrate playback and editing of assets captured in Cinematic mode into your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/Cinematic",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Cinematic.json"
+    },
+    {
+      "title": "AVCam: Building a camera app",
+      "url": "https://developer.apple.com/documentation/AVFoundation/avcam-building-a-camera-app",
+      "type": "samplecode",
+      "description": "Capture photos and record video using the front and rear iPhone and iPad cameras.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/avcam-building-a-camera-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/avcam-building-a-camera-app.json"
+    },
+    {
+      "title": "AVFoundation",
+      "url": "https://developer.apple.com/documentation/AVFoundation",
+      "type": "documentation",
+      "description": "Work with audiovisual assets, control device cameras, process audio, and configure system audio interactions.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/319-capture-cinematic-video-in-your-app/",
+  "files": {
+    "metadata": "sessions/wwdc2025/319-capture-cinematic-video-in-your-app/metadata.json",
+    "readme": "sessions/wwdc2025/319-capture-cinematic-video-in-your-app/README.md",
+    "transcript": "sessions/wwdc2025/319-capture-cinematic-video-in-your-app/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/319-capture-cinematic-video-in-your-app/transcript.json"
+  }
+}

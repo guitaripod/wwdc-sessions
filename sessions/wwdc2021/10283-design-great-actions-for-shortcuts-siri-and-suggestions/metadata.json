@@ -1,0 +1,78 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10283",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10283,
+  "title": "Design great actions for Shortcuts, Siri, and Suggestions",
+  "description": "Actions are the building blocks of shortcuts. They allow people to take advantage of your app’s functionality even when they're not looking at your app’s interface. We'll show you how to design actions that are useful, easy-to-use, and can be incorporated into powerful multi-step shortcuts. You'll also explore enhancements around publishing and sharing shortcuts, ensuring that people can access your app in the way they want across all of Apple's platforms.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10283",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10283",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 1333,
+  "hasTranscript": true,
+  "transcriptWordCount": 3935,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10283/6/870EDB46-506F-4A85-83FE-8B90CA8A2C92/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10283/6/870EDB46-506F-4A85-83FE-8B90CA8A2C92/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10283/6/870EDB46-506F-4A85-83FE-8B90CA8A2C92/downloads/wwdc2021-10283_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10283/6/870EDB46-506F-4A85-83FE-8B90CA8A2C92/downloads/wwdc2021-10283_hd.mp4",
+    "duration": 1333
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Offering Actions in the Shortcuts App",
+      "url": "https://developer.apple.com/documentation/SiriKit/offering-actions-in-the-shortcuts-app",
+      "type": "documentation",
+      "description": "Suggest shortcuts users may want to add to Siri or combine with other actions in their own shortcuts.",
+      "sosumiURL": "https://sosumi.ai/documentation/SiriKit/offering-actions-in-the-shortcuts-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SiriKit/offering-actions-in-the-shortcuts-app.json"
+    },
+    {
+      "title": "Feature your actions in the Shortcuts app",
+      "url": "https://developer.apple.com/videos/play/wwdc2020/10084/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10084/"
+    },
+    {
+      "title": "Human Interface Guidelines: Siri",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/siri",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/siri"
+    }
+  ],
+  "path": "sessions/wwdc2021/10283-design-great-actions-for-shortcuts-siri-and-suggestions/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10283-design-great-actions-for-shortcuts-siri-and-suggestions/metadata.json",
+    "readme": "sessions/wwdc2021/10283-design-great-actions-for-shortcuts-siri-and-suggestions/README.md",
+    "transcript": "sessions/wwdc2021/10283-design-great-actions-for-shortcuts-siri-and-suggestions/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10283-design-great-actions-for-shortcuts-siri-and-suggestions/transcript.json"
+  }
+}

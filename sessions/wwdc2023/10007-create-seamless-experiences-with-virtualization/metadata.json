@@ -1,0 +1,99 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10007",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10007,
+  "title": "Create seamless experiences with Virtualization",
+  "description": "Discover the latest updates to the Virtualization framework. We’ll show you how to configure a virtual machine (VM) to automatically resize its display, take you through saving and restoring a running VM, and explore storage and performance options for Virtualization apps running on the desktop or in the data center. To learn more about the Virtualization framework, check out “Create macOS or Linux virtual machines” from WWDC22.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10007",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10007",
+  "type": "Video",
+  "publishedAt": "2023-06-07T08:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 958,
+  "hasTranscript": true,
+  "transcriptWordCount": 1977,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10007/4/ADC7900A-352D-4B06-8285-22AFB8A66356/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10007/4/ADC7900A-352D-4B06-8285-22AFB8A66356/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10007/4/ADC7900A-352D-4B06-8285-22AFB8A66356/downloads/wwdc2023-10007_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10007/4/ADC7900A-352D-4B06-8285-22AFB8A66356/downloads/wwdc2023-10007_hd.mp4",
+    "duration": 958
+  },
+  "codeSnippets": [
+    {
+      "title": "Set display as resizable",
+      "language": "swift",
+      "startTimeSeconds": 118,
+      "code": "// virtualMachine is a VZVirtualMachine.\nlet virtualMachineView = VZVirtualMachineView()\nvirtualMachineView.virtualMachine = virtualMachine\n\nvirtualMachineView.automaticallyReconfiguresDisplay = true"
+    },
+    {
+      "title": "Save a virtual machine",
+      "language": "swift",
+      "startTimeSeconds": 260,
+      "code": "// virtualMachine is a running VZVirtualMachine.\ntry await virtualMachine.pause()\n\nlet saveFileURL = URL(filePath: \"SaveFile.vzvmsave\", directoryHint: .notDirectory)\ntry await virtualMachine.saveMachineStateTo(url: saveFileURL)"
+    },
+    {
+      "title": "Restore a virtual machine",
+      "language": "swift",
+      "startTimeSeconds": 298,
+      "code": "let configuration = VZVirtualMachineConfiguration()\n// Customize configuration.\n\nlet virtualMachine = VZVirtualMachine(configuration: configuration)\n\nlet saveFileURL = URL(filePath: \"SaveFile.vzvmsave\", directoryHint: .notDirectory)\ntry await virtualMachine.restoreMachineStateFrom(url: saveFileURL)\n\ntry await virtualMachine.resume()"
+    },
+    {
+      "title": "Configure a Virtio block device with the NBD attachment",
+      "language": "swift",
+      "startTimeSeconds": 568,
+      "code": "let url = URL(string: \"nbd://localhost:10809/myDisk\")!\nlet attachment = try VZNetworkBlockDeviceStorageDeviceAttachment(url: url)\n\nlet blockDevice = VZVirtioBlockDeviceConfiguration(attachment: attachment)"
+    },
+    {
+      "title": "Respond to events with a delegate with the NBD attachment",
+      "language": "swift",
+      "startTimeSeconds": 602,
+      "code": "let url = URL(string: \"nbd://localhost:10809/myDisk\")!\nlet attachment = try VZNetworkBlockDeviceStorageDeviceAttachment(url: url)\n\n// NetworkBlockDeviceAttachmentDelegate implements the delegate protocol.\nlet delegate = NetworkBlockDeviceAttachmentDelegate()\nattachment.delegate = delegate\n\nlet blockDevice = VZVirtioBlockDeviceConfiguration(attachment: attachment)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Running macOS in a virtual machine on Apple silicon",
+      "url": "https://developer.apple.com/documentation/Virtualization/running-macos-in-a-virtual-machine-on-apple-silicon",
+      "type": "documentation",
+      "description": "Install and run macOS in a virtual machine using the Virtualization framework.",
+      "sosumiURL": "https://sosumi.ai/documentation/Virtualization/running-macos-in-a-virtual-machine-on-apple-silicon",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Virtualization/running-macos-in-a-virtual-machine-on-apple-silicon.json"
+    },
+    {
+      "title": "Virtualization",
+      "url": "https://developer.apple.com/documentation/Virtualization",
+      "type": "documentation",
+      "description": "Create virtual machines and run macOS and Linux-based operating systems.",
+      "sosumiURL": "https://sosumi.ai/documentation/Virtualization",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Virtualization.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10007-create-seamless-experiences-with-virtualization/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10007-create-seamless-experiences-with-virtualization/metadata.json",
+    "readme": "sessions/wwdc2023/10007-create-seamless-experiences-with-virtualization/README.md",
+    "transcript": "sessions/wwdc2023/10007-create-seamless-experiences-with-virtualization/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10007-create-seamless-experiences-with-virtualization/transcript.json"
+  }
+}

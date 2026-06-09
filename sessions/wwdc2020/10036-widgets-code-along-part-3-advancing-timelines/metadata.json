@@ -1,0 +1,72 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10036",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10036,
+  "title": "Widgets Code-along, part 3: Advancing timelines",
+  "description": "Take your widget to the next level as we embark upon the third and final stage of the widgets code-along. Pick up where you left off in Part 2 or start with the Part 3 starter project to go warp speed ahead. We’ll explore advanced concepts for widgets, timelines, and configuration. Learn how to load in-process and background URLs and link directly to content within your app. And discover how to create multiple widgets that explore different features within your app, as well as making your widget dynamically configurable. For more on creating great widgets, watch \"Build SwiftUI views for widgets”.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10036",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10036",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "dynamic configuration",
+    "multiple widgets",
+    "onbackgroundurlsessionevents",
+    "swiftui",
+    "url sessions",
+    "widget",
+    "widgetbundle",
+    "widgetkit"
+  ],
+  "topics": [
+    "App Services",
+    "Swift",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 546,
+  "hasTranscript": true,
+  "transcriptWordCount": 1125,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10036/3/7DCA777C-43D0-4737-B04C-3D232B54A481/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10036/3/7DCA777C-43D0-4737-B04C-3D232B54A481/wwdc2020_10036_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10036/3/7DCA777C-43D0-4737-B04C-3D232B54A481/wwdc2020_10036_hd.mp4",
+    "duration": 546
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Building Widgets Using WidgetKit and SwiftUI",
+      "url": "https://developer.apple.com/documentation/widgetkit/building_widgets_using_widgetkit_and_swiftui",
+      "type": "samplecode",
+      "description": "Create widgets to show your app’s content on the Home screen, with custom intents for user-customizable settings.",
+      "sosumiURL": "https://sosumi.ai/documentation/widgetkit/building_widgets_using_widgetkit_and_swiftui",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/widgetkit/building_widgets_using_widgetkit_and_swiftui.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10036-widgets-code-along-part-3-advancing-timelines/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10036-widgets-code-along-part-3-advancing-timelines/metadata.json",
+    "readme": "sessions/wwdc2020/10036-widgets-code-along-part-3-advancing-timelines/README.md",
+    "transcript": "sessions/wwdc2020/10036-widgets-code-along-part-3-advancing-timelines/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10036-widgets-code-along-part-3-advancing-timelines/transcript.json"
+  }
+}

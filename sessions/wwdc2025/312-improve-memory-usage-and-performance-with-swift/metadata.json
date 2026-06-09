@@ -1,0 +1,174 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-312",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 312,
+  "title": "Improve memory usage and performance with Swift",
+  "description": "Discover ways to improve the performance and memory management of your Swift code. We’ll explore ways to refine your code – from making high-level algorithmic changes to adopting the new InlineArray and Span types for finer control over memory and allocations.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/312",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/312",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 1891,
+  "hasTranscript": true,
+  "transcriptWordCount": 4890,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/312/4/ae42066d-6af2-4371-bf68-81a81ddef963/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/312/4/ae42066d-6af2-4371-bf68-81a81ddef963/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/312/4/ae42066d-6af2-4371-bf68-81a81ddef963/downloads/wwdc2025-312_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/312/4/ae42066d-6af2-4371-bf68-81a81ddef963/downloads/wwdc2025-312_hd.mp4",
+    "duration": 1891
+  },
+  "codeSnippets": [
+    {
+      "title": "Corrected Data.readByte() method",
+      "language": "swift",
+      "startTimeSeconds": 421,
+      "code": "import Foundation\n\nextension Data {\n  /// Consume a single byte from the start of this data.\n  mutating func readByte() -> UInt8? {\n    guard !isEmpty else { return nil }\n    return self.popFirst()\n  }\n}"
+    },
+    {
+      "title": "RGBAPixel.data(channels:) method",
+      "language": "swift",
+      "startTimeSeconds": 596,
+      "code": "extension RGBAPixel {\n  /// Returns the RGB or RGBA values for this pixel, as specified\n  /// by the given channels information.\n  func data(channels: QOI.Channels) -> some Collection<UInt8> {\n    switch channels {\n    case .rgb:\n      [r, g, b]\n    case .rgba:\n      [r, g, b, a]\n    }\n  }\n}"
+    },
+    {
+      "title": "Original QOIParser.parseQOI(from:) method",
+      "language": "swift",
+      "startTimeSeconds": 621,
+      "code": "extension QOIParser {\n  /// Parses an image from the given QOI data.\n  func parseQOI(from input: inout Data) -> QOI? {\n    guard let header = QOI.Header(parsing: &input) else { return nil }\n\n    let pixels = readEncodedPixels(from: &input)\n      .flatMap { decodePixels(from: $0) }\n      .prefix(header.pixelCount)\n      .flatMap { $0.data(channels: header.channels) }\n\n    return QOI(header: header, data: Data(pixels))\n  }\n}"
+    },
+    {
+      "title": "Revised QOIParser.parseQOI(from:) method",
+      "language": "swift",
+      "startTimeSeconds": 773,
+      "code": "extension QOIParser {\n  /// Parses an image from the given QOI data.\n  func parseQOI(from input: inout Data) -> QOI? {\n    guard let header = QOI.Header(parsing: &input) else { return nil }\n\n    let totalBytes = header.pixelCount * Int(header.channels.rawValue)\n    var pixelData = Data(repeating: 0, count: totalBytes)\n    var offset = 0\n\n    while offset < totalBytes {\n      guard let nextPixel = parsePixel(from: &input) else { break }\n\n      switch nextPixel {\n      case .run(let count):\n        for _ in 0..<count {\n          state.previousPixel\n            .write(to: &pixelData, at: &offset, channels: header.channels)\n        }\n      default:\n        decodeSinglePixel(from: nextPixel)\n          .write(to: &pixelData, at: &offset, channels: header.channels)\n      }\n    }\n\n    return QOI(header: header, data: pixelData)\n  }\n}"
+    },
+    {
+      "title": "Array behavior",
+      "language": "swift",
+      "startTimeSeconds": 907,
+      "code": "var array = [1, 2, 3]\narray.append(4)\narray.removeFirst()\n// array == [2, 3, 4]\n\nvar copy = array\ncopy[0] = 10      // copy happens on mutation\n// array == [2, 3, 4]\n// copy == [10, 3, 4]"
+    },
+    {
+      "title": "InlineArray behavior (part 1)",
+      "language": "swift",
+      "startTimeSeconds": 1187,
+      "code": "var array: InlineArray<3, Int> = [1, 2, 3]\narray[0] = 4\n// array == [4, 2, 3]\n\n// Can't append or remove elements\narray.append(4)\n// error: Value of type 'InlineArray<3, Int>' has no member 'append'\n\n// Can only assign to a same-sized inline array\nlet bigger: InlineArray<6, Int> = array\n// error: Cannot assign value of type 'InlineArray<3, Int>' to type 'InlineArray<6, Int>'"
+    },
+    {
+      "title": "InlineArray behavior (part 2)",
+      "language": "swift",
+      "startTimeSeconds": 1223,
+      "code": "var array: InlineArray<3, Int> = [1, 2, 3]\narray[0] = 4\n// array == [4, 2, 3]\n\nvar copy = array    // copy happens on assignment\nfor i in copy.indices {\n    copy[i] += 10\n}\n// array == [4, 2, 3]\n// copy == [14, 12, 13]"
+    },
+    {
+      "title": "processUsingBuffer() function",
+      "language": "swift",
+      "startTimeSeconds": 1393,
+      "code": "// Safe usage of a buffer pointer\nfunc processUsingBuffer(_ array: [Int]) -> Int {\n    array.withUnsafeBufferPointer { buffer in\n        var result = 0\n        for i in 0..<buffer.count {\n            result += calculate(using: buffer, at: i)\n        }\n        return result\n    }\n}"
+    },
+    {
+      "title": "Dangerous getPointerToBytes() function",
+      "language": "swift",
+      "startTimeSeconds": 1414,
+      "code": "// Dangerous - DO NOT USE!\nfunc getPointerToBytes() -> UnsafePointer<UInt8> {\n    let array: [UInt8] = Array(repeating: 0, count: 128)\n    // DANGER: The next line escapes a pointer\n    let pointer = array.withUnsafeBufferPointer { $0.baseAddress! }\n    // DANGER: The next line returns the escaped pointer\n    return pointer\n}"
+    },
+    {
+      "title": "processUsingSpan() function",
+      "language": "swift",
+      "startTimeSeconds": 1486,
+      "code": "// Safe usage of a span\n@available(macOS 16.0, *)\nfunc processUsingSpan(_ array: [Int]) -> Int {\n    let intSpan = array.span\n    var result = 0\n    for i in 0..<intSpan.count {\n        result += calculate(using: intSpan, at: i)\n    }\n    return result\n}"
+    },
+    {
+      "title": "getHiddenSpanOfBytes() function (attempt 1)",
+      "language": "swift",
+      "startTimeSeconds": 1507,
+      "code": "@available(macOS 16.0, *)\nfunc getHiddenSpanOfBytes() -> Span<UInt8> { }\n// error: Cannot infer lifetime dependence..."
+    },
+    {
+      "title": "getHiddenSpanOfBytes() function (attempt 2)",
+      "language": "swift",
+      "startTimeSeconds": 1528,
+      "code": "@available(macOS 16.0, *)\nfunc getHiddenSpanOfBytes() -> () -> Int {\n    let array: [UInt8] = Array(repeating: 0, count: 128)\n    let span = array.span\n    return { span.count }\n}"
+    },
+    {
+      "title": "RawSpan.readByte() method",
+      "language": "swift",
+      "startTimeSeconds": 1587,
+      "code": "@available(macOS 16.0, *)\nextension RawSpan {\n  mutating func readByte() -> UInt8? {\n    guard !isEmpty else { return nil }\n\n    let value = unsafeLoadUnaligned(as: UInt8.self)\n    self = self._extracting(droppingFirst: 1)\n    return value\n  }\n}"
+    },
+    {
+      "title": "Final QOIParser.parseQOI(from:) method",
+      "language": "swift",
+      "startTimeSeconds": 1682,
+      "code": "/// Parses an image from the given QOI data.\nmutating func parseQOI(from input: inout RawSpan) -> QOI? {\n  guard let header = QOI.Header(parsing: &input) else { return nil }\n\n  let totalBytes = header.pixelCount * Int(header.channels.rawValue)\n\n  let pixelData = Data(rawCapacity: totalBytes) { outputSpan in\n    while outputSpan.count < totalBytes {\n      guard let nextPixel = parsePixel(from: &input) else { break }\n\n      switch nextPixel {\n      case .run(let count):\n        for _ in 0..<count {\n          previousPixel\n            .write(to: &outputSpan, channels: header.channels)\n        }\n\n      default:\n        decodeSinglePixel(from: nextPixel)\n          .write(to: &outputSpan, channels: header.channels)\n\n      }\n    }\n  }\n\n  return QOI(header: header, data: pixelData)\n}"
+    },
+    {
+      "title": "RGBAPixel.write(to:channels:) method",
+      "language": "swift",
+      "startTimeSeconds": 1711,
+      "code": "@available(macOS 16.0, *)\nextension RGBAPixel {\n  /// Writes this pixel's RGB or RGBA data into the given output span.\n  @lifetime(&output)\n  func write(to output: inout OutputRawSpan, channels: QOI.Channels) {\n    output.append(r)\n    output.append(g)\n    output.append(b)\n\n    if channels == .rgba {\n      output.append(a)\n    }\n  }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Swift Binary Parsing",
+      "url": "https://github.com/apple/swift-binary-parsing",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "Performance and metrics",
+      "url": "https://developer.apple.com/documentation/Xcode/performance-and-metrics",
+      "type": "documentation",
+      "description": "Measure, investigate, and address the use of system resources and issues impacting performance using Instruments and Xcode Organizer.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/performance-and-metrics",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/performance-and-metrics.json"
+    },
+    {
+      "title": "The Swift website",
+      "url": "https://www.swift.org",
+      "type": "documentation",
+      "description": "The Swift website, where you can find information on how to get started, packages in the ecosystem, blog posts, and more."
+    },
+    {
+      "title": "The Swift Programming Language",
+      "url": "https://docs.swift.org/swift-book/",
+      "type": "guide",
+      "description": "The definitive guide to Swift, Apple’s programming language for building iOS, macOS, watchOS, and tvOS apps."
+    }
+  ],
+  "path": "sessions/wwdc2025/312-improve-memory-usage-and-performance-with-swift/",
+  "files": {
+    "metadata": "sessions/wwdc2025/312-improve-memory-usage-and-performance-with-swift/metadata.json",
+    "readme": "sessions/wwdc2025/312-improve-memory-usage-and-performance-with-swift/README.md",
+    "transcript": "sessions/wwdc2025/312-improve-memory-usage-and-performance-with-swift/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/312-improve-memory-usage-and-performance-with-swift/transcript.json"
+  }
+}

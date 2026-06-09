@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-111",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 111,
+  "title": "Keynote (ASL)",
+  "description": "The Apple Worldwide Developers Conference kicks off with exciting reveals, inspiration, and new opportunities. Join the worldwide developer community for an in-depth look at the future of Apple platforms, directly from Apple Park.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/111",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/111",
+  "type": "Special Event",
+  "publishedAt": "2022-06-06T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Essentials"
+  ],
+  "primaryTopic": "Essentials",
+  "duration": 6533,
+  "hasTranscript": true,
+  "transcriptWordCount": 15550,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://events-delivery.apple.com/0205eyyhwbbqexozkwmgccegwnjyrktg/m3u8/vod_asl_index-ktnaTcjUgzeMGMTaiatvJAZgtCVGqFUX.m3u8",
+    "duration": 6533
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2022/111-keynote-asl/",
+  "files": {
+    "metadata": "sessions/wwdc2022/111-keynote-asl/metadata.json",
+    "readme": "sessions/wwdc2022/111-keynote-asl/README.md",
+    "transcript": "sessions/wwdc2022/111-keynote-asl/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/111-keynote-asl/transcript.json"
+  }
+}

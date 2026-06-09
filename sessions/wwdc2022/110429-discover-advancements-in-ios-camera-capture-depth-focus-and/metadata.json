@@ -1,0 +1,86 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-110429",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 110429,
+  "title": "Discover advancements in iOS camera capture: Depth, focus, and multitasking",
+  "description": "Discover how you can take advantage of advanced camera capture features in your app. We'll show you how to use the LiDAR scanner to create photo and video effects and perform accurate depth measurement. Learn how your app can use the camera for picture-in-picture or multitasking, control face-driven autofocus and autoexposure during camera capture, and more. We'll also share strategies for using multiple video outputs so that you can optimize live preview while capturing high-quality video output. For an overview on camera capture capabilities, watch \"What’s new in camera capture\" from WWDC21.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/110429",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/110429",
+  "type": "Video",
+  "publishedAt": "2022-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Photos & Camera"
+  ],
+  "primaryTopic": "Photos & Camera",
+  "duration": 1102,
+  "hasTranscript": true,
+  "transcriptWordCount": 2943,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110429/4/60E4BC61-632F-484F-AF90-EA3203042E76/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110429/4/60E4BC61-632F-484F-AF90-EA3203042E76/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110429/4/60E4BC61-632F-484F-AF90-EA3203042E76/downloads/wwdc2022-110429_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110429/4/60E4BC61-632F-484F-AF90-EA3203042E76/downloads/wwdc2022-110429_hd.mp4",
+    "duration": 1102
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "TN3121: Selecting a pixel format for an AVCaptureVideoDataOutput",
+      "url": "https://developer.apple.com/documentation/Technotes/tn3121-selecting-a-pixel-format-for-an-avcapturevideodataoutput",
+      "type": "documentation",
+      "description": "Learn how to choose the best output pixel format for your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/Technotes/tn3121-selecting-a-pixel-format-for-an-avcapturevideodataoutput",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Technotes/tn3121-selecting-a-pixel-format-for-an-avcapturevideodataoutput.json"
+    },
+    {
+      "title": "Adopting Picture in Picture for video calls",
+      "url": "https://developer.apple.com/documentation/AVKit/adopting-picture-in-picture-for-video-calls",
+      "type": "documentation",
+      "description": "Add multitasking capability to your video-call apps by using Picture in Picture (PiP).",
+      "sosumiURL": "https://sosumi.ai/documentation/AVKit/adopting-picture-in-picture-for-video-calls",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVKit/adopting-picture-in-picture-for-video-calls.json"
+    },
+    {
+      "title": "Accessing the camera while multitasking",
+      "url": "https://developer.apple.com/documentation/avkit/accessing_the_camera_while_multitasking",
+      "type": "documentation",
+      "description": "Operate the camera in Split View, Slide Over, or Picture in Picture mode.",
+      "sosumiURL": "https://sosumi.ai/documentation/avkit/accessing_the_camera_while_multitasking",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/avkit/accessing_the_camera_while_multitasking.json"
+    },
+    {
+      "title": "Capture setup",
+      "url": "https://developer.apple.com/documentation/AVFoundation/capture-setup",
+      "type": "documentation",
+      "description": "Configure built-in cameras and microphones, and external capture devices, for media capture.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/capture-setup",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/capture-setup.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/110429-discover-advancements-in-ios-camera-capture-depth-focus-and/",
+  "files": {
+    "metadata": "sessions/wwdc2022/110429-discover-advancements-in-ios-camera-capture-depth-focus-and/metadata.json",
+    "readme": "sessions/wwdc2022/110429-discover-advancements-in-ios-camera-capture-depth-focus-and/README.md",
+    "transcript": "sessions/wwdc2022/110429-discover-advancements-in-ios-camera-capture-depth-focus-and/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/110429-discover-advancements-in-ios-camera-capture-depth-focus-and/transcript.json"
+  }
+}

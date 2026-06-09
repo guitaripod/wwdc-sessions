@@ -1,0 +1,246 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-237",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 237,
+  "title": "What’s new for the spatial web",
+  "description": "Discover the latest spatial features for the web on visionOS 26. We’ll cover how to display inline 3D models with the brand new HTML model element. And we’ll share powerful features, including model lighting, interactions, and animations. Learn how to embed newly supported immersive media on your web site, such as 360-degree video and Apple Immersive Video. And get a sneak peek at adding a custom environment to your web pages.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/237",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/237",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [
+    "animation",
+    "javascript",
+    "model"
+  ],
+  "topics": [
+    "Spatial Computing",
+    "Safari & Web"
+  ],
+  "primaryTopic": "Safari & Web",
+  "duration": 1769,
+  "hasTranscript": true,
+  "transcriptWordCount": 4437,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/237/5/f5fcabf4-e9fa-420b-a1a8-3e4868fccca9/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/237/5/f5fcabf4-e9fa-420b-a1a8-3e4868fccca9/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/237/5/f5fcabf4-e9fa-420b-a1a8-3e4868fccca9/downloads/wwdc2025-237_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/237/5/f5fcabf4-e9fa-420b-a1a8-3e4868fccca9/downloads/wwdc2025-237_hd.mp4",
+    "duration": 1769
+  },
+  "codeSnippets": [
+    {
+      "title": "Embed 3D models - Basic syntax",
+      "language": "xml",
+      "startTimeSeconds": 60,
+      "code": "<model src=\"teapot.usdz\"></model>"
+    },
+    {
+      "title": "Embed 3D models with source element",
+      "language": "xml",
+      "startTimeSeconds": 255,
+      "code": "<model>\n  <source src=\"teapot.usdz\" type=\"model/vnd.usdz+zip\">\n</model>"
+    },
+    {
+      "title": "Example server configurations to add USDZ MIME type support",
+      "language": "markdown",
+      "startTimeSeconds": 330,
+      "code": "# Apache\n\n```\nAddType model/vnd.usdz+zip .usdz\n```\n\n# NGINX mime.types\n\n```\ntypes {\n  ...\n  model/vnd.usdz+zip usdz;\n}\n```\n\n# Python HTTP server\n\n```\nimport http.server\nHandler = http.server.SimpleHTTPRequestHandle\nHandler.extensions_map = { \".usdz\": \"model/vnd.usdz+zip\" }\nhttpd = http.server.HTTPServer((\"\", 8000), Handler)\nhttpd.serve_forever()\n```"
+    },
+    {
+      "title": "Specify a fall back image for <model> element",
+      "language": "xml",
+      "startTimeSeconds": 351,
+      "code": "<model src=\"camera.usdz\">\n  <img src=\"camera.png\">\n</model>"
+    },
+    {
+      "title": "Example 2D rendering fallback experience",
+      "language": "xml",
+      "startTimeSeconds": 377,
+      "code": "<!-- <model-viewer> library from https://modelviewer.dev/ -->\n<script type=\"module\" \n  src=\"https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js\">\n</script>\n\n<model src=\"camera.usdz\">\n  <!-- Fallback experience for backward compatibility -->  \n  <model-viewer src=\"camera.glb\"></model-viewer>\n</model>"
+    },
+    {
+      "title": "Detect if the model element is supported",
+      "language": "javascript",
+      "startTimeSeconds": 412,
+      "code": "if (window.HTMLModelElement) {\n  // Supported by this browser\n} else {\n  // Not supported by this browser\n}"
+    },
+    {
+      "title": "Implementing a loading indicator using .ready promise",
+      "language": "xml",
+      "startTimeSeconds": 452,
+      "code": "<model src=\"camera.usdz\" id=\"mymodel\"></model>\n\n<script>\nconst mymodel = document.getElementById(\"mymodel\");\n\nif (window.HTMLModelElement) {\n  mymodel.ready.then(result => {\n\t// Hide the loading indicator\n\t// Show the model\n }).catch(error => {\n\t// Loading error occurred, show a retry button\n });\n}\n</script>"
+    },
+    {
+      "title": "CSS example for setting the color of the virtual space",
+      "language": "xml",
+      "startTimeSeconds": 503,
+      "code": "<body>\n  <!-- page content here -->\n  <model src=\"camera.usdz\" class=\"my_model\"></model>\n</body>\n\n<style>\n:root {\n  --main-bg-color: rgb(240, 240, 240);\n}\n\nbody {\n  background-color: var(--main-bg-color);\n}\n\n.my_model {\n  /* set the virtual space color */\n  background-color: var(--main-bg-color); \n}\n</style>"
+    },
+    {
+      "title": "CSS example for frosted glass panel on top of a <model>",
+      "language": "xml",
+      "startTimeSeconds": 561,
+      "code": "<div class=\"container\">\n  <model src=\"camera.usdz\"></model>\n  <div class=\"panel\"> ... </div>\n</div>\n\n<style>\n.container {\n  position: relative;\n}\n\n.panel {\n  position: absolute;\n  left: 60%;\n  backdrop-filter: blur(20px);\n  background: linear-gradient(to right,\n                              rgba(240, 240, 240, 0.8),\n                              rgba(240, 240, 240, 0.5) 4px);\n}\n</style>"
+    },
+    {
+      "title": "Setting image-based lighting (IBL) with environmentmap",
+      "language": "xml",
+      "startTimeSeconds": 656,
+      "code": "<model src=\"camera.usdz\" environmentmap=\"sunset.exr\"></model>"
+    },
+    {
+      "title": "Allowing inline rotation with stagemode",
+      "language": "xml",
+      "startTimeSeconds": 761,
+      "code": "<model src=\"teapot.usdz\" stagemode=\"orbit\"></model>"
+    },
+    {
+      "title": "Customize placement with JavaScript entityTransform",
+      "language": "xml",
+      "startTimeSeconds": 811,
+      "code": "<model src=\"teapot.usdz\" id=\"mymodel\"></model>\n\n<script>\nconst mymodel = document.getElementById(\"mymodel\");\nmymodel.ready.then(result => {\n  const matrix = mymodel.entityTransform; // DOMMatrixReadOnly\n});\n</script>"
+    },
+    {
+      "title": "Make the model face right with entityTransform",
+      "language": "xml",
+      "startTimeSeconds": 829,
+      "code": "<model src=\"teapot.usdz\" id=\"mymodel\"></model>\n<a onclick=\"turnRight()\">Right</a>\n\n<script>\nconst mymodel = document.getElementById(\"mymodel\");\nfunction turnRight() {\n  const matrix = mymodel.entityTransform; // DOMMatrixReadOnly\n  const newMatrix = matrix.rotateAxisAngle(0, 1, 0, 90);\n  mymodel.entityTransform = newMatrix;\n}\n</script>"
+    },
+    {
+      "title": "Setting the entityTransform to an identity matrix",
+      "language": "javascript",
+      "startTimeSeconds": 903,
+      "code": "model.entityTransform = new DOMMatrix();"
+    },
+    {
+      "title": "Basic animation control",
+      "language": "xml",
+      "startTimeSeconds": 991,
+      "code": "<model src=\"toy.usdz\" id=\"mymodel\" loop autoplay></model>\n<button onclick=\"toggleAnimation()\">Play/Pause</button>\n\n<script>\nconst mymodel = document.getElementById(\"mymodel\");\n\nfunction toggleAnimation() {\n  if (mymodel.paused) {\n\tmymodel.play();\n  } else {\n\tmymodel.pause();\n  }\n}\n</script>"
+    },
+    {
+      "title": "Jump to animation timestamp using .currentTime property",
+      "language": "xml",
+      "startTimeSeconds": 1055,
+      "code": "<model src=\"camera.usdz\" id=\"mymodel\"></model>\n\n<script>\nconst mymodel = document.getElementById(\"mymodel\");\n\nfunction openFlash() {\n  mymodel.currentTime = 1; // Unit is seconds\n}\n\nfunction openScreen() {\n  mymodel.currentTime = 3; // Unit is seconds\n}\n</script>"
+    },
+    {
+      "title": "Update .currentTime with a slider",
+      "language": "xml",
+      "startTimeSeconds": 1091,
+      "code": "<model src=\"camera.usdz\" id=\"mymodel\"></model>\n<input type=\"range\" id=\"slider\" min=\"2\" max=\"3\" step=\"any\" value=\"2\">\n\n\n<script>\nconst mymodel = document.getElementById(\"mymodel\");\n\nslider.addEventListener(\"input\", (event) => {\n  mymodel.currentTime = event.target.value;\n});\n</script>"
+    },
+    {
+      "title": "Generate USDZ with three.js and display with <model>",
+      "language": "javascript",
+      "startTimeSeconds": 1175,
+      "code": "import * as THREE from \"three\";\nimport { USDZExporter } from \"three/examples/exporters/USDZExporter.js\";\n\nasync function generateModel() {\n\tconst scene = new THREE.Scene();\n\t// ... create a really nice scene procedurally ...\n\n\tconst bytes = await new USDZExporter().parseAsync(scene);\n\tconst objURL = URL.createObjectURL(new Blob([bytes]));\n\n\tconst mymodel = document.getElementById(\"mymodel\");\n\tmymodel.setAttribute(\"src\", objURL);\n}"
+    },
+    {
+      "title": "Embed immersive media",
+      "language": "xml",
+      "startTimeSeconds": 1390,
+      "code": "<video src=\"spatial_video.mov\"></video>  <!-- Single file -->\n<video src=\"360_video.m3u8\"></video>  <!-- HTTP Live Streaming -->"
+    },
+    {
+      "title": "Going full screen with Javascript for <video> elements",
+      "language": "xml",
+      "startTimeSeconds": 1465,
+      "code": "<video src=\"360_video.m3u8\" id=\"player\" controls></video>\n\n<script>\nconst player = document.getElementById(\"player\");\nplayer.requestFullScreen();\n</script>"
+    },
+    {
+      "title": "Embed panoramas and offer full screen with Javascript",
+      "language": "xml",
+      "startTimeSeconds": 1475,
+      "code": "<picture>\n  <source media=\"(max-width: 799px)\" srcset=\"thumbnail.jpg\">\n  <source media=\"(min-width: 800px)\" srcset=\"panorama.jpg\">\n  <img src=\"panorama.jpg\" id=\"pano\">\n</picture>\n\n<script>\nconst pano = document.getElementById(\"pano\");\npano.requestFullScreen();\n</script>"
+    },
+    {
+      "title": "Embed spatial photos and offer full screen with Javascript",
+      "language": "xml",
+      "startTimeSeconds": 1497,
+      "code": "<img src=\"spatial.heic\" id=\"img\">\n\n<script>\nconst img = document.getElementById(\"img\");\nimg.requestFullScreen();\n</script>"
+    },
+    {
+      "title": "Embed spatial photos with the new \"controls\" attribute",
+      "language": "xml",
+      "startTimeSeconds": 1521,
+      "code": "<img src=\"spatial.heic\" id=\"img\" controls>"
+    },
+    {
+      "title": "Provide a custom environment",
+      "language": "xml",
+      "startTimeSeconds": 1609,
+      "code": "<link rel=\"spatial-backdrop\" href=\"office.usdz\" environmentmap=\"lighting.hdr\">"
+    }
+  ],
+  "resources": [
+    {
+      "title": "The HTML model element in Apple Vision Pro",
+      "url": "https://webkit.org/blog/17118/a-step-into-the-spatial-web-the-html-model-element-in-apple-vision-pro/",
+      "type": "documentation",
+      "description": "visionOS 26 brings a major update to an important building block for the spatial web: The HTML model element is enabled by default, with a new API that’s ready to use today."
+    },
+    {
+      "title": "GitHub: model element samples",
+      "url": "https://immersive-web.github.io/model-element-samples/",
+      "type": "samplecode",
+      "description": "Various examples of HTML model element."
+    },
+    {
+      "title": "GitHub: Spatial Backdrop explainer",
+      "url": "https://github.com/WebKit/explainers/tree/main/spatial-backdrop",
+      "type": "documentation",
+      "description": "Operating systems on virtual reality devices have the capability of displaying virtual environments behind the windows and volumes of the various applications running on the device including its web browsers. This new link type enables Websites to change this virtual environment to one that is specified by the web page."
+    },
+    {
+      "title": "GitHub: <model> element that displays 3D explainer",
+      "url": "https://github.com/immersive-web/model-element/blob/main/explainer.md",
+      "type": "documentation",
+      "description": "The HTML <model> element aims to allow a website to embed interactive 3D models as conveniently as any other visual media. Models are expected to be created by 3D authoring tools or generated dynamically, but served as a standalone resource by the server."
+    },
+    {
+      "title": "MDN: Properly configuring server MIME types",
+      "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side/Configuring_server_MIME_types",
+      "type": "documentation",
+      "description": "MIME types describe the media type of content, either in email, or served by web servers or web applications. They are intended to help provide a hint as to how the content should be processed and displayed."
+    },
+    {
+      "title": "QuickLook example files",
+      "url": "https://developer.apple.com/augmented-reality/quick-look/",
+      "type": "samplecode",
+      "description": "QuickLook example files",
+      "sosumiURL": "https://sosumi.ai/augmented-reality/quick-look/"
+    },
+    {
+      "title": "Learn more about Reality Composer",
+      "url": "https://developer.apple.com/augmented-reality/reality-composer/",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/augmented-reality/reality-composer/"
+    }
+  ],
+  "path": "sessions/wwdc2025/237-what-s-new-for-the-spatial-web/",
+  "files": {
+    "metadata": "sessions/wwdc2025/237-what-s-new-for-the-spatial-web/metadata.json",
+    "readme": "sessions/wwdc2025/237-what-s-new-for-the-spatial-web/README.md",
+    "transcript": "sessions/wwdc2025/237-what-s-new-for-the-spatial-web/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/237-what-s-new-for-the-spatial-web/transcript.json"
+  }
+}

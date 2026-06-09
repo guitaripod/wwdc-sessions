@@ -1,0 +1,115 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2017-815",
+  "event": "wwdc2017",
+  "eventName": "WWDC17",
+  "year": 2017,
+  "eventContentId": 815,
+  "title": "How to Pick a Custom Font",
+  "description": "Choosing a custom font for your app can be a daunting task involving both functional and stylistic decisions. Gain a solid understanding of fundamental font design characteristics such as proportion and contrast. Learn how to apply this knowledge when deciding which font is right for your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2017/815",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2017/815",
+  "type": "Video",
+  "publishedAt": "2017-06-04T17:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "custom font",
+    "custom fonts",
+    "design best practices",
+    "design studio",
+    "design studio shorts",
+    "font",
+    "fonts",
+    "short",
+    "shorts",
+    "typography"
+  ],
+  "topics": [
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 890,
+  "hasTranscript": true,
+  "transcriptWordCount": 2421,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/815hn3cbczzv55/815/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/815hn3cbczzv55/815/815_sd_how_to_pick_a_custom_font.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/815hn3cbczzv55/815/815_hd_how_to_pick_a_custom_font.mp4",
+    "duration": 890
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "The Elements of Typographic Style, Version 4.0 by Robert Bringhurst",
+      "url": "http://typographica.org/typography-books/the-elements-of-typographic-style-4th-edition/",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "Typographica: My Favorite Font Sources: A Shortlist of Trusted Foundries and Retailers",
+      "url": "http://typographica.org/on-typography/my-favorite-font-sources-a-shortlist-of-trusted-foundries-and-retailers/",
+      "type": "documentation",
+      "description": "My Favorite Font Sources: A Shortlist of Trusted Foundries and Retailers"
+    },
+    {
+      "title": "Typographica - Type Reviews, Books, Commentary",
+      "url": "http://typographica.org",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "Thinking with Type by Ellen Lupton",
+      "url": "http://thinkingwithtype.com",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "Inside Paragraphs",
+      "url": "http://insideparagraphs.com/",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "Type at Cooper West",
+      "url": "http://coopertype.org/lectures/west",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "Apple Design Site",
+      "url": "https://developer.apple.com/design/",
+      "type": "guide",
+      "description": "Guidelines for designing great apps.",
+      "sosumiURL": "https://sosumi.ai/design/"
+    },
+    {
+      "title": "Fonts In Use",
+      "url": "https://fontsinuse.com",
+      "type": "documentation",
+      "description": "A great resource and source of inspiration for style matching with a wide variety of styles, origins and medias."
+    }
+  ],
+  "path": "sessions/wwdc2017/815-how-to-pick-a-custom-font/",
+  "files": {
+    "metadata": "sessions/wwdc2017/815-how-to-pick-a-custom-font/metadata.json",
+    "readme": "sessions/wwdc2017/815-how-to-pick-a-custom-font/README.md",
+    "transcript": "sessions/wwdc2017/815-how-to-pick-a-custom-font/transcript.md",
+    "transcriptJSON": "sessions/wwdc2017/815-how-to-pick-a-custom-font/transcript.json"
+  }
+}

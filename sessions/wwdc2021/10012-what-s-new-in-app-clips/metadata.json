@@ -1,0 +1,99 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10012",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10012,
+  "title": "What's new in App Clips",
+  "description": "Discover how App Clips can elevate quick and focused experiences for specific tasks, the moment your customer needs them. We’ll take you through some of the latest improvements to App Clips, including launching an experience directly from an app, testing your App Clip locally, and creating App Clip Codes to make it easy to access your experience in the real world. We’ll also share some great examples of App Clips from our developer community that provide innovative ways to interact with people and beautiful designs. To get the most of this session, we recommend first watching “Explore App Clips” and “Configure and link your App Clips” from WWDC20.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10012",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10012",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "app clip",
+    "app clip card",
+    "app clip card in safari",
+    "app clip card in safari view controller",
+    "app clip code",
+    "app clip code generation",
+    "app clip code generator",
+    "app-clip-display=card",
+    "app clip experience",
+    "app clip in svc",
+    "app clips",
+    "app clips in safari view controller",
+    "app store connect",
+    "fruta",
+    "full sized app clip card",
+    "local experience",
+    "location association",
+    "maps placecard",
+    "meta tag",
+    "nfc integrated",
+    "safari view controller",
+    "scan only",
+    "siri suggestion widget",
+    "smart app clip banner",
+    "test",
+    "test app clip",
+    "testing",
+    "url handling",
+    "view in safari"
+  ],
+  "topics": [
+    "Essentials",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 948,
+  "hasTranscript": true,
+  "transcriptWordCount": 2237,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10012/3/AA1959EB-823F-4382-A050-7764EC6F604E/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10012/3/AA1959EB-823F-4382-A050-7764EC6F604E/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10012/3/AA1959EB-823F-4382-A050-7764EC6F604E/downloads/wwdc2021-10012_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10012/3/AA1959EB-823F-4382-A050-7764EC6F604E/downloads/wwdc2021-10012_hd.mp4",
+    "duration": 948
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Fruta: Building a feature-rich app with SwiftUI",
+      "url": "https://developer.apple.com/documentation/AppClip/fruta-building-a-feature-rich-app-with-swiftui",
+      "type": "samplecode",
+      "description": "Create a shared codebase to build a multiplatform app that offers widgets and an App Clip.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppClip/fruta-building-a-feature-rich-app-with-swiftui",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppClip/fruta-building-a-feature-rich-app-with-swiftui.json"
+    },
+    {
+      "title": "Learn more about creating app clips",
+      "url": "https://developer.apple.com/app-clips/",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/app-clips/"
+    }
+  ],
+  "path": "sessions/wwdc2021/10012-what-s-new-in-app-clips/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10012-what-s-new-in-app-clips/metadata.json",
+    "readme": "sessions/wwdc2021/10012-what-s-new-in-app-clips/README.md",
+    "transcript": "sessions/wwdc2021/10012-what-s-new-in-app-clips/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10012-what-s-new-in-app-clips/transcript.json"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-513",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 513,
+  "title": "Understanding CPU Usage with Web Inspector",
+  "description": "As a developer of web content, you play an important role in fulfilling customer expectations for a high performance web experience while minimizing power use across all their devices. Discover new insights on how you can improve the power efficiency of your webpages in Safari, or embedded web content in your apps, by using this powerful new tool in Web Inspector. Learn new strategies to help you deliver dynamic experiences that use less CPU and save battery life.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/513",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/513",
+  "type": "Video",
+  "publishedAt": "2019-06-04T18:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Safari & Web"
+  ],
+  "primaryTopic": "Safari & Web",
+  "duration": 803,
+  "hasTranscript": true,
+  "transcriptWordCount": 2145,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/513w02gjyhgbk02/513/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/513w02gjyhgbk02/513/513_sd_understanding_cpu_usage_with_web_inspector.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/513w02gjyhgbk02/513/513_hd_understanding_cpu_usage_with_web_inspector.mp4",
+    "duration": 803
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/513-understanding-cpu-usage-with-web-inspector/",
+  "files": {
+    "metadata": "sessions/wwdc2019/513-understanding-cpu-usage-with-web-inspector/metadata.json",
+    "readme": "sessions/wwdc2019/513-understanding-cpu-usage-with-web-inspector/README.md",
+    "transcript": "sessions/wwdc2019/513-understanding-cpu-usage-with-web-inspector/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/513-understanding-cpu-usage-with-web-inspector/transcript.json"
+  }
+}

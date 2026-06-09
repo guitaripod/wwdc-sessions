@@ -1,0 +1,137 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10120",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10120,
+  "title": "Support Full Keyboard Access in your iOS app",
+  "description": "iPhone and iPad support numerous input modes for those with motor impairments, including touch interaction modification, Switch Control, and Full Keyboard Access. We’ll explore how people can interact with their devices solely through keyboard input, working through a real-life example to discover key APIs. We’ll also take you through some best practices for supporting motor accessibility when you integrate Full Keyboard Access in your apps.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10120",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10120",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "accessibility element",
+    "accessibilitylabel",
+    "accessibility label",
+    "accessibility path",
+    "accessibiltypath",
+    "accessible input",
+    "alternative input",
+    "assistive technology",
+    "assistivetouch",
+    "custom action",
+    "custom keyboard shortcut",
+    "focus",
+    "focus engine",
+    "full keyboard access",
+    "gestures",
+    "interaction commands",
+    "interaction via keyboard",
+    "isaccessibilityelement",
+    "keyboard",
+    "keyboard as input",
+    "keyboard shortcut",
+    "motor accessibility",
+    "motor impairment",
+    "navigation commands",
+    "switch control",
+    "tab z",
+    "uiaccessibility",
+    "uiaccessibilitycustomaction",
+    "uikeycommand",
+    "uimenu",
+    "user input label",
+    "voice control",
+    "voice over"
+  ],
+  "topics": [
+    "Accessibility & Inclusion"
+  ],
+  "primaryTopic": "Accessibility & Inclusion",
+  "duration": 1010,
+  "hasTranscript": true,
+  "transcriptWordCount": 2598,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10120/11/284E99F6-0E62-4027-AE02-86A26EEBEC07/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10120/11/284E99F6-0E62-4027-AE02-86A26EEBEC07/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10120/11/284E99F6-0E62-4027-AE02-86A26EEBEC07/downloads/wwdc2021-10120_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10120/11/284E99F6-0E62-4027-AE02-86A26EEBEC07/downloads/wwdc2021-10120_hd.mp4",
+    "duration": 1010
+  },
+  "codeSnippets": [
+    {
+      "title": "Accessibility custom actions",
+      "language": "swift",
+      "startTimeSeconds": 426,
+      "code": "// Accessibility custom actions\n\nlet addAction = UIAccessibilityCustomAction(\n    name: gameLocString(\"add\"), image: UIImage(systemName: \"plus.square\")) { _ in\n            self.addCard()\n            return true\n        }\n\nlet pinAction = UIAccessibilityCustomAction(\n    name: gameLocString(\"pin\"), image: UIImage(systemName: \"pin.fill\")) { _ in\n            self.pinCard()\n            return true\n        }\n\ncardView.accessibilityCustomActions = [addAction, pinAction]"
+    },
+    {
+      "title": "Keyboard shortcuts: buildMenu",
+      "language": "swift",
+      "startTimeSeconds": 519,
+      "code": "// Keyboard shortcuts\n\n// In AppDelegate.swift\noverride func buildMenu(with builder: UIMenuBuilder) {\n    super.buildMenu(with: builder)\n    guard builder.system == .main else {\n        return\n    }\n\n    let pinCommand = UIKeyCommand(title: gameLocString(\"pin\"), image: UIImage(systemName:\n        \"pin.fill\"), action:#selector(GameViewController.pinFocusedCard), input: \"P\",\n        discoverabilityTitle:gameLocString(\"pin.card\"))      \n    let addCommand = UIKeyCommand(title: gameLocString(\"add\"), image: UIImage(systemName: \n        \"plus.square\"), action: #selector(GameViewController.addFocusedCard), input: \"A\",\n        discoverabilityTitle: gameLocString(\"add.card\"))\n    let identifier = UIMenu.Identifier(\"gameplay_menu\")\n    let menu = UIMenu.init(title: gameLocString(\"gameplay\"), image:  UIImage(systemName\n        \"rectangle.grid.3x2\"), identifier: identifier, children: [addCommand, pinCommand]);\n\n    builder.insertSibling(menu, afterMenu: .view)\n}"
+    },
+    {
+      "title": "Keyboard shortcuts: canPerformAction",
+      "language": "swift",
+      "startTimeSeconds": 562,
+      "code": "// Keyboard shortcuts\n\n// In GameViewController.swift\noverride func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {\n    if action == #selector(addFocusedCard) || action == #selector(pinFocusedCard) {\n        return self.focusedCard != .none\n    }\n    return super.canPerformAction(action, withSender: sender)\n}"
+    },
+    {
+      "title": "Accessibility elements",
+      "language": "swift",
+      "startTimeSeconds": 635,
+      "code": "itemView.isAccessibilityElement = true\nitemView.accessibilityLabel = gameLocString(for: item)"
+    },
+    {
+      "title": "Responding to user interaction",
+      "language": "swift",
+      "startTimeSeconds": 661,
+      "code": "itemView.accessibilityRespondsToUserInteraction = false"
+    },
+    {
+      "title": "Supporting accessible input",
+      "language": "swift",
+      "startTimeSeconds": 821,
+      "code": "self.accessibilityUserInputLabels = [\n    gameLocString(\"settings\"),\n    gameLocString(\"prefs\"),\n    gameLocString(\"preferences\"),\n    gameLocString(\"gear\")];"
+    },
+    {
+      "title": "Accessibility path",
+      "language": "swift",
+      "startTimeSeconds": 892,
+      "code": "// Accessibility path\n\nlet rect = circleLevelButton.convert(levelButton.bounds, to: nil)\n\ncircleLevelButton.accessibilityPath = UIBezierPath(ovalIn: rect)\n\n\n// If your button is in a scroll view, it’s generally better to\n// override accessibilityPath and/or accessibilityFrame\nextension CircleButton {\n    open override var accessibilityPath: UIBezierPath? {\n        get {\n            let rect = self.convert(self.bounds, to: nil)\n            return UIBezierPath(ovalIn: rect)\n        }\n        set {\n            // no-op\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Accessibility for Developers",
+      "url": "https://developer.apple.com/accessibility/",
+      "type": "guide",
+      "description": "Collection of Accessibility resources for macOS, iOS, watchOS, and tvOS.",
+      "sosumiURL": "https://sosumi.ai/accessibility/"
+    }
+  ],
+  "path": "sessions/wwdc2021/10120-support-full-keyboard-access-in-your-ios-app/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10120-support-full-keyboard-access-in-your-ios-app/metadata.json",
+    "readme": "sessions/wwdc2021/10120-support-full-keyboard-access-in-your-ios-app/README.md",
+    "transcript": "sessions/wwdc2021/10120-support-full-keyboard-access-in-your-ios-app/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10120-support-full-keyboard-access-in-your-ios-app/transcript.json"
+  }
+}

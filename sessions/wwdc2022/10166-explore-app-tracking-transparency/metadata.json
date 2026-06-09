@@ -1,0 +1,83 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10166",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10166,
+  "title": "Explore App Tracking Transparency",
+  "description": "Learn more about App Tracking Transparency and how it helps people using your app have choice and control over tracking. App Store Policy now requires that all apps receive permission through the AppTrackingTransparency framework in order to track people's data. We’ll explain how this policy defines tracking, whether your app needs to adopt this framework, and how to implement it effectively.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10166",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10166",
+  "type": "Video",
+  "publishedAt": "2022-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "app tracking transparency",
+    "nutrion label",
+    "privacy",
+    "tracking"
+  ],
+  "topics": [
+    "Essentials",
+    "System Services",
+    "Privacy & Security"
+  ],
+  "primaryTopic": "Privacy & Security",
+  "duration": 822,
+  "hasTranscript": true,
+  "transcriptWordCount": 2075,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10166/3/144ECF3D-FAB1-44D1-A265-90946F21F612/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10166/3/144ECF3D-FAB1-44D1-A265-90946F21F612/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10166/3/144ECF3D-FAB1-44D1-A265-90946F21F612/downloads/wwdc2022-10166_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10166/3/144ECF3D-FAB1-44D1-A265-90946F21F612/downloads/wwdc2022-10166_hd.mp4",
+    "duration": 822
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Attributing ads with SKAdNetwork and Private Click Measurement",
+      "url": "https://developer.apple.com/app-store/ad-attribution/",
+      "type": "documentation",
+      "description": "SKAdNetwork and Private Click Measurement let advertisers attribute their advertising across multiple sources — all while maintaining user privacy.",
+      "sosumiURL": "https://sosumi.ai/app-store/ad-attribution/"
+    },
+    {
+      "title": "App Store Guidelines: User Privacy and Data Use",
+      "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/app-store/user-privacy-and-data-use/"
+    },
+    {
+      "title": "Protecting the User’s Privacy",
+      "url": "https://developer.apple.com/documentation/UIKit/protecting-the-user-s-privacy",
+      "type": "documentation",
+      "description": "Secure personal data, and respect user preferences for how data is used.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/protecting-the-user-s-privacy",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/protecting-the-user-s-privacy.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10166-explore-app-tracking-transparency/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10166-explore-app-tracking-transparency/metadata.json",
+    "readme": "sessions/wwdc2022/10166-explore-app-tracking-transparency/README.md",
+    "transcript": "sessions/wwdc2022/10166-explore-app-tracking-transparency/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10166-explore-app-tracking-transparency/transcript.json"
+  }
+}

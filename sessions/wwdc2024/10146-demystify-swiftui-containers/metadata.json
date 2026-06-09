@@ -1,0 +1,325 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2024-10146",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10146,
+  "title": "Demystify SwiftUI containers",
+  "description": "Learn about the capabilities of SwiftUI container views and build a mental model for how subviews are managed by their containers. Leverage new APIs to build your own custom containers, create modifiers to customize container content, and give your containers that extra polish that helps your apps stand out.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10146",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10146",
+  "type": "Video",
+  "publishedAt": "2024-06-12T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1092,
+  "hasTranscript": true,
+  "transcriptWordCount": 2515,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10146/4/F3988ADA-0BF0-447C-BE07-01C07F99F11E/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10146/4/F3988ADA-0BF0-447C-BE07-01C07F99F11E/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10146/4/F3988ADA-0BF0-447C-BE07-01C07F99F11E/downloads/wwdc2024-10146_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10146/4/F3988ADA-0BF0-447C-BE07-01C07F99F11E/downloads/wwdc2024-10146_hd.mp4",
+    "duration": 1092
+  },
+  "codeSnippets": [
+    {
+      "title": "SwiftUI Lists",
+      "language": "swift",
+      "startTimeSeconds": 20,
+      "code": "List {\n  Text(\"Scrolling in the Deep\")\n  Text(\"Born to Build & Run\")\n  Text(\"Some Body Like View\")\n}"
+    },
+    {
+      "title": "SwiftUI Lists",
+      "language": "swift",
+      "startTimeSeconds": 36,
+      "code": "List {\n  Text(\"Scrolling in the Deep\")\n  Text(\"Born to Build & Run\")\n  Text(\"Some Body Like View\")\n\n  ForEach(otherSongs) { song in\n    Text(song.title)\n  }\n}"
+    },
+    {
+      "title": "SwiftUI Lists",
+      "language": "swift",
+      "startTimeSeconds": 54,
+      "code": "List {\n  Section(\"Favorite Songs\") {\n    Text(\"Scrolling in the Deep\")\n    Text(\"Born to Build & Run\")\n    Text(\"Some Body Like View\")\n  }\n\n  Section(\"Other Songs\") {\n    ForEach(otherSongs) { song in\n      Text(song.title)\n    }\n  }\n}"
+    },
+    {
+      "title": "SwiftUI Lists",
+      "language": "swift",
+      "startTimeSeconds": 60,
+      "code": "List {\n  Section(\"Favorite Songs\") {\n    Text(\"Scrolling in the Deep\")\n    Text(\"Born to Build & Run\")\n    Text(\"Some Body Like View\")\n  }\n\n  Section(\"Other Songs\") {\n    ForEach(otherSongs) { song in\n      Text(song.title)\n        .listRowSeparator(.hidden)\n    }\n  }\n}"
+    },
+    {
+      "title": "Data-driven DisplayBoard",
+      "language": "swift",
+      "startTimeSeconds": 155,
+      "code": "@State private var songs: [Song] = [\n  Song(\"Scrolling in the Deep\"),\n  Song(\"Born to Build & Run\"),\n  Song(\"Some Body Like View\"),\n]\n\nvar body: some View {\n  DisplayBoard(songs) { song in\n    Text(song.title)\n  }\n}"
+    },
+    {
+      "title": "DisplayBoard implementation",
+      "language": "swift",
+      "startTimeSeconds": 167,
+      "code": "// Insert code snvar data: Data\n@ViewBuilder var content: (Data.Element) -> Content\n\nvar body: some View {\n  DisplayBoardCardLayout {\n    ForEach(data) { item in\n      CardView {\n        content(item)\n      }\n    }\n  }\n  .background { BoardBackgroundView() }\n}"
+    },
+    {
+      "title": "Data-driven DisplayBoard",
+      "language": "swift",
+      "startTimeSeconds": 188,
+      "code": "@State private var songs: [Song] = [\n  Song(\"Scrolling in the Deep\"),\n  Song(\"Born to Build & Run\"),\n  Song(\"Some Body Like View\"),\n]\n\nvar body: some View {\n  DisplayBoard(songs) { song in\n    Text(song.title)\n  }\n}"
+    },
+    {
+      "title": "List composition",
+      "language": "swift",
+      "startTimeSeconds": 210,
+      "code": "List(songsFromSam) { song in\n  Text(song.title)\n}"
+    },
+    {
+      "title": "List composition",
+      "language": "swift",
+      "startTimeSeconds": 226,
+      "code": "List {\n  Text(\"Scrolling in the Deep\")\n  Text(\"Born to Build & Run\")\n  Text(\"Some Body Like View\")\n}"
+    },
+    {
+      "title": "List composition",
+      "language": "swift",
+      "startTimeSeconds": 236,
+      "code": "List {\n  Text(\"Scrolling in the Deep\")\n  Text(\"Born to Build & Run\")\n  Text(\"Some Body Like View\")\n}\n\nList(songsFromSam) { song in\n  Text(song.title)\n}"
+    },
+    {
+      "title": "List composition",
+      "language": "swift",
+      "startTimeSeconds": 245,
+      "code": "List {\n  Text(\"Scrolling in the Deep\")\n  Text(\"Born to Build & Run\")\n  Text(\"Some Body Like View\")\n}\n\nList {\n  ForEach(songsFromSam) { song in\n    Text(song.title)\n  }\n}"
+    },
+    {
+      "title": "List composition",
+      "language": "swift",
+      "startTimeSeconds": 264,
+      "code": "List {\n  Text(\"Scrolling in the Deep\")\n  Text(\"Born to Build & Run\")\n  Text(\"Some Body Like View\")\n\n  ForEach(songsFromSam) { song in\n    Text(song.title)\n  }\n}"
+    },
+    {
+      "title": "DisplayBoard implementation",
+      "language": "swift",
+      "startTimeSeconds": 299,
+      "code": "var data: Data\n@ViewBuilder var content: (Data.Element) -> Content\n\nvar body: some View {\n  DisplayBoardCardLayout {\n    ForEach(data) { item in\n      CardView {\n        content(item)\n      }\n    }\n  }\n  .background { BoardBackgroundView() }\n}"
+    },
+    {
+      "title": "DisplayBoard implementation",
+      "language": "swift",
+      "startTimeSeconds": 315,
+      "code": "// DisplayBoard implementation\n\n@ViewBuilder var content: Content\n\nvar body: some View {\n  DisplayBoardCardLayout {\n    ForEach(data) { item in\n      CardView {\n        content(item)\n      }\n    }\n  }\n  .background { BoardBackgroundView() }\n}\n\nDisplayBoard {\n  Text(\"Scrolling in the Deep\")\n  Text(\"Born to Build & Run\")\n  Text(\"Some Body Like View\")\n}\n\nDisplayBoard {\n  ForEach(songsFromSam) { song in\n    Text(song.title)\n  }\n}"
+    },
+    {
+      "title": "DisplayBoard implementation",
+      "language": "swift",
+      "startTimeSeconds": 327,
+      "code": "@ViewBuilder var content: Content\n\nvar body: some View {\n  DisplayBoardCardLayout {\n    ForEach(subviewOf: content) { subview in\n      CardView {\n        subview\n      }\n    }\n  }\n  .background { BoardBackgroundView() }\n}"
+    },
+    {
+      "title": "List composition",
+      "language": "swift",
+      "startTimeSeconds": 352,
+      "code": "List {\n  Text(\"Scrolling in the Deep\")\n  Text(\"Born to Build & Run\")\n  Text(\"Some Body Like View\")\n\n  ForEach(songsFromSam) { song in\n    Text(song.title)\n  }\n}"
+    },
+    {
+      "title": "DisplayBoard composition",
+      "language": "swift",
+      "startTimeSeconds": 357,
+      "code": "DisplayBoard {\n  Text(\"Scrolling in the Deep\")\n  Text(\"Born to Build & Run\")\n  Text(\"Some Body Like View\")\n\n  ForEach(songsFromSam) { song in\n    Text(song.title)\n  }\n}"
+    },
+    {
+      "title": "DisplayBoard implementation",
+      "language": "swift",
+      "startTimeSeconds": 372,
+      "code": "@ViewBuilder var content: Content\n\nvar body: some View {\n  DisplayBoardCardLayout {\n    ForEach(subviewOf: content) { subview in\n      CardView {\n        subview\n      }\n    }\n  }\n  .background { BoardBackgroundView() }\n}"
+    },
+    {
+      "title": "DisplayBoard subviews",
+      "language": "swift",
+      "startTimeSeconds": 383,
+      "code": "DisplayBoard {\n  Text(\"Scrolling in the Deep\")\n  Text(\"Born to Build & Run\")\n  Text(\"Some Body Like View\")\n\n  ForEach(songsFromSam) { song in\n    Text(song.title)\n  }\n}"
+    },
+    {
+      "title": "Declared vs. resolved views",
+      "language": "swift",
+      "startTimeSeconds": 396,
+      "code": "DisplayBoard {\n  Text(\"Scrolling in the Deep\")\n  Text(\"Born to Build & Run\")\n  Text(\"Some Body Like View\")\n\n  ForEach(songsFromSam) { song in\n    Text(song.title)\n  }\n}\n\n// 3 resolved subviews\nText(\"Scrolling in the Deep\")\nText(\"Born to Build & Run\")\nText(\"Some Body Like View\")\n\n// 9 resolved subviews\nText(\"I Container Multitudes\")\n…\nText(\"Love Stack\")"
+    },
+    {
+      "title": "List subviews",
+      "language": "swift",
+      "startTimeSeconds": 431,
+      "code": "List {\n  Text(\"Scrolling in the Deep\")\n  Text(\"Born to Build & Run\")\n  Text(\"Some Body Like View\")\n\n  ForEach(songsFromSam) { song in\n    Text(song.title)\n  }\n}"
+    },
+    {
+      "title": "Declared vs. resolved views",
+      "language": "swift",
+      "startTimeSeconds": 439,
+      "code": "DisplayBoard {\n  Text(\"Scrolling in the Deep\")\n  Text(\"Born to Build & Run\")\n  Text(\"Some Body Like View\")\n\n  ForEach(songsFromSam) { song in\n    Text(song.title)\n  }\n}\n\n// 3 resolved subviews\nText(\"Scrolling in the Deep\")\nText(\"Born to Build & Run\")\nText(\"Some Body Like View\")\n\n// 9 resolved subviews\nText(\"I Container Multitudes\")\n…\nText(\"Love Stack\")"
+    },
+    {
+      "title": "Resolved ForEach",
+      "language": "swift",
+      "startTimeSeconds": 480,
+      "code": "// 1 declared view\nForEach(songsFromSam) { song in\n  Text(song.title)\n}\n\n// 9 resolved subviews\nText(\"I Container Multitudes\")\n…\nText(\"Love Stack\")"
+    },
+    {
+      "title": "Resolved Group",
+      "language": "swift",
+      "startTimeSeconds": 496,
+      "code": "// 1 declared view\nGroup {\n  Text(\"Scrolling in the Deep\")\n  Text(\"Born to Build & Run\")\n  Text(\"Some Body Like View\")\n}\n\n// 3 resolved subviews\nText(\"Scrolling in the Deep\")\n\nText(\"Born to Build & Run\")\n\nText(\"Some Body Like View\")"
+    },
+    {
+      "title": "Resolved EmptyView",
+      "language": "swift",
+      "startTimeSeconds": 512,
+      "code": "// 1 declared view\nEmptyView()\t\n\n// Zero resolved subviews"
+    },
+    {
+      "title": "Resolved if expression",
+      "language": "swift",
+      "startTimeSeconds": 519,
+      "code": "// 1 declared view\nif showFavoriteSongs {\n  Text(\"Scrolling in the Deep\")\n  Text(\"Born to Build & Run\")\n  Text(\"Some Body Like View\")\n}\n\n// true → 3 resolved subviews\nText(\"Scrolling in the Deep\")\nText(\"Born to Build & Run\")\nText(\"Some Body Like View\")\n\n// false → Zero resolved subviews"
+    },
+    {
+      "title": "DisplayBoard implementation",
+      "language": "swift",
+      "startTimeSeconds": 528,
+      "code": "@ViewBuilder var content: Content\n\nvar body: some View {\n  DisplayBoardCardLayout {\n    ForEach(subviewOf: content) { subview in\n      CardView {\n        subview\n      }\n    }\n  }\n  .background { BoardBackgroundView() }\n}"
+    },
+    {
+      "title": "DisplayBoard composition",
+      "language": "swift",
+      "startTimeSeconds": 551,
+      "code": "DisplayBoard {\n  Text(\"Scrolling in the Deep\")\n  Text(\"Born to Build & Run\")\n  Text(\"Some Body Like View\")\n\n  ForEach(songsFromSam) { song in\n    Text(song.title)\n  }\n}"
+    },
+    {
+      "title": "DisplayBoard composition",
+      "language": "swift",
+      "startTimeSeconds": 557,
+      "code": "DisplayBoard {\n  Text(\"Scrolling in the Deep\")\n  Text(\"Born to Build & Run\")\n  Text(\"Some Body Like View\")\n\n  ForEach(songsFromSam) { song in\n    Text(song.title)\n  }\n\n  ForEach(songsFromSommer) { song in\n    Text(song.title)\n  }\n}"
+    },
+    {
+      "title": "DisplayBoard implementation",
+      "language": "swift",
+      "startTimeSeconds": 584,
+      "code": "@ViewBuilder var content: Content\n\nvar body: some View {\n  DisplayBoardCardLayout {\n    ForEach(subviewOf: content) { subview in\n      CardView {\n        subview\n      }\n    }\n  }\n  .background { BoardBackgroundView() }\n}"
+    },
+    {
+      "title": "DisplayBoard implementation",
+      "language": "swift",
+      "startTimeSeconds": 595,
+      "code": "@ViewBuilder var content: Content\n\nvar body: some View {\n  DisplayBoardCardLayout {\n    Group(subviewsOf: content) { subviews in\n      ForEach(subviews) { subview in\n        CardView {\n          subview\n        }\n      }\n    }\n  }\n  .background { BoardBackgroundView() }\n}"
+    },
+    {
+      "title": "DisplayBoard implementation",
+      "language": "swift",
+      "startTimeSeconds": 619,
+      "code": "@ViewBuilder var content: Content\n\nvar body: some View {\n  DisplayBoardCardLayout {\n    Group(subviewsOf: content) { subviews in\n      ForEach(subviews) { subview in\n        CardView(\n          scale: subviews.count > 15 ? .small : .normal\n        ) {\n          subview\n        }\n      }\n    }\n  }\n  .background { BoardBackgroundView() }\n}"
+    },
+    {
+      "title": "List sections",
+      "language": "swift",
+      "startTimeSeconds": 647,
+      "code": "List {\n  Section(\"Favorite Songs\") {\n    Text(\"Scrolling in the Deep\")\n    Text(\"Born to Build & Run\")\n    Text(\"Some Body Like View\")\n  }\n\n  Section(\"Other Songs\") {\n    ForEach(otherSongs) { song in\n      Text(song.title)\n    }\n  }\n}"
+    },
+    {
+      "title": "DisplayBoard sections",
+      "language": "swift",
+      "startTimeSeconds": 663,
+      "code": "DisplayBoard {\n  Section(\"Matt's Favorites\") {\n    Text(\"Scrolling in the Deep\")\n    Text(\"Born to Build & Run\")\n    Text(\"Some Body Like View\")\n  }\n  Section(\"Sam's Favorites\") {\n    ForEach(songsFromSam) { song in\n      Text(song.title)\n    }\n  }\n  Section(\"Sommer's Favorites\") {\n    ForEach(songsFromSommer) { song in\n      Text(song.title)\n    }\n  }\n}"
+    },
+    {
+      "title": "Implementing DisplayBoard sections",
+      "language": "swift",
+      "startTimeSeconds": 686,
+      "code": "DisplayBoard sections\n@ViewBuilder var content: Content\n\nvar body: some View {\n  DisplayBoardCardLayout {\n    Group(subviewsOf: content) { subviews in\n      ForEach(subviews) { subview in\n        CardView(\n          scale: subviews.count > 15 ? .small : .normal\n        ) {\n          subview\n        }\n      }\n    }\n  }\n  .background { BoardBackgroundView() }\n}"
+    },
+    {
+      "title": "Implementing DisplayBoard sections",
+      "language": "swift",
+      "startTimeSeconds": 695,
+      "code": "@ViewBuilder var content: Content\n\nvar body: some View {\n  DisplayBoardSectionContent {\n    content\n  }\n  .background { BoardBackgroundView() }\n}\n\nstruct DisplayBoardSectionContent<Content: View>: View {\n  @ViewBuilder var content: Content\n  ...\n}"
+    },
+    {
+      "title": "Implementing DisplayBoard sections",
+      "language": "swift",
+      "startTimeSeconds": 702,
+      "code": "@ViewBuilder var content: Content\n\nvar body: some View {\n  HStack(spacing: 80) {\n    ForEach(sectionOf: content) { section in\n      DisplayBoardSectionContent {\n        section.content\n      }\n    }\n  }\n  .background { BoardBackgroundView() }\n}"
+    },
+    {
+      "title": "Implementing DisplayBoard section headers",
+      "language": "swift",
+      "startTimeSeconds": 768,
+      "code": "@ViewBuilder var content: Content\n\nvar body: some View {\n  HStack(spacing: 80) {\n    ForEach(sectionOf: content) { section in\n      VStack(spacing: 20) {\n        if !section.header.isEmpty {\n          DisplayBoardSectionHeaderCard { section.header }\n        } \n        DisplayBoardSectionContent {\n          section.content\n        }\n        .background { BoardSectionBackgroundView() }\n      }\n    }\n  }\n  .background { BoardBackgroundView() }\n}"
+    },
+    {
+      "title": "List customization",
+      "language": "swift",
+      "startTimeSeconds": 810,
+      "code": "List {\n  Section(\"Favorite Songs\") {\n    Text(\"Scrolling in the Deep\")\n    Text(\"Born to Build & Run\")\n    Text(\"Some Body Like View\")\n  }\n\n  Section(\"Other Songs\") {\n    ForEach(otherSongs) { song in\n      Text(song.title)\n        .listRowSeparator(.hidden)\n    }\n  }\n}"
+    },
+    {
+      "title": "Custom container values",
+      "language": "swift",
+      "startTimeSeconds": 886,
+      "code": "extension ContainerValues {\n  @Entry var isDisplayBoardCardRejected: Bool = false\n}\n\nextension View {\n  func displayBoardCardRejected(_ isRejected: Bool) -> some View {\n    containerValue(\\.isDisplayBoardCardRejected, isRejected)\n  }\n}"
+    },
+    {
+      "title": "Implementing DisplayBoard customization",
+      "language": "swift",
+      "startTimeSeconds": 942,
+      "code": "struct DisplayBoardSectionContent<Content: View>: View {\n  @ViewBuilder var content: Content\n\n  var body: some View {\n    DisplayBoardCardLayout {\n      Group(subviewsOf: content) { subviews in\n        ForEach(subviews) { subview in\n          let values = subview.containerValues\n          CardView(\n            scale: (subviews.count > 15) ? .small : .normal,\n            isRejected: values.isDisplayBoardCardRejected\n          ) {\n            subview\n          }\n        }\n      }\n    }\n  }\n}"
+    },
+    {
+      "title": "DisplayBoard customization",
+      "language": "swift",
+      "startTimeSeconds": 975,
+      "code": "DisplayBoard {\n  Section(\"Matt's Favorites\") {\n    Text(\"Scrolling in the Deep\")\n      .displayBoardCardRejected(true)\n    Text(\"Born to Build & Run\")\n    Text(\"Some Body Like View\")\n  }\n  Section(\"Sam's Favorites\") {\n    ForEach(songsFromSam) { song in\n      Text(song.title)\n        .displayBoardCardRejected(song.samHasDibs)\n    }\n  }\n  Section(\"Sommer's Favorites\") {\n    ForEach(songsFromSommer) { Text($0.title) }}}\n  }\n  .displayBoardCardRejected(true)\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Creating custom container views",
+      "url": "https://developer.apple.com/documentation/SwiftUI/Creating-custom-container-views",
+      "type": "samplecode",
+      "description": "Access individual subviews to compose flexible container views.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/Creating-custom-container-views",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/Creating-custom-container-views.json"
+    },
+    {
+      "title": "Forum: UI Frameworks",
+      "url": "https://developer.apple.com/forums/topics/ui-frameworks?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/ui-frameworks?cid=vf-a-0010"
+    }
+  ],
+  "path": "sessions/wwdc2024/10146-demystify-swiftui-containers/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10146-demystify-swiftui-containers/metadata.json",
+    "readme": "sessions/wwdc2024/10146-demystify-swiftui-containers/README.md",
+    "transcript": "sessions/wwdc2024/10146-demystify-swiftui-containers/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10146-demystify-swiftui-containers/transcript.json"
+  }
+}

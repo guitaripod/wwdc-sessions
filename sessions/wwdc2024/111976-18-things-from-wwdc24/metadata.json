@@ -1,0 +1,58 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2024-111976",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 111976,
+  "title": "18 things from WWDC24",
+  "description": "Here’s your guide to the big announcements from this year’s Worldwide Developers Conference.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/111976",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/111976",
+  "type": "Video",
+  "publishedAt": "2024-06-10T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "recap"
+  ],
+  "topics": [
+    "Essentials"
+  ],
+  "primaryTopic": "Essentials",
+  "duration": 163,
+  "hasTranscript": true,
+  "transcriptWordCount": 350,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/111976/1/FF5D2060-A995-4815-90EF-1E40B45F8C91/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/111976/1/FF5D2060-A995-4815-90EF-1E40B45F8C91/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/111976/1/FF5D2060-A995-4815-90EF-1E40B45F8C91/downloads/wwdc2024-111976_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/111976/1/FF5D2060-A995-4815-90EF-1E40B45F8C91/downloads/wwdc2024-111976_hd.mp4",
+    "duration": 163
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2024/111976-18-things-from-wwdc24/",
+  "files": {
+    "metadata": "sessions/wwdc2024/111976-18-things-from-wwdc24/metadata.json",
+    "readme": "sessions/wwdc2024/111976-18-things-from-wwdc24/README.md",
+    "transcript": "sessions/wwdc2024/111976-18-things-from-wwdc24/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/111976-18-things-from-wwdc24/transcript.json"
+  }
+}

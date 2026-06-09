@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-240",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 240,
+  "title": "SwiftUI On All Devices",
+  "description": "Once you’ve learned the basics of SwiftUI, you’ve learned what you need to know to use SwiftUI anywhere. You can use the same SwiftUI skills for making an iOS app as you would for making an app on watchOS, tvOS or macOS. We'll cover the basics, and then dig into more detail about how SwiftUI can help you make changes to your app on every Apple device. Hear about design principles for each platform and learn about how much code you can share across platforms. See how to incorporate device-specific features and how to make changes in SwiftUI by following along with a starter project, available for download.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/240",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/240",
+  "type": "Video",
+  "publishedAt": "2019-06-07T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "better apps faster",
+    "canvas",
+    "control",
+    "declarative",
+    "previews",
+    "view"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 2705,
+  "hasTranscript": true,
+  "transcriptWordCount": 6533,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/240kqdx1bcyovfjoz/240/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/240kqdx1bcyovfjoz/240/240_sd_swiftui_on_all_devices.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/240kqdx1bcyovfjoz/240/240_hd_swiftui_on_all_devices.mp4",
+    "duration": 2705
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/240-swiftui-on-all-devices/",
+  "files": {
+    "metadata": "sessions/wwdc2019/240-swiftui-on-all-devices/metadata.json",
+    "readme": "sessions/wwdc2019/240-swiftui-on-all-devices/README.md",
+    "transcript": "sessions/wwdc2019/240-swiftui-on-all-devices/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/240-swiftui-on-all-devices/transcript.json"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10143",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10143,
+  "title": "Explore HLS variants in AVFoundation",
+  "description": "Discover how you can use AVFoundation APIs to highlight different variants of your content within your app. We’ll show you how you can inspect HLS content using these APIs for different video characteristics, including attributes like SDR/HDR, FPS, and the like. And we’ll explore the AVAssetVariant, which represents streaming and offline content.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10143",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10143",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "4k",
+    "hd",
+    "hls",
+    "sd",
+    "variants"
+  ],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 568,
+  "hasTranscript": true,
+  "transcriptWordCount": 1282,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10143/8/02A20AB5-0C7F-4E9F-B252-75A25D1261ED/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10143/8/02A20AB5-0C7F-4E9F-B252-75A25D1261ED/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10143/8/02A20AB5-0C7F-4E9F-B252-75A25D1261ED/downloads/wwdc2021-10143_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10143/8/02A20AB5-0C7F-4E9F-B252-75A25D1261ED/downloads/wwdc2021-10143_hd.mp4",
+    "duration": 568
+  },
+  "codeSnippets": [
+    {
+      "title": "HLS Master Playlist",
+      "language": "swift",
+      "startTimeSeconds": 40,
+      "code": "#EXTM3U\n#EXT-X-VERSION:7\n#EXT-X-INDEPENDENT-SEGMENTS\n\n#EXT-X-MEDIA:TYPE=AUDIO,NAME=\"English\",GROUP-ID=\"stereo\",LANGUAGE=\"en\",DEFAULT=YES, AUTOSELECT=YES,CHANNELS=\"2\",URI=\"en_stereo.m3u8\"\n#EXT-X-MEDIA:TYPE=AUDIO,NAME=\"French\",GROUP-ID=\"stereo\",LANGUAGE=\"fr\",DEFAULT=NO, AUTOSELECT=YES,CHANNELS=\"2\",URI=\"fr_stereo.m3u8\"\n\n#EXT-X-MEDIA:TYPE=AUDIO,NAME=\"English\",GROUP-ID=\"atmos\",LANGUAGE=\"en\",DEFAULT=YES, AUTOSELECT=YES,CHANNELS=\"16/JOC\",URI=\"en_atmos.m3u8\"\n#EXT-X-MEDIA:TYPE=AUDIO,NAME=\"French\",GROUP-ID=\"atmos\",LANGUAGE=\"fr\",DEFAULT=NO, AUTOSELECT=YES,CHANNELS=\"16/JOC\",URI=\"fr_atmos.m3u8\"\n\n#EXT-X-STREAM-INF:BANDWIDTH=14516883,VIDEO-RANGE=SDR,CODECS=\"avc1.64001f,mp4a.40.5\", AUDIO=\"stereo\",FRAME-RATE=23.976,RESOLUTION=1920x1080\nsdr_variant.m3u8\n\n#EXT-X-STREAM-INF:BANDWIDTH=34516883,VIDEO-RANGE=PQ,CODECS=\"dvh1.05.06,ec-3\", AUDIO=\"atmos\",FRAME-RATE=23.976,RESOLUTION=3840x1920\ndovi_variant.m3u8"
+    },
+    {
+      "title": "Peak bitrate cap predicate",
+      "language": "swift",
+      "startTimeSeconds": 218,
+      "code": "let peakBitRateCap = NSPredicate(format: \"peakBitRate < 5000000\")\n\nlet peakBitRateCapQualifier = AVAssetVariantQualifier(predicate: peakBitRateCap)"
+    },
+    {
+      "title": "HDR predicate",
+      "language": "swift",
+      "startTimeSeconds": 235,
+      "code": "let hdrOnlyPredicate = NSPredicate(format: \"videoAttributes.videoRange == %@\", argumentArray: [AVVideoRange.pq])\n\nlet hdrOnlyQualifier = AVAssetVariantQualifier(predicate: hdrOnlyPredicate)"
+    },
+    {
+      "title": "Content configuration",
+      "language": "swift",
+      "startTimeSeconds": 286,
+      "code": "let variantPref = AVAssetVariantQualifier(predicate: NSPredicate(format: \"videoAttributes.videoRange == %@ && peakBitRate < 5000000\", argumentArray: [AVVideoRange.pq]))\n\nlet myMediaSelections : [AVMediaSelection] = [enAudioMS, frAudioMS, enLegibleMS] //English, French audio and English subtitle renditions \n\nlet contentConfig = AVAssetDownloadContentConfiguration()\n\ncontentConfig.variantQualifiers = [variantPref]\n\ncontentConfig.mediaSelections = myMediaSelections"
+    },
+    {
+      "title": "Download configuration",
+      "language": "swift",
+      "startTimeSeconds": 389,
+      "code": "let asset = AVURLAsset(url: URL(string: \"http://example.com/master.m3u8\")!)\nlet dwConfig = AVAssetDownloadConfiguration(asset: asset, title: \"my-title\")\n\n/* Primary content config */\nlet varPref = NSPredicate(format: \"videoAttributes.videoRange == %@ && peakBitRate < 5000000\", argumentArray: [AVVideoRange.pq])\nlet varQf = AVAssetVariantQualifier(predicate: varPref)\n\ndwConfig.primaryContentConfiguration.variantQualifiers = [varQf]\ndwConfig.primaryContentConfiguration.mediaSelections = [enAudioMS, frAudioMS, enLegibleMS] //English, French audio and English subtitle renditions \n\n/* Aux content config */\nlet auxVarPref = NSPredicate(format: \"%d IN audioAttributes.formatIDs\", argumentArray: [kAudioFormatAppleLossless])\nlet auxVarQf = AVAssetVariantQualifier(predicate: auxVarPref)\n\nlet auxContentConfig = AVAssetDownloadContentConfiguration()\nauxContentConfig.variantQualifiers = [auxVarQf]\nauxContentConfig.mediaSelections = [enAudioMS] //english audio\ndwConfig.auxiliaryContentConfigurations = [auxContentConfig]\n\ndwConfig.optimizesAuxiliaryContentConfigurations = true"
+    },
+    {
+      "title": "Download task",
+      "language": "swift",
+      "startTimeSeconds": 462,
+      "code": "let myAssetDownloadDelegate = MyDownloadDelegate()\nlet avurlsession = AVAssetDownloadURLSession(configuration: URLSessionConfiguration.background(withIdentifier: \"my-background-session\"), assetDownloadDelegate: myAssetDownloadDelegate, delegateQueue: OperationQueue.main)\n\nlet asset = AVURLAsset(url: URL(string: \"http://example.com/master.m3u8\")!)\nlet dwConfig = AVAssetDownloadConfiguration(asset: asset, title: “my-title”)\n\n...\n\nlet downloadTask = avurlsession.makeAssetDownloadTask(downloadConfiguration: dwConfig)\n\ndownloadTask.resume()\n\nlet progress = downloadTask.progress"
+    },
+    {
+      "title": "Direct variant selection",
+      "language": "swift",
+      "startTimeSeconds": 490,
+      "code": "/* Example for direct variant selection */\n\nlet asset = AVURLAsset(url: URL(string: \"http://example.com/master.m3u8\")!)\nlet dwConfig = AVAssetDownloadConfiguration(asset: asset, title: \"my-title\")\n\n/* Primary content config */\nlet myVariant : AVAssetVariant = ...\nlet myMediaSelections : [AVMediaSelection] = ...\n\nlet variantQf = AVAssetVariantQualifier(variant: myVariant)\n\ndwConfig.primaryContentConfiguration.variantQualifiers = [variantQf]\ndwConfig.primaryContentConfiguration.mediaSelections = myMediaSelections\n\n/* Aux content config */\nlet myAuxVariant : AVAssetVariant = ...\nlet myAuxMediaSelections : [AVMediaSelection] = ...\n\nlet auxVariantQf = AVAssetVariantQualifier(variant: myAuxVariant)\n\nlet auxContentConfig = AVAssetDownloadContentConfiguration()\nauxContentConfig.variantQualifiers = [auxVariantQf]\nauxContentConfig.mediaSelections = myAuxMediaSelections\ndwConfig.auxiliaryContentConfigurations = [auxContentConfig]"
+    }
+  ],
+  "resources": [
+    {
+      "title": "HTTP Live Streaming - Overview",
+      "url": "https://developer.apple.com/streaming/",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/streaming/"
+    }
+  ],
+  "path": "sessions/wwdc2021/10143-explore-hls-variants-in-avfoundation/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10143-explore-hls-variants-in-avfoundation/metadata.json",
+    "readme": "sessions/wwdc2021/10143-explore-hls-variants-in-avfoundation/README.md",
+    "transcript": "sessions/wwdc2021/10143-explore-hls-variants-in-avfoundation/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10143-explore-hls-variants-in-avfoundation/transcript.json"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2016-720",
+  "event": "wwdc2016",
+  "eventName": "WWDC16",
+  "year": 2016,
+  "eventContentId": 720,
+  "title": "Concurrent Programming With GCD in Swift 3",
+  "description": "Swift 3 provides new interfaces that make it easier than ever to write applications with Grand Central Dispatch. Learn the basics of GCD and best practices on how to use it to architect your Swift application. You'll also hear about new APIs and other GCD improvements.",
+  "url": "https://developer.apple.com/videos/play/wwdc2016/720",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2016/720",
+  "type": "Video",
+  "publishedAt": "2016-06-17T16:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "dispatch",
+    "gcd",
+    "qos",
+    "queue",
+    "runloop",
+    "thread"
+  ],
+  "topics": [
+    "Developer Tools",
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 2141,
+  "hasTranscript": true,
+  "transcriptWordCount": 5308,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2016/720w6g8t9zhd23va0ai/720/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2016/720w6g8t9zhd23va0ai/720/720_sd_concurrent_programming_with_gcd_in_swift_3.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2016/720w6g8t9zhd23va0ai/720/720_hd_concurrent_programming_with_gcd_in_swift_3.mp4",
+    "duration": 2141
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2016/720-concurrent-programming-with-gcd-in-swift-3/",
+  "files": {
+    "metadata": "sessions/wwdc2016/720-concurrent-programming-with-gcd-in-swift-3/metadata.json",
+    "readme": "sessions/wwdc2016/720-concurrent-programming-with-gcd-in-swift-3/README.md",
+    "transcript": "sessions/wwdc2016/720-concurrent-programming-with-gcd-in-swift-3/transcript.md",
+    "transcriptJSON": "sessions/wwdc2016/720-concurrent-programming-with-gcd-in-swift-3/transcript.json"
+  }
+}

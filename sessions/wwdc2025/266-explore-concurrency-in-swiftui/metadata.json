@@ -1,0 +1,137 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-266",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 266,
+  "title": "Explore concurrency in SwiftUI",
+  "description": "Discover how SwiftUI leverages Swift concurrency to build safe and responsive apps. Explore how SwiftUI uses the main actor by default and offloads work to other actors. Learn how to interpret concurrency annotations and manage async tasks with SwiftUI’s event loop for smooth animations and UI updates. You’ll leave knowing how to avoid data races and write code fearlessly.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/266",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/266",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 1495,
+  "hasTranscript": true,
+  "transcriptWordCount": 3017,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/266/7/c7837487-ed14-4560-8c2c-a583596027ca/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/266/7/c7837487-ed14-4560-8c2c-a583596027ca/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/266/7/c7837487-ed14-4560-8c2c-a583596027ca/downloads/wwdc2025-266_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/266/7/c7837487-ed14-4560-8c2c-a583596027ca/downloads/wwdc2025-266_hd.mp4",
+    "duration": 1495
+  },
+  "codeSnippets": [
+    {
+      "title": "UI for extracting colors",
+      "language": "swift",
+      "startTimeSeconds": 165,
+      "code": "// UI for extracting colors\n\nstruct ColorScheme: Identifiable, Hashable {\n    var id = UUID()\n    let imageName: String\n    var colors: [Color]\n}\n\n@Observable\nfinal class ColorExtractor {\n    var imageName: String\n    var scheme: ColorScheme?\n    var isExtracting: Bool = false\n    var colorCount: Float = 5\n\n    func extractColorScheme() async {}\n}\n\nstruct ColorExtractorView: View {\n    @State private var model = ColorExtractor()\n\n    var body: some View {\n            ImageView(\n                imageName: model.imageName,\n                isLoading: model.isExtracting\n            )\n            EqualWidthVStack {\n                ColorSchemeView(\n                    isLoading: model.isExtracting,\n                    colorScheme: model.scheme,\n                    extractCount: Int(model.colorCount)\n                )\n                .onTapGesture {\n                    guard !model.isExtracting else { return }\n                    withAnimation { model.isExtracting = true }\n                    Task {\n                        await model.extractColorScheme()\n                        withAnimation { model.isExtracting = false }\n                    }\n                }\n                Slider(value: $model.colorCount, in: 3...10, step: 1)\n                    .disabled(model.isExtracting)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "AppKit and UIKit require @MainActor: an example",
+      "language": "swift",
+      "startTimeSeconds": 355,
+      "code": "// AppKit and UIKit require @MainActor\n// Example: UIViewRepresentable\n\nstruct FancyUILabel: UIViewRepresentable {\n    func makeUIView(context: Context) -> UILabel {\n        let label = UILabel()\n        // customize the label...\n        return label\n    }\n}"
+    },
+    {
+      "title": "UI for extracting colors",
+      "language": "swift",
+      "startTimeSeconds": 402,
+      "code": "// UI for extracting colors\n\nstruct ColorScheme: Identifiable, Hashable {\n    var id = UUID()\n    let imageName: String\n    var colors: [Color]\n}\n\n@Observable\nfinal class ColorExtractor {\n    var imageName: String\n    var scheme: ColorScheme?\n    var isExtracting: Bool = false\n    var colorCount: Float = 5\n\n    func extractColorScheme() async {}\n}\n\nstruct ColorExtractorView: View {\n    @State private var model = ColorExtractorModel()\n\n    var body: some View {\n            ImageView(\n                imageName: model.imageName,\n                isLoading: model.isExtracting\n            )\n            EqualWidthVStack(spacing: 30) {\n                ColorSchemeView(\n                    isLoading: model.isExtracting,\n                    colorScheme: model.scheme,\n                    extractCount: Int(model.colorCount)\n                )\n                .onTapGesture {\n                    guard !model.isExtracting else { return }\n                    withAnimation { model.isExtracting = true }\n                    Task {\n                        await model.extractColorScheme()\n                        withAnimation { model.isExtracting = false }\n                    }\n                }\n                Slider(value: $model.colorCount, in: 3...10, step: 1)\n                    .disabled(model.isExtracting)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Animated circle, part of color scheme view",
+      "language": "swift",
+      "startTimeSeconds": 506,
+      "code": "// Part of color scheme view\n\nstruct SchemeContentView: View {\n    let isLoading: Bool\n    @State private var pulse: Bool = false\n\n    var body: some View {\n        ZStack {\n            // Color wheel …\n\n            Circle()\n                .scaleEffect(isLoading ? 1.5 : 1)\n\n            VStack {\n                Text(isLoading ? \"Please wait\" : \"Extract\")\n\n                if !isLoading {\n                    Text(\"^[\\(extractCount) color](inflect: true)\")\n                }\n            }\n            .visualEffect { [pulse] content, _ in\n                content\n                    .blur(radius: pulse ? 2 : 0)\n            }\n            .onChange(of: isLoading) { _, newValue in\n                withAnimation(newValue ? kPulseAnimation : nil) {\n                    pulse = newValue\n                }\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "UI for extracting colors",
+      "language": "swift",
+      "startTimeSeconds": 790,
+      "code": "// UI for extracting colors\n\nstruct ColorExtractorView: View {\n    @State private var model = ColorExtractor()\n\n    var body: some View {\n            ImageView(\n                imageName: model.imageName,\n                isLoading: model.isExtracting\n            )\n            EqualWidthVStack {\n                ColorSchemeView(\n                    isLoading: model.isExtracting,\n                    colorScheme: model.scheme,\n                    extractCount: Int(model.colorCount)\n                )\n                .onTapGesture {\n                    guard !model.isExtracting else { return }\n                    withAnimation { model.isExtracting = true }\n                    Task {\n                        await model.extractColorScheme()\n                        withAnimation { model.isExtracting = false }\n                    }\n                }\n                Slider(value: $model.colorCount, in: 3...10, step: 1)\n                    .disabled(model.isExtracting)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Part of color scheme view",
+      "language": "swift",
+      "startTimeSeconds": 827,
+      "code": "// Part of color scheme view\n\nstruct SchemeContentView: View {\n    let isLoading: Bool\n    @State private var pulse: Bool = false\n\n    var body: some View {\n        ZStack {\n            // Color wheel …\n\n            Circle()\n                .scaleEffect(isLoading ? 1.5 : 1)\n\n            VStack {\n                Text(isLoading ? \"Please wait\" : \"Extract\")\n\n                if !isLoading {\n                    Text(\"^[\\(extractCount) color](inflect: true)\")\n                }\n            }\n            .visualEffect { [pulse] content, _ in\n                content\n                    .blur(radius: pulse ? 2 : 0)\n            }\n            .onChange(of: isLoading) { _, newValue in\n                withAnimation(newValue ? kPulseAnimation : nil) {\n                    pulse = newValue\n                }\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "UI for extracting colors",
+      "language": "swift",
+      "startTimeSeconds": 1062,
+      "code": "// UI for extracting colors\n\nstruct ColorExtractorView: View {\n    @State private var model = ColorExtractor()\n\n    var body: some View {\n            ImageView(\n                imageName: model.imageName,\n                isLoading: model.isExtracting\n            )\n            EqualWidthVStack {\n                ColorSchemeView(\n                    isLoading: model.isExtracting,\n                    colorScheme: model.scheme,\n                    extractCount: Int(model.colorCount)\n                )\n                .onTapGesture {\n                    guard !model.isExtracting else { return }\n                    withAnimation { model.isExtracting = true }\n                    Task {\n                        await model.extractColorScheme()\n                        withAnimation { model.isExtracting = false }\n                    }\n                }\n                Slider(value: $model.colorCount, in: 3...10, step: 1)\n                    .disabled(model.isExtracting)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Animate colors as they appear by scrolling",
+      "language": "swift",
+      "startTimeSeconds": 1135,
+      "code": "// Animate colors as they appear by scrolling\n\nstruct SchemeHistoryItemView: View {\n    let scheme: ColorScheme\n    @State private var isShown: Bool = false\n\n    var body: some View {\n        HStack(spacing: 0) {\n            ForEach(scheme.colors) { color in\n                color\n                    .offset(x: 0, y: isShown ? 0 : 60)\n            }\n        }\n        .onScrollVisibilityChange(threshold: 0.9) {\n            guard !isShown else { return }\n            withAnimation {\n                isShown = $0\n            }\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Mutex",
+      "url": "https://developer.apple.com/documentation/Synchronization/Mutex",
+      "type": "documentation",
+      "description": "A synchronization primitive that protects shared mutable state via",
+      "sosumiURL": "https://sosumi.ai/documentation/Synchronization/Mutex",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Synchronization/Mutex.json"
+    },
+    {
+      "title": "Concurrency",
+      "url": "https://developer.apple.com/documentation/Swift/concurrency",
+      "type": "documentation",
+      "description": "Perform asynchronous and parallel operations.",
+      "sosumiURL": "https://sosumi.ai/documentation/Swift/concurrency",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Swift/concurrency.json"
+    },
+    {
+      "title": "Updating an App to Use Swift Concurrency",
+      "url": "https://developer.apple.com/documentation/swift/updating_an_app_to_use_swift_concurrency",
+      "type": "samplecode",
+      "description": "Improve your app’s performance by refactoring your code to take advantage of asynchronous functions in Swift.",
+      "sosumiURL": "https://sosumi.ai/documentation/swift/updating_an_app_to_use_swift_concurrency",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/swift/updating_an_app_to_use_swift_concurrency.json"
+    },
+    {
+      "title": "The Swift Programming Language: Concurrency",
+      "url": "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency/",
+      "type": "guide",
+      "description": "The chapter of the Language Guide in The Swift Programming Language that covers asynchronous and parallel code, including asynchronous functions (async/await), asynchronous sequences (AsyncSequence), async let, tasks, task groups, and actors."
+    }
+  ],
+  "path": "sessions/wwdc2025/266-explore-concurrency-in-swiftui/",
+  "files": {
+    "metadata": "sessions/wwdc2025/266-explore-concurrency-in-swiftui/metadata.json",
+    "readme": "sessions/wwdc2025/266-explore-concurrency-in-swiftui/README.md",
+    "transcript": "sessions/wwdc2025/266-explore-concurrency-in-swiftui/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/266-explore-concurrency-in-swiftui/transcript.json"
+  }
+}

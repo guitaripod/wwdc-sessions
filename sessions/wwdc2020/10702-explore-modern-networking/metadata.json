@@ -1,0 +1,39 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10702",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10702,
+  "title": "Explore modern networking",
+  "description": "Speed up your app and make it more resilient, private and secure with modern networking APIs. Learn about networking protocols and how incorporating these within your app and server can provide faster performance and reduce both your power consumption and thermal impact. Discover how to better protect people in your app through technologies like encrypted DNS and local network privacy. And find out how you can leverage local push connectivity to deliver notifications from your application server to devices on networks without an internet connection.",
+  "url": "https://developer.apple.com/news/?id=bmnscduq",
+  "sosumiURL": "https://sosumi.ai/news/?id=bmnscduq",
+  "type": "Article",
+  "publishedAt": "2020-06-22T00:00:33-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": null,
+  "hasTranscript": false,
+  "transcriptWordCount": 0,
+  "availableLanguages": [],
+  "media": {},
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2020/10702-explore-modern-networking/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10702-explore-modern-networking/metadata.json",
+    "readme": "sessions/wwdc2020/10702-explore-modern-networking/README.md"
+  }
+}

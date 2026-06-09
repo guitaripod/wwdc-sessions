@@ -1,0 +1,88 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2024-10204",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10204,
+  "title": "Build a great Lock Screen camera capture experience",
+  "description": "Find out how the LockedCameraCapture API can help you bring your capture application’s most useful information directly to the Lock Screen. Examine the API’s features and functionality, learn how to get started creating a capture extension, and find out how that extension behaves when the device is locked.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10204",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10204",
+  "type": "Video",
+  "publishedAt": "2024-06-12T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "camera",
+    "lock screen",
+    "machine learning"
+  ],
+  "topics": [
+    "AI & Machine Learning",
+    "Photos & Camera"
+  ],
+  "primaryTopic": "Photos & Camera",
+  "duration": 1369,
+  "hasTranscript": true,
+  "transcriptWordCount": 3723,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10204/9/FFB7B19C-9230-4A4E-B4CD-5E6EED8FBEF3/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10204/9/FFB7B19C-9230-4A4E-B4CD-5E6EED8FBEF3/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10204/9/FFB7B19C-9230-4A4E-B4CD-5E6EED8FBEF3/downloads/wwdc2024-10204_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10204/9/FFB7B19C-9230-4A4E-B4CD-5E6EED8FBEF3/downloads/wwdc2024-10204_hd.mp4",
+    "duration": 1369
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Creating a camera experience for the Lock Screen",
+      "url": "https://developer.apple.com/documentation/LockedCameraCapture/Creating-a-camera-experience-for-the-Lock-Screen",
+      "type": "documentation",
+      "description": "Offer your app’s camera experience on locked devices from Control Center, the Lock Screen, and the Action button.",
+      "sosumiURL": "https://sosumi.ai/documentation/LockedCameraCapture/Creating-a-camera-experience-for-the-Lock-Screen",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/LockedCameraCapture/Creating-a-camera-experience-for-the-Lock-Screen.json"
+    },
+    {
+      "title": "Creating controls to perform actions across the system",
+      "url": "https://developer.apple.com/documentation/WidgetKit/Creating-controls-to-perform-actions-across-the-system",
+      "type": "documentation",
+      "description": "Perform your app’s actions from Control Center, the Lock Screen, and the Action button.",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit/Creating-controls-to-perform-actions-across-the-system",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit/Creating-controls-to-perform-actions-across-the-system.json"
+    },
+    {
+      "title": "Human Interface Guidelines: Controls",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/controls",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/controls"
+    },
+    {
+      "title": "Forum: Photos & Camera",
+      "url": "https://developer.apple.com/forums/topics/media-technologies/photos-and-camera?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/media-technologies/photos-and-camera?cid=vf-a-0010"
+    }
+  ],
+  "path": "sessions/wwdc2024/10204-build-a-great-lock-screen-camera-capture-experience/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10204-build-a-great-lock-screen-camera-capture-experience/metadata.json",
+    "readme": "sessions/wwdc2024/10204-build-a-great-lock-screen-camera-capture-experience/README.md",
+    "transcript": "sessions/wwdc2024/10204-build-a-great-lock-screen-camera-capture-experience/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10204-build-a-great-lock-screen-camera-capture-experience/transcript.json"
+  }
+}

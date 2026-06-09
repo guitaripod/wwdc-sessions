@@ -1,0 +1,55 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-10696",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2020,
+  "eventContentId": 10696,
+  "title": "Uniform Type Identifiers — a reintroduction",
+  "description": "Ever wonder how the system decides what app should open a given file? Explore the Uniform Type Identifiers framework, which helps you simplify the process for supporting standard or proprietary file formats in your app. You’ll learn how to use the new framework and Xcode to declare the types your app supports, discover how to boost performance when you adopt UTTypes, and review the latest platform APIs that support UTTypes.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/10696",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10696",
+  "type": "Video",
+  "publishedAt": "2020-11-17T10:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 1466,
+  "hasTranscript": true,
+  "transcriptWordCount": 3896,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/10696/2/368BE18F-8FF4-4704-AF5A-DB0EB1CD067D/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/tech-talks/10696/2/368BE18F-8FF4-4704-AF5A-DB0EB1CD067D/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/10696/2/368BE18F-8FF4-4704-AF5A-DB0EB1CD067D/downloads/tech-talks-10696_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/10696/2/368BE18F-8FF4-4704-AF5A-DB0EB1CD067D/downloads/tech-talks-10696_hd.mp4",
+    "duration": 1466
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/tech-talks/10696-uniform-type-identifiers-a-reintroduction/",
+  "files": {
+    "metadata": "sessions/tech-talks/10696-uniform-type-identifiers-a-reintroduction/metadata.json",
+    "readme": "sessions/tech-talks/10696-uniform-type-identifiers-a-reintroduction/README.md",
+    "transcript": "sessions/tech-talks/10696-uniform-type-identifiers-a-reintroduction/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/10696-uniform-type-identifiers-a-reintroduction/transcript.json"
+  }
+}

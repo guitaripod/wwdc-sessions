@@ -1,0 +1,71 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10176",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10176,
+  "title": "Lift subjects from images in your app",
+  "description": "Discover how you can easily pull the subject of an image from its background in your apps. Learn how to lift the primary subject or to access the subject at a given point with VisionKit. We’ll also share how you can lift subjects using Vision and combine that with lower-level frameworks like Core Image to create fun image effects and more complex compositing pipelines. For more information about the latest updates to VisionKit, check out “What’s new in VisionKit.\" And for more information about person segmentation in images, watch \"Explore 3D body pose and person segmentation in Vision\" from WWDC23.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10176",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10176",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services",
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1118,
+  "hasTranscript": true,
+  "transcriptWordCount": 2780,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10176/4/85EF7B31-0252-4567-AEBB-723298444C56/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10176/4/85EF7B31-0252-4567-AEBB-723298444C56/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10176/4/85EF7B31-0252-4567-AEBB-723298444C56/downloads/wwdc2023-10176_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10176/4/85EF7B31-0252-4567-AEBB-723298444C56/downloads/wwdc2023-10176_hd.mp4",
+    "duration": 1118
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "VisionKit",
+      "url": "https://developer.apple.com/documentation/VisionKit",
+      "type": "documentation",
+      "description": "Identify and extract information in the environment using the device’s camera, or in images that your app displays.",
+      "sosumiURL": "https://sosumi.ai/documentation/VisionKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/VisionKit.json"
+    },
+    {
+      "title": "Vision",
+      "url": "https://developer.apple.com/documentation/Vision",
+      "type": "documentation",
+      "description": "Analyze image and video content in your app using computer vision algorithms for object detection, text recognition, and image segmentation.",
+      "sosumiURL": "https://sosumi.ai/documentation/Vision",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Vision.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10176-lift-subjects-from-images-in-your-app/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10176-lift-subjects-from-images-in-your-app/metadata.json",
+    "readme": "sessions/wwdc2023/10176-lift-subjects-from-images-in-your-app/README.md",
+    "transcript": "sessions/wwdc2023/10176-lift-subjects-from-images-in-your-app/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10176-lift-subjects-from-images-in-your-app/transcript.json"
+  }
+}

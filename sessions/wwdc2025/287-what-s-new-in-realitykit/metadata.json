@@ -1,0 +1,188 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-287",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 287,
+  "title": "What’s new in RealityKit",
+  "description": "Unleash your creativity with new RealityKit features that can help you build rich 3D content for iOS, iPadOS, macOS, tvOS and visionOS. Learn how you can access ARKit data directly through RealityKit. Explore how you can interact with your 3D content more naturally using the object manipulation feature. Discover some new APIs for scene understanding, environment blending, instancing and much more, all using an interactive sample.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/287",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/287",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "accessories",
+    "component",
+    "reality",
+    "reality composer",
+    "reality composer pro",
+    "reality converter",
+    "realitykit",
+    "realitykit audio",
+    "realityview",
+    "spatial",
+    "spatial accessories",
+    "spatial computing",
+    "spatial photos and videos",
+    "spatial tracking",
+    "swiftui"
+  ],
+  "topics": [
+    "Graphics & Games",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 1568,
+  "hasTranscript": true,
+  "transcriptWordCount": 3943,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/287/4/23ef24fe-2271-4352-b5af-b350e85dc101/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/287/4/23ef24fe-2271-4352-b5af-b350e85dc101/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/287/4/23ef24fe-2271-4352-b5af-b350e85dc101/downloads/wwdc2025-287_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/287/4/23ef24fe-2271-4352-b5af-b350e85dc101/downloads/wwdc2025-287_hd.mp4",
+    "duration": 1568
+  },
+  "codeSnippets": [
+    {
+      "title": "Set up SpatialTrackingSession",
+      "language": "swift",
+      "startTimeSeconds": 273,
+      "code": "// Set up SpatialTrackingSession\n@State var spatialTrackingSession = SpatialTrackingSession()\n\nRealityView { content in\n\n    let configuration = SpatialTrackingSession.Configuration(\n        tracking: [.plane]\n    )\n\t\t// Run the configuration\n    if let unavailableCapabilities = await spatialTrackingSession.run(configuration) {\n        // Handle errors\n    }\n}"
+    },
+    {
+      "title": "Set up PlaneAnchor",
+      "language": "swift",
+      "startTimeSeconds": 274,
+      "code": "// Set up PlaneAnchor\nRealityView { content in\n\n\t\t// Set up the SpatialTrackingSession\n\n    // Add a PlaneAnchor\n    let planeAnchor = AnchorEntity(.plane(.horizontal,\n                                          classification: .table,\n                                          minimumBounds: [0.15, 0.15]))\n    content.add(planeAnchor)\n}"
+    },
+    {
+      "title": "Handle DidAnchor event",
+      "language": "swift",
+      "startTimeSeconds": 348,
+      "code": "// Handle DidAnchor event\n\n\t\tdidAnchor = content.subscribe(to: AnchorStateEvents.DidAnchor.self) { event in\n\n\t\tguard let anchorComponent =\n           event.entity.components[ARKitAnchorComponent.self] else { return }\n\n\n\t\tguard let planeAnchor = anchorComponent.anchor as? PlaneAnchor else { return }\n\n\t\tlet worldSpaceFromExtent =\n    planeAnchor.originFromAnchorTransform *\n    planeAnchor.geometry.extent.anchorFromExtentTransform\n\n    gameRoot.transform = Transform(matrix: worldSpaceFromExtent)\n\n    // Add game objects to gameRoot \n}"
+    },
+    {
+      "title": "Set up ManipulationComponent",
+      "language": "swift",
+      "startTimeSeconds": 458,
+      "code": "// Set up ManipulationComponent\nextension Entity {\n    static func loadModelAndSetUp(modelName: String,\n                                  in bundle: Bundle) async throws -> Entity {\n\n        let entity = // Load model and assign PhysicsBodyComponent\n        let shapes = // Generate convex shape that fits the entity model\n\n        // Initialize manipulation\n        ManipulationComponent.configureEntity(entity, collisionShapes: [shapes])\n        var manipulationComponent = ManipulationComponent()\n        manipulationComponent.releaseBehavior = .stay\n        entity.components.set(manipulationComponent)\n\n        // Continue entity set up\n    }\n}"
+    },
+    {
+      "title": "Subscribe to willBegin ManipulationEvent",
+      "language": "swift",
+      "startTimeSeconds": 568,
+      "code": "// Subscribe to ManipulationEvents\n\n// Update the PhysicsBodyComponent to support movement\nwillBegin = content.subscribe(to: ManipulationEvents.WillBegin.self) { event in\n    if var physicsBody = event.entity.components[PhysicsBodyComponent.self] {\n        physicsBody.mode = .kinematic\n        event.entity.components.set(physicsBody)\n    }\n}"
+    },
+    {
+      "title": "Subscribe to willEnd ManipulationEvent",
+      "language": "swift",
+      "startTimeSeconds": 569,
+      "code": "// Subscribe to ManipulationEvents\n\n// Update the PhysicsBodyComponent to be a dynamic object\nwillEnd = content.subscribe(to: ManipulationEvents.WillEnd.self) { event in\n    if var physicsBody = event.entity.components[PhysicsBodyComponent.self] {\n        physicsBody.mode = .dynamic\n        event.entity.components.set(physicsBody)\n    }\n}"
+    },
+    {
+      "title": "Set up Scene understanding mesh collision and physics​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​",
+      "language": "swift",
+      "startTimeSeconds": 652,
+      "code": "// Set up Scene understanding mesh collision/physics\n\nlet configuration = SpatialTrackingSession.Configuration(\n    tracking: [.plane],\n    sceneUnderstanding: [.collision, .physics]\n)"
+    },
+    {
+      "title": "Set up EnvironmentBlendingComponent",
+      "language": "swift",
+      "startTimeSeconds": 716,
+      "code": "// Set up EnvironmentBlendingComponent\n\nentity.components.set(\n    EnvironmentBlendingComponent(preferredBlendingMode: .occluded(by: .surroundings))\n)"
+    },
+    {
+      "title": "Set up MeshInstancesComponent",
+      "language": "swift",
+      "startTimeSeconds": 860,
+      "code": "// Set up MeshInstancesComponent entity\n\nlet entity = try await ModelEntity(named:\"PebbleStriped.usdz\")\nvar meshInstancesComponent = MeshInstancesComponent()\nlet instances = try LowLevelInstanceData(instanceCount: 20)\nmeshInstancesComponent[partIndex: 0] = instances\n\ninstances.withMutableTransforms { transforms in\n    for i in 0..<20 { \n        let scale: Float = .random(in:0.018...0.025)\n        let angle: Float = .random(in:0..<2) * .pi\n        let position = randomPoint(in: inArea, with: scene)\n        let transform = Transform(scale: .init(repeating: scale),\n                                  rotation: .init(angle: angle,axis: [0, 1, 0]),\n                                  translation: position)\n        transforms[i] = transform.matrix\n    }\n}\n\nentity.components.set(meshInstancesComponent)"
+    },
+    {
+      "title": "Load and display a 2D photo",
+      "language": "swift",
+      "startTimeSeconds": 1056,
+      "code": "// Load and display a 2D photo\n\nguard let url = Bundle.main.url(forResource: \"my2DPhoto\", withExtension: \"heic\") else {a\n    return\n}\n\nlet component = try await ImagePresentationComponent(contentsOf: url)\n\nlet entity = Entity()\nentity.components.set(component)"
+    },
+    {
+      "title": "Load and display a spatial photo with windowed presentation",
+      "language": "swift",
+      "startTimeSeconds": 1077,
+      "code": "// Load and display a spatial photo with windowed presentation\n\nguard let url = Bundle.main.url(forResource: \"mySpatialPhoto\", withExtension: \"heic\") else {\n    return\n}\n\nvar component = try await ImagePresentationComponent(contentsOf: url)\n\n// Discover if the component supports windowed spatial photo presentation.\nif component.availableViewingModes.contains(.spatialStereo) {\n    component.desiredViewingMode = .spatialStereo\n}\n\nentity.components.set(component)"
+    },
+    {
+      "title": "Load and display a spatial photo with immserive presentation",
+      "language": "swift",
+      "startTimeSeconds": 1102,
+      "code": "// Load and display a spatial photo with immersive presentation\n\nguard let url = Bundle.main.url(forResource: \"mySpatialPhoto\", withExtension: \"heic\") else {\n    return\n}\n\nvar component = try await ImagePresentationComponent(contentsOf: url)\n\n// Discover if the component supports immersive spatial photo presentation.\nif component.availableViewingModes.contains(.spatialStereoImmersive) {\n    component.desiredViewingMode = .spatialStereoImmersive\n}\n\nentity.components.set(component)"
+    },
+    {
+      "title": "Load a spatial photo and use it to generate and present a spatial scene",
+      "language": "swift",
+      "startTimeSeconds": 1136,
+      "code": "// Load a spatial photo and use it to generate and present a spatial scene\n\nguard let url = Bundle.main.url(forResource: \"mySpatialPhoto\", withExtension: \"heic\") else {\n    return\n}\n\nlet spatial3DImage = try await ImagePresentationComponent.Spatial3DImage(contentsOf: url)\nvar component = ImagePresentationComponent(spatial3DImage: spatial3DImage)\n\ntry await spatial3DImage.generate()\n\n// Discover if the component supports windowed spatial scene presentation.\nif component.availableViewingModes.contains(.spatial3D) {\n    component.desiredViewingMode = .spatial3D\n}\n\nentity.components.set(component)"
+    },
+    {
+      "title": "Generating a spatial scene as needed",
+      "language": "swift",
+      "startTimeSeconds": 1206,
+      "code": "// Load a spatial photo and use it to generate and present a spatial scene\n\nguard let url = Bundle.main.url(forResource: \"mySpatialPhoto\", withExtension: \"heic\") else {\n    return\n}\n\nlet spatial3DImage = try await ImagePresentationComponent.Spatial3DImage(contentsOf: url)\nvar component = ImagePresentationComponent(spatial3DImage: spatial3DImage)\n\ncomponent.desiredViewingMode = .spatial3D // (or .spatial3DImmersive)\n\nentity.components.set(component)\n\ntry await spatial3DImage.generate()"
+    },
+    {
+      "title": "Load entity from Data object​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​",
+      "language": "swift",
+      "startTimeSeconds": 1415,
+      "code": "// Load entity from Data object\n\nif let (data, response) = try? await URLSession.shared.data(from: url) {\n    if let entity = try? await Entity(from: data) {\n        content.add(entity)\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Integrating virtual objects with your environment",
+      "url": "https://developer.apple.com/documentation/RealityKit/integrating-virtual-objects-with-your-environment",
+      "type": "samplecode",
+      "description": "Create an immersive game using native anchor support, environmental blending, model manipulation, and mesh instance duplication.",
+      "sosumiURL": "https://sosumi.ai/documentation/RealityKit/integrating-virtual-objects-with-your-environment",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/RealityKit/integrating-virtual-objects-with-your-environment.json"
+    },
+    {
+      "title": "Presenting images in RealityKit",
+      "url": "https://developer.apple.com/documentation/RealityKit/presenting-images-in-realitykit",
+      "type": "samplecode",
+      "description": "Create and display spatial scenes in RealityKit",
+      "sosumiURL": "https://sosumi.ai/documentation/RealityKit/presenting-images-in-realitykit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/RealityKit/presenting-images-in-realitykit.json"
+    },
+    {
+      "title": "Playing immersive media with RealityKit",
+      "url": "https://developer.apple.com/documentation/visionOS/playing-immersive-media-with-realitykit",
+      "type": "samplecode",
+      "description": "Create an immersive video playback experience with RealityKit.",
+      "sosumiURL": "https://sosumi.ai/documentation/visionOS/playing-immersive-media-with-realitykit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/visionOS/playing-immersive-media-with-realitykit.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/287-what-s-new-in-realitykit/",
+  "files": {
+    "metadata": "sessions/wwdc2025/287-what-s-new-in-realitykit/metadata.json",
+    "readme": "sessions/wwdc2025/287-what-s-new-in-realitykit/README.md",
+    "transcript": "sessions/wwdc2025/287-what-s-new-in-realitykit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/287-what-s-new-in-realitykit/transcript.json"
+  }
+}

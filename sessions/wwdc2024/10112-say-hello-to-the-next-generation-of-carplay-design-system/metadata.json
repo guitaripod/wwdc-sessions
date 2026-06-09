@@ -1,0 +1,78 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2024-10112",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10112,
+  "title": "Say hello to the next generation of CarPlay design system",
+  "description": "Explore the design system at the heart of the next generation of CarPlay that allows each automaker to express their vehicle’s character and brand. Learn how gauges, layouts, dynamic content, and more are deeply customizable and adaptable, allowing you to express your own design philosophy and create an iconic, tailored look. This session is intended for automakers, system developers, and anyone designing a system that supports the next generation of CarPlay.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10112",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10112",
+  "type": "Video",
+  "publishedAt": "2024-06-10T14:00:00-07:00",
+  "platforms": [
+    "iOS"
+  ],
+  "keywords": [
+    "🚗",
+    "🚙",
+    "car",
+    "instrument cluster"
+  ],
+  "topics": [
+    "System Services",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 1165,
+  "hasTranscript": true,
+  "transcriptWordCount": 3136,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10112/5/AD039C5C-EB45-47FB-887E-3DCDABC70719/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10112/5/AD039C5C-EB45-47FB-887E-3DCDABC70719/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10112/5/AD039C5C-EB45-47FB-887E-3DCDABC70719/downloads/wwdc2024-10112_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10112/5/AD039C5C-EB45-47FB-887E-3DCDABC70719/downloads/wwdc2024-10112_hd.mp4",
+    "duration": 1165
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Forum: Design",
+      "url": "https://developer.apple.com/forums/topics/design?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/design?cid=vf-a-0010"
+    },
+    {
+      "title": "MFI Program",
+      "url": "https://mfi.apple.com",
+      "type": "guide",
+      "description": "MFi Technologies and the Apple Ecosystem"
+    },
+    {
+      "title": "CarPlay for developers",
+      "url": "https://developer.apple.com/carplay",
+      "type": "guide",
+      "description": "Guide to CarPlay development",
+      "sosumiURL": "https://sosumi.ai/carplay"
+    }
+  ],
+  "path": "sessions/wwdc2024/10112-say-hello-to-the-next-generation-of-carplay-design-system/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10112-say-hello-to-the-next-generation-of-carplay-design-system/metadata.json",
+    "readme": "sessions/wwdc2024/10112-say-hello-to-the-next-generation-of-carplay-design-system/README.md",
+    "transcript": "sessions/wwdc2024/10112-say-hello-to-the-next-generation-of-carplay-design-system/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10112-say-hello-to-the-next-generation-of-carplay-design-system/transcript.json"
+  }
+}

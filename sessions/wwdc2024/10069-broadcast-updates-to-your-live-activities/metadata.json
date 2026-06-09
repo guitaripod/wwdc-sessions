@@ -1,0 +1,102 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2024-10069",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10069,
+  "title": "Broadcast updates to your Live Activities",
+  "description": "With broadcast push notifications, your app can send updates to thousands of Live Activities with a single request. We’ll discover how broadcast push notifications work between an app, a server, and the Apple Push Notification service, then we’ll walk through best practices for this capability and how to implement it.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10069",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10069",
+  "type": "Video",
+  "publishedAt": "2024-06-12T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "apns"
+  ],
+  "topics": [
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 768,
+  "hasTranscript": true,
+  "transcriptWordCount": 1733,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10069/4/4BD768EC-9A6C-492A-ADB0-C17EF9F7110C/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10069/4/4BD768EC-9A6C-492A-ADB0-C17EF9F7110C/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10069/4/4BD768EC-9A6C-492A-ADB0-C17EF9F7110C/downloads/wwdc2024-10069_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10069/4/4BD768EC-9A6C-492A-ADB0-C17EF9F7110C/downloads/wwdc2024-10069_hd.mp4",
+    "duration": 768
+  },
+  "codeSnippets": [
+    {
+      "title": "Subscribe a Live Activity to broadcast push notification updates",
+      "language": "swift",
+      "startTimeSeconds": 470,
+      "code": "// Request a Live Activity and subscribe to broadcast push notifications\n\nimport ActivityKit\n\nfunc startLiveActivity(channelId: String) {\n    let gameAttributes = GameAttributes()\n    let initialState = GameAttributes.ContentState(\n            home: 0, away: 0, update: \"First Half\"\n    )\n    try Activity.request(\n            attributes: gameAttributes,\n            content: .init(state: initialState, staleDate: nil),\n            pushType: .channel(channelId)\n    )\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Forum: App & System Services",
+      "url": "https://developer.apple.com/forums/topics/app-and-system-services?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/app-and-system-services?cid=vf-a-0010"
+    },
+    {
+      "title": "Sending broadcast push notification requests to APNs",
+      "url": "https://developer.apple.com/documentation/UserNotifications/sending-broadcast-push-notification-requests-to-apns",
+      "type": "documentation",
+      "description": "Transmit your broadcast notification payload to Apple Push Notifications service (APNs).",
+      "sosumiURL": "https://sosumi.ai/documentation/UserNotifications/sending-broadcast-push-notification-requests-to-apns",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UserNotifications/sending-broadcast-push-notification-requests-to-apns.json"
+    },
+    {
+      "title": "Sending channel management requests to APNs",
+      "url": "https://developer.apple.com/documentation/UserNotifications/sending-channel-management-requests-to-apns",
+      "type": "documentation",
+      "description": "Manage channels that your application uses for broadcast push notifications.",
+      "sosumiURL": "https://sosumi.ai/documentation/UserNotifications/sending-channel-management-requests-to-apns",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UserNotifications/sending-channel-management-requests-to-apns.json"
+    },
+    {
+      "title": "Setting up broadcast push notifications",
+      "url": "https://developer.apple.com/documentation/UserNotifications/setting-up-broadcast-push-notifications",
+      "type": "documentation",
+      "description": "Enable broadcast capability for Apple Push Notifications service (APNs).",
+      "sosumiURL": "https://sosumi.ai/documentation/UserNotifications/setting-up-broadcast-push-notifications",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UserNotifications/setting-up-broadcast-push-notifications.json"
+    },
+    {
+      "title": "Starting and updating Live Activities with ActivityKit push notifications",
+      "url": "https://developer.apple.com/documentation/ActivityKit/starting-and-updating-live-activities-with-activitykit-push-notifications",
+      "type": "documentation",
+      "description": "Use ActivityKit to receive push tokens and to remotely start, update, and end your Live Activity with ActivityKit notifications.",
+      "sosumiURL": "https://sosumi.ai/documentation/ActivityKit/starting-and-updating-live-activities-with-activitykit-push-notifications",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ActivityKit/starting-and-updating-live-activities-with-activitykit-push-notifications.json"
+    }
+  ],
+  "path": "sessions/wwdc2024/10069-broadcast-updates-to-your-live-activities/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10069-broadcast-updates-to-your-live-activities/metadata.json",
+    "readme": "sessions/wwdc2024/10069-broadcast-updates-to-your-live-activities/README.md",
+    "transcript": "sessions/wwdc2024/10069-broadcast-updates-to-your-live-activities/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10069-broadcast-updates-to-your-live-activities/transcript.json"
+  }
+}

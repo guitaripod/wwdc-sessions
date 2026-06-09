@@ -1,0 +1,87 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10032",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10032,
+  "title": "Explore WKWebView additions",
+  "description": "Explore the latest updates to WKWebView. We’ll show you how to use APIs to manipulate web content without JavaScript, explore delegates that can help with WebRTC and Downloads, and share how you can easily create a richer web experience within your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10032",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10032",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "dictation",
+    "media",
+    "safari",
+    "web app"
+  ],
+  "topics": [
+    "Safari & Web"
+  ],
+  "primaryTopic": "Safari & Web",
+  "duration": 1304,
+  "hasTranscript": true,
+  "transcriptWordCount": 3357,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10032/4/BF2DECD6-BD90-4253-9082-6F2FC912788C/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10032/4/BF2DECD6-BD90-4253-9082-6F2FC912788C/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10032/4/BF2DECD6-BD90-4253-9082-6F2FC912788C/downloads/wwdc2021-10032_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10032/4/BF2DECD6-BD90-4253-9082-6F2FC912788C/downloads/wwdc2021-10032_hd.mp4",
+    "duration": 1304
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "App-Bound Domains Domain WebKit Blog Post",
+      "url": "https://webkit.org/blog/10882/app-bound-domains/",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "SFSafariViewController",
+      "url": "https://developer.apple.com/documentation/SafariServices/SFSafariViewController",
+      "type": "documentation",
+      "description": "An object that provides a visible standard interface for browsing the web.",
+      "sosumiURL": "https://sosumi.ai/documentation/SafariServices/SFSafariViewController",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SafariServices/SFSafariViewController.json"
+    },
+    {
+      "title": "WebKit Open Source Project",
+      "url": "https://webkit.org",
+      "type": "guide",
+      "description": "WebKit Open Source Project"
+    },
+    {
+      "title": "WebKit",
+      "url": "https://developer.apple.com/documentation/WebKit",
+      "type": "documentation",
+      "description": "Integrate web content seamlessly into your app, and customize content interactions to meet your app’s needs.",
+      "sosumiURL": "https://sosumi.ai/documentation/WebKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WebKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10032-explore-wkwebview-additions/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10032-explore-wkwebview-additions/metadata.json",
+    "readme": "sessions/wwdc2021/10032-explore-wkwebview-additions/README.md",
+    "transcript": "sessions/wwdc2021/10032-explore-wkwebview-additions/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10032-explore-wkwebview-additions/transcript.json"
+  }
+}

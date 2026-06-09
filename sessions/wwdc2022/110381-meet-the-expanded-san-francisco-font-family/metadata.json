@@ -1,0 +1,62 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-110381",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 110381,
+  "title": "Meet the expanded San Francisco font family",
+  "description": "Discover the latest additions to San Francisco – the system font for Apple platforms – and find out how they can provide more control and versatility when designing interfaces. In addition to weights and optical sizes, San Francisco now supports three new width styles: Condensed, Compressed, and Expanded. We’ll also take you through the linguistic expansion of San Francisco and learn more about the feature-rich Arabic system font families: SF Arabic and SF Arabic Rounded.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/110381",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/110381",
+  "type": "Video",
+  "publishedAt": "2022-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "new york",
+    "san francisco",
+    "type",
+    "typeface",
+    "typography"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 1109,
+  "hasTranscript": true,
+  "transcriptWordCount": 2745,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110381/5/23FB4AFE-1352-4B9D-A2C6-A3F7C232C022/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110381/5/23FB4AFE-1352-4B9D-A2C6-A3F7C232C022/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110381/5/23FB4AFE-1352-4B9D-A2C6-A3F7C232C022/downloads/wwdc2022-110381_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110381/5/23FB4AFE-1352-4B9D-A2C6-A3F7C232C022/downloads/wwdc2022-110381_hd.mp4",
+    "duration": 1109
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2022/110381-meet-the-expanded-san-francisco-font-family/",
+  "files": {
+    "metadata": "sessions/wwdc2022/110381-meet-the-expanded-san-francisco-font-family/metadata.json",
+    "readme": "sessions/wwdc2022/110381-meet-the-expanded-san-francisco-font-family/README.md",
+    "transcript": "sessions/wwdc2022/110381-meet-the-expanded-san-francisco-font-family/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/110381-meet-the-expanded-san-francisco-font-family/transcript.json"
+  }
+}

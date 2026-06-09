@@ -1,0 +1,91 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10119",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10119,
+  "title": "What’s new in Safari extensions",
+  "description": "Learn about the latest improvements to Safari extensions. We’ll take you through new APIs, explore per-site permissions for Safari app extensions, and share how you can make sure your extensions work great in both Private Browsing and Profiles.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10119",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10119",
+  "type": "Video",
+  "publishedAt": "2023-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Safari & Web"
+  ],
+  "primaryTopic": "Safari & Web",
+  "duration": 732,
+  "hasTranscript": true,
+  "transcriptWordCount": 2096,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10119/4/83A24FCC-71E7-4137-BD8D-E165D7A1A020/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10119/4/83A24FCC-71E7-4137-BD8D-E165D7A1A020/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10119/4/83A24FCC-71E7-4137-BD8D-E165D7A1A020/downloads/wwdc2023-10119_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10119/4/83A24FCC-71E7-4137-BD8D-E165D7A1A020/downloads/wwdc2023-10119_hd.mp4",
+    "duration": 732
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Adding a web development tool to Safari Web Inspector",
+      "url": "https://developer.apple.com/documentation/SafariServices/adding-a-web-development-tool-to-safari-web-inspector",
+      "type": "documentation",
+      "description": "Expand the built-in Safari Web Inspector to include your custom tool, augmenting developers’ options for inspecting, testing, and debugging webpages.",
+      "sosumiURL": "https://sosumi.ai/documentation/SafariServices/adding-a-web-development-tool-to-safari-web-inspector",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SafariServices/adding-a-web-development-tool-to-safari-web-inspector.json"
+    },
+    {
+      "title": "Developing a Safari Web Extension",
+      "url": "https://developer.apple.com/documentation/SafariServices/developing-a-safari-web-extension",
+      "type": "samplecode",
+      "description": "Customize and enhance web pages by building a Safari web extension.",
+      "sosumiURL": "https://sosumi.ai/documentation/SafariServices/developing-a-safari-web-extension",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SafariServices/developing-a-safari-web-extension.json"
+    },
+    {
+      "title": "Safari Release Notes",
+      "url": "https://developer.apple.com/documentation/safari-release-notes",
+      "type": "documentation",
+      "description": "Learn about changes for Safari and Safari View Controller for iOS, iPadOS, macOS, and in visionOS; WKWebView for iOS, iPadOS, macOS, watchOS, and in visionOS; and Web Inspector on macOS.",
+      "sosumiURL": "https://sosumi.ai/documentation/safari-release-notes",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/safari-release-notes.json"
+    },
+    {
+      "title": "Submit feedback",
+      "url": "http://feedbackassistant.apple.com",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "MDN Web Docs - Web Extensions API",
+      "url": "https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API",
+      "type": "documentation",
+      "description": "JavaScript APIs for web extensions."
+    }
+  ],
+  "path": "sessions/wwdc2023/10119-what-s-new-in-safari-extensions/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10119-what-s-new-in-safari-extensions/metadata.json",
+    "readme": "sessions/wwdc2023/10119-what-s-new-in-safari-extensions/README.md",
+    "transcript": "sessions/wwdc2023/10119-what-s-new-in-safari-extensions/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10119-what-s-new-in-safari-extensions/transcript.json"
+  }
+}

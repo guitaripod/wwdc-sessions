@@ -1,0 +1,95 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10142",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10142,
+  "title": "Efficiency awaits: Background tasks in SwiftUI",
+  "description": "Background Tasks help apps respond to system events and keep time-sensitive data up to date. Learn how you can use the SwiftUI Background Tasks API to handle tasks succinctly. We’ll show you how to use Swift Concurrency to handle network responses, background refresh, and more — all while preserving performance and power.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10142",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10142",
+  "type": "Video",
+  "publishedAt": "2022-06-10T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    ".apprefresh",
+    "app refresh task",
+    "async",
+    "async await",
+    "background runtime",
+    ".backgroundtask",
+    "background task",
+    "concurrency",
+    ".downloadtask",
+    "foreground runtime",
+    "notification",
+    "stormy",
+    "suspend application",
+    "suspended app",
+    "swift concurrency",
+    "task",
+    "url background task",
+    "urlsession",
+    "urlsessionconfiguration",
+    "wake app",
+    "withtaskcancellationhandler"
+  ],
+  "topics": [
+    "App Services",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 769,
+  "hasTranscript": true,
+  "transcriptWordCount": 1816,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10142/4/D8D87522-CCCC-46BA-8C48-ECA2A5F9E36E/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10142/4/D8D87522-CCCC-46BA-8C48-ECA2A5F9E36E/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10142/4/D8D87522-CCCC-46BA-8C48-ECA2A5F9E36E/downloads/wwdc2022-10142_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10142/4/D8D87522-CCCC-46BA-8C48-ECA2A5F9E36E/downloads/wwdc2022-10142_hd.mp4",
+    "duration": 769
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "BackgroundTask",
+      "url": "https://developer.apple.com/documentation/SwiftUI/BackgroundTask",
+      "type": "documentation",
+      "description": "The kinds of background tasks that your app or extension can handle.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/BackgroundTask",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/BackgroundTask.json"
+    },
+    {
+      "title": "backgroundTask(_:action:)",
+      "url": "https://developer.apple.com/documentation/SwiftUI/Scene/backgroundTask(_:action:)",
+      "type": "documentation",
+      "description": "Runs the specified action when the system provides a background task.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/Scene/backgroundTask(_:action:)",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/Scene/backgroundTask(_:action:).json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10142-efficiency-awaits-background-tasks-in-swiftui/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10142-efficiency-awaits-background-tasks-in-swiftui/metadata.json",
+    "readme": "sessions/wwdc2022/10142-efficiency-awaits-background-tasks-in-swiftui/README.md",
+    "transcript": "sessions/wwdc2022/10142-efficiency-awaits-background-tasks-in-swiftui/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10142-efficiency-awaits-background-tasks-in-swiftui/transcript.json"
+  }
+}

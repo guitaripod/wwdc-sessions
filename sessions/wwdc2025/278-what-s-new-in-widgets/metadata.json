@@ -1,0 +1,163 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-278",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 278,
+  "title": "What’s new in widgets",
+  "description": "WidgetKit elevates your app with updates to widgets, Live Activities, and controls. Learn how to bring your widgets to visionOS, take them on the road with CarPlay, and make them look their best with accented rendering modes. Plus, find out how relevant widgets can be surfaced in the Smart Stack on watchOS, and discover how push notifications can be used to keep your widgets up to date.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/278",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/278",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1468,
+  "hasTranscript": true,
+  "transcriptWordCount": 3796,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/278/6/2b85cabe-2b0a-4290-a667-9170e4b5ae18/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/278/6/2b85cabe-2b0a-4290-a667-9170e4b5ae18/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/278/6/2b85cabe-2b0a-4290-a667-9170e4b5ae18/downloads/wwdc2025-278_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/278/6/2b85cabe-2b0a-4290-a667-9170e4b5ae18/downloads/wwdc2025-278_hd.mp4",
+    "duration": 1468
+  },
+  "codeSnippets": [
+    {
+      "title": "Observe .widgetRenderingMode",
+      "language": "swift",
+      "startTimeSeconds": 164,
+      "code": "struct MostFrequentBeverageWidgetView: View {\n    @Environment(\\.widgetRenderingMode) var renderingMode\n\n    var entry: Entry\n\n    var body: some View {\n        ZStack {\n            if renderingMode == .fullColor {\n                Image(entry.beverageImage)\n                    .resizable()\n                    .aspectRatio(contentMode: .fill)\n\n                LinearGradient(gradient: Gradient(colors: [.clear, .clear, .black.opacity(0.8)]), startPoint: .top, endPoint: .bottom)\n            }\n\n            VStack {\n                if renderingMode == .accented {\n                    Image(entry.beverageImage)\n                        .resizable()\n                        .widgetAccentedRenderingMode(.desaturated)\n                        .aspectRatio(contentMode: .fill)\n                }\n\n                BeverageTextView()\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "visionOS Widget Configuration",
+      "language": "swift",
+      "startTimeSeconds": 368,
+      "code": "struct CaffeineTrackerWidget: Widget {\n    var body: some WidgetConfiguration {\n        StaticConfiguration(\n            kind: \"BaristaWidget\",\n            provider: Provider()\n        ) { entry in\n            CaffeineTrackerWidgetView(entry: entry)\n        }\n        .configurationDisplayName(\"Caffeine Tracker\")\n        .description(\"A widget tracking your caffeine intake during the day.\")\n        .supportedMountingStyles([.elevated])\n        .widgetTexture(.paper)\n        .supportedFamilies([.systemExtraLargePortrait])\n    }\n}"
+    },
+    {
+      "title": "LevelOfDetail - CaffeineTrackerWidgetView",
+      "language": "swift",
+      "startTimeSeconds": 536,
+      "code": "struct CaffeineTrackerWidgetView : View {\n    @Environment(\\.levelOfDetail) var levelOfDetail\n\n    var entry: CaffeineLogEntry\n\n    var body: some View {\n        VStack(alignment: .leading) {\n            TotalCaffeineView(entry: entry)\n\n            if let log = entry.log {\n                LastDrinkView(log: log)\n            }\n\n            if levelOfDetail == .default {\n                LogDrinkView()\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "LevelOfDetail - TotalCaffeineView",
+      "language": "swift",
+      "startTimeSeconds": 586,
+      "code": "struct TotalCaffeineView: View {\n    @Environment(\\.levelOfDetail) var levelOfDetail\n\n    let entry: CaffeineLogEntry\n\n    var body: some View {\n        VStack {\n            Text(\"Total Caffeine\")\n                .font(.caption)\n\n            Text(totalCaffeine.formatted())\n                .font(caffeineFont)\n        }\n    }\n\n    var caffeineFont: Font {\n        if levelOfDetail == .simplified {\n            .largeTitle\n        } else {\n            .title\n        }\n    }\n\n    var totalCaffeine: Measurement<UnitMass> {\n        entry.totalCaffeine\n    }\n}"
+    },
+    {
+      "title": "Add .supplementalActivityFamilies",
+      "language": "swift",
+      "startTimeSeconds": 709,
+      "code": "struct ShopOrderLiveActivity: Widget {\n    var body: some WidgetConfiguration {\n        ActivityConfiguration(for: Attributes.self) { context in\n            ActivityView(context: context)\n        } dynamicIsland: { context in\n            DynamicIsland {\n                DynamicIslandExpandedRegion(.leading) {\n                    ExpandedView(context: context)\n                }\n            } compactLeading: {\n                LeadingView(context: context)\n            } compactTrailing: {\n                TrailingView(context: context)\n            } minimal: {\n                MinimalView(context: context)\n            }\n        }\n        .supplementalActivityFamilies([.small])\n    }\n}"
+    },
+    {
+      "title": "Add .activityFamily",
+      "language": "swift",
+      "startTimeSeconds": 747,
+      "code": "struct ActivityView: View {\n    @Environment(\\.activityFamily) var activityFamily\n    var context: ActivityViewContext<Attributes>\n\n    var body: some View {\n        switch activityFamily {\n        case .small:\n            ShopOrderSmallView(context: context)\n        default:\n            ShopOrderView(context: context)\n        }\n    }\n}"
+    },
+    {
+      "title": "Define relevance widget with RelevanceConfiguration",
+      "language": "swift",
+      "startTimeSeconds": 980,
+      "code": "struct HappyHourRelevanceWidget: Widget {\n    var body: some WidgetConfiguration {\n        RelevanceConfiguration(\n            kind: \"HappyHour\",\n            provider: Provider()\n        ) { entry in\n            WidgetView(entry: entry)\n        }\n    }\n}"
+    },
+    {
+      "title": "Implement RelevanceEntriesProvider",
+      "language": "swift",
+      "startTimeSeconds": 1001,
+      "code": "struct Provider: RelevanceEntriesProvider {\n    func placeholder(context: Context) -> Entry {\n        Entry()\n    }\n\n    func relevance() async -> WidgetRelevance<Configuration> {\n        let configs = await fetchConfigs()\n        var attributes: [WidgetRelevanceAttribute<Configuration>] = []\n\n        for config in configs {\n            attributes.append(WidgetRelevanceAttribute(\n                configuration: config,\n                context: .date(interval: config.interval, kind: .default)))\n        }\n\n        return WidgetRelevance(attributes)\n    }\n\n    func entry(configuration: Configuration,\n               context: RelevanceEntriesProviderContext) async throws -> Entry {\n        Entry(shop: configuration.shop, timeRange: configuration.timeRange)\n    }\n}"
+    },
+    {
+      "title": "Handle push token and widget configuration changes",
+      "language": "swift",
+      "startTimeSeconds": 1273,
+      "code": "struct CaffeineTrackerPushHandler: WidgetPushHandler {\n    func pushTokenDidChange(_ pushInfo: WidgetPushInfo, widgets: [WidgetInfo]) {\n        // Send push token and subscription info to server\n    }\n}"
+    },
+    {
+      "title": "Add pushHandler to WidgetConfiguration",
+      "language": "swift",
+      "startTimeSeconds": 1290,
+      "code": "struct CaffeineTrackerWidget: Widget {\n    var body: some WidgetConfiguration {\n        StaticConfiguration(\n            kind: Constants.widgetKind,\n            provider: Provider()\n        ) { entry in\n            CaffeineTrackerWidgetView(entry: entry)\n        }\n        .configurationDisplayName(\"Caffeine Tracker\")\n        .pushHandler(CaffeineTrackerPushHandler.self)\n    }\n}"
+    },
+    {
+      "title": "Push Notification Request Body",
+      "language": "json",
+      "startTimeSeconds": 1349,
+      "code": "{\n    \"aps\": {\n        \"content-changed\": true\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Updating widgets with WidgetKit push notifications",
+      "url": "https://developer.apple.com/documentation/WidgetKit/Updating-widgets-with-widgetkit-push-notifications",
+      "type": "documentation",
+      "description": "Use WidgetKit to receive push tokens and reload your widgets with remote push notifications.",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit/Updating-widgets-with-widgetkit-push-notifications",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit/Updating-widgets-with-widgetkit-push-notifications.json"
+    },
+    {
+      "title": "Updating your widgets for visionOS",
+      "url": "https://developer.apple.com/documentation/WidgetKit/Updating-your-widgets-for-visionOS",
+      "type": "documentation",
+      "description": "Choose widget styles specific to visionOS, support recessed and elevated appearances, and add proximity awareness to your widget.",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit/Updating-your-widgets-for-visionOS",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit/Updating-your-widgets-for-visionOS.json"
+    },
+    {
+      "title": "Optimizing your widget for accented rendering mode and Liquid Glass",
+      "url": "https://developer.apple.com/documentation/WidgetKit/optimizing-your-widget-for-accented-rendering-mode-and-liquid-glass",
+      "type": "documentation",
+      "description": "Make your widget feel at home on Apple platforms and Liquid Glass by using accented rendering mode.",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit/optimizing-your-widget-for-accented-rendering-mode-and-liquid-glass",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit/optimizing-your-widget-for-accented-rendering-mode-and-liquid-glass.json"
+    },
+    {
+      "title": "RelevanceKit",
+      "url": "https://developer.apple.com/documentation/RelevanceKit",
+      "type": "documentation",
+      "description": "Provide on-device intelligence with contextual clues that increase your widget’s visibility on Apple Watch.",
+      "sosumiURL": "https://sosumi.ai/documentation/RelevanceKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/RelevanceKit.json"
+    },
+    {
+      "title": "Increasing the visibility of widgets in Smart Stacks",
+      "url": "https://developer.apple.com/documentation/WidgetKit/Widget-Suggestions-In-Smart-Stacks",
+      "type": "documentation",
+      "description": "Provide contextual information and donate intents to the system to make sure your widget appears prominently in Smart Stacks.",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit/Widget-Suggestions-In-Smart-Stacks",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit/Widget-Suggestions-In-Smart-Stacks.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/278-what-s-new-in-widgets/",
+  "files": {
+    "metadata": "sessions/wwdc2025/278-what-s-new-in-widgets/metadata.json",
+    "readme": "sessions/wwdc2025/278-what-s-new-in-widgets/README.md",
+    "transcript": "sessions/wwdc2025/278-what-s-new-in-widgets/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/278-what-s-new-in-widgets/transcript.json"
+  }
+}

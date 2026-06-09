@@ -1,0 +1,93 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-111376",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2023,
+  "eventContentId": 111376,
+  "title": "Meet rule-based matchmaking in Game Center",
+  "description": "Learn how to incorporate the new rule-based matchmaking feature into your real-time multiplayer games. Discover how you can provide customized and flexible matchmaking to improve the quality of player matches and create a more fun and engaging experience for all players.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/111376",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111376",
+  "type": "Video",
+  "publishedAt": "2023-11-09T08:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1026,
+  "hasTranscript": true,
+  "transcriptWordCount": 2462,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/111376/4/A21307B9-8F3F-44C5-A5C7-3F9962FE846B/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/tech-talks/111376/4/A21307B9-8F3F-44C5-A5C7-3F9962FE846B/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/111376/4/A21307B9-8F3F-44C5-A5C7-3F9962FE846B/downloads/tech-talks-111376_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/111376/4/A21307B9-8F3F-44C5-A5C7-3F9962FE846B/downloads/tech-talks-111376_hd.mp4",
+    "duration": 1026
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Metrics",
+      "url": "https://developer.apple.com/documentation/AppStoreConnectAPI/metrics",
+      "type": "documentation",
+      "description": "Analyze data about matchmaking rules.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreConnectAPI/metrics",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreConnectAPI/metrics.json"
+    },
+    {
+      "title": "Python script to test your matchmaking rules using the App Store Connect API",
+      "url": "https://github.com/apple/game-center-tools",
+      "type": "download",
+      "description": "Download the Python script to test your Game Center matchmaking rules using the App Store Connect API."
+    },
+    {
+      "title": "Matchmaking rules",
+      "url": "https://developer.apple.com/documentation/GameKit/matchmaking-rules",
+      "type": "documentation",
+      "description": "Game Center applies different type of rules you create in a particular order to find the best matches.",
+      "sosumiURL": "https://sosumi.ai/documentation/GameKit/matchmaking-rules",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/GameKit/matchmaking-rules.json"
+    },
+    {
+      "title": "Generating JSON Web Tokens for API requests",
+      "url": "https://developer.apple.com/documentation/AppStoreServerAPI/generating-json-web-tokens-for-api-requests",
+      "type": "documentation",
+      "description": "Create JSON Web Tokens signed with your private key to authorize requests for App Store Server API and External Purchase Server API.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreServerAPI/generating-json-web-tokens-for-api-requests",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreServerAPI/generating-json-web-tokens-for-api-requests.json"
+    },
+    {
+      "title": "App Store Connect API",
+      "url": "https://developer.apple.com/documentation/AppStoreConnectAPI",
+      "type": "documentation",
+      "description": "The data structure that represents an app store connect api resource.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreConnectAPI",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreConnectAPI.json"
+    }
+  ],
+  "path": "sessions/tech-talks/111376-meet-rule-based-matchmaking-in-game-center/",
+  "files": {
+    "metadata": "sessions/tech-talks/111376-meet-rule-based-matchmaking-in-game-center/metadata.json",
+    "readme": "sessions/tech-talks/111376-meet-rule-based-matchmaking-in-game-center/README.md",
+    "transcript": "sessions/tech-talks/111376-meet-rule-based-matchmaking-in-game-center/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/111376-meet-rule-based-matchmaking-in-game-center/transcript.json"
+  }
+}

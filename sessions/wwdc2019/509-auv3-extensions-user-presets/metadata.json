@@ -1,0 +1,69 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-509",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 509,
+  "title": "AUv3 Extensions User Presets",
+  "description": "Audio Unit app extensions gives users a convenient way to create or modify audio in any iOS or macOS app that uses sound, including music production apps such as GarageBand or Logic Pro X. And now, with iOS 13, you can store user presets for your extensions that are accessible across applications.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/509",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/509",
+  "type": "Video",
+  "publishedAt": "2019-06-04T18:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 332,
+  "hasTranscript": true,
+  "transcriptWordCount": 775,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/509tdjld4pedsigr9/509/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/509tdjld4pedsigr9/509/509_sd_auv3_extensions_user_presets.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/509tdjld4pedsigr9/509/509_hd_auv3_extensions_user_presets.mp4",
+    "duration": 332
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Incorporating Audio Effects and Instruments",
+      "url": "https://developer.apple.com/documentation/AudioToolbox/incorporating-audio-effects-and-instruments",
+      "type": "samplecode",
+      "description": "Add custom audio processing and MIDI instruments to your app by hosting Audio Unit (AU) plug-ins.",
+      "sosumiURL": "https://sosumi.ai/documentation/AudioToolbox/incorporating-audio-effects-and-instruments",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AudioToolbox/incorporating-audio-effects-and-instruments.json"
+    },
+    {
+      "title": "Creating custom audio effects",
+      "url": "https://developer.apple.com/documentation/AVFAudio/creating-custom-audio-effects",
+      "type": "samplecode",
+      "description": "Add custom audio-effect processing to apps like Logic Pro X and GarageBand by creating Audio Unit (AU) plug-ins.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFAudio/creating-custom-audio-effects",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFAudio/creating-custom-audio-effects.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/509-auv3-extensions-user-presets/",
+  "files": {
+    "metadata": "sessions/wwdc2019/509-auv3-extensions-user-presets/metadata.json",
+    "readme": "sessions/wwdc2019/509-auv3-extensions-user-presets/README.md",
+    "transcript": "sessions/wwdc2019/509-auv3-extensions-user-presets/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/509-auv3-extensions-user-presets/transcript.json"
+  }
+}

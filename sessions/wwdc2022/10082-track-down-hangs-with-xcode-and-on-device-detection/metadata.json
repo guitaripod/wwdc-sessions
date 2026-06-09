@@ -1,0 +1,62 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10082",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10082,
+  "title": "Track down hangs with Xcode and on-device detection",
+  "description": "Learn how you can increase responsiveness and eliminate hangs in your app and make even better experiences. Hang out with the Performance Tools team as we explore how you can track down these issues — and even stop them from occurring in the first place. We’ll take you through the latest detection mechanisms for iOS to help track hangs during pre-release testing, show you how to identify issues in release builds using the Xcode Organizer, and more.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10082",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10082",
+  "type": "Video",
+  "publishedAt": "2022-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 1033,
+  "hasTranscript": true,
+  "transcriptWordCount": 2651,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10082/5/31EEEDCE-D908-48E8-AEDA-A40811515F69/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10082/5/31EEEDCE-D908-48E8-AEDA-A40811515F69/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10082/5/31EEEDCE-D908-48E8-AEDA-A40811515F69/downloads/wwdc2022-10082_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10082/5/31EEEDCE-D908-48E8-AEDA-A40811515F69/downloads/wwdc2022-10082_hd.mp4",
+    "duration": 1033
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Improving app responsiveness",
+      "url": "https://developer.apple.com/documentation/Xcode/improving-app-responsiveness",
+      "type": "documentation",
+      "description": "Create a user experience that feels responsive by removing hangs and hitches from your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/improving-app-responsiveness",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/improving-app-responsiveness.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10082-track-down-hangs-with-xcode-and-on-device-detection/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10082-track-down-hangs-with-xcode-and-on-device-detection/metadata.json",
+    "readme": "sessions/wwdc2022/10082-track-down-hangs-with-xcode-and-on-device-detection/README.md",
+    "transcript": "sessions/wwdc2022/10082-track-down-hangs-with-xcode-and-on-device-detection/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10082-track-down-hangs-with-xcode-and-on-device-detection/transcript.json"
+  }
+}

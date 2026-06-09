@@ -1,0 +1,121 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-252",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 252,
+  "title": "Optimize your monetization with App Analytics",
+  "description": "Explore the new monetization, subscription, and offer analytics coming to App Analytics. We’ll cover how powerful, new data visualizations and automated reports can help you make data-driven decisions that drive revenue growth, and discuss how to pair these metrics with acquisition features such as custom product pages to optimize and improve your monetization strategy.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/252",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/252",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "cohort",
+    "consumable",
+    "engagement",
+    "subscription"
+  ],
+  "topics": [
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 949,
+  "hasTranscript": true,
+  "transcriptWordCount": 2341,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/252/5/adef7487-7011-47b3-8efb-93421930f6d2/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/252/5/adef7487-7011-47b3-8efb-93421930f6d2/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/252/5/adef7487-7011-47b3-8efb-93421930f6d2/downloads/wwdc2025-252_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/252/5/adef7487-7011-47b3-8efb-93421930f6d2/downloads/wwdc2025-252_hd.mp4",
+    "duration": 949
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Analytics Reports",
+      "url": "https://developer.apple.com/documentation/analytics-reports",
+      "type": "documentation",
+      "description": "A list of app development reports, their field descriptions, and glossaries.",
+      "sosumiURL": "https://sosumi.ai/documentation/analytics-reports",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/analytics-reports.json"
+    },
+    {
+      "title": "Take action on peer group benchmarks",
+      "url": "https://developer.apple.com/app-store/peer-group-benchmarks/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/app-store/peer-group-benchmarks/"
+    },
+    {
+      "title": "Explore custom product pages",
+      "url": "https://developer.apple.com/app-store/custom-product-pages/",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/app-store/custom-product-pages/"
+    },
+    {
+      "title": "Promote your apps",
+      "url": "https://developer.apple.com/app-store/promote/",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/app-store/promote/"
+    },
+    {
+      "title": "Measuring App Performance",
+      "url": "https://developer.apple.com/app-store/measuring-app-performance/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/app-store/measuring-app-performance/"
+    },
+    {
+      "title": "Gain Insights with Analytics",
+      "url": "https://developer.apple.com/app-store-connect/analytics/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/app-store-connect/analytics/"
+    },
+    {
+      "title": "Implementing introductory offers in your app",
+      "url": "https://developer.apple.com/documentation/StoreKit/implementing-introductory-offers-in-your-app",
+      "type": "documentation",
+      "description": "Offer introductory pricing for auto-renewable subscriptions to eligible users.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/implementing-introductory-offers-in-your-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/implementing-introductory-offers-in-your-app.json"
+    },
+    {
+      "title": "StoreKit",
+      "url": "https://developer.apple.com/documentation/StoreKit",
+      "type": "documentation",
+      "description": "Support In-App Purchases and interactions with the App Store.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/252-optimize-your-monetization-with-app-analytics/",
+  "files": {
+    "metadata": "sessions/wwdc2025/252-optimize-your-monetization-with-app-analytics/metadata.json",
+    "readme": "sessions/wwdc2025/252-optimize-your-monetization-with-app-analytics/README.md",
+    "transcript": "sessions/wwdc2025/252-optimize-your-monetization-with-app-analytics/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/252-optimize-your-monetization-with-app-analytics/transcript.json"
+  }
+}

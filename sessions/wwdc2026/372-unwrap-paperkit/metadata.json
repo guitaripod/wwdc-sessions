@@ -1,0 +1,104 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-372",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 372,
+  "title": "Unwrap PaperKit",
+  "description": "Craft a canvas-based application with PaperKit. Explore the new data model APIs that let you access, create, and modify markup elements. Learn how to add custom controls and annotations, and discover best practices for integrating these features into your app to build a fully featured creative canvas.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/372",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/372",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "🎈",
+    "paper"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 459,
+  "hasTranscript": true,
+  "transcriptWordCount": 1053,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/372/4/012a7de6-cf54-420f-aaf7-02ea568485bf/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/372/4/012a7de6-cf54-420f-aaf7-02ea568485bf/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/372/4/012a7de6-cf54-420f-aaf7-02ea568485bf/downloads/wwdc2026-372_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/372/4/012a7de6-cf54-420f-aaf7-02ea568485bf/downloads/wwdc2026-372_hd.mp4",
+    "duration": 459
+  },
+  "codeSnippets": [
+    {
+      "title": "Creating markup subelements",
+      "language": "swift",
+      "startTimeSeconds": 96,
+      "code": "import PaperKit\n\nfunc generateMarkup(pageSize: CGSize, panelFrames: [CGRect], configuration: ShapeConfiguration) -> PaperMarkup {\n    var markup = PaperMarkup(bounds: CGRect(origin: .zero, size: pageSize))\n    var subelements: MarkupOrderedSet = markup.subelements\n    for panelFrame: CGRect in panelFrames {\n        let shape = ShapeMarkup(frame: panelFrame, configuration: configuration)\n        subelements.append(shape)\n    }\n    markup.subelements = subelements\n    return markup\n}"
+    },
+    {
+      "title": "Making template elements read-only",
+      "language": "swift",
+      "startTimeSeconds": 183,
+      "code": "import PaperKit\n\nfunc generateMarkup(pageSize: CGSize, panelFrames: [CGRect], configuration: ShapeConfiguration) -> PaperMarkup {\n    var markup = PaperMarkup(bounds: CGRect(origin: .zero, size: pageSize))\n    var subelements: MarkupOrderedSet = markup.subelements\n    for panelFrame: CGRect in panelFrames {\n        var shape = ShapeMarkup(frame: panelFrame, configuration: configuration)\n        shape.allowedInteractions = .readOnly\n        subelements.append(shape)\n    }\n    markup.subelements = subelements\n    return markup\n}"
+    },
+    {
+      "title": "Apply style to template elements",
+      "language": "swift",
+      "startTimeSeconds": 262,
+      "code": "import PaperKit\n\nfunc updatePanelColor(_ selectedColor: CGColor) {\n    guard var markup: PaperMarkup = paperMarkupViewController.markup else { return }\n    var subelements: MarkupOrderedSet = markup.subelements\n    for element in subelements {\n        guard var shape = element as? ShapeMarkup else { continue }\n        shape.strokeColor = selectedColor\n        shape.fillColor = selectedColor.copy(alpha: 0.15)\n        subelements.updateOrAppend(shape)\n    }\n    markup.subelements = subelements\n    markup.backgroundColor = selectedColor.copy(alpha: 0.15)\n    paperMarkupViewController.markup = markup\n}"
+    },
+    {
+      "title": "Add adornments to each panel",
+      "language": "swift",
+      "startTimeSeconds": 353,
+      "code": "import PaperKit\n\nfunc addPanelAdornments(for page: Page) {\n    var adornments: [MarkupAdornment] = []\n    for (panelIndex, panel) in page.panels.enumerated() {\n        let adornmentID = UUID()\n        adornmentPanelMapping[adornmentID] = panelIndex\n        let center = CGPoint(x: panel.midX, y: panel.midY)\n        let adornment = MarkupAdornment(\n            id: adornmentID,\n            anchor: .canvas(location: center),\n            imageConfiguration: .systemImage(\"photo.badge.plus\"),\n            dragRegion: .fixed,\n            scalesWithZoom: false\n        )\n        adornments.append(adornment)\n    }\n    paperMarkupViewController.adornments = adornments\n}"
+    },
+    {
+      "title": "Handle adornment taps",
+      "language": "swift",
+      "startTimeSeconds": 368,
+      "code": "import ImagePlayground\nimport PaperKit\n\nfunc paperMarkupViewController(_ paperMarkupViewController: PaperMarkupViewController, didTapAdornmentWithID id: UUID) {\n    guard let panelIndex = adornmentPanelMapping[id] else { return }\n    activeImageGenerationPanelIndex = panelIndex\n\n    let imagePlaygroundViewController = ImagePlaygroundViewController()\n    imagePlaygroundViewController.delegate = self\n    present(imagePlaygroundViewController, animated: true)\n}"
+    },
+    {
+      "title": "Place the generated image",
+      "language": "swift",
+      "startTimeSeconds": 380,
+      "code": "import ImagePlayground\nimport PaperKit\n\nfunc imageViewController(_ imageViewController: ImagePlaygroundViewController, didCreateImageAt imageURL: URL) {\n    guard let panelFrame = activeGenerationPanelFrame,\n          let paperMarkupViewController = pageViewController.paperViewController,\n          var markup = paperMarkupViewController.markup,\n          let image = UIImage(contentsOfFile: imageURL.path) else { return }\n\n    let imageMarkup = ImageMarkup(frame: panelFrame, image: image)\n    markup.subelements.append(imageMarkup)\n    paperMarkupViewController.markup = markup\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "PaperKit",
+      "url": "https://developer.apple.com/documentation/PaperKit",
+      "type": "documentation",
+      "description": "Add drawings, shapes, and a consistent markup experience to your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/PaperKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/PaperKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/372-unwrap-paperkit/",
+  "files": {
+    "metadata": "sessions/wwdc2026/372-unwrap-paperkit/metadata.json",
+    "readme": "sessions/wwdc2026/372-unwrap-paperkit/README.md",
+    "transcript": "sessions/wwdc2026/372-unwrap-paperkit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/372-unwrap-paperkit/transcript.json"
+  }
+}

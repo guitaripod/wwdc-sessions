@@ -1,0 +1,92 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10168",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10168,
+  "title": "Build Mail app extensions",
+  "description": "Meet MailKit: the best way to build amazing experiences on top of Mail. MailKit enables apps to easily and securely interact with the Mail app for macOS. We'll deep dive into the MailKit API, and show you how to create extensions for composing messages, message actions, secure email, and content blocking.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10168",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10168",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [
+    "blocking",
+    "compose",
+    "content",
+    "content blocking",
+    "decrypt",
+    "encrypt",
+    "extensions",
+    "mail extensions",
+    "mail plugins",
+    "mail rules",
+    "message routing",
+    "plugins",
+    "routing",
+    "signature",
+    "spam filter"
+  ],
+  "topics": [
+    "Privacy & Security",
+    "Safari & Web",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1101,
+  "hasTranscript": true,
+  "transcriptWordCount": 2425,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10168/10/DB697C64-E7F4-431F-BA61-53827D49FC36/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10168/10/DB697C64-E7F4-431F-BA61-53827D49FC36/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10168/10/DB697C64-E7F4-431F-BA61-53827D49FC36/downloads/wwdc2021-10168_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10168/10/DB697C64-E7F4-431F-BA61-53827D49FC36/downloads/wwdc2021-10168_hd.mp4",
+    "duration": 1101
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Build Mail App Extensions",
+      "url": "https://developer.apple.com/documentation/MailKit/build-mail-app-extensions",
+      "type": "samplecode",
+      "description": "Create app extensions that block content, perform message and composing actions, and help message security.",
+      "sosumiURL": "https://sosumi.ai/documentation/MailKit/build-mail-app-extensions",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MailKit/build-mail-app-extensions.json"
+    },
+    {
+      "title": "MailKit",
+      "url": "https://developer.apple.com/documentation/MailKit",
+      "type": "documentation",
+      "description": "Secure, customize, and act on email messages that users send and receive.",
+      "sosumiURL": "https://sosumi.ai/documentation/MailKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MailKit.json"
+    },
+    {
+      "title": "Introduction to WebKit Content Blockers",
+      "url": "https://webkit.org/blog/3476/content-blockers-first-look/",
+      "type": "documentation",
+      "description": null
+    }
+  ],
+  "path": "sessions/wwdc2021/10168-build-mail-app-extensions/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10168-build-mail-app-extensions/metadata.json",
+    "readme": "sessions/wwdc2021/10168-build-mail-app-extensions/README.md",
+    "transcript": "sessions/wwdc2021/10168-build-mail-app-extensions/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10168-build-mail-app-extensions/transcript.json"
+  }
+}

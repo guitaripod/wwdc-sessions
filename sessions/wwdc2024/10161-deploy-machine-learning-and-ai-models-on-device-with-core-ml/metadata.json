@@ -1,0 +1,82 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2024-10161",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10161,
+  "title": "Deploy machine learning and AI models on-device with Core ML",
+  "description": "Learn new ways to optimize speed and memory performance when you convert and run machine learning and AI models through Core ML. We’ll cover new options for model representations, performance insights, execution, and model stitching which can be used together to create compelling and private on-device experiences.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10161",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10161",
+  "type": "Video",
+  "publishedAt": "2024-06-11T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "ai",
+    "coreml",
+    "coreml editor",
+    "machine learning"
+  ],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1095,
+  "hasTranscript": true,
+  "transcriptWordCount": 3027,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10161/4/47C857D9-30F3-4FA6-AD90-26916A33426D/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10161/4/47C857D9-30F3-4FA6-AD90-26916A33426D/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10161/4/47C857D9-30F3-4FA6-AD90-26916A33426D/downloads/wwdc2024-10161_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10161/4/47C857D9-30F3-4FA6-AD90-26916A33426D/downloads/wwdc2024-10161_hd.mp4",
+    "duration": 1095
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Forum: Machine Learning and AI",
+      "url": "https://developer.apple.com/forums/topics/machine-learning-and-ai?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/machine-learning-and-ai?cid=vf-a-0010"
+    },
+    {
+      "title": "Stable Diffusion with Core ML on Apple Silicon",
+      "url": "https://machinelearning.apple.com/research/stable-diffusion-coreml-apple-silicon",
+      "type": "documentation",
+      "description": "Discussion of Stable Diffusion models optimized for running on Apple silicon."
+    },
+    {
+      "title": "Core ML",
+      "url": "https://developer.apple.com/documentation/CoreML",
+      "type": "documentation",
+      "description": "Integrate machine learning models into your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreML",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreML.json"
+    }
+  ],
+  "path": "sessions/wwdc2024/10161-deploy-machine-learning-and-ai-models-on-device-with-core-ml/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10161-deploy-machine-learning-and-ai-models-on-device-with-core-ml/metadata.json",
+    "readme": "sessions/wwdc2024/10161-deploy-machine-learning-and-ai-models-on-device-with-core-ml/README.md",
+    "transcript": "sessions/wwdc2024/10161-deploy-machine-learning-and-ai-models-on-device-with-core-ml/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10161-deploy-machine-learning-and-ai-models-on-device-with-core-ml/transcript.json"
+  }
+}

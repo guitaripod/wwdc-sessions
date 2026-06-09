@@ -1,0 +1,67 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-427",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 427,
+  "title": "Training Recommendation Models in Create ML",
+  "description": "Recommendation models for Core ML can enable a very personal experience for the customers using your app. They power suggestions for what music to play or what movie to see in the apps you use every day. Learn how you can easily create a custom Recommendation model from all sorts of data sources using the Create ML app. Gain a deeper understanding of how this kind of personalization is possible while maintaining user privacy. See an example of one of these recommenders in action.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/427",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/427",
+  "type": "Video",
+  "publishedAt": "2019-06-06T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "ai",
+    "artificial intelligence",
+    "classifier",
+    "core ml",
+    "create ml",
+    "machine learning",
+    "object detection",
+    "personalization",
+    "recommendation",
+    "recommender",
+    "table",
+    "text",
+    "training"
+  ],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 631,
+  "hasTranscript": true,
+  "transcriptWordCount": 1503,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/427quw6yo5agrbit/427/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/427quw6yo5agrbit/427/427_sd_training_recommendation_models_in_create_ml.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/427quw6yo5agrbit/427/427_hd_training_recommendation_models_in_create_ml.mp4",
+    "duration": 631
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/427-training-recommendation-models-in-create-ml/",
+  "files": {
+    "metadata": "sessions/wwdc2019/427-training-recommendation-models-in-create-ml/metadata.json",
+    "readme": "sessions/wwdc2019/427-training-recommendation-models-in-create-ml/README.md",
+    "transcript": "sessions/wwdc2019/427-training-recommendation-models-in-create-ml/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/427-training-recommendation-models-in-create-ml/transcript.json"
+  }
+}

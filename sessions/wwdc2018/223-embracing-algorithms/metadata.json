@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2018-223",
+  "event": "wwdc2018",
+  "eventName": "WWDC18",
+  "year": 2018,
+  "eventContentId": 223,
+  "title": "Embracing Algorithms",
+  "description": "When you imagine building a new app, what do you think about? Models, views, and controllers deserve their prominent place in the design process, but we don't often give the same attention to the underlying work our apps need to do. Understand how to identify and optimize the algorithms in your app, and discover how implementing algorithms as generic protocol extensions results in efficient, effective, and maintainable code.",
+  "url": "https://developer.apple.com/videos/play/wwdc2018/223",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2018/223",
+  "type": "Video",
+  "publishedAt": "2018-06-07T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 2413,
+  "hasTranscript": true,
+  "transcriptWordCount": 5398,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/223plbqb0sfpv80/223/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/223plbqb0sfpv80/223/223_sd_embracing_algorithms.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/223plbqb0sfpv80/223/223_hd_embracing_algorithms.mp4",
+    "duration": 2413
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2018/223-embracing-algorithms/",
+  "files": {
+    "metadata": "sessions/wwdc2018/223-embracing-algorithms/metadata.json",
+    "readme": "sessions/wwdc2018/223-embracing-algorithms/README.md",
+    "transcript": "sessions/wwdc2018/223-embracing-algorithms/transcript.md",
+    "transcriptJSON": "sessions/wwdc2018/223-embracing-algorithms/transcript.json"
+  }
+}

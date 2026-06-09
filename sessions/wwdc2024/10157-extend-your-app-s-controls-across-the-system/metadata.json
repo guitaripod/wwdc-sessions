@@ -1,0 +1,184 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2024-10157",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10157,
+  "title": "Extend your app’s controls across the system",
+  "description": "Bring your app’s controls to Control Center, the Lock Screen, and beyond. Learn how you can use WidgetKit to extend your app’s controls to the system experience. We’ll cover how you can to build a control, tailor its appearance, and make it configurable.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10157",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10157",
+  "type": "Video",
+  "publishedAt": "2024-06-11T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "controlwidget",
+    "controlwidgetbutton",
+    "controlwidgettoggle",
+    "widgetkit"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1089,
+  "hasTranscript": true,
+  "transcriptWordCount": 2574,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10157/5/5DC0FBFA-B601-4A2F-BE3D-40FBF3757522/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10157/5/5DC0FBFA-B601-4A2F-BE3D-40FBF3757522/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10157/5/5DC0FBFA-B601-4A2F-BE3D-40FBF3757522/downloads/wwdc2024-10157_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10157/5/5DC0FBFA-B601-4A2F-BE3D-40FBF3757522/downloads/wwdc2024-10157_hd.mp4",
+    "duration": 1089
+  },
+  "codeSnippets": [
+    {
+      "title": "Add the control to the Widget Bundle",
+      "language": "swift",
+      "startTimeSeconds": 193,
+      "code": "@main\nstruct ProductivityExtensionBundle: WidgetBundle {\n\n    var body: some Widget {\n        ChecklistWidget()\n        TaskCounterWidget()\n        TimerToggle()\n    }\n\n}"
+    },
+    {
+      "title": "Complete the control",
+      "language": "swift",
+      "startTimeSeconds": 209,
+      "code": "struct TimerToggle: ControlWidget {\n    var body: some ControlWidgetConfiguration {\n        StaticControlConfiguration(\n            kind: \"com.apple.Productivity.TimerToggle\"\n        ) {\n            ControlWidgetToggle(\n                \"Work Timer\",\n                isOn: TimerManager.shared.isRunning,\n                action: ToggleTimerIntent()\n            ) { _ in\n                Image(systemName:\n                      \"hourglass.bottomhalf.filled\")\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Specify different symbols when on and off​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​",
+      "language": "swift",
+      "startTimeSeconds": 281,
+      "code": "struct TimerToggle: ControlWidget {\n    var body: some ControlWidgetConfiguration {\n        StaticControlConfiguration(\n            kind: \"com.apple.Productivity.TimerToggle\"\n        ) {\n            ControlWidgetToggle(\n                \"Work Timer\",\n                isOn: TimerManager.shared.isRunning,\n                action: ToggleTimerIntent()\n            ) { isOn in\n                Image(systemName: isOn\n                      ? \"hourglass\"\n                      : \"hourglass.bottomhalf.filled\")\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Specify custom value text​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​ and add a custom tint color",
+      "language": "swift",
+      "startTimeSeconds": 321,
+      "code": "struct TimerToggle: ControlWidget {\n    var body: some ControlWidgetConfiguration {\n        StaticControlConfiguration(\n            kind: \"com.apple.Productivity.TimerToggle\"\n        ) {\n            ControlWidgetToggle(\n                \"Work Timer\",\n                isOn: TimerManager.shared.isRunning,\n                action: ToggleTimerIntent()\n            ) { isOn in\n                Label(isOn ? \"Running\" : \"Stopped\",\n                      systemImage: isOn\n                      ? \"hourglass\"\n                      : \"hourglass.bottomhalf.filled\")\n            }\n            .tint(.purple)\n        }\n    }\n}"
+    },
+    {
+      "title": "Implement timer toggling",
+      "language": "swift",
+      "startTimeSeconds": 494,
+      "code": "struct ToggleTimerIntent: SetValueIntent, LiveActivityIntent {\n    static let title: LocalizedStringResource = \"Productivity Timer\"\n\n    @Parameter(title: \"Running\")\n    var value: Bool  // The timer’s running state\n\n    func perform() throws -> some IntentResult {\n        TimerManager.shared.setTimerRunning(value)\n        return .result()\n    }\n}"
+    },
+    {
+      "title": "Refresh the control from within the app",
+      "language": "swift",
+      "startTimeSeconds": 534,
+      "code": "func timerManager(_ manager: TimerManager,\n                  timerDidChange timer: ProductivityTimer) {\n    ControlCenter.shared.reloadControls(\n        ofKind: \"com.apple.Productivity.TimerToggle\"\n    )\n}"
+    },
+    {
+      "title": "Define a Value Provider",
+      "language": "swift",
+      "startTimeSeconds": 603,
+      "code": "struct TimerValueProvider: ControlValueProvider {\n\n    func currentValue() async throws -> Bool {\n        try await TimerManager.shared.fetchRunningState()\n    }\n\n    let previewValue: Bool = false\n}"
+    },
+    {
+      "title": "Provide asynchronously fetched state with a Value Provider",
+      "language": "swift",
+      "startTimeSeconds": 660,
+      "code": "struct TimerToggle: ControlWidget {\n    var body: some ControlWidgetConfiguration {\n        StaticControlConfiguration(\n            kind: \"com.apple.Productivity.TimerToggle\",\n            provider: TimerValueProvider()\n        ) { isRunning in\n            ControlWidgetToggle(\n                \"Work Timer\",\n                isOn: isRunning,\n                action: ToggleTimerIntent()\n            ) { isOn in\n                Label(isOn ? \"Running\" : \"Stopped\",\n                      systemImage: isOn\n                      ? \"hourglass\"\n                      : \"hourglass.bottomhalf.filled\")\n            }\n            .tint(.purple)\n        }\n    }\n}"
+    },
+    {
+      "title": "Make the Value Provider configurable",
+      "language": "swift",
+      "startTimeSeconds": 786,
+      "code": "struct ConfigurableTimerValueProvider: AppIntentControlValueProvider {\n    func currentValue(configuration: SelectTimerIntent) async throws -> TimerState {\n        let timer = configuration.timer\n        let isRunning = try await TimerManager.shared.fetchTimerRunning(timer: timer)\n        return TimerState(timer: timer, isRunning: isRunning)\n    }\n\n    func previewValue(configuration: SelectTimerIntent) -> TimerState {\n        return TimerState(timer: configuration.timer, isRunning: false)\n    }\n}"
+    },
+    {
+      "title": "Make the timer configurable",
+      "language": "swift",
+      "startTimeSeconds": 820,
+      "code": "struct TimerToggle: ControlWidget {\n    var body: some ControlWidgetConfiguration {\n        AppIntentControlConfiguration(\n            kind: \"com.apple.Productivity.TimerToggle\",\n            provider: ConfigurableTimerValueProvider()\n        ) { timerState in\n            ControlWidgetToggle(\n                timerState.timer.name,\n                isOn: timerState.isRunning,\n                action: ToggleTimerIntent(timer: timerState.timer)\n            ) { isOn in\n                Label(isOn ? \"Running\" : \"Stopped\",\n                      systemImage: isOn\n                      ? \"hourglass\"\n                      : \"hourglass.bottomhalf.filled\")\n            }\n            .tint(.purple)\n        }\n    }\n}"
+    },
+    {
+      "title": "Prompt for user configuration automatically",
+      "language": "swift",
+      "startTimeSeconds": 866,
+      "code": "struct SomeControl: ControlWidget {\n    var body: some ControlWidgetConfiguration {\n        AppIntentControlConfiguration(\n            // ...\n        )\n        .promptsForUserConfiguration()\n    }\n}"
+    },
+    {
+      "title": "Custom action hint -> hint treated as verb phrase",
+      "language": "swift",
+      "startTimeSeconds": 942,
+      "code": "struct TimerToggle: ControlWidget {\n    var body: some ControlWidgetConfiguration {\n        AppIntentControlConfiguration(\n            kind: \"com.apple.Productivity.TimerToggle\",\n            provider: ConfigurableTimerValueProvider()\n        ) { timerState in\n            ControlWidgetToggle(\n                timerState.timer.name,\n                isOn: timerState.isRunning,\n                action: ToggleTimerIntent(timer: timerState.timer)\n            ) { isOn in\n                Label(isOn ? \"Running\" : \"Stopped\",\n                      systemImage: isOn\n                      ? \"hourglass\"\n                      : \"hourglass.bottomhalf.filled\")\n                .controlWidgetActionHint(isOn ?\n                                         \"Start\" : \"Stop\")\n            }\n            .tint(.purple)\n        }\n    }\n}"
+    },
+    {
+      "title": "Specify a display name and add a description",
+      "language": "swift",
+      "startTimeSeconds": 1016,
+      "code": "struct TimerToggle: ControlWidget {\n    var body: some ControlWidgetConfiguration {\n        AppIntentControlConfiguration(\n            kind: \"com.apple.Productivity.TimerToggle\",\n            provider: ConfigurableTimerValueProvider()\n        ) { timerState in\n            ControlWidgetToggle(\n                timerState.timer.name,\n                isOn: timerState.isRunning,\n                action: ToggleTimerIntent(timer: timerState.timer)\n            ) { isOn in\n                Label(isOn ? \"Running\" : \"Stopped\",\n                      systemImage: isOn\n                      ? \"hourglass\"\n                      : \"hourglass.bottomhalf.filled\")\n                .controlWidgetActionHint(isOn ?\n                                         \"Start\" : \"Stop\")\n            }\n            .tint(.purple)\n        }\n        .displayName(\"Productivity Timer\")\n        .description(\"Start and stop a productivity timer.\")\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Creating a camera experience for the Lock Screen",
+      "url": "https://developer.apple.com/documentation/LockedCameraCapture/Creating-a-camera-experience-for-the-Lock-Screen",
+      "type": "documentation",
+      "description": "Offer your app’s camera experience on locked devices from Control Center, the Lock Screen, and the Action button.",
+      "sosumiURL": "https://sosumi.ai/documentation/LockedCameraCapture/Creating-a-camera-experience-for-the-Lock-Screen",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/LockedCameraCapture/Creating-a-camera-experience-for-the-Lock-Screen.json"
+    },
+    {
+      "title": "Updating controls locally and remotely",
+      "url": "https://developer.apple.com/documentation/WidgetKit/Updating-controls-locally-and-remotely",
+      "type": "documentation",
+      "description": "Update and reload controls from your app or using push notifications.",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit/Updating-controls-locally-and-remotely",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit/Updating-controls-locally-and-remotely.json"
+    },
+    {
+      "title": "Adding refinements and configuration to controls",
+      "url": "https://developer.apple.com/documentation/WidgetKit/Adding-refinements-and-configuration-to-controls",
+      "type": "documentation",
+      "description": "Customize the way controls display across the system and offer people the ability to configure them.",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit/Adding-refinements-and-configuration-to-controls",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit/Adding-refinements-and-configuration-to-controls.json"
+    },
+    {
+      "title": "Creating controls to perform actions across the system",
+      "url": "https://developer.apple.com/documentation/WidgetKit/Creating-controls-to-perform-actions-across-the-system",
+      "type": "documentation",
+      "description": "Perform your app’s actions from Control Center, the Lock Screen, and the Action button.",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit/Creating-controls-to-perform-actions-across-the-system",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit/Creating-controls-to-perform-actions-across-the-system.json"
+    },
+    {
+      "title": "Human Interface Guidelines: Controls",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/controls",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/controls"
+    },
+    {
+      "title": "Forum: App & System Services",
+      "url": "https://developer.apple.com/forums/topics/app-and-system-services?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/app-and-system-services?cid=vf-a-0010"
+    }
+  ],
+  "path": "sessions/wwdc2024/10157-extend-your-app-s-controls-across-the-system/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10157-extend-your-app-s-controls-across-the-system/metadata.json",
+    "readme": "sessions/wwdc2024/10157-extend-your-app-s-controls-across-the-system/README.md",
+    "transcript": "sessions/wwdc2024/10157-extend-your-app-s-controls-across-the-system/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10157-extend-your-app-s-controls-across-the-system/transcript.json"
+  }
+}

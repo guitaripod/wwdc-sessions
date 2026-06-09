@@ -1,0 +1,59 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2016-510",
+  "event": "wwdc2016",
+  "eventName": "WWDC16",
+  "year": 2016,
+  "eventContentId": 510,
+  "title": "Validating HTTP Live Streams",
+  "description": "HTTP Live Streaming enables the reliable delivery of media content over a wide variety of network conditions. Learn best practices in HLS authoring, see how to verify your streams using the HTTP Live Streaming tools, and apply the results to improve the performance of your streams.",
+  "url": "https://developer.apple.com/videos/play/wwdc2016/510",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2016/510",
+  "type": "Video",
+  "publishedAt": "2016-06-12T17:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "hls",
+    "hlsreport",
+    "http live streaming",
+    "mediastreamvalidator",
+    "validation"
+  ],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 1341,
+  "hasTranscript": true,
+  "transcriptWordCount": 3149,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2016/510ndmh9wkcvzneegv2/510/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2016/510ndmh9wkcvzneegv2/510/510_sd_validating_http_live_streams.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2016/510ndmh9wkcvzneegv2/510/510_hd_validating_http_live_streams.mp4",
+    "duration": 1341
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2016/510-validating-http-live-streams/",
+  "files": {
+    "metadata": "sessions/wwdc2016/510-validating-http-live-streams/metadata.json",
+    "readme": "sessions/wwdc2016/510-validating-http-live-streams/README.md",
+    "transcript": "sessions/wwdc2016/510-validating-http-live-streams/transcript.md",
+    "transcriptJSON": "sessions/wwdc2016/510-validating-http-live-streams/transcript.json"
+  }
+}

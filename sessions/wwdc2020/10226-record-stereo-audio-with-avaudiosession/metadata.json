@@ -1,0 +1,79 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10226",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10226,
+  "title": "Record stereo audio with AVAudioSession",
+  "description": "Stereo recording is a powerful way to deliver immersive sound to listeners, fans, and family — and your app can use the built-in microphones on iPhone or iPad to record it. Discover how AVAudioSession can help you capture stereo audio from a mobile device, address the new special consideration called “input orientation,” and learn how to adopt this API in your app to provide a better recording experience.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10226",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10226",
+  "type": "Video",
+  "publishedAt": "2020-06-23T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 577,
+  "hasTranscript": true,
+  "transcriptWordCount": 1613,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10226/5/C8C3C21B-7FB6-4655-A9C9-7879416D0435/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10226/5/C8C3C21B-7FB6-4655-A9C9-7879416D0435/wwdc2020_10226_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10226/5/C8C3C21B-7FB6-4655-A9C9-7879416D0435/wwdc2020_10226_hd.mp4",
+    "duration": 577
+  },
+  "codeSnippets": [
+    {
+      "title": "How to set up recording from the built-in mic",
+      "language": "swift",
+      "startTimeSeconds": 417,
+      "code": "// How to set up recording from the built-in mic\n\nprivate func enableBuiltInMic() {\n    ...   \n    // Find the built-in microphone.\n    guard let availableInputs = session.availableInputs,\n          let builtInMic = availableInputs.first(where: { $0.portType == .builtInMic }) \n    else {\n        print(\"The device must have a built-in microphone.\")\n        return\n    }  \n    ...   \n    do {\n        try session.setPreferredInput(builtInMic)\n        ...  \n    } catch {\n        ...\n    }\n}"
+    },
+    {
+      "title": "Configure stereo recording",
+      "language": "swift",
+      "startTimeSeconds": 436,
+      "code": "// Configure stereo recording\n\nfunc selectDataSource(...) {\n    ...\n    // Set the preferred polar pattern to stereo.\n    try newDataSource.setPreferredPolarPattern(.stereo)\n\n    // Set the preferred data source and polar pattern.\n    try preferredInput.setPreferredDataSource(newDataSource)\n\n    // Update the input orientation to match the current user interface orientation.\n    try session.setPreferredInputOrientation(orientation.inputOrientation)\n    ...\n}"
+    },
+    {
+      "title": "When to select a data source & updated the stereo input orientation",
+      "language": "swift",
+      "startTimeSeconds": 502,
+      "code": "// When to select a data source & updated the stereo input orientation\n\noverride func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {\n    updateDataSource()\n}\n\n@IBAction func updateDataSourceSelection(_ sender: Any) {\n    updateDataSource()\n}\n\nprivate func updateDataSource() {\n    // Don't update the data source if the app is currently recording.\n    guard controller.state != .recording else { return }\n\n    let dataSourceName = dataSources[dataSourceChooser.selectedSegmentIndex]\n    controller.selectDataSource( named: dataSourceName,    \n        orientation:Orientation(windowOrientation)) { layout in\n        self.layoutView.layout = layout\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Capturing stereo audio from built-In microphones",
+      "url": "https://developer.apple.com/documentation/AVFAudio/capturing-stereo-audio-from-built-in-microphones",
+      "type": "samplecode",
+      "description": "Configure an iOS device’s built-in microphones to add stereo recording capabilities to your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFAudio/capturing-stereo-audio-from-built-in-microphones",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFAudio/capturing-stereo-audio-from-built-in-microphones.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10226-record-stereo-audio-with-avaudiosession/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10226-record-stereo-audio-with-avaudiosession/metadata.json",
+    "readme": "sessions/wwdc2020/10226-record-stereo-audio-with-avaudiosession/README.md",
+    "transcript": "sessions/wwdc2020/10226-record-stereo-audio-with-avaudiosession/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10226-record-stereo-audio-with-avaudiosession/transcript.json"
+  }
+}

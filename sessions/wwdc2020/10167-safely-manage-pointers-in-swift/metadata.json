@@ -1,0 +1,136 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10167",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10167,
+  "title": "Safely manage pointers in Swift",
+  "description": "Come with us as we delve into unsafe pointer types in Swift. Discover the requirements for each type and how to use it correctly. We’ll discuss typed pointers, drop down to raw pointers, and finally circumvent pointer type safety entirely by binding memory. This session is a follow-up to \"Unsafe Swift\" from WWDC20. To get the most out of it, you should be familiar with Swift and the C programming language.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10167",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10167",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 1651,
+  "hasTranscript": true,
+  "transcriptWordCount": 5307,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10167/3/5A7F9994-6332-4CE6-8132-10C43C01827B/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10167/3/5A7F9994-6332-4CE6-8132-10C43C01827B/wwdc2020_10167_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10167/3/5A7F9994-6332-4CE6-8132-10C43C01827B/wwdc2020_10167_hd.mp4",
+    "duration": 1651
+  },
+  "codeSnippets": [
+    {
+      "title": "Images: undefined behavior can lead to data loss",
+      "language": "swift",
+      "startTimeSeconds": 344,
+      "code": "struct Image {\n    // elided...\n}\n\n// Undefined behavior can lead to data loss…\nstruct Collage {\n    var imageData: UnsafeMutablePointer<Image>?\n    var imageCount: Int = 0\n}\n\n// C-style API expects a pointer-to-Int\nfunc addImages(_ countPtr: UnsafeMutablePointer<UInt32>) -> UnsafeMutablePointer<Image> {\n    // ...\n    let imageData = UnsafeMutablePointer<Image>.allocate(capacity: 1)\n    imageData[0] = Image()\n    countPtr.pointee += 1\n    return imageData\n}\n\nfunc saveImages(_ imageData: UnsafeMutablePointer<Image>, _ count: Int) {\n    // Arbitrary function body...\n    print(count)\n}\n\nvar collage = Collage()\ncollage.imageData = withUnsafeMutablePointer(to: &collage.imageCount) {\n    addImages(UnsafeMutableRawPointer($0).assumingMemoryBound(to: UInt32.self))\n}\nsaveImages(collage.imageData!, collage.imageCount) // May see imageCount == 0"
+    },
+    {
+      "title": "Direct memory allocation",
+      "language": "swift",
+      "startTimeSeconds": 606,
+      "code": "func directAllocation<T>(t: T, count: Int) {\n    let tPtr = UnsafeMutablePointer<T>.allocate(capacity: count)\n    tPtr.initialize(repeating: t, count: count)\n    tPtr.assign(repeating: t, count: count)\n    tPtr.deinitialize(count: count)\n    tPtr.deallocate()\n}"
+    },
+    {
+      "title": "Using a raw pointer to read from Foundation Data",
+      "language": "swift",
+      "startTimeSeconds": 864,
+      "code": "import Foundation\n\nfunc readUInt32(data: Data) -> UInt32 {\n    data.withUnsafeBytes { (buffer: UnsafeRawBufferPointer) in\n        buffer.load(fromByteOffset: 4, as: UInt32.self)\n    }\n}\n\nlet data = Data(Array<UInt8>([0, 0, 0, 0, 1, 0, 0, 0]))\nprint(readUInt32(data: data))"
+    },
+    {
+      "title": "Raw allocation",
+      "language": "swift",
+      "startTimeSeconds": 877,
+      "code": "func rawAllocate<T>(t: T, numValues: Int) -> UnsafeMutablePointer<T> {\n    let rawPtr = UnsafeMutableRawPointer.allocate(\n            byteCount: MemoryLayout<T>.stride * numValues,\n            alignment: MemoryLayout<T>.alignment)\n    let tPtr = rawPtr.initializeMemory(as: T.self, repeating: t, count: numValues)\n    // Must use the typed pointer ‘tPtr’ to deinitialize.\n    return tPtr\n}"
+    },
+    {
+      "title": "Contiguous allocation",
+      "language": "swift",
+      "startTimeSeconds": 943,
+      "code": "func contiguousAllocate<Header>(header: Header, numValues: Int) -> (UnsafeMutablePointer<Header>, UnsafeMutablePointer<Int32>) {\n    let offset = MemoryLayout<Header>.stride\n    let byteCount = offset + MemoryLayout<Int32>.stride * numValues\n    assert(MemoryLayout<Header>.alignment >= MemoryLayout<Int32>.alignment)\n    let bufferPtr = UnsafeMutableRawPointer.allocate(\n            byteCount: byteCount, alignment: MemoryLayout<Header>.alignment)\n    let headerPtr = bufferPtr.initializeMemory(as: Header.self, repeating: header, count: 1)\n    let elementPtr = (bufferPtr + offset).initializeMemory(as: Int32.self, repeating: 0, count: numValues)\n    return (headerPtr, elementPtr)\n}"
+    },
+    {
+      "title": "Using assumingMemoryBound(to:) to recover a typed pointer",
+      "language": "swift",
+      "startTimeSeconds": 1083,
+      "code": "func takesIntPointer(_: UnsafePointer<Int>) { /* elided */ }\n\nstruct RawContainer {\n    var rawPtr: UnsafeRawPointer\n    var pointsToInt: Bool\n}\n\nfunc testContainer(numValues: Int) {\n    let intPtr = UnsafeMutablePointer<Int>.allocate(capacity: numValues)\n    let rc = RawContainer(rawPtr: intPtr, pointsToInt: true)\n    // ...\n    if rc.pointsToInt {\n        takesIntPointer(rc.rawPtr.assumingMemoryBound(to: Int.self))\n    }\n}"
+    },
+    {
+      "title": "Calling pthread_create",
+      "language": "swift",
+      "startTimeSeconds": 1120,
+      "code": "// Use assumingMemoryBound to recover a pointer type from a (void *) C callback.\n/*\nfunc pthread_create(_ thread: UnsafeMutablePointer<pthread_t?>!,\n    _ attr: UnsafePointer<pthread_attr_t>?,\n    _ start_routine: (UnsafeMutableRawPointer) -> UnsafeMutableRawPointer?,\n    _ arg: UnsafeMutableRawPointer?) -> Int32\n*/\nimport Darwin\n\nstruct ThreadContext { /* elided */ }\n\nfunc testPthreadCreate() {\n    let contextPtr = UnsafeMutablePointer<ThreadContext>.allocate(capacity: 1)\n    contextPtr.initialize(to: ThreadContext())\n    var pthread: pthread_t?\n    let result = pthread_create(\n            &pthread, nil,\n            { (ptr: UnsafeMutableRawPointer) in\n                let contextPtr = ptr.assumingMemoryBound(to: ThreadContext.self)\n                // ... The rest of the thread start routine\n                return nil\n            },\n            contextPtr)\n}"
+    },
+    {
+      "title": "Pointing to tuple elements",
+      "language": "swift",
+      "startTimeSeconds": 1166,
+      "code": "func takesIntPointer(_: UnsafePointer<Int>) { /* elided */ }\n\nfunc testPointingToTuple() {\n    let tuple = (0, 1, 2)\n    withUnsafePointer(to: tuple) { (tuplePtr: UnsafePointer<(Int, Int, Int)>) in\n        takesIntPointer(UnsafeRawPointer(tuplePtr).assumingMemoryBound(to: Int.self))\n    }\n}"
+    },
+    {
+      "title": "Pointing to struct properties",
+      "language": "swift",
+      "startTimeSeconds": 1226,
+      "code": "func takesIntPointer(_: UnsafePointer<Int>) { /* elided */ }\n\nstruct MyStruct {\n    var status: Bool\n    var value: Int\n}\n\nfunc testPointingToStructProperty() {\n    let myStruct = MyStruct(status: true, value: 0)\n    withUnsafePointer(to: myStruct) { (ptr: UnsafePointer<MyStruct>) in\n        let rawValuePtr =\n                (UnsafeRawPointer(ptr) + MemoryLayout<MyStruct>.offset(of: \\MyStruct.value)!)\n        takesIntPointer(rawValuePtr.assumingMemoryBound(to: Int.self))\n    }\n}"
+    },
+    {
+      "title": "bindMemory(to:capacity:) invalidates pointers",
+      "language": "swift",
+      "startTimeSeconds": 1277,
+      "code": "func testBindMemory() {\n    let uint16Ptr = UnsafeMutablePointer<UInt16>.allocate(capacity: 2)\n    uint16Ptr.initialize(repeating: 0, count: 2)\n    let int32Ptr = UnsafeMutableRawPointer(uint16Ptr).bindMemory(to: Int32.self, capacity: 1)\n    // Accessing uint16Ptr is now undefined\n    int32Ptr.deallocate()\n}"
+    },
+    {
+      "title": "withMemoryRebound(to:capacity:) API",
+      "language": "swift",
+      "startTimeSeconds": 1393,
+      "code": "func takesUInt8Pointer(_: UnsafePointer<UInt8>) { /* elided */ }\n\nfunc testWithMemoryRebound(int8Ptr: UnsafePointer<Int8>, count: Int) {\n    int8Ptr.withMemoryRebound(to: UInt8.self, capacity: count) {\n        (uint8Ptr: UnsafePointer<UInt8>) in\n        // int8Ptr cannot be used within this closure\n        takesUInt8Pointer(uint8Ptr)\n    }\n    // uint8Ptr cannot be used outside this closure\n}"
+    },
+    {
+      "title": "BufferView: Layering types on top of raw memory",
+      "language": "swift",
+      "startTimeSeconds": 1549,
+      "code": "struct UnsafeBufferView<Element>: RandomAccessCollection {\n    let rawBytes: UnsafeRawBufferPointer\n    let count: Int\n\n    init(reinterpret rawBytes: UnsafeRawBufferPointer, as: Element.Type) {\n        self.rawBytes = rawBytes\n        self.count = rawBytes.count / MemoryLayout<Element>.stride\n        precondition(self.count * MemoryLayout<Element>.stride == rawBytes.count)\n        precondition(Int(bitPattern: rawBytes.baseAddress).isMultiple(of: MemoryLayout<Element>.alignment))\n    }\n\n    var startIndex: Int { 0 }\n\n    var endIndex: Int { count }\n\n    subscript(index: Int) -> Element {\n        rawBytes.load(fromByteOffset: index * MemoryLayout<Element>.stride, as: Element.self)\n    }\n}\n\nfunc testBufferView() {\n    let array = [0,1,2,3]\n    array.withUnsafeBytes {\n        let view = UnsafeBufferView(reinterpret: $0, as: UInt.self)\n        for val in view {\n            print(val)\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Manual Memory Management",
+      "url": "https://developer.apple.com/documentation/Swift/manual-memory-management",
+      "type": "documentation",
+      "description": "Allocate and manage memory manually.",
+      "sosumiURL": "https://sosumi.ai/documentation/Swift/manual-memory-management",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Swift/manual-memory-management.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10167-safely-manage-pointers-in-swift/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10167-safely-manage-pointers-in-swift/metadata.json",
+    "readme": "sessions/wwdc2020/10167-safely-manage-pointers-in-swift/README.md",
+    "transcript": "sessions/wwdc2020/10167-safely-manage-pointers-in-swift/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10167-safely-manage-pointers-in-swift/transcript.json"
+  }
+}

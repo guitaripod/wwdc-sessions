@@ -1,0 +1,84 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2024-10138",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10138,
+  "title": "Create a custom data store with SwiftData",
+  "description": "Combine the power of SwiftData’s expressive, declarative modeling API with your own persistence backend. Learn how to build a custom data store and explore how to progressively add persistence features in your app. To get the most out of this session, watch “Meet SwiftData” and “Model your schema with SwiftData” from WWDC23.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10138",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10138",
+  "type": "Video",
+  "publishedAt": "2024-06-11T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "datastore",
+    "datastoreconfiguration",
+    "datastoresnapshot"
+  ],
+  "topics": [
+    "App Services",
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 832,
+  "hasTranscript": true,
+  "transcriptWordCount": 1911,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10138/4/A149C0AB-2AB1-48C1-B259-4D5621873D5F/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10138/4/A149C0AB-2AB1-48C1-B259-4D5621873D5F/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10138/4/A149C0AB-2AB1-48C1-B259-4D5621873D5F/downloads/wwdc2024-10138_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10138/4/A149C0AB-2AB1-48C1-B259-4D5621873D5F/downloads/wwdc2024-10138_hd.mp4",
+    "duration": 832
+  },
+  "codeSnippets": [
+    {
+      "title": "Implement a JSON store",
+      "language": "swift",
+      "startTimeSeconds": 495,
+      "code": "// Implement a JSON store\n\n@available(swift 5.9) @available(macOS 15, iOS 18, tvOS 18, watchOS 11, visionOS 2, *)\nfinal class JSONStoreConfiguration: DataStoreConfiguration {\n    typealias StoreType = JSONStore\n\n    var name: String\n    var schema: Schema?\n    var fileURL: URL\n\n    init(name: String, schema: Schema? = nil, fileURL: URL) {\n        self.name = name\n        self.schema = schema\n        self.fileURL = fileURL\n    }\n\n    static func == (lhs: JSONStoreConfiguration, rhs: JSONStoreConfiguration) -> Bool {\n        return lhs.name == rhs.name\n    }\n\n    func hash(into hasher: inout Hasher) {\n        hasher.combine(name)\n    }\n}\n\n@available(swift 5.9) @available(macOS 15, iOS 18, tvOS 18, watchOS 11, visionOS 2, *)\nfinal class JSONStore: DataStore {\n    typealias Configuration = JSONStoreConfiguration\n    typealias Snapshot = DefaultSnapshot\n\n    var configuration: JSONStoreConfiguration\n    var name: String\n    var schema: Schema\n    var identifier: String\n\n    init(_ configuration: JSONStoreConfiguration, migrationPlan: (any SchemaMigrationPlan.Type)?) throws {\n        self.configuration = configuration\n        self.name = configuration.name\n        self.schema = configuration.schema!\n        self.identifier = configuration.fileURL.lastPathComponent\n    }\n\n    func save(_ request: DataStoreSaveChangesRequest<DefaultSnapshot>) throws -> DataStoreSaveChangesResult<DefaultSnapshot> {\n        var remappedIdentifiers = [PersistentIdentifier: PersistentIdentifier]()\n        var serializedTrips = try self.read()\n\n        for snapshot in request.inserted {\n            let permanentIdentifier = try PersistentIdentifier.identifier(for: identifier, \n                                                                          entityName: snapshot.persistentIdentifier.entityName,\n                                                                          primaryKey: UUID())\n            let permanentSnapshot = snapshot.copy(persistentIdentifier: permanentIdentifier)\n            serializedTrips[permanentIdentifier] = permanentSnapshot\n            remappedIdentifiers[snapshot.persistentIdentifier] = permanentIdentifier\n        }\n\n        for snapshot in request.updated {\n            serializedTrips[snapshot.persistentIdentifier] = snapshot\n        }\n\n        for snapshot in request.deleted {\n            serializedTrips[snapshot.persistentIdentifier] = nil\n        }\n\n        try self.write(serializedTrips)\n        return DataStoreSaveChangesResult<DefaultSnapshot>(for: self.identifier,\n                                                           remappedPersistentIdentifiers: remappedIdentifiers,\n                                                           deletedIdentifiers: request.deleted.map({ $0.persistentIdentifier }))\n    }\n\n    func fetch<T>(_ request: DataStoreFetchRequest<T>) throws -> DataStoreFetchResult<T, DefaultSnapshot> where T : PersistentModel {\n        if request.descriptor.predicate != nil {\n            throw DataStoreError.preferInMemoryFilter\n        } else if request.descriptor.sortBy.count > 0 {\n            throw DataStoreError.preferInMemorySort\n        }\n\n        let objs = try self.read()\n        let snapshots = objs.values.map({ $0 })\n        return DataStoreFetchResult(descriptor: request.descriptor, fetchedSnapshots: snapshots, relatedSnapshots: objs)\n    }\n\n    func read() throws -> [PersistentIdentifier: DefaultSnapshot] {\n        if FileManager.default.fileExists(atPath: configuration.fileURL.path(percentEncoded: false)) {\n            let decoder = JSONDecoder()\n            decoder.dateDecodingStrategy = .iso8601\n\n            let trips = try decoder.decode([DefaultSnapshot].self, from: try Data(contentsOf: configuration.fileURL))\n            var result = [PersistentIdentifier: DefaultSnapshot]()\n            trips.forEach { s in\n                result[s.persistentIdentifier] = s\n            }\n            return result\n        } else {\n            return [:]\n        }\n    }\n\n    func write(_ trips: [PersistentIdentifier: DefaultSnapshot]) throws {\n        let encoder = JSONEncoder()\n        encoder.dateEncodingStrategy = .iso8601\n        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]\n        let jsonData = try encoder.encode(trips.values.map({ $0 }))\n        try jsonData.write(to: configuration.fileURL)\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Forum: Programming Languages",
+      "url": "https://developer.apple.com/forums/topics/programming-languages-topic?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/programming-languages-topic?cid=vf-a-0010"
+    },
+    {
+      "title": "SwiftData",
+      "url": "https://developer.apple.com/documentation/SwiftData",
+      "type": "documentation",
+      "description": "Write your model code declaratively to add managed persistence and efficient",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftData",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftData.json"
+    }
+  ],
+  "path": "sessions/wwdc2024/10138-create-a-custom-data-store-with-swiftdata/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10138-create-a-custom-data-store-with-swiftdata/metadata.json",
+    "readme": "sessions/wwdc2024/10138-create-a-custom-data-store-with-swiftdata/README.md",
+    "transcript": "sessions/wwdc2024/10138-create-a-custom-data-store-with-swiftdata/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10138-create-a-custom-data-store-with-swiftdata/transcript.json"
+  }
+}

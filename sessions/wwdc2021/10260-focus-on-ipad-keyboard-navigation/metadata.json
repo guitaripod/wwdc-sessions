@@ -1,0 +1,211 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10260",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10260,
+  "title": "Focus on iPad keyboard navigation",
+  "description": "Improve the keyboard experience in your iPad and Mac Catalyst app. Discover how you can accelerate access to key features with the hardware keyboard, and navigate through your views and view controllers. Learn how to customize which elements are keyboard navigable, as well as how to customize the tab loop.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10260",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10260",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "commands",
+    "environment",
+    "focus",
+    "groups",
+    "ipad",
+    "item",
+    "key",
+    "keyboard",
+    "navigation",
+    "productivity",
+    "sidebar."
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1223,
+  "hasTranscript": true,
+  "transcriptWordCount": 2999,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10260/4/E0BC9390-870B-4D59-9A0C-74941EAF4E36/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10260/4/E0BC9390-870B-4D59-9A0C-74941EAF4E36/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10260/4/E0BC9390-870B-4D59-9A0C-74941EAF4E36/downloads/wwdc2021-10260_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10260/4/E0BC9390-870B-4D59-9A0C-74941EAF4E36/downloads/wwdc2021-10260_hd.mp4",
+    "duration": 1223
+  },
+  "codeSnippets": [
+    {
+      "title": "canBecomeFocused",
+      "language": "swift",
+      "startTimeSeconds": 181,
+      "code": "override var canBecomeFocused: Bool { true }"
+    },
+    {
+      "title": "allowsFocus",
+      "language": "swift",
+      "startTimeSeconds": 240,
+      "code": "class MyViewController: UICollectionViewController {\n    override func viewDidLoad() {\n        super.viewDidLoad()\n        self.collectionView.allowsFocus = true\n    }\n}"
+    },
+    {
+      "title": "canFocusItemAtIndexPath",
+      "language": "swift",
+      "startTimeSeconds": 263,
+      "code": "class MyCollectionViewDelegate: NSObject, UICollectionViewDelegate {\n    func collectionView(_ collectionView: UICollectionView,\n                canFocusItemAt indexPath: IndexPath) -> Bool {\n        return true\n    }\n}"
+    },
+    {
+      "title": "UIFocusDebugger checkFocusability(for:)",
+      "language": "bash",
+      "startTimeSeconds": 280,
+      "code": "po UIFocusDebugger.checkFocusability(for:)"
+    },
+    {
+      "title": "UIFocusHaloEffect",
+      "language": "swift",
+      "startTimeSeconds": 348,
+      "code": "let focusEffect = UIFocusHaloEffect(roundedRect: self.bounds, cornerRadius: self.layer.cornerRadius, curve: .continuous)\nself.focusEffect = focusEffect"
+    },
+    {
+      "title": "ReferenceView and ContainerView",
+      "language": "swift",
+      "startTimeSeconds": 363,
+      "code": "let focusEffect = UIFocusHaloEffect(roundedRect: self.bounds, cornerRadius: self.layer.cornerRadius, curve: .continuous)\n\n// make sure the effect is added right above the image view\nfocusEffect.referenceView = self.imageView\n\n// make sure the effect is added to our scroll view\nfocusEffect.containerView = self.scrollView\n\nself.focusEffect = focusEffect"
+    },
+    {
+      "title": "Custom focus effects",
+      "language": "swift",
+      "startTimeSeconds": 463,
+      "code": "init(frame: CGRect) {\n   super.init(frame: frame)\n   self.focusEffect = nil\n}\n\nfunc didUpdateFocus(in context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {\n    if context.nextFocusedItem == self {\n        // This view is focused. Customize its appearance.\n    }\n    else if context.previouslyFocusedItem == self {\n        // This view was focused.\n    }\n}"
+    },
+    {
+      "title": "Selection Follows Focus",
+      "language": "swift",
+      "startTimeSeconds": 548,
+      "code": "var selectionFollowsFocus: Bool"
+    },
+    {
+      "title": "Selection Follows Focus for Item at Index Path",
+      "language": "swift",
+      "startTimeSeconds": 556,
+      "code": "func collectionView(_ collectionView: UICollectionView, selectionFollowsFocusForItemAt indexPath: IndexPath) -> Bool {\n    return self.action(for: indexPath).type != .showAlert\n}"
+    },
+    {
+      "title": "Focus Group Identifier",
+      "language": "swift",
+      "startTimeSeconds": 732,
+      "code": "self.focusGroupIdentifier = \"com.myapp.groups.sidebar\""
+    },
+    {
+      "title": "UIFocusGroupPriority",
+      "language": "swift",
+      "startTimeSeconds": 772,
+      "code": "extension UIFocusGroupPriority {\n    public static let ignored: UIFocusGroupPriority // 0\n    public static let previouslyFocused: UIFocusGroupPriority // 1000\n    public static let prioritized: UIFocusGroupPriority // 2000\n    public static let currentlyFocused: UIFocusGroupPriority // NSIntegerMax\n}"
+    },
+    {
+      "title": "Focus Group Priority on a cell",
+      "language": "swift",
+      "startTimeSeconds": 820,
+      "code": "// Customizing an item’s focus group priority\n\nfunc collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {\n    let cell = ...\n    if self.isCallToActionCell(at: indexPath) {\n        // This cell is not as important as a selected cell but should\n        // be chosen over the last focused cell in this group.\n        cell.focusGroupPriority = .previouslyFocused + 10\n    }\n    return cell\n}"
+    },
+    {
+      "title": "UIFocusDebugger checkFocusGroupTree(for:)",
+      "language": "bash",
+      "startTimeSeconds": 946,
+      "code": "po UIFocusDebugger.checkFocusGroupTree(for:)"
+    },
+    {
+      "title": "wantsPriorityOverSystemBehavior",
+      "language": "swift",
+      "startTimeSeconds": 1156,
+      "code": "keyCommand.wantsPriorityOverSystemBehavior = true"
+    },
+    {
+      "title": "pressesBegan",
+      "language": "swift",
+      "startTimeSeconds": 1176,
+      "code": "override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {\n    if (/* check presses of interest */) {\n        // handle the press\n    }\n    else {\n        super.pressesBegan(presses, with: event)\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Navigating an app’s user interface using a keyboard",
+      "url": "https://developer.apple.com/documentation/UIKit/navigating-an-app-s-user-interface-using-a-keyboard",
+      "type": "samplecode",
+      "description": "Navigate between user interface elements using a keyboard and focusable UI elements in iPad apps and apps built with Mac Catalyst.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/navigating-an-app-s-user-interface-using-a-keyboard",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/navigating-an-app-s-user-interface-using-a-keyboard.json"
+    },
+    {
+      "title": "Adjusting your layout with keyboard layout guide",
+      "url": "https://developer.apple.com/documentation/UIKit/adjusting-your-layout-with-keyboard-layout-guide",
+      "type": "documentation",
+      "description": "Respond dynamically to keyboard movement by using the tracking features of the keyboard layout guide.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/adjusting-your-layout-with-keyboard-layout-guide",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/adjusting-your-layout-with-keyboard-layout-guide.json"
+    },
+    {
+      "title": "About focus interactions for Apple TV",
+      "url": "https://developer.apple.com/documentation/UIKit/about-focus-interactions-for-apple-tv",
+      "type": "documentation",
+      "description": "Design and implement intuitive control schemes for menus and interactive user interface layouts.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/about-focus-interactions-for-apple-tv",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/about-focus-interactions-for-apple-tv.json"
+    },
+    {
+      "title": "Adding hardware keyboard support to your app",
+      "url": "https://developer.apple.com/documentation/UIKit/adding-hardware-keyboard-support-to-your-app",
+      "type": "samplecode",
+      "description": "Enhance interactions with your app by handling raw keyboard events, writing custom keyboard shortcuts, and working with gesture recognizers.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/adding-hardware-keyboard-support-to-your-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/adding-hardware-keyboard-support-to-your-app.json"
+    },
+    {
+      "title": "Adding menus and shortcuts to the menu bar and user interface",
+      "url": "https://developer.apple.com/documentation/UIKit/adding-menus-and-shortcuts-to-the-menu-bar-and-user-interface",
+      "type": "samplecode",
+      "description": "Provide quick access to useful actions by adding menus and keyboard shortcuts to your Mac app built with Mac Catalyst.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/adding-menus-and-shortcuts-to-the-menu-bar-and-user-interface",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/adding-menus-and-shortcuts-to-the-menu-bar-and-user-interface.json"
+    },
+    {
+      "title": "Implementing Advanced Text Input Features",
+      "url": "https://developer.apple.com/sample-code/wwdc/2017/Implementing-Advanced-Text-Input-Features.zip",
+      "type": "samplecode",
+      "description": "Demonstrates how to implement many common user interface patterns surrounding the iOS keyboard, as well as how to create a custom keyboard extension.",
+      "sosumiURL": "https://sosumi.ai/sample-code/wwdc/2017/Implementing-Advanced-Text-Input-Features.zip"
+    },
+    {
+      "title": "UIKit",
+      "url": "https://developer.apple.com/documentation/UIKit",
+      "type": "documentation",
+      "description": "Construct and manage a graphical, event-driven user interface for your iOS, iPadOS, or tvOS app.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10260-focus-on-ipad-keyboard-navigation/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10260-focus-on-ipad-keyboard-navigation/metadata.json",
+    "readme": "sessions/wwdc2021/10260-focus-on-ipad-keyboard-navigation/README.md",
+    "transcript": "sessions/wwdc2021/10260-focus-on-ipad-keyboard-navigation/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10260-focus-on-ipad-keyboard-navigation/transcript.json"
+  }
+}

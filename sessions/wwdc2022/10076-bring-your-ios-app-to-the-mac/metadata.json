@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10076",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10076,
+  "title": "Bring your iOS app to the Mac",
+  "description": "Discover all the different ways you can transform your iOS app into a great macOS experience. We’ll explore best practices for bringing your app to the Mac, whether you ship an iPad app for M1 Macs or build something for all Macs using Mac Catalyst. Learn about the latest tools, options, and APIs to help you deliver enhanced experiences. We’ll also show you how you can optimize your app for the Mac, and find out how desktop class iPad features automatically transform into Mac-native options when built using Mac Catalyst.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10076",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10076",
+  "type": "Video",
+  "publishedAt": "2022-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Essentials",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1357,
+  "hasTranscript": true,
+  "transcriptWordCount": 2762,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10076/6/DC2BEEAC-6D3F-40B0-B9A7-0C46031B0C91/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10076/6/DC2BEEAC-6D3F-40B0-B9A7-0C46031B0C91/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10076/6/DC2BEEAC-6D3F-40B0-B9A7-0C46031B0C91/downloads/wwdc2022-10076_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10076/6/DC2BEEAC-6D3F-40B0-B9A7-0C46031B0C91/downloads/wwdc2022-10076_hd.mp4",
+    "duration": 1357
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Supporting desktop-class features in your iPad app",
+      "url": "https://developer.apple.com/documentation/UIKit/supporting-desktop-class-features-in-your-ipad-app",
+      "type": "samplecode",
+      "description": "Enhance your iPad app by adding desktop-class features and document support.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/supporting-desktop-class-features-in-your-ipad-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/supporting-desktop-class-features-in-your-ipad-app.json"
+    },
+    {
+      "title": "Human Interface Guidelines: Mac Catalyst",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/mac-catalyst",
+      "type": "documentation",
+      "description": "When you use Mac Catalyst to create a Mac version of your iPad app, you make your app available to a new audience while giving existing users the opportunity to enjoy it in a new environment.",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/mac-catalyst"
+    },
+    {
+      "title": "Human Interface Guidelines: Designing for macOS",
+      "url": "https://developer.apple.com/design/Human-Interface-Guidelines/designing-for-macos",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/Human-Interface-Guidelines/designing-for-macos"
+    }
+  ],
+  "path": "sessions/wwdc2022/10076-bring-your-ios-app-to-the-mac/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10076-bring-your-ios-app-to-the-mac/metadata.json",
+    "readme": "sessions/wwdc2022/10076-bring-your-ios-app-to-the-mac/README.md",
+    "transcript": "sessions/wwdc2022/10076-bring-your-ios-app-to-the-mac/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10076-bring-your-ios-app-to-the-mac/transcript.json"
+  }
+}

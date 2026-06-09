@@ -1,0 +1,51 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-246",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 246,
+  "title": "Window Management in Your Multitasking App",
+  "description": "Dive into the details of window management in your Multitasking app, including how to properly handle creating, refreshing, and closing windows. Hear about best practices for when to refresh the content in your window and learn how to ensure your app’s visual state is up-to-date in the switcher.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/246",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/246",
+  "type": "Video",
+  "publishedAt": "2019-06-07T15:20:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 818,
+  "hasTranscript": true,
+  "transcriptWordCount": 2089,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/246bnifwqasd17ytre/246/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/246bnifwqasd17ytre/246/246_sd_window_management_in_your_multitasking_app.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/246bnifwqasd17ytre/246/246_hd_window_management_in_your_multitasking_app.mp4",
+    "duration": 818
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/246-window-management-in-your-multitasking-app/",
+  "files": {
+    "metadata": "sessions/wwdc2019/246-window-management-in-your-multitasking-app/metadata.json",
+    "readme": "sessions/wwdc2019/246-window-management-in-your-multitasking-app/README.md",
+    "transcript": "sessions/wwdc2019/246-window-management-in-your-multitasking-app/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/246-window-management-in-your-multitasking-app/transcript.json"
+  }
+}

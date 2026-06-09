@@ -1,0 +1,85 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10003",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10003,
+  "title": "Meet WeatherKit",
+  "description": "WeatherKit offers valuable weather data for your apps and services to help people stay up to date on the latest conditions. Learn how to use Swift and REST APIs to access information about the current weather, 10-day hourly forecasts for temperature, expected precipitation, wind reports, the UV Index, and more. We’ll also share how WeatherKit can provide timely, hyperlocal weather information without compromising someone’s personal data or their privacy.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10003",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10003",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "api",
+    "browser",
+    "rest",
+    "weather",
+    "web"
+  ],
+  "topics": [
+    "Maps & Location",
+    "Safari & Web",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 729,
+  "hasTranscript": true,
+  "transcriptWordCount": 1787,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10003/5/C8AAE478-A435-4DA4-8256-F32941E32204/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10003/5/C8AAE478-A435-4DA4-8256-F32941E32204/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10003/5/C8AAE478-A435-4DA4-8256-F32941E32204/downloads/wwdc2022-10003_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10003/5/C8AAE478-A435-4DA4-8256-F32941E32204/downloads/wwdc2022-10003_hd.mp4",
+    "duration": 729
+  },
+  "codeSnippets": [
+    {
+      "title": "Request the weather in Swift",
+      "language": "swift",
+      "startTimeSeconds": 268,
+      "code": "// Request the weather\n\nimport WeatherKit\nimport CoreLocation\n\n\nlet weatherService = WeatherService()\n\nlet syracuse = CLLocation(latitude: 43, longitude: -76)\n\nlet weather = try! await weatherService.weather(for: syracuse)\n\nlet temperature = weather.currentWeather.temperature\n\nlet uvIndex = weather.currentWeather.uvIndex"
+    },
+    {
+      "title": "Request the weather via REST API",
+      "language": "javascript",
+      "startTimeSeconds": 476,
+      "code": "/* Request a token */\nconst tokenResponse = await fetch('https://example.com/token');\nconst token = await tokenResponse.text();\n\n/* Get my weather object */\nconst url = \"https://weatherkit.apple.com/1/weather/en-US/41.029/-74.642?dataSets=weatherAlerts&country=US\"\n\nconst weatherResponse = await fetch(url, {\nheaders: {\n\"Authorization\": token\n}\n});\nconst weather = await weatherResponse.json();\n\n/* Check for active weather alerts */\nconst alerts = weather.weatherAlerts;\nconst detailsUrl = weather.weatherAlerts.detailsUrl;"
+    }
+  ],
+  "resources": [
+    {
+      "title": "WeatherKit",
+      "url": "https://developer.apple.com/documentation/WeatherKit",
+      "type": "documentation",
+      "description": "Deliver weather conditions and alerts to your users.",
+      "sosumiURL": "https://sosumi.ai/documentation/WeatherKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WeatherKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10003-meet-weatherkit/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10003-meet-weatherkit/metadata.json",
+    "readme": "sessions/wwdc2022/10003-meet-weatherkit/README.md",
+    "transcript": "sessions/wwdc2022/10003-meet-weatherkit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10003-meet-weatherkit/transcript.json"
+  }
+}

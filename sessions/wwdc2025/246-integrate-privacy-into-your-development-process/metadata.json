@@ -1,0 +1,113 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-246",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 246,
+  "title": "Integrate privacy into your development process",
+  "description": "Learn how to build privacy into your apps from the planning stages through deployment. We’ll cover practical ways to integrate privacy at each step of the development lifecycle, focusing on data minimization, on-device processing, and transparency and control. You’ll discover how to use Apple’s tools and frameworks to protect user data and create a privacy-respecting app experience.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/246",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/246",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Privacy & Security"
+  ],
+  "primaryTopic": "Privacy & Security",
+  "duration": 1542,
+  "hasTranscript": true,
+  "transcriptWordCount": 3904,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/246/4/37a0cde9-fca8-4877-b05c-95e677c0e2b0/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/246/4/37a0cde9-fca8-4877-b05c-95e677c0e2b0/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/246/4/37a0cde9-fca8-4877-b05c-95e677c0e2b0/downloads/wwdc2025-246_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/246/4/37a0cde9-fca8-4877-b05c-95e677c0e2b0/downloads/wwdc2025-246_hd.mp4",
+    "duration": 1542
+  },
+  "codeSnippets": [
+    {
+      "title": "Create an inline Photos picker",
+      "language": "swift",
+      "startTimeSeconds": 629,
+      "code": "// Create an inline Photos picker\n\n// Define the app's Photos picker\nPhotosPicker(\n    selection: $viewModel.selection,\n    matching: .images,\n    preferredItemEncoding: .current,\n    photoLibrary: .shared()\n) {\n    Text(\"Select Photos\")\n}\n\n// Configure a half-height Photos picker\n.photosPickerStyle(.inline)\n.ignoresSafeArea()\n.frame(height: 340)"
+    },
+    {
+      "title": "Display the Location Button",
+      "language": "swift",
+      "startTimeSeconds": 693,
+      "code": "// Display the Location Button\n\nLocationButton(LocationButton.Title.currentLocation) {\n    // Start updating location when user taps the button.\n    // Location button doesn't require the additional\n    // step of calling 'requestWhenInUseAuthorization()'.\n    manager.startUpdatingLocation()\n}.foregroundColor(Color.white)\n    .cornerRadius(27)\n    .frame(width: 210, height: 54)\n    .padding(.bottom, 30)"
+    },
+    {
+      "title": "Encrypting data in CloudKit",
+      "language": "swift",
+      "startTimeSeconds": 828,
+      "code": "myRecord.encryptedValues[\"encryptedStringField\"] = \"Sensitive value\"\n\nlet decryptedString = myRecord.encryptedValues[\"encryptedStringField\"] as? String"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Swift Homomorphic Encryption",
+      "url": "https://github.com/apple/swift-homomorphic-encryption",
+      "type": "samplecode",
+      "description": "Homomorphic Encryption library and applications in Swift."
+    },
+    {
+      "title": "Configuring app groups",
+      "url": "https://developer.apple.com/documentation/Xcode/configuring-app-groups",
+      "type": "documentation",
+      "description": "Enable communication and data sharing between multiple installed apps created",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/configuring-app-groups",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/configuring-app-groups.json"
+    },
+    {
+      "title": "AdAttributionKit",
+      "url": "https://developer.apple.com/documentation/AdAttributionKit",
+      "type": "documentation",
+      "description": "Present, process, and register postbacks for in-app ads in the App Store and alternative app marketplaces.",
+      "sosumiURL": "https://sosumi.ai/documentation/AdAttributionKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AdAttributionKit.json"
+    },
+    {
+      "title": "Privacy manifest files",
+      "url": "https://developer.apple.com/documentation/BundleResources/privacy-manifest-files",
+      "type": "documentation",
+      "description": "Describe the data your app or third-party SDK collects and the required reasons APIs it uses.",
+      "sosumiURL": "https://sosumi.ai/documentation/BundleResources/privacy-manifest-files",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/BundleResources/privacy-manifest-files.json"
+    },
+    {
+      "title": "Explore the Human Interface Guidelines for privacy",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/privacy",
+      "type": "documentation",
+      "description": "Explore the Human Interface Guidelines for privacy.",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/privacy"
+    }
+  ],
+  "path": "sessions/wwdc2025/246-integrate-privacy-into-your-development-process/",
+  "files": {
+    "metadata": "sessions/wwdc2025/246-integrate-privacy-into-your-development-process/metadata.json",
+    "readme": "sessions/wwdc2025/246-integrate-privacy-into-your-development-process/README.md",
+    "transcript": "sessions/wwdc2025/246-integrate-privacy-into-your-development-process/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/246-integrate-privacy-into-your-development-process/transcript.json"
+  }
+}

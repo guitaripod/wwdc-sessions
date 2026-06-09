@@ -1,0 +1,83 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10135",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10135,
+  "title": "Get timely alerts from Bluetooth devices on watchOS",
+  "description": "Find out how Bluetooth devices can send timely and relevant alerts to Apple Watch. We'll show you how to take advantage of periodic data in complications, explore background peripheral discovery, and help you learn how to use characteristic monitoring in watchOS. We'll also share best practices and design guidance for creating a great Bluetooth accessory.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10135",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10135",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Health & Fitness",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 833,
+  "hasTranscript": true,
+  "transcriptWordCount": 1886,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10135/4/B6405ED7-98EE-473C-8174-144D5E72CA02/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10135/4/B6405ED7-98EE-473C-8174-144D5E72CA02/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10135/4/B6405ED7-98EE-473C-8174-144D5E72CA02/downloads/wwdc2022-10135_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10135/4/B6405ED7-98EE-473C-8174-144D5E72CA02/downloads/wwdc2022-10135_hd.mp4",
+    "duration": 833
+  },
+  "codeSnippets": [
+    {
+      "title": "Listen for alerts",
+      "language": "swift",
+      "startTimeSeconds": 221,
+      "code": "func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {\n    peripheral.setNotifyValue(true, for: characteristic)\n}\n\nfunc peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {\n    if let newData = characteristic.value {\n        // Post a local notification.\n    }\n}"
+    },
+    {
+      "title": "Discover peripherals",
+      "language": "swift",
+      "startTimeSeconds": 555,
+      "code": "func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {\n    central.scanForPeripherals(withServices: [myCustomUUID])\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Accessory Design Guidelines",
+      "url": "https://developer.apple.com/accessories/Accessory-Design-Guidelines.pdf",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/accessories/Accessory-Design-Guidelines.pdf"
+    },
+    {
+      "title": "Core Bluetooth",
+      "url": "https://developer.apple.com/documentation/CoreBluetooth",
+      "type": "documentation",
+      "description": "Communicate with Bluetooth low energy and BR/EDR (“Classic”) Devices.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreBluetooth",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreBluetooth.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10135-get-timely-alerts-from-bluetooth-devices-on-watchos/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10135-get-timely-alerts-from-bluetooth-devices-on-watchos/metadata.json",
+    "readme": "sessions/wwdc2022/10135-get-timely-alerts-from-bluetooth-devices-on-watchos/README.md",
+    "transcript": "sessions/wwdc2022/10135-get-timely-alerts-from-bluetooth-devices-on-watchos/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10135-get-timely-alerts-from-bluetooth-devices-on-watchos/transcript.json"
+  }
+}

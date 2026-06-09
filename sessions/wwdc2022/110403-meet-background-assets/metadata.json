@@ -1,0 +1,95 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-110403",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 110403,
+  "title": "Meet Background Assets",
+  "description": "Discover how you can use the Background Assets framework to download large files directly from your CDN and improve the initial launch experience of your apps and games. We’ll show you how to schedule background downloads during initial app install, app updates, and periodically as someone uses the app. We’ll also explore how you can manage scheduled downloads to make sure people have the content they want, when they want it.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/110403",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/110403",
+  "type": "Video",
+  "publishedAt": "2022-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1442,
+  "hasTranscript": true,
+  "transcriptWordCount": 4825,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110403/3/7B38146A-41F4-422B-A863-6E4277C76C6E/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110403/3/7B38146A-41F4-422B-A863-6E4277C76C6E/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110403/3/7B38146A-41F4-422B-A863-6E4277C76C6E/downloads/wwdc2022-110403_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110403/3/7B38146A-41F4-422B-A863-6E4277C76C6E/downloads/wwdc2022-110403_hd.mp4",
+    "duration": 1442
+  },
+  "codeSnippets": [
+    {
+      "title": "Getting started with Background Assets",
+      "language": "swift",
+      "startTimeSeconds": 328,
+      "code": "// Getting started with Background Assets\nimport BackgroundAssets\n\nlet url = URL(string: \"https://cdn.example.com/large-asset.bin\")!\nlet appGroupIdentifier = \"group.WWDC.AssetContainer\"\nlet download = BAURLDownload ( identifier: \"Large-Asset\",\n                               request: URLRequest(url:url),\n                               applicationGroupIdentifier:\n                                appGroupIdentifier )\n\nlet manager = BADownloadManager.shared\nmanager.delegate = self  // BADownloadManagerDelegate protocol\n\n// Schedule download at an opportunistic time determined by the system\ndo {\n    try manager.schedule(download)\n} catch {\n    print(\"Failed to schedule download. \\(error)\")\n}\n\n// or Schedule download in foreground\ndo {\n    try manager.startForegroundDownload(download)\n} catch {\n    print(\"Failed to start foreground download. \\(error)\")\n}\n\n// or Promote downloads to foreground.\ndo {\n    for download in try await manager.fetchCurrentDownloads) {\n       try manager.startForegroundDownload(download)\n    }\n} catch {\n    print(\"Failed to promote downloads to foreground \\(error)\")\n}"
+    },
+    {
+      "title": "BADownloadManager delegate protocol",
+      "language": "swift",
+      "startTimeSeconds": 628,
+      "code": "// BADownloadManager protocol definition\npublic protocol BADownloadManagerDelegate : NSObjectProtocol {\n    optional func downloadDidBegin(_ download: BADownload)\n\n    optional func downloadDidPause(_ download: BADownload)\n\n    optional func download(_ download: BADownload,\n                           bytesWritten: Int64,\n                           totalBytesWritten: Int64,\n                           totalExpectedBytes: Int64)\n\n    optional func download(_ download: BADownload, didReceive challenge: URLAuthenticationChallenge) async -> (URLSession.AuthChallengeDisposition, URLCredential?)\n\n    optional func download(_ download: BADownload, failedWithError error: Error)\n\n    optional func download(_ download: BADownload, finishedWithFileURL fileURL: URL)\n}"
+    },
+    {
+      "title": "BADownloaderExtension protocol",
+      "language": "swift",
+      "startTimeSeconds": 937,
+      "code": "// BADownloaderExtension protocol definition\npublic protocol BADownloaderExtension : NSObjectProtocol {\n    optional func applicationDidInstall(metadata: BAApplicationExtensionInfo)\n\n    optional func applicationDidUpdate(metadata: BAApplicationExtensionInfo)\n\n    optional func checkForUpdates(metadata: BAApplicationExtensionInfo)\n\n    optional func download(_ download: BADownload, didReceive challenge: URLAuthenticationChallenge) async -> (URLSession.AuthChallengeDisposition, URLCredential?)\n\n    optional func backgroundDownloadDidFail(failedDownload: BADownload)\n\n    optional func backgroundDownloadDidFinish(finishedDownload: BADownload, fileURL: URL)\n\n    optional func extensionWillTerminate()\n}"
+    },
+    {
+      "title": "Synchronizing between app and extension",
+      "language": "swift",
+      "startTimeSeconds": 1180,
+      "code": "// Synchronizing between app and extension\nfunc download(_ download: BADownload, finishedWithFileURL fileURL: URL) {\n    let manager = BADownloadManager.shared\n    manager.withExclusiveControl { error in\n        guard error == nil else {\n            print(\"Unable to acquire exclusive control \\(String(describing: error))\")\n            return\n        }\n        // Exclusive control acquired\n        // All code in this scope ensures mutual exclusion between extension and app\n        do {\n            let data = try Data(contentsOf: fileURL, options: .mappedIfSafe)\n            // Do something with memory mapped data\n            try FileManager.default.removeItem(at: fileURL)\n        } catch {\n            print(\"Unable to read/cleanup file data. \\(error)\")\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "NSBundleResourceRequest",
+      "url": "https://developer.apple.com/documentation/Foundation/NSBundleResourceRequest",
+      "type": "documentation",
+      "description": "A resource manager you use to download content hosted on the App Store at the time your app needs it.",
+      "sosumiURL": "https://sosumi.ai/documentation/Foundation/NSBundleResourceRequest",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Foundation/NSBundleResourceRequest.json"
+    },
+    {
+      "title": "Background Assets",
+      "url": "https://developer.apple.com/documentation/BackgroundAssets",
+      "type": "documentation",
+      "description": "Improve or eliminate the time people wait while your app downloads assets.",
+      "sosumiURL": "https://sosumi.ai/documentation/BackgroundAssets",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/BackgroundAssets.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/110403-meet-background-assets/",
+  "files": {
+    "metadata": "sessions/wwdc2022/110403-meet-background-assets/metadata.json",
+    "readme": "sessions/wwdc2022/110403-meet-background-assets/README.md",
+    "transcript": "sessions/wwdc2022/110403-meet-background-assets/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/110403-meet-background-assets/transcript.json"
+  }
+}

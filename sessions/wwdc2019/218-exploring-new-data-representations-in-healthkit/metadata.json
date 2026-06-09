@@ -1,0 +1,69 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-218",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 218,
+  "title": "Exploring New Data Representations in HealthKit",
+  "description": "Discover how HealthKit is enriching and expanding the health data types available to the users of your app. Learn about modern storage for high-frequency health data types, accessing beat-to-beat heart rate data, and how to bring an entire new dimension of health to your users with new support for hearing health.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/218",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/218",
+  "type": "Video",
+  "publishedAt": "2019-06-05T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Health & Fitness"
+  ],
+  "primaryTopic": "Health & Fitness",
+  "duration": 2047,
+  "hasTranscript": true,
+  "transcriptWordCount": 5467,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/218cnjfazt0v1am/218/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/218cnjfazt0v1am/218/218_sd_exploring_new_data_representations_in_healthkit.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/218cnjfazt0v1am/218/218_hd_exploring_new_data_representations_in_healthkit.mp4",
+    "duration": 2047
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Reading and Writing HealthKit Series Data",
+      "url": "https://developer.apple.com/documentation/HealthKit/reading-and-writing-healthkit-series-data",
+      "type": "samplecode",
+      "description": "Share and read heartbeat and quantity series data using series builders and queries.",
+      "sosumiURL": "https://sosumi.ai/documentation/HealthKit/reading-and-writing-healthkit-series-data",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HealthKit/reading-and-writing-healthkit-series-data.json"
+    },
+    {
+      "title": "HealthKit",
+      "url": "https://developer.apple.com/documentation/HealthKit",
+      "type": "documentation",
+      "description": "Access and share health and fitness data while maintaining the user’s privacy and control.",
+      "sosumiURL": "https://sosumi.ai/documentation/HealthKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HealthKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/218-exploring-new-data-representations-in-healthkit/",
+  "files": {
+    "metadata": "sessions/wwdc2019/218-exploring-new-data-representations-in-healthkit/metadata.json",
+    "readme": "sessions/wwdc2019/218-exploring-new-data-representations-in-healthkit/README.md",
+    "transcript": "sessions/wwdc2019/218-exploring-new-data-representations-in-healthkit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/218-exploring-new-data-representations-in-healthkit/transcript.json"
+  }
+}

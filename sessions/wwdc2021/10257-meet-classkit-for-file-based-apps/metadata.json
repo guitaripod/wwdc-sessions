@@ -1,0 +1,111 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10257",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10257,
+  "title": "Meet ClassKit for file-based apps",
+  "description": "The ClassKit framework can help surface educational activities within your app to teachers using the Schoolwork app. Discover how you can provide teachers with greater insights into student learning by adopting the latest file-based API to report student progress data within your app. We’ll also show you how to use ClassKit to report out different data types, and how to test your implementation in developer mode.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10257",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10257",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "document",
+    "school"
+  ],
+  "topics": [
+    "Business & Education"
+  ],
+  "primaryTopic": "Business & Education",
+  "duration": 850,
+  "hasTranscript": true,
+  "transcriptWordCount": 2225,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10257/6/1A9F8965-41D7-4A10-A0B1-36FE84E977EE/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10257/6/1A9F8965-41D7-4A10-A0B1-36FE84E977EE/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10257/6/1A9F8965-41D7-4A10-A0B1-36FE84E977EE/downloads/wwdc2021-10257_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10257/6/1A9F8965-41D7-4A10-A0B1-36FE84E977EE/downloads/wwdc2021-10257_hd.mp4",
+    "duration": 850
+  },
+  "codeSnippets": [
+    {
+      "title": "openFile()",
+      "language": "swift",
+      "startTimeSeconds": 445,
+      "code": "func openFile() async throws {\n     // Your existing code for opening a file goes here.\n     let activity = await try CLSDataStore.shared.fetchActivity(for: fileURL)\n     activity.start()\n     await try CLSDataStore.shared.save()\n}"
+    },
+    {
+      "title": "closeFile()",
+      "language": "swift",
+      "startTimeSeconds": 487,
+      "code": "func closeFile() async throws {\n     let activity = await try CLSDataStore.shared.fetchActivity(for: fileURL)\n     let wordCount = activity.primaryActivityItem as? CLSQuantityItem ??\n         CLSQuantityItem(identifier: \"total_word_count\", title: \"Word Count\")\n     wordCount.quantity = currentDocumentWordCount()\n     activity.primaryActivityItem = wordCount\n     activity.progress = progress()\n     activity.stop()\n     await try CLSDataStore.shared.save()\n}"
+    },
+    {
+      "title": "closeFile()2",
+      "language": "swift",
+      "startTimeSeconds": 528,
+      "code": "func closeFile() async throws {\n     let activity = await try CLSDataStore.shared.fetchActivity(for: fileURL)\n     let wordCount = activity.primaryActivityItem as? CLSQuantityItem ??\n         CLSQuantityItem(identifier: \"total_word_count\", title: \"Word Count\")\n     wordCount.quantity = currentDocumentWordCount()\n     activity.primaryActivityItem = wordCount\n     activity.progress = progress()\n     activity.stop()\n     await try CLSDataStore.shared.save()\n}"
+    },
+    {
+      "title": "openFile() BreakPointHit",
+      "language": "swift",
+      "startTimeSeconds": 680,
+      "code": "func openFile() async throws {\n     // Your existing code for opening a file goes here.\n     let activity = await try CLSDataStore.shared.fetchActivity(for: fileURL)\n     activity.start()\n     await try CLSDataStore.shared.save()\n}"
+    },
+    {
+      "title": "closeFile() BreakPointhit",
+      "language": "swift",
+      "startTimeSeconds": 715,
+      "code": "func closeFile() async throws {\n     let activity = await try CLSDataStore.shared.fetchActivity(for: fileURL)\n     let wordCount = activity.primaryActivityItem as? CLSQuantityItem ??\n         CLSQuantityItem(identifier: \"total_word_count\", title: \"Word Count\")\n     wordCount.quantity = currentDocumentWordCount()\n     activity.primaryActivityItem = wordCount\n     activity.progress = progress()\n     activity.stop()\n     await try CLSDataStore.shared.save()\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "fetchActivity(for:completion:)",
+      "url": "https://developer.apple.com/documentation/ClassKit/CLSDataStore/fetchActivity(for:completion:)",
+      "type": "documentation",
+      "description": "Fetches an activity for a given document so you can record progress on the associated task.",
+      "sosumiURL": "https://sosumi.ai/documentation/ClassKit/CLSDataStore/fetchActivity(for:completion:)",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ClassKit/CLSDataStore/fetchActivity(for:completion:).json"
+    },
+    {
+      "title": "Incorporating ClassKit into an Educational App",
+      "url": "https://developer.apple.com/documentation/ClassKit/incorporating-classkit-into-an-educational-app",
+      "type": "samplecode",
+      "description": "Walk through the process of setting up assignments and recording student progress.",
+      "sosumiURL": "https://sosumi.ai/documentation/ClassKit/incorporating-classkit-into-an-educational-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ClassKit/incorporating-classkit-into-an-educational-app.json"
+    },
+    {
+      "title": "ClassKit",
+      "url": "https://developer.apple.com/documentation/ClassKit",
+      "type": "documentation",
+      "description": "Enable teachers to assign activities from your app’s content and to view student progress.",
+      "sosumiURL": "https://sosumi.ai/documentation/ClassKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ClassKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10257-meet-classkit-for-file-based-apps/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10257-meet-classkit-for-file-based-apps/metadata.json",
+    "readme": "sessions/wwdc2021/10257-meet-classkit-for-file-based-apps/README.md",
+    "transcript": "sessions/wwdc2021/10257-meet-classkit-for-file-based-apps/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10257-meet-classkit-for-file-based-apps/transcript.json"
+  }
+}

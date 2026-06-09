@@ -1,0 +1,129 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-375",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 375,
+  "title": "Create high quality images using Image Playground",
+  "description": "Enable high-quality image creation in your app using Image Playground. With a new generative model that runs on Private Cloud Compute, users can make images in virtually any style, including photorealistic, in your app. You can also specify dimensions for use in even more places, and allow people to modify images using natural language descriptions and touch. Explore how to adopt Image Playground, generate images from descriptions and photos, and manage feature availability in your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/375",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/375",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "imagecreator"
+  ],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 851,
+  "hasTranscript": true,
+  "transcriptWordCount": 1729,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/375/4/01104285-3253-4b2d-80c3-0d5cdf95c97e/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/375/4/01104285-3253-4b2d-80c3-0d5cdf95c97e/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/375/4/01104285-3253-4b2d-80c3-0d5cdf95c97e/downloads/wwdc2026-375_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/375/4/01104285-3253-4b2d-80c3-0d5cdf95c97e/downloads/wwdc2026-375_hd.mp4",
+    "duration": 851
+  },
+  "codeSnippets": [
+    {
+      "title": "Adopt Image Playground in SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 328,
+      "code": "// Adopt Image Playground in SwiftUI\n\nfunc imagePlaygroundSheet(\n    isPresented: Binding<Bool>,\n    concepts: [ImagePlaygroundConcept] = [],\n    sourceImage: Image? = nil,\n    onCompletion: @escaping (URL) -> Void,\n    onCancellation: (() -> Void)? = nil\n) -> some View"
+    },
+    {
+      "title": "Add Image Playground sheet with binding to @State",
+      "language": "swift",
+      "startTimeSeconds": 339,
+      "code": "// Adopt Image Playground\n\n@State private var showingPlayground = false\n\nvar body: some View {\n    Button(\"Create image\") {\n        showingPlayground = true\n    }\n    .imagePlaygroundSheet(\n        isPresented: $showingPlayground,\n        onCompletion: { url in\n            var updated = currentCard\n            store.saveImage(url, for: &updated)\n        }\n    )\n}"
+    },
+    {
+      "title": "Seeding the sheet with context from your card",
+      "language": "swift",
+      "startTimeSeconds": 389,
+      "code": "// Seeding the sheet with context from your card\n\nvar concepts: [ImagePlaygroundConcept] {\n    [\n        .text(card.theme),\n        .extracted(from: card.message, title: card.theme),\n    ]\n}\n\nvar body: some View {\n    Button(\"Create image\") {\n        showingPlayground = true\n    }\n    .imagePlaygroundSheet(\n        isPresented: $showingPlayground,\n        concepts: concepts,\n        onCompletion: { url in\n            var updated = card\n            store.saveImage(url, for: &updated)\n        }\n    )\n}"
+    },
+    {
+      "title": "Starting from a reference photo",
+      "language": "swift",
+      "startTimeSeconds": 431,
+      "code": "// Starting from a reference photo\n\n@State private var sourceImage: Image?\n\nvar body: some View {\n    Button(\"Create image\") {\n        showingPlayground = true\n    }\n    .imagePlaygroundSheet(\n        isPresented: $showingPlayground,\n        concepts: concepts,\n        sourceImage: sourceImage,\n        onCompletion: { url in\n            var updated = card\n            store.saveImage(url, for: &updated)\n        }\n    )\n}"
+    },
+    {
+      "title": "Providing a visual suggestion using a drawing",
+      "language": "swift",
+      "startTimeSeconds": 462,
+      "code": "// Providing a visual suggestion using a drawing\n\n@State private var drawing = PKDrawing()\n\nvar concepts: [ImagePlaygroundConcept] {\n    var result: [ImagePlaygroundConcept] = [\n        .text(card.theme),\n        .extracted(from: card.message)\n    ]\n    if !drawing.strokes.isEmpty {\n        result.append(.drawing(drawing))\n    }\n    return result\n}"
+    },
+    {
+      "title": "Adopt Image Playground in UIKit or AppKit",
+      "language": "swift",
+      "startTimeSeconds": 486,
+      "code": "// Adopt Image Playground in UIKit or AppKit\n\nfunc presentViewController() {\n    let viewController = ImagePlaygroundViewController()\n    viewController.concepts = [\n        .text(card.theme),\n        .extracted(from: card.message)\n    ]\n    viewController.delegate = self\n    present(viewController, animated: true)\n}\n\nfunc imagePlaygroundViewController(\n    _ viewController: ImagePlaygroundViewController,\n    didCreateImageAt url: URL\n) {\n    var updated = card\n    store.saveImage(url, for: &updated)\n    dismiss(animated: true)\n}"
+    },
+    {
+      "title": "Size Specification",
+      "language": "swift",
+      "startTimeSeconds": 542,
+      "code": "// Size Specification\n\nvar options: ImagePlaygroundOptions {\n    var options = ImagePlaygroundOptions()\n    options.sizeSpecification = .closest(to: card.format.size)\n    return options\n}\n\nvar body: some View {\n    Button(\"Create image\") { showingPlayground = true }\n        .imagePlaygroundSheet(\n            isPresented: $showingPlayground,\n            concepts: concepts,\n            onCompletion: { url in\n                var updated = card\n                store.saveImage(url, for: &updated)\n            }\n        )\n        .imagePlaygroundOptions(options)\n}"
+    },
+    {
+      "title": "Styles",
+      "language": "swift",
+      "startTimeSeconds": 579,
+      "code": "// Styles\n\nvar options: ImagePlaygroundOptions {\n    var options = ImagePlaygroundOptions()\n    options.sizeSpecification = .closest(to: card.format.size)\n    return options\n}\n\nvar body: some View {\n    Button(\"Create image\") { showingPlayground = true }\n        .imagePlaygroundSheet(\n            isPresented: $showingPlayground,\n            concepts: concepts,\n            onCompletion: { url in\n                var updated = card\n                store.saveImage(url, for: &updated)\n            }\n        )\n        .imagePlaygroundOptions(options)\n        .imagePlaygroundGenerationStyle(\n            pendingStylePreset.defaultStyle,\n            in: pendingStylePreset.allowedStyles\n        )\n}"
+    },
+    {
+      "title": "External Provider Style",
+      "language": "swift",
+      "startTimeSeconds": 627,
+      "code": "// External Provider Style\n\nvar options: ImagePlaygroundOptions {\n    var options = ImagePlaygroundOptions()\n    options.sizeSpecification = .closest(to: card.format.size)\n    return options\n}\n\nvar body: some View {\n    Button(\"Create image\") { showingPlayground = true }\n        .imagePlaygroundSheet(\n            isPresented: $showingPlayground,\n            concepts: concepts,\n            onCompletion: { url in\n                var updated = card\n                store.saveImage(url, for: &updated)\n            }\n        )\n        .imagePlaygroundOptions(options)\n        .imagePlaygroundGenerationStyle(\n            pendingStylePreset.defaultStyle,\n            in: pendingStylePreset.allowedStyles + [.externalProvider]\n        )\n}"
+    },
+    {
+      "title": "Generating an expressive icon for the card thumbnail",
+      "language": "swift",
+      "startTimeSeconds": 662,
+      "code": "// Generating an expressive icon for the card thumbnail\n\n@State private var showingIconPlayground = false\n\nvar body: some View {\n    Button(\"Create icon\") {\n        showingIconPlayground = true\n    }\n    Color.clear\n        .imagePlaygroundSheet(\n            isPresented: $showingIconPlayground,\n            concepts: concepts,\n            onCompletion: { _ in\n            } ,\n            onAdaptiveImageGlyphCreation: { glyph in\n                var updatedCard = card\n                store.saveIcon(glyph, for: &updatedCard)\n            }\n        )\n        .imagePlaygroundGenerationStyle(.emoji, in: [.emoji])\n}"
+    },
+    {
+      "title": "Disabling personalization when it doesn't fit your context",
+      "language": "swift",
+      "startTimeSeconds": 721,
+      "code": "// Disabling personalization when it doesn't fit your context\n\nvar options: ImagePlaygroundOptions {\n    var options = ImagePlaygroundOptions()\n    options.sizeSpecification = .closest(to: card.format.size)\n    options.personalization = .disabled\n    return options\n}"
+    },
+    {
+      "title": "Supports image generation",
+      "language": "swift",
+      "startTimeSeconds": 752,
+      "code": "// Supports image generation\n\n@Environment(\\.supportsImageGeneration)\nprivate var supportsImageGeneration\n\nvar body: some View {\n    NavigationLink(card.recipient) {\n        if supportsImageGeneration {\n            CardEditorView(card: card)\n        }γelse {\n            CardPickerView(card: card)\n        }\n    }\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2026/375-create-high-quality-images-using-image-playground/",
+  "files": {
+    "metadata": "sessions/wwdc2026/375-create-high-quality-images-using-image-playground/metadata.json",
+    "readme": "sessions/wwdc2026/375-create-high-quality-images-using-image-playground/README.md",
+    "transcript": "sessions/wwdc2026/375-create-high-quality-images-using-image-playground/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/375-create-high-quality-images-using-image-playground/transcript.json"
+  }
+}

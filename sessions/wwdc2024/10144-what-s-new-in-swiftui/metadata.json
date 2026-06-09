@@ -1,0 +1,303 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2024-10144",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10144,
+  "title": "What’s new in SwiftUI",
+  "description": "Learn how you can use SwiftUI to build great apps for any Apple platform. Explore a fresh new look and feel for tabs and documents on iPadOS. Improve your window management with new windowing APIs, and gain more control over immersive spaces and volumes in your visionOS apps. We’ll also take you through other exciting refinements that help you make expressive charts, customize and layout text, and so much more.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10144",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10144",
+  "type": "Video",
+  "publishedAt": "2024-06-10T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Essentials",
+    "Spatial Computing",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1393,
+  "hasTranscript": true,
+  "transcriptWordCount": 3455,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10144/4/8A69C683-3259-454B-9F94-5BBE98999A1B/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10144/4/8A69C683-3259-454B-9F94-5BBE98999A1B/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10144/4/8A69C683-3259-454B-9F94-5BBE98999A1B/downloads/wwdc2024-10144_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10144/4/8A69C683-3259-454B-9F94-5BBE98999A1B/downloads/wwdc2024-10144_hd.mp4",
+    "duration": 1393
+  },
+  "codeSnippets": [
+    {
+      "title": "TabView",
+      "language": "swift",
+      "startTimeSeconds": 98,
+      "code": "import SwiftUI\n\nstruct KaraokeTabView: View {\n    @State var customization = TabViewCustomization()\n\n    var body: some View {\n        TabView {\n            Tab(\"Parties\", image: \"party.popper\") {\n                PartiesView(parties: Party.all)\n            }\n            .customizationID(\"karaoke.tab.parties\")\n\n            Tab(\"Planning\", image: \"pencil.and.list.clipboard\") {\n                PlanningView()\n            }\n            .customizationID(\"karaoke.tab.planning\")\n\n            Tab(\"Attendance\", image: \"person.3\") {\n                AttendanceView()\n            }\n            .customizationID(\"karaoke.tab.attendance\")\n\n            Tab(\"Song List\", image: \"music.note.list\") {\n                SongListView()\n            }\n            .customizationID(\"karaoke.tab.songlist\")\n        }\n        .tabViewStyle(.sidebarAdaptable)\n        .tabViewCustomization($customization)\n    }\n}\n\nstruct PartiesView: View {\n    var parties: [Party]\n    var body: some View { Text(\"PartiesView\") }\n}\n\nstruct PlanningView: View {\n    var body: some View { Text(\"PlanningView\") }\n}\n\nstruct AttendanceView: View {\n    var body: some View { Text(\"AttendanceView\") }\n}\n\nstruct SongListView: View {\n    var body: some View { Text(\"SongListView\") }\n}\n\nstruct Party {\n    static var all: [Party] = []\n}\n\n#Preview {\n    KaraokeTabView()\n}"
+    },
+    {
+      "title": "Presentation sizing",
+      "language": "swift",
+      "startTimeSeconds": 148,
+      "code": "import SwiftUI\n\nstruct AllPartiesView: View {\n    @State var showAddSheet: Bool = true\n    var parties: [Party] = []\n\n    var body: some View {\n        PartiesGridView(parties: parties, showAddSheet: $showAddSheet)\n            .sheet(isPresented: $showAddSheet) {\n                AddPartyView()\n                    .presentationSizing(.form)\n            }\n    }\n}\n\nstruct PartiesGridView: View {\n    var parties: [Party]\n    @Binding var showAddSheet: Bool\n\n    var body: some View {\n        Text(\"PartiesGridView\")\n    }\n}\n\nstruct AddPartyView: View {\n    var body: some View {\n        Text(\"AddPartyView\")\n    }\n}\n\nstruct Party {\n    static var all: [Party] = []\n}\n\n#Preview {\n    AllPartiesView()\n}"
+    },
+    {
+      "title": "Zoom transition",
+      "language": "swift",
+      "startTimeSeconds": 159,
+      "code": "import SwiftUI\n\nstruct PartyView: View {\n    var party: Party\n    @Namespace() var namespace\n\n    var body: some View {\n        NavigationLink {\n            PartyDetailView(party: party)\n                .navigationTransition(.zoom(\n                    sourceID: party.id, in: namespace))\n        } label: {\n            Text(\"Party!\")\n        }\n        .matchedTransitionSource(id: party.id, in: namespace)\n    }\n}\n\nstruct PartyDetailView: View {\n    var party: Party\n\n    var body: some View {\n        Text(\"PartyDetailView\")\n    }\n}\n\nstruct Party: Identifiable {\n    var id = UUID()\n    static var all: [Party] = []\n}\n\n#Preview {\n    @Previewable var party: Party = Party()\n    NavigationStack {\n        PartyView(party: party)\n    }\n}"
+    },
+    {
+      "title": "Controls API",
+      "language": "swift",
+      "startTimeSeconds": 198,
+      "code": "import WidgetKit\nimport SwiftUI\n\nstruct StartPartyControl: ControlWidget {\n    var body: some ControlWidgetConfiguration {\n        StaticControlConfiguration(\n            kind: \"com.apple.karaoke_start_party\"\n        ) {\n            ControlWidgetButton(action: StartPartyIntent()) {\n                Label(\"Start the Party!\", systemImage: \"music.mic\")\n                Text(PartyManager.shared.nextParty.name)\n            }\n        }\n    }\n}\n\n// Model code\n\nclass PartyManager {\n    static let shared = PartyManager()\n    var nextParty: Party = Party(name: \"WWDC Karaoke\")\n}\n\nstruct Party {\n    var name: String\n}\n\n// AppIntent\n\nimport AppIntents\n\nstruct StartPartyIntent: AppIntent {\n    static let title: LocalizedStringResource = \"Start the Party\"\n\n    func perform() async throws -> some IntentResult {\n        return .result()\n    }\n}"
+    },
+    {
+      "title": "Function plotting",
+      "language": "swift",
+      "startTimeSeconds": 229,
+      "code": "import SwiftUI\nimport Charts\n\nstruct AttendanceView: View {\n    var body: some View {\n        Chart {\n          LinePlot(x: \"Parties\", y: \"Guests\") { x in\n            pow(x, 2)\n          }\n          .foregroundStyle(.purple)\n        }\n        .chartXScale(domain: 1...10)\n        .chartYScale(domain: 1...100)\n    }\n}\n\n#Preview {\n    AttendanceView()\n        .padding(40)\n}"
+    },
+    {
+      "title": "Dynamic table columns",
+      "language": "swift",
+      "startTimeSeconds": 258,
+      "code": "import SwiftUI\n\nstruct SongCountsTable: View {\n\n    var body: some View {\n        Table(Self.guestData) {\n            // A static column for the name\n            TableColumn(\"Name\", value: \\.name)\n\n            TableColumnForEach(Self.partyData) { party in\n                TableColumn(party.name) { guest in\n                    Text(guest.songsSung[party.id] ?? 0, format: .number)\n                }\n            }\n        }\n    }\n\n    private static func randSongsSung(low: Bool = false) -> [Int : Int] {\n        var songs: [Int : Int] = [:]\n        for party in partyData {\n            songs[party.id] = low ? Int.random(in: 0...3) : Int.random(in: 3...12)\n        }\n        return songs\n    }\n\n    private static let guestData: [GuestData] = [\n        GuestData(name: \"Sommer\", songsSung: randSongsSung()),\n        GuestData(name: \"Sam\", songsSung: randSongsSung()),\n        GuestData(name: \"Max\", songsSung: randSongsSung()),\n        GuestData(name: \"Kyle\", songsSung: randSongsSung(low: true)),\n        GuestData(name: \"Matt\", songsSung: randSongsSung(low: true)),\n        GuestData(name: \"Apollo\", songsSung: randSongsSung()),\n        GuestData(name: \"Anna\", songsSung: randSongsSung()),\n        GuestData(name: \"Raj\", songsSung: randSongsSung()),\n        GuestData(name: \"John\", songsSung: randSongsSung(low: true)),\n        GuestData(name: \"Harry\", songsSung: randSongsSung()),\n        GuestData(name: \"Luca\", songsSung: randSongsSung()),\n        GuestData(name: \"Curt\", songsSung: randSongsSung()),\n        GuestData(name: \"Betsy\", songsSung: randSongsSung())\n    ]\n\n    private static let partyData: [PartyData] = [\n        PartyData(partyNumber: 1, numberGuests: 5),\n        PartyData(partyNumber: 2, numberGuests: 6),\n        PartyData(partyNumber: 3, numberGuests: 7),\n        PartyData(partyNumber: 4, numberGuests: 9),\n        PartyData(partyNumber: 5, numberGuests: 9),\n        PartyData(partyNumber: 6, numberGuests: 10),\n        PartyData(partyNumber: 7, numberGuests: 11),\n        PartyData(partyNumber: 8, numberGuests: 12),\n        PartyData(partyNumber: 9, numberGuests: 11),\n        PartyData(partyNumber: 10, numberGuests: 13),\n    ]\n\n}\n\nstruct GuestData: Identifiable {\n    let name: String\n    let songsSung: [Int : Int]\n\n    let id = UUID()\n}\n\nstruct PartyData: Identifiable {\n    let partyNumber: Int\n    let numberGuests: Int\n    let symbolSize = 100\n\n    var id: Int {\n        partyNumber\n    }\n\n    var name: String {\n        \"\\(partyNumber)\"\n    }\n}\n\n#Preview {\n    SongCountsTable()\n        .padding(40)\n}"
+    },
+    {
+      "title": "Mesh gradients",
+      "language": "swift",
+      "startTimeSeconds": 282,
+      "code": "import SwiftUI\n\nstruct MyMesh: View {\n    var body: some View {\n        MeshGradient(\n            width: 3,\n            height: 3,\n            points: [\n                .init(0, 0), .init(0.5, 0), .init(1, 0),\n                .init(0, 0.5), .init(0.3, 0.5), .init(1, 0.5),\n                .init(0, 1), .init(0.5, 1), .init(1, 1)\n            ],\n            colors: [\n                .red, .purple, .indigo,\n                .orange, .cyan, .blue,\n                .yellow, .green, .mint\n            ]\n        )\n    }\n}\n\n#Preview {\n    MyMesh()\n        .statusBarHidden()\n}"
+    },
+    {
+      "title": "Document launch scene",
+      "language": "swift",
+      "startTimeSeconds": 314,
+      "code": "DocumentGroupLaunchScene(\"Your Lyrics\") {\n    NewDocumentButton()\n    Button(\"New Parody from Existing Song\") {\n        // Do something!\n    }\n} background: {\n    PinkPurpleGradient()\n} backgroundAccessoryView: { geometry in\n    MusicNotesAccessoryView(geometry: geometry)\n         .symbolEffect(.wiggle(.rotational.continuous()))\n} overlayAccessoryView: { geometry in\n    MicrophoneAccessoryView(geometry: geometry)\n}"
+    },
+    {
+      "title": "Window styling and default placement",
+      "language": "swift",
+      "startTimeSeconds": 424,
+      "code": "Window(\"Lyric Preview\", id: \"lyricPreview\") {\n    LyricPreview()\n}\n  .windowStyle(.plain)\n  .windowLevel(.floating)\n  .defaultWindowPlacement { content, context in\n      let displayBounds = context.defaultDisplay.visibleRect\n      let contentSize = content.sizeThatFits(.unspecified)\n      return topPreviewPlacement(size: contentSize, bounds: displayBounds)\n  }\n}"
+    },
+    {
+      "title": "Window Drag Gesture",
+      "language": "swift",
+      "startTimeSeconds": 450,
+      "code": "Text(currentLyric)\n    .background(.thinMaterial, in: .capsule)\n    .gesture(WindowDragGesture())"
+    },
+    {
+      "title": "Push window environment action",
+      "language": "swift",
+      "startTimeSeconds": 498,
+      "code": "struct EditorView: View {\n    @Environment(\\.pushWindow) private var pushWindow\n\n    var body: some View {\n        Button(\"Play\", systemImage: \"play.fill\") {\n            pushWindow(id: \"lyric-preview\")\n        }\n    }\n}"
+    },
+    {
+      "title": "Hover effects",
+      "language": "swift",
+      "startTimeSeconds": 527,
+      "code": "struct ProfileButtonStyle: ButtonStyle {\n    func makeBody(configuration: Configuration) -> some View {\n        configuration.label\n            .background(.thinMaterial)\n            .hoverEffect(.highlight)\n            .clipShape(.capsule)\n            .hoverEffect { effect, isActive, _ in\n                effect.scaleEffect(isActive ? 1.05 : 1.0)\n            }\n    }\n}"
+    },
+    {
+      "title": "Modifier key alternates",
+      "language": "swift",
+      "startTimeSeconds": 554,
+      "code": "Button(\"Preview Lyrics in Window\") {\n    // show preview in window\n}\n.modifierKeyAlternate(.option) {\n    Button(\"Preview Lyrics in Full Screen\") {\n        // show preview in full screen\n    }\n}\n.keyboardShortcut(\"p\", modifiers: [.shift, .command])"
+    },
+    {
+      "title": "Responding to modifier keys",
+      "language": "swift",
+      "startTimeSeconds": 572,
+      "code": "var body: some View {\n        LyricLine()\n            .overlay(alignment: .top) {\n                if showBouncingBallAlignment {\n                    // Show bouncing ball alignment guide\n                }\n            }\n            .onModifierKeysChanged(mask: .option) {\n                showBouncingBallAlignment = !$1.isEmpty\n            }\n    }"
+    },
+    {
+      "title": "Pointer customization",
+      "language": "swift",
+      "startTimeSeconds": 595,
+      "code": "ForEach(resizeAnchors) { anchor in\n    ResizeHandle(anchor: anchor)\n         .pointerStyle(.frameResize(position: anchor.position))\n}"
+    },
+    {
+      "title": "Pencil squeeze gesture",
+      "language": "swift",
+      "startTimeSeconds": 623,
+      "code": "@Environment(\\.preferredPencilSqueezeAction) var preferredAction\n\nvar body: some View {\n    LyricsEditorView()\n        .onPencilSqueeze { phase in\n            if preferredAction == .showContextualPalette, case let .ended(value) = phase {\n                if let anchorPoint = value.hoverPose?.anchor {\n                    lyricDoodlePaletteAnchor = .point(anchorPoint)\n                }\n                lyricDoodlePalettePresented = true\n            }\n       }"
+    },
+    {
+      "title": "Custom containers",
+      "language": "swift",
+      "startTimeSeconds": 793,
+      "code": "struct DisplayBoard<Content: View>: View {\n  @ViewBuilder var content: Content\n\n  var body: some View {\n    DisplayBoardCardLayout {\n      ForEach(subviewOf: content) { subview in\n        CardView {\n          subview\n        }\n      }\n    }\n    .background { BoardBackgroundView() }\n  }\n}\n\nDisplayBoard {\n  Text(\"Scrolling in the Deep\")\n  Text(\"Born to Build & Run\")\n  Text(\"Some Body Like View\")\n\n  ForEach(songsFromSam) { song in\n    Text(song.title)\n  }\n}"
+    },
+    {
+      "title": "Custom containers with sectioning",
+      "language": "swift",
+      "startTimeSeconds": 815,
+      "code": "DisplayBoard {\n  Section(\"Matt's Favorites\") {\n    Text(\"Scrolling in the Deep\")\n    Text(\"Born to Build & Run\")\n    Text(\"Some Body Like View\")\n      .displayBoardCardRejected(true)\n  }\n\tSection(\"Sam's Favorites\") {\n    ForEach(songsFromSam) { song in\n      Text(song.title)\n    }\n  }\n}"
+    },
+    {
+      "title": "Entry macro",
+      "language": "swift",
+      "startTimeSeconds": 832,
+      "code": "extension EnvironmentValues {\n  @Entry var karaokePartyColor: Color = .purple\n}\n\nextension FocusValues {\n  @Entry var lyricNote: String? = nil\n}\n\nextension Transaction {\n  @Entry var animatePartyIcons: Bool = false\n}\n\nextension ContainerValues {\n  @Entry var displayBoardCardStyle: DisplayBoardCardStyle = .bordered\n}"
+    },
+    {
+      "title": "Default accessibility label augmentation",
+      "language": "swift",
+      "startTimeSeconds": 852,
+      "code": "SongView(song)\n  .accessibilityElement(children: .combine)\n  .accessibilityLabel { label in\n    if let rating = song.rating {\n      Text(rating)\n    }\n    label\n  }"
+    },
+    {
+      "title": "Previewable",
+      "language": "swift",
+      "startTimeSeconds": 892,
+      "code": "#Preview {\n   @Previewable @State var showAllSongs = true\n   Toggle(\"Show All songs\", isOn: $showAllSongs)\n}"
+    },
+    {
+      "title": "Programatic text selection",
+      "language": "swift",
+      "startTimeSeconds": 906,
+      "code": "struct LyricView: View {\n  @State private var selection: TextSelection?\n\n  var body: some View {\n    TextField(\"Line \\(line.number)\", text: $line.text, selection: $selection)\n    // ...\n  }\n}"
+    },
+    {
+      "title": "Getting selected ranges",
+      "language": "swift",
+      "startTimeSeconds": 919,
+      "code": "InspectorContent(text: line.text, ranges: selection?.ranges)"
+    },
+    {
+      "title": "Binding to search field focus state",
+      "language": "swift",
+      "startTimeSeconds": 929,
+      "code": "// Binding to search field focus state\n\nstruct SongSearchView: View {\n  @FocusState private var isSearchFieldFocused: Bool\n\n  @State private var searchText = \"\"\n  @State private var isPresented = false\n\n  var body: some View {\n    NavigationSplitView {\n      Text(\"Power Ballads\")\n      Text(\"Show Tunes\")\n    } detail: {\n      // ...\n      if !isSearchFieldFocused {\n        Button(\"Find another song\") {\n          isSearchFieldFocused = true\n        }\n      }\n    }\n    .searchable(text: $searchText, isPresented: $isPresented)\n    .searchFocused($isSearchFieldFocused)\n  }\n}"
+    },
+    {
+      "title": "Text suggestions",
+      "language": "swift",
+      "startTimeSeconds": 941,
+      "code": "TextField(\"Line \\(line.number)\", text: $line.text)\n  .textInputSuggestions {\n    ForEach(lyricCompletions) {\n      Text($0.attributedCompletion)\n        .textInputCompletion($0.text)\n    }\n  }"
+    },
+    {
+      "title": "Color mixing",
+      "language": "swift",
+      "startTimeSeconds": 959,
+      "code": "Color.red.mix(with: .purple, by: 0.2)\nColor.red.mix(with: .purple, by: 0.5)\nColor.red.mix(with: .purple, by: 0.8)"
+    },
+    {
+      "title": "Custom shaders",
+      "language": "swift",
+      "startTimeSeconds": 973,
+      "code": "ContentView()\n  .task {\n    let slimShader = ShaderLibrary.slim()\n    try! await slimShader.compile(as: .layerEffect)\n  }"
+    },
+    {
+      "title": "React to scroll geometry changes",
+      "language": "swift",
+      "startTimeSeconds": 983,
+      "code": "struct ContentView: View {\n  @State private var showBackButton = false\n\n  ScrollView {\n    // ...\n  }\n  .onScrollGeometryChange(for: Bool.self) { geometry in\n    geometry.contentOffset.y < geometry.contentInsets.top\n  } action: { wasScrolledToTop, isScrolledToTop in\n    withAnimation {\n      showBackButton = !isScrolledToTop\n    }\n  }\n}"
+    },
+    {
+      "title": "React to scroll visibility changes",
+      "language": "swift",
+      "startTimeSeconds": 1002,
+      "code": "struct AutoPlayingVideo: View {\n  @State private var player: AVPlayer = makePlayer()\n\n  var body: some View {\n    VideoPlayer(player: player)\n      .onScrollVisibilityChange(threshold: 0.2) { visible in\n        if visible {\n          player.play()\n        } else {\n          player.pause()\n        }\n      }\n  }\n}"
+    },
+    {
+      "title": "New scroll positions",
+      "language": "swift",
+      "startTimeSeconds": 1014,
+      "code": "struct ContentView: View {\n  @State private var position: ScrollPosition =\n    .init(idType: Int.self)\n\n  var body: some View {\n    ScrollView {\n      // ... \n    }\n    .scrollPosition($position)\n    .overlay {\n      FloatingButton(\"Back to Invitation\") {\n        position.scrollTo(edge: .top)\n      }\n    }\n  }\n}"
+    },
+    {
+      "title": "Gesture interoperability",
+      "language": "swift",
+      "startTimeSeconds": 1097,
+      "code": "struct VideoThumbnailScrubGesture: UIGestureRecognizerRepresentable {\n  @Binding var progress: Double\n\n  func makeUIGestureRecognizer(context: Context) -> VideoThumbnailScrubGestureRecognizer {\n    VideoThumbnailScrubGestureRecognizer()\n  }\n\n  func handleUIGestureRecognizerAction(\n    _ recognizer: VideoThumbnailScrubGestureRecognizer, context: Context\n  ) {\n    progress = recognizer.progress\n  }\n}\n\nstruct VideoThumbnailTile: View {\n  var body: some View {\n    VideoThumbnail()\n      .gesture(VideoThumbnailScrubGesture(progress: $progress))\n  }\n}"
+    },
+    {
+      "title": "SwiftUI animations in UIKit and AppKit",
+      "language": "swift",
+      "startTimeSeconds": 1114,
+      "code": "let animation = SwiftUI.Animation.spring(duration: 0.8)\n\n// UIKit\nUIView.animate(animation) {\n    view.center = endOfBracelet\n}\n\n// AppKit\nNSAnimationContext.animate(animation) {\n    view.center = endOfBracelet\n}"
+    },
+    {
+      "title": "Representable animation bridging",
+      "language": "swift",
+      "startTimeSeconds": 1137,
+      "code": "struct BeadBoxWrapper: UIViewRepresentable {\n  @Binding var isOpen: Bool\n\n  func updateUIView(_ box: BeadBox, context: Context) {\n\t\tcontext.animate {\n\t\t  box.lid.center.y = isOpen ? -100 : 100\n\t\t}\n  }\n}"
+    },
+    {
+      "title": "Volume baseplate visibility",
+      "language": "swift",
+      "startTimeSeconds": 1199,
+      "code": "struct KaraokePracticeApp: App {\n  var body: some Scene {\n    WindowGroup {\n      ContentView()\n    }\n    .windowStyle(.volumetric)\n    .defaultWorldScaling(.trueScale)\n    .volumeBaseplateVisibility(.hidden)\n  }\n}"
+    },
+    {
+      "title": "React to volume viewpoint changes",
+      "language": "swift",
+      "startTimeSeconds": 1215,
+      "code": "struct MicrophoneView: View {\n @State var micRotation: Rotation3D = .identity\n\n  var body: some View {\n    Model3D(named: \"microphone\")\n      .onVolumeViewpointChange { _, new in\n        micRotation = rotateToFace(new)\n      }\n      .rotation3DEffect(micRotation)\n      .animation(.easeInOut, value: micRotation)\n  } \n}"
+    },
+    {
+      "title": "Control allowed immersion levels",
+      "language": "swift",
+      "startTimeSeconds": 1238,
+      "code": "struct KaraokeApp: App {\n  @State private var immersion: ImmersionStyle = .progressive(\n    0.4...1.0, initialAmount: 0.5)\n\n  var body: some Scene {\n    ImmersiveSpace(id: \"Karaoke\") {\n      LoungeView()\n    }\n    .immersionStyle(selection: $immersion, in: immersion)\n   }\n}"
+    },
+    {
+      "title": "Preferred surrounding effects",
+      "language": "swift",
+      "startTimeSeconds": 1260,
+      "code": "struct LoungeView: View {\n  var body: some View {\n    StageView()\n      .preferredSurroundingsEffect(.colorMultiply(.purple))\n  }\n}"
+    },
+    {
+      "title": "Custom text renderers",
+      "language": "swift",
+      "startTimeSeconds": 1293,
+      "code": "struct KaraokeRenderer: TextRenderer {\n  func draw(\n    layout: Text.Layout,\n    in context: inout GraphicsContext\n  ) {\n    for line in layout {\n      for run in line {\n        var glow = context\n\n        glow.addFilter(.blur(radius: 8))\n        glow.addFilter(purpleColorFilter)\n\n        glow.draw(run)\n        context.draw(run)\n      }\n    }\n  }\n}\n\nstruct LyricsView: View {\n  var body: some View {\n    Text(\"A Whole View World\")\n      .textRenderer(KaraokeRenderer())\n  }\n}\n\n#Preview {\n  LyricsView()\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "SwiftUI updates",
+      "url": "https://developer.apple.com/documentation/Updates/SwiftUI",
+      "type": "documentation",
+      "description": "Learn about important changes to SwiftUI.",
+      "sosumiURL": "https://sosumi.ai/documentation/Updates/SwiftUI",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Updates/SwiftUI.json"
+    },
+    {
+      "title": "Forum: UI Frameworks",
+      "url": "https://developer.apple.com/forums/topics/ui-frameworks?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/ui-frameworks?cid=vf-a-0010"
+    }
+  ],
+  "path": "sessions/wwdc2024/10144-what-s-new-in-swiftui/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10144-what-s-new-in-swiftui/metadata.json",
+    "readme": "sessions/wwdc2024/10144-what-s-new-in-swiftui/README.md",
+    "transcript": "sessions/wwdc2024/10144-what-s-new-in-swiftui/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10144-what-s-new-in-swiftui/transcript.json"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-707",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 707,
+  "title": "Advances in App Background Execution",
+  "description": "Background execution is a powerful tool your app can leverage to provide a great user experience. Learn about best practices to follow when running in the background, especially if you use VoIP or silent pushes, and an all-new scheduling API that enables long running processing and maintenance tasks.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/707",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/707",
+  "type": "Video",
+  "publishedAt": "2019-06-05T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "background",
+    "battery",
+    "performance",
+    "power"
+  ],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 2347,
+  "hasTranscript": true,
+  "transcriptWordCount": 6784,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/707smbqns2s4u1v49bn/707/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/707smbqns2s4u1v49bn/707/707_sd_advances_in_app_background_execution.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/707smbqns2s4u1v49bn/707/707_hd_advances_in_app_background_execution.mp4",
+    "duration": 2347
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Refreshing and Maintaining Your App Using Background Tasks",
+      "url": "https://developer.apple.com/documentation/BackgroundTasks/refreshing-and-maintaining-your-app-using-background-tasks",
+      "type": "samplecode",
+      "description": "Use scheduled background tasks for refreshing your app content and for performing maintenance.",
+      "sosumiURL": "https://sosumi.ai/documentation/BackgroundTasks/refreshing-and-maintaining-your-app-using-background-tasks",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/BackgroundTasks/refreshing-and-maintaining-your-app-using-background-tasks.json"
+    },
+    {
+      "title": "Background Tasks",
+      "url": "https://developer.apple.com/documentation/BackgroundTasks",
+      "type": "documentation",
+      "description": "Support background processing in your app by wrapping your app’s most critical work in framework-provided tasks.",
+      "sosumiURL": "https://sosumi.ai/documentation/BackgroundTasks",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/BackgroundTasks.json"
+    },
+    {
+      "title": "pushRegistry(_:didReceiveIncomingPushWith:for:completion:)",
+      "url": "https://developer.apple.com/documentation/PushKit/PKPushRegistryDelegate/pushRegistry(_:didReceiveIncomingPushWith:for:completion:)",
+      "type": "documentation",
+      "description": "Tells the delegate that a remote push notification arrived.",
+      "sosumiURL": "https://sosumi.ai/documentation/PushKit/PKPushRegistryDelegate/pushRegistry(_:didReceiveIncomingPushWith:for:completion:)",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/PushKit/PKPushRegistryDelegate/pushRegistry(_:didReceiveIncomingPushWith:for:completion:).json"
+    }
+  ],
+  "path": "sessions/wwdc2019/707-advances-in-app-background-execution/",
+  "files": {
+    "metadata": "sessions/wwdc2019/707-advances-in-app-background-execution/metadata.json",
+    "readme": "sessions/wwdc2019/707-advances-in-app-background-execution/README.md",
+    "transcript": "sessions/wwdc2019/707-advances-in-app-background-execution/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/707-advances-in-app-background-execution/transcript.json"
+  }
+}

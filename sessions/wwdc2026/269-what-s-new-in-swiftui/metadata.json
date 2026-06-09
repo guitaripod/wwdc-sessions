@@ -1,0 +1,282 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-269",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 269,
+  "title": "What’s new in SwiftUI",
+  "description": "Explore the latest additions to SwiftUI and discover how they can improve your apps. We’ll introduce a new Document protocol with direct disk access and snapshot-based diffing for building high-performance apps; new APIs for reordering content in lists, grids, and sections; and toolbar enhancements including visibility priority and auto-minimizing behavior. We’ll also cover expanded presentation APIs — including swipe actions on any view — plus AsyncImage caching improvements and lazy state initialization for Observable types.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/269",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/269",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "screenshots"
+  ],
+  "topics": [
+    "App Services",
+    "Design",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1695,
+  "hasTranscript": true,
+  "transcriptWordCount": 3916,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/269/4/9215cf93-1308-4706-91e8-34d4e40939d1/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/269/4/9215cf93-1308-4706-91e8-34d4e40939d1/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/269/4/9215cf93-1308-4706-91e8-34d4e40939d1/downloads/wwdc2026-269_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/269/4/9215cf93-1308-4706-91e8-34d4e40939d1/downloads/wwdc2026-269_hd.mp4",
+    "duration": 1695
+  },
+  "codeSnippets": [
+    {
+      "title": "appearsActive environment value",
+      "language": "swift",
+      "startTimeSeconds": 200,
+      "code": "struct SidebarFooterView: View {\n    @Environment(\\.appearsActive) private var appearsActive\n\n    var body: some View {\n        MyAccountView()\n            .opacity(appearsActive ? 1 : 0.5)\n    }\n}"
+    },
+    {
+      "title": "Menu icon visibility",
+      "language": "swift",
+      "startTimeSeconds": 214,
+      "code": "CommandMenu(\"Stickers\") {\n    Button { openStore() } label: {\n        Label(\"Store\", systemImage: \"bag.fill\")\n            .labelStyle(.titleAndIcon)\n        }\n    }\n    // Other menu items\n}"
+    },
+    {
+      "title": "Prominent tab role",
+      "language": "swift",
+      "startTimeSeconds": 312,
+      "code": "TabView {\n    Tab { EventsTab() }\n    Tab { HolidaysTab() }\n    Tab { FunTab() }\n\n    Tab(role: .prominent) {\n        CartTab()\n    }\n}"
+    },
+    {
+      "title": "Toolbar item visibility and overflow menu",
+      "language": "swift",
+      "startTimeSeconds": 375,
+      "code": "// Toolbar item visibility priority\n\nStickerPageView()\n    .toolbar {\n        ToolbarItemGroup {\n            UndoButton()\n            RedoButton()\n        }\n        .visibilityPriority(.high)\n        ToolbarOverflowMenu {\n            ChoosePhotoButton()\n            ExportAsImageButton()\n            ClearAllStickersButton()\n        }\n        ToolbarItem(placement: .topBarPinnedTrailing) {\n            ShareButton()\n        }\n    }"
+    },
+    {
+      "title": "Minimize toolbar on scroll with toolbarMinimizeBehavior",
+      "language": "swift",
+      "startTimeSeconds": 457,
+      "code": "// Minimize toolbar when scrolling\n\nScrollView {\n    StickerListView()\n}\n.toolbarMinimizeBehavior(.onScrollDown, for: .navigationBar)"
+    },
+    {
+      "title": "Document creation sources with context parameter",
+      "language": "swift",
+      "startTimeSeconds": 587,
+      "code": "// Use the context to create a document\n\n@main\nstruct Stickers: App {\n    var body: some Scene {\n        DocumentGroupLaunchScene(\"Create a Sticker Page\") {\n            NewDocumentButton(\"New Sticker Page\", source: .blank)\n            NewDocumentButton(\"Sticker Page from Photo…\", source: .photo)\n        }\n\n        DocumentGroup { /* ... */ }\n    }\n}\n\nextension DocumentCreationSource {\n    static let blank = Self(id: \"blank\")\n    static let photo = Self(id: \"photo\")\n}"
+    },
+    {
+      "title": "Use the context to create a document",
+      "language": "swift",
+      "startTimeSeconds": 601,
+      "code": "@main\nstruct Stickers: App {\n    var body: some Scene {\n        DocumentGroupLaunchScene(\"Create a Sticker Page\") {\n            NewDocumentButton(\"New Sticker Page\", source: .blank)\n            NewDocumentButton(\"Sticker Page from Photo…\", source: .photo)\n        }\n\n        DocumentGroup { document in\n            StickerPageDocumentView(document)\n        } { configuration, context in\n            StickerPageDocument(configuration: configuration, context: context)\n        }\n    }\n}"
+    },
+    {
+      "title": "Document app declaration",
+      "language": "swift",
+      "startTimeSeconds": 643,
+      "code": "@main\nstruct Stickers: App {\n    var body: some Scene {\n        DocumentGroup { /* ... */ }\n        WindowGroup { /* ... */ }\n    }\n}"
+    },
+    {
+      "title": "Implement document writing",
+      "language": "swift",
+      "startTimeSeconds": 685,
+      "code": "@Observable\nfinal class StickerDocument {\n    // ...\n}"
+    },
+    {
+      "title": "Implement document writing: list writable formats",
+      "language": "swift",
+      "startTimeSeconds": 694,
+      "code": "@Observable\nfinal class StickerDocument {\n\n    static let writableDocumentTypes: [UTType] = [.stickerDocument]\n\n    // ...\n}\n\nimport UniformTypeIdentifiers\n\nextension UTType {\n    static let stickerDocument = UTType(exportedAs: \"stickerdocument\")\n}"
+    },
+    {
+      "title": "Implement document writing: provide snapshot",
+      "language": "swift",
+      "startTimeSeconds": 705,
+      "code": "@Observable\nfinal class StickerDocument {\n\n    static let writableDocumentTypes: [UTType] = [.stickerDocument]\n\n    @MainActor\n    func snapshot(contentType: UTType) async throws -> sending PageSnapshot { /* ... */ }\n\n    // ...\n}"
+    },
+    {
+      "title": "Implement document writing: represent the snapshot",
+      "language": "swift",
+      "startTimeSeconds": 714,
+      "code": "struct PageSnapshot {\n    var background: Image\n    var metadata: StickerPlacements\n    var stickers: [Image]\n}\n\nstruct StickerPlacements { /* ... */ }"
+    },
+    {
+      "title": "Implement document writing: provide a DocumentWriter",
+      "language": "swift",
+      "startTimeSeconds": 733,
+      "code": "@Observable\nfinal class StickerDocument {\n\n    static let writableDocumentTypes: [UTType] = [.stickerDocument]\n\n    @MainActor\n    func snapshot(contentType: UTType) async throws -> sending PageSnapshot {\n        makeSnapshot()\n    }\n\n    func writer(configuration: sending WriteConfiguration) -> sending Writer {\n        Writer(contentType: configuration.contentType)\n    }\n}"
+    },
+    {
+      "title": "DocumentWriter: Snapshot",
+      "language": "swift",
+      "startTimeSeconds": 753,
+      "code": "struct Writer<Snapshot>: DocumentWriter {\n    typealias Snapshot = PageSnapshot\n\n    // ...\n}"
+    },
+    {
+      "title": "DocumentWriter: PageSnapshot as Snapshot",
+      "language": "swift",
+      "startTimeSeconds": 756,
+      "code": "struct Writer<Snapshot>: DocumentWriter {\n    typealias Snapshot = PageSnapshot\n\n    let contentType: UTType\n\n    // ...\n}"
+    },
+    {
+      "title": "DocumentWriter protocol implementation",
+      "language": "swift",
+      "startTimeSeconds": 762,
+      "code": "struct Writer<Snapshot>: DocumentWriter {\n    typealias Snapshot = PageSnapshot\n\n    let contentType: UTType\n\n    nonisolated func write(\n        snapshot: sending PageSnapshot, to destination: URL,\n        previous: sending PageSnapshot?, progress: consuming Subprogress\n    ) async throws {\n        // write .stickerDocument\n    }\n}"
+    },
+    {
+      "title": "Progress reporting during writing",
+      "language": "swift",
+      "startTimeSeconds": 798,
+      "code": "struct Writer<Snapshot>: DocumentWriter {\n    typealias Snapshot = PageSnapshot\n\n    let contentType: UTType\n\n    nonisolated func write(\n        snapshot: sending PageSnapshot, to destination: URL,\n        previous: sending PageSnapshot?, progress: consuming Subprogress\n    ) async throws {\n        // report progress…\n        // write .stickerDocument\n    }\n}"
+    },
+    {
+      "title": "Implement document reading with ReadableDocument protocol",
+      "language": "swift",
+      "startTimeSeconds": 807,
+      "code": "extension StickerDocument: ReadableDocument {\n\n}"
+    },
+    {
+      "title": "Add PNG to supported formats list",
+      "language": "swift",
+      "startTimeSeconds": 875,
+      "code": "@Observable\nfinal class StickerDocument: WritableDocument {\n\n    static let writableContentTypes: [UTType] = [.stickerDocument, .png]\n}"
+    },
+    {
+      "title": "Add content type checks",
+      "language": "swift",
+      "startTimeSeconds": 888,
+      "code": "struct Writer<Snapshot>: DocumentWriter {\n    typealias Snapshot = PageSnapshot\n\n    let contentType: UTType\n\n    nonisolated func write(\n        snapshot: sending PageSnapshot, to destination: URL,\n        previous: sending PageSnapshot?, progress: consuming Subprogress\n    ) async throws {\n        if contentType.conforms(to: .stickerDocument) {\n            // write .stickerDocument\n        } else if contentType.conforms(to: .png)\n\n    }\n}"
+    },
+    {
+      "title": "Writing multiple formats including PNG",
+      "language": "swift",
+      "startTimeSeconds": 896,
+      "code": "struct Writer<Snapshot>: DocumentWriter {\n    typealias Snapshot = PageSnapshot\n\n    let contentType: UTType\n\n    nonisolated func write(\n        snapshot: sending PageSnapshot, to destination: URL, \n        previous: sending PageSnapshot?, progress: consuming Subprogress\n    ) async throws {\n        if contentType.conforms(to: .stickerDocument) {  \n            // write .stickerDocument\n        } else if contentType.conforms(to: .png) {\n            let context = CGContext(/* ... */) \n            context.draw(/* ... */)\n        }\n    }\n}"
+    },
+    {
+      "title": "Reorderable list with reorderContainer",
+      "language": "swift",
+      "startTimeSeconds": 958,
+      "code": "List {\n    ForEach(stickers) { sticker in\n        StickerListItemView(sticker: sticker)\n    }\n    .reorderable()\n}\n.reorderContainer(for: Sticker.self) { difference in\n    difference.apply(to: &stickers)\n}"
+    },
+    {
+      "title": "Apply changes to a reorderable list's data source",
+      "language": "swift",
+      "startTimeSeconds": 974,
+      "code": "import OrderedCollections // from https://github.com/apple/swift-collections\n\nextension ReorderDifference where CollectionID == ReorderableSingleCollectionIdentifier {\n    func apply(to values: inout [some Identifiable<ItemID>]) {\n        var dictionary = OrderedDictionary(uniqueKeys: values.map { $0.id }, values: values)\n        let destinationOffset: Int? = switch destination.position {\n        case .before(let destination):\n            dictionary.keys.firstIndex(of: destination)\n        case .end:\n            nil\n        }\n        dictionary.move(keys: sources, to: destinationOffset ?? values.endIndex)\n        values = dictionary.values.elements\n    }\n}"
+    },
+    {
+      "title": "Reorderable grid with LazyVGrid",
+      "language": "swift",
+      "startTimeSeconds": 1008,
+      "code": "LazyVGrid {\n    ForEach(stickers) { sticker in\n        StickerListItemView(sticker: sticker)\n    }\n    .reorderable()\n}\n.reorderContainer(for: Sticker.self) { difference in\n    difference.apply(to: &stickers)\n}"
+    },
+    {
+      "title": "Swipe actions on List",
+      "language": "swift",
+      "startTimeSeconds": 1092,
+      "code": "List {\n    ForEach(stickers) { sticker in\n        StickerListItemView(sticker: sticker)\n            .swipeActions {\n                DeleteButton(sticker: sticker)\n            }\n    }\n}"
+    },
+    {
+      "title": "Swipe actions on any view",
+      "language": "swift",
+      "startTimeSeconds": 1095,
+      "code": "ScrollView {\n    LazyVStack {\n        ForEach(stickers) { sticker in\n            StickerListItemView(sticker: sticker)\n                .swipeActions {\n                    DeleteButton(sticker: sticker)\n                }\n        }\n    }\n}\n.swipeActionsContainer()"
+    },
+    {
+      "title": "Confirmation dialog with item binding",
+      "language": "swift",
+      "startTimeSeconds": 1134,
+      "code": "struct StickerCanvasView: View {\n    var stickers: [Sticker]\n    @State private var stickerToDelete: Sticker?\n\n    var body: some View {\n        ZStack {\n            ForEach(stickers) { sticker in\n                PlacedStickerView(sticker: sticker)\n                    .contextMenu {\n                        // ...\n                    }\n            }\n        }\n        .confirmationDialog(\n            \"Delete?\", item: $stickerToDelete\n        ) { sticker in\n            DeleteStickerButton(sticker)\n        }   \n    }\n}"
+    },
+    {
+      "title": "Alert with item binding",
+      "language": "swift",
+      "startTimeSeconds": 1175,
+      "code": "struct StickerCanvasView: View {\n    var stickers: [Sticker]\n    @State private var stickerToDelete: Sticker?\n\n    var body: some View {\n        ZStack {\n            ForEach(stickers) { sticker in\n                PlacedStickerView(sticker: sticker)\n                    .contextMenu {\n                        // ...\n                    }\n            }\n        }\n        .alert(\n            \"Delete?\", item: $stickerToDelete\n        ) { sticker in\n            DeleteStickerButton(sticker)\n        }   \n    }\n}"
+    },
+    {
+      "title": "AsyncImage with URLRequest and custom URLSession",
+      "language": "swift",
+      "startTimeSeconds": 1278,
+      "code": "@Observable class StickerStore {\n    static let imageSession: URLSession = {\n        let config = URLSessionConfiguration.default\n        config.urlCache = URLCache(\n            memoryCapacity: 64 * 1024 * 1024,\n            diskCapacity: 256 * 1024 * 1024)\n        return URLSession(configuration: config)\n    }()\n}\n\nForEach(pets) { pet in\n    AsyncImage(request: URLRequest(\n        url: pet.imageURL,\n        cachePolicy: .returnCacheDataElseLoad)\n    )\n}\n.asyncImageURLSession(StickerStore.imageSession)"
+    },
+    {
+      "title": "@State converted to macro for lazy initialization",
+      "language": "swift",
+      "startTimeSeconds": 1388,
+      "code": "@Observable class StickerStore { }\n\nstruct StickerStoreView: View {\n    // store is now lazily initialized, only\n    // created once for the lifetime of the view\n    @State private var store = StickerStore()\n\n    var body: some View {\n        // ...\n    }\n}"
+    },
+    {
+      "title": "@State macro init assignment error",
+      "language": "swift",
+      "startTimeSeconds": 1428,
+      "code": "struct StickerPageView: View {\n    @State private var page = StickerPage()\n    let title: String\n\n    init(title: String) {\n        self.page = StickerPage(title: title) // Variable 'self.title' used before being initialized\n        self.title = title\n    }\n\n    var body: some View {\n        // ...\n    }\n}"
+    },
+    {
+      "title": "Fixed @State macro init assignment error",
+      "language": "swift",
+      "startTimeSeconds": 1442,
+      "code": "struct StickerPageView: View {\n    @State private var page: StickerPage // Removed default value to fix error\n    let title: String\n\n    init(title: String) {\n        self.page = StickerPage(title: title)\n        self.title = title\n    }\n\n    var body: some View {\n        // ...\n    }\n}"
+    },
+    {
+      "title": "@ContentBuilder",
+      "language": "swift",
+      "startTimeSeconds": 1567,
+      "code": "@ContentBuilder\nfunc stickerLibraryView() -> some View {\n  // ...\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "State()",
+      "url": "https://developer.apple.com/documentation/SwiftUI/State()",
+      "type": "documentation",
+      "description": "Creates a property that can read and write a value managed by SwiftUI.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/State()",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/State().json"
+    },
+    {
+      "title": "ContentBuilder",
+      "url": "https://developer.apple.com/documentation/SwiftUI/ContentBuilder",
+      "type": "documentation",
+      "description": "A custom parameter attribute that constructs views and other content types",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/ContentBuilder",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/ContentBuilder.json"
+    },
+    {
+      "title": "Swift Collections on GitHub",
+      "url": "https://github.com/apple/swift-collections",
+      "type": "documentation",
+      "description": "GitHub repository for the Swift Collections package."
+    }
+  ],
+  "path": "sessions/wwdc2026/269-what-s-new-in-swiftui/",
+  "files": {
+    "metadata": "sessions/wwdc2026/269-what-s-new-in-swiftui/metadata.json",
+    "readme": "sessions/wwdc2026/269-what-s-new-in-swiftui/README.md",
+    "transcript": "sessions/wwdc2026/269-what-s-new-in-swiftui/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/269-what-s-new-in-swiftui/transcript.json"
+  }
+}

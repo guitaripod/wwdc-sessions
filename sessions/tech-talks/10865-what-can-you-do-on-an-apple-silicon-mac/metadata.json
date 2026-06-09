@@ -1,0 +1,48 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-10865",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2020,
+  "eventContentId": 10865,
+  "title": "What can you do on an Apple silicon Mac?",
+  "description": "Learn how developers updated their apps for Apple silicon Macs and began taking advantage of the advanced capabilities of the Apple M1 chip.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/10865",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10865",
+  "type": "Video",
+  "publishedAt": "2020-11-10T13:00:00-08:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 154,
+  "hasTranscript": true,
+  "transcriptWordCount": 445,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/10865/1/6E98E40E-D103-4F4F-A64D-5C27D6C53AD2/tech-talks-10865.m3u8",
+    "duration": 154
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/tech-talks/10865-what-can-you-do-on-an-apple-silicon-mac/",
+  "files": {
+    "metadata": "sessions/tech-talks/10865-what-can-you-do-on-an-apple-silicon-mac/metadata.json",
+    "readme": "sessions/tech-talks/10865-what-can-you-do-on-an-apple-silicon-mac/README.md",
+    "transcript": "sessions/tech-talks/10865-what-can-you-do-on-an-apple-silicon-mac/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/10865-what-can-you-do-on-an-apple-silicon-mac/transcript.json"
+  }
+}

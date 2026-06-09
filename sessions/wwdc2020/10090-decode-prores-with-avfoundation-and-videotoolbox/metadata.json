@@ -1,0 +1,128 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10090",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10090,
+  "title": "Decode ProRes with AVFoundation and VideoToolbox",
+  "description": "Make decoding and displaying ProRes content easier in your Mac app: Learn how to implement an optimal graphics pipeline by leveraging AVFoundation and VideoToolbox’s decoding capabilities. We’ll share best practices and performance considerations for your app, show you how to integrate Afterburner cards into your pipeline, and walk through how you can display decoded frames using Metal.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10090",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10090",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [
+    "av foundation",
+    "metal",
+    "performance",
+    "prores",
+    "video"
+  ],
+  "topics": [
+    "Developer Tools",
+    "Graphics & Games",
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 1420,
+  "hasTranscript": true,
+  "transcriptWordCount": 3318,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10090/6/EA16694F-BEEC-44FF-A129-12336E5390B9/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10090/6/EA16694F-BEEC-44FF-A129-12336E5390B9/wwdc2020_10090_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10090/6/EA16694F-BEEC-44FF-A129-12336E5390B9/wwdc2020_10090_hd.mp4",
+    "duration": 1420
+  },
+  "codeSnippets": [
+    {
+      "title": "Creating an AVAssetReader is pretty easy",
+      "language": "objectivec",
+      "startTimeSeconds": 461,
+      "code": "// Constructing an AVAssetReader\n\n// Create an AVAsset with an URL pointing at a local asset\nAVAsset *sourceMovieAsset = [AVAsset assetWithURL:sourceMovieURL];\n\n// Create an AVAssetReader for the asset\nAVAssetReader *assetReader = [AVAssetReader assetReaderWithAsset:sourceMovieAsset \n                                                           error:&error];"
+    },
+    {
+      "title": "// Configuring AVAssetReaderTrackOutput",
+      "language": "objectivec",
+      "startTimeSeconds": 478,
+      "code": "// Configuring AVAssetReaderTrackOutput\n\n// Copy the array of video tracks from the source movie\nNSArray<AVAssetTrack*>  *tracks = [sourceMovieAsset tracksWithMediaType:AVMediaTypeVideo];\n\n// Get the first video track\nAVAssetTrack *track = [sourceMovieVideoTracks objectAtIndex:0];\n\n// Create the asset reader track output for this video track, requesting ‘y416’ output\nNSDictionary *outputSettings = @{ (id)kCVPixelBufferPixelFormatTypeKey :\n                                  @(kCVPixelFormatType_4444AYpCbCr16) };\n\nAVAssetReaderTrackOutput* assetReaderTrackOutput\n= [AVAssetReaderTrackOutput assetReaderTrackOutputWithTrack:track\n                                             outputSettings:outputSettings];\n\n// Set the property to instruct the track output to return the samples \n// without copying them\nassetReaderTrackOutput.alwaysCopiesSampleData = NO;\n\n// Connect the the AVAssetReaderTrackOutput to the AVAssetReader\n[assetReader addOutput:assetReaderTrackOutput];"
+    },
+    {
+      "title": "Running AVAssetReader",
+      "language": "objectivec",
+      "startTimeSeconds": 537,
+      "code": "// Running AVAssetReader\n\nBOOL success = [assetReader startReading];\n\nif (success) {\n   CMSampleBufferRef sampleBuffer = NULL;\n\n   // output is a AVAssetReaderOutput\n   while ((sampleBuffer = [output copyNextSampleBuffer]))\n   {\n       CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);\n\n       if (imageBuffer)\n       {\n          // Use the image buffer here\n          // if imageBuffer is NULL, this is likely a marker sampleBuffer\n       }\n    }\n}"
+    },
+    {
+      "title": "Prepareing CMSampleBuffers for optimized RPC transfer",
+      "language": "objectivec",
+      "startTimeSeconds": 700,
+      "code": "AVAssetReaderTrackOutput* assetReaderTrackOutput\n= [AVAssetReaderTrackOutput assetReaderTrackOutputWithTrack:track\n                                             outputSettings:nil];"
+    },
+    {
+      "title": "How an AVSampleBufferGenerator is created",
+      "language": "objectivec",
+      "startTimeSeconds": 744,
+      "code": "AVSampleCursor* cursor = [assetTrack makeSampleCursorAtFirstSampleInDecodeOrder];\n\nAVSampleBufferRequest* request = [[AVSampleBufferRequest alloc] initWithStartCursor:cursor];\n\nrequest.direction = AVSampleBufferRequestDirectionForward;\nrequest.preferredMinSampleCount = 1;\nrequest.maxSampleCount = 1;\n\nAVSampleBufferGenerator* generator\n= [[AVSampleBufferGenerator alloc] initWithAsset:srcAsset timebase:nil];\n\nBOOL notDone = YES;\n\nwhile(notDone)\n{\n   CMSampleBufferRef sampleBuffer = [generator createSampleBufferForRequest:request];\n\n   // do your thing with the sampleBuffer\n\n   [cursor stepInDecodeOrderByCount:1];\n}"
+    },
+    {
+      "title": "Pack your sample data into a CMBlockBuffer",
+      "language": "objectivec",
+      "startTimeSeconds": 820,
+      "code": "CMBlockBufferCreateWithMemoryBlock(kCFAllocatorDefault, sampleData, sizeof(sampleData), \n                                   kCFAllocatorMalloc, NULL, 0, sizeof(sampleData), 0, \n                                   &blockBuffer);\n\nCMVideoFormatDescriptionCreate(kCFAllocatorDefault, kCMVideoCodecType_AppleProRes4444, 1920, \n                               1080, extensionsDictionary, &formatDescription);\n\nCMSampleTimingInfo timingInfo;\n\ntimingInfo.duration = CMTimeMake(10, 600);\ntimingInfo.presentationTimeStamp = CMTimeMake(frameNumber * 10, 600);\n\nCMSampleBufferCreateReady(kCFAllocatorDefault, blockBuffer, formatDescription, 1, 1, \n                          &timingInfo, 1, &sampleSize, &sampleBuffer);"
+    },
+    {
+      "title": "VTDecompressionSession Creation",
+      "language": "objectivec",
+      "startTimeSeconds": 1067,
+      "code": "// VTDecompressionSession Creation\n\nCMFormatDescriptionRef formatDesc = CMSampleBufferGetFormatDescription(sampleBuffer);\n\nCFDictionaryRef pixelBufferAttributes = (__bridge CFDictionaryRef)@{\n    (id)kCVPixelBufferPixelFormatTypeKey :\n    @(kCVPixelFormatType_4444AYpCbCr16) };\n\nVTDecompressionSessionRef decompressionSession;\n\nOSStatus err = VTDecompressionSessionCreate(kCFAllocatorDefault, \n                                            formatDesc, \n                                            NULL,\n                                            pixelBufferAttributes, \n                                            NULL, \n                                            &decompressionSession);"
+    },
+    {
+      "title": "Running a VTDecompressionSession",
+      "language": "objectivec",
+      "startTimeSeconds": 1110,
+      "code": "// Running a VTDecompressionSession\n\nuint32_t inFlags = kVTDecodeFrame_EnableAsynchronousDecompression;\n\nVTDecompressionOutputHandler  outputHandler\n = ^(OSStatus status,\n     VTDecodeInfoFlags infoFlags,\n     CVImageBufferRef imageBuffer,\n     CMTime presentationTimeStamp,\n     CMTime presentationDurationVTDecodeInfoFlags)\n {\n     // Handle decoder output in this block\n     // Status reports any decoder errors\n     // imageBuffer contains the decoded frame if there were no errors\n };\n\nVTDecodeInfoFlags outFlags;\n\nOSStatus err = VTDecompressionSessionDecodeFrameWithOutputHandler(decompressionSession,\n                                                   sampleBuffer, inFlags, \n                                                   &outFlags, outputHandler);"
+    },
+    {
+      "title": "CVPixelBuffer to Metal texture: IOSurface",
+      "language": "objectivec",
+      "startTimeSeconds": 1254,
+      "code": "// CVPixelBuffer to Metal texture: IOSurface\n\nIOSurfaceRef surface = CVPixelBufferGetIOSurface(imageBuffer);\n\nid <MTLTexture> metalTexture = [metalDevice newTextureWithDescriptor:descriptor\n                                                           iosurface:surface \n                                                               plane:0];\n\n// Mark the IOSurface as in-use so that it won’t be recycled by the CVPixelBufferPool\nIOSurfaceIncrementUseCount(surface);\n\n// Set up command buffer completion handler to decrement IOSurface use count again\n[cmdBuffer addCompletedHandler:^(id<MTLCommandBuffer> buffer) {\n     IOSurfaceDecrementUseCount(surface);\n }];"
+    },
+    {
+      "title": "Create a CVMetalTextureCacheRef",
+      "language": "objectivec",
+      "startTimeSeconds": 1302,
+      "code": "// Create a CVMetalTextureCacheRef\n\nCVMetalTextureCacheRef metalTextureCache = NULL;\n\nid <MTLDevice> metalDevice = MTLCreateSystemDefaultDevice();\n\nCVMetalTextureCacheCreate(kCFAllocatorDefault, NULL, metalDevice, NULL, &metalTextureCache);\n\n// Create a CVMetalTextureRef using metalTextureCache and our pixelBuffer\nCVMetalTextureCacheCreateTextureFromImage(kCFAllocatorDefault,\n                                          metalTextureCache,\n                                          pixelBuffer,\n                                          NULL,\n                                          pixelFormat,\n                                          CVPixelBufferGetWidth(pixelBuffer),\n                                          CVPixelBufferGetHeight(pixelBuffer),\n                                          0,\n                                          &cvTexture);\n\nid <MTLTexture>  texture = CVMetalTextureGetTexture(cvTexture);\n// Be sure to release the cvTexture object when the Metal command buffer completes!"
+    }
+  ],
+  "resources": [
+    {
+      "title": "AVFoundation",
+      "url": "https://developer.apple.com/documentation/AVFoundation",
+      "type": "documentation",
+      "description": "Work with audiovisual assets, control device cameras, process audio, and configure system audio interactions.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10090-decode-prores-with-avfoundation-and-videotoolbox/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10090-decode-prores-with-avfoundation-and-videotoolbox/metadata.json",
+    "readme": "sessions/wwdc2020/10090-decode-prores-with-avfoundation-and-videotoolbox/README.md",
+    "transcript": "sessions/wwdc2020/10090-decode-prores-with-avfoundation-and-videotoolbox/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10090-decode-prores-with-avfoundation-and-videotoolbox/transcript.json"
+  }
+}

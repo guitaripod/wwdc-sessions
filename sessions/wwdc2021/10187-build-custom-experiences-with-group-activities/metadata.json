@@ -1,0 +1,102 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10187",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10187,
+  "title": "Build custom experiences with Group Activities",
+  "description": "Go beyond basic streaming and interaction and discover how you can build advanced SharePlay experiences using the full power of the Group Activities framework. We’ll show you how to adapt a simple drawing app into a real-time shared canvas, explore APIs like GroupSessionMessenger — which helps send and receive custom messages between participants in the group — and learn how to put the finishing touches on a custom SharePlay experience.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10187",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10187",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "draw",
+    "draw together",
+    "facetime",
+    "face time",
+    "groupactivities",
+    "group activities",
+    "groupsession",
+    "shareplay",
+    "share play"
+  ],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 1509,
+  "hasTranscript": true,
+  "transcriptWordCount": 3801,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10187/3/53AD885C-179C-4013-A2D3-D985CE932C87/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10187/3/53AD885C-179C-4013-A2D3-D985CE932C87/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10187/3/53AD885C-179C-4013-A2D3-D985CE932C87/downloads/wwdc2021-10187_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10187/3/53AD885C-179C-4013-A2D3-D985CE932C87/downloads/wwdc2021-10187_hd.mp4",
+    "duration": 1509
+  },
+  "codeSnippets": [
+    {
+      "title": "Configuring your application’s activity",
+      "language": "swift",
+      "startTimeSeconds": 230,
+      "code": "struct DrawTogether: GroupActivity {\n\n    var metadata: GroupActivityMetadata {\n        var metadata = GroupActivityMetadata()\n        metadata.title = NSLocalizedString(\"Draw Together\",\n                                           comment: \"Title of group activity\")\n        metadata.type = .generic\n        return metadata\n    }\n\n}"
+    },
+    {
+      "title": "Define, Receive and Send messages",
+      "language": "swift",
+      "startTimeSeconds": 606,
+      "code": "let messenger = GroupSessionMessenger(session: groupSession)\n\n// 1. Define\nstruct UpsertStrokeMessage: Codable {\n    let id: UUID\n    let color: Color\n    let point: CGPoint\n}\n\n// 2. Receive\nfor await (message, context) in messenger.messages(of: UpsertStrokeMessage.self) {\n    // Handle message\n}\n\n// 3. Send\ndo {\n    try await messenger.send(UpsertStrokeMessage(id: stroke.id, color: .red, point: point))\n} catch {\n    // Handle error\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Drawing content in a group session",
+      "url": "https://developer.apple.com/documentation/groupactivities/drawing_content_in_a_group_session",
+      "type": "documentation",
+      "description": "Invite your friends to draw on a shared canvas while on a FaceTime call.",
+      "sosumiURL": "https://sosumi.ai/documentation/groupactivities/drawing_content_in_a_group_session",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/groupactivities/drawing_content_in_a_group_session.json"
+    },
+    {
+      "title": "Supporting coordinated media playback",
+      "url": "https://developer.apple.com/documentation/AVFoundation/supporting-coordinated-media-playback",
+      "type": "documentation",
+      "description": "Create synchronized media experiences that enable users to watch and listen across devices.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/supporting-coordinated-media-playback",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/supporting-coordinated-media-playback.json"
+    },
+    {
+      "title": "Group Activities",
+      "url": "https://developer.apple.com/documentation/GroupActivities",
+      "type": "documentation",
+      "description": "Create app-specific activities your users can share and experience together.",
+      "sosumiURL": "https://sosumi.ai/documentation/GroupActivities",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/GroupActivities.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10187-build-custom-experiences-with-group-activities/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10187-build-custom-experiences-with-group-activities/metadata.json",
+    "readme": "sessions/wwdc2021/10187-build-custom-experiences-with-group-activities/README.md",
+    "transcript": "sessions/wwdc2021/10187-build-custom-experiences-with-group-activities/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10187-build-custom-experiences-with-group-activities/transcript.json"
+  }
+}

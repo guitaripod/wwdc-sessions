@@ -1,0 +1,121 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10176",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10176,
+  "title": "Master Picture in Picture on tvOS",
+  "description": "Picture in Picture is coming to Apple TV: With simultaneous video playback and the ability to swap between full screen content and Picture in Picture, you’ve never had more multitasking flexibility within your tvOS app. Discover how you can add AVPictureInPictureController to your project, leverage familiar APIs to create custom playback interfaces, and implement the best playback experience possible for people using your app. We'll also show you how to migrate away from the \"swipe up\" gesture to activate customOverlayViewController, as AVPlayerViewController now uses that gesture in tvOS 14. To get the most out of this session, you should have a basic understanding of AVKit. For more information, watch \"Delivering Intuitive Media Playback with AVKit.\" We can't wait to see how you take advantage of tvOS’s unique Picture in Picture features with AVPlayerViewController.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10176",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10176",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "tvOS"
+  ],
+  "keywords": [
+    "appletv",
+    "apple tv",
+    "apple tv 4k",
+    "apple tv developer",
+    "avpictureinpicturecontroller",
+    "picture in picture",
+    "picture-in-picture",
+    "pip",
+    "tv",
+    "tv app",
+    "tv app dev",
+    "tv app developer",
+    "tv dev",
+    "tv developer",
+    "tvos",
+    "tvos dev",
+    "tvos developer",
+    "video"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 1113,
+  "hasTranscript": true,
+  "transcriptWordCount": 2899,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10176/2/4E16A761-E513-4658-9F3F-4BC73B38271A/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10176/2/4E16A761-E513-4658-9F3F-4BC73B38271A/wwdc2020_10176_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10176/2/4E16A761-E513-4658-9F3F-4BC73B38271A/wwdc2020_10176_hd.mp4",
+    "duration": 1113
+  },
+  "codeSnippets": [
+    {
+      "title": "Setting up your app's audio session",
+      "language": "swift",
+      "startTimeSeconds": 133,
+      "code": "let audioSession = AVAudioSession.sharedInstance()\ndo {\n    try audioSession.setCategory(.playback)\n} catch {\n    print(\"Setting category to AVAudioSessionCategoryPlayback failed.\")\n}"
+    },
+    {
+      "title": "Observering canStopPictureInPicture",
+      "language": "swift",
+      "startTimeSeconds": 357,
+      "code": "_ = pipController.observe(\\.canStopPictureInPicture) { controller, change in\n    // Update your UI\n    if controller.canStopPictureInPicture {\n        pipActions = [.swap, .stop]\n    } else {\n        pipActions = [.start]\n    }\n}"
+    },
+    {
+      "title": "Tying AVPlayer with MPNowPlayingSession",
+      "language": "swift",
+      "startTimeSeconds": 426,
+      "code": "final class CustomPlayerViewController: UIViewController {\n\n    init(player: AVPlayer) {       \n        let playerLayer = AVPlayerLayer(player: player)       \n        pictureInPictureController = AVPictureInPictureController(playerLayer: playerLayer)\n\n        nowPlayingSession = MPNowPlayingSession(players: [player])\n    }\n\n    private func publishNowPlayingMetadata() {\n        nowPlayingSession.nowPlayingInfoCenter.nowPlayingInfo = // Your Now Playing info\n        nowPlayingSession.becomeActiveIfPossible()\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Playing video",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/playing-video",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/playing-video"
+    },
+    {
+      "title": "Adopting Picture in Picture Playback in tvOS",
+      "url": "https://developer.apple.com/documentation/AVKit/adopting-picture-in-picture-playback-in-tvos",
+      "type": "samplecode",
+      "description": "Add advanced multitasking capabilities to your video apps by using Picture in Picture playback in tvOS.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVKit/adopting-picture-in-picture-playback-in-tvos",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVKit/adopting-picture-in-picture-playback-in-tvos.json"
+    },
+    {
+      "title": "Adopting Picture in Picture in a Standard Player",
+      "url": "https://developer.apple.com/documentation/AVKit/adopting-picture-in-picture-in-a-standard-player",
+      "type": "documentation",
+      "description": "Add Picture in Picture (PiP) playback to your app using a player view controller.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVKit/adopting-picture-in-picture-in-a-standard-player",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVKit/adopting-picture-in-picture-in-a-standard-player.json"
+    },
+    {
+      "title": "Adopting Picture in Picture in a Custom Player",
+      "url": "https://developer.apple.com/documentation/AVKit/adopting-picture-in-picture-in-a-custom-player",
+      "type": "documentation",
+      "description": "Add controls to your custom player user interface to invoke Picture in Picture (PiP) playback.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVKit/adopting-picture-in-picture-in-a-custom-player",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVKit/adopting-picture-in-picture-in-a-custom-player.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10176-master-picture-in-picture-on-tvos/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10176-master-picture-in-picture-on-tvos/metadata.json",
+    "readme": "sessions/wwdc2020/10176-master-picture-in-picture-on-tvos/README.md",
+    "transcript": "sessions/wwdc2020/10176-master-picture-in-picture-on-tvos/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10176-master-picture-in-picture-on-tvos/transcript.json"
+  }
+}

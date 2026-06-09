@@ -1,0 +1,65 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-220",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 220,
+  "title": "Advances in UI Data Sources",
+  "description": "Use UI Data Sources to simplify updating your table view and collection view items using automatic diffing. High fidelity, quality animations of set changes are automatic and require no extra code! This improved data source mechanism completely avoids synchronization bugs, exceptions, and crashes! Learn about this simplified data model that uses on identifiers and snapshots so that you can focus on your app’s dynamic data and content instead of the minutia of UI data synchronization.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/220",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/220",
+  "type": "Video",
+  "publishedAt": "2019-06-05T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "diffable"
+  ],
+  "topics": [
+    "System Services",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 2175,
+  "hasTranscript": true,
+  "transcriptWordCount": 6183,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/220xl4hxzzr7b19/220/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/220xl4hxzzr7b19/220/220_sd_advances_in_ui_data_sources.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/220xl4hxzzr7b19/220/220_hd_advances_in_ui_data_sources.mp4",
+    "duration": 2175
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Implementing modern collection views",
+      "url": "https://developer.apple.com/documentation/UIKit/implementing-modern-collection-views",
+      "type": "samplecode",
+      "description": "Bring compositional layouts to your app and simplify updating your user interface with diffable data sources.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/implementing-modern-collection-views",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/implementing-modern-collection-views.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/220-advances-in-ui-data-sources/",
+  "files": {
+    "metadata": "sessions/wwdc2019/220-advances-in-ui-data-sources/metadata.json",
+    "readme": "sessions/wwdc2019/220-advances-in-ui-data-sources/README.md",
+    "transcript": "sessions/wwdc2019/220-advances-in-ui-data-sources/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/220-advances-in-ui-data-sources/transcript.json"
+  }
+}

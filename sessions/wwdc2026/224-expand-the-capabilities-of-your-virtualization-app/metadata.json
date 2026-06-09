@@ -1,0 +1,139 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-224",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 224,
+  "title": "Expand the capabilities of your Virtualization app",
+  "description": "Bring powerful new capabilities in macOS 27 to your Virtualization app. Discover how to automate the setup of macOS guests through user account setup on first boot. We’ll explore advanced workflows that involve passthrough of USB accessories to virtual machines, as well as custom network topologies and port forwarding. You’ll also learn about recent improvements that can enrich the experience of running your app’s virtual machines.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/224",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/224",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 1229,
+  "hasTranscript": true,
+  "transcriptWordCount": 3051,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/224/5/33a91529-8caf-409e-9c54-1b8952744651/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/224/5/33a91529-8caf-409e-9c54-1b8952744651/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/224/5/33a91529-8caf-409e-9c54-1b8952744651/downloads/wwdc2026-224_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/224/5/33a91529-8caf-409e-9c54-1b8952744651/downloads/wwdc2026-224_hd.mp4",
+    "duration": 1229
+  },
+  "codeSnippets": [
+    {
+      "title": "Provision a macOS guest",
+      "language": "swift",
+      "startTimeSeconds": 117,
+      "code": "import Virtualization\n\nlet provisioningOptions = VZMacGuestProvisioningOptions()\nprovisioningOptions.fullName = fullName\nprovisioningOptions.username = username\nprovisioningOptions.password = password\nprovisioningOptions.logsInAutomatically = true\nprovisioningOptions.enablesRemoteLogin = true\n\nlet startOptions = VZMacOSVirtualMachineStartOptions()\ntry startOptions.setGuestProvisioning(provisioningOptions)\n\ntry await virtualMachine.start(options: startOptions)"
+    },
+    {
+      "title": "Register an Accessory Access listener",
+      "language": "swift",
+      "startTimeSeconds": 432,
+      "code": "import AccessoryAccess\n\nlet criteria: [AAUSBAccessoryMatchingCriteria] = []\nlet accessories = try await AAUSBAccessoryManager.shared.registerListener(self, matchingCriteria: criteria)\n\nfor accessory in accessories {\n    // Handle previously attached accessories.\n}"
+    },
+    {
+      "title": "Respond to USB accessory connection",
+      "language": "swift",
+      "startTimeSeconds": 459,
+      "code": "import AccessoryAccess\nimport Virtualization\n\nclass AccessoryListener: NSObject, AAUSBAccessoryListener {\n    func usbAccessoryDidConnect(_ usbAccessory: AAUSBAccessory) {\n        virtualMachine.queue.async {\n            do {\n                let configuration = VZUSBPassthroughDeviceConfiguration(device: usbAccessory)\n                let device = try VZUSBPassthroughDevice(configuration: configuration)\n                self.virtualMachine.usbControllers.first?.attach(device: device) { error in\n                    // Handle error if necessary...\n                }\n            } catch {\n                // Handle error...\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Create a custom vmnet network",
+      "language": "swift",
+      "startTimeSeconds": 604,
+      "code": "import Virtualization\nimport vmnet\n\nvar status: vmnet_return_t = .VMNET_FAILURE\nguard let networkConfiguration =\n    vmnet_network_configuration_create(.VMNET_SHARED_MODE, &status) else { ... }\n\nguard let network =\n    vmnet_network_create(networkConfiguration, &status) else { ... }\n\nlet attachment = VZVmnetNetworkDeviceAttachment(network: network)\n\nlet networkDeviceConfiguration = VZVirtioNetworkDeviceConfiguration()\nnetworkDeviceConfiguration.attachment = attachment\n\nvirtualMachineConfiguration.networkDevices = [networkDeviceConfiguration]\n\nlet virtualMachine = VZVirtualMachine(configuration: virtualMachineConfiguration)"
+    },
+    {
+      "title": "Use DiskImageKit with Virtualization",
+      "language": "swift",
+      "startTimeSeconds": 894,
+      "code": "import DiskImageKit\nimport Virtualization\n\nlet baseImage = try DiskImage(opening: .open(url: baseLayerURL, mode: .readOnly))\nlet cacheImage = try baseImage.appending(.asifLayer(url: cacheLayerURL, type: .cache))\nlet overlayImage = try DiskImage(opening: .open(url: overlayLayerURL))\nlet stackedImage = try cacheImage.appending(overlayImage)\n\nlet storageDeviceAttachment = try VZDiskImageStorageDeviceAttachment(diskImage: stackedImage)\n\nlet storageDeviceConfiguration =\n    VZVirtioBlockDeviceConfiguration(attachment: storageDeviceAttachment)\n\nvirtualMachineConfiguration.storageDevices = [storageDeviceConfiguration]\n\nlet virtualMachine = VZVirtualMachine(configuration: virtualMachineConfiguration)"
+    },
+    {
+      "title": "Configure a custom Virtio device",
+      "language": "swift",
+      "startTimeSeconds": 1061,
+      "code": "import Virtualization\n\nlet deviceConfiguration = VZCustomVirtioDeviceConfiguration()\n\n// Virtio entropy device.\ndeviceConfiguration.deviceID = 4\n// PCI class for crypto devices.\ndeviceConfiguration.pciClassID = 0x10\n// PCI subclass for network and computing encryption controllers.\ndeviceConfiguration.pciSubclassID = 0x00\n// An entropy device uses a single Virtio queue.\ndeviceConfiguration.virtioQueueCount = 1\n\ndeviceConfiguration.provider =\n    VZCustomVirtioDeviceDelegateProvider(deviceQueue: deviceQueue, delegate: provider)\n\nvirtualMachineConfiguration.customVirtioDevices = [deviceConfiguration]\n\nlet virtualMachine = VZVirtualMachine(configuration: virtualMachineConfiguration)"
+    },
+    {
+      "title": "Attach a delegate to a VZCustomVirtioDevice",
+      "language": "swift",
+      "startTimeSeconds": 1100,
+      "code": "import Virtualization\n\nclass DeviceConfigurationDelegate: NSObject, VZCustomVirtioDeviceConfigurationDelegate {\n    func customVirtioConfiguration(_ deviceConfiguration: VZCustomVirtioDeviceConfiguration,\n                                   didCreateDevice device: VZCustomVirtioDevice) {\n        device.delegate = deviceDelegate\n        self.device = device\n    }\n}"
+    },
+    {
+      "title": "Process Virtio queue elements",
+      "language": "swift",
+      "startTimeSeconds": 1122,
+      "code": "import Virtualization\n\nclass DeviceDelegate: NSObject, VZCustomVirtioDeviceDelegate {\n    func customVirtioDevice(_ device: VZCustomVirtioDevice,\n                            didReceiveNotificationFor queue: VZVirtioQueue) {\n        while let element = queue.nextElement() {\n            // Process element...\n            element.returnToQueue()\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "DiskImageKit",
+      "url": "https://developer.apple.com/documentation/DiskImageKit",
+      "type": "documentation",
+      "description": "Create, open, and manage disk images.",
+      "sosumiURL": "https://sosumi.ai/documentation/DiskImageKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/DiskImageKit.json"
+    },
+    {
+      "title": "Accessory Access",
+      "url": "https://developer.apple.com/documentation/AccessoryAccess",
+      "type": "documentation",
+      "description": "Manage access to connected USB accessories.",
+      "sosumiURL": "https://sosumi.ai/documentation/AccessoryAccess",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AccessoryAccess.json"
+    },
+    {
+      "title": "vmnet",
+      "url": "https://developer.apple.com/documentation/vmnet",
+      "type": "documentation",
+      "description": "Connect with network interfaces to read and write packets on guest operating systems.",
+      "sosumiURL": "https://sosumi.ai/documentation/vmnet",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/vmnet.json"
+    },
+    {
+      "title": "Virtual I/O Device (VIRTIO) Version 1.4",
+      "url": "https://docs.oasis-open.org/virtio/virtio/v1.4/virtio-v1.4.html",
+      "type": "documentation",
+      "description": "This document describes the specifications of the “virtio” family of devices. These devices are found in virtual environments, yet by design they look like physical devices to the guest within the virtual machine - and this document treats them as such. This similarity allows the guest to use standard drivers and discovery mechanisms."
+    },
+    {
+      "title": "Virtualization",
+      "url": "https://developer.apple.com/documentation/Virtualization",
+      "type": "documentation",
+      "description": "Create virtual machines and run macOS and Linux-based operating systems.",
+      "sosumiURL": "https://sosumi.ai/documentation/Virtualization",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Virtualization.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/224-expand-the-capabilities-of-your-virtualization-app/",
+  "files": {
+    "metadata": "sessions/wwdc2026/224-expand-the-capabilities-of-your-virtualization-app/metadata.json",
+    "readme": "sessions/wwdc2026/224-expand-the-capabilities-of-your-virtualization-app/README.md",
+    "transcript": "sessions/wwdc2026/224-expand-the-capabilities-of-your-virtualization-app/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/224-expand-the-capabilities-of-your-virtualization-app/transcript.json"
+  }
+}

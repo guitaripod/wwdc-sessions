@@ -1,0 +1,78 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-110364",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2023,
+  "eventContentId": 110364,
+  "title": "Explore App Store pricing upgrades",
+  "description": "Learn about the newest pricing capabilities available on the App Store. We’ll walk through enhanced global pricing, new tools to manage pricing by storefront, additional price points, and global equalization. We’ll also share configuration examples.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/110364",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110364",
+  "type": "Video",
+  "publishedAt": "2023-05-02T07:00:00-07:00",
+  "platforms": [],
+  "keywords": [],
+  "topics": [
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 1735,
+  "hasTranscript": true,
+  "transcriptWordCount": 4360,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/110364/5/69A1B6A9-370C-413E-9A19-24B09E2FEB52/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/tech-talks/110364/5/69A1B6A9-370C-413E-9A19-24B09E2FEB52/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/110364/5/69A1B6A9-370C-413E-9A19-24B09E2FEB52/downloads/tech-talks-110364_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/110364/5/69A1B6A9-370C-413E-9A19-24B09E2FEB52/downloads/tech-talks-110364_hd.mp4",
+    "duration": 1735
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Set availability for in-app purchases",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-in-app-purchases/set-availability-for-in-app-purchases",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/help/app-store-connect/manage-in-app-purchases/set-availability-for-in-app-purchases"
+    },
+    {
+      "title": "Schedule price changes for in-app purchases",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-in-app-purchases/schedule-price-changes",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/help/app-store-connect/manage-in-app-purchases/schedule-price-changes"
+    },
+    {
+      "title": "Manage in-app purchase pricing",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-in-app-purchases/set-a-price-for-an-in-app-purchase",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/help/app-store-connect/manage-in-app-purchases/set-a-price-for-an-in-app-purchase"
+    },
+    {
+      "title": "Manage app pricing",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-app-pricing/set-a-price",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/help/app-store-connect/manage-app-pricing/set-a-price"
+    }
+  ],
+  "path": "sessions/tech-talks/110364-explore-app-store-pricing-upgrades/",
+  "files": {
+    "metadata": "sessions/tech-talks/110364-explore-app-store-pricing-upgrades/metadata.json",
+    "readme": "sessions/tech-talks/110364-explore-app-store-pricing-upgrades/README.md",
+    "transcript": "sessions/tech-talks/110364-explore-app-store-pricing-upgrades/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/110364-explore-app-store-pricing-upgrades/transcript.json"
+  }
+}

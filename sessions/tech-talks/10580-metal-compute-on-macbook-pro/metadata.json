@@ -1,0 +1,60 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-10580",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2021,
+  "eventContentId": 10580,
+  "title": "Metal Compute on MacBook Pro",
+  "description": "Discover how you can take advantage of Metal compute on the latest MacBook Pro. Learn the fundamental principles of high-performance Metal compute and find out how you can take advantage of the framework to create better workflows for your development process and even better apps for creative pros.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/10580",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10580",
+  "type": "Video",
+  "publishedAt": "2021-12-07T10:00:00-08:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [
+    "apple silicon",
+    "cuda",
+    "metal",
+    "metal shading language",
+    "metal tools",
+    "opencl",
+    "performance",
+    "proapps",
+    "tips and tricks"
+  ],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1424,
+  "hasTranscript": true,
+  "transcriptWordCount": 3763,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/10580/3/8702685B-149D-4D98-B6E6-D2FFC774C89E/cmaf.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/10580/3/8702685B-149D-4D98-B6E6-D2FFC774C89E/downloads/tech-talks-10580_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/10580/3/8702685B-149D-4D98-B6E6-D2FFC774C89E/downloads/tech-talks-10580_hd.mp4",
+    "duration": 1424
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/tech-talks/10580-metal-compute-on-macbook-pro/",
+  "files": {
+    "metadata": "sessions/tech-talks/10580-metal-compute-on-macbook-pro/metadata.json",
+    "readme": "sessions/tech-talks/10580-metal-compute-on-macbook-pro/README.md",
+    "transcript": "sessions/tech-talks/10580-metal-compute-on-macbook-pro/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/10580-metal-compute-on-macbook-pro/transcript.json"
+  }
+}

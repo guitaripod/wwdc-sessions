@@ -2,10 +2,11 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
   "title": "WWDC Session Metadata",
-  "description": "Full structured record for one session: sessions/<event>/<n>/metadata.json.",
+  "description": "Full structured record for one session: sessions/<event>/<n>-<slug>/metadata.json.",
   "type": "object",
   "required": ["schemaVersion", "id", "event", "title", "url", "hasTranscript", "path", "files"],
   "properties": {
+    "$schema": { "type": "string" },
     "schemaVersion": { "type": "integer" },
     "id": { "type": "string", "examples": ["wwdc2026-298"] },
     "event": { "type": "string", "examples": ["wwdc2026"] },
@@ -16,7 +17,7 @@
     "description": { "type": ["string", "null"] },
     "url": { "type": "string", "format": "uri" },
     "sosumiURL": { "type": ["string", "null"], "format": "uri", "description": "developer.apple.com URL rehosted as Markdown via sosumi.ai." },
-    "type": { "type": ["string", "null"] },
+    "type": { "type": ["string", "null"], "description": "Normalized; legacy `Session` is folded into `Video`." },
     "publishedAt": { "type": ["string", "null"] },
     "platforms": { "type": "array", "items": { "type": "string" } },
     "keywords": { "type": "array", "items": { "type": "string" } },
@@ -34,7 +35,8 @@
         "downloadHLS": { "type": "string" },
         "downloadSD": { "type": "string" },
         "downloadHD": { "type": "string" },
-        "duration": { "type": "integer" }
+        "duration": { "type": "integer" },
+        "tnsURL": { "type": "string" }
       }
     },
     "codeSnippets": {

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-111428",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2026,
+  "eventContentId": 111428,
+  "title": "Meet agentic coding in Xcode",
+  "description": "Discover how Xcode 26.3 seamlessly integrates coding agents like OpenAI Codex and Claude Agent to work together on complex, multi-step tasks. Learn how Xcode enables coding agents to build projects, run tests, and search Apple documentation – all through the Model Context Protocol.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/111428",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111428",
+  "type": "Video",
+  "publishedAt": "2026-02-03T09:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 263,
+  "hasTranscript": true,
+  "transcriptWordCount": 626,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/111428/7/5f526083-7440-4c97-8078-86a95e569cb3/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/tech-talks/111428/7/5f526083-7440-4c97-8078-86a95e569cb3/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/111428/7/5f526083-7440-4c97-8078-86a95e569cb3/downloads/tech-talks-111428_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/111428/7/5f526083-7440-4c97-8078-86a95e569cb3/downloads/tech-talks-111428_hd.mp4",
+    "duration": 263
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Giving external agents access to Xcode",
+      "url": "https://developer.apple.com/documentation/Xcode/giving-external-agents-access-to-xcode",
+      "type": "documentation",
+      "description": "Let agents access your project and Xcode capabilities using the Model Context Protocol.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/giving-external-agents-access-to-xcode",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/giving-external-agents-access-to-xcode.json"
+    },
+    {
+      "title": "Setting up coding intelligence",
+      "url": "https://developer.apple.com/documentation/Xcode/setting-up-coding-intelligence",
+      "type": "documentation",
+      "description": "Enable intelligence tools that you want to use in Xcode.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/setting-up-coding-intelligence",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/setting-up-coding-intelligence.json"
+    },
+    {
+      "title": "Writing code with intelligence in Xcode",
+      "url": "https://developer.apple.com/documentation/Xcode/writing-code-with-intelligence-in-xcode",
+      "type": "documentation",
+      "description": "Start conversations with an agent or model in Xcode to generate code, navigate unfamiliar codebases, and fix or refactor existing code.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/writing-code-with-intelligence-in-xcode",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/writing-code-with-intelligence-in-xcode.json"
+    }
+  ],
+  "path": "sessions/tech-talks/111428-meet-agentic-coding-in-xcode/",
+  "files": {
+    "metadata": "sessions/tech-talks/111428-meet-agentic-coding-in-xcode/metadata.json",
+    "readme": "sessions/tech-talks/111428-meet-agentic-coding-in-xcode/README.md",
+    "transcript": "sessions/tech-talks/111428-meet-agentic-coding-in-xcode/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/111428-meet-agentic-coding-in-xcode/transcript.json"
+  }
+}

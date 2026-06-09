@@ -1,0 +1,107 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-324",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 324,
+  "title": "Automate your development process with the App Store Connect API",
+  "description": "Learn how the new Webhook API can provide you with real-time notifications from App Store Connect. We’ll also introduce new APls that can help you manage user feedback and build delivery, and discuss how to integrate these tools into your development workflow to improve efficiency and streamline your processes.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/324",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/324",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "json",
+    "webhook"
+  ],
+  "topics": [
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 999,
+  "hasTranscript": true,
+  "transcriptWordCount": 2276,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/324/4/73f2b9d1-c998-4828-a323-9613bc559bd3/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/324/4/73f2b9d1-c998-4828-a323-9613bc559bd3/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/324/4/73f2b9d1-c998-4828-a323-9613bc559bd3/downloads/wwdc2025-324_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/324/4/73f2b9d1-c998-4828-a323-9613bc559bd3/downloads/wwdc2025-324_hd.mp4",
+    "duration": 999
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Webhook notifications",
+      "url": "https://developer.apple.com/documentation/AppStoreConnectAPI/webhook-notifications",
+      "type": "documentation",
+      "description": "Manage notifications from App Store about your apps and their statuses.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreConnectAPI/webhook-notifications",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreConnectAPI/webhook-notifications.json"
+    },
+    {
+      "title": "Uploading and versioning Apple hosted background assets",
+      "url": "https://developer.apple.com/documentation/AppStoreConnectAPI/managing-apple-hosted-background-assets",
+      "type": "documentation",
+      "description": "Manage background assets for your App store apps.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreConnectAPI/managing-apple-hosted-background-assets",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreConnectAPI/managing-apple-hosted-background-assets.json"
+    },
+    {
+      "title": "Beta feedback screenshot submissions",
+      "url": "https://developer.apple.com/documentation/AppStoreConnectAPI/beta-feedback-screenshot-submissions",
+      "type": "documentation",
+      "description": "Get Testflight feedback screenshots from beta testers for your apps.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreConnectAPI/beta-feedback-screenshot-submissions",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreConnectAPI/beta-feedback-screenshot-submissions.json"
+    },
+    {
+      "title": "Beta feedback crash submissions",
+      "url": "https://developer.apple.com/documentation/AppStoreConnectAPI/beta-feedback-crash-submissions",
+      "type": "documentation",
+      "description": "Get TestFlight feedback crashes from beta testers for your apps.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreConnectAPI/beta-feedback-crash-submissions",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreConnectAPI/beta-feedback-crash-submissions.json"
+    },
+    {
+      "title": "Prerelease Versions and Beta Testers",
+      "url": "https://developer.apple.com/documentation/AppStoreConnectAPI/prerelease-versions-and-beta-testers",
+      "type": "documentation",
+      "description": "Manage your beta testing program, including beta testers and groups, apps, App Clips, and builds.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreConnectAPI/prerelease-versions-and-beta-testers",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreConnectAPI/prerelease-versions-and-beta-testers.json"
+    },
+    {
+      "title": "App Store Connect API Resources",
+      "url": "https://developer.apple.com/app-store-connect/api/",
+      "type": "guide",
+      "description": "Gain the flexibility to customize your workflows so you can focus on creating great apps. This REST API lets you automate tasks on App Store Connect for increased efficiency. Use it for development, testing, and reporting within your team’s internal workflow.",
+      "sosumiURL": "https://sosumi.ai/app-store-connect/api/"
+    }
+  ],
+  "path": "sessions/wwdc2025/324-automate-your-development-process-with-the-app-store-connect/",
+  "files": {
+    "metadata": "sessions/wwdc2025/324-automate-your-development-process-with-the-app-store-connect/metadata.json",
+    "readme": "sessions/wwdc2025/324-automate-your-development-process-with-the-app-store-connect/README.md",
+    "transcript": "sessions/wwdc2025/324-automate-your-development-process-with-the-app-store-connect/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/324-automate-your-development-process-with-the-app-store-connect/transcript.json"
+  }
+}

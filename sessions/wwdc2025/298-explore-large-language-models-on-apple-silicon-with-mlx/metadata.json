@@ -1,0 +1,199 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-298",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 298,
+  "title": "Explore large language models on Apple silicon with MLX",
+  "description": "Discover MLX LM – designed specifically to make working with large language models simple and efficient on Apple silicon. We’ll cover how to fine-tune and run inference on state-of-the-art large language models on your Mac, and how to seamlessly integrate them into Swift-based applications and projects.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/298",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/298",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1208,
+  "hasTranscript": true,
+  "transcriptWordCount": 3077,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/298/4/fc7619f7-0729-4d62-9a01-ba6020832cb8/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/298/4/fc7619f7-0729-4d62-9a01-ba6020832cb8/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/298/4/fc7619f7-0729-4d62-9a01-ba6020832cb8/downloads/wwdc2025-298_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/298/4/fc7619f7-0729-4d62-9a01-ba6020832cb8/downloads/wwdc2025-298_hd.mp4",
+    "duration": 1208
+  },
+  "codeSnippets": [
+    {
+      "title": "Running DeepSeek AI's model with MLX LM",
+      "language": "bash",
+      "startTimeSeconds": 72,
+      "code": "mlx_lm.chat --model mlx-community/DeepSeek-V3-0324-4bit"
+    },
+    {
+      "title": "Text generation with MLX LM",
+      "language": "bash",
+      "startTimeSeconds": 231,
+      "code": "mlx_lm.generate --model \"mlx-community/Mistral-7B-Instruct-v0.3-4bit\" \\\n                --prompt \"Write a quick sort in Swift\""
+    },
+    {
+      "title": "Changing the model's behavior with flags",
+      "language": "bash",
+      "startTimeSeconds": 275,
+      "code": "mlx_lm.generate --model \"mlx-community/Mistral-7B-Instruct-v0.3-4bit\" \\\n                --prompt \"Write a quick sort in Swift\" \\\n                --top-p 0.5 \\\n                --temp 0.2 \\\n                --max-tokens 1024"
+    },
+    {
+      "title": "Getting help for MLX LM",
+      "language": "bash",
+      "startTimeSeconds": 288,
+      "code": "mlx_lm.generate --help"
+    },
+    {
+      "title": "MLX LM Python API",
+      "language": "python",
+      "startTimeSeconds": 326,
+      "code": "# Using MLX LM from Python\n\nfrom mlx_lm import load, generate\n\n# Load the model and tokenizer directly from HF\nmodel, tokenizer = load(\"mlx-community/Mistral-7B-Instruct-v0.3-4bit\")\n\n# Prepare the prompt for the model\nprompt = \"Write a quick sort in Swift\"\nmessages = [{\"role\": \"user\", \"content\": prompt}]\nprompt = tokenizer.apply_chat_template(\n    messages, add_generation_prompt=True\n)\n\n# Generate the text\ntext = generate(model, tokenizer, prompt=prompt, verbose=True)"
+    },
+    {
+      "title": "Inspecting model architecture",
+      "language": "python",
+      "startTimeSeconds": 384,
+      "code": "from mlx_lm import load, generate\n\nmodel, tokenizer = load(\"mlx-community/Mistral-7B-Instruct-v0.3-4bit\")\n\nprint(model)\nprint(model.parameters())\nprint(model.layers[0].self_attn)"
+    },
+    {
+      "title": "Generation with KV cache",
+      "language": "python",
+      "startTimeSeconds": 481,
+      "code": "from mlx_lm import load, generate\nfrom mlx_lm.models.cache import make_prompt_cache\n\n# Load the model and tokenizer directly from HF\nmodel, tokenizer = load(\"mlx-community/Mistral-7B-Instruct-v0.3-4bit\")\n\n# Prepare the prompt for the model\nprompt = \"Write a quick sort in Swift\"\nmessages = [{\"role\": \"user\", \"content\": prompt}]\nprompt = tokenizer.apply_chat_template(\n    messages, add_generation_prompt=True\n)\n\ncache = make_prompt_cache(model)\n\n# Generate the text\ntext = generate(model, tokenizer, prompt=prompt, prompt_cache=cache, verbose=True)"
+    },
+    {
+      "title": "Quantization",
+      "language": "bash",
+      "startTimeSeconds": 577,
+      "code": "mlx_lm.convert --hf-path \"mistralai/Mistral-7B-Instruct-v0.3\" \\\n               --mlx-path \"./mistral-7b-v0.3-4bit\" \\\n               --dtype float16 \\\n               --quantize --q-bits 4 --q-group-size 64"
+    },
+    {
+      "title": "Model quantization with MLX LM in Python",
+      "language": "python",
+      "startTimeSeconds": 633,
+      "code": "from mlx_lm.convert import convert\n\n# We can choose a different quantization per layer\ndef mixed_quantization(layer_path, layer, model_config):\n    if \"lm_head\" in layer_path or \"embed_tokens\" in layer_path:\n        return {\"bits\": 6, \"group_size\": 64}\n    elif hasattr(layer, \"to_quantized\"):\n        return {\"bits\": 4, \"group_size\": 64}\n    else:\n        return False\n\n# Convert can be used to change precision, quantize and upload models to HF\nconvert(\n    hf_path=\"mistralai/Mistral-7B-Instruct-v0.3\",\n    mlx_path=\"./mistral-7b-v0.3-mixed-4-6-bit\",\n    quantize=True,\n    quant_predicate=mixed_quantization\n)"
+    },
+    {
+      "title": "Model fine-tuning",
+      "language": "bash",
+      "startTimeSeconds": 817,
+      "code": "mlx_lm.lora --model \"mlx-community/Mistral-7B-Instruct-v0.3-4bit\" \n\t\t\t\t\t\t--train \n            --data /path/to/our/data/folder\n            --iters 300 \n            --batch-size 16"
+    },
+    {
+      "title": "Prompting before fine-tuning",
+      "language": "bash",
+      "startTimeSeconds": 906,
+      "code": "mlx_lm.generate --model \"./mistral-7b-v0.3-4bit\" \\\n    --prompt \"Who won the latest super bowl?\""
+    },
+    {
+      "title": "Fine-tuning to learn new knowledge",
+      "language": "bash",
+      "startTimeSeconds": 934,
+      "code": "mlx_lm.lora --model \"./mistral-7b-v0.3-4bit\" \n\t\t\t\t\t\t--train \n            --data ./data \n            --iters 300 \n            --batch-size 8 \n            --mask-prompt \n            --learning-rate 1e-5"
+    },
+    {
+      "title": "Prompting after fine-tuning",
+      "language": "bash",
+      "startTimeSeconds": 948,
+      "code": "mlx_lm.generate --model \"mlx-community/Mistral-7B-Instruct-v0.3-4bit\" \\\n                --prompt \"Who won the latest super bowl?\" \\\n                --adapter \"adapters\""
+    },
+    {
+      "title": "Fusing models",
+      "language": "bash",
+      "startTimeSeconds": 989,
+      "code": "mlx_lm.fuse --model \"mlx-community/Mistral-7B-Instruct-v0.3-4bit\"\n            --adapter-path \"path/to/trained/adapters\" \\\n            --save-path \"fused-mistral-7b-v0.3-4bit\" \\\n            --upload-repo \"my-name/fused-mistral-7b-v0.3-4bit\"\n\n# Fusing our fine-tuned model adapters\nmlx_lm.fuse --model \"./mistral-7b-v0.3-4bit\" \\\n            --adapter-path \"adapters\" \\\n            --save-path \"fused-mistral-7b-v0.3-4bit\""
+    },
+    {
+      "title": "LLMs in MLX Swift",
+      "language": "swift",
+      "startTimeSeconds": 1034,
+      "code": "import Foundation\nimport MLX\nimport MLXLMCommon\nimport MLXLLM\n\n@main\nstruct LLM {\n    static func main() async throws {\n        // Load the model and tokenizer directly from HF\n        let modelId = \"mlx-community/Mistral-7B-Instruct-v0.3-4bit\"\n        let modelFactory = LLMModelFactory.shared\n        let configuration = ModelConfiguration(id: modelId)\n        let model = try await modelFactory.loadContainer(configuration: configuration)\n\n        try await model.perform({context in\n            // Prepare the prompt for the model\n            let prompt = \"Write a quicksort in Swift\"\n            let input = try await context.processor.prepare(input: UserInput(prompt: prompt))\n\n            // Generate the text\n            let params = GenerateParameters(temperature: 0.0)\n            let tokenStream = try generate(input: input, parameters: params, context: context)\n            for await part in tokenStream {\n                print(part.chunk ?? \"\", terminator: \"\")\n            }\n        })\n    }\n}"
+    },
+    {
+      "title": "Generation with KV cache in MLX Swift",
+      "language": "swift",
+      "startTimeSeconds": 1080,
+      "code": "import Foundation\nimport MLX\nimport MLXLMCommon\nimport MLXLLM\n\n@main\nstruct LLM {\n    static func main() async throws {\n        // Load the model and tokenizer directly from HF\n        let modelId = \"mlx-community/Mistral-7B-Instruct-v0.3-4bit\"\n        let modelFactory = LLMModelFactory.shared\n        let configuration = ModelConfiguration(id: modelId)\n        let model = try await modelFactory.loadContainer(configuration: configuration)\n\n        try await model.perform({context in\n            // Prepare the prompt for the model\n            let prompt = \"Write a quicksort in Swift\"\n            let input = try await context.processor.prepare(input: UserInput(prompt: prompt))\n\n            // Create the key-value cache\n            let generateParameters = GenerateParameters()\n            let cache = context.model.newCache(parameters: generateParameters)\n\n            // Low level token iterator\n            let tokenIter = try TokenIterator(input: input,\n                                              model: context.model,\n                                              cache: cache,\n                                              parameters: generateParameters)\n            let tokenStream = generate(input: input, context: context, iterator: tokenIter)\n            for await part in tokenStream {\n                print(part.chunk ?? \"\", terminator: \"\")\n            }\n        })\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "MLX Swift Examples",
+      "url": "https://github.com/ml-explore/mlx-swift-examples",
+      "type": "samplecode",
+      "description": "MLX Swift Examples"
+    },
+    {
+      "title": "MLX Examples",
+      "url": "https://github.com/ml-explore/mlx-examples",
+      "type": "samplecode",
+      "description": "This repo contains a variety of standalone examples using the MLX framework."
+    },
+    {
+      "title": "MLX Swift",
+      "url": "https://github.com/ml-explore/mlx-swift",
+      "type": "documentation",
+      "description": "MLX Swift is a Swift API for MLX."
+    },
+    {
+      "title": "MLX LM - Python API",
+      "url": "https://github.com/ml-explore/mlx-lm",
+      "type": "documentation",
+      "description": "MLX LM is a Python package for generating text and fine-tuning large language models on Apple silicon with MLX."
+    },
+    {
+      "title": "MLX Explore - Python API",
+      "url": "https://github.com/ml-explore/mlx",
+      "type": "documentation",
+      "description": "MLX is an array framework for machine learning on Apple silicon, brought to you by Apple machine learning research."
+    },
+    {
+      "title": "MLX Framework",
+      "url": "https://mlx-framework.org",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "MLX Llama Inference",
+      "url": "https://ml-explore.github.io/mlx/build/html/examples/llama-inference.html",
+      "type": "documentation",
+      "description": "MLX enables efficient inference of large-ish transformers on Apple silicon without compromising on ease of use. In this example we will create an inference script for the Llama family of transformer models in which the model is defined in less than 200 lines of python."
+    },
+    {
+      "title": "MLX",
+      "url": "https://ml-explore.github.io/mlx/",
+      "type": "documentation",
+      "description": "MLX is an array framework for machine learning on Apple silicon, brought to you by Apple machine learning research."
+    }
+  ],
+  "path": "sessions/wwdc2025/298-explore-large-language-models-on-apple-silicon-with-mlx/",
+  "files": {
+    "metadata": "sessions/wwdc2025/298-explore-large-language-models-on-apple-silicon-with-mlx/metadata.json",
+    "readme": "sessions/wwdc2025/298-explore-large-language-models-on-apple-silicon-with-mlx/README.md",
+    "transcript": "sessions/wwdc2025/298-explore-large-language-models-on-apple-silicon-with-mlx/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/298-explore-large-language-models-on-apple-silicon-with-mlx/transcript.json"
+  }
+}

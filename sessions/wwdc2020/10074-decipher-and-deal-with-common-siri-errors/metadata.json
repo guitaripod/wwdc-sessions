@@ -1,0 +1,71 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10074",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10074,
+  "title": "Decipher and deal with common Siri errors",
+  "description": "“Sorry, there was a problem with the app...\" Don’t let Siri errors get you down: Learn how to debug your Siri intents and create great integrations people can use through voice or the Shortcuts app. We’ll look at common intent errors, how to test for them, and the path to a seamless Siri experience for your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10074",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10074",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "extensions",
+    "in-app intent handling",
+    "intents",
+    "intentsui",
+    "shortcuts",
+    "siri",
+    "sirikit"
+  ],
+  "topics": [
+    "Developer Tools",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 129,
+  "hasTranscript": true,
+  "transcriptWordCount": 321,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10074/3/8D3993B6-C13D-4BD2-A35A-D5F6D820C45B/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10074/3/8D3993B6-C13D-4BD2-A35A-D5F6D820C45B/wwdc2020_10074_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10074/3/8D3993B6-C13D-4BD2-A35A-D5F6D820C45B/wwdc2020_10074_hd.mp4",
+    "duration": 129
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Soup Chef: Accelerating App Interactions with Shortcuts",
+      "url": "https://developer.apple.com/documentation/SiriKit/soup-chef-accelerating-app-interactions-with-shortcuts",
+      "type": "samplecode",
+      "description": "Make it easy for people to use Siri with your app by providing shortcuts to your app’s actions.",
+      "sosumiURL": "https://sosumi.ai/documentation/SiriKit/soup-chef-accelerating-app-interactions-with-shortcuts",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SiriKit/soup-chef-accelerating-app-interactions-with-shortcuts.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10074-decipher-and-deal-with-common-siri-errors/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10074-decipher-and-deal-with-common-siri-errors/metadata.json",
+    "readme": "sessions/wwdc2020/10074-decipher-and-deal-with-common-siri-errors/README.md",
+    "transcript": "sessions/wwdc2020/10074-decipher-and-deal-with-common-siri-errors/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10074-decipher-and-deal-with-common-siri-errors/transcript.json"
+  }
+}

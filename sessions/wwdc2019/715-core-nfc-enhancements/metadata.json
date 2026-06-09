@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-715",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 715,
+  "title": "Core NFC Enhancements",
+  "description": "Learn how easy it is to add support for NFC in your app and take advantage of the newest capabilities such as NDEF writing and support for widely adopted native tag protocols.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/715",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/715",
+  "type": "Video",
+  "publishedAt": "2019-06-07T16:20:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "nfc"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1843,
+  "hasTranscript": true,
+  "transcriptWordCount": 3938,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/715qg6xyd3qgplhd3m/715/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/715qg6xyd3qgplhd3m/715/715_sd_core_nfc_enhancements.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/715qg6xyd3qgplhd3m/715/715_hd_core_nfc_enhancements.mp4",
+    "duration": 1843
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Creating NFC Tags from Your iPhone",
+      "url": "https://developer.apple.com/documentation/CoreNFC/creating-nfc-tags-from-your-iphone",
+      "type": "samplecode",
+      "description": "Save data to tags, and interact with them using native tag protocols.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreNFC/creating-nfc-tags-from-your-iphone",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreNFC/creating-nfc-tags-from-your-iphone.json"
+    },
+    {
+      "title": "CoreNFC Tag Reading",
+      "url": "https://developer.apple.com/sample-code/wwdc/2017/CoreNFC-Tag-Reading.zip",
+      "type": "samplecode",
+      "description": "Shows how to integrate Core NFC Framework into your application to enable NFC tag reading.",
+      "sosumiURL": "https://sosumi.ai/sample-code/wwdc/2017/CoreNFC-Tag-Reading.zip"
+    },
+    {
+      "title": "Core NFC",
+      "url": "https://developer.apple.com/documentation/CoreNFC",
+      "type": "documentation",
+      "description": "Detect NFC tags, read messages that contain NDEF data, and save data to writable tags.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreNFC",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreNFC.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/715-core-nfc-enhancements/",
+  "files": {
+    "metadata": "sessions/wwdc2019/715-core-nfc-enhancements/metadata.json",
+    "readme": "sessions/wwdc2019/715-core-nfc-enhancements/README.md",
+    "transcript": "sessions/wwdc2019/715-core-nfc-enhancements/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/715-core-nfc-enhancements/transcript.json"
+  }
+}

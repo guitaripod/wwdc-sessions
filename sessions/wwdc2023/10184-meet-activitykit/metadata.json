@@ -1,0 +1,171 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10184",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10184,
+  "title": "Meet ActivityKit",
+  "description": "Live Activities are a glanceable way for someone to keep track of the progress of a task within your app. We’ll teach you how you can create helpful experiences for the Lock Screen, the Dynamic Island, and StandBy. Learn how to update your app’s Live Activities, monitor activity state, and take advantage of WidgetKit and SwiftUI to build richer experiences.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10184",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10184",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "activities",
+    "activity",
+    "activitykit",
+    "dynamic",
+    "dynamic island",
+    "island",
+    "live",
+    "live activities",
+    "live notification",
+    "live notifications",
+    "lock",
+    "lock screen",
+    "notification",
+    "notifications",
+    "screen",
+    "standby"
+  ],
+  "topics": [
+    "Essentials",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1035,
+  "hasTranscript": true,
+  "transcriptWordCount": 2166,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10184/4/A7390924-2731-4B9B-925E-1CBDFB186C3E/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10184/4/A7390924-2731-4B9B-925E-1CBDFB186C3E/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10184/4/A7390924-2731-4B9B-925E-1CBDFB186C3E/downloads/wwdc2023-10184_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10184/4/A7390924-2731-4B9B-925E-1CBDFB186C3E/downloads/wwdc2023-10184_hd.mp4",
+    "duration": 1035
+  },
+  "codeSnippets": [
+    {
+      "title": "Define ActivityAttributes",
+      "language": "swift",
+      "startTimeSeconds": 340,
+      "code": "import ActivityKit\n\nstruct AdventureAttributes: ActivityAttributes {\n    let hero: EmojiRanger\n\n    struct ContentState: Codable & Hashable {\n        let currentHealthLevel: Double\n        let eventDescription: String\n    }\n}"
+    },
+    {
+      "title": "Request Live Activity with initial content state",
+      "language": "swift",
+      "startTimeSeconds": 388,
+      "code": "let adventure = AdventureAttributes(hero: hero)\n\nlet initialState = AdventureAttributes.ContentState(\n    currentHealthLevel: hero.healthLevel,\n    eventDescription: \"Adventure has begun!\"\n)\nlet content = ActivityContent(state: initialState, staleDate: nil, relevanceScore: 0.0)\n\nlet activity = try Activity.request(\n    attributes: adventure,\n    content: content,\n    pushType: nil\n)"
+    },
+    {
+      "title": "Update Live Activity with new content",
+      "language": "swift",
+      "startTimeSeconds": 480,
+      "code": "let heroName = activity.attributes.hero.name               \nlet contentState = AdventureAttributes.ContentState(\n    currentHealthLevel: hero.healthLevel,\n    eventDescription: \"\\(heroName) has taken a critical hit!\"\n)\n\nvar alertConfig = AlertConfiguration(\n    title: \"\\(heroName) has taken a critical hit!\",\n    body: \"Open the app and use a potion to heal \\(heroName)\",\n    sound: .default\n)  \n\nactivity.update(\n    ActivityContent<AdventureAttributes.ContentState>(\n        state: contentState,\n        staleDate: nil\n    ),\n    alertConfiguration: alertConfig\n)"
+    },
+    {
+      "title": "Observe activity state",
+      "language": "swift",
+      "startTimeSeconds": 570,
+      "code": "// Observe activity state asynchronously\nfunc observeActivity(activity: Activity<AdventureAttributes>) {\n    Task {\n        for await activityState in activity.activityStateUpdates {\n            if activityState == .dismissed {\n                self.cleanUpDismissedActivity()\n            }\n        }\n    }\n}\n\n// Observe activity state synchronously\nlet activityState = activity.activityState\nif activityState == .dismissed {\n    self.cleanUpDismissedActivity()\n}"
+    },
+    {
+      "title": "Dismiss Live Activity with final content state",
+      "language": "swift",
+      "startTimeSeconds": 603,
+      "code": "let hero = activity.attributes.hero\n\nlet finalContent = AdventureAttributes.ContentState(\n    currentHealthLevel: hero.healthLevel,\n    eventDescription: \"Adventure over! \\(hero.name) has defeated the boss! Congrats!\"\n)\n\nlet dismissalPolicy: ActivityUIDismissalPolicy = .default\n\nactivity.end(\n    ActivityContent(state: finalContent, staleDate: nil),\n    dismissalPolicy: dismissalPolicy)\n}"
+    },
+    {
+      "title": "Add ActivityConfiguration to WidgetBundle",
+      "language": "swift",
+      "startTimeSeconds": 650,
+      "code": "import WidgetKit\nimport SwiftUI\n\n@main\nstruct EmojiRangersWidgetBundle: WidgetBundle {\n    var body: some Widget {\n        EmojiRangerWidget()\n        LeaderboardWidget()\n        AdventureActivityConfiguration()\n    }\n}"
+    },
+    {
+      "title": "Define Lock Screen presentation",
+      "language": "swift",
+      "startTimeSeconds": 665,
+      "code": "struct AdventureActivityConfiguration: Widget {\n    var body: some WidgetConfiguration {\n        ActivityConfiguration(for: AdventureAttributes.self) { context in\n            AdventureLiveActivityView(\n                hero: context.attributes.hero,\n                isStale: context.isStale,\n                contentState: context.state\n            )\n            .activityBackgroundTint(Color.navyBlue)\n        } dynamicIsland: { context in\n            // ...\n        }\n    }\n}"
+    },
+    {
+      "title": "Define Dynamic Island compact presentation",
+      "language": "swift",
+      "startTimeSeconds": 808,
+      "code": "struct AdventureActivityConfiguration: Widget {\n    var body: some WidgetConfiguration {\n        ActivityConfiguration(for: AdventureAttributes.self) { context in\n            // ...\n        } dynamicIsland: { context in\n            DynamicIsland {\n                // ...\n            } compactLeading: {\n                Avatar(hero: context.attributes.hero)\n            } compactTrailing: {\n                ProgressView(value: context.state.currentHealthLevel) {\n                    Text(\"\\(Int(context.state.currentHealthLevel * 100))\")\n                }\n                .progressViewStyle(.circular)\n                .tint(context.state.currentHealthLevel <= 0.2 ? Color.red : Color.green)\n            } minimal: {\n                // ...\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Define Dynamic Island minimal presentation",
+      "language": "swift",
+      "startTimeSeconds": 882,
+      "code": "struct AdventureActivityConfiguration: Widget {\n    var body: some WidgetConfiguration {\n        ActivityConfiguration(for: AdventureAttributes.self) { context in\n            // ...\n        } dynamicIsland: { context in\n            DynamicIsland {\n                // ...\n            } compactLeading: {\n                // ...\n            } compactTrailing: {\n                // ...\n            } minimal: {\n                ProgressView(value: context.state.currentHealthLevel) {\n                    Avatar(hero: context.attributes.hero)\n                }\n                .progressViewStyle(.circular)\n                .tint(context.state.currentHealthLevel <= 0.2 ? Color.red : Color.green)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Define Dynamic Island expanded presentation",
+      "language": "swift",
+      "startTimeSeconds": 926,
+      "code": "struct AdventureActivityConfiguration: Widget {\n    var body: some WidgetConfiguration {\n        ActivityConfiguration(for: AdventureAttributes.self) { context in\n            // ...\n        } dynamicIsland: { context in\n            DynamicIsland {\n                // Leading region\n                DynamicIslandExpandedRegion(.leading) {\n                    LiveActivityAvatarView(hero: hero)\n                }\n\n                // Expanded region\n                DynamicIslandExpandedRegion(.trailing) {\n                    StatsView(hero: hero, isStale: isStale)\n                }\n\n                // Bottom region\n                DynamicIslandExpandedRegion(.bottom) {\n                    HealthBar(currentHealthLevel: contentState.currentHealthLevel)\n                    EventDescriptionView(hero: hero, contentState: contentState)\n                }\n            } compactLeading: {\n                // ...\n            } compactTrailing: {\n                // ...\n            } minimal: {\n                // ...\n            }\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Live Activities",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/live-activities",
+      "type": "documentation",
+      "description": "A Live Activity displays up-to-date information from your app, allowing people to view the progress of events or tasks at a glance.",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/live-activities"
+    },
+    {
+      "title": "Starting and updating Live Activities with ActivityKit push notifications",
+      "url": "https://developer.apple.com/documentation/ActivityKit/starting-and-updating-live-activities-with-activitykit-push-notifications",
+      "type": "documentation",
+      "description": "Use ActivityKit to receive push tokens and to remotely start, update, and end your Live Activity with ActivityKit notifications.",
+      "sosumiURL": "https://sosumi.ai/documentation/ActivityKit/starting-and-updating-live-activities-with-activitykit-push-notifications",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ActivityKit/starting-and-updating-live-activities-with-activitykit-push-notifications.json"
+    },
+    {
+      "title": "Displaying live data with Live Activities",
+      "url": "https://developer.apple.com/documentation/ActivityKit/displaying-live-data-with-live-activities",
+      "type": "documentation",
+      "description": "Display up-to-date data and offer quick interactions in the Dynamic Island, on the Lock Screen, in CarPlay, and on a paired Mac or Apple Watch.",
+      "sosumiURL": "https://sosumi.ai/documentation/ActivityKit/displaying-live-data-with-live-activities",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ActivityKit/displaying-live-data-with-live-activities.json"
+    },
+    {
+      "title": "ActivityKit",
+      "url": "https://developer.apple.com/documentation/ActivityKit",
+      "type": "documentation",
+      "description": "Share live updates from your app as Live Activities on iPhone, iPad, Apple Watch, and the Mac.",
+      "sosumiURL": "https://sosumi.ai/documentation/ActivityKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ActivityKit.json"
+    },
+    {
+      "title": "WidgetKit",
+      "url": "https://developer.apple.com/documentation/WidgetKit",
+      "type": "documentation",
+      "description": "Extend the reach of your app by creating widgets, watch complications, Live Activities, and controls.",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10184-meet-activitykit/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10184-meet-activitykit/metadata.json",
+    "readme": "sessions/wwdc2023/10184-meet-activitykit/README.md",
+    "transcript": "sessions/wwdc2023/10184-meet-activitykit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10184-meet-activitykit/transcript.json"
+  }
+}

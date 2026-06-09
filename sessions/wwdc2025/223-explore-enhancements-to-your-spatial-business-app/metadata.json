@@ -1,0 +1,114 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-223",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 223,
+  "title": "Explore enhancements to your spatial business app",
+  "description": "Discover how the latest enhancements and APIs in visionOS 26 expand access and extend enterprise capabilities announced last year. Learn how these all-new features make it easy to build model training workflows, enhance video feeds, and enable you to align coordinate systems over a local network to develop collaborative experiences in your in-house app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/223",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/223",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [
+    "camera",
+    "enterprise",
+    "follow",
+    "in-house",
+    "license",
+    "stereo"
+  ],
+  "topics": [
+    "App Services",
+    "Spatial Computing",
+    "Business & Education"
+  ],
+  "primaryTopic": "Business & Education",
+  "duration": 1537,
+  "hasTranscript": true,
+  "transcriptWordCount": 3277,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/223/4/5af51454-839b-4a10-9b09-2f7018e9e3af/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/223/4/5af51454-839b-4a10-9b09-2f7018e9e3af/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/223/4/5af51454-839b-4a10-9b09-2f7018e9e3af/downloads/wwdc2025-223_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/223/4/5af51454-839b-4a10-9b09-2f7018e9e3af/downloads/wwdc2025-223_hd.mp4",
+    "duration": 1537
+  },
+  "codeSnippets": [
+    {
+      "title": "createml on the Mac command line",
+      "language": "bash",
+      "startTimeSeconds": 180,
+      "code": "xcrun createml objecttracker -s my.usdz -o my.referenceobject"
+    },
+    {
+      "title": "VisionEntitlementServices",
+      "language": "swift",
+      "startTimeSeconds": 268,
+      "code": "import VisionEntitlementServices\n\nfunc checkLicenseStatus() {\n    // Get the shared license details instance\n    let license = EnterpriseLicenseDetails.shared\n\n    // First, you might check the overall license status\n    guard license.licenseStatus == .valid else {\n        print(\"Enterprise license is not valid: \\(license.licenseStatus)\")\n        // Optionally disable enterprise features or alert the user\n        return\n    }\n\n    // Then, check for a specific entitlement before using the feature\n    if license.isApproved(for: .mainCameraAccess) {\n        // Safe to proceed with using the main camera API\n        print(\"Main Camera Access approved. Enabling feature...\")\n        // ... enable camera functionality ...\n    } else {\n        // Feature not approved for this license\n        print(\"Main Camera Access not approved.\")\n        // ... keep feature disabled, potentially inform user ...\n    }\n}"
+    },
+    {
+      "title": "SharedCoordinateSpaceModel",
+      "language": "swift",
+      "startTimeSeconds": 604,
+      "code": "//\n//  SharedCoordinateSpaceModel.swift\n//\n\nimport ARKit\n\nclass SharedCoordinateSpaceModel {\n    let arkitSession = ARKitSession()\n    let sharedCoordinateSpace = SharedCoordinateSpaceProvider()\n    let worldTracking = WorldTrackingProvider()\n\n    func runARKitSession() async {\n        do {\n            try await arkitSession.run([sharedCoordinateSpace, worldTracking])\n        } catch {\n            reportError(\"Error: running session: \\(error)\")\n        }\n    }\n\n    // Push data received from other participants\n    func pushCoordinateSpaceData(_ data: Data) {\n        if let coordinateSpaceData = SharedCoordinateSpaceProvider.CoordinateSpaceData(data: data) {\n            sharedCoordinateSpace.push(data: coordinateSpaceData)\n        }\n    }\n\n    // Poll data to be sent to other participants\n    func pollCoordinateSpaceData() async {\n        if let coordinateSpaceData = sharedCoordinateSpace.nextCoordinateSpaceData {\n            // Send my coordinate space data\n        }\n    }\n\n    // Be notified when participants connect or disconnect from the shared coordinate space\n    func processEventUpdates() async {\n        let participants = [UUID]()\n        for await event in sharedCoordinateSpace.eventUpdates {\n            switch event {\n                // Participants changed\n            case .connectedParticipantIdentifiers(participants: participants):\n                // handle change\n                print(\"Handle change in participants\")\n            case .sharingEnabled:\n                print(\"sharing enabled\")\n            case .sharingDisabled:\n                print(\"sharing disabled\")\n            @unknown default:\n                print(\"handle future events\")\n            }\n        }\n    }\n\n    // Be notified when able to add shared world anchors\n    func processSharingAvailabilityUpdates() async {\n        for await sharingAvailability in worldTracking.worldAnchorSharingAvailability\n            where sharingAvailability == .available {\n            // Able to add anchor\n        }\n    }\n    // Add shared world anchor\n    func addWorldAnchor(at transform: simd_float4x4) async throws {\n        let anchor = WorldAnchor(originFromAnchorTransform: transform, sharedWithNearbyParticipants: true)\n        try await worldTracking.addAnchor(anchor)\n    }\n\n    // Process shared anchor updates from local session and from other participants\n    func processWorldTrackingUpdates() async {\n        for await update in worldTracking.anchorUpdates {\n            switch update.event {\n            case .added, .updated, .removed:\n                // Handle anchor updates\n                print(\"Handle updates to shared world anchors\")\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "contentCaptureProtected",
+      "language": "swift",
+      "startTimeSeconds": 770,
+      "code": "// Example implementing contentCaptureProtected\n\nstruct SecretDocumentView: View {\n    var body: some View {\n        VStack {\n            Text(\"Secrets\")\n                .font(.largeTitle)\n                .padding()\n\n            SensitiveDataView()\n                .contentCaptureProtected()\n        }\n        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)\n    }\n}"
+    },
+    {
+      "title": "CameraRegionView",
+      "language": "swift",
+      "startTimeSeconds": 1008,
+      "code": "//\n//  InspectorView.swift\n//\n\nimport SwiftUI\nimport VisionKit\n\nstruct InspectorView: View {\n    @Environment(CameraFeedDelivery.self) private var cameraFeedDelivery: CameraFeedDelivery\n\n    var body: some View {\n        CameraRegionView(isContrastAndVibrancyEnhancementEnabled: true) { result in\n            var pixelBuffer: CVReadOnlyPixelBuffer?\n            switch result {\n            case .success(let value):\n                pixelBuffer = value.pixelBuffer\n            case .failure(let error):\n                reportError(\"Failure: \\(error.localizedDescription)\")\n                cameraFeedDelivery.stopFeed()\n                return nil\n            }\n\n            cameraFeedDelivery.frameUpdate(pixelBuffer: pixelBuffer!)\n            return nil\n        }\n    }\n}\n\n@main\nstruct EnterpriseAssistApp: App {\n    var body: some Scene {\n        WindowGroup {\n            ContentView()\n        }\n\n        WindowGroup(id: \"InspectorView\") {\n            InspectorView()\n        }\n        .windowResizability(.contentSize)\n    }\n}"
+    },
+    {
+      "title": "CameraRegionAnchor",
+      "language": "swift",
+      "startTimeSeconds": 1275,
+      "code": "class CameraRegionHandler {\n    let arkitSession = ARKitSession()\n    var cameraRegionProvider: CameraRegionProvider?\n    var cameraRegionAnchor: CameraRegionAnchor?\n\n    func setUpNewAnchor(anchor: simd_float4x4, width: Float, height: Float) async {\n        let anchor = CameraRegionAnchor(originFromAnchorTransform: anchor,\n                                        width: width,\n                                        height: height,\n                                        cameraEnhancement: .stabilization)\n\n        guard let cameraRegionProvider = self.cameraRegionProvider else {\n            reportError(\"Missing CameraRegionProvider\")\n            return\n        }\n\n        do {\n            try await cameraRegionProvider.addAnchor(anchor)\n        } catch {\n            reportError(\"Error adding anchor: \\(error)\")\n        }\n        cameraRegionAnchor = anchor\n\n        Task {\n            let updates = cameraRegionProvider.anchorUpdates(forID: anchor.id)\n            for await update in updates {\n                let pixelBuffer = update.anchor.pixelBuffer\n                // handle pixelBuffer\n            }\n        }\n    }\n\n    func removeAnchor() async {\n        guard let cameraRegionProvider = self.cameraRegionProvider else {\n            reportError(\"Missing CameraRegionProvider\")\n            return\n        }\n\n        if let cameraRegionAnchor = self.cameraRegionAnchor {\n            do {\n                try await cameraRegionProvider.removeAnchor(cameraRegionAnchor)\n            } catch {\n                reportError(\"Error removing anchor: \\(error.localizedDescription)\")\n                return\n            }\n            self.cameraRegionAnchor = nil\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Implementing object tracking in your app",
+      "url": "https://developer.apple.com/documentation/visionOS/implementing-object-tracking-in-your-app",
+      "type": "documentation",
+      "description": "Create engaging interactions by training models to recognize and track real-world objects in people’s surroundings.",
+      "sosumiURL": "https://sosumi.ai/documentation/visionOS/implementing-object-tracking-in-your-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/visionOS/implementing-object-tracking-in-your-app.json"
+    },
+    {
+      "title": "Building spatial experiences for business apps with enterprise APIs for visionOS",
+      "url": "https://developer.apple.com/documentation/visionOS/building-spatial-experiences-for-business-apps-with-enterprise-apis",
+      "type": "documentation",
+      "description": "Grant enhanced sensor access and increased platform control to your visionOS app by using entitlements.",
+      "sosumiURL": "https://sosumi.ai/documentation/visionOS/building-spatial-experiences-for-business-apps-with-enterprise-apis",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/visionOS/building-spatial-experiences-for-business-apps-with-enterprise-apis.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/223-explore-enhancements-to-your-spatial-business-app/",
+  "files": {
+    "metadata": "sessions/wwdc2025/223-explore-enhancements-to-your-spatial-business-app/metadata.json",
+    "readme": "sessions/wwdc2025/223-explore-enhancements-to-your-spatial-business-app/README.md",
+    "transcript": "sessions/wwdc2025/223-explore-enhancements-to-your-spatial-business-app/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/223-explore-enhancements-to-your-spatial-business-app/transcript.json"
+  }
+}

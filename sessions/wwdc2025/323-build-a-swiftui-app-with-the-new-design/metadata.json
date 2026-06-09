@@ -1,0 +1,248 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-323",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 323,
+  "title": "Build a SwiftUI app with the new design",
+  "description": "Explore the ways Liquid Glass transforms the look and feel of your app. Discover how this stunning new material enhances toolbars, controls, and app structures across platforms, providing delightful interactions and seamlessly integrating your app with the system. Learn how to adopt new APIs that can help you make the most of Liquid Glass.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/323",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/323",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Design",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1337,
+  "hasTranscript": true,
+  "transcriptWordCount": 2669,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/323/4/0fd37581-632a-4827-b656-d192163cece0/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/323/4/0fd37581-632a-4827-b656-d192163cece0/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/323/4/0fd37581-632a-4827-b656-d192163cece0/downloads/wwdc2025-323_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/323/4/0fd37581-632a-4827-b656-d192163cece0/downloads/wwdc2025-323_hd.mp4",
+    "duration": 1337
+  },
+  "codeSnippets": [
+    {
+      "title": "Segmented Picker",
+      "language": "swift",
+      "startTimeSeconds": 71,
+      "code": "Picker(\"View\", selection: $selection) {\n    Text(\"Map\").tag(ViewMode.map)\n    Text(\"List\").tag(ViewMode.list)\n}\n.pickerStyle(.segmented)"
+    },
+    {
+      "title": "Extend background images",
+      "language": "swift",
+      "startTimeSeconds": 239,
+      "code": "// Extend background images\n\nstruct LandmarkDetailView: View {\n    let landmark: Landmark\n\n    var body: some View {\n        ScrollView {\n            VStack {\n                Image(landmark.backgroundImageName)\n                    .resizable()\n                    .aspectRatio(contentMode: .fill)\n                    .backgroundExtensionEffect()\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Adding an inspector",
+      "language": "swift",
+      "startTimeSeconds": 263,
+      "code": "// Adding an inspector\n\nNavigationSplitView {\n    // sidebar\n} detail: {\n    // detail\n}\n.inspector(isPresented: $presentInspector) {\n    LandmarkDetailInspectorView(landmark: landmark)\n}"
+    },
+    {
+      "title": "Minimize tab bar on scroll",
+      "language": "swift",
+      "startTimeSeconds": 307,
+      "code": "// Minimize tab bar on scroll\n\nTabView {\n    // tabs\n}\n.tabBarMinimizeBehavior(.onScrollDown)"
+    },
+    {
+      "title": "Tab bar accessory",
+      "language": "swift",
+      "startTimeSeconds": 339,
+      "code": "// Tab bar accessory\n\nTabView {\n    // tabs\n}\n.tabBarMinimizeBehavior(.onScrollDown)\n.tabViewBottomAccessory {\n    MusicPlaybackView()\n}\n\nstruct MusicPlaybackView: View {\n    @Environment(\\.tabViewBottomAccessoryPlacement)\n    var placement\n\n    var body: some View {\n        if placement == .inline {\n            // compact layout\n        } else {\n            // full layout\n        }\n    }\n}"
+    },
+    {
+      "title": "Sheets with presentation detents",
+      "language": "swift",
+      "startTimeSeconds": 380,
+      "code": "// Sheets\n\nCollectionDetailView()\n    .sheet(isPresented: $isShowingLandmarksSelection) {\n        LandmarksSelectionList()\n            .presentationDetents([.height(180), .medium, .large])\n    }"
+    },
+    {
+      "title": "Presentation background",
+      "language": "swift",
+      "startTimeSeconds": 413,
+      "code": "// Presentation background\n\nCollectionDetailView()\n    .sheet(isPresented: $isShowingLandmarksSelection) {\n        LandmarksSelectionList()\n            .presentationDetents([.height(180), .medium, .large])\n            .presentationBackground(.thickMaterial)\n    }"
+    },
+    {
+      "title": "Zoom transition",
+      "language": "swift",
+      "startTimeSeconds": 430,
+      "code": "// Zoom transition\n\n@Namespace private var namespace\n\nContentView()\n    .toolbar {\n        ToolbarItem(placement: .bottomBar) {\n            Button {\n                isPresented = true\n            } label: {\n                Image(systemName: \"map\")\n            }\n            .matchedTransitionSource(\n                id: \"transition-id\", in: namespace)\n        }\n    }\n    .sheet(isPresented: $isPresented) {\n        SheetContent()\n            .navigationTransition(\n                .zoom(\n                    sourceID: \"transition-id\", in: namespace))\n    }"
+    },
+    {
+      "title": "Toolbar menus",
+      "language": "swift",
+      "startTimeSeconds": 447,
+      "code": "// Toolbar menus\n\nLandmarkDetailView()\n    .toolbar {\n        ToolbarItemGroup {\n            Button { } label: {\n                Image(systemName: \"square.and.arrow.up\")\n            }\n\n            Menu(\n                \"Collections\",\n                systemImage: \"book.closed\"\n            ) {\n                // menu items\n            }\n        }\n    }"
+    },
+    {
+      "title": "Confirmation dialog",
+      "language": "swift",
+      "startTimeSeconds": 461,
+      "code": "// Confirmation dialog\n\nCollectionDetailView()\n    .toolbar {\n        Button(\"Delete\", systemImage: \"trash\") {\n            presentDialog = true\n        }\n        .confirmationDialog(\n            \"Delete?\",\n            isPresented: $presentDialog\n        ) {\n            Button(\"Delete\", role: .destructive) { }\n        }\n    }"
+    },
+    {
+      "title": "Visually separate toolbar items",
+      "language": "swift",
+      "startTimeSeconds": 506,
+      "code": "// Visually separate toolbar items\n\nstruct LandmarkDetailView: View {\n    var body: some View {\n        ScrollView {\n            ScrollContent()\n        }\n        .toolbar {\n            ToolbarItem { ShareLink() }\n            ToolbarSpacer(.fixed)\n            ToolbarItem { FavoriteButton() }\n            ToolbarItem { CollectionsButton() }\n            ToolbarSpacer(.fixed)\n            ToolbarItem { InspectorToggle() }\n        }\n    }\n}"
+    },
+    {
+      "title": "Toolbar items with flexible spacing",
+      "language": "swift",
+      "startTimeSeconds": 527,
+      "code": "// Toolbar items with flexible spacing\n\nstruct InboxView: View {\n    var body: some View {\n        ScrollView {\n            ScrollContent()\n        }\n        .toolbar {\n            ToolbarItem(placement: .bottomBar) {\n                FilterPicker()\n            }\n            ToolbarSpacer(.flexible, placement: .bottomBar)\n            DefaultToolbarItem(\n                kind: .search, placement: .bottomBar)\n            ToolbarSpacer(.fixed, placement: .bottomBar)\n            ToolbarItem(placement: .bottomBar) {\n                NewMessageButton()\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Hide shared glass background",
+      "language": "swift",
+      "startTimeSeconds": 547,
+      "code": "// Hide shared glass background\n\nstruct HomeView: View {\n    var body: some View {\n        ContentView()\n            .toolbar {\n                ToolbarItem {\n                    ProfileButton()\n                }\n                .sharedBackgroundVisibility(.hidden)\n            }\n    }\n}"
+    },
+    {
+      "title": "Toolbar item with a badge",
+      "language": "swift",
+      "startTimeSeconds": 580,
+      "code": "// Toolbar item with a badge\n\n@Environment(ModelData.self) var modelData\n\nCollectionsView()\n    .toolbar {\n        ToolbarItemGroup {\n            Button(\"Notifications\", systemImage: \"bell\") { }\n                .badge(modelData.notifications.count)\n            Button(\"Add\", systemImage: \"plus\") { }\n        }\n    }"
+    },
+    {
+      "title": "Hard scroll edge effect",
+      "language": "swift",
+      "startTimeSeconds": 657,
+      "code": "// Hard scroll edge effect\n\nScrollView {\n    // content\n}\n.scrollEdgeEffectStyle(.hard, for: .top)"
+    },
+    {
+      "title": "Search in top-trailing position",
+      "language": "swift",
+      "startTimeSeconds": 704,
+      "code": "// Search in the top-trailing position\n\nstruct TopTrailingSearch: View {\n    @State private var searchText = \"\"\n\n    var body: some View {\n        NavigationSplitView {\n            SidebarContent()\n        } detail: {\n            DetailContent()\n        }\n        .searchable(text: $searchText)\n    }\n}"
+    },
+    {
+      "title": "Minimized search in toolbar",
+      "language": "swift",
+      "startTimeSeconds": 771,
+      "code": "// Minimized search in the toolbar\n\nstruct MinimizedSearch: View {\n    @State private var searchText = \"\"\n\n    var body: some View {\n        NavigationStack {\n            DetailContent()\n        }\n        .searchable(text: $searchText)\n        .searchToolbarBehavior(.minimize)\n    }\n}"
+    },
+    {
+      "title": "TabView with a search tab",
+      "language": "swift",
+      "startTimeSeconds": 797,
+      "code": "// TabView with a search tab\n\nstruct ContentView: View {\n    @State private var searchText = \"\"\n\n    var body: some View {\n        TabView {\n            // other tabs\n\n            Tab(role: .search) {\n                NavigationStack {\n                    SearchTabContent()\n                }\n            }\n        }\n        .searchable(text: $searchText)\n    }\n}"
+    },
+    {
+      "title": "Capsule buttons",
+      "language": "swift",
+      "startTimeSeconds": 865,
+      "code": "Button(…)\n    .buttonBorderShape(.capsule)"
+    },
+    {
+      "title": "Button sizes: high density layouts",
+      "language": "swift",
+      "startTimeSeconds": 909,
+      "code": "// Button sizes: high density layouts\n\nVStack {\n    Picker(\"Inspector View Mode\", selection: $mode) {\n        // options\n    }\n    .controlSize(.large)\n\n    InspectorStackView()\n        .controlSize(.small)\n}"
+    },
+    {
+      "title": "Glass button styles",
+      "language": "swift",
+      "startTimeSeconds": 933,
+      "code": "// Prominent glass button\nButton(\"Get Started\") { }\n    .buttonStyle(.glassProminent)\n\n// Standard glass button\nButton(\"Learn More\") { }\n    .buttonStyle(.glass)"
+    },
+    {
+      "title": "macOS menu icons",
+      "language": "swift",
+      "startTimeSeconds": 992,
+      "code": "// Menus\n\nMenu(\"Edit\") {\n    Section {\n        Button(\"Undo\",\n               systemImage: \"arrow.uturn.backward\") { }\n        Button(\"Redo\",\n               systemImage: \"arrow.uturn.forward\") { }\n    }\n\n    Section {\n        Button(\"Copy\",\n               systemImage: \"document.on.document\") { }\n        Button(\"Duplicate\",\n               systemImage: \"plus.square.on.square\") { }\n    }\n}"
+    },
+    {
+      "title": "Concentric rectangle shape",
+      "language": "swift",
+      "startTimeSeconds": 1047,
+      "code": "// Concentric rectangle shape\n\nCustomControl()\n    .background(.tint, in: .rect(corner: .containerConcentric))"
+    },
+    {
+      "title": "Glass effect",
+      "language": "swift",
+      "startTimeSeconds": 1110,
+      "code": "// Glass effect\n\nLabel(\"Desert\", systemImage: \"sun.max.fill\")\n    .padding()\n    .glassEffect()"
+    },
+    {
+      "title": "Glass effect: custom shape",
+      "language": "swift",
+      "startTimeSeconds": 1132,
+      "code": "// Customize shape\n\nLabel(\"Desert\", systemImage: \"sun.max.fill\")\n    .padding()\n    .glassEffect(in: .rect(cornerRadius: 16))"
+    },
+    {
+      "title": "Glass effect: tinted",
+      "language": "swift",
+      "startTimeSeconds": 1139,
+      "code": "// Tinted glass\n\nLabel(\"Desert\", systemImage: \"sun.max.fill\")\n    .padding()\n    .glassEffect(.regular.tint(.green))"
+    },
+    {
+      "title": "Glass effect: interactive",
+      "language": "swift",
+      "startTimeSeconds": 1161,
+      "code": "// Interactive glass\n\nLabel(\"Desert\", systemImage: \"sun.max.fill\")\n    .padding()\n    .glassEffect(.regular.interactive())"
+    },
+    {
+      "title": "Glass morphing with GlassEffectContainer",
+      "language": "swift",
+      "startTimeSeconds": 1191,
+      "code": "// GlassEffectContainer\n\n@Namespace var namespace\n\nGlassEffectContainer {\n    VStack {\n        if isExpanded {\n            VStack(spacing: 16) {\n                ForEach(badges) { badge in\n                    BadgeLabel(badge: badge)\n                        .glassEffect()\n                        .glassEffectID(badge.id, in: namespace)\n                }\n            }\n        }\n\n        BadgeToggle()\n            .buttonStyle(.glass)\n            .glassEffectID(\"badgeToggle\", in: namespace)\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Applying Liquid Glass to custom views",
+      "url": "https://developer.apple.com/documentation/SwiftUI/Applying-Liquid-Glass-to-custom-views",
+      "type": "documentation",
+      "description": "Configure, combine, and morph views using Liquid Glass effects.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/Applying-Liquid-Glass-to-custom-views",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/Applying-Liquid-Glass-to-custom-views.json"
+    },
+    {
+      "title": "Landmarks: Building an app with Liquid Glass",
+      "url": "https://developer.apple.com/documentation/SwiftUI/Landmarks-Building-an-app-with-Liquid-Glass",
+      "type": "samplecode",
+      "description": "Enhance your app experience with system-provided and custom Liquid Glass.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/Landmarks-Building-an-app-with-Liquid-Glass",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/Landmarks-Building-an-app-with-Liquid-Glass.json"
+    },
+    {
+      "title": "Adopting Liquid Glass",
+      "url": "https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass",
+      "type": "documentation",
+      "description": "Find out how to bring the new material to your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/TechnologyOverviews/adopting-liquid-glass",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/TechnologyOverviews/adopting-liquid-glass.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/323-build-a-swiftui-app-with-the-new-design/",
+  "files": {
+    "metadata": "sessions/wwdc2025/323-build-a-swiftui-app-with-the-new-design/metadata.json",
+    "readme": "sessions/wwdc2025/323-build-a-swiftui-app-with-the-new-design/README.md",
+    "transcript": "sessions/wwdc2025/323-build-a-swiftui-app-with-the-new-design/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/323-build-a-swiftui-app-with-the-new-design/transcript.json"
+  }
+}

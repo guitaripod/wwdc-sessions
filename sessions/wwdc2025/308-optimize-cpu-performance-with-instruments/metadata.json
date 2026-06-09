@@ -1,0 +1,152 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-308",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 308,
+  "title": "Optimize CPU performance with Instruments",
+  "description": "Learn how to optimize your app for Apple silicon with two new hardware-assisted tools in Instruments. We’ll start by covering how to profile your app, then dive deeper by showing every single function called with Processor Trace. We’ll also discuss how to use CPU Counters’ modes to analyze your code for CPU bottlenecks.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/308",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/308",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "AI & Machine Learning",
+    "Graphics & Games",
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 1979,
+  "hasTranscript": true,
+  "transcriptWordCount": 5178,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/308/4/5c144645-dea8-4f16-97ac-a6dd76cf72d8/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/308/4/5c144645-dea8-4f16-97ac-a6dd76cf72d8/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/308/4/5c144645-dea8-4f16-97ac-a6dd76cf72d8/downloads/wwdc2025-308_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/308/4/5c144645-dea8-4f16-97ac-a6dd76cf72d8/downloads/wwdc2025-308_hd.mp4",
+    "duration": 1979
+  },
+  "codeSnippets": [
+    {
+      "title": "Binary search in Collection",
+      "language": "swift",
+      "startTimeSeconds": 397,
+      "code": "public func binarySearch<E, C>(\n    needle: E,\n    haystack: C\n) -> C.Index where E: Comparable, C: Collection<E> {\n    var start = haystack.startIndex\n    var length = haystack.count\n\n    while length > 0 {\n        let half = length / 2\n        let middle = haystack.index(start, offsetBy: half)\n        let middleValue = haystack[middle]\n        if needle < middleValue {\n            length = half\n        } else if needle == middleValue {\n            return middle\n        } else {\n            start = haystack.index(after: middle)\n            length -= half + 1\n        }\n    }\n\n    return start\n}"
+    },
+    {
+      "title": "Throughput benchmark",
+      "language": "swift",
+      "startTimeSeconds": 469,
+      "code": "import Testing\nimport OSLog\n\nlet signposter = OSSignposter(\n    subsystem: \"com.example.apple-samplecode.MyBinarySearch\",\n    category: .pointsOfInterest\n)\n\nfunc search(\n    name: StaticString,\n    duration: Duration,\n    _ search: () -> Void\n) {\n    var now = ContinuousClock.now\n    var outerIterations = 0\n\n    let interval = signposter.beginInterval(name)\n    let start = ContinuousClock.now\n    repeat {\n        search()\n        outerIterations += 1\n        now = .now\n    } while (start.duration(to: now) < duration)\n    let elapsed = start.duration(to: now)\n    let seconds = Double(elapsed.components.seconds) +\n            Double(elapsed.components.attoseconds) / 1e18\n    let throughput = Double(outerIterations) / seconds\n    signposter.endInterval(name, interval, \"\\(throughput) ops/s\")\n    print(\"\\(name): \\(throughput) ops/s\")\n}\n\nlet arraySize = 8 << 20\nlet arrayCount = arraySize / MemoryLayout<Int>.size\nlet searchCount = 10_000\n\nstruct MyBinarySearchTests {\n    let sortedArray: [Int]\n    let randomElements: [Int]\n\n    init() {\n        let sortedArray: [Int] = (0..<arrayCount).map { _ in\n                .random(in: 0..<arrayCount)\n        }.sorted()\n        self.randomElements = (0..<searchCount).map { _ in\n            sortedArray.randomElement()!\n        }\n        self.sortedArray = sortedArray\n    }\n\n    @Test func searchCollection() throws {\n        search(name: \"Collection\", duration: .seconds(1)) {\n            for element in randomElements {\n                _ = binarySearch(needle: element, haystack: sortedArray)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Binary search in Span",
+      "language": "swift",
+      "startTimeSeconds": 826,
+      "code": "public func binarySearch<E: Comparable>(\n    needle: E,\n    haystack: Span<E>\n) -> Span<E>.Index {\n    var start = haystack.indices.startIndex\n    var length = haystack.count\n\n    while length > 0 {\n        let half = length / 2\n        let middle = haystack.indices.index(start, offsetBy: half)\n        let middleValue = haystack[middle]\n        if needle < middleValue {\n            length = half\n        } else if needle == middleValue {\n            return middle\n        } else {\n            start = haystack.indices.index(after: middle)\n            length -= half + 1\n        }\n    }\n\n    return start\n}"
+    },
+    {
+      "title": "Throughput benchmark for binary search in Span",
+      "language": "swift",
+      "startTimeSeconds": 909,
+      "code": "extension MyBinarySearchTests {\n    @Test func searchSpan() throws {\n        let span = sortedArray.span\n        search(name: \"Span\", duration: .seconds(1)) {\n            for element in randomElements {\n                _ = binarySearch(needle: element, haystack: span)\n            }\n        }\n    }\n\n    @Test func searchSpanForProcessorTrace() throws {\n        let span = sortedArray.span\n        signposter.withIntervalSignpost(\"Span\") {\n            for element in randomElements[0..<10] {\n                _ = binarySearch(needle: element, haystack: span)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Binary search in Span<Int>",
+      "language": "swift",
+      "startTimeSeconds": 1157,
+      "code": "public func binarySearchInt(\n    needle: Int,\n    haystack: Span<Int>\n) -> Span<Int>.Index {\n    var start = haystack.indices.startIndex\n    var length = haystack.count\n\n    while length > 0 {\n        let half = length / 2\n        let middle = haystack.indices.index(start, offsetBy: half)\n        let middleValue = haystack[middle]\n        if needle < middleValue {\n            length = half\n        } else if needle == middleValue {\n            return middle\n        } else {\n            start = haystack.indices.index(after: middle)\n            length -= half + 1\n        }\n    }\n    return start\n}"
+    },
+    {
+      "title": "Throughput benchmark for binary search in Span<Int>",
+      "language": "swift",
+      "startTimeSeconds": 1384,
+      "code": "extension MyBinarySearchTests {\n    @Test func searchSpanInt() throws {\n        let span = sortedArray.span\n        search(name: \"Span<Int>\", duration: .seconds(1)) {\n            for element in randomElements {\n                _ = binarySearchInt(needle: element, haystack: span)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Branchless binary search",
+      "language": "swift",
+      "startTimeSeconds": 1594,
+      "code": "public func binarySearchBranchless(\n    needle: Int,\n    haystack: Span<Int>\n) -> Span<Int>.Index {\n    var start = haystack.indices.startIndex\n    var length = haystack.count\n\n    while length > 0 {\n        let remainder = length % 2\n        length /= 2\n        let middle = start &+ length\n        let middleValue = haystack[middle]\n        if needle > middleValue {\n            start = middle &+ remainder\n        }\n    }\n\n    return start\n}"
+    },
+    {
+      "title": "Throughput benchmark for branchless binary search",
+      "language": "swift",
+      "startTimeSeconds": 1640,
+      "code": "extension MyBinarySearchTests {\n    @Test func searchBranchless() throws {\n        let span = sortedArray.span\n        search(name: \"Branchless\", duration: .seconds(1)) {\n            for element in randomElements {\n                _ = binarySearchBranchless(needle: element, haystack: span)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Eytzinger binary search",
+      "language": "swift",
+      "startTimeSeconds": 1767,
+      "code": "public func binarySearchEytzinger(\n    needle: Int,\n    haystack: Span<Int>\n) -> Span<Int>.Index {\n    var start = haystack.indices.startIndex.advanced(by: 1)\n    let length = haystack.count\n\n    while start < length {\n        let value = haystack[start]\n        start *= 2\n        if value < needle {\n            start += 1\n        }\n    }\n\n    return start >> ((~start).trailingZeroBitCount + 1)\n}"
+    },
+    {
+      "title": "Throughput benchmark for Eytzinger binary search",
+      "language": "swift",
+      "startTimeSeconds": 1834,
+      "code": "struct MyBinarySearchEytzingerTests {\n    let eytzingerArray: [Int]\n    let randomElements: [Int]\n\n    static func reorderEytzinger(_ input: [Int], array: inout [Int], sourceIndex: Int, resultIndex: Int) -> Int {\n        var sourceIndex = sourceIndex\n        if resultIndex < array.count {\n            sourceIndex = reorderEytzinger(input, array: &array, sourceIndex: sourceIndex, resultIndex: 2 * resultIndex)\n            array[resultIndex] = input[sourceIndex]\n            sourceIndex = reorderEytzinger(input, array: &array, sourceIndex: sourceIndex + 1, resultIndex: 2 * resultIndex + 1)\n        }\n        return sourceIndex\n    }\n\n    init() {\n        let sortedArray: [Int] = (0..<arrayCount).map { _ in\n            .random(in: 0..<arrayCount)\n        }.sorted()\n        var eytzingerArray: [Int] = Array(repeating: 0, count: arrayCount + 1)\n        _ = Self.reorderEytzinger(sortedArray, array: &eytzingerArray, sourceIndex: 0, resultIndex: 1)\n        self.randomElements = (0..<searchCount).map { _ in\n            sortedArray.randomElement()!\n        }\n        self.eytzingerArray = eytzingerArray\n    }\n\n    @Test func searchEytzinger() throws {\n        let span = eytzingerArray.span\n        search(name: \"Eytzinger\", duration: .seconds(1)) {\n            for element in randomElements {\n                _ = binarySearchEytzinger(needle: element, haystack: span)\n            }\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Performance and metrics",
+      "url": "https://developer.apple.com/documentation/Xcode/performance-and-metrics",
+      "type": "documentation",
+      "description": "Measure, investigate, and address the use of system resources and issues impacting performance using Instruments and Xcode Organizer.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/performance-and-metrics",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/performance-and-metrics.json"
+    },
+    {
+      "title": "Analyzing CPU usage with the Processor Trace instrument",
+      "url": "https://developer.apple.com/documentation/Xcode/analyzing-cpu-usage-with-processor-trace",
+      "type": "documentation",
+      "description": "Identify code where your app uses the CPU inefficiently.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/analyzing-cpu-usage-with-processor-trace",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/analyzing-cpu-usage-with-processor-trace.json"
+    },
+    {
+      "title": "Apple Silicon CPU Optimization Guide Version 4",
+      "url": "https://developer.apple.com/documentation/Apple-Silicon/cpu-optimization-guide",
+      "type": "documentation",
+      "description": "Identify performance optimization strategies for Apple silicon",
+      "sosumiURL": "https://sosumi.ai/documentation/Apple-Silicon/cpu-optimization-guide",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Apple-Silicon/cpu-optimization-guide.json"
+    },
+    {
+      "title": "Tuning your code’s performance for Apple silicon",
+      "url": "https://developer.apple.com/documentation/Apple-Silicon/tuning-your-code-s-performance-for-apple-silicon",
+      "type": "documentation",
+      "description": "Improve your code to get the best performance from both Apple silicon and Intel-based",
+      "sosumiURL": "https://sosumi.ai/documentation/Apple-Silicon/tuning-your-code-s-performance-for-apple-silicon",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Apple-Silicon/tuning-your-code-s-performance-for-apple-silicon.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/308-optimize-cpu-performance-with-instruments/",
+  "files": {
+    "metadata": "sessions/wwdc2025/308-optimize-cpu-performance-with-instruments/metadata.json",
+    "readme": "sessions/wwdc2025/308-optimize-cpu-performance-with-instruments/README.md",
+    "transcript": "sessions/wwdc2025/308-optimize-cpu-performance-with-instruments/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/308-optimize-cpu-performance-with-instruments/transcript.json"
+  }
+}

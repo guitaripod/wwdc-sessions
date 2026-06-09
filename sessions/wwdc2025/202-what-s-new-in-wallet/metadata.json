@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-202",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 202,
+  "title": "What’s new in Wallet",
+  "description": "Discover the latest features and improvements in Wallet. We’ll cover how to update your boarding passes with a stunning new design, and introduce new capabilities for multi-event tickets. We’ll also discuss API changes that help you seamlessly add passes to Wallet.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/202",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/202",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "airlines",
+    "bording pass",
+    "events",
+    "pass",
+    "passkit"
+  ],
+  "topics": [
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1234,
+  "hasTranscript": true,
+  "transcriptWordCount": 3103,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/202/5/8fe1fffa-e36b-4be6-a752-5ac3a921f7fa/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/202/5/8fe1fffa-e36b-4be6-a752-5ac3a921f7fa/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/202/5/8fe1fffa-e36b-4be6-a752-5ac3a921f7fa/downloads/wwdc2025-202_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/202/5/8fe1fffa-e36b-4be6-a752-5ac3a921f7fa/downloads/wwdc2025-202_hd.mp4",
+    "duration": 1234
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Wallet",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/wallet",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/wallet"
+    },
+    {
+      "title": "PassKit (Apple Pay and Wallet)",
+      "url": "https://developer.apple.com/documentation/PassKit",
+      "type": "documentation",
+      "description": "Process Apple Pay payments in your app, and create and distribute passes for the Wallet app.",
+      "sosumiURL": "https://sosumi.ai/documentation/PassKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/PassKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/202-what-s-new-in-wallet/",
+  "files": {
+    "metadata": "sessions/wwdc2025/202-what-s-new-in-wallet/metadata.json",
+    "readme": "sessions/wwdc2025/202-what-s-new-in-wallet/README.md",
+    "transcript": "sessions/wwdc2025/202-what-s-new-in-wallet/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/202-what-s-new-in-wallet/transcript.json"
+  }
+}

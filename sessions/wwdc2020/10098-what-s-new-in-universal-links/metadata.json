@@ -1,0 +1,76 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10098",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10098,
+  "title": "What's new in Universal Links",
+  "description": "Universal Links help people access your content, whether or not they have your app installed. Get the details on the latest updates for the Universal Links API, including support for Apple Watch and SwiftUI. Learn how you can reduce the size and complexity of your app-site-association file with enhanced pattern matching features like wildcards, substitution variables, and Unicode support. And discover how cached associated domains data will improve the initial launch experience for people using your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10098",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10098",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "handoff",
+    "spotlight",
+    "universal link",
+    "universal links"
+  ],
+  "topics": [
+    "Safari & Web",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 1384,
+  "hasTranscript": true,
+  "transcriptWordCount": 3590,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10098/3/E024AF2B-1DDA-4974-AA48-4186E6F9E22D/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10098/3/E024AF2B-1DDA-4974-AA48-4186E6F9E22D/wwdc2020_10098_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10098/3/E024AF2B-1DDA-4974-AA48-4186E6F9E22D/wwdc2020_10098_hd.mp4",
+    "duration": 1384
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Supporting universal links in your app",
+      "url": "https://developer.apple.com/documentation/Xcode/supporting-universal-links-in-your-app",
+      "type": "documentation",
+      "description": "Prepare your app to respond to an incoming universal link.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/supporting-universal-links-in-your-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/supporting-universal-links-in-your-app.json"
+    },
+    {
+      "title": "Allowing apps and websites to link to your content",
+      "url": "https://developer.apple.com/documentation/Xcode/allowing-apps-and-websites-to-link-to-your-content",
+      "type": "documentation",
+      "description": "Use universal links to link directly to content within your app and share data securely.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/allowing-apps-and-websites-to-link-to-your-content",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/allowing-apps-and-websites-to-link-to-your-content.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10098-what-s-new-in-universal-links/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10098-what-s-new-in-universal-links/metadata.json",
+    "readme": "sessions/wwdc2020/10098-what-s-new-in-universal-links/README.md",
+    "transcript": "sessions/wwdc2020/10098-what-s-new-in-universal-links/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10098-what-s-new-in-universal-links/transcript.json"
+  }
+}

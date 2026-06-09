@@ -1,0 +1,66 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-110349",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2023,
+  "eventContentId": 110349,
+  "title": "Make the most of product page optimization",
+  "description": "Learn how to get more from your product page optimization tests. We’ll explore best practices, provide data-based recommendations, and share success stories from developers who have used product page optimization to make their App Store product pages even more relevant and effective.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/110349",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110349",
+  "type": "Video",
+  "publishedAt": "2023-02-28T08:30:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Business & Education",
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 1126,
+  "hasTranscript": true,
+  "transcriptWordCount": 2760,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/110349/3/CB7912B8-3835-407B-A8D9-E687355995B1/cmaf.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/110349/3/CB7912B8-3835-407B-A8D9-E687355995B1/downloads/tech-talks-110349_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/110349/3/CB7912B8-3835-407B-A8D9-E687355995B1/downloads/tech-talks-110349_hd.mp4",
+    "duration": 1126
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Create a product page optimization test",
+      "url": "https://help.apple.com/app-store-connect/#/dev811bef199",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "Explore product page optimization",
+      "url": "https://developer.apple.com/app-store/product-page-optimization/",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/app-store/product-page-optimization/"
+    }
+  ],
+  "path": "sessions/tech-talks/110349-make-the-most-of-product-page-optimization/",
+  "files": {
+    "metadata": "sessions/tech-talks/110349-make-the-most-of-product-page-optimization/metadata.json",
+    "readme": "sessions/tech-talks/110349-make-the-most-of-product-page-optimization/README.md",
+    "transcript": "sessions/tech-talks/110349-make-the-most-of-product-page-optimization/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/110349-make-the-most-of-product-page-optimization/transcript.json"
+  }
+}

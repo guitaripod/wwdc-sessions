@@ -1,0 +1,160 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10171",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10171,
+  "title": "Meet Swift OpenAPI Generator",
+  "description": "Discover how Swift OpenAPI Generator can help you work with HTTP server APIs whether you’re extending an iOS app or writing a server in Swift. We’ll show you how this package plugin can streamline your workflow and simplify your codebase by generating code from an OpenAPI document.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10171",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10171",
+  "type": "Video",
+  "publishedAt": "2023-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "🐱",
+    "😸",
+    "😹",
+    "😺",
+    "😻",
+    "😼",
+    "😽",
+    "😾",
+    "😿",
+    "🙀"
+  ],
+  "topics": [
+    "Developer Tools",
+    "Essentials",
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 1316,
+  "hasTranscript": true,
+  "transcriptWordCount": 3135,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10171/6/B3B8830B-E039-4E13-B13E-989D45016244/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10171/6/B3B8830B-E039-4E13-B13E-989D45016244/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10171/6/B3B8830B-E039-4E13-B13E-989D45016244/downloads/wwdc2023-10171_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10171/6/B3B8830B-E039-4E13-B13E-989D45016244/downloads/wwdc2023-10171_hd.mp4",
+    "duration": 1316
+  },
+  "codeSnippets": [
+    {
+      "title": "Example OpenAPI document",
+      "language": "yaml",
+      "startTimeSeconds": 257,
+      "code": "openapi: \"3.0.3\"\ninfo:\n  title: \"GreetingService\"\n  version: \"1.0.0\"\nservers:\n- url: \"http://localhost:8080/api\"\n  description: \"Production\"\npaths:\n  /greet:\n    get:\n      operationId: \"getGreeting\"\n      parameters:\n      - name: \"name\"\n        required: false\n        in: \"query\"\n        description: \"Personalizes the greeting.\"\n        schema:\n          type: \"string\"\n      responses:\n        \"200\":\n          description: \"Returns a greeting\"\n          content:\n            application/json:\n              schema:\n                $ref: \"#/components/schemas/Greeting\""
+    },
+    {
+      "title": "CatService openapi.yaml",
+      "language": "yaml",
+      "startTimeSeconds": 425,
+      "code": "openapi: \"3.0.3\"\ninfo:\n  title: CatService\n  version: 1.0.0\nservers:\n  - url: http://localhost:8080/api\n    description: \"Localhost cats 🙀\"\npaths:\n  /emoji:\n    get:\n      operationId: getEmoji\n      parameters:\n      - name: count\n        required: false\n        in: query\n        description: \"The number of cats to return. 😽😽😽\"\n        schema:\n          type: integer\n      responses:\n        '200':\n          description: \"Returns a random emoji, of a cat, ofc! 😻\"\n          content:\n            text/plain:\n              schema:\n                type: string"
+    },
+    {
+      "title": "Making API calls from your app",
+      "language": "swift",
+      "startTimeSeconds": 483,
+      "code": "import SwiftUI\nimport OpenAPIRuntime\nimport OpenAPIURLSession\n\n#Preview {\n    ContentView()\n}\n\nstruct ContentView: View {\n    @State private var emoji = \"🫥\"\n\n    var body: some View {\n        VStack {\n            Text(emoji).font(.system(size: 100))\n            Button(\"Get cat!\") {\n                Task { try? await updateEmoji() }\n            }\n        }\n        .padding()\n        .buttonStyle(.borderedProminent)\n    }\n\n    let client: Client\n\n    init() {\n        self.client = Client(\n            serverURL: try! Servers.server1(),\n            transport: URLSessionTransport()\n        )\n    }\n\n    func updateEmoji() async throws {\n        let response = try await client.getEmoji(Operations.getEmoji.Input())\n\n        switch response {\n        case let .ok(okResponse):\n            switch okResponse.body {\n            case .text(let text):\n                emoji = text\n            }\n        case .undocumented(statusCode: let statusCode, _):\n            print(\"cat-astrophe: \\(statusCode)\")\n            emoji = \"🙉\"\n        }\n    }\n}"
+    },
+    {
+      "title": "CatServiceClient openapi-generator-config.yaml",
+      "language": "yaml",
+      "startTimeSeconds": 588,
+      "code": "generate:\n  - types\n  - client"
+    },
+    {
+      "title": "Adapting as the API evolves",
+      "language": "swift",
+      "startTimeSeconds": 804,
+      "code": "import SwiftUI\nimport OpenAPIRuntime\nimport OpenAPIURLSession\n\n#Preview {\n    ContentView()\n}\n\nstruct ContentView: View {\n    @State private var emoji = \"🫥\"\n\n    var body: some View {\n        VStack {\n            Text(emoji).font(.system(size: 100))\n            Button(\"Get cat!\") {\n                Task { try? await updateEmoji() }\n            }\n            Button(\"More cats!\") {\n                Task { try? await updateEmoji(count: 3) }\n            }\n        }\n        .padding()\n        .buttonStyle(.borderedProminent)\n    }\n\n    let client: Client\n\n    init() {\n        self.client = Client(\n            serverURL: try! Servers.server1(),\n            transport: URLSessionTransport()\n        )\n    }\n\n    func updateEmoji(count: Int = 1) async throws {\n        let response = try await client.getEmoji(Operations.getEmoji.Input(\n            query: Operations.getEmoji.Input.Query(count: count)\n        ))\n\n        switch response {\n        case let .ok(okResponse):\n            switch okResponse.body {\n            case .text(let text):\n                emoji = text\n            }\n        case .undocumented(statusCode: let statusCode, _):\n            print(\"cat-astrophe: \\(statusCode)\")\n            emoji = \"🙉\"\n        }\n    }\n}"
+    },
+    {
+      "title": "Testing your app with mocks",
+      "language": "swift",
+      "startTimeSeconds": 906,
+      "code": "import SwiftUI\nimport OpenAPIRuntime\nimport OpenAPIURLSession\n\n#Preview {\n    ContentView(client: MockClient())\n}\n\nstruct ContentView<C: APIProtocol>: View {\n    @State private var emoji = \"🫥\"\n\n    var body: some View {\n        VStack {\n            Text(emoji).font(.system(size: 100))\n            Button(\"Get cat!\") {\n                Task { try? await updateEmoji() }\n            }\n            Button(\"More cats!\") {\n                Task { try? await updateEmoji(count: 3) }\n            }\n        }\n        .padding()\n        .buttonStyle(.borderedProminent)\n    }\n\n    let client: C\n\n    init(client: C) {\n        self.client = client\n    }\n\n    init() where C == Client {\n        self.client = Client(\n            serverURL: try! Servers.server1(),\n            transport: URLSessionTransport()\n        )\n    }\n\n    func updateEmoji(count: Int = 1) async throws {\n        let response = try await client.getEmoji(Operations.getEmoji.Input(\n            query: Operations.getEmoji.Input.Query(count: count)\n        ))\n\n        switch response {\n        case let .ok(okResponse):\n            switch okResponse.body {\n            case .text(let text):\n                emoji = text\n            }\n        case .undocumented(statusCode: let statusCode, _):\n            print(\"cat-astrophe: \\(statusCode)\")\n            emoji = \"🙉\"\n        }\n    }\n}\n\nstruct MockClient: APIProtocol {\n    func getEmoji(_ input: Operations.getEmoji.Input) async throws -> Operations.getEmoji.Output {\n        let count = input.query.count ?? 1\n        let emojis = String(repeating: \"🤖\", count: count)\n        return .ok(Operations.getEmoji.Output.Ok(\n            body: .text(emojis)\n        ))\n    }\n}"
+    },
+    {
+      "title": "Implementing a backend server",
+      "language": "swift",
+      "startTimeSeconds": 1018,
+      "code": "import Foundation\nimport OpenAPIRuntime\nimport OpenAPIVapor\nimport Vapor\n\nstruct Handler: APIProtocol {\n    func getEmoji(_ input: Operations.getEmoji.Input) async throws -> Operations.getEmoji.Output {\n        let candidates = \"🐱😹😻🙀😿😽😸😺😾😼\"\n        let chosen = String(candidates.randomElement()!)\n        let count = input.query.count ?? 1\n        let emojis = String(repeating: chosen, count: count)\n        return .ok(Operations.getEmoji.Output.Ok(body: .text(emojis)))\n    }\n}\n\n@main\nstruct CatService {\n    public static func main() throws {\n        let app = Vapor.Application()\n        let transport = VaporTransport(routesBuilder: app)\n        let handler = Handler()\n        try handler.registerHandlers(on: transport, serverURL: Servers.server1())\n        try app.run()\n    }\n}"
+    },
+    {
+      "title": "CatService Package.swift",
+      "language": "swift",
+      "startTimeSeconds": 1123,
+      "code": "// swift-tools-version: 5.8\nimport PackageDescription\n\nlet package = Package(\n    name: \"CatService\",\n    platforms: [\n        .macOS(.v13),\n    ],\n    dependencies: [\n        .package(\n             url: \"https://github.com/apple/swift-openapi-generator\",\n            .upToNextMinor(from: \"0.1.0\")\n        ),\n        .package(\n            url: \"https://github.com/apple/swift-openapi-runtime\",\n            .upToNextMinor(from: \"0.1.0\")\n        ),\n        .package(\n            url: \"https://github.com/swift-server/swift-openapi-vapor\",\n            .upToNextMinor(from: \"0.1.0\")\n        ),\n        .package(\n            url: \"https://github.com/vapor/vapor\",\n            .upToNextMajor(from: \"4.69.2\")\n        ),\n    ],\n    targets: [\n        .executableTarget(\n            name: \"CatService\",\n            dependencies: [\n                .product(name: \"OpenAPIRuntime\", package: \"swift-openapi-runtime\"),\n                .product(name: \"OpenAPIVapor\", package: \"swift-openapi-vapor\"),\n                .product(name: \"Vapor\", package: \"vapor\"),\n            ],\n            resources: [\n                .process(\"Resources/cat.mp4\"),\n            ],\n            plugins: [\n                .plugin(name: \"OpenAPIGenerator\", package: \"swift-openapi-generator\"),\n            ]\n        ),\n    ]\n)"
+    },
+    {
+      "title": "CatService openapi.yaml",
+      "language": "yaml",
+      "startTimeSeconds": 1148,
+      "code": "openapi: \"3.0.3\"\ninfo:\n  title: CatService\n  version: 1.0.0\nservers:\n  - url: http://localhost:8080/api\n    description: \"Localhost cats 🙀\"\npaths:\n  /emoji:\n    get:\n      operationId: getEmoji\n      parameters:\n      - name: count\n        required: false\n        in: query\n        description: \"The number of cats to return. 😽😽😽\"\n        schema:\n          type: integer\n      responses:\n        '200':\n          description: \"Returns a random emoji, of a cat, ofc! 😻\"\n          content:\n            text/plain:\n              schema:\n                type: string"
+    },
+    {
+      "title": "CatService openapi-generator-config.yaml",
+      "language": "yaml",
+      "startTimeSeconds": 1150,
+      "code": "generate:\n  - types\n  - server"
+    },
+    {
+      "title": "Adding an operation to the OpenAPI document",
+      "language": "yaml",
+      "startTimeSeconds": 1211,
+      "code": "openapi: \"3.0.3\"\ninfo:\n  title: CatService\n  version: 1.0.0\nservers:\n  - url: http://localhost:8080/api\n    description: \"Localhost cats 🙀\"\npaths:\n  /emoji:\n    get:\n      operationId: getEmoji\n      parameters:\n      - name: count\n        required: false\n        in: query\n        description: \"The number of cats to return. 😽😽😽\"\n        schema:\n          type: integer\n      responses:\n        '200':\n          description: \"Returns a random emoji, of a cat, ofc! 😻\"\n          content:\n            text/plain:\n              schema:\n                type: string\n\n  /clip:\n    get:\n      operationId: getClip\n      responses:\n        '200':\n          description: \"Returns a cat video! 😽\"\n          content:\n            video/mp4:\n              schema:\n                type: string\n                format: binary"
+    },
+    {
+      "title": "Adding a new API operation",
+      "language": "swift",
+      "startTimeSeconds": 1226,
+      "code": "import Foundation\nimport OpenAPIRuntime\nimport OpenAPIVapor\nimport Vapor\n\nstruct Handler: APIProtocol {\n    func getClip(_ input: Operations.getClip.Input) async throws -> Operations.getClip.Output {\n        let clipResourceURL = Bundle.module.url(forResource: \"cat\", withExtension: \"mp4\")!\n        let clipData = try Data(contentsOf: clipResourceURL)\n        return .ok(Operations.getClip.Output.Ok(body: .binary(clipData)))\n    }\n\n    func getEmoji(_ input: Operations.getEmoji.Input) async throws -> Operations.getEmoji.Output {\n        let candidates = \"🐱😹😻🙀😿😽😸😺😾😼\"\n        let chosen = String(candidates.randomElement()!)\n        let count = input.query.count ?? 1\n        let emojis = String(repeating: chosen, count: count)\n        return .ok(Operations.getEmoji.Output.Ok(body: .text(emojis)))\n    }\n}\n\n@main\nstruct CatService {\n    public static func main() throws {\n        let app = Vapor.Application()\n        let transport = VaporTransport(routesBuilder: app)\n        let handler = Handler()\n        try handler.registerHandlers(on: transport, serverURL: Servers.server1())\n        try app.run()\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "URLSession Transport for Swift OpenAPI Generator",
+      "url": "https://github.com/apple/swift-openapi-urlsession",
+      "type": "guide",
+      "description": "A client transport that uses the URLSession type from the Foundation framework to perform HTTP operations. Use the transport with client code generated by Swift OpenAPI Generator."
+    },
+    {
+      "title": "Swift OpenAPI Generator Runtime",
+      "url": "http://github.com/apple/swift-openapi-runtime",
+      "type": "guide",
+      "description": "This library provides common abstractions and helper functions used by the client and server code generated by Swift OpenAPI Generator."
+    },
+    {
+      "title": "Swift OpenAPI Generator package plugin",
+      "url": "https://github.com/apple/swift-openapi-generator",
+      "type": "guide",
+      "description": "Generate Swift client and server code from an OpenAPI document."
+    }
+  ],
+  "path": "sessions/wwdc2023/10171-meet-swift-openapi-generator/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10171-meet-swift-openapi-generator/metadata.json",
+    "readme": "sessions/wwdc2023/10171-meet-swift-openapi-generator/README.md",
+    "transcript": "sessions/wwdc2023/10171-meet-swift-openapi-generator/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10171-meet-swift-openapi-generator/transcript.json"
+  }
+}

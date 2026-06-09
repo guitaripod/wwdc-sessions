@@ -1,0 +1,113 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-10858",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2020,
+  "eventContentId": 10858,
+  "title": "Discover Metal enhancements for A14 Bionic",
+  "description": "Explore how Metal is bringing sophisticated rendering and powerful compute features to A14 Bionic. We’ll take you through the Metal capabilities delivered in the Apple GPU Family 7 feature set, including new texture addressing modes, fast SIMD reduction and matrix multiplication operations, and a deep dive into implementing a visibility buffer using barycentric coordinates and primitive ID.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/10858",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10858",
+  "type": "Video",
+  "publishedAt": "2020-10-21T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1737,
+  "hasTranscript": true,
+  "transcriptWordCount": 4225,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/10858/2/870884DF-CCA3-41E5-9AAC-9A3DCBF0615E/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/tech-talks/10858/2/870884DF-CCA3-41E5-9AAC-9A3DCBF0615E/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/10858/2/870884DF-CCA3-41E5-9AAC-9A3DCBF0615E/downloads/tech-talks-10858_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/10858/2/870884DF-CCA3-41E5-9AAC-9A3DCBF0615E/downloads/tech-talks-10858_hd.mp4",
+    "duration": 1737
+  },
+  "codeSnippets": [
+    {
+      "title": "Visibility buffer - Geometry stage",
+      "language": "swift",
+      "startTimeSeconds": 590,
+      "code": "// Vertex Shader - Geometry stage\n\nvertex float4 geoVertex(float3* pos   [[buffer(0)]], \n                        float4x4* vpm [[buffer(1)]],\n                        Uint vid      [[vertex_id]]) {\n   float3 p = pos[vid];          // Position fetch\n   return doTransform(p, vpm);   // Transform step\n}\n\n\n// Fragment Shader - Geometry stage\n\nfragment VisBufferFragment geoFrag(uint primid  [[primitive_id]],\n                                   float3 baryc [[barycentric_coords]],\n                                   uint drawid  [[buffer(0)]]) { \n   VisBufferFragment out;    out.surface_id  = makeID(primid, drawid);   // Combine draw ID and primitive ID\n   out.barycentric = baryc.xy; \n   return out;\n}"
+    },
+    {
+      "title": "Visibility buffer - Lighting stage",
+      "language": "swift",
+      "startTimeSeconds": 621,
+      "code": "// Lighting Compute Kernel\n\nkernel lightingCompute(Draws* draws          [[buffer(0)]],\n                       texture2d<float4> lit [[texture(0)]]) {\n\n  /* Reconstruction using Visibility Buffer */\n  MaterialInput mi  = doReconstruct(surface_id, baryc, draws);\n\n  /* Apply material model */\n  MaterialOutput mo = doMaterial(mi, mat);\n\n  /* Apply lighting function */\n  lit[thread_id]    = doLighting(mo, lights);\n\n}"
+    },
+    {
+      "title": "Visibility buffer - Reconstruction step",
+      "language": "swift",
+      "startTimeSeconds": 747,
+      "code": "MaterialInput doReconstruct (uint32 surface_id, short2 baryc, Draws* draws, Mesh* meshes)\n{\n    MaterialInput mi;\n\n    /* Retrieve primitive ID and Draw ID */\n    uint primid   = surface_id & 0x0000FFFF; uint surface_id = ids >> 16;\n    /* Retrieve the 3rd barycentric coordinate */\n    float3 bc     = float3(baryc.xy, 1.0 - baryc.x - baryc.y);\n    /* Retrieve (mesh ID, vertex ID) using primitive ID and draw ID */\n    uint meshid   = draws[drawid].meshid;\n    uint3 vertid  = uint3(draws[meshid].ib[primid*3+0], \n                          draws[meshid].ib[primid*3+1], \n                          draws[meshid].ib[primid*3+2]);\n    /* Interpolate vertex buffer data cross barycentric coordinates */\n    mi.uv  = meshes[meshid].vb[vertid.x].uv.xy * bc.x +\n             meshes[meshid].vb[vertid.y].uv.xy * bc.y +\n             meshes[meshid].vb[vertid.z].uv.xy * bc.z;\n    /* Other draw state such as normals */\n    mi.normal     = normalize(draws[drawid].vpm * float4(normal, 0)).xyz;\n\n    return mi;\n}"
+    },
+    {
+      "title": "Texture addressing modes",
+      "language": "swift",
+      "startTimeSeconds": 925,
+      "code": "/* * rAddressMode : The address mode for the texture depth (r) coordinate.\n   * sAddressMode : The address mode for the texture width (s) coordinate.\n   * tAddressMode : The address mode for the texture height (t) coordinate.\n   * borderColor : The border color for clamped texture values.\n */\n\nlet device = MTLCreateSystemDefaultDevice()!\n\nlet samplerDesc = MTLSamplerDescriptor()\n\n/* … Program other sample state… */\nsamplerDesc.magFilter = .linear;\n\nsamplerDesc.sAddressMode = .mirrorClampToEdge\nsamplerDesc.tAddressMode = .mirrorClampToEdge\n\nsamplerDesc.rAddressMode = .clampToBorderColor\nsamplerDesc.borderColor  = .transparentBlack\n\nlet samplerState = device.makeSamplerState(descriptor: samplerDesc)!"
+    },
+    {
+      "title": "SIMD reduce_sum",
+      "language": "swift",
+      "startTimeSeconds": 1245,
+      "code": "void reduce_sum(device float const* input_array,\n                device float* total_sum)\n{\n     threadgroup float SSA[32];\n\n     float a = input_array[read_offset];\n\n     float simdgroup_sum = simd_sum(a);\n\n     SSA[sg_index] = simdgroup_sum;\n\n     threadgroup_barrier(mem_flags::mem_threadgroup);\n\n     if (simdgroup_index_in_threadgroup == 0)\n     {\n         *total_sum  = simd_sum(SSA[sg_index]);\n     }\n}"
+    },
+    {
+      "title": "SIMD 16x16 matrix multiplication",
+      "language": "swift",
+      "startTimeSeconds": 1496,
+      "code": "// SIMD 16x16 matrix multiplication\n\nvoid matmul(threadgroup float const* A, threadgroup float const* B, threadgroup float* C)\n{\n\n    simdgroup_float8x8 matA, matB, matC(0.0f);\n\n\n    A += A_increment(sg_index, A_row_stride);\n    B += B_increment(sg_index, B_row_stride);\n    C += C_increment(sg_index, C_row_stride);\n\n    for (ushort k = 0; k < 16; k += 8) {\n        simdgroup_load(matA, A + k, A_row_stride);\n        simdgroup_load(matB, B + k * B_row_stride, B_row_stride);\n        simdgroup_multiply_accumulate(matC, matA, matB, matC);\n    }\n\n    simdgroup_store(matC, C, C_row_stride);\n\n}"
+    },
+    {
+      "title": "Metal Performance Shaders",
+      "language": "swift",
+      "startTimeSeconds": 1551,
+      "code": "// General matrix multiplication\nlet matMulKernel = MPSMatrixMultiplication(device: device!, resultRows: M, \n    resultColumns: N, interiorColumns: K)\nmatMulKernel.encode(commandBuffer: commandBuffer, leftMatrix: A, rightMatrix: B,\n    resultMatrix: C)\n\n// CNN convolution\nlet convKernel = MPSCNNConvolution(device: device!, weights: convDataSource)\nconvKernel.encodeBatch(commandBuffer: commandBuffer, \n    sourceImages: sources, destinationImages: results)\n\n// MPS Graph\nlet graph = MPSGraph()\nlet A = graph.placeholder(shape:[M, K], dataType: .float32)\nlet B = graph.placeholder(shape:[K, N], dataType: .float32)\nlet C = graph.matrixMultiplication(primaryTensor: A, secondaryTensor: B)\ngraph.run(feeds: [A, B] targetTensors: C targetOperations: nil)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Metal Performance Shaders",
+      "url": "https://developer.apple.com/documentation/MetalPerformanceShaders",
+      "type": "documentation",
+      "description": "Optimize graphics and compute performance with kernels that are fine-tuned for the unique characteristics of each Metal GPU family.",
+      "sosumiURL": "https://sosumi.ai/documentation/MetalPerformanceShaders",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MetalPerformanceShaders.json"
+    },
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    }
+  ],
+  "path": "sessions/tech-talks/10858-discover-metal-enhancements-for-a14-bionic/",
+  "files": {
+    "metadata": "sessions/tech-talks/10858-discover-metal-enhancements-for-a14-bionic/metadata.json",
+    "readme": "sessions/tech-talks/10858-discover-metal-enhancements-for-a14-bionic/README.md",
+    "transcript": "sessions/tech-talks/10858-discover-metal-enhancements-for-a14-bionic/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/10858-discover-metal-enhancements-for-a14-bionic/transcript.json"
+  }
+}

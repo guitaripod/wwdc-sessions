@@ -1,0 +1,66 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-259",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 259,
+  "title": "Xcode, agents, and you",
+  "description": "Learn how you can use coding agents in Xcode in your development process. We’ll explore multiple ways of working with agents with tips to take you from creating an initial prototype to polishing a refined app. Discover how Xcode’s coding assistant adapts to help you stay engaged with the creative work that makes coding fun, whether you’re building an app solo or working with a team.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/259",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/259",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Swift",
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 1443,
+  "hasTranscript": true,
+  "transcriptWordCount": 3982,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/259/4/f4d40bb5-32db-418f-8a6e-396c77044afb/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/259/4/f4d40bb5-32db-418f-8a6e-396c77044afb/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/259/4/f4d40bb5-32db-418f-8a6e-396c77044afb/downloads/wwdc2026-259_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/259/4/f4d40bb5-32db-418f-8a6e-396c77044afb/downloads/wwdc2026-259_hd.mp4",
+    "duration": 1443
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Writing code with intelligence in Xcode",
+      "url": "https://developer.apple.com/documentation/Xcode/writing-code-with-intelligence-in-xcode",
+      "type": "documentation",
+      "description": "Start conversations with an agent or model in Xcode to generate code, navigate unfamiliar codebases, and fix or refactor existing code.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/writing-code-with-intelligence-in-xcode",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/writing-code-with-intelligence-in-xcode.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/259-xcode-agents-and-you/",
+  "files": {
+    "metadata": "sessions/wwdc2026/259-xcode-agents-and-you/metadata.json",
+    "readme": "sessions/wwdc2026/259-xcode-agents-and-you/README.md",
+    "transcript": "sessions/wwdc2026/259-xcode-agents-and-you/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/259-xcode-agents-and-you/transcript.json"
+  }
+}

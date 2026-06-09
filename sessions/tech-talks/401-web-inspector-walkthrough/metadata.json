@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-401",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2017,
+  "eventContentId": 401,
+  "title": "Web Inspector Walkthrough",
+  "description": "Web Inspector is packed with features designed to make inspection, debugging and delivery of your web content a breeze. Get an overview of the latest features including major layouts, tabs, buttons, and other capabilities that make Web Inspector a powerful web development tool.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/401",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/401",
+  "type": "Video",
+  "publishedAt": "2017-12-21T10:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "Safari & Web"
+  ],
+  "primaryTopic": "Safari & Web",
+  "duration": 353,
+  "hasTranscript": true,
+  "transcriptWordCount": 759,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tutorials/web_inspector_walkthrough/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tutorials/web_inspector_walkthrough/web_inspector_walkthrough_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tutorials/web_inspector_walkthrough/web_inspector_walkthrough_hd.mp4",
+    "duration": 353
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/tech-talks/401-web-inspector-walkthrough/",
+  "files": {
+    "metadata": "sessions/tech-talks/401-web-inspector-walkthrough/metadata.json",
+    "readme": "sessions/tech-talks/401-web-inspector-walkthrough/README.md",
+    "transcript": "sessions/tech-talks/401-web-inspector-walkthrough/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/401-web-inspector-walkthrough/transcript.json"
+  }
+}

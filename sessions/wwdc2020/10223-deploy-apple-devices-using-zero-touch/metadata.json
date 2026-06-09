@@ -1,0 +1,78 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10223",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10223,
+  "title": "Deploy Apple devices using zero-touch",
+  "description": "Discover how Apple's system administrators remotely deploy Apple devices to their teams, ensuring a zero-touch deployment. Learn how to configure the setup experience, control and manage devices effectively, and discover practices around security and management.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10223",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10223",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "distribution",
+    "enterprise",
+    "mdm",
+    "security"
+  ],
+  "topics": [
+    "App Store, Distribution & Marketing",
+    "Business & Education"
+  ],
+  "primaryTopic": "Business & Education",
+  "duration": 1027,
+  "hasTranscript": true,
+  "transcriptWordCount": 2566,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10223/9/49D57195-8840-4152-B855-ED08FAA914A7/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10223/9/49D57195-8840-4152-B855-ED08FAA914A7/wwdc2020_10223_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10223/9/49D57195-8840-4152-B855-ED08FAA914A7/wwdc2020_10223_hd.mp4",
+    "duration": 1027
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Apple School Manager User Guide",
+      "url": "https://support.apple.com/guide/apple-school-manager/",
+      "type": "documentation",
+      "description": "Apple School Manager User Guide"
+    },
+    {
+      "title": "Apple Business Manager User Guide",
+      "url": "https://support.apple.com/guide/apple-business-manager/",
+      "type": "guide",
+      "description": "Apple Business Manager User Guide"
+    },
+    {
+      "title": "Apple Platform Deployment",
+      "url": "https://support.apple.com/guide/deployment/",
+      "type": "documentation",
+      "description": null
+    }
+  ],
+  "path": "sessions/wwdc2020/10223-deploy-apple-devices-using-zero-touch/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10223-deploy-apple-devices-using-zero-touch/metadata.json",
+    "readme": "sessions/wwdc2020/10223-deploy-apple-devices-using-zero-touch/README.md",
+    "transcript": "sessions/wwdc2020/10223-deploy-apple-devices-using-zero-touch/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10223-deploy-apple-devices-using-zero-touch/transcript.json"
+  }
+}

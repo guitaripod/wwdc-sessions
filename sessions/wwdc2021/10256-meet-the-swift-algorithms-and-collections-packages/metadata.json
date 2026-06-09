@@ -1,0 +1,266 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10256",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10256,
+  "title": "Meet the Swift Algorithms and Collections packages",
+  "description": "Discover two of the latest additions to the list of open-source Swift packages from Apple: Swift Algorithms and Swift Collections. Not only can you use these packages immediately, they also incubate new algorithms and data structures for eventual inclusion in the Swift Standard Library. We’ll show you how you can integrate these packages into your projects and select the right algorithms and data structures to make your code clearer and faster.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10256",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10256",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "adjacentpairs",
+    "array",
+    "arrayslice",
+    "buffer",
+    "chunked",
+    "chunkedby",
+    "chunks",
+    "compactmap",
+    "deque",
+    "dictionary",
+    "double-ended",
+    "ended",
+    "filter",
+    "flatmap",
+    "flattensequence",
+    "hashtable",
+    "joined",
+    "joinedby",
+    "joinedsequence",
+    "lazycompactmap",
+    "lazyflatmap",
+    "lazysequence",
+    "loops",
+    "map",
+    "messages",
+    "nsorderedset",
+    "ordereddictionary",
+    "orderedset",
+    "prefix",
+    "queue",
+    "raw",
+    "reversedcollection",
+    "set",
+    "suffix",
+    "transcript",
+    "windows"
+  ],
+  "topics": [
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 1830,
+  "hasTranscript": true,
+  "transcriptWordCount": 4459,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10256/8/389DAED7-3871-4195-95B0-59E7F10A5E52/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10256/8/389DAED7-3871-4195-95B0-59E7F10A5E52/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10256/8/389DAED7-3871-4195-95B0-59E7F10A5E52/downloads/wwdc2021-10256_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10256/8/389DAED7-3871-4195-95B0-59E7F10A5E52/downloads/wwdc2021-10256_hd.mp4",
+    "duration": 1830
+  },
+  "codeSnippets": [
+    {
+      "title": "The map algorithm",
+      "language": "swift",
+      "startTimeSeconds": 60,
+      "code": "// Raw loop:\nvar selectedMessages: [Message] = []\nfor indexPath in indexPathsForSelectedRows {\n    selectedMessages.append(messages[indexPath.row])\n}\n\n// Using `map` makes this clearer and faster.\nindexPathsForSelectedRows.map { messages[$0.row] }"
+    },
+    {
+      "title": "The compactMap algorithm",
+      "language": "swift",
+      "startTimeSeconds": 96,
+      "code": "// Raw loop:\nvar attachments: [Attachment] = []\nfor message in messages {\n    if let attachment = message.attachment {\n        attachments.append(attachment)\n    }\n}\n\n// The above is just a `map` and a `filter`.\nmessages\n    .filter { $0.attachment != nil }\n    .map { $0.attachment! }\n\n// This pattern is so common we have a special name and algorithm for it.\nmessages.compactMap { $0.attachment }"
+    },
+    {
+      "title": "The flatMap algorithm",
+      "language": "swift",
+      "startTimeSeconds": 126,
+      "code": "extension Message {\n    func makeMessageParts() -> [TranscriptItem]\n}\n\nmessages // [Message]\n    .map { $0.makeMessageParts() } // [[TranscriptItem]]\n    .joined() // [TranscriptItem]\n\n// This pattern is so common that we have another special kind of map for it.\nmessages // [Message]\n    .flatMap { $0.makeMessageParts() }  // [TranscriptItem]"
+    },
+    {
+      "title": "Chaining together algorithms",
+      "language": "swift",
+      "startTimeSeconds": 180,
+      "code": "// Raw loop:\nvar photos: [PhotoItem] = []\nfor item in transcript.reversed() {\n    if let photo = item as? PhotoItem {\n        photos.append(photo)\n        if photos.count == 6 {\n            break\n        }\n    }\n}\n\n// The above can be expressed more concisely by chaining together algorithms.\ntranscript\n    .reversed() // [TranscriptItem]\n    .compactMap { $0 as? PhotoItem } // [PhotoItem]\n    .prefix(6) // [PhotoItem]\n\n// This gives us more flexibility to express this code more clearly.\ntranscript\n    .compactMap { $0 as? PhotoItem } // [PhotoItem]\n    .suffix(6) // [PhotoItem]\n    .reversed() // [PhotoItem]"
+    },
+    {
+      "title": "Lazy adapters",
+      "language": "swift",
+      "startTimeSeconds": 259,
+      "code": "extension Message {\n    func makeMessageParts() -> [TranscriptItem]\n}\n\nmessages\n    .map { $0.makeMessageParts() } // [[TranscriptItem]]\n    .joined() // FlattenSequence<[[TranscriptItem]]>"
+    },
+    {
+      "title": "Lazy algorithm chains",
+      "language": "swift",
+      "startTimeSeconds": 298,
+      "code": "transcript\n    .lazy // LazySequence<[TranscriptItem]>\n    .compactMap { $0 as? PhotoItem } // LazyCompactMap<[TranscriptItem], PhotoItem>\n    .suffix(6) // LazyCompactMap<ArraySlice<TranscriptItem>, PhotoItem>\n    .reversed() // ReversedCollection<LazyCompactMap<ArraySlice<TranscriptItem>, PhotoItem>>"
+    },
+    {
+      "title": "Wrapping a lazy algorithm chain in an Array initializer",
+      "language": "swift",
+      "startTimeSeconds": 348,
+      "code": "Array(\n    transcript\n        .lazy\n        .compactMap { $0 as? PhotoItem }\n        .suffix(6)\n        .reversed()\n)"
+    },
+    {
+      "title": "windows(ofCount:)",
+      "language": "swift",
+      "startTimeSeconds": 433,
+      "code": "import Algorithms\n\nlet x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]\n\nfor window in x.windows(ofCount: 3) {\n    print(window)\n}\n\n// Prints [0, 1, 2]\n// Prints [1, 2, 3]\n// Prints [2, 3, 4]\n// Prints [3, 4, 5]"
+    },
+    {
+      "title": "adjacentPairs()",
+      "language": "swift",
+      "startTimeSeconds": 450,
+      "code": "import Algorithms\n\nlet x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]\n\nfor (prev, next) in x.adjacentPairs() {\n    print((prev, next))\n}\n\n// Prints (0, 1)\n// Prints (1, 2)\n// Prints (2, 3)\n// Prints (3, 4)"
+    },
+    {
+      "title": "chunks(ofCount:)",
+      "language": "swift",
+      "startTimeSeconds": 465,
+      "code": "import Algorithms\n\nlet x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]\n\nfor chunk in x.chunks(ofCount: 3) {\n    print(chunk)\n}\n\n// Prints [0, 1, 2]\n// Prints [3, 4, 5]\n// Prints [6, 7, 8]\n// Prints [9]"
+    },
+    {
+      "title": "chunked(on:)",
+      "language": "swift",
+      "startTimeSeconds": 488,
+      "code": "import Algorithms\n\nlet x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]\n\nfor (isPrime, chunk) in x.chunked(on: \\.isPrime) {\n    print((isPrime, chunk))\n}\n\n// Prints (false, [0, 1])\n// Prints (true, [2, 3])\n// Prints (false, [4])\n// Prints (true, [5])"
+    },
+    {
+      "title": "Recognizing the chunked(on:) pattern",
+      "language": "swift",
+      "startTimeSeconds": 513,
+      "code": "// Raw loop:\nvar prev: Element?\nfor element in collection {\n    if prev?.value != element.value {\n        // do work\n    }\n    prev = element\n}\n\n// The above is just `chunked(on:)`.\nfor (value, chunk) in collection.chunked(on: \\.value) {\n    // do work\n}"
+    },
+    {
+      "title": "Mapping, chunking, and joining",
+      "language": "swift",
+      "startTimeSeconds": 529,
+      "code": "import Algorithms\n\nextension Message {\n    func makeMessageParts() -> [TranscriptItem]\n}\n\ntranscript = Array(\n    messages\n        .lazy\n        .flatMap { $0.makeMessageParts() }\n        .chunked { $1.date.timeIntervalSince($0.date) < 60 * 60 }\n        .joined { DateItem(date: $1.first!.date) }\n)"
+    },
+    {
+      "title": "Double-ended queues",
+      "language": "swift",
+      "startTimeSeconds": 896,
+      "code": "var queue: Deque = [\"A\", \"B\", \"C\"]\n\nqueue.append(\"D\")\nqueue.append(\"E\")\nqueue.removeFirst()  // \"A\"\nqueue.removeFirst()  // \"B\"\n\nqueue.prepend(\"F\")\nqueue.prepend(\"G\")\nqueue.removeLast()   // \"E\"\nqueue.removeLast()   // \"D\""
+    },
+    {
+      "title": "Deque protocol conformances",
+      "language": "swift",
+      "startTimeSeconds": 946,
+      "code": "var items: Deque = [\"D\", \"E\", \"f\"]\nprint(items[1])  // \"E\"\nitems[2] = \"F\"\nitems.insert(contentsOf: [\"A\", \"B\", \"C\"], at: 0)\nprint(items[1])  // \"B\""
+    },
+    {
+      "title": "Accessing elements is still efficient",
+      "language": "swift",
+      "startTimeSeconds": 1051,
+      "code": "var items: Deque = [\"D\", \"E\", \"F\"]\nprint(items[1])  // \"E\"\nitems.insert(contentsOf: [\"A\", \"B\", \"C\"], at: 0)\nprint(items[1])  // \"B\""
+    },
+    {
+      "title": "Removing elements at random is twice as fast on average",
+      "language": "swift",
+      "startTimeSeconds": 1119,
+      "code": "var items: Deque = [\"A\", \"B\", \"C\", \"D\", \"E\", \"F\"]\nitems.removeSubrange(1 ..< 3)"
+    },
+    {
+      "title": "Unordered sets",
+      "language": "swift",
+      "startTimeSeconds": 1173,
+      "code": "let first: Set = [\"A\", \"B\", \"C\", \"D\", \"E\", \"F\"]\nprint(first)  // [\"B\", \"E\", \"C\", \"F\", \"D\", \"A\"]\nlet second: Set = [\"A\", \"B\", \"C\", \"D\", \"E\", \"F\"]\nprint(second)  // [\"A\", \"D\", \"E\", \"F\", \"C\", \"B\"]\nprint(first == second)  // true"
+    },
+    {
+      "title": "Ordered sets",
+      "language": "swift",
+      "startTimeSeconds": 1226,
+      "code": "let first: OrderedSet = [\"A\", \"B\", \"C\", \"D\", \"E\", \"F\"]\nprint(first)         // [\"A\", \"B\", \"C\", \"D\", \"E\", \"F\"]\n\nlet second: OrderedSet = [\"F\", \"E\", \"D\", \"C\", \"B\", \"A\"]\n\nprint(first == second)                      // false\nprint(first.unordered == second.unordered)  // true"
+    },
+    {
+      "title": "Ordered sets resemble how arrays work",
+      "language": "swift",
+      "startTimeSeconds": 1264,
+      "code": "var items: OrderedSet = [\"E\", \"D\", \"C\", \"B\", \"A\"]\nitems[3]  // \"B\"\nitems.append(\"F\")         // (inserted: true, index: 5)\nitems.insert(\"B\", at: 1)  // (inserted: false, index: 3)\nitems.remove(\"E\")\nitems.sort()\nitems.shuffle()"
+    },
+    {
+      "title": "Ordered sets implement high-level set operations",
+      "language": "swift",
+      "startTimeSeconds": 1352,
+      "code": "var items: OrderedSet = [\"B\", \"D\", \"E\"]\nitems.formUnion([\"A\", \"B\", \"C\", \"F\"])\nitems.subtract([\"A\", \"B\", \"G\"])\n\nlet other: OrderedSet = [\"C\", \"D\", \"E\", \"F\"]\nprint(items == other)  // false\nprint(items.unordered == other.unordered)  // true"
+    },
+    {
+      "title": "Ordered dictionaries",
+      "language": "swift",
+      "startTimeSeconds": 1606,
+      "code": "var dict: OrderedDictionary = [2: \"two\", 1: \"one\", 0: \"zero\"]\n\nprint(dict[1])  // Optional(\"one\")\nprint(dict)     // [2: \"two\", 1: \"one\", 0: \"zero\"]\n\ndict[3] = \"three\"\ndict[1] = nil\nprint(dict)     // [2: \"two\", 0: \"zero\", 3: \"three\"]"
+    },
+    {
+      "title": "Subscripting always means the keying subscript",
+      "language": "swift",
+      "startTimeSeconds": 1658,
+      "code": "var dict: OrderedDictionary = [2: \"two\", 0: \"zero\", 3: \"three\"]\n\nprint(dict[0])           // Optional(\"zero\")       \n\nprint(dict.elements[0])  // (key: 2, value: \"two\")"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Collection",
+      "url": "https://developer.apple.com/documentation/Swift/Collection",
+      "type": "documentation",
+      "description": "A sequence whose elements can be traversed multiple times,",
+      "sosumiURL": "https://sosumi.ai/documentation/Swift/Collection",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Swift/Collection.json"
+    },
+    {
+      "title": "Sequence",
+      "url": "https://developer.apple.com/documentation/Swift/Sequence",
+      "type": "documentation",
+      "description": "A type that provides sequential, iterated access to its elements.",
+      "sosumiURL": "https://sosumi.ai/documentation/Swift/Sequence",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Swift/Sequence.json"
+    },
+    {
+      "title": "Swift Collections on GitHub",
+      "url": "https://github.com/apple/swift-collections",
+      "type": "documentation",
+      "description": "GitHub repository for the Swift Collections package."
+    },
+    {
+      "title": "Swift Algorithms on GitHub",
+      "url": "https://github.com/apple/swift-algorithms",
+      "type": "documentation",
+      "description": "GitHub repository for the Swift Algorithms package."
+    },
+    {
+      "title": "Swift Forums",
+      "url": "https://forums.swift.org",
+      "type": "developerForum",
+      "description": "Forums for the Swift open-source project."
+    }
+  ],
+  "path": "sessions/wwdc2021/10256-meet-the-swift-algorithms-and-collections-packages/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10256-meet-the-swift-algorithms-and-collections-packages/metadata.json",
+    "readme": "sessions/wwdc2021/10256-meet-the-swift-algorithms-and-collections-packages/README.md",
+    "transcript": "sessions/wwdc2021/10256-meet-the-swift-algorithms-and-collections-packages/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10256-meet-the-swift-algorithms-and-collections-packages/transcript.json"
+  }
+}

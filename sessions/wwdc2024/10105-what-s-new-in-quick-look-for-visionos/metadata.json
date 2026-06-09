@@ -1,0 +1,75 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2024-10105",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10105,
+  "title": "What’s new in Quick Look for visionOS",
+  "description": "Explore how Quick Look in visionOS can elevate file preview and editing experiences in your app. We’ll cover the integration of in-app and windowed Quick Look, as well as a brand-new API that customizes the windowed Quick Look experience in your app. We’ll also share the latest enhancements to viewing 3D models within Quick Look.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10105",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10105",
+  "type": "Video",
+  "publishedAt": "2024-06-13T08:00:00-07:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [
+    "quick look",
+    "reality",
+    "reality composer pro",
+    "spatial computing",
+    "spatial tracking",
+    "usdz"
+  ],
+  "topics": [
+    "Graphics & Games",
+    "Safari & Web",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 864,
+  "hasTranscript": true,
+  "transcriptWordCount": 1839,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10105/5/9DD1E3E1-8BCD-498A-9045-F2251FFDF077/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10105/5/9DD1E3E1-8BCD-498A-9045-F2251FFDF077/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10105/5/9DD1E3E1-8BCD-498A-9045-F2251FFDF077/downloads/wwdc2024-10105_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10105/5/9DD1E3E1-8BCD-498A-9045-F2251FFDF077/downloads/wwdc2024-10105_hd.mp4",
+    "duration": 864
+  },
+  "codeSnippets": [
+    {
+      "title": "Variants USDZ",
+      "language": "objectivec",
+      "startTimeSeconds": 742,
+      "code": "#usda 1.0\n(\n\tdefaultPrim = \"iPhone\"\n)\n\ndef Xform \"iPhone\" (\n\tvariants = {\n\t\tstring Color = \"Black_Titanium\"\n\t}\n\tprepend variantSets = [\"Color\"]\n)\n{\n\tvariantSet \"Color\" = {\n\t\t\"Black_Titanium\" { }\n\t\t\"Blue_Titanium\" { }\n\t\t\"Natural_Titanium\" { }\n\t\t\"White_Titanium\" { }\n }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Forum: Spatial Computing",
+      "url": "https://developer.apple.com/forums/topics/spatial-computing?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/spatial-computing?cid=vf-a-0010"
+    }
+  ],
+  "path": "sessions/wwdc2024/10105-what-s-new-in-quick-look-for-visionos/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10105-what-s-new-in-quick-look-for-visionos/metadata.json",
+    "readme": "sessions/wwdc2024/10105-what-s-new-in-quick-look-for-visionos/README.md",
+    "transcript": "sessions/wwdc2024/10105-what-s-new-in-quick-look-for-visionos/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10105-what-s-new-in-quick-look-for-visionos/transcript.json"
+  }
+}

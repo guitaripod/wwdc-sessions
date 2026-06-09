@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10260",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10260,
+  "title": "Get started with building apps for spatial computing",
+  "description": "Get ready to develop apps and games for visionOS! Discover the fundamental building blocks that make up spatial computing — windows, volumes, and spaces — and find out how you can use these elements to build engaging and immersive experiences.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10260",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10260",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 1915,
+  "hasTranscript": true,
+  "transcriptWordCount": 4765,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10260/4/B4DC13C8-DE9B-4FD2-B413-018357E5E5F7/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10260/4/B4DC13C8-DE9B-4FD2-B413-018357E5E5F7/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10260/4/B4DC13C8-DE9B-4FD2-B413-018357E5E5F7/downloads/wwdc2023-10260_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10260/4/B4DC13C8-DE9B-4FD2-B413-018357E5E5F7/downloads/wwdc2023-10260_hd.mp4",
+    "duration": 1915
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2023/10260-get-started-with-building-apps-for-spatial-computing/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10260-get-started-with-building-apps-for-spatial-computing/metadata.json",
+    "readme": "sessions/wwdc2023/10260-get-started-with-building-apps-for-spatial-computing/README.md",
+    "transcript": "sessions/wwdc2023/10260-get-started-with-building-apps-for-spatial-computing/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10260-get-started-with-building-apps-for-spatial-computing/transcript.json"
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10190",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10190,
+  "title": "Create audio drivers with DriverKit",
+  "description": "Discover how to use the AudioDriverKit API to consolidate your Audio Server plug-in and DriverKit extension into a single package. Learn how you can simplify audio driver installation with an app instead of an installer package and distribute your driver through the Mac App Store. And we’ll take you through how the Core Audio HAL interacts with AudioDriverKit and discover best practices for audio device drivers.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10190",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10190",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "System Services",
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 1118,
+  "hasTranscript": true,
+  "transcriptWordCount": 2753,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10190/5/C1305D2C-3534-4C07-A3D7-3A70DA9FCAE2/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10190/5/C1305D2C-3534-4C07-A3D7-3A70DA9FCAE2/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10190/5/C1305D2C-3534-4C07-A3D7-3A70DA9FCAE2/downloads/wwdc2021-10190_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10190/5/C1305D2C-3534-4C07-A3D7-3A70DA9FCAE2/downloads/wwdc2021-10190_hd.mp4",
+    "duration": 1118
+  },
+  "codeSnippets": [
+    {
+      "title": "Subclass of IOUserAudioDriver",
+      "language": "objectivec",
+      "startTimeSeconds": 358,
+      "code": "// SimpleAudioDriver example, subclass of IOUserAudioDriver\n\nclass SimpleAudioDriver: public IOUserAudioDriver\n{\npublic:\n\tvirtual bool init() override;\n\tvirtual void free() override;\n\n\tvirtual kern_return_t Start(IOService* provider) override;\t\n\tvirtual kern_return_t Stop(IOService* provider) override;\n\tvirtual kern_return_t NewUserClient(uint32_t in_type,\n\t\t\t\t\t\t\t\t\t\t IOUserClient** out_user_client) override;\n\n\tvirtual kern_return_t StartDevice(IOUserAudioObjectID in_object_id,\n\t\t\t\t\t\t\t\t\t   IOUserAudioStartStopFlags in_flags) override;\n\n\tvirtual kern_return_t StopDevice(IOUserAudioObjectID in_object_id,\n\t\t\t\t\t\t\t\t\t  IOUserAudioStartStopFlags in_flags) override;"
+    },
+    {
+      "title": "Override of IOService::NewUserClient",
+      "language": "objectivec",
+      "startTimeSeconds": 387,
+      "code": "// SimpleAudioDriver example override of IOService::NewUserClient\nkern_return_t SimpleAudioDriver::NewUserClient_Impl(uint32_t in_type,\n\t\t\t\t\t\t\t\t\t\t\t\t\t IOUserClient** out_user_client)\n{\n\tkern_return_t error = kIOReturnSuccess;\n\t//\tHave the super class create the IOUserAudioDriverUserClient object if the type is\n\t//\tkIOUserAudioDriverUserClientType\n\tif (in_type == kIOUserAudioDriverUserClientType)\n\t{\n\t\terror = super::NewUserClient(in_type, out_user_client, SUPERDISPATCH);\n\t}\n\telse\n\t{\n\t\tIOService* user_client_service = nullptr;\n\t\terror = Create(this, \"SimpleAudioDriverUserClientProperties\", &user_client_service);\n\t\tFailIfError(error, , Failure, \"failed to create the SimpleAudioDriver user-client\");\n\t\t*out_user_client = OSDynamicCast(IOUserClient, user_client_service);\n\t}\n\treturn error;\n}"
+    },
+    {
+      "title": "SimpleAudioDevice::init",
+      "language": "objectivec",
+      "startTimeSeconds": 424,
+      "code": "// SimpleAudioDevice::init, set device sample rates and create IOUserAudioStream object\n...\n    SetAvailableSampleRates(sample_rates, 2); \n    SetSampleRate(kSampleRate_1);\n\n    //\tCreate the IOBufferMemoryDescriptor ring buffer for the input stream\n    OSSharedPtr<IOBufferMemoryDescriptor> io_ring_buffer;\n    const auto buffer_size_bytes = static_cast<uint32_t>(in_zero_timestamp_period *  \n        sizeof(uint16_t) * input_channels_per_frame);\n    IOBufferMemoryDescriptor::Create(kIOMemoryDirectionInOut, buffer_size_bytes, 0, \n       io_ring_buffer.attach());\n\n    //\tCreate input stream object and pass in the IO ring buffer memory descriptor\n    ivars->m_input_stream = IOUserAudioStream::Create(in_driver, \n                                                      IOUserAudioStreamDirection::Input, \n                                                      io_ring_buffer.get());\n..."
+    },
+    {
+      "title": "SimpleAudioDevice::init continued",
+      "language": "objectivec",
+      "startTimeSeconds": 499,
+      "code": "// SimpleAudioDevice::init continued\n    IOUserAudioStreamBasicDescription input_stream_formats[2] = {\n            kSampleRate_1, IOUserAudioFormatID::LinearPCM,\n            static_cast<IOUserAudioFormatFlags>(\n                    IOUserAudioFormatFlags::FormatFlagIsSignedInteger | \n                    IOUserAudioFormatFlags::FormatFlagsNativeEndian),\n            static_cast<uint32_t>(sizeof(int16_t)*input_channels_per_frame),\n            1,\n            static_cast<uint32_t>(sizeof(int16_t)*input_channels_per_frame),\n            static_cast<uint32_t>(input_channels_per_frame),\n            16\n\t\t    },\n        ...\n    }\n\n    ivars->m_input_stream->SetAvailableStreamFormats(input_stream_formats, 2);\n    ivars->m_input_stream_format = input_stream_formats[0];\n    ivars->m_input_stream->SetCurrentStreamFormat(&ivars->m_input_stream_format);\n\n    error = AddStream(ivars->m_input_stream.get());"
+    },
+    {
+      "title": "Create a input volume level control object",
+      "language": "objectivec",
+      "startTimeSeconds": 530,
+      "code": "//\tCreate volume control object for the input stream.\n    ivars->m_input_volume_control = IOUserAudioLevelControl::Create(in_driver,\n        true, -6.0, {-96.0, 0.0},\n        IOUserAudioObjectPropertyElementMain,\n        IOUserAudioObjectPropertyScope::Input,\n        IOUserAudioClassID::VolumeControl);\n\n    //\tAdd volume control to device\n    error = AddControl(ivars->m_input_volume_control.get());"
+    },
+    {
+      "title": "Create custom property",
+      "language": "objectivec",
+      "startTimeSeconds": 562,
+      "code": "// SimpleAudioDevice::init, Create custom property\n\nIOUserAudioObjectPropertyAddress prop_addr = {\n    kSimpleAudioDriverCustomPropertySelector,\n    IOUserAudioObjectPropertyScope::Global,\n    IOUserAudioObjectPropertyElementMain\n};\n\ncustom_property = IOUserAudioCustomProperty::Create(in_driver, prop_addr, true,\n    IOUserAudioCustomPropertyDataType::String,\n    IOUserAudioCustomPropertyDataType::String);\n\nqualifier = OSSharedPtr(\n    OSString::withCString(kSimpleAudioDriverCustomPropertyQualifier0), OSNoRetain);\ndata = OSSharedPtr(\n    OSString::withCString(kSimpleAudioDriverCustomPropertyDataValue0), OSNoRetain);\ncustom_property->SetQualifierAndDataValue(qualifier.get(), data.get());\n\nAddCustomProperty(custom_property.get());"
+    },
+    {
+      "title": "Subclass of IOUserAudioDevice",
+      "language": "objectivec",
+      "startTimeSeconds": 647,
+      "code": "// SimpleAudioDevice example subclass of IOUserAudioDevice\n\nclass SimpleAudioDevice: public IOUserAudioDevice\n{\n...\n    virtual kern_return_t StartIO(IOUserAudioStartStopFlags in_flags) final LOCALONLY;\n    virtual kern_return_t StopIO(IOUserAudioStartStopFlags in_flags) final LOCALONLY;\n\nprivate:\n    kern_return_t StartTimers() LOCALONLY;\n    void StopTimers() LOCALONLY;\n    void UpdateTimers() LOCALONLY;\n    virtual void ZtsTimerOccurred(OSAction* action,\n\t\t\t\t\t\t\t\t   uint64_t time) TYPE(IOTimerDispatchSource::TimerOccurred);\n    virtual void ToneTimerOccurred(OSAction* action,\n\t\t\t\t\t\t\t\t\tuint64_t time) TYPE(IOTimerDispatchSource::TimerOccurred);\n    void GenerateToneForInput(size_t in_frame_size) LOCALONLY;\n}"
+    },
+    {
+      "title": "StartIO",
+      "language": "objectivec",
+      "startTimeSeconds": 678,
+      "code": "// StartIO \nkern_return_t SimpleAudioDevice::StartIO(IOUserAudioStartStopFlags in_flags)\n{\n    __block kern_return_t error = kIOReturnSuccess;\n    __block OSSharedPtr<IOMemoryDescriptor> input_iomd;\n    ivars->m_work_queue->DispatchSync(^(){\n\t\t//\tTell IOUserAudioObject base class to start IO for the device\n        error = super::StartIO(in_flags);\n        if (error == kIOReturnSuccess)\n        {\n            // Get stream IOMemoryDescriptor, create mapping and store to ivars\t\n            input_iomd = ivars->m_input_stream->GetIOMemoryDescriptor();\n            input_iomd->CreateMapping(0, 0, 0, 0, 0, ivars->m_input_memory_map.attach());\n\n            // Start timers to send timestamps and generate sine tone on the stream buffer\t\n            StartTimers();\n        }\n    });\n    return error;\n}"
+    },
+    {
+      "title": "StartTimers",
+      "language": "objectivec",
+      "startTimeSeconds": 717,
+      "code": "kern_return_t SimpleAudioDevice::StartTimers()\n{\n...\n\t//\tclear the device's timestamps\n\tUpdateCurrentZeroTimestamp(0, 0);\n\tauto current_time = mach_absolute_time();\n\tauto wake_time = current_time + ivars->m_zts_host_ticks_per_buffer;\n\n\t//\tstart the timer, the first time stamp will be taken when it goes off\n\tivars->m_zts_timer_event_source->WakeAtTime(kIOTimerClockMachAbsoluteTime,\n\t\t\t\t\t\t\t\t\t\t\t\t wake_time,\n\t\t\t\t\t\t\t\t\t\t\t\t 0);\n\tivars->m_zts_timer_event_source->SetEnable(true);\n...\n}"
+    },
+    {
+      "title": "ZtsTimerOccurred",
+      "language": "objectivec",
+      "startTimeSeconds": 747,
+      "code": "void SimpleAudioDevice::ZtsTimerOccurred_Impl(OSAction* action, uint64_t time)\n{\n...\n\tGetCurrentZeroTimestamp(&current_sample_time, &current_host_time);\n\tauto host_ticks_per_buffer = ivars->m_zts_host_ticks_per_buffer;\n\tif (current_host_time != 0) {\n\t\tcurrent_sample_time += GetZeroTimestampPeriod();\n\t\tcurrent_host_time += host_ticks_per_buffer;\n\t}\n\telse {\n\t\tcurrent_sample_time = 0;\n\t\tcurrent_host_time = time;\n\t}\n\t// Update the device with the current timestamp\n\tUpdateCurrentZeroTimestamp(current_sample_time, current_host_time);\n\n\t//\tset the timer to go off in one buffer\n\tivars->m_zts_timer_event_source->WakeAtTime(kIOTimerClockMachAbsoluteTime,\n\t\t\t\t\t\t\t\t\t\t\t\tcurrent_host_time + host_ticks_per_buffer, 0);\n}"
+    },
+    {
+      "title": "GenerateToneForInput",
+      "language": "objectivec",
+      "startTimeSeconds": 783,
+      "code": "void SimpleAudioDevice::GenerateToneForInput(size_t in_frame_size) \n{\n\t// Fill out the input buffer with a sine tone\n\tif (ivars->m_input_memory_map)\n\t{\n\t\t//\tGet the pointer to the IO buffer and use stream format information\n\t\t//\tto get buffer length\n\t\tconst auto& format = ivars->m_input_stream_format;\n\t\tauto buffer_length = ivars->m_input_memory_map->GetLength() / \n            (format.mBytesPerFrame / format.mChannelsPerFrame);\n\t\tauto num_samples = in_frame_size;\n\t\tauto buffer = reinterpret_cast<int16_t*>(ivars->m_input_memory_map->GetAddress() +  \n            ivars->m_input_memory_map->GetOffset());\n...\t\n}"
+    },
+    {
+      "title": "GenerateToneForInput continued",
+      "language": "objectivec",
+      "startTimeSeconds": 810,
+      "code": "void SimpleAudioDevice::GenerateToneForInput(size_t in_frame_size) \n{\n...\n\tauto input_volume_level = ivars->m_input_volume_control->GetScalarValue();\n\n\tfor (size_t i = 0; i < num_samples; i++)\n\t{\n\t\tfloat float_value = input_volume_level * \n    sin(2.0 * M_PI * frequency * \n       static_cast<double>(ivars->m_tone_sample_index) / format.mSampleRate);\n\n\t\tint16_t integer_value = FloatToInt16(float_value);\n\t\tfor (auto ch_index = 0; ch_index < format.mChannelsPerFrame; ch_index++)\n\t\t{\n\t\t\tauto buffer_index =\n                (format.mChannelsPerFrame * ivars->m_tone_sample_index + ch_index) %         \n                buffer_length;\n\t\t\tbuffer[buffer_index] = integer_value;\n\t\t}\n\t\tivars->m_tone_sample_index += 1;\n\t}\n}"
+    },
+    {
+      "title": "IOUserAudioClockDevice.h and IOUserAudioDevice.h",
+      "language": "objectivec",
+      "startTimeSeconds": 842,
+      "code": "// IOUserAudioClockDevice.h and IOUserAudioDevice.h\n\nkern_return_t RequestDeviceConfigurationChange(uint64_t in_change_action,\n\t\t\t\t\t\t\t\t\t\t\t    OSObject* in_change_info);\n\nvirtual kern_return_t PerformDeviceConfigurationChange(uint64_t in_change_action,\n\t\t\t\t\t\t\t\t\t\t\t            OSObject* in_change_info);\n\nvirtual kern_return_t AbortDeviceConfigurationChange(uint64_t change_action,\n\t\t\t\t\t\t\t\t\t\t\t\t\t  OSObject* in_change_info);"
+    },
+    {
+      "title": "HandleTestConfigChange",
+      "language": "objectivec",
+      "startTimeSeconds": 932,
+      "code": "kern_return_t SimpleAudioDriver::HandleTestConfigChange()\n{\n\tauto change_info = OSSharedPtr(OSString::withCString(\"Toggle Sample Rate\"), OSNoRetain);\n\treturn ivars->m_simple_audio_device->RequestDeviceConfigurationChange(\n        k_custom_config_change_action, change_info.get());\n}\n\nclass SimpleAudioDevice: public IOUserAudioDevice\n{\n...\n\tvirtual kern_return_t PerformDeviceConfigurationChange(uint64_t change_action,\n\t\t\t\t\t\t\t\t\t\t\t\t    OSObject* in_change_info) final LOCALONLY;\n}"
+    },
+    {
+      "title": "PerformDeviceConfigurationChange",
+      "language": "objectivec",
+      "startTimeSeconds": 965,
+      "code": "// In SimpleAudioDevice::PerformDeviceConfigurationChange\n\tkern_return_t ret = kIOReturnSuccess;\n\tswitch (change_action) {\n\t\tcase k_custom_config_change_action: {\n\t\t\tif (in_change_info)\t{\n\t\t\t\tauto change_info_string = OSDynamicCast(OSString, in_change_info);\n\t\t\t\tDebugMsg(\"%s\", change_info_string->getCStringNoCopy());\n\t\t\t}\n\n\t\t\tdouble rate_to_set = static_cast<uint64_t>(GetSampleRate()) != \n                static_cast<uint64_t>(kSampleRate_1) ? kSampleRate_1 : kSampleRate_2;\n\t\t\tret = SetSampleRate(rate_to_set);\n\t\t\tif (ret == kIOReturnSuccess) {\n\t\t\t\t// Update stream formats with the new rate\n\t\t\t\tret = ivars->m_input_stream->DeviceSampleRateChanged(rate_to_set);\n\t\t\t}\n\t\t}\n\t\t\tbreak;\n\n\t\tdefault:\n\t\t\tret = super::PerformDeviceConfigurationChange(change_action, in_change_info);\n\t\t\tbreak;\n\t}\n\n\t// Update the cached format:\n\tivars->m_input_stream_format = ivars->m_input_stream->GetCurrentStreamFormat();\n\n\treturn ret;\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2021/10190-create-audio-drivers-with-driverkit/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10190-create-audio-drivers-with-driverkit/metadata.json",
+    "readme": "sessions/wwdc2021/10190-create-audio-drivers-with-driverkit/README.md",
+    "transcript": "sessions/wwdc2021/10190-create-audio-drivers-with-driverkit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10190-create-audio-drivers-with-driverkit/transcript.json"
+  }
+}

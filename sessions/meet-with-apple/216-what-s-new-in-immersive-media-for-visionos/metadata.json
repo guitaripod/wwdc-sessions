@@ -1,0 +1,51 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "meet-with-apple-216",
+  "event": "meet-with-apple",
+  "eventName": "Meet with Apple",
+  "year": 2025,
+  "eventContentId": 216,
+  "title": "What’s new in immersive media for visionOS",
+  "description": "Get to know the different types of media you can make for apps, games, and experiences in visionOS. Learn about updates for 2D and 3D video, spatial video, and more immersive media formats like 180, 360, Wide FOV, and Apple Immersive Video. This session was originally presented as part of the Meet with Apple activity “Create immersive media experiences for visionOS - Day 1.” Watch the full video for more insights and related sessions.",
+  "url": "https://developer.apple.com/videos/play/meet-with-apple/216",
+  "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/216",
+  "type": "Video",
+  "publishedAt": "2025-12-01T00:00:00-08:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 1392,
+  "hasTranscript": true,
+  "transcriptWordCount": 3190,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/216/2/1f699e3f-5c9a-45e8-aaf0-843079181a9f/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/216/2/1f699e3f-5c9a-45e8-aaf0-843079181a9f/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/216/2/1f699e3f-5c9a-45e8-aaf0-843079181a9f/downloads/meet-with-apple-216_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/216/2/1f699e3f-5c9a-45e8-aaf0-843079181a9f/downloads/meet-with-apple-216_hd.mp4",
+    "duration": 1392
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/meet-with-apple/216-what-s-new-in-immersive-media-for-visionos/",
+  "files": {
+    "metadata": "sessions/meet-with-apple/216-what-s-new-in-immersive-media-for-visionos/metadata.json",
+    "readme": "sessions/meet-with-apple/216-what-s-new-in-immersive-media-for-visionos/README.md",
+    "transcript": "sessions/meet-with-apple/216-what-s-new-in-immersive-media-for-visionos/transcript.md",
+    "transcriptJSON": "sessions/meet-with-apple/216-what-s-new-in-immersive-media-for-visionos/transcript.json"
+  }
+}

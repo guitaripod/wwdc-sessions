@@ -1,0 +1,183 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10152",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10152,
+  "title": "Accelerate machine learning with Metal Performance Shaders Graph",
+  "description": "Metal Performance Shaders Graph is a compute engine that helps you build, compile, and execute customized multidimensional graphs for linear algebra, machine learning, computer vision, and image processing. Discover how MPSGraph can accelerate the popular TensorFlow platform through a Metal backend for Apple products. Learn how to add control flow to your graphs, manage the graph compilation for optimal performance, and use the MPSGraph operations to accelerate the hardest compute applications with only a few lines of code.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10152",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10152",
+  "type": "Video",
+  "publishedAt": "2021-06-11T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "machine learning",
+    "metal",
+    "metal shading language",
+    "optimization",
+    "performance"
+  ],
+  "topics": [
+    "AI & Machine Learning",
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1752,
+  "hasTranscript": true,
+  "transcriptWordCount": 4169,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10152/6/38BC0CF8-718D-4950-9CC4-B64396F5FFDD/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10152/6/38BC0CF8-718D-4950-9CC4-B64396F5FFDD/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10152/6/38BC0CF8-718D-4950-9CC4-B64396F5FFDD/downloads/wwdc2021-10152_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10152/6/38BC0CF8-718D-4950-9CC4-B64396F5FFDD/downloads/wwdc2021-10152_hd.mp4",
+    "duration": 1752
+  },
+  "codeSnippets": [
+    {
+      "title": "Control dependencies 1",
+      "language": "swift",
+      "startTimeSeconds": 515,
+      "code": "// Execute the graph\nlet results = graph.run(feeds: [inputTensor: inputs],\n                        targetTensors: [exp],\n                        targetOperations: [assign])"
+    },
+    {
+      "title": "Control dependencies 2",
+      "language": "swift",
+      "startTimeSeconds": 541,
+      "code": "// Create control dependency\n\nlet exp = graph.controlDependency(with: [assign],\n                                  dependentBlock: { \n                                      return [graph.exponent(with: input, \n                                                             name: nil)]\n                                  },\n                                  name: nil)\n\n// Execute the graph\n\nlet results = graph.run(feeds: [inputTensor: inputs],\n                        targetTensors: [exp],\n                        targetOperations: nil)"
+    },
+    {
+      "title": "Evaluation method",
+      "language": "swift",
+      "startTimeSeconds": 882,
+      "code": "// Create the graph\n\nlet placeholder0 = graph.placeholder(shape: [1, 3], \n                                     dataType: .float32, \n                                     name: nil)\n\nlet placeholder1 = graph.placeholder(shape: [2, 1], \n                                     dataType: .float32, \n                                     name: nil)\n\nlet addTensor = graph.addition(placeholder0, \n                               placeholder1, \n                               name: nil)\n\n// Compile the graph into an executable\n\nlet executable = graph.compile(with: nil,\n                               feeds: [placeholder0: MPSGraphShapedType(shape: [1, 3], \n                                                                        dataType: .float32),\n                                       placeholder1: MPSGraphShapedType(shape: [2, 1], \n                                                                        dataType: .float32)],\n                               targetTensors: [addTensor],\n                               targetOperations: nil,\n                               compilationDescriptor: nil)\n\n// Execute the graph into an executable\n\nlet fetch = executable.run(with: commandQueue,\n                           inputs: [MPSGraphTensorData(input0),        \n                                    MPSGraphTensorData(input1)],\n                           results: nil,\n                           executionDescriptor: nil)"
+    },
+    {
+      "title": "Disabling the type inference pass",
+      "language": "swift",
+      "startTimeSeconds": 998,
+      "code": "// Create the graph compilation descriptor\n\nlet descriptor = MPSGraphCompilationDescriptor()\n\n// Disable type inference\n\ndescriptor.disableTypeInference()\n\n// Compile the graph into an executable\n\nlet executable = graph.compile(with: nil,\n                               feeds: /* feeds */,\n                               targetTensors: /* target tensors */,\n                               targetOperations: nil,\n                               compilationDescriptor: descriptor)\n\n// execute the graph"
+    },
+    {
+      "title": "If/else in batch normalization",
+      "language": "swift",
+      "startTimeSeconds": 1162,
+      "code": "// Different behavior during inference and training\n\nlet results = graph.if(isTraining,\n                       then: { ... },    // compute mean and variance\n                       else: { ... },    // use running_mean and running_variance\n                       name: nil)"
+    },
+    {
+      "title": "If/else",
+      "language": "swift",
+      "startTimeSeconds": 1186,
+      "code": "let predicate = graph.lessThan(a, \n                               b, \n                               name: nil)\n\nlet results = graph.if(predicate,\n    then: {[\n        graph.addition(a, \n                       b, \n                       name: nil)\n    ]},\n    else: {[\n        graph.subtraction(a, \n                          b, \n                          name: nil)\n    ]},\n    name: nil)"
+    },
+    {
+      "title": "For loop 1",
+      "language": "swift",
+      "startTimeSeconds": 1258,
+      "code": "var result = input0\n\nfor i in 0..<4 {\n    result *= input1\n}"
+    },
+    {
+      "title": "For Loop 2",
+      "language": "swift",
+      "startTimeSeconds": 1272,
+      "code": "// Initialize inputs\n\nlet input0 = graph.placeholder(shape: [], \n                               dataType: .int32, \n                               name: nil)\n\nlet input1 = graph.placeholder(shape: [], \n                               dataType: .int32, \n                               name: nil)\n\nlet numberOfIterations = graph.constant(4, \n                                        shape: [], \n                                        dataType: .int32)"
+    },
+    {
+      "title": "For Loop 3",
+      "language": "swift",
+      "startTimeSeconds": 1293,
+      "code": "// Define Body\n\nlet body = {\n    (index: MPSGraphTensor, iterationArguments: [MPSGraphTensor]) -> [MPSGraphTensor] in\n        let iterationResult = graph.multiplication(iterationArguments[0], input1, name: nil)\n        return [iterationResult]\n}"
+    },
+    {
+      "title": "For Loop 4",
+      "language": "swift",
+      "startTimeSeconds": 1312,
+      "code": "// Create for loop operation\n\nlet result = graph.for(numberOfIterations: numberOfIterations,\n                       initialIterationArguments: [input0],\n                       body: body)"
+    },
+    {
+      "title": "While loop 1",
+      "language": "swift",
+      "startTimeSeconds": 1371,
+      "code": "var result = initialValue\n\nwhile result < threshold {\n    result *= multiplier\n}"
+    },
+    {
+      "title": "While loop 2",
+      "language": "swift",
+      "startTimeSeconds": 1381,
+      "code": "// Evaluate condition\n\nlet condition = {\n    (inputs: [MPSGraphTensor], returnTensors: NSMutableArray) -> MPSGraphTensor in\n        let predicate = graph.lessThan(inputs[0], threshold, name: nil)\n        returnTensors.add(inputs[0])\n        return predicate\n}"
+    },
+    {
+      "title": "While loop 3",
+      "language": "swift",
+      "startTimeSeconds": 1402,
+      "code": "// Define body\n\nlet body = {\n    (inputs: [MPSGraphTensor]) -> [MPSGraphTensor] in\n        let iterationResult = graph.multiplication(inputs[0], multiplier, name: nil)\n        return [iterationResult]\n}"
+    },
+    {
+      "title": "While loop 4",
+      "language": "swift",
+      "startTimeSeconds": 1413,
+      "code": "// Create while loop operation\n\nlet results = graph.while(initialInputs: [initialValue],\n                          before: condition,\n                          after: body,\n                          name: nil)"
+    },
+    {
+      "title": "Edge filter",
+      "language": "swift",
+      "startTimeSeconds": 1500,
+      "code": "// Apply the laplacian edge filter on the source image\n\nlet edges = graph.stencil(with: source, \n                          weights: laplacianWeights, \n                          descriptor: desc, \n                          name: nil)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Training a Neural Network with Metal Performance Shaders",
+      "url": "https://developer.apple.com/documentation/MetalPerformanceShaders/training-a-neural-network-with-metal-performance-shaders",
+      "type": "samplecode",
+      "description": "Use an MPS neural network graph to train a simple neural network digit classifier.",
+      "sosumiURL": "https://sosumi.ai/documentation/MetalPerformanceShaders/training-a-neural-network-with-metal-performance-shaders",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MetalPerformanceShaders/training-a-neural-network-with-metal-performance-shaders.json"
+    },
+    {
+      "title": "Metal Performance Shaders",
+      "url": "https://developer.apple.com/documentation/MetalPerformanceShaders",
+      "type": "documentation",
+      "description": "Optimize graphics and compute performance with kernels that are fine-tuned for the unique characteristics of each Metal GPU family.",
+      "sosumiURL": "https://sosumi.ai/documentation/MetalPerformanceShaders",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MetalPerformanceShaders.json"
+    },
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    },
+    {
+      "title": "Metal Shading Language Specification",
+      "url": "https://developer.apple.com/metal/metal-shading-language-specification.pdf",
+      "type": "guide",
+      "description": "The Metal shading language is used to write graphics and compute functions that are executed on the GPU. Version 2.0 of the Metal shading language adds new features such as Raster Order Groups, Indirect Argument Buffers, Arrays of Samplers, Uniform Types, and much more.",
+      "sosumiURL": "https://sosumi.ai/metal/metal-shading-language-specification.pdf"
+    }
+  ],
+  "path": "sessions/wwdc2021/10152-accelerate-machine-learning-with-metal-performance-shaders-g/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10152-accelerate-machine-learning-with-metal-performance-shaders-g/metadata.json",
+    "readme": "sessions/wwdc2021/10152-accelerate-machine-learning-with-metal-performance-shaders-g/README.md",
+    "transcript": "sessions/wwdc2021/10152-accelerate-machine-learning-with-metal-performance-shaders-g/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10152-accelerate-machine-learning-with-metal-performance-shaders-g/transcript.json"
+  }
+}

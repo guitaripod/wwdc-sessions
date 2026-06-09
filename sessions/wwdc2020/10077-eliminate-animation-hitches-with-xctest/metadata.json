@@ -1,0 +1,88 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10077",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10077,
+  "title": "Eliminate animation hitches with XCTest",
+  "description": "Animations can dramatically enhance the user experience of your app, provide a sense of direct manipulation, and help people to better understand the results of their actions. Animation hitches can break that experience. Discover how to use XCTest to detect interruptions to smooth scrolling and animations, and learn how to catch regressions before they affect the people relying on your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10077",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10077",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "animate",
+    "battery",
+    "energy",
+    "metrics",
+    "performance",
+    "scroll",
+    "xcode",
+    "xctest"
+  ],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 825,
+  "hasTranscript": true,
+  "transcriptWordCount": 2089,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10077/2/B3286370-EF32-46C5-AF96-8EF51A8EB971/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10077/2/B3286370-EF32-46C5-AF96-8EF51A8EB971/wwdc2020_10077_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10077/2/B3286370-EF32-46C5-AF96-8EF51A8EB971/wwdc2020_10077_hd.mp4",
+    "duration": 825
+  },
+  "codeSnippets": [
+    {
+      "title": "Create an animation os_signpost interval",
+      "language": "swift",
+      "startTimeSeconds": 395,
+      "code": "os_signpost(.animationBegin, log: logHandle, name: \"performAnimationInterval\")\nos_signpost(.end, log: logHandle, name: \"performAnimationInterval\")"
+    },
+    {
+      "title": "Use a UIKit instrumented animation os_signpost interval",
+      "language": "swift",
+      "startTimeSeconds": 415,
+      "code": "extension XCTOSSignpostMetric {\n     open class var navigationTransitionMetric: XCTMetric { get }\n     open class var customNavigationTransitionMetric: XCTMetric { get }\n     open class var scrollDecelerationMetric: XCTMetric { get }\n     open class var scrollDraggingMetric: XCTMetric { get }\n}"
+    },
+    {
+      "title": "Measure scrolling animation performance using a Performance XCTest",
+      "language": "swift",
+      "startTimeSeconds": 432,
+      "code": "// Measure scrolling animation performance using a Performance XCTest\nfunc testScrollingAnimationPerformance() throws {\n    app.launch()\n    app.staticTexts[\"Meal Planner\"].tap()\n    let foodCollection = app.collectionViews.firstMatch\n\n    measure(metrics: [XCTOSSignpostMetric.scrollDecelerationMetric]) {\n        foodCollection.swipeUp(velocity: .fast)\n    }\n}"
+    },
+    {
+      "title": "Reset the application state between runs",
+      "language": "swift",
+      "startTimeSeconds": 482,
+      "code": "func testScrollingAnimationPerformance() throws { \n    app.launch()\n    app.staticTexts[\"Meal Planner\"].tap()\n    let foodCollection = app.collectionViews.firstMatch\n\n    let measureOptions = XCTMeasureOptions()\n    measureOptions.invocationOptions = [.manuallyStop]\n\n    measure(metrics: [XCTOSSignpostMetric.scrollDecelerationMetric],\n            options: measureOptions) {\n        foodCollection.swipeUp(velocity: .fast)\n        stopMeasuring()\n        foodCollection.swipeDown(velocity: .fast)\n    }\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2020/10077-eliminate-animation-hitches-with-xctest/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10077-eliminate-animation-hitches-with-xctest/metadata.json",
+    "readme": "sessions/wwdc2020/10077-eliminate-animation-hitches-with-xctest/README.md",
+    "transcript": "sessions/wwdc2020/10077-eliminate-animation-hitches-with-xctest/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10077-eliminate-animation-hitches-with-xctest/transcript.json"
+  }
+}

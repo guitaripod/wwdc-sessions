@@ -1,0 +1,55 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2017-513",
+  "event": "wwdc2017",
+  "eventName": "WWDC17",
+  "year": 2017,
+  "eventContentId": 513,
+  "title": "High Efficiency Image File Format",
+  "description": "Learn the essential details of the new High Efficiency Image File Format (HEIF) and discover which capabilities are used by Apple platforms. Gain deep insights into the container structure, the types of media and metadata it can handle, and the many other advantages that this new standard affords.",
+  "url": "https://developer.apple.com/videos/play/wwdc2017/513",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2017/513",
+  "type": "Video",
+  "publishedAt": "2017-06-04T17:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games",
+    "System Services",
+    "Photos & Camera"
+  ],
+  "primaryTopic": "Photos & Camera",
+  "duration": 1745,
+  "hasTranscript": true,
+  "transcriptWordCount": 3540,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/513fzgbviu23l/513/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/513fzgbviu23l/513/513_sd_high_efficiency_image_file_format.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/513fzgbviu23l/513/513_hd_high_efficiency_image_file_format.mp4",
+    "duration": 1745
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2017/513-high-efficiency-image-file-format/",
+  "files": {
+    "metadata": "sessions/wwdc2017/513-high-efficiency-image-file-format/metadata.json",
+    "readme": "sessions/wwdc2017/513-high-efficiency-image-file-format/README.md",
+    "transcript": "sessions/wwdc2017/513-high-efficiency-image-file-format/transcript.md",
+    "transcriptJSON": "sessions/wwdc2017/513-high-efficiency-image-file-format/transcript.json"
+  }
+}

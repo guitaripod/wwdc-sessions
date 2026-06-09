@@ -1,0 +1,74 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10642",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10642,
+  "title": "Build Image and Video Style Transfer models in Create ML",
+  "description": "Bring stylized effects to your photos and videos with Style Transfer in Create ML. Discover how you can train models in minutes that make it easy to bring creative visual features to your app. Learn about the training process and the options you have for controlling the results. And we’ll explore the real-time performance of these models by demonstrating three of them simultaneously in ARKit. To get the most out of this session, you should be familiar with Create ML. For an overview, watch “Introducing the Create ML App.”",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10642",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10642",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "ai",
+    "core ml",
+    "create ml",
+    "neural network",
+    "photo",
+    "photo effects",
+    "style density",
+    "style strength",
+    "style transfer",
+    "video",
+    "video effects"
+  ],
+  "topics": [
+    "Developer Tools",
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 708,
+  "hasTranscript": true,
+  "transcriptWordCount": 1719,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10642/5/64274BC5-1940-4124-8B2F-4E1B9378202A/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10642/5/64274BC5-1940-4124-8B2F-4E1B9378202A/wwdc2020_10642_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10642/5/64274BC5-1940-4124-8B2F-4E1B9378202A/wwdc2020_10642_hd.mp4",
+    "duration": 708
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Create ML",
+      "url": "https://developer.apple.com/documentation/CreateML",
+      "type": "documentation",
+      "description": "Create machine learning models for use in your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/CreateML",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CreateML.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10642-build-image-and-video-style-transfer-models-in-create-ml/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10642-build-image-and-video-style-transfer-models-in-create-ml/metadata.json",
+    "readme": "sessions/wwdc2020/10642-build-image-and-video-style-transfer-models-in-create-ml/README.md",
+    "transcript": "sessions/wwdc2020/10642-build-image-and-video-style-transfer-models-in-create-ml/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10642-build-image-and-video-style-transfer-models-in-create-ml/transcript.json"
+  }
+}

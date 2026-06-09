@@ -1,0 +1,123 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-293",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 293,
+  "title": "Enhance child safety with PermissionKit",
+  "description": "Discover how PermissionKit helps you enhance communication safety for children in your app. We’ll show you how to use this new framework to create age-appropriate communication experiences and leverage Family Sharing for parental approvals. You’ll learn how to build permission requests that seamlessly integrate with Messages, handle parental responses, and adapt your UI for child users. To get the most out of this session, we recommend first watching “Deliver age-appropriate experiences in your app” from WWDC25.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/293",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/293",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "🎈"
+  ],
+  "topics": [
+    "App Services",
+    "Privacy & Security"
+  ],
+  "primaryTopic": "Privacy & Security",
+  "duration": 697,
+  "hasTranscript": true,
+  "transcriptWordCount": 1781,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/293/4/3d149cec-af19-46df-9916-67a21d041047/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/293/4/3d149cec-af19-46df-9916-67a21d041047/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/293/4/3d149cec-af19-46df-9916-67a21d041047/downloads/wwdc2025-293_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/293/4/3d149cec-af19-46df-9916-67a21d041047/downloads/wwdc2025-293_hd.mp4",
+    "duration": 697
+  },
+  "codeSnippets": [
+    {
+      "title": "Tailor your UI for children",
+      "language": "swift",
+      "startTimeSeconds": 243,
+      "code": "import PermissionKit\n\nlet knownHandles = await CommunicationLimits.current.knownHandles(in: conversation.participants)\n\nif knownHandles.isSuperset(of: conversation.participants) {\n    // Show content\n} else {\n    // Hide content\n}"
+    },
+    {
+      "title": "Create a question",
+      "language": "swift",
+      "startTimeSeconds": 315,
+      "code": "import PermissionKit\n\nvar question = PermissionQuestion(handles: [\n    CommunicationHandle(value: \"dragonslayer42\", kind: .custom),\n    CommunicationHandle(value: \"progamer67\", kind: .custom)\n])"
+    },
+    {
+      "title": "Create a question - additional metadata",
+      "language": "swift",
+      "startTimeSeconds": 338,
+      "code": "import PermissionKit\n\nlet people = [\n    PersonInformation(\n        handle: CommunicationHandle(value: \"dragonslayer42\", kind: .custom),\n        nameComponents: nameComponents,\n        avatarImage: profilePic\n    ),\n    PersonInformation(\n        handle: CommunicationHandle(value: \"progamer67\", kind: .custom)\n    )\n]\n\nvar topic = CommunicationTopic(personInformation: people)\ntopic.actions = [.message]\n\nvar question = PermissionQuestion(communicationTopic: topic)"
+    },
+    {
+      "title": "Ask a question - SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 385,
+      "code": "import PermissionKit\nimport SwiftUI\n\nstruct ContentView: View {\n    let question: PermissionQuestion<CommunicationTopic>\n\n    var body: some View {\n        // ...\n        CommunicationLimitsButton(question: question) {\n            Label(\"Ask Permission\", systemImage: \"paperplane\")\n        }\n    }\n}"
+    },
+    {
+      "title": "Ask a question - UIKit",
+      "language": "swift",
+      "startTimeSeconds": 403,
+      "code": "import PermissionKit\nimport UIKit\n\ntry await CommunicationLimits.current.ask(question, in: viewController)"
+    },
+    {
+      "title": "Ask a question - AppKit",
+      "language": "swift",
+      "startTimeSeconds": 414,
+      "code": "import PermissionKit\nimport AppKit\n\ntry await CommunicationLimits.current.ask(question, in: window)"
+    },
+    {
+      "title": "Parent/guardian responses",
+      "language": "swift",
+      "startTimeSeconds": 439,
+      "code": "import PermissionKit\nimport SwiftUI\n\nstruct ChatsView: View {\n    @State var isShowingResponseAlert = false\n\n    var body: some View {\n        List {\n           // ...\n        }\n        .task {\n            let updates = CommunicationLimits.current.updates\n            for await update in updates {\n                // Received a response!\n                self.isShowingResponseAlert = true\n            }\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Design safe and age‑appropriate experiences for your apps and games",
+      "url": "https://developer.apple.com/kids/",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/kids/"
+    },
+    {
+      "title": "Declared Age Range",
+      "url": "https://developer.apple.com/documentation/DeclaredAgeRange",
+      "type": "documentation",
+      "description": "Create age-appropriate experiences in your app by asking people to share their age range.",
+      "sosumiURL": "https://sosumi.ai/documentation/DeclaredAgeRange",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/DeclaredAgeRange.json"
+    },
+    {
+      "title": "PermissionKit",
+      "url": "https://developer.apple.com/documentation/PermissionKit",
+      "type": "documentation",
+      "description": "Create communication experiences between a child and their parent or guardian.",
+      "sosumiURL": "https://sosumi.ai/documentation/PermissionKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/PermissionKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/293-enhance-child-safety-with-permissionkit/",
+  "files": {
+    "metadata": "sessions/wwdc2025/293-enhance-child-safety-with-permissionkit/metadata.json",
+    "readme": "sessions/wwdc2025/293-enhance-child-safety-with-permissionkit/README.md",
+    "transcript": "sessions/wwdc2025/293-enhance-child-safety-with-permissionkit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/293-enhance-child-safety-with-permissionkit/transcript.json"
+  }
+}

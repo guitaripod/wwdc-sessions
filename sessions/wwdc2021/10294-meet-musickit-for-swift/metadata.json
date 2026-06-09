@@ -1,0 +1,115 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10294",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10294,
+  "title": "Meet MusicKit for Swift",
+  "description": "MusicKit makes it easy to integrate Apple Music into your app. Explore the Swift-based framework: We’ll take you through the basic process of using MusicKit — including how to find, request, and play content — and show you how you can incorporate music subscription workflows into your app if someone hasn’t yet signed up to Apple Music.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10294",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10294",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "apple music",
+    "music",
+    "musickit",
+    "songs",
+    "swift"
+  ],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 1066,
+  "hasTranscript": true,
+  "transcriptWordCount": 2846,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10294/5/DFB67B36-DCDE-49D9-8ED1-AC2A8B566F64/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10294/5/DFB67B36-DCDE-49D9-8ED1-AC2A8B566F64/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10294/5/DFB67B36-DCDE-49D9-8ED1-AC2A8B566F64/downloads/wwdc2021-10294_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10294/5/DFB67B36-DCDE-49D9-8ED1-AC2A8B566F64/downloads/wwdc2021-10294_hd.mp4",
+    "duration": 1066
+  },
+  "codeSnippets": [
+    {
+      "title": "Loading and accessing relationships",
+      "language": "swift",
+      "startTimeSeconds": 176,
+      "code": "// Loading and accessing relationships\n\nlet detailedAlbum = try await album.with([.artists, .tracks, .relatedAlbums])\nprint(\"\\(detailedAlbum)\")\n\nif let tracks = detailedAlbum.tracks {\n    print(\"  Tracks:\")\n    tracks.prefix(2).forEach { track in\n        print(\"    \\(track)\")\n    }\n}"
+    },
+    {
+      "title": "Loading and accessing associations",
+      "language": "swift",
+      "startTimeSeconds": 211,
+      "code": "// Loading and accessing associations\n\nlet detailedAlbum = try await album.with([.artists, .tracks, .relatedAlbums])\nprint(\"\\(detailedAlbum)\")\n\nif let relatedAlbums = detailedAlbum.relatedAlbums {\n    print(\"  \\(relatedAlbums.title ?? \"\"):\")\n    relatedAlbums.prefix(2).forEach { relatedAlbum in\n        print(\"    \\(relatedAlbum)\")\n    }\n}"
+    },
+    {
+      "title": "Loading top level genres",
+      "language": "swift",
+      "startTimeSeconds": 542,
+      "code": "// Loading top level genres\n\nstruct MyGenresResponse: Decodable {\n    let data: [Genre]\n}\n\nlet countryCode = try await MusicDataRequest.currentCountryCode\nlet url = URL(string: \"https://api.music.apple.com/v1/catalog/\\(countryCode)/genres\")!\n\nlet dataRequest = MusicDataRequest(urlRequest: URLRequest(url: url))\nlet dataResponse = try await dataRequest.response()\n\nlet decoder = JSONDecoder()\nlet genresResponse = try decoder.decode(MyGenresResponse.self, from: dataResponse.data)\nprint(\"\\(genresResponse.data[9])\")"
+    },
+    {
+      "title": "Requesting user consent for MusicKit",
+      "language": "swift",
+      "startTimeSeconds": 649,
+      "code": "// Requesting user consent for MusicKit\n\n@State var isAuthorizedForMusicKit = false\n\nfunc requestMusicAuthorization() {\n    detach {\n        let authorizationStatus = await MusicAuthorization.request()\n        if authorizationStatus == .authorized {\n            isAuthorizedForMusicKit = true\n        } else {\n            // User denied permission.\n        }\n    }\n}"
+    },
+    {
+      "title": "Using music subscription to drive state of a play button",
+      "language": "swift",
+      "startTimeSeconds": 774,
+      "code": "// Using music subscription to drive state of a play button\n\n@State var musicSubscription: MusicSubscription?\n\nvar body: some View {\n    Button(action: handlePlayButtonSelected) {\n        Image(systemName: \"play.fill\")\n    }\n    .disabled(!(musicSubscription?.canPlayCatalogContent ?? false))\n    .task {\n        for await subscription in MusicSubscription.subscriptionUpdates {\n            musicSubscription = subscription\n        }\n    }\n}"
+    },
+    {
+      "title": "Showing contextual music subscription offer",
+      "language": "swift",
+      "startTimeSeconds": 934,
+      "code": "// Showing contextual music subscription offer\n\n@State var musicSubscription: MusicSubscription?\n@State var isShowingOffer = false\n\nvar offerOptions: MusicSubscriptionOffer.Options {\n    var offerOptions = MusicSubscriptionOffer.Options()\n    offerOptions.itemID = album.id\n    return offerOptions\n}\n\nvar body: some View {\n    Button(\"Show Subscription Offers\", action: showSubscriptionOffer)\n        .disabled(!(musicSubscription?.canBecomeSubscriber ?? false))\n        .musicSubscriptionOffer(isPresented: $isShowingOffer, options: offerOptions)\n}\n\nfunc showSubscriptionOffer() {\n    isShowingOffer = true\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Using MusicKit to integrate with Apple Music",
+      "url": "https://developer.apple.com/documentation/MusicKit/using-musickit-to-integrate-with-apple-music",
+      "type": "samplecode",
+      "description": "Find an album in Apple Music that corresponds to a CD in a user’s collection, and present the information for the album.",
+      "sosumiURL": "https://sosumi.ai/documentation/MusicKit/using-musickit-to-integrate-with-apple-music",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MusicKit/using-musickit-to-integrate-with-apple-music.json"
+    },
+    {
+      "title": "MusicKit",
+      "url": "https://developer.apple.com/documentation/musickit",
+      "type": "documentation",
+      "description": "Integrate your app with Apple Music.",
+      "sosumiURL": "https://sosumi.ai/documentation/musickit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/musickit.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10294-meet-musickit-for-swift/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10294-meet-musickit-for-swift/metadata.json",
+    "readme": "sessions/wwdc2021/10294-meet-musickit-for-swift/README.md",
+    "transcript": "sessions/wwdc2021/10294-meet-musickit-for-swift/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10294-meet-musickit-for-swift/transcript.json"
+  }
+}

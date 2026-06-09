@@ -1,0 +1,69 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-417",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 417,
+  "title": "Improving Battery Life and Performance",
+  "description": "Learn about new ways to find and fix performance issues during daily development, beta testing, and public release on the App Store. Learn how to catch performance issues during daily development by measuring CPU, memory, and more in your XCTests. Discover how to find issues in the field during beta testing and public release using MetricKit. See how the Xcode Organizer now displays the most important metrics from your app aggregated from each version on the App Store.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/417",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/417",
+  "type": "Video",
+  "publishedAt": "2019-06-06T16:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "analytics",
+    "battery",
+    "beta testing",
+    "data",
+    "energy",
+    "field data",
+    "instruments",
+    "measure",
+    "metrickit",
+    "metrics",
+    "performance",
+    "xcode",
+    "xctest",
+    "xctmetric"
+  ],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 2373,
+  "hasTranscript": true,
+  "transcriptWordCount": 6729,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/417vjfis9nusyysvl/417/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/417vjfis9nusyysvl/417/417_sd_improving_battery_life_and_performance.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/417vjfis9nusyysvl/417/417_hd_improving_battery_life_and_performance.mp4",
+    "duration": 2373
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/417-improving-battery-life-and-performance/",
+  "files": {
+    "metadata": "sessions/wwdc2019/417-improving-battery-life-and-performance/metadata.json",
+    "readme": "sessions/wwdc2019/417-improving-battery-life-and-performance/README.md",
+    "transcript": "sessions/wwdc2019/417-improving-battery-life-and-performance/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/417-improving-battery-life-and-performance/transcript.json"
+  }
+}

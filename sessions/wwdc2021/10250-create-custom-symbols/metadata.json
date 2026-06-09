@@ -1,0 +1,70 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10250",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10250,
+  "title": "Create custom symbols",
+  "description": "Discover how you can create custom iconography with the latest rendering modes in SF Symbols 3. We’ll help you learn how to draw, edit, and annotate symbols, as well as explore more advanced techniques to improve the design process. For a primer on working with custom symbol templates, we recommend first watching “Introducing SF Symbols” from WWDC19.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10250",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10250",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 1547,
+  "hasTranscript": true,
+  "transcriptWordCount": 3961,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10250/5/0F96BECB-C142-4BA8-8CEA-5EE69F7BF77E/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10250/5/0F96BECB-C142-4BA8-8CEA-5EE69F7BF77E/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10250/5/0F96BECB-C142-4BA8-8CEA-5EE69F7BF77E/downloads/wwdc2021-10250_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10250/5/0F96BECB-C142-4BA8-8CEA-5EE69F7BF77E/downloads/wwdc2021-10250_hd.mp4",
+    "duration": 1547
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Download SF Symbols",
+      "url": "https://developer.apple.com/sf-symbols/",
+      "type": "download",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/sf-symbols/"
+    },
+    {
+      "title": "Human Interface Guidelines: SF Symbols",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/sf-symbols",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/sf-symbols"
+    }
+  ],
+  "path": "sessions/wwdc2021/10250-create-custom-symbols/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10250-create-custom-symbols/metadata.json",
+    "readme": "sessions/wwdc2021/10250-create-custom-symbols/README.md",
+    "transcript": "sessions/wwdc2021/10250-create-custom-symbols/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10250-create-custom-symbols/transcript.json"
+  }
+}

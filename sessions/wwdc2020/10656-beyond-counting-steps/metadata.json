@@ -1,0 +1,88 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10656",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10656,
+  "title": "Beyond counting steps",
+  "description": "Move beyond step counting in your app and give people a much richer understanding of their mobility. We’ll detail how you can take advantage of mobility metrics in iOS and watchOS to measure movement in more distinct and actionable ways. Learn about the latest HealthKit APIs for accessing mobility data, strategies for meaningful data aggregation, and how to interpret results for people using your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10656",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10656",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "motion",
+    "motionprocessor",
+    "pedometer",
+    "stairs",
+    "steps"
+  ],
+  "topics": [
+    "Health & Fitness"
+  ],
+  "primaryTopic": "Health & Fitness",
+  "duration": 1265,
+  "hasTranscript": true,
+  "transcriptWordCount": 3287,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10656/3/396B42E5-AAA7-4464-94DF-8F090FB4ED5E/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10656/3/396B42E5-AAA7-4464-94DF-8F090FB4ED5E/wwdc2020_10656_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10656/3/396B42E5-AAA7-4464-94DF-8F090FB4ED5E/wwdc2020_10656_hd.mp4",
+    "duration": 1265
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "CareKit",
+      "url": "https://developer.apple.com/CareKit/documentation/carekit/",
+      "type": "guide",
+      "description": "Create apps that help people better understand and manage their health.",
+      "sosumiURL": "https://sosumi.ai/CareKit/documentation/carekit/"
+    },
+    {
+      "title": "ResearchKit Open Source Website",
+      "url": "http://researchkit.org",
+      "type": "guide",
+      "description": "ResearchKit Open Source Website"
+    },
+    {
+      "title": "HealthKit",
+      "url": "https://developer.apple.com/documentation/HealthKit",
+      "type": "documentation",
+      "description": "Access and share health and fitness data while maintaining the user’s privacy and control.",
+      "sosumiURL": "https://sosumi.ai/documentation/HealthKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HealthKit.json"
+    },
+    {
+      "title": "Core Motion",
+      "url": "https://developer.apple.com/documentation/CoreMotion",
+      "type": "documentation",
+      "description": "Process accelerometer, gyroscope, pedometer, and environment-related events.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreMotion",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreMotion.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10656-beyond-counting-steps/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10656-beyond-counting-steps/metadata.json",
+    "readme": "sessions/wwdc2020/10656-beyond-counting-steps/README.md",
+    "transcript": "sessions/wwdc2020/10656-beyond-counting-steps/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10656-beyond-counting-steps/transcript.json"
+  }
+}

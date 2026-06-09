@@ -1,0 +1,125 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10043",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10043,
+  "title": "Build an Action Classifier with Create ML",
+  "description": "Discover how to build Action Classification models in Create ML. With a custom action classifier, your app can recognize and understand body movements in real-time from videos or through a camera. We’ll show you how to use samples to easily train a Core ML model to identify human actions like jumping jacks, squats, and dance moves. Learn how this is powered by the Body Pose estimation features of the Vision Framework. Get inspired to create apps that can provide coaching for fitness routines, deliver feedback on athletic form, and more. To get the most out of this session, you should be familiar with Create ML. For an overview, watch “Introducing the Create ML app.” You can also brush up on differences between Action Classification and sensor-based Activity Classification by watching “Building Activity Classification Models in Create ML.” To learn more about the powerful technology that enables Action Classification features, be sure to check out “Detect Body and Hand Pose with Vision.” And you can see how we combined this classification capability together with other technologies to create our own sample application in “Explore the Action & Vision App.”",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10043",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10043",
+  "type": "Video",
+  "publishedAt": "2020-06-23T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "action classification",
+    "action classifier",
+    "activity classification",
+    "ai",
+    "body pose",
+    "core ml",
+    "create ml",
+    "fitness",
+    "machine learning"
+  ],
+  "topics": [
+    "Developer Tools",
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1566,
+  "hasTranscript": true,
+  "transcriptWordCount": 3256,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10043/3/D1F0FA14-5265-4AB7-9D8D-118CA6F3E162/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10043/3/D1F0FA14-5265-4AB7-9D8D-118CA6F3E162/wwdc2020_10043_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10043/3/D1F0FA14-5265-4AB7-9D8D-118CA6F3E162/wwdc2020_10043_hd.mp4",
+    "duration": 1566
+  },
+  "codeSnippets": [
+    {
+      "title": "Working with montage videos",
+      "language": "json",
+      "startTimeSeconds": 328,
+      "code": "[ \n    {\n        \"file_name\": \"Montage1.mov\",\n        \"label\": \"Squats\",\n        \"start_time\": 4.5,\n        \"end_time\": 8\n    }\n]"
+    },
+    {
+      "title": "Getting poses",
+      "language": "swift",
+      "startTimeSeconds": 845,
+      "code": "import Vision\nlet request = VNDetectHumanBodyPoseRequest()"
+    },
+    {
+      "title": "Getting poses from a video",
+      "language": "swift",
+      "startTimeSeconds": 850,
+      "code": "import Vision\nlet videoURL = URL(fileURLWithPath: \"your-video-file.MOV\")\nlet startTime = CMTime.zero\nlet endTime = CMTime.indefinite\n\nlet request = VNDetectHumanBodyPoseRequest(completionHandler: { request, error in\n    let poses = request.results as! [VNRecognizedPointsObservation]\n})\n\nlet processor = VNVideoProcessor(url: videoURL)\ntry processor.add(request)\ntry processor.analyze(with: CMTimeRange(start: startTime, end: endTime))"
+    },
+    {
+      "title": "Getting poses from an image",
+      "language": "swift",
+      "startTimeSeconds": 866,
+      "code": "import Vision\nlet request = VNDetectHumanBodyPoseRequest()\n// Use either one from image URL, CVPixelBuffer, CMSampleBuffer, CGImage, CIImage, etc. in image request handler, based on the context.\nlet handler = VNImageRequestHandler(url: URL(fileURLWithPath: \"your-image.jpg\"))\n\ntry handler.perform([request])\nlet poses = request.results as! [VNRecognizedPointsObservation]"
+    },
+    {
+      "title": "Making a prediction",
+      "language": "swift",
+      "startTimeSeconds": 897,
+      "code": "import Vision\nimport CoreML\n\n// Assume pose1, pose2, ..., have been obtained from a video file or camera stream.\nlet pose1: VNRecognizedPointsObservation\nlet pose2: VNRecognizedPointsObservation\n// ...\n\n// Get a [1, 3, 18] dimension multi-array for each frame\nlet poseArray1 = try pose1.keypointsMultiArray()\nlet poseArray2 = try pose2.keypointsMultiArray()\n// ...\n\n// Get a [60, 3, 18] dimension prediction window from 60 frames\nlet modelInput = MLMultiArray(concatenating: [poseArray1, poseArray2], axis: 0, dataType: .float)"
+    },
+    {
+      "title": "Demo: Building the app in Xcode",
+      "language": "swift",
+      "startTimeSeconds": 987,
+      "code": "import Foundation\nimport CoreML\nimport Vision\n\n@available(iOS 14.0, *)\nclass Predictor {\n    /// Fitness classifier model.\n    let fitnessClassifier = FitnessClassifier()\n\n    /// Vision body pose request.\n    let humanBodyPoseRequest = VNDetectHumanBodyPoseRequest()\n\n    /// A rotation window to save the last 60 poses from past 2 seconds.\n    var posesWindow: [VNRecognizedPointsObservation?] = []\n    init() {\n        posesWindow.reserveCapacity(predictionWindowSize)\n    }\n\n    /// Extracts poses from a frame.\n    func processFrame(_ samplebuffer: CMSampleBuffer) throws -> [VNRecognizedPointsObservation] {\n        // Perform Vision body pose request\n        let framePoses = extractPoses(from: samplebuffer)\n\n        // Select the most promiment person.\n        let pose = try selectMostProminentPerson(from: framePoses)\n\n        // Add the pose to window\n        posesWindow.append(pose)\n\n        return framePoses\n    }\n\n    // Make a prediction when window is full, periodically\n    var isReadyToMakePrediction: Bool {\n        posesWindow.count == predictionWindowSize\n    }\n\n    /// Make a model prediction on a window.\n    func makePrediction() throws -> PredictionOutput {\n        // Prepare model input: convert each pose to a multi-array, and concatenate multi-arrays.\n        let poseMultiArrays: [MLMultiArray] = try posesWindow.map { person in\n            guard let person = person else {\n                // Pad 0s when no person detected.\n                return zeroPaddedMultiArray()\n            }\n            return try person.keypointsMultiArray()\n        }\n\n        let modelInput = MLMultiArray(concatenating: poseMultiArrays, axis: 0, dataType: .float)\n\n        // Perform prediction\n        let predictions = try fitnessClassifier.prediction(poses: modelInput)\n\n        // Reset poses window\n        posesWindow.removeFirst(predictionInterval)\n\n        return (\n            label: predictions.label,\n            confidence: predictions.labelProbabilities[predictions.label]!\n        )\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Creating an Action Classifier Model",
+      "url": "https://developer.apple.com/documentation/CreateML/creating-an-action-classifier-model",
+      "type": "documentation",
+      "description": "Train a machine learning model to recognize a person’s body movements.",
+      "sosumiURL": "https://sosumi.ai/documentation/CreateML/creating-an-action-classifier-model",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CreateML/creating-an-action-classifier-model.json"
+    },
+    {
+      "title": "Building a feature-rich app for sports analysis",
+      "url": "https://developer.apple.com/documentation/Vision/building-a-feature-rich-app-for-sports-analysis",
+      "type": "samplecode",
+      "description": "Detect and classify human activity in real time using computer vision and machine learning.",
+      "sosumiURL": "https://sosumi.ai/documentation/Vision/building-a-feature-rich-app-for-sports-analysis",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Vision/building-a-feature-rich-app-for-sports-analysis.json"
+    },
+    {
+      "title": "Create ML",
+      "url": "https://developer.apple.com/documentation/CreateML",
+      "type": "documentation",
+      "description": "Create machine learning models for use in your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/CreateML",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CreateML.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10043-build-an-action-classifier-with-create-ml/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10043-build-an-action-classifier-with-create-ml/metadata.json",
+    "readme": "sessions/wwdc2020/10043-build-an-action-classifier-with-create-ml/README.md",
+    "transcript": "sessions/wwdc2020/10043-build-an-action-classifier-with-create-ml/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10043-build-an-action-classifier-with-create-ml/transcript.json"
+  }
+}

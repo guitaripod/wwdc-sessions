@@ -1,0 +1,136 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10061",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10061,
+  "title": "Expand your SiriKit Media Intents to more platforms",
+  "description": "Discover how you can enable Siri summoning for your music or audio app using SiriKit Media Intents. We’ll walk you through how to add Siri support to your music, podcast, or other audio service on more of our platforms, including HomePod and Apple TV, so people can start listening by just asking Siri. And learn about new APIs that let you support alternative results, helping people listen more quickly without leaving the Siri interface.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10061",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10061",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "audio",
+    "audiobooks",
+    "conversational interaction",
+    "design",
+    "intents",
+    "intentsui",
+    "media",
+    "music",
+    "podcasts",
+    "siri",
+    "sirikit",
+    "sirikit media intents",
+    "siri remote",
+    "voice"
+  ],
+  "topics": [
+    "App Services",
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 686,
+  "hasTranscript": true,
+  "transcriptWordCount": 1715,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10061/7/0C05700A-690E-443C-9984-6792A466E6CA/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10061/7/0C05700A-690E-443C-9984-6792A466E6CA/wwdc2020_10061_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10061/7/0C05700A-690E-443C-9984-6792A466E6CA/wwdc2020_10061_hd.mp4",
+    "duration": 686
+  },
+  "codeSnippets": [
+    {
+      "title": "resolveMediaItems method",
+      "language": "swift",
+      "startTimeSeconds": 165,
+      "code": "func resolveMediaItems(for intent: INPlayMediaIntent, with completion: @escaping ([INPlayMediaMediaItemResolutionResult]) -> Void) {\n}"
+    },
+    {
+      "title": "handle with .continueInApp",
+      "language": "swift",
+      "startTimeSeconds": 183,
+      "code": "func handle(intent: INPlayMediaIntent, completion: (INPlayMediaIntentResponse) -> Void) {\n  completion(INPlayMediaIntentResponse(code: .continueInApp, userActivity: nil))\n}"
+    },
+    {
+      "title": "Singular successWithResolvedMediaItem call",
+      "language": "swift",
+      "startTimeSeconds": 324,
+      "code": "INPlayMediaMediaItemResolutionResult.success(with: mediaItems[0])"
+    },
+    {
+      "title": "Plural successesWithResolvedMediaItems call",
+      "language": "swift",
+      "startTimeSeconds": 340,
+      "code": "INPlayMediaMediaItemResolutionResult.successes(with: mediaItems)"
+    },
+    {
+      "title": "handle with .handleInApp",
+      "language": "swift",
+      "startTimeSeconds": 367,
+      "code": "func handle(intent: INPlayMediaIntent, completion: (INPlayMediaIntentResponse) -> Void) {\n  completion(INPlayMediaIntentResponse(code: .handleInApp, userActivity: nil))\n}"
+    },
+    {
+      "title": "ControlAudio resolveMediaItems",
+      "language": "swift",
+      "startTimeSeconds": 397,
+      "code": "func resolveMediaItems(for intent: INPlayMediaIntent, with completion: @escaping ([INPlayMediaMediaItemResolutionResult]) -> Void) {\n    let mediaSearch = intent.mediaSearch\n    resolveMediaItems(for: mediaSearch) { optionalMediaItems in\n        guard let mediaItems = optionalMediaItems else {\n            return\n        }\n        completion(INPlayMediaMediaItemResolutionResult.successes(with: mediaItems))\n    }\n}"
+    },
+    {
+      "title": "App prewarming background appLaunch",
+      "language": "swift",
+      "startTimeSeconds": 624,
+      "code": "func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {\n    // Locate any app prewarming logic in this method -- fetch credentials, get audio player ready, etc.\n    return true\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "If you’d like to integrate your music service with HomePod, let us know",
+      "url": "https://developer.apple.com/contact/request/sirikit-media-intent-for-homepod",
+      "type": "guide",
+      "description": "With SiriKit Media Intents on HomePod, streaming music services can integrate directly with HomePod to deliver a seamless playback experience for their users. Users can simply ask Siri to access music and playlists from your service and play them on one or multiple HomePod speakers throughout the home. If you’d like to integrate your service with HomePod, let us know.",
+      "sosumiURL": "https://sosumi.ai/contact/request/sirikit-media-intent-for-homepod"
+    },
+    {
+      "title": "Providing Hands-Free App Control with Intents",
+      "url": "https://developer.apple.com/documentation/SiriKit/providing-hands-free-app-control-with-intents",
+      "type": "samplecode",
+      "description": "Resolve, confirm, and handle intents without an extension.",
+      "sosumiURL": "https://sosumi.ai/documentation/SiriKit/providing-hands-free-app-control-with-intents",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SiriKit/providing-hands-free-app-control-with-intents.json"
+    },
+    {
+      "title": "Managing Audio with SiriKit",
+      "url": "https://developer.apple.com/documentation/SiriKit/managing-audio-with-sirikit",
+      "type": "samplecode",
+      "description": "Control audio playback and handle requests to add media using SiriKit Media Intents.",
+      "sosumiURL": "https://sosumi.ai/documentation/SiriKit/managing-audio-with-sirikit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SiriKit/managing-audio-with-sirikit.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10061-expand-your-sirikit-media-intents-to-more-platforms/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10061-expand-your-sirikit-media-intents-to-more-platforms/metadata.json",
+    "readme": "sessions/wwdc2020/10061-expand-your-sirikit-media-intents-to-more-platforms/README.md",
+    "transcript": "sessions/wwdc2020/10061-expand-your-sirikit-media-intents-to-more-platforms/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10061-expand-your-sirikit-media-intents-to-more-platforms/transcript.json"
+  }
+}

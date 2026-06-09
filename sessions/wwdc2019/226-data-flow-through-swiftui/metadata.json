@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-226",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 226,
+  "title": "Data Flow Through SwiftUI",
+  "description": "SwiftUI was built from the ground up to let you write beautiful and correct user interfaces free of inconsistencies. Learn how to connect your data as dependencies while keeping the UI fully predictable and error free. Familiarize yourself with SwiftUI’s powerful data flow tools and understand what the best tool is for each situation.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/226",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/226",
+  "type": "Video",
+  "publishedAt": "2019-06-06T09:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 2240,
+  "hasTranscript": true,
+  "transcriptWordCount": 5336,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/226mq9pvm28zqfqer2a/226/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/226mq9pvm28zqfqer2a/226/226_sd_data_flow_through_swiftui.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/226mq9pvm28zqfqer2a/226/226_hd_data_flow_through_swiftui.mp4",
+    "duration": 2240
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/226-data-flow-through-swiftui/",
+  "files": {
+    "metadata": "sessions/wwdc2019/226-data-flow-through-swiftui/metadata.json",
+    "readme": "sessions/wwdc2019/226-data-flow-through-swiftui/README.md",
+    "transcript": "sessions/wwdc2019/226-data-flow-through-swiftui/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/226-data-flow-through-swiftui/transcript.json"
+  }
+}

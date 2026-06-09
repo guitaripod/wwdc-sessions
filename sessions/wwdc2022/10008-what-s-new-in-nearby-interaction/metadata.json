@@ -1,0 +1,94 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10008",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10008,
+  "title": "What's new in Nearby Interaction",
+  "description": "Discover how the Nearby Interaction framework can help you easily integrate Ultra Wideband (UWB) into your apps and hardware accessories. Learn how you can combine the visual-spatial power of ARKit with the radio sensitivity of the U1 chip to locate nearby stationary objects with precision. We’ll also show you how you can create background interactions using UWB accessories paired via Bluetooth.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10008",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10008",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services",
+    "Maps & Location"
+  ],
+  "primaryTopic": "Maps & Location",
+  "duration": 1732,
+  "hasTranscript": true,
+  "transcriptWordCount": 3686,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10008/5/BB4E3444-7C8E-42CC-B427-08DA670C9D41/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10008/5/BB4E3444-7C8E-42CC-B427-08DA670C9D41/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10008/5/BB4E3444-7C8E-42CC-B427-08DA670C9D41/downloads/wwdc2022-10008_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10008/5/BB4E3444-7C8E-42CC-B427-08DA670C9D41/downloads/wwdc2022-10008_hd.mp4",
+    "duration": 1732
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Finding devices with precision",
+      "url": "https://developer.apple.com/documentation/NearbyInteraction/finding-devices-with-precision",
+      "type": "samplecode",
+      "description": "Leverage the spatial awareness of ARKit and Apple Ultra Wideband Chips in your app to guide users to a nearby device.",
+      "sosumiURL": "https://sosumi.ai/documentation/NearbyInteraction/finding-devices-with-precision",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/NearbyInteraction/finding-devices-with-precision.json"
+    },
+    {
+      "title": "PHASE",
+      "url": "https://developer.apple.com/documentation/PHASE",
+      "type": "documentation",
+      "description": "Create dynamic audio experiences in your game or app that react to events and cues in the environment.",
+      "sosumiURL": "https://sosumi.ai/documentation/PHASE",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/PHASE.json"
+    },
+    {
+      "title": "Nearby Interactions with U1",
+      "url": "https://developer.apple.com/nearby-interaction/",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/nearby-interaction/"
+    },
+    {
+      "title": "Nearby Interaction",
+      "url": "https://developer.apple.com/documentation/NearbyInteraction",
+      "type": "documentation",
+      "description": "Locate and interact with nearby devices using identifiers, distance, and direction.",
+      "sosumiURL": "https://sosumi.ai/documentation/NearbyInteraction",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/NearbyInteraction.json"
+    },
+    {
+      "title": "Core Bluetooth",
+      "url": "https://developer.apple.com/documentation/CoreBluetooth",
+      "type": "documentation",
+      "description": "Communicate with Bluetooth low energy and BR/EDR (“Classic”) Devices.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreBluetooth",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreBluetooth.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10008-what-s-new-in-nearby-interaction/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10008-what-s-new-in-nearby-interaction/metadata.json",
+    "readme": "sessions/wwdc2022/10008-what-s-new-in-nearby-interaction/README.md",
+    "transcript": "sessions/wwdc2022/10008-what-s-new-in-nearby-interaction/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10008-what-s-new-in-nearby-interaction/transcript.json"
+  }
+}

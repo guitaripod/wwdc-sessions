@@ -1,0 +1,201 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-110357",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 110357,
+  "title": "Meet Swift Regex",
+  "description": "Learn how you can process strings more effectively when you take advantage of Swift Regex. Come for concise literals but stay for Regex builders — a new, declarative approach to string processing. We'll also explore the Unicode models in String and share how Swift Regex can make Unicode-correct processing easy.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/110357",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/110357",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Essentials",
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 1378,
+  "hasTranscript": true,
+  "transcriptWordCount": 3090,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110357/3/8FEA2DD3-43EE-44FB-A856-53169F90D683/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110357/3/8FEA2DD3-43EE-44FB-A856-53169F90D683/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110357/3/8FEA2DD3-43EE-44FB-A856-53169F90D683/downloads/wwdc2022-110357_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110357/3/8FEA2DD3-43EE-44FB-A856-53169F90D683/downloads/wwdc2022-110357_hd.mp4",
+    "duration": 1378
+  },
+  "codeSnippets": [
+    {
+      "title": "Processing collections",
+      "language": "swift",
+      "startTimeSeconds": 95,
+      "code": "let transaction = \"DEBIT     03/05/2022    Doug's Dugout Dogs         $33.27\"\n\nlet fragments = transaction.split(whereSeparator: \\.isWhitespace)\n// [\"DEBIT\", \"03/05/2022\", \"Doug\\'s\", \"Dugout\", \"Dogs\", \"$33.27\"]"
+    },
+    {
+      "title": "Low-level index manipulation",
+      "language": "swift",
+      "startTimeSeconds": 109,
+      "code": "var slice = transaction[...]\n\n// Extract a field, advancing `slice` to the start of the next field\nfunc extractField() -> Substring {\n  let endIdx = {\n    var start = slice.startIndex\n    while true {\n      // Position of next whitespace (including tabs)\n      guard let spaceIdx = slice[start...].firstIndex(where: \\.isWhitespace) else {\n        return slice.endIndex\n      }\n\n      // Tab suffices\n      if slice[spaceIdx] == \"\\t\" {\n        return spaceIdx\n      }\n\n      // Otherwise check for a second whitespace character\n      let afterSpaceIdx = slice.index(after: spaceIdx)\n      if afterSpaceIdx == slice.endIndex || slice[afterSpaceIdx].isWhitespace {\n        return spaceIdx\n      }\n\n      // Skip over the single space and try again\n      start = afterSpaceIdx\n    }\n  }()\n  defer { slice = slice[endIdx...].drop(while: \\.isWhitespace) }\n  return slice[..<endIdx]\n}\n\nlet kind = extractField()\nlet date = try Date(String(extractField()), strategy:  Date.FormatStyle(date: .numeric))\nlet account = extractField()\nlet amount = try Decimal(String(extractField()), format: .currency(code: \"USD\"))"
+    },
+    {
+      "title": "Regex literals",
+      "language": "swift",
+      "startTimeSeconds": 167,
+      "code": "// Regex literals\nlet digits = /\\d+/\n// digits: Regex<Substring>"
+    },
+    {
+      "title": "Regex created at run-time",
+      "language": "swift",
+      "startTimeSeconds": 200,
+      "code": "// Run-time construction\nlet runtimeString = #\"\\d+\"#\nlet digits = try Regex(runtimeString)\n// digits: Regex<AnyRegexOutput>"
+    },
+    {
+      "title": "Regex builder",
+      "language": "swift",
+      "startTimeSeconds": 224,
+      "code": "// Regex builders\nlet digits = OneOrMore(.digit)\n// digits: Regex<Substring>"
+    },
+    {
+      "title": "Split approach with a regex literal",
+      "language": "swift",
+      "startTimeSeconds": 236,
+      "code": "let transaction = \"DEBIT     03/05/2022    Doug's Dugout Dogs         $33.27\"\n\nlet fragments = transaction.split(separator: /\\s{2,}|\\t/)\n// [\"DEBIT\", \"03/05/2022\", \"Doug's Dugout Dogs\", \"$33.27\"]"
+    },
+    {
+      "title": "Normalize field separators",
+      "language": "swift",
+      "startTimeSeconds": 276,
+      "code": "let transaction = \"DEBIT     03/05/2022    Doug's Dugout Dogs         $33.27\"\n\nlet normalized = transaction.replacing(/\\s{2,}|\\t/, with: \"\\t\")\n// DEBIT»03/05/2022»Doug's Dugout Dogs»$33.27"
+    },
+    {
+      "title": "Create a Regex builder",
+      "language": "swift",
+      "startTimeSeconds": 415,
+      "code": "// CREDIT    03/02/2022    Payroll from employer         $200.23\n// CREDIT    03/03/2022    Suspect A                     $2,000,000.00\n// DEBIT     03/03/2022    Ted's Pet Rock Sanctuary      $2,000,000.00\n// DEBIT     03/05/2022    Doug's Dugout Dogs            $33.27\n\nimport RegexBuilder\nlet fieldSeparator = /\\s{2,}|\\t/\nlet transactionMatcher = Regex {\n  /CREDIT|DEBIT/\n  fieldSeparator\n  One(.date(.numeric, locale: Locale(identifier: \"en_US\"), timeZone: .gmt))\n  fieldSeparator\n  OneOrMore {\n    NegativeLookahead { fieldSeparator }\n    CharacterClass.any\n  }\n  fieldSeparator\n  One(.localizedCurrency(code: \"USD\").locale(Locale(identifier: \"en_US\")))\n}"
+    },
+    {
+      "title": "Use Captures to extract portions of input",
+      "language": "swift",
+      "startTimeSeconds": 544,
+      "code": "let fieldSeparator = /\\s{2,}|\\t/\nlet transactionMatcher = Regex {\n  Capture { /CREDIT|DEBIT/ }\n  fieldSeparator\n\n  Capture { One(.date(.numeric, locale: Locale(identifier: \"en_US\"), timeZone: .gmt)) }\n  fieldSeparator\n\n  Capture {\n    OneOrMore {\n      NegativeLookahead { fieldSeparator }\n      CharacterClass.any\n    }\n  }\n  fieldSeparator\n  Capture { One(.localizedCurrency(code: \"USD\").locale(Locale(identifier: \"en_US\"))) }\n}\n// transactionMatcher: Regex<(Substring, Substring, Date, Substring, Decimal)>"
+    },
+    {
+      "title": "Plot twist!",
+      "language": "swift",
+      "startTimeSeconds": 631,
+      "code": "private let ledger = \"\"\"\nKIND      DATE          INSTITUTION                AMOUNT\n----------------------------------------------------------------\nCREDIT    03/01/2022    Payroll from employer      $200.23\nCREDIT    03/03/2022    Suspect A                  $2,000,000.00\nDEBIT     03/03/2022    Ted's Pet Rock Sanctuary   $2,000,000.00\nDEBIT     03/05/2022    Doug's Dugout Dogs         $33.27\nDEBIT     06/03/2022    Oxford Comma Supply Ltd.   £57.33\n\"\"\"\n// 😱"
+    },
+    {
+      "title": "Use named captures",
+      "language": "swift",
+      "startTimeSeconds": 653,
+      "code": "let regex = #/\n  (?<date>     \\d{2} / \\d{2} / \\d{4})\n  (?<middle>   \\P{currencySymbol}+)\n  (?<currency> \\p{currencySymbol})\n/#\n// Regex<(Substring, date: Substring, middle: Substring, currency: Substring)>"
+    },
+    {
+      "title": "Use Foundation's date parser",
+      "language": "swift",
+      "startTimeSeconds": 693,
+      "code": "let regex = #/\n  (?<date>     \\d{2} / \\d{2} / \\d{4})\n  (?<middle>   \\P{currencySymbol}+)\n  (?<currency> \\p{currencySymbol})\n/#\n// Regex<(Substring, date: Substring, middle: Substring, currency: Substring)>\n\nfunc pickStrategy(_ currency: Substring) -> Date.ParseStrategy {\n  switch currency {\n  case \"$\": return .date(.numeric, locale: Locale(identifier: \"en_US\"), timeZone: .gmt)\n  case \"£\": return .date(.numeric, locale: Locale(identifier: \"en_GB\"), timeZone: .gmt)\n  default: fatalError(\"We found another one!\")\n  }\n}"
+    },
+    {
+      "title": "Find and replace",
+      "language": "swift",
+      "startTimeSeconds": 708,
+      "code": "let regex = #/\n  (?<date>     \\d{2} / \\d{2} / \\d{4})\n  (?<middle>   \\P{currencySymbol}+)\n  (?<currency> \\p{currencySymbol})\n/#\n// Regex<(Substring, date: Substring, middle: Substring, currency: Substring)>\n\nfunc pickStrategy(_ currency: Substring) -> Date.ParseStrategy { … }\n\nledger.replace(regex) { match -> String in\n  let date = try! Date(String(match.date), strategy: pickStrategy(match.currency))\n\n  // ISO 8601, it's the only way to be sure\n  let newDate = date.formatted(.iso8601.year().month().day())\n\n  return newDate + match.middle + match.currency\n}"
+    },
+    {
+      "title": "A zombie love story",
+      "language": "swift",
+      "startTimeSeconds": 765,
+      "code": "let aZombieLoveStory = \"🧟‍♀️💖🧠\"\n// Characters: 🧟‍♀️, 💖, 🧠"
+    },
+    {
+      "title": "A zombie love story in unicode scalars",
+      "language": "swift",
+      "startTimeSeconds": 781,
+      "code": "aZombieLoveStory.unicodeScalars\n// Unicode scalar values: U+1F9DF, U+200D, U+2640, U+FE0F, U+1F496, U+1F9E0"
+    },
+    {
+      "title": "A zombie love story in UTF8",
+      "language": "swift",
+      "startTimeSeconds": 824,
+      "code": "aZombieLoveStory.utf8\n// UTF-8 code units: F0 9F A7 9F E2 80 8D E2 99 80 EF B8 8F F0 9F 92 96 F0 9F A7 A0"
+    },
+    {
+      "title": "Unicode canonical equivalence",
+      "language": "swift",
+      "startTimeSeconds": 852,
+      "code": "\"café\".elementsEqual(\"cafe\\u{301}\")\n// true"
+    },
+    {
+      "title": "String's views are compared at binary level",
+      "language": "swift",
+      "startTimeSeconds": 889,
+      "code": "\"café\".elementsEqual(\"cafe\\u{301}\")\n// true\n\n\"café\".unicodeScalars.elementsEqual(\"cafe\\u{301}\".unicodeScalars)\n// false\n\n\"café\".utf8.elementsEqual(\"cafe\\u{301}\".utf8)\n// false"
+    },
+    {
+      "title": "Unicode processing",
+      "language": "swift",
+      "startTimeSeconds": 914,
+      "code": "switch (\"🧟‍♀️💖🧠\", \"The Brain Cafe\\u{301}\") {\ncase (/.\\N{SPARKLING HEART}./, /.*café/.ignoresCase()):\n  print(\"Oh no! 🧟‍♀️💖🧠, but 🧠💖☕️!\")\ndefault:\n  print(\"No conflicts found\")\n}"
+    },
+    {
+      "title": "Complex scalar processing",
+      "language": "swift",
+      "startTimeSeconds": 954,
+      "code": "let input = \"Oh no! 🧟‍♀️💖🧠, but 🧠💖☕️!\"\n\ninput.firstMatch(of: /.\\N{SPARKLING HEART}./)\n// 🧟‍♀️💖🧠\n\ninput.firstMatch(of: /.\\N{SPARKLING HEART}./.matchingSemantics(.unicodeScalar))\n// ️💖🧠"
+    },
+    {
+      "title": "Live transaction matcher",
+      "language": "swift",
+      "startTimeSeconds": 1076,
+      "code": "let timestamp = Regex { ... } // proprietary\nlet details = try Regex(inputString)\nlet amountMatcher = /[\\d.]+/\n\n// CREDIT    <proprietary>      <redacted>        200.23        A1B34EFF     ...\nlet fieldSeparator = /\\s{2,}|\\t/\nlet transactionMatcher = Regex {\n  Capture { /CREDIT|DEBIT/ }\n  fieldSeparator\n\n  Capture { timestamp }\n  fieldSeparator\n\n  Capture { details }\n  fieldSeparator\n\n  // ...\n}"
+    },
+    {
+      "title": "Replace field separator",
+      "language": "swift",
+      "startTimeSeconds": 1106,
+      "code": "let field = OneOrMore {\n  NegativeLookahead { fieldSeparator }\n  CharacterClass.any\n}"
+    },
+    {
+      "title": "Use TryCapture",
+      "language": "swift",
+      "startTimeSeconds": 1135,
+      "code": "// CREDIT    <proprietary>      <redacted>        200.23        A1B34EFF     ...\nlet fieldSeparator = /\\s{2,}|\\t/\nlet field = OneOrMore {\n  NegativeLookahead { fieldSeparator }\n  CharacterClass.any\n}\nlet transactionMatcher = Regex {\n  Capture { /CREDIT|DEBIT/ }\n  fieldSeparator\n\n  TryCapture(field) { timestamp ~= $0 ? $0 : nil }\n  fieldSeparator\n\n  TryCapture(field) { details ~= $0 ? $0 : nil }\n  fieldSeparator\n\n  // ...\n}"
+    },
+    {
+      "title": "Fixing the scaling issues",
+      "language": "swift",
+      "startTimeSeconds": 1305,
+      "code": "// CREDIT    <proprietary>      <redacted>        200.23        A1B34EFF     ...\nlet fieldSeparator = Local { /\\s{2,}|\\t/ } \nlet field = OneOrMore {\n  NegativeLookahead { fieldSeparator }\n  CharacterClass.any\n}\nlet transactionMatcher = Regex {\n  Capture { /CREDIT|DEBIT/ }\n  fieldSeparator\n\n  TryCapture(field) { timestamp ~= $0 ? $0 : nil }\n  fieldSeparator\n\n  TryCapture(field) { details ~= $0 ? $0 : nil }\n  fieldSeparator\n\n  // ...\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2022/110357-meet-swift-regex/",
+  "files": {
+    "metadata": "sessions/wwdc2022/110357-meet-swift-regex/metadata.json",
+    "readme": "sessions/wwdc2022/110357-meet-swift-regex/README.md",
+    "transcript": "sessions/wwdc2022/110357-meet-swift-regex/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/110357-meet-swift-regex/transcript.json"
+  }
+}

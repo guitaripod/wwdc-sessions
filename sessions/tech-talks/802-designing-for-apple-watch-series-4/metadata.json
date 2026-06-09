@@ -1,0 +1,65 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-802",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2018,
+  "eventContentId": 802,
+  "title": "Designing for Apple Watch Series 4",
+  "description": "Apple Watch Series 4 provides new opportunities for designers and developers to do more with their apps. Series 4 watches have new displays with larger dimensions, and other enhancements that allow developers to deliver richer and more immersive experiences.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/802",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/802",
+  "type": "Video",
+  "publishedAt": "2018-09-12T11:00:00-07:00",
+  "platforms": [
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 566,
+  "hasTranscript": true,
+  "transcriptWordCount": 1367,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tutorials/20180912/802xfgu0ylbq0q0w/designing_for_apple_watch_series_4/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tutorials/20180912/802xfgu0ylbq0q0w/designing_for_apple_watch_series_4/designing_for_apple_watch_series_4_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tutorials/20180912/802xfgu0ylbq0q0w/designing_for_apple_watch_series_4/designing_for_apple_watch_series_4_hd.mp4",
+    "duration": 566
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Apple Design Resources",
+      "url": "https://developer.apple.com/design/resources/",
+      "type": "download",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/resources/"
+    },
+    {
+      "title": "Designing for watchOS",
+      "url": "https://developer.apple.com/design/Human-Interface-Guidelines/designing-for-watchos",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/Human-Interface-Guidelines/designing-for-watchos"
+    }
+  ],
+  "path": "sessions/tech-talks/802-designing-for-apple-watch-series-4/",
+  "files": {
+    "metadata": "sessions/tech-talks/802-designing-for-apple-watch-series-4/metadata.json",
+    "readme": "sessions/tech-talks/802-designing-for-apple-watch-series-4/README.md",
+    "transcript": "sessions/tech-talks/802-designing-for-apple-watch-series-4/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/802-designing-for-apple-watch-series-4/transcript.json"
+  }
+}

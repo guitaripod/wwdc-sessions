@@ -1,0 +1,91 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10649",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10649,
+  "title": "Add custom views and modifiers to the Xcode Library",
+  "description": "The Xcode Library is an easy way for you to discover available SwiftUI views and drag and drop them to the Xcode Previews canvas, enabling rich visual editing of your app. We’ll show you how to extend the content of the Xcode Library with your own views and modifiers, optimizing for reusability and discoverability within your app or Swift packages. For more on Xcode Previews, check out \"Structure your app for SwiftUI previews\", and \"Visually edit SwiftUI views\".",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10649",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10649",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "library",
+    "modifiers",
+    "swiftui",
+    "views",
+    "xcode"
+  ],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 791,
+  "hasTranscript": true,
+  "transcriptWordCount": 2283,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10649/5/904EDE80-6092-4438-85F6-0660C7586D01/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10649/5/904EDE80-6092-4438-85F6-0660C7586D01/wwdc2020_10649_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10649/5/904EDE80-6092-4438-85F6-0660C7586D01/wwdc2020_10649_hd.mp4",
+    "duration": 791
+  },
+  "codeSnippets": [
+    {
+      "title": "LibraryContentProvider",
+      "language": "swift",
+      "startTimeSeconds": 117,
+      "code": "public protocol LibraryContentProvider {\n  @LibraryContentBuilder\n  var views: [LibraryItem] { get }\n\n  @LibraryContentBuilder\n  public func modifiers(base: ModifierBase) -> [LibraryItem]\n}"
+    },
+    {
+      "title": "LibraryItem",
+      "language": "swift",
+      "startTimeSeconds": 152,
+      "code": "LibraryItem(\n  SmoothieRowView(smoothie: .lemonberry),\n  visible: true,\n  title: \"Smoothie Row View\",\n  category: .control\n)"
+    },
+    {
+      "title": "LibraryContent",
+      "language": "swift",
+      "startTimeSeconds": 202,
+      "code": "struct LibraryContent: LibraryContentProvider {\n    @LibraryContentBuilder\n    var views: [LibraryItem] {\n        LibraryItem(\n            SmoothieRowView(smoothie: .lemonberry),\n            category: .control\n        )\n\n        LibraryItem(\n            SmoothieRowView(smoothie: .lemonberry, showNearbyPopularity: true),\n            title: \"Smoothie Row View With Popularity\",\n            category: .control\n        )\n    }\n}"
+    },
+    {
+      "title": "Image extension",
+      "language": "swift",
+      "startTimeSeconds": 537,
+      "code": "extension Image {\n    func resizedToFill(width: CGFloat, height: CGFloat) -> some View {\n        return self\n            .resizable()\n            .aspectRatio(contentMode: .fill)\n            .frame(width: width, height: height)\n    }\n}"
+    },
+    {
+      "title": "Modifiers",
+      "language": "swift",
+      "startTimeSeconds": 557,
+      "code": "@LibraryContentBuilder\n    func modifiers(base: Image) -> [LibraryItem] {\n        LibraryItem(\n            base.resizedToFill(width: 100.0, height: 100.0)\n        )\n    }"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2020/10649-add-custom-views-and-modifiers-to-the-xcode-library/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10649-add-custom-views-and-modifiers-to-the-xcode-library/metadata.json",
+    "readme": "sessions/wwdc2020/10649-add-custom-views-and-modifiers-to-the-xcode-library/README.md",
+    "transcript": "sessions/wwdc2020/10649-add-custom-views-and-modifiers-to-the-xcode-library/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10649-add-custom-views-and-modifiers-to-the-xcode-library/transcript.json"
+  }
+}

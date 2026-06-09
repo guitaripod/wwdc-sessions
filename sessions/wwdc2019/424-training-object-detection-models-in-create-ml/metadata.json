@@ -1,0 +1,66 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-424",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 424,
+  "title": "Training Object Detection Models in Create ML",
+  "description": "Custom Core ML models for Object Detection offer you an opportunity to add some real magic to your app. Learn how the Create ML app in Xcode makes it easy to train and evaluate these models. See how you can test the model performance directly within the app by taking advantage of Continuity Camera. It's never been easier to build and deploy great Object Detection models for Core ML.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/424",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/424",
+  "type": "Video",
+  "publishedAt": "2019-06-05T09:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "ai",
+    "artificial intelligence",
+    "camera",
+    "classifier",
+    "core ml",
+    "core motion",
+    "create ml",
+    "images",
+    "machine learning",
+    "object detection",
+    "photos",
+    "training",
+    "vision"
+  ],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 941,
+  "hasTranscript": true,
+  "transcriptWordCount": 2036,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/424gsffe67thwyafre/424/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/424gsffe67thwyafre/424/424_sd_training_object_detection_models_in_create_ml.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/424gsffe67thwyafre/424/424_hd_training_object_detection_models_in_create_ml.mp4",
+    "duration": 941
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/424-training-object-detection-models-in-create-ml/",
+  "files": {
+    "metadata": "sessions/wwdc2019/424-training-object-detection-models-in-create-ml/metadata.json",
+    "readme": "sessions/wwdc2019/424-training-object-detection-models-in-create-ml/README.md",
+    "transcript": "sessions/wwdc2019/424-training-object-detection-models-in-create-ml/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/424-training-object-detection-models-in-create-ml/transcript.json"
+  }
+}

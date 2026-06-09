@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10621",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10621,
+  "title": "Support performance-intensive apps and games",
+  "description": "iOS and iPadOS provide powerful capabilities to help developers deliver breakthrough apps and games across all device generations. In certain instances, however, demanding apps with exceptional performance requirements may only be able to provide the best experience on devices with an A12 Bionic chip or higher. With Xcode 12, developers can now enable a setting for performance-intensive apps and games to indicate this requirement. We’ll walk you through the narrow circumstances for when to apply this setting and the app distribution trade-offs that must be carefully considered. Before selecting this approach, you should have deep experience in optimizing your apps. Watch “Delivering Optimized Metal Apps and Games” for specific insights into the tools and best practices you can use to make your product work well on all supported devices. For more on creating graphics-intensive experiences for your app or game using Metal, check out “Harness Apple GPUs with Metal”.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10621",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10621",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Store, Distribution & Marketing",
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 342,
+  "hasTranscript": true,
+  "transcriptWordCount": 743,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10621/12/FEB3B958-DCDB-4DD3-8EE6-79F97FD9A440/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10621/12/FEB3B958-DCDB-4DD3-8EE6-79F97FD9A440/wwdc2020_10621_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10621/12/FEB3B958-DCDB-4DD3-8EE6-79F97FD9A440/wwdc2020_10621_hd.mp4",
+    "duration": 342
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2020/10621-support-performance-intensive-apps-and-games/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10621-support-performance-intensive-apps-and-games/metadata.json",
+    "readme": "sessions/wwdc2020/10621-support-performance-intensive-apps-and-games/README.md",
+    "transcript": "sessions/wwdc2020/10621-support-performance-intensive-apps-and-games/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10621-support-performance-intensive-apps-and-games/transcript.json"
+  }
+}

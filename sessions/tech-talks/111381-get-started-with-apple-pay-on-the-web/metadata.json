@@ -1,0 +1,99 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-111381",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2024,
+  "eventContentId": 111381,
+  "title": "Get started with Apple Pay on the Web",
+  "description": "Adding Apple Pay to your website elevates your customer experience. Learn how to present Apple Pay as a payment option, validate your merchant session, and authenticate and process payments. You’ll also find out how to configure your environment, set up transactions using the Apple Pay demo site, and test your implementation.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/111381",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111381",
+  "type": "Video",
+  "publishedAt": "2024-02-08T08:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services",
+    "Safari & Web"
+  ],
+  "primaryTopic": "Safari & Web",
+  "duration": 1368,
+  "hasTranscript": true,
+  "transcriptWordCount": 3887,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/111381/1/5390DD57-0C09-48CF-B913-BE4CA90D712B/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/tech-talks/111381/1/5390DD57-0C09-48CF-B913-BE4CA90D712B/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/111381/1/5390DD57-0C09-48CF-B913-BE4CA90D712B/downloads/tech-talks-111381_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/111381/1/5390DD57-0C09-48CF-B913-BE4CA90D712B/downloads/tech-talks-111381_hd.mp4",
+    "duration": 1368
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Apple Pay Platform Integration Guide",
+      "url": "https://developer.apple.com/download/files/Apple-Pay-Platform-Integration-Guide.pdf",
+      "type": "guide",
+      "description": "This guide outlines the steps and considerations you need to take as a platform to enable Apple Pay payments for your merchants.",
+      "sosumiURL": "https://sosumi.ai/download/files/Apple-Pay-Platform-Integration-Guide.pdf"
+    },
+    {
+      "title": "Apple Pay Sandbox Testing",
+      "url": "https://developer.apple.com/apple-pay/sandbox-testing/",
+      "type": "documentation",
+      "description": "This document provides an overview of the sandbox environment, details on how to get started, and general support to test your Apple Pay transactions.",
+      "sosumiURL": "https://sosumi.ai/apple-pay/sandbox-testing/"
+    },
+    {
+      "title": "TN3103: Apple Pay on the Web troubleshooting guide",
+      "url": "https://developer.apple.com/documentation/Technotes/tn3103-apple-pay-on-the-web-troubleshooting-guide",
+      "type": "documentation",
+      "description": "Troubleshooting guide for implementing Apple Pay on the Web.",
+      "sosumiURL": "https://sosumi.ai/documentation/Technotes/tn3103-apple-pay-on-the-web-troubleshooting-guide",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Technotes/tn3103-apple-pay-on-the-web-troubleshooting-guide.json"
+    },
+    {
+      "title": "Apple Pay Merchant Integration Guide",
+      "url": "http://developer.apple.com/apple-pay/Apple-Pay-Merchant-Integration-Guide.pdf",
+      "type": "guide",
+      "description": "This guide outlines the steps needed to enable Apple Pay in app and on the web.",
+      "sosumiURL": "https://sosumi.ai/apple-pay/Apple-Pay-Merchant-Integration-Guide.pdf"
+    },
+    {
+      "title": "Apple Pay on the Web Interactive Demo",
+      "url": "https://applepaydemo.apple.com",
+      "type": "guide",
+      "description": "Try configuring an Apple Pay JS button and then making a test transaction."
+    },
+    {
+      "title": "Apple Pay",
+      "url": "https://developer.apple.com/documentation/passkit/apple_pay",
+      "type": "documentation",
+      "description": "Request and process Apple Pay payments in your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/passkit/apple_pay",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/passkit/apple_pay.json"
+    }
+  ],
+  "path": "sessions/tech-talks/111381-get-started-with-apple-pay-on-the-web/",
+  "files": {
+    "metadata": "sessions/tech-talks/111381-get-started-with-apple-pay-on-the-web/metadata.json",
+    "readme": "sessions/tech-talks/111381-get-started-with-apple-pay-on-the-web/README.md",
+    "transcript": "sessions/tech-talks/111381-get-started-with-apple-pay-on-the-web/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/111381-get-started-with-apple-pay-on-the-web/transcript.json"
+  }
+}

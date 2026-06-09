@@ -1,0 +1,116 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10216",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10216,
+  "title": "What's new in ResearchKit",
+  "description": "ResearchKit continues to simplify how developers build research and care apps. Explore how the latest ResearchKit updates expand the boundaries of data researchers can collect. Learn about features like enhanced onboarding, extended options for surveys, and new active tasks. Discover how Apple has partnered with the research community to leverage this framework, helping developers build game-changing apps that empower care teams and the research community.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10216",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10216",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "activities",
+    "chart",
+    "graph",
+    "healthkit",
+    "study",
+    "task"
+  ],
+  "topics": [
+    "Health & Fitness"
+  ],
+  "primaryTopic": "Health & Fitness",
+  "duration": 1849,
+  "hasTranscript": true,
+  "transcriptWordCount": 5048,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10216/5/10085282-EADD-4030-9CAF-5F5A1D28C4E7/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10216/5/10085282-EADD-4030-9CAF-5F5A1D28C4E7/wwdc2020_10216_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10216/5/10085282-EADD-4030-9CAF-5F5A1D28C4E7/wwdc2020_10216_hd.mp4",
+    "duration": 1849
+  },
+  "codeSnippets": [
+    {
+      "title": "instructionStep",
+      "language": "swift",
+      "startTimeSeconds": 204,
+      "code": "let instructionStep = ORKInstructionStep(identifier: \"InstructionStepIdentifier\")\ninstructionStep.title = \"Welcome!\"\ninstructionStep.detailText = \"Thank you for joining our study. Tap Next to learn more before signing up.\"\ninstructionStep.image =  UIImage(named: \"health_blocks\")!"
+    },
+    {
+      "title": "informedConsentInstructionStep",
+      "language": "swift",
+      "startTimeSeconds": 248,
+      "code": "let informedConsentInstructionStep = ORKInstructionStep(identifier: \"ConsentStepIdentifier\")\ninformedConsentInstructionStep.title = \"Before You Join\"\ninformedConsentInstructionStep.image = UIImage(named: \"informed_consent\")!\n\nlet heartBodyItem = ORKBodyItem(text: exampleText, \n                                detailText: nil, \n                                image: UIImage(systemName: \"heart.fill\"), \n                                learnMoreItem: nil, \n                                bodyItemStyle: .image)\n\ninformedConsentInstructionStep.bodyItems = [heartBodyItem]"
+    },
+    {
+      "title": "webViewStep",
+      "language": "swift",
+      "startTimeSeconds": 304,
+      "code": "let webViewStep = ORKWebViewStep(identifier: String(describing: Identifier.webViewStep), html: exampleHtml)\nwebViewStep.showSignatureAfterContent = true"
+    },
+    {
+      "title": "sesAnswerFormat",
+      "language": "swift",
+      "startTimeSeconds": 463,
+      "code": "let sesAnswerFormat = ORKSESAnswerFormat(topRungText: \"Optimal Health\", \n                                         bottomRungText: \"Poor Health\")\n\nlet sesFormItem = ORKFormItem(identifier: \"sesIdentifier\", \n                                      text: exampleText, \n                                      answerFormat: sesAnswerFormat)"
+    },
+    {
+      "title": "scaleAnswerFormItem",
+      "language": "swift",
+      "startTimeSeconds": 527,
+      "code": "let scaleAnswerFormat = ORKScaleAnswerFormat(maximumValue: 10, minimumValue: 1, defaultValue: 11, step: 1)\nscaleAnswerFormat.shouldShowDontKnowButton = true\nscaleAnswerFormat.customDontKnowButtonText = \"Prefer not to answer\"\n\nlet scaleAnswerFormItem = ORKFormItem(identifier: \"ScaleAnswerFormItemIdentifier\", \n                                      text: \"What is your current pain level?\", \n                                      answerFormat: scaleAnswerFormat)"
+    },
+    {
+      "title": "textAnswerQuestionStep",
+      "language": "swift",
+      "startTimeSeconds": 587,
+      "code": "let textAnswerFormat = ORKAnswerFormat.textAnswerFormat()\ntextAnswerFormat.multipleLines = true\ntextAnswerFormat.maximumLength = 280;\ntextAnswerFormat.hideWordCountLabel = false\ntextAnswerFormat.hideClearButton = false\n\nlet textAnswerQuestionStep = ORKQuestionStep(identifier: textAnswerIdentifier),\n                                             title: exampleTitle,\n                                             question: exampleQuestionText,\n                                             answer: textAnswerFormat)"
+    },
+    {
+      "title": "ORKReviewViewController",
+      "language": "swift",
+      "startTimeSeconds": 660,
+      "code": "let reviewVC = ORKReviewViewController(task: taskViewController.task,\n                                       result: taskViewController.result,\n                                       delegate: self)\nreviewVC.reviewTitle = \"Review your response\"\nreviewVC.text = \"Please take a moment to review your responses below. If you need to change any answers just tap the edit button to update your response.\""
+    },
+    {
+      "title": "ORK3DModelStep",
+      "language": "swift",
+      "startTimeSeconds": 870,
+      "code": "let usdzModelManager = ORKUSDZModelManager(usdzFileName: \"toy_drummer\")\nusdzModelManager.allowsSelection = false\nusdzModelManager.highlightColor = .yellow\nusdzModelManager.enableContinueAfterSelection = false\nusdzModelManager.identifiersOfObjectsToHighlight = arrayOfIdentifiers\n\nlet threeDimensionalModelStep = ORK3DModelStep(identifier: drummerModelIdentifier,\n                                               modelManager: usdzModelManager)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Research and Care Website",
+      "url": "https://www.researchandcare.org",
+      "type": "documentation",
+      "description": "Research and Care Website"
+    }
+  ],
+  "path": "sessions/wwdc2020/10216-what-s-new-in-researchkit/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10216-what-s-new-in-researchkit/metadata.json",
+    "readme": "sessions/wwdc2020/10216-what-s-new-in-researchkit/README.md",
+    "transcript": "sessions/wwdc2020/10216-what-s-new-in-researchkit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10216-what-s-new-in-researchkit/transcript.json"
+  }
+}

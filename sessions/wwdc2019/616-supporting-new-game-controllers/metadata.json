@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-616",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 616,
+  "title": "Supporting New Game Controllers",
+  "description": "With iOS 13, macOS Catalina, and tvOS 13, the Game Controller framework adds support for several well-known console game controllers. Get briefed about the newly-added controllers and understand how their inputs are delivered. Learn recommended best practices for handling optional buttons, and understand the right approach for support on macOS.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/616",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/616",
+  "type": "Video",
+  "publishedAt": "2019-06-04T18:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "System Services",
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1020,
+  "hasTranscript": true,
+  "transcriptWordCount": 2592,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/616my96cpgv09ab5lq/616/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/616my96cpgv09ab5lq/616/616_sd_supporting_new_game_controllers.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/616my96cpgv09ab5lq/616/616_hd_supporting_new_game_controllers.mp4",
+    "duration": 1020
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/616-supporting-new-game-controllers/",
+  "files": {
+    "metadata": "sessions/wwdc2019/616-supporting-new-game-controllers/metadata.json",
+    "readme": "sessions/wwdc2019/616-supporting-new-game-controllers/README.md",
+    "transcript": "sessions/wwdc2019/616-supporting-new-game-controllers/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/616-supporting-new-game-controllers/transcript.json"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10031",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10031,
+  "title": "Discover Web Inspector improvements",
+  "description": "Web Inspector provides the tools for you to understand and debug your web pages on macOS, iOS, and iPadOS. We’ll take you through the latest features and improvements to Web Inspector, including a new overlay for inspecting CSS Grid containers on your pages, even more configurable breakpoints to make debugging simpler, and the ability to create and edit Audits.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10031",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10031",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "open source",
+    "safari",
+    "webkit"
+  ],
+  "topics": [
+    "Essentials",
+    "Safari & Web"
+  ],
+  "primaryTopic": "Safari & Web",
+  "duration": 1720,
+  "hasTranscript": true,
+  "transcriptWordCount": 4808,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10031/10/44412231-AD6C-40B4-8253-43BC3EEBC768/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10031/10/44412231-AD6C-40B4-8253-43BC3EEBC768/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10031/10/44412231-AD6C-40B4-8253-43BC3EEBC768/downloads/wwdc2021-10031_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10031/10/44412231-AD6C-40B4-8253-43BC3EEBC768/downloads/wwdc2021-10031_hd.mp4",
+    "duration": 1720
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Safari Technology Preview",
+      "url": "https://developer.apple.com/safari/technology-preview/",
+      "type": "download",
+      "description": "Safari Technology Preview",
+      "sosumiURL": "https://sosumi.ai/safari/technology-preview/"
+    },
+    {
+      "title": "Safari Release Notes",
+      "url": "https://developer.apple.com/documentation/safari-release-notes",
+      "type": "documentation",
+      "description": "Learn about changes for Safari and Safari View Controller for iOS, iPadOS, macOS, and in visionOS; WKWebView for iOS, iPadOS, macOS, watchOS, and in visionOS; and Web Inspector on macOS.",
+      "sosumiURL": "https://sosumi.ai/documentation/safari-release-notes",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/safari-release-notes.json"
+    },
+    {
+      "title": "Web Inspector Reference",
+      "url": "https://webkit.org/web-inspector/",
+      "type": "documentation",
+      "description": "Web Inspector Documentation"
+    },
+    {
+      "title": "Learn more about bug reporting",
+      "url": "https://developer.apple.com/bug-reporting/",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/bug-reporting/"
+    }
+  ],
+  "path": "sessions/wwdc2021/10031-discover-web-inspector-improvements/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10031-discover-web-inspector-improvements/metadata.json",
+    "readme": "sessions/wwdc2021/10031-discover-web-inspector-improvements/README.md",
+    "transcript": "sessions/wwdc2021/10031-discover-web-inspector-improvements/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10031-discover-web-inspector-improvements/transcript.json"
+  }
+}

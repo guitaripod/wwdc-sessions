@@ -1,0 +1,143 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10166",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10166,
+  "title": "Meet DocC documentation in Xcode",
+  "description": "Discover how you can use DocC to build and share documentation for Swift packages and frameworks. We’ll show you how to begin generating documentation from your own code — or from third-party code you depend upon — and write and format it using Markdown. And we’ll also take you through the export process, helping you generate DocC archives to share with the public.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10166",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10166",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "docc",
+    "doccarchive",
+    "documentation",
+    "documentation catalog",
+    "documentation compiler",
+    "xcode"
+  ],
+  "topics": [
+    "Essentials",
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 1371,
+  "hasTranscript": true,
+  "transcriptWordCount": 3421,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10166/7/097C7329-25A1-4933-A07D-78C7F1F1CA46/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10166/7/097C7329-25A1-4933-A07D-78C7F1F1CA46/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10166/7/097C7329-25A1-4933-A07D-78C7F1F1CA46/downloads/wwdc2021-10166_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10166/7/097C7329-25A1-4933-A07D-78C7F1F1CA46/downloads/wwdc2021-10166_hd.mp4",
+    "duration": 1371
+  },
+  "codeSnippets": [
+    {
+      "title": "Existing comments in code",
+      "language": "swift",
+      "startTimeSeconds": 574,
+      "code": "// A model representing a sloth.\npublic struct Sloth {\n    // ...\n}"
+    },
+    {
+      "title": "Writing documentation comments",
+      "language": "swift",
+      "startTimeSeconds": 605,
+      "code": "/// A model representing a sloth.\npublic struct Sloth {\n    // ...\n}"
+    },
+    {
+      "title": "Writing block-style documentation comments",
+      "language": "swift",
+      "startTimeSeconds": 622,
+      "code": "/** \n A model representing a sloth.\n */\npublic struct Sloth {\n    // ...\n}"
+    },
+    {
+      "title": "Documenting the Food struct",
+      "language": "swift",
+      "startTimeSeconds": 694,
+      "code": "/// Food that a sloth can consume.\n///\n/// Sloths love to eat the leaves and twigs they find in the rainforest canopy as they\n/// slowly move around. To feed them these items, you can use the `twig`,\n/// `regularLeaf` and `largeLeaf` default foods.\n///\n/// ```swift\n/// superSloth.eat(.twig)\n/// ```\npublic struct Food {\n\t\t// ...\n}"
+    },
+    {
+      "title": "Documenting the Sloth.sleep(in:for:) method",
+      "language": "swift",
+      "startTimeSeconds": 838,
+      "code": "/// A model representing a sloth.\npublic struct Sloth {\n    /// Sleep in the specified habitat for a number of hours.\n    ///\n    /// - Parameters:\n    ///     - habitat: The location for the sloth to sleep.\n    ///     - numberOfHours: The number of hours for the sloth to sleep.\n    /// - Returns: The sloth’s energy level after sleeping.\n    mutating public func sleep(in habitat: Habitat, for numberOfHours: Int = 12) -> Int {\n        energyLevel += habitat.comfortLevel * numberOfHours\n        return energyLevel\n    }\n}"
+    },
+    {
+      "title": "Documenting the Sloth.eat(_:quantity:) method",
+      "language": "swift",
+      "startTimeSeconds": 939,
+      "code": "/// A model representing a sloth.\npublic struct Sloth {\n    /// Eat the provided specialty sloth food.\n    ///\n    /// Sloths love to eat while they move very slowly through their rainforest habitats. They\n    /// are especially happy to consume leaves and twigs, which they digest over long periods\n    /// of time, mostly while they sleep.\n    ///\n    /// ```swift\n    /// let flower = Sloth.Food(name: \"Flower Bud\", energy: 10)\n    /// superSloth.eat(flower)\n    /// ```\n    ///\n    /// - Parameters:\n    ///   - food: The food for the sloth to eat.\n    ///   - quantity: The quantity of the food for the sloth to eat.\n    /// - Returns: The sloth's energy level after eating.\n    mutating public func eat(_ food: Food, quantity: Int = 1) -> Int {\n        energyLevel += food.energy * quantity\n        return energyLevel\n    }\n}"
+    },
+    {
+      "title": "Adding symbol links to the documentation for Sloth.sleep(in:for:)",
+      "language": "swift",
+      "startTimeSeconds": 1066,
+      "code": "/// A model representing a sloth.\npublic struct Sloth {\n    /// The energy level of the sloth.\n    public var energyLevel: EnergyLevel\n\n    /// Sleep in the specified habitat for a number of hours.\n    ///\n    /// Each time the sloth sleeps, their ``energyLevel`` increases every hour by the\n    /// habitat's ``Habitat/comfortLevel``.  \n    ///\n    /// - Parameters:\n    ///     - habitat: The location for the sloth to sleep.\n    ///     - numberOfHours: The number of hours for the sloth to sleep.\n    /// - Returns: The sloth’s energy level after sleeping.\n    mutating public func sleep(in habitat: Habitat, for numberOfHours: Int = 12) -> Int {\n        energyLevel += habitat.comfortLevel * numberOfHours\n        return energyLevel\n    }\n}"
+    },
+    {
+      "title": "Adding symbol links to the documentation for Sloth.eat(_:quantity:)",
+      "language": "swift",
+      "startTimeSeconds": 1124,
+      "code": "/// A model representing a sloth.\npublic struct Sloth {\n    /// Eat the provided specialty sloth food.\n    ///\n    /// Sloths love to eat while they move very slowly through their rainforest habitats. They\n    /// are especially happy to consume leaves and twigs, which they digest over long periods\n    /// of time, mostly while they sleep.\n    ///\n    /// ```swift\n    /// let flower = Sloth.Food(name: \"Flower Bud\", energy: 10)\n    /// superSloth.eat(flower)\n    /// ```\n    ///\n    /// When they eat food, a sloth's ``energyLevel`` increases by the food's\n    /// ``Food/energy``. \n    ///\n    /// - Parameters:\n    ///   - food: The food for the sloth to eat.\n    ///   - quantity: The quantity of the food for the sloth to eat.\n    /// - Returns: The sloth's energy level after eating.\n    mutating public func eat(_ food: Food, quantity: Int = 1) -> Int {\n        energyLevel += food.energy * quantity\n        return energyLevel\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Formatting your documentation",
+      "url": "https://developer.apple.com/documentation/docc",
+      "type": "guide",
+      "description": "Enhance your content’s presentation with special formatting and styling for text, links, and other page elements.",
+      "sosumiURL": "https://sosumi.ai/documentation/docc",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/docc.json"
+    },
+    {
+      "title": "Writing symbol documentation in your source files",
+      "url": "https://developer.apple.com/documentation/Xcode/writing-symbol-documentation-in-your-source-files",
+      "type": "guide",
+      "description": "Add reference documentation to your symbols that explains how to use them.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/writing-symbol-documentation-in-your-source-files",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/writing-symbol-documentation-in-your-source-files.json"
+    },
+    {
+      "title": "SlothCreator: Building DocC documentation in Xcode",
+      "url": "https://developer.apple.com/documentation/Xcode/slothcreator-building-docc-documentation-in-xcode",
+      "type": "samplecode",
+      "description": "Build DocC documentation for a Swift package that contains a DocC Catalog.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/slothcreator-building-docc-documentation-in-xcode",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/slothcreator-building-docc-documentation-in-xcode.json"
+    },
+    {
+      "title": "Documenting a Swift Framework or Package",
+      "url": "https://www.swift.org/documentation/docc/documenting-a-swift-framework-or-package",
+      "type": "documentation",
+      "description": "Create developer documentation from in-source comments, add articles with code snippets, and add tutorials for a guided learning experience."
+    }
+  ],
+  "path": "sessions/wwdc2021/10166-meet-docc-documentation-in-xcode/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10166-meet-docc-documentation-in-xcode/metadata.json",
+    "readme": "sessions/wwdc2021/10166-meet-docc-documentation-in-xcode/README.md",
+    "transcript": "sessions/wwdc2021/10166-meet-docc-documentation-in-xcode/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10166-meet-docc-documentation-in-xcode/transcript.json"
+  }
+}

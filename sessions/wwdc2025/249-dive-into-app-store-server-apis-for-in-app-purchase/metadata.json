@@ -1,0 +1,103 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-249",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 249,
+  "title": "Dive into App Store server APIs for In-App Purchase",
+  "description": "Discover the latest updates for the App Store Server API, App Store Server Notifications, and App Store Server Library to help manage customer purchase data directly on your server and deliver great In-App Purchase experiences. We’ll cover updates to appAccountToken and signature signing, new fields in signed transaction and renewal info, and new APIs. Then, we’ll show how to generate a promotional offer signature on your server, and how to use the Send Consumption Information endpoint.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/249",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/249",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services",
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 1367,
+  "hasTranscript": true,
+  "transcriptWordCount": 3246,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/249/4/7efe7148-7440-40ff-a24c-becb06197f36/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/249/4/7efe7148-7440-40ff-a24c-becb06197f36/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/249/4/7efe7148-7440-40ff-a24c-becb06197f36/downloads/wwdc2025-249_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/249/4/7efe7148-7440-40ff-a24c-becb06197f36/downloads/wwdc2025-249_hd.mp4",
+    "duration": 1367
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Set App Account Token",
+      "url": "https://developer.apple.com/documentation/AppStoreServerAPI/Set-App-Account-Token",
+      "type": "documentation",
+      "description": "Sets the app account token value for a purchase the customer makes outside of your app, or updates its value in an existing transaction.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreServerAPI/Set-App-Account-Token",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreServerAPI/Set-App-Account-Token.json"
+    },
+    {
+      "title": "Advanced Commerce API",
+      "url": "https://developer.apple.com/in-app-purchase/advanced-commerce-api/",
+      "type": "documentation",
+      "description": "The Advanced Commerce API is designed to support developers with exceptionally large content catalogs, creator experiences, and subscriptions with optional add-ons offered within their apps.",
+      "sosumiURL": "https://sosumi.ai/in-app-purchase/advanced-commerce-api/"
+    },
+    {
+      "title": "Simplifying your implementation by using the App Store Server Library",
+      "url": "https://developer.apple.com/documentation/AppStoreServerAPI/simplifying-your-implementation-by-using-the-app-store-server-library",
+      "type": "documentation",
+      "description": "Use Apple’s open source library to create JSON Web Tokens (JWT) to authorize your calls, verify transactions, extract transaction identifiers from receipts, and more.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreServerAPI/simplifying-your-implementation-by-using-the-app-store-server-library",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreServerAPI/simplifying-your-implementation-by-using-the-app-store-server-library.json"
+    },
+    {
+      "title": "App Store Server API",
+      "url": "https://developer.apple.com/documentation/AppStoreServerAPI",
+      "type": "documentation",
+      "description": "Manage your customers’ App Store transactions from your server.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreServerAPI",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreServerAPI.json"
+    },
+    {
+      "title": "App Store Server Notifications",
+      "url": "https://developer.apple.com/documentation/appstoreservernotifications",
+      "type": "documentation",
+      "description": "Monitor in-app purchase events in real time with server notifications from the App Store.",
+      "sosumiURL": "https://sosumi.ai/documentation/appstoreservernotifications",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/appstoreservernotifications.json"
+    },
+    {
+      "title": "Submit feedback",
+      "url": "http://feedbackassistant.apple.com",
+      "type": "documentation",
+      "description": null
+    }
+  ],
+  "path": "sessions/wwdc2025/249-dive-into-app-store-server-apis-for-in-app-purchase/",
+  "files": {
+    "metadata": "sessions/wwdc2025/249-dive-into-app-store-server-apis-for-in-app-purchase/metadata.json",
+    "readme": "sessions/wwdc2025/249-dive-into-app-store-server-apis-for-in-app-purchase/README.md",
+    "transcript": "sessions/wwdc2025/249-dive-into-app-store-server-apis-for-in-app-purchase/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/249-dive-into-app-store-server-apis-for-in-app-purchase/transcript.json"
+  }
+}

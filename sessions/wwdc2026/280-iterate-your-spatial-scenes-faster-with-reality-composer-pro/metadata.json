@@ -1,0 +1,66 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-280",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 280,
+  "title": "Iterate your spatial scenes faster with Reality Composer Pro 3",
+  "description": "Unlock powerful new features in Reality Composer Pro 3 for building spatial experiences. Learn how you can add content, visual effects, lighting, and interactivity to your immersive scenes — all without leaving the editor. Discover how to iterate quickly using AI-assisted features right within the editor.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/280",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/280",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "3d",
+    "environment",
+    "game",
+    "reality",
+    "reality composer pro",
+    "realitykit",
+    "scene",
+    "spatial computing",
+    "visionos"
+  ],
+  "topics": [
+    "Graphics & Games",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 1004,
+  "hasTranscript": true,
+  "transcriptWordCount": 2013,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/280/4/0f02d465-7874-4ac3-aac3-b1b792efecd3/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/280/4/0f02d465-7874-4ac3-aac3-b1b792efecd3/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/280/4/0f02d465-7874-4ac3-aac3-b1b792efecd3/downloads/wwdc2026-280_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/280/4/0f02d465-7874-4ac3-aac3-b1b792efecd3/downloads/wwdc2026-280_hd.mp4",
+    "duration": 1004
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2026/280-iterate-your-spatial-scenes-faster-with-reality-composer-pro/",
+  "files": {
+    "metadata": "sessions/wwdc2026/280-iterate-your-spatial-scenes-faster-with-reality-composer-pro/metadata.json",
+    "readme": "sessions/wwdc2026/280-iterate-your-spatial-scenes-faster-with-reality-composer-pro/README.md",
+    "transcript": "sessions/wwdc2026/280-iterate-your-spatial-scenes-faster-with-reality-composer-pro/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/280-iterate-your-spatial-scenes-faster-with-reality-composer-pro/transcript.json"
+  }
+}

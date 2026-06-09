@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: refresh-kb
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,6 +20,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
       - name: Regenerate knowledge base
         run: python3 scripts/build.py
       - name: Validate integrity
@@ -25,5 +31,10 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-          git diff --cached --quiet || git commit -m "chore: refresh WWDC26 data"
+          if git diff --cached --quiet; then
+            echo "No changes."
+            exit 0
+          fi
+          git commit -m "chore: refresh WWDC knowledge base"
+          git pull --rebase --autostash origin "${{ github.ref_name }}"
           git push

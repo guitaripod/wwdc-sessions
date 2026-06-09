@@ -1,0 +1,89 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-110345",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2022,
+  "eventContentId": 110345,
+  "title": "Explore Family Sharing for In-App Purchases",
+  "description": "Family Sharing for In-App Purchases lets people share their auto-renewable subscriptions and non-consumables with up to five additional family members, helping you attract new subscribers, increase user engagement, and improve retention. We’ll review how you can enable this feature in App Store Connect, provide best practices when using the feature with StoreKit and App Store Server Notifications, and help you deliver a great In-App Purchase experience.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/110345",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110345",
+  "type": "Video",
+  "publishedAt": "2022-12-01T10:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 1324,
+  "hasTranscript": true,
+  "transcriptWordCount": 2953,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/110345/4/C7832583-3700-4355-B6DB-AD56E0F5E2F9/cmaf.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/110345/4/C7832583-3700-4355-B6DB-AD56E0F5E2F9/downloads/tech-talks-110345_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/110345/4/C7832583-3700-4355-B6DB-AD56E0F5E2F9/downloads/tech-talks-110345_hd.mp4",
+    "duration": 1324
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "In-app purchase overview",
+      "url": "https://developer.apple.com/in-app-purchase/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/in-app-purchase/"
+    },
+    {
+      "title": "Turn on Family Sharing for in-app purchases in App Store Connect",
+      "url": "https://help.apple.com/app-store-connect/#/dev45b03fab9",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Supporting Family Sharing in your app",
+      "url": "https://developer.apple.com/documentation/StoreKit/supporting-family-sharing-in-your-app",
+      "type": "documentation",
+      "description": "Provide service to share subscriptions and non-consumable products to family members.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/supporting-family-sharing-in-your-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/supporting-family-sharing-in-your-app.json"
+    },
+    {
+      "title": "Family Sharing for in-app purchases overview",
+      "url": "https://developer.apple.com/app-store/subscriptions/#family-sharing",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/app-store/subscriptions/#family-sharing"
+    },
+    {
+      "title": "App Store Server Notifications",
+      "url": "https://developer.apple.com/documentation/appstoreservernotifications",
+      "type": "documentation",
+      "description": "Monitor in-app purchase events in real time with server notifications from the App Store.",
+      "sosumiURL": "https://sosumi.ai/documentation/appstoreservernotifications",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/appstoreservernotifications.json"
+    }
+  ],
+  "path": "sessions/tech-talks/110345-explore-family-sharing-for-in-app-purchases/",
+  "files": {
+    "metadata": "sessions/tech-talks/110345-explore-family-sharing-for-in-app-purchases/metadata.json",
+    "readme": "sessions/tech-talks/110345-explore-family-sharing-for-in-app-purchases/README.md",
+    "transcript": "sessions/tech-talks/110345-explore-family-sharing-for-in-app-purchases/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/110345-explore-family-sharing-for-in-app-purchases/transcript.json"
+  }
+}

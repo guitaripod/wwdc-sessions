@@ -1,0 +1,95 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-10868",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2021,
+  "eventContentId": 10868,
+  "title": "Subscription offer codes",
+  "description": "Subscription offer codes can help you acquire, retain, and win back subscribers as you grow your business. Learn about configuration options, creating a great experience, and measuring redemptions. We’ll explore how to set up customer eligibility, territory, price, and expiration in App Store Connect. And we'll take you through managing your offers, integrating them into your application and backend systems, and measuring performance.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/10868",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10868",
+  "type": "Video",
+  "publishedAt": "2021-03-10T10:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "in-app purchases",
+    "subscription",
+    "subscription business model",
+    "subscription marketing"
+  ],
+  "topics": [
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 1752,
+  "hasTranscript": true,
+  "transcriptWordCount": 4353,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/10868/2/F1E54F32-9D1E-41EA-9669-5810588B788F/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/tech-talks/10868/2/F1E54F32-9D1E-41EA-9669-5810588B788F/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/10868/2/F1E54F32-9D1E-41EA-9669-5810588B788F/downloads/tech-talks-10868_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/10868/2/F1E54F32-9D1E-41EA-9669-5810588B788F/downloads/tech-talks-10868_hd.mp4",
+    "duration": 1752
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "App Store Server Notifications",
+      "url": "https://developer.apple.com/documentation/appstoreservernotifications",
+      "type": "documentation",
+      "description": "Monitor in-app purchase events in real time with server notifications from the App Store.",
+      "sosumiURL": "https://sosumi.ai/documentation/appstoreservernotifications",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/appstoreservernotifications.json"
+    },
+    {
+      "title": "Leveraging server to server receipt validation",
+      "url": "https://developer.apple.com/documentation/storekit/original_api_for_in-app_purchase/validating_receipts_with_the_app_store",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/documentation/storekit/original_api_for_in-app_purchase/validating_receipts_with_the_app_store",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/storekit/original_api_for_in-app_purchase/validating_receipts_with_the_app_store.json"
+    },
+    {
+      "title": "Offer codes overview",
+      "url": "https://developer.apple.com/app-store/subscriptions/?cid=ocsurvey111720#offer-codes",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/app-store/subscriptions/?cid=ocsurvey111720#offer-codes"
+    },
+    {
+      "title": "Implementing offer codes in your app",
+      "url": "https://developer.apple.com/documentation/StoreKit/implementing-offer-codes-in-your-app",
+      "type": "documentation",
+      "description": "Enable customers to redeem offer codes through the App Store or within an app that uses receipts.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/implementing-offer-codes-in-your-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/implementing-offer-codes-in-your-app.json"
+    },
+    {
+      "title": "Learn more about setting up offer codes",
+      "url": "https://help.apple.com/app-store-connect/#/dev6a098e4b1",
+      "type": "guide",
+      "description": null
+    }
+  ],
+  "path": "sessions/tech-talks/10868-subscription-offer-codes/",
+  "files": {
+    "metadata": "sessions/tech-talks/10868-subscription-offer-codes/metadata.json",
+    "readme": "sessions/tech-talks/10868-subscription-offer-codes/README.md",
+    "transcript": "sessions/tech-talks/10868-subscription-offer-codes/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/10868-subscription-offer-codes/transcript.json"
+  }
+}

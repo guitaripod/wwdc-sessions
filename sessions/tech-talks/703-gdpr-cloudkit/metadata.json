@@ -1,0 +1,63 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-703",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2018,
+  "eventContentId": 703,
+  "title": "GDPR & CloudKit",
+  "description": "The General Data Protection Regulation (GDPR) is a European Union regulation that requires developers to give users visibility and control over the personal data you store on their behalf. Learn how to use new and existing CloudKit APIs to build privacy into your apps and make sure customers can exercise their GDPR rights.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/703",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/703",
+  "type": "Video",
+  "publishedAt": "2018-09-12T11:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "System Services",
+    "Privacy & Security"
+  ],
+  "primaryTopic": "Privacy & Security",
+  "duration": 812,
+  "hasTranscript": true,
+  "transcriptWordCount": 2042,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tutorials/20180912/703j00nzmafjd72j/gdpr_and_cloudkit/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tutorials/20180912/703j00nzmafjd72j/gdpr_and_cloudkit/gdpr_and_cloudkit_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tutorials/20180912/703j00nzmafjd72j/gdpr_and_cloudkit/gdpr_and_cloudkit_hd.mp4",
+    "duration": 812
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "CloudKit & GDPR",
+      "url": "https://developer.apple.com/support/allowing-users-to-manage-data/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/support/allowing-users-to-manage-data/"
+    }
+  ],
+  "path": "sessions/tech-talks/703-gdpr-cloudkit/",
+  "files": {
+    "metadata": "sessions/tech-talks/703-gdpr-cloudkit/metadata.json",
+    "readme": "sessions/tech-talks/703-gdpr-cloudkit/README.md",
+    "transcript": "sessions/tech-talks/703-gdpr-cloudkit/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/703-gdpr-cloudkit/transcript.json"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-238",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 238,
+  "title": "Customize your app for Assistive Access",
+  "description": "Assistive Access is a distinctive, focused iOS experience that makes it easier for people with cognitive disabilities to use iPhone and iPad independently. In iOS and iPadOS 26, you can customize your app when it’s running in Assistive Access to give people greater ease and independence. Learn how to tailor your app using the AssistiveAccess SwiftUI scene type, and explore the key design principles that can help you create a high-quality Assistive Access experience for everyone.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/238",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/238",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Accessibility & Inclusion"
+  ],
+  "primaryTopic": "Accessibility & Inclusion",
+  "duration": 937,
+  "hasTranscript": true,
+  "transcriptWordCount": 2179,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/238/4/a553c517-f6ca-46e7-b339-36e971996e78/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/238/4/a553c517-f6ca-46e7-b339-36e971996e78/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/238/4/a553c517-f6ca-46e7-b339-36e971996e78/downloads/wwdc2025-238_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/238/4/a553c517-f6ca-46e7-b339-36e971996e78/downloads/wwdc2025-238_hd.mp4",
+    "duration": 937
+  },
+  "codeSnippets": [
+    {
+      "title": "Create a scene for Assistive Access",
+      "language": "swift",
+      "startTimeSeconds": 321,
+      "code": "// Create a scene for Assistive Access\n\nimport SwiftUI\nimport SwiftData\n\n@main\nstruct WWDCDrawApp: App {\n  var body: some Scene {\n    WindowGroup {\n      ContentView()\n        .modelContainer(for: [DrawingModel.self])\n    }\n    AssistiveAccess {\n      AssistiveAccessContentView()\n          .modelContainer(for: [DrawingModel.self])\n    }\n  }\n}"
+    },
+    {
+      "title": "Display an Assistive Access preview",
+      "language": "swift",
+      "startTimeSeconds": 385,
+      "code": "// Display an Assistive Access preview\n\nimport SwiftUI\n\nstruct AssistiveAccessContentView: View {\n  @Environment(\\.modelContext) var context\n  var body: some View {\n    VStack {\n      Image(systemName: \"globe\")\n        .imageScale(.large)\n        .foregroundStyle(.tint)\n      Text(\"Hello, world!\")\n    }\n    .padding()\n  }\n}\n\n#Preview(traits: .assistiveAccess)\n    AssistiveAccessContentView()\n}"
+    },
+    {
+      "title": "Declare a SwiftUI scene with UIKit",
+      "language": "swift",
+      "startTimeSeconds": 395,
+      "code": "// Declare a SwiftUI scene with UIKit\n\nimport UIKit\nimport SwiftUI\n\nclass AssistiveAccessSceneDelegate: UIHostingSceneDelegate {\n\n  static var rootScene: some Scene {\n    AssistiveAccess {\n      AssistiveAccessContentView()\n    }\n  }\n\n    /* ... */\n}"
+    },
+    {
+      "title": "Activate a SwiftUI scene with UIKit",
+      "language": "swift",
+      "startTimeSeconds": 415,
+      "code": "// Activate a SwiftUI scene with UIKit\n\nimport UIKit\n\n@main\nclass AppDelegate: UIApplicationDelegate {\n  func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {\n    let role = connectingSceneSession.role\n    let sceneConfiguration = UISceneConfiguration(name: nil, sessionRole: role)\n    if role == .windowAssistiveAccessApplication {\n      sceneConfiguration.delegateClass = AssistiveAccessSceneDelegate.self\n    }\n    return sceneConfiguration\n  }\n}"
+    },
+    {
+      "title": "Display an icon alongside a navigation title",
+      "language": "swift",
+      "startTimeSeconds": 876,
+      "code": "// Display an icon alongside a navigation title\n\nimport SwiftUI\n\nstruct ColorSelectionView: View {\n  var body: some View {\n    Group {\n      List {\n        ForEach(ColorMode.allCases) { color in\n          NavigationLink(destination: DrawingView(color: color)) {\n            ColorThumbnail(color: color)\n          }\n        }\n      }\n      .navigationTitle(\"Draw\")\n      .assistiveAccessNavigationIcon(systemImage: \"hand.draw.fill\")\n    }\n  }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "AssistiveAccess",
+      "url": "https://developer.apple.com/documentation/SwiftUI/AssistiveAccess",
+      "type": "documentation",
+      "description": "A scene that presents an interface appropriate for Assistive Access on iOS",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/AssistiveAccess",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/AssistiveAccess.json"
+    },
+    {
+      "title": "Human Interface Guidelines: Accessibility",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/accessibility",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/accessibility"
+    },
+    {
+      "title": "UISupportsFullScreenInAssistiveAccess",
+      "url": "https://developer.apple.com/documentation/BundleResources/Information-Property-List/UISupportsFullScreenInAssistiveAccess",
+      "type": "documentation",
+      "description": "A Boolean value that indicates if an iOS or iPadOS app appears as full screen in Assistive Access.",
+      "sosumiURL": "https://sosumi.ai/documentation/BundleResources/Information-Property-List/UISupportsFullScreenInAssistiveAccess",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/BundleResources/Information-Property-List/UISupportsFullScreenInAssistiveAccess.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/238-customize-your-app-for-assistive-access/",
+  "files": {
+    "metadata": "sessions/wwdc2025/238-customize-your-app-for-assistive-access/metadata.json",
+    "readme": "sessions/wwdc2025/238-customize-your-app-for-assistive-access/README.md",
+    "transcript": "sessions/wwdc2025/238-customize-your-app-for-assistive-access/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/238-customize-your-app-for-assistive-access/transcript.json"
+  }
+}

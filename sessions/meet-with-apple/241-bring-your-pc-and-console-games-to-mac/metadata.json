@@ -1,0 +1,71 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "meet-with-apple-241",
+  "event": "meet-with-apple",
+  "eventName": "Meet with Apple",
+  "year": 2025,
+  "eventContentId": 241,
+  "title": "Bring your PC and console games to Mac",
+  "description": "Learn how to port your existing Windows and console games to Apple silicon devices using tools like Metal and the Game Porting Toolkit. Explore the techniques that can help you accelerate and streamline your porting workflows, and get your game running across the entire Mac lineup. This session was originally presented as part of the Meet with Apple activity “Press Start: Game development on Apple platforms.” Watch the full video for more insights and related sessions.",
+  "url": "https://developer.apple.com/videos/play/meet-with-apple/241",
+  "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/241",
+  "type": "Video",
+  "publishedAt": "2025-12-15T00:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1193,
+  "hasTranscript": true,
+  "transcriptWordCount": 3450,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/241/2/5357eb92-faad-4544-b3fa-4b3b2ee8e39a/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/241/2/5357eb92-faad-4544-b3fa-4b3b2ee8e39a/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/241/2/5357eb92-faad-4544-b3fa-4b3b2ee8e39a/downloads/meet-with-apple-241_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/241/2/5357eb92-faad-4544-b3fa-4b3b2ee8e39a/downloads/meet-with-apple-241_hd.mp4",
+    "duration": 1193
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Metal Developer Resources",
+      "url": "https://developer.apple.com/metal/",
+      "type": "guide",
+      "description": "Accelerate graphics and much more with Metal. Metal powers hardware-accelerated graphics on Apple platforms by providing a low-overhead API, rich shading language, tight integration between graphics and compute, and an unparalleled suite of GPU profiling and debugging tools. Your games and pro apps can take full advantage of the incredible performance and efficiency of Apple silicon across iPhone, iPad, Mac, and Apple TV.",
+      "sosumiURL": "https://sosumi.ai/metal/"
+    },
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    }
+  ],
+  "path": "sessions/meet-with-apple/241-bring-your-pc-and-console-games-to-mac/",
+  "files": {
+    "metadata": "sessions/meet-with-apple/241-bring-your-pc-and-console-games-to-mac/metadata.json",
+    "readme": "sessions/meet-with-apple/241-bring-your-pc-and-console-games-to-mac/README.md",
+    "transcript": "sessions/meet-with-apple/241-bring-your-pc-and-console-games-to-mac/transcript.md",
+    "transcriptJSON": "sessions/meet-with-apple/241-bring-your-pc-and-console-games-to-mac/transcript.json"
+  }
+}

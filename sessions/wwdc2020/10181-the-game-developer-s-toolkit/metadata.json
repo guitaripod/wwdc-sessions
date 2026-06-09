@@ -1,0 +1,67 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10181",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10181,
+  "title": "The game developer’s toolkit",
+  "description": null,
+  "url": "https://developer.apple.com/news/?id=v0n9qlqx",
+  "sosumiURL": "https://sosumi.ai/news/?id=v0n9qlqx",
+  "type": "Article",
+  "publishedAt": "2020-06-22T00:00:40-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "achievement",
+    "controller",
+    "controllers",
+    "dashboard",
+    "game",
+    "game best practices",
+    "game center",
+    "game center design",
+    "game controller",
+    "game controllers",
+    "game design",
+    "game designer",
+    "game dev",
+    "game developer",
+    "gamekit",
+    "game kit",
+    "gameplaykit",
+    "games",
+    "leaderboard"
+  ],
+  "topics": [
+    "Design",
+    "Graphics & Games"
+  ],
+  "primaryTopic": null,
+  "duration": null,
+  "hasTranscript": false,
+  "transcriptWordCount": 0,
+  "availableLanguages": [],
+  "media": {},
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Game Center",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/game-center",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/game-center"
+    }
+  ],
+  "path": "sessions/wwdc2020/10181-the-game-developer-s-toolkit/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10181-the-game-developer-s-toolkit/metadata.json",
+    "readme": "sessions/wwdc2020/10181-the-game-developer-s-toolkit/README.md"
+  }
+}

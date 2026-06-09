@@ -1,0 +1,53 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2017-514",
+  "event": "wwdc2017",
+  "eventName": "WWDC17",
+  "year": 2017,
+  "eventContentId": 514,
+  "title": "Error Handling Best Practices for HTTP Live Streaming",
+  "description": "HTTP Live Streaming (HLS) reliably delivers media content across a variety of network and bandwidth conditions. However, there are many factors that can impact stream delivery, such as server or encoder failures, caching issues, or network dropouts. Learn the best-practice behaviors that your servers should adopt to maximize reliability, and gain a practical understanding of the errors your app may encounter and how to handle them.",
+  "url": "https://developer.apple.com/videos/play/wwdc2017/514",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2017/514",
+  "type": "Video",
+  "publishedAt": "2017-06-04T17:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 1121,
+  "hasTranscript": true,
+  "transcriptWordCount": 2135,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/514tjrrgnguh4k/514/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/514tjrrgnguh4k/514/514_sd_error_handling_best_practices_for_http_live_streaming.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/514tjrrgnguh4k/514/514_hd_error_handling_best_practices_for_http_live_streaming.mp4",
+    "duration": 1121
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2017/514-error-handling-best-practices-for-http-live-streaming/",
+  "files": {
+    "metadata": "sessions/wwdc2017/514-error-handling-best-practices-for-http-live-streaming/metadata.json",
+    "readme": "sessions/wwdc2017/514-error-handling-best-practices-for-http-live-streaming/README.md",
+    "transcript": "sessions/wwdc2017/514-error-handling-best-practices-for-http-live-streaming/transcript.md",
+    "transcriptJSON": "sessions/wwdc2017/514-error-handling-best-practices-for-http-live-streaming/transcript.json"
+  }
+}

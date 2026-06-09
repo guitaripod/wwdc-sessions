@@ -1,0 +1,123 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2018-234",
+  "event": "wwdc2018",
+  "eventName": "WWDC18",
+  "year": 2018,
+  "eventContentId": 234,
+  "title": "What’s New in Safari and WebKit",
+  "description": "Safari and WebKit are continually evolving with new features, APIs, and cutting edge web standards. Learn about this year’s biggest feature highlights, designed to help you create richer experiences with better performance and security — whether you are developing content for a browser or developing an app with embedded web content.",
+  "url": "https://developer.apple.com/videos/play/wwdc2018/234",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2018/234",
+  "type": "Video",
+  "publishedAt": "2018-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Safari & Web"
+  ],
+  "primaryTopic": "Safari & Web",
+  "duration": 2725,
+  "hasTranscript": true,
+  "transcriptWordCount": 6422,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/234iphi7iwpe8ew16w/234/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/234iphi7iwpe8ew16w/234/234_sd_whats_new_in_safari_and_webkit.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/234iphi7iwpe8ew16w/234/234_hd_whats_new_in_safari_and_webkit.mp4",
+    "duration": 2725
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Introducing Storage Access API",
+      "url": "https://webkit.org/blog/8124/introducing-storage-access-api/",
+      "type": "documentation",
+      "description": "Learn about Storage Access API and Intelligent Tracking Prevention."
+    },
+    {
+      "title": "Clipboard API Improvements",
+      "url": "https://webkit.org/blog/8170/clipboard-api-improvements/",
+      "type": "documentation",
+      "description": "Learn about updates to drag and drop features this year."
+    },
+    {
+      "title": "Service Workers WebKit Blog Post",
+      "url": "https://webkit.org/blog/8090/workers-at-your-service/",
+      "type": "guide",
+      "description": "Learn to use the Service Worker API."
+    },
+    {
+      "title": "Payment Request API for Apple Pay",
+      "url": "https://webkit.org/blog/8182/introducing-the-payment-request-api-for-apple-pay/",
+      "type": "documentation",
+      "description": "Support Apple Pay using the Payment Request API"
+    },
+    {
+      "title": "Password AutoFill",
+      "url": "https://developer.apple.com/documentation/Security/password-autofill",
+      "type": "documentation",
+      "description": "Streamline your app’s login and onboarding procedures.",
+      "sosumiURL": "https://sosumi.ai/documentation/Security/password-autofill",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Security/password-autofill.json"
+    },
+    {
+      "title": "Safari web extensions",
+      "url": "https://developer.apple.com/documentation/SafariServices/safari-web-extensions",
+      "type": "documentation",
+      "description": "Create web extensions that work in Safari and other browsers.",
+      "sosumiURL": "https://sosumi.ai/documentation/SafariServices/safari-web-extensions",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SafariServices/safari-web-extensions.json"
+    },
+    {
+      "title": "Authentication Services",
+      "url": "https://developer.apple.com/documentation/AuthenticationServices",
+      "type": "documentation",
+      "description": "Make it easy for users to log into apps and services.",
+      "sosumiURL": "https://sosumi.ai/documentation/AuthenticationServices",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AuthenticationServices.json"
+    },
+    {
+      "title": "Password Rules Validation Tool",
+      "url": "https://developer.apple.com/password-rules",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/password-rules"
+    },
+    {
+      "title": "WebKit",
+      "url": "https://developer.apple.com/documentation/WebKit",
+      "type": "documentation",
+      "description": "Integrate web content seamlessly into your app, and customize content interactions to meet your app’s needs.",
+      "sosumiURL": "https://sosumi.ai/documentation/WebKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WebKit.json"
+    },
+    {
+      "title": "Introduction to Safari Content-Blocking Rules",
+      "url": "https://developer.apple.com/library/content/documentation/Extensions/Conceptual/ContentBlockingRules/Introduction/Introduction.html",
+      "type": "documentation",
+      "description": "Introduction to Safari Content-Blocking Rules",
+      "sosumiURL": "https://sosumi.ai/library/content/documentation/Extensions/Conceptual/ContentBlockingRules/Introduction/Introduction.html"
+    }
+  ],
+  "path": "sessions/wwdc2018/234-what-s-new-in-safari-and-webkit/",
+  "files": {
+    "metadata": "sessions/wwdc2018/234-what-s-new-in-safari-and-webkit/metadata.json",
+    "readme": "sessions/wwdc2018/234-what-s-new-in-safari-and-webkit/README.md",
+    "transcript": "sessions/wwdc2018/234-what-s-new-in-safari-and-webkit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2018/234-what-s-new-in-safari-and-webkit/transcript.json"
+  }
+}

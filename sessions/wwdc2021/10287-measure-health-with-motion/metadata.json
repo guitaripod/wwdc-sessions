@@ -1,0 +1,172 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10287",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10287,
+  "title": "Measure health with motion",
+  "description": "Discover how you can take your app’s health monitoring to the next level with motion data. Meet Walking Steadiness for iPhone and the six-minute-walk metric for Apple Watch: Walking Steadiness can help your app interpret someone’s quality of walking and risk of falling, while the six-minute-walk metric — along with the HealthKit estimate recalibration API — can track changes to walking endurance following acute events like surgery. We’ll show you how you can support these metrics and help provide actionable health data to people who use your app, helping improve patient care and clinical trials, especially as more services must be delivered remotely.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10287",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10287",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "healthkit",
+    "therapy"
+  ],
+  "topics": [
+    "Health & Fitness"
+  ],
+  "primaryTopic": "Health & Fitness",
+  "duration": 1249,
+  "hasTranscript": true,
+  "transcriptWordCount": 3522,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10287/5/C117695D-C24C-4B2E-B6A4-C87244FC08AC/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10287/5/C117695D-C24C-4B2E-B6A4-C87244FC08AC/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10287/5/C117695D-C24C-4B2E-B6A4-C87244FC08AC/downloads/wwdc2021-10287_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10287/5/C117695D-C24C-4B2E-B6A4-C87244FC08AC/downloads/wwdc2021-10287_hd.mp4",
+    "duration": 1249
+  },
+  "codeSnippets": [
+    {
+      "title": "Grab authorization to read and share sixMinuteWalkTestDistance type",
+      "language": "swift",
+      "startTimeSeconds": 1,
+      "code": "// Grab authorization to read and share sixMinuteWalkTestDistance type\n\nlet healthStore = HKHealthStore()\nlet types: Set = [\n    HKObjectType.quantityType(forIdentifier: .sixMinuteWalkTestDistance)!\n]\n\nhealthStore.requestAuthorization(toShare: types, read: types) { _, _ in }"
+    },
+    {
+      "title": "Recalibrate Six-Minute Walk estimates",
+      "language": "swift",
+      "startTimeSeconds": 2,
+      "code": "// Recalibrate estimate\n\nlet healthStore = HKHealthStore()\nlet sixMinuteWalkType = HKSampleType.quantityType(forIdentifier: .sixMinuteWalkTestDistance)!\n\nif sixMinuteWalkType.allowsRecalibrationForEstimates {\n\n    healthStore.recalibrateEstimates(sampleType: sixMinuteWalkType, date: surgeryDate) { \n        (success, error) in\n        // Handle error\n    }\n\n}"
+    },
+    {
+      "title": "Get authorized for walkingSteadiness type",
+      "language": "swift",
+      "startTimeSeconds": 3,
+      "code": "// Get authorized\n\nlet types: Set = [\n    HKObjectType.quantityType(forIdentifier: .walkingSteadiness)!\n]\n\nhealthKitStore.requestAuthorization(toShare: nil, read: types) { _, _ in }"
+    },
+    {
+      "title": "Construct a query for most recent walkingSteadiness score",
+      "language": "swift",
+      "startTimeSeconds": 4,
+      "code": "// Construct a query for most recent walkingSteadiness score\n\nlet steadinessType = HKObjectType.quantityType(forIdentifier: .walkingSteadiness)\nlet sortByEndDate = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)\n\nlet query = HKSampleQuery(sampleType: steadinessType,\n                          predicate: nil,\n                          limit: 1,\n                          sortDescriptors: [sortByEndDate]) { (query, samples, error) in\n\n    if let sample = samples?.first as? HKQuantitySample{\n\n        let recentScore = sample.quantity.doubleValue(forUnit: .percentUnit)\n\n        updateStatus(score: recentScore)\n    }\n}\n\nself.healthStore.execute(query)"
+    },
+    {
+      "title": "Construct a query for most recent walkingSteadiness classification",
+      "language": "swift",
+      "startTimeSeconds": 5,
+      "code": "// Construct a query for most recent walkingSteadiness classification\n\nlet steadinessType = HKObjectType.quantityType(forIdentifier: .walkingSteadiness)\n\nlet query = HKSampleQuery(sampleType: steadinessType,\n                          predicate: nil,\n                          limit: 1,\n                          sortDescriptors: nil) { (query, samples, error) in\n\n    if let sample = samples?.first as? HKQuantitySample{\n\n        let recentScore = sample.quantity.doubleValue(forUnit: .percentUnit)\n\n        // Use HealthKit API to classify a value as OK, Low, or Very Low\n        let recentClassification = HKAppleWalkingSteadinessClassification(for: walkingSteadiness.quantity)\n\n        updateStatus(classification: recentClassification, score: recentScore)\n    }\n}\n\nself.healthStore.execute(query)"
+    },
+    {
+      "title": "Get authorized .walkingSteadinessEvent",
+      "language": "swift",
+      "startTimeSeconds": 6,
+      "code": "// Get authorized\n\nlet types: Set = [\n    HKObjectType.categoryType(forIdentifier: .walkingSteadinessEvent)!\n]\n\nhealthKitStore.requestAuthorization(toShare: nil, read: types) { _, _ in }"
+    },
+    {
+      "title": "Watch for walkingSteadiness notifications",
+      "language": "swift",
+      "startTimeSeconds": 7,
+      "code": "// Watch for walkingSteadiness notifications\n\nlet notificationType = HKCategoryType.categoryType(forIdentifier: .appleWalkingSteadinessEvent)!\n\nlet query = HKObserverQuery(sampleType: notificationType, predicate: nil) { \n    (query, completionHandler, errorOrNil) in\n\n    if let error = errorOrNil {\n        // Properly handle the error.\n        return\n    }\n\n    promptCheckupForNotification()\n\n    completionHandler()\n}\n\nself.healthStore.execute(query)"
+    },
+    {
+      "title": "Query walking steadiness in the past 6 weeks",
+      "language": "swift",
+      "startTimeSeconds": 8,
+      "code": "// Query samples from HealthKit\n\n// Look back 6 weeks\nlet end = Date()\nlet start = Calendar.current.date(byAdding: .week, value: -6, to: end)\n\nlet datePredicate = HKQuery.predicateForSamples(withStart: start, end: end, options: [])\n\n// Query walking steadiness\nlet steadinessType = HKObjectType.quantityType(forIdentifier: .walkingSteadiness)\nlet sortByEndDate = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)\n\nlet query = HKSampleQuery(sampleType: steadinessType,\n                          predicate: sortByEndDate,\n                          limit: nil,\n                          sortDescriptors:[sortByEndDate]) { (_, samples, _) in\n\n    detectTrends(samples)\n}\nself.healthStore.execute(query)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "HKAppleWalkingSteadinessClassification",
+      "url": "https://developer.apple.com/documentation/HealthKit/HKAppleWalkingSteadinessClassification",
+      "type": "documentation",
+      "description": "A classification of a score based on the steadiness of the user’s gait.",
+      "sosumiURL": "https://sosumi.ai/documentation/HealthKit/HKAppleWalkingSteadinessClassification",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HealthKit/HKAppleWalkingSteadinessClassification.json"
+    },
+    {
+      "title": "appleWalkingSteadinessEvent",
+      "url": "https://developer.apple.com/documentation/HealthKit/HKCategoryTypeIdentifier/appleWalkingSteadinessEvent",
+      "type": "documentation",
+      "description": "A category sample type that records an incident where the user showed a reduced score for their gait’s steadiness.",
+      "sosumiURL": "https://sosumi.ai/documentation/HealthKit/HKCategoryTypeIdentifier/appleWalkingSteadinessEvent",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HealthKit/HKCategoryTypeIdentifier/appleWalkingSteadinessEvent.json"
+    },
+    {
+      "title": "appleWalkingSteadiness",
+      "url": "https://developer.apple.com/documentation/HealthKit/HKQuantityTypeIdentifier/appleWalkingSteadiness",
+      "type": "documentation",
+      "description": "A quantity sample type that measures the steadiness of the user’s gait.",
+      "sosumiURL": "https://sosumi.ai/documentation/HealthKit/HKQuantityTypeIdentifier/appleWalkingSteadiness",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HealthKit/HKQuantityTypeIdentifier/appleWalkingSteadiness.json"
+    },
+    {
+      "title": "CMFallDetectionManager",
+      "url": "https://developer.apple.com/documentation/CoreMotion/CMFallDetectionManager",
+      "type": "documentation",
+      "description": "An object for managing fall detection events.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreMotion/CMFallDetectionManager",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreMotion/CMFallDetectionManager.json"
+    },
+    {
+      "title": "Measuring Walking Quality Through iPhone Mobility Metrics",
+      "url": "https://www.apple.com/healthcare/docs/site/Measuring_Walking_Quality_Through_iPhone_Mobility_Metrics.pdf",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "Using Apple Watch to Estimate Six-Minute Walk Distance",
+      "url": "https://www.apple.com/healthcare/docs/site/Using_Apple_Watch_to_Estimate_Six_Minute_Walk_Distance.pdf",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Using Apple Watch to Estimate Cardio Fitness with VO2 max",
+      "url": "https://www.apple.com/healthcare/docs/site/Using_Apple_Watch_to_Estimate_Cardio_Fitness_with_VO2_max.pdf",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "Getting movement disorder symptom data",
+      "url": "https://developer.apple.com/documentation/CoreMotion/getting-movement-disorder-symptom-data",
+      "type": "documentation",
+      "description": "Retrieve data from the Apple Watch’s movement disorder manager.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreMotion/getting-movement-disorder-symptom-data",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreMotion/getting-movement-disorder-symptom-data.json"
+    },
+    {
+      "title": "Core Motion",
+      "url": "https://developer.apple.com/documentation/CoreMotion",
+      "type": "documentation",
+      "description": "Process accelerometer, gyroscope, pedometer, and environment-related events.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreMotion",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreMotion.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10287-measure-health-with-motion/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10287-measure-health-with-motion/metadata.json",
+    "readme": "sessions/wwdc2021/10287-measure-health-with-motion/README.md",
+    "transcript": "sessions/wwdc2021/10287-measure-health-with-motion/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10287-measure-health-with-motion/transcript.json"
+  }
+}

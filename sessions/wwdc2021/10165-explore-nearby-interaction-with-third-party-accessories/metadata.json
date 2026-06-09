@@ -1,0 +1,81 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10165",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10165,
+  "title": "Explore Nearby Interaction with third-party accessories",
+  "description": "Discover how your app can interact with Ultra Wideband (UWB) third-party accessories when running on a U1-equipped device. We’ll show you how to use the Nearby Interaction framework’s standards-based technology to implement precise and directionally-aware experiences with accessories. Learn about resources for getting started with accessory and app development such as development kits, sample code, and specification documents, along with supported technology providers. To find out more about Nearby Interaction, check out the framework documentation linked as part of this session. And if you’re an accessory manufacturer or considering becoming one, be sure to check out the Nearby Interaction accessory specification documents and Getting Started resources.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10165",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10165",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "u1",
+    "uwb"
+  ],
+  "topics": [
+    "Maps & Location",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 1381,
+  "hasTranscript": true,
+  "transcriptWordCount": 3044,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10165/5/7A838436-C185-4F66-B1AD-411F16DCBF86/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10165/5/7A838436-C185-4F66-B1AD-411F16DCBF86/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10165/5/7A838436-C185-4F66-B1AD-411F16DCBF86/downloads/wwdc2021-10165_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10165/5/7A838436-C185-4F66-B1AD-411F16DCBF86/downloads/wwdc2021-10165_hd.mp4",
+    "duration": 1381
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Nearby Interactions with U1",
+      "url": "https://developer.apple.com/nearby-interaction/",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/nearby-interaction/"
+    },
+    {
+      "title": "MFI Program",
+      "url": "https://mfi.apple.com",
+      "type": "guide",
+      "description": "MFi Technologies and the Apple Ecosystem"
+    },
+    {
+      "title": "Nearby Interaction",
+      "url": "https://developer.apple.com/documentation/NearbyInteraction",
+      "type": "documentation",
+      "description": "Locate and interact with nearby devices using identifiers, distance, and direction.",
+      "sosumiURL": "https://sosumi.ai/documentation/NearbyInteraction",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/NearbyInteraction.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10165-explore-nearby-interaction-with-third-party-accessories/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10165-explore-nearby-interaction-with-third-party-accessories/metadata.json",
+    "readme": "sessions/wwdc2021/10165-explore-nearby-interaction-with-third-party-accessories/README.md",
+    "transcript": "sessions/wwdc2021/10165-explore-nearby-interaction-with-third-party-accessories/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10165-explore-nearby-interaction-with-third-party-accessories/transcript.json"
+  }
+}

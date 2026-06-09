@@ -1,0 +1,118 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10082",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10082,
+  "title": "Meet ARKit for spatial computing",
+  "description": "Discover how you can use ARKit’s tracking and scene understanding features to develop a whole new universe of immersive apps and games. Learn how visionOS and ARKit work together to help you create apps that understand a person’s surroundings — all while preserving privacy. Explore the latest updates to the ARKit API and follow along as we demonstrate how to take advantage of hand tracking and scene geometry in your apps.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10082",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10082",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 1451,
+  "hasTranscript": true,
+  "transcriptWordCount": 3871,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10082/4/C3D5172D-3BAF-4656-B6F7-2C8CE38F8749/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10082/4/C3D5172D-3BAF-4656-B6F7-2C8CE38F8749/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10082/4/C3D5172D-3BAF-4656-B6F7-2C8CE38F8749/downloads/wwdc2023-10082_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10082/4/C3D5172D-3BAF-4656-B6F7-2C8CE38F8749/downloads/wwdc2023-10082_hd.mp4",
+    "duration": 1451
+  },
+  "codeSnippets": [
+    {
+      "title": "Authorisation API",
+      "language": "swift",
+      "startTimeSeconds": 320,
+      "code": "// Privacy\n// Authorization\n\nsession = ARKitSession()\n\nTask {\n    let authorizationResult = await session.requestAuthorization(for: [.handTracking])\n\n    for (authorizationType, authorizationStatus) in authorizationResult {\n        print(\"Authorization status for \\(authorizationType): \\(authorizationStatus)\")\n\n        switch authorizationStatus {\n        case .allowed:\n            // All good!\n            break\n        case .denied:\n            // Need to handle this.\n            break\n        ...\n        }\n    }\n}"
+    },
+    {
+      "title": "World Tracking Device Pose Render Struct",
+      "language": "swift",
+      "startTimeSeconds": 620,
+      "code": "// World tracking\n// Device pose\n\n#include <ARKit/ARKit.h>\n#include <CompositorServices/CompositorServices.h>\n\nstruct Renderer {\n    ar_session_t                 session;\n    ar_world_tracking_provider_t world_tracking;\n    ar_pose_t                    pose;\n\n    ...\n};\n\nvoid renderer_init(struct Renderer *renderer) {\n    renderer->session = ar_session_create();\n\n    ar_world_tracking_configuration_t config = ar_world_tracking_configuration_create();\n    renderer->world_tracking = ar_world_tracking_provider_create(config);\n\n    ar_data_providers_t providers = ar_data_providers_create();\n    ar_data_providers_add_data_provider(providers, renderer->world_tracking);\n    ar_session_run(renderer->session, providers);\n\n    renderer->pose = ar_pose_create();\n\n    ...\n}"
+    },
+    {
+      "title": "World Tracking Device Pose Render function",
+      "language": "swift",
+      "startTimeSeconds": 621,
+      "code": "// World tracking\n// Device pose\n\nvoid render(struct Renderer *renderer,\n            cp_layer_t       layer,\n            cp_frame_t       frame_encoder,\n            cp_drawable_t    drawable) {\n    const cp_frame_timing_t timing_info = cp_drawable_get_frame_timing(drawable);\n    const cp_time_t presentation_time = cp_frame_timing_get_presentation_time(timing_info);\n    const CFTimeInterval target_render_time = cp_time_to_cf_time_interval(presentation_time);\n\n    simd_float4x4 pose = matrix_identity_float4x4;\n\n    const ar_pose_status_t status =\n        ar_world_tracking_provider_query_pose_at_timestamp(renderer->world_tracking,\n                                                           target_render_time,\n                                                           renderer->pose);\n\n    if (status == ar_pose_status_success) {\n        pose = ar_pose_get_origin_from_device_transform(renderer->pose);\n    }\n\n    ...\n\n    cp_drawable_set_ar_pose(drawable, renderer->pose);\n\n    ...\n}"
+    },
+    {
+      "title": "Hand tracking joints",
+      "language": "swift",
+      "startTimeSeconds": 960,
+      "code": "/ Hand tracking\n\n@available(xrOS 1.0, *)\npublic struct Skeleton : @unchecked Sendable, CustomStringConvertible {\n\n    public func joint(named: SkeletonDefinition.JointName) -> Skeleton.Joint \n\n    public struct Joint : CustomStringConvertible, @unchecked Sendable {\n\n        public var parentJoint: Skeleton.Joint? { get }\n\n        public var name: String { get }\n\n        public var localTransform: simd_float4x4 { get }\n\n        public var rootTransform: simd_float4x4 { get }\n\n        public var isTracked: Bool { get }\n    }\n}"
+    },
+    {
+      "title": "Hand tracking with Render struct",
+      "language": "swift",
+      "startTimeSeconds": 1020,
+      "code": "// Hand tracking\n// Polling for hands\n\nstruct Renderer {\n    ar_hand_tracking_provider_t  hand_tracking;\n    struct {\n        ar_hand_anchor_t left;\n        ar_hand_anchor_t right;\n    } hands;\n\n    ...\n};\n\nvoid renderer_init(struct Renderer *renderer) {\n    ...\n\n    ar_hand_tracking_configuration_t hand_config = ar_hand_tracking_configuration_create();\n    renderer->hand_tracking = ar_hand_tracking_provider_create(hand_config);\n\n    ar_data_providers_t providers = ar_data_providers_create();\n    ar_data_providers_add_data_provider(providers, renderer->world_tracking);\n    ar_data_providers_add_data_provider(providers, renderer->hand_tracking);\n    ar_session_run(renderer->session, providers);\n\n    renderer->hands.left = ar_hand_anchor_create();\n    renderer->hands.right = ar_hand_anchor_create();\n\n    ...\n}"
+    },
+    {
+      "title": "hand tracking call in render function",
+      "language": "swift",
+      "startTimeSeconds": 1045,
+      "code": "// Hand tracking\n// Polling for hands\n\nvoid render(struct Renderer *renderer,\n            ... ) {\n    ...\n\n    ar_hand_tracking_provider_get_latest_anchors(renderer->hand_tracking,\n                                                 renderer->hands.left,\n                                                 renderer->hands.right);\n\n    if (ar_trackable_anchor_is_tracked(renderer->hands.left)) {\n        const simd_float4x4 origin_from_wrist \n            = ar_anchor_get_origin_from_anchor_transform(renderer->hands.left);\n\n        ...\n    }\n\n    ...\n}"
+    },
+    {
+      "title": "Demo app TimeForCube",
+      "language": "swift",
+      "startTimeSeconds": 1080,
+      "code": "// App\n\n@main\nstruct TimeForCube: App {\n   @StateObject var model = TimeForCubeViewModel()\n\n    var body: some SwiftUI.Scene {\n        ImmersiveSpace {\n            RealityView { content in\n                content.add(model.setupContentEntity())\n            }\n            .task {\n                await model.runSession()\n            }\n            .task {\n                await model.processHandUpdates()\n            }\n            .task {\n                await model.processReconstructionUpdates()\n            }\n            .gesture(SpatialTapGesture().targetedToAnyEntity().onEnded({ value in\n                let location3D = value.convert(value.location3D, from: .global, to: .scene)\n                model.addCube(tapLocation: location3D)\n            }))\n        }\n    }\n}"
+    },
+    {
+      "title": "Demo app View Model",
+      "language": "swift",
+      "startTimeSeconds": 1130,
+      "code": "// View model\n\n@MainActor class TimeForCubeViewModel: ObservableObject {\n    private let session = ARKitSession()\n    private let handTracking = HandTrackingProvider()\n    private let sceneReconstruction = SceneReconstructionProvider()\n\n    private var contentEntity = Entity()\n\n    private var meshEntities = [UUID: ModelEntity]()\n\n    private let fingerEntities: [HandAnchor.Chirality: ModelEntity] = [\n        .left: .createFingertip(),\n        .right: .createFingertip()\n    ]\n\n    func setupContentEntity() { ... }\n\n    func runSession() async { ... }\n\n    func processHandUpdates() async { ... }\n\n    func processReconstructionUpdates() async { ... }\n\n    func addCube(tapLocation: SIMD3<Float>) { ... }\n}"
+    },
+    {
+      "title": "function HandTrackingProvider",
+      "language": "swift",
+      "startTimeSeconds": 1200,
+      "code": "class TimeForCubeViewModel: ObservableObject {\n    ...\n    private let fingerEntities: [HandAnchor.Chirality: ModelEntity] = [\n        .left: .createFingertip(),\n        .right: .createFingertip()\n    ]\n\n    ...\n    func processHandUpdates() async {\n        for await update in handTracking.anchorUpdates {\n            let handAnchor = update.anchor\n\n            guard handAnchor.isTracked else { continue }\n\n            let fingertip = handAnchor.skeleton.joint(named: .handIndexFingerTip)\n\n            guard fingertip.isTracked else { continue }\n\n            let originFromWrist = handAnchor.transform\n            let wristFromIndex = fingertip.rootTransform\n            let originFromIndex = originFromWrist * wristFromIndex\n\n            fingerEntities[handAnchor.chirality]?.setTransformMatrix(originFromIndex,             relativeTo: nil)\n        }"
+    },
+    {
+      "title": "function SceneReconstruction",
+      "language": "swift",
+      "startTimeSeconds": 1280,
+      "code": "func processReconstructionUpdates() async {\n        for await update in sceneReconstruction.anchorUpdates {\n            let meshAnchor = update.anchor\n\n            guard let shape = try? await ShapeResource.generateStaticMesh(from: meshAnchor)             else { continue }\n\n            switch update.event {\n            case .added:\n                let entity = ModelEntity()\n                entity.transform = Transform(matrix: meshAnchor.transform)\n                entity.collision = CollisionComponent(shapes: [shape], isStatic: true)\n                entity.physicsBody = PhysicsBodyComponent()\n                entity.components.set(InputTargetComponent())\n\n                meshEntities[meshAnchor.id] = entity\n                contentEntity.addChild(entity)\n            case .updated:\n                guard let entity = meshEntities[meshAnchor.id] else { fatalError(\"...\") }\n                entity.transform = Transform(matrix: meshAnchor.transform)\n                entity.collision?.shapes = [shape]\n            case .removed:\n                meshEntities[meshAnchor.id]?.removeFromParent()\n                meshEntities.removeValue(forKey: meshAnchor.id)\n            @unknown default:\n                fatalError(\"Unsupported anchor event\")\n            }\n        }\n    }"
+    },
+    {
+      "title": "add cube at tap location",
+      "language": "swift",
+      "startTimeSeconds": 1340,
+      "code": "class TimeForCubeViewModel: ObservableObject {\n    func addCube(tapLocation: SIMD3<Float>) {\n        let placementLocation = tapLocation + SIMD3<Float>(0, 0.2, 0)\n\n        let entity = ModelEntity(\n            mesh: .generateBox(size: 0.1, cornerRadius: 0.0),\n            materials: [SimpleMaterial(color: .systemPink, isMetallic: false)],\n            collisionShape: .generateBox(size: SIMD3<Float>(repeating: 0.1)),\n            mass: 1.0)\n\n        entity.setPosition(placementLocation, relativeTo: nil)\n        entity.components.set(InputTargetComponent(allowedInputTypes: .indirect))\n\n        let material = PhysicsMaterialResource.generate(friction: 0.8, restitution: 0.0)\n        entity.components.set(PhysicsBodyComponent(shapes: entity.collision!.shapes,\n                                                   mass: 1.0,\n                                                   material: material,\n                                                   mode: .dynamic))\n\n        contentEntity.addChild(entity)\n    }\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2023/10082-meet-arkit-for-spatial-computing/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10082-meet-arkit-for-spatial-computing/metadata.json",
+    "readme": "sessions/wwdc2023/10082-meet-arkit-for-spatial-computing/README.md",
+    "transcript": "sessions/wwdc2023/10082-meet-arkit-for-spatial-computing/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10082-meet-arkit-for-spatial-computing/transcript.json"
+  }
+}

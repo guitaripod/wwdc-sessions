@@ -1,0 +1,114 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2024-10115",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10115,
+  "title": "Enhance the immersion of media viewing in custom environments",
+  "description": "Extend your media viewing experience using Reality Composer Pro components like Docking Region, Reverb, and Virtual Environment Probe. Find out how to further enhance immersion using Reflections, Tint Surroundings Effect, SharePlay, and the Immersive Environment Picker.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10115",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10115",
+  "type": "Video",
+  "publishedAt": "2024-06-11T08:00:00-07:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [
+    "brightness",
+    "custom environments",
+    "diffuse",
+    "docking region component",
+    "group session",
+    "immersive environment picker",
+    "light spill",
+    "media playback",
+    "reality composer pro",
+    "realitykit",
+    "reflections",
+    "reverb",
+    "shareplay",
+    "specular",
+    "tint",
+    "virtual environment probe"
+  ],
+  "topics": [
+    "Spatial Computing",
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 1046,
+  "hasTranscript": true,
+  "transcriptWordCount": 2773,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10115/4/6A9F8C82-702C-4646-8039-A898373DFDAD/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10115/4/6A9F8C82-702C-4646-8039-A898373DFDAD/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10115/4/6A9F8C82-702C-4646-8039-A898373DFDAD/downloads/wwdc2024-10115_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10115/4/6A9F8C82-702C-4646-8039-A898373DFDAD/downloads/wwdc2024-10115_hd.mp4",
+    "duration": 1046
+  },
+  "codeSnippets": [
+    {
+      "title": "Add environments to the Immersive Environment Picker",
+      "language": "swift",
+      "startTimeSeconds": 914,
+      "code": "WindowGroup {\n            ContentView()\n                .immersiveEnvironmentPicker {\n                    ForEach(viewModel.environmentItems) { item in\n                        Button(item.title, image: item.thumbnail) {\n                            Task { \n                                await openImmersiveSpace(id: item.id)\n                            }\n                        }\n                    }\n                }\n        }"
+    },
+    {
+      "title": "Synchronization of an environment state using SharePlay",
+      "language": "swift",
+      "startTimeSeconds": 947,
+      "code": "import AVKit\nimport GroupActivities\n\n   for await session in MyActivity.sessions() {\n\n        // join the session, activate the activity, etc.\n\n        playerViewController\n            .player?\n            .playbackCoordinator\n            .coordinateWithSession(session)\n\n        playerViewController\n            .groupExperienceCoordinator\n            .coordinateWithSession(session)\n    }"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Enabling video reflections in an immersive environment",
+      "url": "https://developer.apple.com/documentation/visionOS/enabling-video-reflections-in-an-immersive-environment",
+      "type": "samplecode",
+      "description": "Create a more immersive experience by adding video reflections in a custom environment.",
+      "sosumiURL": "https://sosumi.ai/documentation/visionOS/enabling-video-reflections-in-an-immersive-environment",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/visionOS/enabling-video-reflections-in-an-immersive-environment.json"
+    },
+    {
+      "title": "Building an immersive media viewing experience",
+      "url": "https://developer.apple.com/documentation/visionOS/building-an-immersive-media-viewing-experience",
+      "type": "samplecode",
+      "description": "Add a deeper level of immersion to media playback in your app with RealityKit and Reality Composer Pro.",
+      "sosumiURL": "https://sosumi.ai/documentation/visionOS/building-an-immersive-media-viewing-experience",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/visionOS/building-an-immersive-media-viewing-experience.json"
+    },
+    {
+      "title": "Forum: Media Technologies",
+      "url": "https://developer.apple.com/forums/topics/media-technologies?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/media-technologies?cid=vf-a-0010"
+    },
+    {
+      "title": "Destination Video",
+      "url": "https://developer.apple.com/documentation/visionOS/destination-video",
+      "type": "samplecode",
+      "description": "Leverage SwiftUI to build an immersive media experience in a multiplatform app.",
+      "sosumiURL": "https://sosumi.ai/documentation/visionOS/destination-video",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/visionOS/destination-video.json"
+    }
+  ],
+  "path": "sessions/wwdc2024/10115-enhance-the-immersion-of-media-viewing-in-custom-environment/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10115-enhance-the-immersion-of-media-viewing-in-custom-environment/metadata.json",
+    "readme": "sessions/wwdc2024/10115-enhance-the-immersion-of-media-viewing-in-custom-environment/README.md",
+    "transcript": "sessions/wwdc2024/10115-enhance-the-immersion-of-media-viewing-in-custom-environment/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10115-enhance-the-immersion-of-media-viewing-in-custom-environment/transcript.json"
+  }
+}

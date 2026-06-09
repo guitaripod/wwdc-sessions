@@ -1,0 +1,218 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10128",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10128,
+  "title": "Your guide to Metal ray tracing",
+  "description": "Discover how you can enhance the visual quality of your games and apps with Metal ray tracing. We’ll take you through the fundamentals of the Metal ray tracing API. Explore the latest enhancements and techniques that will enable you to create larger and more complex scenes, reduce memory usage and build times, and efficiently render visual content like hair and fur.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10128",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10128",
+  "type": "Video",
+  "publishedAt": "2023-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1918,
+  "hasTranscript": true,
+  "transcriptWordCount": 4498,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10128/5/D57CE53D-520E-44FB-99BA-4E63AA58C47C/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10128/5/D57CE53D-520E-44FB-99BA-4E63AA58C47C/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10128/5/D57CE53D-520E-44FB-99BA-4E63AA58C47C/downloads/wwdc2023-10128_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10128/5/D57CE53D-520E-44FB-99BA-4E63AA58C47C/downloads/wwdc2023-10128_hd.mp4",
+    "duration": 1918
+  },
+  "codeSnippets": [
+    {
+      "title": "Create triangle geometry descriptor",
+      "language": "swift",
+      "startTimeSeconds": 186,
+      "code": "// Create geometry descriptor:\nlet geometryDescriptor = MTLAccelerationStructureTriangleGeometryDescriptor()\n\ngeometryDescriptor.vertexBuffer = vertexBuffer\ngeometryDescriptor.indexBuffer = indexBuffer\ngeometryDescriptor.triangleCount = triangleCount"
+    },
+    {
+      "title": "Create bounding box geometry descriptor",
+      "language": "swift",
+      "startTimeSeconds": 200,
+      "code": "// Create geometry descriptor:\nlet geometryDescriptor = MTLAccelerationStructureBoundingBoxGeometryDescriptor()\n\ngeometryDescriptor.boundingBoxBuffer = boundingBoxBuffer\ngeometryDescriptor.boundingBoxCount = boundingBoxCount"
+    },
+    {
+      "title": "Create curve geometry descriptor",
+      "language": "swift",
+      "startTimeSeconds": 402,
+      "code": "let geometryDescriptor = MTLAccelerationStructureCurveGeometryDescriptor()\n\ngeometryDescriptor.controlPointBuffer = controlPointBuffer\ngeometryDescriptor.radiusBuffer = radiusBuffer\ngeometryDescriptor.indexBuffer = indexBuffer\n\ngeometryDescriptor.controlPointCount = controlPointCount\ngeometryDescriptor.segmentCount = segmentCount\ngeometryDescriptor.curveType = .round\ngeometryDescriptor.curveBasis = .bezier\ngeometryDescriptor.segmentControlPointCount = 4"
+    },
+    {
+      "title": "Create primitive acceleration structure descriptor",
+      "language": "swift",
+      "startTimeSeconds": 449,
+      "code": "// Create acceleration structure descriptor\nlet accelerationStructureDescriptor = MTLPrimitiveAccelerationStructureDescriptor()\n\n// Add geometry descriptor to acceleration structure descriptor\naccelerationStructureDescriptor.geometryDescriptors = [ geometryDescriptor ]"
+    },
+    {
+      "title": "Query for acceleration size and alignment requirements",
+      "language": "swift",
+      "startTimeSeconds": 488,
+      "code": "// Query for acceleration structure sizes\nlet sizes: MTLAccelerationStructureSizes\nsizes = device.accelerationStructureSizes(descriptor: accelerationStructureDescriptor)\n\n// Query for size and alignment requirement in a heap\nlet heapSize: MTLSizeAndAlign\nheapSize = device.heapAccelerationStructureSizeAndAlign(size: sizes.accelerationStructureSize)"
+    },
+    {
+      "title": "Allocate acceleration structure and scratch buffer",
+      "language": "swift",
+      "startTimeSeconds": 519,
+      "code": "// Allocate acceleration structure from heap\nvar accelerationStructure: MTLAccelerationStructure!\naccelerationStructure = heap.makeAccelerationStructure(size: heapSize.size)\n\n// Allocate scratch buffer\nlet scratchBuffer = device.makeBuffer(length: sizes.buildScratchBufferSize,\n                                      options: .storageModePrivate)!"
+    },
+    {
+      "title": "Encode the acceleration structure build",
+      "language": "swift",
+      "startTimeSeconds": 520,
+      "code": "let commandEncoder = commandBuffer.makeAccelerationStructureCommandEncoder()!\n\ncommandEncoder.build(accelerationStructure: accelerationStructure,\n                     descriptor: accelerationStructureDescriptor,\n                     scratchBuffer: scratchBuffer,\n                     scratchBufferOffset: 0)\n\ncommandEncoder.endEncoding()"
+    },
+    {
+      "title": "Create instance acceleration structure descriptor",
+      "language": "swift",
+      "startTimeSeconds": 690,
+      "code": "var instanceASDesc = MTLInstanceAccelerationStructureDescriptor()\n\ninstanceASDesc.instanceCount = ...\ninstanceASDesc.instancedAccelerationStructures = [ mountainAS, treeAS, ... ]\ninstanceASDesc.instanceDescriptorType = .userID"
+    },
+    {
+      "title": "Allocate the instance descriptor buffer",
+      "language": "swift",
+      "startTimeSeconds": 727,
+      "code": "let size = MemoryLayout<MTLAccelerationStructureUserIDInstanceDescriptor>.stride\nlet instanceDescriptorBufferSize = size * instanceASDesc.instanceCount\n\nlet instanceDescriptorBuffer = device.makeBuffer(length: instanceDescriptorBufferSize,\n                                                 options: .storageModeShared)!\n\ninstanceASDesc.instanceDescriptorBuffer = instanceDescriptorBuffer"
+    },
+    {
+      "title": "Populate instance descriptors",
+      "language": "swift",
+      "startTimeSeconds": 753,
+      "code": "var instanceDesc = MTLAccelerationStructureUserIDInstanceDescriptor()\n\ninstanceDesc.accelerationStructureIndex = 0    // index into instancedAccelerationStructures\ninstanceDesc.transformationMatrix = ...\ninstanceDesc.mask = 0xFFFFFFFF"
+    },
+    {
+      "title": "Configure indirect instance acceleration structure descriptor",
+      "language": "swift",
+      "startTimeSeconds": 846,
+      "code": "var instanceASDesc = MTLIndirectInstanceAccelerationStructureDescriptor()\n\ninstanceASDesc.instanceDescriptorType = .indirect\ninstanceASDesc.maxInstanceCount = ...\ninstanceASDesc.instanceCountBuffer = ...\ninstanceASDesc.instanceDescriptorBuffer = ..."
+    },
+    {
+      "title": "Populate indirect instance descriptor",
+      "language": "cpp",
+      "startTimeSeconds": 869,
+      "code": "device MTLIndirectAccelerationStructureInstanceDescriptor *instance_buffer = ...;\n// ...\nacceleration_structure<> as = ...;\ninstance_buffer[i].accelerationStructureID = as;\ninstance_buffer[i].transformationMatrix[0] = ...;\ninstance_buffer[i].transformationMatrix[1] = ...;\ninstance_buffer[i].transformationMatrix[2] = ...;\ninstance_buffer[i].transformationMatrix[3] = ...;\ninstance_buffer[i].mask = 0xFFFFFFFF;"
+    },
+    {
+      "title": "Update geometry using refitting",
+      "language": "swift",
+      "startTimeSeconds": 1162,
+      "code": "// Allocate scratch buffer\nlet scratchBuffer = device.makeBuffer(length: sizes.refitScratchBufferSize,\n                                      options: .storageModePrivate)!\n\n// Create command buffer/encoder ...\n\n// Refit acceleration structure\ncommandEncoder.refit(sourceAccelerationStructure: accelerationStructure,\n                     descriptor: asDescriptor,\n                     destinationAccelerationStructure: accelerationStructure,\n                     scratchBuffer: scratchBuffer,\n                     scratchBufferOffset: 0)"
+    },
+    {
+      "title": "Use compaction to reclaim memory",
+      "language": "swift",
+      "startTimeSeconds": 1224,
+      "code": "// Use compaction to reclaim memory\n\n// Create command buffer/encoder ...\n\nsizeCommandEncoder.writeCompactedSize(accelerationStructure: accelerationStructure,\n                                      buffer: sizeBuffer,\n                                      offset: 0,\n                                      sizeDataType: .ulong)\n\n// endEncoding(), commit command buffer and wait until completed ...\n\n// Allocate new acceleration structure using UInt64 from sizeBuffer ...\n\ncompactCommandEncoder.copyAndCompact(sourceAccelerationStructure: accelerationStructure,\n                             destinationAccelerationStructure: compactedAccelerationStructure)"
+    },
+    {
+      "title": "Set acceleration structure on the command encoder",
+      "language": "swift",
+      "startTimeSeconds": 1296,
+      "code": "encoder.setAccelerationStructure(primitiveAccelerationStructure, bufferIndex:0)"
+    },
+    {
+      "title": "Intersect rays with primitive acceleration structure",
+      "language": "cpp",
+      "startTimeSeconds": 1308,
+      "code": "// Intersect rays with a primitive acceleration structure\n\n[[kernel]]\nvoid trace_rays(acceleration_structure<> as, /* ... */) {\n  intersector<> i;\n\n  ray r(origin, direction);\n\n  intersection_result<> result = i.intersect(r, as);\n\n  if (result.type == intersection_type::triangle) {\n    float distance = result.distance;\n\n\n    // shade triangle...\n  }\n}"
+    },
+    {
+      "title": "Use triangle_data tag to get triangle barycentric coordinates",
+      "language": "cpp",
+      "startTimeSeconds": 1344,
+      "code": "// Intersect rays with a primitive acceleration structure\n\n[[kernel]]\nvoid trace_rays(acceleration_structure<> as, /* ... */) {\n  intersector<triangle_data> i;\n\n  ray r(origin, direction);\n\n  intersection_result<triangle_data> result = i.intersect(r, as);\n\n  if (result.type == intersection_type::triangle) {\n    float distance = result.distance;\n    float2 coords = result.triangle_barycentric_coord;\n\n    // shade triangle...\n  }\n}"
+    },
+    {
+      "title": "Set instance acceleration structure on the command encoder",
+      "language": "swift",
+      "startTimeSeconds": 1371,
+      "code": "encoder.setAccelerationStructure(instanceAccelerationStructure, bufferIndex:0)\nencoder.useHeap(accelerationStructureHeap);"
+    },
+    {
+      "title": "Intersect rays with instance acceleration structure",
+      "language": "cpp",
+      "startTimeSeconds": 1387,
+      "code": "// Intersect rays with an instance acceleration structure\n\n[[kernel]]\nvoid trace_rays(acceleration_structure<instancing> as, /* ... */) {\n  intersector<instancing, max_levels<3>> i;\n\n  ray r(origin, direction);\n\n  intersection_result<instancing, max_levels<3>> result = i.intersect(r, as);\n\n  if (result.type == intersection_type::triangle) {\n    float distance = result.distance;\n\n    // shade triangle...\n  }\n}"
+    },
+    {
+      "title": "Find intersected instance information in the intersection result",
+      "language": "cpp",
+      "startTimeSeconds": 1483,
+      "code": "// Intersect rays with an instance acceleration structure\n\n[[kernel]]\nvoid trace_rays(acceleration_structure<instancing> as, /* ... */) {\n  intersector<instancing, max_levels<3>> i;\n\n  ray r(origin, direction);\n\n  intersection_result<instancing, max_levels<3>> result = i.intersect(r, as);\n\n  if (result.type == intersection_type::triangle) {\n    float distance = result.distance;\n    for (uint i = 0; i < result.instance_count; ++i) {\n      uint id = result.instance_id[i];\n      // ...\n    }\n    // shade triangle...\n  }\n}"
+    },
+    {
+      "title": "Intersect rays with curve primitives",
+      "language": "cpp",
+      "startTimeSeconds": 1502,
+      "code": "// Intersect rays with curve primitives\n\n[[kernel]]\nvoid trace_rays(acceleration_structure<> as, /* ... */) {\n  intersector<> i;\n\n  i.assume_geometry_type(geometry_type::curve | geometry_type::triangle);\n\n  ray r(origin, direction);\n\n  intersection_result<> result = i.intersect(r, as);\n\n  if (result.type == intersection_type::curve) {\n    float distance = result.distance;\n    // shade curve...\n  }\n}"
+    },
+    {
+      "title": "Find curve parameter in the intersection result",
+      "language": "cpp",
+      "startTimeSeconds": 1526,
+      "code": "// Intersect rays with curve primitives\n\n[[kernel]]\nvoid trace_rays(acceleration_structure<> as, /* ... */) {\n  intersector<curve_data> i;\n\n  i.assume_geometry_type(geometry_type::curve | geometry_type::triangle);\n\n  ray r(origin, direction);\n\n  intersection_result<curve_data> result = i.intersect(r, as);\n\n  if (result.type == intersection_type::curve) {\n    float distance = result.distance;\n    float param = result.curve_parameter;\n    // shade curve...\n  }\n}"
+    },
+    {
+      "title": "Set geometry type on the intersector for better performance",
+      "language": "cpp",
+      "startTimeSeconds": 1564,
+      "code": "// Intersect rays with curve primitives\n\n[[kernel]]\nvoid trace_rays(acceleration_structure<> as, /* ... */) {\n  intersector<curve_data> i;\n\n  i.assume_geometry_type(geometry_type::curve | geometry_type::triangle);\n  i.assume_curve_type(curve_type::round);\n  i.assume_curve_basis(curve_basis::bezier);\n  i.assume_curve_control_point_count(3);\n\n  ray r(origin, direction);\n\n  intersection_result<curve_data> result = i.intersect(r, as);\n\n  if (result.type == intersection_type::curve) {\n    float distance = result.distance;\n    float param = result.curve_parameter;\n    // shade curve...\n  }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Rendering reflections in real time using ray tracing",
+      "url": "https://developer.apple.com/documentation/Metal/rendering-reflections-in-real-time-using-ray-tracing",
+      "type": "samplecode",
+      "description": "Implement realistic real-time lighting by dynamically generating reflection maps",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/rendering-reflections-in-real-time-using-ray-tracing",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/rendering-reflections-in-real-time-using-ray-tracing.json"
+    },
+    {
+      "title": "Accelerating ray tracing using Metal",
+      "url": "https://developer.apple.com/documentation/metal/metal_sample_code_library/accelerating_ray_tracing_using_metal",
+      "type": "samplecode",
+      "description": "Implement ray-traced rendering using GPU-based parallel processing.",
+      "sosumiURL": "https://sosumi.ai/documentation/metal/metal_sample_code_library/accelerating_ray_tracing_using_metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/metal/metal_sample_code_library/accelerating_ray_tracing_using_metal.json"
+    },
+    {
+      "title": "Metal for Accelerating Ray Tracing",
+      "url": "https://developer.apple.com/documentation/metal/metal_sample_code_library/accelerating_ray_tracing_using_metal",
+      "type": "documentation",
+      "description": "Use the Metal Performance Shaders ray intersector to perform ray-traced rendering.",
+      "sosumiURL": "https://sosumi.ai/documentation/metal/metal_sample_code_library/accelerating_ray_tracing_using_metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/metal/metal_sample_code_library/accelerating_ray_tracing_using_metal.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10128-your-guide-to-metal-ray-tracing/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10128-your-guide-to-metal-ray-tracing/metadata.json",
+    "readme": "sessions/wwdc2023/10128-your-guide-to-metal-ray-tracing/README.md",
+    "transcript": "sessions/wwdc2023/10128-your-guide-to-metal-ray-tracing/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10128-your-guide-to-metal-ray-tracing/transcript.json"
+  }
+}

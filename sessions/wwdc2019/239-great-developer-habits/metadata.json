@@ -1,0 +1,56 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-239",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 239,
+  "title": "Great Developer Habits",
+  "description": "Successful app development requires mastering a lot of different things. Discover practices you can incorporate into your development workflow to enhance your productivity, and improve your app’s performance and stability. Learn how to improve the quality of code you write with Xcode. Gain a practical understanding of some valuable development techniques.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/239",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/239",
+  "type": "Video",
+  "publishedAt": "2019-06-07T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Design",
+    "SwiftUI & UI Frameworks",
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 2074,
+  "hasTranscript": true,
+  "transcriptWordCount": 5638,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/239lnmy9z9ulgdrcej/239/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/239lnmy9z9ulgdrcej/239/239_sd_great_developer_habits.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/239lnmy9z9ulgdrcej/239/239_hd_great_developer_habits.mp4",
+    "duration": 2074
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/239-great-developer-habits/",
+  "files": {
+    "metadata": "sessions/wwdc2019/239-great-developer-habits/metadata.json",
+    "readme": "sessions/wwdc2019/239-great-developer-habits/README.md",
+    "transcript": "sessions/wwdc2019/239-great-developer-habits/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/239-great-developer-habits/transcript.json"
+  }
+}

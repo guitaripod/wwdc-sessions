@@ -1,0 +1,55 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "meet-with-apple-208",
+  "event": "meet-with-apple",
+  "eventName": "Meet with Apple",
+  "year": 2025,
+  "eventContentId": 208,
+  "title": "Showcase: Learn how apps are integrating the new design and Liquid Glass",
+  "description": "Learn directly from developers about how they implemented the new design and Liquid Glass across Apple platforms. In this series of online presentations by third-party teams, you’ll find out how developers of all sizes are embracing native design, expressing their brand identities, and quickly and successfully adopting the latest features. This activity also includes a panel discussion with Apple designers. Conducted in English.",
+  "url": "https://developer.apple.com/videos/play/meet-with-apple/208",
+  "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/208",
+  "type": "Video",
+  "publishedAt": "2025-11-18T10:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 6977,
+  "hasTranscript": true,
+  "transcriptWordCount": 17926,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/208/1/b3fa3082-7819-4f41-b832-cee515695595/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/208/1/b3fa3082-7819-4f41-b832-cee515695595/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/208/1/b3fa3082-7819-4f41-b832-cee515695595/downloads/meet-with-apple-208_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/208/1/b3fa3082-7819-4f41-b832-cee515695595/downloads/meet-with-apple-208_hd.mp4",
+    "duration": 6977
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/meet-with-apple/208-showcase-learn-how-apps-are-integrating-the-new-design-and-l/",
+  "files": {
+    "metadata": "sessions/meet-with-apple/208-showcase-learn-how-apps-are-integrating-the-new-design-and-l/metadata.json",
+    "readme": "sessions/meet-with-apple/208-showcase-learn-how-apps-are-integrating-the-new-design-and-l/README.md",
+    "transcript": "sessions/meet-with-apple/208-showcase-learn-how-apps-are-integrating-the-new-design-and-l/transcript.md",
+    "transcriptJSON": "sessions/meet-with-apple/208-showcase-learn-how-apps-are-integrating-the-new-design-and-l/transcript.json"
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2018-706",
+  "event": "wwdc2018",
+  "eventName": "WWDC18",
+  "year": 2018,
+  "eventContentId": 706,
+  "title": "Accessing Health Records with HealthKit",
+  "description": "HealthKit provides a consolidated repository for a variety of data including health records containing information such as lab results, immunizations, and medications downloaded directly from institutions. Discover new health records classes and types created to provide easy access to high-level record types without preventing access to the underlying raw data. Learn new authorization techniques that allows your app to access health record data for analysis and presentation in a manner that respects your customer's privacy.",
+  "url": "https://developer.apple.com/videos/play/wwdc2018/706",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2018/706",
+  "type": "Video",
+  "publishedAt": "2018-06-05T15:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "fitness",
+    "health",
+    "healthkit",
+    "health records",
+    "workouts"
+  ],
+  "topics": [
+    "Health & Fitness"
+  ],
+  "primaryTopic": "Health & Fitness",
+  "duration": 2281,
+  "hasTranscript": true,
+  "transcriptWordCount": 4698,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/706pjh63zj75v07w6/706/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/706pjh63zj75v07w6/706/706_sd_accessing_health_records_with_healthkit.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/706pjh63zj75v07w6/706/706_hd_accessing_health_records_with_healthkit.mp4",
+    "duration": 2281
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Accessing Health Records",
+      "url": "https://developer.apple.com/documentation/HealthKit/accessing-health-records",
+      "type": "guide",
+      "description": "Read clinical record data from the HealthKit store.",
+      "sosumiURL": "https://sosumi.ai/documentation/HealthKit/accessing-health-records",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HealthKit/accessing-health-records.json"
+    },
+    {
+      "title": "FHIR specification (DSTU2, 1.0.2)",
+      "url": "http://hl7.org/fhir/DSTU2/index.html",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "HL7 FHIR Foundation",
+      "url": "http://www.fhir.org",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Argonaut Data Query Implementation Guide",
+      "url": "http://www.fhir.org/guides/argonaut/r2/index.html",
+      "type": "documentation",
+      "description": null
+    }
+  ],
+  "path": "sessions/wwdc2018/706-accessing-health-records-with-healthkit/",
+  "files": {
+    "metadata": "sessions/wwdc2018/706-accessing-health-records-with-healthkit/metadata.json",
+    "readme": "sessions/wwdc2018/706-accessing-health-records-with-healthkit/README.md",
+    "transcript": "sessions/wwdc2018/706-accessing-health-records-with-healthkit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2018/706-accessing-health-records-with-healthkit/transcript.json"
+  }
+}

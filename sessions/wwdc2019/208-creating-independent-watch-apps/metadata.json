@@ -1,0 +1,87 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-208",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 208,
+  "title": "Creating Independent Watch Apps",
+  "description": "watchOS 6 enables a whole new level of watchOS experiences by allowing fully independent apps and apps built just for Apple Watch, and by bringing the App Store to Apple Watch. Discover how to leverage the power of many iOS frameworks and technologies, now on watchOS, to create fully independent experiences on Apple Watch.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/208",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/208",
+  "type": "Video",
+  "publishedAt": "2019-06-04T15:00:00-07:00",
+  "platforms": [
+    "watchOS"
+  ],
+  "keywords": [
+    "⌚️",
+    "apple watch",
+    "clkcomplication",
+    "clockkit",
+    "cloudkit",
+    "complications",
+    "digital crown",
+    "dynamic notifications",
+    "extended runtime",
+    "independence",
+    "independent",
+    "interactive notifications",
+    "notifications",
+    "sign in with apple",
+    "unnotification",
+    "watch",
+    "watchkit",
+    "watchos",
+    "wkinterface"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1683,
+  "hasTranscript": true,
+  "transcriptWordCount": 4174,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/208ryw5t6xyu0a6/208/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/208ryw5t6xyu0a6/208/208_sd_creating_independent_watch_apps.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/208ryw5t6xyu0a6/208/208_hd_creating_independent_watch_apps.mp4",
+    "duration": 1683
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Creating independent watchOS apps",
+      "url": "https://developer.apple.com/documentation/watchOS-Apps/creating-independent-watchos-apps",
+      "type": "documentation",
+      "description": "Set up a watchOS app that installs and runs without a companion iOS app.",
+      "sosumiURL": "https://sosumi.ai/documentation/watchOS-Apps/creating-independent-watchos-apps",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/watchOS-Apps/creating-independent-watchos-apps.json"
+    },
+    {
+      "title": "WatchKit",
+      "url": "https://developer.apple.com/documentation/WatchKit",
+      "type": "documentation",
+      "description": "Build watchOS apps that use features the app delegate monitors or controls, such as background tasks and extended runtime sessions.",
+      "sosumiURL": "https://sosumi.ai/documentation/WatchKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WatchKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/208-creating-independent-watch-apps/",
+  "files": {
+    "metadata": "sessions/wwdc2019/208-creating-independent-watch-apps/metadata.json",
+    "readme": "sessions/wwdc2019/208-creating-independent-watch-apps/README.md",
+    "transcript": "sessions/wwdc2019/208-creating-independent-watch-apps/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/208-creating-independent-watch-apps/transcript.json"
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10250",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10250,
+  "title": "Prototype with Xcode Playgrounds",
+  "description": "Speed up feature development by prototyping new code with Xcode Playgrounds, eliminating the need to keep rebuilding and relaunching your project to verify your changes. We’ll show you how using a playground in your project or package can help you try out your code in various scenarios and take a close look at the returned values, including complex structures and user interface elements, so you can quickly iterate on a feature before integrating it into your project.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10250",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10250",
+  "type": "Video",
+  "publishedAt": "2023-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "🦉",
+    "⚡️"
+  ],
+  "topics": [
+    "Essentials",
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 1466,
+  "hasTranscript": true,
+  "transcriptWordCount": 2858,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10250/3/A3F1820C-593C-4DF2-A36B-F95FA81B1BBC/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10250/3/A3F1820C-593C-4DF2-A36B-F95FA81B1BBC/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10250/3/A3F1820C-593C-4DF2-A36B-F95FA81B1BBC/downloads/wwdc2023-10250_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10250/3/A3F1820C-593C-4DF2-A36B-F95FA81B1BBC/downloads/wwdc2023-10250_hd.mp4",
+    "duration": 1466
+  },
+  "codeSnippets": [
+    {
+      "title": "birdsToShow computed property before the required changes",
+      "language": "swift",
+      "startTimeSeconds": 124,
+      "code": "var birdsToShow: [Bird] {\n    // TODO: Narrow down the list of birds to find.\n    let birdProvider = BirdProvider(region: .northAmerica)\n    return birdProvider.birds\n}"
+    },
+    {
+      "title": "birdProvider instance",
+      "language": "swift",
+      "startTimeSeconds": 255,
+      "code": "let birdProvider = BirdProvider(region: .northAmerica)"
+    },
+    {
+      "title": "CustomStringConvertible",
+      "language": "swift",
+      "startTimeSeconds": 391,
+      "code": "extension Bird: CustomStringConvertible {\n\n    public var description: String {\n        return \"\\(commonName) (\\(scientificName))\"\n    }\n\n}"
+    },
+    {
+      "title": "CustomPlaygroundDisplayConvertible",
+      "language": "swift",
+      "startTimeSeconds": 497,
+      "code": "extension Bird: CustomPlaygroundDisplayConvertible {\n\n    public var playgroundDescription: Any {\n        return photo as Any\n    }\n\n}"
+    },
+    {
+      "title": "Birds without a photo",
+      "language": "swift",
+      "startTimeSeconds": 585,
+      "code": "let birdsToFind = birdProvider.birds.filter { $0.photo == nil }"
+    },
+    {
+      "title": "Owls without a photo",
+      "language": "swift",
+      "startTimeSeconds": 652,
+      "code": "let owlsToFind = birdsToFind.filter { $0.family == .owls }"
+    },
+    {
+      "title": "Verifying the ChecklistView",
+      "language": "swift",
+      "startTimeSeconds": 675,
+      "code": "let checklist = ChecklistView()\nfor bird in owlsToFind {\n    checklist.add(bird)\n}"
+    },
+    {
+      "title": "birdsToShow computed property with the required changes",
+      "language": "swift",
+      "startTimeSeconds": 821,
+      "code": "var birdsToShow: [Bird] {\n    let birdProvider = BirdProvider(region: .northAmerica)\n    let birdsToFind = birdProvider.birds.filter { $0.photo == nil }\n    let owlsToFind = birdsToFind.filter { $0.family == .owls }\n    return owlsToFind\n}"
+    },
+    {
+      "title": "sightingToShow function before the required changes",
+      "language": "swift",
+      "startTimeSeconds": 861,
+      "code": "func sightingToShow(for bird: Bird) -> Sighting? {\n    // TODO: Use BirdSightings package to fetch the most recent sighting.\n    return nil\n}"
+    },
+    {
+      "title": "BirdSightings package example",
+      "language": "swift",
+      "startTimeSeconds": 904,
+      "code": "let barnOwlCode = \"BNOW\"\nlet centralParkLocation = CLLocationCoordinate2D(latitude:  40.785091, longitude: -73.968285)\n\nlet sightingsProvider = SightingsProvider()\nsightingsProvider.fetchSightings(of: barnOwlCode, around: centralParkLocation)"
+    },
+    {
+      "title": "Parameters for sightings fetching",
+      "language": "swift",
+      "startTimeSeconds": 968,
+      "code": "let bird = owlsToFind.first!\nlet appleParkLocation = CLLocationCoordinate2D(latitude: 37.3348655, longitude: 122.0089409)"
+    },
+    {
+      "title": "Sightings fetching",
+      "language": "swift",
+      "startTimeSeconds": 1051,
+      "code": "let sightingsProvider = SightingsProvider()\nlet sightings = sightingsProvider.fetchSightings(of: bird.speciesCode, around: appleParkLocation)"
+    },
+    {
+      "title": "Initializing the SightingMapView",
+      "language": "swift",
+      "startTimeSeconds": 1103,
+      "code": "let mostRecentSighting = sightings.first\nlet sightingMapView = SightingMapView(sighting: mostRecentSighting)"
+    },
+    {
+      "title": "Setting up the playground's live view",
+      "language": "swift",
+      "startTimeSeconds": 1135,
+      "code": "import PlaygroundSupport\nPlaygroundPage.current.liveView = sightingMapView"
+    },
+    {
+      "title": "sightingToShow function with the required changes",
+      "language": "swift",
+      "startTimeSeconds": 1340,
+      "code": "func sightingToShow(for bird: Bird) -> Sighting? {\n    let sightingsProvider = SightingsProvider()\n    let sightings = sightingsProvider.fetchSightings(of: bird.speciesCode, around: lastCurrentLocation)\n    let mostRecentSighting = sightings.first\n    return mostRecentSighting\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2023/10250-prototype-with-xcode-playgrounds/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10250-prototype-with-xcode-playgrounds/metadata.json",
+    "readme": "sessions/wwdc2023/10250-prototype-with-xcode-playgrounds/README.md",
+    "transcript": "sessions/wwdc2023/10250-prototype-with-xcode-playgrounds/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10250-prototype-with-xcode-playgrounds/transcript.json"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2016-501",
+  "event": "wwdc2016",
+  "eventName": "WWDC16",
+  "year": 2016,
+  "eventContentId": 501,
+  "title": "Advances in iOS Photography",
+  "description": "People love to take pictures with iPhone. In fact, it's the most popular camera in the world, and photography apps empower this experience. Explore new AVFoundation Capture APIs which allow for the capture of Live Photos, RAW image data from the camera, and wide color photos.",
+  "url": "https://developer.apple.com/videos/play/wwdc2016/501",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2016/501",
+  "type": "Video",
+  "publishedAt": "2016-06-14T11:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "camera",
+    "capture",
+    "editing",
+    "image",
+    "jpg",
+    "live photo",
+    "photo",
+    "raw"
+  ],
+  "topics": [
+    "Photos & Camera"
+  ],
+  "primaryTopic": "Photos & Camera",
+  "duration": 3582,
+  "hasTranscript": true,
+  "transcriptWordCount": 9287,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2016/501l32ujtbnw2ad06wy/501/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2016/501l32ujtbnw2ad06wy/501/501_sd_advances_in_ios_photography.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2016/501l32ujtbnw2ad06wy/501/501_hd_advances_in_ios_photography.mp4",
+    "duration": 3582
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2016/501-advances-in-ios-photography/",
+  "files": {
+    "metadata": "sessions/wwdc2016/501-advances-in-ios-photography/metadata.json",
+    "readme": "sessions/wwdc2016/501-advances-in-ios-photography/README.md",
+    "transcript": "sessions/wwdc2016/501-advances-in-ios-photography/transcript.md",
+    "transcriptJSON": "sessions/wwdc2016/501-advances-in-ios-photography/transcript.json"
+  }
+}

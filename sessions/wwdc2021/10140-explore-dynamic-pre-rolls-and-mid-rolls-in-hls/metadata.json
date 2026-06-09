@@ -1,0 +1,92 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10140",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10140,
+  "title": "Explore dynamic pre-rolls and mid-rolls in HLS",
+  "description": "Learn how you can create seamless transitions between advertisements and your HLS streams. We’ll show you how to incorporate HLS tags and AVFoundation APIs to create media experiences that move easily between your primary content and mid-rolls, and provide best practices for playing these streams in your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10140",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10140",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "ads",
+    "advertisements",
+    "interstitals",
+    "interstitial"
+  ],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 919,
+  "hasTranscript": true,
+  "transcriptWordCount": 2668,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10140/15/4961CE04-6EAD-4B07-BD40-70010F74EF0D/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10140/15/4961CE04-6EAD-4B07-BD40-70010F74EF0D/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10140/15/4961CE04-6EAD-4B07-BD40-70010F74EF0D/downloads/wwdc2021-10140_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10140/15/4961CE04-6EAD-4B07-BD40-70010F74EF0D/downloads/wwdc2021-10140_hd.mp4",
+    "duration": 919
+  },
+  "codeSnippets": [
+    {
+      "title": "AVPlayerInterstitialEvent",
+      "language": "swift",
+      "startTimeSeconds": 590,
+      "code": "class AVPlayerInterstitialEvent {\n    var primaryItem: AVPlayerItem? { get }\n    var identifier: String { get }\n    var time: CMTime { get }\n    var date: Date? { get }\n    var templateItems: [AVPlayerItem] { get }\n    var restrictions: AVPlayerInterstitialEvent.Restrictions { get }\n    var resumptionOffset: CMTime { get }\n    var playoutLimit: CMTime { get }\n    var userDefinedAttributes: [AnyHashable : Any] { get }\n}"
+    },
+    {
+      "title": "Observing server inserted events",
+      "language": "swift",
+      "startTimeSeconds": 658,
+      "code": "// Client observes server-side interstitial playback\nlet player = AVPlayer(url: movieURL) // movieURL has EXT-X-DATERANGE ad tags\nlet observer = AVPlayerInterstitialEventMonitor(primaryPlayer: player)\nNotificationCenter.default.addObserver(\n  forName: AVPlayerInterstitialEventMonitor.currentEventDidChangeNotification,\n  object: observer,\n  queue: OperationQueue.main) {\n      notification_ in\n      self.updateUI(observer.currentEvent, observer.interstitialPlayer)\n}"
+    },
+    {
+      "title": "AVPlayerInterstitialEventController",
+      "language": "swift",
+      "startTimeSeconds": 700,
+      "code": "class AVPlayerInterstitialEventController : AVPlayerInterstitialEventMonitor {\n    var events: [AVPlayerInterstitialEvent]!\n    func cancelCurrentEvent(withResumptionOffset resumptionOffset: CMTime) \n}"
+    },
+    {
+      "title": "Client schedules ad pod",
+      "language": "swift",
+      "startTimeSeconds": 721,
+      "code": "// Client inserted events\n\n// Client schedules an ad pod at 10s into primary asset\nlet player  = AVPlayer(url: movieURL)  // no ads in primary asset\nlet controller = AVPlayerInterstitialEventController(primaryPlayer: player)\nlet adPodTemplates = [AVPlayerItem(url: ad1URL), AVPlayerItem(url: ad2URL)]\nlet event = AVPlayerInterstitialEvent( \n  primaryItem: player.currentItem,\n  time: CMTime(seconds: 10, preferredTimescale: 1),\n  templateItems: adPodTemplates,\n  restrictions: [],\n  resumptionOffset: .zero,\n  playoutLimit: .invalid)\n\n controller.events = [event]\n player.currentItem.translatesPlayerInterstitialEvents = true\n let vc = AVPlayerViewController()\n vc.player = player\n player.play()"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Getting Started with HLS Interstitials",
+      "url": "https://developer.apple.com/streaming/GettingStartedWithHLSInterstitials.pdf",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/streaming/GettingStartedWithHLSInterstitials.pdf"
+    }
+  ],
+  "path": "sessions/wwdc2021/10140-explore-dynamic-pre-rolls-and-mid-rolls-in-hls/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10140-explore-dynamic-pre-rolls-and-mid-rolls-in-hls/metadata.json",
+    "readme": "sessions/wwdc2021/10140-explore-dynamic-pre-rolls-and-mid-rolls-in-hls/README.md",
+    "transcript": "sessions/wwdc2021/10140-explore-dynamic-pre-rolls-and-mid-rolls-in-hls/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10140-explore-dynamic-pre-rolls-and-mid-rolls-in-hls/transcript.json"
+  }
+}

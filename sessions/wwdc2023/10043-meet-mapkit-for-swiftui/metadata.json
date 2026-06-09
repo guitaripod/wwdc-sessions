@@ -1,0 +1,74 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10043",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10043,
+  "title": "Meet MapKit for SwiftUI",
+  "description": "Discover how expanded SwiftUI support for MapKit has made it easier than ever for you to integrate Maps into your app. We’ll show you how to use SwiftUI to add annotations and overlays to a map, control the camera, and more.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10043",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10043",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Essentials",
+    "Maps & Location"
+  ],
+  "primaryTopic": "Maps & Location",
+  "duration": 1641,
+  "hasTranscript": true,
+  "transcriptWordCount": 3844,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10043/5/700E3600-5A61-4BE8-9A61-441B11B13E8C/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10043/5/700E3600-5A61-4BE8-9A61-441B11B13E8C/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10043/5/700E3600-5A61-4BE8-9A61-441B11B13E8C/downloads/wwdc2023-10043_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10043/5/700E3600-5A61-4BE8-9A61-441B11B13E8C/downloads/wwdc2023-10043_hd.mp4",
+    "duration": 1641
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "MapKit for SwiftUI",
+      "url": "https://developer.apple.com/documentation/MapKit/mapkit-for-swiftui",
+      "type": "documentation",
+      "description": "MapKit for SwiftUI allows you to build map-centric views and apps across Apple platforms. You can design expressive and highly interactive Maps with minimal code by composing views, using ViewBuilders and view modifiers.",
+      "sosumiURL": "https://sosumi.ai/documentation/MapKit/mapkit-for-swiftui",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MapKit/mapkit-for-swiftui.json"
+    },
+    {
+      "title": "MapKit",
+      "url": "https://developer.apple.com/documentation/MapKit",
+      "type": "documentation",
+      "description": "Display map or satellite imagery within your app, call out points of interest, and determine placemark information for map coordinates.",
+      "sosumiURL": "https://sosumi.ai/documentation/MapKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MapKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10043-meet-mapkit-for-swiftui/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10043-meet-mapkit-for-swiftui/metadata.json",
+    "readme": "sessions/wwdc2023/10043-meet-mapkit-for-swiftui/README.md",
+    "transcript": "sessions/wwdc2023/10043-meet-mapkit-for-swiftui/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10043-meet-mapkit-for-swiftui/transcript.json"
+  }
+}

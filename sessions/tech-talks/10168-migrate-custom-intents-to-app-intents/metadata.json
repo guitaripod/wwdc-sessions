@@ -1,0 +1,48 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-10168",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2023,
+  "eventContentId": 10168,
+  "title": "Migrate custom intents to App Intents",
+  "description": "Learn how you can easily convert your existing custom intents to App Intents. We'll take you through the conversion of your intents to Swift and discuss how you can improve discoverability of your app features when you create App Shortcuts. To learn more about App Intents, watch \"Implement App Shortcuts with App Intents\" and \"Dive into App Intents\" from WWDC22.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/10168",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10168",
+  "type": "Video",
+  "publishedAt": "2023-02-01T08:00:00-08:00",
+  "platforms": [],
+  "keywords": [],
+  "topics": [
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1040,
+  "hasTranscript": true,
+  "transcriptWordCount": 2930,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/10168/3/561D9E4F-CCD2-44D2-A224-DB2F1A2AE40D/cmaf.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/10168/3/561D9E4F-CCD2-44D2-A224-DB2F1A2AE40D/downloads/tech-talks-10168_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/10168/3/561D9E4F-CCD2-44D2-A224-DB2F1A2AE40D/downloads/tech-talks-10168_hd.mp4",
+    "duration": 1040
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/tech-talks/10168-migrate-custom-intents-to-app-intents/",
+  "files": {
+    "metadata": "sessions/tech-talks/10168-migrate-custom-intents-to-app-intents/metadata.json",
+    "readme": "sessions/tech-talks/10168-migrate-custom-intents-to-app-intents/README.md",
+    "transcript": "sessions/tech-talks/10168-migrate-custom-intents-to-app-intents/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/10168-migrate-custom-intents-to-app-intents/transcript.json"
+  }
+}

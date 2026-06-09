@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-346",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 346,
+  "title": "Meet Containerization",
+  "description": "Meet Containerization, an open source project written in Swift to create and run Linux containers on your Mac. Learn how Containerization approaches Linux containers securely and privately. Discover how the open-sourced Container CLI tool utilizes the Containerization package to provide simple, yet powerful functionality to build, run, and deploy Linux Containers on Mac.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/346",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/346",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 752,
+  "hasTranscript": true,
+  "transcriptWordCount": 1678,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/346/5/addb7968-a35a-4c71-967f-a125b913b4c3/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/346/5/addb7968-a35a-4c71-967f-a125b913b4c3/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/346/5/addb7968-a35a-4c71-967f-a125b913b4c3/downloads/wwdc2025-346_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/346/5/addb7968-a35a-4c71-967f-a125b913b4c3/downloads/wwdc2025-346_hd.mp4",
+    "duration": 752
+  },
+  "codeSnippets": [
+    {
+      "title": "Container Image Pull",
+      "language": "bash",
+      "startTimeSeconds": 598,
+      "code": "container image pull alpine:latest"
+    },
+    {
+      "title": "Container Run",
+      "language": "bash",
+      "startTimeSeconds": 643,
+      "code": "container run -t -i alpine:latest sh"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Container",
+      "url": "https://github.com/apple/container",
+      "type": "guide",
+      "description": "Details on the container command line tooling, utilizing the Containerization library."
+    },
+    {
+      "title": "Containerization",
+      "url": "https://github.com/apple/containerization",
+      "type": "guide",
+      "description": "Open-source project for the Containerization library."
+    }
+  ],
+  "path": "sessions/wwdc2025/346-meet-containerization/",
+  "files": {
+    "metadata": "sessions/wwdc2025/346-meet-containerization/metadata.json",
+    "readme": "sessions/wwdc2025/346-meet-containerization/README.md",
+    "transcript": "sessions/wwdc2025/346-meet-containerization/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/346-meet-containerization/transcript.json"
+  }
+}

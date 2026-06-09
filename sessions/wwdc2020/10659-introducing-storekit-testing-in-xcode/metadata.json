@@ -1,0 +1,103 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10659",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10659,
+  "title": "Introducing StoreKit Testing in Xcode",
+  "description": "Discover StoreKit Testing in Xcode — a local environment for testing your in-app purchases without needing to connect to App Store servers. We’ll show you how to set up a test environment, create a StoreKit configuration file, and prepare to validate receipts locally. We’ll also explain how to test a variety of in-app purchase scenarios and automate those tests with the StoreKitTest framework, and cover the latest improvements to testing in the sandbox environment.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10659",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10659",
+  "type": "Video",
+  "publishedAt": "2020-06-23T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "iap",
+    "in-app purchase",
+    "in-app purchases",
+    "sandbox",
+    "storekit",
+    "xctest"
+  ],
+  "topics": [
+    "App Store, Distribution & Marketing",
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 1492,
+  "hasTranscript": true,
+  "transcriptWordCount": 3655,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10659/10/6FFA68D9-58F1-4DC0-BDBA-8E432292E682/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10659/10/6FFA68D9-58F1-4DC0-BDBA-8E432292E682/wwdc2020_10659_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10659/10/6FFA68D9-58F1-4DC0-BDBA-8E432292E682/wwdc2020_10659_hd.mp4",
+    "duration": 1492
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Testing In-App Purchases with sandbox",
+      "url": "https://developer.apple.com/documentation/StoreKit/testing-in-app-purchases-with-sandbox",
+      "type": "documentation",
+      "description": "Test your implementation of In-App Purchases using real product information and server-to-server transactions in the sandbox environment.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/testing-in-app-purchases-with-sandbox",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/testing-in-app-purchases-with-sandbox.json"
+    },
+    {
+      "title": "StoreKit Test",
+      "url": "https://developer.apple.com/documentation/StoreKitTest",
+      "type": "documentation",
+      "description": "Create and automate tests in Xcode for your app’s subscription and in-app purchase transactions, and SKAdNetwork implementations.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKitTest",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKitTest.json"
+    },
+    {
+      "title": "Testing In-App Purchases in Xcode",
+      "url": "https://developer.apple.com/documentation/StoreKit/testing-in-app-purchases-in-xcode",
+      "type": "documentation",
+      "description": "Use locally configured product data to test and debug your In-App Purchases implementation.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/testing-in-app-purchases-in-xcode",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/testing-in-app-purchases-in-xcode.json"
+    },
+    {
+      "title": "Setting up StoreKit Testing in Xcode",
+      "url": "https://developer.apple.com/documentation/Xcode/setting-up-storekit-testing-in-xcode",
+      "type": "documentation",
+      "description": "Prepare your test environment to test in-app purchases with data you configure locally.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/setting-up-storekit-testing-in-xcode",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/setting-up-storekit-testing-in-xcode.json"
+    },
+    {
+      "title": "Testing at all stages of development with Xcode and the sandbox",
+      "url": "https://developer.apple.com/documentation/StoreKit/testing-at-all-stages-of-development-with-xcode-and-the-sandbox",
+      "type": "documentation",
+      "description": "Verify your implementation of In-App Purchases by testing your code throughout its development.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/testing-at-all-stages-of-development-with-xcode-and-the-sandbox",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/testing-at-all-stages-of-development-with-xcode-and-the-sandbox.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10659-introducing-storekit-testing-in-xcode/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10659-introducing-storekit-testing-in-xcode/metadata.json",
+    "readme": "sessions/wwdc2020/10659-introducing-storekit-testing-in-xcode/README.md",
+    "transcript": "sessions/wwdc2020/10659-introducing-storekit-testing-in-xcode/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10659-introducing-storekit-testing-in-xcode/transcript.json"
+  }
+}

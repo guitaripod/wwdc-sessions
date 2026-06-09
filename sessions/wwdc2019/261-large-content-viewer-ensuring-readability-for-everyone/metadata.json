@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-261",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 261,
+  "title": "Large Content Viewer - Ensuring Readability for Everyone",
+  "description": "Tab Bars can't grow with dynamic text, but the Large Content Viewer helps them to be seen by people with low vision. iOS 13 brings this feature to custom tab bars. Learn how to enable Large Content Viewer on your custom tab bars and ensure the right vector image is featured in the heads-up display.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/261",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/261",
+  "type": "Video",
+  "publishedAt": "2019-06-04T18:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "Accessibility & Inclusion"
+  ],
+  "primaryTopic": "Accessibility & Inclusion",
+  "duration": 788,
+  "hasTranscript": true,
+  "transcriptWordCount": 2009,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/261p8np41tos4h2/261/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/261p8np41tos4h2/261/261_sd_large_content_viewer_ensuring_readability_for_everyone.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/261p8np41tos4h2/261/261_hd_large_content_viewer_ensuring_readability_for_everyone.mp4",
+    "duration": 788
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/261-large-content-viewer-ensuring-readability-for-everyone/",
+  "files": {
+    "metadata": "sessions/wwdc2019/261-large-content-viewer-ensuring-readability-for-everyone/metadata.json",
+    "readme": "sessions/wwdc2019/261-large-content-viewer-ensuring-readability-for-everyone/README.md",
+    "transcript": "sessions/wwdc2019/261-large-content-viewer-ensuring-readability-for-everyone/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/261-large-content-viewer-ensuring-readability-for-everyone/transcript.json"
+  }
+}

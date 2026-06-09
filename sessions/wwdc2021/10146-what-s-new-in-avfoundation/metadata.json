@@ -1,0 +1,161 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10146",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10146,
+  "title": "What’s new in AVFoundation",
+  "description": "Discover the latest updates to AVFoundation, Apple’s framework for inspecting, playing, and authoring audiovisual presentations. We’ll explore how you can use AVFoundation to query attributes of audiovisual assets, further customize your custom video compositions with timed metadata, and author caption files.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10146",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10146",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "asset",
+    "authoring",
+    "avasset",
+    "avfoundation",
+    "composition",
+    "inspection",
+    "media",
+    "metadata",
+    "video"
+  ],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 1011,
+  "hasTranscript": true,
+  "transcriptWordCount": 2895,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10146/5/DB6BBE8F-5AF9-4331-BF7B-F8DF5AC43A92/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10146/5/DB6BBE8F-5AF9-4331-BF7B-F8DF5AC43A92/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10146/5/DB6BBE8F-5AF9-4331-BF7B-F8DF5AC43A92/downloads/wwdc2021-10146_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10146/5/DB6BBE8F-5AF9-4331-BF7B-F8DF5AC43A92/downloads/wwdc2021-10146_hd.mp4",
+    "duration": 1011
+  },
+  "codeSnippets": [
+    {
+      "title": "AVAsset property loading",
+      "language": "swift",
+      "startTimeSeconds": 136,
+      "code": "func inspectAsset() async throws {\n\tlet asset = AVAsset(url: movieURL)\n\tlet duration = try await asset.load(.duration)\n\tmyFunction(thatUses: duration)\n}"
+    },
+    {
+      "title": "Load multiple properties",
+      "language": "swift",
+      "startTimeSeconds": 242,
+      "code": "func inspectAsset() async throws {\n\tlet asset = AVAsset(url: movieURL)\n\tlet (duration, tracks) = try await asset.load(.duration, .tracks)\n\tmyFunction(thatUses: duration, and: tracks)\n}"
+    },
+    {
+      "title": "Check status",
+      "language": "swift",
+      "startTimeSeconds": 292,
+      "code": "switch asset.status(of: .duration) {\ncase .notYetLoaded:\n\t// This is the initial state after creating an asset. \ncase .loading:\n\t// This means the asset is actively doing work.\ncase .loaded(let duration):\n\t// Use the asset's property value.\ncase .failed(let error):\n\t// Handle the error.\n}"
+    },
+    {
+      "title": "Async filtering methods",
+      "language": "swift",
+      "startTimeSeconds": 392,
+      "code": "let asset: AVAsset\nlet trk1 = try await asset.loadTrack(withTrackID: 1)\nlet atrs = try await asset.loadTracks(withMediaType: .audio)\nlet ltrs = try await asset.loadTracks(withMediaCharacteristic: .legible)\nlet qtmd = try await asset.loadMetadata(for: .quickTimeMetadata)\nlet chcl = try await asset.loadChapterMetadataGroups(withTitleLocale: .current)\nlet chpl = try await asset.loadChapterMetadataGroups(bestMatchingPreferredLanguages: [\"en-US\"])\nlet amsg = try await asset.loadMediaSelectionGroup(for: .audible)\n\nlet track: AVAssetTrack\nlet seg0 = try await track.loadSegment(forTrackTime: .zero)\nlet spts = try await track.loadSamplePresentationTime(forTrackTime: .zero)\nlet ismd = try await track.loadMetadata(for: .isoUserData)\nlet fbtr = try await track.loadAssociatedTracks(ofType: .audioFallback)"
+    },
+    {
+      "title": "Async loading: Old API",
+      "language": "swift",
+      "startTimeSeconds": 436,
+      "code": "asset.loadValuesAsynchronously(forKeys: [\"duration\", \"tracks\"]) {\n\tvar error: NSError?\n\tguard asset.statusOfValue(forKey: \"duration\", error: &error) == .loaded else { ... }\n\tguard asset.statusOfValue(forKey: \"tracks\", error: &error) == .loaded else { ... }\n\tlet duration = asset.duration\n\tlet audioTracks = asset.tracks(withMediaType: .audio)\n\t// Use duration and audioTracks.\n}"
+    },
+    {
+      "title": "This is the equivalent using the new API:",
+      "language": "swift",
+      "startTimeSeconds": 489,
+      "code": "let duration = try await asset.load(.duration)\nlet audioTracks = try await asset.loadTracks(withMediaType: .audio)\n// Use duration and audioTracks."
+    },
+    {
+      "title": "load(_:)",
+      "language": "swift",
+      "startTimeSeconds": 516,
+      "code": "let tracks = try await asset.load(.tracks)"
+    },
+    {
+      "title": "Async filtering method",
+      "language": "swift",
+      "startTimeSeconds": 531,
+      "code": "let audioTracks = try await\n    asset.loadTracks(withMediaType: .audio)"
+    },
+    {
+      "title": "status(of:)",
+      "language": "swift",
+      "startTimeSeconds": 538,
+      "code": "switch status(of: .tracks) {\n    case .loaded(let tracks):\n    // Use tracks."
+    },
+    {
+      "title": "load(_:) again (returns cached value)",
+      "language": "swift",
+      "startTimeSeconds": 558,
+      "code": "let tracks = try await asset.load(.tracks)"
+    },
+    {
+      "title": "Assert status is .loaded()",
+      "language": "swift",
+      "startTimeSeconds": 589,
+      "code": "guard case .loaded (let tracks)\n    = asset.status(of: .tracks) else { ... }"
+    },
+    {
+      "title": "Custom video composition with metadata: Setup",
+      "language": "swift",
+      "startTimeSeconds": 709,
+      "code": "/*\n Source movie:\n - Track 1: Audio\n - Track 2: Video\n - Track 3: Video\n - Track 4: Metadata\n - Track 5: Metadata\n - Track 6: Metadata\n */\n\n// Tell AVMutableVideoComposition about all the metadata tracks.\nvideoComposition.sourceSampleDataTrackIDs = [4, 5]\n\n// For each AVMutableVideoCompositionInstruction, specify the metadata track ID(s) to include.\ninstruction1.requiredSourceSampleDataTrackIDs = [4]\ninstruction2.requiredSourceSampleDataTrackIDs = [4, 5]"
+    },
+    {
+      "title": "Custom video composition with metadata: Compositing",
+      "language": "swift",
+      "startTimeSeconds": 764,
+      "code": "// This is an implementation of a AVVideoCompositing method:\nfunc startRequest(_ request: AVAsynchronousVideoCompositionRequest) {\n\tfor trackID in request.sourceSampleDataTrackIDs {\n\t\tlet metadata: AVTimedMetadataGroup? = request.sourceTimedMetadata(byTrackID: trackID)\n\t\t// To get CMSampleBuffers instead, use sourceSampleBuffer(byTrackID:).\n\n\t}\n\n\t// Compose input video frames, using metadata, here.\n\n\trequest.finish(withComposedVideoFrame: composedFrame)\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Loading media data asynchronously",
+      "url": "https://developer.apple.com/documentation/AVFoundation/loading-media-data-asynchronously",
+      "type": "documentation",
+      "description": "Build responsive apps by using language-level concurrency features to efficiently load media data.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/loading-media-data-asynchronously",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/loading-media-data-asynchronously.json"
+    },
+    {
+      "title": "AVFoundation",
+      "url": "https://developer.apple.com/documentation/AVFoundation",
+      "type": "documentation",
+      "description": "Work with audiovisual assets, control device cameras, process audio, and configure system audio interactions.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10146-what-s-new-in-avfoundation/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10146-what-s-new-in-avfoundation/metadata.json",
+    "readme": "sessions/wwdc2021/10146-what-s-new-in-avfoundation/README.md",
+    "transcript": "sessions/wwdc2021/10146-what-s-new-in-avfoundation/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10146-what-s-new-in-avfoundation/transcript.json"
+  }
+}

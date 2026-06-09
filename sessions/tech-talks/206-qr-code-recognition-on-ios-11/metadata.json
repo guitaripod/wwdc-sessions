@@ -1,0 +1,51 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-206",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2017,
+  "eventContentId": 206,
+  "title": "QR Code Recognition on iOS 11",
+  "description": "iOS 11 provides built-in support to detect and handle QR codes. Discover the supported QR code types, how each type is handled by built-in Camera and Safari apps, and how Universal Links can seamlessly send users to your app when scanning your QR codes.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/206",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/206",
+  "type": "Video",
+  "publishedAt": "2017-12-21T10:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Photos & Camera"
+  ],
+  "primaryTopic": "Photos & Camera",
+  "duration": 556,
+  "hasTranscript": true,
+  "transcriptWordCount": 1304,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tutorials/qr_code_recognition_in_ios_11/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tutorials/qr_code_recognition_in_ios_11/qr_code_recognition_in_ios_11_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tutorials/qr_code_recognition_in_ios_11/qr_code_recognition_in_ios_11_hd.mp4",
+    "duration": 556
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/tech-talks/206-qr-code-recognition-on-ios-11/",
+  "files": {
+    "metadata": "sessions/tech-talks/206-qr-code-recognition-on-ios-11/metadata.json",
+    "readme": "sessions/tech-talks/206-qr-code-recognition-on-ios-11/README.md",
+    "transcript": "sessions/tech-talks/206-qr-code-recognition-on-ios-11/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/206-qr-code-recognition-on-ios-11/transcript.json"
+  }
+}

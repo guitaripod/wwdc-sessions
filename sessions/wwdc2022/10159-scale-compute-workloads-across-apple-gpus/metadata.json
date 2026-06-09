@@ -1,0 +1,73 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10159",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10159,
+  "title": "Scale compute workloads across Apple GPUs",
+  "description": "Discover how you can create compute workloads that scale efficiently across Apple GPUs. Learn how to saturate the GPU by improving your work distribution, minimize GPU timeline gaps with effective pipelining and concurrent dispatches, and use atomic operations effectively. We'll also take you through the latest counters and tools in Xcode and Instruments that can help you optimize spatial and temporal memory access patterns.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10159",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10159",
+  "type": "Video",
+  "publishedAt": "2022-06-10T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "compilation",
+    "compiler",
+    "metal",
+    "metal 3",
+    "metal compute",
+    "metal shading language",
+    "metal tools",
+    "performance",
+    "xcode"
+  ],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1497,
+  "hasTranscript": true,
+  "transcriptWordCount": 3292,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10159/5/4B824E2A-E99A-492A-84EA-6F6ECC279EB3/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10159/5/4B824E2A-E99A-492A-84EA-6F6ECC279EB3/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10159/5/4B824E2A-E99A-492A-84EA-6F6ECC279EB3/downloads/wwdc2022-10159_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10159/5/4B824E2A-E99A-492A-84EA-6F6ECC279EB3/downloads/wwdc2022-10159_hd.mp4",
+    "duration": 1497
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10159-scale-compute-workloads-across-apple-gpus/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10159-scale-compute-workloads-across-apple-gpus/metadata.json",
+    "readme": "sessions/wwdc2022/10159-scale-compute-workloads-across-apple-gpus/README.md",
+    "transcript": "sessions/wwdc2022/10159-scale-compute-workloads-across-apple-gpus/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10159-scale-compute-workloads-across-apple-gpus/transcript.json"
+  }
+}

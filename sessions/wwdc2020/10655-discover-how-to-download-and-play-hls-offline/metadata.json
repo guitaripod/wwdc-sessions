@@ -1,0 +1,151 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10655",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10655,
+  "title": "Discover how to download and play HLS offline",
+  "description": "Discover how to play HLS audio or video without an internet connection in your app by downloading HLS content for offline consumption using AVFoundation. Explore best practices for working with your HLS content while offline, learn how to use FairPlay Streaming to protect your offline audio and video, and hear updates on our media download policies.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10655",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10655",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 1028,
+  "hasTranscript": true,
+  "transcriptWordCount": 2507,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10655/3/45C0E27F-A3BA-416D-B037-9BEE7466C11F/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10655/3/45C0E27F-A3BA-416D-B037-9BEE7466C11F/wwdc2020_10655_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10655/3/45C0E27F-A3BA-416D-B037-9BEE7466C11F/wwdc2020_10655_hd.mp4",
+    "duration": 1028
+  },
+  "codeSnippets": [
+    {
+      "title": "AVAssetDownloadTask",
+      "language": "swift",
+      "startTimeSeconds": 172,
+      "code": "let hlsAsset = AVURLAsset(url: assetURL)\n\nlet backgroundConfiguration = URLSessionConfiguration.background(\n    withIdentifier: \"assetDownloadConfigurationIdentifier\")\nlet assetURLSession = AVAssetDownloadURLSession(configuration: backgroundConfiguration,\n    assetDownloadDelegate: self, delegateQueue: OperationQueue.main())\n\n// Download a Movie at 2 mbps\nlet assetDownloadTask = assetURLSession.makeAssetDownloadTask(asset: hlsAsset,\n    assetTitle: \"My Movie\", assetArtworkData: myAssetArtwork,\n    options: [AVAssetDownloadTaskMinimumRequiredMediaBitrateKey: 2000000])!\nassetDownloadTask.resume()\n\n\n\n// AVAssetDownloadTask uses automatic media selection"
+    },
+    {
+      "title": "Monitor AVAssetDownloadTask",
+      "language": "swift",
+      "startTimeSeconds": 221,
+      "code": "// Monitor AVAssetDownloadTask\npublic protocol AVAssetDownloadDelegate: URLSessionTaskDelegate {\n\n\n\t// Use to monitor progress\n\tfunc urlSession(_ session: URLSession, assetDownloadTask: AVAssetDownloadTask,\n\t\tdidLoad timeRange: CMTimeRange, totalTimeRangesLoaded loadedTimeRanges: [NSValue],\n\t\ttimeRangeExpectedToLoad: CMTimeRange)\n\n\n\t// Listen for completion\n\tfunc urlSession(_ session: URLSession, task: URLSessionTask,\n\t\tdidCompleteWithError error: Error?)\n\n}"
+    },
+    {
+      "title": "Monitoring example",
+      "language": "swift",
+      "startTimeSeconds": 250,
+      "code": "// Monitoring\nMyAssetDownloadDelegate: NSObject, AVAssetDownloadDelegate {\n    func urlSession(_ session: URLSession, assetDownloadTask: AVAssetDownloadTask,\ndidLoad timeRange: CMTimeRange, totalTimeRangesLoaded loadedTimeRanges: [NSValue], timeRangeExpectedToLoad: CMTimeRange) {\n\n\t\t// Convert loadedTimeRanges to CMTimeRanges\n\t\tvar percentComplete = 0.0\n\t\tfor value in loadedTimeRanges {\n\t\t\tlet loadedTimeRange: CMTimeRange = value.timeRangeValue \n\t\t\tpercentComplete += CMTimeGetSeconds(loadedTimeRange.duration) /\n\t\t\t\tCMTimeGetSeconds(timeRangeExpectedToLoad.duration)\n\t\t}\n\t\tpercentComplete *= 100\n\t\tprint(\"percent complete: \\(percentComplete)\")\n\t}\n}"
+    },
+    {
+      "title": "Choose media-selections",
+      "language": "swift",
+      "startTimeSeconds": 295,
+      "code": "let hlsAsset = AVURLAsset(url: assetURL)\nlet myMediaSelections = [] // audio media-selections followed by subtitle media-selections\n\nguard hlsAsset.statusOfValue(forKey: \"availableMediaCharacteristicsWithMediaSelectionOptions\", error: nil) \n   == AVKeyValueStatus.loaded else { return }\n\nlet mediaCharacteristic = //AVMediaCharacteristic.audible or AVMediaCharacteristic.legible\nlet mediaSelectionGroup = hlsAsset.mediaSelectionGroup(forMediaCharacteristic: mediaCharacteristic)\nif let options = mediaSelectionGroup?.options {\n    for option in options {\n        // chose your media selection option\n        if /* this is my option */ {\n            let mutableMediaSelection = hlsAsset.preferredMediaSelection.mutableCopy()\n            mutableMediaSelection.select(option, in: mediaSelectionGroup)\n            myMediaSelections.append(mutableMediaSelection)\n        }\n    }\n}"
+    },
+    {
+      "title": "AVAggregateAssetDownloadTask",
+      "language": "swift",
+      "startTimeSeconds": 311,
+      "code": "let hlsAsset = AVURLAsset(url: assetURL)\nlet myMediaSelections = ...\n\nlet backgroundConfiguration = URLSessionConfiguration.background(\n    withIdentifier: \"assetDownloadConfigurationIdentifier\")\nlet assetURLSession = AVAssetDownloadURLSession(configuration: backgroundConfiguration,\n    assetDownloadDelegate: self, delegateQueue: OperationQueue.main())\n\n// Download a Movie at 2 mbps\nlet aggDownloadTask = assetURLSession.aggregateAssetDownloadTask(with: hlsAsset,\n    mediaSelections: myMediaSelections,\n    assetTitle: \"My Movie\",\n    assetArtworkData: myAssetArtwork,\n    options:[AVAssetDownloadTaskMinimumRequiredMediaBitrateKey: 2000000])!\naggDownloadTask.resume()"
+    },
+    {
+      "title": "Monitor AVAggregateAssetDownloadTask",
+      "language": "swift",
+      "startTimeSeconds": 391,
+      "code": "// Monitor AVAggregateAssetDownloadTask\npublic protocol AVAssetDownloadDelegate: URLSessionTaskDelegate {\n\n\t// Use to monitor progress\n\tfunc urlSession(_ session: URLSession, \n\t\taggregateAssetDownloadTask: AVAggregateAssetDownloadTask, \n\t\tdidLoad timeRange: CMTimeRange, totalTimeRangesLoaded loadedTimeRanges: [NSValue], \n\t\ttimeRangeExpectedToLoad: CMTimeRange, \n\t\tfor mediaSelection: AVMediaSelection\n\t)\n\n\t// Listen for completion for each media selection\n\tfunc urlSession(_ session: URLSession, \n\t\taggregateAssetDownloadTask: AVAggregateAssetDownloadTask, \n\t\tdidCompleteFor mediaSelection: AVMediaSelection)\n\n    // In case of audio rendition, expect calls once for stereo followed by once for multichannel rep.\n}"
+    },
+    {
+      "title": "Restore Tasks on App Launch",
+      "language": "swift",
+      "startTimeSeconds": 424,
+      "code": "// Restore Tasks on App Launch\nclass MyAppDelegate: UIResponder, UIApplicationDelegate {\n\tfunc application(_ application: UIApplication, \n\t\t\tdidFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {\n\t\tlet configuration = URLSessionConfiguration.background(withIdentifier:\n\t\t\t\"assetDownloadConfigurationIdentifier\")\n\t\tlet session = URLSession(configuration: configuration) \n\t\tsession.getAllTasks { tasks in\n\t\t\tfor task in tasks {\n\t\t\t\tif let assetDownloadTask = task as? AVAssetDownloadTask {\n\t\t\t\t\t// restore progress indicators, state, etc...\n\t\t\t\t} \n\t\t\t}\n\t\t}\n\t}\n}"
+    },
+    {
+      "title": "Store the download location",
+      "language": "swift",
+      "startTimeSeconds": 464,
+      "code": "// Store the download location\npublic protocol AVAssetDownloadDelegate: URLSessionTaskDelegate {\n\n\t// AVAssetDownloadTask\n\tfunc urlSession(_ session: URLSession, \n\t\tassetDownloadTask: AVAssetDownloadTask, \n\t\tdidFinishDownloadingTo location: URL)\n\n\t// AVAggregateAssetDownloadTask\n\tfunc urlSession(_ session: URLSession, \n\t\taggregateAssetDownloadTask: AVAggregateAssetDownloadTask, \n\t\twillDownloadTo location: URL)\n\n}"
+    },
+    {
+      "title": "Instantiating Your AVAsset for Playback",
+      "language": "swift",
+      "startTimeSeconds": 485,
+      "code": "// Instantiating Your AVAsset for Playback\n\n// 1) Create Asset for AVAssetDownloadTask\nlet networkURL = URL(string: \"http://example.com/master.m3u8\")!\nlet asset = AVURLAsset(url: networkURL)\nlet task = assetDownloadSession.makeAssetDownloadTask(asset: asset, assetTitle: \"My Movie\",\nassetArtworkData: nil, options: nil)\n\n\n// 2) Re-use Asset for Playback, Even After Task Restoration at App Launch\nlet playerItem = AVPlayerItem(asset: task.urlAsset)\n\n\n// Reusing asset, will allow AVFoundation to optimize resources between playback and download in cases where the playback happens before the download is complete."
+    },
+    {
+      "title": "Create using file URL",
+      "language": "swift",
+      "startTimeSeconds": 536,
+      "code": "// Create using file URL\n\nlet fileURL = URL(fileURLWithPath: self.savedAssetDownloadLocation)\nlet asset = AVURLAsset(url: fileURL)\n\nlet playerItem = AVPlayerItem(asset: task.urlAsset)"
+    },
+    {
+      "title": "What can I play offline?",
+      "language": "swift",
+      "startTimeSeconds": 556,
+      "code": "// What can I play offline?\n\npublic class AVURLAsset {\n\n\tpublic var assetCache: AVAssetCache? { get }\n\n}\n\npublic class AVAssetCache {\n\n\tpublic var isPlayableOffline: Bool { get }\n\n\tpublic func mediaSelectionOptions(in mediaSelectionGroup: AVMediaSelectionGroup)\n\t\t-> [AVMediaSelectionOption]\n\n}"
+    },
+    {
+      "title": "Invalidate Offline Key",
+      "language": "swift",
+      "startTimeSeconds": 693,
+      "code": "// Invalidate Offline Key\n\npublic class AVContentKeySession {\n\n\tfunc invalidatePersistableContentKey(_ persistableContentKeyData: Data, \n\t\toptions: [AVContentKeySessionServerPlaybackContextOption : Any]? = nil, \n\t\tcompletionHandler handler: @escaping (Data?, Error?) -> Void)\n\n\n\tfunc invalidateAllPersistableContentKeys(forApp appIdentifier: Data, \n\t\toptions: [AVContentKeySessionServerPlaybackContextOption : Any]? = nil, \n\t\tcompletionHandler handler: @escaping (Data?, Error?) -> Void)\n\n\n}"
+    },
+    {
+      "title": "Quality Selection",
+      "language": "swift",
+      "startTimeSeconds": 834,
+      "code": "// Quality Selection\n\npublic class AVAssetDownloadTask {\n\n\tpublic let AVAssetDownloadTaskMinimumRequiredMediaBitrateKey: String\n\n\t//Starting in iOS 14\n\n\tpublic let AVAssetDownloadTaskMinimumRequiredPresentationSizeKey: String\n\n\tpublic let AVAssetDownloadTaskPrefersHDRKey: String\n\n}"
+    },
+    {
+      "title": "Multichannel Audio Selection",
+      "language": "swift",
+      "startTimeSeconds": 870,
+      "code": "// Multichannel Audio Selection\n\npublic class AVAssetDownloadTask {\n\n\tpublic let AVAssetDownloadTaskPrefersMultichannelKey: String\n\n}"
+    },
+    {
+      "title": "AVAssetDownloadStorageManager",
+      "language": "swift",
+      "startTimeSeconds": 951,
+      "code": "// AVAssetDownloadStorageManager \n// Get the singleton \nlet storageManager = AVAssetDownloadStorageManager.shared()\n\n// Create the policy \nlet newPolicy = AVMutableAssetDownloadStorageManagementPolicy() \n\nnewPolicy.expirationDate = myExpiryDate\n\nnewPolicy.priority = .important \n\n// Set the policy\nstorageManager.setStorageManagementPolicy(newPolicy, forURL: myDownloadStorageURL)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Using AVFoundation to play and persist HTTP live streams",
+      "url": "https://developer.apple.com/documentation/AVFoundation/using-avfoundation-to-play-and-persist-http-live-streams",
+      "type": "samplecode",
+      "description": "Play HTTP Live Streams and persist streams on disk for offline playback using AVFoundation.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/using-avfoundation-to-play-and-persist-http-live-streams",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/using-avfoundation-to-play-and-persist-http-live-streams.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10655-discover-how-to-download-and-play-hls-offline/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10655-discover-how-to-download-and-play-hls-offline/metadata.json",
+    "readme": "sessions/wwdc2020/10655-discover-how-to-download-and-play-hls-offline/README.md",
+    "transcript": "sessions/wwdc2020/10655-discover-how-to-download-and-play-hls-offline/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10655-discover-how-to-download-and-play-hls-offline/transcript.json"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2024-10087",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10087,
+  "title": "Create custom environments for your immersive apps in visionOS",
+  "description": "Discover how to create visually rich and performant customized app environments for Apple Vision Pro. Learn design guidelines, get expert recommendations, and explore techniques you can use in any digital content creation tool to begin building your immersive environment.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10087",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10087",
+  "type": "Video",
+  "publishedAt": "2024-06-11T08:00:00-07:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Spatial Computing",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 567,
+  "hasTranscript": true,
+  "transcriptWordCount": 1224,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10087/4/1BAC307D-DA03-4FDC-AB9B-F3B4494DE81E/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10087/4/1BAC307D-DA03-4FDC-AB9B-F3B4494DE81E/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10087/4/1BAC307D-DA03-4FDC-AB9B-F3B4494DE81E/downloads/wwdc2024-10087_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10087/4/1BAC307D-DA03-4FDC-AB9B-F3B4494DE81E/downloads/wwdc2024-10087_hd.mp4",
+    "duration": 567
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Enabling video reflections in an immersive environment",
+      "url": "https://developer.apple.com/documentation/visionOS/enabling-video-reflections-in-an-immersive-environment",
+      "type": "samplecode",
+      "description": "Create a more immersive experience by adding video reflections in a custom environment.",
+      "sosumiURL": "https://sosumi.ai/documentation/visionOS/enabling-video-reflections-in-an-immersive-environment",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/visionOS/enabling-video-reflections-in-an-immersive-environment.json"
+    },
+    {
+      "title": "Building an immersive media viewing experience",
+      "url": "https://developer.apple.com/documentation/visionOS/building-an-immersive-media-viewing-experience",
+      "type": "samplecode",
+      "description": "Add a deeper level of immersion to media playback in your app with RealityKit and Reality Composer Pro.",
+      "sosumiURL": "https://sosumi.ai/documentation/visionOS/building-an-immersive-media-viewing-experience",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/visionOS/building-an-immersive-media-viewing-experience.json"
+    },
+    {
+      "title": "Forum: Design",
+      "url": "https://developer.apple.com/forums/topics/design?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/design?cid=vf-a-0010"
+    },
+    {
+      "title": "Destination Video",
+      "url": "https://developer.apple.com/documentation/visionOS/destination-video",
+      "type": "samplecode",
+      "description": "Leverage SwiftUI to build an immersive media experience in a multiplatform app.",
+      "sosumiURL": "https://sosumi.ai/documentation/visionOS/destination-video",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/visionOS/destination-video.json"
+    }
+  ],
+  "path": "sessions/wwdc2024/10087-create-custom-environments-for-your-immersive-apps-in-vision/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10087-create-custom-environments-for-your-immersive-apps-in-vision/metadata.json",
+    "readme": "sessions/wwdc2024/10087-create-custom-environments-for-your-immersive-apps-in-vision/README.md",
+    "transcript": "sessions/wwdc2024/10087-create-custom-environments-for-your-immersive-apps-in-vision/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10087-create-custom-environments-for-your-immersive-apps-in-vision/transcript.json"
+  }
+}

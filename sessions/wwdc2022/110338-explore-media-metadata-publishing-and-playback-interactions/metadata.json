@@ -1,0 +1,117 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-110338",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 110338,
+  "title": "Explore media metadata publishing and playback interactions",
+  "description": "Learn how you can highlight your app's Now Playing information on every platform. We'll take you through an overview of media metadata, learn how it gets represented in areas like the Lock Screen and Control Center, and show you how to write and publish effective media metadata for your content. We'll also explore how your app can respond to commands from other devices such as HomePod.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/110338",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/110338",
+  "type": "Video",
+  "publishedAt": "2022-06-10T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 852,
+  "hasTranscript": true,
+  "transcriptWordCount": 2515,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110338/3/BCB38F17-7908-4BD8-8A7A-767EC8C59367/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110338/3/BCB38F17-7908-4BD8-8A7A-767EC8C59367/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110338/3/BCB38F17-7908-4BD8-8A7A-767EC8C59367/downloads/wwdc2022-110338_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110338/3/BCB38F17-7908-4BD8-8A7A-767EC8C59367/downloads/wwdc2022-110338_hd.mp4",
+    "duration": 852
+  },
+  "codeSnippets": [
+    {
+      "title": "Instantiation examples",
+      "language": "swift",
+      "startTimeSeconds": 274,
+      "code": "// playing Magnificent\n\nself.session = MPNowPlayingSession(players: [player])\n\n\n\n// Playing different WWDC sessions, one full screen and one in PiP\n\nself.session = MPNowPlayingSession(players: [player])\nself.pipSession = MPNowPlayingSession(players: [pipPlayer])\n\n\n\n// playing multi-view race\n\nself.session = MPNowPlayingSession(players: [topLeft, topRight, bottomLeft, bottomRight])"
+    },
+    {
+      "title": "Promoting and demoting sessions as Now Playing",
+      "language": "swift",
+      "startTimeSeconds": 298,
+      "code": "// Promoting and demoting sessions as Now Playing\n\nself.session = MPNowPlayingSession(players: [player])\nself.pipSession = MPNowPlayingSession(players: [pipPlayer])\n\n// if the content in PiP is promoted to full screen, swap active\n\nself.pipSession.becomeActiveIfPossible { becameActive in\n    // if success, pipSession data populates lock screen, etc, and\n    // controls from lock screen, etc are routed to pipSession\n}"
+    },
+    {
+      "title": "Responding to play and pause commands",
+      "language": "swift",
+      "startTimeSeconds": 332,
+      "code": "// Example of responding to play and pause commands\n\nself.session = MPNowPlayingSession(players: [player])\n\n// respond to play commands\nself.session.remoteCommandCenter.playCommand.addTarget { event in\n    player.play()\n    return .success\n}\n\n// respond to pause commands\nself.session.remoteCommandCenter.pauseCommand.addTarget { event in\n    player.pause()\n    return .success\n}"
+    },
+    {
+      "title": "Responding to skip forward commands",
+      "language": "swift",
+      "startTimeSeconds": 382,
+      "code": "// Example responding to skip forward commands\n\nself.session.remoteCommandCenter.skipForwardCommand.preferredIntervals = [15.0]\nself.session.remoteCommandCenter.skipForwardCommand.addTarget { event in\n    let skipCommand = event as! MPSkipIntervalCommandEvent\n    player.seek(to: CMTimeAdd(player.currentTime(), CMTimeMakeWithSeconds(skipCommand.interval, preferredTimescale: 1)))\n    return .success\n}\n\n// commands can also be disabled. for example, during an ad:\nself.session.remoteCommandCenter.skipForwardCommand.isEnabled = false\n\n// add handlers for all commands that are applicable to the content // https://developer.apple.com/documentation/mediaplayer/mpremotecommandcenter"
+    },
+    {
+      "title": "Setting artwork metadata with automatic publishing",
+      "language": "swift",
+      "startTimeSeconds": 468,
+      "code": "// Example of setting artwork metadata\nlet artwork = MPMediaItemArtwork(image: image)\nlet title = \"Magnificent\"\n\nplayerItem.nowPlayingInfo = [\n    MPMediaItemPropertyTitle: title,\n    MPMediaItemPropertyArtwork: artwork,\n    // …\n]\n\nself.session = MPNowPlayingSession(players: [player])\nself.session.automaticallyPublishNowPlayingInfo = true"
+    },
+    {
+      "title": "Setting ad time ranges for automatic publishing",
+      "language": "swift",
+      "startTimeSeconds": 518,
+      "code": "// Example with ads that should not contribute to elapsed time and duration\n\nlet preroll = MPAdTimeRange(timeRange: CMTimeRange(start: CMTime.zero, duration: CMTimeMakeWithSeconds(30, preferredTimescale: 1)))\n\n\nplayerItem.nowPlayingInfo = [\n    …\n    MPNowPlayingInfoPropertyAdTimeRanges: [preroll]\n    …\n]\n\nself.session = MPNowPlayingSession(players: [player])\nself.session.automaticallyPublishNowPlayingInfo = true"
+    },
+    {
+      "title": "Setting artwork and title metadata for AVKit",
+      "language": "swift",
+      "startTimeSeconds": 662,
+      "code": "// Example of setting artwork metadata\n\nlet path = Bundle.main.path(forResource: \"poster\", ofType: \"jpg\")\nlet posterData = FileManager.default.contents(atPath: path!)!\n\nlet artwork = AVMutableMetadataItem()\nartwork.identifier = .commonIdentifierArtwork\nartwork.value = posterData as NSData\nartwork.dataType = kCMMetadataBaseDataType_JPEG as String\nartwork.extendedLanguageTag = \"und\"\n\nlet title = AVMutableMetadataItem()\ntitle.identifier = .commonIdentifierTitle\ntitle.value = \"Magnificent\" as NSString\ntitle.extendedLanguageTag = \"und\"\n\nplayerItem.externalMetadata = [artwork, title]"
+    },
+    {
+      "title": "Manually publishing Now Playing",
+      "language": "swift",
+      "startTimeSeconds": 779,
+      "code": "// Example of setting Now Playing information\n\nlet artwork = MPMediaItemArtwork(image: image)\n\nlet nowPlayingInfo = [\n    MPMediaItemPropertyTitle: title,\n    MPMediaItemPropertyArtwork: artwork,\n    MPMediaItemPropertyPlaybackDuration: playerItem.duration,\n    MPNowPlayingInfoPropertyElapsedPlaybackTime: player.currentTime().seconds,\n    MPNowPlayingInfoPropertyPlaybackRate: player.rate\n]\n\nMPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo"
+    },
+    {
+      "title": "Updating Now Playing metadata",
+      "language": "swift",
+      "startTimeSeconds": 805,
+      "code": "// On any non-linear time change, playback rate change, or play/pause\n\nvar nowPlayingInfo = MPNowPlayingInfoCenter.default().nowPlayingInfo\nnowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = player.currentTime().seconds\nnowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = player.rate"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Media Player",
+      "url": "https://developer.apple.com/documentation/MediaPlayer",
+      "type": "documentation",
+      "description": "Find and play songs, audio podcasts, audio books, and more from within your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/MediaPlayer",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MediaPlayer.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/110338-explore-media-metadata-publishing-and-playback-interactions/",
+  "files": {
+    "metadata": "sessions/wwdc2022/110338-explore-media-metadata-publishing-and-playback-interactions/metadata.json",
+    "readme": "sessions/wwdc2022/110338-explore-media-metadata-publishing-and-playback-interactions/README.md",
+    "transcript": "sessions/wwdc2022/110338-explore-media-metadata-publishing-and-playback-interactions/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/110338-explore-media-metadata-publishing-and-playback-interactions/transcript.json"
+  }
+}

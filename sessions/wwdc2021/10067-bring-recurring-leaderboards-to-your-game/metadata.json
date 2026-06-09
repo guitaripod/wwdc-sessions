@@ -1,0 +1,72 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10067",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10067,
+  "title": "Bring Recurring Leaderboards to your game",
+  "description": "Recurring leaderboards are a great way to encourage players to keep coming back to your game. Code along with us as we take you through how to set up a recurring leaderboard, both within App Store Connect and in your game itself. For a refresher on the differences between recurring and classic leaderboards before beginning this code-along, we recommend watching the recurring leaderboards section of \"Tap into Game Center: Leaderboards, Achievements, and Multiplayer\" from WWDC20.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10067",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10067",
+  "type": "Video",
+  "publishedAt": "2021-06-11T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "codealong"
+  ],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1555,
+  "hasTranscript": true,
+  "transcriptWordCount": 2901,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10067/7/1E50A29A-8D8C-4103-B1E4-F62F2C5AA329/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10067/7/1E50A29A-8D8C-4103-B1E4-F62F2C5AA329/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10067/7/1E50A29A-8D8C-4103-B1E4-F62F2C5AA329/downloads/wwdc2021-10067_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10067/7/1E50A29A-8D8C-4103-B1E4-F62F2C5AA329/downloads/wwdc2021-10067_hd.mp4",
+    "duration": 1555
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Creating recurring leaderboards",
+      "url": "https://developer.apple.com/documentation/GameKit/creating-recurring-leaderboards",
+      "type": "documentation",
+      "description": "Create a leaderboard for your game that ranks player scores based on a schedule.",
+      "sosumiURL": "https://sosumi.ai/documentation/GameKit/creating-recurring-leaderboards",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/GameKit/creating-recurring-leaderboards.json"
+    },
+    {
+      "title": "Human Interface Guidelines: Game Center",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/game-center",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/game-center"
+    }
+  ],
+  "path": "sessions/wwdc2021/10067-bring-recurring-leaderboards-to-your-game/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10067-bring-recurring-leaderboards-to-your-game/metadata.json",
+    "readme": "sessions/wwdc2021/10067-bring-recurring-leaderboards-to-your-game/README.md",
+    "transcript": "sessions/wwdc2021/10067-bring-recurring-leaderboards-to-your-game/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10067-bring-recurring-leaderboards-to-your-game/transcript.json"
+  }
+}

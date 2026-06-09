@@ -1,0 +1,138 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-222",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 222,
+  "title": "Understanding Images in Vision Framework",
+  "description": "Learn all about the many advances in the Vision Framework including effortless image classification, image saliency, determining image similarity, and improvements in facial feature detection, and face capture quality scoring. This packed session will show you how easy it is to bring powerful computer vision techniques to your apps.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/222",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/222",
+  "type": "Video",
+  "publishedAt": "2019-06-05T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "camera",
+    "core ml",
+    "face capture quality",
+    "face detection",
+    "face landmarks",
+    "image classification",
+    "images",
+    "image similarity",
+    "machine learning",
+    "photos",
+    "saliency",
+    "vision"
+  ],
+  "topics": [
+    "Photos & Camera",
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 2390,
+  "hasTranscript": true,
+  "transcriptWordCount": 6597,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/222z7uanb8bo1e/222/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/222z7uanb8bo1e/222/222_sd_understanding_images_in_vision_framework.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/222z7uanb8bo1e/222/222_hd_understanding_images_in_vision_framework.mp4",
+    "duration": 2390
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Highlighting Areas of Interest in an Image Using Saliency",
+      "url": "https://developer.apple.com/documentation/Vision/highlighting-areas-of-interest-in-an-image-using-saliency",
+      "type": "samplecode",
+      "description": "Quantify and visualize where people are likely to look in an image.",
+      "sosumiURL": "https://sosumi.ai/documentation/Vision/highlighting-areas-of-interest-in-an-image-using-saliency",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Vision/highlighting-areas-of-interest-in-an-image-using-saliency.json"
+    },
+    {
+      "title": "Analyzing Image Similarity with Feature Print",
+      "url": "https://developer.apple.com/documentation/Vision/analyzing-image-similarity-with-feature-print",
+      "type": "samplecode",
+      "description": "Generate a feature print to compute distance between images.",
+      "sosumiURL": "https://sosumi.ai/documentation/Vision/analyzing-image-similarity-with-feature-print",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Vision/analyzing-image-similarity-with-feature-print.json"
+    },
+    {
+      "title": "Classifying images for categorization and search",
+      "url": "https://developer.apple.com/documentation/Vision/classifying-images-for-categorization-and-search",
+      "type": "samplecode",
+      "description": "Analyze and label images using a Vision classification request.",
+      "sosumiURL": "https://sosumi.ai/documentation/Vision/classifying-images-for-categorization-and-search",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Vision/classifying-images-for-categorization-and-search.json"
+    },
+    {
+      "title": "Selecting a selfie based on capture quality",
+      "url": "https://developer.apple.com/documentation/Vision/selecting-a-selfie-based-on-capture-quality",
+      "type": "samplecode",
+      "description": "Compare face-capture quality in a set of images by using Vision.",
+      "sosumiURL": "https://sosumi.ai/documentation/Vision/selecting-a-selfie-based-on-capture-quality",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Vision/selecting-a-selfie-based-on-capture-quality.json"
+    },
+    {
+      "title": "Recognizing Objects in Live Capture",
+      "url": "https://developer.apple.com/documentation/Vision/recognizing-objects-in-live-capture",
+      "type": "documentation",
+      "description": "Apply Vision algorithms to identify objects in real-time video.",
+      "sosumiURL": "https://sosumi.ai/documentation/Vision/recognizing-objects-in-live-capture",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Vision/recognizing-objects-in-live-capture.json"
+    },
+    {
+      "title": "Tracking Multiple Objects or Rectangles in Video",
+      "url": "https://developer.apple.com/documentation/Vision/tracking-multiple-objects-or-rectangles-in-video",
+      "type": "samplecode",
+      "description": "Apply Vision algorithms to track objects or rectangles throughout a video.",
+      "sosumiURL": "https://sosumi.ai/documentation/Vision/tracking-multiple-objects-or-rectangles-in-video",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Vision/tracking-multiple-objects-or-rectangles-in-video.json"
+    },
+    {
+      "title": "Detecting Objects in Still Images",
+      "url": "https://developer.apple.com/documentation/Vision/detecting-objects-in-still-images",
+      "type": "documentation",
+      "description": "Locate and demarcate rectangles, faces, barcodes, and text in images using the Vision framework.",
+      "sosumiURL": "https://sosumi.ai/documentation/Vision/detecting-objects-in-still-images",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Vision/detecting-objects-in-still-images.json"
+    },
+    {
+      "title": "Image Classification with Vision and CoreML",
+      "url": "https://developer.apple.com/sample-code/wwdc/2017/ImageClassificationwithVisionandCoreML.zip",
+      "type": "samplecode",
+      "description": "Demonstrates using Vision with Core ML to preprocess images and perform image classification.",
+      "sosumiURL": "https://sosumi.ai/sample-code/wwdc/2017/ImageClassificationwithVisionandCoreML.zip"
+    },
+    {
+      "title": "Vision",
+      "url": "https://developer.apple.com/documentation/Vision",
+      "type": "documentation",
+      "description": "Analyze image and video content in your app using computer vision algorithms for object detection, text recognition, and image segmentation.",
+      "sosumiURL": "https://sosumi.ai/documentation/Vision",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Vision.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/222-understanding-images-in-vision-framework/",
+  "files": {
+    "metadata": "sessions/wwdc2019/222-understanding-images-in-vision-framework/metadata.json",
+    "readme": "sessions/wwdc2019/222-understanding-images-in-vision-framework/README.md",
+    "transcript": "sessions/wwdc2019/222-understanding-images-in-vision-framework/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/222-understanding-images-in-vision-framework/transcript.json"
+  }
+}

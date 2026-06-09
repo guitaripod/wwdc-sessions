@@ -1,0 +1,178 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10063",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10063,
+  "title": "Accelerate machine learning with Metal",
+  "description": "Discover how you can use Metal to accelerate your PyTorch model training on macOS. We'll take you through updates to TensorFlow training support, explore the latest features and operations of MPS Graph, and share best practices to help you achieve great performance for all your machine learning needs. For more on using Metal with machine learning, watch \"Accelerate machine learning with Metal Performance Shaders Graph\" from WWDC21.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10063",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10063",
+  "type": "Video",
+  "publishedAt": "2022-06-10T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games",
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1791,
+  "hasTranscript": true,
+  "transcriptWordCount": 3954,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10063/4/0942FD31-5504-40C2-A4E8-6AAAC31E459C/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10063/4/0942FD31-5504-40C2-A4E8-6AAAC31E459C/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10063/4/0942FD31-5504-40C2-A4E8-6AAAC31E459C/downloads/wwdc2022-10063_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10063/4/0942FD31-5504-40C2-A4E8-6AAAC31E459C/downloads/wwdc2022-10063_hd.mp4",
+    "duration": 1791
+  },
+  "codeSnippets": [
+    {
+      "title": "Install PyTorch using pip",
+      "language": "bash",
+      "startTimeSeconds": 224,
+      "code": "python -m pip install torch"
+    },
+    {
+      "title": "Create the MPS device",
+      "language": "python",
+      "startTimeSeconds": 239,
+      "code": "import torch\n\nmpsDevice = torch.device(\"mps\" if torch.backends.mps.is_available() else “cpu”)"
+    },
+    {
+      "title": "Convert the model to use the MPS device",
+      "language": "python",
+      "startTimeSeconds": 255,
+      "code": "import torchvision\n\nmodel = torchvision.models.resnet50()\n\nmodel_mps = model.to(device=mpsDevice)"
+    },
+    {
+      "title": "Run the model",
+      "language": "python",
+      "startTimeSeconds": 286,
+      "code": "sample_input = torch.randn((32, 3, 254, 254), device=mpsDevice)\n\nprediction = model_mps(sample_input)"
+    },
+    {
+      "title": "TensorFlow MetalStream protocol",
+      "language": "objectivec",
+      "startTimeSeconds": 567,
+      "code": "@protocol TF_MetalStream\n\n- (id <MTLCommandBuffer>)currentCommandBuffer;\n- (dispatch_queue_t)queue;\n- (void)commit;\n- (void)commitAndWait;\n\n@end"
+    },
+    {
+      "title": "Register a custom operation",
+      "language": "objectivec",
+      "startTimeSeconds": 625,
+      "code": "// Register the operation\nREGISTER_OP(\"ZeroOut\")\n    .Input(\"to_zero: int32\")\n    .Output(\"zeroed: int32\")\n    .SetShapeFn([](::tensorflow::shape_inference::InferenceContext* c) {\n      c —> set_output(0, c —> input(0));\n      return Status::OK();\n    });"
+    },
+    {
+      "title": "Implement a custom operation",
+      "language": "objectivec",
+      "startTimeSeconds": 641,
+      "code": "// Define Compute function\nvoid MetalZeroOut::Compute(TF_OpKernelContext *ctx) {\n     // Get input and allocate outputs\n     TF_Tensor* input = nullptr;\n     TF_GetInput(ctx, 0, &input, status);\n     TF_Tensor* output;\n     OP_REQUIRES_OK(ctx, ctx->allocate_output(0, input.shape(), &output));\n\n    // Use TF_MetalStream to encode the custom op\n    id<TF_MetalStream> metalStream = (id<TF_MetalStream>)(TF_GetStream(ctx, status));\n    dispatch_sync(metalStream.queue, ^() {\n              id<MTLCommandBuffer> commandBuffer = metalStream.currentCommandBuffer;\n              // Create encoder and encode GPU kernel\n             [metalStream commit];\n    }\n\n    // Delete the TF_Tensors\n    TF_DeleteTensor(input);\n    TF_DeleteTensor(output);\n}"
+    },
+    {
+      "title": "Import a custom operation",
+      "language": "python",
+      "startTimeSeconds": 690,
+      "code": "# Import operation in python script for training\nimport tensorflow as tf\nzero_out_module = tf.load_op_library('./zero_out.so')\nprint(zero_out_module.zero_out([[1, 2], [3, 4]]).numpy())"
+    },
+    {
+      "title": "Using shared events",
+      "language": "swift",
+      "startTimeSeconds": 1169,
+      "code": "// Using shared events\nlet executionDescriptor = MPSGraphExecutionDescriptor()\nlet event = MTLCreateSystemDefaultDevice()!.makeSharedEvent()!\nexecutionDescriptor.signal(event, atExecutionEvent: .completed, value: 1)\n\nlet fetch = computeGraph.runAsync(with: commandQueue1,\n                                  feeds: [input0Tensor: input0),\n                                          input1Tensor: input1],\n                                  targetTensors: [finalTensor],\n                                  targetOperations: nil,\n                                  executionDescriptor: executionDescriptor)\n\nlet executionDescriptor2 = MPSGraphExecutionDescriptor()\nexecutionDescriptor2.wait(for: event, value: 1)\n\nlet fetch2 = postProcessGraph.runAsync(with: commandQueue2,\n                                       feeds: [input0Tensor: fetch[finalTensor]!,\n                                               input1Tensor: input1],\n                                       targetTensors: [finalTensor],\n                                       targetOperations: nil,\n                                       executionDescriptor: executionDescriptor2)"
+    },
+    {
+      "title": "Adding an LSTM unit to the graph",
+      "language": "swift",
+      "startTimeSeconds": 1323,
+      "code": "let descriptor = MPSGraphLSTMDescriptor()\n\ndescriptor.inputGateActivation = .sigmoid\ndescriptor.forgetGateActivation = .sigmoid\ndescriptor.cellGateActivation = .tanh\ndescriptor.outputGateActivation = .sigmoid\ndescriptor.activation = .tanh\ndescriptor.bidirectional = false\ndescriptor.training = true\n\nlet lstm = graph.LSTM(inputTensor,\n                      recurrentWeight: recurrentWeightsTensor,\n                      inputWeight: weightsTensor,\n                      bias: nil,\n                      initState: nil,\n                      initCell: nil,\n                      descriptor: descriptor,\n                      name: nil)"
+    },
+    {
+      "title": "Using MaxPooling with return indices API",
+      "language": "swift",
+      "startTimeSeconds": 1415,
+      "code": "// Forward pass\nlet descriptor = MPSGraphPooling4DOpDescriptor(kernelSizes: @[1,1,3,3], \n                                               paddingStyle: .TF_SAME)\ndescriptor.returnIndicesMode = .globalFlatten4D\n\nlet [poolingTensor, indicesTensor] = graph.maxPooling4DReturnIndices(sourceTensor,\n                                                                     descriptor: descriptor, \n                                                                     name: nil)\n\n// Backward pass\nlet outputShape = graph.shapeOf(destination, name: nil)\nlet gradientTensor = graph.maxPooling4DGradient(gradient: gradientTensor,\n                                                indices: indicesTensor, \n                                        outputShape: outputShape, \n                                        descriptor: descriptor, \n                                        name: nil)"
+    },
+    {
+      "title": "Use Random Operation",
+      "language": "swift",
+      "startTimeSeconds": 1482,
+      "code": "// Declare Philox state tensor\nlet stateTensor = graph.randomPhiloxStateTensor(seed: 2022, name: nil)\n\n// Declare RandomOp descriptor\nlet descriptor = MPSGraphRandomOpDescriptor(distribution: .truncatedNormal,\n                                            dataType: .float32)\ndescriptor.mean = -1.0f\ndescriptor.standardDeviation = 2.5f\ndescriptor.min = descriptor.mean - 2 * descriptor.standardDeviation\ndescriptor.max = descriptor.mean + 2 * descriptor.standardDeviation\n\nlet [randomTensor, stateTensor] = graph.randomTensor(shapeTensor: shapeTensor\n                                             descriptor: descriptor, \n                                             stateTensor: stateTensor, \n                                             name: nil)"
+    },
+    {
+      "title": "Use the Hamming Distance API",
+      "language": "swift",
+      "startTimeSeconds": 1559,
+      "code": "// Code example remember 2D input tensor\nlet primaryTensor = graph.placeholder(shape: @[3,4], \n                                      dataType: .uint32, \n                                      name: nil)\nlet secondaryTensor = graph.placeholder(shape: @[1,4], \n                                        dataType: .uint32, \n                                        name: nil)\n\n// The hamming distance shape will be 3x1\nlet distance = graph.HammingDistance(primary: primaryTensor,\n                                     secondary: secondaryTensor,\n                                     resultDataType: .uint16\n                                     name: nil)"
+    },
+    {
+      "title": "Use the expandDims API",
+      "language": "swift",
+      "startTimeSeconds": 1581,
+      "code": "// Expand the input tensor dimensions, 4x2 -> 4x1x2\nlet expandedTensor = graph.expandDims(inputTensor, \n                                      axis: 1, \n                                      name: nil)"
+    },
+    {
+      "title": "Use the squeeze API",
+      "language": "swift",
+      "startTimeSeconds": 1590,
+      "code": "// Squeeze the input tensor dimensions, 4x1x2 -> 4x2\nlet squeezedTensor = graph.squeeze(expandedTensor, \n                                   axis: 1, \n                                   name: nil)"
+    },
+    {
+      "title": "Use the Split API",
+      "language": "swift",
+      "startTimeSeconds": 1595,
+      "code": "// Split the tensor in two, 4x2 -> (4x1, 4x1)\nlet [split1, split2] = graph.split(squeezedTensor, \n                                   numSplits: 2, \n                                   axis: 0, \n                                   name: nil)"
+    },
+    {
+      "title": "Use the Stack API",
+      "language": "swift",
+      "startTimeSeconds": 1599,
+      "code": "// Stack the tensor back together, (4x1, 4x1) -> 2x4x1\nlet stackedTensor = graph.stack([split1, split2], \n                                axis: 0,\n                                name: nil)"
+    },
+    {
+      "title": "Use the CoordinateAlongAxis API",
+      "language": "swift",
+      "startTimeSeconds": 1606,
+      "code": "// Get coordinates along 0-axis, 2x4\nlet coord = graph.coordinateAlongAxis(axis: 0, \n                                      shape: @[2, 4], \n                                      name: nil)"
+    },
+    {
+      "title": "Create a Range1D operation",
+      "language": "swift",
+      "startTimeSeconds": 1624,
+      "code": "// 1. Set coordTensor = [0,1,2,3,4,5] along 0 axis\nlet coordTensor   = graph.coordinate(alongAxis: 0, withShape: @[6], name: nil)\n\n// 2. Multiply by a stride 4 and add an offset 3\nlet strideTensor  = graph.constant(4.0, dataType: .int32)\nlet offsetTensor  = graph.constant(3.0, dataType: .int32)\nlet stridedTensor = graph.multiplication(strideTensor, coordTensor, name: nil)\nlet rangeTensor   = graph.addition(offsetTensor, stridedTensor, name: nil)\n\n// 3. Compute the result = [3, 7, 11, 15, 19, 23]\nlet fetch = graph.runAsync(feeds: [:],\n                           targetTensors: [rangeTensor],\n                           targetOperations: nil)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10063-accelerate-machine-learning-with-metal/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10063-accelerate-machine-learning-with-metal/metadata.json",
+    "readme": "sessions/wwdc2022/10063-accelerate-machine-learning-with-metal/README.md",
+    "transcript": "sessions/wwdc2022/10063-accelerate-machine-learning-with-metal/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10063-accelerate-machine-learning-with-metal/transcript.json"
+  }
+}

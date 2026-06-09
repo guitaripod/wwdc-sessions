@@ -1,0 +1,162 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10156",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10156,
+  "title": "Control training in Create ML with Swift",
+  "description": "With the Create ML framework you have more power than ever to easily develop models and automate workflows. We'll show you how to explore and interact with your machine learning models while you train them, helping you get a better model quickly. Discover how training control in Create ML can customize your training workflow with checkpointing APIs to pause, save, resume, and extend your training process. And find out how you can monitor your progress programmatically using Combine APIs. If you're not already familiar with Create ML and curious about training machine learning models, be sure to watch “Introducing the Create ML App.”",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10156",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10156",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [
+    "checkpointing",
+    "checkpoints",
+    "combine",
+    "core ml",
+    "create ml",
+    "iterations",
+    "ml job",
+    "ml session",
+    "playgrounds",
+    "swift"
+  ],
+  "topics": [
+    "Swift",
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1119,
+  "hasTranscript": true,
+  "transcriptWordCount": 2696,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10156/4/EA8484C6-7456-457B-B105-A9D03C7FB92B/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10156/4/EA8484C6-7456-457B-B105-A9D03C7FB92B/wwdc2020_10156_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10156/4/EA8484C6-7456-457B-B105-A9D03C7FB92B/wwdc2020_10156_hd.mp4",
+    "duration": 1119
+  },
+  "codeSnippets": [
+    {
+      "title": "Synchronous training",
+      "language": "swift",
+      "startTimeSeconds": 279,
+      "code": "let model = try MLActivityClassifier(...)"
+    },
+    {
+      "title": "Asynchronous Training",
+      "language": "swift",
+      "startTimeSeconds": 287,
+      "code": "let job = try MLActivityClassifier.train(..., sessionParameters: sessionParameters)"
+    },
+    {
+      "title": "Setting up training parameters",
+      "language": "swift",
+      "startTimeSeconds": 298,
+      "code": "// Session parameters can be provided to `train` method.\nlet sessionParameters = MLTrainingSessionParameters(\n    sessionDirectory: sessionDirectory,\n    reportInterval: 10,\n    checkpointInterval: 100,\n    iterations: 1000\n)\n\nlet job = try MLActivityClassifier.train(..., sessionParameters: sessionParameters)"
+    },
+    {
+      "title": "Register a sink to receive model",
+      "language": "swift",
+      "startTimeSeconds": 381,
+      "code": "// Register a sink to receive the resulting model.\njob.result.sink { result in\n    // Handle errors\n}\nreceiveValue: { model in\n    // Use model\n}\n.store(in: &subscriptions)"
+    },
+    {
+      "title": "Getting training progress",
+      "language": "swift",
+      "startTimeSeconds": 427,
+      "code": "// Observing progress details\njob.progress.publisher(for: \\.fractionCompleted)\n    .sink { [weak job] fractionCompleted in\n        guard let job = job, let progress = MLProgress(progress: job.progress) else {\n            return\n        }\n        print(\"Progress: \\(fractionCompleted)\")\n        print(\"Iteration: \\(progress.itemCount) of \\(progress.totalItemCount ?? 0)\")\n        print(\"Accuracy: \\(progress.metrics[.accuracy] ?? 0.0)\")\n    }\n    .store(in: &subscriptions)"
+    },
+    {
+      "title": "Demo 1: Setup",
+      "language": "swift",
+      "startTimeSeconds": 535,
+      "code": "let style = NSImage(byReferencing: styleImageURL)\nlet validation = NSImage(byReferencing: validationImageURL)\n\nvar iterations = 500\nvar progressInterval = 5\nvar checkpointInterval = 5\nlet sessionDirectory = URL(fileURLWithPath: \"\\(NSHomeDirectory())/\\(experimentID)\")\n\nlet sessionParameters = MLTrainingSessionParameters(sessionDirectory: sessionDirectory,\n                                                    reportInterval: progressInterval,\n                                                    checkpointInterval: checkpointInterval,\n                                                    iterations: iterations)\n\nlet trainingParameters = MLStyleTransfer.ModelParameters(\n  \talgorithm: .cnn,\n    validation: .content(validationImageURL),\n    maxIterations: iterations,\n    textelDensity: 416,\n    styleStrength: 5)"
+    },
+    {
+      "title": "Demo 1: Training",
+      "language": "swift",
+      "startTimeSeconds": 603,
+      "code": "var subscriptions = [AnyCancellable]()\n\nlet job = try MLStyleTransfer.train(trainingData: dataSource,\n                                    parameters: trainingParameters,\n                                    sessionParameters: sessionParameters)\n\njob.result.sink { result in\n    print(result)\n}\nreceiveValue: { model in\n    try? model.write(to: sessionDirectory)\n}\n.store(in: &subscriptions)"
+    },
+    {
+      "title": "Demo 1: Progress",
+      "language": "swift",
+      "startTimeSeconds": 651,
+      "code": "job.progress\n    .publisher(for: \\.fractionCompleted)\n    .sink { completed in\n\n        _ = completed\n\n        guard let progress = MLProgress(progress: job.progress) else { return }\n\n        if let styleLoss = progress.metrics[.styleLoss] { _ = styleLoss }\n\n        if let contentLoss = progress.metrics[.contentLoss] { _ = contentLoss }\n\n    }\n    .store(in: &subscriptions)"
+    },
+    {
+      "title": "Demo 1: Cancel & Resume",
+      "language": "swift",
+      "startTimeSeconds": 724,
+      "code": "job.cancel()\n\nlet resumedJob = try MLStyleTransfer.train(\n    trainingData: dataSource,\n    parameters: trainingParameters,\n    sessionParameters: sessionParameters)\n\nresumedJob.progress\n    .publisher(for: \\.fractionCompleted)\n    .sink { completed in\n        _ = completed\n\n        guard let progress = MLProgress(progress: resumedJob.progress) else { return }\n        if let styleLoss = progress.metrics[.styleLoss] { _ = styleLoss }\n        if let contentLoss = progress.metrics[.contentLoss] { _ = contentLoss }\n    }\n    .store(in: &subscriptions)\n\nresumedJob.result.sink { result in\n    print(result)\n}\nreceiveValue: { model in\n    try? model.write(to: sessionDirectory)\n}\n.store(in: &subscriptions)"
+    },
+    {
+      "title": "Observing checkpoints",
+      "language": "swift",
+      "startTimeSeconds": 866,
+      "code": "let job = try MLActivityClassifier.train(..., sessionParameters: sessionParameters)\n\n// Register for receiving checkpoints.\njob.checkpoints.sink { checkpoint in\n    // Process checkpoint\n}\n.store(in: &subscriptions)"
+    },
+    {
+      "title": "Generating a model from a checkpoint",
+      "language": "swift",
+      "startTimeSeconds": 890,
+      "code": "// Generate a model from a checkpoint\nguard checkpoint.phase == .training else {\n    // Not a training checkpoint, can't create model yet.\n    return\n}\n\nlet model = try MLActivityClassifier(checkpoint: checkpoint)\ntry model.write(to: url)"
+    },
+    {
+      "title": "Working with a session",
+      "language": "swift",
+      "startTimeSeconds": 940,
+      "code": "let session = MLObjectDetector.restoreTrainingSession(sessionParameters: sessionParameters)\n\nlet losses = session.checkpoints.compactMap { $0.metrics[.loss] as? Double }"
+    },
+    {
+      "title": "Removing checkpoints from a session",
+      "language": "swift",
+      "startTimeSeconds": 948,
+      "code": "let session = MLObjectDetector.restoreTrainingSession(sessionParameters: sessionParameters)\n\n// Save space by removing some checkpoints\nsession.removeCheckpoints { $0.iteration < 500 }"
+    },
+    {
+      "title": "Demo 2: Visualizing Style Transfer Checkpoints",
+      "language": "swift",
+      "startTimeSeconds": 973,
+      "code": "job.checkpoints\n    .compactMap { $0.metrics[.stylizedImageURL] as? URL }\n    .map { NSImage(byReferencing: $0) }\n    .sink { image in\n        let _ = image\n    }\n    .store(in: &subscriptions)"
+    },
+    {
+      "title": "Demo 2: Visualizing Checkpoints with SwiftUI + Live View",
+      "language": "swift",
+      "startTimeSeconds": 984,
+      "code": "job.checkpoints\n    .compactMap { $0.metrics[.stylizedImageURL] as? URL }\n    .receive(on: DispatchQueue.main)\n    .map { NSImage(byReferencing: $0) }\n    .sink { image in\n        let _ = image\n\n        let view = VStack {\n            Image(nsImage: image)\n                .resizable()\n                .aspectRatio(contentMode: .fit)\n            Image(nsImage: style)\n                .resizable()\n                .aspectRatio(contentMode: .fit)\n            Image(nsImage: validation)\n                .resizable()\n                .aspectRatio(contentMode: .fit)\n        }.frame(maxHeight: 1400)\n\n        PlaygroundSupport.PlaygroundPage.current.setLiveView(view)  \n    }\n    .store(in: &subscriptions)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Create ML",
+      "url": "https://developer.apple.com/documentation/CreateML",
+      "type": "documentation",
+      "description": "Create machine learning models for use in your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/CreateML",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CreateML.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10156-control-training-in-create-ml-with-swift/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10156-control-training-in-create-ml-with-swift/metadata.json",
+    "readme": "sessions/wwdc2020/10156-control-training-in-create-ml-with-swift/README.md",
+    "transcript": "sessions/wwdc2020/10156-control-training-in-create-ml-with-swift/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10156-control-training-in-create-ml-with-swift/transcript.json"
+  }
+}

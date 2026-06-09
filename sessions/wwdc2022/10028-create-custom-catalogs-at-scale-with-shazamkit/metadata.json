@@ -1,0 +1,95 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10028",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10028,
+  "title": "Create custom catalogs at scale with ShazamKit",
+  "description": "Learn how ShazamKit can help you build custom catalogs and support exact matching of any audio source within your app — all on-device. Find out how you can easily generate audio signatures and build catalogs at scale through the new ShazamKit CLI. We'll also show you how you can quickly update your app to sync with large amounts of audio content like multiple seasons of a TV show or multiple episodes of a podcast, and we'll share updates to the ShazamKit API and SHMediaItems to help your apps respond precisely to key moments in audio sources using time ranges. For more on ShazamKit, we recommend watching \"Explore ShazamKit\" and \"Create custom audio experiences with ShazamKit\" from WWDC21.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10028",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10028",
+  "type": "Video",
+  "publishedAt": "2022-06-10T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 1184,
+  "hasTranscript": true,
+  "transcriptWordCount": 2553,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10028/3/F2DB18FC-F40C-4FB9-A080-5202CE2794CA/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10028/3/F2DB18FC-F40C-4FB9-A080-5202CE2794CA/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10028/3/F2DB18FC-F40C-4FB9-A080-5202CE2794CA/downloads/wwdc2022-10028_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10028/3/F2DB18FC-F40C-4FB9-A080-5202CE2794CA/downloads/wwdc2022-10028_hd.mp4",
+    "duration": 1184
+  },
+  "codeSnippets": [
+    {
+      "title": "Food Math Matcher",
+      "language": "swift",
+      "startTimeSeconds": 266,
+      "code": "/*\nSee LICENSE folder for this sample’s licensing information.\n\nAbstract:\nThe model that is responsible for matching against the catalog and update the SwiftUI Views.\n*/\n\nimport ShazamKit\nimport AVFAudio\n\nstruct MatchResult {\n    var title: String?\n    var equation: Equation?\n    var episode: Episode?\n    var answerRange: ClosedRange<Int>?\n\n    var hasContent: Bool {\n        equation != nil || title != nil || answerRange != nil\n    }\n}\n\nclass Matcher: NSObject, ObservableObject, SHSessionDelegate {\n    @Published var matchResult: MatchResult?\n\n    private var session: SHSession!\n    private let audioEngine = AVAudioEngine()\n    private var matchingTask: Task<Void, Never>? = nil\n\n    func match(catalog: SHCustomCatalog) throws {\n\n        session = SHSession(catalog: catalog)\n        session.delegate = self\n\n        let audioFormat = AVAudioFormat(standardFormatWithSampleRate: audioEngine.inputNode.outputFormat(forBus: 0).sampleRate,\n                                        channels: 1)\n        audioEngine.inputNode.installTap(onBus: 0, bufferSize: 2048, format: audioFormat) { [weak session] buffer, audioTime in\n            session?.matchStreamingBuffer(buffer, at: audioTime)\n        }\n\n        try AVAudioSession.sharedInstance().setCategory(.record)\n        AVAudioSession.sharedInstance().requestRecordPermission { [weak self] success in\n            guard success, let self = self else { return }\n\n            Task.detached {\n                try? self.audioEngine.start()\n            }\n        }\n\n        Task { @MainActor in\n            for await case .match(let match) in session.results {\n                self.matchResult = match.matchResult\n            }\n        }\n    }\n}\n\nextension SHMatch {\n\n    var matchResult: MatchResult {\n        mediaItems.reduce(into: MatchResult()) { result, mediaItem in\n            result.title = result.title ?? mediaItem.title\n            result.episode = result.episode ?? mediaItem.episode\n            result.equation = result.equation ?? mediaItem.equation\n            result.answerRange = result.answerRange ?? mediaItem.answerRange\n        }\n    }\n}"
+    },
+    {
+      "title": "Timed Media Items",
+      "language": "swift",
+      "startTimeSeconds": 831,
+      "code": "// Restrict this media item to only describe the first 5 seconds\n\n let mediaItem = SHMediaItem(properties: [\n            .title: \"Title\",\n            .timeRanges:[0.0..<5.0]\n        ])\n\n let timeRanges: [Range<TimeInterval>] = mediaItem.timeRanges"
+    },
+    {
+      "title": "Combine Catalogs",
+      "language": "swift",
+      "startTimeSeconds": 962,
+      "code": "let parentCatalog = SHCustomCatalog()\n\nparentCatalog.add(from: URL(fileURLWithPath: \"/path/to/Episode1.shazamcatalog\"))\nparentCatalog.add(from: URL(fileURLWithPath: \"/path/to/Episode2.shazamcatalog\"))\nparentCatalog.add(from: URL(fileURLWithPath: \"/path/to/Episode3.shazamcatalog\"))"
+    },
+    {
+      "title": "Frequency Skew",
+      "language": "swift",
+      "startTimeSeconds": 1018,
+      "code": "func within(range: Range<Float>, for matchedMediaItem: SHMatchedMediaItem) -> Bool {\n\n\trange.contains(matchedMediaItem.frequencySkew)\n}"
+    },
+    {
+      "title": "Frequency Skew Ranges",
+      "language": "swift",
+      "startTimeSeconds": 1041,
+      "code": "// Restrict this media item to only describe the first 5 seconds\n\n let mediaItem = SHMediaItem(properties: [\n            .title: “Frequency Skewed Audio”,\n            .frequencySkewRanges:[0.01..<0.02]\n        ])\n\n let frequencySkewRanges: [Range<Float>] = mediaItem.frequencySkewRanges"
+    }
+  ],
+  "resources": [
+    {
+      "title": "ShazamKit",
+      "url": "https://developer.apple.com/documentation/ShazamKit",
+      "type": "documentation",
+      "description": "Find information about a specific audio recording when a segment of it’s part of captured sound in the Shazam catalog or your custom catalog.",
+      "sosumiURL": "https://sosumi.ai/documentation/ShazamKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ShazamKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10028-create-custom-catalogs-at-scale-with-shazamkit/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10028-create-custom-catalogs-at-scale-with-shazamkit/metadata.json",
+    "readme": "sessions/wwdc2022/10028-create-custom-catalogs-at-scale-with-shazamkit/README.md",
+    "transcript": "sessions/wwdc2022/10028-create-custom-catalogs-at-scale-with-shazamkit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10028-create-custom-catalogs-at-scale-with-shazamkit/transcript.json"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-101",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 101,
+  "title": "Keynote",
+  "description": "WWDC 2019 Keynote",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/101",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/101",
+  "type": "Special Event",
+  "publishedAt": "2019-06-03T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Essentials"
+  ],
+  "primaryTopic": "Essentials",
+  "duration": 8253,
+  "hasTranscript": false,
+  "transcriptWordCount": 0,
+  "availableLanguages": [],
+  "media": {
+    "hls": "https://p-events-delivery.akamaized.net/3004qzusahnbjppuwydgjzsdyzsippar/m3u8/hls_vod_mvp.m3u8",
+    "duration": 8253
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/101-keynote/",
+  "files": {
+    "metadata": "sessions/wwdc2019/101-keynote/metadata.json",
+    "readme": "sessions/wwdc2019/101-keynote/README.md"
+  }
+}

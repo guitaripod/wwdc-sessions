@@ -1,0 +1,68 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2018-215",
+  "event": "wwdc2018",
+  "eventName": "WWDC18",
+  "year": 2018,
+  "eventContentId": 215,
+  "title": "Introducing ClassKit",
+  "description": "The new ClassKit framework lets you organize educational content in your app so that teachers can discover and assign specific activities and view students’ progress in the new Schoolwork app. Learn how to adopt ClassKit to your content structure, declare assignable content, and share student progress on activities teachers assign in Schoolwork.",
+  "url": "https://developer.apple.com/videos/play/wwdc2018/215",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2018/215",
+  "type": "Video",
+  "publishedAt": "2018-06-06T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Business & Education"
+  ],
+  "primaryTopic": "Business & Education",
+  "duration": 2305,
+  "hasTranscript": true,
+  "transcriptWordCount": 5800,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/215xraudwwyzg2lgu2l/215/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/215xraudwwyzg2lgu2l/215/215_sd_introducing_classkit.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/215xraudwwyzg2lgu2l/215/215_hd_introducing_classkit.mp4",
+    "duration": 2305
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Incorporating ClassKit into an Educational App",
+      "url": "https://developer.apple.com/documentation/ClassKit/incorporating-classkit-into-an-educational-app",
+      "type": "samplecode",
+      "description": "Walk through the process of setting up assignments and recording student progress.",
+      "sosumiURL": "https://sosumi.ai/documentation/ClassKit/incorporating-classkit-into-an-educational-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ClassKit/incorporating-classkit-into-an-educational-app.json"
+    },
+    {
+      "title": "ClassKit",
+      "url": "https://developer.apple.com/documentation/ClassKit",
+      "type": "documentation",
+      "description": "Enable teachers to assign activities from your app’s content and to view student progress.",
+      "sosumiURL": "https://sosumi.ai/documentation/ClassKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ClassKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2018/215-introducing-classkit/",
+  "files": {
+    "metadata": "sessions/wwdc2018/215-introducing-classkit/metadata.json",
+    "readme": "sessions/wwdc2018/215-introducing-classkit/README.md",
+    "transcript": "sessions/wwdc2018/215-introducing-classkit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2018/215-introducing-classkit/transcript.json"
+  }
+}

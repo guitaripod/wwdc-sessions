@@ -1,0 +1,135 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-10874",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2021,
+  "eventContentId": 10874,
+  "title": "Get the most out of CloudKit Sharing",
+  "description": "Discover how apps can use CloudKit to share records with others. We'll show you how to encourage collaboration between people using your app and support those interactions with Apple frameworks. Learn how to create and manage shares, explore sharing options like public permissions, and find out how you can use zone sharing in iOS 15 and macOS Monterey to share entire record zones of data. To get the most out of this session, we recommend being familiar with CloudKit and a basic understanding of record and data types.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/10874",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10874",
+  "type": "Video",
+  "publishedAt": "2021-12-07T10:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "ckshare",
+    "cloudkit sharing",
+    "hierarchical",
+    "sharing",
+    "sharing sample app",
+    "zone"
+  ],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 744,
+  "hasTranscript": true,
+  "transcriptWordCount": 1754,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/10874/3/E774EFC4-2BA1-475F-A66D-CACB5A60FDCE/cmaf.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/10874/3/E774EFC4-2BA1-475F-A66D-CACB5A60FDCE/downloads/tech-talks-10874_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/10874/3/E774EFC4-2BA1-475F-A66D-CACB5A60FDCE/downloads/tech-talks-10874_hd.mp4",
+    "duration": 744
+  },
+  "codeSnippets": [
+    {
+      "title": "Create a new Contact record",
+      "language": "swift",
+      "startTimeSeconds": 118,
+      "code": "// Create a new Contact record\n\nfunc addContact(name: String, phoneNumber: String) async throws {\n    let id = CKRecord.ID(zoneID: recordZone.zoneID)\n    let contactRecord = CKRecord(recordType: \"Contact\", recordID: id)\n    contactRecord[\"name\"] = name\n    contactRecord[\"phoneNumber\"] = phoneNumber\n    try await privateCloudDatabase.save(contactRecord)\n}"
+    },
+    {
+      "title": "Preparing a CKShare",
+      "language": "swift",
+      "startTimeSeconds": 249,
+      "code": "// Preparing a CKShare\n\nfunc createShare(contactRecord: CKRecord) async throws -> CKShare {\n    let share = CKShare(rootRecord: contactRecord)\n\n    try await privateCloudDatabase.modifyRecords(\n        saving: [contactRecord, share], \n        deleting: []\n    )\n\n    return share\n}"
+    },
+    {
+      "title": "UICloudSharingControllerDelegate",
+      "language": "swift",
+      "startTimeSeconds": 325,
+      "code": "// UICloudSharingControllerDelegate\n\npublic protocol UICloudSharingControllerDelegate {\n\n    // ...\n\n    // Called after the CloudKit sharing controller failed to save the share record.\n    func cloudSharingController(UICloudSharingController, failedToSaveShareWithError: Error)\n\n    // Called after the CloudKit sharing controller saves the share record.\n    func cloudSharingControllerDidSaveShare(UICloudSharingController)\n\n    // Called after the user decided to stop sharing the record.\n    func cloudSharingControllerDidStopSharing(UICloudSharingController)\n\n}"
+    },
+    {
+      "title": "Processing an accepted share invitation",
+      "language": "swift",
+      "startTimeSeconds": 387,
+      "code": "// Processing a user’s acceptance of a share invitation\n\nfunc application(\n    _ application: UIApplication,\n    userDidAcceptCloudKitShareWith shareMetadata: CKShare.Metadata\n) {\n    let container = CKContainer(identifier: shareMetadata.containerIdentifier)\n\n    Task {\n        do {\n            try await container.accept(shareMetadata)\n        } catch {\n            // Handle errors that may occur\n        }\n    }\n}"
+    },
+    {
+      "title": "Fetching shared records",
+      "language": "swift",
+      "startTimeSeconds": 444,
+      "code": "// Fetching records shared with the current iCloud user\n\nfunc fetchSharedContacts(in zone: CKRecordZone) async throws {\n    var changeToken: CKServerChangeToken? = nil\n    var moreChangesComing = true\n\n    while moreChangesComing {\n        let changes = try await sharedCloudDatabase.recordZoneChanges(\n            inZoneWith: zone.zoneID, \n            since: changeToken\n        )\n\n        // Process changes as needed (modifications and deletions)\n        processChanges(changes)\n\n        moreChangesComing = changes.moreComing\n        changeToken = changes.changeToken\n    }\n}"
+    },
+    {
+      "title": "Search: Phone Number",
+      "language": "swift",
+      "startTimeSeconds": 556,
+      "code": "// Search by phone number\n\nlet phoneNumber = \"417-555-9311\"\nlet participant = try await container.shareParticipant(forPhoneNumber: phoneNumber)"
+    },
+    {
+      "title": "Search: Email Address",
+      "language": "swift",
+      "startTimeSeconds": 556,
+      "code": "// Search by email address\n\nlet emailAddress = \"dave_knox@icloud.com\"\nlet participant = try await container.shareParticipant(forEmailAddress: emailAddress)"
+    },
+    {
+      "title": "Search: Record ID",
+      "language": "swift",
+      "startTimeSeconds": 556,
+      "code": "// Search by user record ID\n\nlet participant = try await container.shareParticipant(forUserRecordID: recordID)"
+    },
+    {
+      "title": "Add participant to a share",
+      "language": "swift",
+      "startTimeSeconds": 572,
+      "code": "// Add participant to existing CKShare record\n\nfunc addParticipant(_ participant: CKShare.Participant, to share: CKShare) async throws {\n    participant.permission = .readWrite\n    share.addParticipant(participant)\n    try await privateCloudDatabase.save(share)\n}"
+    },
+    {
+      "title": "Confirm invitation acceptance",
+      "language": "swift",
+      "startTimeSeconds": 587,
+      "code": "// Fetch CKShare.Metadata and confirm accepting share from a given URL\n\nfunc confirmShareParticipation(from url: URL) async throws {\n    let shareMetadata = try await container.shareMetadata(for: url)\n    try await container.accept(shareMetadata)\n}"
+    },
+    {
+      "title": "Share an entire record zone",
+      "language": "swift",
+      "startTimeSeconds": 674,
+      "code": "// Create a CKShare sharing an entire record zone\n\nfunc createAndSaveShare(for zone: CKRecordZone) async throws -> CKShare {\n    let share = CKShare(recordZoneID: zone.zoneID)\n    try await privateCloudDatabase.save(share)\n\n    if share.recordID.recordName == CKRecordNameZoneWideShare {\n        // This is managing a shared record zone\n    }\n\n    return share\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "CloudKit Samples: Sharing",
+      "url": "https://github.com/apple/cloudkit-sample-sharing",
+      "type": "samplecode",
+      "description": "This project demonstrates sharing CloudKit records across user accounts. It shows how to initiate a share from one user account, and accept the share and subsequently view shared data on another account."
+    }
+  ],
+  "path": "sessions/tech-talks/10874-get-the-most-out-of-cloudkit-sharing/",
+  "files": {
+    "metadata": "sessions/tech-talks/10874-get-the-most-out-of-cloudkit-sharing/metadata.json",
+    "readme": "sessions/tech-talks/10874-get-the-most-out-of-cloudkit-sharing/README.md",
+    "transcript": "sessions/tech-talks/10874-get-the-most-out-of-cloudkit-sharing/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/10874-get-the-most-out-of-cloudkit-sharing/transcript.json"
+  }
+}

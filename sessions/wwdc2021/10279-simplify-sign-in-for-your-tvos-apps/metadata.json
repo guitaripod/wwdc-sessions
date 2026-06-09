@@ -1,0 +1,95 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10279",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10279,
+  "title": "Simplify sign in for your tvOS apps",
+  "description": "Find out how people can use Face ID or Touch ID on their iOS or iPadOS device to authorize purchases and sign into your tvOS app. Discover how you can simplify sign in for people using your app and help them get to the content they want to enjoy, faster. We’ll show you how to set up a simplified sign in process and share some best practices about creating great sign in experiences for Apple TV. To get the most out of this session, we recommend a basic understanding of associated domains and the Authentication Services framework.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10279",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10279",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "tvOS"
+  ],
+  "keywords": [
+    "auth",
+    "authentication",
+    "keychain",
+    "password",
+    "sign-in",
+    "sign in with apple",
+    "sign-on",
+    "sign-up",
+    "username"
+  ],
+  "topics": [
+    "Privacy & Security"
+  ],
+  "primaryTopic": "Privacy & Security",
+  "duration": 476,
+  "hasTranscript": true,
+  "transcriptWordCount": 1168,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10279/6/2634C5FD-06F9-4C34-8D8A-215A0C29356B/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10279/6/2634C5FD-06F9-4C34-8D8A-215A0C29356B/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10279/6/2634C5FD-06F9-4C34-8D8A-215A0C29356B/downloads/wwdc2021-10279_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10279/6/2634C5FD-06F9-4C34-8D8A-215A0C29356B/downloads/wwdc2021-10279_hd.mp4",
+    "duration": 476
+  },
+  "codeSnippets": [
+    {
+      "title": "Request a credential",
+      "language": "swift",
+      "startTimeSeconds": 208,
+      "code": "let controller = ASAuthorizationController(authorizationRequests: [\n    ASAuthorizationPasswordProvider().createRequest()\n])\n\ncontroller.delegate = self\ncontroller.performRequests()"
+    },
+    {
+      "title": "Finish signing in",
+      "language": "swift",
+      "startTimeSeconds": 259,
+      "code": "func authorizationController(controller: ASAuthorizationController,\n    didCompleteWithAuthorization authorization: ASAuthorization) {\n    if let credential = authorization.credential as? ASPasswordCredential {\n        // Use the credential to sign in\n    }\n}"
+    },
+    {
+      "title": "Handle errors",
+      "language": "swift",
+      "startTimeSeconds": 283,
+      "code": "func authorizationController(controller: ASAuthorizationController,\n    didCompleteWithError error: Error) {\n    if case ASAuthorizationError.canceled = error  { return }\n    // Let the user know something went wrong\n}"
+    },
+    {
+      "title": "Specify custom authorization methods",
+      "language": "swift",
+      "startTimeSeconds": 360,
+      "code": "controller.customAuthorizationMethods = [\n    // Sign in Manually\n    .other,\n    // Restore Purchase\n    .restorePurchase\n]"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Simplifying User Authentication in a tvOS App",
+      "url": "https://developer.apple.com/documentation/AuthenticationServices/simplifying-user-authentication-in-a-tvos-app",
+      "type": "samplecode",
+      "description": "Build a fluid sign-in experience for your tvOS apps using AuthenticationServices.",
+      "sosumiURL": "https://sosumi.ai/documentation/AuthenticationServices/simplifying-user-authentication-in-a-tvos-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AuthenticationServices/simplifying-user-authentication-in-a-tvos-app.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10279-simplify-sign-in-for-your-tvos-apps/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10279-simplify-sign-in-for-your-tvos-apps/metadata.json",
+    "readme": "sessions/wwdc2021/10279-simplify-sign-in-for-your-tvos-apps/README.md",
+    "transcript": "sessions/wwdc2021/10279-simplify-sign-in-for-your-tvos-apps/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10279-simplify-sign-in-for-your-tvos-apps/transcript.json"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-404",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 404,
+  "title": "Make a big impact with small writing changes",
+  "description": "With the new design system across platforms, now’s a perfect time to revisit the writing in your UI too. Learn how a few small changes, like removing repetition and leading with benefits, can quickly enhance the usability and clarity of your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/404",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/404",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 961,
+  "hasTranscript": true,
+  "transcriptWordCount": 2554,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/404/4/59f0f7aa-24a1-477b-b61b-2baeebe52df0/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/404/4/59f0f7aa-24a1-477b-b61b-2baeebe52df0/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/404/4/59f0f7aa-24a1-477b-b61b-2baeebe52df0/downloads/wwdc2025-404_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/404/4/59f0f7aa-24a1-477b-b61b-2baeebe52df0/downloads/wwdc2025-404_hd.mp4",
+    "duration": 961
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Writing",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/writing",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/writing"
+    }
+  ],
+  "path": "sessions/wwdc2025/404-make-a-big-impact-with-small-writing-changes/",
+  "files": {
+    "metadata": "sessions/wwdc2025/404-make-a-big-impact-with-small-writing-changes/metadata.json",
+    "readme": "sessions/wwdc2025/404-make-a-big-impact-with-small-writing-changes/README.md",
+    "transcript": "sessions/wwdc2025/404-make-a-big-impact-with-small-writing-changes/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/404-make-a-big-impact-with-small-writing-changes/transcript.json"
+  }
+}

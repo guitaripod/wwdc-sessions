@@ -1,0 +1,157 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-335",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 335,
+  "title": "Improve your prompts by hill-climbing with Evaluations",
+  "description": "Learn comparative evaluation techniques to guide your prompt engineering and select the right model for your app. Explore how to baseline performance, expand your evaluation strategy, and convert results to JSON for integration with other tools. Discover when to apply different prompting strategies and how to iteratively refine prompts for best results.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/335",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/335",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "ai",
+    "machine learning",
+    "testing",
+    "xcode"
+  ],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1601,
+  "hasTranscript": true,
+  "transcriptWordCount": 4175,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/335/4/a464d330-6aa2-456d-9a07-eae997aef08c/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/335/4/a464d330-6aa2-456d-9a07-eae997aef08c/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/335/4/a464d330-6aa2-456d-9a07-eae997aef08c/downloads/wwdc2026-335_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/335/4/a464d330-6aa2-456d-9a07-eae997aef08c/downloads/wwdc2026-335_hd.mp4",
+    "duration": 1601
+  },
+  "codeSnippets": [
+    {
+      "title": "The BookTaggingEvaluation",
+      "language": "swift",
+      "startTimeSeconds": 234,
+      "code": "// MARK: - Evaluation\n  struct BookTaggingEvaluation: Evaluation {\n      func subject(from sample: ModelSample<BookTags>) async throws -> ModelSubject<BookTags> {\n          let result = try await BookTaggingService.generateTags(for: sample.promptDescription)\n          return ModelSubject(value: result)\n      }\n\n      // MARK: - Dataset\n      var dataset = ArrayLoader(samples:\n          Book.sampleBooks.map { book in\n              ModelSample(prompt: book.review, expected: BookTags(tags: book.tags))\n          }\n      )\n\n      // MARK: - Evaluators & Metrics\n      var tagCount = Metric(\"Tag Count\")\n      let hasGenreTag = Metric(\"Has Genre Tag\")\n      let noDuplicates = Metric(\"No Duplicates\")\n\n      let relevance = ScoreDimension(\n          \"Relevance\",\n          description: \"\"\"\n              Whether each tag describes a quality, theme, or tone of the\n              book itself rather than incidental details or the reader's\n              personal reactions.\n              \"\"\",\n          scale: .numeric([\n              4: \"Every tag describes the book itself\",\n              3: \"Most tags describe the book, one picks up a reader reaction or minor detail\",\n              2: \"Most tags are surface details or personal reactions, not book descriptors\",\n              1: \"Tags don't meaningfully describe the book\"\n          ])\n      )\n\n      let usefulness = ScoreDimension(\n          \"Usefulness\",\n          description: \"\"\"\n              Whether tags are at the right granularity for browsing — broad\n              enough that multiple books could share the tag, specific enough\n              to help filter.\n              \"\"\",\n          scale: .numeric([\n              4: \"Every tag could group multiple books while still narrowing a search\",\n              3: \"Most tags are at the right level, one is either too broad or too narrow\",\n              2: \"Most tags are too broad to filter or too narrow to group\",\n              1: \"Tags would not help with browsing\"\n          ])\n      )\n\n      var evaluators: Evaluators {\n          // 1. Tag count is within the required 3–8 range\n          Evaluator { _, subject in\n              let count = subject.value.tags.count\n              if (count >= 3 && count <= 8) {\n                  return tagCount.passing(rationale: \"\\(count) tags\")\n              }\n              return tagCount.failing(rationale: \"Got \\(count) tags, expected 3–8\")\n          }\n\n          // 2. At least one tag identifies the genre or literary form\n          Evaluator { _, subject in\n              let tags = subject.value.tags.map { $0.lowercased() }\n              let knownGenres = await BookTaggingService.knownGenres\n              for tag in tags {\n                  if knownGenres.contains(tag) {\n                      return hasGenreTag.passing(rationale: \"Matched \\(tag)\")\n                  }\n              }\n              return hasGenreTag.failing()\n          }\n\n          // 3. No duplicate tags\n          Evaluator { _, subject in\n              let uniqueCount = Set(subject.value.tags.map { $0.lowercased() }).count\n              if (subject.value.tags.count - uniqueCount) > 0 {\n                  return noDuplicates.failing(rationale: \"Found \\(subject.value.tags.count - uniqueCount) duplicates\")\n              }\n              return noDuplicates.passing()\n          }\n\n          // 4. Overall tag quality — groundedness, coverage, specificity\n          ModelJudgeEvaluator(\n              judge: .default,\n              dimensions: [relevance, usefulness],\n              prompt: ModelJudgePrompt(\n                  instructions: \"\"\"\n                      You are evaluating automatically generated tags for Shelf, a personal\n                      book tracking app. Users write a short summary of their reading\n                      experience, and the app generates tags to make their library browsable.\n                      A good tag describes the book itself — its genre, themes, tone, or\n                      setting. A bad tag picks up incidental details or the reader's personal\n                      reactions that don't describe the book.\n                      \"\"\",\n                  evaluationTarget: { output in output.tags.joined(separator: \", \") },\n                  reference: { input, _ in\n                      [\"Expected Tags\": input.expected?.tags.joined(separator: \", \") ?? \"\"]\n                  }\n              )\n          )\n      }\n\n      // MARK: - Analysis\n      func aggregateMetrics(using aggregator: inout MetricsAggregator) {\n          aggregator.group(\"Heuristics\") { group in\n              group.computeMean(of: tagCount)\n              group.computeMean(of: hasGenreTag)\n              group.computeMean(of: noDuplicates)\n          }\n          aggregator.group(\"Quality\") { group in\n              group.computeMean(of: relevance.metric)\n              group.computeMean(of: usefulness.metric)\n          }\n      }\n  }"
+    },
+    {
+      "title": "Refined Relevance & Usefulness score dimensions",
+      "language": "swift",
+      "startTimeSeconds": 245,
+      "code": "let relevance = ScoreDimension(\n      \"Relevance\",\n      description: \"\"\"\n          Whether each tag describes the book itself — its genre, themes,\n          tone, or setting — rather than the reader's reactions, meta-\n          commentary about the review, or facts about the author. A book\n          can be \"suspenseful\" (a property of the text); a reader is\n          \"exhausted\" (a reaction). Mis-labeling the genre is a serious failure.\n          \"\"\",\n      scale: .numeric([\n          4: \"Every tag describes the book itself\",\n          3: \"Most tags describe the book, one picks up a reader reaction or minor detail\",\n          2: \"Most tags are surface details or personal reactions, not book descriptors\",\n          1: \"Tags don't meaningfully describe the book\"\n      ])\n  )\n\n  let usefulness = ScoreDimension(\n      \"Usefulness\",\n      description: \"\"\"\n          Whether tags work as library shelf labels — broad enough that\n          several books could plausibly share the tag, specific enough to\n          meaningfully narrow a search. Standard genre and theme tags work;\n          made-up phrases, character names, hyper-specific descriptors, and\n          overly generic words like \"interesting\" don't.\n          \"\"\",\n      scale: .numeric([\n          4: \"Every tag could group multiple books while still narrowing a search\",\n          3: \"Most tags are at the right level, one is either too broad or too narrow\",\n          2: \"Most tags are too broad to filter or too narrow to group\",\n          1: \"Tags would not help with browsing\"\n      ])\n  )"
+    },
+    {
+      "title": "The alignment dataset, extracted to JSON",
+      "language": "swift",
+      "startTimeSeconds": 716,
+      "code": "// Model judge alignment dataset\n  [\n    {\n      \"input\": \"I have read this book more times than I can count…\",\n      \"response\": \"[\\\"literary-fiction\\\", \\\"historical-fiction\\\", \\\"family-drama\\\", \\\"romantic-drama\\\", \n  \\\"character-driven\\\", \\\"emotional-intensity\\\", \\\"multigenerational-narrative\\\", \\\"penned-by-a-woman\\\"]\"\n    }\n    // ... add your expert ratings to each entry\n  ]"
+    },
+    {
+      "title": "The judge alignment evaluation: dataset, subject, evaluator",
+      "language": "swift",
+      "startTimeSeconds": 751,
+      "code": "// Model judge alignment evaluation\n  struct BookTagJudgmentCalibration: Evaluation {\n\n      // MARK: Dataset — load the extracted summary/tag pairs\n      static let samples: [ModelSample<BookTagJudgmentValue>] = {\n          guard let url = Bundle(for: BundleToken.self).url(\n                  forResource: \"BookTaggingEvaluation-extracted\", withExtension: \"json\"),\n                let data = try? Data(contentsOf: url) else { return [] }\n          // Build ModelSample array (adding expert ratings)\n          // ...\n      }()\n\n      var dataset: some Loader { ArrayLoader(samples: Self.samples) }\n\n      // MARK: Capture Subject — tags are already generated, so just return them\n      func subject(from sample: ModelSample<BookTagJudgmentValue>) async throws -> ModelSubject<BookTagJudgmentValue> {\n          ModelSubject(value: sample.expected ?? BookTagJudgmentValue(\n              tags: [], expertRelevanceScore: 0, expertUsefulnessScore: 0))\n      }\n\n      // MARK: Evaluators — the same model judge as the book-tags evaluation\n      var evaluators: Evaluators {\n          ModelJudgeEvaluator(\n              judge: .default,\n              dimensions: [relevance, usefulness],\n              prompt: ModelJudgePrompt(\n                  instructions: \"You are evaluating automatically generated tags for Book Tracker…\",\n                  evaluationTarget: { output in output.tags.joined(separator: \", \") },\n                  reference: { input, _ in\n                      [\"Expected Tags\": input.expected?.tags.joined(separator: \", \") ?? \"\"]\n                  }\n              )\n          )\n      }\n  }"
+    },
+    {
+      "title": "Cohen's kappa aggregation",
+      "language": "swift",
+      "startTimeSeconds": 780,
+      "code": "func aggregateMetrics(using aggregator: inout MetricsAggregator) {\n      let expertRelevance = Self.samples.map { Double($0.expected?.expertRelevanceScore ?? 0) }\n      let expertUsefulness = Self.samples.map { Double($0.expected?.expertUsefulnessScore ?? 0) }\n\n      aggregator.group(\"Relevance\") { group in\n          group.computeMean(of: relevance.metric)\n          group.computeStandardDeviation(of: relevance.metric)\n          group.custom(of: relevance.metric, label: \"Relevance Alignment Score\") { judge in\n              cohensKappa(ratings1: expertRelevance, ratings2: judge) ?? 0\n          }\n      }\n      aggregator.group(\"Usefulness\") { group in\n          group.computeMean(of: usefulness.metric)\n          group.computeStandardDeviation(of: usefulness.metric)\n          group.custom(of: usefulness.metric, label: \"Usefulness Alignment Score\") { judge in\n              cohensKappa(ratings1: expertUsefulness, ratings2: judge) ?? 0\n          }\n      }\n  }"
+    },
+    {
+      "title": "The judge calibration test",
+      "language": "swift",
+      "startTimeSeconds": 804,
+      "code": "// Model judge alignment tests\n  @Suite(\"Book Tag Judge Calibration\")\n  struct BookTagJudgmentCalibrationTests {\n      static let evaluation = BookTagJudgmentCalibration()\n\n      @Test(\"Judge Calibration\", .evaluates(evaluation))\n      func evaluateJudgeCalibration() async throws {\n          let result = EvaluationContext.current.result\n\n          let usefulnessMetric = BookTagJudgmentCalibrationTests.evaluation.usefulness.metric\n          let relevanceMetric = BookTagJudgmentCalibrationTests.evaluation.relevance.metric\n\n          #expect(result.aggregateValue(.custom(label: \"Relevance: Judge vs Expert\")) > 0.6)\n          #expect(result.aggregateValue(.custom(label: \"Usefulness: Judge vs Expert\")) > 0.6)\n      }\n  }"
+    },
+    {
+      "title": "The experimental judge prompt",
+      "language": "swift",
+      "startTimeSeconds": 993,
+      "code": "// Experimental evaluation\n  struct BookTagJudgmentCalibrationExperimental: Evaluation {\n      var evaluators: Evaluators {\n          ModelJudgeEvaluator(\n              judge: .default,\n              dimensions: [relevance, usefulness],\n              prompt: ModelJudgePrompt(\n                  instructions: \"\"\"\n                      You are an experienced reader and librarian evaluating tags\n                      automatically generated for Book Tracker... Score the tag set on two\n                      independent dimensions: Relevance and Usefulness.\n\n                      ## What a good tag looks like\n                      - Genre/form, theme/subject, tone/atmosphere, setting/era\n\n                      ## Common failure modes\n                      - Reader reactions, meta-commentary, author facts, genre contradictions\n                      \"\"\",   // ← full prompt is ~40 lines; abbreviated here\n                  evaluationTarget: { output in output.tags.joined(separator: \", \") },\n                  reference: { input, _ in\n                      [\"Book Review\": input.promptDescription,\n                       \"Tags Generated for the Review\": input.expected?.tags.joined(separator: \", \") ?? \"\"]\n                  }\n              )\n          )\n      }\n  }"
+    },
+    {
+      "title": "Few-shot worked examples in the judge prompt",
+      "language": "swift",
+      "startTimeSeconds": 1212,
+      "code": "struct ExperimentalBookTagJudgmentCalibration: Evaluation {\n      var evaluators: Evaluators {\n          ModelJudgeEvaluator(\n              judge: SystemLanguageModel(),\n              dimensions: [relevance, usefulness],\n              prompt: ModelJudgePrompt(\n                  instructions: \"\"\"\n                      You are calibrating with an expert librarian who scores\n                      automatically generated tags for Book Tracker... Your goal is to\n                      match how the librarian scores. Use the worked examples to calibrate.\n\n                      ## Worked examples\n                      ### Example A — clean fit (Pride and Prejudice)\n                      Tags: romance, historical-fiction, love, redemption, passion\n                      Librarian: Relevance 4, Usefulness 4\n\n                      ### Example E — flat genre contradiction (Frankenstein)\n                      Tags: horror, science-fiction, ... self-help, self-improvement\n                      Librarian: Relevance 2, Usefulness 3\n                      ... (6 examples A–F; keep the set small to avoid overfitting)\n                      \"\"\",   // ← full prompt is ~60 lines; abbreviated here\n                  evaluationTarget: { output in output.tags.joined(separator: \", \") },\n                  reference: { input, _ in\n                      [\"Book Review\": input.promptDescription,\n                       \"Tags Generated for the Review\": input.expected?.tags.joined(separator: \", \") ?? \"\"]\n                  }\n              )\n          )\n      }\n  }\n\n  9. The BookLookupTool — slides 166–167"
+    },
+    {
+      "title": "The BookLookupTool",
+      "language": "swift",
+      "startTimeSeconds": 1323,
+      "code": "// Book Information Lookup Tool\n  struct BookLookupTool: Tool {\n      let name = \"lookupBook\"\n      let description = \"Looks up the title and author of a book given distinguishing details — such as character names, \n  settings, quoted lines, or notable plot points — extracted from a reader's review.\"\n\n      @Generable\n      struct Arguments {\n          @Guide(description: \"Distinguishing details from the review that identify the book, such as character names, \n  settings, quoted lines, or notable plot points.\")\n          var details: String\n      }\n\n      @Generable\n      struct Output {\n          @Guide(description: \"The title of the identified book, or an empty string if no match was found.\")\n          var title: String\n\n          @Guide(description: \"The author of the identified book, or an empty string if no match was found.\")\n          var author: String\n      }\n\n      func call(arguments: Arguments) async throws -> Output {\n          let needles = arguments.details\n              .lowercased()\n              .split(whereSeparator: { !$0.isLetter && !$0.isNumber })\n              .map(String.init)\n              .filter { $0.count >= 4 }\n\n          let best = Book.sampleBooks\n              .map { book -> (book: Book, score: Int) in\n                  let review = book.review.lowercased()\n                  let score = needles.reduce(0) { partial, needle in\n                      partial + (review.contains(needle) ? 1 : 0)\n                  }\n                  return (book, score)\n              }\n              .max(by: { $0.score < $1.score })\n\n          guard let match = best, match.score > 0 else {\n              return Output(title: \"\", author: \"\")\n          }\n          return Output(title: match.book.title, author: match.book.author)\n      }\n  }"
+    },
+    {
+      "title": "BookTaggingService with a tools parameter",
+      "language": "swift",
+      "startTimeSeconds": 1356,
+      "code": "// Book Tagging Service\n  struct BookTaggingService {\n      static func generateTags(for review: String, tools: [any Tool] = []) async throws -> BookTags {\n          let prompt = tagsPrompt(review: review)\n          let session = LanguageModelSession(\n              model: SystemLanguageModel(guardrails: .permissiveContentTransformations),\n              tools: tools,\n              instructions: instructions\n          )\n          let response = try await session.respond(to: prompt, generating: BookTags.self)\n          return response.content\n      }\n  }"
+    },
+    {
+      "title": "Evaluation with the lookup tool",
+      "language": "swift",
+      "startTimeSeconds": 1377,
+      "code": "// Evaluation of tags with tool\n  struct BookTaggingWithLookupEvaluation: Evaluation {\n      func subject(from sample: ModelSample<BookTags>) async throws -> ModelSubject<BookTags> {\n          let result = try await BookTaggingService.generateTags(\n              for: sample.promptDescription,\n              tools: [BookLookupTool()]\n          )\n          return ModelSubject(value: result)\n      }\n      // ... same dataset, evaluators, and aggregation as BookTaggingEvaluation\n  }"
+    },
+    {
+      "title": "Compare with/without the tool in one suite",
+      "language": "swift",
+      "startTimeSeconds": 1389,
+      "code": "@Suite(\"Book Tag Evaluations\")\n  struct BookTagEvaluationTests {\n      static let evaluation = BookTaggingEvaluation()\n      static let lookupEvaluation = BookTaggingWithLookupEvaluation()\n\n      @Test(\"Book Tag Evaluations\", .evaluates(evaluation, info: evaluationInfo))\n      func evaluateBookTagging() async throws {\n          let result = EvaluationContext.current.result\n          let rangeMetric = BookTagEvaluationTests.evaluation.tagCount\n          let dupeMetric = BookTagEvaluationTests.evaluation.noDuplicates\n          #expect(result.aggregateValue(.mean(of: rangeMetric)) >= 0.8)\n          #expect(result.aggregateValue(.mean(of: dupeMetric)) == 1)\n      }\n\n      @Test(\"Book Tag Evaluations (with BookLookupTool)\", .evaluates(lookupEvaluation, info: lookupEvaluationInfo))\n      func evaluateBookTaggingWithLookup() async throws {\n          let result = EvaluationContext.current.result\n          let rangeMetric = BookTagEvaluationTests.lookupEvaluation.tagCount\n          let dupeMetric = BookTagEvaluationTests.lookupEvaluation.noDuplicates\n          #expect(result.aggregateValue(.mean(of: rangeMetric)) >= 0.8)\n          #expect(result.aggregateValue(.mean(of: dupeMetric)) == 1)\n      }\n  }"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Book Tracker: Using Evaluations to evaluate an intelligent feature",
+      "url": "https://developer.apple.com/documentation/Evaluations/book-tracker-using-evaluations-to-evaluate-an-intelligent-feature",
+      "type": "samplecode",
+      "description": "Measure and improve the quality of your app’s intelligence-powered features using the Evaluations framework.",
+      "sosumiURL": "https://sosumi.ai/documentation/Evaluations/book-tracker-using-evaluations-to-evaluate-an-intelligent-feature",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Evaluations/book-tracker-using-evaluations-to-evaluate-an-intelligent-feature.json"
+    },
+    {
+      "title": "Designing effective model-as-judge evaluators",
+      "url": "https://developer.apple.com/documentation/Evaluations/designing-effective-model-judges",
+      "type": "documentation",
+      "description": "Configure model-as-judge evaluators that produce scores you correlate",
+      "sosumiURL": "https://sosumi.ai/documentation/Evaluations/designing-effective-model-judges",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Evaluations/designing-effective-model-judges.json"
+    },
+    {
+      "title": "Designing specific, measurable criteria in an evaluation suite",
+      "url": "https://developer.apple.com/documentation/Evaluations/designing-evaluation-criteria",
+      "type": "documentation",
+      "description": "Define quality for your feature by choosing measurable",
+      "sosumiURL": "https://sosumi.ai/documentation/Evaluations/designing-evaluation-criteria",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Evaluations/designing-evaluation-criteria.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/335-improve-your-prompts-by-hill-climbing-with-evaluations/",
+  "files": {
+    "metadata": "sessions/wwdc2026/335-improve-your-prompts-by-hill-climbing-with-evaluations/metadata.json",
+    "readme": "sessions/wwdc2026/335-improve-your-prompts-by-hill-climbing-with-evaluations/README.md",
+    "transcript": "sessions/wwdc2026/335-improve-your-prompts-by-hill-climbing-with-evaluations/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/335-improve-your-prompts-by-hill-climbing-with-evaluations/transcript.json"
+  }
+}

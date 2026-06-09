@@ -1,0 +1,51 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-110933",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 110933,
+  "title": "WWDC22 Day 5 recap",
+  "description": "It's time to close out Day 5 of WWDC with one last report.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/110933",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/110933",
+  "type": "Video",
+  "publishedAt": "2022-06-10T15:00:00-07:00",
+  "platforms": [],
+  "keywords": [
+    "recap"
+  ],
+  "topics": [
+    "Essentials"
+  ],
+  "primaryTopic": "Essentials",
+  "duration": 64,
+  "hasTranscript": true,
+  "transcriptWordCount": 170,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110933/1/CF0900A1-24C8-4C33-B6D1-18B2343DC206/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110933/1/CF0900A1-24C8-4C33-B6D1-18B2343DC206/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110933/1/CF0900A1-24C8-4C33-B6D1-18B2343DC206/downloads/wwdc2022-110933_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110933/1/CF0900A1-24C8-4C33-B6D1-18B2343DC206/downloads/wwdc2022-110933_hd.mp4",
+    "duration": 64
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2022/110933-wwdc22-day-5-recap/",
+  "files": {
+    "metadata": "sessions/wwdc2022/110933-wwdc22-day-5-recap/metadata.json",
+    "readme": "sessions/wwdc2022/110933-wwdc22-day-5-recap/README.md",
+    "transcript": "sessions/wwdc2022/110933-wwdc22-day-5-recap/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/110933-wwdc22-day-5-recap/transcript.json"
+  }
+}

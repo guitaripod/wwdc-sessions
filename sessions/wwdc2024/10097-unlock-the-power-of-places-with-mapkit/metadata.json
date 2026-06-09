@@ -1,0 +1,152 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2024-10097",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10097,
+  "title": "Unlock the power of places with MapKit",
+  "description": "Discover powerful new ways to integrate maps into your apps and websites with MapKit and MapKit JS. Learn how to save and reference unique places using Place ID. Check out improvements to search that make it more efficient to find relevant places. Get introduced to the new Place Card API that lets you display rich information about places so customers can explore destinations right in your app. And, we’ll show you quick ways to embed maps in your website with our simplified token provisioning and Web Embed API.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10097",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10097",
+  "type": "Video",
+  "publishedAt": "2024-06-12T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services",
+    "Safari & Web",
+    "Maps & Location"
+  ],
+  "primaryTopic": "Maps & Location",
+  "duration": 999,
+  "hasTranscript": true,
+  "transcriptWordCount": 2942,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10097/4/D991C391-4CC9-4A32-A10F-9D4DC6D7B615/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10097/4/D991C391-4CC9-4A32-A10F-9D4DC6D7B615/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10097/4/D991C391-4CC9-4A32-A10F-9D4DC6D7B615/downloads/wwdc2024-10097_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10097/4/D991C391-4CC9-4A32-A10F-9D4DC6D7B615/downloads/wwdc2024-10097_hd.mp4",
+    "duration": 999
+  },
+  "codeSnippets": [
+    {
+      "title": "Display a visitor center annotation",
+      "language": "swift",
+      "startTimeSeconds": 186,
+      "code": "// Display a visitor center annotation\n\nstruct PlaceMapView: View {\n    var placeID: String // \"I63802885C8189B2B\"\n\n    @State private var item: MKMapItem?\n\n    var body: some View {\n        Map {\n            if let item {\n                Marker(item: item)\n            }\n        }\n        .task {\n            guard let identifier = MKMapItem.Identifier(\n                rawValue: placeID\n            ) else {\n                return\n            }\n            let request = MKMapItemRequest(\n                mapItemIdentifier: identifier\n            )\n            item = try? await request.mapItem\n        }\n    }\n}"
+    },
+    {
+      "title": "Display an annotation for the center",
+      "language": "javascript",
+      "startTimeSeconds": 224,
+      "code": "<!DOCTYPE html>\n<html>\n<head>\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n  <style>\n    #map {\n      margin: 0 auto;\n    }\n  </style>\n</head>\n<body>\n\n<script\n  crossorigin async\n  src=\"https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js\"\n  data-callback=\"entryPoint\"\n  data-token=\"TODO: Add your token here\"\n></script>\n\n<script>\nwindow.entryPoint = () => {\n  const id = \"I63802885C8189B2B\";\n  const lookup = new mapkit.PlaceLookup();\n  lookup.getPlace(id, annotatePlace);\n};\n\nconst annotatePlace = (error, place) => {\n  const center = place.coordinate;\n  const span = new mapkit.CoordinateSpan(0.01, 0.01);\n  const region = new mapkit.CoordinateRegion(center, span);\n  const map = new mapkit.Map(\"map\", { region });\n\n  const annotation = new mapkit.PlaceAnnotation(place);\n  map.addAnnotation(annotation);\n};\n</script>\n\n<div id=\"map\" style=\"width: 100dvw; height: 100dvh;\"></div>\n\n</body>\n\n</html>"
+    },
+    {
+      "title": "Display my favorite apple stores",
+      "language": "swift",
+      "startTimeSeconds": 452,
+      "code": "// Display my favorite apple stores\n\nstruct VisitedStoresView: View {\n    var visitedStores: [MKMapItem]\n    @State private var selection: MKMapItem?\n\n    var body: some View {\n        Map(selection: $selection) {\n            ForEach(visitedStores, id: \\.self) { store in\n                Marker(item: store)\n            }\n            .mapItemDetailSelectionAccessory()\n        }\n    }\n}"
+    },
+    {
+      "title": "Display a selectable annotation",
+      "language": "javascript",
+      "startTimeSeconds": 470,
+      "code": "<!DOCTYPE html>\n<html>\n<head>\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n  <style>\n    #map {\n      margin: 0 auto;\n    }\n  </style>\n</head>\n<body>\n\n<script\n  crossorigin async\n  src=\"https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js\"\n  data-callback=\"entryPoint\"\n  data-token=\"TODO: Add your token here\"\n></script>\n\n<script>\nwindow.entryPoint = () => {\n  const id = \"I63802885C8189B2B\";\n  const lookup = new mapkit.PlaceLookup();\n  lookup.getPlace(id, annotatePlace);\n};\n\nconst annotatePlace = (error, place) => {\n  const center = place.coordinate;\n  const span = new mapkit.CoordinateSpan(0.01, 0.01);\n  const region = new mapkit.CoordinateRegion(center, span);\n  const map = new mapkit.Map(\"map\", { region });\n\n  const annotation = new mapkit.PlaceAnnotation(place);\n  map.addAnnotation(annotation);\n\n  const accessory = new mapkit.PlaceSelectionAccessory();\n  annotation.selectionAccessory = accessory;\n};\n</script>\n\n<div id=\"map\" style=\"width: 100dvw; height: 100dvh;\"></div>\n\n</body>\n\n</html>"
+    },
+    {
+      "title": "List stores and show details when selected",
+      "language": "swift",
+      "startTimeSeconds": 555,
+      "code": "// List stores and show details when selected\n\nstruct StoreList: View {\n    var stores: [MKMapItem]\n    @State private var selectedStore: MKMapItem?\n\n    var body: some View {\n        List(\n            stores,\n            id: \\.self,\n            selection: $selectedStore\n        ) {\n            Text($0.name ?? \"Apple Store\")\n        }\n        .mapItemDetailSheet(item: $selectedStore)\n    }\n}"
+    },
+    {
+      "title": "Show visitor center details",
+      "language": "javascript",
+      "startTimeSeconds": 577,
+      "code": "<!DOCTYPE html>\n<html>\n<head>\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n  <style>\n    #map {\n      margin: 0 auto;\n    }\n  </style>\n</head>\n<body>\n\n<script\n  crossorigin async\n  src=\"https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js\"\n  data-callback=\"entryPoint\"\n  data-token=\"TODO: Add your token here\"\n></script>\n\n<script>\nwindow.entryPoint = () => {\n  const id = \"I63802885C8189B2B\";\n  const lookup = new mapkit.PlaceLookup();\n  lookup.getPlace(id, annotatePlace);\n};\n\nconst annotatePlace = (error, place) => {\n  const el = document.getElementById(\"place\");\n  const detail = new mapkit.PlaceDetail(el, place, {\n    colorScheme: mapkit.PlaceDetail.ColorSchemes.Adaptive\n  });\n};\n</script>\n\n<div id=\"place\"></div>\n\n</body>\n\n</html>"
+    },
+    {
+      "title": "Display a place card for the selected map feature, too",
+      "language": "swift",
+      "startTimeSeconds": 677,
+      "code": "// Display a place card for the selected map feature, too\n\nstruct VisitedStoresView: View {\n    var visitedStores: [MKMapItem]\n    @State private var selection: MapSelection<MKMapItem>?\n\n    var body: some View {\n        Map(selection: $selection) {\n            ForEach(visitedStores, id: \\.self) { store in\n                Marker(item: store)\n                    .tag(MapSelection(store))\n            }\n            .mapItemDetailSelectionAccessory(.callout)\n        }\n        .mapFeatureSelectionAccessory(.callout)\n    }\n}"
+    },
+    {
+      "title": "Find Cupertino, then find coffee",
+      "language": "javascript",
+      "startTimeSeconds": 789,
+      "code": "<!DOCTYPE html>\n<html>\n<head>\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n  <style>\n    #map {\n      margin: 0 auto;\n    }\n  </style>\n</head>\n<body>\n\n<script\n  crossorigin async\n  src=\"https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js\"\n  data-callback=\"entryPoint\"\n  data-token=\"TODO: Add your token here\"\n></script>\n\n<script>\nwindow.entryPoint = () => {\n  const addressFilter = mapkit.AddressFilter.including([\n    mapkit.AddressCategory.Locality\n  ]);\n  const citySearch = new mapkit.Search({ addressFilter });\n  citySearch.search(\"Cupertino\", showMap);\n};\n\nconst showMap = (error, cities) => {\n  const center = cities.places[0].coordinate;\n  const span = new mapkit.CoordinateSpan(0.01, 0.01);\n  const region = new mapkit.CoordinateRegion(center, span);\n  const map = new mapkit.Map(\"map\", { region });\n\n  const coffeeSearch = new mapkit.Search({\n    region,\n    regionPriority: mapkit.Search.RegionPriority.Required,\n    pointOfInterestFilter: mapkit.PointOfInterestFilter.including([\n      mapkit.PointOfInterestCategory.Cafe\n    ])\n  });\n  coffeeSearch.search(\"coffee\", (error, results) => {\n    for (const place of results.places) {\n      const marker = new mapkit.PlaceAnnotation(place);\n      map.addAnnotation(marker);\n    }\n  });\n};\n</script>\n\n<div id=\"map\" style=\"width: 100dvw; height: 100dvh;\"></div>\n\n</body>\n\n</html>"
+    },
+    {
+      "title": "Finding coffee in Cupertino",
+      "language": "swift",
+      "startTimeSeconds": 881,
+      "code": "// Finding coffee in Cupertino\n\nstruct CoffeeMap: View {\n    @State private var position: MapCameraPosition = .automatic\n    @State private var coffeeShops: [MKMapItem] = []\n\n    var body: some View {\n        Map(position: $position) {\n            ForEach(coffeeShops, id: \\.self) { café in\n                Marker(item: cafe)\n            }\n        }\n        .task {\n            guard let cupertino = await findCity() else {\n                return\n            }\n            coffeeShops = await findCoffee(in: cupertino)\n        }\n    }\n\n    private func findCity() async -> MKMapItem? {\n        let request = MKLocalSearch.Request()\n        request.naturalLanguageQuery = \"cupertino\"\n\n        request.addressFilter = MKAddressFilter(\n            including: .locality\n        )\n\n        let search = MKLocalSearch(request: request)\n        let response = try? await search.start()\n        return response?.mapItems.first\n    }\n\n    private func findCoffee(in city: MKMapItem ) async -> [MKMapItem] {\n        let request = MKLocalSearch.Request()\n        request.naturalLanguageQuery = \"coffee\"\n        let downtown = MKCoordinateRegion(\n            center: city.placemark.coordinate,\n            span: .init(\n                latitudeDelta: 0.01,\n                longitudeDelta: 0.01\n            )\n        )\n        request.region = downtown\n        request.regionPriority = .required\n        let search = MKLocalSearch(request: request)\n        let response = try? await search.start()\n        return response?.mapItems ?? []\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Displaying place information using the Maps Embed API",
+      "url": "https://developer.apple.com/documentation/MapKitJS/displaying-place-information-using-the-maps-embed-api",
+      "type": "documentation",
+      "description": "Show place information on a map using a URL.",
+      "sosumiURL": "https://sosumi.ai/documentation/MapKitJS/displaying-place-information-using-the-maps-embed-api",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MapKitJS/displaying-place-information-using-the-maps-embed-api.json"
+    },
+    {
+      "title": "Identifying unique locations with Place IDs",
+      "url": "https://developer.apple.com/documentation/MapKit/identifying-unique-locations-with-place-ids",
+      "type": "documentation",
+      "description": "Obtain information about a point of interest that persists over its lifetime.",
+      "sosumiURL": "https://sosumi.ai/documentation/MapKit/identifying-unique-locations-with-place-ids",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MapKit/identifying-unique-locations-with-place-ids.json"
+    },
+    {
+      "title": "Resources - Apple Maps - Apple Developer",
+      "url": "https://developer.apple.com/maps/resources/",
+      "type": "documentation",
+      "description": "Tools, documentation, tutorials, videos, and more.",
+      "sosumiURL": "https://sosumi.ai/maps/resources/"
+    },
+    {
+      "title": "Forum: Maps & Location",
+      "url": "https://developer.apple.com/forums/topics/maps-and-location?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/maps-and-location?cid=vf-a-0010"
+    },
+    {
+      "title": "Interacting with nearby points of interest",
+      "url": "https://developer.apple.com/documentation/MapKit/interacting-with-nearby-points-of-interest",
+      "type": "samplecode",
+      "description": "Provide automatic search completions for a partial search query, search the map for relevant locations nearby, and retrieve details for selected points of interest.",
+      "sosumiURL": "https://sosumi.ai/documentation/MapKit/interacting-with-nearby-points-of-interest",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MapKit/interacting-with-nearby-points-of-interest.json"
+    }
+  ],
+  "path": "sessions/wwdc2024/10097-unlock-the-power-of-places-with-mapkit/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10097-unlock-the-power-of-places-with-mapkit/metadata.json",
+    "readme": "sessions/wwdc2024/10097-unlock-the-power-of-places-with-mapkit/README.md",
+    "transcript": "sessions/wwdc2024/10097-unlock-the-power-of-places-with-mapkit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10097-unlock-the-power-of-places-with-mapkit/transcript.json"
+  }
+}

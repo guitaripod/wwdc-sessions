@@ -1,0 +1,176 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-250",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 250,
+  "title": "Use structured concurrency with Network framework",
+  "description": "Network framework is the best way to make low-level network connections on Apple platforms — and in iOS, iPadOS, and macOS 26, it’s a perfect fit for your structured concurrency code. We’ll explore how you can make connections, send and receive data and framed messages, listen for incoming connections, and browse the network for services. We’ll also cover key best practices along the way.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/250",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/250",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 1270,
+  "hasTranscript": true,
+  "transcriptWordCount": 2892,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/250/4/ffac19d6-02fb-4abc-a491-fc009e5d38e3/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/250/4/ffac19d6-02fb-4abc-a491-fc009e5d38e3/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/250/4/ffac19d6-02fb-4abc-a491-fc009e5d38e3/downloads/wwdc2025-250_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/250/4/ffac19d6-02fb-4abc-a491-fc009e5d38e3/downloads/wwdc2025-250_hd.mp4",
+    "duration": 1270
+  },
+  "codeSnippets": [
+    {
+      "title": "Make a connection with TLS",
+      "language": "swift",
+      "startTimeSeconds": 244,
+      "code": "// Make a connection\n\nimport Network\n\nlet connection = NetworkConnection(to: .hostPort(host: \"www.example.com\", port: 1029)) {\n  TLS() \n}"
+    },
+    {
+      "title": "Make a connection with TLS and IP options",
+      "language": "swift",
+      "startTimeSeconds": 281,
+      "code": "// Make a connection\n\nimport Network\n\nlet connection = NetworkConnection(to: .hostPort(host: \"www.example.com\", port: 1029) {\n  TLS {\n    TCP {\n      IP()\n        .fragmentationEnabled(false)\n    }\n  }\n}"
+    },
+    {
+      "title": "Make a connection with customized parameters",
+      "language": "swift",
+      "startTimeSeconds": 307,
+      "code": "// Make a connection\n\nimport Network\n\nlet connection = NetworkConnection(to: .hostPort(host: \"www.example.com\", port: 1029),\n                                   using: .parameters {\n  TLS {\n    TCP {\n      IP()\n        .fragmentationEnabled(false)\n    }\n  }\n}\n.constrainedPathsProhibited(true))"
+    },
+    {
+      "title": "Send and receive on a connection",
+      "language": "swift",
+      "startTimeSeconds": 450,
+      "code": "// Send and receive on a connection\n\nimport Network\n\npublic func sendAndReceiveWithTLS() async throws {\n  let connection = NetworkConnection(to: .hostPort(host: \"www.example.com\", port: 1029)) {\n    TLS()\n  }\n\n  let outgoingData = Data(\"Hello, world!\".utf8)\n  try await connection.send(outgoingData)\n\n  let incomingData = try await connection.receive(exactly: 98).content\n  print(\"Received data: \\(incomingData)\")\n}"
+    },
+    {
+      "title": "Send and receive on a connection",
+      "language": "swift",
+      "startTimeSeconds": 509,
+      "code": "// Send and receive on a connection\n\nimport Network\n\npublic func sendAndReceiveWithTLS() async throws {\n  let connection = NetworkConnection(to: .hostPort(host: \"www.example.com\", port: 1029)) {\n    TLS()\n  }\n\n  let outgoingData = Data(\"Hello, world!\".utf8)\n  try await connection.send(outgoingData)\n\n  let remaining32 = try await connection.receive(as: UInt32.self).content\n  guard var remaining = Int(exactly: remaining32) else { /* ... throw an error ... */ }\n  while remaining > 0 {\n    let imageChunk = try await connection.receive(atLeast: 1, atMost: remaining).content\n    remaining -= imageChunk.count\n\n    // Parse the next portion of the image before continuing\n  }\n}"
+    },
+    {
+      "title": "Tic-Tac-Toe game messages",
+      "language": "swift",
+      "startTimeSeconds": 666,
+      "code": "// TicTacToe game messages\n\nimport Network\n\nenum GameMessage: Int {\n  case selectedCharacter = 0\n  case move = 1\n}\n\nstruct GameCharacter: Codable {\n  let character: String\n}\n\nstruct GameMove: Codable {\n  let row: Int\n  let column: Int\n}"
+    },
+    {
+      "title": "Send TicTacToe game messages with TLV",
+      "language": "swift",
+      "startTimeSeconds": 684,
+      "code": "// Send TicTacToe game messages with TLV\n\nimport Network\n\npublic func sendWithTLV() async throws {\n  let connection = NetworkConnection(to: .hostPort(host: \"www.example.com\", port: 1029)) {\n    TLV {\n      TLS()\n    }\n  }\n\n  let characterData = try JSONEncoder().encode(GameCharacter(character: \"🐨\"))\n  try await connection.send(characterData, type: GameMessage.selectedCharacter.rawValue)\n}"
+    },
+    {
+      "title": "Receive TicTacToe game messages with TLV",
+      "language": "swift",
+      "startTimeSeconds": 713,
+      "code": "import Network\n\npublic func receiveWithTLV() async throws {\n  let connection = NetworkConnection(to: .hostPort(host: \"www.example.com\", port: 1029)) {\n    TLV {\n      TLS()\n    }\n  }\n\n  let (incomingData, metadata) = try await connection.receive()\n  switch GameMessage(rawValue: metadata.type) {\n  case .selectedCharacter:\n    let character = try JSONDecoder().decode(GameCharacter.self, from: incomingData)\n    print(\"Character selected: \\(character)\")\n  case .move:\n    let move = try JSONDecoder().decode(GameMove.self, from: incomingData)\n    print(\"Move: \\(move)\")\n  case .none:\n    print(\"Unknown message\")\n  }\n}"
+    },
+    {
+      "title": "Tic-Tac-Toe game messages with Coder",
+      "language": "swift",
+      "startTimeSeconds": 770,
+      "code": "// TicTacToe game messages with Coder\n\nimport Network\n\nenum GameMessage: Codable {\n  case selectedCharacter(String)\n  case move(row: Int, column: Int)\n}"
+    },
+    {
+      "title": "Send TicTacToe game messages with Coder",
+      "language": "swift",
+      "startTimeSeconds": 793,
+      "code": "// Send TicTacToe game messages with Coder\n\nimport Network\n\npublic func sendWithCoder() async throws {\n  let connection = NetworkConnection(to: .hostPort(host: \"www.example.com\", port: 1029)) {\n    Coder(GameMessage.self, using: .json) {\n      TLS()\n    }\n  }\n\n  let selectedCharacter: GameMessage = .selectedCharacter(\"🐨\")\n  try await connection.send(selectedCharacter)\n}"
+    },
+    {
+      "title": "Receive TicTacToe game messages with Coder",
+      "language": "swift",
+      "startTimeSeconds": 833,
+      "code": "// Receive TicTacToe game messages with Coder\n\nimport Network\n\npublic func receiveWithCoder() async throws {\n  let connection = NetworkConnection(to: .hostPort(host: \"www.example.com\", port: 1029)) {\n    Coder(GameMessage.self, using: .json) {\n      TLS()\n    }\n  }\n\n  let gameMessage = try await connection.receive().content\n  switch gameMessage {\n  case .selectedCharacter(let character):\n    print(\"Character selected: \\(character)\")\n  case .move(let row, let column):\n    print(\"Move: (\\(row), \\(column))\")\n  }\n}"
+    },
+    {
+      "title": "Listen for incoming connections with NetworkListener",
+      "language": "swift",
+      "startTimeSeconds": 916,
+      "code": "// Listen for incoming connections with NetworkListener\n\nimport Network\n\npublic func listenForIncomingConnections() async throws {\n  try await NetworkListener {\n    Coder(GameMessage.self, using: .json) {\n      TLS()\n    }\n  }.run { connection in\n    for try await (gameMessage, _) in connection.messages {\n      // Handle the GameMessage\n    }\n  }\n}"
+    },
+    {
+      "title": "Browse for nearby paired Wi-Fi Aware devices",
+      "language": "swift",
+      "startTimeSeconds": 1059,
+      "code": "// Browse for nearby paired Wi-Fi Aware devices\n\nimport Network\nimport WiFiAware\n\npublic func findNearbyDevice() async throws {\n  let endpoint = try await NetworkBrowser(for: .wifiAware(.connecting(to: .allPairedDevices, from: .ticTacToeService))).run { endpoints in\n    .finish(endpoints.first!)\n  }\n\n  // Make a connection to the endpoint\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "NetworkBrowser",
+      "url": "https://developer.apple.com/documentation/Network/NetworkBrowser",
+      "type": "documentation",
+      "description": "Discover advertised services and devices on the network.",
+      "sosumiURL": "https://sosumi.ai/documentation/Network/NetworkBrowser",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Network/NetworkBrowser.json"
+    },
+    {
+      "title": "NetworkListener",
+      "url": "https://developer.apple.com/documentation/Network/NetworkListener",
+      "type": "documentation",
+      "description": "Listen for incoming network connections.",
+      "sosumiURL": "https://sosumi.ai/documentation/Network/NetworkListener",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Network/NetworkListener.json"
+    },
+    {
+      "title": "NetworkConnection",
+      "url": "https://developer.apple.com/documentation/Network/NetworkConnection",
+      "type": "documentation",
+      "description": "Connect to an endpoint on the network to send and receive data.",
+      "sosumiURL": "https://sosumi.ai/documentation/Network/NetworkConnection",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Network/NetworkConnection.json"
+    },
+    {
+      "title": "Building a custom peer-to-peer protocol",
+      "url": "https://developer.apple.com/documentation/Network/building-a-custom-peer-to-peer-protocol",
+      "type": "samplecode",
+      "description": "Use networking frameworks to create a custom protocol for playing a game across iOS, iPadOS, watchOS, and tvOS devices.",
+      "sosumiURL": "https://sosumi.ai/documentation/Network/building-a-custom-peer-to-peer-protocol",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Network/building-a-custom-peer-to-peer-protocol.json"
+    },
+    {
+      "title": "Network",
+      "url": "https://developer.apple.com/documentation/Network",
+      "type": "documentation",
+      "description": "Create network connections to send and receive data using transport and security protocols.",
+      "sosumiURL": "https://sosumi.ai/documentation/Network",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Network.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/250-use-structured-concurrency-with-network-framework/",
+  "files": {
+    "metadata": "sessions/wwdc2025/250-use-structured-concurrency-with-network-framework/metadata.json",
+    "readme": "sessions/wwdc2025/250-use-structured-concurrency-with-network-framework/README.md",
+    "transcript": "sessions/wwdc2025/250-use-structured-concurrency-with-network-framework/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/250-use-structured-concurrency-with-network-framework/transcript.json"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-602",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 602,
+  "title": "Working with USD",
+  "description": "Universal Scene Description (USD) enables the robust description of 3D scenes and empowers engineers and artists to seamlessly collaborate across the creative workflow. Get introduced to the powerful capabilities of USD and explore its incredible scalability. Gain a deeper understanding of how USD assets are created and learn about delivering usdz content for use with ARKit and RealityKit.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/602",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/602",
+  "type": "Video",
+  "publishedAt": "2019-06-04T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Spatial Computing",
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1915,
+  "hasTranscript": true,
+  "transcriptWordCount": 3507,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/602ytoojud5i0kfnj4n/602/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/602ytoojud5i0kfnj4n/602/602_sd_working_with_usd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/602ytoojud5i0kfnj4n/602/602_hd_working_with_usd.mp4",
+    "duration": 1915
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "AR Quick Look Gallery",
+      "url": "https://developer.apple.com/arkit/gallery",
+      "type": "download",
+      "description": "AR Quick Look Gallery Page",
+      "sosumiURL": "https://sosumi.ai/arkit/gallery"
+    }
+  ],
+  "path": "sessions/wwdc2019/602-working-with-usd/",
+  "files": {
+    "metadata": "sessions/wwdc2019/602-working-with-usd/metadata.json",
+    "readme": "sessions/wwdc2019/602-working-with-usd/README.md",
+    "transcript": "sessions/wwdc2019/602-working-with-usd/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/602-working-with-usd/transcript.json"
+  }
+}

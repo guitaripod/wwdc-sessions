@@ -1,0 +1,206 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10221",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10221,
+  "title": "Streamline your localized strings",
+  "description": "When you localize the text within your app, you can help make your app more accessible to a worldwide audience. Discover best practices for building your localization workflow, including how to write and format strings accurately, and learn how to prepare strings for localization in different languages using Xcode.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10221",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10221",
+  "type": "Video",
+  "publishedAt": "2021-06-11T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "🌍",
+    "🌎",
+    "🌏",
+    "formatter",
+    "i18n",
+    "internationalization",
+    "stringsdict",
+    "swiftui",
+    "translation",
+    "xcloc"
+  ],
+  "topics": [
+    "Essentials",
+    "SwiftUI & UI Frameworks",
+    "System Services",
+    "Accessibility & Inclusion"
+  ],
+  "primaryTopic": "Accessibility & Inclusion",
+  "duration": 1624,
+  "hasTranscript": true,
+  "transcriptWordCount": 3592,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10221/4/E712C2D5-BD11-435B-8F19-C4ACFD79160A/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10221/4/E712C2D5-BD11-435B-8F19-C4ACFD79160A/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10221/4/E712C2D5-BD11-435B-8F19-C4ACFD79160A/downloads/wwdc2021-10221_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10221/4/E712C2D5-BD11-435B-8F19-C4ACFD79160A/downloads/wwdc2021-10221_hd.mp4",
+    "duration": 1624
+  },
+  "codeSnippets": [
+    {
+      "title": "Declaring a string",
+      "language": "swift",
+      "startTimeSeconds": 210,
+      "code": "Button(\"Order\")"
+    },
+    {
+      "title": "Declaring a string anywhere else",
+      "language": "swift",
+      "startTimeSeconds": 224,
+      "code": "button.title = NSLocalizedString(\"Order\", comment: \"…\")\nbutton.title = String(localized: \"Order\")"
+    },
+    {
+      "title": "Declaring a string in a SwiftUI view 2",
+      "language": "swift",
+      "startTimeSeconds": 260,
+      "code": "Text(\"Your order is ready.\")\nButton(\"Order\") {\n  // Action…\n}"
+    },
+    {
+      "title": "Declare a string in SwiftUI view with verbatim",
+      "language": "swift",
+      "startTimeSeconds": 273,
+      "code": "Text(verbatim: \"Sample data\")"
+    },
+    {
+      "title": "Button to place an order",
+      "language": "swift",
+      "startTimeSeconds": 294,
+      "code": "// SwiftUI\nButton(\"Order\") { … }\n\n\n// Swift\nbutton.title = String(localized: \"Order\")"
+    },
+    {
+      "title": "Button to place an order with a variable",
+      "language": "swift",
+      "startTimeSeconds": 315,
+      "code": "let count = 3\n\n\n// SwiftUI\nButton(\"Order \\(count) Tickets\") { … }\n\n\n// Swift\nbutton.title = String(localized: \"Order \\(count) Tickets\")"
+    },
+    {
+      "title": "Button to place an order with a variable 2",
+      "language": "swift",
+      "startTimeSeconds": 336,
+      "code": "let count = 3\n\n// Supports user’s preferred numbers,\n// pluralization, RTL variables isolation…\n// Previously: .localizedStringWithFormat()\nString(localized: \"Order \\(count) Tickets\")"
+    },
+    {
+      "title": "Use 2 separate strings",
+      "language": "swift",
+      "startTimeSeconds": 381,
+      "code": "// Recommended for all languages\nString(localized: \"Order Now\")\nString(localized: \"Order Later\")"
+    },
+    {
+      "title": "Button to place an order 2",
+      "language": "swift",
+      "startTimeSeconds": 417,
+      "code": "// SwiftUI\nText(\"Order\")\n\n\n// Swift\nString(localized: \"Order\")"
+    },
+    {
+      "title": "Button to place an order with comment",
+      "language": "swift",
+      "startTimeSeconds": 429,
+      "code": "// SwiftUI\nText(\"Order\", comment: \"Button: confirms concert tickets booking”)\n\n\n// Swift\nString(localized: \"Order\", comment: \"Button: confirms concert tickets booking\")"
+    },
+    {
+      "title": "What makes a good comment",
+      "language": "swift",
+      "startTimeSeconds": 456,
+      "code": "Text(\"Order\", comment: \"Button: confirms concert tickets booking\")\nText(\"Order\", comment: \"Button: confirms concert tickets booking\")\nText(\"\\(ticketCount) Ordered\", comment: \"Order summary: total number of tickets ordered\")"
+    },
+    {
+      "title": "Request server strings in the user's language",
+      "language": "swift",
+      "startTimeSeconds": 652,
+      "code": "Bundle.preferredLocalizations(from: allServerLanguages).first"
+    },
+    {
+      "title": "Declare a string with a variable, customized table name, and a comment",
+      "language": "swift",
+      "startTimeSeconds": 697,
+      "code": "Text(\"\\(ticketCount) Ordered\",\n     tableName: \"UserProfile\",\n     comment: \"Profile subtitle: total number of tickets ordered\")"
+    },
+    {
+      "title": "Using a framework",
+      "language": "swift",
+      "startTimeSeconds": 829,
+      "code": "/* —-----------—------------—-—---- In TicketKit Framework —---------—------------—-—---- */\n\n// TicketKit/OrderStatus.swift\npublic enum OrderStatus {\n    case pending, processing, complete, canceled, invalid(Error)\n\n    var displayName: String {\n        switch self {\n        case .complete: return String(localized: \"Complete\",\n                                      bundle: Bundle(for: AnyClassInTicketKit.self),\n                                      comment: \"Standalone ticket status: order finalized\")\n\n/* —-----------—-----------—---—---       In Host App      —---------—------------—-—---- */\n\nimport TicketKit\nText(OrderStatus.complete.displayName)"
+    },
+    {
+      "title": "Import translated strings catalogs",
+      "language": "bash",
+      "startTimeSeconds": 1063,
+      "code": "xcodebuild -exportLocalizations -workspace VacationPlanet.xcworkspace -localizationPath ~/Documents\nxcodebuild -importLocalizations -workspace VacationPlanet.xcworkspace -localizationPath ~/Documents/de.xcloc"
+    },
+    {
+      "title": "Localized attributed strings",
+      "language": "swift",
+      "startTimeSeconds": 1108,
+      "code": "AttributedString(localized: \"Your order is **complete**!\",\n                 comment: \"Ticket order confirmation title\")"
+    },
+    {
+      "title": "Plural with stringsdict",
+      "language": "swift",
+      "startTimeSeconds": 1162,
+      "code": "String(localized: \"Order \\(ticketCount) Ticket(s)\")"
+    },
+    {
+      "title": "Plural for strings without a number",
+      "language": "swift",
+      "startTimeSeconds": 1366,
+      "code": "if ticketCount == 1 {\n    button.text = String(localized: \"Order This Ticket\")\n} else if ticketCount == 2 { // If needed\n    button.text = String(localized: \"Order Both Tickets\")\n} else {\n    button.text = String(localized: \"Order All Tickets\")\n}"
+    },
+    {
+      "title": "Automatic grammar agreement",
+      "language": "swift",
+      "startTimeSeconds": 1411,
+      "code": "AttributedString(localized: \"Order ^[\\(ticketsCount) Ticket](inflect: true)\")"
+    },
+    {
+      "title": "Format data in strings",
+      "language": "swift",
+      "startTimeSeconds": 1545,
+      "code": "[\"pop\", \"rock\", \"electronic\"].formatted(.list(type: .or)) // pop, rock, or electronic\n\nText(\"Total: \\(price, format: .currency(code: \"USD\"))\", // Total: $9.41\n     comment: \"Order subtitle: total price of all tickets\")"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Localization",
+      "url": "https://developer.apple.com/documentation/Xcode/localization",
+      "type": "documentation",
+      "description": "Expand the market for your app by supporting multiple languages and regions.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/localization",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/localization.json"
+    },
+    {
+      "title": "Expanding Your App to New Markets",
+      "url": "https://developer.apple.com/localization/",
+      "type": "guide",
+      "description": "Internationalization and Localization. Expanding Your App to New Markets.",
+      "sosumiURL": "https://sosumi.ai/localization/"
+    }
+  ],
+  "path": "sessions/wwdc2021/10221-streamline-your-localized-strings/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10221-streamline-your-localized-strings/metadata.json",
+    "readme": "sessions/wwdc2021/10221-streamline-your-localized-strings/README.md",
+    "transcript": "sessions/wwdc2021/10221-streamline-your-localized-strings/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10221-streamline-your-localized-strings/transcript.json"
+  }
+}

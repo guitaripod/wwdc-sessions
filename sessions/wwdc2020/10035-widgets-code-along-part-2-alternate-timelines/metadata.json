@@ -1,0 +1,86 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10035",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10035,
+  "title": "Widgets Code-along, part 2: Alternate timelines",
+  "description": "Our code-along continues as we help our widget rewrite the future and travel into an alternate timeline. Continue where you left off from Part 1, or traverse time and space and begin with the Part 2 starter project to jump right into the action. Find out how you can integrate system intelligence into your widgets to help them dynamically change at different points during the day and surface the most relevant information. Explore core timeline concepts, support multiple widget families, and learn how to make your widget configurable. Once you’ve helped your widget find its place in time, move on to the third and final part of the Widgets Code-along to discover advanced widget concepts and timelines.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10035",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10035",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "custom intent",
+    "deep linking",
+    "dynamically configure widget",
+    "inintent",
+    "intentconfiguration",
+    "intenttimelineprovider",
+    "refresh",
+    "staticconfiguration",
+    "swiftui",
+    ".systemlarge",
+    "system large",
+    ".systemmedium",
+    "system medium",
+    ".systemsmall",
+    "system small",
+    "timeline",
+    "timelineentryrelevance",
+    "timelinereloadpolicy",
+    "widget",
+    ".widgetfamily",
+    "widgetkit",
+    "widgeturl"
+  ],
+  "topics": [
+    "Swift",
+    "SwiftUI & UI Frameworks",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 918,
+  "hasTranscript": true,
+  "transcriptWordCount": 1857,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10035/4/3A0E6D7F-8B87-46BB-A1B8-CE8CFABE7427/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10035/4/3A0E6D7F-8B87-46BB-A1B8-CE8CFABE7427/wwdc2020_10035_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10035/4/3A0E6D7F-8B87-46BB-A1B8-CE8CFABE7427/wwdc2020_10035_hd.mp4",
+    "duration": 918
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Building Widgets Using WidgetKit and SwiftUI",
+      "url": "https://developer.apple.com/documentation/widgetkit/building_widgets_using_widgetkit_and_swiftui",
+      "type": "samplecode",
+      "description": "Create widgets to show your app’s content on the Home screen, with custom intents for user-customizable settings.",
+      "sosumiURL": "https://sosumi.ai/documentation/widgetkit/building_widgets_using_widgetkit_and_swiftui",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/widgetkit/building_widgets_using_widgetkit_and_swiftui.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10035-widgets-code-along-part-2-alternate-timelines/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10035-widgets-code-along-part-2-alternate-timelines/metadata.json",
+    "readme": "sessions/wwdc2020/10035-widgets-code-along-part-2-alternate-timelines/README.md",
+    "transcript": "sessions/wwdc2020/10035-widgets-code-along-part-2-alternate-timelines/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10035-widgets-code-along-part-2-alternate-timelines/transcript.json"
+  }
+}

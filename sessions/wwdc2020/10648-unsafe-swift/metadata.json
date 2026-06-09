@@ -1,0 +1,190 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10648",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10648,
+  "title": "Unsafe Swift",
+  "description": "What exactly makes code “unsafe”? Join the Swift team as we take a look at the programming language’s safety precautions — and when you might need to reach for unsafe operations. We’ll take a look at APIs that can cause unexpected states if not used correctly, and how you can write code more specifically to avoid undefined behavior. Learn how to work with C APIs that use pointers and the steps to take when you want to use Swift’s unsafe pointer APIs. To get the most out of this session, you should have some familiarity with Swift and the C programming language. And for more information on working with pointers, check out \"Safely Manage Pointers in Swift\".",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10648",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10648",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 1370,
+  "hasTranscript": true,
+  "transcriptWordCount": 3590,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10648/4/59961AEA-1ADD-470E-BD61-596E5950E0BE/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10648/4/59961AEA-1ADD-470E-BD61-596E5950E0BE/wwdc2020_10648_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10648/4/59961AEA-1ADD-470E-BD61-596E5950E0BE/wwdc2020_10648_hd.mp4",
+    "duration": 1370
+  },
+  "codeSnippets": [
+    {
+      "title": "Optional's force unwrapping operator",
+      "language": "swift",
+      "startTimeSeconds": 52,
+      "code": "let value: Int? = nil\n\nprint(value!) // Fatal error: Unexpectedly found nil while unwrapping an Optional value"
+    },
+    {
+      "title": "Unsafe force-unwrapping",
+      "language": "swift",
+      "startTimeSeconds": 118,
+      "code": "let value: String? = \"Hello\"\n\nprint(value.unsafelyUnwrapped) // Hello"
+    },
+    {
+      "title": "Invalid use of unsafe force-unwrapping",
+      "language": "swift",
+      "startTimeSeconds": 145,
+      "code": "let value: String? = nil\n\nprint(value.unsafelyUnwrapped) // ?!"
+    },
+    {
+      "title": "Invalid use of unsafe force-unwrapping",
+      "language": "swift",
+      "startTimeSeconds": 263,
+      "code": "let value: String? = nil\n\nprint(value.unsafelyUnwrapped) // Guaranteed fatal error in debug builds"
+    },
+    {
+      "title": "Manual memory management",
+      "language": "swift",
+      "startTimeSeconds": 457,
+      "code": "let ptr = UnsafeMutablePointer<Int>.allocate(capacity: 1)\nptr.initialize(to: 42)\nprint(ptr.pointee) // 42\nptr.deallocate()\nptr.pointee = 23 // UNDEFINED BEHAVIOR"
+    },
+    {
+      "title": "Passing an array of integers to a C function (1)",
+      "language": "objectivec",
+      "startTimeSeconds": 604,
+      "code": "void process_integers(const int *start, size_t count);"
+    },
+    {
+      "title": "Passing an array of integers to a C function (2)",
+      "language": "swift",
+      "startTimeSeconds": 608,
+      "code": "func process_integers(_ start: UnsafePointer<CInt>!, _ count: Int)"
+    },
+    {
+      "title": "Passing an array of integers to a C function (3)",
+      "language": "swift",
+      "startTimeSeconds": 617,
+      "code": "let start = UnsafeMutablePointer<CInt>.allocate(capacity: 4)\n\nstart.initialize(to: 0)\n(start + 1).initialize(to: 2)\n(start + 2).initialize(to: 4)\n(start + 3).initialize(to: 6)\n\nprocess_integers(start, 4)\n\nstart.deinitialize(count: 4)\nstart.deallocate()"
+    },
+    {
+      "title": "Unsafe buffer pointer types",
+      "language": "swift",
+      "startTimeSeconds": 753,
+      "code": "UnsafeBufferPointer<Element>\nUnsafeMutableBufferPointer<Element>\n\nUnsafeRawBufferPointer\nUnsafeMutableRawBufferPointer"
+    },
+    {
+      "title": "Accessing contiguous collection storage",
+      "language": "swift",
+      "startTimeSeconds": 808,
+      "code": "Sequence.withContiguousStorageIfAvailable(_:)\nMutableCollection.withContiguousMutableStorageIfAvailable(_:)\n\nString.withCString(_:)\nString.withUTF8(_:)\n\nArray.withUnsafeBytes(_:)\nArray.withUnsafeBufferPointer(_:)\nArray.withUnsafeMutableBytes(_:)\nArray.withUnsafeMutableBufferPointer(_:)"
+    },
+    {
+      "title": "Temporary pointers to Swift values",
+      "language": "swift",
+      "startTimeSeconds": 819,
+      "code": "withUnsafePointer(to:_:)\nwithUnsafeMutablePointer(to:_:)\nwithUnsafeBytes(of:_:)\nwithUnsafeMutableBytes(of:_:)"
+    },
+    {
+      "title": "Passing an array of integers to a C function (4)",
+      "language": "swift",
+      "startTimeSeconds": 828,
+      "code": "let values: [CInt] = [0, 2, 4, 6]\n\nvalues.withUnsafeBufferPointer { buffer in\n  print_integers(buffer.baseAddress!, buffer.count)\n}"
+    },
+    {
+      "title": "Passing an array of integers to a C function (5)",
+      "language": "swift",
+      "startTimeSeconds": 865,
+      "code": "let values: [CInt] = [0, 2, 4, 6]\n\nprint_integers(values, values.count)"
+    },
+    {
+      "title": "Advanced C interoperability",
+      "language": "swift",
+      "startTimeSeconds": 936,
+      "code": "func sysctl(\n  _ name: UnsafeMutablePointer<CInt>!,\n  _ namelen: CUnsignedInt,\n  _ oldp: UnsafeMutableRawPointer!,\n  _ oldlenp: UnsafeMutablePointer<Int>!,\n  _ newp: UnsafeMutableRawPointer!,\n  _ newlen: Int\n) -> CInt"
+    },
+    {
+      "title": "Advanced C interoperability",
+      "language": "swift",
+      "startTimeSeconds": 992,
+      "code": "import Darwin\n\nfunc cachelineSize() -> Int {\n    var query = [CTL_HW, HW_CACHELINE]\n    var result: CInt = 0\n    var resultSize = MemoryLayout<CInt>.size\n    let r = sysctl(&query, CUnsignedInt(query.count), &result, &resultSize, nil, 0)\n    precondition(r == 0, \"Cannot query cache line size\")\n    precondition(resultSize == MemoryLayout<CInt>.size)\n    return Int(result)\n}\n\nprint(cachelineSize()) // 64"
+    },
+    {
+      "title": "Advanced C interoperability",
+      "language": "swift",
+      "startTimeSeconds": 1098,
+      "code": "import Darwin\n\nfunc cachelineSize() -> Int {\n    var query = [CTL_HW, HW_CACHELINE]\n    return query.withUnsafeMutableBufferPointer { buffer in\n        var result: CInt = 0\n        withUnsafeMutablePointer(to: &result) { resultptr in\n            var resultSize = MemoryLayout<CInt>.size\n            let r = withUnsafeMutablePointer(to: &resultSize) { sizeptr in\n                sysctl(buffer.baseAddress, CUnsignedInt(buffer.count),\n                       resultptr, sizeptr,\n                       nil, 0)\n            }\n            precondition(r == 0, \"Cannot query cache line size\")\n            precondition(resultSize == MemoryLayout<CInt>.size)\n        }\n        return Int(result)\n    }\n}\n\nprint(cachelineSize()) // 64"
+    },
+    {
+      "title": "Advanced C interoperability",
+      "language": "swift",
+      "startTimeSeconds": 1110,
+      "code": "import Darwin\n\nfunc cachelineSize() -> Int {\n    var query = [CTL_HW, HW_CACHELINE]\n    var result: CInt = 0\n    var resultSize = MemoryLayout<CInt>.size\n    let r = sysctl(&query, CUnsignedInt(query.count), &result, &resultSize, nil, 0)\n    precondition(r == 0, \"Cannot query cache line size\")\n    precondition(resultSize == MemoryLayout<CInt>.size)\n    return Int(result)\n}\n\nprint(cachelineSize()) // 64"
+    },
+    {
+      "title": "Closure-based vs. implicit pointers",
+      "language": "swift",
+      "startTimeSeconds": 1128,
+      "code": "var value = 42\nwithUnsafeMutablePointer(to: &value) { p in\n  p.pointee += 1\n}\nprint(value)  // 43"
+    },
+    {
+      "title": "Closure-based vs. implicit pointers",
+      "language": "swift",
+      "startTimeSeconds": 1159,
+      "code": "var value = 42\nwithUnsafeMutablePointer(to: &value) { p in\n  p.pointee += 1\n}\nprint(value)  // 43\n\nvar value2 = 42\nlet p = UnsafeMutablePointer(&value2) // BROKEN -- dangling pointer!\np.pointee += 1\nprint(value2)"
+    },
+    {
+      "title": "Initializing contiguous collection storage",
+      "language": "swift",
+      "startTimeSeconds": 1183,
+      "code": "Array.init(unsafeUninitializedCapacity:initializingWith:)\nString.init(unsafeUninitializedCapacity:initializingUTF8With:)"
+    },
+    {
+      "title": "Initializing a String value using a C function",
+      "language": "swift",
+      "startTimeSeconds": 1202,
+      "code": "import Darwin\n\nfunc kernelVersion() -> String {\n    var query = [CTL_KERN, KERN_VERSION]\n    var length = 0\n    let r = sysctl(&query, 2, nil, &length, nil, 0)\n    precondition(r == 0, \"Error retrieving kern.version\")\n    return String(unsafeUninitializedCapacity: length) { buffer in\n        var length = buffer.count\n        let r = sysctl(&query, 2, buffer.baseAddress, &length, nil, 0)\n        precondition(r == 0, \"Error retrieving kern.version\")\n        precondition(length > 0 && length <= buffer.count)\n        precondition(buffer[length - 1] == 0)\n        return length - 1\n    }\n}\n\nprint(kernelVersion())\n// Darwin Kernel Version 19.5.0: Thu Apr 30 18:25:59 PDT 2020; root:xnu-6153.121.1~7/RELEASE_X86_64"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Manual Memory Management",
+      "url": "https://developer.apple.com/documentation/Swift/manual-memory-management",
+      "type": "documentation",
+      "description": "Allocate and manage memory manually.",
+      "sosumiURL": "https://sosumi.ai/documentation/Swift/manual-memory-management",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Swift/manual-memory-management.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10648-unsafe-swift/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10648-unsafe-swift/metadata.json",
+    "readme": "sessions/wwdc2020/10648-unsafe-swift/README.md",
+    "transcript": "sessions/wwdc2020/10648-unsafe-swift/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10648-unsafe-swift/transcript.json"
+  }
+}

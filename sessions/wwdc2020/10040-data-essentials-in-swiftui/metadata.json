@@ -1,0 +1,177 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10040",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10040,
+  "title": "Data Essentials in SwiftUI",
+  "description": "Data is a complex part of any app, but SwiftUI makes it easy to ensure a smooth, data-driven experience from prototyping to production. Discover @State and @Binding, two powerful tools that can preserve and seamlessly update your Source of Truth. We'll also show you how ObservableObject lets you connect your views to your data model. Learn about some tricky challenges and cool new ways to solve them — directly from the experts! To get the most out of this session, you should be familiar with SwiftUI. Watch “App essentials in SwiftUI” and \"Introduction to SwiftUI\"",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10040",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10040",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "$",
+    "appstorage",
+    "@binding",
+    "bindings",
+    "body a pure function",
+    "data dependency",
+    "data model",
+    "model",
+    "objectwillchange",
+    "observableobject",
+    "onchange",
+    "onreceive",
+    "performance",
+    "projectedvalue",
+    "property wrapper",
+    "prototyping",
+    "@published",
+    "publisher",
+    "scenes",
+    "scenestorage",
+    "source of truth",
+    "state",
+    "@state",
+    "@stateobject",
+    "view",
+    "willset"
+  ],
+  "topics": [
+    "Swift",
+    "System Services",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 2175,
+  "hasTranscript": true,
+  "transcriptWordCount": 5942,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10040/3/76E05CA6-5C92-45FC-8DB0-0009FC6D18F0/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10040/3/76E05CA6-5C92-45FC-8DB0-0009FC6D18F0/wwdc2020_10040_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10040/3/76E05CA6-5C92-45FC-8DB0-0009FC6D18F0/wwdc2020_10040_hd.mp4",
+    "duration": 2175
+  },
+  "codeSnippets": [
+    {
+      "title": "BookCard",
+      "language": "swift",
+      "startTimeSeconds": 129,
+      "code": "struct BookCard : View {\n    let book: Book\n    let progress: Double\n\n    var body: some View {\n        HStack {\n            Cover(book.coverName)\n            VStack(alignment: .leading) {\n                TitleText(book.title)\n                AuthorText(book.author)\n            }\n            Spacer()\n            RingProgressView(value: progress)              \n        }\n    }\n}"
+    },
+    {
+      "title": "EditorConfig",
+      "language": "swift",
+      "startTimeSeconds": 215,
+      "code": "struct EditorConfig {\n    var isEditorPresented = false\n    var note = \"\"\n    var progress: Double = 0\n    mutating func present(initialProgress: Double) {\n        progress = initialProgress\n        note = \"\"\n        isEditorPresented = true\n    }\n}\nstruct BookView: View {\n    @State private var editorConfig = EditorConfig()\n    func presentEditor() { editorConfig.present(…) }\n    var body: some View {\n        …\n        Button(action: presentEditor) { … }\n        …\n    }\n}"
+    },
+    {
+      "title": "ProgressEditor",
+      "language": "swift",
+      "startTimeSeconds": 359,
+      "code": "struct EditorConfig {\n    var isEditorPresented = false\n    var note = \"\"\n    var progress: Double = 0\n}\nstruct BookView: View {\n    @State private var editorConfig = EditorConfig()\n    var body: some View {\n        …\n        ProgressEditor(editorConfig: $editorConfig)\n        …\n    }\n}\n\nstruct ProgressEditor: View {\n    @Binding var editorConfig: EditorConfig\n    …\n        TextEditor($editorConfig.note)\n    …\n}"
+    },
+    {
+      "title": "CurrentlyReading",
+      "language": "swift",
+      "startTimeSeconds": 795,
+      "code": "/// The current reading progress for a specific book.\nclass CurrentlyReading: ObservableObject {\n    let book: Book\n    @Published var progress: ReadingProgress\n\n    // …\n}\n\nstruct ReadingProgress {\n    struct Entry : Identifiable {\n        let id: UUID\n        let progress: Double\n        let time: Date\n        let note: String?\n    }\n\n    var entries: [Entry]\n}"
+    },
+    {
+      "title": "BookView",
+      "language": "swift",
+      "startTimeSeconds": 936,
+      "code": "struct BookView: View {\n    @ObservedObject var currentlyReading: CurrentlyReading\n\n    var body: some View {\n        VStack {\n            BookCard(\n                currentlyReading: currentlyReading)\n\n            //…\n\n            ProgressDetailsList(\n                progress: currentlyReading.progress)\n        }\n    }\n}"
+    },
+    {
+      "title": "CurrentlyReading with isFinished",
+      "language": "swift",
+      "startTimeSeconds": 1070,
+      "code": "class CurrentlyReading: ObservableObject {\n    let book: Book\n    @Published var progress = ReadingProgress()\n    @Published var isFinished = false\n\n    var currentProgress: Double {\n        isFinished ? 1.0 : progress.progress\n    }\n}"
+    },
+    {
+      "title": "BookView with Toggle",
+      "language": "swift",
+      "startTimeSeconds": 1101,
+      "code": "struct BookView: View {\n    @ObservedObject var currentlyReading: CurrentlyReading\n\n    var body: some View {\n        VStack {\n            BookCard(\n                currentlyReading: currentlyReading)\n\n            HStack {\n                Button(action: presentEditor) { /* … */ }\n                    .disabled(currentlyReading.isFinished)\n\n                Toggle(\n                    isOn: $currentlyReading.isFinished\n                ) {\n                    Label(\n                        \"I'm Done\",\n                        systemImage: \"checkmark.circle.fill\")\n                }\n            }\n            //…\n        }\n    }\n}"
+    },
+    {
+      "title": "CoverImageLoader",
+      "language": "swift",
+      "startTimeSeconds": 1198,
+      "code": "class CoverImageLoader: ObservableObject {\n    @Published public private(set) var image: Image? = nil\n\n    func load(_ name: String) {\n        // …\n    }\n\n    func cancel() {\n        // …\n    }\n\n    deinit {\n        cancel()\n    }\n}"
+    },
+    {
+      "title": "BookCoverView",
+      "language": "swift",
+      "startTimeSeconds": 1220,
+      "code": "struct BookCoverView: View {\n    @StateObject var loader = CoverImageLoader()\n\n    var coverName: String\n    var size: CGFloat\n\n    var body: some View {\n        CoverImage(loader.image, size: size)\n            .onAppear { loader.load(coverName) }\n    }\n}"
+    },
+    {
+      "title": "ReadingListViewer (Bad)",
+      "language": "swift",
+      "startTimeSeconds": 1536,
+      "code": "struct ReadingListViewer: View {\n    var body: some View {\n        NavigationView {\n            ReadingList()\n            Placeholder()\n        }\n    }\n}\n\nstruct ReadingList: View {\n    @ObservedObject var store = ReadingListStore()\n\n    var body: some View {\n        // ...\n    }\n}"
+    },
+    {
+      "title": "ReadingListViewer (Good)",
+      "language": "swift",
+      "startTimeSeconds": 1599,
+      "code": "struct ReadingListViewer: View {\n    var body: some View {\n        NavigationView {\n            ReadingList()\n            Placeholder()\n        }\n    }\n}\n\nstruct ReadingList: View {\n    @StateObject var store = ReadingListStore()\n\n    var body: some View {\n        // ...\n    }\n}"
+    },
+    {
+      "title": "App-wide Source of Truth",
+      "language": "swift",
+      "startTimeSeconds": 1852,
+      "code": "@main\nstruct BookClubApp: App {\n    @StateObject private var store = ReadingListStore()\n\n    var body: some Scene {\n        WindowGroup {\n            ReadingListViewer(store: store)\n        }\n    }\n}"
+    },
+    {
+      "title": "SceneStorage",
+      "language": "swift",
+      "startTimeSeconds": 1963,
+      "code": "struct ReadingListViewer: View {\n    @SceneStorage(\"selection\") var selection: String?\n\n    var body: some View {\n        NavigationView {\n            ReadingList(selection: $selection)\n            BookDetailPlaceholder()\n        }\n    }\n}"
+    },
+    {
+      "title": "AppStorage",
+      "language": "swift",
+      "startTimeSeconds": 2029,
+      "code": "struct BookClubSettings: View {\n    @AppStorage(\"updateArtwork\") private var updateArtwork = true\n    @AppStorage(\"syncProgress\") private var syncProgress = true\n\n    var body: some View {\n        Form {\n            Toggle(isOn: $updateArtwork) {\n                //...\n            }\n\n            Toggle(isOn: $syncProgress) {\n                //...\n            }\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Model data",
+      "url": "https://developer.apple.com/documentation/SwiftUI/Model-data",
+      "type": "documentation",
+      "description": "Manage the data that your app uses to drive its interface.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/Model-data",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/Model-data.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10040-data-essentials-in-swiftui/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10040-data-essentials-in-swiftui/metadata.json",
+    "readme": "sessions/wwdc2020/10040-data-essentials-in-swiftui/README.md",
+    "transcript": "sessions/wwdc2020/10040-data-essentials-in-swiftui/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10040-data-essentials-in-swiftui/transcript.json"
+  }
+}

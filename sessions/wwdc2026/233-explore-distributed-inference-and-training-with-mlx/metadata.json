@@ -1,0 +1,155 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-233",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 233,
+  "title": "Explore distributed inference and training with MLX",
+  "description": "Scale your machine learning workloads across multiple Macs using MLX. Learn how to tackle interconnect efficiency, large model inference, request batching, and distributed training challenges. Discover how a few Macs on your desk can replace expensive cloud infrastructure for demanding AI workloads.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/233",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/233",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1326,
+  "hasTranscript": true,
+  "transcriptWordCount": 2975,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/233/4/379c319a-5718-4fd2-aac6-2f97180c5892/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/233/4/379c319a-5718-4fd2-aac6-2f97180c5892/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/233/4/379c319a-5718-4fd2-aac6-2f97180c5892/downloads/wwdc2026-233_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/233/4/379c319a-5718-4fd2-aac6-2f97180c5892/downloads/wwdc2026-233_hd.mp4",
+    "duration": 1326
+  },
+  "codeSnippets": [
+    {
+      "title": "Hostfile format for a 4-node MLX cluster",
+      "language": "json",
+      "startTimeSeconds": 511,
+      "code": "[\n  {\n    \"ssh\": \"m3-ultra-0\",\n    \"ips\": [\"192.168.1.10\"],\n    \"rdma\": [null, \"rdma_en5\", \"rdma_en4\", \"rdma_en3\"]\n  },\n  {\n    \"ssh\": \"m3-ultra-1\",\n    \"ips\": [\"192.168.1.11\"],\n    \"rdma\": [\"rdma_en5\", null, \"rdma_en4\", \"rdma_en3\"]\n  },\n  {\n    \"ssh\": \"m3-ultra-2\",\n    \"ips\": [\"192.168.1.12\"],\n    \"rdma\": [\"rdma_en5\", \"rdma_en4\", null, \"rdma_en3\"]\n  },\n  {\n    \"ssh\": \"m3-ultra-3\",\n    \"ips\": [\"192.168.1.13\"],\n    \"rdma\": [\"rdma_en5\", \"rdma_en4\", \"rdma_en3\", null]\n  }\n]"
+    },
+    {
+      "title": "Generate the cluster hostfile with mlx.distributed_config",
+      "language": "bash",
+      "startTimeSeconds": 536,
+      "code": "mlx.distributed_config \\\n    --hosts m3-ultra-0,m3-ultra-1,m3-ultra-2,m3-ultra-3 \\\n    --output \"m3-ultra-jaccl.json\" \\\n    --env MLX_METAL_FAST_SYNCH=1 \\\n    --auto-setup \\\n    --backend jaccl"
+    },
+    {
+      "title": "Run distributed LLM inference with mlx_lm.chat",
+      "language": "bash",
+      "startTimeSeconds": 664,
+      "code": "# Single-device LLM inference\nmlx_lm.chat --model \"Qwen/Qwen3.6-27B\" --max-tokens 2048\n\n# Distributed LLM inference across the cluster\nmlx.launch --hostfile \"m3-ultra-jaccl.json\" -- \\\n    /remote/path/to/mlx_lm.chat --model \"Qwen/Qwen3.6-27B\" --max-tokens 2048"
+    },
+    {
+      "title": "Run distributed inference with pipeline parallelism",
+      "language": "bash",
+      "startTimeSeconds": 903,
+      "code": "# Tensor parallelism (default)\nmlx.launch --hostfile \"m3-ultra-jaccl.json\" -- \\\n    /remote/path/to/mlx_lm.chat --model \"moonshotai/Kimi-K2.6\" \\\n                                 --max-tokens 2048\n\n# Pipeline parallelism — append --pipeline flag\nmlx.launch --hostfile \"m3-ultra-jaccl.json\" -- \\\n    /remote/path/to/mlx_lm.chat --model \"moonshotai/Kimi-K2.6\" \\\n                                 --max-tokens 2048 \\\n                                 --pipeline"
+    },
+    {
+      "title": "Run distributed fine-tuning with mlx_lm.lora",
+      "language": "bash",
+      "startTimeSeconds": 1038,
+      "code": "# Single-device fine-tuning\nmlx_lm.lora --model \"Qwen/Qwen3.5-9B\" \\\n             --data \"mlx-community/wikisql\" \\\n             --train --batch-size 4\n\n# Distributed fine-tuning (scale --batch-size by number of devices)\nmlx.launch --hostfile \"hostfile.json\" -- \\\n    /remote/path/to/mlx_lm.lora --model \"Qwen/Qwen3.5-9B\" \\\n                                  --data \"mlx-community/wikisql\" \\\n                                  --train --batch-size 16"
+    },
+    {
+      "title": "Distributed inference with the MLX LM Python API",
+      "language": "python",
+      "startTimeSeconds": 1141,
+      "code": "import mlx.core as mx\nfrom mlx_lm import stream_generate\nfrom mlx_lm.utils import sharded_load\n\n# Initialise distributed backend\ngroup = mx.distributed.init(strict=True, backend=\"jaccl\")\n# Define parallelism\ntensor_group, pipeline_group = group, None\n\n# Shard the model\nmodel, tokenizer = sharded_load(\"moonshotai/Kimi-K2.6\", pipeline_group, tensor_group)\nfor response in stream_generate(model, tokenizer, prompt, max_tokens=1024):\n    if group.rank() == 0:\n        print(response.text, end=\"\", flush=True)"
+    },
+    {
+      "title": "Shard a layer with the MLX Python API",
+      "language": "python",
+      "startTimeSeconds": 1171,
+      "code": "import mlx.core as mx\nimport mlx.nn as nn\n\n# Initialise distributed backend\ngroup = mx.distributed.init(strict=True, backend=\"jaccl\")\n\n# Define layer and shard it column-wise\nlayer = nn.Linear(1024, 1024)\nsharded_layer = nn.layers.distributed.shard_linear(\n    layer, strategy=\"all-to-sharded\", group=group\n)\ndata = mx.random.normal((1, 1, 1024))\noutput = sharded_layer(data)\nmx.eval(output)"
+    },
+    {
+      "title": "All-reduce across devices in Python, Swift, and C++",
+      "language": "python",
+      "startTimeSeconds": 1187,
+      "code": "# Python\nimport mlx.core as mx\nworld = mx.distributed.init(strict=True, backend=\"jaccl\")\ndata = mx.full((4,), float(world.rank()), dtype=mx.float32)\nresult = mx.distributed.all_sum(data, group=world)\nmx.eval(result)\n\n# Swift\nlet group = try DistributedGroup(strict: .ring)\nlet data = rank == 0\n    ? MLXArray(converting: [1.0, 2.0, 3.0])\n    : MLXArray(converting: [5.0, 6.0, 7.0])\nlet result = try group.allSum(data)\n\n// C++\nnamespace mx = mlx::core;\nauto world = mx::distributed::init(/* strict */ true, \"jaccl\");\nmx::array data = mx::full({4}, static_cast<float>(world.rank()), mx::float32);\nmx::array result = mx::distributed::all_sum(data, world);\nmx::eval(result);"
+    },
+    {
+      "title": "Standalone distributed sum with the JACCL C++ API",
+      "language": "cpp",
+      "startTimeSeconds": 1206,
+      "code": "#include <jaccl/jaccl.h>\n#include <iostream>\n\nint main() {\n    // Initialize JACCL group\n    auto group = jaccl::init();\n    std::cout << \"Rank \" << group->rank() << \" of \" << group->size() << std::endl;\n    // Perform all-reduce sum\n    float data[10] = {1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f, 9.0f, 10.0f};\n    float output[10];\n    group->all_sum(data, output, sizeof(data), jaccl::Float32);\n    std::cout << \"Result: \" << output[0] << std::endl;\n    return 0;\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "MLX Swift LM on GitHub",
+      "url": "https://github.com/ml-explore/mlx-swift-lm",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "MLX Swift Examples",
+      "url": "https://github.com/ml-explore/mlx-swift-examples",
+      "type": "samplecode",
+      "description": "MLX Swift Examples"
+    },
+    {
+      "title": "MLX Examples",
+      "url": "https://github.com/ml-explore/mlx-examples",
+      "type": "samplecode",
+      "description": "This repo contains a variety of standalone examples using the MLX framework."
+    },
+    {
+      "title": "MLX Swift",
+      "url": "https://github.com/ml-explore/mlx-swift",
+      "type": "documentation",
+      "description": "MLX Swift is a Swift API for MLX."
+    },
+    {
+      "title": "MLX LM - Python API",
+      "url": "https://github.com/ml-explore/mlx-lm",
+      "type": "documentation",
+      "description": "MLX LM is a Python package for generating text and fine-tuning large language models on Apple silicon with MLX."
+    },
+    {
+      "title": "MLX Explore - Python API",
+      "url": "https://github.com/ml-explore/mlx",
+      "type": "documentation",
+      "description": "MLX is an array framework for machine learning on Apple silicon, brought to you by Apple machine learning research."
+    },
+    {
+      "title": "MLX Framework",
+      "url": "https://mlx-framework.org",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "MLX",
+      "url": "https://ml-explore.github.io/mlx/",
+      "type": "documentation",
+      "description": "MLX is an array framework for machine learning on Apple silicon, brought to you by Apple machine learning research."
+    }
+  ],
+  "path": "sessions/wwdc2026/233-explore-distributed-inference-and-training-with-mlx/",
+  "files": {
+    "metadata": "sessions/wwdc2026/233-explore-distributed-inference-and-training-with-mlx/metadata.json",
+    "readme": "sessions/wwdc2026/233-explore-distributed-inference-and-training-with-mlx/README.md",
+    "transcript": "sessions/wwdc2026/233-explore-distributed-inference-and-training-with-mlx/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/233-explore-distributed-inference-and-training-with-mlx/transcript.json"
+  }
+}

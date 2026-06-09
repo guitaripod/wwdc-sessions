@@ -1,0 +1,132 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-223",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 223,
+  "title": "Live Activities essentials",
+  "description": "Elevate your app experience with Live Activities. Explore many of the places where Live Activities appear, including a new style in the Dynamic Island that delivers more information when iPhone is used in landscape. Learn how to tailor your Live Activity for each space, structure your content and data, and drive real time updates from start to finish using ActivityKit and push notifications.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/223",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/223",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 916,
+  "hasTranscript": true,
+  "transcriptWordCount": 2205,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/223/4/9098c495-ea8b-44f9-b852-f6eb64840161/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/223/4/9098c495-ea8b-44f9-b852-f6eb64840161/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/223/4/9098c495-ea8b-44f9-b852-f6eb64840161/downloads/wwdc2026-223_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/223/4/9098c495-ea8b-44f9-b852-f6eb64840161/downloads/wwdc2026-223_hd.mp4",
+    "duration": 916
+  },
+  "codeSnippets": [
+    {
+      "title": "Define initial Live Activity",
+      "language": "swift",
+      "startTimeSeconds": 256,
+      "code": "// Define initial Live Activity.\n\nimport ActivityKit\nimport Foundation\n\npublic struct DrinkOrderAttributes: ActivityAttributes {\n    let shopName: String\n    let drink: Drink\n    let orderID: UUID\n\n    public struct ContentState: Codable, Hashable {\n        var phase: DrinkOrder.Phase = .waiting\n        var estimatedReadyDate: Date\n        var rating: DrinkOrder.Rating?\n    }\n}"
+    },
+    {
+      "title": "Create each Live Activity view",
+      "language": "swift",
+      "startTimeSeconds": 335,
+      "code": "// Create each Live Activity view\n\nimport ActivityKit\nimport SwiftUI\nimport WidgetKit\n\nstruct DrinkOrderLiveActivity: Widget {\n    var body: some WidgetConfiguration {\n        ActivityConfiguration(for: DrinkOrderAttributes.self) { context in\n            ActivityView(context: context)\n        } dynamicIsland: { context in\n            DynamicIsland {\n                DynamicIslandExpandedRegion(.leading) {\n                    ExpandedLeadingView(context: context)\n                }\n                DynamicIslandExpandedRegion(.center) {\n                    ExpandedCenterView(context: context)\n                }\n                DynamicIslandExpandedRegion(.trailing) {\n                    ExpandedTrailingView(context: context)\n                }\n                DynamicIslandExpandedRegion(.bottom) {\n                    ExpandedBottomView(context: context)\n                }\n            } compactLeading: {\n                CompactLeadingView(context: context)\n            } compactTrailing: {\n                CompactTrailingView(context: context)\n            } minimal: {\n                MinimalView(context: context)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Start and update a Live Activity",
+      "language": "swift",
+      "startTimeSeconds": 463,
+      "code": "// Start a Live Activity\n\nfunc launchLiveActivity(order: DrinkOrder) throws {\n    guard ActivityAuthorizationInfo().areActivitiesEnabled else { return }\n    let attributes = DrinkOrderAttributes(shopName: \"Coffee Shop\", drink: order.drink, orderID: order.id)\n    let estimatedReadyDate = Date.now + (15 * 60)\n    let contentState = DrinkOrderAttributes.ContentState(phase: .waiting, estimatedReadyDate: estimatedReadyDate)\n    let activityContent = ActivityContent(state: contentState, staleDate: nil)\n    let activity = try Activity.request(attributes: attributes, content: activityContent)\n\n}\n\n// Update a Live Activity\n\nawait activity.update(\n    ActivityContent(\n        state: DrinkOrderAttributes.ContentState(\n            phase: .preparing,\n            estimatedReadyDate: estimatedReadyDate\n        ),\n        staleDate: nil\n    )\n)"
+    },
+    {
+      "title": "Optimize for limited width in the Dynamic Island",
+      "language": "swift",
+      "startTimeSeconds": 633,
+      "code": "// Optimize for limited width in the Dynamic Island\n\nstruct CompactTrailingView: View {\n    @Environment(\\.isDynamicIslandLimitedInWidth) var isDynamicIslandLimitedInWidth\n    var context: ActivityViewContext<DrinkOrderAttributes>\n    var body: some View {\n        if isDynamicIslandLimitedInWidth {\n            StepProgressIconView(context: context)\n        } else if context.state.phase.showsTimer {\n            EstimatedReadyView(context: context, font: .system(.body).monospacedDigit())\n                .multilineTextAlignment(.trailing)\n                .frame(maxWidth: maximumTimerLabelWidth)\n        } else {\n            OrderPhaseLabelView(context: context, font: .caption2.bold(), color: .brown)\n                .multilineTextAlignment(.trailing)\n        }\n    }\n}"
+    },
+    {
+      "title": "Extend background color in StandBy",
+      "language": "swift",
+      "startTimeSeconds": 694,
+      "code": "// Extend background color in StandBy\n\nstruct ActivityView: View {\n\n    @Environment(\\.showsWidgetContainerBackground) var showsWidgetContainerBackground\n    var context: ActivityViewContext<DrinkOrderAttributes>\n\n    var body: some View {\n        DetailView(context: context)\n            .background {\n                if showsWidgetContainerBackground {\n                    LinearGradient.barista\n                }\n            }\n            .activityBackgroundTint(.espresso)\n    }\n}"
+    },
+    {
+      "title": "Add support for activityFamily small",
+      "language": "swift",
+      "startTimeSeconds": 750,
+      "code": "// Add support for activityFamily small\n\nimport ActivityKit\nimport SwiftUI\nimport WidgetKit\n\nstruct DrinkOrderLiveActivity: Widget {\n    var body: some WidgetConfiguration {\n        ActivityConfiguration(for: DrinkOrderAttributes.self) { context in\n            ActivityView(context: context)\n        } dynamicIsland: { context in\n            DynamicIsland {\n                DynamicIslandExpandedRegion(.leading) {\n                    ExpandedLeadingView(context: context)\n                }\n                DynamicIslandExpandedRegion(.center) {\n                    ExpandedCenterView(context: context)\n                }\n                DynamicIslandExpandedRegion(.trailing) {\n                    ExpandedTrailingView(context: context)\n                }\n                DynamicIslandExpandedRegion(.bottom) {\n                    ExpandedBottomView(context: context)\n                }\n            } compactLeading: {\n                CompactLeadingView(context: context)\n            } compactTrailing: {\n                CompactTrailingView(context: context)\n            } minimal: {\n                MinimalView(context: context)\n            }\n        }\n        .supplementalActivityFamilies([.small])\n    }\n}"
+    },
+    {
+      "title": "Optimize for small family",
+      "language": "swift",
+      "startTimeSeconds": 763,
+      "code": "// Optimize for small family\n\nstruct ActivityView: View {\n    @Environment(\\.showsWidgetContainerBackground) var showsWidgetContainerBackground\n    @Environment(\\.activityFamily) var activityFamily\n\n    var context: ActivityViewContext<DrinkOrderAttributes>\n\n    var body: some View {\n        contentView\n            .background {\n                if showsWidgetContainerBackground {\n                    LinearGradient.barista\n                }\n            }\n            .activityBackgroundTint(.espresso)\n    }\n\n    @ViewBuilder\n    var contentView: some View {\n        if activityFamily == .small {\n            SmallView(context: context)\n        } else {\n            DetailView(context: context)\n        }\n    }\n}"
+    },
+    {
+      "title": "Add interactivity with App Intents",
+      "language": "swift",
+      "startTimeSeconds": 816,
+      "code": "// Add interactivity with App Intents\n\nstruct RateDrinkIntent: LiveActivityIntent {\n    static var title: LocalizedStringResource = \"Rate Drink\"\n\n    @Parameter(title: \"Order ID\")\n    var orderID: String\n\n    @Parameter(title: \"Positive\")\n    var isPositive: Bool\n\n    func perform() async throws -> some IntentResult {\n        await updateLocalDatastore(rating: isPositive ? .great : .poor, dismissPolicy: .after(.now + 15))\n        return .result()\n    }\n}"
+    },
+    {
+      "title": "Associate an intent with a button",
+      "language": "swift",
+      "startTimeSeconds": 846,
+      "code": "// Associate an intent with a button\n\nstruct RatingButtons: View {\n    var context: ActivityViewContext<DrinkOrderAttributes>\n    var body: some View {\n        HStack(spacing: 12) {\n            Button(intent: RateDrinkIntent(\n                orderID: context.attributes.orderID.uuidString, isPositive: false)) {\n                Label(\"Not Good\", systemImage: \"hand.thumbsdown.fill\")\n            }\n            .buttonStyle(RatingButtonStyle(color: .red))\n\n            Button(intent: RateDrinkIntent(\n                orderID: context.attributes.orderID.uuidString, isPositive: true)) {\n                Label(\"Great\", systemImage: \"hand.thumbsup.fill\")\n            }\n            .buttonStyle(RatingButtonStyle(color: .green))\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Live Activities",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/live-activities",
+      "type": "documentation",
+      "description": "A Live Activity displays up-to-date information from your app, allowing people to view the progress of events or tasks at a glance.",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/live-activities"
+    },
+    {
+      "title": "Starting and updating Live Activities with ActivityKit push notifications",
+      "url": "https://developer.apple.com/documentation/ActivityKit/starting-and-updating-live-activities-with-activitykit-push-notifications",
+      "type": "documentation",
+      "description": "Use ActivityKit to receive push tokens and to remotely start, update, and end your Live Activity with ActivityKit notifications.",
+      "sosumiURL": "https://sosumi.ai/documentation/ActivityKit/starting-and-updating-live-activities-with-activitykit-push-notifications",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ActivityKit/starting-and-updating-live-activities-with-activitykit-push-notifications.json"
+    },
+    {
+      "title": "ActivityKit",
+      "url": "https://developer.apple.com/documentation/ActivityKit",
+      "type": "documentation",
+      "description": "Share live updates from your app as Live Activities on iPhone, iPad, Apple Watch, and the Mac.",
+      "sosumiURL": "https://sosumi.ai/documentation/ActivityKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ActivityKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/223-live-activities-essentials/",
+  "files": {
+    "metadata": "sessions/wwdc2026/223-live-activities-essentials/metadata.json",
+    "readme": "sessions/wwdc2026/223-live-activities-essentials/README.md",
+    "transcript": "sessions/wwdc2026/223-live-activities-essentials/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/223-live-activities-essentials/transcript.json"
+  }
+}

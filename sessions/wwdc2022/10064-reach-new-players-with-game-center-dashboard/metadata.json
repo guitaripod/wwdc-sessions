@@ -1,0 +1,101 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10064",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10064,
+  "title": "Reach new players with Game Center dashboard",
+  "description": "Meet the Game Center activity dashboard and discover how it can help your game reach new players. We'll introduce you to the dashboard and profiles and explore how they can track player achievements, high scores, and leaderboard changes for your game. We'll also show you how to add Game Center to your Unity game project using the Game Center plug-in.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10064",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10064",
+  "type": "Video",
+  "publishedAt": "2022-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "game center",
+    "game dev",
+    "game developer",
+    "gamekit",
+    "game kit"
+  ],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 607,
+  "hasTranscript": true,
+  "transcriptWordCount": 1488,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10064/9/B7DD74D7-2555-495C-9DA2-8A9B7D0C6D8B/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10064/9/B7DD74D7-2555-495C-9DA2-8A9B7D0C6D8B/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10064/9/B7DD74D7-2555-495C-9DA2-8A9B7D0C6D8B/downloads/wwdc2022-10064_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10064/9/B7DD74D7-2555-495C-9DA2-8A9B7D0C6D8B/downloads/wwdc2022-10064_hd.mp4",
+    "duration": 607
+  },
+  "codeSnippets": [
+    {
+      "title": "Authenticate the local player",
+      "language": "swift",
+      "startTimeSeconds": 251,
+      "code": "// Authenticate the local player\nimport GameKit\n\nclass TitleScreenViewController: UIViewController {\n\n    override func viewDidLoad() {\n        super.viewDidLoad()\n\n        // Authenticate the local player\n        GKLocalPlayer.local.authenticateHandler = { viewController, error in\n            if let viewController = viewController {\n                // Present the view controller from Game Center.\n                return\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Authenticate the local player",
+      "language": "csharp",
+      "startTimeSeconds": 270,
+      "code": "// Authenticate the local player\nusing Apple.GameKit;\n\npublic class MyGameManager : MonoBehaviour\n{\n    private GKLocalPlayer _localPlayer;\n\n    private async Task Start()\n    {\n        try\n        {\n            _localPlayer = await GKLocalPlayer.Authenticate();\n        }\n        catch (Exception exception)\n        {\n            // Handle exception...\n        }\n    }\n}"
+    },
+    {
+      "title": "Show the Access Point",
+      "language": "swift",
+      "startTimeSeconds": 325,
+      "code": "// Show the Access Point\nimport GameKit\n\nclass MenuScreenViewController: UIViewController {\n\n    override func viewDidLoad() {\n        super.viewDidLoad()\n\n        GKAccessPoint.shared.location = .topLeading\n        GKAccessPoint.shared.isActive = true\n    }\n}"
+    },
+    {
+      "title": "Show the Access Point",
+      "language": "csharp",
+      "startTimeSeconds": 340,
+      "code": "// Show the Access Point\nGKAccessPoint.Shared.Location = \n    GKAcessPoint.GKAccessPointLocation.TopLeading;\n\nGKAccessPoint.Shared.IsActive = true;"
+    }
+  ],
+  "resources": [
+    {
+      "title": "GKLocalPlayer",
+      "url": "https://developer.apple.com/documentation/GameKit/GKLocalPlayer",
+      "type": "documentation",
+      "description": "The local player who signs in to Game Center on the device running the game.",
+      "sosumiURL": "https://sosumi.ai/documentation/GameKit/GKLocalPlayer",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/GameKit/GKLocalPlayer.json"
+    },
+    {
+      "title": "Human Interface Guidelines: Game Center",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/game-center",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/game-center"
+    }
+  ],
+  "path": "sessions/wwdc2022/10064-reach-new-players-with-game-center-dashboard/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10064-reach-new-players-with-game-center-dashboard/metadata.json",
+    "readme": "sessions/wwdc2022/10064-reach-new-players-with-game-center-dashboard/README.md",
+    "transcript": "sessions/wwdc2022/10064-reach-new-players-with-game-center-dashboard/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10064-reach-new-players-with-game-center-dashboard/transcript.json"
+  }
+}

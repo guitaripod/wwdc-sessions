@@ -1,0 +1,133 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10191",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10191,
+  "title": "Meet Object Capture for iOS",
+  "description": "Discover how you can offer an end-to-end Object Capture experience directly in your iOS apps to help people turn their objects into ready-to-use 3D models. Learn how you can create a fully automated Object Capture scan flow with our sample app and how you can assist people in automatically capturing the best content for their model. We’ll also discuss LiDAR data and provide best practices for scanning objects.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10191",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10191",
+  "type": "Video",
+  "publishedAt": "2023-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 1205,
+  "hasTranscript": true,
+  "transcriptWordCount": 2850,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10191/4/4163D349-9555-463C-B8F1-0839D7BC6E49/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10191/4/4163D349-9555-463C-B8F1-0839D7BC6E49/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10191/4/4163D349-9555-463C-B8F1-0839D7BC6E49/downloads/wwdc2023-10191_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10191/4/4163D349-9555-463C-B8F1-0839D7BC6E49/downloads/wwdc2023-10191_hd.mp4",
+    "duration": 1205
+  },
+  "codeSnippets": [
+    {
+      "title": "Instantiating ObjectCaptureSession",
+      "language": "swift",
+      "startTimeSeconds": 603,
+      "code": "import RealityKit\nimport SwiftUI \n\nvar session = ObjectCaptureSession()"
+    },
+    {
+      "title": "Starting the session",
+      "language": "swift",
+      "startTimeSeconds": 625,
+      "code": "var configuration = ObjectCaptureSession.Configuration()\nconfiguration.checkpointDirectory = getDocumentsDir().appendingPathComponent(\"Snapshots/\")\n\nsession.start(imagesDirectory: getDocumentsDir().appendingPathComponent(\"Images/\"),\n              configuration: configuration)"
+    },
+    {
+      "title": "Creating ObjectCaptureView",
+      "language": "swift",
+      "startTimeSeconds": 650,
+      "code": "import RealityKit\nimport SwiftUI\n\nstruct CapturePrimaryView: View {\n    var body: some View {\n        ZStack {\n            ObjectCaptureView(session: session)\n        }\n    }\n}"
+    },
+    {
+      "title": "Transition to detecting state",
+      "language": "swift",
+      "startTimeSeconds": 680,
+      "code": "var body: some View {\n    ZStack {\n        ObjectCaptureView(session: session)\n        if case .ready = session.state {\n            CreateButton(label: \"Continue\") { \n                session.startDetecting() \n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Showing ObjectCaptureView",
+      "language": "swift",
+      "startTimeSeconds": 696,
+      "code": "var body: some View {\n    ZStack {\n        ObjectCaptureView(session: session)\n    }\n}"
+    },
+    {
+      "title": "Transition to capturing state",
+      "language": "swift",
+      "startTimeSeconds": 724,
+      "code": "var body: some View {\n    ZStack {\n        ObjectCaptureView(session: session)\n        if case .ready = session.state {\n            CreateButton(label: \"Continue\") { \n                session.startDetecting()\n            }\n        } else if case .detecting = session.state {\n            CreateButton(label: \"Start Capture\") { \n                session.startCapturing()\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Showing ObjectCaptureView",
+      "language": "swift",
+      "startTimeSeconds": 747,
+      "code": "var body: some View {\n    ZStack {\n        ObjectCaptureView(session: session)\n    }\n}"
+    },
+    {
+      "title": "Completed scan pass",
+      "language": "swift",
+      "startTimeSeconds": 770,
+      "code": "var body: some View {\n    if session.userCompletedScanPass {\n        VStack {\n        }\n    } else {\n        ZStack {\n            ObjectCaptureView(session: session)\n        }\n    }\n}"
+    },
+    {
+      "title": "Transition to finishing state",
+      "language": "swift",
+      "startTimeSeconds": 843,
+      "code": "var body: some View {\n    if session.userCompletedScanPass {\n        VStack {\n            CreateButton(label: \"Finish\") {\n                session.finish() \n            }\n        }\n   } else {\n        ZStack {\n            ObjectCaptureView(session: session)\n        }\n    }\n}"
+    },
+    {
+      "title": "Point cloud view",
+      "language": "swift",
+      "startTimeSeconds": 900,
+      "code": "var body: some View {\n    if session.userCompletedScanPass {\n        VStack {\n            ObjectCapturePointCloudView(session: session)\n            CreateButton(label: \"Finish\") {\n                session.finish() \n            }\n        }\n    } else {    \n        ZStack {\n            ObjectCaptureView(session: session)\n        }\n    }\n}"
+    },
+    {
+      "title": "Reconstruction API",
+      "language": "swift",
+      "startTimeSeconds": 950,
+      "code": "var body: some View {\n    ReconstructionProgressView()\n        .task {\n            var configuration = PhotogrammetrySession.Configuration()\n            configuration.checkpointDirectory = getDocumentsDir()\n                .appendingPathComponent(\"Snapshots/\")\n            let session = try PhotogrammetrySession(\n                input: getDocumentsDir().appendingPathComponent(\"Images/\"),\n                configuration: configuration)\n            try session.process(requests: [ \n                .modelFile(url: getDocumentsDir().appendingPathComponent(\"model.usdz\")) \n            ])\n            for try await output in session.outputs {\n                switch output {\n                    case .processingComplete:\n                        handleComplete()\n                        // Handle other Output messages here.\n                }}}}"
+    },
+    {
+      "title": "Capturing for Mac",
+      "language": "swift",
+      "startTimeSeconds": 1022,
+      "code": "// Capturing for Mac\n\nvar configuration = ObjectCaptureSession.Configuration()\nconfiguration.isOverCaptureEnabled = true\n\nsession.start(imagesDirectory: getDocumentsDir().appendingPathComponent(\"Images/\"),\n              configuration: configuration)"
+    },
+    {
+      "title": "Pose output",
+      "language": "swift",
+      "startTimeSeconds": 1120,
+      "code": "// Pose output\n\ntry session.process(requests: [ \n    .poses \n    .modelFile(url: modelURL),\n])\nfor try await output in session.outputs {\n    switch output {\n    case .poses(let poses):\n        handlePoses(poses)\n    case .processingComplete:\n        handleComplete()\n    }\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2023/10191-meet-object-capture-for-ios/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10191-meet-object-capture-for-ios/metadata.json",
+    "readme": "sessions/wwdc2023/10191-meet-object-capture-for-ios/README.md",
+    "transcript": "sessions/wwdc2023/10191-meet-object-capture-for-ios/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10191-meet-object-capture-for-ios/transcript.json"
+  }
+}

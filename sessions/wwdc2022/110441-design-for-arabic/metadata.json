@@ -1,0 +1,73 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-110441",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 110441,
+  "title": "Design for Arabic · صمّم بالعربي",
+  "description": "تعرّف على المبادئ الأساسية لتصميم الواجهات الرقمية باللغة العربية. سواء كنت تود تصميم تطبيق أو لعبة خصيصًا للاستخدام العربي، أو تود ترجمة تطبيق من لغة أخرى إلى العربية، سنقدم لك أفضل الطرق للوصول إلى تصميم مثالي يخدم المحتوى العربي. تعلم أيضا تأثير اتجاه اللغة على اتجاه القوالب والأيقونات، وسمات الخط العربي الجيد للاستخدام الرقمي، وصيغ الأرقام العربية وتأثيرها على واجهة المستخدم. This is the Arabic language edition of \"Design for Arabic.\" Find out how to design or optimize your app or game for Arabic. Whether you’re planning a first release or improving an existing app or game, we’ll help you learn best practices and tips for UI design for Arabic speakers. Learn how to create beautiful Right to Left layouts with UI components and iconography, discover the nuances of Arabic script and typography in product design, and explore Arabic numerals.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/110441",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/110441",
+  "type": "Video",
+  "publishedAt": "2022-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "rtl"
+  ],
+  "topics": [
+    "Accessibility & Inclusion",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 1170,
+  "hasTranscript": true,
+  "transcriptWordCount": 3184,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110441/4/C8C3F26A-9D07-41B4-A006-585B5F484C08/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110441/4/C8C3F26A-9D07-41B4-A006-585B5F484C08/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110441/4/C8C3F26A-9D07-41B4-A006-585B5F484C08/downloads/wwdc2022-110441_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110441/4/C8C3F26A-9D07-41B4-A006-585B5F484C08/downloads/wwdc2022-110441_hd.mp4",
+    "duration": 1170
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Right to left",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/right-to-left",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/right-to-left"
+    },
+    {
+      "title": "Apple Design Resources",
+      "url": "https://developer.apple.com/design/resources/",
+      "type": "download",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/resources/"
+    }
+  ],
+  "path": "sessions/wwdc2022/110441-design-for-arabic/",
+  "files": {
+    "metadata": "sessions/wwdc2022/110441-design-for-arabic/metadata.json",
+    "readme": "sessions/wwdc2022/110441-design-for-arabic/README.md",
+    "transcript": "sessions/wwdc2022/110441-design-for-arabic/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/110441-design-for-arabic/transcript.json"
+  }
+}

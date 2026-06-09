@@ -1,0 +1,80 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10263",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10263,
+  "title": "Deploy passkeys at work",
+  "description": "Discover how you can take advantage of passkeys in managed environments at work. We’ll explore how passkeys can work well in enterprise environments through Managed Apple ID support for iCloud Keychain. We’ll also share how administrators can manage passkeys for specific devices using Access Management controls in Apple Business Manager and Apple School Manager.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10263",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10263",
+  "type": "Video",
+  "publishedAt": "2023-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "2fa",
+    "attestation",
+    "password",
+    "phishing"
+  ],
+  "topics": [
+    "Privacy & Security",
+    "Business & Education"
+  ],
+  "primaryTopic": "Business & Education",
+  "duration": 983,
+  "hasTranscript": true,
+  "transcriptWordCount": 2610,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10263/6/31A324CE-DD40-456B-A7DB-8660EF139277/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10263/6/31A324CE-DD40-456B-A7DB-8660EF139277/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10263/6/31A324CE-DD40-456B-A7DB-8660EF139277/downloads/wwdc2023-10263_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10263/6/31A324CE-DD40-456B-A7DB-8660EF139277/downloads/wwdc2023-10263_hd.mp4",
+    "duration": 983
+  },
+  "codeSnippets": [
+    {
+      "title": "Example passkey attestation configuration",
+      "language": "json",
+      "startTimeSeconds": 667,
+      "code": "// Example configuration: com.apple.configuration.security.passkey.attestation\n\n{\n    \"Type\": \"com.apple.configuration.security.passkey.attestation\",\n    \"Identifier\": \"B1DC0125-D380-433C-913A-89D98D68BA9C\",\n    \"ServerToken\": \"8EAB1785-6FC4-4B4D-BD63-1D1D2A085106\",\n    \"Payload\": {\n        \"AttestationIdentityAssetReference\": \"88999A94-B8D6-481A-8323-BF2F029F4EF9\",\n        \"RelyingParties\": [\n            \"www.example.com\"\n        ]\n    }\n}"
+    },
+    {
+      "title": "WebAuthn Packed Attestation Statement Format",
+      "language": "json",
+      "startTimeSeconds": 792,
+      "code": "// WebAuthn Packed Attestation Statement Format\n\nattestationObject: {\n    \"fmt\": \"packed\",\n    \"attStmt\": {\n        \"alg\": -7, // for ES256\n        \"sig\": bytes,\n        \"x5c\": [ attestnCert: bytes, * (caCert: bytes) ]\n    }\n    \"authData\": {\n        \"attestedCredentialData\": {\n            \"aaguid\": “dd4ec289-e01d-41c9-bb89-70fa845d4bf2”, // for Apple devices\n            <…>\n        }\n        <…>\n    }\n    <…>\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Passkeys overview",
+      "url": "https://developer.apple.com/passkeys/",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/passkeys/"
+    }
+  ],
+  "path": "sessions/wwdc2023/10263-deploy-passkeys-at-work/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10263-deploy-passkeys-at-work/metadata.json",
+    "readme": "sessions/wwdc2023/10263-deploy-passkeys-at-work/README.md",
+    "transcript": "sessions/wwdc2023/10263-deploy-passkeys-at-work/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10263-deploy-passkeys-at-work/transcript.json"
+  }
+}

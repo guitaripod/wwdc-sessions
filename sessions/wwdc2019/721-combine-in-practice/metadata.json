@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-721",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 721,
+  "title": "Combine in Practice",
+  "description": "Expand your knowledge of Combine, Apple's new unified, declarative framework for processing values over time. Learn about how to correctly handle errors, schedule work and integrate Combine into your app today.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/721",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/721",
+  "type": "Video",
+  "publishedAt": "2019-06-06T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 2081,
+  "hasTranscript": true,
+  "transcriptWordCount": 5403,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/721ga0kflgr4ypfx/721/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/721ga0kflgr4ypfx/721/721_sd_combine_in_practice.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/721ga0kflgr4ypfx/721/721_hd_combine_in_practice.mp4",
+    "duration": 2081
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/721-combine-in-practice/",
+  "files": {
+    "metadata": "sessions/wwdc2019/721-combine-in-practice/metadata.json",
+    "readme": "sessions/wwdc2019/721-combine-in-practice/README.md",
+    "transcript": "sessions/wwdc2019/721-combine-in-practice/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/721-combine-in-practice/transcript.json"
+  }
+}

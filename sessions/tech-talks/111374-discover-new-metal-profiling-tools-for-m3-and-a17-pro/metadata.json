@@ -1,0 +1,53 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-111374",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2023,
+  "eventContentId": 111374,
+  "title": "Discover new Metal profiling tools for M3 and A17 Pro",
+  "description": "Learn how the new profiling tools in Xcode 15 can help you achieve the best Metal performance on Apple family 9 GPUs. Discover how to use shader cost graphs, performance heat maps, and shader execution history tools to profile and optimize your Metal code. Find out how to use new GPU counters to optimize GPU occupancy and ray-tracing performance.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/111374",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111374",
+  "type": "Video",
+  "publishedAt": "2023-11-09T08:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 2036,
+  "hasTranscript": true,
+  "transcriptWordCount": 4532,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/111374/4/B34C6255-A869-44BE-854B-468DC2871E98/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/tech-talks/111374/4/B34C6255-A869-44BE-854B-468DC2871E98/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/111374/4/B34C6255-A869-44BE-854B-468DC2871E98/downloads/tech-talks-111374_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/111374/4/B34C6255-A869-44BE-854B-468DC2871E98/downloads/tech-talks-111374_hd.mp4",
+    "duration": 2036
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/tech-talks/111374-discover-new-metal-profiling-tools-for-m3-and-a17-pro/",
+  "files": {
+    "metadata": "sessions/tech-talks/111374-discover-new-metal-profiling-tools-for-m3-and-a17-pro/metadata.json",
+    "readme": "sessions/tech-talks/111374-discover-new-metal-profiling-tools-for-m3-and-a17-pro/README.md",
+    "transcript": "sessions/tech-talks/111374-discover-new-metal-profiling-tools-for-m3-and-a17-pro/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/111374-discover-new-metal-profiling-tools-for-m3-and-a17-pro/transcript.json"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10150",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10150,
+  "title": "Optimize CarPlay for vehicle systems",
+  "description": "Discover how you can integrate CarPlay into modern vehicle systems. We’ll show you how to adjust CarPlay for any high-resolution display — regardless of configuration or size. Learn how you can use CarPlay-supplied metadata and video streams to show information on additional displays, and find out how advances in wireless connectivity, audio, and video encoding can help prepare your vehicle system for the next generation of CarPlay.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10150",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10150",
+  "type": "Video",
+  "publishedAt": "2023-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS"
+  ],
+  "keywords": [
+    "🚗",
+    "🚙",
+    "airplay",
+    "car",
+    "ev charging",
+    "hevc"
+  ],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 1104,
+  "hasTranscript": true,
+  "transcriptWordCount": 2659,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10150/4/21F9E94A-7EFC-455B-B168-18C2B8CB5965/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10150/4/21F9E94A-7EFC-455B-B168-18C2B8CB5965/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10150/4/21F9E94A-7EFC-455B-B168-18C2B8CB5965/downloads/wwdc2023-10150_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10150/4/21F9E94A-7EFC-455B-B168-18C2B8CB5965/downloads/wwdc2023-10150_hd.mp4",
+    "duration": 1104
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "CarPlay for developers",
+      "url": "https://developer.apple.com/carplay",
+      "type": "guide",
+      "description": "Guide to CarPlay development",
+      "sosumiURL": "https://sosumi.ai/carplay"
+    }
+  ],
+  "path": "sessions/wwdc2023/10150-optimize-carplay-for-vehicle-systems/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10150-optimize-carplay-for-vehicle-systems/metadata.json",
+    "readme": "sessions/wwdc2023/10150-optimize-carplay-for-vehicle-systems/README.md",
+    "transcript": "sessions/wwdc2023/10150-optimize-carplay-for-vehicle-systems/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10150-optimize-carplay-for-vehicle-systems/transcript.json"
+  }
+}

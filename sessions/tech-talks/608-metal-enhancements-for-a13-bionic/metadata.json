@@ -1,0 +1,60 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-608",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2019,
+  "eventContentId": 608,
+  "title": "Metal Enhancements for A13 Bionic",
+  "description": "Metal brings powerful API features and GPU-driven capabilities to A13 Bionic including sparse textures, vertex amplification, Tier 2 argument buffers, ASTC HDR, and more. Understand the architectural improvements of the Apple-designed A13 Bionic and learn how the latest Metal enhancements advance the state of the art for modern apps and games.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/608",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/608",
+  "type": "Video",
+  "publishedAt": "2019-09-10T00:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 2148,
+  "hasTranscript": true,
+  "transcriptWordCount": 5715,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tutorials/20190910/608hjakbtjbxcvt53sft/metal_enhancements_for_a13_bionic/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tutorials/20190910/608hjakbtjbxcvt53sft/metal_enhancements_for_a13_bionic/metal_enhancements_for_a13_bionic_hd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tutorials/20190910/608hjakbtjbxcvt53sft/metal_enhancements_for_a13_bionic/metal_enhancements_for_a13_bionic_hd.mp4",
+    "duration": 2148
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Modern rendering with Metal",
+      "url": "https://developer.apple.com/documentation/Metal/modern-rendering-with-metal",
+      "type": "samplecode",
+      "description": "Use advanced Metal features such as indirect command buffers, sparse textures, and variable rate rasterization to implement complex rendering techniques.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/modern-rendering-with-metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/modern-rendering-with-metal.json"
+    }
+  ],
+  "path": "sessions/tech-talks/608-metal-enhancements-for-a13-bionic/",
+  "files": {
+    "metadata": "sessions/tech-talks/608-metal-enhancements-for-a13-bionic/metadata.json",
+    "readme": "sessions/tech-talks/608-metal-enhancements-for-a13-bionic/README.md",
+    "transcript": "sessions/tech-talks/608-metal-enhancements-for-a13-bionic/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/608-metal-enhancements-for-a13-bionic/transcript.json"
+  }
+}

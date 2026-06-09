@@ -1,0 +1,138 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2024-10118",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10118,
+  "title": "What’s new in UIKit",
+  "description": "Explore everything new in UIKit, including tab and document launch experiences, transitions, and text and input changes. We’ll also discuss better-than-ever interoperability between UIKit and SwiftUI animations and gestures, as well as general improvements throughout UIKit.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10118",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10118",
+  "type": "Video",
+  "publishedAt": "2024-06-10T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "symbols",
+    "traits",
+    "uiupdatelink"
+  ],
+  "topics": [
+    "App Services",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1270,
+  "hasTranscript": true,
+  "transcriptWordCount": 2701,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10118/4/16FC914B-F442-41A4-AFF4-5047A3FF7125/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10118/4/16FC914B-F442-41A4-AFF4-5047A3FF7125/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10118/4/16FC914B-F442-41A4-AFF4-5047A3FF7125/downloads/wwdc2024-10118_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10118/4/16FC914B-F442-41A4-AFF4-5047A3FF7125/downloads/wwdc2024-10118_hd.mp4",
+    "duration": 1270
+  },
+  "codeSnippets": [
+    {
+      "title": "Using SwiftUI to animate UIViews with gestures",
+      "language": "swift",
+      "startTimeSeconds": 1,
+      "code": "switch gesture.state {\ncase .changed:\n    UIView.animate(.interactiveSpring) {\n        bead.center = gesture.translation\n    }\n\ncase .ended:\n    UIView.animate(.spring) {\n        bead.center = endOfBracelet\n    }\n}"
+    },
+    {
+      "title": "Setting failure requirements between gestures",
+      "language": "swift",
+      "startTimeSeconds": 2,
+      "code": "// Inner SwiftUI double tap gesture\n\nCircle()\n    .gesture(doubleTap, name: \"SwiftUIDoubleTap\")\n\n\n// Outer UIKit single tap gesture\n\nfunc gestureRecognizer(\n    _ gestureRecognizer: UIGestureRecognizer, \n    shouldRequireFailureOf other: UIGestureRecognizer\n) -> Bool {\n    other.name == \"SwiftUIDoubleTap\"\n}"
+    },
+    {
+      "title": "Responding to horizontalSizeClass trait",
+      "language": "swift",
+      "startTimeSeconds": 3,
+      "code": "class MyView: UIView {\n    override func layoutSubviews() {\n        super.layoutSubviews()\n\n        if traitCollection.horizontalSizeClass == .compact {\n            // apply compact layout\n        } else {\n            // apply regular layout\n        }\n    }\n}"
+    },
+    {
+      "title": "Using the new automatic content and background configurations",
+      "language": "swift",
+      "startTimeSeconds": 4,
+      "code": "func configurations(for location: FileLocation) ->\n    (UIListContentConfiguration, UIBackgroundConfiguration) {\n\n    var contentConfiguration = UIListContentConfiguration.cell()\n    let backgroundConfiguration = UIBackgroundConfiguration.listCell()\n\n    contentConfiguration.text = location.title\n    contentConfiguration.image = location.thumbnailImage\n\n    return (contentConfiguration, backgroundConfiguration)\n}"
+    },
+    {
+      "title": "Using UIUpdateLink",
+      "language": "swift",
+      "startTimeSeconds": 5,
+      "code": "let updateLink = UIUpdateLink(\n    view: view,\n    actionTarget: self,\n    selector: #selector(update)\n)\nupdateLink.requiresContinuousUpdates = true\nupdateLink.isEnabled = true\n\n@objc func update(updateLink: UIUpdateLink,\n                  updateInfo: UIUpdateInfo) {\n    view.center.y = sin(updateInfo.modelTime)\n        * 100 + view.bounds.midY\n}"
+    },
+    {
+      "title": "An example of providing UICanvasFeedbackGenerator with additional context",
+      "language": "swift",
+      "startTimeSeconds": 6,
+      "code": "@ViewLoading var feedbackGenerator: UICanvasFeedbackGenerator\n\noverride func viewDidLoad() {\n    super.viewDidLoad()\n    feedbackGenerator = UICanvasFeedbackGenerator(view: view)\n}\n\nfunc dragAligned(_ sender: UIPanGestureRecognizer) {\n    feedbackGenerator.alignmentOccurred(at: sender.location(in: view))\n}"
+    },
+    {
+      "title": "Using new attributes for highlight",
+      "language": "swift",
+      "startTimeSeconds": 7,
+      "code": "var attributes = [NSAttributedString.Key: Any]()\n\n// Highlight style\nattributes[.textHighlightStyle] = \nNSAttributedString.TextHighlightStyle.default\n\n// Highlight color scheme\nattributes[.textHighlightColorScheme] =\nNSAttributedString.TextHighlightColorScheme.default"
+    },
+    {
+      "title": "Customizing formatting panel",
+      "language": "swift",
+      "startTimeSeconds": 8,
+      "code": "textView.textFormattingConfiguration = .init(groups: [\n    .group([\n        .component(.fontAttributes, .mini),\n        .component(.fontPicker, .regular),\n        .component(.textColor, .mini)\n    ]),\n    .group([\n        .component(.fontPointSize, .mini),\n        .component(.listStyles, .regular),\n        .component(.highlight, .mini)\n    ])\n])"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Automatic trait tracking",
+      "url": "https://developer.apple.com/documentation/UIKit/automatic-trait-tracking",
+      "type": "documentation",
+      "description": "Reduce the need to manually register for trait changes when you use traits within a method or closure that supports automatic trait tracking.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/automatic-trait-tracking",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/automatic-trait-tracking.json"
+    },
+    {
+      "title": "UIUpdateLink",
+      "url": "https://developer.apple.com/documentation/UIKit/UIUpdateLink",
+      "type": "documentation",
+      "description": "An object you use to observe, participate in, and affect the UI update process.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UIUpdateLink",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UIUpdateLink.json"
+    },
+    {
+      "title": "Forum: UI Frameworks",
+      "url": "https://developer.apple.com/forums/topics/ui-frameworks?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/ui-frameworks?cid=vf-a-0010"
+    },
+    {
+      "title": "UIKit updates",
+      "url": "https://developer.apple.com/documentation/Updates/UIKit",
+      "type": "documentation",
+      "description": "Learn about important changes to UIKit.",
+      "sosumiURL": "https://sosumi.ai/documentation/Updates/UIKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Updates/UIKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2024/10118-what-s-new-in-uikit/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10118-what-s-new-in-uikit/metadata.json",
+    "readme": "sessions/wwdc2024/10118-what-s-new-in-uikit/README.md",
+    "transcript": "sessions/wwdc2024/10118-what-s-new-in-uikit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10118-what-s-new-in-uikit/transcript.json"
+  }
+}

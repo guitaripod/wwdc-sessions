@@ -1,0 +1,97 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10180",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10180,
+  "title": "Detect and diagnose memory issues",
+  "description": "Discover how you can understand and diagnose memory performance problems with Xcode. We’ll take you through the latest updates to Xcode’s tools, explore Metrics, check out the memgraph collection feature in XCTest, and learn how to catch regressions using a Performance XCTest.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10180",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10180",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "memory",
+    "performance",
+    "xcode"
+  ],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 1766,
+  "hasTranscript": true,
+  "transcriptWordCount": 4506,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10180/5/0CD6241A-4A02-4CD3-9885-93ABE0FD4981/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10180/5/0CD6241A-4A02-4CD3-9885-93ABE0FD4981/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10180/5/0CD6241A-4A02-4CD3-9885-93ABE0FD4981/downloads/wwdc2021-10180_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10180/5/0CD6241A-4A02-4CD3-9885-93ABE0FD4981/downloads/wwdc2021-10180_hd.mp4",
+    "duration": 1766
+  },
+  "codeSnippets": [
+    {
+      "title": "Monitor memory performance with XCTests",
+      "language": "swift",
+      "startTimeSeconds": 292,
+      "code": "// Monitor memory performance with XCTests\n\nfunc testSaveMeal() {\n    let app = XCUIApplication()\n\n    let options = XCTMeasureOptions()\n    options.invocationOptions = [.manuallyStart]\n\n    measure(metrics: [XCTMemoryMetric(application: app)],\n            options: options) {\n\n        app.launch()\n\n        startMeasuring()\n\n        app.cells.firstMatch.buttons[\"Save meal\"].firstMatch.tap()\n\n             let savedButton = app.cells.firstMatch.buttons[\"Saved\"].firstMatch\n        XCTAssertTrue(savedButton.waitForExistence(timeout: 30))\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Analyzing the performance of your shipping app",
+      "url": "https://developer.apple.com/documentation/Xcode/analyzing-the-performance-of-your-shipping-app",
+      "type": "documentation",
+      "description": "View power and performance metrics for apps you distribute through the App",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/analyzing-the-performance-of-your-shipping-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/analyzing-the-performance-of-your-shipping-app.json"
+    },
+    {
+      "title": "Manual Memory Management",
+      "url": "https://developer.apple.com/documentation/Swift/manual-memory-management",
+      "type": "documentation",
+      "description": "Allocate and manage memory manually.",
+      "sosumiURL": "https://sosumi.ai/documentation/Swift/manual-memory-management",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Swift/manual-memory-management.json"
+    },
+    {
+      "title": "MetricKit",
+      "url": "https://developer.apple.com/documentation/MetricKit",
+      "type": "documentation",
+      "description": "Measure your app’s performance using daily metric and diagnostic reports from real users.",
+      "sosumiURL": "https://sosumi.ai/documentation/MetricKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MetricKit.json"
+    },
+    {
+      "title": "XCTest",
+      "url": "https://developer.apple.com/documentation/XCTest",
+      "type": "documentation",
+      "description": "Create and run unit tests, performance tests, and UI tests for your Xcode project.",
+      "sosumiURL": "https://sosumi.ai/documentation/XCTest",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/XCTest.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10180-detect-and-diagnose-memory-issues/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10180-detect-and-diagnose-memory-issues/metadata.json",
+    "readme": "sessions/wwdc2021/10180-detect-and-diagnose-memory-issues/README.md",
+    "transcript": "sessions/wwdc2021/10180-detect-and-diagnose-memory-issues/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10180-detect-and-diagnose-memory-issues/transcript.json"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10087",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10087,
+  "title": "Diagnose Power and Performance regressions in your app",
+  "description": "Quickly discover how to identify priorities when viewing power and performance regressions. Learn how to track metrics that have regressed with device-and percentile-specific information, so you can focus your efforts on optimization and save valuable development time. We’ll also show you how to track down common anti-patterns in your app that wear out device storage, help you customize your workflows, and add App Store Connect APIs to help you stay up to date on your app’s real-world performance.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10087",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10087",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Store, Distribution & Marketing",
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 930,
+  "hasTranscript": true,
+  "transcriptWordCount": 2326,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10087/6/35272A76-3FD8-4149-B4C9-B7C0AA197E61/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10087/6/35272A76-3FD8-4149-B4C9-B7C0AA197E61/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10087/6/35272A76-3FD8-4149-B4C9-B7C0AA197E61/downloads/wwdc2021-10087_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10087/6/35272A76-3FD8-4149-B4C9-B7C0AA197E61/downloads/wwdc2021-10087_hd.mp4",
+    "duration": 930
+  },
+  "codeSnippets": [
+    {
+      "title": "App Store Connect API Metrics",
+      "language": "bash",
+      "startTimeSeconds": 780,
+      "code": "GET /v1/apps/{application-id}/perfPowerMetrics\nGET /v1/builds/{id}/perfPowerMetrics"
+    },
+    {
+      "title": "App Store Connect API Diagnostics",
+      "language": "bash",
+      "startTimeSeconds": 781,
+      "code": "GET /v1/builds/{id}/diagnosticSignatures\nGET /v1/diagnosticSignatures/{id}/logs"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Reducing terminations in your app",
+      "url": "https://developer.apple.com/documentation/Xcode/reduce-terminations-in-your-app",
+      "type": "documentation",
+      "description": "Minimize how frequently the system stops your app by addressing common termination reasons.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/reduce-terminations-in-your-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/reduce-terminations-in-your-app.json"
+    },
+    {
+      "title": "Analyzing the performance of your shipping app",
+      "url": "https://developer.apple.com/documentation/Xcode/analyzing-the-performance-of-your-shipping-app",
+      "type": "documentation",
+      "description": "View power and performance metrics for apps you distribute through the App",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/analyzing-the-performance-of-your-shipping-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/analyzing-the-performance-of-your-shipping-app.json"
+    },
+    {
+      "title": "Measuring App Performance",
+      "url": "https://developer.apple.com/app-store/measuring-app-performance/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/app-store/measuring-app-performance/"
+    },
+    {
+      "title": "MetricKit",
+      "url": "https://developer.apple.com/documentation/MetricKit",
+      "type": "documentation",
+      "description": "Measure your app’s performance using daily metric and diagnostic reports from real users.",
+      "sosumiURL": "https://sosumi.ai/documentation/MetricKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MetricKit.json"
+    },
+    {
+      "title": "App Store Connect API",
+      "url": "https://developer.apple.com/documentation/AppStoreConnectAPI",
+      "type": "documentation",
+      "description": "The data structure that represents an app store connect api resource.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreConnectAPI",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreConnectAPI.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10087-diagnose-power-and-performance-regressions-in-your-app/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10087-diagnose-power-and-performance-regressions-in-your-app/metadata.json",
+    "readme": "sessions/wwdc2021/10087-diagnose-power-and-performance-regressions-in-your-app/README.md",
+    "transcript": "sessions/wwdc2021/10087-diagnose-power-and-performance-regressions-in-your-app/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10087-diagnose-power-and-performance-regressions-in-your-app/transcript.json"
+  }
+}

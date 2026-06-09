@@ -1,0 +1,63 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10131",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10131,
+  "title": "Meet declarative device management",
+  "description": "The future of device management is here: Learn how you can support mobile device management while allowing individual devices to be autonomous and proactive, bringing both increased performance and scalability. We'll show you how you can incorporate this declarative model in your MDM solution.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10131",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10131",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Store, Distribution & Marketing",
+    "Business & Education"
+  ],
+  "primaryTopic": "Business & Education",
+  "duration": 1338,
+  "hasTranscript": true,
+  "transcriptWordCount": 3206,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10131/4/E2547688-09E1-4213-B74C-BA8E1EE3D32A/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10131/4/E2547688-09E1-4213-B74C-BA8E1EE3D32A/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10131/4/E2547688-09E1-4213-B74C-BA8E1EE3D32A/downloads/wwdc2021-10131_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10131/4/E2547688-09E1-4213-B74C-BA8E1EE3D32A/downloads/wwdc2021-10131_hd.mp4",
+    "duration": 1338
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Device Management",
+      "url": "https://developer.apple.com/documentation/DeviceManagement",
+      "type": "documentation",
+      "description": "Manage your organization’s devices remotely.",
+      "sosumiURL": "https://sosumi.ai/documentation/DeviceManagement",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/DeviceManagement.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10131-meet-declarative-device-management/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10131-meet-declarative-device-management/metadata.json",
+    "readme": "sessions/wwdc2021/10131-meet-declarative-device-management/README.md",
+    "transcript": "sessions/wwdc2021/10131-meet-declarative-device-management/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10131-meet-declarative-device-management/transcript.json"
+  }
+}

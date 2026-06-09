@@ -1,0 +1,85 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10047",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10047,
+  "title": "Enable encrypted DNS",
+  "description": "When people access the web within your app, their privacy is paramount. Safeguard that information by leveraging encrypted DNS across our platforms to deliver private and secure connectivity within your app. Discover how you can use system DNS settings to connect to encrypted servers or enable encrypted DNS within an app using standard networking APIs. Enabling encrypted DNS is yet another way your app can help preserve privacy for your customers and provide them with a better and more secure experience.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10047",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10047",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "fingerprinting"
+  ],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 796,
+  "hasTranscript": true,
+  "transcriptWordCount": 1618,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10047/4/01915145-ACB0-4244-86DA-2FBCCFEC9B58/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10047/4/01915145-ACB0-4244-86DA-2FBCCFEC9B58/wwdc2020_10047_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10047/4/01915145-ACB0-4244-86DA-2FBCCFEC9B58/wwdc2020_10047_hd.mp4",
+    "duration": 796
+  },
+  "codeSnippets": [
+    {
+      "title": "Create a DNS configuration",
+      "language": "swift",
+      "startTimeSeconds": 256,
+      "code": "// Create a DNS configuration\n\nimport NetworkExtension\n\nNEDNSSettingsManager.shared().loadFromPreferences { loadError in\n    if let loadError = loadError {\n        // ...handle error...\n        return\n    }\n    let dohSettings = NEDNSOverHTTPSSettings(servers: [ \"2001:db8::2\" ])\n    dohSettings.serverURL = URL(string: \"https://dnsserver.example.net/dns-query\")\n    NEDNSSettingsManager.shared().dnsSettings = dohSettings\n    NEDNSSettingsManager.shared().saveToPreferences { saveError in\n        if let saveError = saveError {\n            // ...handle error...\n            return\n        }\n    }\n}"
+    },
+    {
+      "title": "Apply network rules",
+      "language": "swift",
+      "startTimeSeconds": 400,
+      "code": "// Apply network rules\n\nlet workWiFi = NEOnDemandRuleEvaluateConnection()\nworkWiFi.interfaceTypeMatch = .wiFi\nworkWiFi.ssidMatch = [\"MyWorkWiFi\"]\nworkWiFi.connectionRules =\n    [ NEEvaluateConnectionRule(matchDomains: [\"enterprise.example.net\"],\n                               andAction: .neverConnect) ]\n\nlet disableOnCell = NEOnDemandRuleDisconnect()\ndisableOnCell.interfaceTypeMatch = .cellular\n\nlet enableByDefault = NEOnDemandRuleConnect()\n\nNEDNSSettingsManager.shared().onDemandRules = [\n    workWiFi,\n    disableOnCell,\n    enableByDefault\n]"
+    },
+    {
+      "title": "Use encrypted DNS with NWConnection",
+      "language": "swift",
+      "startTimeSeconds": 647,
+      "code": "// Use encrypted DNS with NWConnection\n\nimport Network\n\nlet privacyContext = NWParameters.PrivacyContext(description: \"EncryptedDNS\")\nif let url = URL(string: \"https://dnsserver.example.net/dns-query\") {\n    let address = NWEndpoint.hostPort(host: \"2001:db8::2\", port: 443)\n    privacyContext.requireEncryptedNameResolution(true,\n        fallbackResolver: .https(url, serverAddresses: [ address ]))\n}\n\nlet tlsParams = NWParameters.tls\ntlsParams.setPrivacyContext(privacyContext)\n\nlet conn = NWConnection(host: \"www.example.com\", port: 443, using: tlsParams)\nconn.start(queue: .main)"
+    },
+    {
+      "title": "Validate which DNS protocol was used",
+      "language": "swift",
+      "startTimeSeconds": 695,
+      "code": "// Validate which DNS protocol was used\n\nimport Network\n\nconn.requestEstablishmentReport(queue: .main) { report in\n    if let report = report {\n        for resolution in report.resolutions {\n            switch resolution.dnsProtocol {\n            case .https, .tls:\n                print(\"Used encrypted DNS!”)\n            case .udp, .tcp:\n                print(\"Used unencrypted DNS\")\n            default:\n                // Ignore unknown protocols\n       }\n    }\n}"
+    },
+    {
+      "title": "Use encrypted DNS for other APIs",
+      "language": "swift",
+      "startTimeSeconds": 727,
+      "code": "// Use encrypted DNS for other APIs\n\nimport Network\n\nif let url = URL(string: \"https://dnsserver.example.net/dns-query\") {\n    let address = NWEndpoint.hostPort(host: \"2001:db8::2\", port: 443)\n    NWParameters.PrivacyContext.default.requireEncryptedNameResolution(true,\n        fallbackResolver: .https(url, serverAddresses: [ address ]))\n}\n\nlet task = URLSession.shared.dataTask(with: ...)\ntask.resume()\n\ngetaddrinfo(...)"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2020/10047-enable-encrypted-dns/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10047-enable-encrypted-dns/metadata.json",
+    "readme": "sessions/wwdc2020/10047-enable-encrypted-dns/README.md",
+    "transcript": "sessions/wwdc2020/10047-enable-encrypted-dns/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10047-enable-encrypted-dns/transcript.json"
+  }
+}

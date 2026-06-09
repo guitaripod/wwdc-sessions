@@ -1,0 +1,121 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10188",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10188,
+  "title": "Sync to iCloud with CKSyncEngine",
+  "description": "Discover how CKSyncEngine can help you sync people’s CloudKit data to iCloud. Learn how you can reduce the amount of code in your app when you let the system handle scheduling for your sync operations. We’ll share how you can automatically benefit from enhanced performance as CloudKit evolves, explore testing for your sync implementation, and more. To get the most out of this session, you should be familiar with CloudKit and CKRecord types.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10188",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10188",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "app",
+    "backend",
+    "cksyncengine",
+    "cloud",
+    "cloudkit",
+    "database",
+    "engine",
+    "icloud",
+    "model",
+    "object",
+    "orm",
+    "persistence",
+    "relational",
+    "share",
+    "sharing",
+    "storage",
+    "sync",
+    "sync engine",
+    "syncing"
+  ],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 1382,
+  "hasTranscript": true,
+  "transcriptWordCount": 3446,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10188/3/F63E6FC7-4329-401C-9D80-CD4E7C8A478A/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10188/3/F63E6FC7-4329-401C-9D80-CD4E7C8A478A/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10188/3/F63E6FC7-4329-401C-9D80-CD4E7C8A478A/downloads/wwdc2023-10188_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10188/3/F63E6FC7-4329-401C-9D80-CD4E7C8A478A/downloads/wwdc2023-10188_hd.mp4",
+    "duration": 1382
+  },
+  "codeSnippets": [
+    {
+      "title": "Initializing CKSyncEngine",
+      "language": "swift",
+      "startTimeSeconds": 734,
+      "code": "actor MySyncManager : CKSyncEngineDelegate {\n\n    init(container: CKContainer, localPersistence: MyLocalPersistence) {\n        let configuration = CKSyncEngine.Configuration(\n            database: container.privateCloudDatabase,\n            stateSerialization: localPersistence.lastKnownSyncEngineState,\n            delegate: self\n        )\n        self.syncEngine = CKSyncEngine(configuration)\n    }\n\n    func handleEvent(_ event: CKSyncEngine.Event, syncEngine: CKSyncEngine) async {\n        switch event {\n        case .stateUpdate(let stateUpdate):\n            self.localPersistence.lastKnownSyncEngineState = stateUpdate.stateSerialization\n        }\n    }\n}"
+    },
+    {
+      "title": "Sending changes to the server",
+      "language": "swift",
+      "startTimeSeconds": 853,
+      "code": "func userDidEditData(recordID: CKRecord.ID) {\n    // Tell the sync engine we need to send this data to the server.\n    self.syncEngine.state.add(pendingRecordZoneChanges: [ .save(recordID) ])\n}\n\nfunc nextRecordZoneChangeBatch(\n    _ context: CKSyncEngine.SendChangesContext, \n    syncEngine: CKSyncEngine\n) async -> CKSyncEngine.RecordZoneChangeBatch? {\n\n    let changes = syncEngine.state.pendingRecordZoneChanges.filter { \n        context.options.zoneIDs.contains($0.recordID.zoneID) \n    }\n\n    return await CKSyncEngine.RecordZoneChangeBatch(pendingChanges: changes) { recordID in\n        self.recordToSave(for: recordID)\n    }\n}"
+    },
+    {
+      "title": "Fetching changes from the server",
+      "language": "swift",
+      "startTimeSeconds": 940,
+      "code": "func handleEvent(_ event: CKSyncEngine.Event, syncEngine: CKSyncEngine) async {\n    switch event {\n\n    case .fetchedRecordZoneChanges(let recordZoneChanges):\n        for modifications in recordZoneChanges.modifications {\n            // Persist the fetched modification locally\n        }\n\n        for deletions in recordZoneChanges.deletions {\n            // Remove the deleted data locally\n        }\n\n    case .fetchedDatabaseChanges(let databaseChanges):      \n        for modifications in databaseChanges.modifications {\n            // Persist the fetched modification locally\n        }\n\n        for deletions in databaseChanges.deletions { \n            // Remove the deleted data locally\n        }\n\n    // Perform any setup/cleanup necessary\n    case .willFetchChanges, .didFetchChanges:\n        break\n\n    case .sentRecordZoneChanges(let sentChanges):\n\n        for failedSave in sentChanges.failedRecordSaves {\n            let recordID = failedSave.record.recordID\n\n            switch failedSave.error.code {\n\n            case .serverRecordChanged:\n                if let serverRecord = failedSave.error.serverRecord {\n                    // Merge server record into local data\n                    syncEngine.state.add(pendingRecordZoneChanges: [ .save(recordID) ])\n                }\n\n            case .zoneNotFound: \n                // Tried to save a record, but the zone doesn't exist yet.\n                syncEngine.state.add(pendingDatabaseChanges: [ .save(recordID.zoneID) ])\n                syncEngine.state.add(pendingRecordZoneChanges: [ .save(recordID) ])\n\n            // CKSyncEngine will automatically handle these errors\n            case .networkFailure, .networkUnavailable, .serviceUnavailable, .requestRateLimited:\n                break\n\n            // An unknown error occurred\n            default:\n                break\n            }\n        }\n\n    case .accountChange(let event):\n        switch event.changeType {\n\n        // Prepare for new user\n        case .signIn:\n            break\n\n        // Delete local data\n        case .signOut:\n            break\n\n        // Delete local data and prepare for new user\n        case .switchAccounts: \n            break\n        }\n    }\n}"
+    },
+    {
+      "title": "Using CKSyncEngine with private and shared databases",
+      "language": "swift",
+      "startTimeSeconds": 1129,
+      "code": "let databases = [ container.privateCloudDatabase, container.sharedCloudDatabase ]\n\nlet syncEngines = databases.map {\n    var configuration = CKSyncEngine.Configuration(\n        database: $0,\n        stateSerialization: lastKnownSyncEngineState($0.databaseScope),\n        delegate: self\n    )\n    return CKSyncEngine(configuration)\n}"
+    },
+    {
+      "title": "Testing CKSyncEngine integration",
+      "language": "swift",
+      "startTimeSeconds": 1200,
+      "code": "func testSyncConflict() async throws {\n\n    // Create two local databases to simulate two devices.\n    let deviceA = MySyncManager()\n    let deviceB = MySyncManager()\n\n    // Save a value from the first device to the server.\n    deviceA.value = \"A\"\n    try await deviceA.syncEngine.sendChanges()\n\n    // Try to save the value from the second device before it fetches changes.\n    // The record save should fail with a conflict that includes the current server record.\n    // In this example, we expect the value from the server to win.\n    deviceB.value = \"B\"\n    XCTAssertThrows(try await deviceB.syncEngine.sendChanges())\n    XCTAssertEqual(deviceB.value, \"A\")\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "CloudKit Samples: CKSyncEngine",
+      "url": "https://github.com/apple/sample-cloudkit-sync-engine",
+      "type": "samplecode",
+      "description": "This project demonstrates using CKSyncEngine to sync data in an app."
+    },
+    {
+      "title": "CKSyncEngine",
+      "url": "https://developer.apple.com/documentation/CloudKit/CKSyncEngine-5sie5",
+      "type": "documentation",
+      "description": "An object that manages the synchronization of local and remote record data.",
+      "sosumiURL": "https://sosumi.ai/documentation/CloudKit/CKSyncEngine-5sie5",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CloudKit/CKSyncEngine-5sie5.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10188-sync-to-icloud-with-cksyncengine/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10188-sync-to-icloud-with-cksyncengine/metadata.json",
+    "readme": "sessions/wwdc2023/10188-sync-to-icloud-with-cksyncengine/README.md",
+    "transcript": "sessions/wwdc2023/10188-sync-to-icloud-with-cksyncengine/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10188-sync-to-icloud-with-cksyncengine/transcript.json"
+  }
+}

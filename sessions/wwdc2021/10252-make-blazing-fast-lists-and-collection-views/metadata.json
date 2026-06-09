@@ -1,0 +1,154 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10252",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10252,
+  "title": "Make blazing fast lists and collection views",
+  "description": "Build consistently smooth scrolling list and collection views: Explore the lifecycle of a cell and learn how to apply that knowledge to eliminate rough scrolling and missed frames. We’ll also show you how to improve your overall scrolling experience and avoid costly hitches, with optimized image loading and automatic cell prefetching. To get the most out of this video, we recommend a basic familiarity with diffable data sources and compositional layout.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10252",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10252",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [
+    "glitch",
+    "hitch",
+    "performance",
+    "rendering",
+    "tableview",
+    "table view"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1350,
+  "hasTranscript": true,
+  "transcriptWordCount": 3408,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10252/5/B37B6913-C7C8-49EA-982E-9D10AC147454/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10252/5/B37B6913-C7C8-49EA-982E-9D10AC147454/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10252/5/B37B6913-C7C8-49EA-982E-9D10AC147454/downloads/wwdc2021-10252_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10252/5/B37B6913-C7C8-49EA-982E-9D10AC147454/downloads/wwdc2021-10252_hd.mp4",
+    "duration": 1350
+  },
+  "codeSnippets": [
+    {
+      "title": "Structuring data",
+      "language": "swift",
+      "startTimeSeconds": 85,
+      "code": "// Structuring data\n\nstruct DestinationPost: Identifiable {\n    // Each post has a unique identifier\n    var id: String\n\n    var title: String\n    var numberOfLikes: Int\n    var assetID: Asset.ID\n}"
+    },
+    {
+      "title": "Setting up diffable data source",
+      "language": "swift",
+      "startTimeSeconds": 121,
+      "code": "// Setting up diffable data source\n\nclass DestinationGridViewController: UIViewController {\n    // Use DestinationPost.ID as the item identifier\n    var dataSource: UICollectionViewDiffableDataSource<Section, DestinationPost.ID>\n\n    private func setInitialData() {\n        var snapshot = NSDiffableDataSourceSnapshot<Section, DestinationPost.ID>()\n\n        // Only one section in this collection view, identified by Section.main\n        snapshot.appendSections([.main])\n\n        // Get identifiers of all destination posts in our model and add to initial snapshot\n        let itemIdentifiers = postStore.allPosts.map { $0.id }\n        snapshot.appendItems(itemIdentifiers)\n\n        dataSource.apply(snapshot, animatingDifferences: false)\n    }\n}"
+    },
+    {
+      "title": "Creating cell registrations",
+      "language": "swift",
+      "startTimeSeconds": 227,
+      "code": "// Cell registrations\n\nlet cellRegistration = UICollectionView.CellRegistration<DestinationPostCell,\n                                                         DestinationPost.ID> {\n    (cell, indexPath, postID) in\n\n    let post = self.postsStore.fetchByID(postID)\n    let asset = self.assetsStore.fetchByID(post.assetID)\n\n    cell.titleView.text = post.region\n    cell.imageView.image = asset.image\n}"
+    },
+    {
+      "title": "Using cell registrations",
+      "language": "swift",
+      "startTimeSeconds": 243,
+      "code": "// Cell registrations\n\nlet cellRegistration = UICollectionView.CellRegistration<DestinationPostCell,\n                                                         DestinationPost.ID> {\n    (cell, indexPath, postID) in\n    ...\n}\n\nlet dataSource = UICollectionViewDiffableDataSource<Section.ID,\n                                                    DestinationPost.ID>(collectionView: cv){\n    (collectionView, indexPath, postID) in\n\n     return collectionView.dequeueConfiguredReusableCell(using: cellRegistration,\n                                                           for: indexPath,\n                                                          item: postID)\n}"
+    },
+    {
+      "title": "Existing cell registration",
+      "language": "swift",
+      "startTimeSeconds": 838,
+      "code": "// Existing cell registration\n\nlet cellRegistration = UICollectionView.CellRegistration<DestinationPostCell,\n                                                         DestinationPost.ID> {\n    (cell, indexPath, postID) in\n\n    let post = self.postsStore.fetchByID(postID)\n    let asset = self.assetsStore.fetchByID(post.assetID)\n\n    cell.titleView.text = post.region\n    cell.imageView.image = asset.image\n}"
+    },
+    {
+      "title": "Updating cells asynchronously (wrong)",
+      "language": "swift",
+      "startTimeSeconds": 857,
+      "code": "// Updating cells asynchronously \n\nlet cellRegistration = UICollectionView.CellRegistration<DestinationPostCell,\n                                                         DestinationPost.ID> {\n    (cell, indexPath, postID) in\n\n    let post = self.postsStore.fetchByID(postID)\n    let asset = self.assetsStore.fetchByID(post.assetID)\n\n    if asset.isPlaceholder {\n        self.assetsStore.downloadAsset(post.assetID) { asset in\n            cell.imageView.image = asset.image\n        }\n    }\n\n    cell.titleView.text = post.region\n    cell.imageView.image = asset.image\n}"
+    },
+    {
+      "title": "Reconfiguring items",
+      "language": "swift",
+      "startTimeSeconds": 915,
+      "code": "private func setPostNeedsUpdate(id: DestinationPost.ID) {\n    var snapshot = dataSource.snapshot()\n    snapshot.reconfigureItems([id])\n    dataSource.apply(snapshot, animatingDifferences: true)\n}"
+    },
+    {
+      "title": "Updating cells asynchronously (correct)",
+      "language": "swift",
+      "startTimeSeconds": 923,
+      "code": "// Updating cells asynchronously\n\nlet cellRegistration = UICollectionView.CellRegistration<DestinationPostCell,\n                                                         DestinationPost.ID> {\n    (cell, indexPath, postID) in\n\n    let post = self.postsStore.fetchByID(postID)\n    let asset = self.assetsStore.fetchByID(post.assetID)\n\n    if asset.isPlaceholder {\n        self.assetsStore.downloadAsset(post.assetID) { _ in\n            self.setPostNeedsUpdate(id: post.id)\n        }\n    }\n\n    cell.titleView.text = post.region\n    cell.imageView.image = asset.image\n}"
+    },
+    {
+      "title": "Data source prefetching",
+      "language": "swift",
+      "startTimeSeconds": 952,
+      "code": "// Data source prefetching\n\nvar prefetchingIndexPaths: [IndexPath: Cancellable]\n\nfunc collectionView(_ collectionView: UICollectionView,\n                    prefetchItemsAt indexPaths [IndexPath]) {\n   // Begin download work\n    for indexPath in indexPaths {\n        guard let post = fetchPost(at: indexPath) else { continue }\n        prefetchingIndexPaths[indexPath] = assetsStore.loadAssetByID(post.assetID)\n    }\n}\n\nfunc collectionView(_ collectionView: UICollectionView,\n                    cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {\n    // Stop fetching\n    for indexPath in indexPaths {\n        prefetchingIndexPaths[indexPath]?.cancel()\n    }\n}"
+    },
+    {
+      "title": "Using prepareForDisplay",
+      "language": "swift",
+      "startTimeSeconds": 1123,
+      "code": "// Using prepareForDisplay\n\n// Initialize the full image\nlet fullImage = UIImage()\n\n// Set a placeholder before preparation\nimageView.image = placeholderImage\n\n// Prepare the full image\nfullImage.prepareForDisplay { preparedImage in\n    DispatchQueue.main.async {\n       self.imageView.image = preparedImage\n    }\n}"
+    },
+    {
+      "title": "Asset downloading without image preparation",
+      "language": "swift",
+      "startTimeSeconds": 1191,
+      "code": "// Asset downloading – before image preparation\n\nfunc downloadAsset(_ id: Asset.ID,\n                   completionHandler: @escaping (Asset) -> Void) -> Cancellable {\n\n    return fetchAssetFromServer(assetID: id) { asset in\n        DispatchQueue.main.async {\n            completionHandler(asset)\n        }\n    }\n}"
+    },
+    {
+      "title": "Asset downloading with image preparation",
+      "language": "swift",
+      "startTimeSeconds": 1198,
+      "code": "// Asset downloading – with image preparation\n\nfunc downloadAsset(_ id: Asset.ID,\n                   completionHandler: @escaping (Asset) -> Void) -> Cancellable {\n    // Check for an already prepared image\n    if let preparedAsset = imageCache.fetchByID(id) {\n        completionHandler(preparedAsset)\n        return AnyCancellable {}\n    }\n    return fetchAssetFromServer(assetID: id) { asset in\n        asset.image.prepareForDisplay { preparedImage in\n            // Store the image in the cache.\n            self.imageCache.add(asset: asset.withImage(preparedImage!))\n            DispatchQueue.main.async {\n                completionHandler(asset)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Using prepareThumbnail",
+      "language": "swift",
+      "startTimeSeconds": 1250,
+      "code": "// Using prepareThumbnail\n\n// Initialize the full image\nlet profileImage = UIImage(...)\n\n// Set a placeholder before preparation\nposterAvatarView.image = placeholderImage\n\n// Prepare the image\nprofileImage.prepareThumbnail(of: posterAvatarView.bounds.size) { thumbnailImage in\n    DispatchQueue.main.async {\n        self.posterAvatarView.image = thumbnailImage\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Building high-performance lists and collection views",
+      "url": "https://developer.apple.com/documentation/UIKit/building-high-performance-lists-and-collection-views",
+      "type": "samplecode",
+      "description": "Improve the performance of lists and collections in your app with prefetching and image preparation.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/building-high-performance-lists-and-collection-views",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/building-high-performance-lists-and-collection-views.json"
+    },
+    {
+      "title": "UIKit",
+      "url": "https://developer.apple.com/documentation/UIKit",
+      "type": "documentation",
+      "description": "Construct and manage a graphical, event-driven user interface for your iOS, iPadOS, or tvOS app.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10252-make-blazing-fast-lists-and-collection-views/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10252-make-blazing-fast-lists-and-collection-views/metadata.json",
+    "readme": "sessions/wwdc2021/10252-make-blazing-fast-lists-and-collection-views/README.md",
+    "transcript": "sessions/wwdc2021/10252-make-blazing-fast-lists-and-collection-views/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10252-make-blazing-fast-lists-and-collection-views/transcript.json"
+  }
+}

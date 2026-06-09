@@ -1,0 +1,62 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10042",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10042,
+  "title": "Explore Natural Language multilingual models",
+  "description": "Learn how to create custom Natural Language models for text classification and word tagging using multilingual, transformer-based embeddings. We’ll show you how to train with less data and support up to 27 different languages across three scripts. Find out how to use these embeddings to fine-tune complex models trained in PyTorch and TensorFlow. For more on Natural Language, check out \"Make apps smarter with Natural Language” from WWDC20.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10042",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10042",
+  "type": "Video",
+  "publishedAt": "2023-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 865,
+  "hasTranscript": true,
+  "transcriptWordCount": 2040,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10042/5/6CB98B4D-64C7-4818-8DFE-12CF2EFAF5CA/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10042/5/6CB98B4D-64C7-4818-8DFE-12CF2EFAF5CA/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10042/5/6CB98B4D-64C7-4818-8DFE-12CF2EFAF5CA/downloads/wwdc2023-10042_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10042/5/6CB98B4D-64C7-4818-8DFE-12CF2EFAF5CA/downloads/wwdc2023-10042_hd.mp4",
+    "duration": 865
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Natural Language",
+      "url": "https://developer.apple.com/documentation/NaturalLanguage",
+      "type": "documentation",
+      "description": "Analyze natural language text and deduce its language-specific metadata.",
+      "sosumiURL": "https://sosumi.ai/documentation/NaturalLanguage",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/NaturalLanguage.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10042-explore-natural-language-multilingual-models/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10042-explore-natural-language-multilingual-models/metadata.json",
+    "readme": "sessions/wwdc2023/10042-explore-natural-language-multilingual-models/README.md",
+    "transcript": "sessions/wwdc2023/10042-explore-natural-language-multilingual-models/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10042-explore-natural-language-multilingual-models/transcript.json"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2024-10065",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10065,
+  "title": "Optimize for the spatial web",
+  "description": "Discover how to make the most of visionOS capabilities on the web. Explore recent updates like improvements to selection highlighting, and the ability to present spatial photos and panorama images in fullscreen. Learn to take advantage of existing web standards for dictation and text-to-speech with WebSpeech, spatial soundscapes with WebAudio, and immersive experiences with WebXR.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10065",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10065",
+  "type": "Video",
+  "publishedAt": "2024-06-11T08:00:00-07:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Spatial Computing",
+    "Safari & Web"
+  ],
+  "primaryTopic": "Safari & Web",
+  "duration": 1209,
+  "hasTranscript": true,
+  "transcriptWordCount": 3678,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10065/7/3AFDD2F6-B764-49D8-AEAB-D5319918AD90/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10065/7/3AFDD2F6-B764-49D8-AEAB-D5319918AD90/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10065/7/3AFDD2F6-B764-49D8-AEAB-D5319918AD90/downloads/wwdc2024-10065_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10065/7/3AFDD2F6-B764-49D8-AEAB-D5319918AD90/downloads/wwdc2024-10065_hd.mp4",
+    "duration": 1209
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Web Speech API - Web APIs | MDN",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API",
+      "type": "documentation",
+      "description": "The Web Speech API enables you to incorporate voice data into web apps."
+    },
+    {
+      "title": "Web Audio API - Web APIs | MDN",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API",
+      "type": "documentation",
+      "description": "The Web Audio API provides a powerful and versatile system for controlling audio on the Web, allowing developers to choose audio sources, add effects to audio, create audio visualizations, apply spatial effects (such as panning) and much more."
+    },
+    {
+      "title": "Forum: Safari & Web",
+      "url": "https://developer.apple.com/forums/topics/safari-and-web?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/safari-and-web?cid=vf-a-0010"
+    },
+    {
+      "title": "WebKit.org – Report issues to the WebKit open-source project",
+      "url": "https://bugs.webkit.org",
+      "type": "documentation",
+      "description": "Bug tracking for WebKit open source project"
+    },
+    {
+      "title": "w3.org – Model element",
+      "url": "https://immersive-web.github.io/model-element",
+      "type": "documentation",
+      "description": "w3.org – Model element"
+    },
+    {
+      "title": "Adding a web development tool to Safari Web Inspector",
+      "url": "https://developer.apple.com/documentation/SafariServices/adding-a-web-development-tool-to-safari-web-inspector",
+      "type": "documentation",
+      "description": "Expand the built-in Safari Web Inspector to include your custom tool, augmenting developers’ options for inspecting, testing, and debugging webpages.",
+      "sosumiURL": "https://sosumi.ai/documentation/SafariServices/adding-a-web-development-tool-to-safari-web-inspector",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SafariServices/adding-a-web-development-tool-to-safari-web-inspector.json"
+    },
+    {
+      "title": "Safari Release Notes",
+      "url": "https://developer.apple.com/documentation/safari-release-notes",
+      "type": "documentation",
+      "description": "Learn about changes for Safari and Safari View Controller for iOS, iPadOS, macOS, and in visionOS; WKWebView for iOS, iPadOS, macOS, watchOS, and in visionOS; and Web Inspector on macOS.",
+      "sosumiURL": "https://sosumi.ai/documentation/safari-release-notes",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/safari-release-notes.json"
+    },
+    {
+      "title": "WebKit Open Source Project",
+      "url": "https://webkit.org",
+      "type": "guide",
+      "description": "WebKit Open Source Project"
+    },
+    {
+      "title": "Web Inspector Reference",
+      "url": "https://webkit.org/web-inspector/",
+      "type": "documentation",
+      "description": "Web Inspector Documentation"
+    }
+  ],
+  "path": "sessions/wwdc2024/10065-optimize-for-the-spatial-web/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10065-optimize-for-the-spatial-web/metadata.json",
+    "readme": "sessions/wwdc2024/10065-optimize-for-the-spatial-web/README.md",
+    "transcript": "sessions/wwdc2024/10065-optimize-for-the-spatial-web/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10065-optimize-for-the-spatial-web/transcript.json"
+  }
+}

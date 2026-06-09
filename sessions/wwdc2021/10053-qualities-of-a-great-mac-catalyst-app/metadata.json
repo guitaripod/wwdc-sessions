@@ -1,0 +1,196 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10053",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10053,
+  "title": "Qualities of a great Mac Catalyst app",
+  "description": "Discover best practices, tools, and techniques to help craft the best possible Mac Catalyst app. We’ll take you through key considerations when you bring your iPad app to macOS, explore detailed code examples for refining your interface and experience, and show you how to distribute your Mac app to everyone. To get the most out of this session, we recommend a basic familiarity with Mac Catalyst. Watch “What’s new in Mac Catalyst” from WWDC21 to get an overview of the latest features for bringing your iPad app to Mac. And for more on improving your macOS experience, watch “Optimize the interface of your Mac Catalyst app” from WWDC20.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10053",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10053",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [
+    "continuity camera",
+    "controls",
+    "distribution",
+    "idiom",
+    "responder chain",
+    "scenes",
+    "sharing",
+    "state restoration",
+    "toolbar",
+    "unscaled",
+    "user activity"
+  ],
+  "topics": [
+    "Essentials",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1460,
+  "hasTranscript": true,
+  "transcriptWordCount": 3465,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10053/3/2422D003-327B-45A7-95E1-047C49B735B3/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10053/3/2422D003-327B-45A7-95E1-047C49B735B3/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10053/3/2422D003-327B-45A7-95E1-047C49B735B3/downloads/wwdc2021-10053_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10053/3/2422D003-327B-45A7-95E1-047C49B735B3/downloads/wwdc2021-10053_hd.mp4",
+    "duration": 1460
+  },
+  "codeSnippets": [
+    {
+      "title": "System button",
+      "language": "swift",
+      "startTimeSeconds": 410,
+      "code": "let button = UIButton(type: .system)\nbutton.setTitle(\"Button\", for: .normal)"
+    },
+    {
+      "title": "Pull-down button",
+      "language": "swift",
+      "startTimeSeconds": 426,
+      "code": "button.menu = UIMenu(...)\nbutton.showsMenuAsPrimaryAction = true"
+    },
+    {
+      "title": "Pop-up button",
+      "language": "swift",
+      "startTimeSeconds": 464,
+      "code": "button.menu = UIMenu(...)\nbutton.showsMenuAsPrimaryAction = true\nbutton.changesSelectionAsPrimaryAction = true"
+    },
+    {
+      "title": "Checkbox",
+      "language": "swift",
+      "startTimeSeconds": 504,
+      "code": "let checkbox = UISwitch()\nif checkbox.style == .checkbox {\n    checkbox.title = \"Checkbox\"\n}"
+    },
+    {
+      "title": "Delegating actions",
+      "language": "swift",
+      "startTimeSeconds": 800,
+      "code": "final class MyView: UIView {\n    override func target(forAction action: Selector, withSender sender: Any?) -> Any? {\n        if action == #selector(Model.setAsFavorite(_:)) {\n            return myModel\n        } else {\n            return super.target(forAction: action, withSender: sender)\n        }\n    }\n}"
+    },
+    {
+      "title": "Requesting a new scene",
+      "language": "swift",
+      "startTimeSeconds": 883,
+      "code": "let viewDetailActivityType = \"viewDetail\"\nlet itemIDKey = \"itemID\"\n\nfinal class MyView: UIView {\n    @objc func viewDoubleClicked(_ sender: Any?) {\n        let userActivity = NSUserActivity(activityType: viewDetailActivityType)\n        userActivity.userInfo = [itemIDKey: selectedItem.itemID]\n        UIApplication.shared.requestSceneSessionActivation(nil,\n            userActivity: userActivity,\n            options: nil,\n            errorHandler: { error in //...\n        })\n    }\n    //...\n}"
+    },
+    {
+      "title": "Responding to a new scene request",
+      "language": "swift",
+      "startTimeSeconds": 957,
+      "code": "let viewDetailActivityType = \"viewDetail\"\n\nfinal class AppDelegate: UIApplicationDelegate {\n    func application(_ application: UIApplication, \n        configurationForConnecting session: UISceneSession, \n        options: UIScene.ConnectionOptions) -> UISceneConfiguration {\n        if let activity = options.userActivities.first {\n            if activity.activityType == viewDetailActivityType {\n                return UISceneConfiguration(name: \"DetailViewer\", sessionRole:session.role)\n            }\n        }\n        return UISceneConfiguration(name: \"Default Configuration\",\n            sessionRole: session.role)\n    }\n    //...\n}"
+    },
+    {
+      "title": "Setting item ID on new scene's root view controller",
+      "language": "swift",
+      "startTimeSeconds": 1033,
+      "code": "let itemIDKey = \"itemID\"\n\nfinal class SceneDelegate: UIWindowSceneDelegate {\n    func scene(_ scene: UIScene, willConnectTo session: UISceneSession,\n        options: UIScene.ConnectionOptions) {\n        if let userActivity = connectionOptions.userActivities.first {\n            if let itemId = userActivity.userInfo?[itemIDKey] as? ItemIDType {\n               // Set item ID on new view controller\n            }\n        }\n        //...\n    }\n    //..."
+    },
+    {
+      "title": "Saving state for later restoration",
+      "language": "swift",
+      "startTimeSeconds": 1067,
+      "code": "final class SceneDelegate: UIWindowSceneDelegate {\n    func stateRestorationActivity(for scene: UIScene) -> NSUserActivity? {\n        //...\n    }\n}"
+    },
+    {
+      "title": "State restoration",
+      "language": "swift",
+      "startTimeSeconds": 1077,
+      "code": "final class AppDelegate: UIApplicationDelegate {\n    func application(_ application: UIApplication, \n        configurationForConnecting session: UISceneSession, \n        options: UIScene.ConnectionOptions) -> UISceneConfiguration {\n        //...\n    }\n}"
+    },
+    {
+      "title": "Handle both new scene requests and state restoration",
+      "language": "swift",
+      "startTimeSeconds": 1122,
+      "code": "let itemIDKey = \"itemID\"\n\nfinal class SceneDelegate: UIWindowSceneDelegate {\n    func scene(_ scene: UIScene, willConnectTo session: UISceneSession,\n        options connectionOptions: UIScene.ConnectionOptions) {\n        if let userActivity = connectionOptions.userActivities.first ??\n            session.stateRestorationActivity {\n            if let itemId = userActivity.userInfo?[itemIDKey] as? ItemIDType {\n               // Set item ID on new view controller\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Provide sharing configuration for the scene",
+      "language": "swift",
+      "startTimeSeconds": 1220,
+      "code": "final class RootViewController: UIViewController {\n    override var activityItemsConfiguration: UIActivityItemsConfigurationReading? {\n      get { UIActivityItemsConfiguration(objects: [image]) }\n      //...\n    }\n}"
+    },
+    {
+      "title": "Support sharing through context menu",
+      "language": "swift",
+      "startTimeSeconds": 1256,
+      "code": "final class MyView: UIView {\n    override var activityItemsConfiguration: UIActivityItemsConfigurationReading? {\n      get { UIActivityItemsConfiguration(objects: images) }\n      //...\n    }\n\n    func viewDidLoad() {\n      let contextMenuInteraction = UIContextMenuInteraction(delegate: self)\n      addInteraction(contextMenuInteraction)\n    }\n}"
+    },
+    {
+      "title": "Supporting continuity camera",
+      "language": "swift",
+      "startTimeSeconds": 1328,
+      "code": "final class MyView: UIView {\n    override var pasteConfiguration: UIPasteConfiguration? {\n      get { UIPasteConfiguration(forAcceptingClass: UIImage.self) }\n      //...\n    }\n\n    func willMove(toWindow: UIWindow) {\n       addInteraction(contextMenuInteraction)\n    }\n\n    override func paste(itemProviders: [NSItemProvider]) {\n       for itemProvider in itemProviders {\n            if itemProvider.canLoadObject(ofClass: UIImage.self) {\n                if let image = try? await itemProvider.loadObject(ofClass:UIImage.self) {\n                    insertImage(image)\n                }          \n                //..."
+    }
+  ],
+  "resources": [
+    {
+      "title": "Building and improving your app with Mac Catalyst",
+      "url": "https://developer.apple.com/documentation/UIKit/building-and-improving-your-app-with-mac-catalyst",
+      "type": "samplecode",
+      "description": "Improve your iPadOS app with Mac Catalyst by supporting native controls, multiple windows, sharing, printing, menus and keyboard shortcuts.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/building-and-improving-your-app-with-mac-catalyst",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/building-and-improving-your-app-with-mac-catalyst.json"
+    },
+    {
+      "title": "Bring an iPad App to the Mac with Mac Catalyst",
+      "url": "https://developer.apple.com/tutorials/Mac-Catalyst",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/tutorials/Mac-Catalyst"
+    },
+    {
+      "title": "Accessibility design for Mac Catalyst",
+      "url": "https://developer.apple.com/documentation/Accessibility/accessibility_design_for_mac_catalyst",
+      "type": "samplecode",
+      "description": "Improve navigation in your app by using keyboard shortcuts and accessibility containers.",
+      "sosumiURL": "https://sosumi.ai/documentation/Accessibility/accessibility_design_for_mac_catalyst",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Accessibility/accessibility_design_for_mac_catalyst.json"
+    },
+    {
+      "title": "Human Interface Guidelines: Mac Catalyst",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/mac-catalyst",
+      "type": "documentation",
+      "description": "When you use Mac Catalyst to create a Mac version of your iPad app, you make your app available to a new audience while giving existing users the opportunity to enjoy it in a new environment.",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/mac-catalyst"
+    },
+    {
+      "title": "Mac Catalyst",
+      "url": "https://developer.apple.com/documentation/UIKit/mac-catalyst",
+      "type": "documentation",
+      "description": "Create a version of your iPad app that users can run on a Mac device.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/mac-catalyst",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/mac-catalyst.json"
+    },
+    {
+      "title": "Adding menus and shortcuts to the menu bar and user interface",
+      "url": "https://developer.apple.com/documentation/UIKit/adding-menus-and-shortcuts-to-the-menu-bar-and-user-interface",
+      "type": "samplecode",
+      "description": "Provide quick access to useful actions by adding menus and keyboard shortcuts to your Mac app built with Mac Catalyst.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/adding-menus-and-shortcuts-to-the-menu-bar-and-user-interface",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/adding-menus-and-shortcuts-to-the-menu-bar-and-user-interface.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10053-qualities-of-a-great-mac-catalyst-app/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10053-qualities-of-a-great-mac-catalyst-app/metadata.json",
+    "readme": "sessions/wwdc2021/10053-qualities-of-a-great-mac-catalyst-app/README.md",
+    "transcript": "sessions/wwdc2021/10053-qualities-of-a-great-mac-catalyst-app/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10053-qualities-of-a-great-mac-catalyst-app/transcript.json"
+  }
+}

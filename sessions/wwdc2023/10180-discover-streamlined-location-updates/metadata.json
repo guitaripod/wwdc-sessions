@@ -1,0 +1,89 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10180",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10180,
+  "title": "Discover streamlined location updates",
+  "description": "Move into the future with Core Location! Meet the CLLocationUpdate class, designed for modern Swift concurrency, and learn how it simplifies getting location updates. We’ll show you how this class works with your apps when they run in the foreground or background and share some best practices.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10180",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10180",
+  "type": "Video",
+  "publishedAt": "2023-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services",
+    "Maps & Location"
+  ],
+  "primaryTopic": "Maps & Location",
+  "duration": 923,
+  "hasTranscript": true,
+  "transcriptWordCount": 2025,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10180/3/BF2CDA20-2D8F-46B8-B850-E1799030451B/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10180/3/BF2CDA20-2D8F-46B8-B850-E1799030451B/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10180/3/BF2CDA20-2D8F-46B8-B850-E1799030451B/downloads/wwdc2023-10180_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10180/3/BF2CDA20-2D8F-46B8-B850-E1799030451B/downloads/wwdc2023-10180_hd.mp4",
+    "duration": 923
+  },
+  "codeSnippets": [
+    {
+      "title": "Getting location updates is easy!",
+      "language": "swift",
+      "startTimeSeconds": 26,
+      "code": "for try await update in CLLocationUpdate.liveUpdates() {\n    print(\"My current location : \\(update.location)\")\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Monitoring location changes with Core Location",
+      "url": "https://developer.apple.com/documentation/CoreLocation/monitoring-location-changes-with-core-location",
+      "type": "samplecode",
+      "description": "Define boundaries and act on user location updates.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreLocation/monitoring-location-changes-with-core-location",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreLocation/monitoring-location-changes-with-core-location.json"
+    },
+    {
+      "title": "Adopting live updates in Core Location",
+      "url": "https://developer.apple.com/documentation/corelocation/adopting_live_updates_in_core_location",
+      "type": "samplecode",
+      "description": "Simplify location delivery using asynchronous events in Swift.",
+      "sosumiURL": "https://sosumi.ai/documentation/corelocation/adopting_live_updates_in_core_location",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/corelocation/adopting_live_updates_in_core_location.json"
+    },
+    {
+      "title": "Core Location",
+      "url": "https://developer.apple.com/documentation/CoreLocation",
+      "type": "documentation",
+      "description": "Obtain the geographic location and orientation of a device.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreLocation",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreLocation.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10180-discover-streamlined-location-updates/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10180-discover-streamlined-location-updates/metadata.json",
+    "readme": "sessions/wwdc2023/10180-discover-streamlined-location-updates/README.md",
+    "transcript": "sessions/wwdc2023/10180-discover-streamlined-location-updates/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10180-discover-streamlined-location-updates/transcript.json"
+  }
+}

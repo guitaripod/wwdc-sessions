@@ -1,0 +1,59 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10072",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10072,
+  "title": "Principles of spatial design",
+  "description": "Discover the fundamentals of spatial design. Learn how to design with depth, scale, windows, and immersion, and apply best practices for creating comfortable, human-centered experiences that transform reality. Find out how you can use these spatial design principles to extend your existing app or bring a new idea to life.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10072",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10072",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [
+    "ar",
+    "mixed reality",
+    "mr",
+    "ux",
+    "virtual reality",
+    "vr"
+  ],
+  "topics": [
+    "Spatial Computing",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 1295,
+  "hasTranscript": true,
+  "transcriptWordCount": 3380,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10072/5/C43DFF91-F057-43E1-891F-41E6D5C01716/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10072/5/C43DFF91-F057-43E1-891F-41E6D5C01716/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10072/5/C43DFF91-F057-43E1-891F-41E6D5C01716/downloads/wwdc2023-10072_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10072/5/C43DFF91-F057-43E1-891F-41E6D5C01716/downloads/wwdc2023-10072_hd.mp4",
+    "duration": 1295
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2023/10072-principles-of-spatial-design/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10072-principles-of-spatial-design/metadata.json",
+    "readme": "sessions/wwdc2023/10072-principles-of-spatial-design/README.md",
+    "transcript": "sessions/wwdc2023/10072-principles-of-spatial-design/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10072-principles-of-spatial-design/transcript.json"
+  }
+}

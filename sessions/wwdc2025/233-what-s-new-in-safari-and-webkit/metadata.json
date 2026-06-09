@@ -1,0 +1,267 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-233",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 233,
+  "title": "What’s new in Safari and WebKit",
+  "description": "Learn how the latest web technologies in Safari and WebKit can help you create incredible experiences. We’ll highlight different CSS features and how they work, including scroll driven animation, cross document view transitions, and anchor positioning. We’ll also explore new media support across audio, video, images, and icons.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/233",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/233",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "css",
+    "javascript",
+    "typography",
+    "webkit"
+  ],
+  "topics": [
+    "App Services",
+    "Safari & Web"
+  ],
+  "primaryTopic": "Safari & Web",
+  "duration": 2827,
+  "hasTranscript": true,
+  "transcriptWordCount": 6753,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/233/5/d86dec2f-e399-4978-b704-a5136136da93/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/233/5/d86dec2f-e399-4978-b704-a5136136da93/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/233/5/d86dec2f-e399-4978-b704-a5136136da93/downloads/wwdc2025-233_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/233/5/d86dec2f-e399-4978-b704-a5136136da93/downloads/wwdc2025-233_hd.mp4",
+    "duration": 2827
+  },
+  "codeSnippets": [
+    {
+      "title": "Progress bar code scroll() example",
+      "language": "xml",
+      "startTimeSeconds": 378,
+      "code": "footer::after {\n  content: \"\";\n  height: 1em;\n  width: 100%;\n  background: var(--yellow);\n  left: 0;\n  bottom: 0;\n  position: fixed;\n  transform-origin: top left;\n  animation: progress-scale linear;\n  animation-timeline: scroll();\n}\n\n@keyframes progress-scale {\n  from { transform: scaleX(0); }\n  to { transform: scaleX(1); }\n}"
+    },
+    {
+      "title": "html an css of text blocks showcasing different code topics",
+      "language": "xml",
+      "startTimeSeconds": 516,
+      "code": "<section class=\"topics\">\n  <h3>What you can learn:</h3>\n  <ul class=\"topics\">\n     <li class=\"topic-item\">Web Development</li>\n     <li class=\"topic-item\">Computer Science</li>\n     <li class=\"topic-item\">Data Science</li>\n     <!-- additional HTML... -->\n  </ul>\n</section>\n\n.topic-item {\n  background: var(--yellow);  \n  border: 1px solid var(--gray);\n  /* additional CSS... */  \n}"
+    },
+    {
+      "title": "text blocks twisting from the left - animation",
+      "language": "xml",
+      "startTimeSeconds": 552,
+      "code": "@keyframes in-from-left {\n  from {\n    opacity: 0;\n    transform: scale(.8) rotate(-90deg)   \n               translateY(15vh);\n  }\n}"
+    },
+    {
+      "title": "text blocks twisting from the middle - animation",
+      "language": "xml",
+      "startTimeSeconds": 558,
+      "code": "@keyframes in-from-middle {\n  from {\n    opacity: 0;\n    transform: scale(.8)   \n               translateY(15vh);\n  }"
+    },
+    {
+      "title": "text blocks twisting from the right - animation",
+      "language": "xml",
+      "startTimeSeconds": 564,
+      "code": "@keyframes in-from-right {\n  from {\n    opacity: 0;\n    transform: scale(.8) rotate(90deg)   \n               translateY(15vh);\n  }\n}"
+    },
+    {
+      "title": "view() timeline example with timeline and range",
+      "language": "xml",
+      "startTimeSeconds": 607,
+      "code": ".topic-item {\n  animation-fill-mode: both;\n  animation-timeline: view();\n  animation-range:\n  &:nth-child(3n + 1) { animation-name: in-from-left; }\n  &:nth-child(3n + 2) { animation-name: in-from-middle; }\n  &:nth-child(3n + 3) { animation-name: in-from-right; }\n}"
+    },
+    {
+      "title": "animation range 50%",
+      "language": "xml",
+      "startTimeSeconds": 740,
+      "code": ".topic-item {\n  animation-fill-mode: both;\n  animation-timeline: view();\n  animation-range: 0% 50%;\n  &:nth-child(3n + 1) { animation-name: in-from-left; }\n  &:nth-child(3n + 2) { animation-name: in-from-middle; }\n  &:nth-child(3n + 3) { animation-name: in-from-right; }\n}"
+    },
+    {
+      "title": "simple cross document view transition code",
+      "language": "xml",
+      "startTimeSeconds": 860,
+      "code": "@view-transition {\n    navigation: auto;\n}"
+    },
+    {
+      "title": "adding media query for reduced motion",
+      "language": "xml",
+      "startTimeSeconds": 960,
+      "code": "@view-transition { navigation: auto; }\n\n@media not (prefers-reduced-motion) {\n  @keyframes slide-in {\n    from { translate: 100vw 0; }\n  }\n  @keyframes slide-out {\n    to { translate: -100vw 0; }\n  }\n}"
+    },
+    {
+      "title": "adding ids to html for cross document view transition",
+      "language": "xml",
+      "startTimeSeconds": 982,
+      "code": "<body>\n  <nav>\n    <!-- additional HTML... -->\n  </nav>\n\n    <section class=\"hero\">\n      <div class=\"hero-image\">\n      <!-- additional HTML... -->\n  </main>\n  <footer>\n    <!-- additional HTML... -->\n  </footer>\n<body>"
+    },
+    {
+      "title": "slide effect for cross document view transition",
+      "language": "xml",
+      "startTimeSeconds": 1018,
+      "code": "@view-transition { navigation: auto; }\n\n@media not (prefers-reduced-motion) {\n  #school-info {\n    view-transition-name: main-body;\n  }\n  ::view-transition-old(main-body) {\n\n  }\n  ::view-transition-new(main-body) {\n\n  }\n  @keyframes slide-in {\n    from { translate:e100vw 0; }\n\t}\n}"
+    },
+    {
+      "title": "nav bar and profile menu",
+      "language": "xml",
+      "startTimeSeconds": 1188,
+      "code": "<nav>\n  <h1 class=\"logo\">A-School of Code</h1>\n  <ul>\n    <li>Courses</li>\n    <li>Cohorts</li>\n    <li class=\"profile\">\n      <img src=\"https://example.com/saron.jpeg\" alt=\"woman speaking\"/>\n    </li>\n  </ul>\n</nav>\n\n<ul class=\"profile-menu\">\n  <li>Account</li>\n  <li>Settings</li>\n  <li>Profile</li>\n  <li>Billing</li>\n</ul>"
+    },
+    {
+      "title": "adding popover attributes",
+      "language": "xml",
+      "startTimeSeconds": 1237,
+      "code": "<ul class=\"profile-menu\" id=\"profile-menu\" popover>\n  <li>Account</li>\n  <li>Settings</li>\n  <li>Profile</li>\n  <li>Billing</li>\n</ul>"
+    },
+    {
+      "title": "adding aria to popover target",
+      "language": "xml",
+      "startTimeSeconds": 1251,
+      "code": "<nav>\n  <div class=\"wrapper\">\n    <h1 class=\"logo\">A-School of Code</h1>\n    <ul>\n      <li>Courses</li>\n      <li>Cohorts</li>\n      <li class=\"profile\">\n        <button class=\"profile-button\" aria-haspopup=\"true\" popovertarget=\"profile-menu\">                                                 >\n          <img src=\"https://example.com/saron.jpg\" alt=\"woman speaking\"/>\n        </button>\n      </li>\n    </ul>\n  </div>\n</nav>"
+    },
+    {
+      "title": "establishing the anchor",
+      "language": "xml",
+      "startTimeSeconds": 1318,
+      "code": ".profile-button {\n  anchor-name: --profile-button;\n}\n\n.profile-menu {\n  position-anchor: --profile-button;\n}"
+    },
+    {
+      "title": "setting the target to top right",
+      "language": "xml",
+      "startTimeSeconds": 1405,
+      "code": ".profile-menu {\n  position-anchor: --profile-button;\n  position-area: top right;\n}"
+    },
+    {
+      "title": "setting the target to bottom center",
+      "language": "swift",
+      "startTimeSeconds": 1419,
+      "code": ".profile-menu {\n  position-anchor: --profile-button;\n  position-area: bottom center;\n}"
+    },
+    {
+      "title": "setting the target to span right",
+      "language": "xml",
+      "startTimeSeconds": 1456,
+      "code": ".profile-menu {\n  position-anchor: --profile-button;\n  position-area: span-right;\n}"
+    },
+    {
+      "title": "setting the target to span left",
+      "language": "xml",
+      "startTimeSeconds": 1457,
+      "code": ".profile-menu {\n  position-anchor: --profile-button;\n  position-area: span-left;\n}"
+    },
+    {
+      "title": "intro to the anchor() function",
+      "language": "xml",
+      "startTimeSeconds": 1650,
+      "code": ".profile-button {\n  anchor-name: --profile-button;\n}\n\n.profile-menu {\n  position-anchor: --profile-button;\n  position: absolute;\n  top: anchor(bottom);\n  left: anchor(left);\n}"
+    },
+    {
+      "title": "using calc and units in anchor() function",
+      "language": "xml",
+      "startTimeSeconds": 1706,
+      "code": ".profile-button {\n  anchor-name: --profile-button;\n}\n\n.profile-menu {\n  position-anchor: --profile-button;\n  position: absolute;\n  top: anchor(bottom);\n  left: calc(anchor(left) + 1.5em);\n}"
+    },
+    {
+      "title": "adding a text gradient",
+      "language": "xml",
+      "startTimeSeconds": 1783,
+      "code": ".logo {\n  background-image: linear-gradient(to \n                    bottom right in hsl, \n                    yellow, orange);\n  background-clip: text;\n  color: transparent;\n}"
+    },
+    {
+      "title": "adding a gradient to border",
+      "language": "xml",
+      "startTimeSeconds": 1865,
+      "code": ".primary-btn {\n  background-image: linear-gradient(to \n                    bottom right in hsl, \n                    yellow, orange);\n  background-clip: border-area;\n  border-color: transparent;\n  background-origin: border-box;\n}"
+    },
+    {
+      "title": "shorthand for adding gradient to border",
+      "language": "xml",
+      "startTimeSeconds": 1935,
+      "code": ".primary-btn {\n  background: border-area linear-gradient(to bottom right in hsl, yellow, orange);\n  border-color: transparent;\n}"
+    },
+    {
+      "title": "arrow shape using path",
+      "language": "xml",
+      "startTimeSeconds": 2013,
+      "code": ".review-shape {\n  clip-path: path(\"M0 0 L 500 0 L 600 \n                   100 L 500 200 L 0 \n                   200 Q 100 100 0 0 z\");\n}"
+    },
+    {
+      "title": "arrow shape using shape()",
+      "language": "xml",
+      "startTimeSeconds": 2101,
+      "code": ".review-shape {\n  clip-path: shape(from top left,\n    line to calc(100% - 50cqh) 0%,\n    line to 100% 50cqh,\n    line to calc(100% - 50cqh) 100%,\n    line to bottom left,\n    curve to top left with 50cqh 50cqh,\n    close);\n}"
+    },
+    {
+      "title": "dynamic range limit: no limit",
+      "language": "xml",
+      "startTimeSeconds": 2502,
+      "code": "img {\n  dynamic-range-limit: no-limit;\n}"
+    },
+    {
+      "title": "dynamic range limit: standard",
+      "language": "xml",
+      "startTimeSeconds": 2517,
+      "code": "img {\n  dynamic-range-limit: standard;\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Can I use",
+      "url": "https://caniuse.com/",
+      "type": "documentation",
+      "description": "\"Can I use\" provides up-to-date browser support tables for support of front-end web technologies on desktop and mobile web browsers."
+    },
+    {
+      "title": "Web Speech API - Web APIs | MDN",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API",
+      "type": "documentation",
+      "description": "The Web Speech API enables you to incorporate voice data into web apps."
+    },
+    {
+      "title": "WebKit.org – Report issues to the WebKit open-source project",
+      "url": "https://bugs.webkit.org",
+      "type": "documentation",
+      "description": "Bug tracking for WebKit open source project"
+    },
+    {
+      "title": "Safari Technology Preview",
+      "url": "https://developer.apple.com/safari/technology-preview/",
+      "type": "download",
+      "description": "Safari Technology Preview",
+      "sosumiURL": "https://sosumi.ai/safari/technology-preview/"
+    },
+    {
+      "title": "WebKit Open Source Project",
+      "url": "https://webkit.org",
+      "type": "guide",
+      "description": "WebKit Open Source Project"
+    },
+    {
+      "title": "Submit feedback",
+      "url": "http://feedbackassistant.apple.com",
+      "type": "documentation",
+      "description": null
+    }
+  ],
+  "path": "sessions/wwdc2025/233-what-s-new-in-safari-and-webkit/",
+  "files": {
+    "metadata": "sessions/wwdc2025/233-what-s-new-in-safari-and-webkit/metadata.json",
+    "readme": "sessions/wwdc2025/233-what-s-new-in-safari-and-webkit/README.md",
+    "transcript": "sessions/wwdc2025/233-what-s-new-in-safari-and-webkit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/233-what-s-new-in-safari-and-webkit/transcript.json"
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-226",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 226,
+  "title": "Create live communication experiences",
+  "description": "LiveCommunicationKit transforms your real-time communication apps into integrated experiences. We’ll show you how to deliver a rich, native conversation UI that puts your app right where people need it: from a full-screen presentation on the Lock Screen to seamless multitasking with the Dynamic Island. Join us as we step through integrating the framework for incoming, outgoing, and group conversations.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/226",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/226",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "System Services",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1038,
+  "hasTranscript": true,
+  "transcriptWordCount": 2881,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/226/4/f8343d5b-0c78-4396-be05-956666fb4ae0/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/226/4/f8343d5b-0c78-4396-be05-956666fb4ae0/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/226/4/f8343d5b-0c78-4396-be05-956666fb4ae0/downloads/wwdc2026-226_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/226/4/f8343d5b-0c78-4396-be05-956666fb4ae0/downloads/wwdc2026-226_hd.mp4",
+    "duration": 1038
+  },
+  "codeSnippets": [
+    {
+      "title": "Set up a conversation manager",
+      "language": "swift",
+      "startTimeSeconds": 401,
+      "code": "// Set up a conversation manager\n\nimport LiveCommunicationKit\n\nlet configuration = ConversationManager.Configuration(\n  ringtoneName: \"SampleRingtone.caf\",\n  iconTemplateImageData: UIImage(named: \"SampleIcon\")?.pngData(),\n  maximumConversationGroups: 1,\n  maximumConversationsPerConversationGroup: 2,\n  includesConversationInRecents: true,\n  supportsVideo: true,\n  supportedHandleTypes: [.phoneNumber, .emailAddress]\n)\n\nlet manager = ConversationManager(configuration: configuration)\nmanager.delegate = self"
+    },
+    {
+      "title": "Report the incoming conversation to the system",
+      "language": "swift",
+      "startTimeSeconds": 562,
+      "code": "// Report the incoming conversation to the system\n\nimport LiveCommunicationKit\nimport PushKit\n\nfinal class SamplePushHandler: NSObject, PKPushRegistryDelegate {\n  func pushRegistry(\n    _ registry: PKPushRegistry,\n    didReceiveIncomingVoIPPushWith payload: PKPushPayload,\n    metadata: PKVoIPPushMetadata) async {\n\n    guard let (handle, uuid) = parseConversationPayload(from: payload) else { return }\n\n    let capabilities = [.video, .pausing, .merging]\n    let update = Conversation.Update(members: [handle], capabilities: capabilities)\n    try? await manager.reportNewIncomingConversation(uuid: uuid, update: update)\n  }\n}"
+    },
+    {
+      "title": "Implement the delegate",
+      "language": "swift",
+      "startTimeSeconds": 597,
+      "code": "// Implement the delegate\n\nimport LiveCommunicationKit\n\nfinal class SampleDelegate: ConversationManagerDelegate {\n  func conversationManager(\n    _ manager: ConversationManager,\n    perform action: ConversationAction\n  ) {\n    switch action {\n    case let action as JoinConversationAction:\n      handleJoinAction(action)\n    default:\n      action.fail()\n    }\n  }\n}"
+    },
+    {
+      "title": "Fulfill the join action",
+      "language": "swift",
+      "startTimeSeconds": 613,
+      "code": "// Handle a failed connection\n\nextension SampleDelegate {\n func handleJoinAction(_ action: JoinConversationAction) {\n    guard let conversation = manager.conversations.first(where: {$0.uuid == uuid })else {\n      return action.fail()\n    }\n\n    manager.reportConversationEvent(.conversationStartedConnecting(.now), for: conversation)\n\n    Task {\n      do {\n        try await setupMediaStream(with: action.conversationUUID)\n        manager.reportConversationEvent(.conversationConnected(.now), for: conversation)\n        action.fulfill(dateConnected: .now)\n      } catch {\n        action.fail()\n      }\n    }\n  }\n}"
+    },
+    {
+      "title": "Route end actions",
+      "language": "swift",
+      "startTimeSeconds": 677,
+      "code": "// Route end actions\n\nfinal class SampleDelegate: ConversationManagerDelegate {\n  // …\n  func conversationManager(\n    _ manager: ConversationManager,\n    perform action: ConversationAction\n  ) {\n    switch action {\n    case let action as JoinConversationAction:\n      handleJoinAction(action)\n    case let action as EndConversationAction:\n      handleEndAction(action)\n    default:\n      action.fail()\n    }\n  }\n}"
+    },
+    {
+      "title": "Create a start action",
+      "language": "swift",
+      "startTimeSeconds": 734,
+      "code": "let startAction = StartConversationAction(\n  conversationUUID: UUID(),\n  handles: [Handle(type: .phoneNumber, value: \"+1-650-555-0199\", displayName: \"Ryan Notch\")],\n  isVideo: false\n)"
+    },
+    {
+      "title": "Perform the action",
+      "language": "swift",
+      "startTimeSeconds": 743,
+      "code": "try await manager.perform([startAction])"
+    },
+    {
+      "title": "Route start actions",
+      "language": "swift",
+      "startTimeSeconds": 749,
+      "code": "// Route start actions\n\nfinal class SampleDelegate: ConversationManagerDelegate {\n  // …\n  func conversationManager(\n    _ manager: ConversationManager,\n    perform action: ConversationAction\n  ) {\n    switch action {\n    case let action as JoinConversationAction:\n      handleJoinAction(action)\n    case let action as EndConversationAction:\n      handleEndAction(action)\n    case let action as StartConversationAction:\n      handleStartAction(action)\n    default:\n      action.fail()\n    }\n  }\n}"
+    },
+    {
+      "title": "Start group conversations",
+      "language": "swift",
+      "startTimeSeconds": 831,
+      "code": "// Start group conversations\n\nlet adam = Handle(type: .emailAddress,\n                  value: \"adam.halwani@icloud.com\",\n                  displayName: \"Adam Halwani\")\nlet david = Handle(type: .emailAddress,\n                   value: \"david@example.com\",\n                   displayName: \"David Evans\")\nlet ryan = Handle(type: .phoneNumber,\n                  value: \"+16505550199\",\n                  displayName: \"Ryan Notch\")\n\nlet startAction = StartConversationAction(\n  conversationUUID: UUID(),\n  handles: [david, ryan],\n  isVideo: false\n)\ntry await manager.perform([startAction])"
+    },
+    {
+      "title": "Report group membership updates",
+      "language": "swift",
+      "startTimeSeconds": 841,
+      "code": "// Report group membership updates\n\nlet update = Conversation.Update(\n  localMember: adam,\n  members: [david, ryan],\n  activeRemoteMembers: [david, ryan],\n  capabilities: [.merging, .pausing, .unmerging]\n)\n\nmanager.reportConversationEvent(\n  .conversationUpdated(update),\n  for: conversation\n)"
+    },
+    {
+      "title": "Route merge actions",
+      "language": "swift",
+      "startTimeSeconds": 926,
+      "code": "// Route merge actions\n\nfinal class SampleDelegate: ConversationManagerDelegate {\n  func conversationManager(\n    _ manager: ConversationManager,\n    perform action: ConversationAction\n  ) {\n    switch action {\n    case let action as JoinConversationAction:\n      handleJoinAction(action)\n    case let action as EndConversationAction:\n      handleEndAction(action)\n    case let action as StartConversationAction:\n        handleStartAction(action)\n    case let action as MergeConversationAction:\n      handleMergeAction(action)\n    default:\n      action.fail()\n    }\n  }\n}"
+    },
+    {
+      "title": "Handle the merge action",
+      "language": "swift",
+      "startTimeSeconds": 933,
+      "code": "// Handle the merge action\n\nextension SampleDelegate {\n  func handleMergeAction(_ action: MergeConversationAction) {\n    let sourceUUID = action.conversationUUID\n    let targetUUID = action.conversationUUIDToMergeWith\n    guard manager.conversations.contains(where: { $0.uuid == sourceUUID }),\n          manager.conversations.contains(where: { $0.uuid == targetUUID }) else {\n      return action.fail()\n    }\n\n    Task {\n      do {\n        let update = try await combineStreams(from: sourceUUID, into: targetUUID)\n        manager.reportConversationEvent(.conversationUpdated(update), for: target)\n        action.fulfill()\n      } catch {\n        action.fail()\n      }\n    }\n  }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Initiating VoIP conversations with LiveCommunicationKit",
+      "url": "https://developer.apple.com/documentation/LiveCommunicationKit/initiating-voip-conversations-with-livecommunicationkit",
+      "type": "documentation",
+      "description": "Let people initiate and receive VoIP conversations, and configure your app so it can be the default calling app on a person’s device.",
+      "sosumiURL": "https://sosumi.ai/documentation/LiveCommunicationKit/initiating-voip-conversations-with-livecommunicationkit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/LiveCommunicationKit/initiating-voip-conversations-with-livecommunicationkit.json"
+    },
+    {
+      "title": "Responding to VoIP Notifications from PushKit",
+      "url": "https://developer.apple.com/documentation/PushKit/responding-to-voip-notifications-from-pushkit",
+      "type": "documentation",
+      "description": "Receive incoming Voice-over-IP (VoIP) push notifications and use them to display the system call interface to the user.",
+      "sosumiURL": "https://sosumi.ai/documentation/PushKit/responding-to-voip-notifications-from-pushkit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/PushKit/responding-to-voip-notifications-from-pushkit.json"
+    },
+    {
+      "title": "LiveCommunicationKit",
+      "url": "https://developer.apple.com/documentation/LiveCommunicationKit",
+      "type": "documentation",
+      "description": "Initiate and handle VoIP and cellular conversations, coordinate them with other communication apps and the system, and get ready to be a default calling or dialer app.",
+      "sosumiURL": "https://sosumi.ai/documentation/LiveCommunicationKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/LiveCommunicationKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/226-create-live-communication-experiences/",
+  "files": {
+    "metadata": "sessions/wwdc2026/226-create-live-communication-experiences/metadata.json",
+    "readme": "sessions/wwdc2026/226-create-live-communication-experiences/README.md",
+    "transcript": "sessions/wwdc2026/226-create-live-communication-experiences/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/226-create-live-communication-experiences/transcript.json"
+  }
+}

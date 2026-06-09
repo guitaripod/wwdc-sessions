@@ -1,0 +1,75 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-430",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 430,
+  "title": "Introducing the Create ML App",
+  "description": "Bringing the power of Core ML to your app begins with one challenge. How do you create your model? The new Create ML app provides an intuitive workflow for model creation. See how to train, evaluate, test, and preview your models quickly in this easy-to-use tool. Get started with one of the many available templates handling a number of powerful machine learning tasks. Learn more about the many features for continuous model improvement and experimentation.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/430",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/430",
+  "type": "Video",
+  "publishedAt": "2019-06-04T15:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "activity",
+    "ai",
+    "artificial intelligence",
+    "classifier",
+    "core ml",
+    "create ml",
+    "detection",
+    "image classification",
+    "learning",
+    "machine learning",
+    "model",
+    "motion",
+    "natural language",
+    "recommender",
+    "sound",
+    "tools",
+    "training",
+    "vision",
+    "xcode"
+  ],
+  "topics": [
+    "Developer Tools",
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 874,
+  "hasTranscript": true,
+  "transcriptWordCount": 2073,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/430tw6e8xtxo3btga2/430/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/430tw6e8xtxo3btga2/430/430_sd_introducing_the_create_ml_app.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/430tw6e8xtxo3btga2/430/430_hd_introducing_the_create_ml_app.mp4",
+    "duration": 874
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/430-introducing-the-create-ml-app/",
+  "files": {
+    "metadata": "sessions/wwdc2019/430-introducing-the-create-ml-app/metadata.json",
+    "readme": "sessions/wwdc2019/430-introducing-the-create-ml-app/README.md",
+    "transcript": "sessions/wwdc2019/430-introducing-the-create-ml-app/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/430-introducing-the-create-ml-app/transcript.json"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-614",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 614,
+  "title": "Metal for Machine Learning",
+  "description": "Metal Performance Shaders (MPS) includes a highly tuned library of data parallel primitives vital to machine learning and leveraging the tremendous power of the GPU. With iOS 13 and macOS Catalina, MPS improves performance, enables more neural networks, and is now even easier to use. Learn more about these advances in MPS and gain a practical understanding of how to implement innovative techniques such as Style Transfer.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/614",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/614",
+  "type": "Video",
+  "publishedAt": "2019-06-07T15:20:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games",
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 2485,
+  "hasTranscript": true,
+  "transcriptWordCount": 7069,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/614o3sph3xudzgm6/614/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/614o3sph3xudzgm6/614/614_sd_metal_for_machine_learning.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/614o3sph3xudzgm6/614/614_hd_metal_for_machine_learning.mp4",
+    "duration": 2485
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Training a Neural Network with Metal Performance Shaders",
+      "url": "https://developer.apple.com/documentation/MetalPerformanceShaders/training-a-neural-network-with-metal-performance-shaders",
+      "type": "samplecode",
+      "description": "Use an MPS neural network graph to train a simple neural network digit classifier.",
+      "sosumiURL": "https://sosumi.ai/documentation/MetalPerformanceShaders/training-a-neural-network-with-metal-performance-shaders",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MetalPerformanceShaders/training-a-neural-network-with-metal-performance-shaders.json"
+    },
+    {
+      "title": "Metal Performance Shaders",
+      "url": "https://developer.apple.com/documentation/MetalPerformanceShaders",
+      "type": "documentation",
+      "description": "Optimize graphics and compute performance with kernels that are fine-tuned for the unique characteristics of each Metal GPU family.",
+      "sosumiURL": "https://sosumi.ai/documentation/MetalPerformanceShaders",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MetalPerformanceShaders.json"
+    },
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/614-metal-for-machine-learning/",
+  "files": {
+    "metadata": "sessions/wwdc2019/614-metal-for-machine-learning/metadata.json",
+    "readme": "sessions/wwdc2019/614-metal-for-machine-learning/README.md",
+    "transcript": "sessions/wwdc2019/614-metal-for-machine-learning/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/614-metal-for-machine-learning/transcript.json"
+  }
+}

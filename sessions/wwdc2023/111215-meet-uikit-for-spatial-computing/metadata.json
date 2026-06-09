@@ -1,0 +1,105 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-111215",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 111215,
+  "title": "Meet UIKit for spatial computing",
+  "description": "Learn how to bring your UIKit app to visionOS. We’ll show you how to build for a new destination, explore APIs and best practices for spatial computing, and take your content into the third dimension when you use SwiftUI with UIKit in visionOS.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/111215",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/111215",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "Essentials",
+    "Spatial Computing",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1539,
+  "hasTranscript": true,
+  "transcriptWordCount": 3263,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/111215/4/E8A7CF44-A276-482B-9CFA-F264FD028F54/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/111215/4/E8A7CF44-A276-482B-9CFA-F264FD028F54/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/111215/4/E8A7CF44-A276-482B-9CFA-F264FD028F54/downloads/wwdc2023-111215_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/111215/4/E8A7CF44-A276-482B-9CFA-F264FD028F54/downloads/wwdc2023-111215_hd.mp4",
+    "duration": 1539
+  },
+  "codeSnippets": [
+    {
+      "title": "permittedArrowDirections",
+      "language": "swift",
+      "startTimeSeconds": 975,
+      "code": "import UIKit\n\nextension EditorViewController {\n\n    @objc func showDocumentPopover(sender: UIBarButtonItem) {\n        let controller = DocumentInfoViewController(document: pixelDocument)\n        controller.modalPresentationStyle = .popover\n        if let presentationController = controller.popoverPresentationController {\n            presentationController.barButtonItem = sender\n            if traitCollection.userInterfaceIdiom == .reality {\n                presentationController.permittedArrowDirections = .any\n            } else {\n                presentationController.permittedArrowDirections = .right\n            }\n        }\n        present(controller, animated: true, completion: nil)\n    }\n\n}"
+    },
+    {
+      "title": "Ornament",
+      "language": "swift",
+      "startTimeSeconds": 1186,
+      "code": "extension EditorViewController {\n\n    func showEditingControlsOrnament() {\n        let ornament = UIHostingOrnament(sceneAlignment: .bottom, contentAlignment: .center) {\n            EditingControlsView(model: controlsViewModel)\n                .glassBackgroundEffect()\n        }\n\n        self.ornaments = [ornament]\n\n        editorView.style = .edgeToEdge\n    }\n\n}"
+    },
+    {
+      "title": "UIHostingController",
+      "language": "swift",
+      "startTimeSeconds": 1365,
+      "code": "extension EditorViewController {\n\n    func showEntityPreview() {\n        let entityView = PixelArtEntityView(model: entityViewModel)\n        let controller = UIHostingController(rootView: entityView)\n        addChild(controller)\n        view.addSubview(controller.view)\n        controller.didMove(toParent: self)\n        prepareEditorInteractions()\n    }\n\n}"
+    },
+    {
+      "title": "Using Semantic Colors",
+      "language": "swift",
+      "startTimeSeconds": 1366,
+      "code": "private let titleLabelTextField: UITextField = {\n    textField.textColor = UIColor.label\n    return textField\n}()\n\nprivate let authorLabel: UILabel = {\n    label.textColor = UIColor.secondaryLabel\n    return label\n}()"
+    },
+    {
+      "title": "Adding a recessed appearance to a text field",
+      "language": "swift",
+      "startTimeSeconds": 1367,
+      "code": "textField.borderStyle = .roundedRect"
+    },
+    {
+      "title": "Overriding preferredContainerBackgroundStyle",
+      "language": "swift",
+      "startTimeSeconds": 1368,
+      "code": "class MyViewController: UIViewController {\n    override var preferredContainerBackgroundStyle: UIContainerBackgroundStyle {\n        return .glass\n    }\n}"
+    },
+    {
+      "title": "Customizing hover style",
+      "language": "swift",
+      "startTimeSeconds": 1369,
+      "code": "class CollectionViewCell: UICollectionViewCell {\n    init(document: PixelArtDocument) {\n        self.hoverStyle = .init(\n            effect: .highlight, \n            shape: .roundedRect(cornerRadius: 8.0))\n    }\n}"
+    },
+    {
+      "title": "Checking user interface idiom",
+      "language": "swift",
+      "startTimeSeconds": 1370,
+      "code": "func fourFingerSwipe() {\n    let gesture = UISwipeGestureRecognizer(\n        target: self, \n        action: #selector(self.deleteAll))\n    gesture.direction = .left\n    if traitCollection.userInterfaceIdiom == .reality {\n        gesture.numberOfTouchesRequired = 2\n    } else {\n        gesture.numberOfTouchesRequired = 4\n    }\n    self.view.addGestureRecognizer(gesture)\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2023/111215-meet-uikit-for-spatial-computing/",
+  "files": {
+    "metadata": "sessions/wwdc2023/111215-meet-uikit-for-spatial-computing/metadata.json",
+    "readme": "sessions/wwdc2023/111215-meet-uikit-for-spatial-computing/README.md",
+    "transcript": "sessions/wwdc2023/111215-meet-uikit-for-spatial-computing/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/111215-meet-uikit-for-spatial-computing/transcript.json"
+  }
+}

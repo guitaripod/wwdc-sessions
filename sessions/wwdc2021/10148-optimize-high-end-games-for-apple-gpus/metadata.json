@@ -1,0 +1,100 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10148",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10148,
+  "title": "Optimize high-end games for Apple GPUs",
+  "description": "Optimize your high-end games for Apple GPUs: We’ll show you how you can use our rendering and debugging tools to eliminate performance issues and make your games great on Apple platforms. Learn from our experiences working with developers at Larian Studios and 4A Games as we help them optimize their games for Apple GPUs. We’ll explore various techniques for improving your game’s performance, including optimizing shaders, reducing memory bandwidth utilization, and increasing the overlap of your GPU workloads. We’ll also dive into the new GPU Timeline profiling tool in Xcode 13 to identify possible performance bottlenecks in “Divinity: Original Sin 2” when running on iPad. For this session, you should be familiar with the tile-based deferred rendering architecture in Apple GPUs, and have a working knowledge of Xcode and the Metal API. Check out “Discover Metal debugging, profiling, and asset creation tools” or the WWDC20 session “Optimize Metal apps and games with GPU counters” to learn more about using our tools to profile graphics workloads.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10148",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10148",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1947,
+  "hasTranscript": true,
+  "transcriptWordCount": 5383,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10148/8/2E6A96C2-2CC3-4852-A318-C5F493B55EC6/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10148/8/2E6A96C2-2CC3-4852-A318-C5F493B55EC6/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10148/8/2E6A96C2-2CC3-4852-A318-C5F493B55EC6/downloads/wwdc2021-10148_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10148/8/2E6A96C2-2CC3-4852-A318-C5F493B55EC6/downloads/wwdc2021-10148_hd.mp4",
+    "duration": 1947
+  },
+  "codeSnippets": [
+    {
+      "title": "Pseudocode to choose shared and private buffer count",
+      "language": "objectivec",
+      "startTimeSeconds": 924,
+      "code": "// Number of frames application is processing\nstatic const uint32_t MAX_FRAMES_IN_FLIGHT = 3;\n\nuint32_t sharedBuffersCount  = 0; // Number of buffers with MTLStorageModeShared to create\nuint32_t privateBuffersCount = 0; // Number of buffers with MTLStorageModePrivate to create\nif (device.hasUnifiedMemory)\n{     // Use extra buffer to reduce impact of completion handler\n    sharedBuffersCount = MAX_FRAMES_IN_FLIGHT + 1;\n    privateBuffersCount = 0;\n}\nelse // GPUs with dedicated memory\n{\n    sharedBuffersCount = MAX_FRAMES_IN_FLIGHT;\n    privateBuffersCount = 1;\n}\n\n// Create shared buffers MTLStorageModeShared\n// If applicable, create private buffer"
+    },
+    {
+      "title": "Pseudocode to avoid redundant bindings",
+      "language": "objectivec",
+      "startTimeSeconds": 1300,
+      "code": "void Renderer::SetFragmentTexture(uint32_t index, id<MTLTexture> texture)\n{\n    if (m_FragmentTextures[index] != texture)\n    {\n        m_FragmentTextures[index] = texture;\n        m_FragmentTexturesChanged = true;\n    }\n}\n\nvoid Renderer::BindFragmentTextures()\n{\n    if (m_FragmentTexturesChanged)\n    {\n        [m_RenderCommandEncoder setFragmentTextures:m_FragmentTextures \n                          withRange:NSMakeRange(0, m_LastFragmentTexture + 1)];\n\n        m_FragmentTexturesChanged = false;\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Debugging the shaders within a draw command or compute dispatch",
+      "url": "https://developer.apple.com/documentation/Xcode/Debugging-the-shaders-within-a-draw-command-or-compute-dispatch",
+      "type": "documentation",
+      "description": "Identify and fix problematic shaders in your app using the shader debugger.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/Debugging-the-shaders-within-a-draw-command-or-compute-dispatch",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/Debugging-the-shaders-within-a-draw-command-or-compute-dispatch.json"
+    },
+    {
+      "title": "Metal Performance Shaders",
+      "url": "https://developer.apple.com/documentation/MetalPerformanceShaders",
+      "type": "documentation",
+      "description": "Optimize graphics and compute performance with kernels that are fine-tuned for the unique characteristics of each Metal GPU family.",
+      "sosumiURL": "https://sosumi.ai/documentation/MetalPerformanceShaders",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MetalPerformanceShaders.json"
+    },
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    },
+    {
+      "title": "Metal Shading Language Specification",
+      "url": "https://developer.apple.com/metal/metal-shading-language-specification.pdf",
+      "type": "guide",
+      "description": "The Metal shading language is used to write graphics and compute functions that are executed on the GPU. Version 2.0 of the Metal shading language adds new features such as Raster Order Groups, Indirect Argument Buffers, Arrays of Samplers, Uniform Types, and much more.",
+      "sosumiURL": "https://sosumi.ai/metal/metal-shading-language-specification.pdf"
+    }
+  ],
+  "path": "sessions/wwdc2021/10148-optimize-high-end-games-for-apple-gpus/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10148-optimize-high-end-games-for-apple-gpus/metadata.json",
+    "readme": "sessions/wwdc2021/10148-optimize-high-end-games-for-apple-gpus/README.md",
+    "transcript": "sessions/wwdc2021/10148-optimize-high-end-games-for-apple-gpus/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10148-optimize-high-end-games-for-apple-gpus/transcript.json"
+  }
+}

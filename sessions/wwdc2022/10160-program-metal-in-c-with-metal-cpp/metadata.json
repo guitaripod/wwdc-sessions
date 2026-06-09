@@ -1,0 +1,138 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10160",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10160,
+  "title": "Program Metal in C++ with metal-cpp",
+  "description": "Your C++ games and apps can now tap into the power of Metal. We'll show you how metal-cpp helps you bridge your C++ code to Metal, explore how each manages object lifecycles, and demonstrate utilities that can help these language cooperate in your app. We'll also share best practices for designing app architecture to elegantly integrate Objective-C and C++ together.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10160",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10160",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "c++",
+    "game dev",
+    "game developer",
+    "metal 3",
+    "metal-cpp"
+  ],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1618,
+  "hasTranscript": true,
+  "transcriptWordCount": 3538,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10160/5/F0ACC08B-EFC0-459E-AE6D-DEA492619F49/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10160/5/F0ACC08B-EFC0-459E-AE6D-DEA492619F49/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10160/5/F0ACC08B-EFC0-459E-AE6D-DEA492619F49/downloads/wwdc2022-10160_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10160/5/F0ACC08B-EFC0-459E-AE6D-DEA492619F49/downloads/wwdc2022-10160_hd.mp4",
+    "duration": 1618
+  },
+  "codeSnippets": [
+    {
+      "title": "Draw a single triangle in C++",
+      "language": "cpp",
+      "startTimeSeconds": 190,
+      "code": "MTL::CommandBuffer* pCmd = _pCommandQueue->commandBuffer();\nMTL::RenderCommandEncoder* pEnc = pCmd->renderCommandEncoder( pRpd );\npEnc->setRenderPipelineState( _pPSO );\npEnc->drawPrimitives( MTL::PrimitiveTypeTriangle, \n                      NS::UInteger(0), \n                      NS::UInteger(3));\npEnc->endEncoding();\npCmd->presentDrawable( pView->currentDrawable() );\npCmd->commit();"
+    },
+    {
+      "title": "Draw a single triangle in Objective-C",
+      "language": "objectivec",
+      "startTimeSeconds": 207,
+      "code": "id<MTLCommandBuffer> cmd = [_commandQueue commandBuffer];\nid<MTLRenderCommandEncoder> enc = [cmd renderCommandEncoderWithDescriptor:pRpd];\n[enc setRenderPipelineState:_pPSO];\n[enc drawPrimitives:MTLPrimitiveTypeTriangle \n        vertexStart:0 \n        vertexCount:3];\n[enc endEncoding];\n[cmd presentDrawable:view.currentDrawable];\n[cmd commit];"
+    },
+    {
+      "title": "Generate the implementation",
+      "language": "cpp",
+      "startTimeSeconds": 370,
+      "code": "#define NS_PRIVATE_IMPLEMENTATION\n#define CA_PRIVATE_IMPLEMENTATION\n#define MTL_PRIVATE_IMPLEMENTATION\n\n#include <Foundation/Foundation.hpp>\n#include <Metal/Metal.hpp>\n#include <QuartzCore/QuartzCore.hpp>"
+    },
+    {
+      "title": "How to use autoreleased objects and AutoreleasePool",
+      "language": "cpp",
+      "startTimeSeconds": 706,
+      "code": "NS::AutoreleasePool* pPool = NS::AutoreleasePool::alloc()->init();\nMTL::CommandBuffer* pCmd = _pCommandQueue->commandBuffer();\nMTL::RenderPassDescriptor* pRpd = pView->currentRenderPassDescriptor();\nMTL::RenderCommandEncoder* pEnc = pCmd->renderCommandEncoder( pRpd );\npEnc->endEncoding();\npCmd->presentDrawable( pView->currentDrawable() );\npCmd->commit();\npPool->release();"
+    },
+    {
+      "title": "How NS::TransferPtr works",
+      "language": "cpp",
+      "startTimeSeconds": 707,
+      "code": "{\n   auto ptr = NS::TransferPtr( pMRR );\n   // Do something with ptr \n   . . . \n}"
+    },
+    {
+      "title": "How NS::RetainPtr works",
+      "language": "cpp",
+      "startTimeSeconds": 1039,
+      "code": "{\n   auto ptr = NS::RetainPtr( pMRR );\n   // Do something with ptr \n   . . . \n}"
+    },
+    {
+      "title": "Create an adapter class calling C++ from Objective-C files",
+      "language": "objectivec",
+      "startTimeSeconds": 1243,
+      "code": "@interface AAPLRendererAdapter () \n{\n    AAPLRenderer* _pRenderer;\n}\n@end\n\n@implementation AAPLRendererAdapter\n- (void)drawInMTKView:(MTKView *)pMtkView\n{\n    _pRenderer->draw((__bridge MTK::View*)pMtkView);\n}\n\n@end"
+    },
+    {
+      "title": "Create an adapter class calling Objective-C from C++ files",
+      "language": "cpp",
+      "startTimeSeconds": 1309,
+      "code": "CA::MetalDrawable* AAPLViewAdapter::currentDrawable() const\n{\n    return (__bridge CA::MetalDrawable*)[(__bridge MTKView *)m_pMTKView currentDrawable];\n}\n\nMTL::Texture* AAPLViewAdapter::depthStencilTexture() const\n{\n    return (__bridge MTL::Texture*)[(__bridge MTKView *)m_pMTKView depthStencilTexture];\n}"
+    },
+    {
+      "title": "Cast between Objective-C and C++ objects and transfer ownership",
+      "language": "cpp",
+      "startTimeSeconds": 1499,
+      "code": "MTL::Texture* newTextureFromCatalog( MTL::Device* pDevice, const char* name,   \n                                     MTL::StorageMode storageMode, MTL::TextureUsage usage )\n{\n    NSDictionary<MTKTextureLoaderOption, id>* options = @{\n            MTKTextureLoaderOptionTextureStorageMode : @( (MTLStorageMode)storageMode ),\n            MTKTextureLoaderOptionTextureUsage : @( (MTLTextureUsage)usage )\n    };\n\n    MTKTextureLoader* textureLoader = [[MTKTextureLoader alloc] \n                                        initWithDevice:(__bridge id<MTLDevice>)pDevice];\n\n    NSError* __autoreleasing err = nil;\n    id< MTLTexture > texture = [textureLoader \n                        newTextureWithName:[NSString stringWithUTF8String:name] \n                               scaleFactor:1 \n                                            bundle:nil \n                                           options:options \n                                             error:&err];\n\n    return (__bridge_retained MTL::Texture*)texture;\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Getting started with Metal-cpp",
+      "url": "https://developer.apple.com/metal/cpp/",
+      "type": "documentation",
+      "description": "Metal-cpp is a low-overhead C++ interface for Metal that helps developers add Metal functionality to graphics apps, games, and game engines that are written in C++.",
+      "sosumiURL": "https://sosumi.ai/metal/cpp/"
+    },
+    {
+      "title": "Download the LearnMetalCPP project",
+      "url": "https://developer.apple.com/metal/LearnMetalCPP.zip",
+      "type": "download",
+      "description": "Resource for the WWDC22 challenge \"Draw with metal-cpp!\"",
+      "sosumiURL": "https://sosumi.ai/metal/LearnMetalCPP.zip"
+    },
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10160-program-metal-in-c-with-metal-cpp/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10160-program-metal-in-c-with-metal-cpp/metadata.json",
+    "readme": "sessions/wwdc2022/10160-program-metal-in-c-with-metal-cpp/README.md",
+    "transcript": "sessions/wwdc2022/10160-program-metal-in-c-with-metal-cpp/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10160-program-metal-in-c-with-metal-cpp/transcript.json"
+  }
+}

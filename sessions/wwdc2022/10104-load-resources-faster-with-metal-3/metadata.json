@@ -1,0 +1,129 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10104",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10104,
+  "title": "Load resources faster with Metal 3",
+  "description": "Discover how you can use fast resource streaming in Metal 3 to quickly load assets. We'll show you how to use an asynchronous set-it-and-forget-it workflow in your app to take advantage of the speed of SSD storage and the throughput of Apple silicon’s unified memory architecture. We'll also explore how you can create separate queues that run parallel to — and synchronize with — your GPU render and compute work. Finally, we'll share how to designate assets like audio with high-priority queues to help you load data with lower latency.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10104",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10104",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "3d graphics",
+    "game",
+    "game dev",
+    "game developer",
+    "metal",
+    "metal 3",
+    "metal tools",
+    "raytracing"
+  ],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1344,
+  "hasTranscript": true,
+  "transcriptWordCount": 3247,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10104/4/E095D698-00CE-4A00-812C-4BA755CE26DB/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10104/4/E095D698-00CE-4A00-812C-4BA755CE26DB/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10104/4/E095D698-00CE-4A00-812C-4BA755CE26DB/downloads/wwdc2022-10104_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10104/4/E095D698-00CE-4A00-812C-4BA755CE26DB/downloads/wwdc2022-10104_hd.mp4",
+    "duration": 1344
+  },
+  "codeSnippets": [
+    {
+      "title": "Create a handle to an existing file",
+      "language": "swift",
+      "startTimeSeconds": 319,
+      "code": "// Create an Metal File IO Handle\n\n// Create handle to an existing file\nvar fileIOHandle: MTLIOFileHandle!\ndo {\n    try fileHandle = device.makeIOHandle(url: filePath)\n} catch {\n    print(error)\n}"
+    },
+    {
+      "title": "Create a Metal IO command queue",
+      "language": "swift",
+      "startTimeSeconds": 409,
+      "code": "// Create a Metal IO command queue\n\nlet commandQueueDescriptor = MTLIOCommandQueueDescriptor()\n\ncommandQueueDescriptor.type = MTLIOCommandQueueType.concurrent // or serial\n\nvar ioCommandQueue: MTLIOCommandQueue!\ndo {\n    try ioCommandQueue = device.makeIOCommandQueue(descriptor: commandQueueDescriptor)\n} catch {\n    print(error)\n}"
+    },
+    {
+      "title": "Create and submit a Metal IO command buffer",
+      "language": "swift",
+      "startTimeSeconds": 437,
+      "code": "// Create Metal IO Command Buffer\n\nlet ioCommandBuffer = ioCommandQueue.makeCommandBuffer()\n\n// Encode load commands\n// Encode load texture and load buffer commands\nioCommandBuffer.load(texture, slice: 0, level: 0, size: size, \n                     sourceBytesPerRow:bytesPerRow, sourceBytesPerImage: bytesPerImage,  \n                     destinationOrigin: destOrigin,\n                     sourceHandle: fileHandle, sourceHandleOffset: 0)\nioCommandBuffer.load(buffer, offset: 0, size: size,\n                     sourceHandle: fileHandle, sourceHandleOffset: 0)\n\n\n// Commit command buffer for execution\nioCommandBuffer.commit()"
+    },
+    {
+      "title": "Synchronize loading and rendering with Metal shared events",
+      "language": "swift",
+      "startTimeSeconds": 531,
+      "code": "var sharedEvent: MTLSharedEvent!\nsharedEvent = device.makeSharedEvent()\n\n// Create Metal IO command buffer\nlet ioCommandBuffer = ioCommandQueue.makeCommandBuffer()\n\nioCommandBuffer.waitForEvent(sharedEvent, value: waitVal)\n\n// Encode load commands\n\nioCommandBuffer.signalEvent(sharedEvent, value: signalVal)\nioCommandBuffer.commit()\n\n// Graphics work waits for the IO command buffer to signal"
+    },
+    {
+      "title": "TryCancel Metal IO command buffer",
+      "language": "swift",
+      "startTimeSeconds": 629,
+      "code": "// Player in the center region\n// Encode loads for the North-West region\nioCommandBufferNW.commit()\n// Encode loads for the West region\nioCommandBufferW.commit()\n// Encode loads for the South-West region\nioCommandBufferSW.commit()\n\n// Player in the western region and heading south\n// tryCancel NW command buffer\nioCommandBufferNW.tryCancel()\n\n// ..\n// ..\nfunc regionNWCancelled() -> Bool {\n    return ioCommandBufferNW.status == MTLIOStatus.cancelled\n}"
+    },
+    {
+      "title": "Create a High Priority Metal IO command queue",
+      "language": "swift",
+      "startTimeSeconds": 748,
+      "code": "// Create a Metal IO command queue\n\nlet commandQueueDescriptor = MTLIOCommandQueueDescriptor()\ncommandQueueDescriptor.type = MTLIOCommandQueueType.concurrent // or serial\n\n// Set Metal IO command queue Priority\ncommandQueueDescriptor.priority = MTLIOPriority.high // or normal or low\n\nvar ioCommandQueue: MTLIOCommandQueue!\ndo {\n    try ioCommandQueue = device.makeIOCommandQueue(descriptor: commandQueueDescriptor)\n} catch {\n    print(error)\n}"
+    },
+    {
+      "title": "Create a compressed file",
+      "language": "swift",
+      "startTimeSeconds": 844,
+      "code": "// Create a compressed file\n\n// Create compression context\nlet chunkSize = 64 * 1024\nlet compressionMethod = MTLIOCompressionMethod.zlib\nlet compressionContext = MTLIOCreateCompressionContext(compressedFilePath, compressionMethod, chunkSize)\n\n// Append uncompressed file data to the compression context\n// Get uncompressed file data \nMTLIOCompressionContextAppendData(compressionContext, filedata.bytes, filedata.length)\n\n\n// Write the compressed file\nMTLIOFlushAndDestroyCompressionContext(compressionContext)"
+    },
+    {
+      "title": "Create a handle to a compressed file",
+      "language": "swift",
+      "startTimeSeconds": 905,
+      "code": "// Create an Metal File IO Handle\n\n// Create handle to a compressed file\nvar compressedFileIOHandle : MTLIOFileHandle!\ndo {\n    try compressedFileHandle = device.makeIOHandle(url: compressedFilePath, compressionMethod: MTLIOCompressionMethod.zlib)\n} catch {\n    print(error)\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Resource loading",
+      "url": "https://developer.apple.com/documentation/Metal/resource-loading",
+      "type": "documentation",
+      "description": "Load assets in your games and apps quickly by running a dedicated input/output queue alongside your GPU tasks.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/resource-loading",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/resource-loading.json"
+    },
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10104-load-resources-faster-with-metal-3/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10104-load-resources-faster-with-metal-3/metadata.json",
+    "readme": "sessions/wwdc2022/10104-load-resources-faster-with-metal-3/README.md",
+    "transcript": "sessions/wwdc2022/10104-load-resources-faster-with-metal-3/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10104-load-resources-faster-with-metal-3/transcript.json"
+  }
+}

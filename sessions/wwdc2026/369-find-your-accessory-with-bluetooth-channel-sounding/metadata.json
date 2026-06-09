@@ -1,0 +1,102 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-369",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 369,
+  "title": "Find your accessory with Bluetooth Channel Sounding",
+  "description": "Get started with Channel Sounding to bring distance and direction awareness to your Bluetooth accessories. Dive into the new Nearby Interaction and Core Bluetooth APIs, and walk through the accessory-side changes you’ll need. Optimize power consumption while ensuring a smooth, responsive experience.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/369",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/369",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 492,
+  "hasTranscript": true,
+  "transcriptWordCount": 947,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/369/4/fea90204-fd38-4da4-b9e7-5dce37bc87d8/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/369/4/fea90204-fd38-4da4-b9e7-5dce37bc87d8/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/369/4/fea90204-fd38-4da4-b9e7-5dce37bc87d8/downloads/wwdc2026-369_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/369/4/fea90204-fd38-4da4-b9e7-5dce37bc87d8/downloads/wwdc2026-369_hd.mp4",
+    "duration": 492
+  },
+  "codeSnippets": [
+    {
+      "title": "Start a Core Bluetooth Channel Sounding session",
+      "language": "swift",
+      "startTimeSeconds": 223,
+      "code": "import CoreBluetooth\n\nfunc isChannelSoundingSupported() -> BOOL {\n    guard centralManager.state == .poweredOn else { return }\n    if #available(iOS 27.0, *) {\n        // Check current device supports Bluetooth Channel Sounding\n        return CBCentralManager.supportsFeatures(.channelSounding)\n    }\n}\n\nfunc startChannelSounding(_ peripheral: CBPeripheral) {\n    guard peripheral.isConnected else { return }\n    if #available(iOS 27.0, *) {  \n        // Step 1: Create a CBChannelSoundingSessionConfiguration\n        let config = CBChannelSoundingSessionConfiguration(role: .initiator)\n\n        // Step 2: Start the channel sounding session\n        peripheral.startChannelSoundingSession(config)\n    }\n}"
+    },
+    {
+      "title": "Receive distance results and cancel a session",
+      "language": "swift",
+      "startTimeSeconds": 249,
+      "code": "import CoreBluetooth\n\n// Receive distance results\nfunc peripheral(_ peripheral: CBPeripheral,\n                didReceive results: CBChannelSoundingProcedureResults?,\n                error: Error?) {\n    guard let results = results else { return }\n\n    let distance = results.distance\n\n    // Do something with distance\n}\n\n// Cancel a Channel Sounding session\nfunc cancelChannelSounding(_ peripheral: CBPeripheral) {\n    guard peripheral.isConnected else { return }\n    if #available(iOS 27.0, *) {\n        // Cancel the channel sounding session\n        peripheral.cancelChannelSoundingSession(config)\n    }\n}\n\nfunc peripheral(_ peripheral: CBPeripheral,\n                didCompleteChannelSoundingSession error: Error?) {   \n    // Session is complete\n}"
+    },
+    {
+      "title": "Start a Nearby Interaction Channel Sounding session",
+      "language": "swift",
+      "startTimeSeconds": 281,
+      "code": "import CoreBluetooth\nimport NearbyInteraction\n\n// Configure a Nearby Interaction Channel Sounding session\nfunc startChannelSoundingThroughNearbyInteraction(_ peripheral: CBPeripheral) {\n    if #available(iOS 27.0, *) {        \n        // Step 1: Check current device supports Bluetooth Channel Sounding\n        guard NISession.deviceCapabilities.supportsBluetoothChannelSounding else { return }\n\n        // Step 2: Create an NINearbyAccessoryConfiguration\n        let config = NINearbyAccessoryConfiguration(\n            bluetoothChannelSoundingIdentifier: peripheral.identifier, \n            previousChannelSoundingIdentifier: nil)\n\n        // Step 3: Enable camera assistance for direction support\n        if NISession.deviceCapabilities.supportsCameraAssistance { \n            config.isCameraAssistanceEnabled = true\n        }\n    }\n}"
+    },
+    {
+      "title": "Run a Nearby Interaction Channel Sounding session",
+      "language": "swift",
+      "startTimeSeconds": 319,
+      "code": "import CoreBluetooth\nimport NearbyInteraction\n\n// Run a Nearby Interaction Channel Sounding session\nfunc runChannelSoundingThroughNearbyInteraction(_ config: NINearbyAccessoryConfiguration) {\n    // Create an NISession\n    let session = NISession()\n    session.delegate = self\n    // Run the NISession with the accessory configuration\n    session.run(config)\n}\n\n// Improve Nearby Interaction direction outputs\nfunc updateAccessoryMotionState(_ isMoving: Bool) {\n    NIMotionActivityState motionState = isMoving ? .moving : .stationary\n\n    // Tell NISession about.the accessory's motion state\n    session.updateMotionState(motionState, forObjectWithToken: object.discoveryToken)\n}\n\n// Receive NISession updates\nfunc session(_ session: NISession, didUpdate nearbyObjects: [NINearbyObjects]) {   \n    guard let object = nearbyObjects.first else { return }\n\n    if let distance = object.distance {\n        // Do something with distance\n    }\n\n    if let direction = object.horizontalAngle {\n        // Do something with horizontal angle\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "AccessorySetupKit",
+      "url": "https://developer.apple.com/documentation/AccessorySetupKit",
+      "type": "documentation",
+      "description": "Enable privacy-preserving discovery and configuration of accessories.",
+      "sosumiURL": "https://sosumi.ai/documentation/AccessorySetupKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AccessorySetupKit.json"
+    },
+    {
+      "title": "Nearby Interaction",
+      "url": "https://developer.apple.com/documentation/NearbyInteraction",
+      "type": "documentation",
+      "description": "Locate and interact with nearby devices using identifiers, distance, and direction.",
+      "sosumiURL": "https://sosumi.ai/documentation/NearbyInteraction",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/NearbyInteraction.json"
+    },
+    {
+      "title": "Core Bluetooth",
+      "url": "https://developer.apple.com/documentation/CoreBluetooth",
+      "type": "documentation",
+      "description": "Communicate with Bluetooth low energy and BR/EDR (“Classic”) Devices.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreBluetooth",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreBluetooth.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/369-find-your-accessory-with-bluetooth-channel-sounding/",
+  "files": {
+    "metadata": "sessions/wwdc2026/369-find-your-accessory-with-bluetooth-channel-sounding/metadata.json",
+    "readme": "sessions/wwdc2026/369-find-your-accessory-with-bluetooth-channel-sounding/README.md",
+    "transcript": "sessions/wwdc2026/369-find-your-accessory-with-bluetooth-channel-sounding/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/369-find-your-accessory-with-bluetooth-channel-sounding/transcript.json"
+  }
+}

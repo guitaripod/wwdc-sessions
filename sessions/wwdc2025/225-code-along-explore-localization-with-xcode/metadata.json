@@ -1,0 +1,113 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-225",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 225,
+  "title": "Code-along: Explore localization with Xcode",
+  "description": "Learn how to localize your app into additional languages using Xcode. We’ll walk step-by-step through the process of creating a String Catalog, translating text, and exchanging files with external translators. You’ll learn best practices for providing necessary context to translators and how Xcode can help to provide this information automatically. For larger projects, we’ll also dive into techniques to manage complexity and streamline string management using type-safe Swift code.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/225",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/225",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "automatic  comment generation",
+    "l10n"
+  ],
+  "topics": [
+    "Developer Tools",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1293,
+  "hasTranscript": true,
+  "transcriptWordCount": 3074,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/225/5/24973a20-a8c9-4ec6-ad29-6adfde87ea5c/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/225/5/24973a20-a8c9-4ec6-ad29-6adfde87ea5c/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/225/5/24973a20-a8c9-4ec6-ad29-6adfde87ea5c/downloads/wwdc2025-225_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/225/5/24973a20-a8c9-4ec6-ad29-6adfde87ea5c/downloads/wwdc2025-225_hd.mp4",
+    "duration": 1293
+  },
+  "codeSnippets": [
+    {
+      "title": "Localizable strings",
+      "language": "swift",
+      "startTimeSeconds": 94,
+      "code": "// import SwiftUI\nText(\"Featured Landmark\", comment: \"Big headline in the hero image of featured landmarks.\")\n\nButton(\"Keep\") { }\n\n// import Foundation\nString(localized: \"New Collection\", comment: \"Default name for a new user-created collection.\")"
+    },
+    {
+      "title": "Adding a comment",
+      "language": "swift",
+      "startTimeSeconds": 360,
+      "code": "Text(\"Delete\",\ncomment: \"Delete button shown in an alert asking for confirmation to delete the collection.\")\n\nString(localized: \"Shared by Friends\", comment: \"Subtitle of post that was shared by friends.\")"
+    },
+    {
+      "title": "XLIFF file",
+      "language": "xml",
+      "startTimeSeconds": 553,
+      "code": "// Field for automatically generated comments in the XLIFF\n\n<trans-unit id=\"Grand Canyon\" xml:space=\"preserve\">\n<source>Grand Canyon</source>\n<target state=\"new\">Grand Canyon</target>\n<note from=\"auto-generated\">Suggestion for searching landmarks</note>\n</trans-unit>"
+    },
+    {
+      "title": "Localized String in the main app and a Swift Package or Framework",
+      "language": "swift",
+      "startTimeSeconds": 598,
+      "code": "// Localized String in the main app:\nText(\"My Collections\", \ncomment: \"Section title above user-created collections.\")\n\n// Localized String in a Swift Package or Framework\nText(\"My Collections\", \nbundle: #bundle, \ncomment: \"Section title above user-created collections.\")"
+    },
+    {
+      "title": "Localized String with a tableName parameter",
+      "language": "swift",
+      "startTimeSeconds": 656,
+      "code": "// Localized String in the main app:\nText(\"My Collections\",\ntableName: \"Discover\",\ncomment: \"Section title above user-created collections.\")\n\n// Localized String in a Swift Package or Framework\nText(\"My Collections\",\ntableName: \"Discover\",\nbundle: #bundle, \ncomment: \"Section title above user-created collections.\")"
+    },
+    {
+      "title": "Symbol usage",
+      "language": "swift",
+      "startTimeSeconds": 1051,
+      "code": "// Symbol usage in SwiftUI\nText(.introductionTitle)\n\n.navigationSubtitle(.subtitle(friendsPosts: 42))\n\n\n// Symbol usage in Foundation\nString(localized: .curatedCollection)\n\n\n// Working with generated symbols in your own types\nstruct CollectionDetailEditingView: View {\n    let title: LocalizedStringResource\n\n    init(title: LocalizedStringResource) {\n        self.title = title\n    }\n}\nCollectionDetailEditingView(title: .editingTitle)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Localizing Landmarks",
+      "url": "https://developer.apple.com/documentation/Xcode/localizing-landmarks",
+      "type": "samplecode",
+      "description": "Add localizations to the Landmarks sample code project.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/localizing-landmarks",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/localizing-landmarks.json"
+    },
+    {
+      "title": "Expanding Your App to New Markets",
+      "url": "https://developer.apple.com/localization/",
+      "type": "guide",
+      "description": "Internationalization and Localization. Expanding Your App to New Markets.",
+      "sosumiURL": "https://sosumi.ai/localization/"
+    }
+  ],
+  "path": "sessions/wwdc2025/225-code-along-explore-localization-with-xcode/",
+  "files": {
+    "metadata": "sessions/wwdc2025/225-code-along-explore-localization-with-xcode/metadata.json",
+    "readme": "sessions/wwdc2025/225-code-along-explore-localization-with-xcode/README.md",
+    "transcript": "sessions/wwdc2025/225-code-along-explore-localization-with-xcode/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/225-code-along-explore-localization-with-xcode/transcript.json"
+  }
+}

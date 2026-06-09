@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-257",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 257,
+  "title": "Accessibility Inspector",
+  "description": "The Accessibility Inspector enables you to identify parts of your app that are not accessible. It provides feedback on how you can make them accessible, as well as simulating voice-over to help you identify what a Voice Over user would experience. Watch a live-demo of an app being fully debugged in the Accessibility Inspector, and learn how to leverage this powerful tool to make your apps better for everyone.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/257",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/257",
+  "type": "Video",
+  "publishedAt": "2019-06-04T18:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "SwiftUI & UI Frameworks",
+    "Accessibility & Inclusion"
+  ],
+  "primaryTopic": "Accessibility & Inclusion",
+  "duration": 614,
+  "hasTranscript": true,
+  "transcriptWordCount": 1206,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/257zstehah872m64ht5/257/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/257zstehah872m64ht5/257/257_sd_accessibility_inspector.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/257zstehah872m64ht5/257/257_hd_accessibility_inspector.mp4",
+    "duration": 614
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/257-accessibility-inspector/",
+  "files": {
+    "metadata": "sessions/wwdc2019/257-accessibility-inspector/metadata.json",
+    "readme": "sessions/wwdc2019/257-accessibility-inspector/README.md",
+    "transcript": "sessions/wwdc2019/257-accessibility-inspector/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/257-accessibility-inspector/transcript.json"
+  }
+}

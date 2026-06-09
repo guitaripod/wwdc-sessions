@@ -1,0 +1,115 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10022",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10022,
+  "title": "Create a seamless speech experience in your apps",
+  "description": "Augment your app’s accessibility experience with speech synthesis: Discover the best times and places to add speech APIs so that everyone who uses your app can benefit. Learn how to use AVSpeechSynthesizer to complement assistive technologies like VoiceOver, and when to implement alternative APIs. And we’ll show you how to route audio to the appropriate source and create apps that integrate speech seamlessly for all who need or want it. To get the most out of this session, you should be familiar with AVFoundation and the basics of speech synthesis. For an overview, watch “AVSpeechSynthesizer: Making iOS Talk.”",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10022",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10022",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "aac",
+    "alternative and augmentative communication",
+    "assistive technology",
+    "avspeechsynthesizer",
+    "avspeechutterance",
+    "speaking rate",
+    "speech properties",
+    "speech request",
+    "spoken content",
+    "utterance",
+    "voice technology"
+  ],
+  "topics": [
+    "Accessibility & Inclusion"
+  ],
+  "primaryTopic": "Accessibility & Inclusion",
+  "duration": 519,
+  "hasTranscript": true,
+  "transcriptWordCount": 1423,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10022/3/286D1613-442C-41FD-A8D9-B7E7E0AC8758/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10022/3/286D1613-442C-41FD-A8D9-B7E7E0AC8758/wwdc2020_10022_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10022/3/286D1613-442C-41FD-A8D9-B7E7E0AC8758/wwdc2020_10022_hd.mp4",
+    "duration": 519
+  },
+  "codeSnippets": [
+    {
+      "title": "Post an Announcement to the Running Assistive Technology",
+      "language": "swift",
+      "startTimeSeconds": 85,
+      "code": "UIAccessibility.post(notification: .announcement, argument: \"Hello World\")"
+    },
+    {
+      "title": "Getting Started with AVSpeechSynthesizer",
+      "language": "swift",
+      "startTimeSeconds": 175,
+      "code": "self.synthesizer = AVSpeechSynthesizer()\nlet utterance = AVSpeechUtterance(string: \"Hello World\")\nself.synthesizer.speak(utterance)"
+    },
+    {
+      "title": "Respecting the Currently Running Assistive Technology's Speech Settings",
+      "language": "swift",
+      "startTimeSeconds": 248,
+      "code": "self.synthesizer = AVSpeechSynthesizer()\nlet utterance = AVSpeechUtterance(string: \"Hello World\")\nutterance.prefersAssistiveTechnologySettings = true\nself.synthesizer.speak(utterance)"
+    },
+    {
+      "title": "Customizing Speech - Choosing a Voice",
+      "language": "swift",
+      "startTimeSeconds": 342,
+      "code": "let utterance = AVSpeechUtterance(string: \"Hello World\")\n\n// Choose a voice using a language code\nutterance.voice = AVSpeechSynthesisVoice(language: \"en-US\")\n\n// Choose a voice using an identifier\nutterance.voice = AVSpeechSynthesisVoice(identifier: AVSpeechSynthesisVoiceIdentifierAlex)\n\n// Get a list of installed voices\nlet voices = AVSpeechSynthesisVoice.speechVoices()"
+    },
+    {
+      "title": "Customizing Speech - Pitch and Rate",
+      "language": "swift",
+      "startTimeSeconds": 376,
+      "code": "let utterance = AVSpeechUtterance(string: \"Hello World\")\n\n// Choose a rate between 0 and 1, 0.5 is the default rate\nutterance.rate = 0.75\n\n// Choose a pitch multiplier between 0.5 and 2, 1 is the default multiplier\nutterance.pitchMultiplier = 1.5\n\n// Choose a volume between 0 and 1, 1 is the default value\nutterance.volume = 0.5"
+    },
+    {
+      "title": "Mix Speech With an Outgoing Call",
+      "language": "swift",
+      "startTimeSeconds": 394,
+      "code": "self.synthesizer = AVSpeechSynthesizer()\nself.synthesizer.mixToTelephonyUplink = true"
+    },
+    {
+      "title": "Opting Speech Out of Application's Audio Session",
+      "language": "swift",
+      "startTimeSeconds": 422,
+      "code": "self.synthesizer = AVSpeechSynthesizer()\nself.synthesizer.usesApplicationAudioSession = false"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Accessibility for UIKit",
+      "url": "https://developer.apple.com/documentation/UIKit/accessibility-for-uikit",
+      "type": "documentation",
+      "description": "Make your UIKit apps accessible to everyone who uses iOS and tvOS.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/accessibility-for-uikit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/accessibility-for-uikit.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10022-create-a-seamless-speech-experience-in-your-apps/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10022-create-a-seamless-speech-experience-in-your-apps/metadata.json",
+    "readme": "sessions/wwdc2020/10022-create-a-seamless-speech-experience-in-your-apps/README.md",
+    "transcript": "sessions/wwdc2020/10022-create-a-seamless-speech-experience-in-your-apps/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10022-create-a-seamless-speech-experience-in-your-apps/transcript.json"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-203",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2017,
+  "eventContentId": 203,
+  "title": "Updating for Apple Watch Series 3",
+  "description": "Apple Watch Series 3 makes it easier to stay connected, even when away from your phone. Learn how to keep your app responsive over cellular connections using URLSession. Find out how to optimize your Watch app networking code to ensure that your app is always up to date and ready for use. Discover how to leverage Core Motion data from the new barometric altimeter for displaying relative altitude changes.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/203",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/203",
+  "type": "Video",
+  "publishedAt": "2017-09-12T10:00:00-07:00",
+  "platforms": [
+    "watchOS"
+  ],
+  "keywords": [
+    "🥃",
+    "⌚️",
+    "cmaltimeter"
+  ],
+  "topics": [
+    "Health & Fitness",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 742,
+  "hasTranscript": true,
+  "transcriptWordCount": 1741,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tutorials/20170912/203fq5xdc4lg5/updating_for_apple_watch_series_3/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tutorials/20170912/203fq5xdc4lg5/updating_for_apple_watch_series_3/updating_for_apple_watch_series_3_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tutorials/20170912/203fq5xdc4lg5/updating_for_apple_watch_series_3/updating_for_apple_watch_series_3_hd.mp4",
+    "duration": 742
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "URLSession Programming Guide",
+      "url": "https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/library/content/documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html"
+    },
+    {
+      "title": "URLSession",
+      "url": "https://developer.apple.com/documentation/Foundation/URLSession",
+      "type": "documentation",
+      "description": "An object that coordinates a group of related, network data transfer tasks.",
+      "sosumiURL": "https://sosumi.ai/documentation/Foundation/URLSession",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Foundation/URLSession.json"
+    },
+    {
+      "title": "Core Motion",
+      "url": "https://developer.apple.com/documentation/CoreMotion",
+      "type": "documentation",
+      "description": "Process accelerometer, gyroscope, pedometer, and environment-related events.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreMotion",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreMotion.json"
+    }
+  ],
+  "path": "sessions/tech-talks/203-updating-for-apple-watch-series-3/",
+  "files": {
+    "metadata": "sessions/tech-talks/203-updating-for-apple-watch-series-3/metadata.json",
+    "readme": "sessions/tech-talks/203-updating-for-apple-watch-series-3/README.md",
+    "transcript": "sessions/tech-talks/203-updating-for-apple-watch-series-3/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/203-updating-for-apple-watch-series-3/transcript.json"
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10106",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10106,
+  "title": "Meet Scribble for iPad",
+  "description": "Scribble offers a lightweight, ergonomic, and enjoyable way of entering text on iPad with Apple Pencil. Discover how people can take advantage of Scribble and handwritten text in apps that use standard text input controls or that implement a custom text editing experience. You’ll learn how it integrates into TextKit, and when you’ll need to adopt the new UIScribbleInteraction and UIIndirectScribbleInteraction APIs to provide a delightful and consistent experience with Scribble in your app. To get the most out of this session, you should be familiar with UIKit text input controls, as well as keyboard input technologies. To get started, watch “Keyboard Input in iOS”. If you’re building a custom text editor, you should be familiar with the UITextInput protocol, TextKit, and related text input APIs. For more information, we recommend checking out “TextKit Best Practices” and “The Keys to a Better Text Input Experience.” And for design guidelines on pencil-based interaction, check out “Apple Pencil Design Essentials.”",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10106",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10106",
+  "type": "Video",
+  "publishedAt": "2020-06-23T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "cursive",
+    "handwriting",
+    "recognition"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 853,
+  "hasTranscript": true,
+  "transcriptWordCount": 2151,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10106/4/AD9A0416-4A7E-4ED7-86AD-8EEEF7199216/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10106/4/AD9A0416-4A7E-4ED7-86AD-8EEEF7199216/wwdc2020_10106_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10106/4/AD9A0416-4A7E-4ED7-86AD-8EEEF7199216/wwdc2020_10106_hd.mp4",
+    "duration": 853
+  },
+  "codeSnippets": [
+    {
+      "title": "isHandlingWriting Example",
+      "language": "swift",
+      "startTimeSeconds": 555,
+      "code": "func updateSearchCompletion() {\n    customSearchField.hideCompletionText = interaction.isHandlingWriting\n}"
+    },
+    {
+      "title": "UIScribbleInteraction.isPencilInputExpected",
+      "language": "swift",
+      "startTimeSeconds": 575,
+      "code": "override func viewDidAppear(_ animated: Bool) {\n    if UIScribbleInteraction.isPencilInputExpected {\n        let lineHeight = textField.font?.lineHeight ?? 17.0\n        let heightForScribble = lineHeight * 4.0\n        heightConstraint.constant = heightForScribble\n    }\n}"
+    },
+    {
+      "title": "scribbleInteractionDidFinishWriting",
+      "language": "swift",
+      "startTimeSeconds": 591,
+      "code": "func scribbleInteractionDidFinishWriting(_ interaction: UIScribbleInteraction) {\n    let lineHeight = textField.font?.lineHeight ?? 17.0\n    let heightForScribble = lineHeight * 4.0\n    heightConstraint.constant = heightForScribble\n}"
+    },
+    {
+      "title": "Should Begin",
+      "language": "swift",
+      "startTimeSeconds": 608,
+      "code": "func scribbleInteraction(_ interaction: UIScribbleInteraction,\n                         shouldBeginAt location: CGPoint) -> Bool {\n    return !appIsInDrawingMode()\n}"
+    },
+    {
+      "title": "Install UIIndirectScribbleInteraction in Engraving Field",
+      "language": "swift",
+      "startTimeSeconds": 701,
+      "code": "override init(frame: CGRect) {\n    super.init(frame: frame)\n    indirectScribbleInteraction = UIIndirectScribbleInteraction(delegate: self)\n    addInteraction(indirectScribbleInteraction)\n    ...\n}"
+    },
+    {
+      "title": "Request Elements",
+      "language": "swift",
+      "startTimeSeconds": 708,
+      "code": "func indirectScribbleInteraction(_ interaction: UIInteraction,\n                                 requestElementsIn rect: CGRect,\n                                 completion: @escaping ([ElementIdentifier]) -> Void) {\n    completion([\"EngravingIdentifier\"])\n}"
+    },
+    {
+      "title": "Frame for element",
+      "language": "swift",
+      "startTimeSeconds": 734,
+      "code": "func indirectScribbleInteraction(_ interaction: UIInteraction,\n                                 frameForElement elementIdentifier: String) -> CGRect {\n    return bounds\n}"
+    },
+    {
+      "title": "Focus Element if Needed",
+      "language": "swift",
+      "startTimeSeconds": 748,
+      "code": "func indirectScribbleInteraction(_ interaction: UIInteraction,\n                                 focusElementIfNeeded elementIdentifier: String,\n                                 referencePoint focusReferencePoint: CGPoint,\n                                 completion: @escaping ((UIResponder & UITextInput)?) -> Void)\n{\n    if editingTextField == nil {\n        createTextField()\n    }\n    editingTextField?.becomeFirstResponder()\n\n    completion(editingTextField)\n}"
+    },
+    {
+      "title": "Is Element Focused",
+      "language": "swift",
+      "startTimeSeconds": 777,
+      "code": "func indirectScribbleInteraction(_ interaction: UIInteraction,\n                                 isElementFocused elementIdentifier: String) -> Bool {\n    // Indicate if our only element is currently installed and focused\n    return editingTextField?.isFirstResponder ?? false\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Customizing Scribble with Interactions",
+      "url": "https://developer.apple.com/documentation/PencilKit/customizing-scribble-with-interactions",
+      "type": "samplecode",
+      "description": "Enable writing on a non-text-input view by adding interactions.",
+      "sosumiURL": "https://sosumi.ai/documentation/PencilKit/customizing-scribble-with-interactions",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/PencilKit/customizing-scribble-with-interactions.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10106-meet-scribble-for-ipad/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10106-meet-scribble-for-ipad/metadata.json",
+    "readme": "sessions/wwdc2020/10106-meet-scribble-for-ipad/README.md",
+    "transcript": "sessions/wwdc2020/10106-meet-scribble-for-ipad/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10106-meet-scribble-for-ipad/transcript.json"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-112",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 112,
+  "title": "Platforms State of the Union (ASL)",
+  "description": "Discover the newest advancements on Apple platforms.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/112",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/112",
+  "type": "Special Event",
+  "publishedAt": "2026-06-08T13:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "asl",
+    "sotu",
+    "sotu 2026"
+  ],
+  "topics": [
+    "Essentials"
+  ],
+  "primaryTopic": "Essentials",
+  "duration": 3698,
+  "hasTranscript": true,
+  "transcriptWordCount": 9222,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/112/1/0e1d49e8-277b-49f9-aaff-d937c5956d86/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/112/1/0e1d49e8-277b-49f9-aaff-d937c5956d86/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/112/1/0e1d49e8-277b-49f9-aaff-d937c5956d86/downloads/wwdc2026-112_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/112/1/0e1d49e8-277b-49f9-aaff-d937c5956d86/downloads/wwdc2026-112_hd.mp4",
+    "duration": 3698
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2026/112-platforms-state-of-the-union-asl/",
+  "files": {
+    "metadata": "sessions/wwdc2026/112-platforms-state-of-the-union-asl/metadata.json",
+    "readme": "sessions/wwdc2026/112-platforms-state-of-the-union-asl/README.md",
+    "transcript": "sessions/wwdc2026/112-platforms-state-of-the-union-asl/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/112-platforms-state-of-the-union-asl/transcript.json"
+  }
+}

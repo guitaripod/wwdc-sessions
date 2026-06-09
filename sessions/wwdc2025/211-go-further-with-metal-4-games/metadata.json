@@ -1,0 +1,110 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-211",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 211,
+  "title": "Go further with Metal 4 games",
+  "description": "Dive deeper into the latest advancements in Metal 4. We’ll introduce the new ray tracing features that help bring your most complex and visually rich workloads to Apple silicon. Discover how MetalFX can help scale workloads by upscaling renderings, interpolating frames, and denoising scenes. To get the most out of this session, we recommend first checking out “Discover Metal 4” and “Explore Metal 4 games”.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/211",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/211",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1607,
+  "hasTranscript": true,
+  "transcriptWordCount": 3722,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/211/4/03920d98-a8a0-4cc8-bc99-3fcf874e0232/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/211/4/03920d98-a8a0-4cc8-bc99-3fcf874e0232/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/211/4/03920d98-a8a0-4cc8-bc99-3fcf874e0232/downloads/wwdc2025-211_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/211/4/03920d98-a8a0-4cc8-bc99-3fcf874e0232/downloads/wwdc2025-211_hd.mp4",
+    "duration": 1607
+  },
+  "codeSnippets": [
+    {
+      "title": "Reactive Mask",
+      "language": "objectivec",
+      "startTimeSeconds": 406,
+      "code": "// Create reactive mask setup in shader\nout.reactivity = m_material_id == eRain ? (m_material_id == eSpark ? 1.0f : 0.0f) : 0.8f;\n\n// Set reactive mask before encoding upscaler on host\ntemporalUpscaler.reactiveMask = reactiveMaskTexture;"
+    },
+    {
+      "title": "MetalFX Frame Interpolator",
+      "language": "objectivec",
+      "startTimeSeconds": 515,
+      "code": "// Create and configure the interpolator descriptor\nMTLFXFrameInterpolatorDescriptor* desc = [MTLFXFrameInterpolatorDescriptor new];\ndesc.scaler = temporalScaler;\n// ...\n\n// Create the effect and configure your effect\nid<MTLFXFrameInterpolator> interpolator = [desc newFrameInterpolatorWithDevice:device];\ninterpolator.motionVectorScaleX = mvecScaleX;\ninterpolator.motionVectorScaleY = mvecScaleY;\ninterpolator.depthReversed = YES;\n\n// Set input textures\ninterpolator.colorTexture = colorTexture;\ninterpolator.prevColorTexture = prevColorTexture;\ninterpolator.depthTexture = depthTexture;\ninterpolator.motionTexture = motionTexture;\ninterpolator.outputTexture = outputTexture;"
+    },
+    {
+      "title": "Interpolator present helper class",
+      "language": "cpp",
+      "startTimeSeconds": 765,
+      "code": "#include <thread>\n#include <mutex>\n#include <sys/event.h>\n#include <mach/mach_time.h>\n\n\nclass PresentThread\n{\n    int m_timerQueue;\n    std::thread m_encodingThread, m_pacingThread;\n    std::mutex m_mutex;\n    std::condition_variable m_scheduleCV, m_threadCV, m_pacingCV;\n    float m_minDuration;\n\n    uint32_t m_width, m_height;\n    MTLPixelFormat m_pixelFormat;\n\n    const static uint32_t kNumBuffers = 3;\n    uint32_t m_bufferIndex, m_inputIndex;\n    bool m_renderingUI, m_presentsPending;\n\n    CAMetalLayer *m_metalLayer;\n    id<MTLCommandQueue> m_presentQueue;\n\n    id<MTLEvent> m_event;\n    id<MTLSharedEvent> m_paceEvent, m_paceEvent2;\n    uint64_t m_eventValue;\n    uint32_t m_paceCount;\n\n    int32_t m_numQueued, m_framesInFlight;\n\n    id<MTLTexture> m_backBuffers[kNumBuffers];\n    id<MTLTexture> m_interpolationOutputs[kNumBuffers];\n    id<MTLTexture> m_interpolationInputs[2];\n    id<MTLRenderPipelineState> m_copyPipeline;\n\n    std::function<void(id<MTLRenderCommandEncoder>)> m_uiCallback = nullptr;\n\n    void PresentThreadFunction();\n    void PacingThreadFunction();\n\n    void CopyTexture(id<MTLCommandBuffer> commandBuffer, id<MTLTexture> dest, id<MTLTexture> src, NSString *label);\n\npublic:\n\n    PresentThread(float minDuration, CAMetalLayer *metalLayer);\n    ~PresentThread()\n    {\n        std::unique_lock<std::mutex> lock(m_mutex);\n        m_numQueued = -1;\n        m_threadCV.notify_one();\n        m_encodingThread.join();\n    }\n    void StartFrame(id<MTLCommandBuffer> commandBuffer)\n    {\n        [commandBuffer encodeWaitForEvent:m_event value:m_eventValue++];\n    }\n\n    void StartUI(id<MTLCommandBuffer> commandBuffer)\n    {\n        assert(m_uiCallback == nullptr);\n        if(!m_renderingUI)\n        {\n            CopyTexture(commandBuffer, m_interpolationInputs[m_inputIndex], m_backBuffers[m_bufferIndex], @\"Copy HUDLESS\");\n            m_renderingUI = true;\n        }\n    }\n\n    void Present(id<MTLFXFrameInterpolator> frameInterpolator, id<MTLCommandQueue> queue);\n\n    id<MTLTexture> GetBackBuffer()\n    {\n        return m_backBuffers[m_bufferIndex];\n    }\n\n    void Resize(uint32_t width, uint32_t height, MTLPixelFormat pixelFormat);\n\n    void DrainPendingPresents()\n    {\n        std::unique_lock<std::mutex> lock(m_mutex);\n        while(m_presentsPending)\n            m_scheduleCV.wait(lock);\n    }\n\n    bool UICallbackEnabled() const\n    {\n        return m_uiCallback != nullptr;\n    }\n\n    void SetUICallback(std::function<void(id<MTLRenderCommandEncoder>)> callback)\n    {\n        m_uiCallback = callback;\n    }\n\n};\n\nPresentThread::PresentThread(float minDuration, CAMetalLayer *metalLayer)\n    : m_encodingThread(&PresentThread::PresentThreadFunction, this)\n    , m_pacingThread(&PresentThread::PacingThreadFunction, this)\n    , m_minDuration(minDuration)\n    , m_numQueued(0)\n    , m_metalLayer(metalLayer)\n    , m_inputIndex(0u)\n    , m_bufferIndex(0u)\n    , m_renderingUI(false)\n    , m_presentsPending(false)\n    , m_framesInFlight(0)\n    , m_paceCount(0)\n    , m_eventValue(0)\n{\n    id<MTLDevice> device = metalLayer.device;\n    m_presentQueue = [device newCommandQueue];\n    m_presentQueue.label = @\"presentQ\";\n    m_timerQueue = kqueue();\n\n    metalLayer.maximumDrawableCount = 3;\n\n    Resize(metalLayer.drawableSize.width, metalLayer.drawableSize.height, metalLayer.pixelFormat);\n\n    m_event = [device newEvent];\n    m_paceEvent = [device newSharedEvent];\n\tm_paceEvent2 = [device newSharedEvent];\n}\n\n\nvoid PresentThread::Present(id<MTLFXFrameInterpolator> frameInterpolator, id<MTLCommandQueue> queue)\n{\n    id<MTLCommandBuffer> commandBuffer = [queue commandBuffer];\n\n    if(m_renderingUI)\n    {\n        frameInterpolator.colorTexture = m_interpolationInputs[m_inputIndex];\n        frameInterpolator.prevColorTexture = m_interpolationInputs[m_inputIndex^1];\n        frameInterpolator.uiTexture = m_backBuffers[m_bufferIndex];\n    }\n    else\n    {\n        frameInterpolator.colorTexture = m_backBuffers[m_bufferIndex];\n        frameInterpolator.prevColorTexture = m_backBuffers[(m_bufferIndex + kNumBuffers - 1) % kNumBuffers];\n        frameInterpolator.uiTexture = nullptr;\n    }\n\n    frameInterpolator.outputTexture = m_interpolationOutputs[m_bufferIndex];\n\n    [frameInterpolator encodeToCommandBuffer:commandBuffer];\n    [commandBuffer addCompletedHandler:^(id<MTLCommandBuffer> _Nonnull) {\n        std::unique_lock<std::mutex> lock(m_mutex);\n        m_framesInFlight--;\n        m_scheduleCV.notify_one();\n        m_paceCount++;\n        m_pacingCV.notify_one();\n    }];\n    [commandBuffer encodeSignalEvent:m_event value:m_eventValue++];\n    [commandBuffer commit];\n\n    std::unique_lock<std::mutex> lock(m_mutex);\n    m_framesInFlight++;\n    m_numQueued++;\n    m_presentsPending = true;\n    m_threadCV.notify_one();\n    while((m_framesInFlight >= 2) || (m_numQueued >= 2))\n        m_scheduleCV.wait(lock);\n\n    m_bufferIndex = (m_bufferIndex + 1) % kNumBuffers;\n    m_inputIndex = m_inputIndex^1u;\n    m_renderingUI = false;\n}\n\nvoid PresentThread::CopyTexture(id<MTLCommandBuffer> commandBuffer, id<MTLTexture> dest, id<MTLTexture> src, NSString *label)\n{\n    MTLRenderPassDescriptor *desc = [MTLRenderPassDescriptor new];\n    desc.colorAttachments[0].texture = dest;\n    desc.colorAttachments[0].loadAction = MTLLoadActionDontCare;\n    desc.colorAttachments[0].storeAction = MTLStoreActionStore;\n    id<MTLRenderCommandEncoder> renderEncoder = [commandBuffer renderCommandEncoderWithDescriptor:desc];\n    [renderEncoder setFragmentTexture:src atIndex:0];\n    [renderEncoder setRenderPipelineState:m_copyPipeline];\n    [renderEncoder drawPrimitives:MTLPrimitiveTypeTriangle vertexStart:0 vertexCount:3];\n    if(m_uiCallback)\n        m_uiCallback(renderEncoder);\n    renderEncoder.label = label;\n    [renderEncoder endEncoding];\n}\n\n\nvoid PresentThread::PacingThreadFunction()\n{\n    NSThread *thread = [NSThread currentThread];\n    [thread setName:@\"PacingThread\"];\n    [thread setQualityOfService:NSQualityOfServiceUserInteractive];\n    [thread setThreadPriority:1.f];\n\n    mach_timebase_info_data_t info;\n    mach_timebase_info(&info);\n\n    // maximum delta (0.1ms) in machtime units\n    const uint64_t maxDeltaInNanoSecs = 100000000;\n    const uint64_t maxDelta = maxDeltaInNanoSecs * info.denom / info.numer;\n\n    uint64_t time = mach_absolute_time();\n\n    uint64_t paceEventValue = 0;\n\n    for(;;)\n    {\n        std::unique_lock<std::mutex> lock(m_mutex);\n        while(m_paceCount == 0)\n            m_pacingCV.wait(lock);\n        m_paceCount--;\n        lock.unlock();\n\n        // we get signal...\n        const uint64_t prevTime = time;\n        time = mach_absolute_time();\n\t\tm_paceEvent.signaledValue = ++paceEventValue;\n\n        const uint64_t delta = std::min(time - prevTime, maxDelta);\n        const uint64_t timeStamp = time + ((delta*31)>>6);\n\n        struct kevent64_s timerEvent, eventOut;\n        struct timespec timeout;\n        timeout.tv_nsec = maxDeltaInNanoSecs;\n        timeout.tv_sec = 0;\n        EV_SET64(&timerEvent,\n                 0,\n                 EVFILT_TIMER,\n                 EV_ADD | EV_ONESHOT | EV_ENABLE,\n                 NOTE_CRITICAL | NOTE_LEEWAY | NOTE_MACHTIME | NOTE_ABSOLUTE,\n                 timeStamp,\n                 0,\n                 0,\n                 0);\n\n        kevent64(m_timerQueue, &timerEvent, 1, &eventOut, 1, 0, &timeout);\n\n        // main screen turn on...\n        m_paceEvent2.signaledValue = ++paceEventValue;\n    }\n}\n\n\nvoid PresentThread::PresentThreadFunction()\n{\n    NSThread *thread = [NSThread currentThread];\n    [thread setName:@\"PresentThread\"];\n    [thread setQualityOfService:NSQualityOfServiceUserInteractive];\n    [thread setThreadPriority:1.f];\n\n\n    uint64_t eventValue = 0;\n    uint32_t bufferIndex = 0;\n\n    uint64_t paceEventValue = 0;\n\n    for(;;)\n    {\n        std::unique_lock<std::mutex> lock(m_mutex);\n\n        if(m_numQueued == 0)\n        {\n            m_presentsPending = false;\n            m_scheduleCV.notify_one();\n        }\n\n        while(m_numQueued == 0)\n            m_threadCV.wait(lock);\n\n        if(m_numQueued < 0)\n            break;\n        lock.unlock();\n\n        @autoreleasepool\n        {\n            id<CAMetalDrawable> drawable = [m_metalLayer nextDrawable];\n\n\t\t\tlock.lock();\n\t\t\tm_numQueued--;\n\t\t\tm_scheduleCV.notify_one();\n\t\t\tlock.unlock();\n\n            id<MTLCommandBuffer> commandBuffer = [m_presentQueue commandBuffer];\n            [commandBuffer encodeWaitForEvent:m_event value:++eventValue];\n            CopyTexture(commandBuffer, drawable.texture, m_interpolationOutputs[bufferIndex], @\"Copy Interpolated\");\n            [commandBuffer encodeSignalEvent:m_event value:++eventValue];\n\t\t\t[commandBuffer encodeWaitForEvent:m_paceEvent value:++paceEventValue];\n\n            if(m_minDuration > 0.f)\n                [commandBuffer presentDrawable:drawable afterMinimumDuration:m_minDuration];\n            else\n                [commandBuffer presentDrawable:drawable];\n            [commandBuffer commit];\n        }\n\n        @autoreleasepool\n        {\n            id<MTLCommandBuffer> commandBuffer = [m_presentQueue commandBuffer];\n            id<CAMetalDrawable> drawable = [m_metalLayer nextDrawable];\n            CopyTexture(commandBuffer, drawable.texture, m_backBuffers[bufferIndex], @\"Copy Rendered\");\n\t\t\t[commandBuffer encodeWaitForEvent:m_paceEvent2 value:++paceEventValue];\n            if(m_minDuration > 0.f)\n                [commandBuffer presentDrawable:drawable afterMinimumDuration:m_minDuration];\n            else\n                [commandBuffer presentDrawable:drawable];\n            [commandBuffer commit];\n        }\n\n        bufferIndex = (bufferIndex + 1) % kNumBuffers;\n    }\n}\n\nvoid PresentThread::Resize(uint32_t width, uint32_t height, MTLPixelFormat pixelFormat)\n{\n    if((m_width != width) || (m_height != height) || (m_pixelFormat != pixelFormat))\n    {\n        id<MTLDevice> device = m_metalLayer.device;\n\n        if(m_pixelFormat != pixelFormat)\n        {\n            id<MTLLibrary> lib = [device newDefaultLibrary];\n            MTLRenderPipelineDescriptor *pipelineDesc = [MTLRenderPipelineDescriptor new];\n            pipelineDesc.vertexFunction = [lib newFunctionWithName:@\"FSQ_VS_V4T2\"];\n            pipelineDesc.fragmentFunction = [lib newFunctionWithName:@\"FSQ_simpleCopy\"];\n            pipelineDesc.colorAttachments[0].pixelFormat = pixelFormat;\n            m_copyPipeline = [device newRenderPipelineStateWithDescriptor:pipelineDesc error:nil];\n            m_pixelFormat = pixelFormat;\n        }\n\n        DrainPendingPresents();\n\n        m_width = width;\n\t\tm_height = height;\n\n        MTLTextureDescriptor *texDesc = [MTLTextureDescriptor texture2DDescriptorWithPixelFormat:pixelFormat width:width height:height mipmapped:NO];\n\t\ttexDesc.storageMode = MTLStorageModePrivate;\n        for(uint32_t i = 0; i < kNumBuffers; i++)\n        {\n            texDesc.usage = MTLTextureUsageShaderRead|MTLTextureUsageShaderWrite|MTLTextureUsageRenderTarget;\n            m_backBuffers[i] = [device newTextureWithDescriptor:texDesc];\n            texDesc.usage = MTLTextureUsageShaderRead|MTLTextureUsageRenderTarget;\n            m_interpolationOutputs[i] = [device newTextureWithDescriptor:texDesc];\n        }\n        texDesc.usage = MTLTextureUsageShaderRead|MTLTextureUsageRenderTarget;\n        m_interpolationInputs[0] = [device newTextureWithDescriptor:texDesc];\n        m_interpolationInputs[1] = [device newTextureWithDescriptor:texDesc];\n\n    }\n}"
+    },
+    {
+      "title": "Set intersection function table offset",
+      "language": "swift",
+      "startTimeSeconds": 780,
+      "code": "// Set intersection function table offset on host-side geometry descriptors\nNSMutableArray<MTLAccelerationStructureGeometryDescriptor *> *geomDescs ...;\nfor (auto g = 0; g < geomList.size(); ++g)\n{\n    MTLAccelerationStructureGeometryDescriptor *descriptor = ...;\n    descriptor.intersectionFunctionTableOffset = g;\n    ...\n    [geomDescs addObject:descriptor];\n}"
+    },
+    {
+      "title": "Set up the intersector",
+      "language": "objectivec",
+      "startTimeSeconds": 781,
+      "code": "// Set up the intersector\nmetal::raytracing::intersector<intersection_function_buffer, instancing, triangle> trace;\ntrace.set_geometry_multiplier(2); // Number of ray types, defaults to 1\ntrace.set_base_id(1);             // Set ray type index, defaults to 0"
+    },
+    {
+      "title": "Ray trace intersection function buffers",
+      "language": "objectivec",
+      "startTimeSeconds": 782,
+      "code": "// Ray trace intersection function buffers\n\n// Set up intersection function buffer arguments\nintersection_function_buffer_arguments ifb_arguments;\nifb_arguments.intersection_function_buffer = raytracingResources.ifbBuffer;\nifb_arguments.intersection_function_buffer_size = raytracingResources.ifbBufferSize;\nifb_arguments.intersection_function_stride = raytracingResources.ifbBufferStride;\n\n// Set up the ray and finish intersecting\nmetal::raytracing::ray r = { origin, direction };\nauto result = trace.intersect(r, ads, ifb_arguments);"
+    },
+    {
+      "title": "Change of temporal scaler setup to denoised temporal scaler setup",
+      "language": "objectivec",
+      "startTimeSeconds": 782,
+      "code": "// Change of temporal scaler setup to denoised temporal scaler setup\n\nMTLFXTemporalScalerDescriptor* desc = [MTLFXTemporalScalerDescriptor new];\ndesc.colorTextureFormat = MTLPixelFormatBGRA8Unorm_sRGB;\ndesc.outputTextureFormat = MTLPixelFormatBGRA8Unorm_sRGB;\ndesc.depthTextureFormat = DepthStencilFormat;\ndesc.motionTextureFormat = MotionVectorFormat;\n\ndesc.diffuseAlbedoTextureFormat = DiffuseAlbedoFormat;\ndesc.specularAlbedoTextureFormat = SpecularAlbedoFormat;\ndesc.normalTextureFormat = NormalVectorFormat;\ndesc.roughnessTextureFormat = RoughnessFormat;\n\ndesc.inputWidth = _mainViewWidth;\ndesc.inputHeight = _mainViewHeight;\ndesc.outputWidth = _screenWidth;\ndesc.outputHeight = _screenHeight;\ntemporalScaler = [desc newTemporalDenoisedScalerWithDevice:_device];"
+    },
+    {
+      "title": "Change temporal scaler encode to denoiser temporal scaler encode",
+      "language": "objectivec",
+      "startTimeSeconds": 784,
+      "code": "// Change temporal scaler encode to denoiser temporal scaler encode\n\ntemporalScaler.colorTexture = _mainView;\ntemporalScaler.motionTexture = _motionTexture;\n\ntemporalScaler.diffuseAlbedoTexture = _diffuseAlbedoTexture;\ntemporalScaler.specularAlbedoTexture = _specularAlbedoTexture;\ntemporalScaler.normalTexture = _normalTexture;\ntemporalScaler.roughnessTexture = _roughnessTexture;\n\ntemporalScaler.depthTexture = _depthTexture;\ntemporalScaler.jitterOffsetX = _pixelJitter.x;\ntemporalScaler.jitterOffsetY = -_pixelJitter.y;\ntemporalScaler.outputTexture = _upscaledColorTarget;\ntemporalScaler.motionVectorScaleX = (float)_motionTexture.width;\ntemporalScaler.motionVectorScaleY = (float)_motionTexture.height;\n[temporalScaler encodeToCommandBuffer:commandBuffer];"
+    },
+    {
+      "title": "Creating instance descriptors for instance acceleration structure",
+      "language": "objectivec",
+      "startTimeSeconds": 964,
+      "code": "// Creating instance descriptors for instance acceleration structure\nMTLAccelerationStructureInstanceDescriptor *grassInstanceDesc, *treeInstanceDesc = . . .;\ngrassInstanceDesc.intersectionFunctionTableOffset = 0;\ntreeInstanceDesc.intersectionFunctionTableOffset  = 1;\n\n// Create buffer for instance descriptors of as many trees/grass instances the scene holds\nid <MTLBuffer> instanceDescs = . . .;\nfor (auto i = 0; i < scene.instances.size(); ++i)\n. . ."
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2025/211-go-further-with-metal-4-games/",
+  "files": {
+    "metadata": "sessions/wwdc2025/211-go-further-with-metal-4-games/metadata.json",
+    "readme": "sessions/wwdc2025/211-go-further-with-metal-4-games/README.md",
+    "transcript": "sessions/wwdc2025/211-go-further-with-metal-4-games/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/211-go-further-with-metal-4-games/transcript.json"
+  }
+}

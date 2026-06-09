@@ -1,0 +1,207 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-253",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 253,
+  "title": "Enhancing your camera experience with capture controls",
+  "description": "Learn how to customize capture controls in your camera experiences. We’ll show you how to take photos with all physical capture controls, including new AirPods support, and how to adjust settings with Camera Control.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/253",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/253",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "avfoundation",
+    "camera",
+    "capture"
+  ],
+  "topics": [
+    "Photos & Camera"
+  ],
+  "primaryTopic": "Photos & Camera",
+  "duration": 1160,
+  "hasTranscript": true,
+  "transcriptWordCount": 2833,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/253/4/61747dad-b349-43cc-83c6-782e690f2ae1/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/253/4/61747dad-b349-43cc-83c6-782e690f2ae1/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/253/4/61747dad-b349-43cc-83c6-782e690f2ae1/downloads/wwdc2025-253_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/253/4/61747dad-b349-43cc-83c6-782e690f2ae1/downloads/wwdc2025-253_hd.mp4",
+    "duration": 1160
+  },
+  "codeSnippets": [
+    {
+      "title": "Initial PhotoCapture view setup",
+      "language": "swift",
+      "startTimeSeconds": 335,
+      "code": "import SwiftUI\n\nstruct PhotoCapture: View {\n    var body: some View {\n        VStack {\n            CameraView()\n        }\n    }\n}"
+    },
+    {
+      "title": "Connecting a button to the camera model",
+      "language": "swift",
+      "startTimeSeconds": 337,
+      "code": "import SwiftUI\n\nstruct PhotoCapture: View {\n    let camera = CameraModel()\n    var body: some View {\n        VStack {\n            CameraView()\n            Button(action: camera.capturePhoto) {\n                Text(\"Take a photo\")\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Importing AVKit",
+      "language": "swift",
+      "startTimeSeconds": 370,
+      "code": "import AVKit\nimport SwiftUI\n\nstruct PhotoCapture: View {\n    let camera = CameraModel()\n    var body: some View {\n        VStack {\n            CameraView()\n            Button(action: camera.capturePhoto) {\n                Text(\"Take a photo\")\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Setting up onCameraCaptureEvent view modifier",
+      "language": "swift",
+      "startTimeSeconds": 374,
+      "code": "import AVKit\nimport SwiftUI\n\nstruct PhotoCapture: View {\n    let camera = CameraModel()\n    var body: some View {\n        VStack {\n            CameraView()\n            .onCameraCaptureEvent { event in\n                if event.phase == .ended {\n                   camera.capturePhoto()\n                }\n            }\n            Button(action: camera.capturePhoto) {\n                Text(\"Take a photo\")\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Default sound for onCameraCaptureEvent view modifier",
+      "language": "swift",
+      "startTimeSeconds": 533,
+      "code": ".onCameraCaptureEvent { event\n\tif event.phase == .ended {\n   \tcamera.capturePhoto() \n  }\n}"
+    },
+    {
+      "title": "Play photo shutter sound on AirPod stem click",
+      "language": "swift",
+      "startTimeSeconds": 553,
+      "code": ".onCameraCaptureEvent(defaultSoundDisabled: true) { event in\n    if event.phase == .ended {a\n        if event.shouldPlaySound {d\n            event.play(.cameraShutter)\n        }\n    }\n    camera.capturePhoto()\n }"
+    },
+    {
+      "title": "Add a build-in zoom slider to Camera Control",
+      "language": "swift",
+      "startTimeSeconds": 886,
+      "code": "captureSession.beginConfiguration()\n\n// configure device inputs and outputs\n\nif captureSession.supportsControls {\n    let zoomControl = AVCaptureSystemZoomSlider(device: device)\n\n    if captureSession.canAddControl(zoomControl) {\n        captureSession.addControl(zoomControl)\n    }\n}\n\ncaptureSession.commitConfiguration()"
+    },
+    {
+      "title": "Modifying the built-in zoom slider to receive updates when zoom changes",
+      "language": "swift",
+      "startTimeSeconds": 940,
+      "code": "let zoomControl = AVCaptureSystemZoomSlider(device: device) { [weak self] zoomFactor in\n    self?.updateUI(zoomFactor: zoomFactor)\n}"
+    },
+    {
+      "title": "Adding a custom reaction-effects picker alongside zoom slider",
+      "language": "swift",
+      "startTimeSeconds": 1006,
+      "code": "let reactions = device.availableReactionTypes.sorted { $0.rawValue < $1.rawValue }\nlet titles = reactions.map { localizedTitle(reaction: $0) }\nlet picker = AVCaptureIndexPicker(“Reactions\", symbolName: “face.smiling.inverted”,\n    localizedIndexTitles: titles)\n\npicker.isEnabled = device.canPerformReactionEffects\npicker.setActionQueue(sessionQueue) { index in\n    device.performEffect(for: reactions[index])\n}\n\nlet controls: [AVCaptureControl] = [zoomControl, picker]\n\nfor control in controls {\n    if captureSession.canAddControl(control) {\n        captureSession.addControl(control)\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Creating a camera experience for the Lock Screen",
+      "url": "https://developer.apple.com/documentation/LockedCameraCapture/Creating-a-camera-experience-for-the-Lock-Screen",
+      "type": "documentation",
+      "description": "Offer your app’s camera experience on locked devices from Control Center, the Lock Screen, and the Action button.",
+      "sosumiURL": "https://sosumi.ai/documentation/LockedCameraCapture/Creating-a-camera-experience-for-the-Lock-Screen",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/LockedCameraCapture/Creating-a-camera-experience-for-the-Lock-Screen.json"
+    },
+    {
+      "title": "Forum: Photos & Camera",
+      "url": "https://developer.apple.com/forums/topics/media-technologies/photos-and-camera?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/media-technologies/photos-and-camera?cid=vf-a-0010"
+    },
+    {
+      "title": "Supporting Continuity Camera in your tvOS app",
+      "url": "https://developer.apple.com/documentation/AVKit/supporting-continuity-camera-in-your-tvos-app",
+      "type": "documentation",
+      "description": "Capture high-quality photos, video, and audio in your Apple TV app by connecting",
+      "sosumiURL": "https://sosumi.ai/documentation/AVKit/supporting-continuity-camera-in-your-tvos-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVKit/supporting-continuity-camera-in-your-tvos-app.json"
+    },
+    {
+      "title": "DockKit",
+      "url": "https://developer.apple.com/documentation/DockKit",
+      "type": "documentation",
+      "description": "Interact with accessories that track subjects on camera as they move around.",
+      "sosumiURL": "https://sosumi.ai/documentation/DockKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/DockKit.json"
+    },
+    {
+      "title": "Creating a camera extension with Core Media I/O",
+      "url": "https://developer.apple.com/documentation/coremediaio/creating_a_camera_extension_with_core_media_i_o",
+      "type": "documentation",
+      "description": "Build high-performance camera drivers that are secure and simple to deploy.",
+      "sosumiURL": "https://sosumi.ai/documentation/coremediaio/creating_a_camera_extension_with_core_media_i_o",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/coremediaio/creating_a_camera_extension_with_core_media_i_o.json"
+    },
+    {
+      "title": "Accessing the camera while multitasking",
+      "url": "https://developer.apple.com/documentation/avkit/accessing_the_camera_while_multitasking",
+      "type": "documentation",
+      "description": "Operate the camera in Split View, Slide Over, or Picture in Picture mode.",
+      "sosumiURL": "https://sosumi.ai/documentation/avkit/accessing_the_camera_while_multitasking",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/avkit/accessing_the_camera_while_multitasking.json"
+    },
+    {
+      "title": "Supporting Continuity Camera in your macOS app",
+      "url": "https://developer.apple.com/documentation/AVFoundation/supporting-continuity-camera-in-your-macos-app",
+      "type": "samplecode",
+      "description": "Enable high-quality photo and video capture by using an iPhone camera as an external capture device.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/supporting-continuity-camera-in-your-macos-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/supporting-continuity-camera-in-your-macos-app.json"
+    },
+    {
+      "title": "Scanning data with the camera",
+      "url": "https://developer.apple.com/documentation/VisionKit/scanning-data-with-the-camera",
+      "type": "documentation",
+      "description": "Enable Live Text data scanning of text and codes that appear in the camera’s viewfinder.",
+      "sosumiURL": "https://sosumi.ai/documentation/VisionKit/scanning-data-with-the-camera",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/VisionKit/scanning-data-with-the-camera.json"
+    },
+    {
+      "title": "AVMultiCamPiP: Capturing from Multiple Cameras",
+      "url": "https://developer.apple.com/documentation/AVFoundation/avmulticampip-capturing-from-multiple-cameras",
+      "type": "samplecode",
+      "description": "Simultaneously record the output from the front and back cameras into a single movie file by using a multi-camera capture session.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/avmulticampip-capturing-from-multiple-cameras",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/avmulticampip-capturing-from-multiple-cameras.json"
+    },
+    {
+      "title": "Capturing photos with depth",
+      "url": "https://developer.apple.com/documentation/AVFoundation/capturing-photos-with-depth",
+      "type": "documentation",
+      "description": "Get a depth map with a photo to create effects like the system camera’s Portrait mode (on compatible devices).",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/capturing-photos-with-depth",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/capturing-photos-with-depth.json"
+    },
+    {
+      "title": "AVFoundation",
+      "url": "https://developer.apple.com/documentation/AVFoundation",
+      "type": "documentation",
+      "description": "Work with audiovisual assets, control device cameras, process audio, and configure system audio interactions.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation.json"
+    },
+    {
+      "title": "Capture setup",
+      "url": "https://developer.apple.com/documentation/AVFoundation/capture-setup",
+      "type": "documentation",
+      "description": "Configure built-in cameras and microphones, and external capture devices, for media capture.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/capture-setup",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/capture-setup.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/253-enhancing-your-camera-experience-with-capture-controls/",
+  "files": {
+    "metadata": "sessions/wwdc2025/253-enhancing-your-camera-experience-with-capture-controls/metadata.json",
+    "readme": "sessions/wwdc2025/253-enhancing-your-camera-experience-with-capture-controls/README.md",
+    "transcript": "sessions/wwdc2025/253-enhancing-your-camera-experience-with-capture-controls/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/253-enhancing-your-camera-experience-with-capture-controls/transcript.json"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "meet-with-apple-223",
+  "event": "meet-with-apple",
+  "eventName": "Meet with Apple",
+  "year": 2025,
+  "eventContentId": 223,
+  "title": "Meet Apple Spatial Audio Format and APAC",
+  "description": "Discover how Apple Spatial Audio Format (ASAF) brings together Higher Order Ambisonics and object-based audio to create spatial precision that complements Apple Immersive Video. This session also introduces APAC, a highly efficient codec designed to play back high-resolution ASAF mixes at low bitrates while maintaining immersive detail and clarity. This session was originally presented as part of the Meet with Apple activity “Create immersive media experiences for visionOS - Day 2.” Watch the full video for more insights and related sessions.",
+  "url": "https://developer.apple.com/videos/play/meet-with-apple/223",
+  "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/223",
+  "type": "Video",
+  "publishedAt": "2025-12-03T00:00:00-08:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Audio & Video",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 1090,
+  "hasTranscript": true,
+  "transcriptWordCount": 2415,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/223/1/1142e962-66e6-45bf-9e14-cd1f3ef95148/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/223/1/1142e962-66e6-45bf-9e14-cd1f3ef95148/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/223/1/1142e962-66e6-45bf-9e14-cd1f3ef95148/downloads/meet-with-apple-223_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/223/1/1142e962-66e6-45bf-9e14-cd1f3ef95148/downloads/meet-with-apple-223_hd.mp4",
+    "duration": 1090
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/meet-with-apple/223-meet-apple-spatial-audio-format-and-apac/",
+  "files": {
+    "metadata": "sessions/meet-with-apple/223-meet-apple-spatial-audio-format-and-apac/metadata.json",
+    "readme": "sessions/meet-with-apple/223-meet-apple-spatial-audio-format-and-apac/README.md",
+    "transcript": "sessions/meet-with-apple/223-meet-apple-spatial-audio-format-and-apac/transcript.md",
+    "transcriptJSON": "sessions/meet-with-apple/223-meet-apple-spatial-audio-format-and-apac/transcript.json"
+  }
+}

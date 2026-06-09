@@ -1,0 +1,185 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-230",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 230,
+  "title": "Wake up to the AlarmKit API",
+  "description": "Rrrr-rrrrr-innng! From countdown timers in your recipe app to wake-up alarms in your travel planning app, the AlarmKit framework in iOS and iPadOS 26 brings timers and alarms to the Lock Screen, Dynamic Island, and more. Learn how to create and manage your app’s alarms, customize their Live Activities, and offer custom alert actions using the App Intents framework. To get the most from this video, we recommend first watching “Meet ActivityKit” from WWDC23.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/230",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/230",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1107,
+  "hasTranscript": true,
+  "transcriptWordCount": 2679,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/230/4/d60bc47c-1b62-4fa0-a1d1-d046cf20f1de/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/230/4/d60bc47c-1b62-4fa0-a1d1-d046cf20f1de/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/230/4/d60bc47c-1b62-4fa0-a1d1-d046cf20f1de/downloads/wwdc2025-230_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/230/4/d60bc47c-1b62-4fa0-a1d1-d046cf20f1de/downloads/wwdc2025-230_hd.mp4",
+    "duration": 1107
+  },
+  "codeSnippets": [
+    {
+      "title": "Check authorization status",
+      "language": "swift",
+      "startTimeSeconds": 161,
+      "code": "// Check authorization status\n\nimport AlarmKit\n\nfunc checkAuthorization() {\n\n  switch AlarmManager.shared.authorizationState {\n    case .notDetermined:\n      // Manually request authorization\n    case .authorized:\n      // Proceed with scheduling\n    case .denied:\n      // Inform status is not authorized\n  }\n\n}"
+    },
+    {
+      "title": "Set up the countdown duration",
+      "language": "swift",
+      "startTimeSeconds": 248,
+      "code": "// Set up the countdown duration\n\nimport AlarmKit\n\nfunc scheduleAlarm() {\n\n  /* ... */\n\n  let countdownDuration = Alarm.CountdownDuration(preAlert: (10 * 60), postAlert: (5 * 60))\n\n  /* ... */\n}"
+    },
+    {
+      "title": "Set a fixed schedule",
+      "language": "swift",
+      "startTimeSeconds": 280,
+      "code": "// Set a fixed schedule\n\nimport AlarmKit\n\nfunc scheduleAlarm() {\n\n  /* ... */\n\n  let keynoteDateComponents = DateComponents(\n    calendar: .current,\n    year: 2025,\n    month: 6,\n    day: 9,\n    hour: 9,\n    minute: 41)\n  let keynoteDate = Calendar.current.date(from: keynoteDateComponents)!\n  let scheduleFixed = Alarm.Schedule.fixed(keynoteDate)\n\n  /* ... */\n\n}"
+    },
+    {
+      "title": "Set a relative schedule",
+      "language": "swift",
+      "startTimeSeconds": 313,
+      "code": "// Set a relative schedule\n\nimport AlarmKit\n\nfunc scheduleAlarm() {\n\n  /* ... */\n\n  let time = Alarm.Schedule.Relative.Time(hour: 7, minute: 0)\n  let recurrence = Alarm.Schedule.Relative.Recurrence.weekly([\n    .monday,\n    .wednesday,\n    .friday\n  ])\n\n  let schedule = Alarm.Schedule.Relative(time: time, repeats: recurrence)\n\n  /* ... */\n\n}"
+    },
+    {
+      "title": "Set up alert appearance with dismiss button",
+      "language": "swift",
+      "startTimeSeconds": 343,
+      "code": "// Set up alert appearance with dismiss button\n\nimport AlarmKit\n\nfunc scheduleAlarm() async throws {\n    typealias AlarmConfiguration = AlarmManager.AlarmConfiguration<CookingData>\n\n    let id = UUID()\n    let duration = Alarm.CountdownDuration(preAlert: (10 * 60), postAlert: (5 * 60))\n\n    let stopButton = AlarmButton(\n        text: \"Dismiss\",\n        textColor: .white,\n        systemImageName: \"stop.circle\")\n\n    let alertPresentation = AlarmPresentation.Alert(\n        title: \"Food Ready!\",\n        stopButton: stopButton)\n\n    let attributes = AlarmAttributes<CookingData>(\n        presentation: AlarmPresentation(\n            alert: alertPresentation),\n        tintColor: Color.green)\n\n    let alarmConfiguration = AlarmConfiguration(\n        countdownDuration: duration,\n        attributes: attributes)\n\n    try await AlarmManager.shared.schedule(id: id, configuration: alarmConfiguration)\n}"
+    },
+    {
+      "title": "Set up alert appearance with repeat button",
+      "language": "swift",
+      "startTimeSeconds": 437,
+      "code": "// Set up alert appearance with repeat button\n\nimport AlarmKit\n\nfunc scheduleAlarm() async throws {\n    typealias AlarmConfiguration = AlarmManager.AlarmConfiguration<CookingData>\n\n    let id = UUID()\n    let duration = Alarm.CountdownDuration(preAlert: (10 * 60), postAlert: (5 * 60))\n\n    let stopButton = AlarmButton(\n        text: \"Dismiss\",\n        textColor: .white,\n        systemImageName: \"stop.circle\")\n\n    let repeatButton = AlarmButton(\n        text: \"Repeat\",\n        textColor: .white,\n        systemImageName: \"repeat.circle\")\n\n    let alertPresentation = AlarmPresentation.Alert(\n        title: \"Food Ready!\",\n        stopButton: stopButton,\n        secondaryButton: repeatButton,\n        secondaryButtonBehavior: .countdown)\n\n    let attributes = AlarmAttributes<CookingData>(\n        presentation: AlarmPresentation(alert: alertPresentation),\n        tintColor: Color.green)\n\n    let alarmConfiguration = AlarmConfiguration(\n        countdownDuration: duration,\n        attributes: attributes)\n\n    try await AlarmManager.shared.schedule(id: id, configuration: alarmConfiguration)\n}"
+    },
+    {
+      "title": "Create a Live Activity for a countdown",
+      "language": "swift",
+      "startTimeSeconds": 555,
+      "code": "// Create a Live Activity for a countdown\n\nimport AlarmKit\nimport ActivityKit\nimport WidgetKit\n\nstruct AlarmLiveActivity: Widget {\n\n  var body: some WidgetConfiguration {\n    ActivityConfiguration(for: AlarmAttributes<CookingData>.self) { context in\n\n      switch context.state.mode {\n      case .countdown:\n        countdownView(context)\n      case .paused:\n        pausedView(context)\n      case .alert:\n        alertView(context)\n      }\n\n    } dynamicIsland: { context in \n\n      DynamicIsland {\n        DynamicIslandExpandedRegion(.leading) {\n          leadingView(context)\n        }\n        DynamicIslandExpandedRegion(.trailing) {\n          trailingView(context)\n        }\n      } compactLeading: {\n        compactLeadingView(context)\n      } compactTrailing: {\n        compactTrailingView(context)\n      } minimal: {\n        minimalView(context)\n      }\n\n    }\n  }\n}"
+    },
+    {
+      "title": "Create custom metadata for the Live Activity",
+      "language": "swift",
+      "startTimeSeconds": 626,
+      "code": "// Create custom metadata for the Live Activity\n\nimport AlarmKit\n\nstruct CookingData: AlarmMetadata {\n  let method: Method\n\n  init(method: Method) {\n    self.method = method\n  }\n\n  enum Method: String, Codable {\n    case frying = \"frying.pan\"\n    case grilling = \"flame\"\n  }\n}"
+    },
+    {
+      "title": "Provide custom metadata to the Live Activity",
+      "language": "swift",
+      "startTimeSeconds": 643,
+      "code": "// Provide custom metadata to the Live Activity\n\nimport AlarmKit\n\nfunc scheduleAlarm() async throws {\n    typealias AlarmConfiguration = AlarmManager.AlarmConfiguration<CookingData>\n\n    let id = UUID()\n    let duration = Alarm.CountdownDuration(preAlert: (10 * 60), postAlert: (5 * 60))\n    let customMetadata = CookingData(method: .frying)\n\n    let stopButton = AlarmButton(\n        text: \"Dismiss\",\n        textColor: .white,\n        systemImageName: \"stop.circle\")\n\n    let repeatButton = AlarmButton(\n        text: \"Repeat\",\n        textColor: .white,\n        systemImageName: \"repeat.circle\")\n\n    let alertPresentation = AlarmPresentation.Alert(\n        title: \"Food Ready!\",\n        stopButton: stopButton,\n        secondaryButton: repeatButton,\n        secondaryButtonBehavior: .countdown)\n\n    let attributes = AlarmAttributes<CookingData>(\n        presentation: AlarmPresentation(alert: alertPresentation),\n        metadata: customMetadata,\n        tintColor: Color.green)\n\n    let alarmConfiguration = AlarmConfiguration(\n        countdownDuration: duration,\n        attributes: attributes)\n\n    try await AlarmManager.shared.schedule(id: id, configuration: alarmConfiguration)\n}"
+    },
+    {
+      "title": "Use custom metadata in the Live Activity",
+      "language": "swift",
+      "startTimeSeconds": 661,
+      "code": "// Use custom metadata in the Live Activity\n\nimport AlarmKit\nimport ActivityKit\nimport WidgetKit\n\nstruct AlarmLiveActivity: Widget {\n\n  var body: some WidgetConfiguration { /* ... */ }\n\n  func alarmIcon(context: ActivityViewContext<AlarmAttributes<CookingData>>) -> some View {\n    let method = context.attributes.metadata?.method ?? .grilling\n    return Image(systemName: method.rawValue)\n  }\n\n}"
+    },
+    {
+      "title": "Set up the system countdown appearance",
+      "language": "swift",
+      "startTimeSeconds": 723,
+      "code": "// Set up the system countdown appearance\n\nimport AlarmKit\n\nfunc scheduleAlarm() async throws {\n  typealias AlarmConfiguration = AlarmManager.AlarmConfiguration<CookingData>\n\n  let id = UUID()\n  let duration = Alarm.CountdownDuration(preAlert: (10 * 60), postAlert: (5 * 60))\n  let customMetadata = CookingData(method: .frying)\n\n  let stopButton = AlarmButton(\n    text: \"Dismiss\",\n    textColor: .white,\n    systemImageName: \"stop.circle\")\n\n  let repeatButton = AlarmButton(\n    text: \"Repeat\",\n    textColor: .white,\n    systemImageName: \"repeat.circle\")\n\n  let alertPresentation = AlarmPresentation.Alert(\n    title: \"Food Ready!\",\n    stopButton: stopButton,\n    secondaryButton: repeatButton,\n    secondaryButtonBehavior: .countdown)\n\n  let pauseButton = AlarmButton(\n    text: \"Pause\",\n    textColor: .green,\n    systemImageName: \"pause\")\n\n  let countdownPresentation = AlarmPresentation.Countdown(\n    title: \"Cooking\",\n    pauseButton: pauseButton)\n\n  let attributes = AlarmAttributes<CookingData>(\n    presentation: AlarmPresentation(\n      alert: alertPresentation,\n      countdown: countdownPresentation),\n    metadata: customMetadata,\n    tintColor: Color.green)\n\n  let alarmConfiguration = AlarmConfiguration(\n    countdownDuration: duration,\n    attributes: attributes)\n\n  try await AlarmManager.shared.schedule(id: id, configuration: alarmConfiguration)\n\n}"
+    },
+    {
+      "title": "Set up the system paused appearance",
+      "language": "swift",
+      "startTimeSeconds": 763,
+      "code": "// Set up the system paused appearance\n\nimport AlarmKit\n\nfunc scheduleAlarm() async throws {\n  typealias AlarmConfiguration = AlarmManager.AlarmConfiguration<CookingData>\n\n  let id = UUID()\n  let duration = Alarm.CountdownDuration(preAlert: (10 * 60), postAlert: (5 * 60))\n  let customMetadata = CookingData(method: .frying)\n\n  let stopButton = AlarmButton(\n    text: \"Dismiss\",\n    textColor: .white,\n    systemImageName: \"stop.circle\")\n\n  let repeatButton = AlarmButton(\n    text: \"Repeat\",\n    textColor: .white,\n    systemImageName: \"repeat.circle\")\n\n  let alertPresentation = AlarmPresentation.Alert(\n    title: \"Food Ready!\",\n    stopButton: stopButton,\n    secondaryButton: repeatButton,\n    secondaryButtonBehavior: .countdown)\n\n  let pauseButton = AlarmButton(\n    text: \"Pause\",\n    textColor: .green,\n    systemImageName: \"pause\")\n\n  let countdownPresentation = AlarmPresentation.Countdown(\n    title: \"Cooking\",\n    pauseButton: pauseButton)\n\n  let resumeButton = AlarmButton(\n    text: \"Resume\",\n    textColor: .green,\n    systemImageName: \"play\")\n\n  let pausedPresentation = AlarmPresentation.Paused(\n    title: \"Paused\",\n    resumeButton: resumeButton)\n\n  let attributes = AlarmAttributes<CookingData>(\n    presentation: AlarmPresentation(\n      alert: alertPresentation,\n      countdown: countdownPresentation,\n      paused: pausedPresentation),\n    metadata: customMetadata,\n    tintColor: Color.green)\n\n  let alarmConfiguration = AlarmConfiguration(\n    countdownDuration: duration,\n    attributes: attributes)\n\n  try await AlarmManager.shared.schedule(id: id, configuration: alarmConfiguration)\n\n}"
+    },
+    {
+      "title": "Add a custom button",
+      "language": "swift",
+      "startTimeSeconds": 849,
+      "code": "// Add a custom button\n\nimport AlarmKit\nimport AppIntents\n\nfunc scheduleAlarm() async throws {\n  typealias AlarmConfiguration = AlarmManager.AlarmConfiguration<CookingData>\n\n  let id = UUID()\n  let duration = Alarm.CountdownDuration(preAlert: (10 * 60), postAlert: (5 * 60))\n  let customMetadata = CookingData(method: .frying)\n  let secondaryIntent = OpenInApp(alarmID: id.uuidString)\n\n  let stopButton = AlarmButton(\n    text: \"Dismiss\",\n    textColor: .white,\n    systemImageName: \"stop.circle\")\n\n  let openButton = AlarmButton(\n    text: \"Open\",\n    textColor: .white,\n    systemImageName: \"arrow.right.circle.fill\")\n\n  let alertPresentation = AlarmPresentation.Alert(\n    title: \"Food Ready!\",\n    stopButton: stopButton,\n    secondaryButton: openButton,\n    secondaryButtonBehavior: .custom)\n\n  let pauseButton = AlarmButton(\n    text: \"Pause\",\n    textColor: .green,\n    systemImageName: \"pause\")\n\n  let countdownPresentation = AlarmPresentation.Countdown(\n    title: \"Cooking\",\n    pauseButton: pauseButton)\n\n  let resumeButton = AlarmButton(\n    text: \"Resume\",\n    textColor: .green,\n    systemImageName: \"play\")\n\n  let pausedPresentation = AlarmPresentation.Paused(\n    title: \"Paused\",\n    resumeButton: resumeButton)\n\n  let attributes = AlarmAttributes<CookingData>(\n    presentation: AlarmPresentation(\n      alert: alertPresentation,\n      countdown: countdownPresentation,\n      paused: pausedPresentation),\n    metadata: customMetadata,\n    tintColor: Color.green)\n\n  let alarmConfiguration = AlarmConfiguration(\n    countdownDuration: duration,\n    attributes: attributes,\n    secondaryIntent: secondaryIntent)\n\n  try await AlarmManager.shared.schedule(id: id, configuration: alarmConfiguration)\n\n}\n\npublic struct OpenInApp: LiveActivityIntent {\n    public func perform() async throws -> some IntentResult { .result() }\n\n    public static var title: LocalizedStringResource = \"Open App\"\n    public static var description = IntentDescription(\"Opens the Sample app\")\n    public static var openAppWhenRun = true\n\n    @Parameter(title: \"alarmID\")\n    public var alarmID: String\n\n    public init(alarmID: String) {\n        self.alarmID = alarmID\n    }\n\n    public init() {\n        self.alarmID = \"\"\n    }\n}"
+    },
+    {
+      "title": "Add a custom sound",
+      "language": "swift",
+      "startTimeSeconds": 970,
+      "code": "// Add a custom sound\n\nimport AlarmKit\nimport AppIntents\n\nfunc scheduleAlarm() async throws {\n  typealias AlarmConfiguration = AlarmManager.AlarmConfiguration<CookingData>\n\n  let id = UUID()\n  let duration = Alarm.CountdownDuration(preAlert: (10 * 60), postAlert: (5 * 60))\n  let customMetadata = CookingData(method: .frying)\n  let secondaryIntent = OpenInApp(alarmID: id.uuidString)\n\n  let stopButton = AlarmButton(\n    text: \"Dismiss\",\n    textColor: .white,\n    systemImageName: \"stop.circle\")\n\n  let openButton = AlarmButton(\n    text: \"Open\",\n    textColor: .white,\n    systemImageName: \"arrow.right.circle.fill\")\n\n  let alertPresentation = AlarmPresentation.Alert(\n    title: \"Food Ready!\",\n    stopButton: stopButton,\n    secondaryButton: openButton,\n    secondaryButtonBehavior: .custom)\n\n  let pauseButton = AlarmButton(\n    text: \"Pause\",\n    textColor: .green,\n    systemImageName: \"pause\")\n\n  let countdownPresentation = AlarmPresentation.Countdown(\n    title: \"Cooking\",\n    pauseButton: pauseButton)\n\n  let resumeButton = AlarmButton(\n    text: \"Resume\",\n    textColor: .green,\n    systemImageName: \"play\")\n\n  let pausedPresentation = AlarmPresentation.Paused(\n    title: \"Paused\",\n    resumeButton: resumeButton)\n\n  let attributes = AlarmAttributes<CookingData>(\n    presentation: AlarmPresentation(\n      alert: alertPresentation,\n      countdown: countdownPresentation,\n      paused: pausedPresentation),\n    metadata: customMetadata,\n    tintColor: Color.green)\n\n  let sound = AlertConfiguration.AlertSound.named(\"Chime\")\n\n  let alarmConfiguration = AlarmConfiguration(\n    countdownDuration: duration,\n    attributes: attributes,\n    secondaryIntent: secondaryIntent,\n    sound: sound)\n\n  try await AlarmManager.shared.schedule(id: id, configuration: alarmConfiguration)\n\n}\n\npublic struct OpenInApp: LiveActivityIntent {\n    public func perform() async throws -> some IntentResult { .result() }\n\n    public static var title: LocalizedStringResource = \"Open App\"\n    public static var description = IntentDescription(\"Opens the Sample app\")\n    public static var openAppWhenRun = true\n\n    @Parameter(title: \"alarmID\")\n    public var alarmID: String\n\n    public init(alarmID: String) {\n        self.alarmID = alarmID\n    }\n\n    public init() {\n        self.alarmID = \"\"\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Scheduling an alarm with AlarmKit",
+      "url": "https://developer.apple.com/documentation/AlarmKit/scheduling-an-alarm-with-alarmkit",
+      "type": "samplecode",
+      "description": "Create prominent alerts at specified dates for your iOS app.",
+      "sosumiURL": "https://sosumi.ai/documentation/AlarmKit/scheduling-an-alarm-with-alarmkit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AlarmKit/scheduling-an-alarm-with-alarmkit.json"
+    },
+    {
+      "title": "AlarmKit",
+      "url": "https://developer.apple.com/documentation/AlarmKit",
+      "type": "documentation",
+      "description": "Schedule prominent alarms and countdowns to help people manage their time.",
+      "sosumiURL": "https://sosumi.ai/documentation/AlarmKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AlarmKit.json"
+    },
+    {
+      "title": "Creating your first app intent",
+      "url": "https://developer.apple.com/documentation/AppIntents/Creating-your-first-app-intent",
+      "type": "documentation",
+      "description": "Create your first app intent that makes your app available in system experiences like Spotlight or the Shortcuts app.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents/Creating-your-first-app-intent",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents/Creating-your-first-app-intent.json"
+    },
+    {
+      "title": "Human Interface Guidelines: Live Activities",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/live-activities",
+      "type": "documentation",
+      "description": "A Live Activity displays up-to-date information from your app, allowing people to view the progress of events or tasks at a glance.",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/live-activities"
+    },
+    {
+      "title": "ActivityKit",
+      "url": "https://developer.apple.com/documentation/ActivityKit",
+      "type": "documentation",
+      "description": "Share live updates from your app as Live Activities on iPhone, iPad, Apple Watch, and the Mac.",
+      "sosumiURL": "https://sosumi.ai/documentation/ActivityKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ActivityKit.json"
+    },
+    {
+      "title": "App Intents",
+      "url": "https://developer.apple.com/documentation/AppIntents",
+      "type": "documentation",
+      "description": "Make content and actions discoverable by Apple Intelligence and support system experiences like Siri, Spotlight, Shortcuts, and widgets.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/230-wake-up-to-the-alarmkit-api/",
+  "files": {
+    "metadata": "sessions/wwdc2025/230-wake-up-to-the-alarmkit-api/metadata.json",
+    "readme": "sessions/wwdc2025/230-wake-up-to-the-alarmkit-api/README.md",
+    "transcript": "sessions/wwdc2025/230-wake-up-to-the-alarmkit-api/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/230-wake-up-to-the-alarmkit-api/transcript.json"
+  }
+}

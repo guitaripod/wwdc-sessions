@@ -1,0 +1,73 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2015-206",
+  "event": "wwdc2015",
+  "eventName": "WWDC15",
+  "year": 2015,
+  "eventContentId": 206,
+  "title": "What's New in MapKit",
+  "description": "See what's new in MapKit. Learn about improvements to existing APIs and new ways of incorporating transit ETAs and Flyover map views in your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2015/206",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2015/206",
+  "type": "Video",
+  "publishedAt": "2015-06-09T16:30:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "annotation",
+    "current location",
+    "direction",
+    "flyover",
+    "geo",
+    "hybrid",
+    "imagery",
+    "location",
+    "map",
+    "mapkit",
+    "mapview",
+    "mk",
+    "overlay",
+    "pin",
+    "route",
+    "satellite",
+    "search",
+    "standard",
+    "tile",
+    "transit"
+  ],
+  "topics": [
+    "Maps & Location"
+  ],
+  "primaryTopic": "Maps & Location",
+  "duration": 2072,
+  "hasTranscript": true,
+  "transcriptWordCount": 5357,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2015/206v5ce46maax7s/206/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2015/206v5ce46maax7s/206/206_sd_whats_new_in_mapkit.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2015/206v5ce46maax7s/206/206_hd_whats_new_in_mapkit.mp4",
+    "duration": 2072
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2015/206-what-s-new-in-mapkit/",
+  "files": {
+    "metadata": "sessions/wwdc2015/206-what-s-new-in-mapkit/metadata.json",
+    "readme": "sessions/wwdc2015/206-what-s-new-in-mapkit/README.md",
+    "transcript": "sessions/wwdc2015/206-what-s-new-in-mapkit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2015/206-what-s-new-in-mapkit/transcript.json"
+  }
+}

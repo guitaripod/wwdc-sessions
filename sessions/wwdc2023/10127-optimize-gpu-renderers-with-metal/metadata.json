@@ -1,0 +1,181 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10127",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10127,
+  "title": "Optimize GPU renderers with Metal",
+  "description": "Discover how to optimize your GPU renderer using the latest Metal features and best practices. We’ll show you how to use function specialization and parallel shader compilation to maintain responsive authoring workflows and the fastest rendering speeds, and help you tune your compute shaders for optimal performance.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10127",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10127",
+  "type": "Video",
+  "publishedAt": "2023-06-08T08:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1017,
+  "hasTranscript": true,
+  "transcriptWordCount": 2015,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10127/4/3C0D2C8A-18E1-4D60-8A77-71F7166622AE/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10127/4/3C0D2C8A-18E1-4D60-8A77-71F7166622AE/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10127/4/3C0D2C8A-18E1-4D60-8A77-71F7166622AE/downloads/wwdc2023-10127_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10127/4/3C0D2C8A-18E1-4D60-8A77-71F7166622AE/downloads/wwdc2023-10127_hd.mp4",
+    "duration": 1017
+  },
+  "codeSnippets": [
+    {
+      "title": "Reduce Branch Performance Cost",
+      "language": "cpp",
+      "startTimeSeconds": 225,
+      "code": "// Reduce branch performance cost\nfragment FragOut frag_material_main(device Material &material [[buffer(0)]]) {\n    if(material.is_glossy) {\n        material_glossy(material);\n    }\n\n    if(material.has_shadows) {\n        light_shadows(material);\n    }\n\n    if(material.has_reflections) {\n        trace_reflections(material);\n    }\n\n    if(material.is_volumetric) {\n        output_volume_parameters(material);\n    }\n\n    return output_material();\n}"
+    },
+    {
+      "title": "Function constant declaration per material feature",
+      "language": "cpp",
+      "startTimeSeconds": 235,
+      "code": "constant bool IsGlossy        [[function_constant(0)]];\nconstant bool HasShadows      [[function_constant(1)]];\nconstant bool HasReflections  [[function_constant(2)]];\nconstant bool IsVolumetric    [[function_constant(3)]];"
+    },
+    {
+      "title": "Dynamic branch for the feature codepath is replaced with function constants",
+      "language": "cpp",
+      "startTimeSeconds": 239,
+      "code": "if(material.has_reflections) {\n  trace_reflections(material);\n}"
+    },
+    {
+      "title": "Dynamic branch for the feature codepath is replaced with function constants",
+      "language": "cpp",
+      "startTimeSeconds": 245,
+      "code": "/* replaced with function constants*/\n\nif(HasReflections) {\n\ttrace_reflections(material);\n}"
+    },
+    {
+      "title": "Reduce branch performance cost with function constants",
+      "language": "cpp",
+      "startTimeSeconds": 253,
+      "code": "constant bool IsGlossy        [[function_constant(0)]];\nconstant bool HasShadows      [[function_constant(1)]];\nconstant bool HasReflections  [[function_constant(2)]];\nconstant bool IsVolumetric    [[function_constant(3)]];\n\n// Reduce branch performance cost\nfragment FragOut frag_material_main(device Material &material [[buffer(0)]]) {\n    if(IsGlossy) {\n        material_glossy(material);\n    }\n\n    if(HasShadows) {\n        light_shadows(material);\n    }\n\n    if(HasReflections) {\n        trace_reflections(material);\n    }\n\n    if(IsVolumetric) {\n        output_volume_parameters(material);\n    }\n\n    return output_material();\n}"
+    },
+    {
+      "title": "Function constants for material parameters",
+      "language": "cpp",
+      "startTimeSeconds": 298,
+      "code": "// Function constants for material parameters\n\nconstant float4 MaterialColor  [[function_constant(0)]];\nconstant float4 MaterialWeight [[function_constant(1)]];\nconstant float4 SheenColor     [[function_constant(2)]];\nconstant float4 SheenFactor    [[function_constant(3)]];\n\nstruct Material {\n    float4 blend_factor;\n};\n\nvoid material_glossy(const constant Material& material) {\n    float4 light, sheen;\n    light = glossy_eval(MaterialColor, MaterialWeight);\n    sheen = sheen_eval(SheenColor, SheenFactor);\n    glossy_output_write(light, sheen, material.blend_factor);\n}"
+    },
+    {
+      "title": "MaterialParameter structure for constant parameters",
+      "language": "objectivec",
+      "startTimeSeconds": 321,
+      "code": "struct MaterialParameter {\n    NSString* name;\n    MTLDataType type;\n    void* value_ptr;\n};\n\nMaterialParameter is_glossy{@\"IsGlossy\",      MTLDataTypeBool,   &material.is_glossy};\nMaterialParameter mat_color{@\"MaterialColor\", MTLDataTypeFloat4, &material.color};"
+    },
+    {
+      "title": "Declare and populate MTLFunctionConstantValues",
+      "language": "objectivec",
+      "startTimeSeconds": 351,
+      "code": "// Declare and populate MTLFunctionConstantValues\nMTLFunctionConstantValues* values = [MTLFunctionConstantValues new];\n\nfor(const MaterialParameter& parameter : shader_parameters) {\n    [values setConstantValue: parameter.value_ptr\n                        type: parameter.type\n                    withName: parameter.name];\n}"
+    },
+    {
+      "title": "Create pipeline render state object with function constant declarations",
+      "language": "objectivec",
+      "startTimeSeconds": 351,
+      "code": "struct Material {\n  bool is_glossy;\n  float color[4];\n};\n\nstruct MaterialParameter {\n    NSString* name;\n    MTLDataType type;\n    void* value_ptr;\n};\n\n// Declare material\nMaterial material = {true, {1.0f,0.0f,0.0f,1.0f}};\n\n// Declare function constant paramters\nMaterialParameter is_glossy{@\"IsGlossy\",      MTLDataTypeBool,   &material.is_glossy};\nMaterialParameter mat_color{@\"MaterialColor\", MTLDataTypeFloat4, &material.color};\n\nMaterialParameter shader_parameters[2] = {is_glossy, mat_color};\n\n// Declare and populate MTLFunctionConstantValues\nMTLFunctionConstantValues* values = [MTLFunctionConstantValues new];\n\nfor(const MaterialParameter& parameter : shader_parameters) {\n    [values setConstantValue: parameter.value_ptr\n                        type: parameter.type\n                    withName: parameter.name];\n}\n\n// Create MTLRenderPipelineDescriptor and create shader function from MTLLibrary\nMTLRenderPipelineDescriptor *dsc = [MTLRenderPipelineDescriptor new];\nNSError* error = nil;\n\ndsc.fragmentFunction = [shader_library newFunctionWithName:@\"frag_material_main\"\n                                            constantValues:values\n                                                     error:&error];\n\n// Create pipeline render state object\nid<MTLRenderPipelineState> pso = [device newRenderPipelineStateWithDescriptor:dsc\n                                                                        error:&error];"
+    },
+    {
+      "title": "Create MTLRenderPipelineDescriptor and create shader function from MTLLibrary",
+      "language": "objectivec",
+      "startTimeSeconds": 374,
+      "code": "// Create MTLRenderPipelineDescriptor and create shader function from MTLLibrary\nMTLRenderPipelineDescriptor *dsc = [MTLRenderPipelineDescriptor new];\nNSError* error = nil;\n\ndsc.fragmentFunction = [shader_library newFunctionWithName:@\"frag_material_main\"\n                                            constantValues:values\n                                                     error:&error];"
+    },
+    {
+      "title": "Shader library creation",
+      "language": "objectivec",
+      "startTimeSeconds": 487,
+      "code": "- (void)newLibraryWithSource:(NSString *)source \n                     options:(MTLCompileOptions *)options\n           completionHandler:(MTLNewLibraryCompletionHandler)completionHandler;"
+    },
+    {
+      "title": "Render pipeline state creation",
+      "language": "objectivec",
+      "startTimeSeconds": 489,
+      "code": "- (void)newRenderPipelineStateWithDescriptor:(MTLRenderPipelineDescriptor *)descriptor\n              completionHandler:(MTLNewRenderPipelineStateCompletionHandler)completionHandler;"
+    },
+    {
+      "title": "Use as many threads as possible for concurrent compilation",
+      "language": "objectivec",
+      "startTimeSeconds": 540,
+      "code": "@property (atomic) BOOL shouldMaximizeConcurrentCompilation;"
+    },
+    {
+      "title": "Assign symbol visibility to default or hidden",
+      "language": "cpp",
+      "startTimeSeconds": 658,
+      "code": "__attribute__((visibility(“default\")))\n             void matrix_mul();\n\n__attribute__((visibility(“hidden\")))\n             void matrix_mul_internal();"
+    },
+    {
+      "title": "Verify device support",
+      "language": "objectivec",
+      "startTimeSeconds": 679,
+      "code": "//For render pipelines\n@property (readonly) BOOL supportsRenderDynamicLibraries;\n\n//For compute pipelines\n@property(readonly) BOOL supportsDynamicLibraries;"
+    },
+    {
+      "title": "Compile dynamic libraries",
+      "language": "objectivec",
+      "startTimeSeconds": 706,
+      "code": "//create a dynamic library from an existing Metal library\n\n- (id<MTLDynamicLibrary>) newDynamicLibrary:(id<MTLLibrary>) library \n                                      error:(NSError **) error\n\n//create from the URL\n- (id<MTLDynamicLibrary>) newDynamicLibraryWithURL:(NSURL *) url\n                                             error:(NSError **) error"
+    },
+    {
+      "title": "Dynamically link shaders",
+      "language": "objectivec",
+      "startTimeSeconds": 738,
+      "code": "//Pipeline state\nMTLRenderPipelineDescriptor* dsc = [MTLRenderPipelineDescriptor new];\ndsc.vertexPreloadedLibraries   = @[dylib_Math, dylib_Shadows];\ndsc.fragmentPreloadedLibraries = @[dylib_Math, dylib_Shadows];\n\n//Compile options\nMTLCompileOptions* options = [MTLCompileOptions new];\noptions.libraries = @[dylib_Math, dylib_Shadows];\n[device newLibraryWithSource:programString\n                     options:options\n                       error:&error];"
+    },
+    {
+      "title": "Specify desired max total threads per threadgroup",
+      "language": "objectivec",
+      "startTimeSeconds": 825,
+      "code": "@interface MTLComputePipelineDescriptor : NSObject\n@property (readwrite, nonatomic) NSUInteger maxTotalThreadsPerThreadgroup;"
+    },
+    {
+      "title": "Match desired max total threads per threadgroup",
+      "language": "objectivec",
+      "startTimeSeconds": 852,
+      "code": "@interface MTLCompileOptions : NSObject\n@property (readwrite, nonatomic) NSUInteger maxTotalThreadsPerThreadgroup;"
+    },
+    {
+      "title": "Tune Metal dynamic libraries",
+      "language": "objectivec",
+      "startTimeSeconds": 865,
+      "code": "MTLCompileOptions* options = [MTLCompileOptions new];\noptions.libraryType = MTLLibraryTypeDynamic;\noptions.installName = @\"executable_path/dylib_Math.metallib\";\nif(@available(macOS 13.3, *)) {\n    options.maxTotalThreadsPerThreadgroup = 768;\n}\n\nid<MTLLibrary> lib = [device newLibraryWithSource:programString\n                                          options:options\n                                            error:&error];\n\nid<MTLDynamicLibrary> dynamicLib = [device newDynamicLibrary:lib\n                                                       error:&error];"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10127-optimize-gpu-renderers-with-metal/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10127-optimize-gpu-renderers-with-metal/metadata.json",
+    "readme": "sessions/wwdc2023/10127-optimize-gpu-renderers-with-metal/README.md",
+    "transcript": "sessions/wwdc2023/10127-optimize-gpu-renderers-with-metal/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10127-optimize-gpu-renderers-with-metal/transcript.json"
+  }
+}

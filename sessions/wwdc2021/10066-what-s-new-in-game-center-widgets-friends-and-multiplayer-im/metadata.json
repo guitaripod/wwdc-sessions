@@ -1,0 +1,118 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10066",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10066,
+  "title": "What’s new in Game Center: Widgets, friends, and multiplayer improvements",
+  "description": "Power up your online gaming experience with GameKit and adopt features like multiplayer, leaderboards, and achievements in your game. We’ll take you through the latest improvements to Game Center, including player matching and multiplayer APIs, and explore how you can boost discovery of your game.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10066",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10066",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services",
+    "App Store, Distribution & Marketing",
+    "Essentials",
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1329,
+  "hasTranscript": true,
+  "transcriptWordCount": 3550,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10066/4/41B04DA6-0AE3-41B6-9CE1-CF48AAAF9439/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10066/4/41B04DA6-0AE3-41B6-9CE1-CF48AAAF9439/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10066/4/41B04DA6-0AE3-41B6-9CE1-CF48AAAF9439/downloads/wwdc2021-10066_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10066/4/41B04DA6-0AE3-41B6-9CE1-CF48AAAF9439/downloads/wwdc2021-10066_hd.mp4",
+    "duration": 1329
+  },
+  "codeSnippets": [
+    {
+      "title": "Friending API",
+      "language": "swift",
+      "startTimeSeconds": 503,
+      "code": "// Call Friend Requests API to present friend request view from a view controller, when player click on Add Friends Button in your game\nlet error = GKLocalPlayer.local\n.presentFriendRequestCreatorFromViewController(using: navigationController)\n\nif error != nil {\n    print(\"Fail to send friend request with error: \\(error!.localizedDescription).\")\n}"
+    },
+    {
+      "title": "loadFriendsAuthorizationStatus",
+      "language": "swift",
+      "startTimeSeconds": 707,
+      "code": "// Checking authorization\nGKLocalPlayer.local.loadFriendsAuthorizationStatus { (authorizationStatus, error) in\n    guard error == nil else {\n       // Error handling\n       print(“Fail to load friends list with error: \\(error!.localizedDescription).”)\n       return\n    }\n\n    // Handle GKFriendsAuthorizationStatus\n    switch authorizationStatus {\n      case .notDetermined:\n         // Player have not made a choice on friends list sharing\n      case .denied:\n         // Player have denied your request to access their friends list\n      case .restricted:\n         // You should delete collected player data from your end\n      case .authorized:\n         // Player have authorized your request to access their friends list\n    }\n}"
+    },
+    {
+      "title": "loadFriends",
+      "language": "swift",
+      "startTimeSeconds": 773,
+      "code": "func loadFriendsOnProgressionMap() async {\n    do {\n        let friends = try await GKLocalPlayer.local.loadFriends()\n        if friends.count > 0 {\n            let leaderboards = try await GKLeaderboard.loadLeaderboards(IDs: [“progress\"])\n            if let leaderboard = leaderboards.first {\n                let entries = try await leaderboard.loadEntries(for: friends, timeScope: .allTime)\n               for entry in entries.1 {\n                    let avatar = try await entry.player.loadPhoto(for: .normal)\n                    let name = entry.player.displayName\n                    let friendLevel = entry.score\n                    // Display player on progression map\n                }\n            }\n        }\n    } catch {\n        print(\"Error: \\(error.localizedDescription).\")\n    }\n}"
+    },
+    {
+      "title": "Enable Fast Start Mode",
+      "language": "swift",
+      "startTimeSeconds": 1217,
+      "code": "// Set canStartWithMinimumPlayers to true to enable Fast Start mode\nlet request = GKMatchRequest()\nrequest.minPlayers = 2\nrequest.maxPlayers = 6\nrequest.playerGroup = 2021\n\nlet vc = GKMatchmakerViewController(matchRequest: request)\nvc.canStartWithMinimumPlayers = true\nvc.delegate = self\nself.present(vc, animated: true, completion: nil)"
+    },
+    {
+      "title": "Handle Players Who Join The Game",
+      "language": "swift",
+      "startTimeSeconds": 1239,
+      "code": "// Set the GKMatch delegate and present your game scene when didFindMatch is called\nfunc matchmakerViewController(_ viewController: GKMatchmakerViewController, didFind match: GKMatch) {\n    viewController.dismiss(animated: true, completion: nil)\n    let gameVC = GameSceneViewController()\n    gameVC.match = match\n    match.delegate = gameVC\n    self.present(gameVC, animated: true, completion: nil)\n}\n\n// Add players who join later by implementing didChangeState delegate\nfunc match(_ match: GKMatch, player: GKPlayer, didChange state: GKPlayerConnectionState) {\n    if state == .connected {\n        self.addPlayer(player)\n    }\n}"
+    },
+    {
+      "title": "Present GKMatchmakerViewController on The Invitee Side",
+      "language": "swift",
+      "startTimeSeconds": 1254,
+      "code": "// On the invitee side, present GKMatchmakerViewController with the invite\nfunc player(_ player: GKPlayer, didAccept invite: GKInvite) {\n    if let vc = GKMatchmakerViewController(invite: invite) {\n        vc.matchmakerDelegate = self\n        self.present(vc, animated: true, completion: nil)\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Finding multiple players for a game",
+      "url": "https://developer.apple.com/documentation/GameKit/finding-multiple-players-for-a-game",
+      "type": "documentation",
+      "description": "Discover and invite other players to participate in a real-time game.",
+      "sosumiURL": "https://sosumi.ai/documentation/GameKit/finding-multiple-players-for-a-game",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/GameKit/finding-multiple-players-for-a-game.json"
+    },
+    {
+      "title": "GKLocalPlayer",
+      "url": "https://developer.apple.com/documentation/GameKit/GKLocalPlayer",
+      "type": "documentation",
+      "description": "The local player who signs in to Game Center on the device running the game.",
+      "sosumiURL": "https://sosumi.ai/documentation/GameKit/GKLocalPlayer",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/GameKit/GKLocalPlayer.json"
+    },
+    {
+      "title": "Human Interface Guidelines: Game Center",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/game-center",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/game-center"
+    }
+  ],
+  "path": "sessions/wwdc2021/10066-what-s-new-in-game-center-widgets-friends-and-multiplayer-im/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10066-what-s-new-in-game-center-widgets-friends-and-multiplayer-im/metadata.json",
+    "readme": "sessions/wwdc2021/10066-what-s-new-in-game-center-widgets-friends-and-multiplayer-im/README.md",
+    "transcript": "sessions/wwdc2021/10066-what-s-new-in-game-center-widgets-friends-and-multiplayer-im/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10066-what-s-new-in-game-center-widgets-friends-and-multiplayer-im/transcript.json"
+  }
+}

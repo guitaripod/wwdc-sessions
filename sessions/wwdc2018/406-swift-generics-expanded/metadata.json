@@ -1,0 +1,75 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2018-406",
+  "event": "wwdc2018",
+  "eventName": "WWDC18",
+  "year": 2018,
+  "eventContentId": 406,
+  "title": "Swift Generics (Expanded)",
+  "description": "Generics are one of the most powerful features of Swift, enabling you to write flexible, reusable components while maintaining static type information. Learn about the design of Swift's generics, including how to generalize protocols, leverage protocol inheritance to express the varying capabilities of related types, build composable generic components with conditional conformances, and reason about the interaction between class inheritance and generics. This expanded version of the WWDC 2018 session includes a brand-new discussion of recursive constraints.",
+  "url": "https://developer.apple.com/videos/play/wwdc2018/406",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2018/406",
+  "type": "Video",
+  "publishedAt": "2018-10-21T15:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "algorithms",
+    "buffer",
+    "classes",
+    "codable",
+    "collections",
+    "conformance",
+    "constraints",
+    "countablerange",
+    "customization points",
+    "decodable",
+    "encodable",
+    "extensions",
+    "mutation",
+    "parametric",
+    "polymorphism",
+    "protocol",
+    "random",
+    "range",
+    "shuffled",
+    "subtype"
+  ],
+  "topics": [
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 3415,
+  "hasTranscript": true,
+  "transcriptWordCount": 9110,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/406z8wpyv2jdenet9rc/406/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/406z8wpyv2jdenet9rc/406/406_sd_swift_generics.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/406z8wpyv2jdenet9rc/406/406_hd_swift_generics.mp4",
+    "duration": 3415
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2018/406-swift-generics-expanded/",
+  "files": {
+    "metadata": "sessions/wwdc2018/406-swift-generics-expanded/metadata.json",
+    "readme": "sessions/wwdc2018/406-swift-generics-expanded/README.md",
+    "transcript": "sessions/wwdc2018/406-swift-generics-expanded/transcript.md",
+    "transcriptJSON": "sessions/wwdc2018/406-swift-generics-expanded/transcript.json"
+  }
+}

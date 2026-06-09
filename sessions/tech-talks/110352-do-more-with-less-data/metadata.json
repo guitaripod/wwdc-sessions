@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-110352",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2022,
+  "eventContentId": 110352,
+  "title": "Do more with less data",
+  "description": "Great apps do more for people while collecting less data. Learn how three simple tips from the App Review team can help you build great experiences while minimizing data collection.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/110352",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110352",
+  "type": "Video",
+  "publishedAt": "2022-12-01T10:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Privacy & Security",
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 580,
+  "hasTranscript": true,
+  "transcriptWordCount": 1476,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/110352/4/EF2E23A4-4662-4C5F-928A-C6F7FDD478C1/cmaf.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/110352/4/EF2E23A4-4662-4C5F-928A-C6F7FDD478C1/downloads/tech-talks-110352_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/110352/4/EF2E23A4-4662-4C5F-928A-C6F7FDD478C1/downloads/tech-talks-110352_hd.mp4",
+    "duration": 580
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "App Store Review Guidelines: Data Use and Sharing",
+      "url": "https://developer.apple.com/app-store/review/guidelines/#data-use-and-sharing",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/app-store/review/guidelines/#data-use-and-sharing"
+    },
+    {
+      "title": "Data Collection and Storage - App Store Review Guidelines",
+      "url": "https://developer.apple.com/app-store/review/guidelines/#data-collection-and-storage",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/app-store/review/guidelines/#data-collection-and-storage"
+    },
+    {
+      "title": "Explore the Human Interface Guidelines for privacy",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/privacy",
+      "type": "documentation",
+      "description": "Explore the Human Interface Guidelines for privacy.",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/privacy"
+    }
+  ],
+  "path": "sessions/tech-talks/110352-do-more-with-less-data/",
+  "files": {
+    "metadata": "sessions/tech-talks/110352-do-more-with-less-data/metadata.json",
+    "readme": "sessions/tech-talks/110352-do-more-with-less-data/README.md",
+    "transcript": "sessions/tech-talks/110352-do-more-with-less-data/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/110352-do-more-with-less-data/transcript.json"
+  }
+}

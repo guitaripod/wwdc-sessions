@@ -1,0 +1,140 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10095",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10095,
+  "title": "Enhance collaboration experiences with Messages",
+  "description": "Discover how you can help improve communication and collaboration in your app with Collaboration in Messages. Learn how to tie a document to Messages conversations for simple sharing and discussion. Explore how you can keep everyone in the conversation up to date on the latest activity in the document. And find out how you can add customizable UI in your app to manage collaboration details and connect documents to Messages conversations and FaceTime calls. To learn more about the SharedWithYou framework, we recommend watching \"Add Shared with You to your app.” For more information on adding collaboration APIs to apps that have custom collaboration infrastructure, check out \"Integrate your custom collaboration app with Messages.”",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10095",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10095",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services",
+    "SwiftUI & UI Frameworks",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 1447,
+  "hasTranscript": true,
+  "transcriptWordCount": 2762,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10095/5/DB09B90A-7453-4E3F-90E9-4AB7322DD253/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10095/5/DB09B90A-7453-4E3F-90E9-4AB7322DD253/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10095/5/DB09B90A-7453-4E3F-90E9-4AB7322DD253/downloads/wwdc2022-10095_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10095/5/DB09B90A-7453-4E3F-90E9-4AB7322DD253/downloads/wwdc2022-10095_hd.mp4",
+    "duration": 1447
+  },
+  "codeSnippets": [
+    {
+      "title": "Create a CloudKit collaboration item provider",
+      "language": "swift",
+      "startTimeSeconds": 248,
+      "code": "// CloudKit collaboration object\n\n// Starting collaboration\nlet itemProvider = NSItemProvider()\nitemProvider.registerCKShare(container: container, \n                             allowedSharingOptions: CKAllowedSharingOptions.standard, \n                             preparationHandler: {\n    // Create your share and save to server, or throw error\n    return savedShare\n})\n\n// Inviting to existing collaboration\nlet itemProvider = NSItemProvider()\nitemProvider.registerCKShare(share, \n                             container: container, \n                             allowedSharingOptions: CKAllowedSharingOptions.standard)"
+    },
+    {
+      "title": "Set up Share Sheet on iOS and Mac Catalyst",
+      "language": "swift",
+      "startTimeSeconds": 455,
+      "code": "// Setting up Share Sheet - iOS and Mac Catalyst\n\nlet activityViewController = UIActivityViewController(activityItems: [collaborationObject], applicationActivities: nil)\n\npresentingViewController.present(activityViewController, animated: true)"
+    },
+    {
+      "title": "Set up Share Popover on macOS",
+      "language": "swift",
+      "startTimeSeconds": 467,
+      "code": "// Setting up Share Popover - macOS\n\nlet sharingServicePicker = NSSharingServicePicker(items: [collaborationObject])\n\nsharingServicePicker.show(relativeTo: view.bounds, of: view, preferredEdge: .minY)"
+    },
+    {
+      "title": "Provide metadata for CloudKit collaboration in Share Sheet (iOS, Mac Catalyst)",
+      "language": "swift",
+      "startTimeSeconds": 502,
+      "code": "// Providing CloudKit metadata - iOS\n\nlet configuration = UIActivityItemsConfiguration(itemProviders: [collaborationItemProvider])\nconfiguration.perItemMetadataProvider = { (_, key) in\n    switch key {\n    case .linkPresentationMetadata:\n        // Create LPLinkMetadata with title and imageProvider\n        return metadata\n    default:\n        return nil\n    }\n}\n\nlet activityViewController = UIActivityViewController(activityItemsConfiguration: configuration)"
+    },
+    {
+      "title": "Provide metadata for CloudKit collaboration in Share Popover (macOS)",
+      "language": "swift",
+      "startTimeSeconds": 543,
+      "code": "// Providing CloudKit metadata - macOS\n\nlet title = “Shared Item”\nlet image = NSImage(contentsOfFile: “Shared_Item_Preview_Image.png”)\nlet icon = NSImage(contentsOfFile: “App_Icon.png”) // Shared item source\n\nlet previewRepresentingItem = NSPreviewRepresentingActivityItem(item: collaborationItemProvider, \n                                                                title: title, \n                                                                image: image, \n                                                                icon: icon)\n\nlet picker = NSSharingServicePicker(items: [previewRepresentingItem])"
+    },
+    {
+      "title": "Create Transferable object for CloudKit collaboration with ShareLink",
+      "language": "swift",
+      "startTimeSeconds": 621,
+      "code": "// SwiftUI CloudKit Transferable\n\nstruct Note: Transferable {\n    // Properties of the note e.g. name, preview image, content, ID, …\n    var share: CKShare?\n    func saveCKShareToServer() async throws -> CKShare { … }\n\n    static var transferRepresentation: some TransferRepresentation {\n        CKShareTransferRepresentation { note in\n            if let share = note.share {\n                return .existing(share, container: container, options: options)\n            } else {\n                return .prepareShare(container: container, options: options) {\n                    return try await note.saveCKShareToServer()\n                }\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Adopt ShareLink in SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 694,
+      "code": "// SwiftUI ShareLink adoption\n\nstruct ContentView: View {\n    @State let item = ShareItem()\n\n    var body: some View {\n        ShareLink(item: item, preview: SharePreview(item.title, image: item.previewImage))\n    }\n}"
+    },
+    {
+      "title": "Initialize the collaborationView",
+      "language": "swift",
+      "startTimeSeconds": 898,
+      "code": "// Collaboration View\n\nlet collaborationView = SWCollaborationView(itemProvider: itemProvider)\n\ncollaborationView.activeParticipantCount = myModel.activePeople.count\n\ncollaborationView.contentView = MyView(model: myModel)\n\ncollaborationView.manageButtonTitle = \"Custom Manage Button\""
+    },
+    {
+      "title": "Observe when CKShare is saved with CKSystemSharingUIObserver",
+      "language": "swift",
+      "startTimeSeconds": 1091,
+      "code": "// Observing CKShare Changes\n\nlet observer = CKSystemSharingUIObserver(container: container)\n\nobserver.systemSharingUIDidSaveShareBlock = { _, result in\n    switch result {\n    case .success(let share):\n        // Handle successfully starting share\n    case .failure(let error):\n        // Handle error\n    }\n}"
+    },
+    {
+      "title": "Observe when CKShare is removed with CKSystemSharingUIObserver",
+      "language": "swift",
+      "startTimeSeconds": 1127,
+      "code": "// Observing CKShare Changes\n\nobserver.systemSharingUIDidStopSharingBlock = { _, result in\n    switch result {\n    case .success(let share):\n        // Handle successfully starting share\n    case .failure(let error):\n        // Handle error\n    }\n}"
+    },
+    {
+      "title": "Posting notice for edit SWHighlightChangeEvent",
+      "language": "swift",
+      "startTimeSeconds": 1244,
+      "code": "// Post an SWHighlightChangeEvent Notice\n\nlet highlightCenter: SWHighlightCenter = self.highlightCenter\n\nlet highlight = try highlightCenter.collaborationHighlight(forURL: ckShareURL, error: &error)\n\nlet editEvent = SWHighlightChangeEvent(highlight: highlight, trigger: .edit)\n\nhighlightCenter.postNotice(for: editEvent)"
+    },
+    {
+      "title": "Post an SWHighlightMentionEvent Notice",
+      "language": "swift",
+      "startTimeSeconds": 1290,
+      "code": "// Post an SWHighlightMentionEvent Notice\n\nlet highlightCenter: SWHighlightCenter = self.highlightCenter\n\nlet highlight = try highlightCenter.collaborationHighlight(forURL: ckShareURL, error: &error)\n\nlet mentionEvent = SWHighlightMentionEvent(highlight: highlight, \n           mentionedPersonCloudKitShareHandle: ckShareParticipantHandle)\n\nhighlightCenter.postNotice(for: mentionEvent)"
+    },
+    {
+      "title": "Post an SWHighlightPersistenceEvent Notice",
+      "language": "swift",
+      "startTimeSeconds": 1318,
+      "code": "// Post an SWHighlightPersistenceEvent Notice\n\nlet highlightCenter: SWHighlightCenter = self.highlightCenter\n\nlet highlight = try highlightCenter.collaborationHighlight(forURL: ckShareURL, error: &error)\n\nlet renamedEvent = SWHighlightPersistenceEvent(highlight: highlight, trigger: .renamed)\n\nhighlightCenter.postNotice(for: renamedEvent)"
+    },
+    {
+      "title": "Post an SWHighlightMembershipEvent Notice",
+      "language": "swift",
+      "startTimeSeconds": 1331,
+      "code": "// Post an SWHighlightMembershipEvent Notice\n\nlet highlightCenter: SWHighlightCenter = self.highlightCenter\n\nlet highlight = try highlightCenter.collaborationHighlight(forURL: ckShareURL, error: &error)\n\nlet membershipEvent = SWHighlightMembershipEvent(highlight: highlight, \n                                           trigger: .addedCollaborator)\n\nhighlightCenter.postNotice(for: membershipEvent)"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2022/10095-enhance-collaboration-experiences-with-messages/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10095-enhance-collaboration-experiences-with-messages/metadata.json",
+    "readme": "sessions/wwdc2022/10095-enhance-collaboration-experiences-with-messages/README.md",
+    "transcript": "sessions/wwdc2022/10095-enhance-collaboration-experiences-with-messages/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10095-enhance-collaboration-experiences-with-messages/transcript.json"
+  }
+}

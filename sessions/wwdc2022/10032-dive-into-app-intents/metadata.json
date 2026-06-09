@@ -1,0 +1,166 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10032",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10032,
+  "title": "Dive into App Intents",
+  "description": "Learn how you can make your app more discoverable and increase app engagement when you use the App Intents framework. We'll take you through the powerful capabilities of this Swift framework, explore the differences between App Intents and SiriKit Intents, and show you how you can expose your app's functionality to the system. We'll also share how you can build entities and queries to create rich App Shortcuts experiences. To learn more about App Intents, watch \"Implement App Shortcuts with App Intents\" and \"Design App Shortcuts\" from WWDC22.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10032",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10032",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1841,
+  "hasTranscript": true,
+  "transcriptWordCount": 4698,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10032/6/69FD8F9D-5C29-4114-9C81-DF1ACC4B4BCA/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10032/6/69FD8F9D-5C29-4114-9C81-DF1ACC4B4BCA/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10032/6/69FD8F9D-5C29-4114-9C81-DF1ACC4B4BCA/downloads/wwdc2022-10032_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10032/6/69FD8F9D-5C29-4114-9C81-DF1ACC4B4BCA/downloads/wwdc2022-10032_hd.mp4",
+    "duration": 1841
+  },
+  "codeSnippets": [
+    {
+      "title": "Open Currently Reading",
+      "language": "swift",
+      "startTimeSeconds": 333,
+      "code": "struct OpenCurrentlyReading: AppIntent {\n    static var title: LocalizedStringResource = \"Open Currently Reading\"\n\n    @MainActor\n    func perform() async throws -> some IntentResult {\n        Navigator.shared.openShelf(.currentlyReading)\n        return .result()\n    }\n\n    static var openAppWhenRun: Bool = true\n}"
+    },
+    {
+      "title": "App Shortcuts",
+      "language": "swift",
+      "startTimeSeconds": 402,
+      "code": "struct LibraryAppShortcuts: AppShortcutsProvider {\n    static var appShortcuts: [AppShortcut] {\n        AppShortcut(\n            intent: OpenCurrentlyReading(),\n            phrases: [\"Open Currently Reading in \\(.applicationName)\"],\n            systemImageName: \"books.vertical.fill\"\n        )\n    }\n}"
+    },
+    {
+      "title": "Shelf Enum",
+      "language": "swift",
+      "startTimeSeconds": 431,
+      "code": "enum Shelf: String {\n    case currentlyReading\n    case wantToRead\n    case read\n}\n\nextension Shelf: AppEnum {\n    static var typeDisplayRepresentation: TypeDisplayRepresentation = \"Shelf\"\n\n    static var caseDisplayRepresentations: [Shelf: DisplayRepresentation] = [\n        .currentlyReading: \"Currently Reading\",\n        .wantToRead: \"Want to Read\",\n        .read: \"Read\",\n    ]\n}"
+    },
+    {
+      "title": "Open Shelf",
+      "language": "swift",
+      "startTimeSeconds": 469,
+      "code": "struct OpenShelf: AppIntent {\n    static var title: LocalizedStringResource = \"Open Shelf\"\n\n    @Parameter(title: \"Shelf\")\n    var shelf: Shelf\n\n    @MainActor\n    func perform() async throws -> some IntentResult {\n        Navigator.shared.openShelf(shelf)\n        return .result()\n    }\n\n    static var parameterSummary: some ParameterSummary {\n        Summary(\"Open \\(\\.$shelf)\")\n    }\n\n    static var openAppWhenRun: Bool = true\n}"
+    },
+    {
+      "title": "Book Entity",
+      "language": "swift",
+      "startTimeSeconds": 656,
+      "code": "struct BookEntity: AppEntity, Identifiable {\n    var id: UUID\n\n    var displayRepresentation: DisplayRepresentation { \"\\(title)\" }\n\n    static var typeDisplayRepresentation: TypeDisplayRepresentation = \"Book\"\n\n    static var defaultQuery = BookQuery()\n}"
+    },
+    {
+      "title": "Book Query",
+      "language": "swift",
+      "startTimeSeconds": 749,
+      "code": "struct BookQuery: EntityQuery {\n    func entities(for identifiers: [UUID]) async throws -> [BookEntity] {\n        identifiers.compactMap { identifier in\n            Database.shared.book(for: identifier)\n        }\n    }\n}"
+    },
+    {
+      "title": "Open Book",
+      "language": "swift",
+      "startTimeSeconds": 796,
+      "code": "struct OpenBook: AppIntent {\n    @Parameter(title: \"Book\")\n    var book: BookEntity\n\n    static var title: LocalizedStringResource = \"Open Book\"\n\n    static var openAppWhenRun = true\n\n    @MainActor\n    func perform() async throws -> some IntentResult {\n        guard try await $book.requestConfirmation(for: book, dialog: \"Are you sure you want to clear read state for \\(book)?\") else {\n            return .result()\n        }\n        Navigator.shared.openBook(book)\n        return .result()\n    }\n\n    static var parameterSummary: some ParameterSummary {\n        Summary(\"Open \\(\\.$book)\")\n    }\n\n    init() {}\n\n    init(book: BookEntity) {\n        self.book = book\n    }\n}"
+    },
+    {
+      "title": "Suggested Entities and String Book Query",
+      "language": "swift",
+      "startTimeSeconds": 820,
+      "code": "struct BookQuery: EntityStringQuery {\n    func entities(for identifiers: [UUID]) async throws -> [BookEntity] {\n        identifiers.compactMap { identifier in\n            Database.shared.book(for: identifier)\n        }\n    }\n\n    func suggestedEntities() async throws -> [BookEntity] {\n        Database.shared.books\n    }\n\n    func entities(matching string: String) async throws -> [BookEntity] {\n        Database.shared.books.filter { book in\n            book.title.lowercased().contains(string.lowercased())\n        }\n    }\n}"
+    },
+    {
+      "title": "Add Book Intent",
+      "language": "swift",
+      "startTimeSeconds": 911,
+      "code": "struct AddBook: AppIntent {\n    static var title: LocalizedStringResource = \"Add Book\"\n\n    @Parameter(title: \"Title\")\n    var title: String\n\n    @Parameter(title: \"Author Name\")\n    var authorName: String?\n\n    @Parameter(title: \"Recommended By\")\n    var recommendedBy: String?\n\n    func perform() async throws -> some IntentResult & ReturnsValue<BookEntity> & OpensIntent {\n        guard var book = await BooksAPI.shared.findBooks(named: title, author: authorName).first else {\n            throw Error.notFound\n        }\n        book.recommendedBy = recommendedBy\n        Database.shared.add(book: book)\n\n        return .result(\n            value: book,\n            openIntent: OpenBook(book: book)\n        )\n    }\n\n    enum Error: Swift.Error, CustomLocalizedStringResourceConvertible {\n        case notFound\n\n        var localizedStringResource: LocalizedStringResource {\n            switch self {\n                case .notFound: return \"Book Not Found\"\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Book Entity with Properties",
+      "language": "swift",
+      "startTimeSeconds": 1101,
+      "code": "struct BookEntity: AppEntity, Identifiable {\n    var id: UUID\n\n    @Property(title: \"Title\")\n    var title: String\n\n    @Property(title: \"Publishing Date\")\n    var datePublished: Date\n\n    @Property(title: \"Read Date\")\n    var dateRead: Date?\n\n    var recommendedBy: String?\n\n    var displayRepresentation: DisplayRepresentation { \"\\(title)\" }\n\n    static var typeDisplayRepresentation: TypeDisplayRepresentation = \"Book\"\n\n    static var defaultQuery = BookQuery()\n\n    init(id: UUID) {\n        self.id = id\n    }\n\n    init(id: UUID, title: String) {\n        self.id = id\n        self.title = title\n    }\n}"
+    },
+    {
+      "title": "Books Property Query",
+      "language": "swift",
+      "startTimeSeconds": 1259,
+      "code": "struct BookQuery: EntityPropertyQuery {\n    static var sortingOptions = SortingOptions {\n        SortableBy(\\BookEntity.$title)\n        SortableBy(\\BookEntity.$dateRead)\n        SortableBy(\\BookEntity.$datePublished)\n    }\n\n    static var properties = QueryProperties {\n        Property(\\BookEntity.$title) {\n            EqualToComparator { NSPredicate(format: \"title = %@\", $0) }\n            ContainsComparator { NSPredicate(format: \"title CONTAINS %@\", $0) }\n        }\n        Property(\\BookEntity.$datePublished) {\n            LessThanComparator { NSPredicate(format: \"datePublished < %@\", $0 as NSDate) }\n            GreaterThanComparator { NSPredicate(format: \"datePublished > %@\", $0 as NSDate) }\n        }\n        Property(\\BookEntity.$dateRead) {\n            LessThanComparator { NSPredicate(format: \"dateRead < %@\", $0 as NSDate) }\n            GreaterThanComparator { NSPredicate(format: \"dateRead > %@\", $0 as NSDate) }\n        }\n    }\n\n    func entities(for identifiers: [UUID]) async throws -> [BookEntity] {\n        identifiers.compactMap { identifier in\n            Database.shared.book(for: identifier)\n        }\n    }\n\n    func suggestedEntities() async throws -> [BookEntity] {\n        Model.shared.library.books.map { BookEntity(id: $0.id, title: $0.title) }\n    }\n\n    func entities(matching string: String) async throws -> [BookEntity] {\n        Database.shared.books.filter { book in\n            book.title.lowercased().contains(string.lowercased())\n        }\n    }\n\n    func entities(\n        matching comparators: [NSPredicate],\n        mode: ComparatorMode,\n        sortedBy: [Sort<BookEntity>],\n        limit: Int?\n    ) async throws -> [BookEntity] {\n        Database.shared.findBooks(matching: comparators, matchAll: mode == .and, sorts: sortedBy.map { (keyPath: $0.by, ascending: $0.order == .ascending) })\n    }\n}"
+    },
+    {
+      "title": "Dialog",
+      "language": "swift",
+      "startTimeSeconds": 1450,
+      "code": "struct AddBook: AppIntent {\n    static var title: LocalizedStringResource = \"Add Book\"\n\n    @Parameter(title: \"Title\")\n    var title: String\n\n    @Parameter(title: \"Author Name\")\n    var authorName: String?\n\n    @Parameter(title: \"Recommended By\")\n    var recommendedBy: String?\n\n    func perform() async throws -> some IntentResult & ReturnsValue<BookEntity> & ProvidesDialog {\n        guard var book = await BooksAPI.shared.findBooks(named: title, author: authorName).first else {\n            throw Error.notFound\n        }\n        book.recommendedBy = recommendedBy\n        Database.shared.add(book: book)\n\n        return .result(\n            value: book,\n            dialog:\"Added \\(book) to Library!\"\n        )\n    }\n\n    enum Error: Swift.Error, CustomLocalizedStringResourceConvertible {\n        case notFound\n\n        var localizedStringResource: LocalizedStringResource {\n            switch self {\n                case .notFound: return \"Book Not Found\"\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Snippet",
+      "language": "swift",
+      "startTimeSeconds": 1465,
+      "code": "struct AddBook: AppIntent {\n    static var title: LocalizedStringResource = \"Add Book\"\n\n    @Parameter(title: \"Title\")\n    var title: String\n\n    @Parameter(title: \"Author Name\")\n    var authorName: String?\n\n    @Parameter(title: \"Recommended By\")\n    var recommendedBy: String?\n\n    func perform() async throws -> some IntentResult & ShowsSnippetView {\n        guard var book = await BooksAPI.shared.findBooks(named: title, author: authorName).first else {\n            throw Error.notFound\n        }\n        book.recommendedBy = recommendedBy\n        Database.shared.add(book: book)\n\n        return .result(value: book) {\n            CoverView(book: book)\n        }\n    }\n\n    enum Error: Swift.Error, CustomLocalizedStringResourceConvertible {\n        case notFound\n\n        var localizedStringResource: LocalizedStringResource {\n            switch self {\n                case .notFound: return \"Book Not Found\"\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Request Value",
+      "language": "swift",
+      "startTimeSeconds": 1490,
+      "code": "struct AddBook: AppIntent {\n    static var title: LocalizedStringResource = \"Add Book\"\n\n    @Parameter(title: \"Title\")\n    var title: String\n\n    @Parameter(title: \"Author Name\")\n    var authorName: String?\n\n    @Parameter(title: \"Recommended By\")\n    var recommendedBy: String?\n\n    func perform() async throws -> some IntentResult {\n        let books = await BooksAPI.shared.findBooks(named: title, author: authorName)\n        guard !books.isEmpty else {\n            throw Error.notFound\n        }\n        if books.count > 1 && authorName == nil {\n            throw $authorName.requestValue(\"Who wrote the book?\")\n        }\n\n        return .result()\n    }\n\n    enum Error: Swift.Error, CustomLocalizedStringResourceConvertible {\n        case notFound\n\n        var localizedStringResource: LocalizedStringResource {\n            switch self {\n                case .notFound: return \"Book Not Found\"\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Request Disambiguation",
+      "language": "swift",
+      "startTimeSeconds": 1522,
+      "code": "struct AddBook: AppIntent {\n    static var title: LocalizedStringResource = \"Add Book\"\n\n    @Parameter(title: \"Title\")\n    var title: String\n\n    @Parameter(title: \"Author Name\")\n    var authorName: String?\n\n    @Parameter(title: \"Recommended By\")\n    var recommendedBy: String?\n\n    func perform() async throws -> some IntentResult {\n        let books = await BooksAPI.shared.findBooks(named: title, author: authorName)\n        guard !books.isEmpty else {\n            throw Error.notFound\n        }\n        if books.count > 1 {\n            let chosenAuthor = try await $authorName.requestDisambiguation(among: books.map { $0.authorName }, dialog: \"Which author?\")\n        }\n        return .result()\n    }\n\n    enum Error: Swift.Error, CustomLocalizedStringResourceConvertible {\n        case notFound\n\n        var localizedStringResource: LocalizedStringResource {\n            switch self {\n                case .notFound: return \"Book Not Found\"\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Request Parameter Confirmation",
+      "language": "swift",
+      "startTimeSeconds": 1548,
+      "code": "struct AddBook: AppIntent {\n    static var title: LocalizedStringResource = \"Add Book\"\n\n    @Parameter(title: \"Title\")\n    var title: String\n\n    @Parameter(title: \"Author Name\")\n    var authorName: String?\n\n    @Parameter(title: \"Recommended By\")\n    var recommendedBy: String?\n\n    func perform() async throws -> some IntentResult & ReturnsValue<BookEntity> {\n        guard var book = await BooksAPI.shared.findBooks(named: title, author: authorName).first else {\n            throw Error.notFound\n        }\n        let confirmed = try await $title.requestConfirmation(for: book.title, dialog: \"Did you mean \\(book)?\")\n        book.recommendedBy = recommendedBy\n        Database.shared.add(book: book)\n        return .result(value: book)\n    }\n\n    enum Error: Swift.Error, CustomLocalizedStringResourceConvertible {\n        case notFound\n\n        var localizedStringResource: LocalizedStringResource {\n            switch self {\n                case .notFound: return \"Book Not Found\"\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Request Result Confirmation",
+      "language": "swift",
+      "startTimeSeconds": 1586,
+      "code": "struct BuyBook: AppIntent {\n    @Parameter(title: \"Book\")\n    var book: BookEntity\n\n    @Parameter(title: \"Count\")\n    var count: Int\n\n    static var title: LocalizedStringResource = \"Buy Book\"\n\n    func perform() async throws -> some IntentResult & ShowsSnippetView & ProvidesDialog {\n        let order = OrderEntity(book: book, count: count)\n        try await requestConfirmation(output: .result(value: order, dialog: \"Are you ready to order?\") {\n            OrderPreview(order: order)\n        })\n\n        return .result(value: order, dialog: \"Thank you for your order!\") {\n            OrderConfirmation(order: order)\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "App Intents",
+      "url": "https://developer.apple.com/documentation/AppIntents",
+      "type": "documentation",
+      "description": "Make content and actions discoverable by Apple Intelligence and support system experiences like Siri, Spotlight, Shortcuts, and widgets.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10032-dive-into-app-intents/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10032-dive-into-app-intents/metadata.json",
+    "readme": "sessions/wwdc2022/10032-dive-into-app-intents/README.md",
+    "transcript": "sessions/wwdc2022/10032-dive-into-app-intents/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10032-dive-into-app-intents/transcript.json"
+  }
+}

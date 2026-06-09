@@ -1,0 +1,75 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2024-10098",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10098,
+  "title": "Design Live Activities for Apple Watch",
+  "description": "Starting in watchOS 11, Live Activities from your iOS app will automatically appear in the Smart Stack on a connected Apple Watch. Learn how to optimize the layout of your Live Activity for the wrist, and provide the right level of information and interactivity at the right time.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10098",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10098",
+  "type": "Video",
+  "publishedAt": "2024-06-11T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 518,
+  "hasTranscript": true,
+  "transcriptWordCount": 1370,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10098/7/25EEDB0F-2C34-42C4-A647-CD4ACBF973C5/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10098/7/25EEDB0F-2C34-42C4-A647-CD4ACBF973C5/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10098/7/25EEDB0F-2C34-42C4-A647-CD4ACBF973C5/downloads/wwdc2024-10098_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10098/7/25EEDB0F-2C34-42C4-A647-CD4ACBF973C5/downloads/wwdc2024-10098_hd.mp4",
+    "duration": 518
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Forum: Design",
+      "url": "https://developer.apple.com/forums/topics/design?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/design?cid=vf-a-0010"
+    },
+    {
+      "title": "Human Interface Guidelines: watchOS",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/designing-for-watchos",
+      "type": "documentation",
+      "description": "When people glance at their Apple Watch, they know they can access essential information and perform simple, timely tasks whether they’re stationary or in motion.",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/designing-for-watchos"
+    },
+    {
+      "title": "Human Interface Guidelines: Live Activities",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/live-activities",
+      "type": "documentation",
+      "description": "A Live Activity displays up-to-date information from your app, allowing people to view the progress of events or tasks at a glance.",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/live-activities"
+    }
+  ],
+  "path": "sessions/wwdc2024/10098-design-live-activities-for-apple-watch/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10098-design-live-activities-for-apple-watch/metadata.json",
+    "readme": "sessions/wwdc2024/10098-design-live-activities-for-apple-watch/README.md",
+    "transcript": "sessions/wwdc2024/10098-design-live-activities-for-apple-watch/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10098-design-live-activities-for-apple-watch/transcript.json"
+  }
+}

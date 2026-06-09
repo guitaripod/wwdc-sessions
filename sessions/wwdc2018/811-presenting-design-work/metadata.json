@@ -1,0 +1,60 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2018-811",
+  "event": "wwdc2018",
+  "eventName": "WWDC18",
+  "year": 2018,
+  "eventContentId": 811,
+  "title": "Presenting Design Work",
+  "description": "Ideas can live or die by their presentation. Learn indispensable and proven techniques for presenting your design work to better communicate your objectives and receive helpful, valuable and constructive feedback.",
+  "url": "https://developer.apple.com/videos/play/wwdc2018/811",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2018/811",
+  "type": "Video",
+  "publishedAt": "2018-06-08T11:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "design",
+    "design short",
+    "design studio shorts",
+    "presentation",
+    "presentations",
+    "short",
+    "shorts"
+  ],
+  "topics": [
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 921,
+  "hasTranscript": true,
+  "transcriptWordCount": 1709,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/811tcr2wk13t3uq/811/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/811tcr2wk13t3uq/811/811_sd_presenting_design_work.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/811tcr2wk13t3uq/811/811_hd_presenting_design_work.mp4",
+    "duration": 921
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2018/811-presenting-design-work/",
+  "files": {
+    "metadata": "sessions/wwdc2018/811-presenting-design-work/metadata.json",
+    "readme": "sessions/wwdc2018/811-presenting-design-work/README.md",
+    "transcript": "sessions/wwdc2018/811-presenting-design-work/transcript.md",
+    "transcriptJSON": "sessions/wwdc2018/811-presenting-design-work/transcript.json"
+  }
+}

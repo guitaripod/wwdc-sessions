@@ -1,0 +1,64 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10081",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10081,
+  "title": "What's new in MetricKit",
+  "description": "Quickly detect power and performance regressions and troubleshoot app issues when you adopt MetricKit. Discover the latest trackable metrics for your app, including CPU instructions, animation hitches, and exit reasons. And learn about diagnostics in MetricKit that can help you troubleshoot hangs, crashes, and disk writes.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10081",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10081",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 825,
+  "hasTranscript": true,
+  "transcriptWordCount": 2205,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10081/3/7AC69CDE-C614-4237-9C10-93A3B67C923E/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10081/3/7AC69CDE-C614-4237-9C10-93A3B67C923E/wwdc2020_10081_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10081/3/7AC69CDE-C614-4237-9C10-93A3B67C923E/wwdc2020_10081_hd.mp4",
+    "duration": 825
+  },
+  "codeSnippets": [
+    {
+      "title": "Using MetricKit",
+      "language": "swift",
+      "startTimeSeconds": 131,
+      "code": "import MetricKit\n\nclass MySubscriber: NSObject, MXMetricManagerSubscriber {\n\n    var metricManager: MXMetricManager?\n\n    override init() {\n        super.init()\n        metricManager = MXMetricManager.shared\n        metricManager?.add(self)\n    }\n\n    override deinit() {\n        metricManager?.remove(self)\n    }\n\n    func didReceive(_ payload: [MXMetricPayload]) {\n        for metricPayload in payload {\n            // Do something with metricPayload.\n        }\n    }\n\n}"
+    },
+    {
+      "title": "Adopting MetricKit Diagnostics",
+      "language": "swift",
+      "startTimeSeconds": 494,
+      "code": "func didReceive(_ payload: [MXDiagnosticPayload]) {\n    for diagnosticPayload in payload {\n        // Consume diagnosticPayload.\n    }\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2020/10081-what-s-new-in-metrickit/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10081-what-s-new-in-metrickit/metadata.json",
+    "readme": "sessions/wwdc2020/10081-what-s-new-in-metrickit/README.md",
+    "transcript": "sessions/wwdc2020/10081-what-s-new-in-metrickit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10081-what-s-new-in-metrickit/transcript.json"
+  }
+}

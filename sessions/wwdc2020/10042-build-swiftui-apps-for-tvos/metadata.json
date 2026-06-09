@@ -1,0 +1,171 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10042",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10042,
+  "title": "Build SwiftUI apps for tvOS",
+  "description": "Add a new dimension to your tvOS app with SwiftUI. We’ll show you how to build layouts powered by SwiftUI and customize your interface with custom buttons, provide more functionality in your app with a context menu, check if views are focused, and manage default focus. To get the most out of this session, you should be comfortable with SwiftUI. For a primer, watch “Introducing SwiftUI: Building Your First App” and “SwiftUI On All Devices.”",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10042",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10042",
+  "type": "Video",
+  "publishedAt": "2020-06-23T10:00:00-07:00",
+  "platforms": [
+    "tvOS"
+  ],
+  "keywords": [
+    "apple tv",
+    "apple tv 4k",
+    "apple tv app",
+    "focus",
+    "focus engine",
+    "lazy grids",
+    "swift",
+    "swift developer",
+    "swiftui",
+    "tv",
+    "tv dev",
+    "tv developer",
+    "tvos",
+    "tv swift",
+    "tv swiftui"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 870,
+  "hasTranscript": true,
+  "transcriptWordCount": 1875,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10042/4/B38E5ED8-1188-4675-877A-272A47769177/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10042/4/B38E5ED8-1188-4675-877A-272A47769177/wwdc2020_10042_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10042/4/B38E5ED8-1188-4675-877A-272A47769177/wwdc2020_10042_hd.mp4",
+    "duration": 870
+  },
+  "codeSnippets": [
+    {
+      "title": "CardButtonStyle",
+      "language": "swift",
+      "startTimeSeconds": 102,
+      "code": "Button(albumLabel, action: playAlbum)\n    .buttonStyle(CardButtonStyle())"
+    },
+    {
+      "title": "Custom Button Styles",
+      "language": "swift",
+      "startTimeSeconds": 144,
+      "code": "struct MyNewButtonStyle: ButtonStyle {\n    func makeBody(configuration: Configuration) -> some View {\n        configuration.label\n           .background(configuration.isPressed ? … : …) // Custom styling\n    }\n}           \n\nButton(albumLabel, action: playAlbum)\n    .buttonStyle(MyNewButtonStyle())"
+    },
+    {
+      "title": "Context Menus",
+      "language": "swift",
+      "startTimeSeconds": 199,
+      "code": "AlbumView()\n    .contextMenu {\n        Button(\"Add to Favorites\", action: addAlbumToFavorites)\n        Button(\"View Artist\", action: viewArtistPage)\n        Button(\"Discover Similar Albums\", action: viewSimilarAlbums)\n    }"
+    },
+    {
+      "title": "isFocused Environment Variable",
+      "language": "swift",
+      "startTimeSeconds": 347,
+      "code": "struct SongView: View {\n    var body: some View {\n        Button(action: playSong) {\n            VStack {\n                Image(albumArt)\n                DetailsView(...)\n            }\n        }.buttonStyle(MyCustomButtonStyle())\n    }\n}\n\nstruct DetailsView: View {\n    ...\n    @Environment(\\.isFocused) var isFocused: Bool\n    var body: some View {\n        VStack {\n            Text(songName)\n            Text(isFocused ? artistAndAlbum : artistName)\n        }\n    }\n}"
+    },
+    {
+      "title": "Login Screen (Default Focus)",
+      "language": "swift",
+      "startTimeSeconds": 522,
+      "code": "var body: some View {\n    VStack {\n        TextField(\"Username\", text: $username)\n\n        SecureField(\"Password\", text: $password)\n\n        Button(\"Log In\", action: logIn)\n\n    }\n\n}"
+    },
+    {
+      "title": "Default Focus",
+      "language": "swift",
+      "startTimeSeconds": 531,
+      "code": "@Namespace private var namespace\n@State private var areCredentialsFilled: Bool\n\nvar body: some View {\n    VStack {\n        TextField(\"Username\", text: $username)\n            .prefersDefaultFocus(!areCredentialsFilled, in: namespace)            \n        SecureField(\"Password\", text: $password)\n\n        Button(\"Log In\", action: logIn)\n           .prefersDefaultFocus(areCredentialsFilled, in: namespace)\n    }\n    .focusScope(namespace)\n}"
+    },
+    {
+      "title": "Reset Focus",
+      "language": "swift",
+      "startTimeSeconds": 672,
+      "code": "@Namespace private var namespace\n@State private var areCredentialsFilled: Bool\n@Environment(\\.resetFocus) var resetFocus\n\nvar body: some View {\n    VStack {\n        TextField(\"Username\", text: $username)\n            .prefersDefaultFocus(!areCredentialsFilled, in: namespace)            \n        SecureField(\"Password\", text: $password)\n\n        Button(\"Log In\", action: logIn)\n           .prefersDefaultFocus(areCredentialsFilled, in: namespace)\n\n        Button(\"Clear\", action: { \n            username = \"\"; password = \"\"\n            areCredentialsFilled = false\n            resetFocus(in: namespace)\n        })\n    }\n    .focusScope(namespace)\n}"
+    },
+    {
+      "title": "Lazy Grids",
+      "language": "swift",
+      "startTimeSeconds": 765,
+      "code": "struct ShelfView: View {\n    var body: some View {\n        ScrollView([.horizontal]) {\n            LazyHGrid(rows: [GridItem()]) {\n                ForEach(playlists, id: \\.self) { playlist in                \n                    Button(action: goToPlaylist) {\n                        Image(playlist.coverImage)\n                            .resizable()\n                            .frame(…)\n                    }\n                    .buttonStyle(CardButtonStyle())\n                }\n            }\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Supporting Multiple Users in Your tvOS App",
+      "url": "https://developer.apple.com/documentation/TVServices/supporting-multiple-users-in-your-tvos-app",
+      "type": "documentation",
+      "description": "Store separate data for each user with the new Runs as Current User capability.",
+      "sosumiURL": "https://sosumi.ai/documentation/TVServices/supporting-multiple-users-in-your-tvos-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/TVServices/supporting-multiple-users-in-your-tvos-app.json"
+    },
+    {
+      "title": "isFocused",
+      "url": "https://developer.apple.com/documentation/SwiftUI/EnvironmentValues/isFocused",
+      "type": "documentation",
+      "description": "Returns whether the nearest focusable ancestor has focus.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/EnvironmentValues/isFocused",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/EnvironmentValues/isFocused.json"
+    },
+    {
+      "title": "prefersDefaultFocus(_:in:)",
+      "url": "https://developer.apple.com/documentation/SwiftUI/View/prefersDefaultFocus(_:in:)",
+      "type": "documentation",
+      "description": "Indicates that the view should receive focus by default for a given",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/View/prefersDefaultFocus(_:in:)",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/View/prefersDefaultFocus(_:in:).json"
+    },
+    {
+      "title": "CardButtonStyle",
+      "url": "https://developer.apple.com/documentation/SwiftUI/CardButtonStyle",
+      "type": "documentation",
+      "description": "A button style that doesn’t pad the content, and applies a motion effect",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/CardButtonStyle",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/CardButtonStyle.json"
+    },
+    {
+      "title": "Learn to Make Apps with SwiftUI",
+      "url": "https://developer.apple.com/tutorials/swiftui",
+      "type": "documentation",
+      "description": "Follow a series of guided tutorials to learn to make apps using SwiftUI and Xcode.",
+      "sosumiURL": "https://sosumi.ai/tutorials/swiftui"
+    },
+    {
+      "title": "SwiftUI",
+      "url": "https://developer.apple.com/documentation/SwiftUI",
+      "type": "documentation",
+      "description": "Declare the user interface and behavior for your app on every platform.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI.json"
+    },
+    {
+      "title": "Human Interface Guidelines: Designing for tvOS",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/designing-for-tvos",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/designing-for-tvos"
+    }
+  ],
+  "path": "sessions/wwdc2020/10042-build-swiftui-apps-for-tvos/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10042-build-swiftui-apps-for-tvos/metadata.json",
+    "readme": "sessions/wwdc2020/10042-build-swiftui-apps-for-tvos/README.md",
+    "transcript": "sessions/wwdc2020/10042-build-swiftui-apps-for-tvos/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10042-build-swiftui-apps-for-tvos/transcript.json"
+  }
+}

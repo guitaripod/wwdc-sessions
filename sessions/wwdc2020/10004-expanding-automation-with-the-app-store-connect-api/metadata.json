@@ -1,0 +1,81 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10004",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10004,
+  "title": "Expanding automation with the App Store Connect API",
+  "description": "Make routine tasks in App Store Connect a thing of the past when you automate your workflow with the App Store Connect API. Learn how you can manage more about your presence on the App Store with the App Metadata API, or use the new Power and Performance Metrics and Diagnostics API to access the same aggregate data that drives the Power and Performance analysis tools in Xcode. Whether you’re managing team members and provisioning profiles, adding or removing beta testers, or downloading your sales and financial reports, this comprehensive API makes automation of these processes a snap.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10004",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10004",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "app store",
+    "automation",
+    "json",
+    "testflight"
+  ],
+  "topics": [
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 1540,
+  "hasTranscript": true,
+  "transcriptWordCount": 4529,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10004/5/7436A537-996F-4CD6-B553-9303BFB99348/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10004/5/7436A537-996F-4CD6-B553-9303BFB99348/wwdc2020_10004_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10004/5/7436A537-996F-4CD6-B553-9303BFB99348/wwdc2020_10004_hd.mp4",
+    "duration": 1540
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "App Store Connect API Resources",
+      "url": "https://developer.apple.com/app-store-connect/api/",
+      "type": "guide",
+      "description": "Gain the flexibility to customize your workflows so you can focus on creating great apps. This REST API lets you automate tasks on App Store Connect for increased efficiency. Use it for development, testing, and reporting within your team’s internal workflow.",
+      "sosumiURL": "https://sosumi.ai/app-store-connect/api/"
+    },
+    {
+      "title": "App Store Connect API",
+      "url": "https://developer.apple.com/documentation/AppStoreConnectAPI",
+      "type": "documentation",
+      "description": "The data structure that represents an app store connect api resource.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreConnectAPI",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreConnectAPI.json"
+    },
+    {
+      "title": "Learn more about App Store Connect",
+      "url": "https://help.apple.com/app-store-connect/",
+      "type": "guide",
+      "description": null
+    }
+  ],
+  "path": "sessions/wwdc2020/10004-expanding-automation-with-the-app-store-connect-api/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10004-expanding-automation-with-the-app-store-connect-api/metadata.json",
+    "readme": "sessions/wwdc2020/10004-expanding-automation-with-the-app-store-connect-api/README.md",
+    "transcript": "sessions/wwdc2020/10004-expanding-automation-with-the-app-store-connect-api/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10004-expanding-automation-with-the-app-store-connect-api/transcript.json"
+  }
+}

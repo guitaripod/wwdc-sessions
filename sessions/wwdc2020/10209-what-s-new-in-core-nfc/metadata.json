@@ -1,0 +1,75 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10209",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10209,
+  "title": "What's new in Core NFC",
+  "description": "Core NFC helps you scan and write to NFC tags in your apps, helping people get more from objects like parking meters, scooter rentals, car charging stations, and more. Learn about Core NFC’s support for the ISO15693 protocol and new tag capabilities, and find out more about syntax improvements for Swift.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10209",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10209",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "nfc"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 351,
+  "hasTranscript": true,
+  "transcriptWordCount": 652,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10209/4/A0EF8CFC-5168-44DA-9F88-3ECE05F82ACE/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10209/4/A0EF8CFC-5168-44DA-9F88-3ECE05F82ACE/wwdc2020_10209_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10209/4/A0EF8CFC-5168-44DA-9F88-3ECE05F82ACE/wwdc2020_10209_hd.mp4",
+    "duration": 351
+  },
+  "codeSnippets": [
+    {
+      "title": "sendCommand",
+      "language": "swift",
+      "startTimeSeconds": 204,
+      "code": "detectedTag.sendCommand(apdu: apdu) { (result: Result<NFCISO7816ResponseAPDU, Error>) in\n   switch result {\n   case .success(let responseAPDU):\n      /// Handle NFCISO7816ResponseAPDU object.\n   case .failure(let error):\n      /// Handle Error object.\n   }\n}"
+    },
+    {
+      "title": "sendMiFareCommand",
+      "language": "swift",
+      "startTimeSeconds": 246,
+      "code": "// You need to zero-pad the data to fill the block size\nif blockData.count < blockSize {\n  blockData += Data(count: blockSize - blockData.count)\n}\n\nlet writeCommand = Data([writeBlockCommand, offset]) + blockData\ntag.sendMiFareCommand(commandPacket: writeCommand) { (response: Result<Data, Error>) in\n  switch (response) {\n  case .success(let responseData):\n    if responseData[0] != successCode {\n      self.readerSession?.invalidate(errorMessage: \"Write tag error. Please try again.\")\n      return\n    }\n\n    let newSize = data.count - blockSize\n    if newSize > 0 {\n      self.write(data.suffix(newSize), to: tag, offset: (offset + 1))\n    } else {\n      self.readerSession?.invalidate()\n    }\n  case .failure(let error):\n    let message = \"Write tag error: \\(error.localizedDescription). Please try again.\"\n    self.readerSession?.invalidate(errorMessage: message)\n  }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Creating NFC Tags from Your iPhone",
+      "url": "https://developer.apple.com/documentation/CoreNFC/creating-nfc-tags-from-your-iphone",
+      "type": "samplecode",
+      "description": "Save data to tags, and interact with them using native tag protocols.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreNFC/creating-nfc-tags-from-your-iphone",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreNFC/creating-nfc-tags-from-your-iphone.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10209-what-s-new-in-core-nfc/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10209-what-s-new-in-core-nfc/metadata.json",
+    "readme": "sessions/wwdc2020/10209-what-s-new-in-core-nfc/README.md",
+    "transcript": "sessions/wwdc2020/10209-what-s-new-in-core-nfc/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10209-what-s-new-in-core-nfc/transcript.json"
+  }
+}

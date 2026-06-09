@@ -1,0 +1,85 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10668",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10668,
+  "title": "Meet Nearby Interaction",
+  "description": "The Nearby Interaction framework streams distance and direction between opted-in Apple devices containing the U1 chip. Discover how this powerful combination of hardware and software allow you to create intuitive spatial interactions based on the relative position of two or more devices. We'll walk you through this session-based API and show you how to deliver entirely new interactive experiences — all with privacy in mind.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10668",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10668",
+  "type": "Video",
+  "publishedAt": "2020-06-23T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "interactive",
+    "proximity",
+    "sharing"
+  ],
+  "topics": [
+    "Maps & Location"
+  ],
+  "primaryTopic": "Maps & Location",
+  "duration": 932,
+  "hasTranscript": true,
+  "transcriptWordCount": 2300,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10668/6/69354ABA-CE3E-4420-A19A-DBF26B4788ED/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10668/6/69354ABA-CE3E-4420-A19A-DBF26B4788ED/wwdc2020_10668_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10668/6/69354ABA-CE3E-4420-A19A-DBF26B4788ED/wwdc2020_10668_hd.mp4",
+    "duration": 932
+  },
+  "codeSnippets": [
+    {
+      "title": "Basic session setup",
+      "language": "swift",
+      "startTimeSeconds": 361,
+      "code": "// A session instance. Store in whichever data structure makes the most sense for your app.\nvar niSession: NISession?\n\n// Instantiate a new session object and set the session's delegate.\nfunc prepareMySession() {\n  // Verify hardware support.\n  guard NISession.isSupported else {\n    print(\"Nearby Interaction is not available on this device.\")\n    return\n  }\n\n  // Create a new session for each peer.\n  niSession = NISession()\n\n  // Set the session’s delegate.\n  niSession?.delegate = self // This class of 'self' needs to conform to NISessionDelegate.\n}\n\n// Share the encoded discovery token to the peer you intend to interact with.\nfunc sendDiscoveryTokenToMyPeer(myPeer: Any /* change to whichever type represents peers in your app */) {                                \n\tguard let myToken = niSession?.discoveryToken else {\n\t\t// The session object is not initialized or has been invalidated.\n\t\treturn\n\t}\n\n\tif let encodedToken = try? NSKeyedArchiver.archivedData(withRootObject: myToken, requiringSecureCoding: true) {\n\t\t<# share token using your app's networking layer #>\n\t}\n}\n\n// Once you receive a token from the peer, create a configuration and run the session.\n// This functions shows how to decode token data that was previously encoded using NSKeyedArchiver.\nfunc runMySession(peerTokenData: Data) {\n  guard let peerDiscoveryToken = try? NSKeyedUnarchiver.unarchivedObject(ofClass: NIDiscoveryToken.self, from: peerTokenData) else {\n    print(\"Unexpectedly failed to decode discovery token.\")\n    return\n  }\n\n  // Create a session configuration using the discovery token received from the peer.\n  let config = NINearbyPeerConfiguration(peerToken: peerDiscoveryToken)\n\n  // Run the session with the configuration.\n  niSession?.run(config)\n}"
+    },
+    {
+      "title": "Verify hardware support",
+      "language": "swift",
+      "startTimeSeconds": 760,
+      "code": "// Always verify hardware support.\nguard NISession.isSupported else {\n  print(\"Nearby Interaction is not available on this device.\")\n  return\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Implementing interactions between users in close proximity",
+      "url": "https://developer.apple.com/documentation/NearbyInteraction/implementing-interactions-between-users-in-close-proximity",
+      "type": "samplecode",
+      "description": "Enable devices to access relative positioning information.",
+      "sosumiURL": "https://sosumi.ai/documentation/NearbyInteraction/implementing-interactions-between-users-in-close-proximity",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/NearbyInteraction/implementing-interactions-between-users-in-close-proximity.json"
+    },
+    {
+      "title": "Nearby Interaction",
+      "url": "https://developer.apple.com/documentation/NearbyInteraction",
+      "type": "documentation",
+      "description": "Locate and interact with nearby devices using identifiers, distance, and direction.",
+      "sosumiURL": "https://sosumi.ai/documentation/NearbyInteraction",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/NearbyInteraction.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10668-meet-nearby-interaction/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10668-meet-nearby-interaction/metadata.json",
+    "readme": "sessions/wwdc2020/10668-meet-nearby-interaction/README.md",
+    "transcript": "sessions/wwdc2020/10668-meet-nearby-interaction/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10668-meet-nearby-interaction/transcript.json"
+  }
+}

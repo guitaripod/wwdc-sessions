@@ -1,0 +1,85 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10090",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10090,
+  "title": "What's new in TextKit and text views",
+  "description": "Discover the latest updates to TextKit and text views in UI frameworks. Explore layout refinements and API enhancements, learn how you can maintain compatibility across multiple OS versions, and find out how to modernize your app with TextKit 2. To get the most out of this session, watch “Meet TextKit 2” from WWDC21.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10090",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10090",
+  "type": "Video",
+  "publishedAt": "2022-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Essentials",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1444,
+  "hasTranscript": true,
+  "transcriptWordCount": 3134,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10090/4/5A0AE4B4-BE39-434E-8B9E-0910F2FD152D/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10090/4/5A0AE4B4-BE39-434E-8B9E-0910F2FD152D/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10090/4/5A0AE4B4-BE39-434E-8B9E-0910F2FD152D/downloads/wwdc2022-10090_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10090/4/5A0AE4B4-BE39-434E-8B9E-0910F2FD152D/downloads/wwdc2022-10090_hd.mp4",
+    "duration": 1444
+  },
+  "codeSnippets": [
+    {
+      "title": "Check for NSTextLayoutManager first",
+      "language": "swift",
+      "startTimeSeconds": 801,
+      "code": "if let textLayoutManager = textView.textLayoutManager {\n    // TextKit 2 code goes here\n}\nelse {\n    let layoutManager = textView.layoutManager    \n    // TextKit 1 code goes here\n}"
+    },
+    {
+      "title": "Counting number of lines of wrapped text in a text view with TextKit 2",
+      "language": "swift",
+      "startTimeSeconds": 1061,
+      "code": "// Example: Updating glyph-based code \n\nvar numberOfLines = 0\nlet textLayoutManager = textView.textLayoutManager\n\ntextLayoutManager.enumerateTextLayoutFragments(from:\n                                               textLayoutManager.documentRange.location,\n                                               options: [.ensuresLayout]) { layoutFragment in\n        numberOfLines += layoutFragment.textLineFragments.count\n}"
+    },
+    {
+      "title": "Convert NSRange to NSTextRange",
+      "language": "swift",
+      "startTimeSeconds": 1270,
+      "code": "let textContentManager = textLayoutManager.textContentManager\n\nlet startLocation = textContentManager.location(textContentManager.documentRange.location, \n                                                offsetBy: nsRange.location)!\n\nlet endLocation = textContentManager.location(startLocation, \n                                              offsetBy: nsRange.length)\n\nlet nsTextRange = NSTextRange(location: startLocation, end: endLocation)"
+    },
+    {
+      "title": "Convert NSTextRange to NSRange",
+      "language": "swift",
+      "startTimeSeconds": 1300,
+      "code": "let textContentManager = textLayoutManager.textContentManager\n\nlet location = textContentManager.offset(from: textContentManager.documentRange.location,\n                                         to: nsTextRange!.location)\n\nlet length = textContentManager.offset(from: nsTextRange!.location,\n                                       to: nsTextRange!.endLocation)\n\nlet nsRange = NSRange(location: location, length: length)"
+    },
+    {
+      "title": "Convert UITextRange to NSTextRange",
+      "language": "swift",
+      "startTimeSeconds": 1322,
+      "code": "let offset = textView.offset(from: textview.beginningOfDocument, to: uiTextRange.start)\n\nlet startLocation = textContentManager.location(textContentManager.documentRange.location, \n                                                offsetBy: offset)!\n\nlet nsTextRange = NSTextRange(location: startLocation)"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2022/10090-what-s-new-in-textkit-and-text-views/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10090-what-s-new-in-textkit-and-text-views/metadata.json",
+    "readme": "sessions/wwdc2022/10090-what-s-new-in-textkit-and-text-views/README.md",
+    "transcript": "sessions/wwdc2022/10090-what-s-new-in-textkit-and-text-views/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10090-what-s-new-in-textkit-and-text-views/transcript.json"
+  }
+}

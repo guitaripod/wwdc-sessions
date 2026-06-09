@@ -1,0 +1,78 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10602",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10602,
+  "title": "Harness Apple GPUs with Metal",
+  "description": "Create visually stunning, high-performance apps and games when you combine the power of Apple GPUs with Metal, the modern foundation for GPU-accelerated graphics on Apple platforms. Discover the architecture and capabilities of the Apple GPU and how Metal harnesses its tile-based deferred rendering (TBDR) architecture to achieve measurable performance gains in apps and games. In this session, we’ll discuss the efficiency of Apple GPUs and show how TBDR applies to an array of modern rendering techniques. You should come to the session with a basic knowledge of Metal and graphics rendering. For a great introduction, check out “Modern Rendering with Metal” to orient yourself.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10602",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10602",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1463,
+  "hasTranscript": true,
+  "transcriptWordCount": 3569,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10602/7/7EE751FE-713A-4E04-8780-38491023B7B8/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10602/7/7EE751FE-713A-4E04-8780-38491023B7B8/wwdc2020_10602_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10602/7/7EE751FE-713A-4E04-8780-38491023B7B8/wwdc2020_10602_hd.mp4",
+    "duration": 1463
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Modern rendering with Metal",
+      "url": "https://developer.apple.com/documentation/Metal/modern-rendering-with-metal",
+      "type": "samplecode",
+      "description": "Use advanced Metal features such as indirect command buffers, sparse textures, and variable rate rasterization to implement complex rendering techniques.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/modern-rendering-with-metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/modern-rendering-with-metal.json"
+    },
+    {
+      "title": "Rendering a scene with deferred lighting in Objective-C",
+      "url": "https://developer.apple.com/documentation/Metal/rendering-a-scene-with-deferred-lighting-in-objective-c",
+      "type": "samplecode",
+      "description": "Avoid expensive lighting calculations by implementing a deferred lighting renderer optimized for immediate mode and tile-based deferred renderer GPUs.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/rendering-a-scene-with-deferred-lighting-in-objective-c",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/rendering-a-scene-with-deferred-lighting-in-objective-c.json"
+    },
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10602-harness-apple-gpus-with-metal/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10602-harness-apple-gpus-with-metal/metadata.json",
+    "readme": "sessions/wwdc2020/10602-harness-apple-gpus-with-metal/README.md",
+    "transcript": "sessions/wwdc2020/10602-harness-apple-gpus-with-metal/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10602-harness-apple-gpus-with-metal/transcript.json"
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2024-10067",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10067,
+  "title": "Bring context to today’s weather",
+  "description": "Harness the power of WeatherKit to get detailed weather forecast data such as precipitation amounts by type, cloud cover by altitude, or maximum wind speed. Find out how you can summarize weather by different parts of the day and highlight significant upcoming changes to temperature or precipitation. Understand how you can compare current weather to the past through our Historical Comparisons dataset and dive into historical weather statistics for any location in the world. We’ll also explore how you can do all of this faster with our Swift and REST APIs.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10067",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10067",
+  "type": "Video",
+  "publishedAt": "2024-06-10T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Maps & Location"
+  ],
+  "primaryTopic": "Maps & Location",
+  "duration": 967,
+  "hasTranscript": true,
+  "transcriptWordCount": 2459,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10067/5/24B0D3B9-2CAA-4132-B63B-EEA93B0837EF/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10067/5/24B0D3B9-2CAA-4132-B63B-EEA93B0837EF/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10067/5/24B0D3B9-2CAA-4132-B63B-EEA93B0837EF/downloads/wwdc2024-10067_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10067/5/24B0D3B9-2CAA-4132-B63B-EEA93B0837EF/downloads/wwdc2024-10067_hd.mp4",
+    "duration": 967
+  },
+  "codeSnippets": [
+    {
+      "title": "Fetch Precipitation Amount",
+      "language": "swift",
+      "startTimeSeconds": 160,
+      "code": "import CoreLocation\nimport Foundation\nimport WeatherKit\n\n\nextension CLLocation {\n    static var newYork: CLLocation {\n        CLLocation(latitude: 50.710, longitude: -74.006)\n    }\n}\n\nlet hourlyPrecipitation = try await WeatherService()\n    .weather(for: .newYork, including: .hourly)\n    .map(\\.precipitationAmount)"
+    },
+    {
+      "title": "Fetch Precipitation Amount (REST)",
+      "language": "markdown",
+      "startTimeSeconds": 205,
+      "code": "https://weatherkit.apple.com/api/v2/weather/en-US/40.710/-74.006?dataSets=forecastHourly&relativeHourlyStart=0&relativeHourlyEnd=1&hourlyRelativeTo=now&timezone=America/New_York"
+    },
+    {
+      "title": "Weather Changes",
+      "language": "swift",
+      "startTimeSeconds": 365,
+      "code": "import CoreLocation\nimport Foundation\nimport WeatherKit\n\n\nextension Date {\n    var isTomorrow: Bool {\n        return Calendar.current.isDateInTomorrow(self)\n    }\n}\n\nlet changes = try await WeatherService()\n   .weather(for: .newYork, including: .changes)\n\nlet lowTemperatureChanges = changes?\n   .filter(\\.date.isTomorrow)\n   .map(\\.lowTemperature)\n\nif let lowTemperatureChanges, lowTemperatureChanges.contains(.decrease) {\n   // Lower temperatures expected tomorrow\n\n}"
+    },
+    {
+      "title": "Weather Changes (REST)",
+      "language": "markdown",
+      "startTimeSeconds": 403,
+      "code": "https://weatherkit.apple.com/api/v2/weather/en-US/40.710/-74.006?dataSets=weatherChanges"
+    },
+    {
+      "title": "Historical Comparisons",
+      "language": "swift",
+      "startTimeSeconds": 497,
+      "code": "import CoreLocation\nimport Foundation\nimport WeatherKit\n\n\nlet mostSignificant = try await WeatherService()\n    .weather(for: .newYork, including: .historicalComparisons)?\n    .first\n\nswitch mostSignificant {\ncase .highTemperature(let trend), .lowTemperature(let trend):\n    // Display temperature trend\n    break\ncase .some, .none:\n    break\n}"
+    },
+    {
+      "title": "Historical Comparisons (REST)",
+      "language": "markdown",
+      "startTimeSeconds": 516,
+      "code": "https://weatherkit.apple.com/api/v2/weather/en-US/40.710/-74.006?dataSets=historicalComparisons"
+    },
+    {
+      "title": "Monthly Statistics",
+      "language": "swift",
+      "startTimeSeconds": 671,
+      "code": "import CoreLocation\nimport Foundation\nimport WeatherKit\n\n\nlet averagePrecipitation = try await WeatherService()\n    .monthlyStatistics(\n        for: .newYork,\n        startMonth: 1,\n        endMonth: 12,\n        including: .precipitation\n    )\n\nlet averagePrecipitationAmountsPerMonth = Dictionary(\n    grouping: averagePrecipitation,\n    by: \\.month\n)"
+    },
+    {
+      "title": "Monthly Statistics (REST)",
+      "language": "markdown",
+      "startTimeSeconds": 701,
+      "code": "https://weatherkit.apple.com/api/v2/statistics/monthly/40.710/-74.006?dataSets=precipitation&start=1&end=12"
+    },
+    {
+      "title": "Daily Summary",
+      "language": "swift",
+      "startTimeSeconds": 772,
+      "code": "import CoreLocation\nimport Foundation\nimport WeatherKit\n\n\nextension Date {\n    static var thirtyDaysAgo: Date {\n        return Calendar.current.date(byAdding: .day, value: -30, to: .now)!\n    }\n}\n\nlet pastThirtyDaysSummary = try await WeatherService()\n    .dailySummary(\n       for: .newYork,\n       forDaysIn: DateInterval(start: .thirtyDaysAgo, end: .now),\n       including: .precipitation\n    )\n    .first\n\nif let pastThirtyDaysSummary {\n    // We have a daily weather summary for each day in the past 30 days\n\n}"
+    },
+    {
+      "title": "Daily Summary (REST)",
+      "language": "markdown",
+      "startTimeSeconds": 802,
+      "code": "https://weatherkit.apple.com/api/v2/summary/daily/40.710/-74.006?dataSets=precipitation&start=2024-05-12&end=2024-06-10"
+    }
+  ],
+  "resources": [
+    {
+      "title": "WeatherKit REST API",
+      "url": "https://developer.apple.com/documentation/WeatherKitRESTAPI",
+      "type": "documentation",
+      "description": "Obtain historical, current, and predictive weather for your app or service.",
+      "sosumiURL": "https://sosumi.ai/documentation/WeatherKitRESTAPI",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WeatherKitRESTAPI.json"
+    },
+    {
+      "title": "Request authentication for WeatherKit REST API",
+      "url": "https://developer.apple.com/documentation/WeatherKitRESTAPI/request-authentication-for-weatherkit-rest-api",
+      "type": "documentation",
+      "description": "Create a developer token to access weather data.",
+      "sosumiURL": "https://sosumi.ai/documentation/WeatherKitRESTAPI/request-authentication-for-weatherkit-rest-api",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WeatherKitRESTAPI/request-authentication-for-weatherkit-rest-api.json"
+    },
+    {
+      "title": "Forum: Maps & Location",
+      "url": "https://developer.apple.com/forums/topics/maps-and-location?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/maps-and-location?cid=vf-a-0010"
+    },
+    {
+      "title": "WeatherKit",
+      "url": "https://developer.apple.com/documentation/WeatherKit",
+      "type": "documentation",
+      "description": "Deliver weather conditions and alerts to your users.",
+      "sosumiURL": "https://sosumi.ai/documentation/WeatherKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WeatherKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2024/10067-bring-context-to-today-s-weather/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10067-bring-context-to-today-s-weather/metadata.json",
+    "readme": "sessions/wwdc2024/10067-bring-context-to-today-s-weather/README.md",
+    "transcript": "sessions/wwdc2024/10067-bring-context-to-today-s-weather/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10067-bring-context-to-today-s-weather/transcript.json"
+  }
+}

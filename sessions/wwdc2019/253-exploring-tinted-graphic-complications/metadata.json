@@ -1,0 +1,70 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-253",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 253,
+  "title": "Exploring Tinted Graphic Complications",
+  "description": "Many Watch faces in watchOS 6 allow for customizing the tint color of content, allowing for even more personalization of Apple’s most personal device. Discover how you can use ClockKit data providers to offer full color and tint-ready options for each complication family type. This gives customers the ability to get up to date, important information at a glance, no matter which Watch face they choose.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/253",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/253",
+  "type": "Video",
+  "publishedAt": "2019-06-04T18:00:00-07:00",
+  "platforms": [
+    "watchOS"
+  ],
+  "keywords": [
+    "⌚️",
+    "apple watch",
+    "clkcomplication",
+    "clockkit",
+    "complications",
+    "digital crown",
+    "watch",
+    "watchkit",
+    "watchos",
+    "wkinterface"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 428,
+  "hasTranscript": true,
+  "transcriptWordCount": 940,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/253llfvak2onhcnjf3w/253/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/253llfvak2onhcnjf3w/253/253_sd_exploring_tinted_graphic_complications.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/253llfvak2onhcnjf3w/253/253_hd_exploring_tinted_graphic_complications.mp4",
+    "duration": 428
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "ClockKit",
+      "url": "https://developer.apple.com/documentation/ClockKit",
+      "type": "documentation",
+      "description": "Display app-specific data on the clock face.",
+      "sosumiURL": "https://sosumi.ai/documentation/ClockKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ClockKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/253-exploring-tinted-graphic-complications/",
+  "files": {
+    "metadata": "sessions/wwdc2019/253-exploring-tinted-graphic-complications/metadata.json",
+    "readme": "sessions/wwdc2019/253-exploring-tinted-graphic-complications/README.md",
+    "transcript": "sessions/wwdc2019/253-exploring-tinted-graphic-complications/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/253-exploring-tinted-graphic-complications/transcript.json"
+  }
+}

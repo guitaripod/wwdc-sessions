@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-601",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 601,
+  "title": "Modern Rendering with Metal",
+  "description": "Metal is the GPU-accelerated graphics and compute framework that helps developers build everything from pro apps to console-style games. Learn how to apply Metal features to implement modern graphics techniques including deferred and tiled-forward rendering. See how GPU-driven capabilities enable Metal to schedule work for itself, allowing complete scenes and compute workloads to be built and executed with little to no CPU interaction. Understand how GPU Families make it easier for you to build apps that scale across Apple platforms, and explore how Metal lets your apps and games realize entirely new levels of performance and capability.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/601",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/601",
+  "type": "Video",
+  "publishedAt": "2019-06-04T11:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 3328,
+  "hasTranscript": true,
+  "transcriptWordCount": 8632,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/601fthb9otw94fg/601/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/601fthb9otw94fg/601/601_sd_modern_rendering_with_metal.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/601fthb9otw94fg/601/601_hd_modern_rendering_with_metal.mp4",
+    "duration": 3328
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Modern rendering with Metal",
+      "url": "https://developer.apple.com/documentation/Metal/modern-rendering-with-metal",
+      "type": "samplecode",
+      "description": "Use advanced Metal features such as indirect command buffers, sparse textures, and variable rate rasterization to implement complex rendering techniques.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/modern-rendering-with-metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/modern-rendering-with-metal.json"
+    },
+    {
+      "title": "Metal Feature Set Tables",
+      "url": "https://developer.apple.com/metal/Metal-Feature-Set-Tables.pdf",
+      "type": "guide",
+      "description": "Features, limits, and capabilities of Metal.",
+      "sosumiURL": "https://sosumi.ai/metal/Metal-Feature-Set-Tables.pdf"
+    },
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/601-modern-rendering-with-metal/",
+  "files": {
+    "metadata": "sessions/wwdc2019/601-modern-rendering-with-metal/metadata.json",
+    "readme": "sessions/wwdc2019/601-modern-rendering-with-metal/README.md",
+    "transcript": "sessions/wwdc2019/601-modern-rendering-with-metal/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/601-modern-rendering-with-metal/transcript.json"
+  }
+}

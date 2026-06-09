@@ -1,0 +1,108 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10652",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10652,
+  "title": "Meet the new Photos picker",
+  "description": "Let people select photos and videos to use in your app without requiring full Photo Library access. Discover how the PHPicker API for iOS and Mac Catalyst ensures privacy while providing your app the features you need. PHPicker is the modern replacement for UIImagePickerController. In addition to its privacy-focused approach, the API also provides additional features for your app like search, multi-image selection, and the ability to zoom in or out on on the photo grid. We’ll show you how PHPicker can help most apps avoid asking for direct library access and how you can implement it to improve the overall experience for people interacting with your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10652",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10652",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "photokit",
+    "photo library",
+    "photos",
+    "photos api",
+    "picker",
+    "privacy"
+  ],
+  "topics": [
+    "Privacy & Security",
+    "SwiftUI & UI Frameworks",
+    "Photos & Camera"
+  ],
+  "primaryTopic": "Photos & Camera",
+  "duration": 873,
+  "hasTranscript": true,
+  "transcriptWordCount": 1961,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10652/3/8660B6AC-4DDE-46E6-830D-1449B090978C/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10652/3/8660B6AC-4DDE-46E6-830D-1449B090978C/wwdc2020_10652_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10652/3/8660B6AC-4DDE-46E6-830D-1449B090978C/wwdc2020_10652_hd.mp4",
+    "duration": 873
+  },
+  "codeSnippets": [
+    {
+      "title": "PHPickerConfiguration",
+      "language": "swift",
+      "startTimeSeconds": 147,
+      "code": "import PhotosUI\n\nvar configuration = PHPickerConfiguration()\n\n// “unlimited” selection by specifying 0, default is 1\nconfiguration.selectionLimit = 0\n\n// Only show images (including Live Photos)\nconfiguration.filter = .images\n// Uncomment next line for other example: Only show videos or Live Photos (for their video complement), but no images\n// configuration.filter = .any(of: [.videos, .livePhotos])"
+    },
+    {
+      "title": "PHPickerViewController",
+      "language": "swift",
+      "startTimeSeconds": 187,
+      "code": "import UIKit\nimport PhotosUI\n\nclass SingleSelectionPickerViewController: UIViewController, PHPickerViewControllerDelegate {\n    @IBAction func presentPicker(_ sender: Any) {\n        var configuration = PHPickerConfiguration()\n        // Only wants images\n        configuration.filter = .images\n\n        let picker = PHPickerViewController(configuration: configuration)\n        picker.delegate = self\n\n        // The client is responsible for presentation and dismissal\n        present(picker, animated: true)\n    }\n\n    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {\n        // The client is responsible for presentation and dismissal\n        picker.dismiss(animated: true)\n\n        // Get the first item provider from the results, the configuration only allowed one image to be selected\n        let itemProvider = results.first?.itemProvider\n\n        if let itemProvider = itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {\n            itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in\n                // TODO: Do something with the image or handle the error\n            }\n        } else {\n            // TODO: Handle empty results or item provider not being able load UIImage\n        }\n    }\n}"
+    },
+    {
+      "title": "Demo - Single Selection",
+      "language": "swift",
+      "startTimeSeconds": 319,
+      "code": "import UIKit\nimport PhotosUI\n\nclass ViewController: UIViewController {\n\n    @IBOutlet weak var imageView: UIImageView!\n\n    @IBAction func presentPicker(_ sender: Any) {\n        var configuration = PHPickerConfiguration()\n        configuration.filter = .images\n\n        let picker = PHPickerViewController(configuration: configuration)\n        picker.delegate = self\n        present(picker, animated: true)\n    }\n\n}\n\nextension ViewController: PHPickerViewControllerDelegate {\n\n    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {\n        dismiss(animated: true)\n\n        if let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {\n            let previousImage = imageView.image\n            itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in\n                DispatchQueue.main.async {\n                    guard let self = self, let image = image as? UIImage, self.imageView.image == previousImage else { return }\n                    self.imageView.image = image\n                }\n            }\n        }\n    }\n\n}"
+    },
+    {
+      "title": "Demo - Multiple Selection",
+      "language": "swift",
+      "startTimeSeconds": 454,
+      "code": "import UIKit\nimport PhotosUI\n\nclass ViewController: UIViewController {\n\n    @IBOutlet weak var imageView: UIImageView!\n\n    var itemProviders: [NSItemProvider] = []\n    var iterator: IndexingIterator<[NSItemProvider]>?\n\n    @IBAction func presentPicker(_ sender: Any) {\n        var configuration = PHPickerConfiguration()\n        configuration.filter = .images\n        configuration.selectionLimit = 0\n\n        let picker = PHPickerViewController(configuration: configuration)\n        picker.delegate = self\n        present(picker, animated: true)\n    }\n\n    func displayNextImage() {\n        if let itemProvider = iterator?.next(), itemProvider.canLoadObject(ofClass: UIImage.self) {\n            let previousImage = imageView.image\n            itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in\n                DispatchQueue.main.async {\n                    guard let self = self, let image = image as? UIImage, self.imageView.image == previousImage else { return }\n                    self.imageView.image = image\n                }\n            }\n        }\n    }\n\n    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {\n        displayNextImage()\n    }\n\n}\n\nextension ViewController: PHPickerViewControllerDelegate {\n\n    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {\n        dismiss(animated: true)\n\n        itemProviders = results.map(\\.itemProvider)\n        iterator = itemProviders.makeIterator()\n        displayNextImage()\n    }\n\n}"
+    },
+    {
+      "title": "Using PHPicker with PhotoKit",
+      "language": "swift",
+      "startTimeSeconds": 673,
+      "code": "import UIKit\nimport PhotosUI\n\nclass PhotoKitPickerViewController: UIViewController, PHPickerViewControllerDelegate {\n    @IBAction func presentPicker(_ sender: Any) {\n        let photoLibrary = PHPhotoLibrary.shared()\n        let configuration = PHPickerConfiguration(photoLibrary: photoLibrary)\n        let picker = PHPickerViewController(configuration: configuration)\n        picker.delegate = self\n        present(picker, animated: true)\n    }\n\n    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {\n        picker.dismiss(animated: true)\n\n        let identifiers = results.compactMap(\\.assetIdentifier)\n        let fetchResult = PHAsset.fetchAssets(withLocalIdentifiers: identifiers, options: nil)\n\n        // TODO: Do something with the fetch result if you have Photos Library access\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Selecting Photos and Videos in iOS",
+      "url": "https://developer.apple.com/documentation/PhotoKit/selecting-photos-and-videos-in-ios",
+      "type": "samplecode",
+      "description": "Improve the user experience of finding and selecting assets by using the Photos picker.",
+      "sosumiURL": "https://sosumi.ai/documentation/PhotoKit/selecting-photos-and-videos-in-ios",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/PhotoKit/selecting-photos-and-videos-in-ios.json"
+    },
+    {
+      "title": "PhotoKit",
+      "url": "https://developer.apple.com/documentation/photokit",
+      "type": "documentation",
+      "description": "Work with image and video assets managed by the Photos app, including those from iCloud Photos and Live Photos.",
+      "sosumiURL": "https://sosumi.ai/documentation/photokit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/photokit.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10652-meet-the-new-photos-picker/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10652-meet-the-new-photos-picker/metadata.json",
+    "readme": "sessions/wwdc2020/10652-meet-the-new-photos-picker/README.md",
+    "transcript": "sessions/wwdc2020/10652-meet-the-new-photos-picker/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10652-meet-the-new-photos-picker/transcript.json"
+  }
+}

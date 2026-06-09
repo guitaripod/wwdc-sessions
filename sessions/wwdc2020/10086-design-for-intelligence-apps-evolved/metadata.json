@@ -1,0 +1,75 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10086",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10086,
+  "title": "Design for intelligence: Apps, evolved",
+  "description": "Intelligence is a core part of building a great modern app. App extensions, Siri suggestions, voice, widgets, App Clips — we’ve designed all of these features to help make everyday tasks easier for people who use our platforms. Learn about the origins of the intelligent system experience, and find out how integrating intelligently with the system can help make your app more convenient, relevant, and intuitive, making your features the focus. Learn more about designing for intelligence in the next part of our series, \"Discover new opportunities.\"",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10086",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10086",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "conversational interaction",
+    "design",
+    "discoverability",
+    "donations",
+    "extensions",
+    "intelligence",
+    "intelligent system experience",
+    "intents",
+    "intentsui",
+    "shortcuts",
+    "siri",
+    "sirikit",
+    "siri suggestions",
+    "suggestions",
+    "system intelligence",
+    "ui",
+    "user experience",
+    "voice"
+  ],
+  "topics": [
+    "App Services",
+    "App Store, Distribution & Marketing",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 424,
+  "hasTranscript": true,
+  "transcriptWordCount": 1095,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10086/3/F5DA137E-B1E5-4180-96CC-2D6680E5996E/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10086/3/F5DA137E-B1E5-4180-96CC-2D6680E5996E/wwdc2020_10086_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10086/3/F5DA137E-B1E5-4180-96CC-2D6680E5996E/wwdc2020_10086_hd.mp4",
+    "duration": 424
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2020/10086-design-for-intelligence-apps-evolved/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10086-design-for-intelligence-apps-evolved/metadata.json",
+    "readme": "sessions/wwdc2020/10086-design-for-intelligence-apps-evolved/README.md",
+    "transcript": "sessions/wwdc2020/10086-design-for-intelligence-apps-evolved/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10086-design-for-intelligence-apps-evolved/transcript.json"
+  }
+}

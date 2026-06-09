@@ -1,0 +1,75 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-613",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 613,
+  "title": "Ray Tracing with Metal",
+  "description": "Metal Performance Shaders (MPS) harness the massive parallelism of the GPU to dramatically accelerate calculations at the heart of modern ray tracing and ray casting techniques. Understand how MPS accelerates calculations for dynamic scenes, and dive into practical examples for implementing soft shadows, ambient occlusion, and global illumination. Learn how to enable hybrid rendering applications, and explore new techniques to extend your app across multiple GPUs.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/613",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/613",
+  "type": "Video",
+  "publishedAt": "2019-06-07T11:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 3518,
+  "hasTranscript": true,
+  "transcriptWordCount": 10274,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/613vjxxrkq20jn/613/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/613vjxxrkq20jn/613/613_sd_ray_tracing_with_metal.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/613vjxxrkq20jn/613/613_hd_ray_tracing_with_metal.mp4",
+    "duration": 3518
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Accelerating ray tracing and motion blur using Metal",
+      "url": "https://developer.apple.com/documentation/Metal/accelerating-ray-tracing-and-motion-blur-using-metal",
+      "type": "samplecode",
+      "description": "Generate ray-traced images with motion blur using GPU-based parallel processing.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/accelerating-ray-tracing-and-motion-blur-using-metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/accelerating-ray-tracing-and-motion-blur-using-metal.json"
+    },
+    {
+      "title": "Metal Performance Shaders",
+      "url": "https://developer.apple.com/documentation/MetalPerformanceShaders",
+      "type": "documentation",
+      "description": "Optimize graphics and compute performance with kernels that are fine-tuned for the unique characteristics of each Metal GPU family.",
+      "sosumiURL": "https://sosumi.ai/documentation/MetalPerformanceShaders",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MetalPerformanceShaders.json"
+    },
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/613-ray-tracing-with-metal/",
+  "files": {
+    "metadata": "sessions/wwdc2019/613-ray-tracing-with-metal/metadata.json",
+    "readme": "sessions/wwdc2019/613-ray-tracing-with-metal/README.md",
+    "transcript": "sessions/wwdc2019/613-ray-tracing-with-metal/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/613-ray-tracing-with-metal/transcript.json"
+  }
+}

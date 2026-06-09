@@ -1,0 +1,51 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "meet-with-apple-234",
+  "event": "meet-with-apple",
+  "eventName": "Meet with Apple",
+  "year": 2025,
+  "eventContentId": 234,
+  "title": "Hands-on experience with editing for Apple Immersive Video",
+  "description": "Join Clara and Ben from Main Course Films to discover how you can approach your editorial process when working with Apple Immersive Video. Learn about engaging with proxy workflows for efficient editing, as well as considerations in shot choice, sequencing, and sound design. This session was originally presented as part of the Meet with Apple activity “Create immersive media experiences for visionOS - Day 2.” Watch the full video for more insights and related sessions.",
+  "url": "https://developer.apple.com/videos/play/meet-with-apple/234",
+  "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/234",
+  "type": "Video",
+  "publishedAt": "2025-12-09T00:00:00-08:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 2212,
+  "hasTranscript": true,
+  "transcriptWordCount": 5664,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/234/1/d649f4d2-8f92-4c0f-a7e8-a9a8acb8a522/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/234/1/d649f4d2-8f92-4c0f-a7e8-a9a8acb8a522/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/234/1/d649f4d2-8f92-4c0f-a7e8-a9a8acb8a522/downloads/meet-with-apple-234_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/234/1/d649f4d2-8f92-4c0f-a7e8-a9a8acb8a522/downloads/meet-with-apple-234_hd.mp4",
+    "duration": 2212
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/meet-with-apple/234-hands-on-experience-with-editing-for-apple-immersive-video/",
+  "files": {
+    "metadata": "sessions/meet-with-apple/234-hands-on-experience-with-editing-for-apple-immersive-video/metadata.json",
+    "readme": "sessions/meet-with-apple/234-hands-on-experience-with-editing-for-apple-immersive-video/README.md",
+    "transcript": "sessions/meet-with-apple/234-hands-on-experience-with-editing-for-apple-immersive-video/transcript.md",
+    "transcriptJSON": "sessions/meet-with-apple/234-hands-on-experience-with-editing-for-apple-immersive-video/transcript.json"
+  }
+}

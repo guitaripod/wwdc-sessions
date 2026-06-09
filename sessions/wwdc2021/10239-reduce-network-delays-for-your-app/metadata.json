@@ -1,0 +1,86 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10239",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10239,
+  "title": "Reduce network delays for your app",
+  "description": "CPU performance and network throughput rates keep improving, but the speed of light is one limit that isn’t going any higher. Learn the APIs and best practices to maximize your app’s responsiveness and efficiency by keeping network round-trip times low and minimizing the number of round trips when performing network operations.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10239",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10239",
+  "type": "Video",
+  "publishedAt": "2021-06-11T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 1371,
+  "hasTranscript": true,
+  "transcriptWordCount": 3034,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10239/4/8C138558-C5F3-4328-AA26-1F2D924B69F9/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10239/4/8C138558-C5F3-4328-AA26-1F2D924B69F9/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10239/4/8C138558-C5F3-4328-AA26-1F2D924B69F9/downloads/wwdc2021-10239_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10239/4/8C138558-C5F3-4328-AA26-1F2D924B69F9/downloads/wwdc2021-10239_hd.mp4",
+    "duration": 1371
+  },
+  "codeSnippets": [
+    {
+      "title": "Fast open with TCP handshake",
+      "language": "swift",
+      "startTimeSeconds": 568,
+      "code": "/* Allow fast open on the connection parameters */\nparameters.allowFastOpen = true\n\nlet connection = NWConnection(to: endpoint, using: parameters)\n\n/* Call send with idempotent initial data before starting the connection */\nconnection.send(content: initialData, completion: .idempotent)\nconnection.start(queue: myQueue)"
+    },
+    {
+      "title": "Sockets with fast open",
+      "language": "swift",
+      "startTimeSeconds": 661,
+      "code": "connectx(fd, ..., CONNECT_DATA_IDEMPOTENT | CONNECT_RESUME_ON_READ_WRITE, ...); // delay SYN\nwrite(fd, ...); // SYN goes out with first data segment"
+    },
+    {
+      "title": "Save round-trips when switching networks with Multipath TCP",
+      "language": "swift",
+      "startTimeSeconds": 815,
+      "code": "// Multipath TCP\n// Save multiple round-trips when switching networks\n\n// On URLSessionConfiguration\nlet configuration = URLSessionConfiguration.default\nconfiguration.multipathServiceType = .interactive\n\n// On NWParameters\nlet parameters = NWParameters.tcp\nparameters.multipathServiceType = .interactive"
+    },
+    {
+      "title": "Background service type, App in foreground",
+      "language": "swift",
+      "startTimeSeconds": 1209,
+      "code": "//Use default  URLSession, set background on URLRequest\nvar request = URLRequest(url: myurl)\nrequest.networkServiceType = .background\n\n//Set service class on parameters to apply to the  NWConnection\nlet parameters = NWParameters.tls\nparameters.serviceClass = .background"
+    },
+    {
+      "title": "Time insensitive tasks running in background",
+      "language": "swift",
+      "startTimeSeconds": 1210,
+      "code": "//Configure background URL Session\n\nlazy var urlSession: URLSession = {\n    let configuration = URLSessionConfiguration.background(withIdentifier: \"MySession\")\n    configuration.isDiscretionary = true\n    return URLSession(configuration: configuration, delegate: self, delegateQueue: nil)\n}()"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2021/10239-reduce-network-delays-for-your-app/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10239-reduce-network-delays-for-your-app/metadata.json",
+    "readme": "sessions/wwdc2021/10239-reduce-network-delays-for-your-app/README.md",
+    "transcript": "sessions/wwdc2021/10239-reduce-network-delays-for-your-app/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10239-reduce-network-delays-for-your-app/transcript.json"
+  }
+}

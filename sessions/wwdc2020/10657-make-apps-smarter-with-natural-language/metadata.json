@@ -1,0 +1,114 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10657",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10657,
+  "title": "Make apps smarter with Natural Language",
+  "description": "Explore how you can leverage the Natural Language framework to better analyze and understand text. Learn how to draw meaning from text using the framework's built-in word and sentence embeddings, and how to create your own custom embeddings for specific needs. We’ll show you how to use samples to train a custom text classifier or word tagger to extract important pieces of information out of text— all powered by the transfer learning algorithms in Natural Language. Find out how you can create apps that can answer user questions, recognize similarities in text, and find relevant documents, images, and more. To get the most out of this session, you should have a basic understanding of the Natural Language framework. For an overview, watch “Introducing Natural Language Framework” and “Advances in Natural Language Framework.” You can also brush up on model training using Create ML through “Introducing the Create ML App.”",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10657",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10657",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "core ml",
+    "create ml",
+    "custom models",
+    "embeddings",
+    "machine learning",
+    "natural language",
+    "nlp",
+    "sentence embedding",
+    "text analysis",
+    "text processing",
+    "word embedding",
+    "word tagging"
+  ],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 2464,
+  "hasTranscript": true,
+  "transcriptWordCount": 6695,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10657/6/2C0D8310-7D45-4FD5-B49E-91B0F6D2B511/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10657/6/2C0D8310-7D45-4FD5-B49E-91B0F6D2B511/wwdc2020_10657_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10657/6/2C0D8310-7D45-4FD5-B49E-91B0F6D2B511/wwdc2020_10657_hd.mp4",
+    "duration": 2464
+  },
+  "codeSnippets": [
+    {
+      "title": "Confidence Scores: tagHypotheses",
+      "language": "swift",
+      "startTimeSeconds": 233,
+      "code": "import NaturalLanguage \n\nlet tagger = NLTagger(tagSchemes: [.nameType])\nlet str = \"Tim Cook is very popular in Spain.\"\nlet strRange = Range(uncheckedBounds: (str.startIndex, str.endIndex))\ntagger.string = str\ntagger.setLanguage(.english, range: strRange)\n\ntagger.enumerateTags(in: str.startIndex..<str.endIndex, unit: .word, scheme: .nameType, options: .omitWhitespace) { (tag, tokenRange) -> Bool in\n    let (hypotheses, _) = tagger.tagHypotheses(at: tokenRange.lowerBound, unit: .word, \n                                               scheme: .nameType, maximumCount: 1)\n    print(hypotheses)\n    return true\n}"
+    },
+    {
+      "title": "Word Embedding",
+      "language": "swift",
+      "startTimeSeconds": 739,
+      "code": "import NaturalLanguage\n\nif let embedding = NLEmbedding.wordEmbedding(for: .english) {\n    let word = \"bicycle\"\n\n    if let vector = embedding.vector(for: word) {\n        print(vector)\n    }\n\n    let dist = embedding.distance(between:word, and: \"motorcycle\")\n    print(dist)\n\n    embedding.enumerateNeighbors(for: word, maximumCount: 5) { neighbor, distance in\n        print(\"\\(neighbor): \\(distance.description)\")\n        return true\n    }\n}"
+    },
+    {
+      "title": "Sentence Embedding",
+      "language": "swift",
+      "startTimeSeconds": 992,
+      "code": "import NaturalLanguage\n\nif let embedding = NLEmbedding.sentenceEmbedding(for: .english) {\n    let sentence = \"This is a sentence.\"\n\n    if let vector = sentenceEmbedding.vector(for: sentence) {\n        print(vector)\n    }\n\n    let dist = sentenceEmbedding.distance(between: sentence, and: \"That is a sentence.\")\n    print(dist)\n}"
+    },
+    {
+      "title": "Finding nearest neighbor with sentence embedding",
+      "language": "swift",
+      "startTimeSeconds": 1116,
+      "code": "func answerKey(for string: String) -> String? {\n        guard let embedding = NLEmbedding.sentenceEmbedding(for: .english) else { return nil }\n        guard let queryVector = embedding.vector(for: string) else { return nil }\n\n        var answerKey: String? = nil\n        var answerDistance = 2.0\n\n        for (key, vectors) in self.faqEmbeddings {\n            for (vector) in vectors {\n                let distance = self.cosineDistance(vector, queryVector)\n                if (distance < answerDistance) {\n                    answerDistance = distance\n                    answerKey = key\n                }\n            }\n        }\n\n        return answerKey\n    }"
+    },
+    {
+      "title": "Sentence embedding compressed as custom embedding",
+      "language": "swift",
+      "startTimeSeconds": 1339,
+      "code": "import NaturalLanguage\nimport CreateML\n\n\nlet embedding = try MLWordEmbedding(dictionary: sentenceVectors)\n\ntry embedding.write(to: URL(fileURLWithPath: \"/tmp/Verse.mlmodel\"))"
+    },
+    {
+      "title": "Finding nearest neighbor with sentence embedding and custom embedding",
+      "language": "swift",
+      "startTimeSeconds": 1367,
+      "code": "func answerKeyCustom(for string: String) -> String? {\n        guard let embedding = NLEmbedding.sentenceEmbedding(for: .english) else { return nil }\n        guard let queryVector = embedding.vector(for: string) else { return nil }\n\n        guard let (nearestLineKey, _) = self.customEmbedding.neighbors(for: queryVector, maximumCount: 1).first else { return nil }\n\n        return self.poemKeyFromLineKey(nearestLineKey)\n    }"
+    },
+    {
+      "title": "WordTagger",
+      "language": "swift",
+      "startTimeSeconds": 2009,
+      "code": "import CreateML\n\nlet modelParameters = MLWordTagger.ModelParameters(algorithm: .crf(revision: 1))"
+    },
+    {
+      "title": "Using custom word tagger",
+      "language": "swift",
+      "startTimeSeconds": 2206,
+      "code": "func findTags(for string: String) {\n        let model = try! NLModel(contentsOf: Bundle.main.url(forResource: \"Nosh\", withExtension: \"mlmodelc\")!)\n        let tagger = NLTagger(tagSchemes: [NoshTags])\n\n        tagger.setModels([model], forTagScheme: NoshTags)\n        tagger.string = string\n\n        tagger.enumerateTags(in: string.startIndex..<string.endIndex, unit: .word, scheme: NoshTags, options: .omitWhitespace) { (tag, tokenRange) -> Bool in\n\n            let name = String(string[tokenRange])\n\n            switch tag {\n                case NoshTagRestaurant:\n                    self.noteRestaurant(name)\n                case NoshTagFood:\n                    self.noteFood(name)\n                case NoshTagFromCity:\n                    self.noteFromCity(name)\n                case NoshTagToCity:\n                    self.noteToCity(name)\n                default:\n                    break\n            }\n            return true\n        }\n    }"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2020/10657-make-apps-smarter-with-natural-language/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10657-make-apps-smarter-with-natural-language/metadata.json",
+    "readme": "sessions/wwdc2020/10657-make-apps-smarter-with-natural-language/README.md",
+    "transcript": "sessions/wwdc2020/10657-make-apps-smarter-with-natural-language/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10657-make-apps-smarter-with-natural-language/transcript.json"
+  }
+}

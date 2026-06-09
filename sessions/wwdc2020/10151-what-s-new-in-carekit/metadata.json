@@ -1,0 +1,262 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10151",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10151,
+  "title": "What's new in CareKit",
+  "description": "Build feature-rich research and care apps with CareKit: Learn about the latest advancements to our health framework, including new views for its modular architecture, improvements to the data store, and tighter integration with other frameworks on iOS. And discover how the open-source community continues to leverage CareKit to allow developers to push the boundaries of digital health — all while preserving privacy.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10151",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10151",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "care",
+    "care plan",
+    "client server",
+    "healthkit",
+    "health monitoring",
+    "hyperprotect",
+    "open source",
+    "synchronize"
+  ],
+  "topics": [
+    "Health & Fitness"
+  ],
+  "primaryTopic": "Health & Fitness",
+  "duration": 2137,
+  "hasTranscript": true,
+  "transcriptWordCount": 5739,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10151/2/2DBFC733-6021-45DC-9030-8F0FECFBE409/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10151/2/2DBFC733-6021-45DC-9030-8F0FECFBE409/wwdc2020_10151_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10151/2/2DBFC733-6021-45DC-9030-8F0FECFBE409/wwdc2020_10151_hd.mp4",
+    "duration": 2137
+  },
+  "codeSnippets": [
+    {
+      "title": "Simple Task View",
+      "language": "swift",
+      "startTimeSeconds": 143,
+      "code": "import CareKitUI\nimport SwiftUI\n\nstruct MySimpleTaskView: View {\n\n    var body: some View {\n        SimpleTaskView(\n            title: Text(\"Stretches\"),\n            detail: Text(\"15 minutes\"),\n            isComplete: false)\n    }\n}"
+    },
+    {
+      "title": "Simple Task View - View Modifiers",
+      "language": "swift",
+      "startTimeSeconds": 172,
+      "code": "import CareKitUI\nimport SwiftUI\n\nstruct MySimpleTaskView: View {\n\n    var body: some View {\n        SimpleTaskView(\n            title: Text(\"Stretches\").fontWeight(.thin),\n            detail: Text(\"15 minutes\"),\n            isComplete: false)\n    }\n}"
+    },
+    {
+      "title": "Simple Task View - Custom Header",
+      "language": "swift",
+      "startTimeSeconds": 222,
+      "code": "struct MySimpleTaskView: View {\n\n    var body: some View {\n        SimpleTaskView(isComplete: false) {                \n            HStack {\n                RoundedRectangle(cornerRadius: 5)\n                    .fill(Color.accentColor)\n                    .frame(width: 5)         \n                HeaderView(\n                    title: Text(\"Stretches\"),\n                    detail: Text(\"15 minutes\"))\n            }\n            .padding()\n        }\n    }\n}"
+    },
+    {
+      "title": "Simple Task View - Appending Views",
+      "language": "swift",
+      "startTimeSeconds": 269,
+      "code": "import CareKitUI\nimport SwiftUI\n\nstruct MyComposedSimpleTaskView: View {\n\n    var body: some View {\n        CardView {\n            VStack(alignment: .leading) {\n\t\t\t\t\t\t\t\tMySimpleTaskView()\n                Divider()\n                Text(\"...\")\n                    .font(.caption)\n                    .foregroundColor(.secondary)    \n            }.padding()\n        }        \n    }\n}"
+    },
+    {
+      "title": "Labeled Value Task View",
+      "language": "swift",
+      "startTimeSeconds": 324,
+      "code": "import CareKitUI\nimport SwiftUI\n\nstruct MyLabeledValueTaskView: View {\n\n    var body: some View {\n        LabeledValueTaskView(\n            title: Text(\"Heart Rate\"),\n            detail: Text(\"Most recent measurement\")\n            state: .complete(\n                Text(\"62\"),\n                Text(\"BPM\")\n            ))\n    }\n}"
+    },
+    {
+      "title": "Numeric Progress Task View",
+      "language": "swift",
+      "startTimeSeconds": 357,
+      "code": "import CareKitUI\nimport SwiftUI\n\nstruct MyNumericProgressView: View {\n\n    var body: some View {\n        NumericProgressTaskView(\n            title: Text(\"Exercise Minutes\"),\n            detail: Text(\"Anytime\"),\n            instructions: Text(\"...\"),\n            progress: Text(\"22\"),\n            goal: Text(\"30\"),\n            isComplete: false)\n    }\n}"
+    },
+    {
+      "title": "Featured Content View",
+      "language": "swift",
+      "startTimeSeconds": 388,
+      "code": "import CareKitUI\nimport UIKit\n\nlet featureView = OCKFeaturedContentView()\n\nfeatureView.imageView.image = UIImage(named: \"groceries\")\nfeatureView.label.text = \"Easy & Healthy Recipes\""
+    },
+    {
+      "title": "Detail View",
+      "language": "swift",
+      "startTimeSeconds": 418,
+      "code": "import CareKitUI\nimport UIKit\n\nlet styledHTML = OCKDetailView.StyledHTML(\n  html: html, \n  css: css)\n\nlet detailView = OCKDetailView(\n  html: styledHTML, \n  showsCloseButton: true)\n\ndetailView.imageView.image = UIImage(named: \"groceries\")"
+    },
+    {
+      "title": "Link View",
+      "language": "swift",
+      "startTimeSeconds": 461,
+      "code": "import CareKitUI\nimport SwiftUI\n\nstruct MyLinkView: View {\n\n    var body: some View {\n        LinkView(\n            title: Text(\"Physical Therapist Appointment\"),\n            instructions: Text(\"...\"),\n            links: [\n                // ...\n                .website(\n                    \"https://www.apple.com\", \n                    title: \"Website\")\n                // ...\n        ])\n    }       \n}"
+    },
+    {
+      "title": "Synchronized Task View 1",
+      "language": "swift",
+      "startTimeSeconds": 536,
+      "code": "// Synchronized Task View\n\nimport CareKit\nimport CareKitUI\nimport SwiftUI\n\nstruct MySynchronizedTaskView: View {\n\n    let storeManager: OCKSynchronizedStoreManager\n\n    var body: some View {\n        CareKit.SimpleTaskView(\n            taskID: \"stretch\",\n            eventQuery: OCKEventQuery(for: Date()),\n            storeManager: storeManager)\n\n    }\n}"
+    },
+    {
+      "title": "Synchronized Task View 2",
+      "language": "swift",
+      "startTimeSeconds": 566,
+      "code": "@State private var isShowingSurvey = false\n\nvar body: some View {\n    CareKit.SimpleTaskView(\n        taskID: \"researchKitSurveyTask\",\n        eventQuery: OCKEventQuery(for: Date()),\n        storeManager: storeManager) { controller in\n\n            CareKitUI.SimpleTaskView(\n                title: Text(controller.viewModel?.title ?? \"\"),\n                detail: controller.viewModel?.detail.map(Text.init),\n                isComplete: controller.viewModel?.isComplete ?? false) {\n                    isShowingSurvey = true\n                }\n        }  \n        .popover(isPresented: $isShowingSurvey) {\n            ResearchKitSurvey()\n        }\n}"
+    },
+    {
+      "title": "Setting up the store",
+      "language": "swift",
+      "startTimeSeconds": 823,
+      "code": "// Setting up the Store\n\nimport CareKit\nimport CareKitStore\n\nlet coreDataStore = OCKStore(name: \"core-data-store\")\nlet healthKitPassthroughStore = OCKHealthKitPassthroughStore(name: \"hk-passthrough—store\")\n\nlet coordinator = OCKStoreCoordinator()\ncoordinator.attach(store: coreDataStore)\ncoordinator.attach(eventStore: healthKitPassthroughStore)\n\nlet storeManager = OCKSynchronizedStoreManager(wrapping: coordinator)"
+    },
+    {
+      "title": "Adding HealthKit linked tasks to the store",
+      "language": "swift",
+      "startTimeSeconds": 855,
+      "code": "// Adding HealthKit Linked Tasks to the Store\n\nlet schedule = OCKSchedule.dailyAtTime(\n    hour: 8,\n    minutes: 0, \n    start: Date(),\n    end: nil,\n    text: nil, \n    duration: .allDay, \n    targetValues: [OCKOutcomeValue(30.0, units: \"Minutes\")])\n\nlet link = OCKHealthKitLinkage(\n    quantityIdentifier: .appleExerciseTime, \n    quantityType: .cumulative,\n    unit: .minute())\n\nlet steps = OCKHealthKitTask(\n    id: \"exerciseMinutes\",\n    title: \"Exercise Minutes\",\n    carePlanUUID: nil,\n    schedule: schedule,\n    healthKitLinkage: link)\n\nstoreManager.store.addAnyTask(steps)"
+    },
+    {
+      "title": "Encoding and decoding FHIR data",
+      "language": "swift",
+      "startTimeSeconds": 1017,
+      "code": "// Encoding and Decoding FHIR Data\n\nimport CareKitStore\nimport CareKitFHIR\n\nlet coder = OCKR4PatientCoder()\n\n// CareKit entity to FHIR data\nlet patient = OCKPatient(...)\nlet json = try! coder.encode(patient)\n\n// FHIR data to CareKit entity\nlet data: Data = //... \nlet resourceData = OCKFHIRResourceData<R4, JSON>(data: data)\nlet patient: OCKPatient = try! coder.decode(resourceData)"
+    },
+    {
+      "title": "Customizing the data mapping 1",
+      "language": "swift",
+      "startTimeSeconds": 1069,
+      "code": "// Customizing the Data Mapping\n\n// Encoding process\ncoder.setFHIRName = { name, fhirPatient in // ModelsR4.Patient\n\n    let humanName = HumanName()\n    humanName.family = name.familyName.map { FHIRPrimitive(FHIRString($0)) }\n    humanName.given = name.givenName.map { [FHIRPrimitive(FHIRString($0))] }\n\n    fhirPatient.name = [humanName]\n}"
+    },
+    {
+      "title": "Customizing the data mapping 2",
+      "language": "swift",
+      "startTimeSeconds": 1090,
+      "code": "// Customizing the Data Mapping\n\n// Encoding process\ncoder.setFHIRName = { name, fhirPatient in // ModelsR4.Patient\n\n    let humanName = HumanName()\n    humanName.family = name.familyName.map { FHIRPrimitive(FHIRString($0)) }\n    humanName.given = name.givenName.map { [FHIRPrimitive(FHIRString($0))] }\n\n    fhirPatient.name = [humanName]\n}"
+    },
+    {
+      "title": "Creating the remote",
+      "language": "swift",
+      "startTimeSeconds": 1556,
+      "code": "private lazy var remote = OCKWatchConnectivityPeer()"
+    },
+    {
+      "title": "Setting up the remote store",
+      "language": "swift",
+      "startTimeSeconds": 1569,
+      "code": "private lazy var store = OCKStore(name: \"sample-store\", remote: remote)"
+    },
+    {
+      "title": "import WatchConnectivity",
+      "language": "swift",
+      "startTimeSeconds": 1578,
+      "code": "import WatchConnectivity"
+    },
+    {
+      "title": "Setting up the Watch Connectivity Session",
+      "language": "swift",
+      "startTimeSeconds": 1593,
+      "code": "WCSession.default.delegate = sessionDelegate\nWCSession.default.activate()"
+    },
+    {
+      "title": "Stub out session delegate class",
+      "language": "swift",
+      "startTimeSeconds": 1613,
+      "code": "class SessionDelegate: NSObject, WCSessionDelegate {\n\n    let remote: OCKWatchConnectivityPeer\n    let store: OCKStore\n\n    init(remote: OCKWatchConnectivityPeer, store: OCKStore) {\n        self.remote = remote\n        self.store = store\n    }\n\n    func session(\n        _ session: WCSession,\n        activationDidCompleteWith activationState: WCSessionActivationState,\n        error: Error?) {\n\n        print(\"New session state: \\(activationState)\")\n    }\n\n    func session(\n        _ session: WCSession,\n        didReceiveMessage message: [String: Any],\n        replyHandler: @escaping ([String: Any]) -> Void) {\n\n        print(\"Received message from peer!\")\n    }\n}"
+    },
+    {
+      "title": "Kick off first synchronization",
+      "language": "swift",
+      "startTimeSeconds": 1622,
+      "code": "if activationState == .activated {\n    store.synchronize { error in\n        print(error?.localizedDescription ?? \"Successful sync!\")\n    }\n}"
+    },
+    {
+      "title": "Forwarding replies on CareKit's behalf",
+      "language": "swift",
+      "startTimeSeconds": 1631,
+      "code": "remote.reply(to: message, store: store) { reply in\n\n    print(\"Sending reply to peer!\")\n\n    replyHandler(reply)\n}"
+    },
+    {
+      "title": "Creating the delegate",
+      "language": "swift",
+      "startTimeSeconds": 1659,
+      "code": "private lazy var sessionDelegate = SessionDelegate(remote: remote, store: store)"
+    },
+    {
+      "title": "Setting up the synchronized store manager",
+      "language": "swift",
+      "startTimeSeconds": 1690,
+      "code": "private(set) lazy var storeManager = OCKSynchronizedStoreManager(wrapping: store)"
+    },
+    {
+      "title": "Defining a new environment key",
+      "language": "swift",
+      "startTimeSeconds": 1707,
+      "code": "private struct StoreManagerKey: EnvironmentKey {\n\n    static var defaultValue: OCKSynchronizedStoreManager {\n\n        let extensionDelegate = WKExtension.shared().delegate as! ExtensionDelegate\n\n        return extensionDelegate.storeManager\n    }\n}"
+    },
+    {
+      "title": "Defining a store manager environment value",
+      "language": "swift",
+      "startTimeSeconds": 1731,
+      "code": "extension EnvironmentValues {\n\n    var storeManager: OCKSynchronizedStoreManager {\n        get {\n            self[StoreManagerKey.self]\n        }\n\n        set {\n            self[StoreManagerKey.self] = newValue\n        }\n    }\n}"
+    },
+    {
+      "title": "Adding an environment variable to the view",
+      "language": "swift",
+      "startTimeSeconds": 1737,
+      "code": "@Environment(\\.storeManager) private var storeManager"
+    },
+    {
+      "title": "Setting up the scroll view",
+      "language": "swift",
+      "startTimeSeconds": 1744,
+      "code": "ScrollView {\n\n}.accentColor(Color(#colorLiteral(red: 0.9960784314, green: 0.3725490196, blue: 0.368627451, alpha: 1)))"
+    },
+    {
+      "title": "Displaying the stretch task card",
+      "language": "swift",
+      "startTimeSeconds": 1762,
+      "code": "InstructionsTaskView(\n    taskID: \"stretch\",\n    eventQuery: OCKEventQuery(for: Date()),\n    storeManager: storeManager)"
+    },
+    {
+      "title": "Displaying the muscle cramps task card",
+      "language": "swift",
+      "startTimeSeconds": 1773,
+      "code": "SimpleTaskView(\n    taskID: \"cramps\",\n    eventQuery: OCKEventQuery(for: Date()),\n    storeManager: storeManager) { controller in\n\n    .init(title: Text(controller.viewModel?.title ?? \"\"),\n          detail: nil,\n          isComplete: controller.viewModel?.isComplete ?? false,\n          action: controller.viewModel?.action ?? {})\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Research and Care Website",
+      "url": "https://www.researchandcare.org",
+      "type": "documentation",
+      "description": "Research and Care Website"
+    },
+    {
+      "title": "CareKit Repository",
+      "url": "https://github.com/carekit-apple/CareKit",
+      "type": "guide",
+      "description": "CareKit Source Repository"
+    }
+  ],
+  "path": "sessions/wwdc2020/10151-what-s-new-in-carekit/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10151-what-s-new-in-carekit/metadata.json",
+    "readme": "sessions/wwdc2020/10151-what-s-new-in-carekit/README.md",
+    "transcript": "sessions/wwdc2020/10151-what-s-new-in-carekit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10151-what-s-new-in-carekit/transcript.json"
+  }
+}

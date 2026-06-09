@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-111373",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2023,
+  "eventContentId": 111373,
+  "title": "Learn performance best practices for Metal shaders",
+  "description": "Discover how you can improve Metal shader performance using some of the latest advancements in Apple GPUs. Learn to reduce a shader’s execution time by configuring function constants, and investigate ways to increase compiler optimization with function groups. Find out how to save run time by improving the shader’s execution and ability to use resources in parallel. Explore the Apple family 9 GPU features and take advantage of hardware acceleration for ray tracing.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/111373",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111373",
+  "type": "Video",
+  "publishedAt": "2023-11-09T08:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1560,
+  "hasTranscript": true,
+  "transcriptWordCount": 3514,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/111373/4/7A338D0D-9FD5-4E2F-B802-E1D169D6A125/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/tech-talks/111373/4/7A338D0D-9FD5-4E2F-B802-E1D169D6A125/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/111373/4/7A338D0D-9FD5-4E2F-B802-E1D169D6A125/downloads/tech-talks-111373_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/111373/4/7A338D0D-9FD5-4E2F-B802-E1D169D6A125/downloads/tech-talks-111373_hd.mp4",
+    "duration": 1560
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/tech-talks/111373-learn-performance-best-practices-for-metal-shaders/",
+  "files": {
+    "metadata": "sessions/tech-talks/111373-learn-performance-best-practices-for-metal-shaders/metadata.json",
+    "readme": "sessions/tech-talks/111373-learn-performance-best-practices-for-metal-shaders/README.md",
+    "transcript": "sessions/tech-talks/111373-learn-performance-best-practices-for-metal-shaders/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/111373-learn-performance-best-practices-for-metal-shaders/transcript.json"
+  }
+}

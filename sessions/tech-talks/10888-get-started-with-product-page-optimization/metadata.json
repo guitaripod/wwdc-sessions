@@ -1,0 +1,71 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-10888",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2022,
+  "eventContentId": 10888,
+  "title": "Get started with product page optimization",
+  "description": "Help make your App Store product page even more relevant and effective with product page optimization. We’ll explore details of the feature, take you through the setup process in App Store Connect including how to test different app icons, screenshots and app previews, and share testing strategies to help you get started with your product page optimization efforts.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/10888",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10888",
+  "type": "Video",
+  "publishedAt": "2022-01-19T08:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 1690,
+  "hasTranscript": true,
+  "transcriptWordCount": 4105,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/10888/4/75B3FC7F-CB21-4CED-B75E-5FB0A7A9ACCE/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/tech-talks/10888/4/75B3FC7F-CB21-4CED-B75E-5FB0A7A9ACCE/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/10888/4/75B3FC7F-CB21-4CED-B75E-5FB0A7A9ACCE/downloads/tech-talks-10888_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/10888/4/75B3FC7F-CB21-4CED-B75E-5FB0A7A9ACCE/downloads/tech-talks-10888_hd.mp4",
+    "duration": 1690
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Product Page Optimization Overview",
+      "url": "https://developer.apple.com/app-store/product-page-optimization/?cid=developer80",
+      "type": "guide",
+      "description": "Product page optimization overview.",
+      "sosumiURL": "https://sosumi.ai/app-store/product-page-optimization/?cid=developer80"
+    },
+    {
+      "title": "Creating your Product Page",
+      "url": "https://developer.apple.com/app-store/product-page/",
+      "type": "documentation",
+      "description": "Help users find and engage with your app on the App Store through thoughtfully crafted app metadata.",
+      "sosumiURL": "https://sosumi.ai/app-store/product-page/"
+    }
+  ],
+  "path": "sessions/tech-talks/10888-get-started-with-product-page-optimization/",
+  "files": {
+    "metadata": "sessions/tech-talks/10888-get-started-with-product-page-optimization/metadata.json",
+    "readme": "sessions/tech-talks/10888-get-started-with-product-page-optimization/README.md",
+    "transcript": "sessions/tech-talks/10888-get-started-with-product-page-optimization/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/10888-get-started-with-product-page-optimization/transcript.json"
+  }
+}

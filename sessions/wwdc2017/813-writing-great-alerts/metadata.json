@@ -1,0 +1,81 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2017-813",
+  "event": "wwdc2017",
+  "eventName": "WWDC17",
+  "year": 2017,
+  "eventContentId": 813,
+  "title": "Writing Great Alerts",
+  "description": "Learn how to create clear, informative, and helpful alerts that will make your app easy and enjoyable to use. Get valuable insights about the proper role for alerts, actionable guidance about writing effective alerts, and techniques for avoiding common pitfalls.",
+  "url": "https://developer.apple.com/videos/play/wwdc2017/813",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2017/813",
+  "type": "Video",
+  "publishedAt": "2017-06-04T17:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "alert",
+    "alerts",
+    "design",
+    "design best practices",
+    "design studio",
+    "design studio shorts",
+    "dialogue",
+    "prompt",
+    "short",
+    "shorts",
+    "writing",
+    "writing alerts"
+  ],
+  "topics": [
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 669,
+  "hasTranscript": true,
+  "transcriptWordCount": 1389,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/813vq78d4cyc3/813/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/813vq78d4cyc3/813/813_sd_writing_great_alerts.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/813vq78d4cyc3/813/813_hd_writing_great_alerts.mp4",
+    "duration": 669
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Alerts",
+      "url": "https://developer.apple.com/design/Human-Interface-Guidelines/alerts",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/Human-Interface-Guidelines/alerts"
+    },
+    {
+      "title": "Apple Design Site",
+      "url": "https://developer.apple.com/design/",
+      "type": "guide",
+      "description": "Guidelines for designing great apps.",
+      "sosumiURL": "https://sosumi.ai/design/"
+    }
+  ],
+  "path": "sessions/wwdc2017/813-writing-great-alerts/",
+  "files": {
+    "metadata": "sessions/wwdc2017/813-writing-great-alerts/metadata.json",
+    "readme": "sessions/wwdc2017/813-writing-great-alerts/README.md",
+    "transcript": "sessions/wwdc2017/813-writing-great-alerts/transcript.md",
+    "transcriptJSON": "sessions/wwdc2017/813-writing-great-alerts/transcript.json"
+  }
+}

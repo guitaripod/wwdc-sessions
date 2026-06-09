@@ -1,0 +1,62 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "meet-with-apple-248",
+  "event": "meet-with-apple",
+  "eventName": "Meet with Apple",
+  "year": 2025,
+  "eventContentId": 248,
+  "title": "Boost discoverability and engagement with the Apple Games app",
+  "description": "The Apple Games app is an all-in-one gaming destination designed to help players jump back into their games, find their next favorite, and have even more fun with friends across iPhone, iPad, and Mac. Learn how the Games app can help you boost engagement and visibility through features like achievements, leaderboards, challenges, and activities. This session was originally presented as part of the Meet with Apple activity “Press Start: Game development on Apple platforms.” Watch the full video for more insights and related sessions.",
+  "url": "https://developer.apple.com/videos/play/meet-with-apple/248",
+  "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/248",
+  "type": "Video",
+  "publishedAt": "2025-12-17T00:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 936,
+  "hasTranscript": true,
+  "transcriptWordCount": 2082,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/248/1/c1b13791-7a5a-4e95-a298-8fa8022d848c/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/248/1/c1b13791-7a5a-4e95-a298-8fa8022d848c/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/248/1/c1b13791-7a5a-4e95-a298-8fa8022d848c/downloads/meet-with-apple-248_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/248/1/c1b13791-7a5a-4e95-a298-8fa8022d848c/downloads/meet-with-apple-248_hd.mp4",
+    "duration": 936
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Overview of the Apple Games app",
+      "url": "https://developer.apple.com/games-app/",
+      "type": "guide",
+      "description": "Discover the Apple games app, an all-in-one gaming destination for players to explore what‘s happening across their games, discover new ones, and play with friends.",
+      "sosumiURL": "https://sosumi.ai/games-app/"
+    }
+  ],
+  "path": "sessions/meet-with-apple/248-boost-discoverability-and-engagement-with-the-apple-games-ap/",
+  "files": {
+    "metadata": "sessions/meet-with-apple/248-boost-discoverability-and-engagement-with-the-apple-games-ap/metadata.json",
+    "readme": "sessions/meet-with-apple/248-boost-discoverability-and-engagement-with-the-apple-games-ap/README.md",
+    "transcript": "sessions/meet-with-apple/248-boost-discoverability-and-engagement-with-the-apple-games-ap/transcript.md",
+    "transcriptJSON": "sessions/meet-with-apple/248-boost-discoverability-and-engagement-with-the-apple-games-ap/transcript.json"
+  }
+}

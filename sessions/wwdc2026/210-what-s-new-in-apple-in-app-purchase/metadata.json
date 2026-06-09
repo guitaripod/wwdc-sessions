@@ -1,0 +1,142 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-210",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 210,
+  "title": "What’s new in Apple In-App Purchase",
+  "description": "Discover how monthly subscriptions with a 12-month commitment give people a more affordable option to pay for your subscription and secure a longer-term commitment. Explore how to configure and test this new payment option using App Store Connect, StoreKit APIs, Xcode testing, and more. Plus, learn about improvements to offer code redemption APIs, and enhancements to the App Review submission experience.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/210",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/210",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services",
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 806,
+  "hasTranscript": true,
+  "transcriptWordCount": 2031,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/210/4/f029ab19-6670-48c6-b9b1-88ac6692cdda/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/210/4/f029ab19-6670-48c6-b9b1-88ac6692cdda/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/210/4/f029ab19-6670-48c6-b9b1-88ac6692cdda/downloads/wwdc2026-210_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/210/4/f029ab19-6670-48c6-b9b1-88ac6692cdda/downloads/wwdc2026-210_hd.mp4",
+    "duration": 806
+  },
+  "codeSnippets": [
+    {
+      "title": "Merchandise pricing terms with StoreKit views",
+      "language": "swift",
+      "startTimeSeconds": 209,
+      "code": "// Merchandise pricing terms with StoreKit views\n\nimport StoreKit\nimport SwiftUI\n\nstruct SubscriptionStore: View {\n    var body: some View {\n        SubscriptionStoreView(groupID: \"3F19ED53\") {\n            // Custom marketing content\n        }\n        .preferredSubscriptionPricingTerms {_, subscriptionInfo in\n            subscriptionInfo.pricingTerms.first {\n                $0.billingPlanType == .monthly\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Get subscription pricing terms and make a purchase",
+      "language": "swift",
+      "startTimeSeconds": 242,
+      "code": "// Get subscription pricing terms and make a purchase\n\nimport StoreKit\n\nvar product: Product?\n// Fetch and assign product\n\n// Get the monthly billing plan's pricing terms for merchandising\nlet pricingTerms = product?.subscription?.pricingTerms\n  .first(where: {$0.billingPlanType == .monthly })\nif let pricingTerms {\n  let monthlyPrice = pricingTerms.billingDisplayPrice\n  let totalCommitmentPrice = pricingTerms.commitmentInfo.price\n  // Display both monthly and total commitment price to the customer\n}\n\nlet result = try? await product?.purchase(options: [.billingPlanType(.monthly)])\nswitch result {\n  // Verify the transaction, give the customer access to\n  // the purchased content, and then finish the transaction\n}"
+    },
+    {
+      "title": "Sheet to manage subscriptions by subscriptionGroupID",
+      "language": "swift",
+      "startTimeSeconds": 305,
+      "code": "// Sheet to manage subscriptions by subscriptionGroupID\n\nimport SwiftUI\nimport StoreKit\n\nstruct ManageSubscriptionsButton: View {\n    let subscriptionGroupID: String\n    @State var presentingManageSubscriptionsSheet: Bool = false\n\n    var body: some View {\n        Button(\"Manage Subscriptions\") {\n            presentingManageSubscriptionsSheet = true\n        }\n        .manageSubscriptionsSheet(\n            isPresented: $presentingManageSubscriptionsSheet,\n            subscriptionGroupID: subscriptionGroupID\n        )\n    }\n}"
+    },
+    {
+      "title": "JWSTransaction (decoded) for a monthly subscription with a 12-month commitment",
+      "language": "json",
+      "startTimeSeconds": 465,
+      "code": "// JWSTransaction (decoded) for a monthly subscription with a 12-month commitment\n\n{\n    // …\n    \"expiresDate\": 1783503660000, // for this billing period\n    \"price\": 10990, // for this billing period\n    \"productId\": \"plus.pro.annual\",\n    \"purchaseDate\": 1780911660000,\n    \"type\": \"Auto-Renewable Subscription\",\n    \"billingPlanType\": \"MONTHLY\",\n    \"commitmentInfo\": {\n        \"billingPeriodNumber\": 1,\n        \"totalBillingPeriods\": 12,\n        \"commitmentExpiresDate\": 1812447660000,\n        \"commitmentPrice\": 131880,\n    }\n}"
+    },
+    {
+      "title": "JWSRenewalInfo (decoded) for a monthly subscription with a 12-month commitment",
+      "language": "json",
+      "startTimeSeconds": 479,
+      "code": "// JWSRenewalInfo (decoded) for a monthly subscription with a 12-month commitment\n\n{\n    // … \n    \"renewalBillingPlanType\": \"MONTHLY\",\n    \"commitmentInfo\": {\n        \"commitmentAutoRenewProductId\": “plus.standard.annual”,\n        \"commitmentAutoRenewStatus\": 0,\n        \"commitmentRenewalDate\": 1812447660000,\n        \"commitmentRenewalPrice\": 10990,\n        \"commitmentRenewalBillingPlanType\": \"BILLED_UPFRONT\"\n    }\n}"
+    },
+    {
+      "title": "Sheet to redeem an offer code",
+      "language": "swift",
+      "startTimeSeconds": 598,
+      "code": "// Sheet to redeem an offer code\n\nstruct OfferCodeRedemption: View {\n    @State var presentingOfferCodeSheet: Bool = false\n\n    var body: some View {\n        Button(\"Redeem Offer Code\") {\n            presentingOfferCodeSheet = true\n        }\n        .offerCodeRedemption(options: [], isPresented: $presentingOfferCodeSheet) {result in\n            switch result {\n            case .success(let verificationResult):\n                switch verificationResult {\n                    // Verify the transaction, give the customer access to\n                    // the purchased content, and then finish the transaction\n                }\n            case .failure(let error):\n                // Handle error\n            }\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "In-App Purchase types",
+      "url": "https://developer.apple.com/help/app-store-connect/reference/in-app-purchases-and-subscriptions/in-app-purchase-types",
+      "type": "documentation",
+      "description": "In-App Purchase types refer to the different types of In-App Purchase options available.",
+      "sosumiURL": "https://sosumi.ai/help/app-store-connect/reference/in-app-purchases-and-subscriptions/in-app-purchase-types"
+    },
+    {
+      "title": "Managing the life cycle of monthly subscriptions with a 12-month commitment",
+      "url": "https://developer.apple.com/documentation/StoreKit/managing-lifecycle-of-monthly-subscriptions-with-a-12-month-commitment-",
+      "type": "documentation",
+      "description": "Handle renewals, cancellations, billing issues, refund requests, and price changes, and test subscriptions with a commitment plan.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/managing-lifecycle-of-monthly-subscriptions-with-a-12-month-commitment-",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/managing-lifecycle-of-monthly-subscriptions-with-a-12-month-commitment-.json"
+    },
+    {
+      "title": "Supporting monthly subscriptions with a 12-month commitment",
+      "url": "https://developer.apple.com/documentation/StoreKit/supporting-monthly-subscriptions-with-a-12-month-commitment",
+      "type": "documentation",
+      "description": "Configure, merchandise, and grant access to a monthly subscription with a 12-month commitment.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/supporting-monthly-subscriptions-with-a-12-month-commitment",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/supporting-monthly-subscriptions-with-a-12-month-commitment.json"
+    },
+    {
+      "title": "App Store Server Notifications V2",
+      "url": "https://developer.apple.com/documentation/AppStoreServerNotifications/App-Store-Server-Notifications-V2",
+      "type": "documentation",
+      "description": "Specify your secure server’s URL in App Store Connect to receive version 2 notifications.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreServerNotifications/App-Store-Server-Notifications-V2",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreServerNotifications/App-Store-Server-Notifications-V2.json"
+    },
+    {
+      "title": "Supporting offer codes in your app",
+      "url": "https://developer.apple.com/documentation/StoreKit/supporting-offer-codes-in-your-app",
+      "type": "documentation",
+      "description": "Enable customers to redeem offer codes through the App Store or within your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/supporting-offer-codes-in-your-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/supporting-offer-codes-in-your-app.json"
+    },
+    {
+      "title": "Implementing a store in your app using the StoreKit API",
+      "url": "https://developer.apple.com/documentation/StoreKit/implementing-a-store-in-your-app-using-the-storekit-api",
+      "type": "samplecode",
+      "description": "Offer In-App Purchases and manage entitlements using signed transactions and status information.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/implementing-a-store-in-your-app-using-the-storekit-api",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/implementing-a-store-in-your-app-using-the-storekit-api.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/210-what-s-new-in-apple-in-app-purchase/",
+  "files": {
+    "metadata": "sessions/wwdc2026/210-what-s-new-in-apple-in-app-purchase/metadata.json",
+    "readme": "sessions/wwdc2026/210-what-s-new-in-apple-in-app-purchase/README.md",
+    "transcript": "sessions/wwdc2026/210-what-s-new-in-apple-in-app-purchase/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/210-what-s-new-in-apple-in-app-purchase/transcript.json"
+  }
+}

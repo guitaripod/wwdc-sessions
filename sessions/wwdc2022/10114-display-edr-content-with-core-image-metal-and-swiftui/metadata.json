@@ -1,0 +1,125 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10114",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10114,
+  "title": "Display EDR content with Core Image, Metal, and SwiftUI",
+  "description": "Discover how you can add support for rendering in Extended Dynamic Range (EDR) from a Core Image based multi-platform SwiftUI application. We'll outline best practices for displaying CIImages to a MTKView using ViewRepresentable. We'll also share the simple steps to enable EDR rendering and explore some of the over 150 built-in CIFilters that support EDR.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10114",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10114",
+  "type": "Video",
+  "publishedAt": "2022-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Audio & Video",
+    "Photos & Camera",
+    "SwiftUI & UI Frameworks",
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1061,
+  "hasTranscript": true,
+  "transcriptWordCount": 2453,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://events-delivery.apple.com/wwdc22/S6610-wbTYzbGrJjXGpwDYrMCraMxm/cmaf.m3u8",
+    "duration": 1061
+  },
+  "codeSnippets": [
+    {
+      "title": "Metal View",
+      "language": "swift",
+      "startTimeSeconds": 317,
+      "code": "// Metal View\n\nstruct MetalView: ViewRepresentable {\n\n    @StateObject var renderer: Renderer\n\n    func makeView(context: Context) -> MTKView {\n        let view = MTKView(frame: .zero, device: renderer.device)\n\n        view.delegate = renderer\n\n        // Suggest to Core Animation, through MetalKit, how often to redraw the view.\n        view.preferredFramesPerSecond = 30\n\n        // Allow Core Image to render to the view using Metal's compute pipeline.\n        view.framebufferOnly = false\n\n       return view\n    }"
+    },
+    {
+      "title": "Renderer",
+      "language": "swift",
+      "startTimeSeconds": 432,
+      "code": "// Renderer\n\nfunc draw(in view: MTKView) {\n  if let commandBuffer = commandQueue.makeCommandBuffer(),\n     let drawable = view.currentDrawable {\n      // Calculate content scale factor so CI can render at Retina resolution.\n  #if os(macOS)\n      var contentScale = view.convertToBacking(CGSize(width: 1.0, height: 1.0)).width\n  #else\n      var contentScale = view.contentScaleFactor\n  #endif\n\n      let destination = CIRenderDestination(width: Int(view.drawableSize.width),\n                          height: Int(view.drawableSize.height), \n                          pixelFormat: view.colorPixelFormat,\n                          commandBuffer: commandBuffer,\n                          mtlTextureProvider: { () -> MTLTexture in\n                                   return drawable.texture\n                          })\n\n      let time = CFTimeInterval(CFAbsoluteTimeGetCurrent() - self.startTime)\n\n      // Create a displayable image for the current time.\n      var image = self.imageProvider(time, contentScaleFactor)\n\n      image = image.transformed(by: CGAffineTransform(translationX: shiftX, y: shiftY))\n      image = image.composited(over: self.opaqueBackground)\n\n      _ = try? self.cicontext.startTask(toRender: image, from: backBounds,\n                                             to: destination, at: CGPoint.zero)"
+    },
+    {
+      "title": "ContentView",
+      "language": "swift",
+      "startTimeSeconds": 489,
+      "code": "// ContentView\n\nimport CoreImage.CIFilterBuiltins\n\ninit(struct ContentView: View {\n    var body: some View {\n       // Create a Metal view with its own renderer.\n       let renderer = Renderer(\n            imageProvider: { (time: CFTimeInterval, scaleFactor: CGFloat) -> CIImage in\n\n            var image: CIImage\n\n            // create image using CIFilter.checkerboardGenerator...\n\n            return image\n        })\n        MetalView(renderer: renderer)\n    }\n}"
+    },
+    {
+      "title": "MetalView changes",
+      "language": "swift",
+      "startTimeSeconds": 557,
+      "code": "if let caMtlLayer = view.layer as? CAMetalLayer  {\n    caMtlLayer.wantsExtendedDynamicRangeContent = true\n    view.colorPixelFormat = MTLPixelFormat.rgba16Float\n    view.colorspace = CGColorSpace(name: CGColorSpace.extendedLinearDisplayP3)\n}"
+    },
+    {
+      "title": "Get headroom",
+      "language": "swift",
+      "startTimeSeconds": 575,
+      "code": "let screen = view.window?.screen;\n#if os(macOS)\n     let headroom = screen?.maximumExtendedDynamicRangeColorComponentValue ?? 1.0\n#else\n     let headroom = screen?.currentEDRHeadroom ?? 1.0\n#endif\n     var image = self.imageProvider(time, contentScaleFactor, headroom)"
+    },
+    {
+      "title": "Use headroom",
+      "language": "swift",
+      "startTimeSeconds": 605,
+      "code": "imageProvider: { (time: CFTimeInterval, scaleFactor: CGFloat,\n                              headroom: CGFloat) -> CIImage in\n           var image: CIImage\n\n           // Use CIFilters to create image for time / scale / headroom / ...\n           return image\n        })"
+    },
+    {
+      "title": "Ripple effect",
+      "language": "swift",
+      "startTimeSeconds": 762,
+      "code": "let ripple = CIFilter.rippleTransition()\nripple.inputImage = image\nripple.targetImage = image\nripple.center = CGPoint(x: 512.0, y: 384.0)\nripple.time = Float(fmod(time*0.25, 1.0))\nripple.shadingImage = shading\nimage = ripple.outputImage"
+    },
+    {
+      "title": "Generating the shading image",
+      "language": "swift",
+      "startTimeSeconds": 814,
+      "code": "let gradient = CIFilter.linearGradient()\nlet w = min( headroom, 8.0 )\ngradient.color0 = CIColor(red: w, green: w, blue: w, \n                          colorSpace: CGColorSpace(name: CGColorSpace.extendedLinearSRGB)!)!\ngradient.color1 = CIColor.clear\ngradient.point0 = CGPoint(x: sin(angle)*90.0 + 100.0, y: cos(angle)*90.0 + 100.0)\ngradient.point1 = CGPoint(x: sin(angle)*85.0 + 100.0, y: cos(angle)*85.0 + 100.0)\nlet shading = gradient.outputImage?.cropped(to: CGRect(x: 0, y: 0, width: 200, height: 200))"
+    },
+    {
+      "title": "CIColorCube and EDR",
+      "language": "swift",
+      "startTimeSeconds": 973,
+      "code": "let f = CIFilter.colorCubeWithColorSpace()\nf.cubeDimension = 32\nf.cubeData = sdrData\nf.extrapolate = true\nf.inputImage = edrImage\nlet edrResult = f.outputImage"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Generating an animation with a Core Image Render Destination",
+      "url": "https://developer.apple.com/documentation/CoreImage/generating-an-animation-with-a-core-image-render-destination",
+      "type": "documentation",
+      "description": "Animate a filtered image to a Metal view in a SwiftUI app using a Core Image Render Destination.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreImage/generating-an-animation-with-a-core-image-render-destination",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreImage/generating-an-animation-with-a-core-image-render-destination.json"
+    },
+    {
+      "title": "Core Image",
+      "url": "https://developer.apple.com/documentation/CoreImage",
+      "type": "documentation",
+      "description": "Use built-in or custom filters to process still and video images.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreImage",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreImage.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10114-display-edr-content-with-core-image-metal-and-swiftui/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10114-display-edr-content-with-core-image-metal-and-swiftui/metadata.json",
+    "readme": "sessions/wwdc2022/10114-display-edr-content-with-core-image-metal-and-swiftui/README.md",
+    "transcript": "sessions/wwdc2022/10114-display-edr-content-with-core-image-metal-and-swiftui/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10114-display-edr-content-with-core-image-metal-and-swiftui/transcript.json"
+  }
+}

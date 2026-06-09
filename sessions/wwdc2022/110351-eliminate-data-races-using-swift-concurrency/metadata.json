@@ -1,0 +1,252 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-110351",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 110351,
+  "title": "Eliminate data races using Swift Concurrency",
+  "description": "Join us as we explore one of the core concepts in Swift concurrency: isolation of tasks and actors. We'll take you through Swift’s approach to eliminating data races and its effect on app architecture. We'll also discuss the importance of atomicity in your code, share the nuances of Sendable checking to maintain isolation, and revisit assumptions about ordering work in a concurrent system.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/110351",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/110351",
+  "type": "Video",
+  "publishedAt": "2022-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Essentials",
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 1734,
+  "hasTranscript": true,
+  "transcriptWordCount": 4380,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110351/3/2B82DC62-6057-4460-93F4-B99CF7073221/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110351/3/2B82DC62-6057-4460-93F4-B99CF7073221/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110351/3/2B82DC62-6057-4460-93F4-B99CF7073221/downloads/wwdc2022-110351_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110351/3/2B82DC62-6057-4460-93F4-B99CF7073221/downloads/wwdc2022-110351_hd.mp4",
+    "duration": 1734
+  },
+  "codeSnippets": [
+    {
+      "title": "Tasks",
+      "language": "swift",
+      "startTimeSeconds": 78,
+      "code": "Task.detached {\n  let fish = await catchFish()\n  let dinner = await cook(fish)\n  await eat(dinner)\n}"
+    },
+    {
+      "title": "What is the pineapple?",
+      "language": "swift",
+      "startTimeSeconds": 151,
+      "code": "enum Ripeness {\n  case hard\n  case perfect\n  case mushy(daysPast: Int)\n}\n\nstruct Pineapple {\n  var weight: Double\n  var ripeness: Ripeness\n\n  mutating func ripen() async { … }\n  mutating func slice() -> Int { … }\n}"
+    },
+    {
+      "title": "Adding chickens",
+      "language": "swift",
+      "startTimeSeconds": 195,
+      "code": "final class Chicken {\n  let name: String\n  var currentHunger: HungerLevel\n\n  func feed() { … }\n  func play() { … }\n  func produce() -> Egg { … }\n}"
+    },
+    {
+      "title": "Sendable protocol",
+      "language": "swift",
+      "startTimeSeconds": 275,
+      "code": "protocol Sendable { }"
+    },
+    {
+      "title": "Use conformance to specify which types are Sendable",
+      "language": "swift",
+      "startTimeSeconds": 284,
+      "code": "struct Pineapple: Sendable { … } //conforms to Sendable because its a value type\nclass Chicken: Sendable { } // cannot conform to Sendable because its an unsynchronized reference type."
+    },
+    {
+      "title": "Check Sendable across task boundaries",
+      "language": "swift",
+      "startTimeSeconds": 297,
+      "code": "// will get an error because Chicken is not Sendable\nlet petAdoption = Task {\n  let chickens = await hatchNewFlock()\n  return chickens.randomElement()!\n}\nlet pet = await petAdoption.value"
+    },
+    {
+      "title": "The Sendable constraint is from the Task struct",
+      "language": "swift",
+      "startTimeSeconds": 326,
+      "code": "struct Task<Success: Sendable, Failure: Error> {\n  var value: Success {\n    get async throws { … }\n  }\n}"
+    },
+    {
+      "title": "Sendable checking for enums and structs",
+      "language": "swift",
+      "startTimeSeconds": 383,
+      "code": "enum Ripeness: Sendable {\n  case hard\n  case perfect\n  case mushy(daysPast: Int)\n}\n\nstruct Pineapple: Sendable {\n  var weight: Double\n  var ripeness: Ripeness\n}"
+    },
+    {
+      "title": "Sendable checking for enums and structs with collections",
+      "language": "swift",
+      "startTimeSeconds": 412,
+      "code": "//contains an array of Sendable types, therefore is Sendable\nstruct Crate: Sendable {\n  var pineapples: [Pineapple]\n}"
+    },
+    {
+      "title": "Sendable checking for enums and structs with non-Sendable collections",
+      "language": "swift",
+      "startTimeSeconds": 437,
+      "code": "//stored property 'flock' of 'Sendable'-conforming struct 'Coop' has non-sendable type '[Chicken]'\nstruct Coop: Sendable {\n  var flock: [Chicken]\n}"
+    },
+    {
+      "title": "Sendable checking in classes",
+      "language": "swift",
+      "startTimeSeconds": 456,
+      "code": "//Can be Sendable if a final class has immutable storage\nfinal class Chicken: Sendable {\n  let name: String\n  var currentHunger: HungerLevel //'currentHunger' is mutable, therefore Chicken cannot be Sendable\n}"
+    },
+    {
+      "title": "Reference types that do their own internal synchronization",
+      "language": "swift",
+      "startTimeSeconds": 478,
+      "code": "//@unchecked can be used, but be careful!\nclass ConcurrentCache<Key: Hashable & Sendable, Value: Sendable>: @unchecked Sendable {\n  var lock: NSLock\n  var storage: [Key: Value]\n}"
+    },
+    {
+      "title": "Sendable checking during task creation",
+      "language": "swift",
+      "startTimeSeconds": 501,
+      "code": "let lily = Chicken(name: \"Lily\")\nTask.detached {@Sendable in\n\tlily.feed()\n}"
+    },
+    {
+      "title": "Sendable function types",
+      "language": "swift",
+      "startTimeSeconds": 548,
+      "code": "struct Task<Success: Sendable, Failure: Error> {\n  static func detached(\n    priority: TaskPriority? = nil,\n    operation: @Sendable @escaping () async throws -> Success\n  ) -> Task<Success, Failure>\n}"
+    },
+    {
+      "title": "Actors",
+      "language": "swift",
+      "startTimeSeconds": 628,
+      "code": "actor Island {\n  var flock: [Chicken]\n  var food: [Pineapple]\n\n  func advanceTime()\n}"
+    },
+    {
+      "title": "Only one boat can visit an island at a time",
+      "language": "swift",
+      "startTimeSeconds": 663,
+      "code": "func nextRound(islands: [Island]) async {\n  for island in islands {\n    await island.advanceTime()\n  }\n}"
+    },
+    {
+      "title": "Non-Sendable data cannot be shared between a task and actor",
+      "language": "swift",
+      "startTimeSeconds": 694,
+      "code": "//Both examples cannot be shared\nawait myIsland.addToFlock(myChicken)\nmyChicken = await myIsland.adoptPet()"
+    },
+    {
+      "title": "What code is actor-isolated?",
+      "language": "swift",
+      "startTimeSeconds": 763,
+      "code": "actor Island {\n  var flock: [Chicken]\n  var food: [Pineapple]\n\n  func advanceTime() {\n    let totalSlices = food.indices.reduce(0) { (total, nextIndex) in\n      total + food[nextIndex].slice()\n    }\n\n    Task {\n      flock.map(Chicken.produce)\n    }\n\n    Task.detached {\n      let ripePineapples = await food.filter { $0.ripeness == .perfect }\n      print(\"There are \\(ripePineapples.count) ripe pineapples on the island\")\n    }\n  }\n}"
+    },
+    {
+      "title": "Nonisolated code",
+      "language": "swift",
+      "startTimeSeconds": 843,
+      "code": "extension Island {\n  nonisolated func meetTheFlock() async {\n    let flockNames = await flock.map { $0.name }\n    print(\"Meet our fabulous flock: \\(flockNames)\")\n  }\n}"
+    },
+    {
+      "title": "Non-isolated synchronous code",
+      "language": "swift",
+      "startTimeSeconds": 888,
+      "code": "func greet(_ friend: Chicken) { }\n\nextension Island {\n  func greetOne() {\n    if let friend = flock.randomElement() { \n      greet(friend)\n    }\n  }\n}"
+    },
+    {
+      "title": "Non-isolated asynchronous code",
+      "language": "swift",
+      "startTimeSeconds": 915,
+      "code": "func greet(_ friend: Chicken) { }\n\nfunc greetAny(flock: [Chicken]) async {\n  if let friend = flock.randomElement() { \n    greet(friend)\n  }\n}"
+    },
+    {
+      "title": "Isolating functions to the main actor",
+      "language": "swift",
+      "startTimeSeconds": 1021,
+      "code": "@MainActor func updateView() { … }\n\nTask { @MainActor in\n\t// …\n  view.selectedChicken = lily\n}\n\nnonisolated func computeAndUpdate() async {\n  computeNewValues()\n  await updateView()\n}"
+    },
+    {
+      "title": "@MainActor types",
+      "language": "swift",
+      "startTimeSeconds": 1058,
+      "code": "@MainActor\nclass ChickenValley: Sendable {\n  var flock: [Chicken]\n  var food: [Pineapple]\n\n  func advanceTime() {\n    for chicken in flock {\n      chicken.eat(from: &food)\n    }\n  }\n}"
+    },
+    {
+      "title": "Non-transactional code",
+      "language": "swift",
+      "startTimeSeconds": 1198,
+      "code": "func deposit(pineapples: [Pineapple], onto island: Island) async {\n   var food = await island.food\n   food += pineapples\n   await island.food = food\n}"
+    },
+    {
+      "title": "Pirates!",
+      "language": "swift",
+      "startTimeSeconds": 1256,
+      "code": "await island.food.takeAll()"
+    },
+    {
+      "title": "Modify `deposit` function to be synchronous",
+      "language": "swift",
+      "startTimeSeconds": 1317,
+      "code": "extension Island {\n   func deposit(pineapples: [Pineapple]) {\n      var food = self.food\n      food += pineapples\n      self.food = food\n   }\n}"
+    },
+    {
+      "title": "AsyncStreams deliver elements in order",
+      "language": "swift",
+      "startTimeSeconds": 1436,
+      "code": "for await event in eventStream {\n  await process(event)\n}"
+    },
+    {
+      "title": "Minimal strict concurrency checking",
+      "language": "swift",
+      "startTimeSeconds": 1502,
+      "code": "import FarmAnimals\nstruct Coop: Sendable {\n  var flock: [Chicken]\n}"
+    },
+    {
+      "title": "Targeted strict concurrency checking",
+      "language": "swift",
+      "startTimeSeconds": 1521,
+      "code": "@preconcurrency import FarmAnimals\n\nfunc visit(coop: Coop) async {\n  guard let favorite = coop.flock.randomElement() else {\n    return\n  }\n\n  Task {\n    favorite.play()\n  }\n}"
+    },
+    {
+      "title": "Complete strict concurrency checking",
+      "language": "swift",
+      "startTimeSeconds": 1613,
+      "code": "import FarmAnimals\n\nfunc doWork(_ body: @Sendable @escaping () -> Void) {\n  DispatchQueue.global().async {\n    body()\n  }\n}\n\nfunc visit(friend: Chicken) {\n  doWork {\n    friend.play()\n  }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Concurrency",
+      "url": "https://developer.apple.com/documentation/Swift/concurrency",
+      "type": "documentation",
+      "description": "Perform asynchronous and parallel operations.",
+      "sosumiURL": "https://sosumi.ai/documentation/Swift/concurrency",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Swift/concurrency.json"
+    },
+    {
+      "title": "The Swift Programming Language: Concurrency",
+      "url": "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency/",
+      "type": "guide",
+      "description": "The chapter of the Language Guide in The Swift Programming Language that covers asynchronous and parallel code, including asynchronous functions (async/await), asynchronous sequences (AsyncSequence), async let, tasks, task groups, and actors."
+    }
+  ],
+  "path": "sessions/wwdc2022/110351-eliminate-data-races-using-swift-concurrency/",
+  "files": {
+    "metadata": "sessions/wwdc2022/110351-eliminate-data-races-using-swift-concurrency/metadata.json",
+    "readme": "sessions/wwdc2022/110351-eliminate-data-races-using-swift-concurrency/README.md",
+    "transcript": "sessions/wwdc2022/110351-eliminate-data-races-using-swift-concurrency/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/110351-eliminate-data-races-using-swift-concurrency/transcript.json"
+  }
+}

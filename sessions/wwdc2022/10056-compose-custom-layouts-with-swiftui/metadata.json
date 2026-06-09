@@ -1,0 +1,236 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10056",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10056,
+  "title": "Compose custom layouts with SwiftUI",
+  "description": "SwiftUI now offers powerful tools to level up your layouts and arrange views for your app’s interface. We’ll introduce you to the Grid container, which helps you create highly customizable, two-dimensional layouts, and show you how you can use the Layout protocol to build your own containers with completely custom behavior. We’ll also explore how you can create seamless animated transitions between your layout types, and share tips and best practices for creating great interfaces.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10056",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10056",
+  "type": "Video",
+  "publishedAt": "2022-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "anylayout",
+    "apply different layouts",
+    "arrange buttons",
+    "bounds",
+    "button",
+    "cache: inout void",
+    "cat",
+    "columns",
+    "dog",
+    "equalwidthhstack",
+    "equatable",
+    "frame()",
+    "geometry reader",
+    "goldfish",
+    "grid",
+    "gridcolumnalignment",
+    "gridrow",
+    "identifiable",
+    "layout",
+    "layout protocol",
+    "layout tools",
+    "lazy grid",
+    "lazyhgrid",
+    "leading edge",
+    ".origin",
+    "placesubviews",
+    "rows",
+    "sizethatfits",
+    "trailing edge",
+    "view",
+    "view modifier",
+    "view spacing",
+    "viewthatfits",
+    "vstack"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1621,
+  "hasTranscript": true,
+  "transcriptWordCount": 4634,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10056/5/F52141E2-6868-4629-A64D-83E618CD6CD5/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10056/5/F52141E2-6868-4629-A64D-83E618CD6CD5/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10056/5/F52141E2-6868-4629-A64D-83E618CD6CD5/downloads/wwdc2022-10056_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10056/5/F52141E2-6868-4629-A64D-83E618CD6CD5/downloads/wwdc2022-10056_hd.mp4",
+    "duration": 1621
+  },
+  "codeSnippets": [
+    {
+      "title": "Grid with explicit rows",
+      "language": "swift",
+      "startTimeSeconds": 268,
+      "code": "struct Leaderboard: View {\n    var body: some View {\n        Grid {\n            GridRow {\n                Text(\"Cat\")\n                ProgressView(value: 0.5)\n                Text(\"25\")\n            }\n            GridRow {\n                Text(\"Goldfish\")\n                ProgressView(value: 0.2)\n                Text(\"9\")\n            }\n            GridRow {\n                Text(\"Dog\")\n                ProgressView(value: 0.3)\n                Text(\"16\")\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Data model",
+      "language": "swift",
+      "startTimeSeconds": 316,
+      "code": "struct Pet: Identifiable, Equatable {\n    let type: String\n    var votes: Int = 0\n    var id: String { type }\n\n    static var exampleData: [Pet] = [\n        Pet(type: \"Cat\", votes: 25),\n        Pet(type: \"Goldfish\", votes: 9),\n        Pet(type: \"Dog\", votes: 16)\n    ]\n}"
+    },
+    {
+      "title": "Final Leaderboard",
+      "language": "swift",
+      "startTimeSeconds": 341,
+      "code": "struct Leaderboard: View {\n    var pets: [Pet]\n    var totalVotes: Int\n\n    var body: some View {\n        Grid(alignment: .leading) {\n            ForEach(pets) { pet in\n                GridRow {\n                    Text(pet.type)\n                    ProgressView(\n                        value: Double(pet.votes),\n                        total: Double(totalVotes))\n                    Text(\"\\(pet.votes)\")\n                        .gridColumnAlignment(.trailing)\n                }\n\n                Divider()\n            }\n        }\n        .padding()\n    }\n}"
+    },
+    {
+      "title": "Layout protocol stubs for required methods",
+      "language": "swift",
+      "startTimeSeconds": 653,
+      "code": "struct MyEqualWidthHStack: Layout {\n    func sizeThatFits(\n        proposal: ProposedViewSize,\n        subviews: Subviews,\n        cache: inout Void\n    ) -> CGSize {\n        // Return a size.\n    }\n\n    func placeSubviews(\n        in bounds: CGRect,\n        proposal: ProposedViewSize,\n        subviews: Subviews,\n        cache: inout Void\n    ) {\n        // Place child views.\n    }\n}"
+    },
+    {
+      "title": "Maximum size helper method",
+      "language": "swift",
+      "startTimeSeconds": 824,
+      "code": "private func maxSize(subviews: Subviews) -> CGSize {\n    let subviewSizes = subviews.map { $0.sizeThatFits(.unspecified) }\n    let maxSize: CGSize = subviewSizes.reduce(.zero) { currentMax, subviewSize in\n        CGSize(\n            width: max(currentMax.width, subviewSize.width),\n            height: max(currentMax.height, subviewSize.height))\n    }\n\n    return maxSize\n}"
+    },
+    {
+      "title": "Spacing helper method",
+      "language": "swift",
+      "startTimeSeconds": 940,
+      "code": "private func spacing(subviews: Subviews) -> [CGFloat] {\n    subviews.indices.map { index in\n        guard index < subviews.count - 1 else { return 0 }\n        return subviews[index].spacing.distance(\n            to: subviews[index + 1].spacing,\n            along: .horizontal)\n    }\n}"
+    },
+    {
+      "title": "Size that fits implementation",
+      "language": "swift",
+      "startTimeSeconds": 993,
+      "code": "func sizeThatFits(\n    proposal: ProposedViewSize,\n    subviews: Subviews,\n    cache: inout Void\n) -> CGSize {\n    // Return a size.\n    guard !subviews.isEmpty else { return .zero }\n\n    let maxSize = maxSize(subviews: subviews)\n    let spacing = spacing(subviews: subviews)\n    let totalSpacing = spacing.reduce(0) { $0 + $1 }\n\n    return CGSize(\n        width: maxSize.width * CGFloat(subviews.count) + totalSpacing,\n        height: maxSize.height)\n}"
+    },
+    {
+      "title": "Place subviews implementation",
+      "language": "swift",
+      "startTimeSeconds": 1011,
+      "code": "func placeSubviews(\n    in bounds: CGRect,\n    proposal: ProposedViewSize,\n    subviews: Subviews,\n    cache: inout Void\n) {\n    // Place child views.\n    guard !subviews.isEmpty else { return }\n\n    let maxSize = maxSize(subviews: subviews)\n    let spacing = spacing(subviews: subviews)\n\n    let placementProposal = ProposedViewSize(width: maxSize.width, height: maxSize.height)\n    var x = bounds.minX + maxSize.width / 2\n\n    for index in subviews.indices {\n        subviews[index].place(\n            at: CGPoint(x: x, y: bounds.midY),\n            anchor: .center,\n            proposal: placementProposal)\n        x += maxSize.width + spacing[index]\n    }\n}"
+    },
+    {
+      "title": "Custom layout instantiation",
+      "language": "swift",
+      "startTimeSeconds": 1087,
+      "code": "MyEqualWidthHStack {\n    ForEach($pets) { $pet in\n        Button {\n            pet.votes += 1\n        } label: {\n            Text(pet.type)\n                .frame(maxWidth: .infinity)\n        }\n        .buttonStyle(.bordered)\n    }\n}"
+    },
+    {
+      "title": "Buttons helper view",
+      "language": "swift",
+      "startTimeSeconds": 1212,
+      "code": "struct Buttons: View {\n    @Binding var pets: [Pet]\n\n    var body: some View {\n        ForEach($pets) { $pet in\n            Button {\n                pet.votes += 1\n            } label: {\n                Text(pet.type)\n                    .frame(maxWidth: .infinity)\n            }\n            .buttonStyle(.bordered)\n        }\n    }\n}"
+    },
+    {
+      "title": "Final voting buttons view",
+      "language": "swift",
+      "startTimeSeconds": 1268,
+      "code": "struct StackedButtons: View {\n    @Binding var pets: [Pet]\n\n    var body: some View {\n        ViewThatFits {\n            MyEqualWidthHStack {\n                Buttons(pets: $pets)\n            }\n            MyEqualWidthVStack {\n                Buttons(pets: $pets)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Radial size that fits",
+      "language": "swift",
+      "startTimeSeconds": 1350,
+      "code": "func sizeThatFits(\n    proposal: ProposedViewSize,\n    subviews: Subviews,\n    cache: inout Void\n)  -> CGSize {\n    // Take whatever space is offered.\n    return proposal.replacingUnspecifiedDimensions()\n}"
+    },
+    {
+      "title": "Radial place subviews without offsets",
+      "language": "swift",
+      "startTimeSeconds": 1372,
+      "code": "func placeSubviews(\n    in bounds: CGRect,\n    proposal: ProposedViewSize,\n    subviews: Subviews,\n    cache: inout Void\n) {\n    let radius = min(bounds.size.width, bounds.size.height) / 3.0\n    let angle = Angle.degrees(360.0 / Double(subviews.count)).radians\n    let offset = 0 // This depends on rank...\n\n    for (index, subview) in subviews.enumerated() {\n        var point = CGPoint(x: 0, y: -radius)\n            .applying(CGAffineTransform(\n                rotationAngle: angle * Double(index) + offset))\n\n        point.x += bounds.midX\n        point.y += bounds.midY\n\n        subview.place(at: point, anchor: .center, proposal: .unspecified)\n    }\n}"
+    },
+    {
+      "title": "Rank value",
+      "language": "swift",
+      "startTimeSeconds": 1422,
+      "code": "private struct Rank: LayoutValueKey {\n    static let defaultValue: Int = 1\n}\n\nextension View {\n    func rank(_ value: Int) -> some View {\n        layoutValue(key: Rank.self, value: value)\n    }\n}"
+    },
+    {
+      "title": "Radial place subviews with offsets",
+      "language": "swift",
+      "startTimeSeconds": 1461,
+      "code": "func placeSubviews(\n    in bounds: CGRect,\n    proposal: ProposedViewSize,\n    subviews: Subviews,\n    cache: inout Void\n) {\n    let radius = min(bounds.size.width, bounds.size.height) / 3.0\n    let angle = Angle.degrees(360.0 / Double(subviews.count)).radians\n\n    let ranks = subviews.map { subview in\n        subview[Rank.self]\n    }\n    let offset = getOffset(ranks)\n\n    for (index, subview) in subviews.enumerated() {\n        var point = CGPoint(x: 0, y: -radius)\n            .applying(CGAffineTransform(\n                rotationAngle: angle * Double(index) + offset))\n        point.x += bounds.midX\n        point.y += bounds.midY\n        subview.place(at: point, anchor: .center, proposal: .unspecified)\n    }\n}"
+    },
+    {
+      "title": "Final profile view",
+      "language": "swift",
+      "startTimeSeconds": 1518,
+      "code": "struct Profile: View {\n    var pets: [Pet]\n    var isThreeWayTie: Bool\n\n    var body: some View {\n        let layout = isThreeWayTie ? AnyLayout(HStackLayout()) : AnyLayout(MyRadialLayout())\n\n        Podium() // Creates the background that shows ranks.\n            .overlay(alignment: .top) {\n                layout {\n                    ForEach(pets) { pet in\n                        Avatar(pet: pet)\n                            .rank(rank(pet))\n                    }\n                }\n                .animation(.default, value: pets)\n            }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Layout containers",
+      "url": "https://developer.apple.com/documentation/swiftui/layout-fundamentals",
+      "type": "documentation",
+      "description": "Arrange views horizontally and vertically inside container views like stacks and grids.",
+      "sosumiURL": "https://sosumi.ai/documentation/swiftui/layout-fundamentals",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/swiftui/layout-fundamentals.json"
+    },
+    {
+      "title": "ViewThatFits",
+      "url": "https://developer.apple.com/documentation/SwiftUI/ViewThatFits",
+      "type": "documentation",
+      "description": "A view that adapts to the available space by providing the first",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/ViewThatFits",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/ViewThatFits.json"
+    },
+    {
+      "title": "AnyLayout",
+      "url": "https://developer.apple.com/documentation/SwiftUI/AnyLayout",
+      "type": "documentation",
+      "description": "A type-erased instance of the layout protocol.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/AnyLayout",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/AnyLayout.json"
+    },
+    {
+      "title": "Layout",
+      "url": "https://developer.apple.com/documentation/SwiftUI/Layout",
+      "type": "documentation",
+      "description": "A type that defines the geometry of a collection of views.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/Layout",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/Layout.json"
+    },
+    {
+      "title": "Grid",
+      "url": "https://developer.apple.com/documentation/SwiftUI/Grid",
+      "type": "documentation",
+      "description": "A container view that arranges other views in a two dimensional layout.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/Grid",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/Grid.json"
+    },
+    {
+      "title": "Composing custom layouts with SwiftUI",
+      "url": "https://developer.apple.com/documentation/SwiftUI/composing-custom-layouts-with-swiftui",
+      "type": "samplecode",
+      "description": "Arrange views in your app’s interface using layout tools that SwiftUI provides.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/composing-custom-layouts-with-swiftui",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/composing-custom-layouts-with-swiftui.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10056-compose-custom-layouts-with-swiftui/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10056-compose-custom-layouts-with-swiftui/metadata.json",
+    "readme": "sessions/wwdc2022/10056-compose-custom-layouts-with-swiftui/README.md",
+    "transcript": "sessions/wwdc2022/10056-compose-custom-layouts-with-swiftui/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10056-compose-custom-layouts-with-swiftui/transcript.json"
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10075",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10075,
+  "title": "Use SwiftUI with AppKit",
+  "description": "Discover how the Shortcuts app uses both SwiftUI and AppKit to create a top-tier experience on macOS. Follow along with the Shortcuts team as we explore how you can host SwiftUI views in AppKit code, handle layout and sizing, participate in the responder chain, enable navigational focus, and more. We’ll also show you how to host AppKit views, helping you migrate existing code into a SwiftUI layout within your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10075",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10075",
+  "type": "Video",
+  "publishedAt": "2022-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Essentials",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1152,
+  "hasTranscript": true,
+  "transcriptWordCount": 2603,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10075/5/041C40B8-2F14-4B08-8406-CFCE8E85A1B0/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10075/5/041C40B8-2F14-4B08-8406-CFCE8E85A1B0/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10075/5/041C40B8-2F14-4B08-8406-CFCE8E85A1B0/downloads/wwdc2022-10075_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10075/5/041C40B8-2F14-4B08-8406-CFCE8E85A1B0/downloads/wwdc2022-10075_hd.mp4",
+    "duration": 1152
+  },
+  "codeSnippets": [
+    {
+      "title": "SidebarView and SidebarItem",
+      "language": "swift",
+      "startTimeSeconds": 89,
+      "code": "struct SidebarView: View {\n    @State private var selectedItem: SidebarItem\n\n    var body: some View {\n        List(selection: $selectedItem) {\n            ...\n            Section(\"Shortcuts\") { ... }\n            Section(\"Folders\") { ... }\n        }\n    }\n}\n\nenum SidebarItem: Hashable {\n    case gallery\n    case allShortcuts\n    ...\n    case folder(Folder)\n}"
+    },
+    {
+      "title": "Hosting SwiftUI sidebar",
+      "language": "swift",
+      "startTimeSeconds": 113,
+      "code": "let splitViewController = NSSplitViewController()\n\nlet sidebar = NSHostingController(rootView: SidebarView(...))\nlet splitViewItem = NSSplitViewItem(viewController: sidebar)\nsplitViewController.addSplitViewItem(splitViewItem)"
+    },
+    {
+      "title": "Sidebar selection model",
+      "language": "swift",
+      "startTimeSeconds": 186,
+      "code": "class SelectionModel: ObservableObject {\n\n    @Published var selectedItem: SidebarItem = .allShortcuts\n\n}\n\n// AppKit Window Controller\ncancellable = selectionModel.$selectedItem.sink { newItem in\n    // update the NSSplitViewController detail\n}"
+    },
+    {
+      "title": "Collection view item hosting SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 277,
+      "code": "class ShortcutItemView: NSCollectionViewItem {\n    private var hostingView: NSHostingView<ShortcutView>?\n\n    func displayShortcut(_ shortcut: Shortcut) {\n        let shortcutView = ShortcutView(shortcut: shortcut)\n\n        if let hostingView = hostingView {\n            hostingView.rootView = shortcutView\n        } else {\n            let newHostingView = NSHostingView(rootView: shortcutView)\n            view.addSubview(newHostingView)\n            setupConstraints(for: newHostingView)\n            self.hostingView = newHostingView\n        }\n    }\n}"
+    },
+    {
+      "title": "Popover presentation",
+      "language": "swift",
+      "startTimeSeconds": 475,
+      "code": "viewController.present(NSHostingController(rootView: ...), \n    asPopoverRelativeTo: rect, of: view, \n    preferredEdge: .maxY, behavior: .transient)"
+    },
+    {
+      "title": "Sheet presentation",
+      "language": "swift",
+      "startTimeSeconds": 495,
+      "code": "viewController.presentAsSheet(NSHostingController(rootView: ...))"
+    },
+    {
+      "title": "Modal window presentation",
+      "language": "swift",
+      "startTimeSeconds": 502,
+      "code": "let hostingController = NSHostingController(rootView: ModalView())\nhostingController.title = \"Window Title\"\nviewController.presentAsModalWindow(hostingController)"
+    },
+    {
+      "title": "Sizing options",
+      "language": "swift",
+      "startTimeSeconds": 525,
+      "code": "hostingController.sizingOptions = [.minSize, .intrinsicContentSize, .maxSize]"
+    },
+    {
+      "title": "Copy, Cut, and Paste commands",
+      "language": "swift",
+      "startTimeSeconds": 647,
+      "code": "Image(...)\n    .focusable()\n    .copyable { ... }\n    .cuttable { ... }\n    .pasteDestination(payloadType: Image.self) { ... }"
+    },
+    {
+      "title": "Respond to standard commands",
+      "language": "swift",
+      "startTimeSeconds": 662,
+      "code": "struct ShortcutsEditorView: View {\n    var body: some View {\n        ScrollView { ... }\n            .onMoveCommand { moveSelection(direction: $0) }\n            .onExitCommand { cancelOperations() }\n            .onCommand(#selector(NSResponder.selectAll(_:)) { selectAllActions() }\n            .onCommand(#selector(moveActionUp(_:)) { moveSelectedAction(.up) }\n            .onCommand(#selector(moveActionDown(_:)) { moveSelectedAction(.down) }\n    }\n}"
+    },
+    {
+      "title": "Script editor",
+      "language": "swift",
+      "startTimeSeconds": 918,
+      "code": "class ScriptEditorView: NSView {\n    var sourceCode: String\n    var isEditable: Bool\n    weak var delegate: ScriptEditorViewDelegate?\n}\n\nprotocol ScriptEditorViewDelegate: AnyObject {\n    func sourceCodeDidChange(in view: ScriptEditorView) -> Void\n}"
+    },
+    {
+      "title": "Script editor container",
+      "language": "swift",
+      "startTimeSeconds": 940,
+      "code": "struct ScriptEditorContainerView: View {\n    @State var sourceCode: String = \"\"\n\n    var body: some View {\n        VStack {\n            CompileButton { compile(code: sourceCode) }\n            Divider()\n            ScriptEditorRepresentable(sourceCode: $sourceCode)\n        }\n    }\n}"
+    },
+    {
+      "title": "Script editor representable",
+      "language": "swift",
+      "startTimeSeconds": 973,
+      "code": "struct ScriptEditorRepresentable: NSViewRepresentable {\n    @Binding var sourceCode: String\n\n    func makeNSView(context: Context) -> ScriptEditorView {\n        let scriptEditor = ScriptEditorView(frame: .zero)\n        scriptEditor.delegate = context.coordinator\n        return scriptEditor\n    }\n\n    func updateNSView(_ nsView: ScriptEditorView, context: Context) {\n        if sourceCode != scriptEditor.sourceCode {\n            scriptEditor.sourceCode = sourceCode\n        }\n        scriptEditor.isEditable = context.environment.isEnabled\n        // Make sure coordinator has a reference to the current value \n        // of the binding:\n        context.coordinator.representable = self\n    }\n\n    func makeCoordinator() -> Coordinator {\n        Coordinator(representable: self)\n    }\n}\n\nclass Coordinator: NSObject, ScriptEditorViewDelegate {\n    var representable: ScriptEditorRepresentable\n\n    init(representable: ScriptEditorRepresentable) { ... }\n\n    func sourceCodeDidChange(in view: ScriptEditorView) {\n        representable.sourceCode = view.sourceCode\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "UIKit integration",
+      "url": "https://developer.apple.com/documentation/SwiftUI/UIKit-integration",
+      "type": "documentation",
+      "description": "Add UIKit views to your SwiftUI app, or use SwiftUI views in your UIKit app.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/UIKit-integration",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/UIKit-integration.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10075-use-swiftui-with-appkit/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10075-use-swiftui-with-appkit/metadata.json",
+    "readme": "sessions/wwdc2022/10075-use-swiftui-with-appkit/README.md",
+    "transcript": "sessions/wwdc2022/10075-use-swiftui-with-appkit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10075-use-swiftui-with-appkit/transcript.json"
+  }
+}

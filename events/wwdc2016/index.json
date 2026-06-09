@@ -1,0 +1,729 @@
+{
+  "event": "wwdc2016",
+  "name": "WWDC16",
+  "year": 2016,
+  "sessionCount": 17,
+  "sessions": [
+    {
+      "id": "wwdc2016-230",
+      "event": "wwdc2016",
+      "year": 2016,
+      "eventContentId": 230,
+      "title": "Enhancing VoIP Apps with CallKit",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2016/230",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2016/230",
+      "duration": 2153,
+      "publishedAt": "2016-06-16T17:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "SwiftUI & UI Frameworks",
+      "topics": [
+        "SwiftUI & UI Frameworks"
+      ],
+      "keywords": [
+        "apns",
+        "ckcall",
+        "ckprovider",
+        "pushkit"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 5457,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2016/230-enhancing-voip-apps-with-callkit/",
+      "description": "CallKit is a new framework that lets your VoIP app integrate tightly with the native Phone UI. Learn how you can have your incoming calls displayed fully on the lock screen. Get details on how people can choose to use your app when making calls from the native Phone app's contacts, favorites, and recents. See how adopting CallKit lets your app coexist seamlessly with other active calls, and allow your calls to interact with CarPlay and Bluetooth accessories."
+    },
+    {
+      "id": "wwdc2016-241",
+      "event": "wwdc2016",
+      "year": 2016,
+      "eventContentId": 241,
+      "title": "Public Transit in Apple Maps",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2016/241",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2016/241",
+      "duration": 679,
+      "publishedAt": "2016-06-12T17:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ],
+      "primaryTopic": "Maps & Location",
+      "topics": [
+        "Maps & Location"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1411,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2016/241-public-transit-in-apple-maps/",
+      "description": "Launched last year with iOS 9 and macOS El Capitan, the new Transit feature in Apple Maps is customized for each city where it's available. Hear about how the Apple Maps team ensures a great customer experience through a combination of transit agency data, field survey, and close attention to the unique transit culture of each city. If you're a transit agency, learn about how you can help to ensure your customers have the most reliable information in Apple Maps."
+    },
+    {
+      "id": "wwdc2016-411",
+      "event": "wwdc2016",
+      "year": 2016,
+      "eventContentId": 411,
+      "title": "System Trace in Depth",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2016/411",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2016/411",
+      "duration": 2238,
+      "publishedAt": "2016-06-16T09:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Developer Tools",
+      "topics": [
+        "Developer Tools"
+      ],
+      "keywords": [
+        "debug",
+        "instruments",
+        "lock",
+        "locking",
+        "locks",
+        "memory",
+        "performance",
+        "profile",
+        "profiling",
+        "system",
+        "template",
+        "thread",
+        "threads",
+        "trace",
+        "virtual memory"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 7613,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2016/411-system-trace-in-depth/",
+      "description": "Join engineers from the Instruments team for another focused look at the System Trace Instruments profiling template and how to get the most out of it. Discover how threads, virtual memory, and locking interact to affect performance. Dive deep for a practical look at how you can improve your app's responsiveness and keep your users engaged."
+    },
+    {
+      "id": "wwdc2016-416",
+      "event": "wwdc2016",
+      "year": 2016,
+      "eventContentId": 416,
+      "title": "Understanding Swift Performance",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2016/416",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2016/416",
+      "duration": 3502,
+      "publishedAt": "2016-06-17T11:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Swift",
+      "topics": [
+        "Swift"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 9087,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2016/416-understanding-swift-performance/",
+      "description": "In this advanced session, find out how structs, classes, protocols, and generics are implemented in Swift. Learn about their relative costs in different dimensions of performance. See how to apply this information to speed up your code."
+    },
+    {
+      "id": "wwdc2016-419",
+      "event": "wwdc2016",
+      "year": 2016,
+      "eventContentId": 419,
+      "title": "Protocol and Value Oriented Programming in UIKit Apps",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2016/419",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2016/419",
+      "duration": 2391,
+      "publishedAt": "2016-06-17T16:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "watchOS"
+      ],
+      "primaryTopic": "SwiftUI & UI Frameworks",
+      "topics": [
+        "Swift",
+        "SwiftUI & UI Frameworks"
+      ],
+      "keywords": [
+        "🦄",
+        "swift in practice"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 6502,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2016/419-protocol-and-value-oriented-programming-in-uikit-apps/",
+      "description": "Building on last year's Protocol-Oriented Programming and Building Better Apps with Value Types sessions, this year's session will highlight tips and tricks for building better Swift apps. See how you can incorporate these design approaches into a real MVC-based Cocoa Touch app, especially in the view and controller layers, where you might not have thought of using these techniques before."
+    },
+    {
+      "id": "wwdc2016-501",
+      "event": "wwdc2016",
+      "year": 2016,
+      "eventContentId": 501,
+      "title": "Advances in iOS Photography",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2016/501",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2016/501",
+      "duration": 3582,
+      "publishedAt": "2016-06-14T11:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "Photos & Camera",
+      "topics": [
+        "Photos & Camera"
+      ],
+      "keywords": [
+        "camera",
+        "capture",
+        "editing",
+        "image",
+        "jpg",
+        "live photo",
+        "photo",
+        "raw"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 9287,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2016/501-advances-in-ios-photography/",
+      "description": "People love to take pictures with iPhone. In fact, it's the most popular camera in the world, and photography apps empower this experience. Explore new AVFoundation Capture APIs which allow for the capture of Live Photos, RAW image data from the camera, and wide color photos."
+    },
+    {
+      "id": "wwdc2016-509",
+      "event": "wwdc2016",
+      "year": 2016,
+      "eventContentId": 509,
+      "title": "Speech Recognition API",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2016/509",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2016/509",
+      "duration": 697,
+      "publishedAt": "2016-06-12T17:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "App Services",
+      "topics": [
+        "Audio & Video",
+        "App Services"
+      ],
+      "keywords": [
+        "audio stream",
+        "cloud",
+        "icloud",
+        "realtime",
+        "recognition",
+        "siri",
+        "speech"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 1518,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2016/509-speech-recognition-api/",
+      "description": "iOS 10 brings a brand new Speech Recognition API that allows you to perform rapid and contextually informed speech recognition in both file-based and realtime scenarios. In this video, you will learn all about the new API and how to bring advanced speech recognition services into your apps."
+    },
+    {
+      "id": "wwdc2016-510",
+      "event": "wwdc2016",
+      "year": 2016,
+      "eventContentId": 510,
+      "title": "Validating HTTP Live Streams",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2016/510",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2016/510",
+      "duration": 1341,
+      "publishedAt": "2016-06-12T17:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS"
+      ],
+      "primaryTopic": "Audio & Video",
+      "topics": [
+        "Audio & Video"
+      ],
+      "keywords": [
+        "hls",
+        "hlsreport",
+        "http live streaming",
+        "mediastreamvalidator",
+        "validation"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 3149,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2016/510-validating-http-live-streams/",
+      "description": "HTTP Live Streaming enables the reliable delivery of media content over a wide variety of network conditions. Learn best practices in HLS authoring, see how to verify your streams using the HTTP Live Streaming tools, and apply the results to improve the performance of your streams."
+    },
+    {
+      "id": "wwdc2016-511",
+      "event": "wwdc2016",
+      "year": 2016,
+      "eventContentId": 511,
+      "title": "AVCapturePhotoOutput - Beyond the Basics",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2016/511",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2016/511",
+      "duration": 1244,
+      "publishedAt": "2016-06-12T17:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "Photos & Camera",
+      "topics": [
+        "Photos & Camera"
+      ],
+      "keywords": [
+        "camera",
+        "capture",
+        "editing",
+        "image",
+        "jpg",
+        "live photo",
+        "photo",
+        "raw"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 2684,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2016/511-avcapturephotooutput-beyond-the-basics/",
+      "description": "Continue your learning from Session 501: Advances in iOS Photography, with some additional details on scene monitoring and resource management in AVFoundation's powerful new AVCapturePhotoOutput API."
+    },
+    {
+      "id": "wwdc2016-606",
+      "event": "wwdc2016",
+      "year": 2016,
+      "eventContentId": 606,
+      "title": "Advanced Metal Shader Optimization",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2016/606",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2016/606",
+      "duration": 2475,
+      "publishedAt": "2016-06-15T15:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "tvOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Developer Tools",
+        "Graphics & Games"
+      ],
+      "keywords": [
+        "3d",
+        "3d graphics",
+        "compiler",
+        "compute",
+        "gpgpu",
+        "gpu",
+        "metl",
+        "mtl",
+        "mtldevice",
+        "opengl",
+        "opengl es",
+        "renderer",
+        "shader",
+        "simd"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 7521,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2016/606-advanced-metal-shader-optimization/",
+      "description": "The Metal shading language is an easy-to-use programming language for writing graphics and compute functions which execute on the GPU. Dive deeper into understanding the design patterns, memory access models, and detailed shader coding best practices which reduce bottlenecks and hide latency. Intended for experienced shader authors with a solid understanding of GPU architecture and hoping to extract every possible cycle."
+    },
+    {
+      "id": "wwdc2016-717",
+      "event": "wwdc2016",
+      "year": 2016,
+      "eventContentId": 717,
+      "title": "Beyond Dictation — Enhanced Voice-Control for macOS apps",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2016/717",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2016/717",
+      "duration": null,
+      "publishedAt": "2016-06-16T17:00:00-07:00",
+      "platforms": [
+        "macOS"
+      ],
+      "primaryTopic": "App Services",
+      "topics": [
+        "App Services"
+      ],
+      "keywords": [
+        "automator"
+      ],
+      "hasTranscript": false,
+      "transcriptWordCount": 0,
+      "availableLanguages": [],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2016/717-beyond-dictation-enhanced-voice-control-for-macos-apps/",
+      "description": "Using the native speech recognition capabilities of macOS you can dictate a letter, message, or perform command and control actions like launching and switching between apps, finding and creating documents, and more; But even more is possible when you combine dictation with built-in automation technologies of macOS to create personalized, voice-triggered, workflows. Learn how to dynamically create dictation command sets for yourself, your application, and your customers."
+    },
+    {
+      "id": "wwdc2016-720",
+      "event": "wwdc2016",
+      "year": 2016,
+      "eventContentId": 720,
+      "title": "Concurrent Programming With GCD in Swift 3",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2016/720",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2016/720",
+      "duration": 2141,
+      "publishedAt": "2016-06-17T16:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Swift",
+      "topics": [
+        "Developer Tools",
+        "Swift"
+      ],
+      "keywords": [
+        "dispatch",
+        "gcd",
+        "qos",
+        "queue",
+        "runloop",
+        "thread"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 5308,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2016/720-concurrent-programming-with-gcd-in-swift-3/",
+      "description": "Swift 3 provides new interfaces that make it easier than ever to write applications with Grand Central Dispatch. Learn the basics of GCD and best practices on how to use it to architect your Swift application. You'll also hear about new APIs and other GCD improvements."
+    },
+    {
+      "id": "wwdc2016-722",
+      "event": "wwdc2016",
+      "year": 2016,
+      "eventContentId": 722,
+      "title": "Developing CarPlay Systems, Part 1",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2016/722",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2016/722",
+      "duration": 1802,
+      "publishedAt": "2016-06-12T17:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "App Services",
+      "topics": [
+        "System Services",
+        "App Services"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 3915,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2016/722-developing-carplay-systems-part-1/",
+      "description": "CarPlay is a smarter, safer way to use your iPhone in the car. Learn how CarPlay works and how to design your car's infotainment system to work seamlessly with iPhone. Understand best practices for a great user experience that integrates CarPlay with the car's native system."
+    },
+    {
+      "id": "wwdc2016-723",
+      "event": "wwdc2016",
+      "year": 2016,
+      "eventContentId": 723,
+      "title": "Developing CarPlay Systems, Part 2",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2016/723",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2016/723",
+      "duration": 1573,
+      "publishedAt": "2016-06-12T17:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "App Services",
+      "topics": [
+        "App Services"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 3580,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2016/723-developing-carplay-systems-part-2/",
+      "description": "Learn how CarPlay integrates with your car's infotainment system. Understand how CarPlay is designed to work with your car's resources including the display, speakers, microphone, user inputs, steering wheel controls, instrument cluster and sensors."
+    },
+    {
+      "id": "wwdc2016-724",
+      "event": "wwdc2016",
+      "year": 2016,
+      "eventContentId": 724,
+      "title": "What's New in the Apple Push Notification Service",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2016/724",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2016/724",
+      "duration": 885,
+      "publishedAt": "2016-06-12T17:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS"
+      ],
+      "primaryTopic": "System Services",
+      "topics": [
+        "System Services"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1458,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2016/724-what-s-new-in-the-apple-push-notification-service/",
+      "description": "Starting with a review of the HTTP/2 based provider API, you will learn about an important new feature: Token Based Authentication. Learn to connect to APNs using authentication tokens for sending pushes via the HTTP/2 API, relieving you of the overhead associated with maintaining valid certificates."
+    },
+    {
+      "id": "wwdc2016-725",
+      "event": "wwdc2016",
+      "year": 2016,
+      "eventContentId": 725,
+      "title": "Deploying AirPrint in Enterprise",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2016/725",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2016/725",
+      "duration": 962,
+      "publishedAt": "2016-06-12T17:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ],
+      "primaryTopic": "SwiftUI & UI Frameworks",
+      "topics": [
+        "SwiftUI & UI Frameworks"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2163,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2016/725-deploying-airprint-in-enterprise/",
+      "description": "AirPrint works everywhere, including Enterprise environments. Learn how to deploy AirPrint in the Enterprise, how to set up an AirPrint Bluetooth Beacon which is new in iOS 10, and how to make sure your users take full advantage of AirPrint features."
+    },
+    {
+      "id": "wwdc2016-805",
+      "event": "wwdc2016",
+      "year": 2016,
+      "eventContentId": 805,
+      "title": "Iterative UI Design",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2016/805",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2016/805",
+      "duration": 2495,
+      "publishedAt": "2016-06-17T10:00:00-07:00",
+      "platforms": [],
+      "primaryTopic": "Design",
+      "topics": [
+        "Design"
+      ],
+      "keywords": [
+        "demo",
+        "demo design",
+        "design",
+        "design best practices",
+        "design comps",
+        "design demo",
+        "iterative",
+        "keynote",
+        "learn to design",
+        "rapid",
+        "ui",
+        "ui design",
+        "user flows",
+        "user interface",
+        "user interface design",
+        "workflows"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 6883,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2016/805-iterative-ui-design/",
+      "description": "You're familiar with Keynote for making presentations, but it's also a powerful tool for exploring, iterating and refining user interface layouts and workflows. Learn techniques and best practices for using Keynote to quickly and persuasively express your product ideas by building realistic and tangible design comps and user flows."
+    }
+  ]
+}

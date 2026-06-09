@@ -1,0 +1,153 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10187",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10187,
+  "title": "Meet SwiftData",
+  "description": "SwiftData is a powerful and expressive persistence framework built for Swift. We’ll show you how you can model your data directly from Swift code, use SwiftData to work with your models, and integrate with SwiftUI.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10187",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10187",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "@attribute",
+    "coredata",
+    "core data",
+    "data",
+    "fetchdescriptor",
+    "macro",
+    "macros",
+    "model",
+    "@model",
+    "models",
+    "observation",
+    "persistence",
+    "predicate",
+    "#predicate",
+    "@relationship",
+    "sortdescriptor",
+    "swift",
+    "swiftdata"
+  ],
+  "topics": [
+    "Essentials",
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 532,
+  "hasTranscript": true,
+  "transcriptWordCount": 1307,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10187/5/1D820D6D-4F01-48EB-8F22-901F4A4B69FE/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10187/5/1D820D6D-4F01-48EB-8F22-901F4A4B69FE/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10187/5/1D820D6D-4F01-48EB-8F22-901F4A4B69FE/downloads/wwdc2023-10187_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10187/5/1D820D6D-4F01-48EB-8F22-901F4A4B69FE/downloads/wwdc2023-10187_hd.mp4",
+    "duration": 532
+  },
+  "codeSnippets": [
+    {
+      "title": "Adding @Model to Trip",
+      "language": "swift",
+      "startTimeSeconds": 87,
+      "code": "import SwiftData\n\n@Model\nclass Trip {\n    var name: String\n    var destination: String\n    var endDate: Date\n    var startDate: Date\n\n    var bucketList: [BucketListItem]? = []\n    var livingAccommodation: LivingAccommodation?\n}"
+    },
+    {
+      "title": "Providing options for @Attribute and @Relationship",
+      "language": "swift",
+      "startTimeSeconds": 166,
+      "code": "@Model\nclass Trip {\n    @Attribute(.unique) var name: String\n    var destination: String\n    var endDate: Date\n    var startDate: Date\n\n    @Relationship(.cascade) var bucketList: [BucketListItem]? = []\n    var livingAccommodation: LivingAccommodation?\n}"
+    },
+    {
+      "title": "Initialize a ModelContainer",
+      "language": "swift",
+      "startTimeSeconds": 223,
+      "code": "// Initialize with only a schema\nlet container = try ModelContainer([Trip.self, LivingAccommodation.self])\n\n// Initialize with configurations\nlet container = try ModelContainer(\n    for: [Trip.self, LivingAccommodation.self],\n    configurations: ModelConfiguration(url: URL(\"path\"))\n)"
+    },
+    {
+      "title": "Creating a model container in SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 238,
+      "code": "import SwiftUI\n\n@main\nstruct TripsApp: App {\n    var body: some Scene {\n        WindowGroup {\n            ContentView()\n        }\n        .modelContainer(\n            for: [Trip.self, LivingAccommodation.self]\n        )\n    }\n}"
+    },
+    {
+      "title": "Accessing the environment's ModelContext",
+      "language": "swift",
+      "startTimeSeconds": 260,
+      "code": "import SwiftUI\n\nstruct ContextView : View {\n    @Environment(\\.modelContext) private var context\n}"
+    },
+    {
+      "title": "Building a predicate",
+      "language": "swift",
+      "startTimeSeconds": 313,
+      "code": "let today = Date()\nlet tripPredicate = #Predicate<Trip> { \n    $0.destination == \"New York\" &&\n    $0.name.contains(\"birthday\") &&\n    $0.startDate > today\n}"
+    },
+    {
+      "title": "Fetching with a FetchDescriptor",
+      "language": "swift",
+      "startTimeSeconds": 332,
+      "code": "let descriptor = FetchDescriptor<Trip>(predicate: tripPredicate)\n\nlet trips = try context.fetch(descriptor)"
+    },
+    {
+      "title": "Fetching with fetch and sort descriptors",
+      "language": "swift",
+      "startTimeSeconds": 346,
+      "code": "let descriptor = FetchDescriptor<Trip>(\n    sortBy: SortDescriptor(\\Trip.name),\n    predicate: tripPredicate\n)\n\nlet trips = try context.fetch(descriptor)"
+    },
+    {
+      "title": "Working with a ModelContext",
+      "language": "swift",
+      "startTimeSeconds": 375,
+      "code": "var myTrip = Trip(name: \"Birthday Trip\", destination: \"New York\")\n\n// Insert a new trip\ncontext.insert(myTrip)\n\n// Delete an existing trip\ncontext.delete(myTrip)\n\n// Manually save changes to the context\ntry context.save()"
+    },
+    {
+      "title": "Using @Query in SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 458,
+      "code": "import SwiftUI\n\nstruct ContentView: View  {\n    @Query(sort: \\.startDate, order: .reverse) var trips: [Trip]\n    @Environment(\\.modelContext) var modelContext\n\n    var body: some View {\n       NavigationStack() {\n          List {\n             ForEach(trips) { trip in \n                 // ...\n             }\n          }\n       }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "SwiftData",
+      "url": "https://developer.apple.com/documentation/SwiftData",
+      "type": "documentation",
+      "description": "Write your model code declaratively to add managed persistence and efficient",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftData",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftData.json"
+    },
+    {
+      "title": "Adopting SwiftData for a Core Data app",
+      "url": "https://developer.apple.com/documentation/CoreData/adopting-swiftdata-for-a-core-data-app",
+      "type": "samplecode",
+      "description": "Persist data in your app intuitively with the Swift native persistence framework.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreData/adopting-swiftdata-for-a-core-data-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreData/adopting-swiftdata-for-a-core-data-app.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10187-meet-swiftdata/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10187-meet-swiftdata/metadata.json",
+    "readme": "sessions/wwdc2023/10187-meet-swiftdata/README.md",
+    "transcript": "sessions/wwdc2023/10187-meet-swiftdata/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10187-meet-swiftdata/transcript.json"
+  }
+}

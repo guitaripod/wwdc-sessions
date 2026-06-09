@@ -1,0 +1,99 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10055",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10055,
+  "title": "What’s new in UIKit",
+  "description": "Explore enhancements and updates to UIKit and learn how to build better iOS, iPadOS, and Mac Catalyst apps. We’ll show you the latest features and improvements in UIKit and share API refinements, performance improvements, and much more.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10055",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10055",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "🎨",
+    "🧑🏻‍🎨"
+  ],
+  "topics": [
+    "App Services",
+    "System Services",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1878,
+  "hasTranscript": true,
+  "transcriptWordCount": 3832,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10055/4/7F22FD85-1611-456E-875B-966A87E16636/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10055/4/7F22FD85-1611-456E-875B-966A87E16636/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10055/4/7F22FD85-1611-456E-875B-966A87E16636/downloads/wwdc2023-10055_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10055/4/7F22FD85-1611-456E-875B-966A87E16636/downloads/wwdc2023-10055_hd.mp4",
+    "duration": 1878
+  },
+  "codeSnippets": [
+    {
+      "title": "Using Xcode previews with view controllers",
+      "language": "swift",
+      "startTimeSeconds": 91,
+      "code": "class LibraryViewController: UIViewController {\n    // ...\n}\n\n#Preview(\"Library\") {\n    let controller = LibraryViewController()\n    controller.displayCuratedContent = true\n    return controller\n}"
+    },
+    {
+      "title": "Using Xcode previews with views",
+      "language": "swift",
+      "startTimeSeconds": 108,
+      "code": "class SlideshowView: UIView {\n    // ...\n}\n\n#Preview(\"Memories\") {\n    let view = SlideshowView()\n    view.title = \"Memories\"\n    view.subtitle = \"Highlights from the past year\"\n    view.images = ...\n    return view\n}"
+    },
+    {
+      "title": "Setting up UIContentUnavailableConfiguration",
+      "language": "swift",
+      "startTimeSeconds": 499,
+      "code": "var config = UIContentUnavailableConfiguration.empty()\n\nconfig.image = UIImage(systemName: \"star.fill\")\nconfig.text = \"No Favorites\"\nconfig.secondaryText =\n    \"Your favorite translations will appear here.\"\n\nviewController.contentUnavailableConfiguration = config"
+    },
+    {
+      "title": "Using UIContentUnavailableConfiguration with SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 536,
+      "code": "let config = UIHostingConfiguration {\n    VStack {\n        ProgressView(value: progress)\n        Text(\"Downloading file...\")\n            .foregroundStyle(.secondary)\n    }\n}\nviewController.contentUnavailableConfiguration = config"
+    },
+    {
+      "title": "Using UIContentUnavailableConfiguration for search results",
+      "language": "swift",
+      "startTimeSeconds": 561,
+      "code": "override func updateContentUnavailableConfiguration(\n    using state: UIContentUnavailableConfigurationState\n) {\n    var config: UIContentUnavailableConfiguration?\n    if searchResults.isEmpty {\n        config = .search()\n    }\n    contentUnavailableConfiguration = config\n}\n\n// Update search results for query\nsearchResults = backingStore.results(for: query)\nsetNeedsUpdateContentUnavailableConfiguration()"
+    }
+  ],
+  "resources": [
+    {
+      "title": "UIKit updates",
+      "url": "https://developer.apple.com/documentation/Updates/UIKit",
+      "type": "documentation",
+      "description": "Learn about important changes to UIKit.",
+      "sosumiURL": "https://sosumi.ai/documentation/Updates/UIKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Updates/UIKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10055-what-s-new-in-uikit/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10055-what-s-new-in-uikit/metadata.json",
+    "readme": "sessions/wwdc2023/10055-what-s-new-in-uikit/README.md",
+    "transcript": "sessions/wwdc2023/10055-what-s-new-in-uikit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10055-what-s-new-in-uikit/transcript.json"
+  }
+}

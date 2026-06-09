@@ -1,0 +1,42 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-101",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 101,
+  "title": "Keynote",
+  "description": "The Apple Worldwide Developers Conference kicks off with exciting reveals, inspiration, and new opportunities to continue creating the most innovative apps in the world. Join the worldwide developer community for an in-depth look at the future of Apple platforms, directly from Apple Park.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/101",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/101",
+  "type": "Special Event",
+  "publishedAt": "2020-06-22T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Essentials"
+  ],
+  "primaryTopic": "Essentials",
+  "duration": 6531,
+  "hasTranscript": false,
+  "transcriptWordCount": 0,
+  "availableLanguages": [],
+  "media": {
+    "hls": "https://p-events-delivery.akamaized.net/2605bdtgclbnfypwzfkzdsupvcyzhhbx/m3u8/hls_vod_mvp.m3u8",
+    "duration": 6531
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2020/101-keynote/",
+  "files": {
+    "metadata": "sessions/wwdc2020/101-keynote/metadata.json",
+    "readme": "sessions/wwdc2020/101-keynote/README.md"
+  }
+}

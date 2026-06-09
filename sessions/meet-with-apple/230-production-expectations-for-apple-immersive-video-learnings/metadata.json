@@ -1,0 +1,51 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "meet-with-apple-230",
+  "event": "meet-with-apple",
+  "eventName": "Meet with Apple",
+  "year": 2025,
+  "eventContentId": 230,
+  "title": "Production expectations for Apple Immersive Video: Learnings from “Submerged”",
+  "description": "Gain insight into how to produce scripted immersive content with Apple Immersive Video. Explore how expanded production development, camera testing, pre-vis, and crew preparation contribute to a smoother production. The session also highlights how the format’s acuity influences set design and lighting, and why reviewing footage on Apple Vision Pro is critical for evaluating detail and viewer comfort. This session was originally presented as part of the Meet with Apple activity “Create immersive media experiences for visionOS - Day 2.” Watch the full video for more insights and related sessions.",
+  "url": "https://developer.apple.com/videos/play/meet-with-apple/230",
+  "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/230",
+  "type": "Video",
+  "publishedAt": "2025-12-05T00:00:00-08:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 712,
+  "hasTranscript": true,
+  "transcriptWordCount": 1876,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/230/1/69ce1cee-a571-40fc-b42e-7545ce712d2e/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/230/1/69ce1cee-a571-40fc-b42e-7545ce712d2e/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/230/1/69ce1cee-a571-40fc-b42e-7545ce712d2e/downloads/meet-with-apple-230_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/230/1/69ce1cee-a571-40fc-b42e-7545ce712d2e/downloads/meet-with-apple-230_hd.mp4",
+    "duration": 712
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/meet-with-apple/230-production-expectations-for-apple-immersive-video-learnings/",
+  "files": {
+    "metadata": "sessions/meet-with-apple/230-production-expectations-for-apple-immersive-video-learnings/metadata.json",
+    "readme": "sessions/meet-with-apple/230-production-expectations-for-apple-immersive-video-learnings/README.md",
+    "transcript": "sessions/meet-with-apple/230-production-expectations-for-apple-immersive-video-learnings/transcript.md",
+    "transcriptJSON": "sessions/meet-with-apple/230-production-expectations-for-apple-immersive-video-learnings/transcript.json"
+  }
+}

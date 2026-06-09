@@ -1,0 +1,84 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2017-605",
+  "event": "wwdc2017",
+  "eventName": "WWDC17",
+  "year": 2017,
+  "eventContentId": 605,
+  "title": "SceneKit in Swift Playgrounds",
+  "description": "Discover tips and tricks gleaned by the Swift Playgrounds Content team for working more effectively with SceneKit on a visually rich app. Learn how to integrate animation, optimize rendering performance, design for accessibility, add visual polish, and understand strategies for creating an effective workflow with 3D assets.",
+  "url": "https://developer.apple.com/videos/play/wwdc2017/605",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2017/605",
+  "type": "Video",
+  "publishedAt": "2017-06-08T09:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "3d",
+    "collada",
+    "dae",
+    "graph",
+    "graphics",
+    "inverse kinematics",
+    "opengl",
+    "opensubdiv",
+    "pbr",
+    "physically based renderer",
+    "physics",
+    "playground",
+    "renderer",
+    "rendering",
+    "scene",
+    "scnlayer",
+    "scnnode",
+    "scnview",
+    "swift",
+    "usd"
+  ],
+  "topics": [
+    "Business & Education",
+    "Swift",
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 2409,
+  "hasTranscript": true,
+  "transcriptWordCount": 6651,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/605al19s0mq8dhrdv/605/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/605al19s0mq8dhrdv/605/605_sd_scenekit_in_swift_playgrounds.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/605al19s0mq8dhrdv/605/605_hd_scenekit_in_swift_playgrounds.mp4",
+    "duration": 2409
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "SceneKit",
+      "url": "https://developer.apple.com/documentation/SceneKit",
+      "type": "documentation",
+      "description": "Create 3D games and add 3D content to apps using high-level scene descriptions, and easily add animations, physics simulation, particle effects, and realistic physically based rendering.",
+      "sosumiURL": "https://sosumi.ai/documentation/SceneKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SceneKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2017/605-scenekit-in-swift-playgrounds/",
+  "files": {
+    "metadata": "sessions/wwdc2017/605-scenekit-in-swift-playgrounds/metadata.json",
+    "readme": "sessions/wwdc2017/605-scenekit-in-swift-playgrounds/README.md",
+    "transcript": "sessions/wwdc2017/605-scenekit-in-swift-playgrounds/transcript.md",
+    "transcriptJSON": "sessions/wwdc2017/605-scenekit-in-swift-playgrounds/transcript.json"
+  }
+}

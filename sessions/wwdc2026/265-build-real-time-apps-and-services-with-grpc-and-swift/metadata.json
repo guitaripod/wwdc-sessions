@@ -1,0 +1,233 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-265",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 265,
+  "title": "Build real-time apps and services with gRPC and Swift",
+  "description": "Build engaging live experiences with gRPC in your Swift app and backend. gRPC is an open-source RPC framework designed for high-performance, bidirectional streaming APIs. Explore how the gRPC Swift package provides a modern, safe runtime built with Swift concurrency. Learn how integrated tools streamline your workflow and help you deliver real-time features with ease.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/265",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/265",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 1465,
+  "hasTranscript": true,
+  "transcriptWordCount": 3389,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/265/4/05249c6d-4136-4164-a8d0-5db0bbb22c7f/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/265/4/05249c6d-4136-4164-a8d0-5db0bbb22c7f/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/265/4/05249c6d-4136-4164-a8d0-5db0bbb22c7f/downloads/wwdc2026-265_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/265/4/05249c6d-4136-4164-a8d0-5db0bbb22c7f/downloads/wwdc2026-265_hd.mp4",
+    "duration": 1465
+  },
+  "codeSnippets": [
+    {
+      "title": "ListRaces RPC definition",
+      "language": "bash",
+      "startTimeSeconds": 218,
+      "code": "edition = \"2024\";\n\nimport \"google/protobuf/timestamp.proto\";\n\nservice SwiftKartService {\n  rpc ListRaces(ListRacesRequest) returns (ListRacesResponse);\n}\n\nmessage ListRacesRequest {\n  int32 limit = 1 [default = 100];\n}\n\nmessage ListRacesResponse {\n  repeated Race races = 1;\n}\n\nmessage Race {\n  string name = 1;\n  string location = 2;\n  google.protobuf.Timestamp start_time = 3;\n  int32 laps = 4;\n  string championship = 5;\n}"
+    },
+    {
+      "title": "grpc-swift-proto-generator-config.json",
+      "language": "json",
+      "startTimeSeconds": 355,
+      "code": "{\n    \"generate\": {\n        \"clients\": true,\n        \"servers\": false,\n        \"messages\": true\n    }\n}"
+    },
+    {
+      "title": "Add gRPC imports",
+      "language": "swift",
+      "startTimeSeconds": 384,
+      "code": "import GRPCCore\nimport GRPCNIOTransportHTTP2\nimport SwiftProtobuf"
+    },
+    {
+      "title": "Create a gRPC client connected to a local server",
+      "language": "swift",
+      "startTimeSeconds": 398,
+      "code": ".task {\n    do {\n        try await withGRPCClient(\n            transport: .http2NIOTS(\n                address: .ipv4(host: \"127.0.0.1\", port: 8080),\n                transportSecurity: .tls\n            )\n        ) { client in\n            <#code#>\n        }\n    } catch {\n        print(\"gRPC error: \\(error)\")\n    }\n}"
+    },
+    {
+      "title": "Call the ListRaces RPC and update the view",
+      "language": "swift",
+      "startTimeSeconds": 434,
+      "code": ".task {\n    do {\n        try await withGRPCClient(\n            transport: .http2NIOTS(\n                address: .ipv4(host: \"127.0.0.1\", port: 8080),\n                transportSecurity: .tls\n            )\n        ) { client in\n            let kart = SwiftKartService.Client(wrapping: client)\n            let request = ListRacesRequest()\n            let response = try await kart.listRaces(request)\n            self.races = response.races.map { race in\n                RaceInfo(\n                    name: race.name,\n                    location: race.location,\n                    startTime: race.startTime.date,\n                    championship: race.championship,\n                    laps: Int(race.laps),\n                    drivers: race.drivers\n                )\n            }\n        }\n    } catch {\n        print(\"gRPC error: \\(error)\")\n    }\n}"
+    },
+    {
+      "title": "ClientManager.swift",
+      "language": "swift",
+      "startTimeSeconds": 510,
+      "code": "import GRPCCore\nimport GRPCNIOTransportHTTP2\nimport Synchronization\nimport SwiftUI\n\n@Observable\nfinal class ClientManager: Sendable {\n    fileprivate let state = Mutex(State.disconnected)\n\n    static func makeTransport() throws -> HTTP2ClientTransport.TransportServices {\n        try .http2NIOTS(\n            target: .ipv4(address: \"127.0.0.1\", port: 8080),\n            transportSecurity: .plaintext\n        )\n    }\n\n    func withClient(\n        body: (_ client: GRPCClient<HTTP2ClientTransport.TransportServices>) async throws -> Void\n    ) async throws {\n        let client = try connectIfNecessary()\n        try await body(client)\n    }\n\n    private func connectIfNecessary() throws -> GRPCClient<HTTP2ClientTransport.TransportServices> {\n        try self.state.withLock { state in\n            try state.connectIfNecessary()\n        }\n    }\n\n    func disconnect() {\n        let client = self.state.withLock { state in\n            state.disconnect()\n        }\n\n        client?.beginGracefulShutdown()\n    }\n}\n\nextension ClientManager {\n    enum State {\n        case connected(GRPCClient<HTTP2ClientTransport.TransportServices>, Task<Void, any Error>)\n        case disconnected\n    }\n}\n\nextension ClientManager.State {\n    mutating func connectIfNecessary() throws -> GRPCClient<HTTP2ClientTransport.TransportServices> {\n        switch self {\n        case .connected(let client, _):\n            return client\n\n        case .disconnected:\n            let client = try GRPCClient(transport: ClientManager.makeTransport())\n            let task = Task { try await client.runConnections() }\n            self = .connected(client, task)\n            return client\n        }\n    }\n\n    mutating func disconnect() -> GRPCClient<HTTP2ClientTransport.TransportServices>? {\n        switch self {\n        case .connected(let client, _):\n            self = .disconnected\n            return client\n        case .disconnected:\n            return nil\n        }\n    }\n}"
+    },
+    {
+      "title": "Propagate ClientManager to child views",
+      "language": "swift",
+      "startTimeSeconds": 519,
+      "code": "import SwiftUI\n\n@main\nstruct SwiftKartApp: App {\n    let manager = ClientManager()\n\n    var body: some Scene {\n        WindowGroup {\n            RaceScheduleView()\n                .environment(manager)\n        }\n    }\n}"
+    },
+    {
+      "title": "Disconnect ClientManager when the scene enters the background phase",
+      "language": "swift",
+      "startTimeSeconds": 532,
+      "code": "import SwiftUI\n\n@main\nstruct SwiftKartApp: App {\n    let manager = ClientManager()\n    @Environment(\\.scenePhase) private var scenePhase\n\n    var body: some Scene {\n        WindowGroup {\n            RaceScheduleView()\n                .environment(manager)\n        }\n        .onChange(of: scenePhase) { _, newPhase in\n            switch newPhase {\n            case .background :\n                manager.disconnect()\n            case .inactive, .active:\n                break\n            @unknown default:\n                break\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Inject ClientManager into the view via @Environment",
+      "language": "swift",
+      "startTimeSeconds": 552,
+      "code": "@Environment(ClientManager.self) var manager"
+    },
+    {
+      "title": "Replace withGRPCClient with manager.withClient",
+      "language": "swift",
+      "startTimeSeconds": 561,
+      "code": ".task {\n    do {\n        try await manager.withClient { client in\n            let kart = SwiftKartService.Client(wrapping: client)\n            let request = ListRacesRequest()\n            let response = try await kart.listRaces(request)\n            self.races = response.races.map { race in\n                RaceInfo(\n                    name: race.name,\n                    location: race.location,\n                    startTime: race.startTime.date,\n                    championship: race.championship,\n                    laps: Int(race.laps),\n                    drivers: race.drivers\n                )\n            }\n        }\n    } catch {\n        print(\"gRPC error: \\(error)\")\n    }\n}"
+    },
+    {
+      "title": "Using SwiftProtobuf",
+      "language": "swift",
+      "startTimeSeconds": 581,
+      "code": "var race = Race()\nrace.name = \"Duck Pond Dash\"\nrace.location = \"Apple Park, Cupertino\"\nrace.startTime = .init(roundingTimeIntervalSince1970: 1_781_198_600)\nrace.laps = 6\nrace.championship = \"Corporate Cup\"\nrace.drivers = [\"Monty\", \"Pepper\", \"Mycroft\", \"Pancakes\", \"Duke\", \"Kiko\", \"Sissi\", \"Bo\"]\n\ntry race.serializedBytes()"
+    },
+    {
+      "title": "Server",
+      "language": "swift",
+      "startTimeSeconds": 752,
+      "code": "let server = GRPCServer(\n    transport: .http2NIOPosix(\n        address: .ipv4(host: \"127.0.0.1\", port: 8080),\n        transportSecurity: .plaintext\n    ),\n    services: [Service()]\n)\ntry await server.serve()"
+    },
+    {
+      "title": "Service",
+      "language": "swift",
+      "startTimeSeconds": 765,
+      "code": "struct Service: SwiftKartService.SimpleServiceProtocol {\n    private let database = RaceDB()\n\n    func listRaces(\n        request: ListRacesRequest,\n        context: ServerContext\n    ) async throws -> ListRacesResponse {\n        var response = ListRacesResponse()\n        response.races = await database.listRaces(atMost: request.limit)\n        return response\n    }\n}"
+    },
+    {
+      "title": "swift_kart_service.proto",
+      "language": "bash",
+      "startTimeSeconds": 800,
+      "code": "edition = \"2024\";\n\nimport \"google/protobuf/duration.proto\";\nimport \"google/protobuf/timestamp.proto\";\n\nservice SwiftKartService {\n  rpc ListRaces(ListRacesRequest) returns (ListRacesResponse);\n  rpc FollowRace(stream FollowRaceRequest) returns (stream FollowRaceResponse);\n}\n\nmessage ListRacesRequest {\n  int32 limit = 1 [default = 100];\n}\n\nmessage ListRacesResponse {\n  repeated Race races = 1;\n}\n\nmessage Race {\n  string name = 1;\n  string location = 2;\n  google.protobuf.Timestamp start_time = 3;\n  int32 laps = 4;\n  string championship = 5;\n  repeated string drivers = 6;\n}\n\nmessage FollowRaceRequest {\n  string race_name = 1;\n  repeated RaceEventType event_types = 2;\n}\n\nenum RaceEventType {\n  RACE_EVENT_TYPE_UNSPECIFIED = 0;\n  RACE_EVENT_TYPE_KART_LOCATIONS = 1;\n  RACE_EVENT_TYPE_STANDINGS = 2;\n}\n\nmessage FollowRaceResponse {\n  oneof event {\n    KartLocations locations = 1;\n    Standings standings = 2;\n  }\n}\n\nmessage KartLocations {\n  message Kart {\n    int32 number = 1;\n    double latitude = 2;\n    double longitude = 3;\n    google.protobuf.Timestamp recorded_at = 4;\n  }\n  repeated Kart karts = 1;\n}\n\nmessage Standings {\n  message Entry {\n    int32 kart_number = 1;\n    google.protobuf.Duration gap_to_leader = 2;\n    int32 position = 3;\n    int32 lap = 4;\n  }\n\n  repeated Entry entries = 1;\n}"
+    },
+    {
+      "title": "FollowRace stub",
+      "language": "swift",
+      "startTimeSeconds": 856,
+      "code": "func followRace(\n    request: RPCAsyncSequence<FollowRaceRequest, any Error>,\n    response: RPCWriter<FollowRaceResponse>,\n    context: ServerContext\n) async throws {\n    throw RPCError(code: .unimplemented, message: \"FollowRace is unimplemented\")\n}"
+    },
+    {
+      "title": "Implement the FollowRace RPC",
+      "language": "swift",
+      "startTimeSeconds": 878,
+      "code": "func followRace(\n    request: RPCAsyncSequence<FollowRaceRequest, any Error>,\n    response: RPCWriter<FollowRaceResponse>,\n    context: ServerContext\n) async throws {\n    try await withThrowingTaskGroup { group in\n        var iterator = request.makeAsyncIterator()\n        guard let first = try await iterator.next() else { return }\n        let eventTypes = Mutex(Set(first.eventTypes))\n\n        group.addTask {\n            let events = tracker.events(forRace: first.raceName).filter { event in\n                eventTypes.withLock { $0.contains(event.type) }\n            }\n\n            for await event in events {\n                var message = FollowRaceResponse()\n                switch event {\n                case .locations(let locations):\n                    message.locations.karts = locations.map { location in\n                        var kart = KartLocations.Kart()\n                        kart.number = Int32(location.number)\n                        kart.latitude = location.latitude\n                        kart.longitude = location.longitude\n                        return kart\n                    }\n                case .standings(let standings):\n                    message.standings.entries = standings.map { standing in\n                        var entry = Standings.Entry()\n                        entry.gapToLeader = .init(rounding: standing.delta, rule: .towardZero)\n                        entry.kartNumber = Int32(standing.kartNumber)\n                        entry.lap = Int32(standing.lap)\n                        entry.position = Int32(standing.position)\n                        return entry\n                    }\n                }\n\n                try await response.write(message)\n            }\n        }\n\n        while let next = try await iterator.next() {\n            eventTypes.withLock { $0 = Set(next.eventTypes) }\n        }\n\n        group.cancelAll()\n    }\n}"
+    },
+    {
+      "title": "swift_kart_service.proto",
+      "language": "bash",
+      "startTimeSeconds": 999,
+      "code": "edition = \"2024\";\n\nimport \"google/protobuf/duration.proto\";\nimport \"google/protobuf/timestamp.proto\";\n\nservice SwiftKartService {\n  rpc ListRaces(ListRacesRequest) returns (ListRacesResponse);\n  rpc FollowRace(stream FollowRaceRequest) returns (stream FollowRaceResponse);\n}\n\nmessage ListRacesRequest {\n  int32 limit = 1 [default = 100];\n}\n\nmessage ListRacesResponse {\n  repeated Race races = 1;\n}\n\nmessage Race {\n  string name = 1;\n  string location = 2;\n  google.protobuf.Timestamp start_time = 3;\n  int32 laps = 4;\n  string championship = 5;\n  repeated string drivers = 6;\n}\n\nmessage FollowRaceRequest {\n  string race_name = 1;\n  repeated RaceEventType event_types = 2;\n}\n\nenum RaceEventType {\n  RACE_EVENT_TYPE_UNSPECIFIED = 0;\n  RACE_EVENT_TYPE_KART_LOCATIONS = 1;\n  RACE_EVENT_TYPE_STANDINGS = 2;\n}\n\nmessage FollowRaceResponse {\n  oneof event {\n    KartLocations locations = 1;\n    Standings standings = 2;\n  }\n}\n\nmessage KartLocations {\n  message Kart {\n    int32 number = 1;\n    double latitude = 2;\n    double longitude = 3;\n    google.protobuf.Timestamp recorded_at = 4;\n  }\n  repeated Kart karts = 1;\n}\n\nmessage Standings {\n  message Entry {\n    int32 kart_number = 1;\n    google.protobuf.Duration gap_to_leader = 2;\n    int32 position = 3;\n    int32 lap = 4;\n  }\n\n  repeated Entry entries = 1;\n}"
+    },
+    {
+      "title": "swift_kart_service.proto",
+      "language": "bash",
+      "startTimeSeconds": 1000,
+      "code": "edition = \"2024\";\n\nimport \"google/protobuf/timestamp.proto\";\n\nservice SwiftKartService {\n  rpc ListRaces(ListRacesRequest) returns (ListRacesResponse);\n}\n\nmessage ListRacesRequest {\n  int32 limit = 1 [default = 100];\n}\n\nmessage ListRacesResponse {\n  repeated Race races = 1;\n}\n\nmessage Race {\n  string name = 1;\n  string location = 2;\n  google.protobuf.Timestamp start_time = 3;\n  int32 laps = 4;\n  string championship = 5;\n  repeated string drivers = 6;\n}"
+    },
+    {
+      "title": "Navigation link to LiveStreamView",
+      "language": "swift",
+      "startTimeSeconds": 1016,
+      "code": "NavigationLink(destination: LiveStreamView(race: race)) {\n    Text(\"Live stream\")\n}"
+    },
+    {
+      "title": "Call the FollowRace RPC in the LiveStreamView",
+      "language": "swift",
+      "startTimeSeconds": 1052,
+      "code": "import SwiftUI\nimport GRPCCore\nimport GRPCNIOTransportHTTP2\nimport SwiftProtobuf\n\nstruct LiveStreamView: View {\n    private let race: RaceInfo\n\n    @Environment(ClientManager.self) var manager\n    @State private var tracking: KartTrackingViewModel\n    @State private var standings: [StandingsEntry] = []\n    @State private var showLeaderboard = false\n    @State private var continuation: AsyncStream<Bool>.Continuation?\n\n    init(race: RaceInfo) {\n        self.race = race\n        self.tracking = KartTrackingViewModel(race: race)\n    }\n\n    var body: some View {\n        VStack {\n            KartTrackingMapView(viewModel: tracking)\n                .ignoresSafeArea()\n                .onAppear { tracking.start() }\n                .onDisappear { tracking.stop() }\n        }\n        .onChange(of: showLeaderboard) { _, newValue in\n            continuation?.yield(newValue)\n        }\n        .sheet(isPresented: $showLeaderboard) {\n            LeaderboardView(race: race, standings: standings)\n                .presentationDetents([.fraction(0.3), .medium, .large])\n                .presentationBackgroundInteraction(.enabled)\n        }\n        .toolbar {\n            Toggle(isOn: $showLeaderboard) {\n                Label(\"Leaderboard\", systemImage: \"list.number\")\n            }\n        }\n        .toolbarBackgroundVisibility(.visible, for: .navigationBar)\n        .task {\n            do {\n                let (stream, continuation) = AsyncStream.makeStream(of: Bool.self)\n                self.continuation = continuation\n                continuation.yield(showLeaderboard)\n\n                try await manager.withClient { client in\n                    let kart = SwiftKartService.Client(wrapping: client)\n                    try await kart.followRace { requestStream in\n                        for await showLeaderboard in stream {\n                            var message = FollowRaceRequest()\n                            message.raceName = race.name\n                            message.eventTypes = [.kartLocations]\n                            if showLeaderboard {\n                                message.eventTypes.append(.standings)\n                            }\n                            try await requestStream.write(message)\n                        }\n                    } onResponse: { responseStream in\n                        for try await message in responseStream.messages {\n                            if let event = message.event {\n                                await handleEvent(event)\n                            }\n                        }\n                    }\n\n                }\n            } catch {\n                print(\"gRPC error: \\(error)\")\n            }\n        }\n    }\n\n    @MainActor\n    private func handleEvent(_ event: FollowRaceResponse.OneOf_Event) {\n        switch event {\n        case .locations(let locations):\n            self.tracking.updateKartCoordinates(\n                locations.karts.map {\n                    TrackedKart(number: $0.number, latitude: $0.latitude, longitude: $0.longitude)\n                }\n            )\n        case .standings(let standings):\n            self.standings = standings.entries.map {\n                StandingsEntry(\n                    kartNumber: $0.kartNumber,\n                    secondsToLeader: $0.gapToLeader.timeInterval,\n                    position: $0.position,\n                    lap: $0.lap\n                )\n            }\n        }\n    }\n}\n\n#Preview {\n    NavigationStack {\n        LiveStreamView(race: .example4)\n            .environment(ClientManager())\n    }\n}"
+    },
+    {
+      "title": "Containerfile",
+      "language": "bash",
+      "startTimeSeconds": 1255,
+      "code": "FROM swift:latest AS builder\n\n# Copy sources into /app\nWORKDIR /app\nCOPY Package.swift Package.resolved .\nCOPY Sources/ Sources/\n\n# Build the server\nRUN swift build -c release --product server\nRUN cp \"$(swift build -c release --show-bin-path)/server\" /usr/bin/server\n\n# Copy the binary from the builder into a smaller runtime image.\nFROM swift:slim\nCOPY --from=builder /usr/bin/server /usr/bin/server\n\nEXPOSE 8080\nENTRYPOINT [\"/usr/bin/server\"]"
+    },
+    {
+      "title": "Deploy service",
+      "language": "bash",
+      "startTimeSeconds": 1316,
+      "code": "gcloud run deploy wwdc-demo-server \\\n  --image us-central1-docker.pkg.dev/wwdc26/wwdc-demo-server/wwdc-demo-server:latest \\\n  --region us-central1 \\\n  --use-http2 \\\n  --allow-unauthenticated"
+    },
+    {
+      "title": "Target deployed service",
+      "language": "swift",
+      "startTimeSeconds": 1342,
+      "code": "static func makeTransport() throws -> HTTP2ClientTransport.TransportServices {\n    try .http2NIOTS(\n        target: .dns(host: \"wwdc-demo-server-863666503339.us-central1.run.app\"),\n        transportSecurity: .tls\n    )\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "About gRPC",
+      "url": "https://grpc.io/",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "gRPC Swift Extras",
+      "url": "https://github.com/grpc/grpc-swift-extras",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "gRPC Swift Protobuf",
+      "url": "https://github.com/grpc/grpc-swift-protobuf",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "gRPC Swift NIO Transport",
+      "url": "https://github.com/grpc/grpc-swift-nio-transport",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "gRPC Swift",
+      "url": "https://github.com/grpc/grpc-swift",
+      "type": "guide",
+      "description": "Swift implementation of grpc."
+    },
+    {
+      "title": "Swift on Server",
+      "url": "https://www.swift.org/server/",
+      "type": "guide",
+      "description": null
+    }
+  ],
+  "path": "sessions/wwdc2026/265-build-real-time-apps-and-services-with-grpc-and-swift/",
+  "files": {
+    "metadata": "sessions/wwdc2026/265-build-real-time-apps-and-services-with-grpc-and-swift/metadata.json",
+    "readme": "sessions/wwdc2026/265-build-real-time-apps-and-services-with-grpc-and-swift/README.md",
+    "transcript": "sessions/wwdc2026/265-build-real-time-apps-and-services-with-grpc-and-swift/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/265-build-real-time-apps-and-services-with-grpc-and-swift/transcript.json"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2018-416",
+  "event": "wwdc2018",
+  "eventName": "WWDC18",
+  "year": 2018,
+  "eventContentId": 416,
+  "title": "iOS Memory Deep Dive",
+  "description": "Discover how memory graphs can be used to get a close up look at what is contributing to an app’s memory footprint. Understand the true memory cost of an image. Learn some tips and tricks for reducing the memory footprint of an app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2018/416",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2018/416",
+  "type": "Video",
+  "publishedAt": "2018-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "footprint",
+    "image",
+    "memory",
+    "size"
+  ],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 3088,
+  "hasTranscript": true,
+  "transcriptWordCount": 8760,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/416n2fmzz0fz88f/416/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/416n2fmzz0fz88f/416/416_sd_ios_memory_deep_dive.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/416n2fmzz0fz88f/416/416_hd_ios_memory_deep_dive.mp4",
+    "duration": 3088
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2018/416-ios-memory-deep-dive/",
+  "files": {
+    "metadata": "sessions/wwdc2018/416-ios-memory-deep-dive/metadata.json",
+    "readme": "sessions/wwdc2018/416-ios-memory-deep-dive/README.md",
+    "transcript": "sessions/wwdc2018/416-ios-memory-deep-dive/transcript.md",
+    "transcriptJSON": "sessions/wwdc2018/416-ios-memory-deep-dive/transcript.json"
+  }
+}

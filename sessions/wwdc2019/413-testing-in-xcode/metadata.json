@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-413",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 413,
+  "title": "Testing in Xcode",
+  "description": "Unit testing is an essential tool to consistently verify your code works correctly. Learn about the built-in testing features in Xcode, using XCTest. Find out how to organize your tests and run them under different configurations using test plans, new in Xcode 11. Discover how to automate testing and efficiently work with the results.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/413",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/413",
+  "type": "Video",
+  "publishedAt": "2019-06-06T11:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 3210,
+  "hasTranscript": true,
+  "transcriptWordCount": 8506,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/413kpguqjv5fqp9/413/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/413kpguqjv5fqp9/413/413_sd_testing_in_xcode.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/413kpguqjv5fqp9/413/413_hd_testing_in_xcode.mp4",
+    "duration": 3210
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/413-testing-in-xcode/",
+  "files": {
+    "metadata": "sessions/wwdc2019/413-testing-in-xcode/metadata.json",
+    "readme": "sessions/wwdc2019/413-testing-in-xcode/README.md",
+    "transcript": "sessions/wwdc2019/413-testing-in-xcode/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/413-testing-in-xcode/transcript.json"
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-326",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 326,
+  "title": "Integrate on-device AI models into your app using Core AI",
+  "description": "Discover a curated collection of popular open-source models — including Qwen, Mistral, SAM3, and more — optimized for Apple silicon using the new Core AI Framework. Learn how to download, run, and benchmark models on your Mac, and integrate them into your app with just a few lines of code. Explore a new workflow for model compilation and on-device specialization to speed up first-time model load. Find out how to profile and optimize runtime performance with Core AI tools in Xcode.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/326",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/326",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1424,
+  "hasTranscript": true,
+  "transcriptWordCount": 2946,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/326/5/7ff038e2-12cb-4b92-9f49-1d051db7ce5d/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/326/5/7ff038e2-12cb-4b92-9f49-1d051db7ce5d/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/326/5/7ff038e2-12cb-4b92-9f49-1d051db7ce5d/downloads/wwdc2026-326_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/326/5/7ff038e2-12cb-4b92-9f49-1d051db7ce5d/downloads/wwdc2026-326_hd.mp4",
+    "duration": 1424
+  },
+  "codeSnippets": [
+    {
+      "title": "Load and run SAM3 image segmentation",
+      "language": "swift",
+      "startTimeSeconds": 661,
+      "code": "import CoreAIImageSegmenter\n\n// Load\nlet segmenter = try await ImageSegmenter(resourcesAt: sam3ModelURL)\n\n// Use\nlet response = try await segmenter.segment(image: inputImage, prompt: \"flower\")\nlet mask = response.segments.first?.mask"
+    },
+    {
+      "title": "Load a language model and create a session",
+      "language": "swift",
+      "startTimeSeconds": 688,
+      "code": "import FoundationModels\nimport CoreAILanguageModels\n\n// Create model instance\nlet model = try await CoreAILanguageModel(resourcesAt: qwen3ModelURL)\n\n// Create session using the model\nlet session = LanguageModelSession(model: model)\n\n// Generate response\nlet response = try await session.respond(to: \"...\")"
+    },
+    {
+      "title": "Generate structured output with @Generable",
+      "language": "swift",
+      "startTimeSeconds": 749,
+      "code": "import FoundationModels\nimport CoreAILanguageModels\n\n@Generable\nstruct VocabCard {\n    let chineseWord: String\n    let englishMeaning: String\n    let exampleSentence: String\n}\n\nlet model = try await CoreAILanguageModel(resourcesAt: modelURL)\nlet session = LanguageModelSession(model: model)\nlet response = try await session.respond(\n    to: \"Create a vocab card for flower\",\n    generating: VocabCard.self\n)\nlet card: VocabCard = response.content"
+    },
+    {
+      "title": "Compile a Core AI model ahead of time",
+      "language": "bash",
+      "startTimeSeconds": 1042,
+      "code": "$ xcrun coreai-build compile MyModel.aimodel --platform iOS"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Core AI PyTorch Extensions",
+      "url": "https://apple.github.io/coreai-torch",
+      "type": "documentation",
+      "description": "Bring PyTorch models to Core AI for on-device execution."
+    },
+    {
+      "title": "Core AI Python",
+      "url": "https://apple.github.io/coreai-torch/main/coreai-core",
+      "type": "documentation",
+      "description": "Python package for building and running AI Models on Apple hardware."
+    },
+    {
+      "title": "Core AI Optimization",
+      "url": "https://apple.github.io/coreai-optimization",
+      "type": "documentation",
+      "description": "A library for model compression, quantization and related optimizations."
+    },
+    {
+      "title": "Core AI",
+      "url": "https://developer.apple.com/documentation/CoreAI",
+      "type": "documentation",
+      "description": "Run AI models in your app on Apple silicon.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreAI",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreAI.json"
+    },
+    {
+      "title": "Compiling Core AI models ahead of time",
+      "url": "https://developer.apple.com/documentation/CoreAI/compiling-core-ai-models-ahead-of-time",
+      "type": "documentation",
+      "description": "Reduce on-device specialization time by compiling Core AI models at build time.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreAI/compiling-core-ai-models-ahead-of-time",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreAI/compiling-core-ai-models-ahead-of-time.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/326-integrate-on-device-ai-models-into-your-app-using-core-ai/",
+  "files": {
+    "metadata": "sessions/wwdc2026/326-integrate-on-device-ai-models-into-your-app-using-core-ai/metadata.json",
+    "readme": "sessions/wwdc2026/326-integrate-on-device-ai-models-into-your-app-using-core-ai/README.md",
+    "transcript": "sessions/wwdc2026/326-integrate-on-device-ai-models-into-your-app-using-core-ai/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/326-integrate-on-device-ai-models-into-your-app-using-core-ai/transcript.json"
+  }
+}

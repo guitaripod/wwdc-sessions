@@ -1,0 +1,133 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-219",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 219,
+  "title": "Enhance the accessibility of your reading app",
+  "description": "Learn how to create robust reading experiences for VoiceOver, Speak Screen, and more. Find out how to provide intuitive text selection, clear navigation between lines and paragraphs, and continuous reading across individual elements and multiple pages.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/219",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/219",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "Accessibility & Inclusion"
+  ],
+  "primaryTopic": "Accessibility & Inclusion",
+  "duration": 1200,
+  "hasTranscript": true,
+  "transcriptWordCount": 2752,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/219/4/da70a3a7-e193-4513-904f-991788c1fa81/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/219/4/da70a3a7-e193-4513-904f-991788c1fa81/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/219/4/da70a3a7-e193-4513-904f-991788c1fa81/downloads/wwdc2026-219_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/219/4/da70a3a7-e193-4513-904f-991788c1fa81/downloads/wwdc2026-219_hd.mp4",
+    "duration": 1200
+  },
+  "codeSnippets": [
+    {
+      "title": "Link text elements together with navigation APIs",
+      "language": "swift",
+      "startTimeSeconds": 449,
+      "code": "// Link text elements together with navigation APIs\n\nimport UIKit\n\nclass TravelGuidePageController: UIViewController {\n\n    var paragraphs: [TravelGuideParagraph]\n\n    func configureNavigationElements() {\n        for (index, paragraph) in paragraphs.enumerated() {\n            if index + 1 < paragraphs.count {\n                paragraph.accessibilityNextTextNavigationElement = paragraphs[index + 1]\n            }\n            if index - 1 >= 0 {\n                paragraph.accessibilityPreviousTextNavigationElement = paragraphs[index - 1]\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Link text elements together with a linked group",
+      "language": "swift",
+      "startTimeSeconds": 479,
+      "code": "// Link text elements together with a linked group\n\nimport SwiftUI\n\nstruct PageView : View {\n    @Namespace private var pageNamespace\n    var paragraphs: [String\n    var pageNumber: Int\n\n    var body: some View {\n        Text(paragraphs[0])\n            .textSelection(.enabled)\n            .accessibilityLinkedGroup(id: pageNumber, in: pageNamespace)\n\n        Text(paragraphs[1])\n            .textSelection(.enabled)\n            .accessibilityLinkedGroup(id: pageNumber, in: pageNamespace)\n    }\n}"
+    },
+    {
+      "title": "Turn pages automatically after reading",
+      "language": "swift",
+      "startTimeSeconds": 590,
+      "code": "// Turn pages automatically after reading\n\nimport UIKit\n\nclass TravelGuidePageController: UIViewController {\n\n    override func viewDidLoad() {\n        super.viewDidLoad()\n        self.lastParagraphView.accessibilityTraits.insert(.causesPageTurn)\n    }\n\n    override func accessibilityScroll(_ direction: UIAccessibilityScrollDirection) -> Bool {\n        moveToPage(direction)\n        var scrollString = \"Page \\(currentPage) of \\(pages.count)\"\n        UIAccessibility.post(notification: .pageScrolled, argument: scrollString)\n        return true\n    }\n}"
+    },
+    {
+      "title": "Add actions to the editor rotor",
+      "language": "swift",
+      "startTimeSeconds": 705,
+      "code": "// Add actions to the editor rotor\n\nimport UIKit\n\nclass TravelGuideParagraph: UITextView {\n\n    override var accessibilityCustomActions: [UIAccessibilityCustomAction]? {\n        get {\n            let saveAction = UIAccessibilityCustomAction(name: \"Save Recommendation\") { _ in\n                self.saveRecommendation()\n            }\n            saveAction.category = UIAccessibilityCustomAction.editCategory\n            return (super.accessibilityCustomActions ?? []) + [saveAction]\n        }\n        set { }\n    }\n\n    private func saveRecommendation() -> Bool {\n        ...\n        return true\n    }\n}"
+    },
+    {
+      "title": "Adopt UITextInput",
+      "language": "swift",
+      "startTimeSeconds": 970,
+      "code": "// Adopt UITextInput\n\nimport UIKit\n\nclass ScannedPage: UIView, UITextInput {\n\n    override init(frame: CGRect) {\n        super.init(frame: frame)\n        let interaction = UITextInteraction(for: .nonEditable)\n        interaction.textInput = self\n        addInteraction(interaction)\n    }\n\n    func selectionRects(for range: UITextRange) -> [UITextSelectionRect] {\n        var rects: [UITextSelectionRect] = []\n\n        let startLine = lineIndex(for: range.start)\n        let endLine = lineIndex(for: range.end)\n\n        for line in startLine...endLine {\n            let rect = selectionRectFromImage(for: range, in: line)\n            rects.append(rect)\n        }\n\n        return rects\n    }\n\n    func text(in range: UITextRange) -> String? {\n        let nsRange = nsRange(from: range)\n        guard let range = Range(nsRange, in: scannedText) else {\n            return nil\n        }\n        return String(scannedText[range])\n    }\n\n    var tokenizer: any UITextInputTokenizer { CustomHandwritingTokenizer(textInput: self) }\n\n    weak var inputDelegate: UITextInputDelegate?\n\n      var selectedTextRange: UITextRange? {\n        // Update visuals when assistive technologies change selection\n        willSet { inputDelegate?.selectionWillChange(self) }\n        didSet { inputDelegate?.selectionDidChange(self) }\n    }\n\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "accessibilityNextTextNavigationElement",
+      "url": "https://developer.apple.com/documentation/ObjectiveC/NSObject-swift.class/accessibilityNextTextNavigationElement",
+      "type": "documentation",
+      "description": "An accessibility element that contains text that semantically follows this element’s text.",
+      "sosumiURL": "https://sosumi.ai/documentation/ObjectiveC/NSObject-swift.class/accessibilityNextTextNavigationElement",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ObjectiveC/NSObject-swift.class/accessibilityNextTextNavigationElement.json"
+    },
+    {
+      "title": "editCategory",
+      "url": "https://developer.apple.com/documentation/UIKit/UIAccessibilityCustomAction/editCategory",
+      "type": "documentation",
+      "description": "A constant that an app specifies through the category property on a UIKit accessibility custom action.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UIAccessibilityCustomAction/editCategory",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UIAccessibilityCustomAction/editCategory.json"
+    },
+    {
+      "title": "accessibilityLinkedGroup(id:in:)",
+      "url": "https://developer.apple.com/documentation/SwiftUI/View/accessibilityLinkedGroup(id:in:)",
+      "type": "documentation",
+      "description": "Links multiple accessibility elements so that the user can quickly",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/View/accessibilityLinkedGroup(id:in:)",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/View/accessibilityLinkedGroup(id:in:).json"
+    },
+    {
+      "title": "causesPageTurn",
+      "url": "https://developer.apple.com/documentation/SwiftUI/AccessibilityTraits/causesPageTurn",
+      "type": "documentation",
+      "description": "The accessibility element causes an automatic page turn when VoiceOver",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/AccessibilityTraits/causesPageTurn",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/AccessibilityTraits/causesPageTurn.json"
+    },
+    {
+      "title": "UITextInput",
+      "url": "https://developer.apple.com/documentation/UIKit/UITextInput",
+      "type": "documentation",
+      "description": "A set of methods for interacting with the text input system and enabling features in documents.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UITextInput",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UITextInput.json"
+    },
+    {
+      "title": "Accessibility for UIKit",
+      "url": "https://developer.apple.com/documentation/UIKit/accessibility-for-uikit",
+      "type": "documentation",
+      "description": "Make your UIKit apps accessible to everyone who uses iOS and tvOS.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/accessibility-for-uikit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/accessibility-for-uikit.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/219-enhance-the-accessibility-of-your-reading-app/",
+  "files": {
+    "metadata": "sessions/wwdc2026/219-enhance-the-accessibility-of-your-reading-app/metadata.json",
+    "readme": "sessions/wwdc2026/219-enhance-the-accessibility-of-your-reading-app/README.md",
+    "transcript": "sessions/wwdc2026/219-enhance-the-accessibility-of-your-reading-app/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/219-enhance-the-accessibility-of-your-reading-app/transcript.json"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-508",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 508,
+  "title": "Modernizing Your Audio App",
+  "description": "Apple platforms provide a comprehensive set of audio frameworks and technologies that are essential to creating a rich app experience. Learn about which frameworks and APIs are recommended to ensure that your app is well positioned for the future.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/508",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/508",
+  "type": "Video",
+  "publishedAt": "2019-06-04T18:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 106,
+  "hasTranscript": true,
+  "transcriptWordCount": 174,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/508kk896m9xoeaz1a/508/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/508kk896m9xoeaz1a/508/508_sd_modernizing_your_audio_app.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/508kk896m9xoeaz1a/508/508_hd_modernizing_your_audio_app.mp4",
+    "duration": 106
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/508-modernizing-your-audio-app/",
+  "files": {
+    "metadata": "sessions/wwdc2019/508-modernizing-your-audio-app/metadata.json",
+    "readme": "sessions/wwdc2019/508-modernizing-your-audio-app/README.md",
+    "transcript": "sessions/wwdc2019/508-modernizing-your-audio-app/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/508-modernizing-your-audio-app/transcript.json"
+  }
+}

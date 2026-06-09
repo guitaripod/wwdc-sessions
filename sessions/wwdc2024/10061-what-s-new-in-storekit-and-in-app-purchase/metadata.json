@@ -1,0 +1,162 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2024-10061",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10061,
+  "title": "What’s new in StoreKit and In-App Purchase",
+  "description": "Learn how to build and deliver even better purchase experiences using the App Store In-App Purchase system. We’ll demo new StoreKit views control styles and new APIs to improve your subscription customization, discuss new fields for transaction-level information, and explore new testability in Xcode. We’ll also review an important StoreKit deprecation.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10061",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10061",
+  "type": "Video",
+  "publishedAt": "2024-06-10T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services",
+    "SwiftUI & UI Frameworks",
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 1380,
+  "hasTranscript": true,
+  "transcriptWordCount": 4036,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10061/4/283D5AFD-5540-405F-A385-1B9CBB0474D4/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10061/4/283D5AFD-5540-405F-A385-1B9CBB0474D4/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10061/4/283D5AFD-5540-405F-A385-1B9CBB0474D4/downloads/wwdc2024-10061_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10061/4/283D5AFD-5540-405F-A385-1B9CBB0474D4/downloads/wwdc2024-10061_hd.mp4",
+    "duration": 1380
+  },
+  "codeSnippets": [
+    {
+      "title": "Destination Video Shop",
+      "language": "swift",
+      "startTimeSeconds": 266,
+      "code": "import StoreKit\nimport SwiftUI\n\nstruct DestinationVideoShop: View {\n\n  var body: some View {\n    SubscriptionStoreView(groupID: Self.subscriptionGroupID) {\n      SubscriptionOptionGroupSet { product in\n\t\t\t\tStreamingPassLevel(product)\n      } label: { streamingPassLevel in\n       \tText(streamingPassLevel.localizedTitle)\n      } marketingContent: { streamingPassLevel in\n        StreamingPassMarketingContent(level: streamingPassLevel)\n        StreamingPassFeatures(level: streamingPassLevel)\n      }\n  \t}\n  \t.subscriptionStoreControlStyle(.compactPicker, placement: .bottomBar)\n\t}\n\n}"
+    },
+    {
+      "title": "Subscription Option Groups - Tabs style",
+      "language": "swift",
+      "startTimeSeconds": 546,
+      "code": "SubscriptionStoreView(groupID: Self.subscriptionGroupID) {\n  SubscriptionOptionGroupSet { product in\n\t\tStreamingPassLevel(product)\n  } label: { streamingPassLevel in\n    Text(streamingPassLevel.localizedTitle)\n  } marketingContent: { _ in\n    StreamingPassMarketingContent()\n\t}\n}\n.subscriptionStoreControlStyle(.compactPicker, placement: .bottomBar)\n.subscriptionStoreOptionGroupStyle(.tabs)"
+    },
+    {
+      "title": "Subscription Option Groups - Links style",
+      "language": "swift",
+      "startTimeSeconds": 560,
+      "code": "SubscriptionStoreView(groupID: Self.subscriptionGroupID) {\n  SubscriptionOptionGroupSet { product in\n\t\tStreamingPassLevel(product)\n  } label: { streamingPassLevel in\n    Text(streamingPassLevel.localizedTitle)\n  } marketingContent: { _ in\n    StreamingPassMarketingContent()\n\t}\n}\n.subscriptionStoreControlStyle(.compactPicker, placement: .bottomBar)\n.subscriptionStoreOptionGroupStyle(.links)"
+    },
+    {
+      "title": "Custom control style implementation",
+      "language": "swift",
+      "startTimeSeconds": 821,
+      "code": "import StoreKit\nimport SwiftUI\n\nstruct BadgedPickerControlStyle: SubscriptionStoreControlStyle {\n  func makeBody(configuration: Configuration) -> some View {\n    SubscriptionPicker(configuration) { pickerOption in\n      HStack(alignment: .top) {\n        VStack(alignment: .leading) {\n          Text(pickerOption.displayName)\n          \t.font(title2.bold())\n          Text(priceDisplay(for: pickerOption))\n          if pickerOption.isFamilyShareable {\n            FamilyShareableBadge()\n          }\n          Text(pickerOption.description)\n        }\n        Spacer()\n        SelectionIndicator(pickerOption.isSelected)\n      }\n    } confirmation: { option in\n      SubscribeButton(option)\n    }\n  }\n}\n\nstruct DestinationVideoShop: View {\n\n  var body: some View {\n    SubscriptionStoreView(groupID: Self.subscriptionGroupID) {\n      SubscriptionPeriodGroupSet { _ in\n        StreamingPassMarketingContent()\n      }\n  \t}\n  \t.subscriptionStoreControlStyle(BadgedPickerControlStyle())\n\t}\n\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Testing in-app purchases with StoreKit transaction manager in Xcode",
+      "url": "https://developer.apple.com/documentation/Xcode/testing-in-app-purchases-with-storeKit-transaction-manager-in-code",
+      "type": "documentation",
+      "description": "Use the transaction manager within Xcode to test in-app purchases without requiring a connection to App Store servers.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/testing-in-app-purchases-with-storeKit-transaction-manager-in-code",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/testing-in-app-purchases-with-storeKit-transaction-manager-in-code.json"
+    },
+    {
+      "title": "Product.SubscriptionInfo.RenewalInfo",
+      "url": "https://developer.apple.com/documentation/StoreKit/Product/SubscriptionInfo/RenewalInfo",
+      "type": "documentation",
+      "description": "The renewal information for an auto-renewable subscription.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/Product/SubscriptionInfo/RenewalInfo",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/Product/SubscriptionInfo/RenewalInfo.json"
+    },
+    {
+      "title": "Transaction properties",
+      "url": "https://developer.apple.com/documentation/StoreKit/transaction-properties",
+      "type": "documentation",
+      "description": "The properties of a transaction, including identifiers, purchase and revocation dates and details, status, and offer details.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/transaction-properties",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/transaction-properties.json"
+    },
+    {
+      "title": "Forum: App Store Distribution & Marketing",
+      "url": "https://developer.apple.com/forums/topics/app-store-distribution-and-marketing?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/app-store-distribution-and-marketing?cid=vf-a-0010"
+    },
+    {
+      "title": "Message",
+      "url": "https://developer.apple.com/documentation/StoreKit/Message",
+      "type": "documentation",
+      "description": "An instance for receiving and displaying App Store messages in your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/Message",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/Message.json"
+    },
+    {
+      "title": "StoreKit views",
+      "url": "https://developer.apple.com/documentation/StoreKit/storekit-views",
+      "type": "documentation",
+      "description": "Display a customizable In-App Purchase store using StoreKit views for SwiftUI.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/storekit-views",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/storekit-views.json"
+    },
+    {
+      "title": "Introducing StoreKit 2",
+      "url": "https://developer.apple.com/storekit/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/storekit/"
+    },
+    {
+      "title": "Setting up StoreKit Testing in Xcode",
+      "url": "https://developer.apple.com/documentation/Xcode/setting-up-storekit-testing-in-xcode",
+      "type": "documentation",
+      "description": "Prepare your test environment to test in-app purchases with data you configure locally.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/setting-up-storekit-testing-in-xcode",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/setting-up-storekit-testing-in-xcode.json"
+    },
+    {
+      "title": "In-App Purchase",
+      "url": "https://developer.apple.com/documentation/StoreKit/in-app-purchase",
+      "type": "documentation",
+      "description": "Offer content and services in your app across Apple platforms using a Swift-based interface.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/in-app-purchase",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/in-app-purchase.json"
+    },
+    {
+      "title": "Original API for In-App Purchase",
+      "url": "https://developer.apple.com/documentation/StoreKit/original-api-for-in-app-purchase",
+      "type": "documentation",
+      "description": "Offer additional content and services in your app using the Original In-App Purchase API.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/original-api-for-in-app-purchase",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/original-api-for-in-app-purchase.json"
+    }
+  ],
+  "path": "sessions/wwdc2024/10061-what-s-new-in-storekit-and-in-app-purchase/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10061-what-s-new-in-storekit-and-in-app-purchase/metadata.json",
+    "readme": "sessions/wwdc2024/10061-what-s-new-in-storekit-and-in-app-purchase/README.md",
+    "transcript": "sessions/wwdc2024/10061-what-s-new-in-storekit-and-in-app-purchase/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10061-what-s-new-in-storekit-and-in-app-purchase/transcript.json"
+  }
+}

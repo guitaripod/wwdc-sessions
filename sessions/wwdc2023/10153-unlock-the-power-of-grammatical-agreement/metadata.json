@@ -1,0 +1,99 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10153",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10153,
+  "title": "Unlock the power of grammatical agreement",
+  "description": "Discover how you can use automatic grammatical agreement in your apps and games to create inclusive and more natural-sounding expressions. We’ll share best practices for working with Foundation, showcase examples in multiple languages, and demonstrate how to use these APIs to enhance the user experience for your apps. For an introduction to automatic grammatical agreement, watch “What’s new in Foundation” from WWDC21.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10153",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10153",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "agreewithargument",
+    "i18n",
+    "inflect",
+    "internationalization",
+    "l10n",
+    "localization"
+  ],
+  "topics": [
+    "Accessibility & Inclusion",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1101,
+  "hasTranscript": true,
+  "transcriptWordCount": 2384,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10153/6/A7A21FC4-917F-4A51-B18C-89DB54EBD3B7/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10153/6/A7A21FC4-917F-4A51-B18C-89DB54EBD3B7/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10153/6/A7A21FC4-917F-4A51-B18C-89DB54EBD3B7/downloads/wwdc2023-10153_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10153/6/A7A21FC4-917F-4A51-B18C-89DB54EBD3B7/downloads/wwdc2023-10153_hd.mp4",
+    "duration": 1101
+  },
+  "codeSnippets": [
+    {
+      "title": "agreeWithConcept",
+      "language": "swift",
+      "startTimeSeconds": 248,
+      "code": "// Formatting the string\n\nvar options = AttributedString.LocalizationOptions()\noptions.concepts = [.localizedPhrase(food.localizedName)]\n\nlet size = AttributedString(localized: \"small\", options: options)"
+    },
+    {
+      "title": "Preferred terms of address",
+      "language": "swift",
+      "startTimeSeconds": 525,
+      "code": "// A person who is delivering the food order\n\nstruct DeliveryPerson {\n\n    // The person's preferred name\n    var name: String\n\n    // An avatar for the delivery person\n    var avatar: Image\n\n    // The person's preferred terms of address. This list may contain more than\n    // one option, we will use the first applicable one for the language that's\n    // used in the UI.\n    var preferredTermsOfAddress: [TermOfAddress]\n}\n\n// Formatting the message in Swift\n\nvar options = AttributedString.LocalizationOptions()\noptions.concepts = [.termsOfAddress(person.preferredTermsOfAddress)]\n\nlet message = AttributedString(localized:  \"\\(person.name) is on ^[their](referentConcept: 1) way.”, options: options)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "NSMorphology",
+      "url": "https://developer.apple.com/documentation/Foundation/NSMorphology",
+      "type": "documentation",
+      "description": "A description of the grammatical properties of a string.",
+      "sosumiURL": "https://sosumi.ai/documentation/Foundation/NSMorphology",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Foundation/NSMorphology.json"
+    },
+    {
+      "title": "NSInflectionRule",
+      "url": "https://developer.apple.com/documentation/Foundation/NSInflectionRule",
+      "type": "documentation",
+      "description": "A rule that affects how an attributed string performs automatic grammatical agreement.",
+      "sosumiURL": "https://sosumi.ai/documentation/Foundation/NSInflectionRule",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Foundation/NSInflectionRule.json"
+    },
+    {
+      "title": "Expanding Your App to New Markets",
+      "url": "https://developer.apple.com/localization/",
+      "type": "guide",
+      "description": "Internationalization and Localization. Expanding Your App to New Markets.",
+      "sosumiURL": "https://sosumi.ai/localization/"
+    }
+  ],
+  "path": "sessions/wwdc2023/10153-unlock-the-power-of-grammatical-agreement/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10153-unlock-the-power-of-grammatical-agreement/metadata.json",
+    "readme": "sessions/wwdc2023/10153-unlock-the-power-of-grammatical-agreement/README.md",
+    "transcript": "sessions/wwdc2023/10153-unlock-the-power-of-grammatical-agreement/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10153-unlock-the-power-of-grammatical-agreement/transcript.json"
+  }
+}

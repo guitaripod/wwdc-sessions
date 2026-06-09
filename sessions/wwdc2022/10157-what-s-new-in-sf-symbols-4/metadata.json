@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10157",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10157,
+  "title": "What's new in SF Symbols 4",
+  "description": "Explore the latest updates to SF Symbols, Apple’s extensive library of iconography designed to integrate seamlessly with San Francisco, the system font for all Apple platforms. Discover the latest additions to the SF Symbols library and new categories in the app. Learn about the new Automatic behavior, which chooses the rendering mode that best highlights what’s unique about the symbol’s characteristics. See how to use the new Variable Color feature to make a symbol more dynamic. We’ll also learn about a more efficient way of annotating symbols with the new unified approach. To get the most out of this session, we recommend first watching “What’s new in SF Symbols” from WWDC21.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10157",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10157",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "categories",
+    "glyph",
+    "icon",
+    "template"
+  ],
+  "topics": [
+    "Essentials",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 1069,
+  "hasTranscript": true,
+  "transcriptWordCount": 2589,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10157/3/A3A24118-7045-4049-9392-6B10E8CDD489/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10157/3/A3A24118-7045-4049-9392-6B10E8CDD489/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10157/3/A3A24118-7045-4049-9392-6B10E8CDD489/downloads/wwdc2022-10157_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10157/3/A3A24118-7045-4049-9392-6B10E8CDD489/downloads/wwdc2022-10157_hd.mp4",
+    "duration": 1069
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2022/10157-what-s-new-in-sf-symbols-4/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10157-what-s-new-in-sf-symbols-4/metadata.json",
+    "readme": "sessions/wwdc2022/10157-what-s-new-in-sf-symbols-4/README.md",
+    "transcript": "sessions/wwdc2022/10157-what-s-new-in-sf-symbols-4/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10157-what-s-new-in-sf-symbols-4/transcript.json"
+  }
+}

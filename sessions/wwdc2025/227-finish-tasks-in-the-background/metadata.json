@@ -1,0 +1,108 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-227",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 227,
+  "title": "Finish tasks in the background",
+  "description": "Discover background execution advancements and understand how the system schedules runtime. We’ll discuss how to get the most out of background runtime to allow your app to deliver features in the background while maintaining a great foreground experience. We’ll also cover how APIs provide background runtime for your app, and how each API is tailored for different use cases — including new APIs in iOS and iPadOS 26 that let your app finish tasks as your app transitions from the foreground to the background.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/227",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/227",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 1118,
+  "hasTranscript": true,
+  "transcriptWordCount": 2803,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/227/4/b4d5d5a5-5c5a-4f37-a4ad-66fea0b6f25d/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/227/4/b4d5d5a5-5c5a-4f37-a4ad-66fea0b6f25d/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/227/4/b4d5d5a5-5c5a-4f37-a4ad-66fea0b6f25d/downloads/wwdc2025-227_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/227/4/b4d5d5a5-5c5a-4f37-a4ad-66fea0b6f25d/downloads/wwdc2025-227_hd.mp4",
+    "duration": 1118
+  },
+  "codeSnippets": [
+    {
+      "title": "Register an app refresh task",
+      "language": "swift",
+      "startTimeSeconds": 507,
+      "code": "import BackgroundTasks\nimport SwiftUI\n\n@main\nstruct ColorFeed: App {\n    var body: some Scene {\n        WindowGroup {\n            // ...\n        }\n        .backgroundTask(.appRefresh(\"com.colorfeed.wwdc25.appRefresh\")) {\n            await self.handleAppRefreshTask()\n        }\n    }\n}"
+    },
+    {
+      "title": "Register a processing task",
+      "language": "swift",
+      "startTimeSeconds": 585,
+      "code": "import BackgroundTasks\nimport UIKit\n\nclass AppDelegate: UIResponder, UIApplicationDelegate {\n    func application(\n        _ application: UIApplication,\n        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?\n    ) -> Bool {\n        BGTaskScheduler.shared.register(\n            forTaskWithIdentifier: \"com.example.apple-samplecode.ColorFeed.db_cleaning\",\n            using: nil\n        ) { task in\n            self.handleAppRefresh(task: task as! BGProcessingTask)\n        }\n    }\n\n    func submitProcessingTaskRequest() {\n        let request = BGProcessingTaskRequest(\n            identifier: \"com.example.apple-samplecode.ColorFeed.db_cleaning\"\n        )\n        request.requiresNetworkConnectivity = true\n        request.requiresExternalPower = true\n\n        BGTaskScheduler.shared.submit(request)! \n    }\n}"
+    },
+    {
+      "title": "Begin and end background task",
+      "language": "swift",
+      "startTimeSeconds": 651,
+      "code": "import UIKit\n\n@main\nclass AppDelegate: UIResponder, UIApplicationDelegate {\n    var backgroundTaskID: UIBackgroundTaskIdentifier = .invalid\n\n    func saveState() { /*  ... */ }\n\n    func handlePersistence() {\n        let app = UIApplication.shared\n        guard backgroundTaskID != .invalid else { return }\n        backgroundTaskID = app.beginBackgroundTask(withName: \"Finish Export\") {\n            app.endBackgroundTask(self.backgroundTaskID)\n            self.backgroundTaskID = .invalid\n        }\n\n        self.saveState()\n\n        app.endBackgroundTask(backgroundTaskID)\n        backgroundTaskID = .invalid\n    }\n}"
+    },
+    {
+      "title": "Continued processing task registration",
+      "language": "swift",
+      "startTimeSeconds": 840,
+      "code": "import BackgroundTasks\n\nfunc handleDialogConfirmation() {\n    BGTaskScheduler.shared.register(\"com.colorfeed.wwdc25.userTask\") { task in\n        let task = task as! BGContinuedProcessingTask\n\n        var shouldContinue = true\n        task.expirationHandler = {\n            shouldContinue = false\n        }\n\n        task.progress.totalUnitCount = 100\n        task.progress.completedUnitCount = 0\n\n        while shouldContinue {\n            // Do some work\n            task.progress.completedUnitCount += 1\n        }\n\n        task.setTaskCompleted(success: true)\n    }\n}"
+    },
+    {
+      "title": "Continued processing task submission",
+      "language": "swift",
+      "startTimeSeconds": 947,
+      "code": "import BackgroundTasks\n\nfunc submitContinuedProcessingTaskRequest() {\n    let request = BGContinuedProcessingTaskRequest(\n        identifier: \"com.colorfeed.wwdc25.userTask\",\n        title: \"A succinct title\",\n        subtitle: \"A useful and informative subtitle\"\n    )\n\n    request.strategy = .fail\n\n    BGTaskScheduler.shared.submit(request)!\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Uploading asset resources in the background",
+      "url": "https://developer.apple.com/documentation/PhotoKit/uploading-asset-resources-in-the-background",
+      "type": "documentation",
+      "description": "Enable reliable cloud backup for photo library assets with background processing.",
+      "sosumiURL": "https://sosumi.ai/documentation/PhotoKit/uploading-asset-resources-in-the-background",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/PhotoKit/uploading-asset-resources-in-the-background.json"
+    },
+    {
+      "title": "Performing long-running tasks on iOS and iPadOS",
+      "url": "https://developer.apple.com/documentation/BackgroundTasks/performing-long-running-tasks-on-ios-and-ipados",
+      "type": "documentation",
+      "description": "Use a continuous background task to do work that can complete as needed.",
+      "sosumiURL": "https://sosumi.ai/documentation/BackgroundTasks/performing-long-running-tasks-on-ios-and-ipados",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/BackgroundTasks/performing-long-running-tasks-on-ios-and-ipados.json"
+    },
+    {
+      "title": "Background Tasks",
+      "url": "https://developer.apple.com/documentation/BackgroundTasks",
+      "type": "documentation",
+      "description": "Support background processing in your app by wrapping your app’s most critical work in framework-provided tasks.",
+      "sosumiURL": "https://sosumi.ai/documentation/BackgroundTasks",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/BackgroundTasks.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/227-finish-tasks-in-the-background/",
+  "files": {
+    "metadata": "sessions/wwdc2025/227-finish-tasks-in-the-background/metadata.json",
+    "readme": "sessions/wwdc2025/227-finish-tasks-in-the-background/README.md",
+    "transcript": "sessions/wwdc2025/227-finish-tasks-in-the-background/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/227-finish-tasks-in-the-background/transcript.json"
+  }
+}

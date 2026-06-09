@@ -1,0 +1,137 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10068",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10068,
+  "title": "What's new in UIKit",
+  "description": "Discover the latest updates and improvements to UIKit and learn how to build better iPadOS, iOS, and Mac Catalyst apps. We’ll take you through UI refinements, productivity updates, API enhancements, and more. We’ll also help you explore improvements to performance, security, and privacy.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10068",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10068",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1454,
+  "hasTranscript": true,
+  "transcriptWordCount": 2534,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10068/4/CD436E87-CE6B-4E99-A7EA-66C5A424B38B/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10068/4/CD436E87-CE6B-4E99-A7EA-66C5A424B38B/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10068/4/CD436E87-CE6B-4E99-A7EA-66C5A424B38B/downloads/wwdc2022-10068_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10068/4/CD436E87-CE6B-4E99-A7EA-66C5A424B38B/downloads/wwdc2022-10068_hd.mp4",
+    "duration": 1454
+  },
+  "codeSnippets": [
+    {
+      "title": "Configuring a UICalendarView with multi-date selection",
+      "language": "swift",
+      "startTimeSeconds": 471,
+      "code": "// Configuring a calendar view with multi-date selection\n\nlet calendarView = UICalendarView()\ncalendarView.delegate = self\ncalendarView.calendar = Calendar(identifier: .gregorian)\nview.addSubview(calendarView)\n\nlet multiDateSelection = UICalendarSelectionMultiDate(delegate: self)\nmultiDateSelection.selectedDates = myDatabase.selectedDates()\ncalendarView.selectionBehavior = multiDateSelection\n\nfunc multiDateSelection(\n    _ selection: UICalendarSelectionMultiDate,\n    canSelectDate dateComponents: DateComponents\n) -> Bool {\n    return myDatabase.hasAvailabilities(for: dateComponents)\n}"
+    },
+    {
+      "title": "Configure UICalendarView decorations.",
+      "language": "swift",
+      "startTimeSeconds": 547,
+      "code": "// Configuring Decorations\nfunc calendarView(\n    _ calendarView: UICalendarView, \n    decorationFor dateComponents: DateComponents\n) -> UICalendarView.Decoration? {\n    switch myDatabase.eventType(on: dateComponents) {\n    case .none:\n        return nil\n    case .busy:\n        return .default()\n    case .travel:\n        return .image(airplaneImage, color: .systemOrange)\n    case .party:\n        return .customView {\n            MyPartyEmojiLabel()\n        }\n    }\n}"
+    },
+    {
+      "title": "Setting up a vertical UIPageControl with custom indicators",
+      "language": "swift",
+      "startTimeSeconds": 616,
+      "code": "// Vertical page control with custom indicators\n\npageControl.direction = .topToBottom\npageControl.preferredIndicatorImage = UIImage(systemNamed: \"square\")\npageControl.preferredCurrentIndicatorImage = UIImage(systemNamed: \"square.fill\")"
+    },
+    {
+      "title": "Creating a custom sheet detent",
+      "language": "swift",
+      "startTimeSeconds": 741,
+      "code": "// Create a custom detent\nsheet.detents = [\n    .large(),\n    .custom { _ in\n        200.0\n    }\n]"
+    },
+    {
+      "title": "Creating a custom sheet detent using a percentage of maximum detent height",
+      "language": "swift",
+      "startTimeSeconds": 758,
+      "code": "// Create a custom detent\nsheet.detents = [\n    .large(),\n    .custom { context in\n        0.3 * context.maximumDetentValue\n    }\n]"
+    },
+    {
+      "title": "Assigning identifiers to custom sheet detents",
+      "language": "swift",
+      "startTimeSeconds": 762,
+      "code": "// Define a custom identifier\nextension UISheetPresentationController.Detent.Identifier {\n    static let small = UISheetPresentationController.Detent.Identifier(\"small\")\n}\n\n// Assign identifier to custom detent\nsheet.detents = [\n    .large(),\n    .custom (identifier: .small) { context in\n        0.3 * context.maximumDetentValue\n    }\n]\n\n// Disable dimming above the custom detent\nsheet.largestUndimmedDetentIdentifier = .small"
+    },
+    {
+      "title": "UIHostingConfiguration example",
+      "language": "swift",
+      "startTimeSeconds": 1336,
+      "code": "cell.contentConfiguration = UIHostingConfiguration {\n    VStack {\n        Image(systemName: \"wand.and.stars\")\n            .font(.title)\n        Text(\"Like magic!\")\n            .font(.title2).bold()\n    }\n    .foregroundStyle(Color.purple)\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "UINavigationItem.ItemStyle",
+      "url": "https://developer.apple.com/documentation/UIKit/UINavigationItem/ItemStyle",
+      "type": "documentation",
+      "description": "Constants that determine how the content of the navigation item lays out in the navigation bar.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UINavigationItem/ItemStyle",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UINavigationItem/ItemStyle.json"
+    },
+    {
+      "title": "UIPageControl",
+      "url": "https://developer.apple.com/documentation/UIKit/UIPageControl",
+      "type": "documentation",
+      "description": "A control that displays a horizontal series of dots, each of which corresponds to a page in the app’s document or other data-model entity.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UIPageControl",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UIPageControl.json"
+    },
+    {
+      "title": "UICalendarView",
+      "url": "https://developer.apple.com/documentation/UIKit/UICalendarView",
+      "type": "documentation",
+      "description": "A view that displays a calendar with date-specific decorations, and provides for user selection of a single date or multiple dates.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UICalendarView",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UICalendarView.json"
+    },
+    {
+      "title": "centerItemGroups",
+      "url": "https://developer.apple.com/documentation/UIKit/UINavigationItem/centerItemGroups",
+      "type": "documentation",
+      "description": "Customizable item groups to display in the center section of the navigation bar.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UINavigationItem/centerItemGroups",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UINavigationItem/centerItemGroups.json"
+    },
+    {
+      "title": "Building a desktop-class iPad app",
+      "url": "https://developer.apple.com/documentation/UIKit/building-a-desktop-class-ipad-app",
+      "type": "documentation",
+      "description": "Optimize your iPad app’s user experience by adopting desktop-class enhancements for multitasking with Stage Manager, document interactions, text editing, search, and more.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/building-a-desktop-class-ipad-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/building-a-desktop-class-ipad-app.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10068-what-s-new-in-uikit/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10068-what-s-new-in-uikit/metadata.json",
+    "readme": "sessions/wwdc2022/10068-what-s-new-in-uikit/README.md",
+    "transcript": "sessions/wwdc2022/10068-what-s-new-in-uikit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10068-what-s-new-in-uikit/transcript.json"
+  }
+}

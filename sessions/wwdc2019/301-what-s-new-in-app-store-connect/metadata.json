@@ -1,0 +1,55 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-301",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 301,
+  "title": "What's New in App Store Connect",
+  "description": "App Store Connect continues to improve its role in each step of your app's lifecycle with new features that make your app submission, management, and distribution experience better than ever. Learn about the latest enhancements and discover new ways to ensure each release of your app is better than the last.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/301",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/301",
+  "type": "Video",
+  "publishedAt": "2019-06-06T16:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 1834,
+  "hasTranscript": true,
+  "transcriptWordCount": 4193,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/301xxdtu2sikt7naxe/301/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/301xxdtu2sikt7naxe/301/301_sd_whats_new_in_app_store_connect.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/301xxdtu2sikt7naxe/301/301_hd_whats_new_in_app_store_connect.mp4",
+    "duration": 1834
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/301-what-s-new-in-app-store-connect/",
+  "files": {
+    "metadata": "sessions/wwdc2019/301-what-s-new-in-app-store-connect/metadata.json",
+    "readme": "sessions/wwdc2019/301-what-s-new-in-app-store-connect/README.md",
+    "transcript": "sessions/wwdc2019/301-what-s-new-in-app-store-connect/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/301-what-s-new-in-app-store-connect/transcript.json"
+  }
+}

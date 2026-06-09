@@ -1,0 +1,154 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10671",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10671,
+  "title": "Architecting for subscriptions",
+  "description": "Learn how you can build simple entitlement logic to enhance the customer experience. We’ll dive deep into key concepts and provide guidance for architecting your systems to accurately entitle service. You’ll learn best practices for subscription features and how to craft the best customer experience throughout the subscription lifecycle.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10671",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10671",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "api",
+    "app store connect",
+    "in-app purchase",
+    "in-app purchases",
+    "inapp purchases",
+    "json",
+    "notifications",
+    "receipt",
+    "receipt validation",
+    "subscription",
+    "subscriptions"
+  ],
+  "topics": [
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 1401,
+  "hasTranscript": true,
+  "transcriptWordCount": 3406,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10671/4/EEBDC02E-B607-4F2B-AD12-3DCBC0F3AFF8/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10671/4/EEBDC02E-B607-4F2B-AD12-3DCBC0F3AFF8/wwdc2020_10671_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10671/4/EEBDC02E-B607-4F2B-AD12-3DCBC0F3AFF8/wwdc2020_10671_hd.mp4",
+    "duration": 1401
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Determining service entitlement on the server",
+      "url": "https://developer.apple.com/documentation/StoreKit/determining-service-entitlement-on-the-server",
+      "type": "samplecode",
+      "description": "Identify a customer’s entitlement to your service, offers, and messaging by analyzing a validated receipt and the state of their subscription.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/determining-service-entitlement-on-the-server",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/determining-service-entitlement-on-the-server.json"
+    },
+    {
+      "title": "App Store Receipts",
+      "url": "https://developer.apple.com/documentation/AppStoreReceipts",
+      "type": "documentation",
+      "description": "Validate app and In-App Purchase receipts with the App Store.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreReceipts",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreReceipts.json"
+    },
+    {
+      "title": "Reducing Involuntary Subscriber Churn",
+      "url": "https://developer.apple.com/documentation/StoreKit/reducing-involuntary-subscriber-churn",
+      "type": "documentation",
+      "description": "Prevent unintentional loss of subscribers due to billing issues.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/reducing-involuntary-subscriber-churn",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/reducing-involuntary-subscriber-churn.json"
+    },
+    {
+      "title": "Implementing introductory offers in your app",
+      "url": "https://developer.apple.com/documentation/StoreKit/implementing-introductory-offers-in-your-app",
+      "type": "documentation",
+      "description": "Offer introductory pricing for auto-renewable subscriptions to eligible users.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/implementing-introductory-offers-in-your-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/implementing-introductory-offers-in-your-app.json"
+    },
+    {
+      "title": "Handling Subscriptions Billing",
+      "url": "https://developer.apple.com/documentation/StoreKit/handling-subscriptions-billing",
+      "type": "documentation",
+      "description": "Build logic around the date and time constraints of subscription products, while planning for all scenarios where you control access to content.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/handling-subscriptions-billing",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/handling-subscriptions-billing.json"
+    },
+    {
+      "title": "Validating Receipts with the App Store",
+      "url": "https://developer.apple.com/documentation/storekit/original_api_for_in-app_purchase/validating_receipts_with_the_app_store",
+      "type": "documentation",
+      "description": "Verify transactions with the App Store on a secure server.",
+      "sosumiURL": "https://sosumi.ai/documentation/storekit/original_api_for_in-app_purchase/validating_receipts_with_the_app_store",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/storekit/original_api_for_in-app_purchase/validating_receipts_with_the_app_store.json"
+    },
+    {
+      "title": "App Store Server Notifications",
+      "url": "https://developer.apple.com/documentation/appstoreservernotifications",
+      "type": "documentation",
+      "description": "Monitor in-app purchase events in real time with server notifications from the App Store.",
+      "sosumiURL": "https://sosumi.ai/documentation/appstoreservernotifications",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/appstoreservernotifications.json"
+    },
+    {
+      "title": "Implementing promotional offers in your app",
+      "url": "https://developer.apple.com/documentation/StoreKit/implementing-promotional-offers-in-your-app",
+      "type": "documentation",
+      "description": "Offer discounted pricing for auto-renewable subscription products to eligible subscribers.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/implementing-promotional-offers-in-your-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/implementing-promotional-offers-in-your-app.json"
+    },
+    {
+      "title": "In-App Purchase",
+      "url": "https://developer.apple.com/documentation/StoreKit/in-app-purchase",
+      "type": "documentation",
+      "description": "Offer content and services in your app across Apple platforms using a Swift-based interface.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/in-app-purchase",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/in-app-purchase.json"
+    },
+    {
+      "title": "Enabling App Store Server Notifications",
+      "url": "https://developer.apple.com/documentation/StoreKit/enabling-app-store-server-notifications",
+      "type": "documentation",
+      "description": "Configure your server and provide an HTTPS URL to receive notifications about in-app purchase events and unreported external purchase tokens.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/enabling-app-store-server-notifications",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/enabling-app-store-server-notifications.json"
+    },
+    {
+      "title": "Auto-renewable subscriptions overview",
+      "url": "https://developer.apple.com/app-store/subscriptions/",
+      "type": "documentation",
+      "description": "Auto-Renewable Subscriptions",
+      "sosumiURL": "https://sosumi.ai/app-store/subscriptions/"
+    }
+  ],
+  "path": "sessions/wwdc2020/10671-architecting-for-subscriptions/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10671-architecting-for-subscriptions/metadata.json",
+    "readme": "sessions/wwdc2020/10671-architecting-for-subscriptions/README.md",
+    "transcript": "sessions/wwdc2020/10671-architecting-for-subscriptions/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10671-architecting-for-subscriptions/transcript.json"
+  }
+}

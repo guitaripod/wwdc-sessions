@@ -1,0 +1,49 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10797",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10797,
+  "title": "Build a great car experience",
+  "description": null,
+  "url": "https://developer.apple.com/news/?id=re988owc",
+  "sosumiURL": "https://sosumi.ai/news/?id=re988owc",
+  "type": "Article",
+  "publishedAt": "2020-06-22T05:41:52-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "🚗",
+    "🚙",
+    "car"
+  ],
+  "topics": [
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": null,
+  "hasTranscript": false,
+  "transcriptWordCount": 0,
+  "availableLanguages": [],
+  "media": {},
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "CarPlay for developers",
+      "url": "https://developer.apple.com/carplay",
+      "type": "guide",
+      "description": "Guide to CarPlay development",
+      "sosumiURL": "https://sosumi.ai/carplay"
+    }
+  ],
+  "path": "sessions/wwdc2020/10797-build-a-great-car-experience/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10797-build-a-great-car-experience/metadata.json",
+    "readme": "sessions/wwdc2020/10797-build-a-great-car-experience/README.md"
+  }
+}

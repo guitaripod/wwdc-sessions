@@ -1,0 +1,81 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10019",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10019,
+  "title": "Get to know Create ML Components",
+  "description": "Create ML makes it easy to build custom machine learning models for image classification, object detection, sound classification, hand pose classification, action classification, tabular data regression, and more. And with the Create ML Components framework, you can further customize underlying tasks and improve your model. We’ll explore the feature extractors, transformers, and estimators that make up these tasks, and show you how you can combine them with other components and pre-processing steps to build custom tasks for concepts like image regression. For more information on creating complex customizable tasks, we recommend watching \"Compose advanced models with Create ML Components\" from WWDC22.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10019",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10019",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1531,
+  "hasTranscript": true,
+  "transcriptWordCount": 3716,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10019/4/CA2236CA-EAD0-454F-8556-FA583BA70590/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10019/4/CA2236CA-EAD0-454F-8556-FA583BA70590/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10019/4/CA2236CA-EAD0-454F-8556-FA583BA70590/downloads/wwdc2022-10019_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10019/4/CA2236CA-EAD0-454F-8556-FA583BA70590/downloads/wwdc2022-10019_hd.mp4",
+    "duration": 1531
+  },
+  "codeSnippets": [
+    {
+      "title": "Image regressor",
+      "language": "swift",
+      "startTimeSeconds": 539,
+      "code": "import CoreImage\nimport CreateMLComponents\n\nstruct ImageRegressor {\n    static let trainingDataURL = URL(fileURLWithPath: \"~/Desktop/bananas\")\n    static let parametersURL = URL(fileURLWithPath: \"~/Desktop/parameters\")\n\n    static func train() async throws -> some Transformer<CIImage, Float> {\n        let estimator = ImageFeaturePrint()\n            .appending(LinearRegressor())\n\n        // File name example: banana-5.jpg\n        let data = try AnnotatedFiles(labeledByNamesAt: trainingDataURL, separator: \"-\", index: 1, type: .image)\n            .mapFeatures(ImageReader.read)\n            .mapAnnotations({ Float($0)! })\n\n        let (training, validation) = data.randomSplit(by: 0.8)\n        let transformer = try await estimator.fitted(to: training, validateOn: validation)\n        try estimator.write(transformer, to: parametersURL)\n\n        return transformer\n    }\n}"
+    },
+    {
+      "title": "Image regressor with metrics and augmentations",
+      "language": "swift",
+      "startTimeSeconds": 738,
+      "code": "import CoreImage\nimport CreateMLComponents\n\nstruct ImageRegressor {\n    static let trainingDataURL = URL(fileURLWithPath: \"~/Desktop/bananas\")\n    static let parametersURL = URL(fileURLWithPath: \"~/Desktop/parameters\")\n\n    static func train() async throws -> some Transformer<CIImage, Float> {\n        let estimator = SaliencyCropper()\n            .appending(ImageFeaturePrint())\n            .appending(LinearRegressor())\n\n        // File name example: banana-5.jpg\n        let data = try AnnotatedFiles(labeledByNamesAt: trainingDataURL, separator: \"-\", index: 1, type: .image)\n            .mapFeatures(ImageReader.read)\n            .mapAnnotations({ Float($0)! })\n            .flatMap(augment)\n\n        let (training, validation) = data.randomSplit(by: 0.8)\n        let transformer = try await estimator.fitted(to: training, validateOn: validation) { event in\n            guard let trainingMaxError = event.metrics[.trainingMaximumError] else {\n                return\n            }\n            guard let validationMaxError = event.metrics[.validationMaximumError] else {\n                return\n            }\n            print(\"Training max error: \\(trainingMaxError), Validation max error: \\(validationMaxError)\")\n        }\n\n        let validationError = try await meanAbsoluteError(\n            transformer.applied(to: validation.map(\\.feature)),\n            validation.map(\\.annotation)\n        )\n        print(\"Mean absolute error: \\(validationError)\")\n\n        try estimator.write(transformer, to: parametersURL)\n\n        return transformer\n    }\n\n    static func augment(_ original: AnnotatedFeature<CIImage, Float>) -> [AnnotatedFeature<CIImage, Float>] {\n        let angle = CGFloat.random(in: -.pi ... .pi)\n        let rotated = original.feature.transformed(by: .init(rotationAngle: angle))\n\n        let scale = CGFloat.random(in: 0.8 ... 1.2)\n        let scaled = original.feature.transformed(by: .init(scaleX: scale, y: scale))\n\n        return [\n            original,\n            AnnotatedFeature(feature: rotated, annotation: original.annotation),\n            AnnotatedFeature(feature: scaled, annotation: original.annotation),\n        ]\n    }\n}"
+    },
+    {
+      "title": "Tabular regressor",
+      "language": "swift",
+      "startTimeSeconds": 1223,
+      "code": "import CreateMLComponents\nimport Foundation\nimport TabularData\n\nstruct TabularRegressor {\n    static let dataURL = URL(fileURLWithPath: \"~/Downloads/avocado.csv\")\n    static let parametersURL = URL(fileURLWithPath: \"~/Downloads/parameters.pkg\")\n\n    static let priceColumnID = ColumnID(\"price\", Double.self)\n\n    static var task: some SupervisedTabularEstimator {\n        let numeric = ColumnSelector(\n            columns: [\"volume\"],\n            estimator: OptionalUnwrapper()\n                .appending(StandardScaler<Double>())\n        )\n        let regression = BoostedTreeRegressor<String>(\n            annotationColumnName: priceColumnID.name,\n            featureColumnNames: [\"type\", \"region\", \"volume\"]\n        )\n\n        return numeric.appending(regression)\n    }\n\n    static func train() async throws -> some TabularTransformer {\n        let dataFrame = try DataFrame(contentsOfCSVFile: dataURL)\n        let (training, validation) = dataFrame.randomSplit(by: 0.8)\n        let transformer = try await task.fitted(to: DataFrame(training), validateOn: DataFrame(validation)) { event in\n            guard let validationError = event.metrics[.validationError] as? Double else {\n                return\n            }\n            print(\"Validation error: \\(validationError)\")\n        }\n        try task.write(transformer, to: parametersURL)\n        return transformer\n    }\n\n    static func predict(\n        type: String,\n        region: String,\n        volume: Double\n    ) async throws -> Double {\n        let model = try task.read(from: parametersURL)\n        let dataFrame: DataFrame = [\n            \"type\": [type],\n            \"region\": [region],\n            \"volume\": [volume]\n        ]\n        let result = try await model(dataFrame)\n        return result[priceColumnID][0]!\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Create ML",
+      "url": "https://developer.apple.com/documentation/CreateML",
+      "type": "documentation",
+      "description": "Create machine learning models for use in your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/CreateML",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CreateML.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10019-get-to-know-create-ml-components/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10019-get-to-know-create-ml-components/metadata.json",
+    "readme": "sessions/wwdc2022/10019-get-to-know-create-ml-components/README.md",
+    "transcript": "sessions/wwdc2022/10019-get-to-know-create-ml-components/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10019-get-to-know-create-ml-components/transcript.json"
+  }
+}

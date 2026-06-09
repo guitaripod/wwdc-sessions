@@ -1,0 +1,75 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-720",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 720,
+  "title": "What's New in Safari Extensions",
+  "description": "Safari Extensions surface your app's unique capabilities within Safari. Discover how the latest features such as content blocking notifications and user interface management and control innovations for pages, tabs, and popovers make your Safari App Extensions and Content Blockers even more powerful. Learn about the latest APIs and best practices for communicating between your extension and your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/720",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/720",
+  "type": "Video",
+  "publishedAt": "2019-06-04T18:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Safari & Web"
+  ],
+  "primaryTopic": "Safari & Web",
+  "duration": 1193,
+  "hasTranscript": true,
+  "transcriptWordCount": 2573,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/720yo3jm1qljmlbddac/720/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/720yo3jm1qljmlbddac/720/720_sd_whats_new_in_safari_extensions.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/720yo3jm1qljmlbddac/720/720_hd_whats_new_in_safari_extensions.mp4",
+    "duration": 1193
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "SFSafariServicesAvailable(_:)",
+      "url": "https://developer.apple.com/documentation/SafariServices/SFSafariServicesAvailable(_:)",
+      "type": "documentation",
+      "description": "Indicates whether a given version of Safari services is available.",
+      "sosumiURL": "https://sosumi.ai/documentation/SafariServices/SFSafariServicesAvailable(_:)",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SafariServices/SFSafariServicesAvailable(_:).json"
+    },
+    {
+      "title": "Converting a legacy Safari extension to a Safari app extension",
+      "url": "https://developer.apple.com/documentation/SafariServices/converting-a-legacy-safari-extension-to-a-safari-app-extension",
+      "type": "documentation",
+      "description": "Convert a legacy Safari extension to a Safari app extension, automatically with keys or manually.",
+      "sosumiURL": "https://sosumi.ai/documentation/SafariServices/converting-a-legacy-safari-extension-to-a-safari-app-extension",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SafariServices/converting-a-legacy-safari-extension-to-a-safari-app-extension.json"
+    },
+    {
+      "title": "Safari web extensions",
+      "url": "https://developer.apple.com/documentation/SafariServices/safari-web-extensions",
+      "type": "documentation",
+      "description": "Create web extensions that work in Safari and other browsers.",
+      "sosumiURL": "https://sosumi.ai/documentation/SafariServices/safari-web-extensions",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SafariServices/safari-web-extensions.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/720-what-s-new-in-safari-extensions/",
+  "files": {
+    "metadata": "sessions/wwdc2019/720-what-s-new-in-safari-extensions/metadata.json",
+    "readme": "sessions/wwdc2019/720-what-s-new-in-safari-extensions/README.md",
+    "transcript": "sessions/wwdc2019/720-what-s-new-in-safari-extensions/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/720-what-s-new-in-safari-extensions/transcript.json"
+  }
+}

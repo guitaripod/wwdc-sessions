@@ -1,0 +1,64 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2018-802",
+  "event": "wwdc2018",
+  "eventName": "WWDC18",
+  "year": 2018,
+  "eventContentId": 802,
+  "title": "Intentional Design",
+  "description": "Great app experiences leap off the screen. They are dynamic, immersive, personal, and, above all else, the result of a strong and clear intent. Learn key techniques for being intentional with your design by choosing appropriate metaphors, making extreme choices, and making every interaction feel more authentic and natural.",
+  "url": "https://developer.apple.com/videos/play/wwdc2018/802",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2018/802",
+  "type": "Video",
+  "publishedAt": "2018-06-06T16:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "behavior",
+    "dad jokes",
+    "design",
+    "editorial",
+    "experience",
+    "interaction",
+    "ui",
+    "ux",
+    "visual"
+  ],
+  "topics": [
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 2404,
+  "hasTranscript": true,
+  "transcriptWordCount": 5574,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/802shgxe9sj19r/802/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/802shgxe9sj19r/802/802_sd_intentional_design.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/802shgxe9sj19r/802/802_hd_intentional_design.mp4",
+    "duration": 2404
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2018/802-intentional-design/",
+  "files": {
+    "metadata": "sessions/wwdc2018/802-intentional-design/metadata.json",
+    "readme": "sessions/wwdc2018/802-intentional-design/README.md",
+    "transcript": "sessions/wwdc2018/802-intentional-design/transcript.md",
+    "transcriptJSON": "sessions/wwdc2018/802-intentional-design/transcript.json"
+  }
+}

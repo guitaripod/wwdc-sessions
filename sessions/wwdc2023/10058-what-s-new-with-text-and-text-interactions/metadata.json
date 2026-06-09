@@ -1,0 +1,72 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10058",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10058,
+  "title": "What’s new with text and text interactions",
+  "description": "Text is an absolutely critical component of every app. Discover the latest features and enhancements for creating rich text experiences on Apple platforms. We’ll show you how to take advantage of common text elements and create entirely custom interactions for your app. Learn about updates to dictation, text loupe, and text selection, and explore improvements to text clipping, line wrapping, and hyphenation.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10058",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10058",
+  "type": "Video",
+  "publishedAt": "2023-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services",
+    "System Services",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 945,
+  "hasTranscript": true,
+  "transcriptWordCount": 2208,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10058/4/8038A20C-9E59-409E-9C2A-02B517C649A7/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10058/4/8038A20C-9E59-409E-9C2A-02B517C649A7/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10058/4/8038A20C-9E59-409E-9C2A-02B517C649A7/downloads/wwdc2023-10058_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10058/4/8038A20C-9E59-409E-9C2A-02B517C649A7/downloads/wwdc2023-10058_hd.mp4",
+    "duration": 945
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Adopting system selection UI in custom text views",
+      "url": "https://developer.apple.com/documentation/UIKit/adopting-system-selection-ui-in-custom-text-views",
+      "type": "documentation",
+      "description": "Incorporate the system text-selection experience into your custom text UI in UIKit.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/adopting-system-selection-ui-in-custom-text-views",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/adopting-system-selection-ui-in-custom-text-views.json"
+    },
+    {
+      "title": "Adopting the system text cursor in custom text views",
+      "url": "https://developer.apple.com/documentation/AppKit/adopting-the-system-text-cursor-in-custom-text-views",
+      "type": "documentation",
+      "description": "Incorporate the system text cursor into your custom text UI in AppKit.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppKit/adopting-the-system-text-cursor-in-custom-text-views",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppKit/adopting-the-system-text-cursor-in-custom-text-views.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10058-what-s-new-with-text-and-text-interactions/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10058-what-s-new-with-text-and-text-interactions/metadata.json",
+    "readme": "sessions/wwdc2023/10058-what-s-new-with-text-and-text-interactions/README.md",
+    "transcript": "sessions/wwdc2023/10058-what-s-new-with-text-and-text-interactions/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10058-what-s-new-with-text-and-text-interactions/transcript.json"
+  }
+}

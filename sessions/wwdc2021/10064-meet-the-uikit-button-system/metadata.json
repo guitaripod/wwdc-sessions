@@ -1,0 +1,126 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10064",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10064,
+  "title": "Meet the UIKit button system",
+  "description": "Every app uses Buttons. With iOS 15, you can adopt updated styles to create gorgeous buttons that fit effortlessly into your interface. We'll explore features that make it easier to create different types of buttons, learn how to provide richer interactions, and discover how you can get great buttons when using Mac Catalyst.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10064",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10064",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "catalyst",
+    "menu",
+    "popdown",
+    "pop-down",
+    "popup",
+    "pop-up",
+    "switch",
+    "toggle",
+    "uibutton",
+    "uibuttonconfiguration",
+    "uimenu"
+  ],
+  "topics": [
+    "Essentials",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1208,
+  "hasTranscript": true,
+  "transcriptWordCount": 2665,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10064/3/5DF3D536-453F-4C11-9BD5-9334BD79D560/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10064/3/5DF3D536-453F-4C11-9BD5-9334BD79D560/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10064/3/5DF3D536-453F-4C11-9BD5-9334BD79D560/downloads/wwdc2021-10064_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10064/3/5DF3D536-453F-4C11-9BD5-9334BD79D560/downloads/wwdc2021-10064_hd.mp4",
+    "duration": 1208
+  },
+  "codeSnippets": [
+    {
+      "title": "Creating a button with a configuration",
+      "language": "swift",
+      "startTimeSeconds": 133,
+      "code": "// Create the Sign In button\n\nlet signInButton = UIButton(type: .system)\nsignInButton.configuration = .filled()\nsignInButton.setTitle(\"Sign In\", for: [])"
+    },
+    {
+      "title": "Customizing a button configuration",
+      "language": "swift",
+      "startTimeSeconds": 200,
+      "code": "// Create the Add to Cart button\n\nvar config = UIButton.Configuration.tinted()\nconfig.title = \"Add to Cart\"\nconfig.image = UIImage(systemName: \"cart.badge.plus\")\nconfig.imagePlacement = .trailing\naddToCartButton = UIButton(configuration: config,\n                           primaryAction: …)"
+    },
+    {
+      "title": "Customizing a button with a configuration update handler",
+      "language": "swift",
+      "startTimeSeconds": 285,
+      "code": "// Customize image and subtitle with a configurationUpdateHandler\n\naddToCartButton.configurationUpdateHandler = {\n    [unowned self] button in\n\n    var config = button.configuration\n    config?.image = button.isHighlighted\n        ? UIImage(systemName: \"cart.fill.badge.plus\")\n        : UIImage(systemName: \"cart.badge.plus\")\n    config?.subtitle = self.itemQuantityDescription\n    button.configuration = config\n}"
+    },
+    {
+      "title": "Indicating a configuration needs an update",
+      "language": "swift",
+      "startTimeSeconds": 359,
+      "code": "// Update addToCartButton when itemQuantityDescription changes\n\nprivate var itemQuantityDescription: String? {\n    didSet {\n        addToCartButton.setNeedsUpdateConfiguration()\n    }\n}"
+    },
+    {
+      "title": "A completely customized button",
+      "language": "swift",
+      "startTimeSeconds": 506,
+      "code": "// Configure the button background\n\nvar config = UIButton.Configuration.filled()\nconfig.buttonSize = .large\nconfig.image = UIImage(systemName: \"cart.fill\")\nconfig.title = \"Checkout\"\nconfig.background.backgroundColor = .buttonEmporium\n\nlet checkoutButton = UIButton(configuration: config\n                              primaryAction: …) \naddToCartButton.configurationUpdateHandler = {\n    [unowned self] button in\n\n    var config = button.configuration\n    config?.showsActivityIndicator = self.isCartBusy\n    button.configuration = config\n}"
+    },
+    {
+      "title": "Creating a toggle button",
+      "language": "swift",
+      "startTimeSeconds": 716,
+      "code": "// Toggle button\n\n// UIAction setup\nlet stockToggleAction = UIAction(title: \"In Stock Only\") { _ in\n    toggleStock()\n}\n\n// The button\nlet button = UIButton(primaryAction: stockToggleAction)\n\nbutton.changesSelectionAsPrimaryAction = true\n\n// Initial state\nbutton.isSelected = showingOnlyInStock()"
+    },
+    {
+      "title": "Creating a pop-up button",
+      "language": "swift",
+      "startTimeSeconds": 870,
+      "code": "// Pop-up button\n\nlet colorClosure = { (action: UIAction) in\n    updateColor(action.title)\n}\n\nlet button = UIButton(primaryAction: nil)\n\nbutton.menu = UIMenu(children: [\n    UIAction(title: \"Bondi Blue\", handler: colorClosure),\n    UIAction(title: \"Flower Power\", state: .on, handler: colorClosure)\n])\n\nbutton.showsMenuAsPrimaryAction = true\n\nbutton.changesSelectionAsPrimaryAction = true\n\n// Update to the currently set one\nupdateColor(button.menu?.selectedElements.first?.title)\n\n// Update the selection\n(button.menu?.children[selectedColorIndex()] as? UIAction)?.state = .on"
+    },
+    {
+      "title": "Creating a custom single selection menu",
+      "language": "swift",
+      "startTimeSeconds": 1098,
+      "code": "// Single selection menu\n\n// The sort menu\nlet sortMenu = UIMenu(title: \"Sort By\", options: .singleSelection, children: [\n    UIAction(title: \"Title\", handler: sortClosure),\n    UIAction(title: \"Date\", handler: sortClosure),\n    UIAction(title: \"Size\", handler: sortClosure)\n])\n\n// The top menu\nlet topMenu = UIMenu(children: [\n    UIAction(title: \"Refresh\", handler: refreshClosure),\n    UIAction(title: \"Account\", handler: accountClosure),\n    sortMenu\n])\n\nlet sortSelectionButton = UIBarButtonItem(primaryAction: nil, menu: topMenu)\n\nupdateSorting(sortSelectionButton.menu?.selectedElements.first)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "UIKit",
+      "url": "https://developer.apple.com/documentation/UIKit",
+      "type": "documentation",
+      "description": "Construct and manage a graphical, event-driven user interface for your iOS, iPadOS, or tvOS app.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10064-meet-the-uikit-button-system/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10064-meet-the-uikit-button-system/metadata.json",
+    "readme": "sessions/wwdc2021/10064-meet-the-uikit-button-system/README.md",
+    "transcript": "sessions/wwdc2021/10064-meet-the-uikit-button-system/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10064-meet-the-uikit-button-system/transcript.json"
+  }
+}

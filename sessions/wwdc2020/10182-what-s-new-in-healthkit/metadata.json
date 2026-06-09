@@ -1,0 +1,59 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10182",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10182,
+  "title": "What's new in HealthKit",
+  "description": "HealthKit is an essential framework that integrates first- and third-party health and fitness data to help people manage their personal health information. Learn about HealthKit’s latest updates, which provide read access to electrocardiograms on Apple Watch and log and track over a dozen new symptoms and their severity. We’ll also go through the latest mobility data types like walking speed and step length to help people monitor and understand their mobility over time.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10182",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10182",
+  "type": "Video",
+  "publishedAt": "2020-06-23T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "ecg",
+    "fitness",
+    "health",
+    "heart",
+    "heart rate",
+    "nutrition"
+  ],
+  "topics": [
+    "Health & Fitness"
+  ],
+  "primaryTopic": "Health & Fitness",
+  "duration": 369,
+  "hasTranscript": true,
+  "transcriptWordCount": 951,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10182/4/96BB3F0A-784E-4154-A542-2F681FB93E30/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10182/4/96BB3F0A-784E-4154-A542-2F681FB93E30/wwdc2020_10182_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10182/4/96BB3F0A-784E-4154-A542-2F681FB93E30/wwdc2020_10182_hd.mp4",
+    "duration": 369
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2020/10182-what-s-new-in-healthkit/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10182-what-s-new-in-healthkit/metadata.json",
+    "readme": "sessions/wwdc2020/10182-what-s-new-in-healthkit/README.md",
+    "transcript": "sessions/wwdc2020/10182-what-s-new-in-healthkit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10182-what-s-new-in-healthkit/transcript.json"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/events.schema.json",
+  "title": "WWDC Events Index",
+  "description": "Per-event summaries: events.json.",
+  "type": "object",
+  "required": ["schemaVersion", "events"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "type": "integer" },
+    "generatedAt": { "type": "string" },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "sessionCount", "transcriptCount", "index", "indexJSON"],
+        "properties": {
+          "id": { "type": "string", "examples": ["wwdc2026", "tech-talks"] },
+          "name": { "type": ["string", "null"] },
+          "year": { "type": ["integer", "null"] },
+          "startTime": { "type": ["string", "null"] },
+          "sessionCount": { "type": "integer" },
+          "transcriptCount": { "type": "integer" },
+          "index": { "type": "string", "description": "Relative path to the per-event Markdown index." },
+          "indexJSON": { "type": "string", "description": "Relative path to the per-event machine slice." }
+        }
+      }
+    }
+  }
+}

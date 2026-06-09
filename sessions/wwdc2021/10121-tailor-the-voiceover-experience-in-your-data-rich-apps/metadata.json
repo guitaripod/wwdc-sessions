@@ -1,0 +1,109 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10121",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10121,
+  "title": "Tailor the VoiceOver experience in your data-rich apps",
+  "description": "Learn how to present complex data through VoiceOver with the Accessibility Custom Content API. Discover how you can deliver accessibility information in a concise form, and only when someone wants it. We’ll show you how you can integrate AXCustomContent and help people who want VoiceOver enabled to navigate your data-rich apps in an efficient manner. To get the most out of this session, you should be familiar with general accessibility principles and VoiceOver accessibility APIs available in Swift and SwiftUI.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10121",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10121",
+  "type": "Video",
+  "publishedAt": "2021-06-11T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "accessibility",
+    "accessibilitycustomcontent",
+    "accessibility custom content",
+    "accessibilitycustomcontentkey",
+    "axcustomcontent",
+    "axcustomcontentprovider",
+    "custom content api",
+    "importance property",
+    "more content available",
+    "more content rotor",
+    "screen reader",
+    "verbosity",
+    "voiceover",
+    "voice over",
+    "voiceover rotor",
+    "woof woof"
+  ],
+  "topics": [
+    "Accessibility & Inclusion"
+  ],
+  "primaryTopic": "Accessibility & Inclusion",
+  "duration": 626,
+  "hasTranscript": true,
+  "transcriptWordCount": 1412,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10121/6/9DFDD9FF-82AF-48DC-A0C1-C2CB8A518D93/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10121/6/9DFDD9FF-82AF-48DC-A0C1-C2CB8A518D93/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10121/6/9DFDD9FF-82AF-48DC-A0C1-C2CB8A518D93/downloads/wwdc2021-10121_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10121/6/9DFDD9FF-82AF-48DC-A0C1-C2CB8A518D93/downloads/wwdc2021-10121_hd.mp4",
+    "duration": 626
+  },
+  "codeSnippets": [
+    {
+      "title": "Accessibility Custom Content API Sample",
+      "language": "swift",
+      "startTimeSeconds": 303,
+      "code": "import UIKit\nimport Accessibility\n\nclass DogTableViewCell: UITableViewCell, AXCustomContentProvider {\n\n    var coverImage: UIImageView!\n    var name: UILabel!\n    var type: UILabel!\n    var desc: UILabel!\n    var popularity: UILabel!\n    var age: UILabel!\n    var weight: UILabel!\n    var height: UILabel!\n\n    override var accessibilityLabel: String? {\n        get {\n            guard let nameLabel = name.text else { return nil }\n            guard let typeLabel = type.text else { return nil }\n            return nameLabel + \", \" + typeLabel\n        }\n        set { }\n    }\n\n    var accessibilityCustomContent: [AXCustomContent]! {\n        get {\n            let notes = AXCustomContent(label: \"Description\", value: desc.text!)\n            let popularity = AXCustomContent(label: \"Popularity\", value: popularity.text!)\n            let age = AXCustomContent(label: \"Age\", value: age.text!)\n            let weight = AXCustomContent(label: \"Weight\", value: weight.text!)\n            let height = AXCustomContent(label: \"Height\" , value: height.text!)\n            return [age, popularity, weight, height, notes]\n        }\n        set { }\n    }\n}"
+    },
+    {
+      "title": "Accessibility Custom Content API Sample with importance property",
+      "language": "swift",
+      "startTimeSeconds": 409,
+      "code": "import UIKit\nimport Accessibility\n\nclass DogTableViewCell: UITableViewCell, AXCustomContentProvider {\n\n    var coverImage: UIImageView!\n    var name: UILabel!\n    var type: UILabel!\n    var desc: UILabel!\n    var popularity: UILabel!\n    var age: UILabel!\n    var weight: UILabel!\n    var height: UILabel!\n\n    override var accessibilityLabel: String? {\n        get {\n            guard let nameLabel = name.text else { return nil }\n            guard let typeLabel = type.text else { return nil }\n            return nameLabel + \", \" + typeLabel\n        }\n        set { }\n    }\n\n    var accessibilityCustomContent: [AXCustomContent]! {\n        get {\n            let notes = AXCustomContent(label: \"Description\", value: desc.text!)\n            let popularity = AXCustomContent(label: \"Popularity\", value: popularity.text!)\n            let age = AXCustomContent(label: \"Age\", value: age.text!)\n            age.importance = .high\n            let weight = AXCustomContent(label: \"Weight\", value: weight.text!)\n            let height = AXCustomContent(label: \"Height\" , value: height.text!)\n            return [popularity, age, weight, height, notes]\n        }\n        set { }\n    }\n}"
+    },
+    {
+      "title": "Accessibility Custom Content API Basic Sample in SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 467,
+      "code": "struct SampleView: View {\n    var body: some View {\n        VStack {\n            Text(name)\n            Text(description)\n        }\n        .accessibilityElement(children: .combine)\n        .accessibilityCustomContent(\"Description\", description, importance: .high)\n    }\n}"
+    },
+    {
+      "title": "Accessibility Custom Content API Sample in Swift UI",
+      "language": "swift",
+      "startTimeSeconds": 490,
+      "code": "import SwiftUI\nimport Accessibility\n\nstruct DogCell: View {\n    var dog: Dog\n    var body: some View {\n        VStack {\n            HStack {\n                dog.image\n                    .resizable()\n                VStack(alignment: .leading) {\n                    Text(dog.name)\n                        .font(.title)\n                    Spacer()\n                    Text(dog.type)\n                        .font(.body)\n                    Spacer()\n                    Text(dog.description)\n                        .fixedSize(horizontal: false, vertical: true)\n                        .font(.subheadline)\n                        .foregroundColor(Color(uiColor: UIColor.brown))\n                        .accessibilityHidden(true)\n                }\n                Spacer()\n            }\n            .padding(.horizontal)\n            HStack(alignment: .top) {\n                VStack(alignment: .leading) {\n                    HStack {\n                        Text(dog.popularity)\n                        Spacer()\n                        Text(dog.age)\n                        Spacer()\n                        Text(dog.weight)\n                        Spacer()\n                        Text(dog.height)\n                    }\n                    .foregroundColor(Color(uiColor: UIColor.darkGray))\n                    .accessibilityHidden(true)\n                }\n                Spacer()\n            }\n            .padding(.horizontal)\n            Divider()\n        }\n        .accessibilityElement(children: .combine)\n        .accessibilityCustomContent(\"Age\", dog.age, importance: .high)\n        .accessibilityCustomContent(\"Popularity\", dog.popularity)\n        .accessibilityCustomContent(\"Weight\", dog.weight)\n        .accessibilityCustomContent(\"Height\", dog.height)\n        .accessibilityCustomContent(\"Description\", dog.description)\n    }\n}"
+    },
+    {
+      "title": "Accessibility Custom Content API Sample with AccessibilityCustomContentKey in SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 537,
+      "code": "import SwiftUI\nimport Accessibility\n\nextension AccessibilityCustomContentKey {\n    static var age: AccessibilityCustomContentKey {\n        AccessibilityCustomContentKey(\"Age\")\n    }\n}\n\nstruct DogCell: View {\n    var dog: Dog\n    var body: some View {\n        VStack {\n            HStack {\n                dog.image\n                    .resizable()\n                VStack(alignment: .leading) {\n                    Text(dog.name)\n                        .font(.title)\n                    Spacer()\n                    Text(dog.type)\n                        .font(.body)\n                    Spacer()\n                    Text(dog.description)\n                        .fixedSize(horizontal: false, vertical: true)\n                        .font(.subheadline)\n                        .foregroundColor(Color(uiColor: UIColor.brown))\n                        .accessibilityHidden(true)\n                }\n                Spacer()\n            }\n            .padding(.horizontal)\n            HStack(alignment: .top) {\n                VStack(alignment: .leading) {\n                    HStack {\n                        Text(dog.popularity)\n                        Spacer()\n                        Text(dog.age)\n                        Spacer()\n                        Text(dog.weight)\n                        Spacer()\n                        Text(dog.height)\n                    }\n                    .foregroundColor(Color(uiColor: UIColor.darkGray))\n                    .accessibilityHidden(true)\n                }\n                Spacer()\n            }\n            .padding(.horizontal)\n            Divider()\n        }\n        .accessibilityElement(children: .combine)\n        .accessibilityCustomContent(.age, dog.age, importance: .high)\n        .accessibilityCustomContent(\"Popularity\", dog.popularity)\n        .accessibilityCustomContent(\"Weight\", dog.weight)\n        .accessibilityCustomContent(\"Height\", dog.height)\n        .accessibilityCustomContent(\"Description\", dog.description)\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Accessibility for Developers",
+      "url": "https://developer.apple.com/accessibility/",
+      "type": "guide",
+      "description": "Collection of Accessibility resources for macOS, iOS, watchOS, and tvOS.",
+      "sosumiURL": "https://sosumi.ai/accessibility/"
+    }
+  ],
+  "path": "sessions/wwdc2021/10121-tailor-the-voiceover-experience-in-your-data-rich-apps/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10121-tailor-the-voiceover-experience-in-your-data-rich-apps/metadata.json",
+    "readme": "sessions/wwdc2021/10121-tailor-the-voiceover-experience-in-your-data-rich-apps/README.md",
+    "transcript": "sessions/wwdc2021/10121-tailor-the-voiceover-experience-in-your-data-rich-apps/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10121-tailor-the-voiceover-experience-in-your-data-rich-apps/transcript.json"
+  }
+}

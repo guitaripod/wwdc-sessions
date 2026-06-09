@@ -1,0 +1,95 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10115",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10115,
+  "title": "AutoFill everywhere",
+  "description": "Discover how to implement AutoFill in your app and help people enter their information into fields easily, privately, and securely. Learn how to help the system to give better suggestions that tailor to your app's functionality: offer smart location suggestions within a navigation app, for example, or provide a private way to input contact information into fields from the QuickType bar. In macOS Big Sur, AutoFill has been extended beyond Safari, to apps. Learn about the small changes that you can make to take advantage of this feature and bring convenience, added security, and a frictionless experience to people using your macOS apps. For more on the latest privacy improvements to our platforms, watch “Build trust through better privacy.”",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10115",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10115",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "auto",
+    "fill",
+    "password",
+    "text input"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "Privacy & Security"
+  ],
+  "primaryTopic": "Privacy & Security",
+  "duration": 613,
+  "hasTranscript": true,
+  "transcriptWordCount": 1127,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10115/8/FFE4310A-D8B3-4E53-8BBF-D799F4F858E5/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10115/8/FFE4310A-D8B3-4E53-8BBF-D799F4F858E5/wwdc2020_10115_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10115/8/FFE4310A-D8B3-4E53-8BBF-D799F4F858E5/wwdc2020_10115_hd.mp4",
+    "duration": 613
+  },
+  "codeSnippets": [
+    {
+      "title": "Address AutoFill",
+      "language": "swift",
+      "startTimeSeconds": 126,
+      "code": "let streetAddressTextField = UITextField()\nsteetAddressTextField.textContentType = .fullStreetAddress  \n\n//Other address granularity: \n// .addressCity, .addressCityAndState, .addressState, .countryName\n// .postalCode, .streetAddressLine1, .streetAddressLine2, .sublocality"
+    },
+    {
+      "title": "Contact AutoFill",
+      "language": "swift",
+      "startTimeSeconds": 377,
+      "code": "// AutoFill contacts' email address\nlet emailTextField = UITextField()\nemailTextField.textContentType = .emailAddress \n\n// AutoFill contacts' phone number\nlet phoneTextField = UITextField()\nphoneTextField.textContentType = .telephoneNumber \n\n// AutoFill contacts' address \nlet streetAddressTextField = UITextField()\nsteetAddressTextField.textContentType = .fullStreetAddress"
+    },
+    {
+      "title": "Password AutoFill",
+      "language": "swift",
+      "startTimeSeconds": 455,
+      "code": "let userTextField = UITextField()\nuserTextField.textContentType = .username\n\nlet passwordTextField = UITextField()\npasswordTextField.textContentType = .password"
+    },
+    {
+      "title": "Security Code AutoFill",
+      "language": "swift",
+      "startTimeSeconds": 480,
+      "code": "let securityCodeTextField = UITextField()\nsecurityCodeTextField.textContentType = .oneTimeCode"
+    },
+    {
+      "title": "Automatic Strong Passwords",
+      "language": "swift",
+      "startTimeSeconds": 510,
+      "code": "let userTextField = UITextField()\nuserTextField.textContentType = .username\n\nlet newPasswordTextField = UITextField()\nnewPasswordTextField.textContentType = .newPassword"
+    },
+    {
+      "title": "Password and Security Codes AutoFill for AppKit based apps",
+      "language": "swift",
+      "startTimeSeconds": 560,
+      "code": "let usernameTextField = NSTextField()\nusernameTextField.contentType = .username\n\nlet passwordField = NSSecureTextField()\npasswordField.contentType = .password\n\nlet securityCodeTextField = NSTextField()\nsecurityCodeTextField.contentType = .oneTimeCode"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2020/10115-autofill-everywhere/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10115-autofill-everywhere/metadata.json",
+    "readme": "sessions/wwdc2020/10115-autofill-everywhere/README.md",
+    "transcript": "sessions/wwdc2020/10115-autofill-everywhere/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10115-autofill-everywhere/transcript.json"
+  }
+}

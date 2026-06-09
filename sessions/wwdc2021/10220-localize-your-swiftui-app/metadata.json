@@ -1,0 +1,151 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10220",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10220,
+  "title": "Localize your SwiftUI app",
+  "description": "Learn how to localize your SwiftUI app and make it available to a global audience. Explore how you can localize strings in SwiftUI, including those with styles and formatting. We'll demonstrate how you can save time by having SwiftUI automatically handle tasks such as layout and keyboard shortcuts, and take you through the localization workflow in Xcode 13. To get the most out of this session and learn more about the Markdown language and AttributedString, check out \"What's new in Foundation\" from WWDC21.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10220",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10220",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "🌍",
+    "🌎",
+    "🌏",
+    "i18n",
+    "keyboard shortcuts",
+    "localizedstringkey",
+    "markdown",
+    "stringsdict"
+  ],
+  "topics": [
+    "Accessibility & Inclusion",
+    "Developer Tools",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1056,
+  "hasTranscript": true,
+  "transcriptWordCount": 2560,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10220/6/3866585A-3920-44B4-AB3F-03A446FCDE3A/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10220/6/3866585A-3920-44B4-AB3F-03A446FCDE3A/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10220/6/3866585A-3920-44B4-AB3F-03A446FCDE3A/downloads/wwdc2021-10220_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10220/6/3866585A-3920-44B4-AB3F-03A446FCDE3A/downloads/wwdc2021-10220_hd.mp4",
+    "duration": 1056
+  },
+  "codeSnippets": [
+    {
+      "title": "Text() with a string literal",
+      "language": "swift",
+      "startTimeSeconds": 94,
+      "code": "Button(action: done) {\n   Text(\"Done\", comment: \"Button title to dismiss rewards sheet\")\n}"
+    },
+    {
+      "title": "Text() with a string literal and interpolation",
+      "language": "swift",
+      "startTimeSeconds": 118,
+      "code": "// RewardsCard.swift\n\nText(\"You are \\(10 - totalStamps) points away from a free smoothie!\")"
+    },
+    {
+      "title": "Text() with tableName",
+      "language": "swift",
+      "startTimeSeconds": 126,
+      "code": "// RecipeView.swift\nText(\"Ingredients.recipe\", tableName: \"Ingredients\", comment: \"Ingredients in a recipe. For languages that have different words for \\\"Ingredient\\\" based on semantic context.\")\nText(\"Ingredients.menu\", tableName: \"Ingredients\", comment: \"Ingredients in a smoothie. For languages that have different words for \\\"Ingredient\\\" based on semantic context.\")"
+    },
+    {
+      "title": "Declare localizable attributes in a custom view",
+      "language": "swift",
+      "startTimeSeconds": 172,
+      "code": "struct Card: View {\n    var title: LocalizedStringKey\n    var subtitle: LocalizedStringKey\n\n    var body: some View {\n        Circle()\n            .fill(BackgroundStyle())\n            .overlay(\n                VStack(spacing: 16) {\n                    Text(title)\n                    Text(subtitle)\n                }\n            )\n    }\n}\n\nCard(\n    title: \"Thank you for your order!\",\n    subtitle: \"We will notify you when your order is ready.\"\n )"
+    },
+    {
+      "title": "Text() with multiline string literal",
+      "language": "swift",
+      "startTimeSeconds": 227,
+      "code": "Text(\"\"\"\n        A delicious blend of tropical fruits and blueberries will\n        have you sambaing around like you never knew you could!\n        \"\"\",\n        comment: \"Tropical Blue smoothie description\")"
+    },
+    {
+      "title": "Customize attributes",
+      "language": "swift",
+      "startTimeSeconds": 279,
+      "code": "VStack(alignment: .leading) {\n    Text(smoothie.title)\n        .font(.headline)\n    Text(ingredients)\n}"
+    },
+    {
+      "title": "Using Markdown",
+      "language": "swift",
+      "startTimeSeconds": 313,
+      "code": "// Smoothie.swift\n\nText(\"A refreshing blend that's a *real kick*!\", comment: \"Lemonberry smoothie description\")"
+    },
+    {
+      "title": "Create a measurement formatter (prior to iOS 15)",
+      "language": "swift",
+      "startTimeSeconds": 364,
+      "code": "let calories = Measurement<UnitEnergy>(\n    value: nutritionFact.kilocalories, unit: .kilocalories)\n\nstatic let measurementFormatter: MeasurementFormatter = {\n    let formatter = MeasurementFormatter()\n    formatter.unitStyle = .long\n    formatter.unitOptions = .providedUnit\n    return formatter\n}()\n\nText(Self.measurementFormatter.string(from: calories))\n\nText(\"Energy: \\(calories, formatter: Self.measurementFormatter)\")"
+    },
+    {
+      "title": "Specify the format in a declarative manner (iOS 15)",
+      "language": "swift",
+      "startTimeSeconds": 382,
+      "code": "let calories = Measurement<UnitEnergy>(\n    value: nutritionFact.kilocalories, unit: .kilocalories)\n\nText(calories.formatted(.measurement(width: .wide, usage: .food)))\n\nText(\"Energy: \\(calories, format: .measurement(width: .wide, usage: .food))\")"
+    },
+    {
+      "title": "Specify a keyboard shortcut",
+      "language": "swift",
+      "startTimeSeconds": 413,
+      "code": "struct SmoothieCommands: Commands {\n\n    var body: some Commands {\n        CommandMenu(Text(\"Smoothie\", comment: \"Menu title for smoothie-related actions\")) {\n            SmoothieFavoriteButton(smoothie)\n                .keyboardShortcut(\"+\")\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Localization",
+      "url": "https://developer.apple.com/documentation/Xcode/localization",
+      "type": "documentation",
+      "description": "Expand the market for your app by supporting multiple languages and regions.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/localization",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/localization.json"
+    },
+    {
+      "title": "Expanding Your App to New Markets",
+      "url": "https://developer.apple.com/localization/",
+      "type": "guide",
+      "description": "Internationalization and Localization. Expanding Your App to New Markets.",
+      "sosumiURL": "https://sosumi.ai/localization/"
+    },
+    {
+      "title": "Fruta: Building a feature-rich app with SwiftUI",
+      "url": "https://developer.apple.com/documentation/AppClip/fruta-building-a-feature-rich-app-with-swiftui",
+      "type": "samplecode",
+      "description": "Create a shared codebase to build a multiplatform app that offers widgets and an App Clip.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppClip/fruta-building-a-feature-rich-app-with-swiftui",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppClip/fruta-building-a-feature-rich-app-with-swiftui.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10220-localize-your-swiftui-app/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10220-localize-your-swiftui-app/metadata.json",
+    "readme": "sessions/wwdc2021/10220-localize-your-swiftui-app/README.md",
+    "transcript": "sessions/wwdc2021/10220-localize-your-swiftui-app/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10220-localize-your-swiftui-app/transcript.json"
+  }
+}

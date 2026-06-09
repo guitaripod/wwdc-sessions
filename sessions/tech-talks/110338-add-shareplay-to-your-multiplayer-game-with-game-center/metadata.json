@@ -1,0 +1,53 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-110338",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2023,
+  "eventContentId": 110338,
+  "title": "Add SharePlay to your multiplayer game with Game Center",
+  "description": "Learn how to let your players jump into games with friends they're on FaceTime calls with, using SharePlay. We'll show you how easy it is to turn on SharePlay support if you are already using the Game Center multiplayer UI. And if you’ve built a custom interface, we’ll give you the few lines of code you need to support SharePlay.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/110338",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110338",
+  "type": "Video",
+  "publishedAt": "2023-02-01T08:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 277,
+  "hasTranscript": true,
+  "transcriptWordCount": 632,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/110338/3/C80FD2D3-3EB4-4404-B02B-1446DC628503/cmaf.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/110338/3/C80FD2D3-3EB4-4404-B02B-1446DC628503/downloads/tech-talks-110338_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/110338/3/C80FD2D3-3EB4-4404-B02B-1446DC628503/downloads/tech-talks-110338_hd.mp4",
+    "duration": 277
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/tech-talks/110338-add-shareplay-to-your-multiplayer-game-with-game-center/",
+  "files": {
+    "metadata": "sessions/tech-talks/110338-add-shareplay-to-your-multiplayer-game-with-game-center/metadata.json",
+    "readme": "sessions/tech-talks/110338-add-shareplay-to-your-multiplayer-game-with-game-center/README.md",
+    "transcript": "sessions/tech-talks/110338-add-shareplay-to-your-multiplayer-game-with-game-center/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/110338-add-shareplay-to-your-multiplayer-game-with-game-center/transcript.json"
+  }
+}

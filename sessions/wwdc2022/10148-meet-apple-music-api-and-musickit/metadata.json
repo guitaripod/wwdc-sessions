@@ -1,0 +1,63 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10148",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10148,
+  "title": "Meet Apple Music API and MusicKit",
+  "description": "Explore the Apple Music API and MusicKit client frameworks. Learn how you can integrate Apple Music features into your web service or Android app, make requests to the Apple Music API to discover and fetch content, and personalize the experience for subscribers.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10148",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10148",
+  "type": "Video",
+  "publishedAt": "2022-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Essentials",
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 1106,
+  "hasTranscript": true,
+  "transcriptWordCount": 3075,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10148/4/ABD3D85D-6492-4E1A-B39A-BEBABBC5C075/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10148/4/ABD3D85D-6492-4E1A-B39A-BEBABBC5C075/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10148/4/ABD3D85D-6492-4E1A-B39A-BEBABBC5C075/downloads/wwdc2022-10148_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10148/4/ABD3D85D-6492-4E1A-B39A-BEBABBC5C075/downloads/wwdc2022-10148_hd.mp4",
+    "duration": 1106
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "MusicKit",
+      "url": "https://developer.apple.com/documentation/musickit",
+      "type": "documentation",
+      "description": "Integrate your app with Apple Music.",
+      "sosumiURL": "https://sosumi.ai/documentation/musickit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/musickit.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10148-meet-apple-music-api-and-musickit/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10148-meet-apple-music-api-and-musickit/metadata.json",
+    "readme": "sessions/wwdc2022/10148-meet-apple-music-api-and-musickit/README.md",
+    "transcript": "sessions/wwdc2022/10148-meet-apple-music-api-and-musickit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10148-meet-apple-music-api-and-musickit/transcript.json"
+  }
+}

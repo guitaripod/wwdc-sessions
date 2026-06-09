@@ -1,0 +1,100 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-225",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 225,
+  "title": "Advances in Camera Capture & Photo Segmentation",
+  "description": "Powerful new features in the AVCapture API let you capture photos and video from multiple cameras simultaneously. Photos now benefit from semantic segmentation that allows you to isolate hair, skin, and teeth in a photo. Learn how these advances enable you to create great camera apps and easily achieve stunning photo effects.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/225",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/225",
+  "type": "Video",
+  "publishedAt": "2019-06-05T17:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "avcapture",
+    "avfoundation",
+    "camera",
+    "core image",
+    "hair",
+    "images",
+    "microphone",
+    "multi camera",
+    "photos",
+    "portrait effects",
+    "segmentation",
+    "skin",
+    "spatial audio",
+    "teeth",
+    "video"
+  ],
+  "topics": [
+    "Photos & Camera"
+  ],
+  "primaryTopic": "Photos & Camera",
+  "duration": 3634,
+  "hasTranscript": true,
+  "transcriptWordCount": 10127,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/225dh4oy0vvscxxr/225/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/225dh4oy0vvscxxr/225/225_sd_advances_in_camera_capture__photo_segmentation.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/225dh4oy0vvscxxr/225/225_hd_advances_in_camera_capture__photo_segmentation.mp4",
+    "duration": 3634
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "AVMultiCamPiP: Capturing from Multiple Cameras",
+      "url": "https://developer.apple.com/documentation/AVFoundation/avmulticampip-capturing-from-multiple-cameras",
+      "type": "samplecode",
+      "description": "Simultaneously record the output from the front and back cameras into a single movie file by using a multi-camera capture session.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/avmulticampip-capturing-from-multiple-cameras",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/avmulticampip-capturing-from-multiple-cameras.json"
+    },
+    {
+      "title": "AVCam: Building a camera app",
+      "url": "https://developer.apple.com/documentation/AVFoundation/avcam-building-a-camera-app",
+      "type": "samplecode",
+      "description": "Capture photos and record video using the front and rear iPhone and iPad cameras.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/avcam-building-a-camera-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/avcam-building-a-camera-app.json"
+    },
+    {
+      "title": "AVFoundation",
+      "url": "https://developer.apple.com/documentation/AVFoundation",
+      "type": "documentation",
+      "description": "Work with audiovisual assets, control device cameras, process audio, and configure system audio interactions.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation.json"
+    },
+    {
+      "title": "Capture setup",
+      "url": "https://developer.apple.com/documentation/AVFoundation/capture-setup",
+      "type": "documentation",
+      "description": "Configure built-in cameras and microphones, and external capture devices, for media capture.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/capture-setup",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/capture-setup.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/225-advances-in-camera-capture-photo-segmentation/",
+  "files": {
+    "metadata": "sessions/wwdc2019/225-advances-in-camera-capture-photo-segmentation/metadata.json",
+    "readme": "sessions/wwdc2019/225-advances-in-camera-capture-photo-segmentation/README.md",
+    "transcript": "sessions/wwdc2019/225-advances-in-camera-capture-photo-segmentation/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/225-advances-in-camera-capture-photo-segmentation/transcript.json"
+  }
+}

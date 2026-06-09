@@ -1,0 +1,183 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10248",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10248,
+  "title": "Analyze hangs with Instruments",
+  "description": "User interface elements often mimic real-world interactions, including real-time responses. Apps with a noticeable delay in user interaction — a hang — can break that illusion and create frustration. We’ll show you how to use Instruments to analyze, understand, and fix hangs in your apps on all Apple platforms. Discover how you can efficiently navigate an Instruments trace document, interpret trace data, and record additional profiling data to better understand your specific hang. If you aren’t familiar with using Instruments, we recommend first watching \"Getting Started with Instruments.\" And to learn about other tools that can help you discover hangs in your app, check out \"Track down hangs with Xcode and on-device detection.\"",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10248",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10248",
+  "type": "Video",
+  "publishedAt": "2023-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "⚡️"
+  ],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 2572,
+  "hasTranscript": true,
+  "transcriptWordCount": 6758,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10248/6/AB6FF62D-3A9D-4816-95E8-2E7B464CA1DF/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10248/6/AB6FF62D-3A9D-4816-95E8-2E7B464CA1DF/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10248/6/AB6FF62D-3A9D-4816-95E8-2E7B464CA1DF/downloads/wwdc2023-10248_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10248/6/AB6FF62D-3A9D-4816-95E8-2E7B464CA1DF/downloads/wwdc2023-10248_hd.mp4",
+    "duration": 2572
+  },
+  "codeSnippets": [
+    {
+      "title": "BackgroundThumbnailView",
+      "language": "swift",
+      "startTimeSeconds": 1178,
+      "code": "struct BackgroundThumbnailView: View {\n    static let thumbnailSize = CGSize(width:128, height:128)\n\n    var background: BackyardBackground\n\n    var body: some View {\n        Image(uiImage: background.thumbnail)\n    }\n}"
+    },
+    {
+      "title": "BackgroundSelectionView with Grid",
+      "language": "swift",
+      "startTimeSeconds": 1198,
+      "code": "var body: some View {\n        ScrollView {\n            Grid {\n                ForEach(backgroundsGrid) { row in\n                    GridRow {\n                        ForEach(row.items) { background in\n                            BackgroundThumbnailView(background: background)\n                                .onTapGesture {\n                                    selectedBackground = background\n                                }\n                        }\n                    }\n                }\n            }\n        }\n    }"
+    },
+    {
+      "title": "BackgroundSelectionView with Grid (simplified)",
+      "language": "swift",
+      "startTimeSeconds": 1203,
+      "code": "var body: some View {\n    ScrollView {\n        Grid {\n            ForEach(backgroundsGrid) { row in\n                GridRow {\n                    ForEach(row.items) { background in\n                        BackgroundThumbnailView(background: background)\n                    }\n                }\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "LazyVGrid variant",
+      "language": "swift",
+      "startTimeSeconds": 1226,
+      "code": "var body: some View {\n    ScrollView {\n        LazyVGrid(columns: [.init(.adaptive(minimum: BackgroundThumbnailView.thumbnailSize.width))]) {\n            ForEach(BackyardBackground.allBackgrounds) { background in\n                BackgroundThumbnailView(background: background)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "BackgroundThumbnailView",
+      "language": "swift",
+      "startTimeSeconds": 1445,
+      "code": "struct BackgroundThumbnailView: View {\n    static let thumbnailSize = CGSize(width:128, height:128)\n\n    var background: BackyardBackground\n\n    var body: some View {\n        Image(uiImage: background.thumbnail)\n    }\n}"
+    },
+    {
+      "title": "BackgroundThumbnailView with progress (but without loading)",
+      "language": "swift",
+      "startTimeSeconds": 1499,
+      "code": "struct BackgroundThumbnailView: View {\n    static let thumbnailSize = CGSize(width:128, height:128)\n\n    var background: BackyardBackground\n    @State private var image: UIImage?\n\n    var body: some View {\n        if let image {\n            Image(uiImage: image)\n        } else {\n            ProgressView()\n                .frame(width: Self.thumbnailSize.width, height: Self.thumbnailSize.height, alignment: .center)\n        }\n    }\n}"
+    },
+    {
+      "title": "BackgroundThumbnailView with async loading on main thread",
+      "language": "swift",
+      "startTimeSeconds": 1526,
+      "code": "struct BackgroundThumbnailView: View {\n    static let thumbnailSize = CGSize(width:128, height:128)\n\n    var background: BackyardBackground\n    @State private var image: UIImage?\n\n    var body: some View {\n        if let image {\n            Image(uiImage: image)\n        } else {\n            ProgressView()\n                .frame(width: Self.thumbnailSize.width, height: Self.thumbnailSize.height, alignment: .center)\n                .task {\n                    image = background.thumbnail\n                }\n        }\n    }\n}"
+    },
+    {
+      "title": "BackgroundThumbnailView with async loading on main thread",
+      "language": "swift",
+      "startTimeSeconds": 1799,
+      "code": "struct BackgroundThumbnailView: View {\n    static let thumbnailSize = CGSize(width:128, height:128)\n\n    var background: BackyardBackground\n    @State private var image: UIImage?\n\n    var body: some View {\n        if let image {\n            Image(uiImage: image)\n        } else {\n            ProgressView()\n                .frame(width: Self.thumbnailSize.width, height: Self.thumbnailSize.height, alignment: .center)\n                .task {\n                    image = background.thumbnail\n                }\n        }\n    }\n}"
+    },
+    {
+      "title": "BackgroundThumbnailView with async loading on main thread (simplified)",
+      "language": "swift",
+      "startTimeSeconds": 1901,
+      "code": "struct BackgroundThumbnailView: View {\n    // [...]\n\n    var body: some View {\n        // [...]\n        ProgressView()\n            .task {\n                image = background.thumbnail\n            }\n        // [...]\n    }\n}"
+    },
+    {
+      "title": "BackgroundThumbnailView with async loading on main thread",
+      "language": "swift",
+      "startTimeSeconds": 2020,
+      "code": "struct BackgroundThumbnailView: View {\n    static let thumbnailSize = CGSize(width:128, height:128)\n\n    var background: BackyardBackground\n    @State private var image: UIImage?\n\n    var body: some View {\n        if let image {\n            Image(uiImage: image)\n        } else {\n            ProgressView()\n                .frame(width: Self.thumbnailSize.width, height: Self.thumbnailSize.height, alignment: .center)\n                .task {\n                    image = background.thumbnail\n                }\n        }\n    }\n}"
+    },
+    {
+      "title": "synchronous thumbnail property",
+      "language": "swift",
+      "startTimeSeconds": 2039,
+      "code": "public var thumbnail: UIImage {\n    get {\n        // compute and cache thumbnail\n    }\n}"
+    },
+    {
+      "title": "asynchronous thumbnail property",
+      "language": "swift",
+      "startTimeSeconds": 2043,
+      "code": "public var thumbnail: UIImage {\n    get async {\n        // compute and cache thumbnail\n    }\n}"
+    },
+    {
+      "title": "BackgroundThumbnailView with async loading in background",
+      "language": "swift",
+      "startTimeSeconds": 2048,
+      "code": "struct BackgroundThumbnailView: View {\n    static let thumbnailSize = CGSize(width:128, height:128)\n\n    var background: BackyardBackground\n    @State private var image: UIImage?\n\n    var body: some View {\n        if let image {\n            Image(uiImage: image)\n        } else {\n            ProgressView()\n                .frame(width: Self.thumbnailSize.width, height: Self.thumbnailSize.height, alignment: .center)\n                .task {\n                    image = await background.thumbnail\n                }\n        }\n    }\n}"
+    },
+    {
+      "title": "shared property causes blocked main thread",
+      "language": "swift",
+      "startTimeSeconds": 2332,
+      "code": "var body: some View {\n    mainContent\n        .task(id: imageMode) {\n            defer {\n                loading = false\n            }\n            do {\n                var image = await background.thumbnail\n                if imageMode == .colorized {\n                    let colorizer = ColorizingService.shared\n                    image = try await colorizer.colorize(image)\n                }\n                self.image = image\n            } catch {\n                self.error = error\n            }\n        }\n}"
+    },
+    {
+      "title": "shared property causes blocked main thread (simplified)",
+      "language": "swift",
+      "startTimeSeconds": 2340,
+      "code": "struct ImageTile: View {\n    // [...]\n\n    // implicit @MainActor\n    var body: some View {\n        mainContent\n            .task() { // inherits @MainActor isolation\n                // [...]\n                let colorizer = ColorizingService.shared\n                result = try await colorizer.colorize(image)\n            }\n    }\n}"
+    },
+    {
+      "title": "shared property causes blocked main thread + ColorizingService (simplified)",
+      "language": "swift",
+      "startTimeSeconds": 2350,
+      "code": "class ColorizingService {\n    static let shared = ColorizingService()\n\n\n    // [...]\n}\n\nstruct ImageTile: View {\n    // [...]\n\n    // implicit @MainActor\n    var body: some View {\n        mainContent\n            .task() { // inherits @MainActor isolation\n                // [...]\n                let colorizer = ColorizingService.shared\n                result = try await colorizer.colorize(image)\n            }\n    }\n}"
+    },
+    {
+      "title": "shared synchronous property after await keyword still causes blocked main thread",
+      "language": "swift",
+      "startTimeSeconds": 2365,
+      "code": "class ColorizingService {\n    static let shared = ColorizingService()\n\n\n    // [...]\n}\n\nstruct ImageTile: View {\n    // [...]\n\n    // implicit @MainActor\n    var body: some View {\n        mainContent\n            .task() { // inherits @MainActor isolation\n                // [...]\n                result = try await ColorizingService.shared.colorize(image)\n            }\n    }\n}"
+    },
+    {
+      "title": "shared synchronous property after await keyword still causes blocked main thread (+colorize function)",
+      "language": "swift",
+      "startTimeSeconds": 2379,
+      "code": "class ColorizingService {\n    static let shared = ColorizingService()\n\n    func colorize(_ grayscaleImage: CGImage) async throws -> CGImage\n    // [...]\n}\n\nstruct ImageTile: View {\n    // [...]\n\n    // implicit @MainActor\n    var body: some View {\n        mainContent\n            .task() { // inherits @MainActor isolation\n                // [...]\n                result = try await ColorizingService.shared.colorize(image)\n            }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Analyzing responsiveness issues in your shipping app",
+      "url": "https://developer.apple.com/documentation/Xcode/analyzing-responsiveness-issues-in-your-shipping-app",
+      "type": "documentation",
+      "description": "Identify responsiveness issues your users encounter, and use the hang and hitch data in Xcode Organizer to determine which issues are most important to fix.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/analyzing-responsiveness-issues-in-your-shipping-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/analyzing-responsiveness-issues-in-your-shipping-app.json"
+    },
+    {
+      "title": "Improving app responsiveness",
+      "url": "https://developer.apple.com/documentation/Xcode/improving-app-responsiveness",
+      "type": "documentation",
+      "description": "Create a user experience that feels responsive by removing hangs and hitches from your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/improving-app-responsiveness",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/improving-app-responsiveness.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10248-analyze-hangs-with-instruments/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10248-analyze-hangs-with-instruments/metadata.json",
+    "readme": "sessions/wwdc2023/10248-analyze-hangs-with-instruments/README.md",
+    "transcript": "sessions/wwdc2023/10248-analyze-hangs-with-instruments/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10248-analyze-hangs-with-instruments/transcript.json"
+  }
+}

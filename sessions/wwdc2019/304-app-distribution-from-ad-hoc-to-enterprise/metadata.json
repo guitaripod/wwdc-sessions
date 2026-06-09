@@ -1,0 +1,55 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-304",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 304,
+  "title": "App Distribution – From Ad-hoc to Enterprise",
+  "description": "Whether you want to share your app with a few colleagues, deliver it to employees within an organization, or release it to the world, there's a distribution mechanism designed to fit your needs. Familiarize yourself with each app deployment model, learn how to choose the one that's best for you, and learn about essential testing and distribution tools.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/304",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/304",
+  "type": "Video",
+  "publishedAt": "2019-06-05T15:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Store, Distribution & Marketing",
+    "Business & Education"
+  ],
+  "primaryTopic": "Business & Education",
+  "duration": 2091,
+  "hasTranscript": true,
+  "transcriptWordCount": 5679,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/304uxy73xvmgt37/304/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/304uxy73xvmgt37/304/304_sd_app_distribution__from_adhoc_to_enterprise.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/304uxy73xvmgt37/304/304_hd_app_distribution__from_adhoc_to_enterprise.mp4",
+    "duration": 2091
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/304-app-distribution-from-ad-hoc-to-enterprise/",
+  "files": {
+    "metadata": "sessions/wwdc2019/304-app-distribution-from-ad-hoc-to-enterprise/metadata.json",
+    "readme": "sessions/wwdc2019/304-app-distribution-from-ad-hoc-to-enterprise/README.md",
+    "transcript": "sessions/wwdc2019/304-app-distribution-from-ad-hoc-to-enterprise/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/304-app-distribution-from-ad-hoc-to-enterprise/transcript.json"
+  }
+}

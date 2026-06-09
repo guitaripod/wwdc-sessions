@@ -1,0 +1,70 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2016-411",
+  "event": "wwdc2016",
+  "eventName": "WWDC16",
+  "year": 2016,
+  "eventContentId": 411,
+  "title": "System Trace in Depth",
+  "description": "Join engineers from the Instruments team for another focused look at the System Trace Instruments profiling template and how to get the most out of it. Discover how threads, virtual memory, and locking interact to affect performance. Dive deep for a practical look at how you can improve your app's responsiveness and keep your users engaged.",
+  "url": "https://developer.apple.com/videos/play/wwdc2016/411",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2016/411",
+  "type": "Video",
+  "publishedAt": "2016-06-16T09:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "debug",
+    "instruments",
+    "lock",
+    "locking",
+    "locks",
+    "memory",
+    "performance",
+    "profile",
+    "profiling",
+    "system",
+    "template",
+    "thread",
+    "threads",
+    "trace",
+    "virtual memory"
+  ],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 2238,
+  "hasTranscript": true,
+  "transcriptWordCount": 7613,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2016/411jge60tmuuh7dolja/411/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2016/411jge60tmuuh7dolja/411/411_sd_system_trace_in_depth.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2016/411jge60tmuuh7dolja/411/411_hd_system_trace_in_depth.mp4",
+    "duration": 2238
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2016/411-system-trace-in-depth/",
+  "files": {
+    "metadata": "sessions/wwdc2016/411-system-trace-in-depth/metadata.json",
+    "readme": "sessions/wwdc2016/411-system-trace-in-depth/README.md",
+    "transcript": "sessions/wwdc2016/411-system-trace-in-depth/transcript.md",
+    "transcriptJSON": "sessions/wwdc2016/411-system-trace-in-depth/transcript.json"
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-249",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 249,
+  "title": "Introducing Multi-Camera Capture for iOS",
+  "description": "In AVCapture on iOS 13 it is now possible to simultaneously capture photos and video from multiple cameras on iPhone XS, iPhone XS Max, iPhone XR, and the latest iPad Pro. It is also possible to configure the multiple microphones on the device to shape the sound that is captured. Learn how to leverage these powerful capabilities to bring creative new features like picture-in-picture and spatial audio to your camera apps. Gain a deeper understanding of the performance considerations that may influence your app design.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/249",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/249",
+  "type": "Video",
+  "publishedAt": "2019-06-05T17:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "avcapture",
+    "avfoundation",
+    "capture",
+    "core image",
+    "depth",
+    "disparity",
+    "hair",
+    "microphone",
+    "multi camera",
+    "parallax",
+    "photo effects",
+    "photography",
+    "photos",
+    "photos api",
+    "portrait mode",
+    "segmentation",
+    "skin",
+    "spatial audio",
+    "teeth"
+  ],
+  "topics": [
+    "Photos & Camera"
+  ],
+  "primaryTopic": "Photos & Camera",
+  "duration": 2680,
+  "hasTranscript": true,
+  "transcriptWordCount": 7308,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/249a0jw909n3uq0/249/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/249a0jw909n3uq0/249/249_sd_introducing_multicamera_capture_for_ios.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/249a0jw909n3uq0/249/249_hd_introducing_multicamera_capture_for_ios.mp4",
+    "duration": 2680
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "AVMultiCamPiP: Capturing from Multiple Cameras",
+      "url": "https://developer.apple.com/documentation/AVFoundation/avmulticampip-capturing-from-multiple-cameras",
+      "type": "samplecode",
+      "description": "Simultaneously record the output from the front and back cameras into a single movie file by using a multi-camera capture session.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/avmulticampip-capturing-from-multiple-cameras",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/avmulticampip-capturing-from-multiple-cameras.json"
+    },
+    {
+      "title": "AVCam: Building a camera app",
+      "url": "https://developer.apple.com/documentation/AVFoundation/avcam-building-a-camera-app",
+      "type": "samplecode",
+      "description": "Capture photos and record video using the front and rear iPhone and iPad cameras.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/avcam-building-a-camera-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/avcam-building-a-camera-app.json"
+    },
+    {
+      "title": "AVFoundation",
+      "url": "https://developer.apple.com/documentation/AVFoundation",
+      "type": "documentation",
+      "description": "Work with audiovisual assets, control device cameras, process audio, and configure system audio interactions.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation.json"
+    },
+    {
+      "title": "Capture setup",
+      "url": "https://developer.apple.com/documentation/AVFoundation/capture-setup",
+      "type": "documentation",
+      "description": "Configure built-in cameras and microphones, and external capture devices, for media capture.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/capture-setup",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/capture-setup.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/249-introducing-multi-camera-capture-for-ios/",
+  "files": {
+    "metadata": "sessions/wwdc2019/249-introducing-multi-camera-capture-for-ios/metadata.json",
+    "readme": "sessions/wwdc2019/249-introducing-multi-camera-capture-for-ios/README.md",
+    "transcript": "sessions/wwdc2019/249-introducing-multi-camera-capture-for-ios/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/249-introducing-multi-camera-capture-for-ios/transcript.json"
+  }
+}

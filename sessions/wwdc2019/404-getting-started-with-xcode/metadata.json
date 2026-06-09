@@ -1,0 +1,79 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-404",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 404,
+  "title": "Getting Started with Xcode",
+  "description": "Xcode is the development environment for creating great apps for Apple platforms. Find out how to take advantage of Xcode features to go all the way from a new project to App Store distribution. Along the way, you'll learn how to navigate the Xcode user interface, how to take advantage of the source editor and live user interface previews, how to incorporate community-developed Swift packages into your app, and how to refactor and test your code, all while developing a working SwiftUI app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/404",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/404",
+  "type": "Video",
+  "publishedAt": "2019-06-04T11:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 3265,
+  "hasTranscript": true,
+  "transcriptWordCount": 8098,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/404w05ssefca567rh/404/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/404w05ssefca567rh/404/404_sd_getting_started_with_xcode.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/404w05ssefca567rh/404/404_hd_getting_started_with_xcode.mp4",
+    "duration": 3265
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Swift API Guidelines",
+      "url": "https://swift.org/documentation/api-design-guidelines/",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "Learn more about App Store Connect",
+      "url": "https://help.apple.com/app-store-connect/",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "Xcode Help",
+      "url": "https://help.apple.com/xcode/mac/current/",
+      "type": "documentation",
+      "description": "Xcode provides tools to manage your entire development workflow—from creating your app to testing, optimizing, and submitting it to the App Store."
+    },
+    {
+      "title": "The Swift Programming Language",
+      "url": "https://docs.swift.org/swift-book/",
+      "type": "guide",
+      "description": "The definitive guide to Swift, Apple’s programming language for building iOS, macOS, watchOS, and tvOS apps."
+    }
+  ],
+  "path": "sessions/wwdc2019/404-getting-started-with-xcode/",
+  "files": {
+    "metadata": "sessions/wwdc2019/404-getting-started-with-xcode/metadata.json",
+    "readme": "sessions/wwdc2019/404-getting-started-with-xcode/README.md",
+    "transcript": "sessions/wwdc2019/404-getting-started-with-xcode/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/404-getting-started-with-xcode/transcript.json"
+  }
+}

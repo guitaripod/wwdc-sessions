@@ -1,0 +1,246 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-254",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 254,
+  "title": "Explore Metal 4 games",
+  "description": "Learn to optimize your game engine with the latest advancements in Metal 4. We’ll cover how to unify your command encoding to minimize CPU overhead, scale up your graphics resource management to support massive scenes and maximize your memory budget, and load large libraries of pipeline states quickly. To get the most out of this session, first watch “Discover Metal 4.”",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/254",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/254",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1941,
+  "hasTranscript": true,
+  "transcriptWordCount": 4785,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/254/6/a73ce35f-7f81-4203-9df3-46c48308ca6f/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/254/6/a73ce35f-7f81-4203-9df3-46c48308ca6f/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/254/6/a73ce35f-7f81-4203-9df3-46c48308ca6f/downloads/wwdc2025-254_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/254/6/a73ce35f-7f81-4203-9df3-46c48308ca6f/downloads/wwdc2025-254_hd.mp4",
+    "duration": 1941
+  },
+  "codeSnippets": [
+    {
+      "title": "Synchronize access to a buffer within an encoder",
+      "language": "objectivec",
+      "startTimeSeconds": 1,
+      "code": "// Synchronize access to a buffer within an encoder\n\nid<MTL4ComputeCommandEncoder> encoder = [commandBuffer computeCommandEncoder];\n\n[encoder copyFromBuffer:src sourceOffset:0 toBuffer:buffer1 destinationOffset:0 size:64];\n\n[encoder barrierAfterEncoderStages:MTLStageBlit \n               beforeEncoderStages:MTLStageDispatch\n                 visibilityOptions:MTL4VisibilityOptionDevice];\n\n[encoder setComputePipelineState:pso];\n\n[argTable setAddress:buffer1.gpuAddress atIndex:0];\n[encoder setArgumentTable:argTable];\n[encoder dispatchThreads:threadsPerGrid threadsPerThreadgroup:threadsPerThreadgroup];\n\n[encoder endEncoding];code snippet."
+    },
+    {
+      "title": "Configure superset of color attachments",
+      "language": "objectivec",
+      "startTimeSeconds": 269,
+      "code": "// Configure superset of color attachments\n\nMTL4RenderPassDescriptor *desc = [MTLRenderPassDescriptor renderPassDescriptor];\n\ndesc.supportColorAttachmentMapping = YES;\n\ndesc.colorAttachments[0].texture = colortex0;\ndesc.colorAttachments[1].texture = colortex1;\ndesc.colorAttachments[2].texture = colortex2;\ndesc.colorAttachments[3].texture = colortex3;\ndesc.colorAttachments[4].texture = colortex4;"
+    },
+    {
+      "title": "Set color attachment map entries",
+      "language": "objectivec",
+      "startTimeSeconds": 278,
+      "code": "// Set color attachment map entries\n\nMTLLogicalToPhysicalColorAttachmentMap* myAttachmentRemap = [MTLLogicalToPhysicalColorAttachmentMap new];\n\n[myAttachmentRemap setPhysicalIndex:0 forLogicalIndex:0];\n[myAttachmentRemap setPhysicalIndex:3 forLogicalIndex:1];\n[myAttachmentRemap setPhysicalIndex:4 forLogicalIndex:2];"
+    },
+    {
+      "title": "Set a color attachment map per pipeline",
+      "language": "objectivec",
+      "startTimeSeconds": 297,
+      "code": "// Set a color attachment map per pipeline\n\n[renderEncoder setRenderPipelineState:myPipeline];\n[renderEncoder setColorAttachmentMap:myAttachmentRemap];\n// Draw with myPipeline\n\n[renderEncoder setRenderPipelineState:myPipeline2];\n[renderEncoder setColorAttachmentMap:myAttachmentRemap2];\n// Draw with myPipeline2"
+    },
+    {
+      "title": "Encode a single render pass with 3 render encoders",
+      "language": "objectivec",
+      "startTimeSeconds": 483,
+      "code": "// Encode a single render pass with 3 render encoders with suspend/resume options\n\n\nid<MTL4RenderCommandEncoder> enc0 = [cmdbuf0 renderCommandEncoderWithDescriptor:desc options:MTL4RenderEncoderOptionSuspending];\n\nid<MTL4RenderCommandEncoder> enc1 = [cmdbuf1 renderCommandEncoderWithDescriptor:desc options:MTL4RenderEncoderOptionResuming | MTL4RenderEncoderOptionSuspending];\n\nid<MTL4RenderCommandEncoder> enc2 = [cmdbuf2 renderCommandEncoderWithDescriptor:desc options:MTL4RenderEncoderOptionResuming];\n\n\nid<MTL4CommandBuffer> cmdbufs[] = { cmdbuf0, cmdbuf1, cmdbuf2 };\n[commandQueue commit:cmdbufs count:3]"
+    },
+    {
+      "title": "Synchronize drawable contents",
+      "language": "objectivec",
+      "startTimeSeconds": 708,
+      "code": "// Synchronize drawable contents\n\nid<MTLDrawable> drawable = [metalLayer nextDrawable];\n[queue waitForDrawable:drawable];\n\n// ... encode render commands to commandBuffer ...\n[queue commit:&commandBuffer count:1];\n\n[queue signalDrawable:drawable];\n\n[drawable present];"
+    },
+    {
+      "title": "Encode a queue barrier to synchronize data",
+      "language": "objectivec",
+      "startTimeSeconds": 805,
+      "code": "// Encode a queue barrier to synchronize data\n\nid<MTL4ComputeCommandEncoder> compute = [commandBuffer computeCommandEncoder];\n\n[compute dispatchThreadgroups:threadGrid threadsPerThreadgroup:threadsPerThreadgroup];\n\n[compute endEncoding];\n\n\nid<MTL4RenderCommandEncoder> render = [commandBuffer renderCommandEncoderWithDescriptor:des];\n\n[render barrierAfterQueueStages:MTLStageDispatch\n                   beforeStages:MTLStageFragment\n              visibilityOptions:MTL4VisibilityOptionDevice];\n\n[renderCommandEncoder drawPrimitives:MTLPrimitiveTypeTriangle\n                         vertexStart:vertexStart\n                         vertexCount:vertexCount];\n\n[render endEncoding];"
+    },
+    {
+      "title": "Create a texture view pool",
+      "language": "objectivec",
+      "startTimeSeconds": 897,
+      "code": "// Create a texture view pool\n\nMTLResourceViewPoolDescriptor *desc = [[MTLResourceViewPoolDescriptor alloc] init]; \ndesc.resourceCount = 500;\n\nid <MTLTextureViewPool> myTextureViewPool =  \n    [myDevice newTextureViewPoolWithDescriptor:myTextureViewPoolDescriptor \n                                         error:nullptr];"
+    },
+    {
+      "title": "Set a texture view",
+      "language": "objectivec",
+      "startTimeSeconds": 907,
+      "code": "// Set a texture view\n\nMTLResourceID myTextureView = [myTextureViewPool setTextureView:myTexture  \n                                                     descriptor:myTextureViewDescriptor  \n                                                        atIndex:5];\n\n[myArgumentTable setTexture:myTextureView \n                    atIndex:0];"
+    },
+    {
+      "title": "Choose appropriate sparse page size",
+      "language": "objectivec",
+      "startTimeSeconds": 961,
+      "code": "MTLHeapDescriptor *desc = [MTLHeapDescriptor new];    \ndesc.type = MTLHeapTypePlacement;\ndesc.storageMode = MTLStorageModePrivate;\ndesc.maxCompatiblePlacementSparsePageSize = MTLSparsePageSize64;\ndesc.size = alignedHeapSize;\n\nid<MTLHeap> heap = [device newHeapWithDescriptor:desc];"
+    },
+    {
+      "title": "Update buffer mappings",
+      "language": "objectivec",
+      "startTimeSeconds": 1025,
+      "code": "// Update buffer mappings\n\nMTL4UpdateSparseBufferMappingOperation bufferOperation;\n\nbufferOperation.mode = MTLSparseTextureMappingModeMap;  \nbufferOperation.bufferRange.location = bufferOffsetInTiles;\nbufferOperation.bufferRange.length = length;\nbufferOperation.heapOffset = heapOffsetInTiles;\n\n[cmdQueue updateBufferMappings:myBuf heap:myHeap operations:&bufferOperation count:1];"
+    },
+    {
+      "title": "Set unspecialized configuration",
+      "language": "objectivec",
+      "startTimeSeconds": 1241,
+      "code": "// In MTL4RenderPipelineColorAttachmentDescriptor\n// Set unspecialized configuration\n\npipelineDescriptor.colorAttachments[i].pixelFormat   = MTLPixelFormatUnspecialized;\npipelineDescriptor.colorAttachments[i].writeMask     = MTLColorWriteMaskUnspecialized;\npipelineDescriptor.colorAttachments[i].blendingState = MTL4BlendStateUnspecialized;"
+    },
+    {
+      "title": "Create a specialized transparent pipeline",
+      "language": "objectivec",
+      "startTimeSeconds": 1300,
+      "code": "// Create a specialized transparent pipeline\n\n// Set the previously unspecialized properties\npipelineDescriptor.colorAttachments[0].pixelFormat = MTLPixelFormatBGRA8Unorm;\npipelineDescriptor.colorAttachments[0].writeMask =\n    MTLColorWriteMaskRed | MTLColorWriteMaskGreen | MTLColorWriteMaskBlue;\npipelineDescriptor.colorAttachments[0].blendingState = MTL4BlendStateEnabled;\n\npipelineDescriptor.colorAttachments[0].sourceRGBBlendFactor = MTLBlendFactorOne;\npipelineDescriptor.colorAttachments[0].destinationRGBBlendFactor = \n    MTLBlendFactorOneMinusSourceAlpha;\npipelineDescriptor.colorAttachments[0].rgbBlendOperation = MTLBlendOperationAdd;\n\nid<MTLRenderPipelineState> transparentPipeline = \n    [compiler newRenderPipelineStateBySpecializationWithDescriptor:pipelineDescriptor\n                                                          pipeline:unspecializedPipeline\n                                                             error:&error];\n\n// Similarly, create the specialized opaque and hologram pipelines"
+    },
+    {
+      "title": "Determine thread count",
+      "language": "objectivec",
+      "startTimeSeconds": 1582,
+      "code": "// Determine thread count\nNSInteger numThreads = 2;\nif (@available(macOS 13.3, iOS 19, visionOS 3, tvOS 19, *))\n{\n    numThreads = [device maximumConcurrentCompilationTaskCount];\n}"
+    },
+    {
+      "title": "Set a proper QoS class for your compilation threads",
+      "language": "objectivec",
+      "startTimeSeconds": 1590,
+      "code": "// Create thread pool\nfor (NSInteger i = 0; i < numThreads; ++i)\n{\n    // Creating a thread with a QoS class DEFAULT\n    pthread_attr_set_qos_class_np(&attr, QOS_CLASS_DEFAULT, 0) ;\n    pthread_create(&threadIds[i], &attr, entryPoint, NULL);\n    pthread_attr_destroy(&attr);\n}"
+    },
+    {
+      "title": "Harvest pipeline configuration scripts",
+      "language": "objectivec",
+      "startTimeSeconds": 1704,
+      "code": "// Harvest pipeline configuration scripts with the pipeline data set serializer\n\n// Create a pipeline data set serializer that only captures descriptors\nMTL4PipelineDataSetSerializerDescriptor *desc = [MTL4PipelineDataSetSerializerDescriptor new];\ndesc.configuration = MTL4PipelineDataSetSerializerConfigurationCaptureDescriptors;\nid<MTL4PipelineDataSetSerializer> serializer =\n    [device newPipelineDataSetSerializerWithDescriptor:desc];\n\n// Set the pipeline data set serializer when creating the compiler\nMTL4CompilerDescriptor *compilerDesc = [MTL4CompilerDescriptor new];\n[compilerDesc setPipelineDataSetSerializer:serializer];\nid<MTL4Compiler> compiler = [device newCompilerWithDescriptor:compilerDesc error:nil];\n\n// Create pipelines using the compiler as usual\n\n// Serialize the descriptors as a pipeline script\nNSData *data = [serializer serializeAsPipelinesScriptWithError:&err];\n\n// Write the pipeline script data to disk\nNSString *path = [NSString pathWithComponents:@[folder, @\"pipelines.mtl4-json\"]];\nBOOL success = [data writeToFile:path options:NSDataWritingAtomic error:&err];"
+    },
+    {
+      "title": "Query pipeline state from MTLArchive",
+      "language": "objectivec",
+      "startTimeSeconds": 1828,
+      "code": "// Query pipeline state from MTLArchive\n\nid<MTL4Archive> archive = [device newArchiveWithURL:archiveURL error:&error];\n\nid<MTLRenderPipelineState> pipeline = \n    [archive newRenderPipelineStateWithDescriptor:descriptor error:&error];\n\nif (pipeline == nil)\n{\n    // handle lookup miss\n\t\tpipeline = [compiler newRenderPipelineStateWithDescriptor:descriptor \n                                          compilerTaskOptions:nil \n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Metal binary archives",
+      "url": "https://developer.apple.com/documentation/Metal/metal-binary-archives",
+      "type": "documentation",
+      "description": "Distribute precompiled GPU-specific binaries as part of your app to avoid runtime compilation of Metal shaders.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/metal-binary-archives",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/metal-binary-archives.json"
+    },
+    {
+      "title": "Reading and writing to sparse textures",
+      "url": "https://developer.apple.com/documentation/Metal/reading-and-writing-to-sparse-textures",
+      "type": "documentation",
+      "description": "Decide how to handle access to unmapped texture regions.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/reading-and-writing-to-sparse-textures",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/reading-and-writing-to-sparse-textures.json"
+    },
+    {
+      "title": "Synchronizing passes with producer barriers",
+      "url": "https://developer.apple.com/documentation/Metal/synchronizing-passes-with-producer-barriers",
+      "type": "documentation",
+      "description": "Block GPU stages in subsequent passes from running until stages in a pass, and earlier passes, finish.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/synchronizing-passes-with-producer-barriers",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/synchronizing-passes-with-producer-barriers.json"
+    },
+    {
+      "title": "Synchronizing passes with consumer barriers",
+      "url": "https://developer.apple.com/documentation/Metal/synchronizing-passes-with-consumer-barriers",
+      "type": "documentation",
+      "description": "Block GPU stages in a pass, and all subsequent passes, from running until stages from earlier passes finish.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/synchronizing-passes-with-consumer-barriers",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/synchronizing-passes-with-consumer-barriers.json"
+    },
+    {
+      "title": "Synchronizing passes with a fence",
+      "url": "https://developer.apple.com/documentation/Metal/synchronizing-passes-with-a-fence",
+      "type": "documentation",
+      "description": "Block GPU stages in a pass until another pass unblocks it by signaling a fence.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/synchronizing-passes-with-a-fence",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/synchronizing-passes-with-a-fence.json"
+    },
+    {
+      "title": "Synchronizing stages within a pass",
+      "url": "https://developer.apple.com/documentation/Metal/synchronizing-stages-within-a-pass",
+      "type": "documentation",
+      "description": "Block GPU stages in the a pass from running until other stages in the same pass finish.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/synchronizing-stages-within-a-pass",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/synchronizing-stages-within-a-pass.json"
+    },
+    {
+      "title": "Resource synchronization",
+      "url": "https://developer.apple.com/documentation/Metal/resource-synchronization",
+      "type": "documentation",
+      "description": "Prevent multiple commands that can access the same resources simultaneously by",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/resource-synchronization",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/resource-synchronization.json"
+    },
+    {
+      "title": "Drawing a triangle with Metal 4",
+      "url": "https://developer.apple.com/documentation/Metal/drawing-a-triangle-with-metal-4",
+      "type": "samplecode",
+      "description": "Render a colorful, rotating 2D triangle by running draw commands with a render pipeline on a GPU.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/drawing-a-triangle-with-metal-4",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/drawing-a-triangle-with-metal-4.json"
+    },
+    {
+      "title": "Using the Metal 4 compilation API",
+      "url": "https://developer.apple.com/documentation/Metal/using-the-metal-4-compilation-api",
+      "type": "documentation",
+      "description": "Control when and how you compile an app’s shaders.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/using-the-metal-4-compilation-api",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/using-the-metal-4-compilation-api.json"
+    },
+    {
+      "title": "Understanding the Metal 4 core API",
+      "url": "https://developer.apple.com/documentation/Metal/understanding-the-metal-4-core-api",
+      "type": "documentation",
+      "description": "Discover the features and functionality in the Metal 4 foundational APIs.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/understanding-the-metal-4-core-api",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/understanding-the-metal-4-core-api.json"
+    },
+    {
+      "title": "Human Interface Guidelines: Designing for games",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/designing-for-games",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/designing-for-games"
+    }
+  ],
+  "path": "sessions/wwdc2025/254-explore-metal-4-games/",
+  "files": {
+    "metadata": "sessions/wwdc2025/254-explore-metal-4-games/metadata.json",
+    "readme": "sessions/wwdc2025/254-explore-metal-4-games/README.md",
+    "transcript": "sessions/wwdc2025/254-explore-metal-4-games/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/254-explore-metal-4-games/transcript.json"
+  }
+}

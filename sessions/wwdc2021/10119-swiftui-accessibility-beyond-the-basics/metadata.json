@@ -1,0 +1,203 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10119",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10119,
+  "title": "SwiftUI Accessibility: Beyond the basics",
+  "description": "Go beyond the basics to deliver an exceptional accessibility experience. Learn how to use the new SwiftUI Previews in Xcode to explore the latest accessibility APIs and create fantastic, accessible apps for everyone. Find out how you can customize the automatic accessibility built into SwiftUI to make your own custom controls accessible. Explore best practices and identify where to improve your app's navigation experience using grouping and focus. And help supercharge navigation for VoiceOver users with the addition of rotors.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10119",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10119",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "accessibilitychildbehavior",
+    "accessibility children",
+    "accessibilitycontainer",
+    "accessibility container",
+    "accessibility element",
+    ".accessibilityfocus",
+    "accessibilityfocusstate",
+    "accessibility navigation",
+    "accessibility panel",
+    "accessibility preview",
+    "accessibilityrepresentation",
+    "accessibility representation",
+    "accessibilitysortpriority",
+    "accessibility sort priority",
+    "accessible",
+    "accessible by default",
+    "button",
+    "canvas",
+    "children",
+    ".combine",
+    ".contain",
+    "custom controls",
+    "custom element",
+    ".ignore",
+    "label",
+    "labels",
+    "previews",
+    "rotors",
+    "shapes",
+    "swiftui previews",
+    "voiceover",
+    "voice over"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "Accessibility & Inclusion"
+  ],
+  "primaryTopic": "Accessibility & Inclusion",
+  "duration": 1690,
+  "hasTranscript": true,
+  "transcriptWordCount": 4420,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10119/6/A3AEB1E4-C4E9-43B4-9EF6-206F6B9704E6/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10119/6/A3AEB1E4-C4E9-43B4-9EF6-206F6B9704E6/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10119/6/A3AEB1E4-C4E9-43B4-9EF6-206F6B9704E6/downloads/wwdc2021-10119_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10119/6/A3AEB1E4-C4E9-43B4-9EF6-206F6B9704E6/downloads/wwdc2021-10119_hd.mp4",
+    "duration": 1690
+  },
+  "codeSnippets": [
+    {
+      "title": "Welcome to the Accessibility Preview",
+      "language": "swift",
+      "startTimeSeconds": 120,
+      "code": "struct ContentView: View {\n    var body: some View {\n        VStack {\n            Text(\"WWDC 2021\")\n                .accessibilityAddTraits(.isHeader)\n\n            Text(\"SwiftUI Accessibility\")\n            Text(\"Beyond the Basics\")\n\n            Image(systemName: \"checkmark.seal.fill\")\n        }\n    }\n}"
+    },
+    {
+      "title": "BudgetSlider",
+      "language": "swift",
+      "startTimeSeconds": 270,
+      "code": "struct BudgetSlider: View {\n    @Binding var value: Double\n    var label: String\n\n    var body: some View {\n        VStack(alignment: .leading) {\n            HStack {\n                Text(label)\n                Text(value.toDollars()).bold()\n            }\n            SliderShape(value: value)\n                .gesture(DragGesture().onChanged(handle))\n        }\n    }\n}\n\nstruct SliderShape: View {\n    var value: Double\n\n    private struct BackgroundTrack: View {\n        var cornerRadius: CGFloat\n        var body: some View {\n            RoundedRectangle(\n                cornerRadius: cornerRadius,\n                style: .continuous\n            )\n            .foregroundColor(Color(white: 0.2))\n        }\n    }\n\n    private struct OverlayTrack: View {\n        var cornerRadius: CGFloat\n        var body: some View {\n            RoundedRectangle(\n                cornerRadius: cornerRadius,\n                style: .continuous\n            )\n            .foregroundColor(Color(white: 0.95))\n        }\n    }\n\n    private struct Knob: View {\n        var cornerRadius: CGFloat\n        var body: some View {\n            RoundedRectangle(\n                cornerRadius: cornerRadius,\n                style: .continuous\n            )\n            .strokeBorder(Color(white: 0.7), lineWidth: 1)\n            .shadow(radius: 3)\n        }\n    }\n\n    var body: some View {\n        GeometryReader { geometry in\n            ZStack(alignment: .leading) {\n                BackgroundTrack(cornerRadius: geometry.size.height / 2)\n\n                OverlayTrack(cornerRadius: geometry.size.height / 2)\n                    .frame(\n                        width: max(geometry.size.height, geometry.size.width * CGFloat(value) + geometry.size.height / 2),\n                        height: geometry.size.height)\n\n                Knob(cornerRadius: geometry.size.height / 2)\n                    .frame(\n                        width: geometry.size.height,\n                        height: geometry.size.height)\n                    .offset(x: max(0, geometry.size.width * CGFloat(value) - geometry.size.height / 2), y: 0)\n            }\n        }\n    }\n}\n\nextension Double {\n    func toDollars() -> String {\n        return \"$\\(Int(self))\"\n    }\n}"
+    },
+    {
+      "title": "Slider",
+      "language": "swift",
+      "startTimeSeconds": 315,
+      "code": "struct StandardSlider: View {\n    @Binding var value: Double\n    var label: String\n\n    var body: some View {\n        Slider(value: $value, in: 0...1) {\n            Text(label) \n        }\n    }\n}"
+    },
+    {
+      "title": "Accessible BudgetSlider",
+      "language": "swift",
+      "startTimeSeconds": 350,
+      "code": "struct BudgetSlider: View {\n    @Binding var value: Double\n    var label: String\n\n    var body: some View {\n        VStack(alignment: .leading) {\n            HStack {\n                Text(label)\n                Text(value.toDollars()).bold()\n            }\n            SliderShape(value: value)\n                .gesture(DragGesture().onChanged(handle))\n                .accessibilityRepresentation {\n                    Slider(value: $value, in: 0...1) {\n                        Text(label)\n                    }\n                    .accessibilityValue(value.toDollars())\n                }\n        }\n    }\n}\n\nstruct SliderShape: View {\n    var value: Double\n\n    private struct BackgroundTrack: View {\n        var cornerRadius: CGFloat\n        var body: some View {\n            RoundedRectangle(\n                cornerRadius: cornerRadius,\n                style: .continuous\n            )\n            .foregroundColor(Color(white: 0.2))\n        }\n    }\n\n    private struct OverlayTrack: View {\n        var cornerRadius: CGFloat\n        var body: some View {\n            RoundedRectangle(\n                cornerRadius: cornerRadius,\n                style: .continuous\n            )\n            .foregroundColor(Color(white: 0.95))\n        }\n    }\n\n    private struct Knob: View {\n        var cornerRadius: CGFloat\n        var body: some View {\n            RoundedRectangle(\n                cornerRadius: cornerRadius,\n                style: .continuous\n            )\n            .strokeBorder(Color(white: 0.7), lineWidth: 1)\n            .shadow(radius: 3)\n        }\n    }\n\n    var body: some View {\n        GeometryReader { geometry in\n            ZStack(alignment: .leading) {\n                BackgroundTrack(cornerRadius: geometry.size.height / 2)\n\n                OverlayTrack(cornerRadius: geometry.size.height / 2)\n                    .frame(\n                        width: max(geometry.size.height, geometry.size.width * CGFloat(value) + geometry.size.height / 2),\n                        height: geometry.size.height)\n\n                Knob(cornerRadius: geometry.size.height / 2)\n                    .frame(\n                        width: geometry.size.height,\n                        height: geometry.size.height)\n                    .offset(x: max(0, geometry.size.width * CGFloat(value) - geometry.size.height / 2), y: 0)\n            }\n        }\n    }\n}\n\nextension Double {\n    func toDollars() -> String {\n        return \"$\\(Int(self))\"\n    }\n}"
+    },
+    {
+      "title": "NavigationBarView",
+      "language": "swift",
+      "startTimeSeconds": 425,
+      "code": "struct NavigationBarView: View {\n    var body: some View {\n        HStack {\n            Text(\"Wallet Pal\")\n                .font(.largeTitle)\n                .bold()\n\n            Spacer()\n\n            Button(\"Edit Budgets\", action: { ... })\n                .buttonStyle(\n                    SymbolButtonStyle(\n                        systemName: \"slider.vertical.3\"))\n        }\n    }\n}\n\nstruct SymbolButtonStyle: ButtonStyle {\n    let systemName: String\n\n    func makeBody(configuration: Configuration) -> some View {\n\t\t\t\tImage(systemName: systemName)\n            .accessibilityRepresentation { configuration.label }\n    }\n}"
+    },
+    {
+      "title": "BudgetHistoryGraph",
+      "language": "swift",
+      "startTimeSeconds": 580,
+      "code": "struct Budget: Identifiable {\n    var month: String\n    var amount: Double\n\n    var id: String { month }\n}\n\nstruct BudgetHistoryGraph: View {\n    var budgets: [Budget]\n\n    var body: some View {\n        GeometryReader { proxy in\n            VStack {\n                Canvas { ctx, size in\n                    let inset: CGFloat = 25\n                    let insetSize = CGSize(width: size.width, height: size.height - inset * 2)\n                    let width = insetSize.width / CGFloat(budgets.count)\n                    let max = budgets.map(\\.amount).max() ?? 0\n                    for n in budgets.indices {\n                        let x = width * CGFloat(n)\n                        let height = (CGFloat(budgets[n].amount) / CGFloat(max)) * insetSize.height\n                        let y = insetSize.height - height\n                        let p = Path(\n                            roundedRect: CGRect(\n                                x: x + 2.5,\n                                y: y + inset,\n                                width: width - 5,\n                                height: height),\n                            cornerRadius: 4)\n                        ctx.fill(p, with: .color(Color.green))\n\n                        ctx.draw(Text(budgets[n].amount.toDollars()), at: CGPoint(x: x + width / 2, y: y + inset / 2))\n\n                        ctx.draw(Text(budgets[n].month), at: CGPoint(x: x + width / 2, y: y + height + 1.5*inset))\n                    }\n                }\n                .accessibilityLabel(\"Budget History Graph\")\n                .accessibilityChildren {\n                    HStack {\n                        ForEach(budgets) { budget in\n                            Rectangle()\n                                .accessibilityLabel(budget.month)\n                                .accessibilityValue(budget.amount.toDollars())\n\n                        }\n                    }\n                }\n\n            }\n        }\n        .padding()\n        .background(\n            RoundedRectangle(cornerRadius: 16)\n                .foregroundColor(Color(white: 0.9)))\n        .padding(.horizontal)\n    }\n}"
+    },
+    {
+      "title": "Composition",
+      "language": "swift",
+      "startTimeSeconds": 750,
+      "code": "// See CompositionExample.swift in the referenced sample project"
+    },
+    {
+      "title": "FriendCellView",
+      "language": "swift",
+      "startTimeSeconds": 830,
+      "code": "struct User: Identifiable {\n    var id: Int\n    var name: String\n    var photo: String\n}\n\nstruct FriendCellView: View {\n    var user: User\n\n    var body: some View {\n        ZStack(alignment: .topLeading) {\n            VStack(alignment: .center) {\n                Image(user.photo)\n                Text(user.name)\n            }\n\n            Button(\"Send Challenge\", action: { /* ... */ })\n                .buttonStyle(\n                    SymbolButtonStyle(\n                        systemName: \"gamecontroller.fill\"))\n        }\n    }\n}\n\nstruct SymbolButtonStyle: ButtonStyle {\n    let systemName: String\n\n    func makeBody(configuration: Configuration) -> some View {\n\t\t\t\tImage(systemName: systemName)\n            .accessibilityRepresentation { configuration.label }\n    }\n}"
+    },
+    {
+      "title": "FriendsView",
+      "language": "swift",
+      "startTimeSeconds": 890,
+      "code": "struct User: Identifiable {\n    var id: Int\n    var name: String\n    var photo: String\n}\n\nstruct FriendCellView: View {\n    var user: User\n\n    var body: some View {\n        ZStack(alignment: .topLeading) {\n            VStack(alignment: .center) {\n                Image(user.photo)\n                Text(user.name)\n            }\n\n            Button(\"Send Challenge\", action: { /* ... */ })\n                .buttonStyle(\n                    SymbolButtonStyle(\n                        systemName: \"gamecontroller.fill\"))\n        }\n    }\n}\n\nstruct FriendsView: View {\n    var users: [User]\n\n    var body: some View {\n        ScrollView(.horizontal, showsIndicators: false) {\n            HStack {\n                ForEach(users) { user in\n                    FriendCellView(user: user)\n                        .onTapGesture { /* ... */ }\n                }\n\n                AddFriendButton()\n\n                Spacer()\n            }\n        }\n    }\n}\n\nstruct AddFriendButton: View {\n    var body: some View {\n        Button(action: { /* ... */ }) {\n            Circle()\n                .foregroundColor(Color(white: 0.9))\n                .frame(width: 50, height: 50)\n                .overlay(\n                    Image(systemName: \"plus\")\n                        .resizable()\n                        .foregroundColor(Color(white: 0.5))\n                        .padding(15)\n                )\n        }\n        .buttonStyle(PlainButtonStyle())\n    }\n}\n\nstruct SymbolButtonStyle: ButtonStyle {\n    let systemName: String\n\n    func makeBody(configuration: Configuration) -> some View {\n\t\t\t\tImage(systemName: systemName)\n            .accessibilityRepresentation { configuration.label }\n    }\n}"
+    },
+    {
+      "title": "FriendsView with Containers",
+      "language": "swift",
+      "startTimeSeconds": 910,
+      "code": "struct User: Identifiable {\n    var id: Int\n    var name: String\n    var photo: String\n}\n\nstruct FriendCellView: View {\n    var user: User\n\n    var body: some View {\n        ZStack(alignment: .topLeading) {\n            VStack(alignment: .center) {\n                Image(user.photo)\n                Text(user.name)\n            }\n\n            Button(\"Send Challenge\", action: { /* ... */ })\n                .buttonStyle(\n                    SymbolButtonStyle(\n                        systemName: \"gamecontroller.fill\"))\n        }\n    }\n}\n\nstruct FriendsView: View {\n    var users: [User]\n\n    var body: some View {\n        ScrollView(.horizontal, showsIndicators: false) {\n            HStack {\n                ForEach(users) { user in\n                    FriendCellView(user: user)\n                         .accessibilityElement(children: .contain)\n                        .onTapGesture { /* ... */ }\n                }\n\n                AddFriendButton()\n\n                Spacer()\n            }\n        }\n    }\n}\n\nstruct AddFriendButton: View {\n    var body: some View {\n        Button(action: { /* ... */ }) {\n            Circle()\n                .foregroundColor(Color(white: 0.9))\n                .frame(width: 50, height: 50)\n                .overlay(\n                    Image(systemName: \"plus\")\n                        .resizable()\n                        .foregroundColor(Color(white: 0.5))\n                        .padding(15)\n                )\n        }\n        .buttonStyle(PlainButtonStyle())\n    }\n}\n\nstruct SymbolButtonStyle: ButtonStyle {\n    let systemName: String\n\n    func makeBody(configuration: Configuration) -> some View {\n\t\t\t\tImage(systemName: systemName)\n            .accessibilityRepresentation { configuration.label }\n    }\n}"
+    },
+    {
+      "title": "FriendCellView Sort Priority",
+      "language": "swift",
+      "startTimeSeconds": 980,
+      "code": "struct User: Identifiable {\n    var id: Int\n    var name: String\n    var photo: String\n}\n\nstruct FriendCellView: View {\n    var user: User\n\n    var body: some View {\n        ZStack(alignment: .topLeading) {\n            VStack(alignment: .center) {\n                Image(user.photo)\n                Text(user.name)\n            }\n\n            Button(\"Send Challenge\", action: { /* ... */ })\n                .buttonStyle(\n                    SymbolButtonStyle(\n                        systemName: \"gamecontroller.fill\"))\n                .accessibilitySortPriority(-1)\n        }\n    }\n}"
+    },
+    {
+      "title": "FriendsView with .combine",
+      "language": "swift",
+      "startTimeSeconds": 1015,
+      "code": "struct User: Identifiable {\n    var id: Int\n    var name: String\n    var photo: String\n}\n\nstruct FriendCellView: View {\n    var user: User\n\n    var body: some View {\n        ZStack(alignment: .topLeading) {\n            VStack(alignment: .center) {\n                Image(user.photo)\n                Text(user.name)\n            }\n\n            Button(\"Send Challenge\", action: { /* ... */ })\n                .buttonStyle(\n                    SymbolButtonStyle(\n                        systemName: \"gamecontroller.fill\"))\n        }\n    }\n}\n\nstruct FriendsView: View {\n    var users: [User]\n\n    var body: some View {\n        ScrollView(.horizontal, showsIndicators: false) {\n            HStack {\n                ForEach(users) { user in\n                    FriendCellView(user: user)\n                        .accessibilityElement(children: .combine)\n                        .onTapGesture { /* ... */ }\n                }\n\n                AddFriendButton()\n\n                Spacer()\n            }\n        }\n    }\n}\n\nstruct AddFriendButton: View {\n    var body: some View {\n        Button(action: { /* ... */ }) {\n            Circle()\n                .foregroundColor(Color(white: 0.9))\n                .frame(width: 50, height: 50)\n                .overlay(\n                    Image(systemName: \"plus\")\n                        .resizable()\n                        .foregroundColor(Color(white: 0.5))\n                        .padding(15)\n                )\n        }\n        .buttonStyle(PlainButtonStyle())\n    }\n}\n\nstruct SymbolButtonStyle: ButtonStyle {\n    let systemName: String\n\n    func makeBody(configuration: Configuration) -> some View {\n\t\t\t\tImage(systemName: systemName)\n            .accessibilityRepresentation { configuration.label }\n    }\n}"
+    },
+    {
+      "title": "AlertsView Implicit Rotor",
+      "language": "swift",
+      "startTimeSeconds": 1230,
+      "code": "struct Alert: Identifiable {\n    var id: Int\n    var isUnread: Bool\n    var isFlagged: Bool\n    var subject: String\n    var content: String\n}\n\nstruct AlertsView: View {\n    var alerts: [Alert]\n\n    var body: some View {\n        VStack {\n            ForEach(alerts) { alert in\n                AlertCellView(alert: alert)\n                    .accessibilityElement(children: .combine)\n            }\n        }\n        .accessibilityElement(children: .contain)\n        .accessibilityRotor(\"Warnings\") {\n            ForEach(alerts) { alert in\n                if alert.isWarning {\n                    AccessibilityRotorEntry(alert.title, id: alert.id)\n                }\n            }\n        }\n    }\n}\n\nstruct AlertCell: View {\n    var alert: Alert\n\n    var body: some View {\n        VStack(alignment: .leading) {\n            HStack {\n                if alert.isUnread {\n                    Circle()\n                        .foregroundColor(.blue)\n                        .frame(width: 10, height: 10)\n                }\n                if alert.isFlagged {\n                    Image(systemName: \"exclamationmark.triangle.fill\")\n                        .foregroundColor(.orange)\n                        .frame(width: 10, height: 10)\n                }\n                Text(alert.subject)\n                    .font(.headline)\n                    .fontWeight(.semibold)\n                Spacer()\n                Text(\"04/30/21\")\n                    .font(.subheadline)\n                    .foregroundColor(.secondary)\n            }\n            Text(alert.content)\n                .lineLimit(3)\n        }\n        .padding(10)\n        .background(\n            RoundedRectangle(cornerRadius: 8)\n                .foregroundColor(Color(white: 0.9))\n        )\n    }\n}"
+    },
+    {
+      "title": "AlertsView Explicit Rotor",
+      "language": "swift",
+      "startTimeSeconds": 1310,
+      "code": "struct Alert: Identifiable {\n    var id: Int\n    var isUnread: Bool\n    var isFlagged: Bool\n    var subject: String\n    var content: String\n}\n\nstruct AlertsView: View {\n    var alerts: [Alert]\n    @Namespace var namespace\n\n    var body: some View {\n        VStack {\n            ForEach(alerts) { alert in\n                VStack {\n                    AlertCellView(alert: alert)\n                        .accessibilityElement(children: .combine)\n                        .accessibilityRotorEntry(id: alert.id, in: namespace)\n                    AlertActionsView(alert: alert)\n                }\n            }\n        }\n        .accessibilityElement(children: .contain)\n        .accessibilityRotor(\"Warnings\") {\n            ForEach(alerts) { alert in\n                if alert.isWarning {\n                    AccessibilityRotorEntry(alert.title, id: alert.id, in: namespace)\n                }\n            }\n        }\n    }\n}\n\nstruct AlertCell: View {\n    var alert: Alert\n\n    var body: some View {\n        VStack(alignment: .leading) {\n            HStack {\n                if alert.isUnread {\n                    Circle()\n                        .foregroundColor(.blue)\n                        .frame(width: 10, height: 10)\n                }\n                if alert.isFlagged {\n                    Image(systemName: \"exclamationmark.triangle.fill\")\n                        .foregroundColor(.orange)\n                        .frame(width: 10, height: 10)\n                }\n                Text(alert.subject)\n                    .font(.headline)\n                    .fontWeight(.semibold)\n                Spacer()\n                Text(\"04/30/21\")\n                    .font(.subheadline)\n                    .foregroundColor(.secondary)\n            }\n            Text(alert.content)\n                .lineLimit(3)\n        }\n        .padding(10)\n        .background(\n            RoundedRectangle(cornerRadius: 8)\n                .foregroundColor(Color(white: 0.9))\n        )\n    }\n}"
+    },
+    {
+      "title": "TextEditor Rotors",
+      "language": "swift",
+      "startTimeSeconds": 1340,
+      "code": "struct ContentView: View {\n    @State var note: Note\n\n    var body: some View {\n        TextEditor($text.content)\n            .accessibilityRotor(\"Email Addresses\", textRanges: note.addressRanges)\n            .accessibilityRotor(\"Links\", textRanges: note.linkRanges)\n            .accessibilityRotor(\"Phone Numbers\", textRanges: note.phoneNumberRanges)\n    }\n}"
+    },
+    {
+      "title": "AlertNotificationView",
+      "language": "swift",
+      "startTimeSeconds": 1485,
+      "code": "struct Notification: Equatable {\n    enum Priority {\n        case low, high\n    }\n    var content: String\n    var priority: Priority\n}\n\nstruct AlertNotificationView<Content: View>: View {\n    @ViewBuilder var content: Content\n    @Binding var notification: Notification?\n    @AccessibilityFocusState var isNotificationFocused: Bool\n\n    var body: some View {\n        ZStack(alignment: .top) {\n            content\n\n            if let notification = $notification {\n                NotificationBanner(notification: notification)\n                    .accessibilityFocused($isNotificationFocused)\n            }\n        }\n        .onChange(of: notification) { notification in\n            if notification?.priority == .high {\n                isNotificationFocused = true\n            } else {\n                postAccessibilityNotification()\n            }\n        }\n    }\n\n    func postAccessibilityNotification() {\n        guard let announcement = notification?.content else {\n            return\n        }\n        #if os(macOS)\n        NSAccessibility.post(\n            element: NSApp.accessibilityWindow(),\n            notification: .announcementRequested,\n            userInfo: [.announcement: announcement])\n        #else\n        UIAccessibility.post(notification: .announcement, argument: announcement)\n        #endif\n    }\n}\n\nstruct NotificationBanner: View {\n    @Binding var notification: Notification?\n    @State var timer: Timer?\n    @AccessibilityFocusState var isNotificationFocused: Bool\n\n    var body: some View {\n        if let notification = notification {\n            Text(notification.content)\n                .accessibilityFocused($isNotificationFocused)\n                .onAppear { startTimer() }\n                .onDisappear { stopTimer() }\n        } else {\n            EmptyView()\n        }\n    }\n\n    func startTimer() {\n        timer = Timer.scheduledTimer(\n            withTimeInterval: 3,\n            repeats: true) { _ in\n            if !isNotificationFocused {\n                notification = nil\n            }\n        }\n    }\n\n    func stopTimer() {\n        timer?.invalidate()\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Accessibility",
+      "url": "https://developer.apple.com/documentation/swiftui/view-accessibility",
+      "type": "documentation",
+      "description": "Make your SwiftUI apps accessible to everyone, including people with disabilities.",
+      "sosumiURL": "https://sosumi.ai/documentation/swiftui/view-accessibility",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/swiftui/view-accessibility.json"
+    },
+    {
+      "title": "Creating accessible views",
+      "url": "https://developer.apple.com/documentation/SwiftUI/creating-accessible-views",
+      "type": "samplecode",
+      "description": "Make your app accessible to everyone by applying accessibility modifiers to your SwiftUI views.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/creating-accessible-views",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/creating-accessible-views.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10119-swiftui-accessibility-beyond-the-basics/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10119-swiftui-accessibility-beyond-the-basics/metadata.json",
+    "readme": "sessions/wwdc2021/10119-swiftui-accessibility-beyond-the-basics/README.md",
+    "transcript": "sessions/wwdc2021/10119-swiftui-accessibility-beyond-the-basics/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10119-swiftui-accessibility-beyond-the-basics/transcript.json"
+  }
+}

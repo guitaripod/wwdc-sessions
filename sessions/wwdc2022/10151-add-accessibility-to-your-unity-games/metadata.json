@@ -1,0 +1,102 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10151",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10151,
+  "title": "Add accessibility to your Unity games",
+  "description": "Learn how you can make your Unity games accessible on Apple platforms using our open source Accessibility plug-in. Follow along as we add support for assistive technologies like VoiceOver and Switch Control to a sample Unity game project. We'll show you how you can automatically scale text with Dynamic Type, support interface accommodations like reduced transparency or increased contrast, and more.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10151",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10151",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games",
+    "Accessibility & Inclusion"
+  ],
+  "primaryTopic": "Accessibility & Inclusion",
+  "duration": 968,
+  "hasTranscript": true,
+  "transcriptWordCount": 1823,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10151/5/3F44347B-F0CF-4DFC-89A8-C801EE456545/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10151/5/3F44347B-F0CF-4DFC-89A8-C801EE456545/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10151/5/3F44347B-F0CF-4DFC-89A8-C801EE456545/downloads/wwdc2022-10151_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10151/5/3F44347B-F0CF-4DFC-89A8-C801EE456545/downloads/wwdc2022-10151_hd.mp4",
+    "duration": 968
+  },
+  "codeSnippets": [
+    {
+      "title": "PlayingCard enum",
+      "language": "csharp",
+      "startTimeSeconds": 463,
+      "code": "public enum PlayingCard\n{\n    AceOfSpade,\n    AceOfClubs,\n    AceOfDiamonds\n}"
+    },
+    {
+      "title": "AccessibleCard class",
+      "language": "csharp",
+      "startTimeSeconds": 473,
+      "code": "using Apple.Accessibility;\npublic class AccessibleCard : MonoBehaviour \n{\n    public PlayingCard cardType;\n    public bool isCovered;\n    void Start()\n    {\n        var accessibilityNode = GetComponent<AccessibilityNode>();\n        accessibilityNode.accessibilityValueDelegate = () => {\n            if (isCovered) {\n              return \"covered\";\n            }\n            if (cardType == PlayingCard.AceOfSpades) {\n              return \"Ace of Spades\";\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "DynamicCardFaces",
+      "language": "csharp",
+      "startTimeSeconds": 635,
+      "code": "public class DynamicCardFaces : MonoBehaviour\n{\n    public Material RegularMaterial;\n    public Material LargeMaterial;\n    void OnEnable()\n    {\n        AccessibilitySettings.onPreferredTextSizesChanged += _settingsChanged;\n    }\n\n    void _settingsChanged() \n    {\n        var shouldUseLarge = AccessibilitySettings.PreferredContentSizeCategory >= \n            ContentSizeCategory.AccessibilityMedium;\n        GetComponent<Renderer>().material = shouldUseLarge ? RegularMaterial :\n            LargeMaterial;\n    }\n}"
+    },
+    {
+      "title": "Dynamic Type",
+      "language": "csharp",
+      "startTimeSeconds": 636,
+      "code": "using UnityEngine.UI;\npublic class DynamicTextSize : MonoBehaviour\n{\n    int originalSize;\n    void Start()\n    {\n        originalSize = GetComponent<Text>().textSize;\n    }\n\n    void OnEnable()\n    {\n        AccessibilitySettings.onPreferredTextSizesChanged += _settingsChanged;     }\n\n    void _settingsChanged() \n    {\n        GetComponent<Text>().textSize = (int)(originalSize *\n            AccessibilitySettings.PreferredContentSizeMultiplier);\n    }\n}"
+    },
+    {
+      "title": "Reduce motion",
+      "language": "csharp",
+      "startTimeSeconds": 894,
+      "code": "using Apple.Accessibility;\npublic class CardController : MonoBehaviour\n{\n    public void Flip() \n    {\n        var reduceMotionOn = !AccessibilitySettings.IsReduceMotionEnabled;\n        if (!reduceMotionOn)\n        {\n            StartCoroutine(Animate());\n        }\n        else \n        {\n            transform.rotation = Quaternion.identify;\n        }\n    }\n    IEnumerator Animate()\n    {\n    } \n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Apple Unity Plug-Ins on GitHub",
+      "url": "https://github.com/apple/unityplugins",
+      "type": "download",
+      "description": null
+    },
+    {
+      "title": "Accessibility",
+      "url": "https://developer.apple.com/documentation/accessibility",
+      "type": "documentation",
+      "description": "Make your apps accessible to everyone who uses Apple devices.",
+      "sosumiURL": "https://sosumi.ai/documentation/accessibility",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/accessibility.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10151-add-accessibility-to-your-unity-games/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10151-add-accessibility-to-your-unity-games/metadata.json",
+    "readme": "sessions/wwdc2022/10151-add-accessibility-to-your-unity-games/README.md",
+    "transcript": "sessions/wwdc2022/10151-add-accessibility-to-your-unity-games/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10151-add-accessibility-to-your-unity-games/transcript.json"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2015-805",
+  "event": "wwdc2015",
+  "eventName": "WWDC15",
+  "year": 2015,
+  "eventContentId": 805,
+  "title": "Apple Watch Design Tips and Tricks",
+  "description": "Get essential design guidance for creating Apple Watch apps that support quick and efficient interaction, make accessing features and information more convenient, and compliment their companion iOS apps. Learn key tips about information architecture, layout, typography, color and app icon design that will make your app easy to use, beautiful and delightful.",
+  "url": "https://developer.apple.com/videos/play/wwdc2015/805",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2015/805",
+  "type": "Video",
+  "publishedAt": "2015-06-12T15:30:00-07:00",
+  "platforms": [
+    "watchOS"
+  ],
+  "keywords": [
+    "⌚️",
+    "design",
+    "digital crown",
+    "experience",
+    "icon",
+    "interface",
+    "layout",
+    "typography",
+    "ui",
+    "watchkit",
+    "wkinterface"
+  ],
+  "topics": [
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 3114,
+  "hasTranscript": true,
+  "transcriptWordCount": 8447,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2015/805yjy11epjkgmnn11/805/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2015/805yjy11epjkgmnn11/805/805_sd_apple_watch_design_tips_and_tricks.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2015/805yjy11epjkgmnn11/805/805_hd_apple_watch_design_tips_and_tricks.mp4",
+    "duration": 3114
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2015/805-apple-watch-design-tips-and-tricks/",
+  "files": {
+    "metadata": "sessions/wwdc2015/805-apple-watch-design-tips-and-tricks/metadata.json",
+    "readme": "sessions/wwdc2015/805-apple-watch-design-tips-and-tricks/README.md",
+    "transcript": "sessions/wwdc2015/805-apple-watch-design-tips-and-tricks/transcript.md",
+    "transcriptJSON": "sessions/wwdc2015/805-apple-watch-design-tips-and-tricks/transcript.json"
+  }
+}

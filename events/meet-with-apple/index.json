@@ -1,0 +1,1877 @@
+{
+  "event": "meet-with-apple",
+  "name": "Meet with Apple",
+  "year": 2025,
+  "sessionCount": 51,
+  "sessions": [
+    {
+      "id": "meet-with-apple-201",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 201,
+      "title": "Explore the biggest updates from WWDC25",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/201",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/201",
+      "duration": 6303,
+      "publishedAt": "2025-07-10T08:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Essentials",
+      "topics": [
+        "Essentials"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 14146,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/201-explore-the-biggest-updates-from-wwdc25/",
+      "description": "Dive into the key features announced at WWDC25 in this all-new session recorded live at the Apple Developer Center in Cupertino. This video is for all members of your team, including designers, developers, and product managers."
+    },
+    {
+      "id": "meet-with-apple-205",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 205,
+      "title": "Code along with the Foundation Models framework",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/205",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/205",
+      "duration": 6217,
+      "publishedAt": "2025-09-15T14:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "macOS"
+      ],
+      "primaryTopic": "AI & Machine Learning",
+      "topics": [
+        "Swift",
+        "AI & Machine Learning"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 14444,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 2,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/205-code-along-with-the-foundation-models-framework/",
+      "description": "Get hands-on experience using the Foundation Models framework to access Apple’s on-device LLM. In this online session, you can code along with us as we build generative AI features into a sample app live in Xcode. We’ll guide you through implementing core features like basic text generation, as well as advanced topics like guided generation for structured data output, streaming responses for dynamic UI updates, and tool calling to retrieve data or take an action. To actively code along, you’ll need a Mac with Apple silicon that supports Apple Intelligence running the latest release of macOS Tahoe 26 and Xcode 26."
+    },
+    {
+      "id": "meet-with-apple-206",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 206,
+      "title": "Secure your app with Memory Integrity Enforcement",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/206",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/206",
+      "duration": 741,
+      "publishedAt": "2025-09-29T08:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Privacy & Security",
+      "topics": [
+        "Developer Tools",
+        "Swift",
+        "Privacy & Security"
+      ],
+      "keywords": [
+        "corruption",
+        "dangling pointer",
+        "memory",
+        "memory tagging extension",
+        "mie",
+        "mte",
+        "security",
+        "tagging",
+        "use-after-free"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 1554,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 2,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/206-secure-your-app-with-memory-integrity-enforcement/",
+      "description": "Discover Memory Integrity Enforcement (MIE), a new security technology where hardware, the operating system, and the compiler work together to prevent access to invalid memory, safely aborting program execution before vulnerabilities can be exploited. Find out how MIE makes it far more difficult for attackers to take advantage of memory corruption bugs. Learn how to adopt MIE in your app to protect people and their data, while also rooting out hard-to-find memory issues in your code base."
+    },
+    {
+      "id": "meet-with-apple-208",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 208,
+      "title": "Showcase: Learn how apps are integrating the new design and Liquid Glass",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/208",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/208",
+      "duration": 6977,
+      "publishedAt": "2025-11-18T10:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Design",
+      "topics": [
+        "SwiftUI & UI Frameworks",
+        "Design"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 17926,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/208-showcase-learn-how-apps-are-integrating-the-new-design-and-l/",
+      "description": "Learn directly from developers about how they implemented the new design and Liquid Glass across Apple platforms. In this series of online presentations by third-party teams, you’ll find out how developers of all sizes are embracing native design, expressing their brand identities, and quickly and successfully adopting the latest features. This activity also includes a panel discussion with Apple designers. Conducted in English."
+    },
+    {
+      "id": "meet-with-apple-209",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 209,
+      "title": "Create immersive media experiences for visionOS - Day 1",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/209",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/209",
+      "duration": 17143,
+      "publishedAt": "2025-11-21T00:00:00-08:00",
+      "platforms": [
+        "visionOS"
+      ],
+      "primaryTopic": "Spatial Computing",
+      "topics": [
+        "Spatial Computing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 44873,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/209-create-immersive-media-experiences-for-visionos-day-1/",
+      "description": "Learn how to create compelling interactive experiences for visionOS and capture immersive video in this multi-day live streamed activity. On Day 1, we’ll show how visionOS 26 can help you tell impactful immersive and interactive stories. You’ll learn how to frame your creative ideas for formats like Apple Immersive Video and explore real-world examples from past productions. You’ll discover how to design for spatial interaction and tell stories that make the audience part of your experience. And you’ll find out how to use SharePlay and spatial Personas to help people connect over your ideas. On Day 2, we’ll dive deep into Apple Immersive Video with Apple Spatial Audio. You’ll discover how to create entirely new media experiences, get started with Apple Immersive Video, explore new production workflows, and dig into previous Apple Immersive productions."
+    },
+    {
+      "id": "meet-with-apple-210",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 210,
+      "title": "Create immersive media experiences for visionOS - Day 2",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/210",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/210",
+      "duration": 11364,
+      "publishedAt": "2025-11-21T00:00:00-08:00",
+      "platforms": [
+        "visionOS"
+      ],
+      "primaryTopic": "Spatial Computing",
+      "topics": [
+        "Spatial Computing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 29154,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/210-create-immersive-media-experiences-for-visionos-day-2/",
+      "description": "Learn how to create compelling interactive experiences for visionOS and capture immersive video in this multi-day live streamed activity. On Day 1, we’ll show how visionOS 26 can help you tell impactful immersive and interactive stories. You’ll learn how to frame your creative ideas for formats like Apple Immersive Video and explore real-world examples from past productions. You’ll discover how to design for spatial interaction and tell stories that make the audience part of your experience. And you’ll find out how to use SharePlay and spatial Personas to help people connect over your ideas. On Day 2, we’ll dive deep into Apple Immersive Video with Apple Spatial Audio. You’ll discover how to create entirely new media experiences, get started with Apple Immersive Video, explore new production workflows, and dig into previous Apple Immersive productions."
+    },
+    {
+      "id": "meet-with-apple-212",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 212,
+      "title": "Optimize your app’s speed and efficiency",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/212",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/212",
+      "duration": null,
+      "publishedAt": null,
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "primaryTopic": "System Services",
+      "topics": [
+        "Developer Tools",
+        "System Services"
+      ],
+      "keywords": [
+        "efficiency",
+        "hangs",
+        "hitches",
+        "launch",
+        "performance",
+        "power",
+        "power profiler",
+        "speed"
+      ],
+      "hasTranscript": false,
+      "transcriptWordCount": 0,
+      "availableLanguages": [],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/212-optimize-your-app-s-speed-and-efficiency/",
+      "description": "Join us online to learn how to elevate your app experience by maximizing performance and resolving inefficiencies. Whether you’re optimizing an existing app or just starting out, you’ll learn how to improve your app’s responsiveness with SwiftUI, monitor performance when using foundation models, and explore ways to reduce your app’s battery usage. Conducted in English."
+    },
+    {
+      "id": "meet-with-apple-214",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 214,
+      "title": "Press Start: Game development on Apple platforms",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/214",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/214",
+      "duration": null,
+      "publishedAt": null,
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": false,
+      "transcriptWordCount": 0,
+      "availableLanguages": [],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/214-press-start-game-development-on-apple-platforms/",
+      "description": "Learn to unlock the full potential of game development for iOS, iPadOS, macOS, and visionOS in this all-day online activity streaming from Cupertino. Whether you’re porting a PC or console title, crafting a mobile masterpiece, or augmenting your game with cutting-edge features, these in-depth sessions will help you find success in the Apple ecosystem. You’ll learn how to leverage Metal, optimize for Apple silicon, design compelling handheld experiences, and navigate the App Store to reach millions of players."
+    },
+    {
+      "id": "meet-with-apple-216",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 216,
+      "title": "What’s new in immersive media for visionOS",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/216",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/216",
+      "duration": 1392,
+      "publishedAt": "2025-12-01T00:00:00-08:00",
+      "platforms": [
+        "visionOS"
+      ],
+      "primaryTopic": "Spatial Computing",
+      "topics": [
+        "Spatial Computing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 3190,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/216-what-s-new-in-immersive-media-for-visionos/",
+      "description": "Get to know the different types of media you can make for apps, games, and experiences in visionOS. Learn about updates for 2D and 3D video, spatial video, and more immersive media formats like 180, 360, Wide FOV, and Apple Immersive Video. This session was originally presented as part of the Meet with Apple activity “Create immersive media experiences for visionOS - Day 1.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-217",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 217,
+      "title": "What’s new in interactive media for visionOS",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/217",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/217",
+      "duration": 1509,
+      "publishedAt": "2025-12-01T00:00:00-08:00",
+      "platforms": [
+        "visionOS"
+      ],
+      "primaryTopic": "Spatial Computing",
+      "topics": [
+        "Spatial Computing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 3624,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/217-what-s-new-in-interactive-media-for-visionos/",
+      "description": "Discover the latest updates to visionOS 26 that can help you build stunning interactive moments for your apps, games, and experiences. This session was originally presented as part of the Meet with Apple activity “Create immersive media experiences for visionOS - Day 1.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-218",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 218,
+      "title": "Create stories with immersive video and audio",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/218",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/218",
+      "duration": 3542,
+      "publishedAt": "2025-12-01T00:00:00-08:00",
+      "platforms": [
+        "visionOS"
+      ],
+      "primaryTopic": "Spatial Computing",
+      "topics": [
+        "Spatial Computing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 8055,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/218-create-stories-with-immersive-video-and-audio/",
+      "description": "Learn the foundations for creating compelling and powerful stories when creating Apple Immersive Video and spatial video experiences. Discover techniques for establishing presence, building authenticity, working with proximity, and creating connection. This session was originally presented as part of the Meet with Apple activity “Create immersive media experiences for visionOS - Day 1.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-219",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 219,
+      "title": "Design immersive and interactive experiences",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/219",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/219",
+      "duration": 4016,
+      "publishedAt": "2025-12-02T00:00:00-08:00",
+      "platforms": [
+        "visionOS"
+      ],
+      "primaryTopic": "Spatial Computing",
+      "topics": [
+        "Spatial Computing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 11726,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/219-design-immersive-and-interactive-experiences/",
+      "description": "Discover design fundamentals and best practices for making immersive and interactive media apps, games, and experiences in visionOS. Find out how to use immersion and interaction within your experiences, build spatial interfaces that support your storytelling, and enrich your content with immersive soundscapes. This session was originally presented as part of the Meet with Apple activity “Create immersive media experiences for visionOS - Day 1.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-220",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 220,
+      "title": "Build spatial experiences with RealityKit",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/220",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/220",
+      "duration": 2454,
+      "publishedAt": "2025-12-02T00:00:00-08:00",
+      "platforms": [
+        "visionOS"
+      ],
+      "primaryTopic": "Spatial Computing",
+      "topics": [
+        "Spatial Computing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 5803,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/220-build-spatial-experiences-with-realitykit/",
+      "description": "Learn how you can build experiences for visionOS. Explore how native Apple frameworks like SwiftUI and RealityKit can help you build compelling stories and games. Find out how Reality Composer Pro can help you bring in 3D assets, create compelling environments, and build fluid animations. This session was originally presented as part of the Meet with Apple activity “Create immersive media experiences for visionOS - Day 1.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-221",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 221,
+      "title": "Build shared experiences for visionOS",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/221",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/221",
+      "duration": 2210,
+      "publishedAt": "2025-12-02T00:00:00-08:00",
+      "platforms": [
+        "visionOS"
+      ],
+      "primaryTopic": "Spatial Computing",
+      "topics": [
+        "Spatial Computing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 6315,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/221-build-shared-experiences-for-visionos/",
+      "description": "Learn how to build media apps, games, and experiences for visionOS that can be shared with others using SharePlay and FaceTime. Learn how to work with spatial Personas, enable simultaneous playback, hand off virtual objects, place people in scenes, and help people connect with local and faraway participants. And find out how you can combine these APIs as we prototype an all-new shared experience for visionOS. This session was originally presented as part of the Meet with Apple activity “Create immersive media experiences for visionOS - Day 1.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-222",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 222,
+      "title": "Meet the Apple Immersive Video format",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/222",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/222",
+      "duration": 1140,
+      "publishedAt": "2025-12-03T00:00:00-08:00",
+      "platforms": [
+        "visionOS"
+      ],
+      "primaryTopic": "Spatial Computing",
+      "topics": [
+        "Spatial Computing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2740,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/222-meet-the-apple-immersive-video-format/",
+      "description": "Explore the foundations of the Apple Immersive Video format and learn how the system is engineered to preserve fidelity, presence of space, and world scale. This session introduces acuity targets, acquisition requirements, AIV file format structures, and foveation techniques. This session also focuses on the role of AIV specific metadata such as ILPD and motion comfort data in creating and playing back amazing AIV experiences. This session was originally presented as part of the Meet with Apple activity “Create immersive media experiences for visionOS - Day 2.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-223",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 223,
+      "title": "Meet Apple Spatial Audio Format and APAC",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/223",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/223",
+      "duration": 1090,
+      "publishedAt": "2025-12-03T00:00:00-08:00",
+      "platforms": [
+        "visionOS"
+      ],
+      "primaryTopic": "Spatial Computing",
+      "topics": [
+        "Audio & Video",
+        "Spatial Computing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2415,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/223-meet-apple-spatial-audio-format-and-apac/",
+      "description": "Discover how Apple Spatial Audio Format (ASAF) brings together Higher Order Ambisonics and object-based audio to create spatial precision that complements Apple Immersive Video. This session also introduces APAC, a highly efficient codec designed to play back high-resolution ASAF mixes at low bitrates while maintaining immersive detail and clarity. This session was originally presented as part of the Meet with Apple activity “Create immersive media experiences for visionOS - Day 2.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-224",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 224,
+      "title": "An introduction to capturing Apple Immersive Video",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/224",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/224",
+      "duration": 571,
+      "publishedAt": "2025-12-03T00:00:00-08:00",
+      "platforms": [
+        "visionOS"
+      ],
+      "primaryTopic": "Spatial Computing",
+      "topics": [
+        "Spatial Computing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1531,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/224-an-introduction-to-capturing-apple-immersive-video/",
+      "description": "Learn how to prepare for and execute a successful Apple Immersive Video shoot. This session covers equipment setup, power and media management, spatial audio capture, and on-set monitoring approaches. You’ll also explore ground and aerial rig options, along with best practices for reviewing dailies on Apple Vision Pro before wrapping production. This session was originally presented as part of the Meet with Apple activity “Create immersive media experiences for visionOS - Day 2.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-225",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 225,
+      "title": "Spatial Audio workflows for Apple Immersive Video",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/225",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/225",
+      "duration": 823,
+      "publishedAt": "2025-12-04T00:00:00-08:00",
+      "platforms": [
+        "visionOS"
+      ],
+      "primaryTopic": "Spatial Computing",
+      "topics": [
+        "Audio & Video",
+        "Spatial Computing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2028,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/225-spatial-audio-workflows-for-apple-immersive-video/",
+      "description": "Follow a step-by-step walkthrough of Spatial Audio workflows designed for Apple Immersive Video. Topics include capturing ambisonic beds and close-miked sources, building layers during sound editorial, and mixing directly in headphones to ensure accurate spatial alignment. The session highlights why reviewing mixes on Apple Vision Pro is essential for maintaining immersion. This session was originally presented as part of the Meet with Apple activity “Create immersive media experiences for visionOS - Day 2.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-226",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 226,
+      "title": "Apple Immersive Video-enabled workflows | Blackmagic Design",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/226",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/226",
+      "duration": 660,
+      "publishedAt": "2025-12-04T00:00:00-08:00",
+      "platforms": [
+        "visionOS"
+      ],
+      "primaryTopic": "Spatial Computing",
+      "topics": [
+        "Audio & Video",
+        "Spatial Computing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1552,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/226-apple-immersive-video-enabled-workflows-blackmagic-design/",
+      "description": "See how Blackmagic Design supports Apple Immersive Video through an end-to-end workflow, from the URSA Cine Immersive camera to immersive tools in DaVinci Resolve Studio 20. Learn how features support reviewing preview content on Apple Vision Pro, mixing in Spatial Audio, managing camera motion data, and delivery of final bundles using purpose-built presets. This session was originally presented as part of the Meet with Apple activity “Create immersive media experiences for visionOS - Day 2.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-227",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 227,
+      "title": "Dailies and mastering for Apple Immersive Video | Colorfront",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/227",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/227",
+      "duration": 619,
+      "publishedAt": "2025-12-04T00:00:00-08:00",
+      "platforms": [
+        "visionOS"
+      ],
+      "primaryTopic": "Spatial Computing",
+      "topics": [
+        "Audio & Video",
+        "Spatial Computing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1544,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/227-dailies-and-mastering-for-apple-immersive-video-colorfront/",
+      "description": "Learn how Colorfront streamlines Apple Immersive Video dailies and mastering using On Set Dailies (OSD) and Transcoder. This session walks through Apple Silicon-optimized performance, distributed rendering features, and how to handle metadata. You’ll also explore a new integration with the MainConcept immersive encoding library that enhances final delivery efficiency and quality. This session was originally presented as part of the Meet with Apple activity “Create immersive media experiences for visionOS - Day 2.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-228",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 228,
+      "title": "Hosting and distributing Apple Immersive Video | SpatialGen",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/228",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/228",
+      "duration": 465,
+      "publishedAt": "2025-12-05T00:00:00-08:00",
+      "platforms": [
+        "visionOS"
+      ],
+      "primaryTopic": "Spatial Computing",
+      "topics": [
+        "Spatial Computing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1083,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/228-hosting-and-distributing-apple-immersive-video-spatialgen/",
+      "description": "Explore how to host and distribute Apple Immersive Video through SpatialGen’s platform. You'll learn about automating MV-HEVC and HLS stream creation, FairPlay DRM support, and generating stream links compatible with Apple platforms and Vision Pro apps. This session was originally presented as part of the Meet with Apple activity “Create immersive media experiences for visionOS - Day 2.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-229",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 229,
+      "title": "Previsualization for Apple Immersive: Learnings from “Open Hearts” by The Weeknd",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/229",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/229",
+      "duration": 797,
+      "publishedAt": "2025-12-05T00:00:00-08:00",
+      "platforms": [
+        "visionOS"
+      ],
+      "primaryTopic": "Spatial Computing",
+      "topics": [
+        "Spatial Computing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2147,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/229-previsualization-for-apple-immersive-learnings-from-open-hea/",
+      "description": "See how immersive previsualization elevates planning for Apple Immersive Video productions. This session demonstrates how CG tools helped test framing, movement, motion comfort, and VFX concepts in advance, which enabled alignment across teams and supported confident creative decisions for The Weeknd’s “Open Hearts\" music video. This session was originally presented as part of the Meet with Apple activity “Create immersive media experiences for visionOS - Day 2.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-230",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 230,
+      "title": "Production expectations for Apple Immersive Video: Learnings from “Submerged”",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/230",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/230",
+      "duration": 712,
+      "publishedAt": "2025-12-05T00:00:00-08:00",
+      "platforms": [
+        "visionOS"
+      ],
+      "primaryTopic": "Spatial Computing",
+      "topics": [
+        "Spatial Computing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1876,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/230-production-expectations-for-apple-immersive-video-learnings/",
+      "description": "Gain insight into how to produce scripted immersive content with Apple Immersive Video. Explore how expanded production development, camera testing, pre-vis, and crew preparation contribute to a smoother production. The session also highlights how the format’s acuity influences set design and lighting, and why reviewing footage on Apple Vision Pro is critical for evaluating detail and viewer comfort. This session was originally presented as part of the Meet with Apple activity “Create immersive media experiences for visionOS - Day 2.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-231",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 231,
+      "title": "Capturing live events for Apple Immersive Video: Learnings from \"Metallica\"",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/231",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/231",
+      "duration": 592,
+      "publishedAt": "2025-12-08T00:00:00-08:00",
+      "platforms": [
+        "visionOS"
+      ],
+      "primaryTopic": "Spatial Computing",
+      "topics": [
+        "Spatial Computing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1258,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/231-capturing-live-events-for-apple-immersive-video-learnings-fr/",
+      "description": "Learn how to approach large-scale live events for Apple Immersive Video. This session covers the importance of access, mapping stage layouts, placing cameras effectively, and analyzing previous performances to anticipate the show. Using the Apple Immersive title \"Metallica\" as an example, you’ll also see how pre-vis in Apple Vision Pro and stabilized capture systems help capture dynamic performances while maintaining comfort. This session was originally presented as part of the Meet with Apple activity “Create immersive media experiences for visionOS - Day 2.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-232",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 232,
+      "title": "The power of simplicity: Lessons from unscripted Apple Immersive titles",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/232",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/232",
+      "duration": 1080,
+      "publishedAt": "2025-12-08T00:00:00-08:00",
+      "platforms": [
+        "visionOS"
+      ],
+      "primaryTopic": "Spatial Computing",
+      "topics": [
+        "Spatial Computing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2385,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/232-the-power-of-simplicity-lessons-from-unscripted-apple-immers/",
+      "description": "Discover techniques on how to craft compelling, unscripted immersive stories. This session explores how to create natural, grounded framing, choose viewer-comfortable distances and heights, and use spatial audio to guide attention. You’ll also learn why building trust with subjects is essential, especially when immersive shots are longer and place people at the heart of the experience. This session was originally presented as part of the Meet with Apple activity “Create immersive media experiences for visionOS - Day 2.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-233",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 233,
+      "title": "Preserving presence for Apple Immersive Video: Learnings from post production",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/233",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/233",
+      "duration": 877,
+      "publishedAt": "2025-12-08T00:00:00-08:00",
+      "platforms": [
+        "visionOS"
+      ],
+      "primaryTopic": "Spatial Computing",
+      "topics": [
+        "Spatial Computing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2743,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/233-preserving-presence-for-apple-immersive-video-learnings-from/",
+      "description": "Learn how to protect presence throughout post production for Apple Immersive Video. The session covers how to review dailies on Apple Vision Pro, use editorial transitions to reset depth, maintain accurate spatial cues in audio, ensure proper 3D behavior for VFX, reduce visual noise, and grade toward an idealized yet natural look. This session was originally presented as part of the Meet with Apple activity “Create immersive media experiences for visionOS - Day 2.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-234",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 234,
+      "title": "Hands-on experience with editing for Apple Immersive Video",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/234",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/234",
+      "duration": 2212,
+      "publishedAt": "2025-12-09T00:00:00-08:00",
+      "platforms": [
+        "visionOS"
+      ],
+      "primaryTopic": "Spatial Computing",
+      "topics": [
+        "Spatial Computing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 5664,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/234-hands-on-experience-with-editing-for-apple-immersive-video/",
+      "description": "Join Clara and Ben from Main Course Films to discover how you can approach your editorial process when working with Apple Immersive Video. Learn about engaging with proxy workflows for efficient editing, as well as considerations in shot choice, sequencing, and sound design. This session was originally presented as part of the Meet with Apple activity “Create immersive media experiences for visionOS - Day 2.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-235",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 235,
+      "title": "Hands-on experience with visual effects for Apple Immersive Video",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/235",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/235",
+      "duration": 2551,
+      "publishedAt": "2025-12-09T00:00:00-08:00",
+      "platforms": [
+        "visionOS"
+      ],
+      "primaryTopic": "Spatial Computing",
+      "topics": [
+        "Spatial Computing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 7028,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/235-hands-on-experience-with-visual-effects-for-apple-immersive/",
+      "description": "Join Matt DeJohn from Blackmagic Design to discover how you can approach visual effects for your Apple Immersive Video projects. Working in Fusion, you’ll learn about stereoscopic title placement, simple patching, and advanced workflows, like stabilization. This session was originally presented as part of the Meet with Apple activity “Create immersive media experiences for visionOS - Day 2.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-236",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 236,
+      "title": "Hands-on experience with Spatial Audio for Apple Immersive Video",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/236",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/236",
+      "duration": 1509,
+      "publishedAt": "2025-12-09T00:00:00-08:00",
+      "platforms": [
+        "visionOS"
+      ],
+      "primaryTopic": "Spatial Computing",
+      "topics": [
+        "Spatial Computing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 4110,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/236-hands-on-experience-with-spatial-audio-for-apple-immersive-v/",
+      "description": "Join David Lebolt from Blackmagic Design to discover how to work with Apple Spatial Audio Format using Fairlight tools. Learn how to setup your session as well as mix, spatialize, and deliver audio correctly with APAC codecs. This session was originally presented as part of the Meet with Apple activity “Create immersive media experiences for visionOS - Day 2.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-237",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 237,
+      "title": "Code-along: Start building with Swift and SwiftUI",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/237",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/237",
+      "duration": 5769,
+      "publishedAt": "2025-11-14T10:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "primaryTopic": "SwiftUI & UI Frameworks",
+      "topics": [
+        "Essentials",
+        "Swift",
+        "SwiftUI & UI Frameworks"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 13171,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/237-code-along-start-building-with-swift-and-swiftui/",
+      "description": "Learn the basics of app development with Swift and SwiftUI. In this online code-along, you’ll build a simple view from an iOS demo app in Xcode, add text fields and photos to capture input, and save information using SwiftData. By the end of the session, you’ll have a complete, interactive interface. To code along, you’ll need a Mac running macOS Sonoma 14.0 or later and Xcode 15 or later. Conducted in English."
+    },
+    {
+      "id": "meet-with-apple-238",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 238,
+      "title": "Discover game development on Apple platforms",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/238",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/238",
+      "duration": 855,
+      "publishedAt": "2025-12-12T00:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2003,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/238-discover-game-development-on-apple-platforms/",
+      "description": "Discover how the unified architecture across Apple platforms makes it faster and easier to build, scale, and deliver high-performance games across every device. Learn how tools like Metal 4, the Game Porting Toolkit, and the Apple Games app help developers reach players on more than 2 billion active devices worldwide. This session was originally presented as part of the Meet with Apple activity “Press Start: Game development on Apple platforms.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-239",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 239,
+      "title": "Chart your game's course to Apple platforms",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/239",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/239",
+      "duration": 1106,
+      "publishedAt": "2025-12-12T00:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2654,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 4,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/239-chart-your-game-s-course-to-apple-platforms/",
+      "description": "Explore key strategies for bringing existing games to the unified Apple ecosystem, whether you’re creating in engines or porting custom PC titles with the Game Porting Toolkit. Learn how you can leverage Apple tools, frameworks, and open-source Unity plug-ins to optimize performance, integrate native features, and reach players across iPhone, iPad, Mac, and Apple Vision Pro. This session was originally presented as part of the Meet with Apple activity “Press Start: Game development on Apple platforms.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-240",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 240,
+      "title": "Level up with Apple game technologies",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/240",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/240",
+      "duration": 1157,
+      "publishedAt": "2025-12-12T00:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 3026,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 3,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/240-level-up-with-apple-game-technologies/",
+      "description": "Explore the frameworks and technologies that can help you deliver great player experiences across the Apple ecosystem. Learn how to use frameworks like GameSave and MetalFX, and tools like Game Mode and Managed Background Assets, to boost performance, streamline launches, and create seamless gameplay on Apple devices. This session was originally presented as part of the Meet with Apple activity “Press Start: Game development on Apple platforms.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-241",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 241,
+      "title": "Bring your PC and console games to Mac",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/241",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/241",
+      "duration": 1193,
+      "publishedAt": "2025-12-15T00:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 3450,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 2,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/241-bring-your-pc-and-console-games-to-mac/",
+      "description": "Learn how to port your existing Windows and console games to Apple silicon devices using tools like Metal and the Game Porting Toolkit. Explore the techniques that can help you accelerate and streamline your porting workflows, and get your game running across the entire Mac lineup. This session was originally presented as part of the Meet with Apple activity “Press Start: Game development on Apple platforms.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-242",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 242,
+      "title": "Explore power, performance, and scale for games on iPhone and iPad",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/242",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/242",
+      "duration": 943,
+      "publishedAt": "2025-12-15T00:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2205,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 1,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/242-explore-power-performance-and-scale-for-games-on-iphone-and/",
+      "description": "Discover the Apple tools and technologies you can use to optimize game performance and power usage on iPhone and iPad. Learn how to use the Metal Performance HUD, Instruments, and Metal debugger to identify bottlenecks, improve efficiency, and scale your game across Apple devices. This session was originally presented as part of the Meet with Apple activity “Press Start: Game development on Apple platforms.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-243",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 243,
+      "title": "Design great interfaces for handheld games",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/243",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/243",
+      "duration": 1199,
+      "publishedAt": "2025-12-15T00:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 3369,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 2,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/243-design-great-interfaces-for-handheld-games/",
+      "description": "Get practical guidance from Apple Design team member Dylan Edwards about adapting console and PC game interfaces to iPhone and iPad. Learn how to create flexible layouts, maximize the full screen, maintain legibility, and design intuitive and responsive touch controls that make handheld gaming feel natural. This session was originally presented as part of the Meet with Apple activity “Press Start: Game development on Apple platforms.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-244",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 244,
+      "title": "Apple Arcade: From concept to catalog",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/244",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/244",
+      "duration": 383,
+      "publishedAt": "2025-12-16T00:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1008,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 1,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/244-apple-arcade-from-concept-to-catalog/",
+      "description": "Take a peek into Apple Arcade, which curates and supports a global catalog of over 250 ad-free games, offering fun, safe, and high-quality experiences for players across Apple devices. Explore Arcade’s unique developer partnerships, funding model, and creative support system, which helps everyone from indie creators to major franchises bring their games from concept to catalog. This session was originally presented as part of the Meet with Apple activity “Press Start: Game development on Apple platforms.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-245",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 245,
+      "title": "Transform your game with Apple Vision Pro",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/245",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/245",
+      "duration": 1653,
+      "publishedAt": "2025-12-16T00:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "visionOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 4037,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/245-transform-your-game-with-apple-vision-pro/",
+      "description": "Join Nathaniel Ellingson from Apple’s Developer Ecosystem team to learn how to bring your game into the spatial computing era. Find out how Apple Vision Pro’s precise hand tracking, spatial accessories, ultra-high resolution displays, and native frameworks like RealityKit and Metal empower creators to craft immersive and visually stunning gaming experiences. This session was originally presented as part of the Meet with Apple activity “Press Start: Game development on Apple platforms.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-246",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 246,
+      "title": "Unlock success with premium games on the App Store",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/246",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/246",
+      "duration": 784,
+      "publishedAt": "2025-12-16T00:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2138,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 2,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/246-unlock-success-with-premium-games-on-the-app-store/",
+      "description": "Learn how game developers can find success with paid and premium titles across the Apple ecosystem. Find out how tools and strategies like pre-order, Universal Purchase, and Game Center can help you optimize discovery, engagement, and revenue while reaching hundreds of millions of players worldwide. This session was originally presented as part of the Meet with Apple activity “Press Start: Game development on Apple platforms.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-247",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 247,
+      "title": "Discover how DREDGE was reimagined for Apple platforms | Black Salt Games",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/247",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/247",
+      "duration": 872,
+      "publishedAt": "2025-12-17T00:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2216,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/247-discover-how-dredge-was-reimagined-for-apple-platforms-black/",
+      "description": "Find out firsthand how Black Salt Games rebuilt their indie hit DREDGE from the inside out, redesigning the game’s UI, controls, and flow to make it feel truly native on iPhone, iPad, and Mac. Plus, learn how business strategies like Universal App support, long runway pre-orders, and “Try before you buy” powered the game’s premium mobile launch. This session was originally presented as part of the Meet with Apple activity “Press Start: Game development on Apple platforms.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-248",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 248,
+      "title": "Boost discoverability and engagement with the Apple Games app",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/248",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/248",
+      "duration": 936,
+      "publishedAt": "2025-12-17T00:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2082,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 1,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/248-boost-discoverability-and-engagement-with-the-apple-games-ap/",
+      "description": "The Apple Games app is an all-in-one gaming destination designed to help players jump back into their games, find their next favorite, and have even more fun with friends across iPhone, iPad, and Mac. Learn how the Games app can help you boost engagement and visibility through features like achievements, leaderboards, challenges, and activities. This session was originally presented as part of the Meet with Apple activity “Press Start: Game development on Apple platforms.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-249",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 249,
+      "title": "Explore game curation and featuring on the App Store",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/249",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/249",
+      "duration": 976,
+      "publishedAt": "2025-12-17T00:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2733,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 3,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/249-explore-game-curation-and-featuring-on-the-app-store/",
+      "description": "Learn more about what the App Store editorial team considers when curating games to feature across the App Store and Apple Games app, including gameplay design, artistic and technical quality, and accessibility. Plus, find out how to use the Featuring Nominations tool in App Store Connect to submit your games, updates, and in-game events for editorial consideration. This session was originally presented as part of the Meet with Apple activity “Press Start: Game development on Apple platforms.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-254",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 254,
+      "title": "Liquid Glass showcase: LTK",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/254",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/254",
+      "duration": 573,
+      "publishedAt": "2025-12-18T00:00:00-08:00",
+      "platforms": [
+        "iOS"
+      ],
+      "primaryTopic": "Design",
+      "topics": [
+        "Design"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1106,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/254-liquid-glass-showcase-ltk/",
+      "description": "Learn how LTK evolved their app for iOS 26 and Liquid Glass. In this video, Jeseka Hahn, VP of Product Design, explains how her team created alignment while boosting engagement and efficiency. This session was originally presented as part of the Meet with Apple activity “Showcase: Learn how apps are integrating the new design and Liquid Glass” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-255",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 255,
+      "title": "Liquid Glass showcase: Slack",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/255",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/255",
+      "duration": 748,
+      "publishedAt": "2025-12-18T00:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ],
+      "primaryTopic": "Design",
+      "topics": [
+        "Design"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2166,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/255-liquid-glass-showcase-slack/",
+      "description": "Find out how Slack reimagined their app experience for the new design and Liquid Glass. In this session, Jaime DeLanghe and Akshay Bakshi share how Slack's product philosophy, design strategy, and strategic integration of native controls deliver a more delightful and efficient user experience. This session was originally presented as part of the Meet with Apple activity “Showcase: Learn how apps are integrating the new design and Liquid Glass” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-256",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 256,
+      "title": "Liquid Glass showcase: CNN",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/256",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/256",
+      "duration": 564,
+      "publishedAt": "2025-12-19T00:00:00-08:00",
+      "platforms": [
+        "iOS"
+      ],
+      "primaryTopic": "Design",
+      "topics": [
+        "Design"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1323,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/256-liquid-glass-showcase-cnn/",
+      "description": "CNN's investment in SwiftUI has enabled their engineering teams to quickly adopt the new design and Liquid Glass. In this video, Kevin Long, Director of Mobile Apps at CNN, shares the benefits of building native experiences while highlighting his team's key engineering learnings. This session was originally presented as part of the Meet with Apple activity “Showcase: Learn how apps are integrating the new design and Liquid Glass” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-257",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 257,
+      "title": "Liquid Glass showcase: Tide Guide",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/257",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/257",
+      "duration": 652,
+      "publishedAt": "2025-12-18T00:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "Design",
+      "topics": [
+        "Design"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1682,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/257-liquid-glass-showcase-tide-guide/",
+      "description": "In this session, you'll learn how indie developer Tucker MacDonald updated his tide and marine weather app for the new design system and extended his designs and custom elements across iOS, iPadOS, watchOS, and macOS. This session was originally presented as part of the Meet with Apple activity “Showcase: Learn how apps are integrating the new design and Liquid Glass” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-263",
+      "event": "meet-with-apple",
+      "year": 2026,
+      "eventContentId": 263,
+      "title": "Get ready for the Swift Student Challenge",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/263",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/263",
+      "duration": 2879,
+      "publishedAt": "2026-01-22T00:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "primaryTopic": "SwiftUI & UI Frameworks",
+      "topics": [
+        "Business & Education",
+        "Essentials",
+        "Swift",
+        "SwiftUI & UI Frameworks"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 8333,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 3,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/263-get-ready-for-the-swift-student-challenge/",
+      "description": "Submissions for the Swift Student Challenge will be open February 6-28. Get ready with this online session, where you’ll explore app development resources with an Apple expert, get inspiration from previous winners, and spark ideas for building your own app playground. This session is conducted in English and intended for students and educators."
+    },
+    {
+      "id": "meet-with-apple-265",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 265,
+      "title": "Fortify your app: Essential strategies to strengthen security",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/265",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/265",
+      "duration": null,
+      "publishedAt": null,
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Developer Tools",
+      "topics": [
+        "Privacy & Security",
+        "Swift",
+        "Developer Tools"
+      ],
+      "keywords": [],
+      "hasTranscript": false,
+      "transcriptWordCount": 0,
+      "availableLanguages": [],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/265-fortify-your-app-essential-strategies-to-strengthen-security/",
+      "description": "Join us to bolster your app’s security and help protect user data in this all-day activity at the Apple Developer Center Cupertino. Whether you’re hardening an existing app or starting a new project, you’ll learn directly from Apple engineers about how to reinforce your app from the ground up. Learn about the security challenges facing modern apps, and explore a comprehensive suite of tools and technologies designed to help safeguard user data. Discover how you can protect your C and C++ codebases with powerful features like Memory Integrity Enforcement, pointer authentication, and memory bounds safety. Find out how to adopt Swift for your most security-sensitive components, taking advantage of its inherent safety and modern abstractions to write secure, high-performance code. And get guidance on how to build a clear security roadmap for new and existing projects, from high-level strategy to hands-on implementation."
+    },
+    {
+      "id": "meet-with-apple-267",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 267,
+      "title": "SwiftUI foundations: Build great apps with SwiftUI",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/267",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/267",
+      "duration": null,
+      "publishedAt": null,
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS"
+      ],
+      "primaryTopic": "Developer Tools",
+      "topics": [
+        "Swift",
+        "Developer Tools"
+      ],
+      "keywords": [],
+      "hasTranscript": false,
+      "transcriptWordCount": 0,
+      "availableLanguages": [],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/267-swiftui-foundations-build-great-apps-with-swiftui/",
+      "description": "Learn to build great apps with SwiftUI in this special all-day activity streaming from the Apple Developer Center Cupertino. Whether you’re just starting out or have experience creating with SwiftUI, this series of foundational sessions will help you sharpen your understanding of core concepts and write strong, performant code. Learn from James Graham, CTO of AllTrails, about how his company took advantage of SwiftUI's capabilities. And dive deeper in a Q&A with members of the SwiftUI engineering team."
+    },
+    {
+      "id": "meet-with-apple-268",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 268,
+      "title": "Code-along: Experiment with coding intelligence in Xcode 26",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/268",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/268",
+      "duration": null,
+      "publishedAt": null,
+      "platforms": [
+        "iOS",
+        "macOS"
+      ],
+      "primaryTopic": "AI & Machine Learning",
+      "topics": [
+        "Swift",
+        "AI & Machine Learning"
+      ],
+      "keywords": [],
+      "hasTranscript": false,
+      "transcriptWordCount": 0,
+      "availableLanguages": [],
+      "resourceCount": 1,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/",
+      "description": "In this online code-along session, you’ll learn how the coding intelligence features in Xcode 26 — such as coding assistant and Coding Tools — can help you write code, generate tests and documentation, fix errors, and navigate codebases. To code along, you’ll need a Mac with Apple silicon running the latest release of macOS 26 and Xcode 26. The session will be conducted in English."
+    },
+    {
+      "id": "meet-with-apple-276",
+      "event": "meet-with-apple",
+      "year": 2026,
+      "eventContentId": 276,
+      "title": "Q&A: Swift concurrency",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/276",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/276",
+      "duration": null,
+      "publishedAt": "2026-04-13T12:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Swift",
+      "topics": [
+        "Developer Tools",
+        "SwiftUI & UI Frameworks",
+        "Swift"
+      ],
+      "keywords": [],
+      "hasTranscript": false,
+      "transcriptWordCount": 0,
+      "availableLanguages": [],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/276-q-a-swift-concurrency/",
+      "description": "Join us online for a live deep dive into Swift concurrency with Apple engineers. Ask questions, gain insights from teams within Apple who have adopted concurrency in their own APIs, and learn best practices for migrating to or adopting Swift concurrency in your apps and libraries. Please note that you‘ll need a free Apple Developer Forums account to participate in the Q&A. Format: Online Length: One hour Conducted in: English"
+    }
+  ]
+}

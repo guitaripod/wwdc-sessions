@@ -1,0 +1,187 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-315",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 315,
+  "title": "Get started with MLX for Apple silicon",
+  "description": "MLX is a flexible and efficient array framework for numerical computing and machine learning on Apple silicon. We’ll explore fundamental features including unified memory, lazy computation, and function transformations. We’ll also look at more advanced techniques for building and accelerating machine learning models across Apple’s platforms using Swift and Python APIs.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/315",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/315",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1169,
+  "hasTranscript": true,
+  "transcriptWordCount": 2925,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/315/4/7321e1ec-e5c2-45a5-a0ea-5e84afc61e0b/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/315/4/7321e1ec-e5c2-45a5-a0ea-5e84afc61e0b/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/315/4/7321e1ec-e5c2-45a5-a0ea-5e84afc61e0b/downloads/wwdc2025-315_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/315/4/7321e1ec-e5c2-45a5-a0ea-5e84afc61e0b/downloads/wwdc2025-315_hd.mp4",
+    "duration": 1169
+  },
+  "codeSnippets": [
+    {
+      "title": "Basics",
+      "language": "python",
+      "startTimeSeconds": 228,
+      "code": "import mlx.core as mx\n\n# Make an array\na = mx.array([1, 2, 3])\n\n# Make another array\nb = mx.array([4, 5, 6])\n\n# Do an operation\nc = a + b\n\n# Access information about the array\nshape = c.shape\ndtype = c.dtype\n\nprint(f\"Result c: {c}\")\nprint(f\"Shape: {shape}\")\nprint(f\"Data type: {dtype}\")"
+    },
+    {
+      "title": "Unified memory",
+      "language": "python",
+      "startTimeSeconds": 331,
+      "code": "import mlx.core as mx\n\na = mx.array([1, 2, 3])\nb = mx.array([4, 5, 6])\n\nc = mx.add(a, b, stream=mx.gpu)\nd = mx.multiply(a, b, stream=mx.cpu)\n\nprint(f\"c computed on the GPU: {c}\")\nprint(f\"d computed on the CPU: {d}\")"
+    },
+    {
+      "title": "Lazy computation",
+      "language": "python",
+      "startTimeSeconds": 380,
+      "code": "import mlx.core as mx\n\n# Make an array\na = mx.array([1, 2, 3])\n\n# Make another array\nb = mx.array([4, 5, 6])\n\n# Do an operation\nc = a + b\n\n# Evaluates c before printing it\nprint(c)\n\n# Also evaluates c\nc_list = c.tolist()\n\n# Also evaluates c\nmx.eval(c)\n\nprint(f\"Evaluate c by converting to list: {c_list}\")\nprint(f\"Evaluate c using print: {c}\")\nprint(f\"Evaluate c using mx.eval(): {c}\")"
+    },
+    {
+      "title": "Function transformation",
+      "language": "python",
+      "startTimeSeconds": 452,
+      "code": "import mlx.core as mx\n\ndef sin(x):\n    return mx.sin(x)\n\ndfdx = mx.grad(sin)\n\ndef sin(x):\n    return mx.sin(x)\n\nd2fdx2 = mx.grad(mx.grad(mx.sin))\n\n# Computes the second derivative of sine at 1.0\nd2fdx2(mx.array(1.0))"
+    },
+    {
+      "title": "Neural Networks in MLX",
+      "language": "python",
+      "startTimeSeconds": 556,
+      "code": "import mlx.core as mx\nimport mlx.nn as nn\nimport mlx.optimizers as optim\n\nclass MLP(nn.Module):\n    \"\"\"A simple MLP.\"\"\"\n\n    def __init__(self, dim, h_dim):\n        super().__init__()\n        self.linear1 = nn.Linear(dim, h_dim)\n        self.linear2 = nn.Linear(h_dim, dim)\n\n    def __call__(self, x):\n        x = self.linear1(x)\n        x = nn.relu(x)\n        x = self.linear2(x)\n        return x"
+    },
+    {
+      "title": "MLX and PyTorch",
+      "language": "python",
+      "startTimeSeconds": 597,
+      "code": "# MLX version\nimport mlx.core as mx\nimport mlx.nn as nn\nimport mlx.optimizers as optim\n\nclass MLP(nn.Module):\n    \"\"\"A simple MLP.\"\"\"\n\n    def __init__(self, dim, h_dim):\n        super().__init__()\n        self.linear1 = nn.Linear(dim, h_dim)\n        self.linear2 = nn.Linear(h_dim, dim)\n\n    def __call__(self, x):\n        x = self.linear1(x)\n        x = nn.relu(x)\n        x = self.linear2(x)\n        return x\n\n# PyTorch version\nimport torch\nimport torch.nn as nn\nimport torch.optim as optim\n\nclass MLP(nn.Module):\n    \"\"\"A simple MLP.\"\"\"\n\n    def __init__(self, dim, h_dim):\n        super().__init__()\n        self.linear1 = nn.Linear(dim, h_dim)\n        self.linear2 = nn.Linear(h_dim, dim)\n\n    def forward(self, x):\n        x = self.linear1(x)\n        x = x.relu()\n        x = self.linear2(x)\n        return x"
+    },
+    {
+      "title": "Compiling MLX functions",
+      "language": "python",
+      "startTimeSeconds": 695,
+      "code": "import mlx.core as mx\nimport math\n\ndef gelu(x):\n    return x * (1 + mx.erf(x / math.sqrt(2))) / 2\n\n@mx.compile\ndef compiled_gelu(x):\n    return x * (1 + mx.erf(x / math.sqrt(2))) / 2\n\nx = mx.random.normal(shape=(4,))\n\nout = gelu(x)\ncompiled_out = compiled_gelu(x)\nprint(f\"gelu:          {out}\")\nprint(f\"compiled gelu: {compiled_out}\")"
+    },
+    {
+      "title": "MLX Fast package",
+      "language": "python",
+      "startTimeSeconds": 752,
+      "code": "import mlx.core as mx\nimport time\n\ndef rms_norm(x, weight, eps=1e-5):\n    y = x.astype(mx.float32)\n    y = y * mx.rsqrt(mx.mean(\n        mx.square(y), \n        axis=-1, \n        keepdims=True,\n    ) + eps)\n    return (weight * y).astype(x.dtype)\n\nbatch_size = 8192\nfeature_dim = 4096\niterations = 1000\n\nx = mx.random.normal([batch_size, feature_dim])\nweight = mx.ones(feature_dim)\nbias = mx.zeros(feature_dim)\n\nstart_time = time.perf_counter()\nfor _ in range(iterations):\n    y = rms_norm(x, weight, eps=1e-5)\n    mx.eval(y)\nrms_norm_time = time.perf_counter() - start_time\nprint(f\"rms_norm execution: {gelu_time:0.4f} sec\")\n\nstart_time = time.perf_counter()\nfor _ in range(iterations):\n    mx.eval(mx.fast.rms_norm(x, weight, eps=1e-5))\nfast_rms_norm_time = time.perf_counter() - start_time\nprint(f\"mx.fast.rms_norm execution: {compiled_gelu_time:0.4f} sec\")\n\nprint(f\"mx.fast.rms_norm speedup: {rms_norm_time/fast_rms_norm_time:0.2f}x\")"
+    },
+    {
+      "title": "Custom Metal kernel",
+      "language": "python",
+      "startTimeSeconds": 810,
+      "code": "import mlx.core as mx\n\n# Build the kernel\nsource = \"\"\"\n    uint elem = thread_position_in_grid.x;\n    out[elem] = metal::exp(inp[elem]);\n\"\"\"\nkernel = mx.fast.metal_kernel(\n    name=\"myexp\",\n    input_names=[\"inp\"],\n    output_names=[\"out\"],\n    source=source,\n)\n\n# Call the kernel on a sample input\nx = mx.array([1.0, 2.0, 3.0])\nout = kernel(\n    inputs=[x],\n    grid=(x.size, 1, 1),\n    threadgroup=(256, 1, 1),\n    output_shapes=[x.shape],\n    output_dtypes=[x.dtype],\n)[0]\nprint(out)"
+    },
+    {
+      "title": "Quantization",
+      "language": "python",
+      "startTimeSeconds": 881,
+      "code": "import mlx.core as mx\n\nx = mx.random.normal([1024])\nweight = mx.random.normal([1024, 1024])\n\nquantized_weight, scales, biases = mx.quantize(\n        weight, bits=4, group_size=32,\n)\n\ny = mx.quantized_matmul(\n    x,\n    quantized_weight,\n    scales=scales,\n    biases=biases,\n    bits=4,\n    group_size=32,\n)\n\nw_orig = mx.dequantize(\n    quantized_weight,\n    scales=scales,\n    biases=biases,\n    bits=4,\n    group_size=32,\n)"
+    },
+    {
+      "title": "Quantized models",
+      "language": "python",
+      "startTimeSeconds": 923,
+      "code": "import mlx.nn as nn\n\nmodel = nn.Sequential(\n    nn.Embedding(100, 32),\n    nn.Linear(32, 32),\n    nn.Linear(32, 32),\n    nn.Linear(32, 1),\n)\n\nprint(model)\n\nnn.quantize(\n    model,\n    bits=4,\n    group_size=32,\n)\n\nprint(model)"
+    },
+    {
+      "title": "Distributed",
+      "language": "python",
+      "startTimeSeconds": 1010,
+      "code": "import mlx.core as mx\n\ngroup = mx.distributed.init()\n\nworld_size = group.size()\nrank = group.rank()\n\nx = mx.array([1.0])\n\nx_sum = mx.distributed.all_sum(x)\n\nprint(x_sum)"
+    },
+    {
+      "title": "Distributed launcher",
+      "language": "bash",
+      "startTimeSeconds": 1040,
+      "code": "mlx.launch --hosts ip1, ip2, ip3, ip4 my_script.py"
+    },
+    {
+      "title": "MLX Swift",
+      "language": "swift",
+      "startTimeSeconds": 1100,
+      "code": "// Swift\nimport MLX\n\n// Make an array\nlet a = MLXArray([1, 2, 3])\n\n// Make another array\nlet b = MLXArray([1, 2, 3])\n\n// Do an operation\nlet c = a + b\n\n// Access information about the array\nlet shape = c.shape\nlet dtype = c.dtype\n\n// Print results\nprint(\"a: \\(a)\")\nprint(\"b: \\(b)\")\nprint(\"c = a + b: \\(c)\")\nprint(\"shape: \\(shape)\")\nprint(\"dtype: \\(dtype)\")"
+    }
+  ],
+  "resources": [
+    {
+      "title": "MLX Swift Examples",
+      "url": "https://github.com/ml-explore/mlx-swift-examples",
+      "type": "samplecode",
+      "description": "MLX Swift Examples"
+    },
+    {
+      "title": "MLX Examples",
+      "url": "https://github.com/ml-explore/mlx-examples",
+      "type": "samplecode",
+      "description": "This repo contains a variety of standalone examples using the MLX framework."
+    },
+    {
+      "title": "MLX Swift",
+      "url": "https://github.com/ml-explore/mlx-swift",
+      "type": "documentation",
+      "description": "MLX Swift is a Swift API for MLX."
+    },
+    {
+      "title": "MLX LM - Python API",
+      "url": "https://github.com/ml-explore/mlx-lm",
+      "type": "documentation",
+      "description": "MLX LM is a Python package for generating text and fine-tuning large language models on Apple silicon with MLX."
+    },
+    {
+      "title": "MLX Explore - Python API",
+      "url": "https://github.com/ml-explore/mlx",
+      "type": "documentation",
+      "description": "MLX is an array framework for machine learning on Apple silicon, brought to you by Apple machine learning research."
+    },
+    {
+      "title": "MLX Framework",
+      "url": "https://mlx-framework.org",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "MLX Llama Inference",
+      "url": "https://ml-explore.github.io/mlx/build/html/examples/llama-inference.html",
+      "type": "documentation",
+      "description": "MLX enables efficient inference of large-ish transformers on Apple silicon without compromising on ease of use. In this example we will create an inference script for the Llama family of transformer models in which the model is defined in less than 200 lines of python."
+    },
+    {
+      "title": "MLX",
+      "url": "https://ml-explore.github.io/mlx/",
+      "type": "documentation",
+      "description": "MLX is an array framework for machine learning on Apple silicon, brought to you by Apple machine learning research."
+    }
+  ],
+  "path": "sessions/wwdc2025/315-get-started-with-mlx-for-apple-silicon/",
+  "files": {
+    "metadata": "sessions/wwdc2025/315-get-started-with-mlx-for-apple-silicon/metadata.json",
+    "readme": "sessions/wwdc2025/315-get-started-with-mlx-for-apple-silicon/README.md",
+    "transcript": "sessions/wwdc2025/315-get-started-with-mlx-for-apple-silicon/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/315-get-started-with-mlx-for-apple-silicon/transcript.json"
+  }
+}

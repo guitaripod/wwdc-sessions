@@ -1,0 +1,135 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10050",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10050,
+  "title": "Complications and widgets: Reloaded",
+  "description": "Our widgets code-along returns as we adventure onto the watchOS and iOS Lock Screen. Learn about the latest improvements to WidgetKit that help power complex complications on watchOS and can help you create Lock Screen widgets for iPhone. We’ll show you how to incorporate the latest SwiftUI views to provide great glanceable data, explore how each platform renders content, and learn how you can customize the design and feel of your content within a widget or complication.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10050",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10050",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Essentials",
+    "SwiftUI & UI Frameworks",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1055,
+  "hasTranscript": true,
+  "transcriptWordCount": 2328,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10050/5/358B551F-283C-4CD1-8172-DAC014727969/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10050/5/358B551F-283C-4CD1-8172-DAC014727969/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10050/5/358B551F-283C-4CD1-8172-DAC014727969/downloads/wwdc2022-10050_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10050/5/358B551F-283C-4CD1-8172-DAC014727969/downloads/wwdc2022-10050_hd.mp4",
+    "duration": 1055
+  },
+  "codeSnippets": [
+    {
+      "title": "widgetAccentable",
+      "language": "swift",
+      "startTimeSeconds": 247,
+      "code": "VStack(alignment: .leading) {\n    Text(\"Headline\")\n        .font(.headline)\n        .widgetAccentable()\n    Text(\"Body 1\")\n    Text(\"Body 2\")\n}.frame(maxWidth: .infinity, alignment: .leading)"
+    },
+    {
+      "title": "AccessoryWidgetBackground",
+      "language": "swift",
+      "startTimeSeconds": 324,
+      "code": "ZStack {\n     AccessoryWidgetBackground()\n     VStack {\n        Text(\"MON\")\n        Text(\"6\")\n         .font(.title)\n    }\n}"
+    },
+    {
+      "title": "Xcode Previews",
+      "language": "swift",
+      "startTimeSeconds": 542,
+      "code": "EmojiRangerWidgetEntryView(entry: SimpleEntry(date: Date(), relevance: nil, character: .spouty))\n                .previewContext(WidgetPreviewContext(family: .accessoryCircular))\n                .previewDisplayName(\"Circular\")\n            EmojiRangerWidgetEntryView(entry: SimpleEntry(date: Date(), relevance: nil, character: .spouty))\n                .previewContext(WidgetPreviewContext(family: .accessoryRectangular))\n                .previewDisplayName(\"Rectangular\")\n            EmojiRangerWidgetEntryView(entry: SimpleEntry(date: Date(), relevance: nil, character: .spouty))\n                .previewContext(WidgetPreviewContext(family: .accessoryInline))\n                .previewDisplayName(\"Inline\")\n\n#if os(iOS)"
+    },
+    {
+      "title": "recommendations method",
+      "language": "swift",
+      "startTimeSeconds": 578,
+      "code": "return recommendedIntents()\n            .map { intent in\n                return IntentRecommendation(intent: intent, description: intent.hero!.displayString)\n            }"
+    },
+    {
+      "title": "ProgressView",
+      "language": "swift",
+      "startTimeSeconds": 665,
+      "code": "ProgressView(interval: entry.character.injuryDate...entry.character.fullHealthDate,\n                         countdown: false,\n                         label: { Text(entry.character.name) },\n                         currentValueLabel: {\n                Avatar(character: entry.character, includeBackground: false)\n            })\n            .progressViewStyle(.circular)"
+    },
+    {
+      "title": "Rectangular",
+      "language": "swift",
+      "startTimeSeconds": 686,
+      "code": "case .accessoryRectangular:\n        HStack(alignment: .center, spacing: 0) {\n            VStack(alignment: .leading) {\n                Text(entry.character.name)\n\n                Text(\"Level \\(entry.character.level)\")\n                Text(entry.character.fullHealthDate, style: .timer)\n            }.frame(maxWidth: .infinity, alignment: .leading)\n            Avatar(character: entry.character, includeBackground: false)\n        }"
+    },
+    {
+      "title": "ViewThatFits",
+      "language": "swift",
+      "startTimeSeconds": 843,
+      "code": "ViewThatFits {\n                Text(\"\\(entry.character.name) is resting, combat-ready in \\(entry.character.fullHealthDate, style: .relative)\")\n                Text(\"\\(entry.character.name) ready in \\(entry.character.fullHealthDate, style: .timer)\")\n                Text(\"\\(entry.character.avatar) \\(entry.character.fullHealthDate, style: .timer)\")\n            }"
+    },
+    {
+      "title": "isLuminanceReduced",
+      "language": "swift",
+      "startTimeSeconds": 978,
+      "code": "@Environment(\\.isLuminanceReduced)\nvar isLuminanceReduced\n\nvar body: some View {\n    if isLuminanceReduced {\n        Text(\"🙈\").font(.title)\n    } else {\n        Text(\"🐵\").font(.title)\n    }\n}"
+    },
+    {
+      "title": "privacySensitive",
+      "language": "swift",
+      "startTimeSeconds": 1012,
+      "code": "VStack(spacing: -2) {\n    Image(systemName: \"heart\")\n        .font(.caption.bold())\n        .widgetAccentable()\n    Text(\"\\(currentHeartRate)\")\n        .font(.title)\n        .privacySensitive()\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Creating accessory widgets and watch complications",
+      "url": "https://developer.apple.com/documentation/WidgetKit/Creating-accessory-widgets-and-watch-complications",
+      "type": "guide",
+      "description": "Support accessory widgets that appear on the Lock Screen and as complications on Apple Watch.",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit/Creating-accessory-widgets-and-watch-complications",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit/Creating-accessory-widgets-and-watch-complications.json"
+    },
+    {
+      "title": "Emoji Rangers: Supporting Live Activities, interactivity, and animations",
+      "url": "https://developer.apple.com/documentation/WidgetKit/emoji-rangers-supporting-live-activities-interactivity-and-animations",
+      "type": "samplecode",
+      "description": "Offer Live Activities, controls, animate data updates, and add interactivity to widgets.",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit/emoji-rangers-supporting-live-activities-interactivity-and-animations",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit/emoji-rangers-supporting-live-activities-interactivity-and-animations.json"
+    },
+    {
+      "title": "WidgetKit",
+      "url": "https://developer.apple.com/documentation/WidgetKit",
+      "type": "documentation",
+      "description": "Extend the reach of your app by creating widgets, watch complications, Live Activities, and controls.",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10050-complications-and-widgets-reloaded/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10050-complications-and-widgets-reloaded/metadata.json",
+    "readme": "sessions/wwdc2022/10050-complications-and-widgets-reloaded/README.md",
+    "transcript": "sessions/wwdc2022/10050-complications-and-widgets-reloaded/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10050-complications-and-widgets-reloaded/transcript.json"
+  }
+}

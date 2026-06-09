@@ -1,0 +1,73 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2017-248",
+  "event": "wwdc2017",
+  "eventName": "WWDC17",
+  "year": 2017,
+  "eventContentId": 248,
+  "title": "Localization Best Practices on tvOS",
+  "description": "Expand the reach of your apps by building them for a worldwide audience. Learn how to create localized tvOS apps that perform seamlessly regardless of country and language. Gain insights into such topics as handling server-side content, matching preferred languages, and localizing images and text direction.",
+  "url": "https://developer.apple.com/videos/play/wwdc2017/248",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2017/248",
+  "type": "Video",
+  "publishedAt": "2017-06-04T17:00:00-07:00",
+  "platforms": [
+    "tvOS"
+  ],
+  "keywords": [
+    "international",
+    "internationalization",
+    "locale",
+    "right to left",
+    "right-to-left"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "Accessibility & Inclusion"
+  ],
+  "primaryTopic": "Accessibility & Inclusion",
+  "duration": 837,
+  "hasTranscript": true,
+  "transcriptWordCount": 2205,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/248l3bagtus6l8jwxh/248/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/248l3bagtus6l8jwxh/248/248_sd_localization_best_practices_on_tvos.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/248l3bagtus6l8jwxh/248/248_hd_localization_best_practices_on_tvos.mp4",
+    "duration": 837
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Internationalization and Localization Guide",
+      "url": "https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/BPInternational/Introduction/Introduction.html",
+      "type": "guide",
+      "description": "Explains how to create a user interface and write code that can be localized into multiple languages.",
+      "sosumiURL": "https://sosumi.ai/library/content/documentation/MacOSX/Conceptual/BPInternational/Introduction/Introduction.html"
+    },
+    {
+      "title": "TVMLKit",
+      "url": "https://developer.apple.com/documentation/TVMLKit",
+      "type": "documentation",
+      "description": "Create client-server apps by incorporating JavaScript and TVML files in your binary app.",
+      "sosumiURL": "https://sosumi.ai/documentation/TVMLKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/TVMLKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2017/248-localization-best-practices-on-tvos/",
+  "files": {
+    "metadata": "sessions/wwdc2017/248-localization-best-practices-on-tvos/metadata.json",
+    "readme": "sessions/wwdc2017/248-localization-best-practices-on-tvos/README.md",
+    "transcript": "sessions/wwdc2017/248-localization-best-practices-on-tvos/transcript.md",
+    "transcriptJSON": "sessions/wwdc2017/248-localization-best-practices-on-tvos/transcript.json"
+  }
+}

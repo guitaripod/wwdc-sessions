@@ -1,0 +1,81 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10183",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10183,
+  "title": "Meet Group Activities",
+  "description": "Learn more about the framework powering SharePlay, and discover the different types of shared experiences you can implement for people who use your app. Explore a high-level overview of the framework’s architecture and concepts, including how Group Activities and AVFoundation work in tandem, and learn how to implement it into your app. This is a great starting point to know more about SharePlay and how to integrate Group Activities in your apps.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10183",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10183",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "facetime",
+    "face time",
+    "groupactivities",
+    "group activities",
+    "groupsession",
+    "media",
+    "shareplay",
+    "share play"
+  ],
+  "topics": [
+    "Essentials",
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 1028,
+  "hasTranscript": true,
+  "transcriptWordCount": 2605,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10183/5/C850E07A-1E66-4641-9742-DE0DE2E3E29B/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10183/5/C850E07A-1E66-4641-9742-DE0DE2E3E29B/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10183/5/C850E07A-1E66-4641-9742-DE0DE2E3E29B/downloads/wwdc2021-10183_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10183/5/C850E07A-1E66-4641-9742-DE0DE2E3E29B/downloads/wwdc2021-10183_hd.mp4",
+    "duration": 1028
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Supporting coordinated media playback",
+      "url": "https://developer.apple.com/documentation/AVFoundation/supporting-coordinated-media-playback",
+      "type": "documentation",
+      "description": "Create synchronized media experiences that enable users to watch and listen across devices.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/supporting-coordinated-media-playback",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/supporting-coordinated-media-playback.json"
+    },
+    {
+      "title": "Group Activities",
+      "url": "https://developer.apple.com/documentation/GroupActivities",
+      "type": "documentation",
+      "description": "Create app-specific activities your users can share and experience together.",
+      "sosumiURL": "https://sosumi.ai/documentation/GroupActivities",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/GroupActivities.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10183-meet-group-activities/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10183-meet-group-activities/metadata.json",
+    "readme": "sessions/wwdc2021/10183-meet-group-activities/README.md",
+    "transcript": "sessions/wwdc2021/10183-meet-group-activities/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10183-meet-group-activities/transcript.json"
+  }
+}

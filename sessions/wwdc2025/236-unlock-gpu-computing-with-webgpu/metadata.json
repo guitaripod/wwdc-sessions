@@ -1,0 +1,98 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-236",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 236,
+  "title": "Unlock GPU computing with WebGPU",
+  "description": "Learn how the WebGPU API provides safe access to GPU devices for graphics and general-purpose computation. We’ll also explore the WGSL shading language to write GPU programs. And we’ll dive into best practices to achieve optimal performance while using minimal power across desktop and mobile devices.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/236",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/236",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "metal",
+    "shader",
+    "webkit"
+  ],
+  "topics": [
+    "App Services",
+    "Safari & Web"
+  ],
+  "primaryTopic": "Safari & Web",
+  "duration": 1313,
+  "hasTranscript": true,
+  "transcriptWordCount": 2874,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/236/5/3eb6d0b1-48d5-46d6-bb81-a6ce4b03b8aa/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/236/5/3eb6d0b1-48d5-46d6-bb81-a6ce4b03b8aa/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/236/5/3eb6d0b1-48d5-46d6-bb81-a6ce4b03b8aa/downloads/wwdc2025-236_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/236/5/3eb6d0b1-48d5-46d6-bb81-a6ce4b03b8aa/downloads/wwdc2025-236_hd.mp4",
+    "duration": 1313
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Transformers.js - Huggingface",
+      "url": "https://huggingface.co/docs/transformers.js/index",
+      "type": "documentation",
+      "description": "Run Transformers directly in your browser, with no need for a server."
+    },
+    {
+      "title": "WebGPU Samples - github.io",
+      "url": "https://webgpu.github.io/webgpu-samples/",
+      "type": "documentation",
+      "description": "The WebGPU Samples are a set of samples and demos demonstrating the use of the WebGPU API."
+    },
+    {
+      "title": "WebGPU - W3C",
+      "url": "https://www.w3.org/TR/webgpu/",
+      "type": "documentation",
+      "description": "WebGPU exposes an API for performing operations, such as rendering and computation, on a Graphics Processing Unit."
+    },
+    {
+      "title": "babylon.js – webGL and WebXR library",
+      "url": "https://www.babylonjs.com",
+      "type": "samplecode",
+      "description": "Web rendering engine"
+    },
+    {
+      "title": "three.js – webGL and WebXR library",
+      "url": "https://threejs.org",
+      "type": "samplecode",
+      "description": "three.js – webGL and WebXR library"
+    },
+    {
+      "title": "Metal Performance Shaders",
+      "url": "https://developer.apple.com/documentation/MetalPerformanceShaders",
+      "type": "documentation",
+      "description": "Optimize graphics and compute performance with kernels that are fine-tuned for the unique characteristics of each Metal GPU family.",
+      "sosumiURL": "https://sosumi.ai/documentation/MetalPerformanceShaders",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MetalPerformanceShaders.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/236-unlock-gpu-computing-with-webgpu/",
+  "files": {
+    "metadata": "sessions/wwdc2025/236-unlock-gpu-computing-with-webgpu/metadata.json",
+    "readme": "sessions/wwdc2025/236-unlock-gpu-computing-with-webgpu/README.md",
+    "transcript": "sessions/wwdc2025/236-unlock-gpu-computing-with-webgpu/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/236-unlock-gpu-computing-with-webgpu/transcript.json"
+  }
+}

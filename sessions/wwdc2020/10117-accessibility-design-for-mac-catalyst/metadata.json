@@ -1,0 +1,116 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10117",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10117,
+  "title": "Accessibility design for Mac Catalyst",
+  "description": "Make your Mac Catalyst app accessible to all — and bring those improvements back to your iPad app. Discover how a great accessible iPad app automatically becomes a great accessible Mac app when adding support for Mac Catalyst. Learn how to further augment your experience with support for mouse and keyboard actions and accessibility element grouping and navigation. And explore how to use new Accessibility Inspector features to test your app and iterate to create a truly great experience for everyone. To get the most out of this session, you should be familiar with Mac Catalyst, UIKit, and basic accessibility APIs for iOS. To get started, check out “Introducing iPad apps for Mac” and \"Auditing your apps for accessibility.\"",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10117",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10117",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "accessibility inspector",
+    "accessibility tree",
+    "accessible",
+    "catalyst",
+    "grouping",
+    "keyboard shortcuts",
+    "voiceover",
+    "voice over"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "Accessibility & Inclusion"
+  ],
+  "primaryTopic": "Accessibility & Inclusion",
+  "duration": 1290,
+  "hasTranscript": true,
+  "transcriptWordCount": 3612,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10117/4/59AF0B72-76C2-4442-8160-967F2A9FDB96/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10117/4/59AF0B72-76C2-4442-8160-967F2A9FDB96/wwdc2020_10117_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10117/4/59AF0B72-76C2-4442-8160-967F2A9FDB96/wwdc2020_10117_hd.mp4",
+    "duration": 1290
+  },
+  "codeSnippets": [
+    {
+      "title": "Ensuring selection automatically triggers when focus moves to a different cell",
+      "language": "swift",
+      "startTimeSeconds": 251,
+      "code": "myTableView.selectionFollowsFocus = true"
+    },
+    {
+      "title": "Creating a keyboard shortcut",
+      "language": "swift",
+      "startTimeSeconds": 361,
+      "code": "extension AppDelegate {\n  override func buildMenu(with builder: UIMenuBuilder) {\n    super.buildMenu(with: builder)\n    let shareCommand = UIKeyCommand(title: NSLocalizedString(\"Share\", comment: \"\"),\n                                    action: #selector(Self.handleShareMenuAction),\n                                    input: \"I\",\n                                    modifierFlags: [.command])\n    let shareMenu = UIMenu(title: \"\",\n                           identifier: UIMenu.Identifier(\"com.example.apple-samplecode.RoastedBeans.share\"),\n                           options: .displayInline,\n                           children: [shareCommand])\n    builder.insertChild(shareMenu, atEndOfMenu: .edit)\n  }\n\n  @objc func handleShareMenuAction() {\n  }\n}"
+    },
+    {
+      "title": "Responding to raw key codes",
+      "language": "swift",
+      "startTimeSeconds": 440,
+      "code": "extension MyViewController {\n  override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {\n    switch presses.first?.key?.keyCode {\n    case .keyboardLeftGUI:\n      // Handle command key pressed\n    case .keyboardB:\n      // Handle B key pressed\n    default:\n    }\n  }\n}"
+    },
+    {
+      "title": "Adding accessibility labels to containers, such as UITableView and UICollectionView",
+      "language": "swift",
+      "startTimeSeconds": 945,
+      "code": "tableView.accessibilityLabel = NSLocalizedString(\"Coffee list\", comment: \"\")"
+    },
+    {
+      "title": "Making great accessibility labels that include state",
+      "language": "swift",
+      "startTimeSeconds": 950,
+      "code": "extension RBListViewController {\n\n    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {\n        let data = tableData[indexPath.row]\n        let label = NSLocalizedString(\"Coffee list\", comment: \"\")\n        let selectedLabel = NSLocalizedString(\"%@ selected\", comment: \"\")\n        tableView.accessibilityLabel = label + \", \" + String(format: selectedLabel, data.coffee.brand)\n    }\n\n}"
+    },
+    {
+      "title": "Adding accessibility containers to improve the navigation experience",
+      "language": "swift",
+      "startTimeSeconds": 1005,
+      "code": "let stackView = UIStackView()\nstackView.axis = .vertical\nstackView.translatesAutoresizingMaskIntoConstraints = false\n\nlet locationsAvailable = viewModel.locationsAvailable\n\nlet titleLabel = UILabel()\ntitleLabel.font = UIFont.preferredFont(forTextStyle: .body).bold()\ntitleLabel.text = NSLocalizedString(\"Availability: \", comment: \"\")\nstackView.addArrangedSubview(titleLabel)\n\nfor location in locationsAvailable {\n  let label = UILabel()\n  label.font = UIFont.preferredFont(forTextStyle: .body)\n  label.text = \"• \" + location\n  label.accessibilityLabel = location\n  stackView.addArrangedSubview(label)\n}\n\nstackView.accessibilityLabel = String(format: NSLocalizedString(\"Available at %@ locations\", comment: \"\"), String(locationsAvailable.count))\nstackView.accessibilityContainerType = .semanticGroup"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Accessibility design for Mac Catalyst",
+      "url": "https://developer.apple.com/documentation/Accessibility/accessibility_design_for_mac_catalyst",
+      "type": "samplecode",
+      "description": "Improve navigation in your app by using keyboard shortcuts and accessibility containers.",
+      "sosumiURL": "https://sosumi.ai/documentation/Accessibility/accessibility_design_for_mac_catalyst",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Accessibility/accessibility_design_for_mac_catalyst.json"
+    },
+    {
+      "title": "Delivering an exceptional accessibility experience",
+      "url": "https://developer.apple.com/documentation/Accessibility/delivering_an_exceptional_accessibility_experience",
+      "type": "samplecode",
+      "description": "Make improvements to your app’s interaction model to support assistive technologies such as VoiceOver.",
+      "sosumiURL": "https://sosumi.ai/documentation/Accessibility/delivering_an_exceptional_accessibility_experience",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Accessibility/delivering_an_exceptional_accessibility_experience.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10117-accessibility-design-for-mac-catalyst/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10117-accessibility-design-for-mac-catalyst/metadata.json",
+    "readme": "sessions/wwdc2020/10117-accessibility-design-for-mac-catalyst/README.md",
+    "transcript": "sessions/wwdc2020/10117-accessibility-design-for-mac-catalyst/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10117-accessibility-design-for-mac-catalyst/transcript.json"
+  }
+}

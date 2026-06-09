@@ -1,0 +1,82 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-10891",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2022,
+  "eventContentId": 10891,
+  "title": "Prepare your organization for macOS Monterey",
+  "description": "Discover the latest platform changes for deploying macOS Monterey in your business or education organization. Learn about changes to initial enrollment, ongoing management, and return to service including managing software updates and the new Erase All Content and Settings feature for macOS.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/10891",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10891",
+  "type": "Video",
+  "publishedAt": "2022-01-19T08:00:00-08:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [
+    "deployment",
+    "device management",
+    "enterprise",
+    "macos monterey"
+  ],
+  "topics": [
+    "Business & Education"
+  ],
+  "primaryTopic": "Business & Education",
+  "duration": 1920,
+  "hasTranscript": true,
+  "transcriptWordCount": 5130,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/10891/7/92B43BCF-DB0F-47D8-AA6D-3F801281C398/cmaf.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/10891/7/92B43BCF-DB0F-47D8-AA6D-3F801281C398/downloads/tech-talks-10891_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/10891/7/92B43BCF-DB0F-47D8-AA6D-3F801281C398/downloads/tech-talks-10891_hd.mp4",
+    "duration": 1920
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "AppleCare Professional Support",
+      "url": "https://www.apple.com/support/professional/",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Apple Platform Security",
+      "url": "https://support.apple.com/guide/security/welcome/web",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Device Management",
+      "url": "https://developer.apple.com/documentation/DeviceManagement",
+      "type": "documentation",
+      "description": "Manage your organization’s devices remotely.",
+      "sosumiURL": "https://sosumi.ai/documentation/DeviceManagement",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/DeviceManagement.json"
+    },
+    {
+      "title": "Apple Platform Deployment",
+      "url": "https://support.apple.com/guide/deployment/",
+      "type": "documentation",
+      "description": null
+    }
+  ],
+  "path": "sessions/tech-talks/10891-prepare-your-organization-for-macos-monterey/",
+  "files": {
+    "metadata": "sessions/tech-talks/10891-prepare-your-organization-for-macos-monterey/metadata.json",
+    "readme": "sessions/tech-talks/10891-prepare-your-organization-for-macos-monterey/README.md",
+    "transcript": "sessions/tech-talks/10891-prepare-your-organization-for-macos-monterey/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/10891-prepare-your-organization-for-macos-monterey/transcript.json"
+  }
+}

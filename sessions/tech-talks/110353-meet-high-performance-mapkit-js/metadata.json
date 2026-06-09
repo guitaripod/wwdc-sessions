@@ -1,0 +1,60 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-110353",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2022,
+  "eventContentId": 110353,
+  "title": "Meet high-performance MapKit JS",
+  "description": "MapKit JS provides a JavaScript API to embed interactive Apple Maps directly into your webpages or apps across different platforms and operating systems, including iOS and Android. Learn about the latest features to help improve load performance and make your web and native apps more responsive and faster — all while giving you more control.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/110353",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110353",
+  "type": "Video",
+  "publishedAt": "2022-12-01T10:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Maps & Location"
+  ],
+  "primaryTopic": "Maps & Location",
+  "duration": 543,
+  "hasTranscript": true,
+  "transcriptWordCount": 1112,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/110353/3/97DDB596-8118-4331-901D-C5569A4C792B/cmaf.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/110353/3/97DDB596-8118-4331-901D-C5569A4C792B/downloads/tech-talks-110353_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/110353/3/97DDB596-8118-4331-901D-C5569A4C792B/downloads/tech-talks-110353_hd.mp4",
+    "duration": 543
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Learn more about MapKitJS",
+      "url": "https://developer.apple.com/maps/web/",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/maps/web/"
+    }
+  ],
+  "path": "sessions/tech-talks/110353-meet-high-performance-mapkit-js/",
+  "files": {
+    "metadata": "sessions/tech-talks/110353-meet-high-performance-mapkit-js/metadata.json",
+    "readme": "sessions/tech-talks/110353-meet-high-performance-mapkit-js/README.md",
+    "transcript": "sessions/tech-talks/110353-meet-high-performance-mapkit-js/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/110353-meet-high-performance-mapkit-js/transcript.json"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10685",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10685,
+  "title": "Pedal to the Metal",
+  "description": null,
+  "url": "https://developer.apple.com/news/?id=3m1y5l20",
+  "sosumiURL": "https://sosumi.ai/news/?id=3m1y5l20",
+  "type": "Article",
+  "publishedAt": "2020-06-22T02:08:20-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": null,
+  "hasTranscript": false,
+  "transcriptWordCount": 0,
+  "availableLanguages": [],
+  "media": {},
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10685-pedal-to-the-metal/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10685-pedal-to-the-metal/metadata.json",
+    "readme": "sessions/wwdc2020/10685-pedal-to-the-metal/README.md"
+  }
+}

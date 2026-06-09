@@ -1,0 +1,156 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-318",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 318,
+  "title": "Share visionOS experiences with nearby people",
+  "description": "Learn how to create shared experiences for people wearing Vision Pro in the same room. We’ll show you how to integrate SharePlay and leverage ARKit in your app, introduce the updated window sharing flows for nearby and FaceTime participants, and cover new API designed for seamless collaboration. Discover best practices to make your collaborative features stand out, easily discoverable, and engaging for people together in the same space.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/318",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/318",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Audio & Video",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 1385,
+  "hasTranscript": true,
+  "transcriptWordCount": 3463,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/318/5/b5e843e6-41fc-4ddd-8aa6-91e3ede41898/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/318/5/b5e843e6-41fc-4ddd-8aa6-91e3ede41898/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/318/5/b5e843e6-41fc-4ddd-8aa6-91e3ede41898/downloads/wwdc2025-318_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/318/5/b5e843e6-41fc-4ddd-8aa6-91e3ede41898/downloads/wwdc2025-318_hd.mp4",
+    "duration": 1385
+  },
+  "codeSnippets": [
+    {
+      "title": "Expose an activity with GroupActivities and SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 381,
+      "code": "// Expose an activity with GroupActivities and SwiftUI\n\nimport SwiftUI\nimport GroupActivities\n\nstruct BoardGameActivity: GroupActivity, Transferable {\n    var metadata: GroupActivityMetadata = {\n        var metadata = GroupActivityMetadata()\n        metadata.title = \"Play Together\"\n        return metadata\n    }()\n}\n\nstruct BoardGameApp: App {\n    var body: some Scene {\n        WindowGroup {\n            BoardGameView()\n            ShareLink(item: BoardGameActivity(), preview: SharePreview(\"Play Together\"))\n                .hidden()\n        }\n        .windowStyle(.volumetric)\n    }\n}\n\nstruct BoardGameView: View {\n    var body: some View {\n        // Board game content\n    }\n}"
+    },
+    {
+      "title": "Join a GroupSession with GroupActivities",
+      "language": "swift",
+      "startTimeSeconds": 434,
+      "code": "// Join a GroupSession with GroupActivities\n\nfunc observeSessions() async {\n\n    // Sessions are created automatically when the activity is activated\n    for await session in BoardGameActivity.sessions() {\n\n        // Additional configuration and setup\n\n        // Join SharePlay\n        session.join()\n    }\n}"
+    },
+    {
+      "title": "Join and configure a GroupSession with GroupActivities",
+      "language": "swift",
+      "startTimeSeconds": 537,
+      "code": "// Join a GroupSession with GroupActivities\n\nfunc observeSessions() async {\n\n    // Sessions are created automatically when the activity is activated\n    for await session in BoardGameActivity.sessions() {\n\n        // Additional configuration and setup\n\n        guard let systemCoordinator = await session.systemCoordinator else { continue }\n        systemCoordinator.configuration.supportsGroupImmersiveSpace = true\n\n        // Join SharePlay\n        session.join()\n    }\n}"
+    },
+    {
+      "title": "Check for nearby participants with GroupActivities",
+      "language": "swift",
+      "startTimeSeconds": 599,
+      "code": "// Check for nearby participants with GroupActivities\n\nfunc observeParticipants(session: GroupSession<BoardGameActivity>) async {\n    for await activeParticipants in session.$activeParticipants.values {\n        let nearbyParticipants = activeParticipants.filter {\n            $0.isNearbyWithLocalParticipant && $0 != session.localParticipant\n        }\n    }\n}"
+    },
+    {
+      "title": "Observe local participant pose with GroupActivities",
+      "language": "swift",
+      "startTimeSeconds": 702,
+      "code": "// Observe local participant pose with GroupActivities\n\nfunc observeLocalParticipantState(session: GroupSession<BoardGameActivity>) async {\n    guard let systemCoordinator = await session.systemCoordinator else { return }\n\n    for await localParticipantState in systemCoordinator.localParticipantStates {\n        let localParticipantPose = localParticipantState.pose\n        // Place presented content relative to the local participant pose\n    }\n}"
+    },
+    {
+      "title": "Associate a specific window with GroupActivities and SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 954,
+      "code": "// Associate a specific window with GroupActivities and SwiftUI\n\nimport SwiftUI\nimport GroupActivities\n\nstruct BoardGameApp: App {\n    var body: some Scene {\n        WindowGroup {\n            BoardGameView()\n            ShareLink(item: BoardGameActivity(), preview: SharePreview(\"Play Together\"))\n                .hidden()\n        }\n        .windowStyle(.volumetric)\n\n        WindowGroup(id: \"InstructionalVideo\") {\n            InstructionalVideoView()\n                .groupActivityAssociation(.primary(\"InstructionalVideo\"))\n        }\n    }\n}\n\nstruct BoardGameView: View {\n    var body: some View {\n        // Board game content\n    }\n}\n\nstruct InstructionalVideoView: View {\n    var body: some View {\n        // Video content\n    }\n}"
+    },
+    {
+      "title": "Create a world anchor with ARKit",
+      "language": "swift",
+      "startTimeSeconds": 1107,
+      "code": "// Create a world anchor with ARKit\n\nimport ARKit\n\nclass AnchorController {\n\n    func setUp(session: ARKitSession, provider: WorldTrackingProvider) async throws {\n        try await session.run([provider])\n    }\n\n    func createAnchor(at transform: simd_float4x4, provider: WorldTrackingProvider) async throws {\n        let anchor = WorldAnchor(originFromAnchorTransform: transform)\n        try await provider.addAnchor(anchor)\n    }\n\n    func observeWorldTracking(provider: WorldTrackingProvider) async {\n       for await update in provider.anchorUpdates {\n            switch update.event {\n            case .added, .updated, .removed:\n                // Add, update, or remove furniture\n                break\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Observe sharing availability with ARKit",
+      "language": "swift",
+      "startTimeSeconds": 1202,
+      "code": "// Observe sharing availability with ARKit\n\nfunc observeSharingAvailability(provider: WorldTrackingProvider) async {\n    for await sharingAvailability in provider.worldAnchorSharingAvailability {\n         if sharingAvailability == .available {\n             // Store availability to check when creating a new shared world anchor\n         }\n     }\n}"
+    },
+    {
+      "title": "Create a shared world anchor with ARKit",
+      "language": "swift",
+      "startTimeSeconds": 1224,
+      "code": "// Create a shared world anchor with ARKit\n\nimport ARKit\n\nclass SharedAnchorController {\n\n    func setUp(session: ARKitSession, provider: WorldTrackingProvider) async throws {\n        try await session.run([provider])\n    }\n\n    func createAnchor(at transform: simd_float4x4, provider: WorldTrackingProvider) async throws {\n        let anchor = WorldAnchor(originFromAnchorTransform: transform,\n                                 sharedWithNearbyParticipants: true)\n        try await provider.addAnchor(anchor)\n    }\n\n    func observeWorldTracking(provider: WorldTrackingProvider) async {\n       for await update in provider.anchorUpdates {\n            switch update.event {\n            case .added, .updated, .removed:\n                // Add, update, or remove furniture. Updates with shared anchors from others!\n                let anchorIdentifier = update.anchor.id\n            }\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "worldAnchorSharingAvailability",
+      "url": "https://developer.apple.com/documentation/ARKit/WorldTrackingProvider/worldAnchorSharingAvailability-swift.property",
+      "type": "documentation",
+      "description": "A sequence of world anchor sharing availability changes.",
+      "sosumiURL": "https://sosumi.ai/documentation/ARKit/WorldTrackingProvider/worldAnchorSharingAvailability-swift.property",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ARKit/WorldTrackingProvider/worldAnchorSharingAvailability-swift.property.json"
+    },
+    {
+      "title": "groupActivityAssociation(_:)",
+      "url": "https://developer.apple.com/documentation/SwiftUI/View/groupActivityAssociation(_:)",
+      "type": "documentation",
+      "description": "Specifies how a view should be associated with the current SharePlay",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/View/groupActivityAssociation(_:)",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/View/groupActivityAssociation(_:).json"
+    },
+    {
+      "title": "init(originFromAnchorTransform:sharedWithNearbyParticipants:)",
+      "url": "https://developer.apple.com/documentation/ARKit/WorldAnchor/init(originFromAnchorTransform:sharedWithNearbyParticipants:)",
+      "type": "documentation",
+      "description": "Initialize a world anchor with a transform and indicate if it should be shared with nearby participants.",
+      "sosumiURL": "https://sosumi.ai/documentation/ARKit/WorldAnchor/init(originFromAnchorTransform:sharedWithNearbyParticipants:)",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ARKit/WorldAnchor/init(originFromAnchorTransform:sharedWithNearbyParticipants:).json"
+    },
+    {
+      "title": "Configure your visionOS app for sharing with people nearby",
+      "url": "https://developer.apple.com/documentation/GroupActivities/configure-your-app-for-sharing-with-people-nearby",
+      "type": "documentation",
+      "description": "Create shared experiences for people wearing Vision Pro in the same room and those on FaceTime.",
+      "sosumiURL": "https://sosumi.ai/documentation/GroupActivities/configure-your-app-for-sharing-with-people-nearby",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/GroupActivities/configure-your-app-for-sharing-with-people-nearby.json"
+    },
+    {
+      "title": "AVPlaybackCoordinator",
+      "url": "https://developer.apple.com/documentation/AVFoundation/AVPlaybackCoordinator",
+      "type": "documentation",
+      "description": "An object that coordinates the playback of players in a connected group.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/AVPlaybackCoordinator",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/AVPlaybackCoordinator.json"
+    },
+    {
+      "title": "Building a guessing game for visionOS",
+      "url": "https://developer.apple.com/documentation/GroupActivities/building-a-guessing-game-for-visionos",
+      "type": "samplecode",
+      "description": "Create a team-based guessing game for visionOS using Group Activities.",
+      "sosumiURL": "https://sosumi.ai/documentation/GroupActivities/building-a-guessing-game-for-visionos",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/GroupActivities/building-a-guessing-game-for-visionos.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/318-share-visionos-experiences-with-nearby-people/",
+  "files": {
+    "metadata": "sessions/wwdc2025/318-share-visionos-experiences-with-nearby-people/metadata.json",
+    "readme": "sessions/wwdc2025/318-share-visionos-experiences-with-nearby-people/README.md",
+    "transcript": "sessions/wwdc2025/318-share-visionos-experiences-with-nearby-people/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/318-share-visionos-experiences-with-nearby-people/transcript.json"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10136",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10136,
+  "title": "Discover account-driven User Enrollment",
+  "description": "Learn how User Enrollment helps you support “bring your own device” deployments in your business or enterprise environment. We’ll explore data separation, enhancements to Managed Apple IDs and how you can use the new account-based onboarding in your organization.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10136",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10136",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Store, Distribution & Marketing",
+    "Privacy & Security",
+    "Business & Education"
+  ],
+  "primaryTopic": "Business & Education",
+  "duration": 1266,
+  "hasTranscript": true,
+  "transcriptWordCount": 2947,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10136/6/8CF389C4-8FA9-4A14-A76E-B5B75AE9D4D8/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10136/6/8CF389C4-8FA9-4A14-A76E-B5B75AE9D4D8/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10136/6/8CF389C4-8FA9-4A14-A76E-B5B75AE9D4D8/downloads/wwdc2021-10136_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10136/6/8CF389C4-8FA9-4A14-A76E-B5B75AE9D4D8/downloads/wwdc2021-10136_hd.mp4",
+    "duration": 1266
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Apple Platform Deployment",
+      "url": "https://support.apple.com/guide/deployment/",
+      "type": "documentation",
+      "description": null
+    }
+  ],
+  "path": "sessions/wwdc2021/10136-discover-account-driven-user-enrollment/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10136-discover-account-driven-user-enrollment/metadata.json",
+    "readme": "sessions/wwdc2021/10136-discover-account-driven-user-enrollment/README.md",
+    "transcript": "sessions/wwdc2021/10136-discover-account-driven-user-enrollment/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10136-discover-account-driven-user-enrollment/transcript.json"
+  }
+}

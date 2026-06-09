@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "meet-with-apple-212",
+  "event": "meet-with-apple",
+  "eventName": "Meet with Apple",
+  "year": 2025,
+  "eventContentId": 212,
+  "title": "Optimize your app’s speed and efficiency",
+  "description": "Join us online to learn how to elevate your app experience by maximizing performance and resolving inefficiencies. Whether you’re optimizing an existing app or just starting out, you’ll learn how to improve your app’s responsiveness with SwiftUI, monitor performance when using foundation models, and explore ways to reduce your app’s battery usage. Conducted in English.",
+  "url": "https://developer.apple.com/videos/play/meet-with-apple/212",
+  "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/212",
+  "type": "Video",
+  "publishedAt": null,
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "efficiency",
+    "hangs",
+    "hitches",
+    "launch",
+    "performance",
+    "power",
+    "power profiler",
+    "speed"
+  ],
+  "topics": [
+    "Developer Tools",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": null,
+  "hasTranscript": false,
+  "transcriptWordCount": 0,
+  "availableLanguages": [],
+  "media": {},
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/meet-with-apple/212-optimize-your-app-s-speed-and-efficiency/",
+  "files": {
+    "metadata": "sessions/meet-with-apple/212-optimize-your-app-s-speed-and-efficiency/metadata.json",
+    "readme": "sessions/meet-with-apple/212-optimize-your-app-s-speed-and-efficiency/README.md"
+  }
+}

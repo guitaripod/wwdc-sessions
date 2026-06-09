@@ -1,0 +1,78 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10139",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10139,
+  "title": "Make a great SharePlay experience",
+  "description": "Discover how you can design and build a great SharePlay experience. We'll show you how to identify activities in your app that can help bring everyone together — even while they're apart. Learn best practices to help you design for group activities, create intuitive interactions, and build support for different types of experiences.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10139",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10139",
+  "type": "Video",
+  "publishedAt": "2022-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "facetime",
+    "group activities",
+    "share",
+    "shareplay"
+  ],
+  "topics": [
+    "Audio & Video",
+    "Design",
+    "Essentials",
+    "Health & Fitness",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1118,
+  "hasTranscript": true,
+  "transcriptWordCount": 3000,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10139/5/67B2BB72-D5FC-4EAE-834D-E7D562F22A4D/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10139/5/67B2BB72-D5FC-4EAE-834D-E7D562F22A4D/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10139/5/67B2BB72-D5FC-4EAE-834D-E7D562F22A4D/downloads/wwdc2022-10139_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10139/5/67B2BB72-D5FC-4EAE-834D-E7D562F22A4D/downloads/wwdc2022-10139_hd.mp4",
+    "duration": 1118
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: SharePlay",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/shareplay/overview/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/shareplay/overview/"
+    },
+    {
+      "title": "SharePlay for Developers",
+      "url": "https://developer.apple.com/shareplay/",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/shareplay/"
+    }
+  ],
+  "path": "sessions/wwdc2022/10139-make-a-great-shareplay-experience/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10139-make-a-great-shareplay-experience/metadata.json",
+    "readme": "sessions/wwdc2022/10139-make-a-great-shareplay-experience/README.md",
+    "transcript": "sessions/wwdc2022/10139-make-a-great-shareplay-experience/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10139-make-a-great-shareplay-experience/transcript.json"
+  }
+}

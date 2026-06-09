@@ -1,0 +1,110 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-716",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 716,
+  "title": "Streaming Audio on watchOS 6",
+  "description": "Streaming audio on Apple Watch allows customers to enjoy your content wherever they go without their iPhone. Learn about the streaming APIs brought over from iOS to allow watchOS apps to create independent audio consumption experiences. Find out how to set up your audio session for streaming and explore best practices to provide the best experience for people moving between different network conditions.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/716",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/716",
+  "type": "Video",
+  "publishedAt": "2019-06-04T18:00:00-07:00",
+  "platforms": [
+    "watchOS"
+  ],
+  "keywords": [
+    "⌚️",
+    "apple watch",
+    "audio",
+    "avfoundation",
+    "avplayer",
+    "avqueueplayer",
+    "backgraound",
+    "background",
+    "coremedia",
+    "core media",
+    "digital crown",
+    "network",
+    "networking",
+    "streaming",
+    "watch",
+    "watchkit",
+    "watchos",
+    "wkinterface"
+  ],
+  "topics": [
+    "System Services",
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 534,
+  "hasTranscript": true,
+  "transcriptWordCount": 1236,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/716z5h7lh9mzhl/716/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/716z5h7lh9mzhl/716/716_sd_streaming_audio_on_watchos_6.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/716z5h7lh9mzhl/716/716_hd_streaming_audio_on_watchos_6.mp4",
+    "duration": 534
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Core Media",
+      "url": "https://developer.apple.com/documentation/CoreMedia",
+      "type": "documentation",
+      "description": "Represent time-based audio-visual assets with essential data types.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreMedia",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreMedia.json"
+    },
+    {
+      "title": "Network",
+      "url": "https://developer.apple.com/documentation/Network",
+      "type": "documentation",
+      "description": "Create network connections to send and receive data using transport and security protocols.",
+      "sosumiURL": "https://sosumi.ai/documentation/Network",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Network.json"
+    },
+    {
+      "title": "URLSession Programming Guide",
+      "url": "https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/library/content/documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html"
+    },
+    {
+      "title": "AVFoundation",
+      "url": "https://developer.apple.com/documentation/AVFoundation",
+      "type": "documentation",
+      "description": "Work with audiovisual assets, control device cameras, process audio, and configure system audio interactions.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation.json"
+    },
+    {
+      "title": "WatchKit",
+      "url": "https://developer.apple.com/documentation/WatchKit",
+      "type": "documentation",
+      "description": "Build watchOS apps that use features the app delegate monitors or controls, such as background tasks and extended runtime sessions.",
+      "sosumiURL": "https://sosumi.ai/documentation/WatchKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WatchKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/716-streaming-audio-on-watchos-6/",
+  "files": {
+    "metadata": "sessions/wwdc2019/716-streaming-audio-on-watchos-6/metadata.json",
+    "readme": "sessions/wwdc2019/716-streaming-audio-on-watchos-6/README.md",
+    "transcript": "sessions/wwdc2019/716-streaming-audio-on-watchos-6/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/716-streaming-audio-on-watchos-6/transcript.json"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10677",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10677,
+  "title": "Build customized ML models with the Metal Performance Shaders Graph",
+  "description": "Discover the Metal Performance Shaders (MPS) Graph, which extends Metal's Compute capabilities to multi-dimensional Tensors. MPS Graph builds on the highly tuned library of data parallel primitives that are vital to machine learning and leverages the tremendous power of the GPU. Explore how MPS Graph can help express sophisticated and dynamic neural network training architectures and optimize across them to get acceleration on the GPU. For a deeper understanding of the concepts covered in this session, check out \"Metal for Machine Learning” from WWDC19.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10677",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10677",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "compute",
+    "graph",
+    "machine learning",
+    "metal",
+    "metal shading language",
+    "mps",
+    "mps graph",
+    "neural network",
+    "operations",
+    "tensors"
+  ],
+  "topics": [
+    "Graphics & Games",
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 2375,
+  "hasTranscript": true,
+  "transcriptWordCount": 5608,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10677/2/C6396D39-7970-4E1A-A045-BC5A85B9AC36/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10677/2/C6396D39-7970-4E1A-A045-BC5A85B9AC36/wwdc2020_10677_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10677/2/C6396D39-7970-4E1A-A045-BC5A85B9AC36/wwdc2020_10677_hd.mp4",
+    "duration": 2375
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Adding custom functions to a shader graph",
+      "url": "https://developer.apple.com/documentation/MetalPerformanceShadersGraph/adding-custom-functions-to-a-shader-graph",
+      "type": "samplecode",
+      "description": "Run your own graph functions on the GPU by building the function programmatically.",
+      "sosumiURL": "https://sosumi.ai/documentation/MetalPerformanceShadersGraph/adding-custom-functions-to-a-shader-graph",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MetalPerformanceShadersGraph/adding-custom-functions-to-a-shader-graph.json"
+    },
+    {
+      "title": "Metal Performance Shaders",
+      "url": "https://developer.apple.com/documentation/MetalPerformanceShaders",
+      "type": "documentation",
+      "description": "Optimize graphics and compute performance with kernels that are fine-tuned for the unique characteristics of each Metal GPU family.",
+      "sosumiURL": "https://sosumi.ai/documentation/MetalPerformanceShaders",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MetalPerformanceShaders.json"
+    },
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10677-build-customized-ml-models-with-the-metal-performance-shader/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10677-build-customized-ml-models-with-the-metal-performance-shader/metadata.json",
+    "readme": "sessions/wwdc2020/10677-build-customized-ml-models-with-the-metal-performance-shader/README.md",
+    "transcript": "sessions/wwdc2020/10677-build-customized-ml-models-with-the-metal-performance-shader/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10677-build-customized-ml-models-with-the-metal-performance-shader/transcript.json"
+  }
+}

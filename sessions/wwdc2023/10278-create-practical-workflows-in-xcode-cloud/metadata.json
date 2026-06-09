@@ -1,0 +1,135 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10278",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10278,
+  "title": "Create practical workflows in Xcode Cloud",
+  "description": "Learn how Xcode Cloud can help teams of all shapes and sizes in their development process. We’ll share different ways to configure actions to help you create simple yet powerful workflows, and show you how to extend Xcode Cloud when you integrate with additional tools.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10278",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10278",
+  "type": "Video",
+  "publishedAt": "2023-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 1716,
+  "hasTranscript": true,
+  "transcriptWordCount": 4502,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10278/4/A5414C99-EB05-48CC-B09F-9A322FBEF0C6/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10278/4/A5414C99-EB05-48CC-B09F-9A322FBEF0C6/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10278/4/A5414C99-EB05-48CC-B09F-9A322FBEF0C6/downloads/wwdc2023-10278_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10278/4/A5414C99-EB05-48CC-B09F-9A322FBEF0C6/downloads/wwdc2023-10278_hd.mp4",
+    "duration": 1716
+  },
+  "codeSnippets": [
+    {
+      "title": "Pre-build script that replaces the app icon for beta builds",
+      "language": "bash",
+      "startTimeSeconds": 878,
+      "code": "#!/bin/sh\n# ci_pre_xcodebuild.sh\n#\n\nif [[ \"$CI_XCODEBUILD_ACTION\" == \"archive\" && \"$CI_WORKFLOW\" == \"Beta\" ]]; then\n    echo \"Replacing app icon with beta icon\"\n    mv BetaAppIcon.appiconset ../App/Assets.xcassets/AppIcon.appiconset\nfi"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Xcode Cloud Workflows and Builds",
+      "url": "https://developer.apple.com/documentation/AppStoreConnectAPI/xcode-cloud-workflows-and-builds",
+      "type": "documentation",
+      "description": "Automate reading Xcode Cloud data, managing workflows, and starting builds.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreConnectAPI/xcode-cloud-workflows-and-builds",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreConnectAPI/xcode-cloud-workflows-and-builds.json"
+    },
+    {
+      "title": "Improving code assessment by organizing tests into test plans",
+      "url": "https://developer.apple.com/documentation/Xcode/organizing-tests-to-improve-feedback",
+      "type": "documentation",
+      "description": "Control the information you receive from your tests at different stages in the software engineering process by creating and configuring test plans.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/organizing-tests-to-improve-feedback",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/organizing-tests-to-improve-feedback.json"
+    },
+    {
+      "title": "Making dependencies available to Xcode Cloud",
+      "url": "https://developer.apple.com/documentation/Xcode/Making-Dependencies-Available-to-Xcode-Cloud",
+      "type": "documentation",
+      "description": "Review dependencies and make them available to Xcode Cloud before you configure your project to use Xcode Cloud.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/Making-Dependencies-Available-to-Xcode-Cloud",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/Making-Dependencies-Available-to-Xcode-Cloud.json"
+    },
+    {
+      "title": "Configuring webhooks in Xcode Cloud",
+      "url": "https://developer.apple.com/documentation/Xcode/Configuring-Webhooks-in-Xcode-Cloud",
+      "type": "documentation",
+      "description": "Configure webhooks that connect Xcode Cloud to other services and tools.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/Configuring-Webhooks-in-Xcode-Cloud",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/Configuring-Webhooks-in-Xcode-Cloud.json"
+    },
+    {
+      "title": "Environment variable reference",
+      "url": "https://developer.apple.com/documentation/Xcode/Environment-Variable-Reference",
+      "type": "documentation",
+      "description": "Review predefined environment variables you use in custom build scripts.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/Environment-Variable-Reference",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/Environment-Variable-Reference.json"
+    },
+    {
+      "title": "Writing custom build scripts",
+      "url": "https://developer.apple.com/documentation/Xcode/Writing-Custom-Build-Scripts",
+      "type": "documentation",
+      "description": "Extend your Xcode Cloud workflows with custom build scripts that perform custom tasks or install additional tools.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/Writing-Custom-Build-Scripts",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/Writing-Custom-Build-Scripts.json"
+    },
+    {
+      "title": "Xcode Cloud workflow reference",
+      "url": "https://developer.apple.com/documentation/Xcode/Xcode-Cloud-Workflow-Reference",
+      "type": "documentation",
+      "description": "Configure metadata, start conditions, actions, post-actions, and more to create custom Xcode Cloud workflows.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/Xcode-Cloud-Workflow-Reference",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/Xcode-Cloud-Workflow-Reference.json"
+    },
+    {
+      "title": "Developing a workflow strategy for Xcode Cloud",
+      "url": "https://developer.apple.com/documentation/Xcode/Developing-a-Workflow-Strategy-for-Xcode-Cloud",
+      "type": "documentation",
+      "description": "Review how you can best create custom Xcode Cloud workflows to refine your continuous integration and delivery practice.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/Developing-a-Workflow-Strategy-for-Xcode-Cloud",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/Developing-a-Workflow-Strategy-for-Xcode-Cloud.json"
+    },
+    {
+      "title": "Configuring your first Xcode Cloud workflow",
+      "url": "https://developer.apple.com/documentation/Xcode/Configuring-Your-First-Xcode-Cloud-Workflow",
+      "type": "documentation",
+      "description": "Set up your project or workspace to use Xcode Cloud and adopt continuous integration and delivery.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/Configuring-Your-First-Xcode-Cloud-Workflow",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/Configuring-Your-First-Xcode-Cloud-Workflow.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10278-create-practical-workflows-in-xcode-cloud/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10278-create-practical-workflows-in-xcode-cloud/metadata.json",
+    "readme": "sessions/wwdc2023/10278-create-practical-workflows-in-xcode-cloud/README.md",
+    "transcript": "sessions/wwdc2023/10278-create-practical-workflows-in-xcode-cloud/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10278-create-practical-workflows-in-xcode-cloud/transcript.json"
+  }
+}

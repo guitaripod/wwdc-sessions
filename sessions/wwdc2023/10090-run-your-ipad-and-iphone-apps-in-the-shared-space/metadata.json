@@ -1,0 +1,81 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10090",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10090,
+  "title": "Run your iPad and iPhone apps in the Shared Space",
+  "description": "Discover how you can run your existing iPad and iPhone apps on Vision Pro. Learn how iPadOS and iOS apps operate on this platform, find out about the Designed for iPad experience, and explore the paths available for enhancing your app experience on visionOS.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10090",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10090",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "Essentials",
+    "Spatial Computing",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 857,
+  "hasTranscript": true,
+  "transcriptWordCount": 1917,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10090/4/F9896DEE-8E84-49C1-AEAF-10D7628B2662/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10090/4/F9896DEE-8E84-49C1-AEAF-10D7628B2662/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10090/4/F9896DEE-8E84-49C1-AEAF-10D7628B2662/downloads/wwdc2023-10090_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10090/4/F9896DEE-8E84-49C1-AEAF-10D7628B2662/downloads/wwdc2023-10090_hd.mp4",
+    "duration": 857
+  },
+  "codeSnippets": [
+    {
+      "title": "Default orientation Info.plist key",
+      "language": "swift",
+      "startTimeSeconds": 277,
+      "code": "UIPreferredDefaultInterfaceOrientation"
+    },
+    {
+      "title": "Supported orientations Info.plist key",
+      "language": "swift",
+      "startTimeSeconds": 303,
+      "code": "UISupportedInterfaceOrientations"
+    },
+    {
+      "title": "Required capabilities Info.plist key",
+      "language": "swift",
+      "startTimeSeconds": 313,
+      "code": "UIRequiredDeviceCapabilities"
+    },
+    {
+      "title": "Look to Dictate enablement",
+      "language": "swift",
+      "startTimeSeconds": 479,
+      "code": "// SwiftUI\n@State private var searchText = \"\"\n\nvar body: some View {\n    NavigationStack {\n        Text(\"Query: \\(searchText)\")\n    }\n    .searchable(text: $searchText)\n    .searchDictationBehavior(.inline(activation: .onLook))\n}\n\n\n// UIKit\nlet searchController = UISearchController()\nsearchController.searchBar.isLookToDictateEnabled = true"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2023/10090-run-your-ipad-and-iphone-apps-in-the-shared-space/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10090-run-your-ipad-and-iphone-apps-in-the-shared-space/metadata.json",
+    "readme": "sessions/wwdc2023/10090-run-your-ipad-and-iphone-apps-in-the-shared-space/README.md",
+    "transcript": "sessions/wwdc2023/10090-run-your-ipad-and-iphone-apps-in-the-shared-space/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10090-run-your-ipad-and-iphone-apps-in-the-shared-space/transcript.json"
+  }
+}

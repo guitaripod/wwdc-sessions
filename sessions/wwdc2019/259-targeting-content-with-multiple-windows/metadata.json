@@ -1,0 +1,51 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-259",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 259,
+  "title": "Targeting Content with Multiple Windows",
+  "description": "Learn how to target content for a specific window in your app. Find out how to identify which scene the system should open from a notification, a shortcut item, and other user activities.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/259",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/259",
+  "type": "Video",
+  "publishedAt": "2019-06-07T15:20:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 671,
+  "hasTranscript": true,
+  "transcriptWordCount": 1874,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/259hnbafsdcioplsf653f/259/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/259hnbafsdcioplsf653f/259/259_sd_targeting_content_with_multiple_windows.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/259hnbafsdcioplsf653f/259/259_hd_targeting_content_with_multiple_windows.mp4",
+    "duration": 671
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/259-targeting-content-with-multiple-windows/",
+  "files": {
+    "metadata": "sessions/wwdc2019/259-targeting-content-with-multiple-windows/metadata.json",
+    "readme": "sessions/wwdc2019/259-targeting-content-with-multiple-windows/README.md",
+    "transcript": "sessions/wwdc2019/259-targeting-content-with-multiple-windows/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/259-targeting-content-with-multiple-windows/transcript.json"
+  }
+}

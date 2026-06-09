@@ -1,0 +1,118 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-388",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 388,
+  "title": "Find and fix performance issues in your Metal games",
+  "description": "Track down hard-to-find game performance issues with powerful Metal tools. Discover how to collect rich performance data using Game Performance Overview in Instruments, run background traces with metalperftrace on macOS and Control Center on iOS, and use the new StateReporting API to correlate metrics directly to your game’s runtime state. Turn hours of telemetry into clear, actionable insights.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/388",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/388",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1261,
+  "hasTranscript": true,
+  "transcriptWordCount": 2852,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/388/4/682e727f-75f9-441f-81d9-2d6f38bde4b0/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/388/4/682e727f-75f9-441f-81d9-2d6f38bde4b0/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/388/4/682e727f-75f9-441f-81d9-2d6f38bde4b0/downloads/wwdc2026-388_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/388/4/682e727f-75f9-441f-81d9-2d6f38bde4b0/downloads/wwdc2026-388_hd.mp4",
+    "duration": 1261
+  },
+  "codeSnippets": [
+    {
+      "title": "Collect a trace with metalperftrace",
+      "language": "bash",
+      "startTimeSeconds": 300,
+      "code": "# Collect the last 5 hours\nmetalperftrace collect /tmp --last 5h\n\n# Output\n# Metal performance traces collected to: /tmp\n# /tmp/MetalPerfTrace_20260401_094100_to_144100.atrc\n\n# Or collect an explicit time range\nmetalperftrace collect /tmp \\\n  --start 2026-04-01T09:41:00 \\\n  --end 2026-04-01T12:41:00"
+    },
+    {
+      "title": "Print a trace overview",
+      "language": "bash",
+      "startTimeSeconds": 422,
+      "code": "metalperftrace overview /Data/MyGameTrace.atrc\n\n# [Modern Renderer pid:13833]\n# Mem: 2146.1 MiB (2343.9 Peak, 1199.4 Metal)\n# Total CPU Time: 2417.601s (33.17% Sys, 66.83% User)\n# Instructions: 9944836683668 (5.75% P, 94.25% E)\n# Cycles: 5176430469224 (4.45% P, 95.55% E)\n# Disk Reads / Writes: 317.37 / 0.04 MiB (Logical Write 0.04)\n# Layer 0x729293000 (3456x2104) Interval 300.065s Active 300.065s\n#   59.7 FPS  17735 Frames  188 Skipped\n#   Frame Time avg: 16.74ms min: 8.33 max: 125.00 stddev: 3.70\n#   CPU Begin-to-Present avg: 3.99ms min: 1.40 max: 94.37 stddev: 1.80\n#   On-GPU Time avg: 13.39ms min: 5.24 max: 37.57 stddev: 1.43\n#   Next Drawable Wait avg: 0.26ms min: 0.00 max: 91.08 stddev: 1.75\n#   Shader Compilation Time: 0.000s (Total: 0, Cached: 18)"
+    },
+    {
+      "title": "Filter by process and emit JSON",
+      "language": "objectivec",
+      "startTimeSeconds": 478,
+      "code": "// Report state transitions\n#import <StateReporting/StateReporting.h>\n\nNSString *domain = @\"com.mygame.level\";\nSRStateReporter *reporter = [SRStateReporter reporterForDomain:domain];\n\n[reporter reportTransitionToStateLabel:@\"Level 1\"\n                        stableMetadata:nil\n                      volatileMetadata:nil];\n\n[reporter reportTransitionToStateLabel:@\"Level 1\"\n                        stableMetadata:@{ @\"id\": @1001 }\n                      volatileMetadata:nil];\n\n[reporter reportVolatileMetadataUpdate:@{ @\"health\": @100 }];"
+    },
+    {
+      "title": "Include full state transitions in overview",
+      "language": "bash",
+      "startTimeSeconds": 835,
+      "code": "metalperftrace overview /Data/MyGameTrace.atrc --include-state-transitions\n\n# [States]\n# com.mygame.graphics\n#   High (30.59%, 14.996s)  raytracing: 1  shadow: ultra\n#   Medium (69.38%, 34.012s)  raytracing: 0  shadow: medium\n# com.mygame.level\n#   Level 1 (20.47%, 10.033s)  biome: forest   id: 1001\n#   Level 2 (79.53%, 38.991s)  biome: volcano  id: 1002"
+    },
+    {
+      "title": "Aggregate metrics by state",
+      "language": "bash",
+      "startTimeSeconds": 855,
+      "code": "# Aggregate across all domains / transitions\nmetalperftrace overview /Data/MyGameTrace.atrc --aggregate\n\n# Aggregate one domain\nmetalperftrace overview /Data/MyGameTrace.atrc --aggregate \\\n  --domain com.mygame.graphics\n\n# Aggregate a specific state label within a domain\nmetalperftrace overview /Data/MyGameTrace.atrc --aggregate \\\n  --domain com.mygame.graphics \\\n  --state-label \"High\""
+    }
+  ],
+  "resources": [
+    {
+      "title": "Understanding the Metal Performance HUD metrics",
+      "url": "https://developer.apple.com/documentation/Xcode/Understanding-metal-performance-hud-metrics",
+      "type": "documentation",
+      "description": "Learn what each of the metrics reported by the heads-up display indicates.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/Understanding-metal-performance-hud-metrics",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/Understanding-metal-performance-hud-metrics.json"
+    },
+    {
+      "title": "Monitoring your Metal app’s graphics performance",
+      "url": "https://developer.apple.com/documentation/Xcode/Monitoring-your-Metal-apps-graphics-performance",
+      "type": "documentation",
+      "description": "Catch performance issues using the Metal Performance HUD while your app runs.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/Monitoring-your-Metal-apps-graphics-performance",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/Monitoring-your-Metal-apps-graphics-performance.json"
+    },
+    {
+      "title": "Getting started with StateReporting",
+      "url": "https://developer.apple.com/documentation/StateReporting/getting-started-with-statereporting",
+      "type": "documentation",
+      "description": "Define reportable metadata types, obtain a state reporter for your domain, and report transitions at the right call sites in your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/StateReporting/getting-started-with-statereporting",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StateReporting/getting-started-with-statereporting.json"
+    },
+    {
+      "title": "Metal debugger",
+      "url": "https://developer.apple.com/documentation/Xcode/Metal-debugger",
+      "type": "documentation",
+      "description": "Debug and profile your Metal workload with a GPU trace.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/Metal-debugger",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/Metal-debugger.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/388-find-and-fix-performance-issues-in-your-metal-games/",
+  "files": {
+    "metadata": "sessions/wwdc2026/388-find-and-fix-performance-issues-in-your-metal-games/metadata.json",
+    "readme": "sessions/wwdc2026/388-find-and-fix-performance-issues-in-your-metal-games/README.md",
+    "transcript": "sessions/wwdc2026/388-find-and-fix-performance-issues-in-your-metal-games/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/388-find-and-fix-performance-issues-in-your-metal-games/transcript.json"
+  }
+}

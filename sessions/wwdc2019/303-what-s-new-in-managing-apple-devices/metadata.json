@@ -1,0 +1,106 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-303",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 303,
+  "title": "What’s New in Managing Apple Devices",
+  "description": "Learn about the latest management enhancements for iOS, macOS, and tvOS and the evolution of management tools over the past year. You'll discover how new MDM features help administrators manage devices more effectively, how new technologies deliver support for centrally managed authorization, and how Apple Business Manager and Apple School Manager have been enhanced to streamline management of your organizations apps, content, and devices.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/303",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/303",
+  "type": "Video",
+  "publishedAt": "2019-06-07T11:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Store, Distribution & Marketing",
+    "Business & Education"
+  ],
+  "primaryTopic": "Business & Education",
+  "duration": 3529,
+  "hasTranscript": true,
+  "transcriptWordCount": 8967,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/303te9o8pf35qp/303/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/303te9o8pf35qp/303/303_sd_whats_new_in_managing_apple_devices.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/303te9o8pf35qp/303/303_hd_whats_new_in_managing_apple_devices.mp4",
+    "duration": 3529
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Apple Configurator 2 User Guide",
+      "url": "https://support.apple.com/guide/apple-configurator-2/",
+      "type": "guide",
+      "description": "Apple Configurator 2 User Guide"
+    },
+    {
+      "title": "Classroom for iPad User Guide",
+      "url": "https://support.apple.com/guide/classroom/welcome/ios",
+      "type": "guide",
+      "description": "Classroom for iPad User Guide"
+    },
+    {
+      "title": "Apple School Manager User Guide",
+      "url": "https://support.apple.com/guide/apple-school-manager/",
+      "type": "documentation",
+      "description": "Apple School Manager User Guide"
+    },
+    {
+      "title": "Apple Remote Desktop Help",
+      "url": "https://help.apple.com/remotedesktop/mac/",
+      "type": "guide",
+      "description": "Apple Remote Desktop Help"
+    },
+    {
+      "title": "Classroom for Mac User Guide",
+      "url": "https://support.apple.com/guide/classroom/welcome/mac",
+      "type": "guide",
+      "description": "Classroom for Mac User Guide"
+    },
+    {
+      "title": "Device Management",
+      "url": "https://developer.apple.com/documentation/DeviceManagement",
+      "type": "documentation",
+      "description": "Manage your organization’s devices remotely.",
+      "sosumiURL": "https://sosumi.ai/documentation/DeviceManagement",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/DeviceManagement.json"
+    },
+    {
+      "title": "Apple Business Manager User Guide",
+      "url": "https://support.apple.com/guide/apple-business-manager/",
+      "type": "guide",
+      "description": "Apple Business Manager User Guide"
+    },
+    {
+      "title": "Apple Platform Deployment",
+      "url": "https://support.apple.com/guide/deployment/",
+      "type": "documentation",
+      "description": null
+    }
+  ],
+  "path": "sessions/wwdc2019/303-what-s-new-in-managing-apple-devices/",
+  "files": {
+    "metadata": "sessions/wwdc2019/303-what-s-new-in-managing-apple-devices/metadata.json",
+    "readme": "sessions/wwdc2019/303-what-s-new-in-managing-apple-devices/README.md",
+    "transcript": "sessions/wwdc2019/303-what-s-new-in-managing-apple-devices/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/303-what-s-new-in-managing-apple-devices/transcript.json"
+  }
+}

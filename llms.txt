@@ -2,28 +2,28 @@
 
 > Agent-native knowledge base of Apple WWDC developer sessions (2014-2026, plus Tech Talks and Meet with Apple): clean transcripts, structured metadata, code snippets, and links to official documentation. Generated from Apple's public developer-video feeds.
 
-1617 sessions across 15 events · 1525 with full transcripts. The machine entrypoint is catalog.json: one record per session with stable id, topics, platforms, languages, and file paths. Each session lives at sessions/<event>/<id>/ with metadata.json, README.md, transcript.md, and transcript.json.
+1630 sessions across 15 events · 1525 with full transcripts. The machine entrypoint is catalog.json: one record per session, each carrying an exact `path` (e.g. sessions/wwdc2026/298-meet-the-evaluations-framework/). Read `path` + filename to fetch a session's metadata.json, README.md, transcript.md, or transcript.json — do not derive paths from the id.
 
 ## Start here
-- [Master catalog (JSON)](catalog.json): every session, with provenance and counts
-- [Events (JSON)](events.json): per-event summaries and counts
+- [Master catalog (JSON)](catalog.json): every session, with provenance, counts, and `rawBase`
+- [Events (JSON)](events.json): per-event summaries; each event also has events/<id>/index.json
 - [Topics (JSON)](topics.json): sessions grouped by topic across years
-- [Agent guide](AGENTS.md): access patterns, path templates, conventions
-- [Catalog schema](schema/catalog.schema.json) · [Session schema](schema/session.schema.json)
+- [Agent guide](AGENTS.md): access patterns, conventions, sosumi docs
+- [Schemas](schema/): catalog, session, events, topics, transcript
 
 ## Events
 - [WWDC26](events/wwdc2026/index.md): 116 sessions, 112 transcripts
 - [WWDC25](events/wwdc2025/index.md): 122 sessions, 120 transcripts
-- [Meet with Apple](events/meet-with-apple/index.md): 45 sessions, 45 transcripts
+- [Meet with Apple](events/meet-with-apple/index.md): 51 sessions, 45 transcripts
 - [WWDC24](events/wwdc2024/index.md): 123 sessions, 123 transcripts
 - [WWDC23](events/wwdc2023/index.md): 181 sessions, 181 transcripts
 - [WWDC22](events/wwdc2022/index.md): 205 sessions, 184 transcripts
 - [WWDC21](events/wwdc2021/index.md): 224 sessions, 199 transcripts
 - [WWDC20](events/wwdc2020/index.md): 244 sessions, 206 transcripts
-- [WWDC19](events/wwdc2019/index.md): 153 sessions, 152 transcripts
+- [WWDC19](events/wwdc2019/index.md): 159 sessions, 152 transcripts
 - [WWDC18](events/wwdc2018/index.md): 38 sessions, 38 transcripts
 - [WWDC17](events/wwdc2017/index.md): 36 sessions, 36 transcripts
 - [Tech Talks](events/tech-talks/index.md): 96 sessions, 95 transcripts
-- [WWDC16](events/wwdc2016/index.md): 16 sessions, 16 transcripts
+- [WWDC16](events/wwdc2016/index.md): 17 sessions, 16 transcripts
 - [WWDC15](events/wwdc2015/index.md): 12 sessions, 12 transcripts
 - [WWDC14](events/wwdc2014/index.md): 6 sessions, 6 transcripts

@@ -1,0 +1,100 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10298",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10298,
+  "title": "Add support for Matter in your smart home app",
+  "description": "The enhanced and new APIs in HomeKit enable smart home developers to integrate with the new Matter protocol in the most convenient way. Tour the Matter protocol, and discover how to set up and manage Matter accessories on our platforms and within your smart home apps.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10298",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10298",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "chip",
+    "home automation",
+    "homekit",
+    "matter"
+  ],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 1062,
+  "hasTranscript": true,
+  "transcriptWordCount": 2628,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10298/8/B4998783-FC66-455C-9469-213C69446C72/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10298/8/B4998783-FC66-455C-9469-213C69446C72/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10298/8/B4998783-FC66-455C-9469-213C69446C72/downloads/wwdc2021-10298_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10298/8/B4998783-FC66-455C-9469-213C69446C72/downloads/wwdc2021-10298_hd.mp4",
+    "duration": 1062
+  },
+  "codeSnippets": [
+    {
+      "title": "Add a Matter accessory to your HomeKit app",
+      "language": "swift",
+      "startTimeSeconds": 298,
+      "code": "home.addAndSetupAccessories() { error in\n    if let error = error {\n         print(\"Error occurred in accessory setup \\(error)”)\n    } else {\n         print(\"Successfully added accessory to HomeKit\")\n    }\n}"
+    },
+    {
+      "title": "Invocation example",
+      "language": "swift",
+      "startTimeSeconds": 552,
+      "code": "let homes = proprietaryHomeStorage.homes.map { home in\n    HMCHIPServiceHome(uuid: home.uuid, name: home.name)\n}\n\nlet topology = HMCHIPServiceTopology(homes: homes)\nlet setupManager = HMAccessorySetupManager()\n\ndo {\n    try await setupManager.addAndSetUpAccessories(for: topology)\n    print(\"Successfully added accessory to my app”)\n} catch {\n    print(\"Error occurred in accessory setup \\(error)\")\n}"
+    },
+    {
+      "title": "Extension communication",
+      "language": "swift",
+      "startTimeSeconds": 615,
+      "code": "class RequestHandler: HMCHIPServiceRequestHandler, CHIPDevicePairingDelegate {\n\n   // . . .\n\n   override func pairAccessory(in: HMCHIPServiceHome, onboardingPayload: String) async throws -> Void {\n        // iOS is instructing the extension to pair the accessory via CHIP.framework\n  }     // . . .\n}"
+    },
+    {
+      "title": "Extension communication",
+      "language": "swift",
+      "startTimeSeconds": 639,
+      "code": "class RequestHandler: HMCHIPServiceRequestHandler, CHIPDevicePairingDelegate {\n\n   // . . .\n\n   override func rooms(in: HMCHIPServiceHome) async throws -> [HMCHIPServiceRoom] {\n        // iOS is querying for a room list that corresponds to the given home\n    }     // . . .\n}"
+    },
+    {
+      "title": "Extension communication",
+      "language": "swift",
+      "startTimeSeconds": 663,
+      "code": "class RequestHandler: HMCHIPServiceRequestHandler, CHIPDevicePairingDelegate {\n\n   // . . .\n\n   override func configureAccessory(named accessoryName: String, room accessoryRoom: HMCHIPServiceRoom) async throws -> Void {\n        // iOS is instructing the extension to apply configuration via CHIP.framework.\n    }     // . . .\n}"
+    },
+    {
+      "title": "Extension communication",
+      "language": "swift",
+      "startTimeSeconds": 687,
+      "code": "class RequestHandler: HMCHIPServiceRequestHandler, CHIPDevicePairingDelegate {\n\n    override func rooms(in: HMCHIPServiceHome) async throws -> [HMCHIPServiceRoom] {\n        // iOS is querying for rooms that match the given home.  These rooms will be shown in system UI and the selection will be vended back to your extension's `configureAccessory` function\n   }\n\n    override func pairAccessory(in: HMCHIPServiceHome, onboardingPayload: String) async throws -> Void {\n        // iOS is instructing the extension to pair the accessory via CHIP.framework\n   }\n\n    override func configureAccessory(named accessoryName: String, room accessoryRoom: HMCHIPServiceRoom) async throws -> Void {\n       // iOS is instructing the extension to apply configuration via CHIP.framework.\n    }\n}"
+    },
+    {
+      "title": "Status and Control",
+      "language": "swift",
+      "startTimeSeconds": 867,
+      "code": "let controller = CHIPDeviceController.shared()\ndo {\n    let device = try controller.getPairedDevice(accessoryDeviceID)\n    let onOffCluster = CHIPOnOff(device: device,\n                               endpoint: lightEndpoint,\n                                  queue: DispatchQueue.main)\n    onOffCluster?.toggle({ (error, values) in\n        // Error handling code here\n    })\n    onOffCluster?.readAttributeOnOff(responseHandler: { error, response in\n        if let state = response?[VALUE_KEY] as? NSInteger {\n           updateLightState(state: state)\n        }\n    })\n} catch {\n    print(\"Error occurred in accessory control \\(error)\")\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2021/10298-add-support-for-matter-in-your-smart-home-app/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10298-add-support-for-matter-in-your-smart-home-app/metadata.json",
+    "readme": "sessions/wwdc2021/10298-add-support-for-matter-in-your-smart-home-app/README.md",
+    "transcript": "sessions/wwdc2021/10298-add-support-for-matter-in-your-smart-home-app/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10298-add-support-for-matter-in-your-smart-home-app/transcript.json"
+  }
+}

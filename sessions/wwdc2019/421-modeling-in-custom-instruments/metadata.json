@@ -1,0 +1,69 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-421",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 421,
+  "title": "Modeling in Custom Instruments",
+  "description": "Custom instruments make it possible to profile your app your way, telling the story of what your app is doing at runtime. At the center of each custom instrument is a modeler. Find out how to build your own modelers that translate from signpost output to the data you want to show in your instrument. Learn how the Instruments rules engine works and how to optimize your instrument for maximum efficiency. This session builds on Creating Custom Instruments from WWDC 2018.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/421",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/421",
+  "type": "Video",
+  "publishedAt": "2019-06-07T15:20:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 2262,
+  "hasTranscript": true,
+  "transcriptWordCount": 7644,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/421pew36g0j6fv4jm/421/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/421pew36g0j6fv4jm/421/421_sd_modeling_in_custom_instruments.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/421pew36g0j6fv4jm/421/421_hd_modeling_in_custom_instruments.mp4",
+    "duration": 2262
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Creating custom modelers for intelligent instruments",
+      "url": "https://developer.apple.com/documentation/Xcode/creating-custom-modelers-for-intelligent-instruments",
+      "type": "documentation",
+      "description": "Create Custom Modelers with the CLIPS language and learn how the embedded rules engine works.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/creating-custom-modelers-for-intelligent-instruments",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/creating-custom-modelers-for-intelligent-instruments.json"
+    },
+    {
+      "title": "Instruments Developer Help",
+      "url": "https://help.apple.com/instruments/developer/mac/current/",
+      "type": "documentation",
+      "description": "Describes how to create custom instruments."
+    }
+  ],
+  "path": "sessions/wwdc2019/421-modeling-in-custom-instruments/",
+  "files": {
+    "metadata": "sessions/wwdc2019/421-modeling-in-custom-instruments/metadata.json",
+    "readme": "sessions/wwdc2019/421-modeling-in-custom-instruments/README.md",
+    "transcript": "sessions/wwdc2019/421-modeling-in-custom-instruments/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/421-modeling-in-custom-instruments/transcript.json"
+  }
+}

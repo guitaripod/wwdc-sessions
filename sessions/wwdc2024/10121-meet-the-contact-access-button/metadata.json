@@ -1,0 +1,96 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2024-10121",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10121,
+  "title": "Meet the Contact Access Button",
+  "description": "Learn about the new Contacts authorization modes and how to improve Contacts access in your app. Discover how to integrate the Contact Access Button into your app to share additional contacts on demand and provide an easier path to Contacts authorization. We’ll also cover Contacts security features and an alternative API to be used if the button isn’t appropriate for your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10121",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10121",
+  "type": "Video",
+  "publishedAt": "2024-06-13T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 943,
+  "hasTranscript": true,
+  "transcriptWordCount": 2088,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10121/4/A4253FF7-546D-4248-9DFA-DACBFB567A90/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10121/4/A4253FF7-546D-4248-9DFA-DACBFB567A90/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10121/4/A4253FF7-546D-4248-9DFA-DACBFB567A90/downloads/wwdc2024-10121_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10121/4/A4253FF7-546D-4248-9DFA-DACBFB567A90/downloads/wwdc2024-10121_hd.mp4",
+    "duration": 943
+  },
+  "codeSnippets": [
+    {
+      "title": "Using ContactAccessButton",
+      "language": "swift",
+      "startTimeSeconds": 315,
+      "code": "// Using ContactAccessButton\n\n@Binding var searchText: String\n@State var authorizationStatus: CNAuthorizationStatus = .notDetermined\n\nvar body: some View {\n    List {\n        ForEach(searchResults(for: searchText)) { person in\n            ResultRow(person)\n        }\n        if authorizationStatus == .limited || authorizationStatus == .notDetermined {\n            ContactAccessButton(queryString: searchText) { identifiers in\n                let contacts = await fetchContacts(withIdentifiers: identifiers)\n                dismissSearch(withResult: contacts)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Appearance options",
+      "language": "swift",
+      "startTimeSeconds": 370,
+      "code": "ContactAccessButton(queryString: searchText)\n  .font(.system(weight: .bold))\n  .foregroundStyle(.gray)\n  .tint(.green)\n  .contactAccessButtonCaption(.phone)\n  .contactAccessButtonStyle(ContactAccessButton.Style(imageWidth: 30))"
+    },
+    {
+      "title": "Fetching contacts with CNContactStore",
+      "language": "swift",
+      "startTimeSeconds": 611,
+      "code": "// Fetching contacts with CNContactStore\n\nfunc fetchContacts(withIdentifiers identifiers: [String]) async -> [CNContact] {\n    return await Task {\n        let keys = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName)]\n        let fetchRequest = CNContactFetchRequest(keysToFetch: keys)\n        fetchRequest.predicate = CNContact.predicateForContacts(withIdentifiers: identifiers)\n        var contacts: [CNContact] = []\n        do {\n            try CNContactStore().enumerateContacts(with: fetchRequest) { contact, _ in\n                contacts.append(contact)\n            }\n        } catch {\n            // ...\n        }\n        return contacts\n    }.value\n}"
+    },
+    {
+      "title": "Using contactAccessPicker",
+      "language": "swift",
+      "startTimeSeconds": 767,
+      "code": "// Using contactAccessPicker\n\n@State private var isPresented = false\n\nvar body: some View {\n    Button(\"Show picker\") {\n        isPresented.toggle()\n    }.contactAccessPicker(isPresented: $isPresented) { identifiers in\n        let contacts = await fetchContacts(withIdentifiers: identifiers)\n        // use the new contacts!\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Accessing a person’s contact data using Contacts and ContactsUI",
+      "url": "https://developer.apple.com/documentation/Contacts/accessing-a-person-s-contact-data-using-contacts-and-contactsui",
+      "type": "samplecode",
+      "description": "Allow people to grant your app access to contact data by adding the Contact access button and Contact access picker to your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/Contacts/accessing-a-person-s-contact-data-using-contacts-and-contactsui",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Contacts/accessing-a-person-s-contact-data-using-contacts-and-contactsui.json"
+    },
+    {
+      "title": "Forum: App & System Services",
+      "url": "https://developer.apple.com/forums/topics/app-and-system-services?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/app-and-system-services?cid=vf-a-0010"
+    }
+  ],
+  "path": "sessions/wwdc2024/10121-meet-the-contact-access-button/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10121-meet-the-contact-access-button/metadata.json",
+    "readme": "sessions/wwdc2024/10121-meet-the-contact-access-button/README.md",
+    "transcript": "sessions/wwdc2024/10121-meet-the-contact-access-button/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10121-meet-the-contact-access-button/transcript.json"
+  }
+}

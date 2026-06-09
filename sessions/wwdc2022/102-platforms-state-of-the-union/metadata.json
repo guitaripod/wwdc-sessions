@@ -1,0 +1,58 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-102",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 102,
+  "title": "Platforms State of the Union",
+  "description": "Take a deeper dive into the latest tools, technologies, and advances across Apple platforms to help you create even better apps.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/102",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/102",
+  "type": "Special Event",
+  "publishedAt": "2022-06-06T13:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "sotu",
+    "sotu 2022"
+  ],
+  "topics": [
+    "Essentials"
+  ],
+  "primaryTopic": "Essentials",
+  "duration": 4210,
+  "hasTranscript": true,
+  "transcriptWordCount": 11552,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/102/2/4143C9F2-546F-4065-B38B-4EC32099CD03/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/102/2/4143C9F2-546F-4065-B38B-4EC32099CD03/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/102/2/4143C9F2-546F-4065-B38B-4EC32099CD03/downloads/wwdc2022-102_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/102/2/4143C9F2-546F-4065-B38B-4EC32099CD03/downloads/wwdc2022-102_hd.mp4",
+    "duration": 4210
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2022/102-platforms-state-of-the-union/",
+  "files": {
+    "metadata": "sessions/wwdc2022/102-platforms-state-of-the-union/metadata.json",
+    "readme": "sessions/wwdc2022/102-platforms-state-of-the-union/README.md",
+    "transcript": "sessions/wwdc2022/102-platforms-state-of-the-union/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/102-platforms-state-of-the-union/transcript.json"
+  }
+}

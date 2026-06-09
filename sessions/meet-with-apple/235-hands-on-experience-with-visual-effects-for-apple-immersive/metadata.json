@@ -1,0 +1,51 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "meet-with-apple-235",
+  "event": "meet-with-apple",
+  "eventName": "Meet with Apple",
+  "year": 2025,
+  "eventContentId": 235,
+  "title": "Hands-on experience with visual effects for Apple Immersive Video",
+  "description": "Join Matt DeJohn from Blackmagic Design to discover how you can approach visual effects for your Apple Immersive Video projects. Working in Fusion, you’ll learn about stereoscopic title placement, simple patching, and advanced workflows, like stabilization. This session was originally presented as part of the Meet with Apple activity “Create immersive media experiences for visionOS - Day 2.” Watch the full video for more insights and related sessions.",
+  "url": "https://developer.apple.com/videos/play/meet-with-apple/235",
+  "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/235",
+  "type": "Video",
+  "publishedAt": "2025-12-09T00:00:00-08:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 2551,
+  "hasTranscript": true,
+  "transcriptWordCount": 7028,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/235/1/6945f3cf-51a6-4755-be33-93cc377f7967/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/235/1/6945f3cf-51a6-4755-be33-93cc377f7967/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/235/1/6945f3cf-51a6-4755-be33-93cc377f7967/downloads/meet-with-apple-235_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/235/1/6945f3cf-51a6-4755-be33-93cc377f7967/downloads/meet-with-apple-235_hd.mp4",
+    "duration": 2551
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/meet-with-apple/235-hands-on-experience-with-visual-effects-for-apple-immersive/",
+  "files": {
+    "metadata": "sessions/meet-with-apple/235-hands-on-experience-with-visual-effects-for-apple-immersive/metadata.json",
+    "readme": "sessions/meet-with-apple/235-hands-on-experience-with-visual-effects-for-apple-immersive/README.md",
+    "transcript": "sessions/meet-with-apple/235-hands-on-experience-with-visual-effects-for-apple-immersive/transcript.md",
+    "transcriptJSON": "sessions/meet-with-apple/235-hands-on-experience-with-visual-effects-for-apple-immersive/transcript.json"
+  }
+}

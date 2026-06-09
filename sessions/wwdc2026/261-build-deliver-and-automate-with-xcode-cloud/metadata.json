@@ -1,0 +1,57 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-261",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 261,
+  "title": "Build, deliver, and automate with Xcode Cloud",
+  "description": "Discover the latest updates to Xcode Cloud that quickly get you started building and delivering your apps. Learn essential Xcode Cloud concepts, set up cloud build and tests simply by connecting your source repository, and configure for app distribution when you’re ready to ship. Find out how webhooks and management tools extends Xcode Cloud’s capabilities, supporting your most advanced workflows.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/261",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/261",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Swift",
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 829,
+  "hasTranscript": true,
+  "transcriptWordCount": 1778,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/261/7/35c49f2b-3f0a-4956-826b-d54d9fed678e/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/261/7/35c49f2b-3f0a-4956-826b-d54d9fed678e/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/261/7/35c49f2b-3f0a-4956-826b-d54d9fed678e/downloads/wwdc2026-261_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/261/7/35c49f2b-3f0a-4956-826b-d54d9fed678e/downloads/wwdc2026-261_hd.mp4",
+    "duration": 829
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2026/261-build-deliver-and-automate-with-xcode-cloud/",
+  "files": {
+    "metadata": "sessions/wwdc2026/261-build-deliver-and-automate-with-xcode-cloud/metadata.json",
+    "readme": "sessions/wwdc2026/261-build-deliver-and-automate-with-xcode-cloud/README.md",
+    "transcript": "sessions/wwdc2026/261-build-deliver-and-automate-with-xcode-cloud/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/261-build-deliver-and-automate-with-xcode-cloud/transcript.json"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-244",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 244,
+  "title": "Visual Design and Accessibility",
+  "description": "Learn about the importance of supporting Large Text. Hear about Differentiate Without Color, a new API on iOS which can enable people with vision disorders such as color-blindness to easily use your app. Learn how to use it and how it can bring inclusivity to your app. Find out how to enable new Reduce Motion API to stop auto-play in your app for people who may be sensitive to motion.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/244",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/244",
+  "type": "Video",
+  "publishedAt": "2019-06-04T18:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Design",
+    "SwiftUI & UI Frameworks",
+    "Accessibility & Inclusion"
+  ],
+  "primaryTopic": "Accessibility & Inclusion",
+  "duration": 613,
+  "hasTranscript": true,
+  "transcriptWordCount": 1480,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/244gmopitz5ezs2kkq/244/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/244gmopitz5ezs2kkq/244/244_sd_visual_design_and_accessibility.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/244gmopitz5ezs2kkq/244/244_hd_visual_design_and_accessibility.mp4",
+    "duration": 613
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/244-visual-design-and-accessibility/",
+  "files": {
+    "metadata": "sessions/wwdc2019/244-visual-design-and-accessibility/metadata.json",
+    "readme": "sessions/wwdc2019/244-visual-design-and-accessibility/README.md",
+    "transcript": "sessions/wwdc2019/244-visual-design-and-accessibility/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/244-visual-design-and-accessibility/transcript.json"
+  }
+}

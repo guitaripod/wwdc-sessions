@@ -1,0 +1,98 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10011",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10011,
+  "title": "Author fragmented MPEG-4 content with AVAssetWriter",
+  "description": "Transform your audio and video content into fragmented MPEG-4 files for a faster and smoother HLS streaming experience. Learn how to work with the fragmented MPEG-4 format, generate fragmented content from a movie, and set up AVAssetWriter to create fragments for HLS output.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10011",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10011",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 1331,
+  "hasTranscript": true,
+  "transcriptWordCount": 2589,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10011/2/090FF01F-98C7-410F-85B3-EB5551BFBD57/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10011/2/090FF01F-98C7-410F-85B3-EB5551BFBD57/wwdc2020_10011_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10011/2/090FF01F-98C7-410F-85B3-EB5551BFBD57/wwdc2020_10011_hd.mp4",
+    "duration": 1331
+  },
+  "codeSnippets": [
+    {
+      "title": "Instantiate AVAssetWriter and input",
+      "language": "swift",
+      "startTimeSeconds": 336,
+      "code": "// Instantiate asset writer\nlet assetWriter = AVAssetWriter(contentType: UTType(AVFileType.mp4.rawValue)!)\n\n// Add inputs\nlet videoInput = AVAssetWriterInput(mediaType: .video, outputSettings: compressionSettings)\n\nassetWriter.add(videoInput)"
+    },
+    {
+      "title": "Configure AVAssetWriter",
+      "language": "swift",
+      "startTimeSeconds": 388,
+      "code": "assetWriter.outputFileTypeProfile = .mpeg4AppleHLS\n\nassetWriter.preferredOutputSegmentInterval = CMTime(seconds: 6.0, preferredTimescale: 1)\n\nassetWriter.initialSegmentStartTime = myInitialSegmentStartTime\n\nassetWriter.delegate = myDelegateObject"
+    },
+    {
+      "title": "Delegate methods",
+      "language": "swift",
+      "startTimeSeconds": 480,
+      "code": "optional func assetWriter(_ writer: AVAssetWriter, didOutputSegmentData segmentData: Data, segmentType: AVAssetSegmentType)\n\n\noptional func assetWriter(_ writer: AVAssetWriter, didOutputSegmentData segmentData: Data, segmentType: AVAssetSegmentType, segmentReport: AVAssetSegmentReport?)"
+    },
+    {
+      "title": "AVAssetSegmentType",
+      "language": "swift",
+      "startTimeSeconds": 517,
+      "code": "public enum AVAssetSegmentType : Int {\n    case initialization = 1 \n    case separable = 2\n}"
+    },
+    {
+      "title": "Custom segmentation",
+      "language": "swift",
+      "startTimeSeconds": 825,
+      "code": "// Set properties\nassetWriter.outputFileTypeProfile = .mpeg4AppleHLS\n\nassetWriter.preferredOutputSegmentInterval = .indefinite\n\nassetWriter.delegate = myDelegateObject\n\n// Passthrough\nlet videoInput = AVAssetWriterInput(mediaType: .video, outputSettings: nil)"
+    },
+    {
+      "title": "Audio has dependencies",
+      "language": "swift",
+      "startTimeSeconds": 917,
+      "code": "extension AVAssetTrack {\n       /* indicates whether this audio track has dependencies (e.g. kAudioFormatMPEGD_USAC) */\n    open var hasAudioSampleDependencies: Bool { get }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Writing fragmented MPEG-4 files for HTTP Live Streaming",
+      "url": "https://developer.apple.com/documentation/AVFoundation/writing-fragmented-mpeg-4-files-for-http-live-streaming",
+      "type": "samplecode",
+      "description": "Create an HTTP Live Streaming presentation by turning a movie file into a sequence of fragmented MPEG-4 files.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/writing-fragmented-mpeg-4-files-for-http-live-streaming",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/writing-fragmented-mpeg-4-files-for-http-live-streaming.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10011-author-fragmented-mpeg-4-content-with-avassetwriter/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10011-author-fragmented-mpeg-4-content-with-avassetwriter/metadata.json",
+    "readme": "sessions/wwdc2020/10011-author-fragmented-mpeg-4-content-with-avassetwriter/README.md",
+    "transcript": "sessions/wwdc2020/10011-author-fragmented-mpeg-4-content-with-avassetwriter/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10011-author-fragmented-mpeg-4-content-with-avassetwriter/transcript.json"
+  }
+}

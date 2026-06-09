@@ -1,0 +1,141 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10175",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10175,
+  "title": "The details of UI typography",
+  "description": "Learn how to achieve exceptional typography in your app’s user interface that enhances legibility, accessibility, and consistency across Apple platforms. Get up to speed on the latest advancements to the San Francisco font family including the move to variable fonts for accommodating optical sizes and weights. We’ll also share tips about how to get the most out of systems fonts, support dynamic type with custom fonts. For a refresher on the principles behind the San Francisco font family, catch up on “Introducing the New System Fonts” from WWDC15.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10175",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10175",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 1833,
+  "hasTranscript": true,
+  "transcriptWordCount": 5131,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10175/3/250D121A-0E77-44A1-AF27-373B9AF669EA/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10175/3/250D121A-0E77-44A1-AF27-373B9AF669EA/wwdc2020_10175_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10175/3/250D121A-0E77-44A1-AF27-373B9AF669EA/wwdc2020_10175_hd.mp4",
+    "duration": 1833
+  },
+  "codeSnippets": [
+    {
+      "title": "Setting custom tracking",
+      "language": "swift",
+      "startTimeSeconds": 739,
+      "code": "// UIKit\nlabel.attributedText =\n    NSAttributedString(string: \"hamburgefonstiv\",\n        attributes: [kCTTrackingAttributeName as NSAttributedString.Key: -0.5])\n\n// SwiftUI\nText(\"hamburgefonstiv\").tracking(-0.5)"
+    },
+    {
+      "title": "Allow tightening to use tight tracking from system fonts",
+      "language": "swift",
+      "startTimeSeconds": 765,
+      "code": "// UIKit: UILabel\nlabel.allowsDefaultTighteningForTruncation = true\n\n// AppKit: NSTextField\ntextField.allowsDefaultTighteningForTruncation = true\n\n// SwiftUI\nText(\"hamburgefonstiv\").allowsTightening(true)"
+    },
+    {
+      "title": "Getting emphasized text styles",
+      "language": "swift",
+      "startTimeSeconds": 1065,
+      "code": "// Getting emphasized text styles\n\nlet label = UILabel()\nlabel.text = \"Ready. Set. Code.\"\n\nif let descriptor = UIFontDescriptor\n    .preferredFontDescriptor(withTextStyle: .title1)\n    .withSymbolicTraits(.traitBold) {\n    // 28 pt Bold on iOS\n    label.font = .init(descriptor: descriptor, size: 0)\n}"
+    },
+    {
+      "title": "Getting emphasized text styles APIs",
+      "language": "swift",
+      "startTimeSeconds": 1085,
+      "code": "// Getting emphasized text styles\n\n// AppKit\nlet descriptor = NSFontDescriptor\n    .preferredFontDescriptor(forTextStyle: .body)\n    .withSymbolicTraits(.bold)\n// 13 pt Semibold on macOS\nlet emphasizedBodyFont = NSFont(descriptor: descriptor, size: 0)\n\n// UIKit/Catalyst\nif let descriptor = UIFontDescriptor\n    .preferredFontDescriptor(withTextStyle: .body)\n    .withSymbolicTraits(.traitBold) {\n    // 17 pt Semibold on iOS\n    let emphasizedBodyFont = UIFont(descriptor: descriptor, size: 0)\n}\n\n// SwiftUI\nlet emphasizedFootnoteFont = Font.footnote.bold() // 13 pt Semibold on iOS"
+    },
+    {
+      "title": "Getting tight leading variant",
+      "language": "swift",
+      "startTimeSeconds": 1174,
+      "code": "// Getting tight leading variant\nimport UIKit\n\nlet label = UILabel()\nlabel.text = \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\"\n\nif let descriptor = UIFontDescriptor\n    .preferredFontDescriptor(withTextStyle: .body)\n    .withSymbolicTraits(.traitTightLeading)\n    // 20 pt line height\n    label.font = UIFont(descriptor: descriptor, size: 0)\n}"
+    },
+    {
+      "title": "Getting loose leading variant",
+      "language": "swift",
+      "startTimeSeconds": 1189,
+      "code": "// Getting tight leading variant\nimport UIKit\n\nlet label = UILabel()\nlabel.text = \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\"\n\nif let descriptor = UIFontDescriptor\n    .preferredFontDescriptor(withTextStyle: .body)\n    .withSymbolicTraits(.traitLooseLeading)\n    // 24 pt line height\n    label.font = UIFont(descriptor: descriptor, size: 0)\n}"
+    },
+    {
+      "title": "Getting tight/loose leading variant APIs",
+      "language": "swift",
+      "startTimeSeconds": 1203,
+      "code": "// Getting tight/loose leading variant\n\n// AppKit\nlet descriptor = NSFontDescriptor.preferredFontDescriptor(forTextStyle: .headline)\n    .withSymbolicTraits(.tightLeading) // Use .looseLeading for loose leading font\nlet tightLeadingFont = NSFont(descriptor: descriptor, size: 0) // 14 pt line height\n\n// UIKit/Catalyst\nif let descriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .title1)\n    .withSymbolicTraits(.traitTightLeading) { // Use .traitLooseLeading for loose leading\n    let tightLeadingFont = UIFont(descriptor: descriptor, size: 0) // 36 pt line height\n}\n\n// SwiftUI\n// Use .loose for loose leading font\nlet tightLeadingFootnoteFont = Font.footnote.leading(.tight) // 16 pt line height on iOS"
+    },
+    {
+      "title": "Access rounded system font design",
+      "language": "swift",
+      "startTimeSeconds": 1256,
+      "code": "// Access rounded system font design\nimport UIKit\n\nlet label = UILabel()\nlabel.text = \"Today\"\n\nif let descriptor = UIFontDescriptor\n    .preferredFontDescriptor(withTextStyle: .largeTitle)\n    .withSymbolicTraits(.traitBold)?\n    .withDesign(.rounded) {\n    // SF Pro Rounded Bold\n    label.font = UIFont(descriptor: descriptor, size: 0)\n}"
+    },
+    {
+      "title": "Access system font designs",
+      "language": "swift",
+      "startTimeSeconds": 1268,
+      "code": "// Access system font designs\n\n// Use .serif for New York, .monospaced for SF Mono\n\n// AppKit\nlet descriptor = NSFontDescriptor.preferredFontDescriptor(forTextStyle: .body)\n    .withDesign(.rounded)\nlet roundedBodyFont = NSFont(descriptor: descriptor, size: 0) // SF Pro Rounded\n\n// UIKit/Catalyst\nif let descriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .body)\n    .withDesign(.rounded) {\n    let roundedBodyFont = UIFont(descriptor: descriptor, size: 0) // SF Pro Rounded\n}\n\n// SwiftUI\nlet roundedBodyFont = Font.system(.body, design: .rounded) // SF Pro Rounded"
+    },
+    {
+      "title": "Support Dynamic Type with custom font in UIKit",
+      "language": "swift",
+      "startTimeSeconds": 1505,
+      "code": "// Support Dynamic Type with custom font in UIKit\n\nif let customFont = UIFont(name: \"Charter-Roman\", size: 17) {\n    let bodyMetrics = UIFontMetrics(forTextStyle: .body)\n\n    // Charter-Roman scaled relative to body text style\n    // in different content size categories.\n    let customFontScaledLikeBody = bodyMetrics.scaledFont(for: customFont)\n    label.font = customFontScaledLikeBody\n    label.adjustsFontForContentSizeCategory = true\n\n    // Scaling constant 10 relative to body text style.\n    let scaledValue = bodyMetrics.scaledValue(for: 10)\n}"
+    },
+    {
+      "title": "Support Dynamic Type with custom fonts in SwiftUI example",
+      "language": "swift",
+      "startTimeSeconds": 1585,
+      "code": "struct ContentView: View {\n    let prose = \"Apple provides two type families you can use in your iOS apps. San Francisco (SF). San Francisco is a sans serif type family that includes SF Pro, SF Pro Rounded, SF Mono, SF Compact, and SF Compact Rounded.\"\n    @ScaledMetric(relativeTo: .body) var padding: CGFloat = 20\n\n    var body: some View {\n        VStack {\n            Text(\"Typography\")\n                .font(.custom(\"Avenir-Medium\", size: 34, relativeTo: .title))\n            Text(prose)\n                .font(.custom(\"Charter-Roman\", size: 17))\n                .padding(padding)\n        }\n    }\n}"
+    },
+    {
+      "title": "Support Dynamic Type with custom fonts in SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 1709,
+      "code": "// Support Dynamic Type with custom fonts in SwiftUI\n\n// Text with font Avenir-Roman, scaling relative to title text style.\nText(\"Typography\").font(.custom(\"Avenir-Roman\", size: 34, relativeTo: .title))\n\n// Text with font Helvetica, scaling relative to body text style.\nText(\"Title\").font(.custom(\"Helvetica\", size: 17))\n\n// Text with font Courier, always use fixed size, do not scale according to user setting.\nText(\"Fixed\").font(.custom(\"Courier\", fixedSize: 17))\n\n// Constant 10, scaled relative to title text style.\n@ScaledMetric(relativeTo: .title) private var spacing: CGFloat = 10.0"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Typography",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/typography",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/typography"
+    },
+    {
+      "title": "Building Apps with Dynamic Type",
+      "url": "https://developer.apple.com/sample-code/wwdc/2017/Building-Apps-with-Dynamic-Type.zip",
+      "type": "samplecode",
+      "description": "Demonstrates several common tips and tricks for supporting Dynamic Type.",
+      "sosumiURL": "https://sosumi.ai/sample-code/wwdc/2017/Building-Apps-with-Dynamic-Type.zip"
+    }
+  ],
+  "path": "sessions/wwdc2020/10175-the-details-of-ui-typography/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10175-the-details-of-ui-typography/metadata.json",
+    "readme": "sessions/wwdc2020/10175-the-details-of-ui-typography/README.md",
+    "transcript": "sessions/wwdc2020/10175-the-details-of-ui-typography/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10175-the-details-of-ui-typography/transcript.json"
+  }
+}

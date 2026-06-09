@@ -1,0 +1,69 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10170",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10170,
+  "title": "Meet TestFlight on Mac",
+  "description": "TestFlight has come to Mac. Learn how you can manage builds and testers, collect feedback, and deploy your macOS app. Discover enhancements for internal testing and new features that integrate with Xcode Cloud to make testing even easier on all platforms.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10170",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10170",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "apple silicon",
+    "beta testing",
+    "catalyst",
+    "m1"
+  ],
+  "topics": [
+    "App Store, Distribution & Marketing",
+    "Essentials",
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 630,
+  "hasTranscript": true,
+  "transcriptWordCount": 1386,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10170/10/D0F6CC7F-69AD-437E-AF5A-E9CFD983F131/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10170/10/D0F6CC7F-69AD-437E-AF5A-E9CFD983F131/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10170/10/D0F6CC7F-69AD-437E-AF5A-E9CFD983F131/downloads/wwdc2021-10170_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10170/10/D0F6CC7F-69AD-437E-AF5A-E9CFD983F131/downloads/wwdc2021-10170_hd.mp4",
+    "duration": 630
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Beta Testing Made Simple",
+      "url": "https://developer.apple.com/testflight/",
+      "type": "documentation",
+      "description": "Beta Testing Made Simple",
+      "sosumiURL": "https://sosumi.ai/testflight/"
+    }
+  ],
+  "path": "sessions/wwdc2021/10170-meet-testflight-on-mac/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10170-meet-testflight-on-mac/metadata.json",
+    "readme": "sessions/wwdc2021/10170-meet-testflight-on-mac/README.md",
+    "transcript": "sessions/wwdc2021/10170-meet-testflight-on-mac/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10170-meet-testflight-on-mac/transcript.json"
+  }
+}

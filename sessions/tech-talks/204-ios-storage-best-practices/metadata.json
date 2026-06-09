@@ -1,0 +1,80 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-204",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2017,
+  "eventContentId": 204,
+  "title": "iOS Storage Best Practices",
+  "description": "Learn tips for keeping your app's on-disk storage as organized and optimized as possible. See how to enable direct access to documents in your app using the new Files app in iOS 11. Gain insights into how to take inventory of your app's files and make the most of the storage capacity available to your app.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/204",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/204",
+  "type": "Video",
+  "publishedAt": "2017-09-12T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 533,
+  "hasTranscript": true,
+  "transcriptWordCount": 1424,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tutorials/20170912/204a83a4lxlz1/ios_storage_best_practices/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tutorials/20170912/204a83a4lxlz1/ios_storage_best_practices/ios_storage_best_practices_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tutorials/20170912/204a83a4lxlz1/ios_storage_best_practices/ios_storage_best_practices_hd.mp4",
+    "duration": 533
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "File System Programming Guide",
+      "url": "https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010672",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/library/content/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010672"
+    },
+    {
+      "title": "Make App Backups More Efficient",
+      "url": "https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/PerformanceTips/PerformanceTips.html#//apple_ref/doc/uid/TP40007072-CH7-SW16",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/PerformanceTips/PerformanceTips.html#//apple_ref/doc/uid/TP40007072-CH7-SW16"
+    },
+    {
+      "title": "Preventing Files From Being Backed Up",
+      "url": "https://developer.apple.com/library/content/qa/qa1719/_index.html",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/library/content/qa/qa1719/_index.html"
+    },
+    {
+      "title": "iOS Data Storage Guidelines",
+      "url": "https://developer.apple.com/icloud/documentation/data-storage/index.html",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/icloud/documentation/data-storage/index.html"
+    }
+  ],
+  "path": "sessions/tech-talks/204-ios-storage-best-practices/",
+  "files": {
+    "metadata": "sessions/tech-talks/204-ios-storage-best-practices/metadata.json",
+    "readme": "sessions/tech-talks/204-ios-storage-best-practices/README.md",
+    "transcript": "sessions/tech-talks/204-ios-storage-best-practices/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/204-ios-storage-best-practices/transcript.json"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-702",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 702,
+  "title": "System Extensions and DriverKit",
+  "description": "One of the next steps in modernizing and improving the security and reliability of macOS is to provide a better architecture for kernel extensions and drivers. Learn how to make this transition with System Extensions and DriverKit.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/702",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/702",
+  "type": "Video",
+  "publishedAt": "2019-06-04T10:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [
+    "driver",
+    "extension",
+    "kernel"
+  ],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 2221,
+  "hasTranscript": true,
+  "transcriptWordCount": 4712,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/702vygott3n041/702/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/702vygott3n041/702/702_sd_system_extensions_and_driverkit.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/702vygott3n041/702/702_hd_system_extensions_and_driverkit.mp4",
+    "duration": 2221
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "System Extensions and DriverKit",
+      "url": "https://developer.apple.com/system-extensions/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/system-extensions/"
+    }
+  ],
+  "path": "sessions/wwdc2019/702-system-extensions-and-driverkit/",
+  "files": {
+    "metadata": "sessions/wwdc2019/702-system-extensions-and-driverkit/metadata.json",
+    "readme": "sessions/wwdc2019/702-system-extensions-and-driverkit/README.md",
+    "transcript": "sessions/wwdc2019/702-system-extensions-and-driverkit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/702-system-extensions-and-driverkit/transcript.json"
+  }
+}

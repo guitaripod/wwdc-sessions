@@ -1,0 +1,53 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-10100",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2021,
+  "eventContentId": 10100,
+  "title": "Explore and manipulate data in Swift with TabularData",
+  "description": "Discover how you can use the TabularData framework to load, explore, and manipulate unstructured data in Swift — whether you need to pre-process data for a machine learning task or digest data on-the-fly in your app. Learn how this framework can help you handle large datasets, join multiple tables of data together, and filter data programmatically. We'll also show you how a DataFrame can be used to drive all the data-centric features of your app.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/10100",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10100",
+  "type": "Video",
+  "publishedAt": "2021-12-07T10:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "AI & Machine Learning",
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 1428,
+  "hasTranscript": true,
+  "transcriptWordCount": 4608,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/10100/7/53BB7B01-5F85-4F5C-93F9-3DABEAB7585C/cmaf.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/10100/7/53BB7B01-5F85-4F5C-93F9-3DABEAB7585C/downloads/tech-talks-10100_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/10100/7/53BB7B01-5F85-4F5C-93F9-3DABEAB7585C/downloads/tech-talks-10100_hd.mp4",
+    "duration": 1428
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/tech-talks/10100-explore-and-manipulate-data-in-swift-with-tabulardata/",
+  "files": {
+    "metadata": "sessions/tech-talks/10100-explore-and-manipulate-data-in-swift-with-tabulardata/metadata.json",
+    "readme": "sessions/tech-talks/10100-explore-and-manipulate-data-in-swift-with-tabulardata/README.md",
+    "transcript": "sessions/tech-talks/10100-explore-and-manipulate-data-in-swift-with-tabulardata/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/10100-explore-and-manipulate-data-in-swift-with-tabulardata/transcript.json"
+  }
+}

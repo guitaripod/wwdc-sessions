@@ -1,0 +1,70 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-510",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 510,
+  "title": "What's New in AVAudioEngine",
+  "description": "AVAudioEngine enables the realtime capture, processing, and playback of audio. Learn how to take advantage of enhancements to this powerful API, such as support for voice processing and spatial rendering mode selection, in your own audio app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/510",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/510",
+  "type": "Video",
+  "publishedAt": "2019-06-04T18:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 533,
+  "hasTranscript": true,
+  "transcriptWordCount": 1052,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/510v8txdlekug3npw2m/510/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/510v8txdlekug3npw2m/510/510_sd_whats_new_in_avaudioengine.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/510v8txdlekug3npw2m/510/510_hd_whats_new_in_avaudioengine.mp4",
+    "duration": 533
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Building a signal generator",
+      "url": "https://developer.apple.com/documentation/AVFAudio/building-a-signal-generator",
+      "type": "samplecode",
+      "description": "Generate audio signals using an audio source node and a custom render callback.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFAudio/building-a-signal-generator",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFAudio/building-a-signal-generator.json"
+    },
+    {
+      "title": "Using voice processing",
+      "url": "https://developer.apple.com/documentation/AVFAudio/using-voice-processing",
+      "type": "samplecode",
+      "description": "Add voice-processing capabilities to your app by using audio engine.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFAudio/using-voice-processing",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFAudio/using-voice-processing.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/510-what-s-new-in-avaudioengine/",
+  "files": {
+    "metadata": "sessions/wwdc2019/510-what-s-new-in-avaudioengine/metadata.json",
+    "readme": "sessions/wwdc2019/510-what-s-new-in-avaudioengine/README.md",
+    "transcript": "sessions/wwdc2019/510-what-s-new-in-avaudioengine/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/510-what-s-new-in-avaudioengine/transcript.json"
+  }
+}

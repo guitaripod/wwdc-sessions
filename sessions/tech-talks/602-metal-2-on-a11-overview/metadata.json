@@ -1,0 +1,82 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-602",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2017,
+  "eventContentId": 602,
+  "title": "Metal 2 on A11 - Overview",
+  "description": "The seamless integration of Metal 2 with the A11 Bionic chip lets your apps and games realize entirely new levels of performance and capability. Get introduced to powerful new API features and GPU-driven capabilities of Metal 2 on A11, including imageblocks, tile shading, enhancements to raster order groups, imageblock sample coverage control, and threadgroup sharing. Understand the architecture of the Apple-designed A11 GPU and see how it creates opportunities for advances in rendering, compute, and machine learning techniques.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/602",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/602",
+  "type": "Video",
+  "publishedAt": "2017-09-12T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 970,
+  "hasTranscript": true,
+  "transcriptWordCount": 2277,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tutorials/20170912/602x28bbwk8lp/metal_on_iphone_x_overview/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tutorials/20170912/602x28bbwk8lp/metal_on_iphone_x_overview/metal_on_iphone_x_overview_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tutorials/20170912/602x28bbwk8lp/metal_on_iphone_x_overview/metal_on_iphone_x_overview_hd.mp4",
+    "duration": 970
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Tailor Your Apps for Apple GPUs and Tile-Based Deferred Rendering",
+      "url": "https://developer.apple.com/documentation/metal/tailor_your_apps_for_apple_gpus_and_tile-based_deferred_rendering",
+      "type": "documentation",
+      "description": "Learn about characteristic Apple GPU features, including imageblocks, tile shaders, and raster order groups.",
+      "sosumiURL": "https://sosumi.ai/documentation/metal/tailor_your_apps_for_apple_gpus_and_tile-based_deferred_rendering",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/metal/tailor_your_apps_for_apple_gpus_and_tile-based_deferred_rendering.json"
+    },
+    {
+      "title": "Metal Feature Set Tables",
+      "url": "https://developer.apple.com/metal/Metal-Feature-Set-Tables.pdf",
+      "type": "guide",
+      "description": "Features, limits, and capabilities of Metal.",
+      "sosumiURL": "https://sosumi.ai/metal/Metal-Feature-Set-Tables.pdf"
+    },
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    },
+    {
+      "title": "Metal Shading Language Specification",
+      "url": "https://developer.apple.com/metal/metal-shading-language-specification.pdf",
+      "type": "guide",
+      "description": "The Metal shading language is used to write graphics and compute functions that are executed on the GPU. Version 2.0 of the Metal shading language adds new features such as Raster Order Groups, Indirect Argument Buffers, Arrays of Samplers, Uniform Types, and much more.",
+      "sosumiURL": "https://sosumi.ai/metal/metal-shading-language-specification.pdf"
+    }
+  ],
+  "path": "sessions/tech-talks/602-metal-2-on-a11-overview/",
+  "files": {
+    "metadata": "sessions/tech-talks/602-metal-2-on-a11-overview/metadata.json",
+    "readme": "sessions/tech-talks/602-metal-2-on-a11-overview/README.md",
+    "transcript": "sessions/tech-talks/602-metal-2-on-a11-overview/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/602-metal-2-on-a11-overview/transcript.json"
+  }
+}

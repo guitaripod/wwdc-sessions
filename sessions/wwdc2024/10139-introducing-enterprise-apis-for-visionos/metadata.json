@@ -1,0 +1,97 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2024-10139",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10139,
+  "title": "Introducing enterprise APIs for visionOS",
+  "description": "Find out how you can use new enterprise APIs for visionOS to create spatial experiences that enhance employee and customer productivity on Apple Vision Pro.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10139",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10139",
+  "type": "Video",
+  "publishedAt": "2024-06-10T14:00:00-07:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "AI & Machine Learning",
+    "App Services",
+    "Audio & Video",
+    "Photos & Camera",
+    "Spatial Computing",
+    "Business & Education"
+  ],
+  "primaryTopic": "Business & Education",
+  "duration": 1278,
+  "hasTranscript": true,
+  "transcriptWordCount": 3774,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10139/5/6269882C-FCC9-45DB-ADB4-DAAF5297CFEF/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10139/5/6269882C-FCC9-45DB-ADB4-DAAF5297CFEF/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10139/5/6269882C-FCC9-45DB-ADB4-DAAF5297CFEF/downloads/wwdc2024-10139_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10139/5/6269882C-FCC9-45DB-ADB4-DAAF5297CFEF/downloads/wwdc2024-10139_hd.mp4",
+    "duration": 1278
+  },
+  "codeSnippets": [
+    {
+      "title": "Main Camera Feed Access Example",
+      "language": "swift",
+      "startTimeSeconds": 216,
+      "code": "// Main Camera Feed Access Example\n\nlet formats = CameraVideoFormat.supportedVideoFormats(for: .main, cameraPositions:[.left])\nlet cameraFrameProvider = CameraFrameProvider()\n\nvar arKitSession = ARKitSession()\nvar pixelBuffer: CVPixelBuffer?\n\nawait arKitSession.queryAuthorization(for: [.cameraAccess])\n\ndo {\n    try await arKitSession.run([cameraFrameProvider])\n} catch {\n    return\n}\n\nguard let cameraFrameUpdates = \n    cameraFrameProvider.cameraFrameUpdates(for: formats[0]) else {\n    return\n}\n\nfor await cameraFrame in cameraFrameUpdates {\n    guard let mainCameraSample = cameraFrame.sample(for: .left) else {\n        continue\n    }\n    self.pixelBuffer = mainCameraSample.pixelBuffer\n}"
+    },
+    {
+      "title": "Spatial barcode & QR code scanning example",
+      "language": "swift",
+      "startTimeSeconds": 467,
+      "code": "// Spatial barcode & QR code scanning example\n\nawait arkitSession.queryAuthorization(for: [.worldSensing])\nlet barcodeDetection = BarcodeDetectionProvider(symbologies: [.code39, .qr, .upce])\n\ndo {\n    try await arkitSession.run([barcodeDetection])\n} catch {\n    return\n}\n\nfor await anchorUpdate in barcodeDetection.anchorUpdates {\n    switch anchorUpdate.event {\n        case .added:\n           // Call our app method to add a box around a new barcode\n           addEntity(for: anchorUpdate.anchor)\n        case .updated:\n            // Call our app method to move a barcode's box\n            updateEntity(for: anchorUpdate.anchor)\n       case .removed:\n            // Call our app method to remove a barcode's box\n            removeEntity(for: anchorUpdate.anchor)\n    }\n}"
+    },
+    {
+      "title": "Apple Neural Engine access example",
+      "language": "swift",
+      "startTimeSeconds": 797,
+      "code": "// Apple Neural Engine access example\n\nlet availableComputeDevices = MLModel.availableComputeDevices\n\nfor computeDevice in availableComputeDevices {\n    switch computeDevice {\n        case .cpu: setCpuEnabledForML(true) // Example method name\n        case .gpu: setGpuEnabledForML(true) // Example method name\n        case .neuralEngine: runMyMLModelWithNeuralEngineAvailable() // Example method name\n        default: continue\n    }\n}"
+    },
+    {
+      "title": "Object tracking enhancements example",
+      "language": "swift",
+      "startTimeSeconds": 939,
+      "code": "// Object tracking enhancements example\n\nvar trackingParameters = ObjectTrackingProvider.TrackingConfiguration()\n\n// Increasing our maximum items tracked from 10 to 15\ntrackingParameters.maximumTrackableInstances = 15\n\n// Leaving all our other parameters at their defaults\ntrackingParameters.maximumInstancesPerReferenceObject = 1\ntrackingParameters.detectionRate = 2.0\ntrackingParameters.stationaryObjectTrackingRate = 5.0\ntrackingParameters.movingObjectTrackingRate = 5.0\n\nlet objectTracking = ObjectTrackingProvider(\n        referenceObjects: Array(referenceObjectDictionary.values),\n        trackingConfiguration: trackingParameters)\n\nvar arkitSession = ARKitSession()\narkitSession.run([objectTracking])"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Building spatial experiences for business apps with enterprise APIs for visionOS",
+      "url": "https://developer.apple.com/documentation/visionOS/building-spatial-experiences-for-business-apps-with-enterprise-apis",
+      "type": "documentation",
+      "description": "Grant enhanced sensor access and increased platform control to your visionOS app by using entitlements.",
+      "sosumiURL": "https://sosumi.ai/documentation/visionOS/building-spatial-experiences-for-business-apps-with-enterprise-apis",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/visionOS/building-spatial-experiences-for-business-apps-with-enterprise-apis.json"
+    },
+    {
+      "title": "Forum: Business & Education",
+      "url": "https://developer.apple.com/forums/topics/business-and-education-topic?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/business-and-education-topic?cid=vf-a-0010"
+    }
+  ],
+  "path": "sessions/wwdc2024/10139-introducing-enterprise-apis-for-visionos/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10139-introducing-enterprise-apis-for-visionos/metadata.json",
+    "readme": "sessions/wwdc2024/10139-introducing-enterprise-apis-for-visionos/README.md",
+    "transcript": "sessions/wwdc2024/10139-introducing-enterprise-apis-for-visionos/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10139-introducing-enterprise-apis-for-visionos/transcript.json"
+  }
+}

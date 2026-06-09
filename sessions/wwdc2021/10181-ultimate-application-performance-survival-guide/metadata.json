@@ -1,0 +1,124 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10181",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10181,
+  "title": "Ultimate application performance survival guide",
+  "description": "Performance optimization can seem like a daunting task — with many metrics to track and tools to use. Fear not: Our survival guide to app performance is here to help you understand tooling, metrics, and paradigms that can help smooth your development process and contribute to a great experience for people using your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10181",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10181",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 1440,
+  "hasTranscript": true,
+  "transcriptWordCount": 3823,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10181/11/A69D2FCC-21C3-4392-B857-552EF73E7714/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10181/11/A69D2FCC-21C3-4392-B857-552EF73E7714/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10181/11/A69D2FCC-21C3-4392-B857-552EF73E7714/downloads/wwdc2021-10181_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10181/11/A69D2FCC-21C3-4392-B857-552EF73E7714/downloads/wwdc2021-10181_hd.mp4",
+    "duration": 1440
+  },
+  "codeSnippets": [
+    {
+      "title": "Using MetricKit",
+      "language": "swift",
+      "startTimeSeconds": 346,
+      "code": "class AppMetrics: MXMetricManagerSubscriber {\n\tinit() {\n\t\tlet shared = MXMetricManager.shared\n\t\tshared.add(self)\n\t}\n\n\tdeinit {\n\t\tlet shared = MXMetricManager.shared\n\t\tshared.remove(self)\n\t}\n\n\t// Receive daily metrics\n\tfunc didReceive(_ payloads: [MXMetricPayload]) {\n\t\t// Process metrics\n\t}\n\n\t// Receive diagnostics\n\tfunc didReceive(_ payloads: [MXDiagnosticPayload]) {\n\t\t// Process metrics\n\t}\n}"
+    },
+    {
+      "title": "Testing Scroll performance",
+      "language": "swift",
+      "startTimeSeconds": 629,
+      "code": "func testScrollingAnimationPerformance() throws {\n\n    app.launch()\n    app.staticTexts[\"Meal Planner\"].tap()\n    let foodCollection = app.collectionViews.firstMatch\n\n    let measureOptions = XCTMeasureOptions()\n    measureOptions.invocationOptions = [.manuallyStop]\n\n    measure(metrics: [XCTOSSignpostMetric.scrollDecelerationMetric],\n    options: measureOptions) {\n        foodCollection.swipeUp(velocity: .fast)\n        stopMeasuring()\n        foodCollection.swipeDown(velocity: .fast)\n    }\n}"
+    },
+    {
+      "title": "Using mxSignpostAnimationIntervalBegin",
+      "language": "swift",
+      "startTimeSeconds": 713,
+      "code": "func startAnimating() {\n\t// Mark the beginning of animations\n\tmxSignpostAnimationIntervalBegin(\n\t\tlog: MXMetricManager.makeLogHandle(category: \"animation_telemetry\"), \n\t\tname: \"custom_animation”)\n\t}\n\n\tfunc animationDidComplete() {\n\t// Mark the end of the animation to receive the collected hitch rate telemetry\n\tmxSignpost(OSSignpostType.end, \n\t\tlog: MXMetricManager.makeLogHandle(category: \"animation_telemetry\"), \n\t\tname: \"custom_animation\")\n}"
+    },
+    {
+      "title": "Using XCTest to Measure Disk Usage",
+      "language": "swift",
+      "startTimeSeconds": 831,
+      "code": "// Example performance XCTest\n\nfunc testSaveMeal() {\n\tlet app = XCUIApplication()\n\tlet options = XCTMeasureOptions()\n\toptions.invocationOptions = [.manuallyStart]\n\n\tmeasure(metrics: [XCTStorageMetric(application: app)], options: options) {\n\t\tapp.launch()\n\t\tstartMeasuring()\n\n\t\tlet firstCell = app.cells.firstMatch\n\t\tfirstCell.buttons[\"Save meal\"].firstMatch.tap()\n\n\t\tlet savedButton = firstCell.buttons[\"Saved\"].firstMatch\n\t\tXCTAssertTrue(savedButton.waitForExistence(timeout: 2))\n\t}\n}"
+    },
+    {
+      "title": "Collect memory telemetry",
+      "language": "swift",
+      "startTimeSeconds": 1279,
+      "code": "// Collect memory telemetry\n\nfunc saveAppAssets() {\n\tmxSignpost(OSSignpostType.begin, \n\t\tlog: MXMetricManager.makeLogHandle(category: \"memory_telemetry\"), \n\t\tname: \"custom_memory\")\n\n\t// save app metadata\n\n\tmxSignpost(OSSignpostType.end, \n\t\tlog: MXMetricManager.makeLogHandle(category: \"memory_telemetry\"), \n\t\tname: \"custom_memory\")\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Analyzing the performance of your shipping app",
+      "url": "https://developer.apple.com/documentation/Xcode/analyzing-the-performance-of-your-shipping-app",
+      "type": "documentation",
+      "description": "View power and performance metrics for apps you distribute through the App",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/analyzing-the-performance-of-your-shipping-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/analyzing-the-performance-of-your-shipping-app.json"
+    },
+    {
+      "title": "Improving app responsiveness",
+      "url": "https://developer.apple.com/documentation/Xcode/improving-app-responsiveness",
+      "type": "documentation",
+      "description": "Create a user experience that feels responsive by removing hangs and hitches from your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/improving-app-responsiveness",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/improving-app-responsiveness.json"
+    },
+    {
+      "title": "MetricKit",
+      "url": "https://developer.apple.com/documentation/MetricKit",
+      "type": "documentation",
+      "description": "Measure your app’s performance using daily metric and diagnostic reports from real users.",
+      "sosumiURL": "https://sosumi.ai/documentation/MetricKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MetricKit.json"
+    },
+    {
+      "title": "App Store Connect API",
+      "url": "https://developer.apple.com/documentation/AppStoreConnectAPI",
+      "type": "documentation",
+      "description": "The data structure that represents an app store connect api resource.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreConnectAPI",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreConnectAPI.json"
+    },
+    {
+      "title": "XCTest",
+      "url": "https://developer.apple.com/documentation/XCTest",
+      "type": "documentation",
+      "description": "Create and run unit tests, performance tests, and UI tests for your Xcode project.",
+      "sosumiURL": "https://sosumi.ai/documentation/XCTest",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/XCTest.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10181-ultimate-application-performance-survival-guide/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10181-ultimate-application-performance-survival-guide/metadata.json",
+    "readme": "sessions/wwdc2021/10181-ultimate-application-performance-survival-guide/README.md",
+    "transcript": "sessions/wwdc2021/10181-ultimate-application-performance-survival-guide/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10181-ultimate-application-performance-survival-guide/transcript.json"
+  }
+}

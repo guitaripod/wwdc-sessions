@@ -1,0 +1,104 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2024-10088",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10088,
+  "title": "Capture HDR content with ScreenCaptureKit",
+  "description": "Learn how to capture high dynamic colors using ScreenCaptureKit, and explore new features like HDR support, microphone capture, and straight-to-file recording.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10088",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10088",
+  "type": "Video",
+  "publishedAt": "2024-06-13T08:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [
+    "hdr",
+    "microphone",
+    "mp4",
+    "screencapturekit"
+  ],
+  "topics": [
+    "Graphics & Games",
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 689,
+  "hasTranscript": true,
+  "transcriptWordCount": 1560,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10088/4/D333573B-E8F2-4420-8709-B8FE3095D56B/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10088/4/D333573B-E8F2-4420-8709-B8FE3095D56B/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10088/4/D333573B-E8F2-4420-8709-B8FE3095D56B/downloads/wwdc2024-10088_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10088/4/D333573B-E8F2-4420-8709-B8FE3095D56B/downloads/wwdc2024-10088_hd.mp4",
+    "duration": 689
+  },
+  "codeSnippets": [
+    {
+      "title": "Capture HDR",
+      "language": "swift",
+      "startTimeSeconds": 322,
+      "code": "// Get content that is currently available for capture.\nlet availableContent = try await SCShareableContent.current\n\n// Create instance of SCContentFilter to record entire display.\nguard let display = availableContent.displays.first else { return }\nlet filter = SCContentFilter(display: display, excludingWindows: [])\n\n// Create a configuration using preset for HDR stream canonical display.\nlet config = SCStreamConfiguration(preset: .captureHDRStreamCanonicalDisplay)\n\n// Create a stream with the filter and stream configuration.\nlet stream = SCStream(filter: filter, configuration: config, delegate: self)\n\n// Add a stream output to capture screen content.\ntry stream.addStreamOutput(self, type: .screen, sampleHandlerQueue: nil)\n\n// Start the capture session.\ntry await stream.startCapture()"
+    },
+    {
+      "title": "Use a local display preset to capture HDR",
+      "language": "swift",
+      "startTimeSeconds": 400,
+      "code": "// Create an SCStreamConfiguration with preset for HDR.\nlet config = SCStreamConfiguration(preset: .captureHDRScreenshotLocalDisplay)\n\n// Call the screenshot API to get CMSampleBuffer representation\nlet screenshotBuffer = try await SCScreenshotManager.captureSampleBuffer(contentFilter: filter, configuration:config)\n\n// Call the screenshot API to get CGImage representation.\nlet screenshotImage = try await SCScreenshotManager.captureImage(contentFilter: filter, configuration:config)"
+    },
+    {
+      "title": "Capture samples of microphone audio",
+      "language": "swift",
+      "startTimeSeconds": 485,
+      "code": "// Create instance of SCStreamConfiguration.\nlet config = SCStreamConfiguration()\n\n// Enable microphone capture and set id of microphone to capture.\nconfig.captureMicrophone = true\nconfig.microphoneCaptureDeviceID = AVCaptureDevice.default(for: .audio)?.uniqueID\n\n// Create an SCStream instance.\nlet stream = SCStream(filter: filter, configuration: config, delegate: self)\n\n// Add stream outputs for capturing screen and microphone.\ntry stream.addStreamOutput(self, type: .screen, sampleHandlerQueue: nil)\ntry stream.addStreamOutput(self, type: .microphone, sampleHandlerQueue: nil)\n\n// Start the capture session\ntry await stream.startCapture()\n\n// Implement SCStreamOutput function to receive samples.\nfunc stream(_ stream: SCStream, didOutputSampleBuffer sampleBuffer: CMSampleBuffer, of type: SCStreamOutputType) {\n    switch type {\n    case .screen:\n        handleLatestScreenSample(sampleBuffer)\n    case .audio:         \n        handleLatestAudioSample(sampleBuffer)\n    case .microphone:\n        handleLatestMicrophoneSample(sampleBuffer)\n    }\n}"
+    },
+    {
+      "title": "Record to file",
+      "language": "swift",
+      "startTimeSeconds": 578,
+      "code": "// Create a recording output configuration.\nlet recordingConfiguration = SCRecordingOutputConfiguration()\n\n// Configure the outputURL (optionally set file type and video codec).\nrecordingConfiguration.outputURL = url\nrecordingConfiguration.outputFileType = .mov\nrecordingConfiguration.videoCodecType = .hevc\n\n// Create the recording output with the configuration.\nlet recordingOutput = SCRecordingOutput(configuration: recordingConfiguration, delegate: self)\n\n// Add an SCRecordingOutput to the stream.\ntry stream.addRecordingOutput(recordingOutput)\n\n// Start capturing (which will also start recording).\ntry await stream.startCapture()\n\n// Stop recording.\ntry await stream.stopCapture()\n\n//OR\n// Stop recording, but keep stream running.\ntry stream.removeRecordingOutput(recordingOutput)"
+    },
+    {
+      "title": "Respond to delegate events",
+      "language": "swift",
+      "startTimeSeconds": 627,
+      "code": "func recordingOutputDidStartRecording(_ recordingOutput: SCRecordingOutput) {\n    // Recording started asynchronously after addRecordOutput.\n}\n\nfunc recordingOutput(_ recordingOutput: SCRecordingOutput, didFailWithError error: Error) {\n    // Recording failed with error.\n}\n\nfunc recordingOutputDidFinishRecording(_ recordingOutput: SCRecordingOutput) {\n    // Recording finished after calling either removeRecordOutput or stopCapture.\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Forum: Media Technologies",
+      "url": "https://developer.apple.com/forums/topics/media-technologies?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/media-technologies?cid=vf-a-0010"
+    },
+    {
+      "title": "ScreenCaptureKit",
+      "url": "https://developer.apple.com/documentation/ScreenCaptureKit",
+      "type": "documentation",
+      "description": "Filter and select screen content and stream it to your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/ScreenCaptureKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ScreenCaptureKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2024/10088-capture-hdr-content-with-screencapturekit/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10088-capture-hdr-content-with-screencapturekit/metadata.json",
+    "readme": "sessions/wwdc2024/10088-capture-hdr-content-with-screencapturekit/README.md",
+    "transcript": "sessions/wwdc2024/10088-capture-hdr-content-with-screencapturekit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10088-capture-hdr-content-with-screencapturekit/transcript.json"
+  }
+}

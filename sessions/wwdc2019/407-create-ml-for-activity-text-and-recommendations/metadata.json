@@ -1,0 +1,62 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-407",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 407,
+  "title": "Create ML for Activity, Text, and Recommendations",
+  "description": "Create ML enables you to produce powerful Core ML models from more than just images. Learn all about creating production-class models for Activity Classification, Text Classification, and Recommendation systems. Explore considerations for gathering and preparing the data needed for these model types.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/407",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/407",
+  "type": "Video",
+  "publishedAt": "2019-06-06T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "accelerometer",
+    "activity",
+    "ai",
+    "artificial intelligence",
+    "classifier",
+    "core ml",
+    "core motion",
+    "create ml",
+    "gazetteer",
+    "gyroscope",
+    "machine learning",
+    "motion",
+    "natural language",
+    "nlp",
+    "recommendation",
+    "recommender",
+    "sensors",
+    "text",
+    "text catalog",
+    "training",
+    "word embeddings"
+  ],
+  "topics": [
+    "Developer Tools",
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": null,
+  "hasTranscript": false,
+  "transcriptWordCount": 0,
+  "availableLanguages": [],
+  "media": {},
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/407-create-ml-for-activity-text-and-recommendations/",
+  "files": {
+    "metadata": "sessions/wwdc2019/407-create-ml-for-activity-text-and-recommendations/metadata.json",
+    "readme": "sessions/wwdc2019/407-create-ml-for-activity-text-and-recommendations/README.md"
+  }
+}

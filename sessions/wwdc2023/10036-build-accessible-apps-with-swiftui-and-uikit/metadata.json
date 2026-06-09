@@ -1,0 +1,151 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10036",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10036,
+  "title": "Build accessible apps with SwiftUI and UIKit",
+  "description": "Discover how advancements in UI frameworks make it easier to build rich, accessible experiences. Find out how technologies like VoiceOver can better interact with your app’s interface through accessibility traits and actions. We’ll share the latest updates to SwiftUI that help you refine your accessibility experience and show you how to keep accessibility information up-to-date in your UIKit apps.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10036",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10036",
+  "type": "Video",
+  "publishedAt": "2023-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Accessibility & Inclusion"
+  ],
+  "primaryTopic": "Accessibility & Inclusion",
+  "duration": 939,
+  "hasTranscript": true,
+  "transcriptWordCount": 2073,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10036/4/BB960BFD-F982-4800-8060-5674B049AC5A/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10036/4/BB960BFD-F982-4800-8060-5674B049AC5A/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10036/4/BB960BFD-F982-4800-8060-5674B049AC5A/downloads/wwdc2023-10036_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10036/4/BB960BFD-F982-4800-8060-5674B049AC5A/downloads/wwdc2023-10036_hd.mp4",
+    "duration": 939
+  },
+  "codeSnippets": [
+    {
+      "title": "Add the accessibility toggle trait",
+      "language": "swift",
+      "startTimeSeconds": 114,
+      "code": "import SwiftUI\n\nstruct FilterButton: View {\n    @State var filter: Bool = false\n\n    var body: some View {\n        Button(action: { filter.toggle() }) {\n            Text(\"Filter\")\n        }\n        .background(filter ? darkGreen : lightGreen)\n        .accessibilityAddTraits(.isToggle)\n    }\n}"
+    },
+    {
+      "title": "Add the accessibility toggle trait with UIKit",
+      "language": "swift",
+      "startTimeSeconds": 151,
+      "code": "import UIKit\n\nclass ViewController: UIViewController {\n    override func viewDidLoad() {\n        super.viewDidLoad()\n\n        let filterButton = UIButton(type: .custom)\n\n        setupButtonView()\n\n        filterButton.accessibilityTraits = [.toggleButton]\n\n        view.addSubview(filterButton)\n    }\n}"
+    },
+    {
+      "title": "Post an accessibility notification",
+      "language": "swift",
+      "startTimeSeconds": 223,
+      "code": "import SwiftUI\n\nstruct ContentView: View {\n    var body: some View {\n        NavigationView {\n            PhotoFilterView\n                .toolbar {\n                    Button(action: {\n                        AccessibilityNotification.Announcement(\"Loading Photos View\")\n                            .post()\n                    }) {\n                        Text(\"Photos\")\n                    }\n                }\n        }\n    }\n}"
+    },
+    {
+      "title": "Assign announcement priority",
+      "language": "swift",
+      "startTimeSeconds": 313,
+      "code": "import SwiftUI\n\nstruct ZoomingImageView: View {\n\n    var defaultPriorityAnnouncement = AttributedString(\"Opening Camera\")\n\n    var lowPriorityAnnouncement: AttributedString {\n        var lowPriorityString = AttributedString(\"Camera Loading\")\n        lowPriorityString.accessibilitySpeechAnnouncementPriority = .low\n        return lowPriorityString\n    }\n\n    var highPriorityAnnouncement: AttributedString {\n        var highPriorityString = AttributedString(\"Camera Active\")\n        highPriorityString.accessibilitySpeechAnnouncementPriority = .high\n        return highPriorityString\n    }\n\n    // ...\n}"
+    },
+    {
+      "title": "Post announcements with priority set",
+      "language": "swift",
+      "startTimeSeconds": 346,
+      "code": "import SwiftUI\n\nstruct CameraButton: View {\n\n    // ...\n\n    var body: some View {\n        Button(action: {\n            // Open Camera Code\n            AccessibilityNotification.Announcement(defaultPriorityAnnouncement).post()\n            // Camera Loading Code\n            AccessibilityNotification.Announcement(lowPriorityAnnouncement).post()\n            // Camera Loaded Code\n            AccessibilityNotification.Announcement(highPriorityAnnouncement).post()\n        }) {\n            Image(\"Camera\")\n           }\n        }\n    }\n}"
+    },
+    {
+      "title": "Assign announcement priority with UIKit",
+      "language": "swift",
+      "startTimeSeconds": 375,
+      "code": "class ViewController: UIViewController {\n    let defaultAnnouncement = NSAttributedString(string: \"Opening Camera\", attributes: \n        [NSAttributedString.Key.UIAccessibilitySpeechAttributeAnnouncementPriority: \n        UIAccessibilityPriority.default]\n    )\n\n    let lowPriorityAnnouncement = NSAttributedString(string: \"Camera Loading\", attributes:   \n        [NSAttributedString.Key.UIAccessibilitySpeechAttributeAnnouncementPriority:\n        UIAccessibilityPriority.low]\n    )\n\n    let highPriorityAnnouncement = NSAttributedString(string: \"Camera Active\", attributes: \n        [NSAttributedString.Key.UIAccessibilitySpeechAttributeAnnouncementPriority:  \n        UIAccessibilityPriority.high]\n    )\n\n    // ...\n}"
+    },
+    {
+      "title": "Add the accessibility zoom action",
+      "language": "swift",
+      "startTimeSeconds": 416,
+      "code": "struct ZoomingImageView: View {\n    @State private var zoomValue = 1.0\n    @State var imageName: String?\n\n    var body: some View {\n        Image(imageName ?? \"\")\n            .scaleEffect(zoomValue)\n            .accessibilityZoomAction { action in\n                let zoomQuantity = \"\\(Int(zoomValue)) x zoom\"\n                switch action.direction {\n                case .zoomIn:\n                    zoomValue += 1.0\n                    AccessibilityNotification.Announcement(zoomQuantity).post()\n                case .zoomOut:\n                    zoomValue -= 1.0\n                    AccessibilityNotification.Announcement(zoomQuantity).post()\n                }\n            }\n    }\n}"
+    },
+    {
+      "title": "Add the accessibility zoom action with UIKit",
+      "language": "swift",
+      "startTimeSeconds": 438,
+      "code": "import UIKit\n\nclass ViewController: UIViewController {\n    let zoomView = ZoomingImageView(frame: .zero)\n    let imageView = UIImageView(image: UIImage(named: \"tree\"))\n\n    override func viewDidLoad() {\n        super.viewDidLoad()\n        zoomView.isAccessibilityElement = true\n        zoomView.accessibilityLabel = \"Zooming Image View\"\n        zoomView.accessibilityTraits = [.image, .supportsZoom]\n\n        zoomView.addSubview(imageView)\n        view.addSubview(zoomView)\n    }\n}"
+    },
+    {
+      "title": "Respond to accessibility zoom actions with UIKit",
+      "language": "swift",
+      "startTimeSeconds": 463,
+      "code": "import UIKit \n\nclass ZoomingImageView: UIScrollView {\n    override func accessibilityZoomIn(at point: CGPoint) -> Bool {\n        zoomScale += 1.0\n\n        let zoomQuantity = \"\\(Int(zoomValue)) x zoom\"  \n        UIAccessibility.post(notification: .announcement, argument: zoomQuantity)\n        return true\n    }\n\n    override func accessibilityZoomOut(at point: CGPoint) -> Bool {\n        zoomScale -= 1.0\n\n        let zoomQuantity = \"\\(Int(zoomValue)) x zoom\" \n        UIAccessibility.post(notification: .announcement, argument: zoomQuantity)             \n        return true\n    }\n}"
+    },
+    {
+      "title": "Use accessibility direct touch options",
+      "language": "swift",
+      "startTimeSeconds": 610,
+      "code": "import SwiftUI\n\nstruct KeyboardKeyView: View {\n    var soundFile: String\n    var body: some View {\n        Rectangle()\n            .fill(.white)\n            .frame(width: 35, height: 80)\n            .onTapGesture(count: 1) {\n                playSound(sound: soundFile, type: \"mp3\")\n            }            \n            .accessibilityDirectTouch(options: .silentOnTouch)\n    }\n}"
+    },
+    {
+      "title": "Use accessibility direct touch options with UIKit",
+      "language": "swift",
+      "startTimeSeconds": 646,
+      "code": "import UIKit\n\nclass ViewController: UIViewController {\n    let waveformButton = UIButton(type: .custom)\n\n    override func viewDidLoad() {\n        super.viewDidLoad()\n\n        waveformButton.accessibilityTraits = .allowsDirectInteraction\n        waveformButton.accessibilityDirectTouchOptions = .silentOnTouch\n        waveformButton.addTarget(self, action: #selector(playTone), for: .touchUpInside)\n\n        view.addSubview(waveformButton)\n    }\n}"
+    },
+    {
+      "title": "Set the accessibility content shape",
+      "language": "swift",
+      "startTimeSeconds": 741,
+      "code": "import SwiftUI\n\nstruct ImageView: View {\n    var body: some View {\n        Image(\"circle-red\")\n            .resizable()\n            .frame(width: 200, height: 200)\n            .accessibilityLabel(\"Red\")\n            .contentShape(.accessibility, Circle())\n    }\n}"
+    },
+    {
+      "title": "Update accessibility values using block-based setters with UIKit",
+      "language": "swift",
+      "startTimeSeconds": 815,
+      "code": "import UIKit \n\nclass ViewController: UIViewController {\n    var isFiltered = false\n\n    override func viewDidLoad() {\n        super.viewDidLoad()\n        // Set up views\n        zoomView.accessibilityValueBlock = { [weak self] in\n            guard let self else { return nil }\n            return isFiltered ? \"Filtered\" : \"Not Filtered\"\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Accessibility updates",
+      "url": "https://developer.apple.com/documentation/Updates/Accessibility",
+      "type": "documentation",
+      "description": "Learn about important changes to Accessibility.",
+      "sosumiURL": "https://sosumi.ai/documentation/Updates/Accessibility",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Updates/Accessibility.json"
+    },
+    {
+      "title": "Accessibility",
+      "url": "https://developer.apple.com/documentation/accessibility",
+      "type": "documentation",
+      "description": "Make your apps accessible to everyone who uses Apple devices.",
+      "sosumiURL": "https://sosumi.ai/documentation/accessibility",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/accessibility.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10036-build-accessible-apps-with-swiftui-and-uikit/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10036-build-accessible-apps-with-swiftui-and-uikit/metadata.json",
+    "readme": "sessions/wwdc2023/10036-build-accessible-apps-with-swiftui-and-uikit/README.md",
+    "transcript": "sessions/wwdc2023/10036-build-accessible-apps-with-swiftui-and-uikit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10036-build-accessible-apps-with-swiftui-and-uikit/transcript.json"
+  }
+}

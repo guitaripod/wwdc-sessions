@@ -1,0 +1,60 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10076",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10076,
+  "title": "Diagnose performance issues with the Xcode Organizer",
+  "description": "Analyze aggregated power and performance data from multiple versions of your app with just a few clicks. We’ll introduce you to the latest version of the Xcode Organizer and its interactive interface, where you can easily compare and contrast app metrics across releases. Explore disk write diagnostics and scroll hitch metrics, and learn how you can use these to offer better performance, reduce battery consumption, and improve device health for people using your app. If you’d like additional information on the Xcode Organizer and improving power and performance in your app, watch \"Improving Battery Life and Performance\" from WWDC19. For more on hitches, check out “Eliminate animation hitches with XCTest.”",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10076",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10076",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "analytics",
+    "diagnostics",
+    "metrics",
+    "performance",
+    "xcode"
+  ],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 667,
+  "hasTranscript": true,
+  "transcriptWordCount": 1906,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10076/4/2E98AB12-04C8-4D40-8FD1-BC186B322664/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10076/4/2E98AB12-04C8-4D40-8FD1-BC186B322664/wwdc2020_10076_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10076/4/2E98AB12-04C8-4D40-8FD1-BC186B322664/wwdc2020_10076_hd.mp4",
+    "duration": 667
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2020/10076-diagnose-performance-issues-with-the-xcode-organizer/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10076-diagnose-performance-issues-with-the-xcode-organizer/metadata.json",
+    "readme": "sessions/wwdc2020/10076-diagnose-performance-issues-with-the-xcode-organizer/README.md",
+    "transcript": "sessions/wwdc2020/10076-diagnose-performance-issues-with-the-xcode-organizer/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10076-diagnose-performance-issues-with-the-xcode-organizer/transcript.json"
+  }
+}

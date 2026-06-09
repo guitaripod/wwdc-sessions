@@ -1,0 +1,292 @@
+{
+  "event": "wwdc2014",
+  "name": "WWDC14",
+  "year": 2014,
+  "sessionCount": 6,
+  "sessions": [
+    {
+      "id": "wwdc2014-223",
+      "event": "wwdc2014",
+      "year": 2014,
+      "eventContentId": 223,
+      "title": "Prototyping: Fake It Till You Make It",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2014/223",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2014/223",
+      "duration": 3470,
+      "publishedAt": "2014-06-05T09:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ],
+      "primaryTopic": "Design",
+      "topics": [
+        "Design"
+      ],
+      "keywords": [
+        "design",
+        "keynote"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 8655,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2014/223-prototyping-fake-it-till-you-make-it/",
+      "description": "Make better apps by trying things out first, before you write any code. Get a glimpse of Apple's prototyping process and the range of tools and techniques we use, some of which might surprise you."
+    },
+    {
+      "id": "wwdc2014-513",
+      "event": "wwdc2014",
+      "year": 2014,
+      "eventContentId": 513,
+      "title": "Direct Access to Video Encoding and Decoding",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2014/513",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2014/513",
+      "duration": 3163,
+      "publishedAt": "2014-06-05T11:30:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ],
+      "primaryTopic": "Audio & Video",
+      "topics": [
+        "Audio & Video"
+      ],
+      "keywords": [
+        "core graphics",
+        "core video",
+        "iosurface"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 7853,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2014/513-direct-access-to-video-encoding-and-decoding/",
+      "description": "Discover how to use AV Foundation and Video Toolbox to access hardware accelerated encoding and decoding services. Gain best practices for when it is appropriate to use a high-level or low-level API for encoding or decoding. Learn about multi-pass export for improved H.264 encoding and see how to use it in your app."
+    },
+    {
+      "id": "wwdc2014-602",
+      "event": "wwdc2014",
+      "year": 2014,
+      "eventContentId": 602,
+      "title": "Ingredients of Great Games",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2014/602",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2014/602",
+      "duration": 3393,
+      "publishedAt": "2014-06-03T15:15:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Design",
+        "Developer Tools",
+        "Graphics & Games"
+      ],
+      "keywords": [
+        "2d",
+        "3d",
+        "engagement",
+        "friction",
+        "game",
+        "graphics",
+        "metal",
+        "nsurlsession",
+        "opengl",
+        "scenekit",
+        "spritekit"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 9240,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2014/602-ingredients-of-great-games/",
+      "description": "Kick off the game development sessions of WWDC 2014 by gaining insight into the key ingredients needed to create a great game for iOS. Understand the importance of harnessing the full capabilities of the platform to create a richer gameplay experience. Get practical guidance about game production and distribution, and learn the design and platform conventions that will make your game even more engaging."
+    },
+    {
+      "id": "wwdc2014-603",
+      "event": "wwdc2014",
+      "year": 2014,
+      "eventContentId": 603,
+      "title": "Working with Metal: Overview",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2014/603",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2014/603",
+      "duration": 2783,
+      "publishedAt": "2014-06-04T09:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [
+        "3d",
+        "3d graphics",
+        "accelerate",
+        "compute",
+        "gpgpu",
+        "gpu",
+        "metl",
+        "mtl",
+        "opengl",
+        "opengl es",
+        "renderer",
+        "shader",
+        "simd"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 8158,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2014/603-working-with-metal-overview/",
+      "description": "Metal provides extremely efficient access to the graphics and compute power of the A7 chip. Get introduced to the essential concepts behind Metal, its low-overhead architecture, streamlined API, and unified shading language. See how Metal lets you take your iOS game or app to the next level of performance and capability."
+    },
+    {
+      "id": "wwdc2014-604",
+      "event": "wwdc2014",
+      "year": 2014,
+      "eventContentId": 604,
+      "title": "Working with Metal: Fundamentals",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2014/604",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2014/604",
+      "duration": 3223,
+      "publishedAt": "2014-06-04T10:15:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [
+        "3d",
+        "3d graphics",
+        "accelerate",
+        "compute",
+        "gpgpu",
+        "gpu",
+        "metl",
+        "mtl",
+        "opengl",
+        "opengl es",
+        "renderer",
+        "shader",
+        "simd"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 9538,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2014/604-working-with-metal-fundamentals/",
+      "description": "Start learning how to code with Metal in this step-by-step walkthrough of basic scene rendering. See the code you need to get your first Metal-based application up and running. Explore how to create graphics and compute shaders and efficiently animate scenes."
+    },
+    {
+      "id": "wwdc2014-605",
+      "event": "wwdc2014",
+      "year": 2014,
+      "eventContentId": 605,
+      "title": "Working with Metal: Advanced",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2014/605",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2014/605",
+      "duration": 3198,
+      "publishedAt": "2014-06-04T11:30:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [
+        "3d",
+        "3d graphics",
+        "accelerate",
+        "compute",
+        "frame debugger",
+        "gpgpu",
+        "gpu",
+        "metal tools",
+        "metl",
+        "mtl",
+        "opengl",
+        "opengl es",
+        "renderer",
+        "shader",
+        "simd",
+        "xcode"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 9489,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2014/605-working-with-metal-advanced/",
+      "description": "Building on the fundamentals, learn how to create advanced games and graphics applications with Metal. See how to construct your rendering pipeline, understand how to use compute and graphics together, and discover how to optimize your Metal-based app."
+    }
+  ]
+}

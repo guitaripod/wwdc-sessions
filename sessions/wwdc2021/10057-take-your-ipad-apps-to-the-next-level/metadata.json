@@ -1,0 +1,222 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10057",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10057,
+  "title": "Take your iPad apps to the next level",
+  "description": "Make even better iPad apps: Learn how you can adopt prominent scenes for uninterrupted, focused interactions. Help people stay engaged and fast with keyboard shortcuts and the keyboard shortcut interface. Explore how the latest in pointer enhancements can help your app boost productivity.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10057",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10057",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "keyboard",
+    "main menu",
+    "menu",
+    "menu bar",
+    "menu system",
+    "mouse",
+    "pointer",
+    "print",
+    "responder",
+    "scene",
+    "shortcut",
+    "trackpad",
+    "uicommand",
+    "uikeycommand",
+    "uimenubuilder",
+    "uimenu printing",
+    "uipointerinteraction",
+    "uiwindowscene",
+    "window"
+  ],
+  "topics": [
+    "Essentials",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 2176,
+  "hasTranscript": true,
+  "transcriptWordCount": 5008,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10057/7/5399C1AB-B62F-4A83-8AA1-FCBFDAFFBF44/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10057/7/5399C1AB-B62F-4A83-8AA1-FCBFDAFFBF44/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10057/7/5399C1AB-B62F-4A83-8AA1-FCBFDAFFBF44/downloads/wwdc2021-10057_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10057/7/5399C1AB-B62F-4A83-8AA1-FCBFDAFFBF44/downloads/wwdc2021-10057_hd.mp4",
+    "duration": 2176
+  },
+  "codeSnippets": [
+    {
+      "title": "Build an \"Open in New Window\" action",
+      "language": "swift",
+      "startTimeSeconds": 296,
+      "code": "let <#newSceneAction#> = UIWindowScene.ActivationAction({ _ in\n\n    // Create the user activity that represents the new scene content.\n    let userActivity = NSUserActivity(activityType: <#User Activity Type#>)\n\n    // Return the activation configuration.\n    return UIWindowScene.ActivationConfiguration(userActivity: userActivity)\n\n})"
+    },
+    {
+      "title": "Use an alternate action with UIWindowScene.ActivationAction",
+      "language": "swift",
+      "startTimeSeconds": 343,
+      "code": "// Create an action to use when multiple scenes are not available.\nlet alternateAction = UIAction(title: <#Alternate Action Title#>,\n                               image: <#Alternate Action Image#>,\n                             handler: { _ in\n    <#Perform Alternate Action#>\n})\n\n// Create the scene activation action with the alternate.\nlet newSceneAction = UIWindowScene.ActivationAction(alternate: alternateAction) { _ in\n\n    // Create the user activity that represents the new scene content.\n    let userActivity = NSUserActivity(activityType: <#Scene Activity Type#>)\n\n    // Return the activation configuration.\n    return UIWindowScene.ActivationConfiguration(userActivity: userActivity)\n}"
+    },
+    {
+      "title": "Present a scene from a collection view with a gesture",
+      "language": "swift",
+      "startTimeSeconds": 418,
+      "code": "func collectionView(_ collectionView: UICollectionView,\n                    sceneActivationConfigurationForItemAt indexPath: IndexPath,\n                    point: CGPoint) -> UIWindowScene.ActivationConfiguration? {\n\n    // Get the item's user activity.\n    guard let itemActivity = <#User Activity#> else {\n        // Return nil if item can’t be opened in a dedicated scene.\n        return nil\n    }\n\n    // Return the activation configuration.\n    return UIWindowScene.ActivationConfiguration(userActivity: itemActivity)\n}"
+    },
+    {
+      "title": "Present a scene from a custom view with a gesture",
+      "language": "swift",
+      "startTimeSeconds": 448,
+      "code": "// Create an activation interaction.\nlet newSceneInteraction = UIWindowScene.ActivationInteraction { interaction, point in\n    // Get the activity for specific point in view.\n    guard let userActivity = <#User Activity#> else { return nil }\n\n    // Return an activation configuration.\n    return UIWindowScene.ActivationConfiguration(userActivity: userActivity)\n\n} errorHandler: { error in\n    // Present the content in another manner.\n    <#Present Content#>\n}\n\n// Add interaction to the view.\n<#View#>.addInteraction(newSceneInteraction)"
+    },
+    {
+      "title": "Customize scene transition preview",
+      "language": "swift",
+      "startTimeSeconds": 533,
+      "code": "// Create the activation configuration.\nlet itemActivity = NSUserActivity(activityType: <#User Activity Type#>)\nlet configuration = UIWindowScene.ActivationConfiguration(userActivity: itemActivity)\n\n// If the cell has a subview to use as the preview, create the custom preview.\nif let cell = collectionView.cellForItem(at: indexPath) as? <#Expected Cell Class#> {\n    configuration.preview = UITargetedPreview(view: cell.<#Subview For Preview#>)\n}\n\n// Return the activation configuration.\nreturn configuration"
+    },
+    {
+      "title": "Save scene state",
+      "language": "swift",
+      "startTimeSeconds": 618,
+      "code": "func stateRestorationActivity(for scene: UIScene) -> NSUserActivity? {\n    guard let viewController = self.window?.rootViewController as? <#Expected View Controller Class#> else {\n        return nil\n    }\n\n    let stateActivity = NSUserActivity(activityType: <#State Restoration Activity Type#>)\n\n    stateActivity.addUserInfoEntries(from: [\n        // Save content of a text field.\n        <#Content Key#>: viewController.<#Text Field#>.text\n    ])\n\n    return stateActivity\n}"
+    },
+    {
+      "title": "Save scene state with interaction state",
+      "language": "swift",
+      "startTimeSeconds": 676,
+      "code": "func stateRestorationActivity(for scene: UIScene) -> NSUserActivity? {\n    guard let viewController = self.window?.rootViewController as? <#Expected View Controller Class#> else {\n        return nil\n    }\n\n    let stateActivity = NSUserActivity(activityType: <#State Restoration Activity Type#>)\n\n    stateActivity.addUserInfoEntries(from: [\n        // Save content of a text field.\n        <#Content Key#>: viewController.<#Text Field#>.text,\n\n        // Save interaction state of a text field.\n        <#Interaction State Key#>: viewController.<#Text Field#>.interactionState\n    ])\n\n    return stateActivity\n}"
+    },
+    {
+      "title": "Restore scene state",
+      "language": "swift",
+      "startTimeSeconds": 733,
+      "code": "func scene(_ scene: UIScene, restoreInteractionState stateRestorationActivity: NSUserActivity) {\n    guard let viewController = window?.rootViewController as? <#Expected View Controller Class#>,\n          let userInfo = stateRestorationActivity.userInfo\n    else { return }\n\n    if let content = userInfo[<#Content Key#>] as? String {\n        // Restore the content first.\n        viewController.<#Text Field#>.text = content\n\n        // Then, restore the text field’s interaction state.\n        if let interactionState = userInfo[<#Interaction State Key#>] {\n            viewController.<#Text Field#>.interactionState = interactionState\n        }\n    }\n}"
+    },
+    {
+      "title": "Restore scene state asynchronously",
+      "language": "swift",
+      "startTimeSeconds": 795,
+      "code": "func scene(_ scene: UIScene, restoreInteractionState stateRestorationActivity: NSUserActivity) {\n    guard let viewController = window?.rootViewController as? <#Expected View Controller Class#> else { return }\n\n    // Request an extension.\n    scene.extendStateRestoration()\n\n    // Fetch content asynchronously.\n    <#self.someAsyncFunction#> { result in\n        <#Restore Content#>\n\n        // Signal that state has been restored.\n        scene.completeStateRestoration()\n    }\n}"
+    },
+    {
+      "title": "Modify the main menu",
+      "language": "swift",
+      "startTimeSeconds": 1035,
+      "code": "override func buildMenu(with builder: UIMenuBuilder) {\n    super.buildMenu(with: builder)\n\n    // Ensure the builder is modifying the main menu.\n    guard builder.system == .main else { return }\n\n    // Use the builder to modify the main menu...\n}"
+    },
+    {
+      "title": "Add key commands to the main menu",
+      "language": "swift",
+      "startTimeSeconds": 1057,
+      "code": "// Create a menu with key commands.\nlet tabMenu = UIMenu(options: .displayInline, children: [\n    UIKeyCommand(title: NSLocalizedString(\"New Tab\", ...),\n                 action: #selector(BrowserViewController.newTab(_:)),\n                 input: \"t\",\n                 modifierFlags: .command),\n    UIKeyCommand(...)\n])\n\n// Insert tabMenu into the File menu.\nbuilder.insertChild(tabMenu, atStartOfMenu: .file)"
+    },
+    {
+      "title": "Add a custom menu category",
+      "language": "swift",
+      "startTimeSeconds": 1099,
+      "code": "// Create a \"Bookmarks\" menu.\nlet bookmarksMenu = UIMenu(title: NSLocalizedString(\"Bookmarks\", ...),\n                           children: [...])\n\n// Insert the Bookmarks menu into the root menu, after View.\nbuilder.insertSibling(bookmarksMenu, afterMenu: .view)\n\n// Insert another menu into the Bookmarks menu.\nlet sortBookmarksMenu = UIMenu(...)\nbuilder.insertChild(sortBookmarksMenu, atEndOfMenu: bookmarksMenu.identifier)"
+    },
+    {
+      "title": "Customizing key command performability",
+      "language": "swift",
+      "startTimeSeconds": 1358,
+      "code": "override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {\n    if action == #selector(closeTab(_:)) {\n        return !openTabs.isEmpty\n    } else {\n        return super.canPerformAction(action, withSender: sender)\n    }\n}"
+    },
+    {
+      "title": "Customizing key command appearance",
+      "language": "swift",
+      "startTimeSeconds": 1406,
+      "code": "override func validate(_ command: UICommand) {\n    if command.action == #selector(toggleBookmark(_:)) {\n        if currentTab.isInBookmarks {\n            command.title = NSLocalizedString(\"Add to Bookmarks\", ...)\n        } else {\n            command.title = NSLocalizedString(\"Remove from Bookmarks\", ...)\n        }\n    } else {\n        return super.validate(command)\n    }\n}"
+    },
+    {
+      "title": "Supporting multi-selection using UIBandSelectionInteraction",
+      "language": "swift",
+      "startTimeSeconds": 1727,
+      "code": "// Support multi-selection using UIBandSelectionInteraction.\n\nlet selectionInteraction = UIBandSelectionInteraction { [weak self] interaction in\n    guard let strongSelf = self else { return }\n\n    // Handle selection by responding to interaction state.\n    if interaction.state == .selecting {\n        strongSelf.selectItemsInRect(interaction.selectionRect)\n    } \n    else if interaction.state == .ended {\n        strongSelf.finalizeSelection()\n    }\n}\n\nview.addInteraction(selectionInteraction)"
+    },
+    {
+      "title": "Customizing a predefined pointer accessory position",
+      "language": "swift",
+      "startTimeSeconds": 1981,
+      "code": "var position = UIPointerAccessory.Position.topRight\nposition.offset = 40.0"
+    },
+    {
+      "title": "Creating a custom pointer accessory position",
+      "language": "swift",
+      "startTimeSeconds": 1994,
+      "code": "let position = UIPointerAccessory.Position(offset: 23.0, angle: .pi * 1.25)"
+    },
+    {
+      "title": "Pointer Accessories",
+      "language": "swift",
+      "startTimeSeconds": 2007,
+      "code": "// Attach two arrow accessories to a lift pointer effect.\n\nfunc pointerInteraction(_ interaction: UIPointerInteraction, styleFor region: UIPointerRegion) -> UIPointerStyle?\n{\n    let preview = UITargetedPreview(view: self)\n    let style = UIPointerStyle(effect: .lift(preview))\n\n    if #available(iOS 15.0, *) {\n        style.accessories = [\n            .arrow(.left),\n            .arrow(.right)\n        ]\n    }\n\n    return style\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Adding hardware keyboard support to your app",
+      "url": "https://developer.apple.com/documentation/UIKit/adding-hardware-keyboard-support-to-your-app",
+      "type": "samplecode",
+      "description": "Enhance interactions with your app by handling raw keyboard events, writing custom keyboard shortcuts, and working with gesture recognizers.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/adding-hardware-keyboard-support-to-your-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/adding-hardware-keyboard-support-to-your-app.json"
+    },
+    {
+      "title": "Enhancing your iPad app with pointer interactions",
+      "url": "https://developer.apple.com/documentation/UIKit/enhancing-your-ipad-app-with-pointer-interactions",
+      "type": "samplecode",
+      "description": "Provide a great user experience with pointing devices, by incorporating pointer content effects and shape customizations.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/enhancing-your-ipad-app-with-pointer-interactions",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/enhancing-your-ipad-app-with-pointer-interactions.json"
+    },
+    {
+      "title": "Human Interface Guidelines: Pointing devices",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/pointing-devices",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/pointing-devices"
+    },
+    {
+      "title": "Adding menus and shortcuts to the menu bar and user interface",
+      "url": "https://developer.apple.com/documentation/UIKit/adding-menus-and-shortcuts-to-the-menu-bar-and-user-interface",
+      "type": "samplecode",
+      "description": "Provide quick access to useful actions by adding menus and keyboard shortcuts to your Mac app built with Mac Catalyst.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/adding-menus-and-shortcuts-to-the-menu-bar-and-user-interface",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/adding-menus-and-shortcuts-to-the-menu-bar-and-user-interface.json"
+    },
+    {
+      "title": "UIKit",
+      "url": "https://developer.apple.com/documentation/UIKit",
+      "type": "documentation",
+      "description": "Construct and manage a graphical, event-driven user interface for your iOS, iPadOS, or tvOS app.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10057-take-your-ipad-apps-to-the-next-level/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10057-take-your-ipad-apps-to-the-next-level/metadata.json",
+    "readme": "sessions/wwdc2021/10057-take-your-ipad-apps-to-the-next-level/README.md",
+    "transcript": "sessions/wwdc2021/10057-take-your-ipad-apps-to-the-next-level/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10057-take-your-ipad-apps-to-the-next-level/transcript.json"
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10100",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10100,
+  "title": "Meet Watch Face Sharing",
+  "description": "Show off your watchOS app’s complications and create a watch face worth sharing. Learn how to share watch faces inside your watchOS and iOS apps or host them on the web for anyone to find and download. We’ll also explore best practices for using watch face preview images, and show you how to create a smooth installation experience.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10100",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10100",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "watchOS"
+  ],
+  "keywords": [
+    "⌚️",
+    "☕️",
+    "clockkit",
+    "complications",
+    "watchkit",
+    "watchos"
+  ],
+  "topics": [
+    "Safari & Web",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 865,
+  "hasTranscript": true,
+  "transcriptWordCount": 2398,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10100/2/880A8C5B-FB7B-456E-951B-5D13415E1B70/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10100/2/880A8C5B-FB7B-456E-951B-5D13415E1B70/wwdc2020_10100_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10100/2/880A8C5B-FB7B-456E-951B-5D13415E1B70/wwdc2020_10100_hd.mp4",
+    "duration": 865
+  },
+  "codeSnippets": [
+    {
+      "title": "Detect Paired Watch",
+      "language": "swift",
+      "startTimeSeconds": 440,
+      "code": "var isPaired: Bool {\n    if (WCSession.isSupported()) {\n        let session = WCSession.default\n        session.delegate = self\n        session.activate()\n        return session.isPaired\n    } else {\n        return false\n    }\n}"
+    },
+    {
+      "title": "Add Face Wrapper",
+      "language": "swift",
+      "startTimeSeconds": 541,
+      "code": "private func addFaceWrapper(withName: String) {\n    if let watchfaceURL = Bundle.main.url(forResource: withName, withExtension: \"watchface\") {\n        CLKWatchFaceLibrary().addWatchFace(at: watchfaceURL, completionHandler: {\n            (error: Error?) in\n            if let nsError = error as NSError?, nsError.code == CLKWatchFaceLibrary.ErrorCode.faceNotAvailable.rawValue {\n                print(nsError)\n            }\n            isLoading = false\n        })\n    }\n}"
+    },
+    {
+      "title": "Add Face Wrapper with Fallback Face",
+      "language": "swift",
+      "startTimeSeconds": 664,
+      "code": "private func addFaceWrapper(withName: String, fallbackName: String?) {\n    if let watchfaceURL = Bundle.main.url(forResource: withName, withExtension: \"watchface\") {\n        CLKWatchFaceLibrary().addWatchFace(at: watchfaceURL, completionHandler: {\n            (error: Error?) in\n            if let nsError = error as NSError?, nsError.code == CLKWatchFaceLibrary.ErrorCode.faceNotAvailable.rawValue {\n                if let name = fallbackName {\n                    // We failed, trying with fallbackName.\n                    addFaceWrapper(withName: name, fallbackName: nil)\n                }\n            }\n            isLoading = false\n        })\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Watch faces",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/watch-faces",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/watch-faces"
+    },
+    {
+      "title": "Sharing an Apple Watch face",
+      "url": "https://developer.apple.com/documentation/ClockKit/sharing-an-apple-watch-face",
+      "type": "documentation",
+      "description": "Distribute a customized watch face to Apple Watch users.",
+      "sosumiURL": "https://sosumi.ai/documentation/ClockKit/sharing-an-apple-watch-face",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ClockKit/sharing-an-apple-watch-face.json"
+    },
+    {
+      "title": "Apple Design Resources",
+      "url": "https://developer.apple.com/design/resources/",
+      "type": "download",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/resources/"
+    }
+  ],
+  "path": "sessions/wwdc2020/10100-meet-watch-face-sharing/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10100-meet-watch-face-sharing/metadata.json",
+    "readme": "sessions/wwdc2020/10100-meet-watch-face-sharing/README.md",
+    "transcript": "sessions/wwdc2020/10100-meet-watch-face-sharing/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10100-meet-watch-face-sharing/transcript.json"
+  }
+}

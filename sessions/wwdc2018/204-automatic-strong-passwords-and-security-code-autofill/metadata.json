@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2018-204",
+  "event": "wwdc2018",
+  "eventName": "WWDC18",
+  "year": 2018,
+  "eventContentId": 204,
+  "title": "Automatic Strong Passwords and Security Code AutoFill",
+  "description": "Passwords and security codes are a modern necessity required for security and privacy. iOS 12 eases the tedious aspects of account setup and sign-in by automatically suggesting and using strong, unique passwords — even from within apps — and by bringing one-time codes to the QuickType bar so users can fill them with one tap. Learn how to optimize your app to ensure that password, security code, and other AutoFill features provide a seamless way for your users to be more secure.",
+  "url": "https://developer.apple.com/videos/play/wwdc2018/204",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2018/204",
+  "type": "Video",
+  "publishedAt": "2018-06-05T11:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Privacy & Security"
+  ],
+  "primaryTopic": "Privacy & Security",
+  "duration": 2202,
+  "hasTranscript": true,
+  "transcriptWordCount": 5388,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/204jfuuku83cex/204/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/204jfuuku83cex/204/204_sd_automatic_strong_passwords_and_security_code_autofill.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/204jfuuku83cex/204/204_hd_automatic_strong_passwords_and_security_code_autofill.mp4",
+    "duration": 2202
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Password Rules Validation Tool",
+      "url": "https://developer.apple.com/password-rules",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/password-rules"
+    }
+  ],
+  "path": "sessions/wwdc2018/204-automatic-strong-passwords-and-security-code-autofill/",
+  "files": {
+    "metadata": "sessions/wwdc2018/204-automatic-strong-passwords-and-security-code-autofill/metadata.json",
+    "readme": "sessions/wwdc2018/204-automatic-strong-passwords-and-security-code-autofill/README.md",
+    "transcript": "sessions/wwdc2018/204-automatic-strong-passwords-and-security-code-autofill/transcript.md",
+    "transcriptJSON": "sessions/wwdc2018/204-automatic-strong-passwords-and-security-code-autofill/transcript.json"
+  }
+}

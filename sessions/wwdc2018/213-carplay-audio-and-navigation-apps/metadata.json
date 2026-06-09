@@ -1,0 +1,66 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2018-213",
+  "event": "wwdc2018",
+  "eventName": "WWDC18",
+  "year": 2018,
+  "eventContentId": 213,
+  "title": "CarPlay Audio and Navigation Apps",
+  "description": "Learn how to update your audio or navigation app to support CarPlay. Apps in CarPlay are optimized for use in the car, and automatically adapt to available vehicle screens and input controls. Audio apps can deliver music, news, podcasts, and more. With the new CarPlay framework, Navigation apps can provide detailed maps, destination search, turn-by-turn guidance, and user notifications.",
+  "url": "https://developer.apple.com/videos/play/wwdc2018/213",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2018/213",
+  "type": "Video",
+  "publishedAt": "2018-06-06T09:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "🚗",
+    "🚙",
+    "car",
+    "map"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 2313,
+  "hasTranscript": true,
+  "transcriptWordCount": 6333,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/213ivbgp77y4z4/213/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/213ivbgp77y4z4/213/213_sd_carplay_audio_and_navigation_apps.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/213ivbgp77y4z4/213/213_hd_carplay_audio_and_navigation_apps.mp4",
+    "duration": 2313
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "CarPlay",
+      "url": "https://developer.apple.com/documentation/CarPlay",
+      "type": "documentation",
+      "description": "Integrate CarPlay in apps related to audio, communication, navigation, parking, EV charging, food ordering, and more.",
+      "sosumiURL": "https://sosumi.ai/documentation/CarPlay",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CarPlay.json"
+    }
+  ],
+  "path": "sessions/wwdc2018/213-carplay-audio-and-navigation-apps/",
+  "files": {
+    "metadata": "sessions/wwdc2018/213-carplay-audio-and-navigation-apps/metadata.json",
+    "readme": "sessions/wwdc2018/213-carplay-audio-and-navigation-apps/README.md",
+    "transcript": "sessions/wwdc2018/213-carplay-audio-and-navigation-apps/transcript.md",
+    "transcriptJSON": "sessions/wwdc2018/213-carplay-audio-and-navigation-apps/transcript.json"
+  }
+}

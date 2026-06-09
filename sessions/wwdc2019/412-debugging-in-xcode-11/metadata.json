@@ -1,0 +1,55 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-412",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 412,
+  "title": "Debugging in Xcode 11",
+  "description": "Xcode 11 introduces new features for finding and fixing bugs fast. Discover how to simulate network conditions and thermal states, and how to override your app's runtime environment while debugging. See how the debugging features work with Xcode previews to identify issues before Build & Run. Learn how to work with the View Debugger to troubleshoot your SwiftUI views.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/412",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/412",
+  "type": "Video",
+  "publishedAt": "2019-06-06T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games",
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 2229,
+  "hasTranscript": true,
+  "transcriptWordCount": 6583,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/412g1eatropvik82vk/412/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/412g1eatropvik82vk/412/412_sd_debugging_in_xcode_11.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/412g1eatropvik82vk/412/412_hd_debugging_in_xcode_11.mp4",
+    "duration": 2229
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/412-debugging-in-xcode-11/",
+  "files": {
+    "metadata": "sessions/wwdc2019/412-debugging-in-xcode-11/metadata.json",
+    "readme": "sessions/wwdc2019/412-debugging-in-xcode-11/README.md",
+    "transcript": "sessions/wwdc2019/412-debugging-in-xcode-11/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/412-debugging-in-xcode-11/transcript.json"
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10229",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10229,
+  "title": "Make features discoverable with TipKit",
+  "description": "Teach people how to use your app with TipKit! Learn how you can create effective educational moments through tips. We’ll share how you can build eligibility rules to reach the ideal audience, control tip frequency, and strategies for testing to ensure successful interactions.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10229",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10229",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "coaching",
+    "discover",
+    "discovery",
+    "education",
+    "feature",
+    "features",
+    "hint",
+    "hints",
+    "in-app",
+    "instructional",
+    "teach",
+    "teaching",
+    "tip",
+    "tipkit",
+    "tips"
+  ],
+  "topics": [
+    "Design",
+    "Essentials",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 885,
+  "hasTranscript": true,
+  "transcriptWordCount": 2351,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10229/4/07E6CA29-01CD-4E03-A3FF-D7D8A3FB4CEF/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10229/4/07E6CA29-01CD-4E03-A3FF-D7D8A3FB4CEF/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10229/4/07E6CA29-01CD-4E03-A3FF-D7D8A3FB4CEF/downloads/wwdc2023-10229_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10229/4/07E6CA29-01CD-4E03-A3FF-D7D8A3FB4CEF/downloads/wwdc2023-10229_hd.mp4",
+    "duration": 885
+  },
+  "codeSnippets": [
+    {
+      "title": "Create a tip",
+      "language": "swift",
+      "startTimeSeconds": 115,
+      "code": "struct FavoriteBackyardTip: Tip {\n\n    var title: Text {\n        Text(\"Save as a Favorite\")\n    }\n\n    var message: Text {\n        Text(\"Your favorite backyards always appear at the top of the list.\")\n    }\n}"
+    },
+    {
+      "title": "Configure TipsCenter",
+      "language": "swift",
+      "startTimeSeconds": 168,
+      "code": "@main\nstruct BackyardBirdsApp: App {\n    var body: some Scene {\n        WindowGroup {\n            ContentView()\n        }\n    }\n\n    // ...\n\n    init() {\n        TipsCenter.shared.configure()\n    }\n}"
+    },
+    {
+      "title": "Add actions and an asset to a tip",
+      "language": "swift",
+      "startTimeSeconds": 198,
+      "code": "struct FavoriteBackyardTip: Tip {\n\n    var title: Text {\n        Text(\"Save as a Favorite\").foregroundColor(.indigo)\n    }\n\n    var message: Text {\n        Text(\"Your favorite backyards always appear at the top of the list.\")\n    }\n\n    var asset: Image {\n        Image(systemName: \"star\")\n    }\n\n    var actions: [Action] {\n        [\n            Tip.Action(\n                id: \"learn-more\", \n                title: \"Learn More\"\n            )\n        ]\n    }\n}"
+    },
+    {
+      "title": "Create a popover view",
+      "language": "swift",
+      "startTimeSeconds": 293,
+      "code": "private let favoriteBackyardTip = FavoriteBackyardTip()\n\n// ...\n\n.toolbar {\n    ToolbarItem {\n        Button {\n            backyard.isFavorite.toggle()\n        } label: {\n            Label(\"Favorite\", systemImage: \"star\")\n                .symbolVariant(\n                    backyard.isFavorite ? .fill : .none\n                )\n        }\n        .popoverMiniTip(tip: favoriteBackyardTip)\n    }\n}"
+    },
+    {
+      "title": "Add a parameter based rule",
+      "language": "swift",
+      "startTimeSeconds": 398,
+      "code": "struct FavoriteBackyardTip: Tip {\n\n    @Parameter\n    static var isLoggedIn: Bool = false\n\n    // ...\n\n    var rules: Predicate<RuleInput...> {\n\n        // User is logged in\n        #Rule(Self.$isLoggedIn) { $0 == true }\n    }\n}"
+    },
+    {
+      "title": "Add an event based rule",
+      "language": "swift",
+      "startTimeSeconds": 436,
+      "code": "struct FavoriteBackyardTip: Tip {\n\n    @Parameter\n    static var isLoggedIn: Bool = false\n\n    static let enteredBackyardDetailView: Event = Event<DetailViewDonation>(\n        id: \"entered-backyard-detail-view\"\n    )\n\n    // ...\n\n    var rules: Predicate<RuleInput...> {\n        // User is logged in\n        #Rule(Self.$isLoggedIn) { $0 == true }\n\n        // User has entered any backyard detail view at least 3 times\n        #Rule(Self.enteredBackyardDetailView) { $0.count >= 3 }\n    }\n}"
+    },
+    {
+      "title": "Donate the event when a view appears",
+      "language": "swift",
+      "startTimeSeconds": 454,
+      "code": ".onAppear {\n     FavoriteBackyardTip.enteredBackyardDetailView.donate()\n}"
+    },
+    {
+      "title": "Filter event donations in an event based rule",
+      "language": "swift",
+      "startTimeSeconds": 479,
+      "code": "// User has entered any backyard detail view at least 3 times in the past 5 days\n#Rule(Self.enteredBackyardDetailView) { \n    $0.donations.filter { \n        $0.date > Date.now.addingTimeInterval(-5 * 60 * 60 * 24)\n    }\n    .count >= 3\n}"
+    },
+    {
+      "title": "Create a custom donation",
+      "language": "swift",
+      "startTimeSeconds": 514,
+      "code": "// Create the associated type\nextension BackyardDetailTip {\n    struct DetailViewDonation: DonationValue {\n        let backyardID: Int\n    }\n}\n\n// Donate the unique id of the backyard detail being viewed\n.onAppear {\n     BackyardFavoriteTip.enteredBackyardDetailView.donate(\n         with: .init(backyardID: backyard.id)\n     )\n}\n\n\nstruct FavoriteBackyardTip: Tip {\n\n    // ...\n\n    var rules: Predicate<RuleInput...> {\n        // Update the rule to specify a backyardID\n        #Rule(Self.enteredBackyardDetailView) {\n            $0.donations.filter {\n                $0.date > Date.now.addingTimeInterval(-5 * 60 * 60 * 24) \n            }\n            .largestSubset(by: \\.backyardID)\n            .count >= 3\n        }\n    }\n}"
+    },
+    {
+      "title": "Configure display frequency",
+      "language": "swift",
+      "startTimeSeconds": 597,
+      "code": "// One tip per day.\nTipsCenter.shared.configure {\n    DisplayFrequency(.daily)\n}\n\n// One tip per hour.\nTipsCenter.shared.configure {\n    DisplayFrequency(.hourly)\n}\n\n// Custom configuration. Only show one tip every five days.\nlet fiveDays: TimeInterval = 5 * 24 * 60 * 60\nTipsCenter.shared.configure {\n    DisplayFrequency(fiveDays)\n}\n\n// No frequency control. Show all tips as soon as eligible.\nTipsCenter.shared.configure {\n    DisplayFrequency(.immediate)\n}"
+    },
+    {
+      "title": "Turn off display frequency controls for a tip",
+      "language": "swift",
+      "startTimeSeconds": 634,
+      "code": "struct FavoriteBackyardTip: Tip {\n\n    // ...\n\n    var options: [Option] {\n        [.ignoresDisplayFrequency(true)]\n    }\n}"
+    },
+    {
+      "title": "Invalidate a tip",
+      "language": "swift",
+      "startTimeSeconds": 687,
+      "code": "Button {\n    backyard.isFavorite.toggle()\n\n    // When user taps the favorite button, dismiss the tip\n    favoriteBackyardTip.invalidate(reason: .userPerformedAction)\n} label: {\n    Label(\"Favorite\", systemImage: \"star\")\n        .symbolVariant(backyard.isFavorite ? .fill : .none)\n}\n.popoverMiniTip(tip: favoriteBackyardTip)"
+    },
+    {
+      "title": "Configure max display count on a tip",
+      "language": "swift",
+      "startTimeSeconds": 701,
+      "code": "struct FavoriteBackyardTip: Tip {\n\n    // ...\n\n    var options: [Option] {\n        [.maxDisplayCount(5)]\n    }\n}"
+    },
+    {
+      "title": "Programmatically call testing API",
+      "language": "swift",
+      "startTimeSeconds": 766,
+      "code": "// Show all defined tips in the app\nTipsCenter.showAllTips()\n\n// Show some tips, but not all\nTipsCenter.showTips([tip1, tip2, tip3])\n\n// Hide some tips, but not all\nTipsCenter.hideTips([tip1, tip2, tip3])\n\n// Hide all tips defined in the app\nTipsCenter.hideAllTips()\n\n// Purge all TipKit related data\nTipsCenter.resetDatastore()"
+    },
+    {
+      "title": "Configure launch arguments in your scheme",
+      "language": "swift",
+      "startTimeSeconds": 811,
+      "code": "// Show all defined tips in the app\ncom.apple.TipKit.ShowAllTips 1\n\n// Show some tips, but not all\ncom.apple.TipKit.ShowTips tipID,otherTipID\n\n// Hide some tips, but not all\ncom.apple.TipKit.HideAllTips 1\n\n// Hide all tips defined in the app\ncom.apple.TipKit.HideTips tipID,otherTipID\n\n// Purge all TipKit related data\ncom.apple.TipKit.ResetDatastore 1"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2023/10229-make-features-discoverable-with-tipkit/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10229-make-features-discoverable-with-tipkit/metadata.json",
+    "readme": "sessions/wwdc2023/10229-make-features-discoverable-with-tipkit/README.md",
+    "transcript": "sessions/wwdc2023/10229-make-features-discoverable-with-tipkit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10229-make-features-discoverable-with-tipkit/transcript.json"
+  }
+}

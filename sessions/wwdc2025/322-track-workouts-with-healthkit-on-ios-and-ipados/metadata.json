@@ -1,0 +1,152 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-322",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 322,
+  "title": "Track workouts with HealthKit on iOS and iPadOS",
+  "description": "Learn best practices for building a great workout experience for iOS. Review the life cycle of a workout session, explore the differences between workouts on Apple Watch and iPhone, and find out how to use Live Activities and Siri to pump up your app’s Lock Screen experience.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/322",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/322",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS"
+  ],
+  "keywords": [
+    "bluetooth",
+    "heart rate",
+    "samples"
+  ],
+  "topics": [
+    "App Services",
+    "Health & Fitness"
+  ],
+  "primaryTopic": "Health & Fitness",
+  "duration": 684,
+  "hasTranscript": true,
+  "transcriptWordCount": 1949,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/322/4/f9d00075-ebbe-458c-a1e6-597ff5d78a1b/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/322/4/f9d00075-ebbe-458c-a1e6-597ff5d78a1b/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/322/4/f9d00075-ebbe-458c-a1e6-597ff5d78a1b/downloads/wwdc2025-322_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/322/4/f9d00075-ebbe-458c-a1e6-597ff5d78a1b/downloads/wwdc2025-322_hd.mp4",
+    "duration": 684
+  },
+  "codeSnippets": [
+    {
+      "title": "Set up workout session",
+      "language": "swift",
+      "startTimeSeconds": 90,
+      "code": "// Set up workout session\n\n// Create workout configuration\nlet configuration = HKWorkoutConfiguration()\nconfiguration.activityType = .running\nconfiguration.locationType = .outdoor\n\n// Create workout session\nlet session = try HKWorkoutSession(healthStore: healthStore, configuration: configuration)\nsession.delegate = self\n\n// Get associated workout builder and add data source\nlet builder = session.associatedWorkoutBuilder()\nbuilder.delegate = self\nbuilder.dataSource = HKLiveWorkoutDataSource(healthStore: healthStore,\n                                             workoutConfiguration: configuration)"
+    },
+    {
+      "title": "Starting the session",
+      "language": "swift",
+      "startTimeSeconds": 114,
+      "code": "// Prepare and start session\n\nsession.prepare()\n\n// Start and display count down\n\n// Start session and builder collection once count down finishes\nsession.startActivity(with: startDate)\ntry await builder.beginCollection(at: startDate)"
+    },
+    {
+      "title": "Handling Metrics",
+      "language": "swift",
+      "startTimeSeconds": 134,
+      "code": "// Handling collected metrics\n\nfunc workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder, \n                    didCollectDataOf collectedTypes: Set<HKSampleType>) {\n    for type in collectedTypes {\n        guard let quantityType = type as? HKQuantityType else { return }\n\n        let statistics = workoutBuilder.statistics(for: quantityType)\n\n        // Update the published values\n        updateForStatistics(statistics)\n    }\n}"
+    },
+    {
+      "title": "Ending workout",
+      "language": "swift",
+      "startTimeSeconds": 148,
+      "code": "// Stopping the workout session\n\nsession.stopActivity(with: .now)\n\n// Session transitions to stopped then call end\nfunc workoutSession(_ workoutSession: HKWorkoutSession,\n                    didChangeTo toState: HKWorkoutSessionState,\n                    from fromState: HKWorkoutSessionState,\n                    date: Date) {\n    guard change.newState == .stopped, let builder else { return }\n\n    try await builder.endCollection(at: change.date)\n    let finishedWorkout = try await builder.finishWorkout()\n    session.end()\n}"
+    },
+    {
+      "title": "Set up Siri Intent",
+      "language": "swift",
+      "startTimeSeconds": 437,
+      "code": "// Create an INExtension within your main app\n\n// Define an intent handler\npublic class IntentHandler: INExtension {\n\n}\n\n// Define the intents to support\nextension IntentHandler: INStartWorkoutIntentHandling\n\nextension IntentHandler: INPauseWorkoutIntentHandling\n\nextension IntentHandler: INResumeWorkoutIntentHandling\n\nextension IntentHandler: INEndWorkoutIntentHandling"
+    },
+    {
+      "title": "Handle the Siri intent",
+      "language": "swift",
+      "startTimeSeconds": 452,
+      "code": "// Handle the intent\n\npublic func handle(intent: INStartWorkoutIntent) async -> INStartWorkoutIntentResponse {\n    let state = await WorkoutManager.shared.state\n\n    switch state {\n    case .running, .paused, .prepared, .stopped:\n        return INStartWorkoutIntentResponse(code: .failureOngoingWorkout, \n                                            userActivity: nil)\n    default:\n        break;\n    }\n    Task {\n        await MainActor.run {\n            // Handle the intents activity type and location\n            WorkoutManager.shared.setWorkoutConfiguration(activityType: .running,   \n                                                          location: .outdoor)\n        }\n    }\n    return INStartWorkoutIntentResponse(code: .success, userActivity: nil)\n }"
+    },
+    {
+      "title": "App Delegate",
+      "language": "swift",
+      "startTimeSeconds": 472,
+      "code": "// Implement an app delegate\n\n// Create app delegate\nclass WorkoutsOniOSSampleAppDelegate: NSObject, UIApplicationDelegate {\n    let handler = IntentHandler()\n\n    func application(_ application: UIApplication, handlerFor intent: INIntent) -> Any? {\n        return handler\n    }\n}\n\n// Add app delegate to app\nstruct WorkoutsOniOSSampleApp: App {\n    @UIApplicationDelegateAdaptor(WorkoutsOniOSSampleAppDelegate.self) var appDelegate\n\n}"
+    },
+    {
+      "title": "Set up crash recovery",
+      "language": "swift",
+      "startTimeSeconds": 549,
+      "code": "// App Delegate\n\nfunc application(_ application: UIApplication,\n                 configurationForConnecting connectingSceneSession: UISceneSession,\n                 options: UIScene.ConnectionOptions) -> UISceneConfiguration {\n    if options.shouldHandleActiveWorkoutRecovery {\n        let store = HKHealthStore()\n        store.recoverActiveWorkoutSession(completion: { (workoutSession, error) in\n            // Handle error\n            Task {\n                await WorkoutManager.shared.recoverWorkout(recoveredSession: workoutSession)\n            }\n        })\n    }\n    let configuration = UISceneConfiguration(name: \"Default Configuration\", \n                                             sessionRole: connectingSceneSession.role)\n    configuration.delegateClass = WorkoutsOniOSSampleAppSceneDelegate.self\n    return configuration\n}"
+    },
+    {
+      "title": "Recover the workout session",
+      "language": "swift",
+      "startTimeSeconds": 565,
+      "code": "// Recover the workout for the session\n\n\nfunc recoverWorkout(recoveredSession: HKWorkoutSession) {\n    session = recoveredSession\n    builder = recoveredSession.associatedWorkoutBuilder()\n    session?.delegate = self\n    builder?.delegate = self\n    workoutConfiguration = recoveredSession.workoutConfiguration\n\n    let dataSource = HKLiveWorkoutDataSource(healthStore: healthStore,                                                                  \n                                             workoutConfiguration: workoutConfiguration)\n    builder?.dataSource = dataSource\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Handling Workout Requests with SiriKit",
+      "url": "https://developer.apple.com/documentation/SiriKit/handling-workout-requests-with-sirikit",
+      "type": "samplecode",
+      "description": "Add an Intent Extension to your app that handles requests to control workouts with Siri.",
+      "sosumiURL": "https://sosumi.ai/documentation/SiriKit/handling-workout-requests-with-sirikit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SiriKit/handling-workout-requests-with-sirikit.json"
+    },
+    {
+      "title": "Running workout sessions",
+      "url": "https://developer.apple.com/documentation/HealthKit/running-workout-sessions",
+      "type": "documentation",
+      "description": "Track a workout on Apple Watch.",
+      "sosumiURL": "https://sosumi.ai/documentation/HealthKit/running-workout-sessions",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HealthKit/running-workout-sessions.json"
+    },
+    {
+      "title": "Building a workout app for iPhone and iPad",
+      "url": "https://developer.apple.com/documentation/HealthKit/building-a-workout-app-for-iphone-and-ipad",
+      "type": "samplecode",
+      "description": "Start a workout in iOS, control it from the Lock Screen with App Intents, and present the workout status with Live Activities.",
+      "sosumiURL": "https://sosumi.ai/documentation/HealthKit/building-a-workout-app-for-iphone-and-ipad",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HealthKit/building-a-workout-app-for-iphone-and-ipad.json"
+    },
+    {
+      "title": "Building a multidevice workout app",
+      "url": "https://developer.apple.com/documentation/HealthKit/building-a-multidevice-workout-app",
+      "type": "samplecode",
+      "description": "Mirror a workout from a watchOS app to its companion iOS app, and perform bidirectional communication between them.",
+      "sosumiURL": "https://sosumi.ai/documentation/HealthKit/building-a-multidevice-workout-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HealthKit/building-a-multidevice-workout-app.json"
+    },
+    {
+      "title": "HKWorkoutSession",
+      "url": "https://developer.apple.com/documentation/HealthKit/HKWorkoutSession",
+      "type": "documentation",
+      "description": "A session that tracks a person’s workout.",
+      "sosumiURL": "https://sosumi.ai/documentation/HealthKit/HKWorkoutSession",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HealthKit/HKWorkoutSession.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/322-track-workouts-with-healthkit-on-ios-and-ipados/",
+  "files": {
+    "metadata": "sessions/wwdc2025/322-track-workouts-with-healthkit-on-ios-and-ipados/metadata.json",
+    "readme": "sessions/wwdc2025/322-track-workouts-with-healthkit-on-ios-and-ipados/README.md",
+    "transcript": "sessions/wwdc2025/322-track-workouts-with-healthkit-on-ios-and-ipados/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/322-track-workouts-with-healthkit-on-ios-and-ipados/transcript.json"
+  }
+}

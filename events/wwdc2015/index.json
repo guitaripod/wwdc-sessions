@@ -1,0 +1,607 @@
+{
+  "event": "wwdc2015",
+  "name": "WWDC15",
+  "year": 2015,
+  "sessionCount": 12,
+  "sessions": [
+    {
+      "id": "wwdc2015-206",
+      "event": "wwdc2015",
+      "year": 2015,
+      "eventContentId": 206,
+      "title": "What's New in MapKit",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2015/206",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2015/206",
+      "duration": 2072,
+      "publishedAt": "2015-06-09T16:30:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ],
+      "primaryTopic": "Maps & Location",
+      "topics": [
+        "Maps & Location"
+      ],
+      "keywords": [
+        "annotation",
+        "current location",
+        "direction",
+        "flyover",
+        "geo",
+        "hybrid",
+        "imagery",
+        "location",
+        "map",
+        "mapkit",
+        "mapview",
+        "mk",
+        "overlay",
+        "pin",
+        "route",
+        "satellite",
+        "search",
+        "standard",
+        "tile",
+        "transit"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 5357,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2015/206-what-s-new-in-mapkit/",
+      "description": "See what's new in MapKit. Learn about improvements to existing APIs and new ways of incorporating transit ETAs and Flyover map views in your app."
+    },
+    {
+      "id": "wwdc2015-401",
+      "event": "wwdc2015",
+      "year": 2015,
+      "eventContentId": 401,
+      "title": "Swift and Objective-C Interoperability",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2015/401",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2015/401",
+      "duration": 2140,
+      "publishedAt": "2015-06-09T13:30:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Swift",
+      "topics": [
+        "Developer Tools",
+        "Swift"
+      ],
+      "keywords": [
+        "enums",
+        "frameworks",
+        "function pointers",
+        "generics",
+        "kindof",
+        "lightweight generics",
+        "macros",
+        "modernizations",
+        "nullability",
+        "objc",
+        "obj-c",
+        "objective-c",
+        "sdk",
+        "typed collections"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 5732,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2015/401-swift-and-objective-c-interoperability/",
+      "description": "Discover new features that make it easier than ever to craft Objective-C APIs that work beautifully in Swift, as well as new Swift language features that provide even better interoperability. Apple engineers will also discuss enhancements to Apple's SDKs that improve the Swift experience."
+    },
+    {
+      "id": "wwdc2015-402",
+      "event": "wwdc2015",
+      "year": 2015,
+      "eventContentId": 402,
+      "title": "What's New in LLDB",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2015/402",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2015/402",
+      "duration": 2317,
+      "publishedAt": "2015-06-09T14:30:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Developer Tools",
+      "topics": [
+        "Developer Tools"
+      ],
+      "keywords": [
+        "breakpoints",
+        "clang",
+        "debugging",
+        "expressions",
+        "llvm",
+        "runtime",
+        "swift"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 5799,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2015/402-what-s-new-in-lldb/",
+      "description": "Enhancements to LLDB simplify life for Swift and Objective-C developers alike. Experienced developers will find new powers within the debugging console, and learn more about the connection between the debugger and Swift REPL. Newcomers will get insight into the range of possibilities hidden behind the LLDB prompt."
+    },
+    {
+      "id": "wwdc2015-408",
+      "event": "wwdc2015",
+      "year": 2015,
+      "eventContentId": 408,
+      "title": "Protocol-Oriented Programming in Swift",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2015/408",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2015/408",
+      "duration": 2752,
+      "publishedAt": "2015-06-10T14:30:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Swift",
+      "topics": [
+        "Swift"
+      ],
+      "keywords": [
+        "architecture",
+        "collection",
+        "copy on write",
+        "protocol extensions",
+        "protocols",
+        "reference type",
+        "sequence",
+        "value semantics",
+        "value type"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 5899,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2015/408-protocol-oriented-programming-in-swift/",
+      "description": "At the heart of Swift's design are two incredibly powerful ideas: protocol-oriented programming and first class value semantics. Each of these concepts benefit predictability, performance, and productivity, but together they can change the way we think about programming. Find out how you can apply these ideas to improve the code you write."
+    },
+    {
+      "id": "wwdc2015-413",
+      "event": "wwdc2015",
+      "year": 2015,
+      "eventContentId": 413,
+      "title": "Advanced Debugging and the Address Sanitizer",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2015/413",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2015/413",
+      "duration": 2032,
+      "publishedAt": "2015-06-12T09:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Developer Tools",
+      "topics": [
+        "Developer Tools"
+      ],
+      "keywords": [
+        "auto layout",
+        "backtrace",
+        "breakpoint",
+        "constraints",
+        "crash",
+        "debug",
+        "debugger",
+        "exception",
+        "frame",
+        "guard malloc",
+        "hierarchy",
+        "lldb",
+        "queue",
+        "stack",
+        "thread",
+        "view",
+        "view debugger"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 4937,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2015/413-advanced-debugging-and-the-address-sanitizer/",
+      "description": "Discover UI debugging and how to use advanced breakpoint actions to quickly explore and fix your app. Learn how the new Address Sanitizer feature finds buffer overflows, use-after-free errors, and other memory corruption bugs at run time."
+    },
+    {
+      "id": "wwdc2015-504",
+      "event": "wwdc2015",
+      "year": 2015,
+      "eventContentId": 504,
+      "title": "Introducing Safari View Controller",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2015/504",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2015/504",
+      "duration": 1884,
+      "publishedAt": "2015-06-09T13:30:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ],
+      "primaryTopic": "SwiftUI & UI Frameworks",
+      "topics": [
+        "Safari & Web",
+        "SwiftUI & UI Frameworks"
+      ],
+      "keywords": [
+        "autofill",
+        "css",
+        "javascript",
+        "passwords",
+        "reader",
+        "safari",
+        "web"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 4691,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2015/504-introducing-safari-view-controller/",
+      "description": "The new SFSafariViewController class enables you to deliver interactive web content in your app just like Safari, including the key Safari UI elements already familiar to your users. See how to easily bring Safari features like Reader and AutoFill into your app, and provide a great web viewing experience with fewer lines of code."
+    },
+    {
+      "id": "wwdc2015-602",
+      "event": "wwdc2015",
+      "year": 2015,
+      "eventContentId": 602,
+      "title": "Managing 3D Assets with Model I/O",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2015/602",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2015/602",
+      "duration": 2566,
+      "publishedAt": "2015-06-09T14:30:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [
+        "abc",
+        "ambient",
+        "camera",
+        "dome",
+        "light",
+        "mesh",
+        "mkasset",
+        "modelio",
+        "modelkit",
+        "obj",
+        "occlusion",
+        "opensubdiv",
+        "sky",
+        "skybox",
+        "stl",
+        "subdivide",
+        "texture"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 6627,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2015/602-managing-3d-assets-with-model-i-o/",
+      "description": "Model I/O provides a seamless infrastructure for accessing and managing 3D models. Its high-performance architecture supports reading and writing popular mesh and model formats, textures, and materials. Get introduced to the Model I/O framework and learn key details about its integration with SceneKit, MetalKit, and GLKit."
+    },
+    {
+      "id": "wwdc2015-703",
+      "event": "wwdc2015",
+      "year": 2015,
+      "eventContentId": 703,
+      "title": "Privacy and Your App",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2015/703",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2015/703",
+      "duration": 2480,
+      "publishedAt": "2015-06-09T14:30:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Privacy & Security",
+      "topics": [
+        "Privacy & Security"
+      ],
+      "keywords": [
+        "consent",
+        "privacy",
+        "security"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 6368,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2015/703-privacy-and-your-app/",
+      "description": "Learn about new developments in Privacy in iOS, OS X, and watchOS that impact your apps. Hear about best practices for delivering great features and respecting your customers' privacy."
+    },
+    {
+      "id": "wwdc2015-705",
+      "event": "wwdc2015",
+      "year": 2015,
+      "eventContentId": 705,
+      "title": "What's New in Core Motion",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2015/705",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2015/705",
+      "duration": 2388,
+      "publishedAt": "2015-06-09T15:30:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Health & Fitness",
+      "topics": [
+        "Graphics & Games",
+        "Health & Fitness"
+      ],
+      "keywords": [
+        "accelerometer",
+        "altimeter",
+        "cmmotion",
+        "coremotion",
+        "cycling",
+        "driving",
+        "fitness",
+        "floors",
+        "gyroscope",
+        "m7",
+        "m8",
+        "motion",
+        "pedometer",
+        "step",
+        "steps",
+        "walking",
+        "watchkit"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 6116,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2015/705-what-s-new-in-core-motion/",
+      "description": "See what's new in Core Motion. Learn how your application can take advantage of the motion sensors on iOS devices. Walk through new features of the pedometer and learn how to use the altimeter to take your app to the next level. Get personal with motion APIs and sensor data on the Apple Watch. Run through a demo that uses motion-context awareness to make an application feel smarter!"
+    },
+    {
+      "id": "wwdc2015-719",
+      "event": "wwdc2015",
+      "year": 2015,
+      "eventContentId": 719,
+      "title": "Your App and Next Generation Networks",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2015/719",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2015/719",
+      "duration": 3161,
+      "publishedAt": "2015-06-12T11:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ],
+      "primaryTopic": "System Services",
+      "topics": [
+        "System Services"
+      ],
+      "keywords": [
+        "ipv6",
+        "tcp"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 7384,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2015/719-your-app-and-next-generation-networks/",
+      "description": "IPv6 is growing exponentially and carriers worldwide are moving to pure IPv6 APNs. Learn about new tools to test your apps for compatibility and get expert advice on making sure your apps work in all network environments. iOS 9 and OS X 10.11 now support the latest TCP standards. Hear from the experts on TCP Fast Open and Explicit Congestion Notification, and find out how it benefits your apps."
+    },
+    {
+      "id": "wwdc2015-802",
+      "event": "wwdc2015",
+      "year": 2015,
+      "eventContentId": 802,
+      "title": "Designing for Apple Watch",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2015/802",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2015/802",
+      "duration": 3288,
+      "publishedAt": "2015-06-10T16:30:00-07:00",
+      "platforms": [
+        "watchOS"
+      ],
+      "primaryTopic": "Design",
+      "topics": [
+        "Design"
+      ],
+      "keywords": [
+        "⌚️",
+        "clockkit",
+        "complication",
+        "digital crown",
+        "experience",
+        "foreground",
+        "haptic",
+        "interface",
+        "layout",
+        "persistent",
+        "picker",
+        "taptic",
+        "ui",
+        "watchkit",
+        "wkinterface"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 8001,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2015/802-designing-for-apple-watch/",
+      "description": "Apple Watch represents a new chapter in the way people relate to technology. It's the most personal device Apple has ever designed, and it enables new ways to receive information and to interact with apps. Learn about the foundations on which Apple Watch was designed and how they lead to Apple Watch apps that complement the iPhone, support lightweight interaction and deliver timely and relevant information to the wrist. Discover how to create usable and beautiful apps, notifications and glances through effective use of typography, information design, layout, animation, and color."
+    },
+    {
+      "id": "wwdc2015-805",
+      "event": "wwdc2015",
+      "year": 2015,
+      "eventContentId": 805,
+      "title": "Apple Watch Design Tips and Tricks",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2015/805",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2015/805",
+      "duration": 3114,
+      "publishedAt": "2015-06-12T15:30:00-07:00",
+      "platforms": [
+        "watchOS"
+      ],
+      "primaryTopic": "Design",
+      "topics": [
+        "Design"
+      ],
+      "keywords": [
+        "⌚️",
+        "design",
+        "digital crown",
+        "experience",
+        "icon",
+        "interface",
+        "layout",
+        "typography",
+        "ui",
+        "watchkit",
+        "wkinterface"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 8447,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2015/805-apple-watch-design-tips-and-tricks/",
+      "description": "Get essential design guidance for creating Apple Watch apps that support quick and efficient interaction, make accessing features and information more convenient, and compliment their companion iOS apps. Learn key tips about information architecture, layout, typography, color and app icon design that will make your app easy to use, beautiful and delightful."
+    }
+  ]
+}

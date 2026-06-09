@@ -1,0 +1,179 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10634",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10634,
+  "title": "Discover search suggestions for Apple TV",
+  "description": "Searching your tvOS app just got even better. Get ready to explore the new simplified search interface and learn how to integrate it into your app with UISearchController. Support your global audience with the addition of new international keyboards and languages. Discover how to add search suggestions to your interface and update results with suggestions on the fly. And we’ll share some of our favorite tips for adding a great search experience to Apple TV.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10634",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10634",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "tvOS"
+  ],
+  "keywords": [
+    "appletv",
+    "apple tv",
+    "apple tv 4k",
+    "apple tv app",
+    "apple tv design",
+    "apple tv dev",
+    "apple tv developer",
+    "apple tv search",
+    "search",
+    "search suggestions",
+    "suggestions",
+    "tv",
+    "tv app dev",
+    "tv app developer",
+    "tv dev",
+    "tv developer",
+    "tvos",
+    "tv search",
+    "uisearchcontroller",
+    "video"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 678,
+  "hasTranscript": true,
+  "transcriptWordCount": 1316,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10634/4/F7B5D94B-69EE-4ABC-86AF-2354D9C93060/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10634/4/F7B5D94B-69EE-4ABC-86AF-2354D9C93060/wwdc2020_10634_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10634/4/F7B5D94B-69EE-4ABC-86AF-2354D9C93060/wwdc2020_10634_hd.mp4",
+    "duration": 678
+  },
+  "codeSnippets": [
+    {
+      "title": "SearchViewController init",
+      "language": "swift",
+      "startTimeSeconds": 100,
+      "code": "private let appData: AppData\n\ninit(appData: AppData) {\n    self.appData = appData\n\n    super.init(nibName: nil, bundle: nil)\n}\n\nrequired init?(coder: NSCoder) {\n    fatalError(\"init(coder:) has not been implemented\")\n}"
+    },
+    {
+      "title": "Search Tab Bar Item",
+      "language": "swift",
+      "startTimeSeconds": 111,
+      "code": "// use the system standard search tab bar item\ntabBarItem = UITabBarItem(tabBarSystemItem: UITabBarItem.SystemItem.search, tag: 0)"
+    },
+    {
+      "title": "SearchController and SearchContainerViewController Definition",
+      "language": "swift",
+      "startTimeSeconds": 125,
+      "code": "private let searchController: UISearchController\nprivate let searchContainerViewController: UISearchContainerViewController"
+    },
+    {
+      "title": "SearchController and SearchContainerViewController Initialization",
+      "language": "swift",
+      "startTimeSeconds": 131,
+      "code": "self.searchController = UISearchController(searchResultsController: self.searchResultsController)\nself.searchContainerViewController = UISearchContainerViewController(searchController: searchController)"
+    },
+    {
+      "title": "viewDidLoad - Add Child View Controller",
+      "language": "swift",
+      "startTimeSeconds": 136,
+      "code": "override func viewDidLoad() {\n    addChild(searchContainerViewController)\n\n    searchContainerViewController.view.frame = view.bounds\n    view.addSubview(searchContainerViewController.view)\n    searchContainerViewController.didMove(toParent: self)\n}"
+    },
+    {
+      "title": "Set searchControllerObservedScrollView",
+      "language": "swift",
+      "startTimeSeconds": 197,
+      "code": "// scroll search controller allong with results collection view\nsearchController.searchControllerObservedScrollView = searchResultsController.collectionView"
+    },
+    {
+      "title": "Assign searchResultsUpdater",
+      "language": "swift",
+      "startTimeSeconds": 223,
+      "code": "searchController.searchResultsUpdater = self"
+    },
+    {
+      "title": "Implement updateSearchResults",
+      "language": "swift",
+      "startTimeSeconds": 240,
+      "code": "func updateSearchResults(for searchController: UISearchController) {\n    if let searchText = searchController.searchBar.text {\n        // get search results for 'searchText' from data source\n        let (results, _) = appData.searchResults(seachTerm: searchText, includePhotos: true, includeVideos: true)\n\n        searchResultsController.items = results\n    } else {\n        // no search text, show unfiltered results\n        searchResultsController.items = appData.allEntries\n    }\n}"
+    },
+    {
+      "title": "Create Instance of SearchViewController",
+      "language": "swift",
+      "startTimeSeconds": 256,
+      "code": "let searchViewController =  SearchViewController(appData: appData)"
+    },
+    {
+      "title": "UISearchSuggestionItem Example",
+      "language": "swift",
+      "startTimeSeconds": 330,
+      "code": "let suggestion1 = UISearchSuggestionItem(localizedSuggestion: \"Result1\", localizedDescription: \"Result1\", iconImage: nil)\nlet suggestion2 = UISearchSuggestionItem(localizedSuggestion: \"Result2\", localizedDescription: \"Result2\", iconImage: nil)\n\nsearchController.searchSuggestions = [suggestion1, suggestion 2]"
+    },
+    {
+      "title": "Implement UISearchSuggestion Properties",
+      "language": "swift",
+      "startTimeSeconds": 425,
+      "code": "var localizedSuggestion: String? {\n    return self.name\n}\n\nvar iconImage: UIImage? {\n    return self.isVideo ? UIImage(systemName: \"video\") : UIImage(systemName: \"photo\")\n}"
+    },
+    {
+      "title": "Implement Accessibility Description",
+      "language": "swift",
+      "startTimeSeconds": 440,
+      "code": "var localizedDescription: String? {\n    if (self.isVideo) {\n        return String.localizedStringWithFormat(NSLocalizedString(\"%@ - Video\", comment: \"\"), self.name)\n    }\n    return String.localizedStringWithFormat(NSLocalizedString(\"%@ - Photo\", comment: \"\"), self.name)\n}"
+    },
+    {
+      "title": "Add new UISearchResultsUpdating",
+      "language": "swift",
+      "startTimeSeconds": 541,
+      "code": "func updateSearchResults(for searchController: UISearchController, selecting searchSuggestion: UISearchSuggestion) {\n    if let searchText = searchController.searchBar.text {\n        var includePhotos = true;\n        var includeVideos = true;\n\n\n    }\n}"
+    },
+    {
+      "title": "Inspect Suggestion",
+      "language": "swift",
+      "startTimeSeconds": 553,
+      "code": "// check if the suggestion is for a photo or video\nif let suggestedEntry = searchSuggestion as? SuggestedEntry {\n    includeVideos = suggestedEntry.isVideo\n    includePhotos = !includeVideos\n}"
+    },
+    {
+      "title": "Filter Results",
+      "language": "swift",
+      "startTimeSeconds": 561,
+      "code": "// filter the results by to include photos, videos, or both\nlet (results, _) = appData.searchResults(seachTerm: searchText, includePhotos: includePhotos, includeVideos: includeVideos)\n\nsearchResultsController.items = results"
+    }
+  ],
+  "resources": [
+    {
+      "title": "UISearchController",
+      "url": "https://developer.apple.com/documentation/UIKit/UISearchController",
+      "type": "documentation",
+      "description": "A view controller that manages the display of search results based on interactions with a search bar.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UISearchController",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UISearchController.json"
+    },
+    {
+      "title": "Human Interface Guidelines: Designing for tvOS",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/designing-for-tvos",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/designing-for-tvos"
+    }
+  ],
+  "path": "sessions/wwdc2020/10634-discover-search-suggestions-for-apple-tv/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10634-discover-search-suggestions-for-apple-tv/metadata.json",
+    "readme": "sessions/wwdc2020/10634-discover-search-suggestions-for-apple-tv/README.md",
+    "transcript": "sessions/wwdc2020/10634-discover-search-suggestions-for-apple-tv/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10634-discover-search-suggestions-for-apple-tv/transcript.json"
+  }
+}

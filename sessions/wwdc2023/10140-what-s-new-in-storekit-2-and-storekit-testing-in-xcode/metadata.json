@@ -1,0 +1,176 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10140",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10140,
+  "title": "What’s new in StoreKit 2 and StoreKit Testing in Xcode",
+  "description": "Get to know the latest enhancements to StoreKit 2 and StoreKit Testing in Xcode. Discover API updates for promoted in-app purchases, StoreKit messages, the Transaction model, the RenewalInfo model, and the App Store sheet for managing subscriptions. Learn how to upgrade to SHA-256 for on-device receipt validation and use APIs to create SwiftUI views. We’ll also help you get started with StoreKit Testing in Xcode so that you can debug and test your in-app purchases and subscriptions. Meet the Transaction Inspector, explore the latest updates to the StoreKit configuration editor, and find out how you can simulate StoreKit errors to test your app’s error handling.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10140",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10140",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Store, Distribution & Marketing",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1465,
+  "hasTranscript": true,
+  "transcriptWordCount": 4147,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10140/4/F65F9FA7-3629-45A5-A4D6-A90BE40BE5E9/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10140/4/F65F9FA7-3629-45A5-A4D6-A90BE40BE5E9/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10140/4/F65F9FA7-3629-45A5-A4D6-A90BE40BE5E9/downloads/wwdc2023-10140_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10140/4/F65F9FA7-3629-45A5-A4D6-A90BE40BE5E9/downloads/wwdc2023-10140_hd.mp4",
+    "duration": 1465
+  },
+  "codeSnippets": [
+    {
+      "title": "Create a listener for promoted in-app purchases",
+      "language": "swift",
+      "startTimeSeconds": 102,
+      "code": "// Create a listener for promoted in-app purchases\nimport StoreKit\n\nlet promotedPurchasesListener = Task {\n    for await promotion in PurchaseIntent.intents {\n        // Process promotion\n        let product = promotion.product\n\n        // Purchase promoted product\n        do {\n            let result = try await product.purchase()\n            // Process result\n        }\n        catch {\n            // Handle error\n        }\n    }\n}"
+    },
+    {
+      "title": "Check promotion order",
+      "language": "swift",
+      "startTimeSeconds": 177,
+      "code": "// Check promotion order\nimport StoreKit\n\ndo {\n    let promotions = try await Product.PromotionInfo.currentOrder\n\n    if promotions.isEmpty {\n        // No local promotion order set\n    }\n\n    for promotion in promotions {\n        let productID = promotion.productID\n        let productVisibility = promotion.visibility\n        // Check promoted products\n    }\n}\ncatch {\n    // Handle error\n}"
+    },
+    {
+      "title": "Set a promotion order",
+      "language": "swift",
+      "startTimeSeconds": 206,
+      "code": "// Set a promotion order\nimport StoreKit\n\nlet newPromotionOrder: [String] = [\n    \"acorns.individual\",\n    \"nectar.cup\",\n    \"sunflowerseeds.pile\"\n]\n\ndo {\n    try await Product.PromotionInfo.updateProductOrder(byID: newPromotionOrder)\n}\ncatch {\n    // Handle error\n}"
+    },
+    {
+      "title": "Update promotion visibility",
+      "language": "swift",
+      "startTimeSeconds": 242,
+      "code": "// Update promotion visibility\nimport StoreKit\n\n// Hide “acorns.individual”\ndo {\n    try await Product.PromotionInfo.updateProductVisibility(.hidden, for: \"acorns.individual\")\n}\ncatch {\n    // Handle error\n}"
+    },
+    {
+      "title": "Update promotion visibility (alternative method)",
+      "language": "swift",
+      "startTimeSeconds": 257,
+      "code": "// Update promotion visibility\nimport StoreKit\n\ndo {\n  let promotions = try await Product.PromotionInfo.currentOrder\n\n  // Hide the first product\n  if var firstPromotion = promotions.first {\n    firstPromotion.visibility = .hidden\n    try await firstPromotion.update()\n  }\n}\ncatch {\n  // Handle error\n}"
+    },
+    {
+      "title": "Product view",
+      "language": "swift",
+      "startTimeSeconds": 512,
+      "code": "// Product view\nimport SwiftUI\nimport StoreKit\n\nstruct BirdFoodShop: View {\n    let productID: String\n    let productImage: String\n\n    var body: some View {\n        ProductView(id: productID) {\n            BirdFoodProductIcon(for: productID)\n        }\n        .productViewStyle(.large)\n    }\n}"
+    },
+    {
+      "title": "Store view",
+      "language": "swift",
+      "startTimeSeconds": 532,
+      "code": "// Store view\nimport SwiftUI\nimport StoreKit\n\nstruct BirdFoodShop: View {\n    let productIDs: [String]\n\n    var body: some View {\n        StoreView(ids: productIDs) { product in\n            BirdFoodIcon(productID: product.id)\n        }\n    }\n}"
+    },
+    {
+      "title": "Subscription view",
+      "language": "swift",
+      "startTimeSeconds": 559,
+      "code": "// Subscription view\nimport SwiftUI\nimport StoreKit\n\nstruct BackyardBirdsPassShop: View {\n    let groupID: String\n\n    var body: some View {\n        SubscriptionStoreView(groupID: groupID)\n    }\n}"
+    },
+    {
+      "title": "Simulated off-device purchase using StoreKitTest",
+      "language": "swift",
+      "startTimeSeconds": 1269,
+      "code": "// Simulated off-device purchase using StoreKitTest\nimport StoreKit\nimport StoreKitTest\n\nfunc testSubscriptionRenewal() async throws {\n    let session = try SKTestSession(configurationFileNamed: \"Store\")\n\n    let oneYearInterval: TimeInterval = (365 * 24 * 60 * 60)\n    let transaction = try await session.buyProduct(\n        identifier: \"birdpass.individual\",\n        options: [\n            .purchaseDate(Date.now - oneYearInterval)\n        ]\n    )\n\n    // Inspect transaction\n}"
+    },
+    {
+      "title": "Set a simulated purchase error when loading products",
+      "language": "swift",
+      "startTimeSeconds": 1308,
+      "code": "// Set a simulated purchase error when loading products\nimport StoreKit\nimport StoreKitTest\n\nfunc testLoadProducts() async throws {\n    let session = try SKTestSession(configurationFileNamed: \"Store\")\n    let productIDs = [\n        \"acorns.individual\",\n        \"nectar.cup\"\n    ]\n\n    // Set a simulated error, then load products, expecting an error\n    session.setSimulatedError(.generic(.networkError), forAPI: .loadProducts)\n    do {\n        _ = try await Product.products(for: productIDs)\n        XCTFail(\"Expected a network error\")\n    }\n    catch StoreKitError.networkError(_) {\n        // Expected error thrown, continue...\n    }\n    // Disable simulated error\n    session.setSimulatedError(nil, forAPI: .loadProducts)\n}"
+    },
+    {
+      "title": "Set a faster subscription renewal rate in a test session",
+      "language": "swift",
+      "startTimeSeconds": 1344,
+      "code": "// Set a faster subscription renewal rate in a test session\nimport StoreKit\nimport StoreKitTest\n\nfunc testSubscriptionRenewal() async throws {\n    let session = try SKTestSession(configurationFileNamed: \"Store\")\n\n    // Set renewals to expire every minute\n    session.timeRate = .oneRenewalEveryMinute\n\n    let transaction = try await session.buyProduct(identifier: \"birdpass.individual\")\n\n    // Wait for renewals and inspect transactions\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Testing failing subscription renewals and In-App Purchases",
+      "url": "https://developer.apple.com/documentation/StoreKit/testing-failing-subscription-renewals-and-in-app-purchases",
+      "type": "documentation",
+      "description": "Verify that your app handles failed subscription renewals that are in the billing retry or billing grace period states, as well as failed In-App Purchases.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/testing-failing-subscription-renewals-and-in-app-purchases",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/testing-failing-subscription-renewals-and-in-app-purchases.json"
+    },
+    {
+      "title": "Message",
+      "url": "https://developer.apple.com/documentation/StoreKit/Message",
+      "type": "documentation",
+      "description": "An instance for receiving and displaying App Store messages in your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/Message",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/Message.json"
+    },
+    {
+      "title": "Supporting promoted In-App Purchases in your app",
+      "url": "https://developer.apple.com/documentation/StoreKit/supporting-promoted-in-app-purchases-in-your-app",
+      "type": "documentation",
+      "description": "Display promoted In-App Purchases on your product page and handle purchases that users initiate on the App Store.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/supporting-promoted-in-app-purchases-in-your-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/supporting-promoted-in-app-purchases-in-your-app.json"
+    },
+    {
+      "title": "Turn on Family Sharing for in-app purchases in App Store Connect",
+      "url": "https://help.apple.com/app-store-connect/#/dev45b03fab9",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Setting up StoreKit Testing in Xcode",
+      "url": "https://developer.apple.com/documentation/Xcode/setting-up-storekit-testing-in-xcode",
+      "type": "documentation",
+      "description": "Prepare your test environment to test in-app purchases with data you configure locally.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/setting-up-storekit-testing-in-xcode",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/setting-up-storekit-testing-in-xcode.json"
+    },
+    {
+      "title": "Submit feedback",
+      "url": "http://feedbackassistant.apple.com",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "StoreKit",
+      "url": "https://developer.apple.com/documentation/StoreKit",
+      "type": "documentation",
+      "description": "Support In-App Purchases and interactions with the App Store.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10140-what-s-new-in-storekit-2-and-storekit-testing-in-xcode/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10140-what-s-new-in-storekit-2-and-storekit-testing-in-xcode/metadata.json",
+    "readme": "sessions/wwdc2023/10140-what-s-new-in-storekit-2-and-storekit-testing-in-xcode/README.md",
+    "transcript": "sessions/wwdc2023/10140-what-s-new-in-storekit-2-and-storekit-testing-in-xcode/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10140-what-s-new-in-storekit-2-and-storekit-testing-in-xcode/transcript.json"
+  }
+}

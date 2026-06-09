@@ -1,0 +1,86 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10023",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10023,
+  "title": "Build a multi-device workout app",
+  "description": "Learn how you can get iPhone involved in your Apple Watch-based workout apps with HealthKit. We’ll show you how to mirror workouts between devices and take a ride with cycling data types. Plus, get to know HealthKit for iPad.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10023",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10023",
+  "type": "Video",
+  "publishedAt": "2023-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Health & Fitness"
+  ],
+  "primaryTopic": "Health & Fitness",
+  "duration": 763,
+  "hasTranscript": true,
+  "transcriptWordCount": 1949,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10023/4/4BFDA0EE-E7FB-44E3-BB58-F46D18A9802C/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10023/4/4BFDA0EE-E7FB-44E3-BB58-F46D18A9802C/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10023/4/4BFDA0EE-E7FB-44E3-BB58-F46D18A9802C/downloads/wwdc2023-10023_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10023/4/4BFDA0EE-E7FB-44E3-BB58-F46D18A9802C/downloads/wwdc2023-10023_hd.mp4",
+    "duration": 763
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Building a multidevice workout app",
+      "url": "https://developer.apple.com/documentation/HealthKit/building-a-multidevice-workout-app",
+      "type": "samplecode",
+      "description": "Mirror a workout from a watchOS app to its companion iOS app, and perform bidirectional communication between them.",
+      "sosumiURL": "https://sosumi.ai/documentation/HealthKit/building-a-multidevice-workout-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HealthKit/building-a-multidevice-workout-app.json"
+    },
+    {
+      "title": "HealthKit updates",
+      "url": "https://developer.apple.com/documentation/Updates/HealthKit",
+      "type": "documentation",
+      "description": "Learn about important changes to HealthKit.",
+      "sosumiURL": "https://sosumi.ai/documentation/Updates/HealthKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Updates/HealthKit.json"
+    },
+    {
+      "title": "watchOS updates",
+      "url": "https://developer.apple.com/documentation/Updates/watchos",
+      "type": "documentation",
+      "description": "Learn about important changes to watchOS.",
+      "sosumiURL": "https://sosumi.ai/documentation/Updates/watchos",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Updates/watchos.json"
+    },
+    {
+      "title": "HealthKit",
+      "url": "https://developer.apple.com/documentation/HealthKit",
+      "type": "documentation",
+      "description": "Access and share health and fitness data while maintaining the user’s privacy and control.",
+      "sosumiURL": "https://sosumi.ai/documentation/HealthKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HealthKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10023-build-a-multi-device-workout-app/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10023-build-a-multi-device-workout-app/metadata.json",
+    "readme": "sessions/wwdc2023/10023-build-a-multi-device-workout-app/README.md",
+    "transcript": "sessions/wwdc2023/10023-build-a-multi-device-workout-app/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10023-build-a-multi-device-workout-app/transcript.json"
+  }
+}

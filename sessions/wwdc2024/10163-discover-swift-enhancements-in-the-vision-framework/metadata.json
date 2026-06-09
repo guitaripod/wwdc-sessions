@@ -1,0 +1,64 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2024-10163",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10163,
+  "title": "Discover Swift enhancements in the Vision framework",
+  "description": "The Vision Framework API has been redesigned to leverage modern Swift features like concurrency, making it easier and faster to integrate a wide array of Vision algorithms into your app. We’ll tour the updated API and share sample code, along with best practices, to help you get the benefits of this framework with less coding effort. We’ll also demonstrate two new features: image aesthetics and holistic body pose.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10163",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10163",
+  "type": "Video",
+  "publishedAt": "2024-06-12T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "machine learning &amp; vision"
+  ],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1009,
+  "hasTranscript": true,
+  "transcriptWordCount": 2282,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10163/4/3380F229-CDBE-487A-8ACF-708A4D32CB79/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10163/4/3380F229-CDBE-487A-8ACF-708A4D32CB79/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10163/4/3380F229-CDBE-487A-8ACF-708A4D32CB79/downloads/wwdc2024-10163_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10163/4/3380F229-CDBE-487A-8ACF-708A4D32CB79/downloads/wwdc2024-10163_hd.mp4",
+    "duration": 1009
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Forum: Machine Learning and AI",
+      "url": "https://developer.apple.com/forums/topics/machine-learning-and-ai?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/machine-learning-and-ai?cid=vf-a-0010"
+    }
+  ],
+  "path": "sessions/wwdc2024/10163-discover-swift-enhancements-in-the-vision-framework/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10163-discover-swift-enhancements-in-the-vision-framework/metadata.json",
+    "readme": "sessions/wwdc2024/10163-discover-swift-enhancements-in-the-vision-framework/README.md",
+    "transcript": "sessions/wwdc2024/10163-discover-swift-enhancements-in-the-vision-framework/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10163-discover-swift-enhancements-in-the-vision-framework/transcript.json"
+  }
+}

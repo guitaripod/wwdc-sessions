@@ -1,0 +1,131 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10162",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10162,
+  "title": "Transform your geometry with Metal mesh shaders",
+  "description": "Meet Metal mesh shaders — a modern and flexible pipeline in Metal for GPU-driven geometry creation and processing. We'll explore how this API can improve and add flexibility to your render pipeline, and share some of the opportunities that GPU-driven work can create. Discover how you can create procedural geometry — like hair rendering — on the GPU using mesh shaders, and build single render passes without additional compute passes or intermediate buffers. We'll also show you how to improve scene processing and rendering through GPU-driven meshlet culling.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10162",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10162",
+  "type": "Video",
+  "publishedAt": "2022-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "3d graphics",
+    "game dev",
+    "game developer",
+    "mesh shaders",
+    "metal",
+    "metal 3",
+    "metal shading language",
+    "metal tools",
+    "proapps",
+    "procedural geometry"
+  ],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1064,
+  "hasTranscript": true,
+  "transcriptWordCount": 2695,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10162/5/9408DC15-0B03-4DD9-8ADE-161821D0E7FC/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10162/5/9408DC15-0B03-4DD9-8ADE-161821D0E7FC/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10162/5/9408DC15-0B03-4DD9-8ADE-161821D0E7FC/downloads/wwdc2022-10162_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10162/5/9408DC15-0B03-4DD9-8ADE-161821D0E7FC/downloads/wwdc2022-10162_hd.mp4",
+    "duration": 1064
+  },
+  "codeSnippets": [
+    {
+      "title": "Object shader (MSL)",
+      "language": "cpp",
+      "startTimeSeconds": 493,
+      "code": "[[object]] \nvoid objectShader(object_data CurvePayload *payloadOutput [[payload]],\n                             const device void *inputData [[buffer(0)]], \n                             uint hairID [[thread_index_in_threadgroup]],\n                             uint triangleID [[threadgroup_position_in_grid]],\n                             mesh_grid_properties mgp)\n{\n    if (hairID < kHairsPerBlock)\n       payloadOutput[hairID] = generateCurveData(inputData, hairID, triangleID);\n    if (hairID == 0)\n       mgp.set_threadgroups_per_grid(uint3(kHairPerBlockX, kHairPerBlockY, 1));\n}"
+    },
+    {
+      "title": "Initializing object stage",
+      "language": "swift",
+      "startTimeSeconds": 515,
+      "code": "let meshPipelineDescriptor = MTLMeshRenderPipelineDescriptor()\nmeshPipelineDescriptor.objectFunction = objectFunction\nmeshPipelineDescriptor.payloadMemoryLength = payloadLength\nmeshPipelineDescriptor.maxTotalThreadsPerObjectThreadgroup = hairsPerBlock"
+    },
+    {
+      "title": "Defining a Metal Mesh",
+      "language": "cpp",
+      "startTimeSeconds": 566,
+      "code": "struct VertexData    { float4 position [[position]]; };\nstruct PrimitiveData { float4 color; };\n\nusing triangle_mesh_t = metal::mesh<\n                                    VertexData,               // Vertex type\n                                    PrimitiveData,            // Primitive type\n                                    10,                       // Maximum vertices\n                                    6,                        // Maximum primitives\n                                    metal::topology::triangle // Topology\n>;\n\n[[mesh]] \nvoid myMeshShader(triangle_mesh_t outputMesh, ...);"
+    },
+    {
+      "title": "Mesh Shader (MSL)",
+      "language": "cpp",
+      "startTimeSeconds": 676,
+      "code": "[[mesh]] void myMeshShader(triangle_mesh_t outputMesh,\n                         uint tid [[thread_index_in_threadgroup]])\n{\n\n    if (tid < kVertexCount) \n        outputMesh.set_vertex(tid, calculateVertex(tid));\n\n    if (tid < kIndexCount) \n        outputMesh.set_index(tid, calculateIndex(tid));\n\n    if (tid < kPrimitiveCount)\n        outputMesh.set_primitive(tid, calculatePrimitive(tid));\n\nif (tid == 0)\n    outputMesh.set_primitive_count(kPrimitiveCount);\n\n}"
+    },
+    {
+      "title": "Initializing the mesh stage",
+      "language": "swift",
+      "startTimeSeconds": 695,
+      "code": "meshPipelineDescriptor.meshFunction = meshFunction\nmeshPipelineDescriptor.maxTotalThreadsPerMeshThreadgroup = vertexCountPerHair"
+    },
+    {
+      "title": "Initializing the fragment stage",
+      "language": "swift",
+      "startTimeSeconds": 728,
+      "code": "meshPipelineDescriptor.maxTotalThreadsPerMeshThreadgroup = vertexCountPerHair"
+    },
+    {
+      "title": "Creating a mesh render pipeline",
+      "language": "swift",
+      "startTimeSeconds": 734,
+      "code": "/// A mesh pipeline state the device creates from a mesh render pipeline descriptor.\nlet meshPipeline: MTLRenderPipelineState\n\ndo {\n    /// A tuple of the mesh pipeline and its reflection information, if applicable.\n    let (pipeline, reflection) = try device.makeRenderPipelineState(descriptor: meshRenderPipelineDescriptor,\n                                                                    options: [])\n    meshPipeline = pipeline\n} catch {\n    print(\"The device can't create a mesh pipeline state: \\(error)\")\n    return\n}"
+    },
+    {
+      "title": "Encoding a mesh pipeline",
+      "language": "swift",
+      "startTimeSeconds": 745,
+      "code": "// Create a encoder for a render pass from the command buffer.\nlet encoder: MTLRenderCommandEncoder!\nencoder = commandBuffer.makeRenderCommandEncoder(descriptor: descriptor)\n\n// Apply the mesh pipeline to the render pass.\nencoder.setRenderPipelineState(meshPipeline)\n\n// Bind the resources for the render pass.\nencoder.setObjectBuffer(objectBuffer, offset: 0, index: 0)\nencoder.setMeshTexture(meshTexture, index: 2)\nencoder.setFragmentBuffer(fragmentBuffer, offset: 0, index: 0)\n\n// Create the size instances for the mesh threadgroups.\nlet objectGridDimensions = MTLSize(width: trianglesPerModel, height: 1, depth: 1)\nlet threadsPerObject = MTLSize(width: hairsPerBlock, height: 1, depth: 1)\nlet threadsPerMesh = MTLSize(width: threadsPerHair, height: 1, depth: 1)\n\n// Encode the draw command for the render pass.\nencoder.drawMeshThreadgroups(objectGridDimensions,\n                             threadsPerObjectThreadgroup: threadsPerObject,\n                             threadsPerMeshThreadgroup: threadsPerMesh)\n\n// Finish encoding the render pass.\nencoder.endEncoding()"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Adjusting the level of detail using Metal mesh shaders",
+      "url": "https://developer.apple.com/documentation/Metal/adjusting-the-level-of-detail-using-metal-mesh-shaders",
+      "type": "documentation",
+      "description": "Choose and render meshes with several levels of detail using object and mesh shaders.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/adjusting-the-level-of-detail-using-metal-mesh-shaders",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/adjusting-the-level-of-detail-using-metal-mesh-shaders.json"
+    },
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10162-transform-your-geometry-with-metal-mesh-shaders/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10162-transform-your-geometry-with-metal-mesh-shaders/metadata.json",
+    "readme": "sessions/wwdc2022/10162-transform-your-geometry-with-metal-mesh-shaders/README.md",
+    "transcript": "sessions/wwdc2022/10162-transform-your-geometry-with-metal-mesh-shaders/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10162-transform-your-geometry-with-metal-mesh-shaders/transcript.json"
+  }
+}

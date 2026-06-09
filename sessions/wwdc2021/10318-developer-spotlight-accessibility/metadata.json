@@ -1,0 +1,53 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10318",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10318,
+  "title": "Developer spotlight: Accessibility",
+  "description": "How do you approach creating apps for everyone? Learn from developers who are blind or deaf themselves as they discuss the process of making technology accessible. Discover how their unique perspectives have sparked innovation at their companies and helped make their apps even more inclusive.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10318",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10318",
+  "type": "Video",
+  "publishedAt": "2021-06-11T11:00:00-07:00",
+  "platforms": [],
+  "keywords": [
+    "accessibility",
+    "panel",
+    "wwdc21"
+  ],
+  "topics": [
+    "Accessibility & Inclusion"
+  ],
+  "primaryTopic": "Accessibility & Inclusion",
+  "duration": 380,
+  "hasTranscript": true,
+  "transcriptWordCount": 917,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10318/12/ACAF8CC7-BEA9-44B2-A056-557CDC67692C/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10318/12/ACAF8CC7-BEA9-44B2-A056-557CDC67692C/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10318/12/ACAF8CC7-BEA9-44B2-A056-557CDC67692C/downloads/wwdc2021-10318_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10318/12/ACAF8CC7-BEA9-44B2-A056-557CDC67692C/downloads/wwdc2021-10318_hd.mp4",
+    "duration": 380
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2021/10318-developer-spotlight-accessibility/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10318-developer-spotlight-accessibility/metadata.json",
+    "readme": "sessions/wwdc2021/10318-developer-spotlight-accessibility/README.md",
+    "transcript": "sessions/wwdc2021/10318-developer-spotlight-accessibility/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10318-developer-spotlight-accessibility/transcript.json"
+  }
+}

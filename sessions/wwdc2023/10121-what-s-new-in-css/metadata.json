@@ -1,0 +1,124 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10121",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10121,
+  "title": "What’s new in CSS",
+  "description": "Explore the latest advancements in CSS. Learn techniques and best practices for working with wide-gamut color, creating gorgeous typography, and writing simple and robust code. We’ll also peer into the future and preview upcoming layout and typography features.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10121",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10121",
+  "type": "Video",
+  "publishedAt": "2023-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Safari & Web"
+  ],
+  "primaryTopic": "Safari & Web",
+  "duration": 2106,
+  "hasTranscript": true,
+  "transcriptWordCount": 5127,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10121/5/583EB542-47B3-45F4-B7D2-35C88ED597C7/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10121/5/583EB542-47B3-45F4-B7D2-35C88ED597C7/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10121/5/583EB542-47B3-45F4-B7D2-35C88ED597C7/downloads/wwdc2023-10121_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10121/5/583EB542-47B3-45F4-B7D2-35C88ED597C7/downloads/wwdc2023-10121_hd.mp4",
+    "duration": 2106
+  },
+  "codeSnippets": [
+    {
+      "title": "Masonry layout, example 1",
+      "language": "markdown",
+      "startTimeSeconds": 169,
+      "code": "main {\n\tdisplay: grid;\n  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));\n\tgrid-template-rows: masonry;\n}"
+    },
+    {
+      "title": "Masonry layout, example 2",
+      "language": "markdown",
+      "startTimeSeconds": 200,
+      "code": "main {\n\tdisplay: grid;\n  grid-template-columns: 1fr 2fr 3fr;\n\tgrid-template-rows: masonry;\n}"
+    },
+    {
+      "title": "Masonry layout, example 3",
+      "language": "markdown",
+      "startTimeSeconds": 204,
+      "code": "main {\n\tdisplay: grid;\n  grid-template-columns: 10rem 1fr minmax(100px, 300px);\n\tgrid-template-rows: masonry;\n}"
+    },
+    {
+      "title": "Margin trim",
+      "language": "markdown",
+      "startTimeSeconds": 328,
+      "code": ".card {\n  background-color: #fcf5e7;\n  padding: 2rlh;\n  margin-trim: block;\n}\nh2, p {\n  margin: 1rlh 0;\n}"
+    },
+    {
+      "title": "Color gamut media query",
+      "language": "markdown",
+      "startTimeSeconds": 445,
+      "code": ".card {\n  background-color: #fcf5e7;\n  padding: 2rlh;\n  margin-trim: block;\n}\nh2, p {\n  margin: 1rlh 0;\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Safari Technology Preview",
+      "url": "https://developer.apple.com/safari/technology-preview/",
+      "type": "download",
+      "description": "Safari Technology Preview",
+      "sosumiURL": "https://sosumi.ai/safari/technology-preview/"
+    },
+    {
+      "title": "Safari Release Notes",
+      "url": "https://developer.apple.com/documentation/safari-release-notes",
+      "type": "documentation",
+      "description": "Learn about changes for Safari and Safari View Controller for iOS, iPadOS, macOS, and in visionOS; WKWebView for iOS, iPadOS, macOS, watchOS, and in visionOS; and Web Inspector on macOS.",
+      "sosumiURL": "https://sosumi.ai/documentation/safari-release-notes",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/safari-release-notes.json"
+    },
+    {
+      "title": "WebKit Open Source Project",
+      "url": "https://webkit.org",
+      "type": "guide",
+      "description": "WebKit Open Source Project"
+    },
+    {
+      "title": "Web Inspector Reference",
+      "url": "https://webkit.org/web-inspector/",
+      "type": "documentation",
+      "description": "Web Inspector Documentation"
+    },
+    {
+      "title": "Submit feedback",
+      "url": "http://feedbackassistant.apple.com",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "MDN Web Docs - Web Extensions API",
+      "url": "https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API",
+      "type": "documentation",
+      "description": "JavaScript APIs for web extensions."
+    }
+  ],
+  "path": "sessions/wwdc2023/10121-what-s-new-in-css/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10121-what-s-new-in-css/metadata.json",
+    "readme": "sessions/wwdc2023/10121-what-s-new-in-css/README.md",
+    "transcript": "sessions/wwdc2023/10121-what-s-new-in-css/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10121-what-s-new-in-css/transcript.json"
+  }
+}

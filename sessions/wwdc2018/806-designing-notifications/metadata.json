@@ -1,0 +1,66 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2018-806",
+  "event": "wwdc2018",
+  "eventName": "WWDC18",
+  "year": 2018,
+  "eventContentId": 806,
+  "title": "Designing Notifications",
+  "description": "Thoughtfully designed notifications are a powerful way to communicate timely information to people that they will find valuable and useful. Learn how you can design notifications people want to receive by making them beautiful, helpful, actionable, and respectful of their valuable time and attention.",
+  "url": "https://developer.apple.com/videos/play/wwdc2018/806",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2018/806",
+  "type": "Video",
+  "publishedAt": "2018-06-08T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "alert",
+    "banners",
+    "do not disturb",
+    "grouping",
+    "ios",
+    "lock screen",
+    "notification",
+    "push",
+    "rich",
+    "thread",
+    "threading",
+    "watch"
+  ],
+  "topics": [
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 2314,
+  "hasTranscript": true,
+  "transcriptWordCount": 6573,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/806d34jrsj444iqhb/806/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/806d34jrsj444iqhb/806/806_sd_designing_notifications.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/806d34jrsj444iqhb/806/806_hd_designing_notifications.mp4",
+    "duration": 2314
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2018/806-designing-notifications/",
+  "files": {
+    "metadata": "sessions/wwdc2018/806-designing-notifications/metadata.json",
+    "readme": "sessions/wwdc2018/806-designing-notifications/README.md",
+    "transcript": "sessions/wwdc2018/806-designing-notifications/transcript.md",
+    "transcriptJSON": "sessions/wwdc2018/806-designing-notifications/transcript.json"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-205",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 205,
+  "title": "Introducing iPad Apps for Mac",
+  "description": "iPad Apps for Mac is an easy way to bring your iPad app to the Mac while maintaining your single code-base. Learn about common Mac features that are automatically implemented for you. Find out how to work with iOS-only frameworks and what using them could mean for your app. Hear about some common usage patterns including how to use third-party frameworks and some setup tips and tricks. Get a taste for how you can make your new Mac app feel like a Mac app by incorporating platform-specific features.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/205",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/205",
+  "type": "Video",
+  "publishedAt": "2019-06-04T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "catalyst",
+    "checkbox",
+    "ipad app",
+    "mac catalyst",
+    "project catalyst",
+    "uikit"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 2487,
+  "hasTranscript": true,
+  "transcriptWordCount": 6671,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/205uk2opbsrhdunlbn/205/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/205uk2opbsrhdunlbn/205/205_sd_introducing_ipad_apps_for_mac.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/205uk2opbsrhdunlbn/205/205_hd_introducing_ipad_apps_for_mac.mp4",
+    "duration": 2487
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/205-introducing-ipad-apps-for-mac/",
+  "files": {
+    "metadata": "sessions/wwdc2019/205-introducing-ipad-apps-for-mac/metadata.json",
+    "readme": "sessions/wwdc2019/205-introducing-ipad-apps-for-mac/README.md",
+    "transcript": "sessions/wwdc2019/205-introducing-ipad-apps-for-mac/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/205-introducing-ipad-apps-for-mac/transcript.json"
+  }
+}

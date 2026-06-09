@@ -1,0 +1,72 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10288",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10288,
+  "title": "Explore the SF Symbols 3 app",
+  "description": "Tour the latest updates to the SF Symbols app — our interactive library for iconography. Learn how you can use the library to design accessible and inclusive apps that look incredible: We’ll take you through changes to the app and symbols search, explore previewing and custom symbol management, and help you integrate symbols into your interface designs. It's recommended you watch \"What's new in SF Symbols\" from WWDC21 before watching this video.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10288",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10288",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Essentials",
+    "SwiftUI & UI Frameworks",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 767,
+  "hasTranscript": true,
+  "transcriptWordCount": 2406,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10288/4/48BB2A1D-31BF-4E09-90DF-2FC4669B3946/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10288/4/48BB2A1D-31BF-4E09-90DF-2FC4669B3946/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10288/4/48BB2A1D-31BF-4E09-90DF-2FC4669B3946/downloads/wwdc2021-10288_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10288/4/48BB2A1D-31BF-4E09-90DF-2FC4669B3946/downloads/wwdc2021-10288_hd.mp4",
+    "duration": 767
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Download SF Symbols",
+      "url": "https://developer.apple.com/sf-symbols/",
+      "type": "download",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/sf-symbols/"
+    },
+    {
+      "title": "Human Interface Guidelines: SF Symbols",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/sf-symbols",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/sf-symbols"
+    }
+  ],
+  "path": "sessions/wwdc2021/10288-explore-the-sf-symbols-3-app/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10288-explore-the-sf-symbols-3-app/metadata.json",
+    "readme": "sessions/wwdc2021/10288-explore-the-sf-symbols-3-app/README.md",
+    "transcript": "sessions/wwdc2021/10288-explore-the-sf-symbols-3-app/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10288-explore-the-sf-symbols-3-app/transcript.json"
+  }
+}

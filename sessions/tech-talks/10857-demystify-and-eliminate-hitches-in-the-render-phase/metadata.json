@@ -1,0 +1,67 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-10857",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2020,
+  "eventContentId": 10857,
+  "title": "Demystify and eliminate hitches in the render phase",
+  "description": "When you implement complex view hierarchies in your app, you may run into animation hitches. Demystify how your views are turned into pixels during the render phase, and learn how to use Instruments to uncover issues in this part of the render loop. Discover how to eliminate offscreen passes and leverage Xcode optimization opportunities in order to provide a great experience when using your app.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/10857",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10857",
+  "type": "Video",
+  "publishedAt": "2020-12-21T00:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "animation hitches",
+    "hitches",
+    "render phase",
+    "xcode"
+  ],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 1164,
+  "hasTranscript": true,
+  "transcriptWordCount": 3166,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/10857/2/25CEDA38-B91E-45A8-A305-76B8025F8320/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/tech-talks/10857/2/25CEDA38-B91E-45A8-A305-76B8025F8320/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/10857/2/25CEDA38-B91E-45A8-A305-76B8025F8320/downloads/tech-talks-10857_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/10857/2/25CEDA38-B91E-45A8-A305-76B8025F8320/downloads/tech-talks-10857_hd.mp4",
+    "duration": 1164
+  },
+  "codeSnippets": [
+    {
+      "title": "Shadow Path",
+      "language": "swift",
+      "startTimeSeconds": 1,
+      "code": "// Setup shadow properties\nview.layer.shadowColor = UIColor.black.cgColor\nview.layer.shadowOpacity = 0.5\n\n// Set a shadow path on a basic layer\nview.layer.shadowPath = UIBezierPath(roundedRect: view.layer.bounds, \n                                     cornerRadius: view.layer.cornerRadius).cgPath"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/tech-talks/10857-demystify-and-eliminate-hitches-in-the-render-phase/",
+  "files": {
+    "metadata": "sessions/tech-talks/10857-demystify-and-eliminate-hitches-in-the-render-phase/metadata.json",
+    "readme": "sessions/tech-talks/10857-demystify-and-eliminate-hitches-in-the-render-phase/README.md",
+    "transcript": "sessions/tech-talks/10857-demystify-and-eliminate-hitches-in-the-render-phase/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/10857-demystify-and-eliminate-hitches-in-the-render-phase/transcript.json"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10197",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10197,
+  "title": "What’s new in SF Symbols 5",
+  "description": "Explore the latest updates to SF Symbols, Apple’s library of iconography designed to integrate seamlessly with San Francisco, the system font for Apple platforms. Learn about symbol animations: a collection of expressive, configurable animations that can make your interface feel more lively and improve user feedback. See how to draw for animation when creating your own custom symbols, and discover the latest additions to the SF Symbols library. To get the most out of this session, we recommend first watching “What’s new in SF Symbols 4” from WWDC22.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10197",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10197",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 1133,
+  "hasTranscript": true,
+  "transcriptWordCount": 2601,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10197/4/01BB92C1-0F42-4AE4-A526-7C83DA02ACAD/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10197/4/01BB92C1-0F42-4AE4-A526-7C83DA02ACAD/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10197/4/01BB92C1-0F42-4AE4-A526-7C83DA02ACAD/downloads/wwdc2023-10197_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10197/4/01BB92C1-0F42-4AE4-A526-7C83DA02ACAD/downloads/wwdc2023-10197_hd.mp4",
+    "duration": 1133
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2023/10197-what-s-new-in-sf-symbols-5/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10197-what-s-new-in-sf-symbols-5/metadata.json",
+    "readme": "sessions/wwdc2023/10197-what-s-new-in-sf-symbols-5/README.md",
+    "transcript": "sessions/wwdc2023/10197-what-s-new-in-sf-symbols-5/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10197-what-s-new-in-sf-symbols-5/transcript.json"
+  }
+}

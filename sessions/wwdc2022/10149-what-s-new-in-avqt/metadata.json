@@ -1,0 +1,65 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10149",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10149,
+  "title": "What’s new in AVQT",
+  "description": "Discover the latest updates and improvements to the Advanced Video Quality Tool (AVQT). We'll take you through the interactive reports feature and help you learn how to identify video quality-related issues. We'll also explore extended support for raw formats, show you how to evaluate specific scenes within a video, and explore how you can use AVQT for Linux to analyze videos on Linux servers and online in the cloud.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10149",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10149",
+  "type": "Video",
+  "publishedAt": "2022-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "avqt",
+    "linux",
+    "video quality"
+  ],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 578,
+  "hasTranscript": true,
+  "transcriptWordCount": 1415,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10149/4/BAEE96D6-1250-4911-A2D6-A96AC4D48ED4/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10149/4/BAEE96D6-1250-4911-A2D6-A96AC4D48ED4/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10149/4/BAEE96D6-1250-4911-A2D6-A96AC4D48ED4/downloads/wwdc2022-10149_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10149/4/BAEE96D6-1250-4911-A2D6-A96AC4D48ED4/downloads/wwdc2022-10149_hd.mp4",
+    "duration": 578
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Advanced Video Quality Tool",
+      "url": "http://developer.apple.com/services-account/download?path=/Developer_Tools/Advanced_Video_Quality_Tool/AdvancedVideoQualityTool.dmg",
+      "type": "download",
+      "description": "The Advanced Video Quality Tool, or AVQT in short, is a macOS command line tool, which estimates perceptual video quality of compressed videos, that might contain video coding and scaling artifacts. The tool expects reference (source) and test (compressed) videos as inputs and outputs frame level and segment level scores of the test video on a scale of 1 to 5, where 1 indicates bad video quality and 5 indicates excellent video quality. You can also use AVQT to compute MSE (Mean Squared Error) and PSNR (Peak Signal to Noise Ratio) scores. Please see the enclosed README for more details.",
+      "sosumiURL": "https://sosumi.ai/services-account/download?path=/Developer_Tools/Advanced_Video_Quality_Tool/AdvancedVideoQualityTool.dmg"
+    }
+  ],
+  "path": "sessions/wwdc2022/10149-what-s-new-in-avqt/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10149-what-s-new-in-avqt/metadata.json",
+    "readme": "sessions/wwdc2022/10149-what-s-new-in-avqt/README.md",
+    "transcript": "sessions/wwdc2022/10149-what-s-new-in-avqt/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10149-what-s-new-in-avqt/transcript.json"
+  }
+}

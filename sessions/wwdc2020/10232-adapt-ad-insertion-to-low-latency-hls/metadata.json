@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10232",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10232,
+  "title": "Adapt ad insertion to Low-Latency HLS",
+  "description": "Find out how to integrate advertising into your Low-Latency HLS streams through server-side ad insertion. We'll show you how to segment your ad content, and examine how ad insertion works with LL-HLS features such as Blocking Playlist Reload and Blocking Preload Hints. For more information about Blocking Playlist Reload and Preload Hinting, watch \"Reduce Latency with HLS Blocking Playlist Reload\" and \"Discover HLS Blocking Preload Hints.\"",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10232",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10232",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 579,
+  "hasTranscript": true,
+  "transcriptWordCount": 1597,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10232/4/D14B77B1-D4C9-4BD0-A395-843696269639/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10232/4/D14B77B1-D4C9-4BD0-A395-843696269639/wwdc2020_10232_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10232/4/D14B77B1-D4C9-4BD0-A395-843696269639/wwdc2020_10232_hd.mp4",
+    "duration": 579
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2020/10232-adapt-ad-insertion-to-low-latency-hls/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10232-adapt-ad-insertion-to-low-latency-hls/metadata.json",
+    "readme": "sessions/wwdc2020/10232-adapt-ad-insertion-to-low-latency-hls/README.md",
+    "transcript": "sessions/wwdc2020/10232-adapt-ad-insertion-to-low-latency-hls/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10232-adapt-ad-insertion-to-low-latency-hls/transcript.json"
+  }
+}

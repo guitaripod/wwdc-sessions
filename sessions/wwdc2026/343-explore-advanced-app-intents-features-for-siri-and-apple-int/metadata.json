@@ -1,0 +1,190 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-343",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 343,
+  "title": "Explore advanced App Intents features for Siri and Apple Intelligence",
+  "description": "Polish how your app works with Siri using advanced App Intents APIs. Learn techniques that let people accomplish more with just their voice, help Apple Intelligence find your content, and provide context for on-screen awareness so Siri understands what’s happening in your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/343",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/343",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "ai",
+    "app intents",
+    "machine learning",
+    "siri",
+    "xcode"
+  ],
+  "topics": [
+    "App Services",
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1448,
+  "hasTranscript": true,
+  "transcriptWordCount": 3568,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/343/4/00190d1d-55b6-4eb2-9ee3-e09f3d8d1c7d/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/343/4/00190d1d-55b6-4eb2-9ee3-e09f3d8d1c7d/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/343/4/00190d1d-55b6-4eb2-9ee3-e09f3d8d1c7d/downloads/wwdc2026-343_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/343/4/00190d1d-55b6-4eb2-9ee3-e09f3d8d1c7d/downloads/wwdc2026-343_hd.mp4",
+    "duration": 1448
+  },
+  "codeSnippets": [
+    {
+      "title": "Custom dialog response",
+      "language": "swift",
+      "startTimeSeconds": 162,
+      "code": "@AppIntent(schema: .audio.addToPlaylist)\n  struct AddToPlaylistIntent {\n\n      func perform() async throws -> some IntentResult & ProvidesDialog {\n          // Adds song to playlist and responds\n          return .result(\n              dialog: IntentDialog(\n                  full: \"\"\"\n                        Added \\(song.title) to the \\\n                        \\(playlist.title) mix tape.\n                        \"\"\",\n                  supporting: \"Added\"\n              )\n          )\n      }\n  }"
+    },
+    {
+      "title": "Ask a clarifying question within an inten",
+      "language": "swift",
+      "startTimeSeconds": 222,
+      "code": "@AppIntent(schema: .clock.createTimer)\n  struct CreateTimerIntent {\n      // MARK: Schema Parameters\n      var duration: Duration\n      var label: String?\n      var isSleepTimer: Bool\n\n      func perform() async throws -> some ReturnsValue<TimerEntity> {\n          // Checks active timers and requests label parameter\n          label = try await $label.requestValue(\n              \"\"\"\n              You already have a timer running. \\\n              What should we call this one?\n              \"\"\"\n          )\n          return .result(value: timerEntity)\n      }\n  }"
+    },
+    {
+      "title": "Enhanced DisplayRepresentation",
+      "language": "swift",
+      "startTimeSeconds": 266,
+      "code": "// Enhanced DisplayRepresentation\n  @AppEntity(schema: .audio.song)\n  struct SongEntity {\n\n      var displayRepresentation: DisplayRepresentation {\n          DisplayRepresentation(\n              title: \"\\(title)\",\n              subtitle: \"\\(artistName)\",\n              image: artworkImage\n          )\n      }\n  }"
+    },
+    {
+      "title": "Return a custom snippet view",
+      "language": "swift",
+      "startTimeSeconds": 305,
+      "code": "@AppIntent(schema: .audio.addToPlaylist)\n  struct AddToPlaylistIntent {\n\n      var audioEntity: AudioEntity\n      var playlist: PlaylistEntity\n\n      func perform() async throws -> some IntentResult & ProvidesDialog & ShowsSnippetView {\n          // Adds to playlist and shows dialog and snippet\n          let view = PlaylistSnippetView(\n              playlist: updatedEntity,\n              tracks: updated.tracks\n          )\n          return .result(dialog: dialog, view: view)\n      }\n  }"
+    },
+    {
+      "title": "Donate a UI interaction",
+      "language": "swift",
+      "startTimeSeconds": 464,
+      "code": "@ModelActor\n  actor ModelManager {\n      func sendMessage(_ /* ... */, donateIntent: Bool = false) async throws -> [Message.ID] {\n\n          // Donate intent with parameters and result so Siri can learn user preferences\n          if donateIntent {\n              let intent = SendMessageIntent()\n              intent.destination = .recipients(conversation.recipients.map(\\.entity))\n\n              let result = messages.map(\\.entity)\n              Task {\n                  try await IntentDonationManager.shared.donate(\n                      intent: intent,\n                      result: .result(value: result)\n                  )\n              }\n          }\n      }\n  }"
+    },
+    {
+      "title": "Declare entity ownership for confirmations",
+      "language": "swift",
+      "startTimeSeconds": 603,
+      "code": "// Informs system if entity is public or shared with others\n  @AppEntity(schema: .calendar.event)\n  struct EventEntity: OwnershipProvidingEntity {\n\n      var ownership: EntityOwnership {\n          // isShared used to compute ownership state: .shared, .public, or .unknown\n          attendees.isEmpty ? .unknown : .shared\n      }\n  }"
+    },
+    {
+      "title": "Index entities with IndexedEntity",
+      "language": "swift",
+      "startTimeSeconds": 690,
+      "code": "// Indexing IndexedEntity with CSSearchableIndex\n  struct EntityIndexingHelper {\n      // Indexes playlist entities\n      func indexPlaylist(_ playlist: Playlist) async throws {\n          let entity = PlaylistEntity(playlist: playlist)\n          try await CSSearchableIndex(name: indexName)\n              .indexAppEntities([entity])\n      }\n  }"
+    },
+    {
+      "title": "Structured search with IntentValueQuer",
+      "language": "swift",
+      "startTimeSeconds": 818,
+      "code": "// Structured search of songs and playlists\n  struct AudioIntentValueQuery: IntentValueQuery {\n\n      // AudioSearch, IntentPerson, and other system types may be supported as input\n      func values(for input: AudioSearch) async throws -> [AudioEntity] {\n          switch input.criteria {\n          case .searchQuery(let query):\n              return try await searchResults(for: query)\n          case .unspecified:\n              return try await likedSongResults()\n          // ... also a .url case\n          }\n      }\n  }"
+    },
+    {
+      "title": "Re-run Siri search in your app",
+      "language": "swift",
+      "startTimeSeconds": 889,
+      "code": "// Intent that re-runs the Siri search in app\n  @AppIntent(schema: .system.searchInApp)\n  struct SearchAudioLibraryIntent {\n\n      var criteria: StringSearchCriteria\n\n      func perform() async throws -> some IntentResult {\n          // Perform in-app search with Siri search string\n          navigation.searchText = criteria.term\n          navigation.selectedTab = .library\n          return .result()\n      }\n  }"
+    },
+    {
+      "title": "Onscreen awareness annotations",
+      "language": "swift",
+      "startTimeSeconds": 987,
+      "code": "// (a) Single primary entity on screen — NSUserActivity\n  struct NowPlayingView: View {\n      @Environment(PlaybackController.self) private var playback\n\n      var body: some View {\n          VStack {\n              // Player UI\n          }\n          .userActivity(\"cosmotunes.nowPlaying\", isActive: playback.currentTrack) { activity in\n              activity.title = playback.currentTrack?.title\n              activity.appEntityIdentifier = EntityIdentifier(\n                  for: SongEntity.self,\n                  identifier: playback.currentTrack.id\n              )\n          }\n      }\n  }\n\n  // (b) One entity among many — View Entity annotation\n  struct AlbumView: View {\n      private var header: some View {\n          VStack(alignment: .leading, spacing: 6) {\n              // ...\n          }\n          .appEntityIdentifier(\n              EntityIdentifier(for: AlbumEntity.self, identifier: session.id.uuidString)\n          )\n      }\n  }\n\n  // (c) Lists and collections — Collection annotation\n  struct PlaylistDetailView: View {\n      var body: some View {\n          List {\n              ForEach(playlist.tracks) { track in\n                  PlaylistTrackRow(track: track)\n              }\n          }\n          .appEntityIdentifier(forSelectionType: GeneratedTrack.ID.self) { trackID in\n              EntityIdentifier(for: SongEntity.self, identifier: trackID)\n          }\n      }\n  }"
+    },
+    {
+      "title": "Component-based display representation query",
+      "language": "swift",
+      "startTimeSeconds": 1043,
+      "code": "// Component-based display representation queries\n  extension PlaylistQuery {\n      func displayRepresentations(\n          for identifiers: [PlaylistEntity.ID],\n          requestedComponents: DisplayRepresentation.Components = .text\n      ) async throws -> [PlaylistEntity.ID: DisplayRepresentation] {\n          let entities = try await model.playlistEntities(for: identifiers)\n\n          // Fetch display representations for fetched entities\n          var result: [PlaylistEntity.ID: DisplayRepresentation] = [:]\n          for entity in entities {\n              result[entity.id] = await entity.displayRepresentation(with: requestedComponents)\n          }\n          return result\n      }\n  }"
+    },
+    {
+      "title": "Entity annotations on system integrations",
+      "language": "swift",
+      "startTimeSeconds": 1267,
+      "code": "// (a) User notifications\n  import AppIntents\n  import UserNotifications\n\n  func scheduleNotification(message: Message, author: Contact, conversation: Conversation) {\n      let content = UNMutableNotificationContent()\n      content.title = author.name\n      content.body = message.body\n\n      // Annotate with entity identifier\n      content.appEntityIdentifiers = [\n          EntityIdentifier(for: MessageEntity.self, identifier: message.id)\n      ]\n      // Schedule the notification\n  }\n\n  // (b) Now Playing — most specific to least specific\n  import NowPlaying\n\n  final class CosmoTunesMediaSession: MediaSessionRepresentable {\n      var content: (any MediaContentRepresentable)? {\n          var content = MusicContent(id: track.id.uuidString, songTitle: track.title /* ... */)\n          content.appEntityIdentifiers = [\n              EntityIdentifier(for: SongEntity.self, identifier: track.id),\n              EntityIdentifier(for: ArtistEntity.self, identifier: track.session.artistName),\n              EntityIdentifier(for: PlaylistEntity.self, identifier: currentPlaylist.id),\n          ]\n          return content\n      }\n  }\n\n  // (c) AlarmKit\n  import AlarmKit\n\n  func scheduleAlarm(_ alarm: Alarm) async throws {\n      let configuration = AlarmManager.AlarmConfiguration<CosmoTunesAlarmMetadata>.alarm(\n          schedule: schedule,\n          attributes: attributes,\n          appEntityIdentifier: EntityIdentifier(for: AlarmEntity.self, identifier: alarm.id),\n          stopIntent: DismissAlarmIntent(),\n          secondaryIntent: SnoozeAlarmIntent(),\n          sound: sound\n      )\n      // Schedule alarm\n  }"
+    }
+  ],
+  "resources": [
+    {
+      "title": "App Intents Testing",
+      "url": "https://developer.apple.com/documentation/AppIntentsTesting",
+      "type": "documentation",
+      "description": "Test your app intents, entities, queries, and integration with system features like Siri or Spotlight.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntentsTesting",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntentsTesting.json"
+    },
+    {
+      "title": "Donating your app’s data and actions to the system",
+      "url": "https://developer.apple.com/documentation/AppIntents/donating-your-apps-data-and-actions-to-the-system",
+      "type": "documentation",
+      "description": "Improve how people interact with your app through Apple Intelligence and Siri",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents/donating-your-apps-data-and-actions-to-the-system",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents/donating-your-apps-data-and-actions-to-the-system.json"
+    },
+    {
+      "title": "Donations and discovery",
+      "url": "https://developer.apple.com/documentation/AppIntents/donations-and-discovery",
+      "type": "documentation",
+      "description": "Donate your app’s intents and entities to the system to help it identify trends and predict",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents/donations-and-discovery",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents/donations-and-discovery.json"
+    },
+    {
+      "title": "Making app entities available in Spotlight",
+      "url": "https://developer.apple.com/documentation/AppIntents/making-app-entities-available-in-spotlight",
+      "type": "documentation",
+      "description": "Update your app entity types to support Spotlight indexing, and donate entities to",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents/making-app-entities-available-in-spotlight",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents/making-app-entities-available-in-spotlight.json"
+    },
+    {
+      "title": "Making actions and content discoverable by Apple Intelligence",
+      "url": "https://developer.apple.com/documentation/AppIntents/making-actions-and-content-discoverable-by-apple-intelligence",
+      "type": "documentation",
+      "description": "Equip the system so that Siri can work with your app by adding specific schemas from relevant domains.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents/making-actions-and-content-discoverable-by-apple-intelligence",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents/making-actions-and-content-discoverable-by-apple-intelligence.json"
+    },
+    {
+      "title": "Providing contextual cues to Apple Intelligence and Siri",
+      "url": "https://developer.apple.com/documentation/AppIntents/providing-contextual-cues-to-apple-intelligence-and-siri",
+      "type": "documentation",
+      "description": "Annotate your interface with app entities to offer contextual information about your app’s",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents/providing-contextual-cues-to-apple-intelligence-and-siri",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents/providing-contextual-cues-to-apple-intelligence-and-siri.json"
+    },
+    {
+      "title": "Apple Intelligence and Siri AI",
+      "url": "https://developer.apple.com/documentation/AppIntents/apple-intelligence-and-siri-ai",
+      "type": "documentation",
+      "description": "Integrate your app with Apple Intelligence and bring it to Siri AI.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents/apple-intelligence-and-siri-ai",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents/apple-intelligence-and-siri-ai.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/343-explore-advanced-app-intents-features-for-siri-and-apple-int/",
+  "files": {
+    "metadata": "sessions/wwdc2026/343-explore-advanced-app-intents-features-for-siri-and-apple-int/metadata.json",
+    "readme": "sessions/wwdc2026/343-explore-advanced-app-intents-features-for-siri-and-apple-int/README.md",
+    "transcript": "sessions/wwdc2026/343-explore-advanced-app-intents-features-for-siri-and-apple-int/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/343-explore-advanced-app-intents-features-for-siri-and-apple-int/transcript.json"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2018-405",
+  "event": "wwdc2018",
+  "eventName": "WWDC18",
+  "year": 2018,
+  "eventContentId": 405,
+  "title": "Measuring Performance Using Logging",
+  "description": "Learn how to use signposts and logging to measure performance. Understand how the Points of Interest instrument can be used to examine logged data. Get an introduction into creating and using custom instruments.",
+  "url": "https://developer.apple.com/videos/play/wwdc2018/405",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2018/405",
+  "type": "Video",
+  "publishedAt": "2018-06-06T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "instrument",
+    "instruments",
+    "os_signpost",
+    "os_signposts",
+    "signpost",
+    "signposts"
+  ],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 2125,
+  "hasTranscript": true,
+  "transcriptWordCount": 5973,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/405bjty1j94taqv8ii/405/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/405bjty1j94taqv8ii/405/405_sd_measuring_performance_using_logging.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/405bjty1j94taqv8ii/405/405_hd_measuring_performance_using_logging.mp4",
+    "duration": 2125
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Logging",
+      "url": "https://developer.apple.com/documentation/os/logging",
+      "type": "documentation",
+      "description": "Capture telemetry from your app for debugging and performance analysis using the unified logging system.",
+      "sosumiURL": "https://sosumi.ai/documentation/os/logging",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/os/logging.json"
+    }
+  ],
+  "path": "sessions/wwdc2018/405-measuring-performance-using-logging/",
+  "files": {
+    "metadata": "sessions/wwdc2018/405-measuring-performance-using-logging/metadata.json",
+    "readme": "sessions/wwdc2018/405-measuring-performance-using-logging/README.md",
+    "transcript": "sessions/wwdc2018/405-measuring-performance-using-logging/transcript.md",
+    "transcriptJSON": "sessions/wwdc2018/405-measuring-performance-using-logging/transcript.json"
+  }
+}

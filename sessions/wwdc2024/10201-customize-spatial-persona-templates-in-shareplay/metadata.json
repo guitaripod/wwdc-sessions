@@ -1,0 +1,150 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2024-10201",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10201,
+  "title": "Customize spatial Persona templates in SharePlay",
+  "description": "Learn how to use custom spatial Persona templates in your visionOS SharePlay experience to fine-tune the placement of Personas relative to your app. We’ll show you how to adopt custom spatial Persona templates in a sample app with SharePlay, move participants between seats, and test your changes in Simulator. We’ll also share best practices for designing custom spatial templates that will make your experience shine.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10201",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10201",
+  "type": "Video",
+  "publishedAt": "2024-06-13T08:00:00-07:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Audio & Video",
+    "Spatial Computing",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 2186,
+  "hasTranscript": true,
+  "transcriptWordCount": 5921,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10201/5/10E5E470-0946-416B-AEC8-E601A8CC6045/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10201/5/10E5E470-0946-416B-AEC8-E601A8CC6045/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10201/5/10E5E470-0946-416B-AEC8-E601A8CC6045/downloads/wwdc2024-10201_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10201/5/10E5E470-0946-416B-AEC8-E601A8CC6045/downloads/wwdc2024-10201_hd.mp4",
+    "duration": 2186
+  },
+  "codeSnippets": [
+    {
+      "title": "Initial team selection template",
+      "language": "swift",
+      "startTimeSeconds": 752,
+      "code": "// Team selection template – custom spatial template\n\nimport GroupActivities\n\nstruct TeamSelectionTemplate: SpatialTemplate {\n    let elements: [any SpatialTemplateElement] = [\n        .seat(position: .app.offsetBy(x: 0, z: 4)),\n\n        .seat(position: .app.offsetBy(x: 1, z: 4)),\n        .seat(position: .app.offsetBy(x: -1, z: 4)),\n\n        .seat(position: .app.offsetBy(x: 2, z: 4)),\n        .seat(position: .app.offsetBy(x: -2, z: 4)),\n    ]\n}"
+    },
+    {
+      "title": "Completed team selection template with seat roles",
+      "language": "swift",
+      "startTimeSeconds": 811,
+      "code": "import GroupActivities\n\n/// The custom spatial template used to arrange Spatial Personas\n/// during Guess Together's team-selection stage.\n///\n/// The team selection template contains three sets of seats:\n///\n/// 1. Five audience seats that participants are initially placed in.\n/// 2. Three Blue Team seats that participants are moved to\n///    when they join team Blue.\n/// 3. Three Red Team seats.\n///\n/// ```\n///                ┌────────────────────┐\n///                │   Guess Together   │\n///                │     app window     │\n///                └────────────────────┘\n///\n///\n///              %                       $\n///                %                   $\n///   Blue Team      %               $      Red Team\n///                    *  *  *  *  *\n///\n///                       Audience\n/// ```\nstruct TeamSelectionTemplate: SpatialTemplate {\n    enum Role: String, SpatialTemplateRole {\n        case blueTeam\n        case redTeam\n    }\n\n    let elements: [any SpatialTemplateElement] = [\n        // Blue team:\n        .seat(position: .app.offsetBy(x: -2.5, z: 3.5), role: Role.blueTeam),\n        .seat(position: .app.offsetBy(x: -3.0, z: 3.0), role: Role.blueTeam),\n        .seat(position: .app.offsetBy(x: -3.5, z: 2.5), role: Role.blueTeam),\n\n        // Starting positions:\n        .seat(position: .app.offsetBy(x: 0, z: 4)),\n        .seat(position: .app.offsetBy(x: 1, z: 4)),\n        .seat(position: .app.offsetBy(x: -1, z: 4)),\n        .seat(position: .app.offsetBy(x: 2, z: 4)),\n        .seat(position: .app.offsetBy(x: -2, z: 4)),\n\n        // Red team:\n        .seat(position: .app.offsetBy(x: 2.5, z: 3.5), role: Role.redTeam),\n        .seat(position: .app.offsetBy(x: 3.0, z: 3.0), role: Role.redTeam),\n        .seat(position: .app.offsetBy(x: 3.5, z: 2.5), role: Role.redTeam)\n    ]\n}"
+    },
+    {
+      "title": "Configuring a custom spatial template",
+      "language": "swift",
+      "startTimeSeconds": 899,
+      "code": "systemCoordinator.configuration.spatialTemplatePreference = .custom(TeamSelectionTemplate())"
+    },
+    {
+      "title": "Assigning the local participant a spatial template role",
+      "language": "swift",
+      "startTimeSeconds": 939,
+      "code": "systemCoordinator.assignRole(TeamSelectionTemplate.Role.blueTeam)"
+    },
+    {
+      "title": "Resigning the local participant from a spatial template role",
+      "language": "swift",
+      "startTimeSeconds": 960,
+      "code": "systemCoordinator.resignRole()"
+    },
+    {
+      "title": "Spatial template roles",
+      "language": "swift",
+      "startTimeSeconds": 1020,
+      "code": "// Associating a role with a seat\n\n.seat(position: .app.offsetBy(x: -2.5, z: 3.5), role: TeamSelectionTemplate.Role.blueTeam)\n\n// Assigning the local participant a role\n\nsystemCoordinator.assignRole(TeamSelectionTemplate.Role.blueTeam)\n\n// Resigning the local participant from their current role\n\nsystemCoordinator.resignRole()"
+    },
+    {
+      "title": "Game template with seat direction",
+      "language": "swift",
+      "startTimeSeconds": 1122,
+      "code": "import GroupActivities\n\n/// The custom spatial template used to arrange spatial Personas\n/// during Guess Together's game stage.\n///\n/// The team selection template contains three sets of seats:\n///\n/// 1. An seat to the left of the app window for the active player.\n/// 2. Two seats to the right of the app window for the active player's\n///    teammates.\n/// 3. Five seats in front of the app window for the inactive team-members\n///    and any audience members.\n///\n/// ```\n///                  ┌────────────────────┐\n///                  │   Guess Together   │\n///                  │     app window     │\n///                  └────────────────────┘\n///\n///\n/// Active Player  %                       $  Active Team\n///                                        $\n///\n///                      *  *  *  *  *\n///\n///                         Audience\n///\n/// ```\nstruct GameTemplate: SpatialTemplate {\n    enum Role: String, SpatialTemplateRole {\n        case player\n        case activeTeam\n    }\n\n    var elements: [any SpatialTemplateElement] {\n        let activeTeamCenterPosition = SpatialTemplateElementPosition.app.offsetBy(x: 2, z: 3)\n\n        let playerSeat = SpatialTemplateSeatElement(\n            position: .app.offsetBy(x: -2, z: 3),\n            direction: .lookingAt(activeTeamCenterPosition),\n            role: Role.player\n        )\n\n        let activeTeamSeats: [any SpatialTemplateElement] = [\n            .seat(\n                position: activeTeamCenterPosition.offsetBy(x: 0, z: -0.5),\n                direction: .lookingAt(playerSeat),\n                role: Role.activeTeam\n            ),\n            .seat(\n                position: activeTeamCenterPosition.offsetBy(x: 0, z: 0.5),\n                direction: .lookingAt(playerSeat),\n                role: Role.activeTeam\n            )\n        ]\n\n        let audienceSeats: [any SpatialTemplateElement] = [\n            .seat(position: .app.offsetBy(x: 0, z: 5)),\n            .seat(position: .app.offsetBy(x: 1, z: 5)),\n            .seat(position: .app.offsetBy(x: -1, z: 5)),\n            .seat(position: .app.offsetBy(x: 2, z: 5)),\n            .seat(position: .app.offsetBy(x: -2, z: 5))\n        ]\n\n        return audienceSeats + [playerSeat] + activeTeamSeats\n    }\n}"
+    },
+    {
+      "title": "Configure group immersive space",
+      "language": "swift",
+      "startTimeSeconds": 1301,
+      "code": "// Configure group immersive space\n\nfor await session in GuessingActivity.sessions() {\n    guard let systemCoordinator = await session.systemCoordinator else { continue }\n\n    systemCoordinator.configuration.supportsGroupImmersiveSpace = true\n}"
+    },
+    {
+      "title": "SimpleLine Template",
+      "language": "swift",
+      "startTimeSeconds": 1835,
+      "code": "// SimpleLine.swift\n\nstruct SimpleLine: SpatialTemplate {\n\n    let elements: [any SpatialTemplateElement] = [\n        .seat(position: .app.offsetBy(x:  0, z: 2)),\n        .seat(position: .app.offsetBy(x:  1, z: 2)),\n        .seat(position: .app.offsetBy(x: -1, z: 2)),\n        .seat(position: .app.offsetBy(x:  2, z: 2)),\n        .seat(position: .app.offsetBy(x: -2, z: 2))\n    ]\n\n}"
+    },
+    {
+      "title": "lookingAt Method",
+      "language": "swift",
+      "startTimeSeconds": 1895,
+      "code": "// Look at a given position or seat\n.seat(\n    position: teamSeatPosition,\n    direction: .lookingAt(activePlayerSeat)\n)"
+    },
+    {
+      "title": "alignedWith Method",
+      "language": "swift",
+      "startTimeSeconds": 1906,
+      "code": "// Look at a given position or seat\n.seat(\n    position: teamSeatPosition,\n    direction: .lookingAt(activePlayerSeat)\n)\n\n// Align with a given app axis\n.seat(\n    position: teamSeatPosition,\n    direction: .alignedWith(appAxis: .z)\n)"
+    },
+    {
+      "title": "rotatedBy Method",
+      "language": "swift",
+      "startTimeSeconds": 1922,
+      "code": "// Look at a given position or seat\n.seat(\n    position: teamSeatPosition,\n    direction: .lookingAt(activePlayerSeat)\n)\n\n// Align with a given app axis\n.seat(\n    position: teamSeatPosition,\n    direction: .alignedWith(appAxis: .z)\n)\n\n// Rotate by a given angle\n.seat(\n    position: teamSeatPosition,\n    direction: .lookingAt(.app).rotatedBy(.degrees(30))\n)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Building a guessing game for visionOS",
+      "url": "https://developer.apple.com/documentation/GroupActivities/building-a-guessing-game-for-visionos",
+      "type": "samplecode",
+      "description": "Create a team-based guessing game for visionOS using Group Activities.",
+      "sosumiURL": "https://sosumi.ai/documentation/GroupActivities/building-a-guessing-game-for-visionos",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/GroupActivities/building-a-guessing-game-for-visionos.json"
+    },
+    {
+      "title": "Forum: App & System Services",
+      "url": "https://developer.apple.com/forums/topics/app-and-system-services?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/app-and-system-services?cid=vf-a-0010"
+    },
+    {
+      "title": "Group Activities",
+      "url": "https://developer.apple.com/documentation/GroupActivities",
+      "type": "documentation",
+      "description": "Create app-specific activities your users can share and experience together.",
+      "sosumiURL": "https://sosumi.ai/documentation/GroupActivities",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/GroupActivities.json"
+    }
+  ],
+  "path": "sessions/wwdc2024/10201-customize-spatial-persona-templates-in-shareplay/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10201-customize-spatial-persona-templates-in-shareplay/metadata.json",
+    "readme": "sessions/wwdc2024/10201-customize-spatial-persona-templates-in-shareplay/README.md",
+    "transcript": "sessions/wwdc2024/10201-customize-spatial-persona-templates-in-shareplay/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10201-customize-spatial-persona-templates-in-shareplay/transcript.json"
+  }
+}

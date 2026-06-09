@@ -1,0 +1,177 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2025-221",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 221,
+  "title": "What’s new in AdAttributionKit",
+  "description": "Learn about new features in AdAttributionKit, including how to measure overlapping reengagement conversions and customize ad attribution rules for your app. Gain insight on a new postback property you can use to measure the success of ad campaigns across countries and regions. We’ll also demonstrate new functionality and best practices for testing your AdAttributionKit implementation. To get the most out of this session, we recommend first watching “Meet AdAttributionKit.”",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/221",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/221",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Store, Distribution & Marketing",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1420,
+  "hasTranscript": true,
+  "transcriptWordCount": 3616,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/221/4/09c47047-90c9-48df-9ed1-f6d24303043e/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/221/4/09c47047-90c9-48df-9ed1-f6d24303043e/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/221/4/09c47047-90c9-48df-9ed1-f6d24303043e/downloads/wwdc2025-221_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/221/4/09c47047-90c9-48df-9ed1-f6d24303043e/downloads/wwdc2025-221_hd.mp4",
+    "duration": 1420
+  },
+  "codeSnippets": [
+    {
+      "title": "Function that retrieves a conversion tag from a URL",
+      "language": "swift",
+      "startTimeSeconds": 342,
+      "code": "func retrieveConversionTag(fromURL url: URL) -> String? {\n    guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {\n        print(\"Could not get components for URL.\")\n        return nil\n    }\n\n    guard let queryItems = components.queryItems else {\n        print(\"URL does not contain query items.\")\n        return nil\n    }\n\n    for item in queryItems {\n        guard item.name == Postback.reengagementOpenURLParameter else {\n            continue\n        }\n        return item.value\n    }\n    return nil\n}"
+    },
+    {
+      "title": "Function that updates conversion value using a conversion tag",
+      "language": "swift",
+      "startTimeSeconds": 415,
+      "code": "func updateConversionValue(_ conversionValue: Int, conversionTag: String) async {\n    do {\n        let update = PostbackUpdate(fineConversionValue: conversionValue,\n                                    lockPostback: false,\n                                    conversionTag: conversionTag)\n        try await Postback.updateConversionValue(update)\n    }\n    catch {\n        print(\"An error occurred while updating the conversion value: \\(error)\")\n    }\n}"
+    },
+    {
+      "title": "Example Info.plist for configuring attribution window",
+      "language": "json",
+      "startTimeSeconds": 572,
+      "code": "{\n  \"AdAttributionKitConfigurations\": {\n    \"AttributionWindows\": {\n      \"com.example.adNetwork\": {\n        \"install\": {\n          \"click\": 2,\n          \"view\": 1\n        }\n      }\n    }\n }"
+    },
+    {
+      "title": "Example Info.plist for configuring attribution window",
+      "language": "json",
+      "startTimeSeconds": 598,
+      "code": "{\n  \"AdAttributionKitConfigurations\": {\n    \"AttributionWindows\": {\n      \"com.example.adNetwork\": {\n        \"install\": {\n          \"click\": 2,\n          \"view\": 1\n        }\n      }\n    }\n }"
+    },
+    {
+      "title": "Example Info.plist for configuring attribution window",
+      "language": "json",
+      "startTimeSeconds": 614,
+      "code": "{\n  \"AdAttributionKitConfigurations\": {\n    \"AttributionWindows\": {\n      \"com.example.adNetwork\": {\n        \"install\": {\n          \"click\": 2,\n          \"ignoreInteractionType\": \"view\"                     \n        }\n      }\n    }\n }"
+    },
+    {
+      "title": "Example Info.plist for configuring attribution window",
+      "language": "json",
+      "startTimeSeconds": 630,
+      "code": "{\n  \"AdAttributionKitConfigurations\": {\n    \"AttributionWindows\": {\n      \"global\": {\n        \"install\": {\n          \"view\": 3\n        }\n      }\n      \"com.example.adNetwork\": {\n        \"install\": {\n          \"click\": 5,\n          \"ignoreInteractionType\": \"view\"\n        }\n      }\n    }\n }"
+    },
+    {
+      "title": "Example Info.plist for configuring attribution window",
+      "language": "json",
+      "startTimeSeconds": 665,
+      "code": "{\n  \"AdAttributionKitConfigurations\": {\n    \"AttributionWindows\": {\n      \"global\": {\n        \"install\": {\n          \"view\": 3\n        }\n      }\n      \"com.example.adNetwork\": {\n        \"install\": {\n          \"click\": 5,\n          \"ignoreInteractionType\": \"view\"\n        }\n      }\n    }\n }"
+    },
+    {
+      "title": "Example Info.plist for configuring attribution cooldown",
+      "language": "json",
+      "startTimeSeconds": 832,
+      "code": "{\n  \"AdAttributionKitConfigurations\": {\n    \"AttributionCooldown\": {\n      \"install-cooldown-hours\": 6，\n      \"reengagement-cooldown-hours\": 1\n    {\n  }\n}"
+    },
+    {
+      "title": "Example install verification token payload",
+      "language": "json",
+      "startTimeSeconds": 962,
+      "code": "{ \n  \"iss\": 13421973,\n  \"iat\": 1745255692,\n  \"iid\": \"34890933\",\n  \"vid\": \"46392455\",\n  \"aud\": \"AppleDownloadVerification-v1\",\n  \"bid\": \"com.example.marketplace\",\n  \"dtype\": \"download\",\n  \"nonce\": \"9BC2C5CC-A1F8-4F93-9D6A-4D524685B67E\"\n}"
+    },
+    {
+      "title": "Example install verification token payload",
+      "language": "json",
+      "startTimeSeconds": 986,
+      "code": "{   \n  \"iss\": 13421973,\n  \"iat\": 1745255692,\n  \"iid\": \"34890933\",\n  \"vid\": \"46392455\",\n  \"aud\": \"AppleDownloadVerification-v1\",\n  \"bid\": \"com.example.marketplace\",\n  \"dtype\": \"download\",\n  \"nonce\": \"9BC2C5CC-A1F8-4F93-9D6A-4D524685B67E\",\n  \"ccode\": \"MT\"\n}"
+    },
+    {
+      "title": "Example postback with country code",
+      "language": "json",
+      "startTimeSeconds": 1025,
+      "code": "{\n   \"ad-interaction-type\": \"click\",\n   \"jws-string\": \"eyJraWQiOiJhcHBsZS1jYXMtaWRlbnRpZmllci8wIiwiYWxnIjoiRVMyNTYifQ.eyJhZHZlcnRpc2VkLWl0ZW0taWRlbnRpZmllciI6Njg0OTM5LCJjb252ZXJzaW9uLXR5cGUiOiJyZS1lbmdhZ2VtZW50IiwibWFya2V0cGxhY2UtaWRlbnRpZmllciI6ImNvbS5hcHBsZS5BcHBTdG9yZSIsImFkLW5ldHdvcmstaWRlbnRpZmllciI6InRlc3QuYWRhdHRyaWJ1dGlvbmtpdCIsImltcHJlc3Npb24tdHlwZSI6ImFwcC1pbXByZXNzaW9uIiwicG9zdGJhY2stc2VxdWVuY2UtaW5kZXgiOjAsInNvdXJjZS1pZGVudGlmaWVyIjoiODM0NCIsImRpZC13aW4iOnRydWUsInBvc3RiYWNrLWlkZW50aWZpZXIiOiIzZjUwZmU1Ny0yOWFlLTQ4NjEtOGMwYi1hYzZhZGRkZmY3MmMiLCJwdWJsaXNoZXItaXRlbS1pZGVudGlmaWVyIjo1ODM4NDkyfQ.AemK1x2ahIPKOnFEEscG4wvipRtR1G6DzpNF4M4joPb8POIH4FJjm4VvcNgLXc9rWBrEDQPvDblduoc7MFcK5w\",\n   \"coarse-conversion-value\": \"medium\",\n   \"country-code\": \"MT\"\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Configuring attribution rules for your app",
+      "url": "https://developer.apple.com/documentation/AdAttributionKit/configuring-attribution-rules-for-your-app",
+      "type": "documentation",
+      "description": "Tune aspects of attribution flow, including the time available to register impressions and the minimum time your app is willing to accept conversions.",
+      "sosumiURL": "https://sosumi.ai/documentation/AdAttributionKit/configuring-attribution-rules-for-your-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AdAttributionKit/configuring-attribution-rules-for-your-app.json"
+    },
+    {
+      "title": "Identifying conversion values with conversion tags",
+      "url": "https://developer.apple.com/documentation/AdAttributionKit/conversion-tags",
+      "type": "documentation",
+      "description": "Use conversion tags to identify and update specific postbacks when you have overlapping conversion windows.",
+      "sosumiURL": "https://sosumi.ai/documentation/AdAttributionKit/conversion-tags",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AdAttributionKit/conversion-tags.json"
+    },
+    {
+      "title": "Creating postbacks in developer settings",
+      "url": "https://developer.apple.com/documentation/AdAttributionKit/creating-postbacks-in-developer-settings",
+      "type": "documentation",
+      "description": "Test development postbacks for your advertised app without interacting with ads from a publisher app.",
+      "sosumiURL": "https://sosumi.ai/documentation/AdAttributionKit/creating-postbacks-in-developer-settings",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AdAttributionKit/creating-postbacks-in-developer-settings.json"
+    },
+    {
+      "title": "Supplying an install verification token",
+      "url": "https://developer.apple.com/documentation/marketplacekit/supplying-an-install-verification-token",
+      "type": "documentation",
+      "description": "Support the installation of alternative distribution apps by creating signed JSON web tokens.",
+      "sosumiURL": "https://sosumi.ai/documentation/marketplacekit/supplying-an-install-verification-token",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/marketplacekit/supplying-an-install-verification-token.json"
+    },
+    {
+      "title": "Verifying a postback",
+      "url": "https://developer.apple.com/documentation/AdAttributionKit/verifying-a-postback",
+      "type": "documentation",
+      "description": "Ensure the validity of a postback you receive after an ad conversion by verifying its cryptographic signature.",
+      "sosumiURL": "https://sosumi.ai/documentation/AdAttributionKit/verifying-a-postback",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AdAttributionKit/verifying-a-postback.json"
+    },
+    {
+      "title": "Enabling Developer Mode on a device",
+      "url": "https://developer.apple.com/documentation/Xcode/enabling-developer-mode-on-a-device",
+      "type": "documentation",
+      "description": "Grant or deny permission for locally installed apps to run in iOS, iPadOS, watchOS, and visionOS.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/enabling-developer-mode-on-a-device",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/enabling-developer-mode-on-a-device.json"
+    },
+    {
+      "title": "AdAttributionKit",
+      "url": "https://developer.apple.com/documentation/AdAttributionKit",
+      "type": "documentation",
+      "description": "Present, process, and register postbacks for in-app ads in the App Store and alternative app marketplaces.",
+      "sosumiURL": "https://sosumi.ai/documentation/AdAttributionKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AdAttributionKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/221-what-s-new-in-adattributionkit/",
+  "files": {
+    "metadata": "sessions/wwdc2025/221-what-s-new-in-adattributionkit/metadata.json",
+    "readme": "sessions/wwdc2025/221-what-s-new-in-adattributionkit/README.md",
+    "transcript": "sessions/wwdc2025/221-what-s-new-in-adattributionkit/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/221-what-s-new-in-adattributionkit/transcript.json"
+  }
+}

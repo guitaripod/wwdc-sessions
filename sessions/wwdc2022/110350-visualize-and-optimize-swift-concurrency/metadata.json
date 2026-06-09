@@ -1,0 +1,92 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-110350",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 110350,
+  "title": "Visualize and optimize Swift concurrency",
+  "description": "Learn how you can optimize your app with the Swift Concurrency template in Instruments. We'll discuss common performance issues and show you how to use Instruments to find and resolve these problems. Learn how you can keep your UI responsive, maximize parallel performance, and analyze Swift concurrency activity within your app. To get the most out of this session, we recommend familiarity with Swift concurrency (including tasks and actors).",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/110350",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/110350",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "swift",
+    "swift concurrency"
+  ],
+  "topics": [
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 1478,
+  "hasTranscript": true,
+  "transcriptWordCount": 3671,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110350/4/3B87EB1E-4E88-4D11-817A-16852AEA794C/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110350/4/3B87EB1E-4E88-4D11-817A-16852AEA794C/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110350/4/3B87EB1E-4E88-4D11-817A-16852AEA794C/downloads/wwdc2022-110350_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110350/4/3B87EB1E-4E88-4D11-817A-16852AEA794C/downloads/wwdc2022-110350_hd.mp4",
+    "duration": 1478
+  },
+  "codeSnippets": [
+    {
+      "title": "CompressionState class",
+      "language": "swift",
+      "startTimeSeconds": 624,
+      "code": "@MainActor\nclass CompressionState: ObservableObject {\n    @Published var files: [FileStatus] = []\n    var logs: [String] = []\n\n    func update(url: URL, progress: Double) {\n        if let loc = files.firstIndex(where: {$0.url == url}) {\n            files[loc].progress = progress\n        }\n    }\n\n    func update(url: URL, uncompressedSize: Int) {\n        if let loc = files.firstIndex(where: {$0.url == url}) {\n            files[loc].uncompressedSize = uncompressedSize\n        }\n    }\n\n    func update(url: URL, compressedSize: Int) {\n        if let loc = files.firstIndex(where: {$0.url == url}) {\n            files[loc].compressedSize = compressedSize\n        }\n    }\n\n    func compressAllFiles() {\n        for file in files {\n            Task {\n                let compressedData = compressFile(url: file.url)\n                await save(compressedData, to: file.url)\n            }\n        }\n    }\n\n    func compressFile(url: URL) -> Data {\n        log(update: \"Starting for \\(url)\")\n        let compressedData = CompressionUtils.compressDataInFile(at: url) { uncompressedSize in\n            update(url: url, uncompressedSize: uncompressedSize)\n        } progressNotification: { progress in\n            update(url: url, progress: progress)\n            log(update: \"Progress for \\(url): \\(progress)\")\n        } finalNotificaton: { compressedSize in\n            update(url: url, compressedSize: compressedSize)\n        }\n        log(update: \"Ending for \\(url)\")\n        return compressedData\n    }\n\n    func log(update: String) {\n        logs.append(update)\n    }"
+    },
+    {
+      "title": "CompressionState class using ParallelCompressor actor",
+      "language": "swift",
+      "startTimeSeconds": 709,
+      "code": "actor ParallelCompressor {\n    var logs: [String] = []\n    unowned let status: CompressionState\n\n    init(status: CompressionState) {\n        self.status = status\n    }\n\n    func compressFile(url: URL) -> Data {\n        log(update: \"Starting for \\(url)\")\n        let compressedData = CompressionUtils.compressDataInFile(at: url) { uncompressedSize in\n            Task { @MainActor in\n                status.update(url: url, uncompressedSize: uncompressedSize)\n            }\n        } progressNotification: { progress in\n            Task { @MainActor in\n                status.update(url: url, progress: progress)\n                await log(update: \"Progress for \\(url): \\(progress)\")\n            }\n        } finalNotificaton: { compressedSize in\n            Task { @MainActor in\n                status.update(url: url, compressedSize: compressedSize)\n            }\n        }\n        log(update: \"Ending for \\(url)\")\n        return compressedData\n    }\n\n    func log(update: String) {\n        logs.append(update)\n    }\n}\n\n@MainActor\nclass CompressionState: ObservableObject {\n    @Published var files: [FileStatus] = []\n    var compressor: ParallelCompressor!\n\n    init() {\n        self.compressor = ParallelCompressor(status: self)\n    }\n\n    func update(url: URL, progress: Double) {\n        if let loc = files.firstIndex(where: {$0.url == url}) {\n            files[loc].progress = progress\n        }\n    }\n\n    func update(url: URL, uncompressedSize: Int) {\n        if let loc = files.firstIndex(where: {$0.url == url}) {\n            files[loc].uncompressedSize = uncompressedSize\n        }\n    }\n\n    func update(url: URL, compressedSize: Int) {\n        if let loc = files.firstIndex(where: {$0.url == url}) {\n            files[loc].compressedSize = compressedSize\n        }\n    }\n\n    func compressAllFiles() {\n        for file in files {\n            Task {\n                let compressedData = await compressor.compressFile(url: file.url)\n                await save(compressedData, to: file.url)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "CompressionState class using ParallelCompressor with minimal actor-isolation and detached tasks",
+      "language": "swift",
+      "startTimeSeconds": 1066,
+      "code": "actor ParallelCompressor {\n    var logs: [String] = []\n    unowned let status: CompressionState\n\n    init(status: CompressionState) {\n        self.status = status\n    }\n\n    nonisolated func compressFile(url: URL) async -> Data {\n        await log(update: \"Starting for \\(url)\")\n        let compressedData = CompressionUtils.compressDataInFile(at: url) { uncompressedSize in\n            Task { @MainActor in\n                status.update(url: url, uncompressedSize: uncompressedSize)\n            }\n        } progressNotification: { progress in\n            Task { @MainActor in\n                status.update(url: url, progress: progress)\n                await log(update: \"Progress for \\(url): \\(progress)\")\n            }\n        } finalNotificaton: { compressedSize in\n            Task { @MainActor in\n                status.update(url: url, compressedSize: compressedSize)\n            }\n        }\n        await log(update: \"Ending for \\(url)\")\n        return compressedData\n    }\n\n    func log(update: String) {\n        logs.append(update)\n    }\n}\n\n@MainActor\nclass CompressionState: ObservableObject {\n    @Published var files: [FileStatus] = []\n    var compressor: ParallelCompressor!\n\n    init() {\n        self.compressor = ParallelCompressor(status: self)\n    }\n\n    func update(url: URL, progress: Double) {\n        if let loc = files.firstIndex(where: {$0.url == url}) {\n            files[loc].progress = progress\n        }\n    }\n\n    func update(url: URL, uncompressedSize: Int) {\n        if let loc = files.firstIndex(where: {$0.url == url}) {\n            files[loc].uncompressedSize = uncompressedSize\n        }\n    }\n\n    func update(url: URL, compressedSize: Int) {\n        if let loc = files.firstIndex(where: {$0.url == url}) {\n            files[loc].compressedSize = compressedSize\n        }\n    }\n\n    func compressAllFiles() {\n        for file in files {\n            Task.detached {\n                let compressedData = await self.compressor.compressFile(url: file.url)\n                await save(compressedData, to: file.url)\n            }\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Concurrency",
+      "url": "https://developer.apple.com/documentation/Swift/concurrency",
+      "type": "documentation",
+      "description": "Perform asynchronous and parallel operations.",
+      "sosumiURL": "https://sosumi.ai/documentation/Swift/concurrency",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Swift/concurrency.json"
+    },
+    {
+      "title": "The Swift Programming Language: Concurrency",
+      "url": "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency/",
+      "type": "guide",
+      "description": "The chapter of the Language Guide in The Swift Programming Language that covers asynchronous and parallel code, including asynchronous functions (async/await), asynchronous sequences (AsyncSequence), async let, tasks, task groups, and actors."
+    }
+  ],
+  "path": "sessions/wwdc2022/110350-visualize-and-optimize-swift-concurrency/",
+  "files": {
+    "metadata": "sessions/wwdc2022/110350-visualize-and-optimize-swift-concurrency/metadata.json",
+    "readme": "sessions/wwdc2022/110350-visualize-and-optimize-swift-concurrency/README.md",
+    "transcript": "sessions/wwdc2022/110350-visualize-and-optimize-swift-concurrency/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/110350-visualize-and-optimize-swift-concurrency/transcript.json"
+  }
+}

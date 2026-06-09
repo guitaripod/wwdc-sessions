@@ -1,0 +1,51 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "meet-with-apple-254",
+  "event": "meet-with-apple",
+  "eventName": "Meet with Apple",
+  "year": 2025,
+  "eventContentId": 254,
+  "title": "Liquid Glass showcase: LTK",
+  "description": "Learn how LTK evolved their app for iOS 26 and Liquid Glass. In this video, Jeseka Hahn, VP of Product Design, explains how her team created alignment while boosting engagement and efficiency. This session was originally presented as part of the Meet with Apple activity “Showcase: Learn how apps are integrating the new design and Liquid Glass” Watch the full video for more insights and related sessions.",
+  "url": "https://developer.apple.com/videos/play/meet-with-apple/254",
+  "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/254",
+  "type": "Video",
+  "publishedAt": "2025-12-18T00:00:00-08:00",
+  "platforms": [
+    "iOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 573,
+  "hasTranscript": true,
+  "transcriptWordCount": 1106,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/254/3/58a8e309-f6a9-4f30-a0b4-ad188d036f66/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/254/3/58a8e309-f6a9-4f30-a0b4-ad188d036f66/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/254/3/58a8e309-f6a9-4f30-a0b4-ad188d036f66/downloads/meet-with-apple-254_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/254/3/58a8e309-f6a9-4f30-a0b4-ad188d036f66/downloads/meet-with-apple-254_hd.mp4",
+    "duration": 573
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/meet-with-apple/254-liquid-glass-showcase-ltk/",
+  "files": {
+    "metadata": "sessions/meet-with-apple/254-liquid-glass-showcase-ltk/metadata.json",
+    "readme": "sessions/meet-with-apple/254-liquid-glass-showcase-ltk/README.md",
+    "transcript": "sessions/meet-with-apple/254-liquid-glass-showcase-ltk/transcript.md",
+    "transcriptJSON": "sessions/meet-with-apple/254-liquid-glass-showcase-ltk/transcript.json"
+  }
+}

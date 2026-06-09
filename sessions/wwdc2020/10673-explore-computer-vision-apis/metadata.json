@@ -1,0 +1,102 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10673",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10673,
+  "title": "Explore Computer Vision APIs",
+  "description": "Learn how to bring Computer Vision intelligence to your app when you combine the power of Core Image, Vision, and Core ML. Go beyond machine learning alone and gain a deeper understanding of images and video. Discover new APIs in Core Image and Vision to bring Computer Vision to your application like new thresholding filters as well as Contour Detection and Optical Flow. And consider ways to use Core Image for preprocessing and visualization of these results. To learn more about the underlying frameworks see \"Vision Framework: Building on Core ML\" and \"Core Image: Performance, Prototyping, and Python.\" And to further explore Computer Vision APIs, be sure to check out the \"Detect Body and Hand Pose with Vision\" and \"Explore the Action & Vision app\" sessions.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10673",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10673",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "cifilter",
+    "ci filters",
+    "ciimage",
+    "cikernel",
+    "computer vision",
+    "contour",
+    "core image",
+    "core ml",
+    "machine learning",
+    "optical flow",
+    "trajectory",
+    "vision",
+    "visualization"
+  ],
+  "topics": [
+    "Photos & Camera",
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1475,
+  "hasTranscript": true,
+  "transcriptWordCount": 3520,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10673/6/A7DA76C9-CB5E-4F5D-9E99-B41AE63BE071/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10673/6/A7DA76C9-CB5E-4F5D-9E99-B41AE63BE071/wwdc2020_10673_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10673/6/A7DA76C9-CB5E-4F5D-9E99-B41AE63BE071/wwdc2020_10673_hd.mp4",
+    "duration": 1475
+  },
+  "codeSnippets": [
+    {
+      "title": "Reading punchcards playgrounds",
+      "language": "swift",
+      "startTimeSeconds": 1164,
+      "code": "import UIKit\nimport CoreImage\nimport CoreImage.CIFilterBuiltins\nimport Vision\n\n\npublic func drawContours(contoursObservation: VNContoursObservation, sourceImage: CGImage) -> UIImage {\n\tlet size = CGSize(width: sourceImage.width, height: sourceImage.height)\n\tlet renderer = UIGraphicsImageRenderer(size: size)\n\n\tlet renderedImage = renderer.image { (context) in \n\n\t\tlet renderingContext = context.cgContext\n\n    // flip the context\n    let flipVertical = CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: size.height)\n    renderingContext.concatenate(flipVertical)\n\n\t\t// draw the original image\n\t\trenderingContext.draw(sourceImage, in: CGRect(x: 0, y: 0, width: size.width, height: size.height))\n\n\t\trenderingContext.scaleBy(x: size.width, y: size.height)\n\t\trenderingContext.setLineWidth(3.0 / CGFloat(size.width))\n\t\tlet redUIColor = UIColor.red\n\t\trenderingContext.setStrokeColor(redUIColor.cgColor)\n\t\trenderingContext.addPath(contoursObservation.normalizedPath)\n\t\trenderingContext.strokePath()\n\t}\n\n\treturn renderedImage;\n}\n\nlet context = CIContext()\nif let sourceImage = UIImage.init(named: \"punchCard.jpg\")\n{\n\tvar inputImage = CIImage.init(cgImage: sourceImage.cgImage!)\n\n\tlet contourRequest = VNDetectContoursRequest.init()\n\n// Uncomment the follwing section to preprocess the image\n//\tdo {\n//\t\t\tlet noiseReductionFilter = CIFilter.gaussianBlur()\n//\t\t\tnoiseReductionFilter.radius = 1.5\n//\t\t\tnoiseReductionFilter.inputImage = inputImage\n//\n//\t\t\tlet monochromeFilter = CIFilter.colorControls()\n//\t\t\tmonochromeFilter.inputImage = noiseReductionFilter.outputImage!\n//\t\t\tmonochromeFilter.contrast = 20.0\n//\t\t\tmonochromeFilter.brightness = 8\n//\t\t\tmonochromeFilter.saturation = 50\n//\n//\t\t\tlet filteredImage = monochromeFilter.outputImage!\n//\n//\t\t\tinputImage = filteredImage\n//\t\t}\n\n\tlet requestHandler = VNImageRequestHandler.init(ciImage: inputImage, options: [:])\n\n\ttry requestHandler.perform([contourRequest])\n\tlet contoursObservation = contourRequest.results?.first as! VNContoursObservation\n\tprint(contoursObservation.contourCount)\n\t_ = drawContours(contoursObservation: contoursObservation, sourceImage: sourceImage.cgImage!)\n} else {\n\tprint(\"could not load image\")\n}"
+    },
+    {
+      "title": "Optical Flow Visualizer (CI kernel)",
+      "language": "swift",
+      "startTimeSeconds": 1385,
+      "code": "//\n//  OpticalFlowVisualizer.cikernel\n//  SampleVideoCompositionWithCIFilter\n//\n\n\nkernel vec4 flowView2(sampler image, float minLen, float maxLen, float size, float tipAngle)\n{\n\t/// Determine the color by calculating the angle from the .xy vector\n\t///\n\tvec4 s = sample(image, samplerCoord(image));\n\tvec2 vector = s.rg - 0.5;\n\tfloat len = length(vector);\n\tfloat H = atan(vector.y,vector.x);\n\t// convert hue to a RGB color\n\tH *= 3.0/3.1415926; // now range [3,3)\n\tfloat i = floor(H);\n\tfloat f = H-i;\n\tfloat a = f;\n\tfloat d = 1.0 - a;\n\tvec4 c;\n\t\t if (H<-3.0) c = vec4(0, 1, 1, 1);\n\telse if (H<-2.0) c = vec4(0, d, 1, 1);\n\telse if (H<-1.0) c = vec4(a, 0, 1, 1);\n\telse if (H<0.0)  c = vec4(1, 0, d, 1);\n\telse if (H<1.0)  c = vec4(1, a, 0, 1);\n\telse if (H<2.0)  c = vec4(d, 1, 0, 1);\n\telse if (H<3.0)  c = vec4(0, 1, a, 1);\n\telse             c = vec4(0, 1, 1, 1);\n\t// make the color darker if the .xy vector is shorter\n\tc.rgb *= clamp((len-minLen)/(maxLen-minLen), 0.0,1.0);\n\t/// Add arrow shapes based on the angle from the .xy vector\n\t///\n\tfloat tipAngleRadians = tipAngle * 3.1415/180.0;\n\tvec2 dc = destCoord(); // current coordinate\n\tvec2 dcm = floor((dc/size)+0.5)*size; // cell center coordinate\n\tvec2 delta = dcm - dc; // coordinate relative to center of cell\n\t// sample the .xy vector from the center of each cell\n\tvec4 sm = sample(image, samplerTransform(image, dcm));\n\tvector = sm.rg - 0.5;\n\tlen = length(vector);\n\tH = atan(vector.y,vector.x);\n\tfloat rotx, k, sideOffset, sideAngle;\n\t// these are the three sides of the arrow\n\trotx = delta.x*cos(H) - delta.y*sin(H);\n\tsideOffset = size*0.5*cos(tipAngleRadians);\n\tk = 1.0 - clamp(rotx-sideOffset, 0.0, 1.0);\n\tc.rgb *= k;\n\tsideAngle = (3.14159 - tipAngleRadians)/2.0;\n\tsideOffset = 0.5 * sin(tipAngleRadians / 2.0);\n\trotx = delta.x*cos(H-sideAngle) - delta.y*sin(H-sideAngle);\n\tk = clamp(rotx+size*sideOffset, 0.0, 1.0);\n\tc.rgb *= k;\n\trotx = delta.x*cos(H+sideAngle) - delta.y*sin(H+sideAngle);\n\tk = clamp(rotx+ size*sideOffset, 0.0, 1.0);\n\tc.rgb *= k;\n\t/// return the color premultiplied\n\tc *= s.a;\n\treturn c;\n}"
+    },
+    {
+      "title": "Optical Flow Visualizer (CIFilter code)",
+      "language": "swift",
+      "startTimeSeconds": 1406,
+      "code": "class OpticalFlowVisualizerFilter: CIFilter {\n\tvar inputImage: CIImage?\n\n\tlet callback: CIKernelROICallback = {\n\t\t\t(index, rect) in\n\t\t\t\treturn rect\n\t\t\t}\n\n\tstatic var kernel: CIKernel = { () -> CIKernel in\n\t\tlet url = Bundle.main.url(forResource: \"OpticalFlowVisualizer\",\n\t\t\t\t\t\t\t\t  withExtension: \"ci.metallib\")!\n\t\tlet data = try! Data(contentsOf: url)\n\n\t\treturn try! CIKernel(functionName: \"flowView2\",\n\t\t\t\t\t\t\t\t  fromMetalLibraryData: data)\n\t}()\n\n\toverride var outputImage : CIImage? {\n\t\tget {\n\t\t\tguard let input = inputImage else {return nil}\n\t\t\treturn OpticalFlowVisualizerFilter.kernel.apply(extent: input.extent, roiCallback: callback, arguments: [input, 0.0, 100.0, 10.0, 30.0])\n\t\t}\n\t}\n}"
+    },
+    {
+      "title": "Optical Flow Visualizer (Vision code)",
+      "language": "swift",
+      "startTimeSeconds": 1422,
+      "code": "var requestHandler = VNSequenceRequestHandler()\n            var previousImage:CIImage?\n\t\t\tif (self.previousImage == nil) \n\t\t\t{\n\t\t\t\tself.previousImage = request.sourceImage\n\t\t\t}\n\t\t\tlet visionRequest = VNGenerateOpticalFlowRequest(targetedCIImage: source, options: [:])\n\n\t\t\tdo {\n\t\t\t\ttry self.requestHandler.perform([visionRequest], on: self.previousImage!)\n\t\t\t\tif let pixelBufferObservation = visionRequest.results?.first as? VNPixelBufferObservation\n\t\t\t\t{\n\t\t\t\t\tsource = CIImage(cvImageBuffer: pixelBufferObservation.pixelBuffer)\n\t\t\t\t}\n\t\t\t} catch {\n\t\t\t\tprint(error)\n\t\t\t}\n\t\t\t// store the previous image\n\t\t\tself.previousImage = request.sourceImage\n\n\t\t\tlet ciFilter = OpticalFlowVisualizerFilter()\n\t\t\tciFilter.inputImage = source\n\t\t\tlet output = ciFilter.outputImage"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Vision",
+      "url": "https://developer.apple.com/documentation/Vision",
+      "type": "documentation",
+      "description": "Analyze image and video content in your app using computer vision algorithms for object detection, text recognition, and image segmentation.",
+      "sosumiURL": "https://sosumi.ai/documentation/Vision",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Vision.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10673-explore-computer-vision-apis/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10673-explore-computer-vision-apis/metadata.json",
+    "readme": "sessions/wwdc2020/10673-explore-computer-vision-apis/README.md",
+    "transcript": "sessions/wwdc2020/10673-explore-computer-vision-apis/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10673-explore-computer-vision-apis/transcript.json"
+  }
+}

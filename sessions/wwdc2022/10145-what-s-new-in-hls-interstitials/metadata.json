@@ -1,0 +1,69 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2022-10145",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10145,
+  "title": "What’s new in HLS Interstitials",
+  "description": "HLS Interstitials can help you create seamless transitions in video content between advertisements, other interstitials, and your HLS streams. Learn how you can optimize your ad inventory, fine-tune interstitial presentation with SNAP-IN/OUT when using HLS, and more.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10145",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10145",
+  "type": "Video",
+  "publishedAt": "2022-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "ad cueing",
+    "ads",
+    "avfoundation",
+    "cue",
+    "interstitials",
+    "mid rolls",
+    "pre rolls",
+    "snap"
+  ],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 566,
+  "hasTranscript": true,
+  "transcriptWordCount": 1559,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10145/4/1BA9D9C4-C8EC-4D33-A67A-2DFEBD032041/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10145/4/1BA9D9C4-C8EC-4D33-A67A-2DFEBD032041/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10145/4/1BA9D9C4-C8EC-4D33-A67A-2DFEBD032041/downloads/wwdc2022-10145_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10145/4/1BA9D9C4-C8EC-4D33-A67A-2DFEBD032041/downloads/wwdc2022-10145_hd.mp4",
+    "duration": 566
+  },
+  "codeSnippets": [
+    {
+      "title": "Client schedules an ad pod at 10s into primary asset",
+      "language": "swift",
+      "startTimeSeconds": 478,
+      "code": "// Client schedules an ad pod at 10s into primary asset\n let player  = AVPlayer( url: movieURL )  // no ads in primary asset\n let controller = AVPlayerInterstitialEventController( primaryPlayer: player )\n let adPodTemplates = [AVPlayerItem( url: ad1URL ), AVPlayerItem( url: ad2URL )]\n let event = AVPlayerInterstitialEvent( primaryItem: player.currentItem,\n                              time: CMTime( seconds: 10, preferredTimescale: 1 ),\n                                      )\n event.templateItems = adPodTemplates\n event.identifier = \"Ad1\"\n event.restrictions = []\n event.resumptionOffset = .zero\n event.playoutLimit = .invalid\n event.cue = .none\n\n controller.events = [event]\n player.currentItem.translatesPlayerInterstitialEvents = true\n let vc = AVPlayerViewController()\n vc.player = player\n player.play()"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2022/10145-what-s-new-in-hls-interstitials/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10145-what-s-new-in-hls-interstitials/metadata.json",
+    "readme": "sessions/wwdc2022/10145-what-s-new-in-hls-interstitials/README.md",
+    "transcript": "sessions/wwdc2022/10145-what-s-new-in-hls-interstitials/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10145-what-s-new-in-hls-interstitials/transcript.json"
+  }
+}

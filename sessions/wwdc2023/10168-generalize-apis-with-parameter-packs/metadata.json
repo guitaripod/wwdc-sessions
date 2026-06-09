@@ -1,0 +1,188 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2023-10168",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10168,
+  "title": "Generalize APIs with parameter packs",
+  "description": "Swift parameter packs are a powerful tool to expand what is possible in your generic code while also enabling you to simplify common generic patterns. We’ll show you how to abstract over types as well as the number of arguments in generic code and simplify common generic patterns to avoid overloads. To get the most out of this session, we recommend first checking out “Embrace Swift generics\" from WWDC22.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10168",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10168",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 1104,
+  "hasTranscript": true,
+  "transcriptWordCount": 2797,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10168/4/C4DB8728-EFE7-49D9-B61E-3061B8F31EF5/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10168/4/C4DB8728-EFE7-49D9-B61E-3061B8F31EF5/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10168/4/C4DB8728-EFE7-49D9-B61E-3061B8F31EF5/downloads/wwdc2023-10168_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10168/4/C4DB8728-EFE7-49D9-B61E-3061B8F31EF5/downloads/wwdc2023-10168_hd.mp4",
+    "duration": 1104
+  },
+  "codeSnippets": [
+    {
+      "title": "radians function",
+      "language": "swift",
+      "startTimeSeconds": 73,
+      "code": "func radians(from degrees: Double) -> Double"
+    },
+    {
+      "title": "Array type",
+      "language": "swift",
+      "startTimeSeconds": 86,
+      "code": "struct Array<Element>"
+    },
+    {
+      "title": "radians function and Array type with concrete expressions",
+      "language": "swift",
+      "startTimeSeconds": 108,
+      "code": "func radians(from degrees: Double) -> Double\nradians(from: 180)\n\nstruct Array<Element>\nArray<Int>"
+    },
+    {
+      "title": "generic query",
+      "language": "swift",
+      "startTimeSeconds": 124,
+      "code": "func query<Payload>(_ item: Request<Payload>) -> Payload"
+    },
+    {
+      "title": "variadic query",
+      "language": "swift",
+      "startTimeSeconds": 142,
+      "code": "func query(_ item: Request...)"
+    },
+    {
+      "title": "generic query",
+      "language": "swift",
+      "startTimeSeconds": 196,
+      "code": "func query<Payload>(_ item: Request<Payload>) -> Payload"
+    },
+    {
+      "title": "two query overloads",
+      "language": "swift",
+      "startTimeSeconds": 203,
+      "code": "func query<Payload>(\n    _ item: Request<Payload>\n) -> Payload\n\nfunc query<Payload1, Payload2>(\n    _ item1: Request<Payload1>,\n    _ item2: Request<Payload2>\n) -> (Payload1, Payload2)"
+    },
+    {
+      "title": "three query overloads",
+      "language": "swift",
+      "startTimeSeconds": 208,
+      "code": "func query<Payload>(\n    _ item: Request<Payload>\n) -> Payload\n\nfunc query<Payload1, Payload2>(\n    _ item1: Request<Payload1>,\n    _ item2: Request<Payload2>\n) -> (Payload1, Payload2)\n\nfunc query<Payload1, Payload2, Payload3>(\n    _ item1: Request<Payload1>,\n    _ item2: Request<Payload2>,\n    _ item3: Request<Payload3>\n) -> (Payload1, Payload2, Payload3)"
+    },
+    {
+      "title": "four query overloads with extra argument error",
+      "language": "swift",
+      "startTimeSeconds": 211,
+      "code": "func query<Payload>(\n    _ item: Request<Payload>\n) -> Payload\n\nfunc query<Payload1, Payload2>(\n    _ item1: Request<Payload1>,\n    _ item2: Request<Payload2>\n) -> (Payload1, Payload2)\n\nfunc query<Payload1, Payload2, Payload3>(\n    _ item1: Request<Payload1>,\n    _ item2: Request<Payload2>,\n    _ item3: Request<Payload3>\n) -> (Payload1, Payload2, Payload3)\n\nfunc query<Payload1, Payload2, Payload3, Payload4>(\n    _ item1: Request<Payload1>,\n    _ item2: Request<Payload2>,\n    _ item3: Request<Payload3>,\n    _ item4: Request<Payload4>\n) -> (Payload1, Payload2, Payload3, Payload4)\n\nlet _ = query(r1, r2, r3, r4, r5)"
+    },
+    {
+      "title": "for-in loop over requests",
+      "language": "swift",
+      "startTimeSeconds": 352,
+      "code": "for request in requests {\n    evaluate(request)\n}"
+    },
+    {
+      "title": "four query overloads",
+      "language": "swift",
+      "startTimeSeconds": 521,
+      "code": "func query<Payload>(\n    _ item: Request<Payload>\n) -> Payload\n\nfunc query<Payload1, Payload2>(\n    _ item1: Request<Payload1>,\n    _ item2: Request<Payload2>\n) -> (Payload1, Payload2)\n\nfunc query<Payload1, Payload2, Payload3>(\n    _ item1: Request<Payload1>,\n    _ item2: Request<Payload2>,\n    _ item3: Request<Payload3>\n) -> (Payload1, Payload2, Payload3)\n\nfunc query<Payload1, Payload2, Payload3, Payload4>(\n    _ item1: Request<Payload1>,\n    _ item2: Request<Payload2>,\n    _ item3: Request<Payload3>,\n    _ item4: Request<Payload4>\n) -> (Payload1, Payload2, Payload3, Payload4)"
+    },
+    {
+      "title": "parameter pack query interface",
+      "language": "swift",
+      "startTimeSeconds": 577,
+      "code": "func query<each Payload>(_ item: repeat Request<each Payload>) -> (repeat each Payload)"
+    },
+    {
+      "title": "parameter pack query with single argument call",
+      "language": "swift",
+      "startTimeSeconds": 601,
+      "code": "func query<each Payload>(_ item: repeat Request<each Payload>) -> (repeat each Payload)\n\nlet result = query(Request<Int>())"
+    },
+    {
+      "title": "parameter pack query with single and triple argument calls",
+      "language": "swift",
+      "startTimeSeconds": 608,
+      "code": "func query<each Payload>(_ item: repeat Request<each Payload>) -> (repeat each Payload)\n\nlet result = query(Request<Int>())\n\nlet results = query(Request<Int>(), Request<String>(), Request<Bool>())"
+    },
+    {
+      "title": "parameter pack query with triple argument call",
+      "language": "swift",
+      "startTimeSeconds": 615,
+      "code": "func query<each Payload>(_ item: repeat Request<each Payload>) -> (repeat each Payload)\n\nlet results = query(Request<Int>(), Request<String>(), Request<Bool>())"
+    },
+    {
+      "title": "parameter pack query interface",
+      "language": "swift",
+      "startTimeSeconds": 656,
+      "code": "func query<each Payload>(\n    _ item: repeat Request<each Payload>\n) -> (repeat each Payload)"
+    },
+    {
+      "title": "parameter pack query interface with conformance",
+      "language": "swift",
+      "startTimeSeconds": 663,
+      "code": "func query<each Payload: Equatable>(\n  _ item: repeat Request<each Payload>\n) -> (repeat each Payload)"
+    },
+    {
+      "title": "parameter pack query interface with where clause",
+      "language": "swift",
+      "startTimeSeconds": 677,
+      "code": "func query<each Payload>(\n    _ item: repeat Request<each Payload>\n) -> (repeat each Payload)\n    where repeat each Payload: Equatable"
+    },
+    {
+      "title": "parameter pack query interface with minimum parameter count",
+      "language": "swift",
+      "startTimeSeconds": 704,
+      "code": "func query<FirstPayload, each Payload>(\n    _ first: Request<FirstPayload>, _ item: repeat Request<each Payload>\n) -> (FirstPayload, repeat each Payload) \n    where FirstPayload: Equatable, repeat each Payload: Equatable"
+    },
+    {
+      "title": "parameter pack query implementation",
+      "language": "swift",
+      "startTimeSeconds": 822,
+      "code": "struct Request<Payload> {\n    func evaluate() -> Payload\n}\n\nfunc query<each Payload>(_ item: repeat Request<each Payload>) -> (repeat each Payload) {\n    return (repeat (each item).evaluate())\n}"
+    },
+    {
+      "title": "parameter pack query implementation with different input and output types",
+      "language": "swift",
+      "startTimeSeconds": 964,
+      "code": "protocol RequestProtocol {\n    associatedtype Input\n    associatedtype Output\n    func evaluate(_ input: Input) -> Output\n}\n\nstruct Evaluator<each Request: RequestProtocol> {\n    var item: (repeat each Request)\n\n    func query(_ input: repeat (each Request).Input) -> (repeat (each Request).Output) {\n        return (repeat (each item).evaluate(each input))\n    }\n}"
+    },
+    {
+      "title": "parameter pack query implementation with control flow break",
+      "language": "swift",
+      "startTimeSeconds": 1025,
+      "code": "protocol RequestProtocol {\n    associatedtype Input\n    associatedtype Output\n    func evaluate(_ input: Input) throws -> Output\n}\n\nstruct Evaluator<each Request: RequestProtocol> {\n    var item: (repeat each Request)\n\n    func query(_ input: repeat (each Request).Input) -> (repeat (each Request).Output)? {\n        do {\n            return (repeat try (each item).evaluate(each input))\n        } catch {\n            return nil\n        }\n    }\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2023/10168-generalize-apis-with-parameter-packs/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10168-generalize-apis-with-parameter-packs/metadata.json",
+    "readme": "sessions/wwdc2023/10168-generalize-apis-with-parameter-packs/README.md",
+    "transcript": "sessions/wwdc2023/10168-generalize-apis-with-parameter-packs/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10168-generalize-apis-with-parameter-packs/transcript.json"
+  }
+}

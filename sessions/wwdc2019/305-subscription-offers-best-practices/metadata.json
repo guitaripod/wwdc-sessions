@@ -1,0 +1,111 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2019-305",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 305,
+  "title": "Subscription Offers Best Practices",
+  "description": "Dive into implementation best practices for Subscription Offers using StoreKit and server-side logic. Learn how to generate signatures, determine customer eligibility, and reduce churn, plus gain insights into strategies for distributing offers to your customers and utilizing Subscription Offers to give your subscribers the best experience.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/305",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/305",
+  "type": "Video",
+  "publishedAt": "2019-06-07T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "in-app purchase",
+    "storekit",
+    "subscription"
+  ],
+  "topics": [
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 2703,
+  "hasTranscript": true,
+  "transcriptWordCount": 6806,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/305k64jjy5srpt9o/305/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/305k64jjy5srpt9o/305/305_sd_subscription_offers_best_practices.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/305k64jjy5srpt9o/305/305_hd_subscription_offers_best_practices.mp4",
+    "duration": 2703
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Generating a Promotional Offer Signature on the Server",
+      "url": "https://developer.apple.com/documentation/StoreKit/generating-a-promotional-offer-signature-on-the-server",
+      "type": "samplecode",
+      "description": "Generate a signature using your private key and lightweight cryptography libraries.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/generating-a-promotional-offer-signature-on-the-server",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/generating-a-promotional-offer-signature-on-the-server.json"
+    },
+    {
+      "title": "Generating a signature for promotional offers",
+      "url": "https://developer.apple.com/documentation/StoreKit/generating-a-signature-for-promotional-offers",
+      "type": "documentation",
+      "description": "Create a signature to validate a promotional offer using your private key.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/generating-a-signature-for-promotional-offers",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/generating-a-signature-for-promotional-offers.json"
+    },
+    {
+      "title": "Promote Your Subscriptions with New Offers",
+      "url": "https://developer.apple.com/app-store-connect/whats-new/?id=02222019",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/app-store-connect/whats-new/?id=02222019"
+    },
+    {
+      "title": "Setting up promotional offers",
+      "url": "https://developer.apple.com/documentation/StoreKit/setting-up-promotional-offers",
+      "type": "documentation",
+      "description": "Generate a key and configure offers for auto-renewable subscriptions in App Store Connect.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/setting-up-promotional-offers",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/setting-up-promotional-offers.json"
+    },
+    {
+      "title": "Implementing promotional offers in your app",
+      "url": "https://developer.apple.com/documentation/StoreKit/implementing-promotional-offers-in-your-app",
+      "type": "documentation",
+      "description": "Offer discounted pricing for auto-renewable subscription products to eligible subscribers.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/implementing-promotional-offers-in-your-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/implementing-promotional-offers-in-your-app.json"
+    },
+    {
+      "title": "Learn more about designing subscriptions",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/subscriptions/overview/",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/subscriptions/overview/"
+    },
+    {
+      "title": "Auto-renewable subscriptions overview",
+      "url": "https://developer.apple.com/app-store/subscriptions/",
+      "type": "documentation",
+      "description": "Auto-Renewable Subscriptions",
+      "sosumiURL": "https://sosumi.ai/app-store/subscriptions/"
+    }
+  ],
+  "path": "sessions/wwdc2019/305-subscription-offers-best-practices/",
+  "files": {
+    "metadata": "sessions/wwdc2019/305-subscription-offers-best-practices/metadata.json",
+    "readme": "sessions/wwdc2019/305-subscription-offers-best-practices/README.md",
+    "transcript": "sessions/wwdc2019/305-subscription-offers-best-practices/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/305-subscription-offers-best-practices/transcript.json"
+  }
+}

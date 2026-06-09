@@ -1,0 +1,64 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10194",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10194,
+  "title": "Add configuration and intelligence to your widgets",
+  "description": "Widgets are at their best when they show up on someone’s Home screen or in the Today View at the right time and provide actionable, relevant information. We’ll show you how to build configurable widgets to let people create a personalized Home screen experience, and that take advantage of system intelligence to help people get what they want, when they want it. Learn how to customize your widget’s configuration interface, and how to appear within Siri Suggestions or at the top of a widget Smart Stack based on user behavior or by letting the system know when there's new, timely information. For more on widgets, watch \"Meet WidgetKit\". And for more on system intelligence, watch the collection \"Design for Intelligence.\"",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10194",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10194",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "donations",
+    "intelligence",
+    "intelligent system experience",
+    "intents",
+    "proactive",
+    "shortcuts",
+    "stack intelligence",
+    "stacks",
+    "system intelligence",
+    "widget",
+    "widgetkit"
+  ],
+  "topics": [
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1652,
+  "hasTranscript": true,
+  "transcriptWordCount": 4423,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10194/2/F906ACBE-2D67-4594-B041-E1F11352CF3A/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10194/2/F906ACBE-2D67-4594-B041-E1F11352CF3A/wwdc2020_10194_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10194/2/F906ACBE-2D67-4594-B041-E1F11352CF3A/wwdc2020_10194_hd.mp4",
+    "duration": 1652
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2020/10194-add-configuration-and-intelligence-to-your-widgets/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10194-add-configuration-and-intelligence-to-your-widgets/metadata.json",
+    "readme": "sessions/wwdc2020/10194-add-configuration-and-intelligence-to-your-widgets/README.md",
+    "transcript": "sessions/wwdc2020/10194-add-configuration-and-intelligence-to-your-widgets/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10194-add-configuration-and-intelligence-to-your-widgets/transcript.json"
+  }
+}

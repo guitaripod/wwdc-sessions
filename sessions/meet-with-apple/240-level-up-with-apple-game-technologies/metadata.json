@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "meet-with-apple-240",
+  "event": "meet-with-apple",
+  "eventName": "Meet with Apple",
+  "year": 2025,
+  "eventContentId": 240,
+  "title": "Level up with Apple game technologies",
+  "description": "Explore the frameworks and technologies that can help you deliver great player experiences across the Apple ecosystem. Learn how to use frameworks like GameSave and MetalFX, and tools like Game Mode and Managed Background Assets, to boost performance, streamline launches, and create seamless gameplay on Apple devices. This session was originally presented as part of the Meet with Apple activity “Press Start: Game development on Apple platforms.” Watch the full video for more insights and related sessions.",
+  "url": "https://developer.apple.com/videos/play/meet-with-apple/240",
+  "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/240",
+  "type": "Video",
+  "publishedAt": "2025-12-12T00:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1157,
+  "hasTranscript": true,
+  "transcriptWordCount": 3026,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/240/2/b3ec888c-8046-4ed6-a6a0-d6e384975b0e/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/240/2/b3ec888c-8046-4ed6-a6a0-d6e384975b0e/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/240/2/b3ec888c-8046-4ed6-a6a0-d6e384975b0e/downloads/meet-with-apple-240_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/240/2/b3ec888c-8046-4ed6-a6a0-d6e384975b0e/downloads/meet-with-apple-240_hd.mp4",
+    "duration": 1157
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Download the Game Porting Toolkit",
+      "url": "https://developer.apple.com/games/game-porting-toolkit/",
+      "type": "documentation",
+      "description": "The Game Porting Toolkit includes an updated set of tools that can help you accelerate porting your advanced games to Mac, and to get them up and running on iPad and iPhone.",
+      "sosumiURL": "https://sosumi.ai/games/game-porting-toolkit/"
+    },
+    {
+      "title": "Human Interface Guidelines: Designing for games",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/designing-for-games",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/designing-for-games"
+    },
+    {
+      "title": "Apple Technologies for Game Developers",
+      "url": "https://developer.apple.com/games/",
+      "type": "documentation",
+      "description": "Apple Technologies for Game Developers",
+      "sosumiURL": "https://sosumi.ai/games/"
+    }
+  ],
+  "path": "sessions/meet-with-apple/240-level-up-with-apple-game-technologies/",
+  "files": {
+    "metadata": "sessions/meet-with-apple/240-level-up-with-apple-game-technologies/metadata.json",
+    "readme": "sessions/meet-with-apple/240-level-up-with-apple-game-technologies/README.md",
+    "transcript": "sessions/meet-with-apple/240-level-up-with-apple-game-technologies/transcript.md",
+    "transcriptJSON": "sessions/meet-with-apple/240-level-up-with-apple-game-technologies/transcript.json"
+  }
+}

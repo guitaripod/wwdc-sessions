@@ -1,0 +1,151 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2020-10056",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10056,
+  "title": "Optimize the interface of your Mac Catalyst app",
+  "description": "Discover how to tailor your Mac Catalyst app so that it looks and feels even more at home on the Mac by using the new “Optimize Interface for Mac” option in Xcode. Explore new layout and appearance options for Catalyst apps, and learn how they can provide you with graphical performance gains, sharper text, and an interface designed specifically for Apple’s desktops and laptops. We’ll show you how to take advantage of these options and provide best practices for organizing your code when developing for multiple platforms. Developers actively working on a Mac Catalyst project will get the most out of watching this session. If you’re new to Catalyst, we recommend watching “Designing iPad Apps for Mac” and \"Introducing iPad Apps for Mac\" for an introduction. For more on working with Mac Catalyst, check out \"What's new in Mac Catalyst”",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10056",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10056",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [
+    "button placement",
+    "catalyst",
+    "controls",
+    "custom artwork",
+    "font sizes",
+    "gestures",
+    "groupbox",
+    "idiom chooser",
+    "ipad apps on the mac",
+    "layouts",
+    "mac idiom",
+    "navigation bar",
+    "optimize",
+    "optimize interface for mac",
+    "scaled",
+    "swiftui",
+    "toolbar",
+    "uigesturerecognizer"
+  ],
+  "topics": [
+    "Developer Tools",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 2252,
+  "hasTranscript": true,
+  "transcriptWordCount": 5904,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10056/11/7A6C9FD8-33A7-4FA5-BF00-AA6A9D0A1A5B/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10056/11/7A6C9FD8-33A7-4FA5-BF00-AA6A9D0A1A5B/wwdc2020_10056_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10056/11/7A6C9FD8-33A7-4FA5-BF00-AA6A9D0A1A5B/wwdc2020_10056_hd.mp4",
+    "duration": 2252
+  },
+  "codeSnippets": [
+    {
+      "title": "Hide Navigation Bar in Mac Idiom",
+      "language": "swift",
+      "startTimeSeconds": 1324,
+      "code": "if traitCollection.userInterfaceIdiom == .mac {\n    navigationController?.setNavigationBarHidden(true, animated: false)\n}"
+    },
+    {
+      "title": "Idiom vs conditional compilation block",
+      "language": "swift",
+      "startTimeSeconds": 1773,
+      "code": "// Idiom vs conditional compilation block\n\nif traitCollection.userInterfaceIdiom == .mac {\n    // \"Optimize Interface for Mac\" specific code\n}\n\n\n#if targetEnvironment(macCatalyst)\n    // Mac Catalyst specific code\n#endif\n\n\nif traitCollection.userInterfaceIdiom == .mac {\n    // \"Optimize Interface for Mac\" specific code\n} else if traitCollection.userInterfaceIdiom == .pad {\n    #if targetEnvironment(macCatalyst)\n        // Mac Catalyst specific code\n    #else\n        // iPad specific code\n    #endif\n}"
+    },
+    {
+      "title": "SwiftUI GroupBox",
+      "language": "swift",
+      "startTimeSeconds": 1886,
+      "code": "// Nested GroupBoxes\n\nstruct ContentView: View {\n    var body: some View {\n        GroupBox {\n            VStack {\n                Text(\"High level information\")\n                GroupBox {\n                    Text(\"Some elaborate details\")\n                }\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "SwiftUI Toggle",
+      "language": "swift",
+      "startTimeSeconds": 1920,
+      "code": "// DefaultToggleStyle\n\nstruct ContentView: View {\n    @State var completed: Bool = false\n\n    var body: some View {\n        Toggle(\"Complete?\", isOn: $completed)\n    }\n}"
+    },
+    {
+      "title": "SwiftUI Button",
+      "language": "swift",
+      "startTimeSeconds": 1955,
+      "code": "// System Button with SF Symbol\n\nstruct ContentView: View {\n    var body: some View {\n        Button(action: { }, label: {\n            HStack {\n                Image(systemName: \"rays\")\n                Text(\"Click Me!\")\n            }\n        })\n    }\n}"
+    },
+    {
+      "title": "SwiftUI DatePicker",
+      "language": "swift",
+      "startTimeSeconds": 1976,
+      "code": "// DefaultDatePickerStyle\n\nstruct ContentView: View {\n    @State var dueDate = Date()\n\n    var body: some View {\n        DatePicker(\"Due:\", selection: $dueDate)\n    }\n}"
+    },
+    {
+      "title": "SwiftUI Picker",
+      "language": "swift",
+      "startTimeSeconds": 1994,
+      "code": "// DefaultPickerStyle\n\nstruct ContentView: View {\n    @State var sizeIndex = 2\n\n    var body: some View {\n        Picker(\"Size:\", selection: $sizeIndex) {\n            Text(\"Small\").tag(1)\n            Text(\"Medium\").tag(2)\n            Text(\"Large\").tag(3)\n        }\n    }\n}"
+    },
+    {
+      "title": "SwiftUI Nineties Style Button",
+      "language": "swift",
+      "startTimeSeconds": 2035,
+      "code": "// Custom gradient button\n\nstruct CustomNinetiesButtonStyle: ButtonStyle {\n    var angle: Angle = .degrees(54.95)\n\n    func gradient(shifted: Bool) -> AngularGradient {\n        let lightTeal = Color(#colorLiteral(red: 0.2785285413, green: 0.9299042821, blue: 0.9448828101, alpha: 1))\n        let yellow    = Color(#colorLiteral(red: 0.9300076365, green: 0.8226149678, blue: 0.59575665, alpha: 1))\n        let pink      = Color(#colorLiteral(red: 0.9437599778, green: 0.3392140865, blue: 0.8994731307, alpha: 1))\n        let purple    = Color(#colorLiteral(red: 0.5234025717, green: 0.3247769475, blue: 0.9921132922, alpha: 1))\n        let softBlue  = Color(#colorLiteral(red: 0.137432307, green: 0.5998355746, blue: 0.9898411632, alpha: 1))\n\n        let gradient = Gradient(stops:\n                                    [.init(color:lightTeal, location: 0.2),\n                                     .init(color: softBlue, location: 0.4),\n                                     .init(color: purple, location: 0.6),\n                                     .init(color: pink, location: 0.8),\n                                     .init(color: yellow, location: 1.0)])\n\n        return AngularGradient(gradient: gradient, center: .init(x: 0.25, y: 0.55), angle: shifted ? angle : .zero)\n    }\n\n    func makeBody(configuration: ButtonStyleConfiguration) -> some View {\n        let background = NinetiesBackground(isPressed: configuration.isPressed,\n                                            pressedGradient: gradient(shifted: false),\n                                            unpressedGradient: gradient(shifted: true))\n        return configuration.label\n            .foregroundColor(configuration.isPressed ? Color.pink : Color.white)\n            .modifier(background)\n    }\n\n    struct NinetiesBackground: ViewModifier {\n        let isPressed: Bool\n        let pressedGradient: AngularGradient\n        let unpressedGradient: AngularGradient\n\n        func body(content: Content) -> some View {\n            let foreground = content\n                    .padding(.horizontal, 24)\n                    .padding(.vertical, 14)\n                    .foregroundColor(.white)\n            return foreground\n                .background(Capsule().fill(isPressed ? pressedGradient : unpressedGradient))\n        }\n    }\n}\nstruct ContentView: View {\n\n    var body: some View {\n      Button(\"Awesome\", action: {})\n          .buttonStyle(CustomNinetiesButtonStyle())\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Mac Catalyst",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/mac-catalyst",
+      "type": "documentation",
+      "description": "When you use Mac Catalyst to create a Mac version of your iPad app, you make your app available to a new audience while giving existing users the opportunity to enjoy it in a new environment.",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/mac-catalyst"
+    },
+    {
+      "title": "Mac Catalyst",
+      "url": "https://developer.apple.com/documentation/UIKit/mac-catalyst",
+      "type": "documentation",
+      "description": "Create a version of your iPad app that users can run on a Mac device.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/mac-catalyst",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/mac-catalyst.json"
+    },
+    {
+      "title": "Optimizing your iPad app for Mac",
+      "url": "https://developer.apple.com/documentation/UIKit/optimizing-your-ipad-app-for-mac",
+      "type": "documentation",
+      "description": "Make your iPad app more like a Mac app by taking advantage of system features in macOS.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/optimizing-your-ipad-app-for-mac",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/optimizing-your-ipad-app-for-mac.json"
+    },
+    {
+      "title": "Adding menus and shortcuts to the menu bar and user interface",
+      "url": "https://developer.apple.com/documentation/UIKit/adding-menus-and-shortcuts-to-the-menu-bar-and-user-interface",
+      "type": "samplecode",
+      "description": "Provide quick access to useful actions by adding menus and keyboard shortcuts to your Mac app built with Mac Catalyst.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/adding-menus-and-shortcuts-to-the-menu-bar-and-user-interface",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/adding-menus-and-shortcuts-to-the-menu-bar-and-user-interface.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10056-optimize-the-interface-of-your-mac-catalyst-app/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10056-optimize-the-interface-of-your-mac-catalyst-app/metadata.json",
+    "readme": "sessions/wwdc2020/10056-optimize-the-interface-of-your-mac-catalyst-app/README.md",
+    "transcript": "sessions/wwdc2020/10056-optimize-the-interface-of-your-mac-catalyst-app/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10056-optimize-the-interface-of-your-mac-catalyst-app/transcript.json"
+  }
+}

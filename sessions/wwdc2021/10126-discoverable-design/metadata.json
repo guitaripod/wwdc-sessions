@@ -1,0 +1,72 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2021-10126",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10126,
+  "title": "Discoverable design",
+  "description": "Discover how you can create interactive, memorable experiences to onboard people into your app. We’ll take you through discoverable design practices and learn how you can craft explorable, fun interfaces that help people grasp the possibilities of your app at a glance. We’ll also show you how to apply this methodology to personalize your content and make your app easy to customize.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10126",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10126",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "🍞",
+    "🥑",
+    "discoverability",
+    "menus",
+    "navigation",
+    "onboarding"
+  ],
+  "topics": [
+    "AI & Machine Learning",
+    "Essentials",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 1964,
+  "hasTranscript": true,
+  "transcriptWordCount": 4727,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10126/6/D50196B9-76AA-4E8D-9E0B-69DE03F58EFC/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10126/6/D50196B9-76AA-4E8D-9E0B-69DE03F58EFC/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10126/6/D50196B9-76AA-4E8D-9E0B-69DE03F58EFC/downloads/wwdc2021-10126_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10126/6/D50196B9-76AA-4E8D-9E0B-69DE03F58EFC/downloads/wwdc2021-10126_hd.mp4",
+    "duration": 1964
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Explore the Human Interface Guidelines",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/"
+    }
+  ],
+  "path": "sessions/wwdc2021/10126-discoverable-design/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10126-discoverable-design/metadata.json",
+    "readme": "sessions/wwdc2021/10126-discoverable-design/README.md",
+    "transcript": "sessions/wwdc2021/10126-discoverable-design/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10126-discoverable-design/transcript.json"
+  }
+}

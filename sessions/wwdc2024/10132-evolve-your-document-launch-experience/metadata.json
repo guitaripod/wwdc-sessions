@@ -1,0 +1,184 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2024-10132",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10132,
+  "title": "Evolve your document launch experience",
+  "description": "Make your document-based app stand out, and bring its unique identity into focus with the new document launch experience. Learn how to leverage the new API to customize the first screen people see when they launch your app. Utilize the new system-provided design, and amend it with custom actions, delightful decorative views, and impressive animations.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10132",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10132",
+  "type": "Video",
+  "publishedAt": "2024-06-11T08:00:00-07:00",
+  "platforms": [
+    "iPadOS"
+  ],
+  "keywords": [
+    "alien flower",
+    "document-based",
+    "fashion shirt",
+    "julia",
+    "yael"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 608,
+  "hasTranscript": true,
+  "transcriptWordCount": 1266,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10132/4/F41D2CAF-097E-4793-B867-78798357CBBC/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10132/4/F41D2CAF-097E-4793-B867-78798357CBBC/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10132/4/F41D2CAF-097E-4793-B867-78798357CBBC/downloads/wwdc2024-10132_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10132/4/F41D2CAF-097E-4793-B867-78798357CBBC/downloads/wwdc2024-10132_hd.mp4",
+    "duration": 608
+  },
+  "codeSnippets": [
+    {
+      "title": "Document-based application",
+      "language": "swift",
+      "startTimeSeconds": 158,
+      "code": "@main\nstruct WritingApp: App {\n    var body: some Scene {\n        DocumentGroup(newDocument: { StoryDocument() }) { file in\n            StoryView(document: $file.document)\n        }\n    }\n}"
+    },
+    {
+      "title": "Presenting a document from the browser in iOS 17",
+      "language": "swift",
+      "startTimeSeconds": 206,
+      "code": "class DocumentViewController: UIDocumentViewController { ... }\n\nlet documentViewController = DocumentViewController()\nlet browserViewController = UIDocumentBrowserViewController(\n    forOpening: [.plainText]\n)\nwindow.rootViewController = browserViewController"
+    },
+    {
+      "title": "Presenting a document from the browser in iOS 17",
+      "language": "swift",
+      "startTimeSeconds": 218,
+      "code": "class DocumentViewController: UIDocumentViewController { ... }\n\nlet documentViewController = DocumentViewController()\nlet browserViewController = UIDocumentBrowserViewController(\n    forOpening: [.plainText]\n)\nwindow.rootViewController = browserViewController\nbrowserViewController.delegate = self"
+    },
+    {
+      "title": "Presenting a document from the browser in iOS 17",
+      "language": "swift",
+      "startTimeSeconds": 223,
+      "code": "class DocumentViewController: UIDocumentViewController { ... }\n\nlet documentViewController = DocumentViewController()\nlet browserViewController = UIDocumentBrowserViewController(\n    forOpening: [.plainText]\n)\nwindow.rootViewController = browserViewController\nbrowserViewController.delegate = self\n\n// MARK: UIDocumentBrowserViewControllerDelegate\n\nfunc documentBrowser(\n    _ browser: UIDocumentBrowserViewController, \n    didPickDocumentsAt documentURLs: [URL]\n) {\n    guard let url = documentURLs.first else { return }\n    documentViewController.document = StoryDocument(fileURL: url)\n    browser.present(documentViewController, animated: true)\n}"
+    },
+    {
+      "title": "Presenting a document from the browser in iOS 18",
+      "language": "swift",
+      "startTimeSeconds": 236,
+      "code": "class DocumentViewController: UIDocumentViewController { ... }\n\nlet documentViewController = DocumentViewController()\nwindow.rootViewController = documentViewController"
+    },
+    {
+      "title": "Customize the document launch experience: background",
+      "language": "swift",
+      "startTimeSeconds": 278,
+      "code": "DocumentGroup(\n    newDocument: { StoryDocument() }\n) { file in\n    StoryView(document: $file.document)\n}\n\nDocumentGroupLaunchScene {\n...\n} background: {\n    Image(.pinkJungle)\n        .resizable()\n        .aspectRatio(contentMode: .fill)\n}"
+    },
+    {
+      "title": "Customize the document launch experience: new document button title",
+      "language": "swift",
+      "startTimeSeconds": 289,
+      "code": "DocumentGroup(\n    newDocument: { StoryDocument() }\n) { file in\n    StoryView(document: $file.document)\n}\nDocumentGroupLaunchScene {\n    NewDocumentButton(\"Start Writing\")\n} background: {\n    Image(.pinkJungle)\n        .resizable()\n        .aspectRatio(contentMode: .fill)\n}"
+    },
+    {
+      "title": "Customize the document launch experience: accessory views",
+      "language": "swift",
+      "startTimeSeconds": 329,
+      "code": "DocumentGroupLaunchScene {\n    NewDocumentButton(\"Start Writing\")\n} background: {\n    Image(.pinkJungle)\n        .resizable()\n        .aspectRatio(contentMode: .fill)\n} overlayAccessoryView: {\n\n}"
+    },
+    {
+      "title": "Position accessory views",
+      "language": "swift",
+      "startTimeSeconds": 344,
+      "code": "DocumentGroupLaunchScene {\n    NewDocumentButton(\"Start Writing\")\n} background: {\n    Image(.pinkJungle)\n        .resizable()\n        .aspectRatio(contentMode: .fill)\n} overlayAccessoryView: { geometry in\n\n}"
+    },
+    {
+      "title": "Position accessory views",
+      "language": "swift",
+      "startTimeSeconds": 353,
+      "code": "DocumentGroupLaunchScene {\n    NewDocumentButton(\"Start Writing\")\n} background: {\n...\n} overlayAccessoryView: { geometry in\n    ZStack {\n        Image(.robot)\n            .position(\n                x: geometry.titleViewFrame.minX, \n                y: geometry.titleViewFrame.minY\n            )\n        Image(.plant)\n            .position(\n                x: geometry.titleViewFrame.maxX, \n                y: geometry.titleViewFrame.maxY\n            )\n    }\n}"
+    },
+    {
+      "title": "Customize the document launch experience in a UIKit app",
+      "language": "swift",
+      "startTimeSeconds": 371,
+      "code": "class DocumentViewController: UIDocumentViewController {\n\n    override func viewDidLoad() {\n        super.viewDidLoad()\n\n        // Update the background\n        launchOptions.background.image = UIImage(resource: .pinkJungle)\n\n        // Add foreground accessories\n        launchOptions.foregroundAccessoryView = ForegroundAccessoryView()\n    }\n}"
+    },
+    {
+      "title": "Create a document from a template: add a button",
+      "language": "swift",
+      "startTimeSeconds": 451,
+      "code": "DocumentGroupLaunchScene {\n    NewDocumentButton(\"Start Writing\")\n    NewDocumentButton(\"Choose a Template\", for: StoryDocument.self) {\n\n    }\n}"
+    },
+    {
+      "title": "Create a document from a template: return document later",
+      "language": "swift",
+      "startTimeSeconds": 465,
+      "code": "@State private var creationContinuation: CheckedContinuation<StoryDocument?, any Error>?\n\nDocumentGroupLaunchScene {\n    NewDocumentButton(\"Start Writing\")\n    NewDocumentButton(\"Choose a Template\", for: StoryDocument.self) {\n        try await withCheckedThrowingContinuation { continuation in\n            self.creationContinuation = continuation\n       }\n    }\n}"
+    },
+    {
+      "title": "Create a document from a template: present a template picker",
+      "language": "swift",
+      "startTimeSeconds": 476,
+      "code": "@State private var creationContinuation: CheckedContinuation<StoryDocument?, any Error>?\n@State private var isTemplatePickerPresented = false\n\nDocumentGroupLaunchScene {\n    NewDocumentButton(\"Start Writing\")\n    NewDocumentButton(\"Choose a Template\", for: StoryDocument.self) {\n        try await withCheckedThrowingContinuation { continuation in\n            self.creationContinuation = continuation\n            self.isTemplatePickerPresented = true\n        }\n    }\n    .sheet(isPresented: $isTemplatePickerPresented) {\n        TemplatePicker(continuation: $creationContinuation\n    }\n}"
+    },
+    {
+      "title": "Create a document from a template: template picker view",
+      "language": "swift",
+      "startTimeSeconds": 487,
+      "code": "struct TemplatePicker: View {\n    @Binding var creationContinuation: CheckedContinuation<StoryDocument?, any Error>?\n\n    var body: some View {\n        Button(\"Three Act Structure\") {\n            creationContinuation?.resume(returning: StoryDocument.threeActStructure())\n            creationContinuation = nil\n        }\n    }\n}\n\nextension StoryDocument {\n    static func threeActStructure() -> Self {\n        Self.init(...)\n    }\n}"
+    },
+    {
+      "title": "Create a document from a template in UIKit",
+      "language": "swift",
+      "startTimeSeconds": 500,
+      "code": "extension UIDocument.CreationIntent {\n    static let template = UIDocument.CreationIntent(\"template\")\n}"
+    },
+    {
+      "title": "Create a document from a template in UIKit",
+      "language": "swift",
+      "startTimeSeconds": 509,
+      "code": "launchOptions.secondaryAction = LaunchOptions.createDocumentAction(with: .template) \nlaunchOptions.browserViewController.delegate = self\n\n// MARK: UIDocumentBrowserViewControllerDelegate\n\nfunc documentBrowser(\n    _ browser: UIDocumentBrowserViewController, \n    didRequestDocumentCreationWithHandler importHandler: @escaping (URL?, ImportMode) -> Void) \n{\n    switch browser.activeDocumentCreationIntent {\n    case .template: \n        presentTemplatePicker(with: importHandler)\n    default:\n        let newDocumentURL = // ...\n        importHandler(newDocumentURL, .copy)\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Building a document-based app with SwiftUI",
+      "url": "https://developer.apple.com/documentation/SwiftUI/Building-a-document-based-app-with-SwiftUI",
+      "type": "samplecode",
+      "description": "Create, save, and open documents in a multiplatform app.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/Building-a-document-based-app-with-SwiftUI",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/Building-a-document-based-app-with-SwiftUI.json"
+    },
+    {
+      "title": "Customizing a document-based app’s launch experience",
+      "url": "https://developer.apple.com/documentation/UIKit/customizing-a-document-based-app-s-launch-experience",
+      "type": "documentation",
+      "description": "Add unique elements to your app’s document launch scene.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/customizing-a-document-based-app-s-launch-experience",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/customizing-a-document-based-app-s-launch-experience.json"
+    },
+    {
+      "title": "Forum: UI Frameworks",
+      "url": "https://developer.apple.com/forums/topics/ui-frameworks?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/ui-frameworks?cid=vf-a-0010"
+    }
+  ],
+  "path": "sessions/wwdc2024/10132-evolve-your-document-launch-experience/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10132-evolve-your-document-launch-experience/metadata.json",
+    "readme": "sessions/wwdc2024/10132-evolve-your-document-launch-experience/README.md",
+    "transcript": "sessions/wwdc2024/10132-evolve-your-document-launch-experience/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10132-evolve-your-document-launch-experience/transcript.json"
+  }
+}
