@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10660",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10660,
+  "title": "What's new in location",
+  "description": "Location technologies are core to delivering context-based services within your app. Discover how the latest privacy controls in Core Location add a whole new dimension to determining position and what that means for your app. We’ll walk you through best practices for implementing these latest location updates and show you how they’re designed to ensure more people get an experience they’re going to love.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10660",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10660",
+  "type": "Video",
+  "publishedAt": "2020-06-23T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "geocode",
+    "geofence",
+    "geofencing",
+    "ibeacon",
+    "indoor positioning",
+    "privacy",
+    "visit monitoring"
+  ],
+  "topics": [
+    "Privacy & Security",
+    "Maps & Location"
+  ],
+  "primaryTopic": "Maps & Location",
+  "duration": 1594,
+  "hasTranscript": true,
+  "transcriptWordCount": 4996,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10660/4/3543DAE5-0D4D-4795-B215-972E16B50056/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10660/4/3543DAE5-0D4D-4795-B215-972E16B50056/wwdc2020_10660_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10660/4/3543DAE5-0D4D-4795-B215-972E16B50056/wwdc2020_10660_hd.mp4",
+    "duration": 1594
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Core Location",
+      "url": "https://developer.apple.com/documentation/CoreLocation",
+      "type": "documentation",
+      "description": "Obtain the geographic location and orientation of a device.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreLocation",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreLocation.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10660/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10660/metadata.json",
+    "readme": "sessions/wwdc2020/10660/README.md",
+    "transcript": "sessions/wwdc2020/10660/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10660/transcript.json"
+  }
+}

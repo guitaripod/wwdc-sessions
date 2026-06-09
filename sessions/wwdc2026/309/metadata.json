@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2026-309",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 309,
+  "title": "Explore Retention Messaging in App Store Connect",
+  "description": "Discover how you can use the power of Retention Messaging to reach subscribers before they cancel. Learn how to configure this feature in App Store Connect and add subscription offers, as well as leverage the Retention Messaging API to deliver real-time messaging and alternative options that encourage people to stay subscribed to your app or game.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/309",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/309",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "tvOS",
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services",
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 910,
+  "hasTranscript": true,
+  "transcriptWordCount": 2314,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/309/4/afa0aec8-f216-43ed-bcb1-1a3742e49dac/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/309/4/afa0aec8-f216-43ed-bcb1-1a3742e49dac/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/309/4/afa0aec8-f216-43ed-bcb1-1a3742e49dac/downloads/wwdc2026-309_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/309/4/afa0aec8-f216-43ed-bcb1-1a3742e49dac/downloads/wwdc2026-309_hd.mp4",
+    "duration": 910
+  },
+  "codeSnippets": [
+    {
+      "title": "Signed transaction updates",
+      "language": "json",
+      "startTimeSeconds": 368,
+      "code": "// Signed transaction updates\n\n{\n    \"bundleId\": \"com.example.app\",\n    \"productId\": \"Yoga_summer_2026\",\n    \"type\": \"Auto-Renewable Subscription\",\n    \"transactionReason\": \"RENEWAL\",\n    \"inAppOwnershipType\": \"PURCHASED\",\n    \"quantity\": 1,\n    \"price\": 0,\n    \"currency\": \"USD\",\n    \"offerType\": 5, // retention offer\n    \"offerIdentifier\": \"Yoga_2026_cancel_free_3m\",\n    \"offerDiscountType\": \"FREE_TRIAL\",\n    \"offerPeriod\": \"P3M\", \n    \"transactionId\": \"1000098916194\"\n    \"originalTransactionId\": \"1000011859217\",\n    \"appAccountToken\": \"23a91ca7-06f3-425f-bff6-820904b510a9\",\n    ...\n}"
+    },
+    {
+      "title": "Retention Messaging API",
+      "language": "markdown",
+      "startTimeSeconds": 470,
+      "code": "// Retention Messaging API: https://api.storekit.apple.com/inApps/v1/messaging\n\n// URL configuration\nPUT /realtime/url\nGET /realtime/url\nDELETE /realtime/url\n\n// Message configuration\nPUT /message/{messageIdentifier}\nDELETE /message/{messageIdentifier}\nGET /message/list\nPUT /default/{productId}/{locale}\nDELETE /default/{productId}/{locale}\nGET /default/{productId}/{locale}\n\n// Image configuration\nPUT /image/{imageIdentifier}\nDELETE /image/{imageIdentifier}\nGET /image/list\n\n// Performance testing - Sandbox only\nPOST /performanceTest // initiate test\nGET /performanceTest/result/{requestId} // get results"
+    },
+    {
+      "title": "Real-time requests",
+      "language": "json",
+      "startTimeSeconds": 514,
+      "code": "// Real-time requests\n\n// Request from the App Store\n{\n    \"originalTransactionId\": \"123456789\",\n    \"appAppleId\": 6745974591,\n    \"productId\": \"Yoga_summer_2026\",\n    \"userLocale\": \"en-US\",\n    \"requestIdentifier\": \"c03248af-dd76-4e9b-9c1e-4489cd19a768\",\n    \"environment\": \"Production\", // or Sandbox\n    \"signedDate\": 1780920000000\n}"
+    },
+    {
+      "title": "Real-time requests with message",
+      "language": "json",
+      "startTimeSeconds": 537,
+      "code": "// Real-time requests\n\n// Request from the App Store\n{\n    \"originalTransactionId\": \"123456789\",\n    \"appAppleId\": 6745974591,\n    \"productId\": \"Yoga_summer_2026\",\n    \"userLocale\": \"en-US\",\n    \"requestIdentifier\": \n        \"c03248af-dd76-4e9b-9c1e-4489cd19a768\",\n    \"environment\": \"Production\", // or Sandbox\n    \"signedDate\": 1780920000000\n}\n\n// Your response\n{\n    \"message\": {\n        \"messageIdentifier\": \n            \"551ee7c0-c097-418e-9dd5-2a98533a7390\"\n    }\n}"
+    },
+    {
+      "title": "Real-time request with alternate product",
+      "language": "json",
+      "startTimeSeconds": 551,
+      "code": "// Real-time requests\n\n// Request from the App Store\n{\n    \"originalTransactionId\": \"123456789\",\n    \"appAppleId\": 6745974591,\n    \"productId\": \"Yoga_summer_2026\",\n    \"userLocale\": \"en-US\",\n    \"requestIdentifier\": \n        \"c03248af-dd76-4e9b-9c1e-4489cd19a768\",\n    \"environment\": \"Production\", // or Sandbox\n    \"signedDate\": 1780920000000\n}\n\n// Your response\n{\n    \"alternateProduct\": {\n        \"messageIdentifier\":\n            \"ed7f25fc-5741-46a3-8502-062e0fb8afd0\",\n        \"productId\": \"Yoga_summer_2026_annual\"\n    }\n}"
+    },
+    {
+      "title": "Real-time request with promotional offer",
+      "language": "json",
+      "startTimeSeconds": 564,
+      "code": "// Real-time requests\n\n// Request from the App Store\n{\n    \"originalTransactionId\": \"123456789\",\n    \"appAppleId\": 6745974591,\n    \"productId\": \"Yoga_summer_2026\",\n    \"userLocale\": \"en-US\",\n    \"requestIdentifier\":          \"c03248af-dd76-4e9b-9c1e-4489cd19a768\",\n    \"environment\": \"Production\", // or Sandbox\n    \"signedDate\": 1780920000000\n}\n\n// Your response\n{\n    \"promotionalOffer\": {\n        \"messageIdentifier\": \n            \"80135e2b-ae15-4ec4-8c5c-9ecc8045c0dc\",\n        \"promotionalOfferSignatureV2\": \"eyJhbGciOiJFUzI…\"\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Interest form: Real-time Retention Messaging",
+      "url": "https://developer.apple.com/contact/request/retention-messaging-api/",
+      "type": "guide",
+      "description": "Interest form",
+      "sosumiURL": "https://sosumi.ai/contact/request/retention-messaging-api/"
+    },
+    {
+      "title": "Supporting monthly subscriptions with a 12-month commitment",
+      "url": "https://developer.apple.com/documentation/StoreKit/supporting-monthly-subscriptions-with-a-12-month-commitment",
+      "type": "documentation",
+      "description": "Configure, merchandise, and grant access to a monthly subscription with a 12-month commitment.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/supporting-monthly-subscriptions-with-a-12-month-commitment",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/supporting-monthly-subscriptions-with-a-12-month-commitment.json"
+    },
+    {
+      "title": "Retention Messaging API",
+      "url": "https://developer.apple.com/documentation/RetentionMessaging",
+      "type": "documentation",
+      "description": "Provide a reason for customers to stay subscribed with a preconfigured message that you can choose in real time, appropriate to the product and locale.",
+      "sosumiURL": "https://sosumi.ai/documentation/RetentionMessaging",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/RetentionMessaging.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/309/",
+  "files": {
+    "metadata": "sessions/wwdc2026/309/metadata.json",
+    "readme": "sessions/wwdc2026/309/README.md",
+    "transcript": "sessions/wwdc2026/309/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/309/transcript.json"
+  }
+}

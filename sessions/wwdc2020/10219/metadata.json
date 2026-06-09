@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10219",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10219,
+  "title": "Build localization-friendly layouts using Xcode",
+  "description": "Localizing your app is a wonderful way to share your work with a worldwide audience and make it relevant to more cultures and languages. We’ll show you how you can prepare for localization before ever translating a word by building thoughtful layouts for your app. Learn how to structure your UI in Xcode, identify common issues prevalent with more verbose and right-to-left languages, and easily adapt your interfaces to provide a great experience for everyone.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10219",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10219",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "autolayout",
+    "auto layout",
+    "localization",
+    "rtl"
+  ],
+  "topics": [
+    "Developer Tools",
+    "Accessibility & Inclusion"
+  ],
+  "primaryTopic": "Accessibility & Inclusion",
+  "duration": 900,
+  "hasTranscript": true,
+  "transcriptWordCount": 2658,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10219/4/2B66E0C1-3863-4A8E-AD06-54CC51176ED3/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10219/4/2B66E0C1-3863-4A8E-AD06-54CC51176ED3/wwdc2020_10219_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10219/4/2B66E0C1-3863-4A8E-AD06-54CC51176ED3/wwdc2020_10219_hd.mp4",
+    "duration": 900
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Autosizing views for localization in iOS",
+      "url": "https://developer.apple.com/documentation/Xcode/autosizing-views-for-localization-in-ios",
+      "type": "samplecode",
+      "description": "Add auto layout constraints to your app to achieve localizable views.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/autosizing-views-for-localization-in-ios",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/autosizing-views-for-localization-in-ios.json"
+    },
+    {
+      "title": "Localization-friendly layouts in macOS",
+      "url": "https://developer.apple.com/documentation/Xcode/localization-friendly-layouts-in-macos",
+      "type": "samplecode",
+      "description": "This project demonstrates localization-friendly auto layout constraints.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/localization-friendly-layouts-in-macos",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/localization-friendly-layouts-in-macos.json"
+    },
+    {
+      "title": "Auto Layout Guide",
+      "url": "https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/AutolayoutPG/",
+      "type": "guide",
+      "description": "Dynamically calculate the size and position of all the views in your view hierarchy, based on constraints placed on those views.",
+      "sosumiURL": "https://sosumi.ai/library/content/documentation/UserExperience/Conceptual/AutolayoutPG/"
+    }
+  ],
+  "path": "sessions/wwdc2020/10219/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10219/metadata.json",
+    "readme": "sessions/wwdc2020/10219/README.md",
+    "transcript": "sessions/wwdc2020/10219/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10219/transcript.json"
+  }
+}

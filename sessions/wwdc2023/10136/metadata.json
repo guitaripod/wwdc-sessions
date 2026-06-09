@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10136",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10136,
+  "title": "What’s new in ScreenCaptureKit",
+  "description": "Level up your screen sharing experience with the latest features in ScreenCaptureKit. Explore the built-in system picker, Presenter Overlay, and screenshot capabilities, and learn how to incorporate these features into your existing ScreenCaptureKit app or game.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10136",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10136",
+  "type": "Video",
+  "publishedAt": "2023-06-08T08:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Audio & Video",
+    "Photos & Camera",
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 823,
+  "hasTranscript": true,
+  "transcriptWordCount": 2149,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10136/6/998A4D51-FB97-4CB9-959F-65B5827F9926/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10136/6/998A4D51-FB97-4CB9-959F-65B5827F9926/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10136/6/998A4D51-FB97-4CB9-959F-65B5827F9926/downloads/wwdc2023-10136_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10136/6/998A4D51-FB97-4CB9-959F-65B5827F9926/downloads/wwdc2023-10136_hd.mp4",
+    "duration": 823
+  },
+  "codeSnippets": [
+    {
+      "title": "Set up delegate for stream",
+      "language": "swift",
+      "startTimeSeconds": 212,
+      "code": "// Set up delegate for stream\nlet stream = SCStream(filter: filter, configuration: config, delegate: self)\n\n// delegate method for Presenter Overlay applied\nfunc stream(_ stream: SCStream, outputEffectDidStart didStart: bool) {\n    // if Presenter Overlay is on, present banner in app to notify\n    if didStart == true {\n        presentBanner()\n        turnOffCamera()\n    } else {\n        turnOnCamera()\n    }\n}"
+    },
+    {
+      "title": "Set up content sharing picker instance",
+      "language": "swift",
+      "startTimeSeconds": 408,
+      "code": "// Set up content sharing picker instance\nlet picker = SCContentSharingPicker.shared()\npicker.addObserver(self)\npicker.active = true\n\n// show system level picker button\nfunc showSystemPicker(sender: UIButton!) {\n    picker.present(for stream: nil, using contentStyle:.window)\n}\n\n// observer call back for picker\nfunc contentSharingPicker(_ picker: SCContentSharingPicker, didUpdateWith filter:                                          \nSCContentFilter, for stream: SCStream?) {\n   if let stream = stream {\n        stream.updateContentFilter(filter)\n    } else {\n        let stream = SCStream(filter: filter, configuration: config, delegate: self)\n    }\n}"
+    },
+    {
+      "title": "Observer call back for picker did fail and did cancel",
+      "language": "swift",
+      "startTimeSeconds": 461,
+      "code": "// Set up content sharing picker instance\nlet picker = SCContentSharingPicker.shared()\npicker.addObserver(self)\npicker.active = true\n\n// show system level picker button\nfunc showSystemPicker(sender: UIButton!) {\n    picker.present(for stream: nil, using contentStyle:.window)\n}\n\n// observer call back for picker did fail\nfunc contentSharingPicker(contentSharingPickerStartDidFailWith error:NSError) {\n    if error {\n        presentNotifications(error: error)\n    }\n}\n\n// observer call back for picker did cancel\nfunc contentSharingPicker(_ picker: SCContentSharingPicker, didCancel for stream: SCStream?) {\n   if stream {\n       resetStateForStream(stream: stream)\n   }\n}"
+    },
+    {
+      "title": "Per-stream configuration",
+      "language": "swift",
+      "startTimeSeconds": 521,
+      "code": "// Set up content sharing picker instance\nlet picker = SCContentSharingPicker.shared()\npicker.addObserver(self)\npicker.active = true\n\n// Create configurations\nlet pickerConfig = SCContentSharingPickerConfiguration()\n\n// Set Picker configuration\npickerConfig.excludedBundleIDs = [“com.foo.myApp”,”com.foo.myApp2”]\npickerConfig.allowsRepicking = true\n\n// Create configurations\npicker.setConfiguration(pickerConfig, for: stream)\n\nfunc showSystemPicker(sender: UIButton!) {\n    picker.present(for stream: nil, using contentStyle:.window)\n}"
+    },
+    {
+      "title": "Call the screenshot API",
+      "language": "swift",
+      "startTimeSeconds": 746,
+      "code": "// Call the screenshot API\n\nclass SCScreenshotManager : NSObject {\n\nclass func captureSampleBuffer(contentFilter: SCContentFilter, \n                               configuration: SCStreamConfiguration)\n  \t\t\t\t\t\t\t\t\t\t\t\t\t\t\tasync throws -> CMSampleBuffer\n\nclass func captureImage(contentFilter: SCContentFilter,\n                        configuration: SCStreamConfiguration)\n  \t\t\t\t\t\t\t\t\t\t\tasync throws -> GImage\n}"
+    },
+    {
+      "title": "Take a screenshot with ScreenCaptureKit",
+      "language": "swift",
+      "startTimeSeconds": 764,
+      "code": "// Don't forget to customize the content you want in your screenshot\n// Use SCShareableContent or SCContentSharingPicker to pick your content\nlet display = nil;\n\n// Create your SCContentFilter and SCStreamConfiguration\n// Customize these lines to use the content you want and desired config options\nlet myContentFilter = SCContentFilter(display: display,\n                             excludingApplications: [],\n                             exceptingWindows: []);\nlet myConfiguration = SCStreamConfiguration();\n\n// Call the screenshot API and get your screenshot image\nif let screenshot = try? await SCScreenshotManager.captureSampleBuffer(contentFilter: myContentFilter, configuration:\n                                                       myConfiguration) {\n    print(\"Fetched screenshot.\")\n} else {\n    print(\"Failed to fetch screenshot.\")\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "ScreenCaptureKit",
+      "url": "https://developer.apple.com/documentation/ScreenCaptureKit",
+      "type": "documentation",
+      "description": "Filter and select screen content and stream it to your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/ScreenCaptureKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ScreenCaptureKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10136/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10136/metadata.json",
+    "readme": "sessions/wwdc2023/10136/README.md",
+    "transcript": "sessions/wwdc2023/10136/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10136/transcript.json"
+  }
+}

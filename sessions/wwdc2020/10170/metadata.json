@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10170",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10170,
+  "title": "What's new in Swift",
+  "description": "Join us for an update on Swift. Discover the latest advancements in runtime performance, along with improvements to the developer experience that make your code faster to read, edit, and debug. Find out how to take advantage of new language features like multiple trailing closures. Learn about new libraries available in the SDK, and explore the growing number of APIs available as Swift Packages.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10170",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10170",
+  "type": "Video",
+  "publishedAt": "2020-06-23T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 1939,
+  "hasTranscript": true,
+  "transcriptWordCount": 4540,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10170/7/9782B095-447A-49C8-A7D2-BB3B006CA5E2/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10170/7/9782B095-447A-49C8-A7D2-BB3B006CA5E2/wwdc2020_10170_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10170/7/9782B095-447A-49C8-A7D2-BB3B006CA5E2/wwdc2020_10170_hd.mp4",
+    "duration": 1939
+  },
+  "codeSnippets": [
+    {
+      "title": "Swift on AWS Lambda",
+      "language": "swift",
+      "startTimeSeconds": 812,
+      "code": "import AWSLambdaRuntime\n\nLambda.run { (_, event: String, callback) in\n    callback(.success(\"Hello, \\(event)\"))\n}"
+    },
+    {
+      "title": "@main",
+      "language": "swift",
+      "startTimeSeconds": 1268,
+      "code": "// Type-based program entry points\n\nimport ArgumentParser\n\n@main\nstruct Hello: ParsableCommand {\n    @Argument(help: \"The name to greet.\")\n    var name: String\n\n    func run() {\n        print(\"Hello, \\(name)!\")\n    }\n}"
+    },
+    {
+      "title": "Synthesized comparable conformance for enums",
+      "language": "swift",
+      "startTimeSeconds": 1430,
+      "code": "// Synthesized comparable conformance for enums\n\nenum MessageStatus: Hashable, Comparable {\n    case draft\n    case saved\n    case failedToSend\n    case sent\n    case delivered\n    case read\n\n    var wasSent: Bool {\n        self >= .sent\n    }\n}"
+    },
+    {
+      "title": "Compress and archive a source directory using Apple Archive",
+      "language": "swift",
+      "startTimeSeconds": 1639,
+      "code": "// Apple Archive\n\nimport AppleArchive\n\ntry ArchiveByteStream.withFileStream(\n    path: \"/tmp/VacationPhotos.aar\",\n    mode: .writeOnly,\n    options: [.create, .truncate],\n    permissions: [.ownerReadWrite, .groupRead, .otherRead]\n) { file in\n    // Receives raw bytes and writes compressed bytes to `file`\n    try ArchiveByteStream.withCompressionStream(using: .lzfse, writingTo: file) { compressor in\n        // Receives archive entries, and writes bytes to `compressor`\n        try ArchiveStream.withEncodeStream(writingTo: compressor) { encoder in\n            // Writes all entries from `src` to `encoder`\n            try encoder.writeDirectoryContents(archiveFrom: source, keySet: fieldKeySet)\n        }\n    }\n}"
+    },
+    {
+      "title": "OSLog support for String interpolations and formatting options",
+      "language": "swift",
+      "startTimeSeconds": 1714,
+      "code": "logger.log(\"\\(offerID, align: .left(columns: 10), privacy: .public)\")\n// Logs \"E1Z3F    \"\n\nlogger.log(\"\\(seconds, format: .fixed(precision: 2)) seconds\")\n// Logs \"1.30 seconds\""
+    },
+    {
+      "title": "ArgumentParser Swift Package",
+      "language": "swift",
+      "startTimeSeconds": 1805,
+      "code": "// Swift ArgumentParser\n\nimport ArgumentParser\n\n@main\nstruct Hello: ParsableCommand {\n    @Option(name: .shortAndLong, help: \"The number of times to say hello.\")\n    var count: Int = 1\n\n    @Argument(help: \"The name to greet.\")\n    var name: String\n\n    func run() {\n        for _ in 1...count {\n            print(\"Hello, \\(name)!\")\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Swift Standard Library Preview",
+      "url": "https://github.com/apple/swift-standard-library-preview",
+      "type": "documentation",
+      "description": "Provides access to new functionality that has been accepted into the standard library through the Swift Evolution process, but has not yet shipped as part of an official Swift release."
+    },
+    {
+      "title": "Swift Argument Parser on GitHub",
+      "url": "https://github.com/apple/swift-argument-parser",
+      "type": "documentation",
+      "description": "Straightforward, type-safe argument parsing for Swift."
+    },
+    {
+      "title": "Swift Evolution",
+      "url": "https://apple.github.io/swift-evolution/",
+      "type": "guide",
+      "description": "The list of Swift Evolution proposals."
+    },
+    {
+      "title": "Swift Numerics on GitHub",
+      "url": "https://github.com/apple/swift-numerics",
+      "type": "documentation",
+      "description": "Swift Numerics provides a set of modules that support numerical computing in Swift."
+    },
+    {
+      "title": "The Swift Programming Language",
+      "url": "https://docs.swift.org/swift-book/",
+      "type": "guide",
+      "description": "The definitive guide to Swift, Apple’s programming language for building iOS, macOS, watchOS, and tvOS apps."
+    }
+  ],
+  "path": "sessions/wwdc2020/10170/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10170/metadata.json",
+    "readme": "sessions/wwdc2020/10170/README.md",
+    "transcript": "sessions/wwdc2020/10170/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10170/transcript.json"
+  }
+}

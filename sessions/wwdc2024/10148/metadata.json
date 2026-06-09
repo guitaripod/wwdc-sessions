@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10148",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10148,
+  "title": "Tailor macOS windows with SwiftUI",
+  "description": "Make your windows feel tailor-made for macOS. Fine-tune your app’s windows for focused purposes, ease of use, and to express functionality. Use SwiftUI to style window toolbars and backgrounds. Arrange your windows with precision, and make smart decisions about restoration and minimization.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10148",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10148",
+  "type": "Video",
+  "publishedAt": "2024-06-12T08:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [
+    "1984",
+    "borderless",
+    "close",
+    "floating",
+    "minimize",
+    "toolbar",
+    "window",
+    "windows",
+    "zoom"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 656,
+  "hasTranscript": true,
+  "transcriptWordCount": 1170,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10148/4/B76C6719-6B90-4EA9-9EDA-03C08C4A02AA/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10148/4/B76C6719-6B90-4EA9-9EDA-03C08C4A02AA/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10148/4/B76C6719-6B90-4EA9-9EDA-03C08C4A02AA/downloads/wwdc2024-10148_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10148/4/B76C6719-6B90-4EA9-9EDA-03C08C4A02AA/downloads/wwdc2024-10148_hd.mp4",
+    "duration": 656
+  },
+  "codeSnippets": [
+    {
+      "title": "Style Toolbars - Removing Title",
+      "language": "swift",
+      "startTimeSeconds": 191,
+      "code": ".toolbar(removing: title)"
+    },
+    {
+      "title": "Style Toolbars - Removing Toolbar Background",
+      "language": "swift",
+      "startTimeSeconds": 194,
+      "code": ".toolbarBackgroundVisibility(.hidden, for: .windowToolbar)"
+    },
+    {
+      "title": "Refine Behaviors - Adding Container Background",
+      "language": "swift",
+      "startTimeSeconds": 273,
+      "code": ".containerBackground(.thickMaterial, for: .window)"
+    },
+    {
+      "title": "Refine Behaviors - Minimize Behavior",
+      "language": "swift",
+      "startTimeSeconds": 313,
+      "code": ".windowMinimizeBehavior(.disabled)"
+    },
+    {
+      "title": "Refine Behaviors - Restoration Behavior",
+      "language": "swift",
+      "startTimeSeconds": 344,
+      "code": ".restorationBehavior(.disabled)"
+    },
+    {
+      "title": "Adjust Placement - Default Placement",
+      "language": "swift",
+      "startTimeSeconds": 431,
+      "code": ".defaultWindowPlacement { content, context in\n    var size = content.sizeThatFits(.unspecified)\n    let displayBounds = context.defaultDisplay.visibleRect\n    // modify size based on display bounds\n    return WindowPlacement(size: size)\n}"
+    },
+    {
+      "title": "Adjust Placement - Ideal Placement",
+      "language": "swift",
+      "startTimeSeconds": 515,
+      "code": ".windowIdealPlacement { content, context in\n    var size = content.sizeThatFits(.unspecified)\n    let displayBounds = context.defaultDisplay.visibleRect\n    // modify size based on display bounds\n    return WindowPlacement(size: size)\n}"
+    },
+    {
+      "title": "Borderless Window",
+      "language": "swift",
+      "startTimeSeconds": 588,
+      "code": ".windowStyle(.plain)"
+    },
+    {
+      "title": "Default Launch Behavior",
+      "language": "swift",
+      "startTimeSeconds": 593,
+      "code": ".defaultLaunchBehavior(.presented)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Customizing window styles and state-restoration behavior in macOS",
+      "url": "https://developer.apple.com/documentation/SwiftUI/Customizing-window-styles-and-state-restoration-behavior-in-macOS",
+      "type": "samplecode",
+      "description": "Configure how your app’s windows look and function in macOS to provide an",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/Customizing-window-styles-and-state-restoration-behavior-in-macOS",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/Customizing-window-styles-and-state-restoration-behavior-in-macOS.json"
+    },
+    {
+      "title": "Windows",
+      "url": "https://developer.apple.com/documentation/SwiftUI/Windows",
+      "type": "documentation",
+      "description": "Display user interface content in a window or a collection of windows.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/Windows",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/Windows.json"
+    },
+    {
+      "title": "Forum: UI Frameworks",
+      "url": "https://developer.apple.com/forums/topics/ui-frameworks?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/ui-frameworks?cid=vf-a-0010"
+    },
+    {
+      "title": "Destination Video",
+      "url": "https://developer.apple.com/documentation/visionOS/destination-video",
+      "type": "samplecode",
+      "description": "Leverage SwiftUI to build an immersive media experience in a multiplatform app.",
+      "sosumiURL": "https://sosumi.ai/documentation/visionOS/destination-video",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/visionOS/destination-video.json"
+    }
+  ],
+  "path": "sessions/wwdc2024/10148/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10148/metadata.json",
+    "readme": "sessions/wwdc2024/10148/README.md",
+    "transcript": "sessions/wwdc2024/10148/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10148/transcript.json"
+  }
+}

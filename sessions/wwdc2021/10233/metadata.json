@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10233",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10233,
+  "title": "Use Accelerate to improve performance and incorporate encrypted archives",
+  "description": "The Accelerate framework helps you make large-scale mathematical computations and image calculations that are optimized for high-performance, low-energy consumption. Explore the latest updates to Accelerate and its Basic Neural Network Subroutines library, including additional layers, activation functions, and improved optimizer support. Check out improvements to simd.h that include better support for C++ templates. Discover support for Apple Encrypted Archive, an extension to Apple Archive that combines compression with powerful encryption and a digital signature. And learn how you can keep data your safe and secure without compromising on performance.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10233",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10233",
+  "type": "Video",
+  "publishedAt": "2021-06-11T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "accelerate",
+    "apple archive",
+    "archives",
+    "bnns",
+    "encryption",
+    "numerics",
+    "performance",
+    "simd",
+    "vector",
+    "vectorization"
+  ],
+  "topics": [
+    "AI & Machine Learning",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 862,
+  "hasTranscript": true,
+  "transcriptWordCount": 2238,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10233/4/72F4F22E-DDAB-4A58-B049-7AC537198EFC/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10233/4/72F4F22E-DDAB-4A58-B049-7AC537198EFC/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10233/4/72F4F22E-DDAB-4A58-B049-7AC537198EFC/downloads/wwdc2021-10233_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10233/4/72F4F22E-DDAB-4A58-B049-7AC537198EFC/downloads/wwdc2021-10233_hd.mp4",
+    "duration": 862
+  },
+  "codeSnippets": [
+    {
+      "title": "Using Accelerate in C/C++",
+      "language": "objectivec",
+      "startTimeSeconds": 115,
+      "code": "// How to use in your own code\n\n// C / Objective C / C++\n#include <Accelerate/Accelerate.h> // Add framework Accelerate\n#include <AppleArchive/AppleArchive.h> // Add framework AppleArchive\n#include <Compression/Compression.h> // Add framework Compression\n#include <simd/simd.h> // No framework to add\n\n// Swift\nimport Accelerate\nimport AppleArchive\nimport Compression\nimport simd"
+    },
+    {
+      "title": "simd example",
+      "language": "swift",
+      "startTimeSeconds": 266,
+      "code": "import simd\n\npublic func swishharder_scalar (_ data: [Float]) -> [Float] {\n  return data.map { x in\n    if x <= -.pi { return 0 }                         //        {  0                if  x ≤ -π\n    if x <=  .pi { return 2*exp(x) * (x + .pi)/2 }    // f(x) = {  2eˣ * (x+π)/2    if -π <  x < π\n    else         { return 2*exp(x) }                  //        {  2eˣ              if  π ≤  x\n  }\n}\n\nfunc swishharder_elementwise(_ x: SIMD8<Float>) -> SIMD8<Float> {\n    let y = 2*simd.exp(x)\n    let a = y.replacing(with: 0, where: x .<= -.pi)\n    let b = ((x + .pi)/2).replacing(with: 1, where: .pi .<= x)\n    return a*b\n}\n\nextension SIMD {\n    internal func store(\n        into buffer: UnsafeMutableBufferPointer<Scalar>,\n        startingAt offset: Int\n    ) {\n        for i in 0 ..< scalarCount {\n            buffer[offset + i] = self[i]\n        }\n    }\n}\n\npublic func swishharder_simd(_ data: [Float]) -> [Float] {\n    return Array<Float>(unsafeUninitializedCapacity: data.count) {\n        (buffer: inout UnsafeMutableBufferPointer<Float>, count: inout Int) in\n        for i in stride(from: 0, to: data.count, by: 8) {\n            let v = SIMD8(data[i ..< i+8])\n            let w = swishharder_elementwise(v)\n            w.store(into: buffer, startingAt: i)\n        }\n        count = data.count\n    }\n}"
+    },
+    {
+      "title": "AEA Encryption",
+      "language": "swift",
+      "startTimeSeconds": 734,
+      "code": "/// Encrypts and archives the directory at the specified URL.\n    ///\n    /// - Parameter sourceURL: The URL of the directory that the function encrypts and archives.\n    /// - Returns: A string containing the status message.\n    ///\n    /// This function writes the result to `directory`. The archive shares the name\n    /// of the supplied directory with an `aea` extension.\n    static func encrypt(sourceURL: URL) -> ConsoleMessage {\n\n        // Verify that the URL path represents a directory.\n        if !sourceURL.hasDirectoryPath {\n            return ConsoleMessage(status: .error,\n                                  message: \"The specified URL doesn't point to a directory.\")\n        }\n\n        guard let source = FilePath(sourceURL) else {\n            return ConsoleMessage(status: .error,\n                                  message: \"Unable to create file path from source URL.\")\n        }\n\n        // Create the destination `FilePath`.\n        let destination = directory\n            .appending(sourceURL.lastPathComponent)\n            .appending(\".aea\")\n        let archiveDestination = FilePath(destination)\n\n        // Create the encryption context + setup credentials\n        let encryptionKey = SymmetricKey(size: .bits256)\n\n        let context = ArchiveEncryptionContext(\n            profile: .hkdf_sha256_aesctr_hmac__symmetric__none,\n            compressionAlgorithm: .lzfse)\n        do {\n            try context.setSymmetricKey(encryptionKey)\n        } catch {\n            return ConsoleMessage(status: .error,\n                                  message: \"Error setting password (\\(error).)\")\n        }\n\n        // Create the file stream, encryption stream, archive encode stream.\n        guard\n            let archiveDestinationFileStream = ArchiveByteStream.fileStream(\n                path: archiveDestination,\n                mode: .writeOnly,\n                options: [ .create, .truncate ],\n                permissions: FilePermissions(rawValue: 0o644)),\n\n                let encryptionStream = ArchiveByteStream.encryptionStream(\n                    writingTo: archiveDestinationFileStream,\n                    encryptionContext: context),\n\n                let encoderStream = ArchiveStream.encodeStream(\n                    writingTo: encryptionStream) else {\n\n                    return ConsoleMessage(status: .error,\n                                          message: \"Error creating streams.\")\n                }\n\n        // Remember to close things in the correct order\n        defer {\n            try? encoderStream.close()\n            try? encryptionStream.close()\n            try? archiveDestinationFileStream.close()\n        }\n\n        // Encode all files in the target directory with the specifed fields.\n        do {\n\n            let fields = ArchiveHeader.FieldKeySet(\"TYP,PAT,DAT,UID,GID,MOD\")!\n            try encoderStream.writeDirectoryContents(archiveFrom: source,\n                                                     keySet: fields)\n        } catch {\n            return ConsoleMessage(status: .error,\n                                  message: \"Error writing directory contents.\")\n        }\n\n        if let url = URL(archiveDestination) {\n            NSWorkspace.shared.activateFileViewerSelecting([url])\n        }\n\n        let message = \"\"\"\nEncrypted with key '\\(encryptionKey.base64Encoded)'.\nArchived and encrypted to: \\(archiveDestination.description).\n\"\"\"\n\n        return ConsoleMessage(status: .encryptionSuccess(base64EncodedKeyData: encryptionKey.base64Encoded),\n                              message: message)\n    }"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Encrypting and Decrypting Directories",
+      "url": "https://developer.apple.com/documentation/AppleArchive/encrypting-and-decrypting-directories",
+      "type": "samplecode",
+      "description": "Compress and encrypt the contents of an entire directory or decompress and decrypt an archived directory  using Apple Encrypted Archive.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppleArchive/encrypting-and-decrypting-directories",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppleArchive/encrypting-and-decrypting-directories.json"
+    },
+    {
+      "title": "Accelerate",
+      "url": "https://developer.apple.com/documentation/Accelerate",
+      "type": "documentation",
+      "description": "Make large-scale mathematical computations and image calculations, optimized for high performance and low energy consumption.",
+      "sosumiURL": "https://sosumi.ai/documentation/Accelerate",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Accelerate.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10233/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10233/metadata.json",
+    "readme": "sessions/wwdc2021/10233/README.md",
+    "transcript": "sessions/wwdc2021/10233/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10233/transcript.json"
+  }
+}

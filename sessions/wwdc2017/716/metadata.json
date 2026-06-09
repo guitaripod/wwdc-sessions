@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2017-716",
+  "event": "wwdc2017",
+  "eventName": "WWDC17",
+  "year": 2017,
+  "eventContentId": 716,
+  "title": "iOS Configuration and APIs for Kiosk and Assessment Apps",
+  "description": "iOS provides several techniques for keeping your app front and center. Whether you’re building a kiosk, hospitality check-in, or educational assessment app, choosing the right app-lock technique is critical. From Guided Access to Automatic Assessment Configuration you’ll learn which approach works best for your unique experience.",
+  "url": "https://developer.apple.com/videos/play/wwdc2017/716",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2017/716",
+  "type": "Session",
+  "publishedAt": "2017-06-09T13:50:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Business & Education",
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 2148,
+  "hasTranscript": true,
+  "transcriptWordCount": 6520,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/716op0un8kq3o4n/716/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/716op0un8kq3o4n/716/716_sd_ios_configuration_and_apis_for_kiosk_and_assessment_apps.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/716op0un8kq3o4n/716/716_hd_ios_configuration_and_apis_for_kiosk_and_assessment_apps.mp4",
+    "duration": 2148
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Automatic Assessment Configuration Sample Code",
+      "url": "https://developer.apple.com/sample-code/wwdc/2017/Automatic-Assessment-Configuration-Sample-Code.zip",
+      "type": "samplecode",
+      "description": "Demonstrates how to request a Guided Access session to lock the device into a single app.",
+      "sosumiURL": "https://sosumi.ai/sample-code/wwdc/2017/Automatic-Assessment-Configuration-Sample-Code.zip"
+    },
+    {
+      "title": "Assessment with iPad",
+      "url": "https://images.apple.com/education/docs/Assessment_with_iPad.pdf",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "iPad and Student Assessment",
+      "url": "https://images.apple.com/education/docs/Assessment_Overview.pdf",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Set up your iPad to give tests and assessments",
+      "url": "https://support.apple.com/en-us/HT204775",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Mobile Device Management Protocol Reference",
+      "url": "https://developer.apple.com/library/content/documentation/Miscellaneous/Reference/MobileDeviceManagementProtocolRef/3-MDM_Protocol/MDM_Protocol.html",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/library/content/documentation/Miscellaneous/Reference/MobileDeviceManagementProtocolRef/3-MDM_Protocol/MDM_Protocol.html"
+    },
+    {
+      "title": "Configuration Profile Reference",
+      "url": "https://developer.apple.com/library/content/featuredarticles/iPhoneConfigurationProfileRef/Introduction/Introduction.html",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/library/content/featuredarticles/iPhoneConfigurationProfileRef/Introduction/Introduction.html"
+    }
+  ],
+  "path": "sessions/wwdc2017/716/",
+  "files": {
+    "metadata": "sessions/wwdc2017/716/metadata.json",
+    "readme": "sessions/wwdc2017/716/README.md",
+    "transcript": "sessions/wwdc2017/716/transcript.md",
+    "transcriptJSON": "sessions/wwdc2017/716/transcript.json"
+  }
+}

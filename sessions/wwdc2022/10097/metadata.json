@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10097",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10097,
+  "title": "What's new in App Clips",
+  "description": "Explore the latest updates to App Clips! Discover how we’ve made your App Clip even easier to build with improvements to the size limit as well as CloudKit and keychain usage. We’ll also show you how to use our validation tool to verify your App Clip and automate workflows for your advanced App Clip experiences using App Store Connect.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10097",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10097",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "15 mb",
+    "advanced app clip",
+    "api",
+    "app clip code",
+    "app clip experience",
+    "app clip testing",
+    "app group container",
+    "app store connect",
+    "associated domain",
+    "attributes",
+    "banner",
+    "cloudkit",
+    "developer settings",
+    "diagnostics",
+    "included",
+    "keychain",
+    "keychain migration",
+    "local keychain",
+    "migration",
+    "physical code",
+    "public database",
+    "qr code",
+    "relationships",
+    "resource id",
+    "size limit",
+    "smart banner",
+    "transferred from app clip to app",
+    "universal link"
+  ],
+  "topics": [
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 584,
+  "hasTranscript": true,
+  "transcriptWordCount": 1376,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10097/4/1195D4FF-4AF5-48B0-BB92-948D01AF942B/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10097/4/1195D4FF-4AF5-48B0-BB92-948D01AF942B/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10097/4/1195D4FF-4AF5-48B0-BB92-948D01AF942B/downloads/wwdc2022-10097_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10097/4/1195D4FF-4AF5-48B0-BB92-948D01AF942B/downloads/wwdc2022-10097_hd.mp4",
+    "duration": 584
+  },
+  "codeSnippets": [
+    {
+      "title": "Read your CloudKit public database from your App Clip",
+      "language": "swift",
+      "startTimeSeconds": 281,
+      "code": "// Read your CloudKit public database from your App Clip\n\nlet container = CKContainer.default()\nlet publicDatabase = container.publicCloudDatabase\nlet record = try await publicDatabase.record(for:\n    CKRecord.ID(recordName: \"A928D582-9BB6-E9C5-7881-E4EAF615E0CD\"))\n\nif let title = record[\"Title\"] as? String,\n    let description = record[\"Description\"] as? String {\n        print(“Fetched a food item from CloudKit: \\(title) \\(description)\")\n}"
+    },
+    {
+      "title": "Read and Write from your App Clip's keychain",
+      "language": "swift",
+      "startTimeSeconds": 363,
+      "code": "// Write authentication token to App Clip keychain\n\nlet addSecretsQuery: [String: Any] = [\n    kSecClass as String: kSecClassGenericPassword,\n    kSecValueData as String: \"smoothie-secret\".data(using: .utf8),\n    kSecAttrLabel as String: \"foodsample-appclip\"\n]\nSecItemAdd(addSecretsQuery as CFDictionary, nil)\n\n// Read authentication token from app or App Clip\n\nvar readSecretsQuery: [String: Any] = [\n    kSecClass as String: kSecClassGenericPassword,\n    kSecReturnAttributes as String: true,\n    kSecAttrLabel as String: \"foodsample-appclip\",\n    kSecReturnData as String: true\n]\nvar secretsCopy: AnyObject?\nSecItemCopyMatching(readSecretsQuery as CFDictionary, &secretsCopy)"
+    },
+    {
+      "title": "Get your App Clip resource ID",
+      "language": "json",
+      "startTimeSeconds": 430,
+      "code": "# Get the App Clip resource ID\n\nGET /v1/apps/1234567890/appClips?filter[bundleId]=com.example.foodsample.Clip\n\n# Response\n\n{\n    \"data\": {\n        \"attributes\": {\n            \"bundleId\": \"com.example.foodsample.Clip\"\n        },\n        \"id\": \"726ad1bb-3e1b-40eb-a986-d8a9897e4f1e\"\n    }\n}"
+    },
+    {
+      "title": "Upload a header image for the advanced App Clip experience",
+      "language": "json",
+      "startTimeSeconds": 445,
+      "code": "# Upload a header image for the advanced App Clip experience\n\nPOST /v1/appClipAdvancedExperienceImages\n{\n    \"data\": {\n        \"type\": \"appClipAdvancedExperienceImages\",\n        \"attributes\": {\n            \"fileName\": \"Hero_image_US.png\",\n            \"fileSize\": 43500\n        }\n    }\n}\n\n# Response\n\n{\n    \"data\": {\n        \"attributes\": \"...\"\n        \"id\": \"91c52741-832b-48a2-8935-1797655edbe7\"\n    }\n}"
+    },
+    {
+      "title": "Create the advanced App Clip experience",
+      "language": "json",
+      "startTimeSeconds": 454,
+      "code": "# Create advanced App Clip experience\n\nPOST /v1/appClipAdvancedExperiences\n{\n    \"data\": {\n        \"type\": \"appClipAdvancedExperiences\",\n        \"attributes\": {\n            \"action\": “OPEN\",\n            \"businessCategory\": \"FOOD_AND_DRINK\",\n            \"defaultLanguage\": \"EN\",\n            \"isPoweredBy\": true,\n            \"link\": \"https://fruta.example.com/restauraunt/simply_salad\",\n            \"place\": {\n                \"names\": [ \"Caffe Macs\" ],\n                \"mapAction\": \"RESTAURANT_ORDER_FOOD\",\n                \"displayPoint\": {\n                    \"coordinates\": { \"latitude\": 37.33611, \"longitude\": -122.00731 },\n                    \"source\": \"CALCULATED\"\n                }\n            }\n        },\n        \"relationships\": {\n            \"appClip\": {\n                \"data\": {\n                    \"type\": \"appClip\",\n                    \"id\": \"726ad1bb-3e1b-40eb-a986-d8a9897e4f1e\"\n                }\n            },\n            \"headerImage\": {\n                \"data\": {\n                    \"type\": \"appClipAdvancedExperienceImages\",\n                    \"id\": \"91c52741-832b-48a2-8935-1797655edbe7\"\n                }\n            }\n        },\n        \"included\": {\n            \"type\": \"appClipAdvancedExperienceLocalizations\",\n            \"attributes\": {\n                \"language\": \"EN\",\n                \"subtitle\": \"Fresh salad every day\",\n                \"title\": \"Simply Salad\"\n            }\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "App Clips",
+      "url": "https://developer.apple.com/documentation/AppClip",
+      "type": "documentation",
+      "description": "Create a lightweight, in-the-moment experience or demo version for your app that’s instantly available.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppClip",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppClip.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10097/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10097/metadata.json",
+    "readme": "sessions/wwdc2022/10097/README.md",
+    "transcript": "sessions/wwdc2022/10097/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10097/transcript.json"
+  }
+}

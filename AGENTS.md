@@ -1,35 +1,55 @@
 # Agent Guide
 
-This repository is a knowledge base of **Apple WWDC26 (WWDC 2026)** developer sessions,
-structured for direct consumption by AI agents. It is free, non-commercial, and complementary to
-Apple's official material — every session links back to its source on developer.apple.com.
+A knowledge base of **Apple WWDC developer sessions** (WWDC 2014-2026, plus Tech Talks and Meet
+with Apple), structured for direct consumption by AI agents. Free, non-commercial, and
+complementary to Apple's official material — every session links back to developer.apple.com.
 
-## How it is organized
+**1617 sessions · 1525 transcripts · 15 events ·
+19 topics.**
+
+## Layout
 
 ```
-catalog.json              Machine-readable index of all 116 sessions (START HERE)
-topics.json               Sessions grouped by Apple's 18 topics
-llms.txt                  llms.txt-format index with one-line summaries
-sessions/<id>/
-  metadata.json           Structured: title, description, platforms, keywords, topics,
-                          code snippets, resources (with DocC JSON endpoints), media URLs
-  README.md               Rendered session page (human + agent readable)
-  transcript.md           Full timecoded transcript (present for 112 sessions)
-topics/<slug>.md          Per-topic session lists
-platforms/<slug>.md       Per-platform session lists
+catalog.json                     Master index — START HERE. Provenance, counts, every session.
+events.json                      Per-event summaries and counts.
+topics.json                      Topic -> session ids across all years.
+llms.txt                         llms.txt-format index.
+schema/catalog.schema.json       JSON Schema for catalog.json.
+schema/session.schema.json       JSON Schema for sessions/*/metadata.json.
+sessions/<event>/<id>/
+  metadata.json                  Structured: platforms, topics, keywords, code snippets,
+                                 resources (with sosumi.ai + DocC endpoints), media, languages.
+  README.md                      Rendered page with YAML frontmatter.
+  transcript.md                  Timecoded transcript prose (when available).
+  transcript.json                Machine transcript: { "segments": [{ "start", "text" }] }.
+events/<event>/index.md          Per-event sessions grouped by topic.
+topics/<slug>.md                 Per-topic index across events.
+platforms/<slug>.md              Per-platform index.
 ```
+
+## Path templates
+
+Every path is derivable from a session `id` (Apple's stable `wwdc<year>-<n>` form):
+
+```
+sessions/<event>/<id>/metadata.json
+sessions/<event>/<id>/transcript.json
+```
+
+`<event>` is the `event` field on each catalog record (e.g. `wwdc2026`, `tech-talks`). Do not
+guess paths — every catalog record carries an exact `path`, and each metadata.json carries a
+`files` map.
 
 ## Recommended access patterns
 
-1. **Need the whole map?** Fetch `catalog.json`. Every entry has `id`, `title`, `topics`,
-   `platforms`, `keywords`, `hasTranscript`, `resourceCount`, and `path`.
-2. **Need one session's content?** Read `sessions/<id>/transcript.md` for the talk and
-   `sessions/<id>/metadata.json` for everything structured.
-3. **Need Apple's documentation behind a session?** Each resource in `metadata.json` carries the
-   canonical `url` plus a `sosumiURL` (clean Markdown via sosumi.ai) and, for API reference, a
-   `doccJSON` field. Prefer `sosumiURL` — it returns AI-readable Markdown instead of
-   JavaScript-rendered HTML or raw render JSON.
-4. **Filtering by subject?** Use `topics.json` / `topics/` or the `keywords` array on each session.
+1. **Whole map:** fetch `catalog.json`. Filter `sessions[]` by `year`, `event`, `topics`,
+   `platforms`, `keywords`, or `hasTranscript`.
+2. **One talk:** read `sessions/<event>/<id>/transcript.md` (prose) or `transcript.json`
+   (`segments[]` with second-precise `start` times for citation).
+3. **Structured detail:** `sessions/<event>/<id>/metadata.json` — code snippets carry full source;
+   resources carry `url`, `sosumiURL`, and `doccJSON`.
+4. **Apple docs behind a session:** prefer each resource's `sosumiURL` (clean Markdown). See below.
+5. **Subject filtering:** `topics.json` / `topics/`, or the `keywords` array per session.
 
 ## Apple documentation as Markdown (Sosumi)
 
@@ -39,17 +59,41 @@ Apple's docs are JavaScript-rendered and mostly invisible to agents. To read any
 - `https://developer.apple.com/documentation/swiftui/observable`
   -> `https://sosumi.ai/documentation/swiftui/observable`
 
-Every session's `metadata.json` precomputes this as `sosumiURL` (per resource and for the session
-itself). Sosumi also exposes an MCP server at `https://sosumi.ai/mcp` (search Apple docs; fetch
-docs, HIG, and video transcripts). Sosumi is an on-demand renderer — fetch pages as needed; do not
-bulk-crawl it.
+Each resource in `metadata.json` precomputes this as `sosumiURL`, and every session has its own
+`sosumiURL`. Sosumi also exposes an MCP server at `https://sosumi.ai/mcp`. It is an on-demand
+renderer — fetch pages as needed; do not bulk-crawl it.
+
+## Languages
+
+Transcripts are materialized in English. Each session's `availableLanguages` lists every language
+Apple publishes (e.g. `eng`, `zho`, `jpn`, `kor`, `spa`, `por`, `fra`); fetch other languages via
+the session's `sosumiURL` or Apple's feed.
+
+## Coverage
+
+| Event | id | Sessions | Transcripts |
+|---|---|---|---|
+| WWDC26 | wwdc2026 | 116 | 112 |
+| WWDC25 | wwdc2025 | 122 | 120 |
+| Meet with Apple | meet-with-apple | 45 | 45 |
+| WWDC24 | wwdc2024 | 123 | 123 |
+| WWDC23 | wwdc2023 | 181 | 181 |
+| WWDC22 | wwdc2022 | 205 | 184 |
+| WWDC21 | wwdc2021 | 224 | 199 |
+| WWDC20 | wwdc2020 | 244 | 206 |
+| WWDC19 | wwdc2019 | 153 | 152 |
+| WWDC18 | wwdc2018 | 38 | 38 |
+| WWDC17 | wwdc2017 | 36 | 36 |
+| Tech Talks | tech-talks | 96 | 95 |
+| WWDC16 | wwdc2016 | 16 | 16 |
+| WWDC15 | wwdc2015 | 12 | 12 |
+| WWDC14 | wwdc2014 | 6 | 6 |
 
 ## Raw fetch base
 
-Files are fetchable raw at:
-`https://raw.githubusercontent.com/guitaripod/wwdc26-sessions/master/<path>` — e.g. `https://raw.githubusercontent.com/guitaripod/wwdc26-sessions/master/catalog.json`.
+`https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/<path>` — e.g. `https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/catalog.json`.
 
 ## Provenance
 
-All session content is © Apple Inc. and sourced from Apple's public WWDC feeds
-(`developer.apple.com`). This index is regenerated by `scripts/build.py`.
+All session content is © Apple Inc., sourced from Apple's public developer-video feeds. This index
+is regenerated by `scripts/build.py` and validated by `scripts/validate.py`.

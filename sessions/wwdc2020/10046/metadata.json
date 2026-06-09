@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10046",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10046,
+  "title": "Create complications for Apple Watch",
+  "description": "When you add complications to a Watch app, people can access glanceable and up to date information directly from their watch face. We’ll show you how to create and build complications from the ground up and introduce you to Multiple Complications. Learn how to construct timelines, use families and templates, and discover best practices on crafting a thorough complication experience.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10046",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10046",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "watchOS"
+  ],
+  "keywords": [
+    "🐋",
+    "🐳",
+    "⌚️",
+    "clockkit",
+    "watchkit",
+    "watchos"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1208,
+  "hasTranscript": true,
+  "transcriptWordCount": 3408,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10046/4/F29A4217-89E7-4D20-A3CE-3764F44B16D8/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10046/4/F29A4217-89E7-4D20-A3CE-3764F44B16D8/wwdc2020_10046_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10046/4/F29A4217-89E7-4D20-A3CE-3764F44B16D8/wwdc2020_10046_hd.mp4",
+    "duration": 1208
+  },
+  "codeSnippets": [
+    {
+      "title": "CLKComplicationDataSource - Required Methods",
+      "language": "swift",
+      "startTimeSeconds": 294,
+      "code": "// CLKComplicationDataSource - Required\nclass ComplicationController: NSObject, CLKComplicationDataSource {\n\n    func getCurrentTimelineEntry(\n        for complication: CLKComplication, \n        withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void)     \n    {\n        // Call the handler with the current timeline entry\n        handler(createTimelineEntry(forComplication: complication, date: Date()))\n    }\n}"
+    },
+    {
+      "title": "CLKComplicationDataSource - Timeline Support",
+      "language": "swift",
+      "startTimeSeconds": 316,
+      "code": "// CLKComplicationDataSource - Timeline Support\nextension ComplicationController {\n\n    func getTimelineEndDate(\n        for complication: CLKComplication, \n        withHandler handler: @escaping (Date?) -> Void) \n    {\n        handler(timeline(for: complication)?.endDate)\n    }\n\n    func getTimelineEntries(\n        for complication: CLKComplication, \n        after date: Date, \n        limit: Int, \n        withHandler handler: @escaping ([CLKComplicationTimelineEntry]?) -> Void) \n    {\n       handler(timeline(for: complication)?.entries(after: date, limit: limit))\n    }\n}"
+    },
+    {
+      "title": "CLKDateTextProvider initialization",
+      "language": "swift",
+      "startTimeSeconds": 491,
+      "code": "let longDate: Date = DateComponents(year: 2020, month: 9, day: 23).date ?? Date()\nlet units: NSCalendar.Unit = [.weekday, .month, .day]\nlet textProvider = CLKDateTextProvider(date: longDate, units: units)"
+    },
+    {
+      "title": "CLKRelativeDateTextProvider initialization",
+      "language": "swift",
+      "startTimeSeconds": 529,
+      "code": "let timerStart: Date = …\nlet units: NSCalendar.Unit = [.hour, .minute, .second]\nlet textProvider = CLKRelativeDateTextProvider(date: timerStart, style: .timer, units: units)"
+    },
+    {
+      "title": "CLKComplicationDataSource - Multiple Complication Support",
+      "language": "swift",
+      "startTimeSeconds": 796,
+      "code": "// CLKComplicationDataSource - Multiple Complication Support\nextension ComplicationController {\n    var descriptors : [CLKComplicationDescriptor] = []\n    var dataDict = Dictionary<AnyHashable, Any>()\n\n    for station in data.stations {\n        dataDict = [“name\": station.name, “shortName\": station.shortName]\n        descriptors.append(\n            CLKComplicationDescriptor(\n                identifier: station.name,\n                displayName: station.name,\n                supportedFamilies: CLKComplicationFamily.allCases,\n                userInfo: dataDict))\n    }\n\n    descriptors.append(\n        CLKComplicationDescriptor(\n            identifier: \"LogSighting\",\n            displayName: \"Log Sighting\",\n            supportedFamilies: CLKComplicationFamily.allCases))\n\n    descriptors.append(\n        CLKComplicationDescriptor(\n            identifier: \"SeasonData\",\n            displayName: \"Season Data\",\n            supportedFamilies: [.graphicRectangular]))\n\n    // Call the handler with the currently supported complication descriptors\n    handler(descriptors)\n}"
+    },
+    {
+      "title": "CLKComplicationDataSource - Sample Templates",
+      "language": "swift",
+      "startTimeSeconds": 1029,
+      "code": "func getLocalizableSampleTemplate(\n    for complication: CLKComplication, \n    withHandler handler: @escaping (CLKComplicationTemplate?) -> Void) \n{\n    let template = createSampleTemplate(forComplication: complication)\n    handler(template)\n}"
+    },
+    {
+      "title": "Whale Watch - Entries",
+      "language": "swift",
+      "startTimeSeconds": 1053,
+      "code": "func createTimelineEntry(\n    forComplication complication: CLKComplication, \n    date: Date) -> CLKComplicationTimelineEntry? \n{\n    guard let template = createTemplate(forComplication: complication, date: date) else {\n        return nil\n    }\n    return CLKComplicationTimelineEntry(date: date, complicationTemplate: template)\n}"
+    },
+    {
+      "title": "Whale Watch - Templates",
+      "language": "swift",
+      "startTimeSeconds": 1064,
+      "code": "func createTemplate(\n    forComplication complication: CLKComplication, \n    date: Date) -> CLKComplicationTemplate? \n{\n    var station: Station? = nil\n    if let stationName = complication.userInfo?[\"name\"] as? String {\n        station = data.stations.first(where: { $0.name == stationName })\n    }\n\n    let image = UIImage(named: \"Spout-small\")!\n    let spoutFullColorImageProvider = CLKFullColorImageProvider(fullColorImage: image)\n    let logSightingTextProvider = CLKSimpleTextProvider(\n        text: \"Log Sighting\", \n        shortText: \"Log\")\n\n    let defaultTemplate: (CLKComplicationFamily) -> CLKComplicationTemplate = { family -> CLKComplicationTemplate in\n      // Return a default complication template for the given family\n    }\n\n    switch (complication.family, complication.identifier) {\n\n    case (.graphicRectangular, \"SeasonData\"):\n        return CLKComplicationTemplateGraphicRectangularFullView(\n            ChartView(\n                seriesData: data.last7DaysSightings, \n                seriesColor: .turquoise)\n\n    case (.graphicCircular, \"LogSighting\"):\n        return CLKComplicationTemplateGraphicCircularStackImage(\n            line1ImageProvider: spoutFullColorImageProvider, \n            line2TextProvider: logSightingTextProvider)\n\n    case (.graphicCircular, _):\n        guard let station = station else { return defaultTemplate(.graphicCircular) }\n        return CLKComplicationTemplateGraphicCircularView(\n            SightingTypeView(station: station))\n\n    case (.graphicCorner, _):\n        guard let station = station else { return defaultTemplate(.graphicCorner) }\n        return CLKComplicationTemplateGraphicCornerTextImage(\n            textProvider: station.timeAndShortLocTextProvider, \n            imageProvider: station.whaleActivityFullColorProvider)\n\n    case (.graphicExtraLarge, _):\n        guard let station = station else { return defaultTemplate(.graphicExtraLarge) }\n        return CLKComplicationTemplateGraphicExtraLargeCircularStackText(\n            line1TextProvider: station.timeAndLocationTextProvider, \n            line2TextProvider: station.shortLocationTextProvider)\n\n    default:\n        return defaultTemplate(complication.family)\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Creating and updating a complication’s timeline",
+      "url": "https://developer.apple.com/documentation/ClockKit/creating-and-updating-a-complication-s-timeline",
+      "type": "samplecode",
+      "description": "Create complications that batch-load a timeline of future entries and run periodic background sessions to update the timeline.",
+      "sosumiURL": "https://sosumi.ai/documentation/ClockKit/creating-and-updating-a-complication-s-timeline",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ClockKit/creating-and-updating-a-complication-s-timeline.json"
+    },
+    {
+      "title": "ClockKit",
+      "url": "https://developer.apple.com/documentation/ClockKit",
+      "type": "documentation",
+      "description": "Display app-specific data on the clock face.",
+      "sosumiURL": "https://sosumi.ai/documentation/ClockKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ClockKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10046/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10046/metadata.json",
+    "readme": "sessions/wwdc2020/10046/README.md",
+    "transcript": "sessions/wwdc2020/10046/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10046/transcript.json"
+  }
+}

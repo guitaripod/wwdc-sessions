@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10109",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10109,
+  "title": "What's new in Foundation",
+  "description": "Discover how the latest updates to Foundation can help you improve your app's localization and internationalization support. Find out about the new AttributedString, designed specifically for Swift, and learn how you can use Markdown to apply style to your localized strings. Explore the grammar agreement engine, which automatically fixes up localized strings so they match grammatical gender and pluralization. And we’ll take you through improvements to date and number formatting that simplify complex requirements while also improving performance.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10109",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10109",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Essentials",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 2255,
+  "hasTranscript": true,
+  "transcriptWordCount": 5747,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10109/5/31B61A71-9D39-4F29-97DF-66309DBA320E/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10109/5/31B61A71-9D39-4F29-97DF-66309DBA320E/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10109/5/31B61A71-9D39-4F29-97DF-66309DBA320E/downloads/wwdc2021-10109_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10109/5/31B61A71-9D39-4F29-97DF-66309DBA320E/downloads/wwdc2021-10109_hd.mp4",
+    "duration": 2255
+  },
+  "codeSnippets": [
+    {
+      "title": "Attributed String Basics",
+      "language": "swift",
+      "startTimeSeconds": 170,
+      "code": "func attributedStringBasics(important: Bool) {\n    var thanks = AttributedString(\"Thank you!\")\n    thanks.font = .body.bold()\n\n    var website = AttributedString(\"Please visit our website.\")\n    website.font = .body.italic()\n    website.link = URL(string: \"http://www.example.com\")\n\n    var container = AttributeContainer()\n    if important {\n        container.foregroundColor = .red\n        container.underlineColor = .primary\n    } else {\n        container.foregroundColor = .primary\n    }\n\n    thanks.mergeAttributes(container)\n    website.mergeAttributes(container)\n\n    print(thanks)\n    print(website)\n}"
+    },
+    {
+      "title": "Attributed String Characters",
+      "language": "swift",
+      "startTimeSeconds": 264,
+      "code": "func attributedStringCharacters() {\n    var message = AttributedString(localized: \"Thank you! _Please visit our [website](http://www.example.com)._\")\n    let characterView = message.characters\n    for i in characterView.indices where characterView[i].isPunctuation {\n        message[i..<characterView.index(after: i)].foregroundColor = .orange\n    }\n\n    print(message)\n}"
+    },
+    {
+      "title": "Attributed String Runs (Part 1)",
+      "language": "swift",
+      "startTimeSeconds": 312,
+      "code": "func attributedStringRuns() {\n    let message = AttributedString(localized: \"Thank you! _Please visit our [website](http://www.example.com)._\")\n    let runCount = message.runs.count\n    // runCount is 4\n    print(runCount)\n\n    let firstRun = message.runs.first!\n    let firstString = String(message.characters[firstRun.range])\n    // firstString is \"Thank you!\"\n    print(firstString)\n}"
+    },
+    {
+      "title": "Attributed String Runs (Part 2)",
+      "language": "swift",
+      "startTimeSeconds": 349,
+      "code": "func attributedStringRuns2() {\n    let message = AttributedString(localized: \"Thank you! _Please visit our [website](http://www.example.com)._\")\n\n    let linkRunCount = message.runs[\\.link].count\n    // linkRunCount is 3\n    print(linkRunCount)\n\n    var insecureLinks: [URL] = []\n    for (value, range) in message.runs[\\.link] {\n        if let v = value, v.scheme != \"https\" {\n            insecureLinks.append(v)\n        }\n    }\n    // insecureLinks is [http://www.example.com]\n    print(insecureLinks)\n}"
+    },
+    {
+      "title": "Attributed String Mutation",
+      "language": "swift",
+      "startTimeSeconds": 396,
+      "code": "func attributedStringMutation() {\n    var message = AttributedString(localized: \"Thank you! _Please visit our [website](http://www.example.com)._\")\n\n    if let range = message.range(of: \"visit\") {\n        message[range].font = .body.italic().bold()\n        message.characters.replaceSubrange(range, with: \"surf\")\n    }\n\n    print(message)\n}"
+    },
+    {
+      "title": "Localized Strings",
+      "language": "swift",
+      "startTimeSeconds": 449,
+      "code": "func prompt(for document: String) -> String {\n    String(localized: \"Would you like to save the document “\\(document)”?\")\n}\n\nfunc attributedPrompt(for document: String) -> AttributedString {\n    AttributedString(localized: \"Would you like to save the document “\\(document)”?\")\n}"
+    },
+    {
+      "title": "Codable Attributed Strings",
+      "language": "swift",
+      "startTimeSeconds": 574,
+      "code": "struct FoodItem: Codable {\n    // Placeholder type to demonstrate concept\n    var name: String\n}\n\nstruct Receipt: Codable {\n    var items: [FoodItem]\n    var thankYouMessage: AttributedString\n}\n\nfunc codableBasics() {\n    let message = AttributedString(localized: \"Thank you! _Please visit our [website](http://www.example.com)._\")\n    let receipt = Receipt(items: [FoodItem(name: \"Juice\")], thankYouMessage: message)\n\n    let encoded = try! JSONEncoder().encode(receipt)\n    let decodedReceipt = try! JSONDecoder().decode(Receipt.self, from: encoded)\n\n    print(\"\\(decodedReceipt.thankYouMessage)\")\n}"
+    },
+    {
+      "title": "Markdown Decodable Attribute",
+      "language": "swift",
+      "startTimeSeconds": 642,
+      "code": "enum RainbowAttribute : CodableAttributedStringKey, MarkdownDecodableAttributedStringKey {\n    enum Value : String, Codable {\n        case plain\n        case fun\n        case extreme\n    }\n\n    public static var name = \"rainbow\"\n}"
+    },
+    {
+      "title": "Custom Markdown Syntax",
+      "language": "markdown",
+      "startTimeSeconds": 690,
+      "code": "This text contains [a link](http://www.example.com).\n\nThis text contains ![an image](http://www.example.com/my_image.gif).\n\nThis text contains ^[an attribute](rainbow: 'extreme')."
+    },
+    {
+      "title": "Custom Markdown Attributes",
+      "language": "markdown",
+      "startTimeSeconds": 747,
+      "code": "This text contains ^[an attribute](rainbow: 'extreme').\n\nThis text contains ^[two attributes](rainbow: 'extreme', otherValue: 42).\n\nThis text contains ^[an attribute with 2 properties](someStuff: {key: true, key2: false})."
+    },
+    {
+      "title": "Attribute Scopes",
+      "language": "swift",
+      "startTimeSeconds": 795,
+      "code": "extension AttributeScopes {\n    struct CaffeAppAttributes : AttributeScope {\n        let rainbow: RainbowAttribute\n\n        let swiftUI: SwiftUIAttributes\n    }\n\n    var caffeApp: CaffeAppAttributes.Type { CaffeAppAttributes.self }\n}\n\nfunc customAttributesFromMarkdown() {\n    let header = AttributedString(localized: \"^[Fast & Delicious](rainbow: 'extreme') Food\", including: \\.caffeApp)\n\n    print(header)\n}"
+    },
+    {
+      "title": "Formatting Dates",
+      "language": "swift",
+      "startTimeSeconds": 1048,
+      "code": "func formattingDates() {\n    // Note: This will use your current date & time plus current locale. Example output is for en_US locale.\n    let date = Date.now\n\n    let formatted = date.formatted()\n    // example: \"6/7/2021, 9:42 AM\"\n    print(formatted)\n\n    let onlyDate = date.formatted(date: .numeric, time: .omitted)\n    // example: \"6/7/2021\"\n    print(onlyDate)\n\n    let onlyTime = date.formatted(date: .omitted, time: .shortened)\n    // example: \"9:42 AM\"\n    print(onlyTime)\n}"
+    },
+    {
+      "title": "Formatting Dates With Styles",
+      "language": "swift",
+      "startTimeSeconds": 1096,
+      "code": "func formattingDatesWithStyles() {\n    // Note: This will use your current date & time plus current locale. Example output is for en_US locale.\n    let date = Date.now\n\n    let formatted = date.formatted(.dateTime)\n    // example: \"6/7/2021, 9:42 AM\"\n    print(formatted)\n}"
+    },
+    {
+      "title": "Formatting Dates - More Examples",
+      "language": "swift",
+      "startTimeSeconds": 1116,
+      "code": "func formattingDatesMoreExamples() {\n    // Note: This will use your current date & time plus current locale. Example output is for en_US locale.\n    let date = Date.now\n\n    let formatted = date.formatted(.dateTime.year().day().month())\n    // example: \"Jun 7, 2021\"\n    print(formatted)\n\n    let formattedWide = date.formatted(.dateTime.year().day().month(.wide))\n    // example: \"June 7, 2021\"\n    print(formattedWide)\n\n    let formattedWeekday = date.formatted(.dateTime.weekday(.wide))\n    // example: \"Monday\"\n    print(formattedWeekday)\n\n    let logFormat = date.formatted(.iso8601)\n    // example: \"20210607T164200Z\"\n    print(logFormat)\n\n    let fileNameFormat = date.formatted(.iso8601.year().month().day().dateSeparator(.dash))\n    // example: \"2021-06-07\"\n    print(fileNameFormat)\n}"
+    },
+    {
+      "title": "Formatting Intervals",
+      "language": "swift",
+      "startTimeSeconds": 1230,
+      "code": "func formattingIntervals() {\n    // Note: This will use your current date & time plus current locale. Example output is for en_US locale.\n    let now = Date.now\n    // Note on time calculations: This represents the absolute point in time 5000 seconds from now. For calculations that are in terms of hours, days, etc., please use Calendar API.\n    let later = now + TimeInterval(5000)\n\n    let range = (now..<later).formatted()\n    // example: \"6/7/21, 9:42 – 11:05 AM\"\n    print(range)\n\n    let noDate = (now..<later).formatted(date: .omitted, time: .complete)\n    // example: \"9:42:00 AM PDT – 11:05:20 AM PDT\"\n    print(noDate)\n\n    let timeDuration = (now..<later).formatted(.timeDuration)\n    // example: \"1:23:20\"\n    print(timeDuration)\n\n    let components = (now..<later).formatted(.components(style: .wide))\n    // example: \"1 hour, 23 minutes, 20 seconds\"\n    print(components)\n\n    let relative = later.formatted(.relative(presentation: .named, unitsStyle: .wide))\n    // example: \"in 1 hour\"\n    print(relative)\n}"
+    },
+    {
+      "title": "Demo - SwiftUI and AttributedString",
+      "language": "swift",
+      "startTimeSeconds": 1299,
+      "code": "import SwiftUI\n\nstruct ContentView: View {\n    @State var date = Date.now\n    @Environment(\\.locale) var locale\n\n    var dateString : AttributedString {\n        var str = date.formatted(.dateTime\n                                    .minute()\n                                    .hour()\n                                    .weekday()\n                                    .locale(locale)\n                                    .attributed)\n\n        let weekday = AttributeContainer\n            .dateField(.weekday)\n\n        let color = AttributeContainer\n            .foregroundColor(.orange)\n\n        str.replaceAttributes(weekday, with: color)\n\n        return str\n    }\n\n\n    var body: some View {\n        VStack {\n            Text(\"Next free coffee\")\n            Text(dateString).font(.title2)\n        }\n        .multilineTextAlignment(.center)\n    }\n}\n\nstruct ContentView_Previews: PreviewProvider {\n    static var previews: some View {\n        ContentView()\n            .environment(\\.locale, Locale(identifier: \"en_US\"))\n        ContentView()\n            .environment(\\.locale, Locale(identifier: \"he_IL\"))\n        ContentView()\n            .environment(\\.locale, Locale(identifier: \"es_ES\"))\n    }\n}"
+    },
+    {
+      "title": "Parsing Dates",
+      "language": "swift",
+      "startTimeSeconds": 1433,
+      "code": "func parsingDates() {\n    let date = Date.now\n\n    let format = Date.FormatStyle().year().day().month()\n    let formatted = date.formatted(format)\n    // example: \"Jun 7, 2021\"\n    print(formatted)\n\n    if let date = try? Date(formatted, strategy: format) {\n        // example: 2021-06-07 07:00:00 +0000\n        print(date)\n    }\n}"
+    },
+    {
+      "title": "Parsing Dates - Strategies",
+      "language": "swift",
+      "startTimeSeconds": 1463,
+      "code": "func parsingDatesStrategies() {\n    let strategy = Date.ParseStrategy(\n        format: \"\\(year: .defaultDigits)-\\(month: .twoDigits)-\\(day: .twoDigits)\",\n        timeZone: TimeZone.current)\n\n    if let date = try? Date(\"2021-06-07\", strategy: strategy) {\n        // date is 2021-06-07 07:00:00 +0000\n        print(date)\n    }\n}"
+    },
+    {
+      "title": "Formatting Numbers",
+      "language": "swift",
+      "startTimeSeconds": 1530,
+      "code": "func formattingNumbers() {\n    // Note: This will use your current locale. Example output is for en_US locale.\n    let value = 12345\n\n    let formatted = value.formatted()\n    // formatted is \"12,345\"\n    print(formatted)\n}"
+    },
+    {
+      "title": "Formatting Numbers With Styles",
+      "language": "swift",
+      "startTimeSeconds": 1536,
+      "code": "func formattingNumbersWithStyles() {\n    // Note: This will use your current locale. Example output is for en_US locale.\n    let percent = 25\n    let percentFormatted = percent.formatted(.percent)\n    // percentFormatted is \"25%\"\n    print(percentFormatted)\n\n    let scientific = 42e9\n    let scientificFormatted = scientific.formatted(.number.notation(.scientific))\n    // scientificFormatted is \"4.2E10\"\n    print(scientificFormatted)\n\n    let price = 29\n    let priceFormatted = price.formatted(.currency(code: \"usd\"))\n    // priceFormatted is \"$29.00\"\n    print(priceFormatted)\n}"
+    },
+    {
+      "title": "Formatting Lists",
+      "language": "swift",
+      "startTimeSeconds": 1547,
+      "code": "func formattingLists() {\n    // Note: This will use your current locale. Example output is for en_US locale.\n    let list = [25, 50, 75].formatted(.list(memberStyle: .percent, type: .or))\n    // list is \"25%, 50%, or 75%\"\n    print(list)\n}"
+    },
+    {
+      "title": "Receipt Tip View",
+      "language": "swift",
+      "startTimeSeconds": 1565,
+      "code": "struct ReceiptTipView: View {\n    @State var tip = 0.15\n\n    var body: some View {\n        HStack {\n            Text(\"Tip\")\n            Spacer()\n            TextField(\"Amount\",\n                      value: $tip,\n                      format: .percent)\n        }\n    }\n}"
+    },
+    {
+      "title": "Automatic Grammar Agreement",
+      "language": "swift",
+      "startTimeSeconds": 1781,
+      "code": "func addToOrderEnglish() {\n    // Note: This will use your current locale. Example output is for en_US locale.\n    let quantity = 2\n    let size = \"large\"\n    let food = \"salad\"\n\n    let message = AttributedString(localized: \"Add ^[\\(quantity) \\(size) \\(food)](inflect: true) to your order\")\n    print(message)\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Foundation",
+      "url": "https://developer.apple.com/documentation/Foundation",
+      "type": "documentation",
+      "description": "Access essential data types, collections, and operating-system services to define the base layer of functionality for your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/Foundation",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Foundation.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10109/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10109/metadata.json",
+    "readme": "sessions/wwdc2021/10109/README.md",
+    "transcript": "sessions/wwdc2021/10109/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10109/transcript.json"
+  }
+}

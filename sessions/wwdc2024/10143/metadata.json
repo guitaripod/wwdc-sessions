@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10143",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10143,
+  "title": "What’s new in device management",
+  "description": "Learn about the latest management capabilities for iOS, iPadOS, macOS, and visionOS, then discover the latest changes to Apple Business Manager and Apple School Manager. We’ll also share updates to Activation Lock, SoftwareUpdate, and Safari management.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10143",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10143",
+  "type": "Video",
+  "publishedAt": "2024-06-13T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Business & Education"
+  ],
+  "primaryTopic": "Business & Education",
+  "duration": 1512,
+  "hasTranscript": true,
+  "transcriptWordCount": 3697,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10143/4/DCF6DCB6-97B8-43FA-9BA4-4E73784D672E/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10143/4/DCF6DCB6-97B8-43FA-9BA4-4E73784D672E/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10143/4/DCF6DCB6-97B8-43FA-9BA4-4E73784D672E/downloads/wwdc2024-10143_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10143/4/DCF6DCB6-97B8-43FA-9BA4-4E73784D672E/downloads/wwdc2024-10143_hd.mp4",
+    "duration": 1512
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Schoolwork User Guide",
+      "url": "https://support.apple.com/guide/schoolwork-teacher/welcome/ios",
+      "type": "documentation",
+      "description": "Schoolwork lets you easily add classes, send assessments, and create assignments, then see assessment results and class, assignment, and student progress."
+    },
+    {
+      "title": "Forum: Business & Education",
+      "url": "https://developer.apple.com/forums/topics/business-and-education-topic?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/business-and-education-topic?cid=vf-a-0010"
+    },
+    {
+      "title": "Apple Configurator User Guide for Mac",
+      "url": "https://support.apple.com/en-gb/guide/apple-configurator-mac/welcome/mac",
+      "type": "documentation",
+      "description": "Learn how to use Apple Configurator to create and install configuration profiles on your iPhone, iPad, or Apple TV."
+    },
+    {
+      "title": "Support - Apple Platform Deployment",
+      "url": "https://support.apple.com/guide/deployment/welcome/",
+      "type": "documentation",
+      "description": "Apple devices integrate hardware, software, apps, and services to let you manage your deployment projects easily. Get the control and flexibility you want by using Apple School Manager or Apple Business Manager and your chosen mobile device management solution."
+    },
+    {
+      "title": "Device Management Client Schema on GitHub",
+      "url": "http://github.com/apple/device-management",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Apple Business Essentials User Guide",
+      "url": "https://support.apple.com/guide/apple-business-essentials/",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Apple Configurator User Guide for iPhone",
+      "url": "https://support.apple.com/guide/apple-configurator/",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Classroom for iPad User Guide",
+      "url": "https://support.apple.com/guide/classroom/welcome/ios",
+      "type": "guide",
+      "description": "Classroom for iPad User Guide"
+    },
+    {
+      "title": "Apple School Manager User Guide",
+      "url": "https://support.apple.com/guide/apple-school-manager/",
+      "type": "documentation",
+      "description": "Apple School Manager User Guide"
+    },
+    {
+      "title": "Classroom for Mac User Guide",
+      "url": "https://support.apple.com/guide/classroom/welcome/mac",
+      "type": "guide",
+      "description": "Classroom for Mac User Guide"
+    },
+    {
+      "title": "Device Management",
+      "url": "https://developer.apple.com/documentation/DeviceManagement",
+      "type": "documentation",
+      "description": "Manage your organization’s devices remotely.",
+      "sosumiURL": "https://sosumi.ai/documentation/DeviceManagement",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/DeviceManagement.json"
+    },
+    {
+      "title": "Apple Platform Deployment",
+      "url": "https://support.apple.com/guide/deployment/",
+      "type": "documentation",
+      "description": null
+    }
+  ],
+  "path": "sessions/wwdc2024/10143/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10143/metadata.json",
+    "readme": "sessions/wwdc2024/10143/README.md",
+    "transcript": "sessions/wwdc2024/10143/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10143/transcript.json"
+  }
+}

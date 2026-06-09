@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10258",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10258,
+  "title": "Understand and eliminate hangs from your app",
+  "description": "Discover how you can track down hangs and delays in your app. We’ll show you tools and methods to discover hangs and their causes, learn about anti-patterns that can lead to hangs, explore best practices for eliminating hangs like GCD, and provide guidance on when you should consider asynchronous code to improve your app performance.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10258",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10258",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 1464,
+  "hasTranscript": true,
+  "transcriptWordCount": 3131,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10258/4/ADC12B98-365A-47E7-9A42-952847271DEF/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10258/4/ADC12B98-365A-47E7-9A42-952847271DEF/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10258/4/ADC12B98-365A-47E7-9A42-952847271DEF/downloads/wwdc2021-10258_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10258/4/ADC12B98-365A-47E7-9A42-952847271DEF/downloads/wwdc2021-10258_hd.mp4",
+    "duration": 1464
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "MetricKit",
+      "url": "https://developer.apple.com/documentation/MetricKit",
+      "type": "documentation",
+      "description": "Measure your app’s performance using daily metric and diagnostic reports from real users.",
+      "sosumiURL": "https://sosumi.ai/documentation/MetricKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MetricKit.json"
+    },
+    {
+      "title": "Dispatch",
+      "url": "https://developer.apple.com/documentation/Dispatch",
+      "type": "documentation",
+      "description": "Execute code concurrently on multicore hardware by submitting work to dispatch queues managed by the system.",
+      "sosumiURL": "https://sosumi.ai/documentation/Dispatch",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Dispatch.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10258/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10258/metadata.json",
+    "readme": "sessions/wwdc2021/10258/README.md",
+    "transcript": "sessions/wwdc2021/10258/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10258/transcript.json"
+  }
+}

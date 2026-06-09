@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10217",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10217,
+  "title": "Explore numerical computing in Swift",
+  "description": "Meet Swift Numerics: a new Swift package for computational mathematics. Take a tour of the protocols and types available in the package and find out how you can use them to write generic code. We'll also show you how and when to use the new Float16 type to improve performance and reduce memory usage.\n\nTo get the most out of this session, you should have some familiarity with mathematics like logarithmic functions and real and imaginary numbers. You should also be familiar with generic programming in Swift. For more background, watch “Swift Generics (Expanded)” from WWDC18.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10217",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10217",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 924,
+  "hasTranscript": true,
+  "transcriptWordCount": 2309,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10217/6/608C3CB1-C8BD-4B19-B5F3-5ADA44E200E3/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10217/6/608C3CB1-C8BD-4B19-B5F3-5ADA44E200E3/wwdc2020_10217_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10217/6/608C3CB1-C8BD-4B19-B5F3-5ADA44E200E3/wwdc2020_10217_hd.mp4",
+    "duration": 924
+  },
+  "codeSnippets": [
+    {
+      "title": "The log-odds function (Double)",
+      "language": "swift",
+      "startTimeSeconds": 65,
+      "code": "import Darwin\n\n/// The log-odds function\n///\n/// https://en.wikipedia.org/wiki/Logit\n///\n/// - Parameter p:\n///   A probability in the range 0...1.\n///\n/// - Returns:\n///   The log of the odds, 'log(p/(1-p))'.\nfunc logit(_ p: Double) -> Double {\n    log(p) - log1p(-p)\n}"
+    },
+    {
+      "title": "The log-odds function (Real)",
+      "language": "swift",
+      "startTimeSeconds": 153,
+      "code": "import Numerics\n\n/// The log-odds function\n///\n/// https://en.wikipedia.org/wiki/Logit\n///\n/// - Parameter p:\n///   A probability in the range 0...1.\n///\n/// - Returns:\n///   The log of the odds, 'log(p/(1-p))'.\nfunc logit<NumberType: Real>(_ p: NumberType) -> NumberType {\n    .log(p) - .log(onePlus: -p)\n}"
+    },
+    {
+      "title": "The Complex type",
+      "language": "swift",
+      "startTimeSeconds": 430,
+      "code": "import Numerics\n\nlet z = Complex(1.0, 2.0) // z = 1 + 2 i"
+    },
+    {
+      "title": "The Complex type: Basic definition",
+      "language": "swift",
+      "startTimeSeconds": 458,
+      "code": "public struct Complex<NumberType> where NumberType: Real {\n    /// The real component\n    public var real: NumberType\n\n    /// The imaginary component\n    public var imaginary: NumberType\n\n    /// Construct a complex number with specified real and imaginary parts\n    public init(_ real: NumberType, _ imaginary: NumberType) {\n        self.real = real\n        self.imaginary = imaginary\n    }\n}"
+    },
+    {
+      "title": "The Complex type: Standard arithmetic operations",
+      "language": "swift",
+      "startTimeSeconds": 484,
+      "code": "extension Complex: SignedNumeric {\n    /// The sum of 'z' and 'w'\n    public static func +(z: Complex, w: Complex) -> Complex {\n        return Complex(z.real + w.real, z.imaginary + w.imaginary)\n    }\n\n    /// The difference of 'z' and 'w'\n    public static func -(z: Complex, w: Complex) -> Complex {\n        return Complex(z.real - w.real, z.imaginary - w.imaginary)\n    }\n\n    /// The product of 'z' and 'w'\n    public static func *(z: Complex, w: Complex) -> Complex {\n        return Complex(z.real * w.real - z.imaginary * w.imaginary,\n                       z.real * w.imaginary + z.imaginary * w.real)\n    }\n}"
+    },
+    {
+      "title": "The Complex type: Polar coordinates",
+      "language": "swift",
+      "startTimeSeconds": 499,
+      "code": "extension Complex {\n    /// The Euclidean norm (a.k.a. 2-norm) of the number.\n    public var length: NumberType {\n        return .hypot(real, imaginary)\n    }\n\n    /// The phase (angle, or \"argument\").\n    ///\n    /// Returns the angle (measured above the real axis) in radians.\n    public var phase: NumberType {\n        return .atan2(y: imaginary, x: real)\n    }\n\n    /// A complex value with specified polar coordinates.\n    public init(length: NumberType, phase: NumberType) {\n        self = Complex(.cos(phase), .sin(phase)).multiplied(by: length)\n    }\n}"
+    },
+    {
+      "title": "Using Accelerate's Basic Linear Algebra Subroutines",
+      "language": "swift",
+      "startTimeSeconds": 556,
+      "code": "import Numerics\nimport Accelerate\n\n/// Array of 100 random Complex<Double> numbers\nlet z = (0 ..< 100).map {\n    Complex(length: 1.0, phase: Double.random(in: -.pi ... .pi))\n}\n\n/// Compute the Euclidean norm of z\nlet norm = cblas_dznrm2(z.count, &z, 1)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Float16",
+      "url": "https://developer.apple.com/documentation/Swift/Float16",
+      "type": "documentation",
+      "description": "A half-precision (16-bit), floating-point value type.",
+      "sosumiURL": "https://sosumi.ai/documentation/Swift/Float16",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Swift/Float16.json"
+    },
+    {
+      "title": "Swift Numerics on GitHub",
+      "url": "https://github.com/apple/swift-numerics",
+      "type": "documentation",
+      "description": "Swift Numerics provides a set of modules that support numerical computing in Swift."
+    },
+    {
+      "title": "Numeric Protocols",
+      "url": "https://developer.apple.com/documentation/Swift/numeric-protocols",
+      "type": "documentation",
+      "description": "Write generic code that works with any numeric type.",
+      "sosumiURL": "https://sosumi.ai/documentation/Swift/numeric-protocols",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Swift/numeric-protocols.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10217/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10217/metadata.json",
+    "readme": "sessions/wwdc2020/10217/README.md",
+    "transcript": "sessions/wwdc2020/10217/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10217/transcript.json"
+  }
+}

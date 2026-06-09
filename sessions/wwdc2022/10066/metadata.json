@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10066",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10066,
+  "title": "Discover Metal 3",
+  "description": "Harness the full potential of Apple silicon in your app with Metal 3. We'll introduce you to the latest features, improvements, and tooling. We'll also explore how you can use advanced features and compiler tools to load resources faster, compile shader binaries at build time, process complex geometry with mesh shaders, render high-resolution graphics in less time, train machine learning networks faster, and more. ",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10066",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10066",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "game dev",
+    "game developer",
+    "metal",
+    "metal 3",
+    "metal compute",
+    "metal shading language",
+    "metal tools",
+    "proapps",
+    "raytracing",
+    "ray tracing"
+  ],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 944,
+  "hasTranscript": true,
+  "transcriptWordCount": 2112,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10066/5/E8711A5F-B118-4630-BC5C-BEDA558FE370/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10066/5/E8711A5F-B118-4630-BC5C-BEDA558FE370/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10066/5/E8711A5F-B118-4630-BC5C-BEDA558FE370/downloads/wwdc2022-10066_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10066/5/E8711A5F-B118-4630-BC5C-BEDA558FE370/downloads/wwdc2022-10066_hd.mp4",
+    "duration": 944
+  },
+  "codeSnippets": [
+    {
+      "title": "Device Family",
+      "language": "swift",
+      "startTimeSeconds": 1,
+      "code": "if device.supportsFamily(.metal3) {\n\n    // My awesome Metal 3 renderer\n\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10066/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10066/metadata.json",
+    "readme": "sessions/wwdc2022/10066/README.md",
+    "transcript": "sessions/wwdc2022/10066/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10066/transcript.json"
+  }
+}

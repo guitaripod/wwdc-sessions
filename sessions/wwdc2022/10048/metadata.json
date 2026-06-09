@@ -1,0 +1,226 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10048",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10048,
+  "title": "What's new in Safari and WebKit",
+  "description": "Explore the latest features in Safari and WebKit and learn how you can make better and more powerful websites. We’ll take you on a tour through the latest updates to HTML, CSS enhancements, Web Inspector tooling, Web APIs, and more.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10048",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10048",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Safari & Web"
+  ],
+  "primaryTopic": "Safari & Web",
+  "duration": 1899,
+  "hasTranscript": true,
+  "transcriptWordCount": 4707,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10048/4/8DF121DF-6825-4FBB-B570-A75F5A44CCB7/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10048/4/8DF121DF-6825-4FBB-B570-A75F5A44CCB7/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10048/4/8DF121DF-6825-4FBB-B570-A75F5A44CCB7/downloads/wwdc2022-10048_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10048/4/8DF121DF-6825-4FBB-B570-A75F5A44CCB7/downloads/wwdc2022-10048_hd.mp4",
+    "duration": 1899
+  },
+  "codeSnippets": [
+    {
+      "title": "Dialog element",
+      "language": "xml",
+      "startTimeSeconds": 179,
+      "code": "<!-- <dialog> element -->\n\n<dialog method=\"dialog\">\n  <form id=\"dialogForm\">\n    <label for=\"givenName\">Given name:</label>\n    <input class=\"focus\" type=\"text\" name=\"givenName\">\n    <label for=\"familyName\">Family name:</label>\n    <input class=\"focus\" type=\"text\" name=\"familyName\">\n    <label>\n      <input type=\"checkbox\"> Can trade in person\n   </label>\n   <button>Send</button>\n  </form>\n</dialog>"
+    },
+    {
+      "title": "Backdrop pseudo-class",
+      "language": "javascript",
+      "startTimeSeconds": 189,
+      "code": "/* ::backdrop pseudo-element */\n\ndialog::backdrop {\n  background: linear-gradient(rgba(233, 182, 76, 0.7), rgba(103, 12, 0, 0.6));\n  animation: fade-in 0.5s;\n}\n\n@keyframes fade-in {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}"
+    },
+    {
+      "title": "inert attribute",
+      "language": "javascript",
+      "startTimeSeconds": 233,
+      "code": "// inert attribute\n\nfunction switchToIndex(index) {\n  this.items.forEach(item => item.inert = true);\n  this.items[index].inert = false;\n  this.currentIndex = index;\n}"
+    },
+    {
+      "title": "Lazy image loading",
+      "language": "xml",
+      "startTimeSeconds": 262,
+      "code": "<img src=\"images/shirt.jpg\" loading=\"lazy\"\nalt=\"a brown polo shirt\"\nwidth=\"500\" height=\"600\">"
+    },
+    {
+      "title": "Container Queries",
+      "language": "javascript",
+      "startTimeSeconds": 406,
+      "code": "/* Container queries */\n\n.container {\n  container-type: inline-size;\n  container-name: clothing-card;\n}\n.content {\n  display: grid;\n  grid-template-rows: 1fr;\n  gap: 1rem;\n}\n@container clothing-card (width > 250px) {\n  .content {\n    grid-template-columns: 1fr 1fr;\n  }\n  /* additional layout code */\n}"
+    },
+    {
+      "title": "Cascade layers",
+      "language": "javascript",
+      "startTimeSeconds": 485,
+      "code": "/* Author Styles - Layer A */\n@layer utilities {\n  div {\n    background-color: red;\n  }\n}\n\n/* Author Styles - Layer B */\n@layer customizations {\n  div {\n    background-color: teal;\n  }\n}\n\n/* Author Styles - Layer C */\n@layer userDefaults {\n  div {\n    background-color: yellow;\n  }\n}"
+    },
+    {
+      "title": ":has() pseudo-class",
+      "language": "xml",
+      "startTimeSeconds": 534,
+      "code": "<!-- :has() pseudo-class -->\n\n<style>\n  form:has(input[type=\"checkbox\"]:checked) {\n    background: #ff927a;\n  }\n</style>\n\n\n\n<form class=\"message\">\n  <textarea rows=\"5\" cols=\"60\" name=\"text\" \n    placeholder=\"Enter text\"></textarea>\n  <div class=\"checkbox\">\n    <input type=\"checkbox\" value=\"urgent\"> \n    <label>Urgent?</label>\n  </div>\n  <button>Send Message</button>\n</form>"
+    },
+    {
+      "title": "Offset Path",
+      "language": "javascript",
+      "startTimeSeconds": 668,
+      "code": "/* offset-path */\n\n:is(.blue, .teal, .yellow, .red)  {\n  offset-path: circle(9vw at 5vw 50%);\n}\n\n@keyframes move {\n  100% { \n    offset-distance: 100%;\n  }\n}\n\n/* Animation */\n.clothing-header.clicked :is(.blue, .teal, .red, .yellow) {\n  animation: move 1100ms ease-in-out;\n}"
+    },
+    {
+      "title": "scroll-behavior: auto",
+      "language": "javascript",
+      "startTimeSeconds": 703,
+      "code": "html {\n  scroll-behavior: auto;\n}"
+    },
+    {
+      "title": "scroll-behavior: smooth",
+      "language": "javascript",
+      "startTimeSeconds": 729,
+      "code": "html {\n  scroll-behavior: smooth;\n}"
+    },
+    {
+      "title": ":focus-visible & accent-color",
+      "language": "javascript",
+      "startTimeSeconds": 790,
+      "code": "/* :focus-visible & accent-color */\n\n:focus-visible {\n  outline: 4px solid var(--green);\n  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);\n}\n\n:root {\n  accent-color: var(--green);\n}"
+    },
+    {
+      "title": "Font palette dark mode & light mode",
+      "language": "javascript",
+      "startTimeSeconds": 890,
+      "code": "/* Dark mode */\nfont-palette: dark;\n\n/* Light mode */\nfont-palette: light;"
+    },
+    {
+      "title": "Font palette custom colors",
+      "language": "javascript",
+      "startTimeSeconds": 901,
+      "code": "/* Dark mode */\nfont-palette: dark;\n\n/* Light mode */\nfont-palette: light;\n\n/* Custom colors */\n@font-palette-values --MyPalette {\n  override-colors: 1 yellow;\n}\n\n#logo {\n  font-palette: --MyPalette;\n}"
+    },
+    {
+      "title": "CSS Grid",
+      "language": "javascript",
+      "startTimeSeconds": 955,
+      "code": "/* Grid to layout cards */\nmain {\n  display: grid;\n  grid-template-columns: \n    repeat(auto-fit, minmax(225px, 1fr));\n  gap: 1rem;\n}\n\n/* Grid to layout each card’s content */\narticle {\n  display: grid;\n  grid-row: span 5;\n}"
+    },
+    {
+      "title": "Adding sub grid",
+      "language": "javascript",
+      "startTimeSeconds": 995,
+      "code": "/* Grid to layout cards */\nmain {\n  display: grid;\n  grid-template-columns: \n    repeat(auto-fit, minmax(225px, 1fr));\n  gap: 1rem;\n}\n\n/* Grid to layout each card’s content */\narticle {\n  display: grid;\n  grid-row: span 5;\n/* Adding subgrid, tying them together */\n  grid-template-rows: subgrid; \n}"
+    },
+    {
+      "title": "Web App Manifest file icons",
+      "language": "json",
+      "startTimeSeconds": 1275,
+      "code": "// Manifest file \n\n\"icons\": [\n {\n   \"src\": \"orange-icon.png\",\n    \"sizes\": \"120x120\",\n    \"type\": \"image/png\"\n  }\n]"
+    },
+    {
+      "title": "apple-touch-icon",
+      "language": "xml",
+      "startTimeSeconds": 1289,
+      "code": "<!-- HTML head -->\n\n<link rel=\"apple-touch-icon\" href=\"blue-icon.png\" />"
+    },
+    {
+      "title": "Broadcast Channel",
+      "language": "javascript",
+      "startTimeSeconds": 1356,
+      "code": "// State change\nbroadcastChannel.postMessage(\"Item is unavailable\");"
+    },
+    {
+      "title": "Origin private file system",
+      "language": "javascript",
+      "startTimeSeconds": 1394,
+      "code": "// Accessing the origin private file system\nconst root = await navigator.storage.getDirectory();\n\n// Create a file named Draft.txt under root directory\nconst draftHandle = await root.getFileHandle(\"Draft.txt\", { \"create\": true });\n\n// Access and read an existing file\nconst existingHandle = await root.getFileHandle(\"Draft.txt\");\nconst existingFile = await existingHandle.getFile();"
+    },
+    {
+      "title": "Shared Worker",
+      "language": "javascript",
+      "startTimeSeconds": 1532,
+      "code": "// Create Shared Worker\nlet worker = new SharedWorker(\"SharedWorker.js\");\n\n// Listen for messages from Shared Worker\nworker.port.addEventListener(\"message\", function(event) {\n  console.log(\"Message received from worker: \" + event);\n});\n\n// Send messages to Shared Worker\nworker.port.postMessage(\"Send message to worker\");"
+    },
+    {
+      "title": "findLast() and findLastIndex()",
+      "language": "javascript",
+      "startTimeSeconds": 1556,
+      "code": "const list = [\"shirt\",\"pants\",\"shoes\",\"hat\",\"shoestring\",\"dress\"];\nconst hasShoeString = (string) => string.includes(\"shoe\");\n\nconsole.log(list.findLast(hasAppString));\n// shoestring\n\nconsole.log(list.findLastIndex(hasAppString));\n// 4"
+    },
+    {
+      "title": "at()",
+      "language": "javascript",
+      "startTimeSeconds": 1577,
+      "code": "const list = [\"shirt\",\"pants\",\"shoes\",\"hat\",\"shoestring\",\"dress\"];\n\n// Instead of this:\nconsole.log(list[list.length - 2]);\n\n// It's as easy as:\nconsole.log(list.at(-2));"
+    },
+    {
+      "title": "strict-dynamic source expression",
+      "language": "javascript",
+      "startTimeSeconds": 1752,
+      "code": "// strict-dynamic source expression\n\n// Without strict-dynamic\nContent-Security-Policy: script-src desired-script.com dependent-script-1.com\n  dependent-script-2.com dependent-script-3.com; default-src \"self\";\n\n// With strict-dynamic\nContent-Security-Policy: default-src \"self\"; script-src \"nonce-desired\" \"strict-dynamic\";"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Safari Technology Preview",
+      "url": "https://developer.apple.com/safari/technology-preview/",
+      "type": "download",
+      "description": "Safari Technology Preview",
+      "sosumiURL": "https://sosumi.ai/safari/technology-preview/"
+    },
+    {
+      "title": "Safari Release Notes",
+      "url": "https://developer.apple.com/documentation/safari-release-notes",
+      "type": "documentation",
+      "description": "Learn about changes for Safari and Safari View Controller for iOS, iPadOS, macOS, and in visionOS; WKWebView for iOS, iPadOS, macOS, watchOS, and in visionOS; and Web Inspector on macOS.",
+      "sosumiURL": "https://sosumi.ai/documentation/safari-release-notes",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/safari-release-notes.json"
+    },
+    {
+      "title": "WebKit Open Source Project",
+      "url": "https://webkit.org",
+      "type": "guide",
+      "description": "WebKit Open Source Project"
+    },
+    {
+      "title": "Learn more about bug reporting",
+      "url": "https://developer.apple.com/bug-reporting/",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/bug-reporting/"
+    },
+    {
+      "title": "MDN Web Docs - Web Extensions API",
+      "url": "https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API",
+      "type": "documentation",
+      "description": "JavaScript APIs for web extensions."
+    }
+  ],
+  "path": "sessions/wwdc2022/10048/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10048/metadata.json",
+    "readme": "sessions/wwdc2022/10048/README.md",
+    "transcript": "sessions/wwdc2022/10048/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10048/transcript.json"
+  }
+}

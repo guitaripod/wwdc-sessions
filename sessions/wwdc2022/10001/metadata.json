@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10001",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10001,
+  "title": "Explore navigation design for iOS",
+  "description": "Familiar navigation patterns can help people easily explore the information within your app — and save them from unnecessary confusion. We’ll show you how to take advantage of existing navigation structures to simplify complex interactions in your app without compromising its personality. Learn best practices and common pitfalls when working with tab bars, modality, and more.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10001",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10001",
+  "type": "Video",
+  "publishedAt": "2022-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "hierarchical navigation",
+    "information architecture",
+    "modality",
+    "modal presentations",
+    "navigation",
+    "navigation best practices",
+    "navigation design",
+    "tab bars"
+  ],
+  "topics": [
+    "Essentials",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 1533,
+  "hasTranscript": true,
+  "transcriptWordCount": 3874,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10001/4/8F64C0B4-8E12-4C78-A0CB-8B7239AA5D4B/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10001/4/8F64C0B4-8E12-4C78-A0CB-8B7239AA5D4B/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10001/4/8F64C0B4-8E12-4C78-A0CB-8B7239AA5D4B/downloads/wwdc2022-10001_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10001/4/8F64C0B4-8E12-4C78-A0CB-8B7239AA5D4B/downloads/wwdc2022-10001_hd.mp4",
+    "duration": 1533
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Explore the Human Interface Guidelines",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/"
+    }
+  ],
+  "path": "sessions/wwdc2022/10001/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10001/metadata.json",
+    "readme": "sessions/wwdc2022/10001/README.md",
+    "transcript": "sessions/wwdc2022/10001/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10001/transcript.json"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2017-719",
+  "event": "wwdc2017",
+  "eventName": "WWDC17",
+  "year": 2017,
+  "eventContentId": 719,
+  "title": "Enabling Your App for CarPlay",
+  "description": "Understand how to enable your audio, messaging, VoIP calling or automaker app for CarPlay. Audio, messaging and VoIP calling apps use a consistent design that's optimized for use in the car. Automaker apps provide vehicle specific controls and displays to keep drivers connected without leaving CarPlay. Explore best practices and learn about the tools and frameworks for CarPlay apps.",
+  "url": "https://developer.apple.com/videos/play/wwdc2017/719",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2017/719",
+  "type": "Video",
+  "publishedAt": "2017-06-04T17:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "🚗",
+    "🚘",
+    "🚙",
+    "automotive",
+    "callkit",
+    "car",
+    "mediaplayer",
+    "mediaplayer framework",
+    "notifications",
+    "sirikit"
+  ],
+  "topics": [
+    "Audio & Video",
+    "SwiftUI & UI Frameworks",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 1653,
+  "hasTranscript": true,
+  "transcriptWordCount": 3788,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/719d0c0vj588o/719/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/719d0c0vj588o/719/719_sd_enabling_your_app_for_carplay.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/719d0c0vj588o/719/719_hd_enabling_your_app_for_carplay.mp4",
+    "duration": 1653
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: CarPlay",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/carplay",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/carplay"
+    }
+  ],
+  "path": "sessions/wwdc2017/719/",
+  "files": {
+    "metadata": "sessions/wwdc2017/719/metadata.json",
+    "readme": "sessions/wwdc2017/719/README.md",
+    "transcript": "sessions/wwdc2017/719/transcript.md",
+    "transcriptJSON": "sessions/wwdc2017/719/transcript.json"
+  }
+}

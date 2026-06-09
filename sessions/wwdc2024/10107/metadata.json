@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10107",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10107,
+  "title": "Discover area mode for Object Capture",
+  "description": "Discover how area mode for Object Capture enables new 3D capture possibilities on iOS by extending the functionality of Object Capture to support capture and reconstruction of an area. Learn how to optimize the quality of iOS captures using the new macOS sample app for reconstruction, and find out how to view the final results with Quick Look on Apple Vision Pro, iPhone, iPad or Mac. Learn about improvements to 3D reconstruction, including a new API that allows you to create your own custom image processing pipelines.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10107",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10107",
+  "type": "Video",
+  "publishedAt": "2024-06-12T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "Graphics & Games",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 691,
+  "hasTranscript": true,
+  "transcriptWordCount": 1997,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10107/4/94F3C53B-10C1-4E39-8B9F-33A5BA561420/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10107/4/94F3C53B-10C1-4E39-8B9F-33A5BA561420/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10107/4/94F3C53B-10C1-4E39-8B9F-33A5BA561420/downloads/wwdc2024-10107_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10107/4/94F3C53B-10C1-4E39-8B9F-33A5BA561420/downloads/wwdc2024-10107_hd.mp4",
+    "duration": 691
+  },
+  "codeSnippets": [
+    {
+      "title": "Data Loading API - load Sample and Mask",
+      "language": "swift",
+      "startTimeSeconds": 499,
+      "code": "func loadSampleAndMask(file: URL) -> PhotogrammetrySample? {\n    do {\n        var sample = try PhotogrammetrySample(contentsOf: file)\n        sample.objectMask = try loadObjectMask(for: file)\n        return sample\n    } catch {\n        return nil\n    }\n}"
+    },
+    {
+      "title": "Data Loading API - create custom photogrammetry Session",
+      "language": "swift",
+      "startTimeSeconds": 555,
+      "code": "func createCustomPhotogrammetrySession(for images: [URL]) -> PhotogrammetrySession {\n    let inputSequence = images.lazy.compactMap { file in\n        return loadSampleAndMask(file: file)\n    }\n    return PhotogrammetrySession(input: inputSequence)\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Building an object reconstruction app",
+      "url": "https://developer.apple.com/documentation/RealityKit/building-an-object-reconstruction-app",
+      "type": "samplecode",
+      "description": "Reconstruct objects from user-selected input images by using photogrammetry.",
+      "sosumiURL": "https://sosumi.ai/documentation/RealityKit/building-an-object-reconstruction-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/RealityKit/building-an-object-reconstruction-app.json"
+    },
+    {
+      "title": "Forum: Spatial Computing",
+      "url": "https://developer.apple.com/forums/topics/spatial-computing?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/spatial-computing?cid=vf-a-0010"
+    }
+  ],
+  "path": "sessions/wwdc2024/10107/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10107/metadata.json",
+    "readme": "sessions/wwdc2024/10107/README.md",
+    "transcript": "sessions/wwdc2024/10107/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10107/transcript.json"
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-110361",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 110361,
+  "title": "Author fast and reliable tests for Xcode Cloud",
+  "description": "Discover how you can create effective testing plans for Xcode Cloud, Apple’s continuous integration and continuous delivery service. We'll show you how testing can be an essential tool to consistently verify your code works correctly. Learn how you can author fast, reliable, and efficient tests for Xcode Cloud, avoid irrelevant failures, and verify your code changes quickly.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/110361",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/110361",
+  "type": "Video",
+  "publishedAt": "2022-06-10T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Essentials",
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 1300,
+  "hasTranscript": true,
+  "transcriptWordCount": 2871,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110361/3/7FB8FB7D-976B-432E-A47D-05ADDFE1BD45/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110361/3/7FB8FB7D-976B-432E-A47D-05ADDFE1BD45/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110361/3/7FB8FB7D-976B-432E-A47D-05ADDFE1BD45/downloads/wwdc2022-110361_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110361/3/7FB8FB7D-976B-432E-A47D-05ADDFE1BD45/downloads/wwdc2022-110361_hd.mp4",
+    "duration": 1300
+  },
+  "codeSnippets": [
+    {
+      "title": "setUp()",
+      "language": "swift",
+      "startTimeSeconds": 217,
+      "code": "override func setUp() async throws {\n\n}"
+    },
+    {
+      "title": "setUp() example",
+      "language": "swift",
+      "startTimeSeconds": 226,
+      "code": "var truck: Truck!\n\noverride func setUp() async throws {\n    let directoryURL = FileManager.default.temporaryDirectory\n    let fileName = UUID().uuidString\n    let fileURL = directoryURL.appendingPathComponent(fileName, isDirectory: false)\n    let data = await mockDonutMenuData()\n    try data.write(to: fileURL)\n    truck = Truck(menuURL: fileURL)\n}"
+    },
+    {
+      "title": "Environment variable example",
+      "language": "swift",
+      "startTimeSeconds": 355,
+      "code": "var truck: Truck!\n\nfunc testOrderDonut() throws {\n    let host = ProcessInfo.processInfo.environment[\"BASE_URL\"]\n\n    let expectation = XCTestExpectation(description: \"Order donut\")\n    truck.order(with: .sprinkles, host: host) { error, donut in\n        XCTAssertTrue(donut.hasSprinkles)\n        expectation.fulfill()\n    }       \n    wait(for: [expectation], timeout: 5)\n}"
+    },
+    {
+      "title": "XCTSkip example",
+      "language": "swift",
+      "startTimeSeconds": 360,
+      "code": "var truck: Truck!\n\nfunc testOrderDonut() throws {\n    let host = ProcessInfo.processInfo.environment[\"BASE_URL\"]\n    try XCTSkipIf(host == \"prod.example.com\")\n\n    let expectation = XCTestExpectation(description: \"Order donut\")\n    truck.order(with: .sprinkles, host: host) { error, donut in\n        XCTAssertTrue(donut.hasSprinkles)\n        expectation.fulfill()\n    }       \n    wait(for: [expectation], timeout: 5)\n}"
+    },
+    {
+      "title": "XCTSkip example",
+      "language": "swift",
+      "startTimeSeconds": 498,
+      "code": "var truck: Truck!\n\nfunc testOrderDonut() throws {\n    let host = ProcessInfo.processInfo.environment[\"BASE_URL\"]\n    try XCTSkipIf(host == \"prod.example.com\")\n\n    let expectation = XCTestExpectation(description: \"Order donut\")\n    truck.order(with: .sprinkles, host: host) { error, donut in\n        XCTAssertTrue(donut.hasSprinkles)\n        expectation.fulfill()\n    }       \n    wait(for: [expectation], timeout: 5)\n}"
+    },
+    {
+      "title": "XCTestExpectation example",
+      "language": "swift",
+      "startTimeSeconds": 528,
+      "code": "var truck: Truck!\n\nfunc testOrderDonut() throws {\n    let host = ProcessInfo.processInfo.environment[\"BASE_URL\"]\n    try XCTSkipIf(host == \"prod.example.com\")\n\n    let expectation = XCTestExpectation(description: \"Order donut\")\n    truck.order(with: .sprinkles, host: host) { error, donut in\n        XCTAssertTrue(donut.hasSprinkles)\n        expectation.fulfill()\n    }       \n    wait(for: [expectation], timeout: 5)\n}"
+    },
+    {
+      "title": "Increase XCTestExpectation example",
+      "language": "swift",
+      "startTimeSeconds": 539,
+      "code": "var truck: Truck!\n\nfunc testOrderDonut() throws {\n    let host = ProcessInfo.processInfo.environment[\"BASE_URL\"]\n    try XCTSkipIf(host == \"prod.example.com\")\n\n    let expectation = XCTestExpectation(description: \"Order donut\")\n    truck.order(with: .sprinkles, host: host) { error, donut in\n        XCTAssertTrue(donut.hasSprinkles)\n        expectation.fulfill()\n    }       \n    wait(for: [expectation], timeout: 10)\n}"
+    },
+    {
+      "title": "Async/await example",
+      "language": "swift",
+      "startTimeSeconds": 556,
+      "code": "var truck: Truck!\n\nfunc testOrderDonut() async throws {\n    let host = ProcessInfo.processInfo.environment[\"BASE_URL\"]\n    try XCTSkipIf(host == \"prod.example.com\")\n\n    let donut = try await truck.orderDonut(with: .sprinkles, host: host)\n    XCTAssertTrue(donut.hasSprinkles)\n}"
+    },
+    {
+      "title": "XCTExpectFailure example",
+      "language": "swift",
+      "startTimeSeconds": 602,
+      "code": "var truck: Truck!\n\nfunc testOrderDonut() async throws {\n    let host = ProcessInfo.processInfo.environment[\"BASE_URL\"]\n    try XCTSkipIf(host == \"prod.example.com\")\n\n    let donut = try await truck.orderDonut(with: .sprinkles, host: host)\n    XCTAssertTrue(donut.hasSprinkles)\n}"
+    },
+    {
+      "title": "XCTExpectFailure example",
+      "language": "swift",
+      "startTimeSeconds": 606,
+      "code": "var truck: Truck!\n\nfunc testOrderDonut() async throws {\n    let host = ProcessInfo.processInfo.environment[\"BASE_URL\"]\n    try XCTSkipIf(host == \"prod.example.com\")\n\n    XCTExpectFailure(\"<https://dev.myco.com/bug/98> Donut ordering service is down\")\n    let donut = try await truck.orderDonut(with: .sprinkles, host: host)\n    XCTAssertTrue(donut.hasSprinkles)\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2022/110361/",
+  "files": {
+    "metadata": "sessions/wwdc2022/110361/metadata.json",
+    "readme": "sessions/wwdc2022/110361/README.md",
+    "transcript": "sessions/wwdc2022/110361/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/110361/transcript.json"
+  }
+}

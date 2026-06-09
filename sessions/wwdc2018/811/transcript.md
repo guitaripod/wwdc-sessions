@@ -1,0 +1,52 @@
+---
+id: "wwdc2018-811"
+event: "wwdc2018"
+title: "Presenting Design Work"
+url: "https://developer.apple.com/videos/play/wwdc2018/811"
+language: "eng"
+words: 1709
+---
+
+# Presenting Design Work — Transcript
+
+[Session page](https://developer.apple.com/videos/play/wwdc2018/811) · [Metadata](metadata.json) · [Structured JSON](transcript.json)
+
+**[0:19]** Thanks, Mike. Hello everyone. Design is hard but design presentations are way harder. I still find them daunting. And today, a presentation about how to present design work at WWDC. The struggle is real. In any presentation, we have to take this big and complex topic and explain it precisely. Take it right down to its nucleus. And if we don't do that well, those ideas might die. All that hard work you did resigned to the depths of your
+
+**[1:05]** hard drive. Presentation matters. As a designer at Apple, I have to present design work all the time. Unfortunately, this year I can't show you too much of that, but I'm going to try and transmit to you the ten most important things I've learned about presenting design work in the next nine minutes or so. It's going to be punchy. Now when you really think about it, there are three fundamental parts to a presentation. There is me, the presenter, the emotional designer consumed by this problem and the prettiness of it. And there is you, the audience,
+
+**[1:51]** detectives of design crime, guardians of good sense, Draculas of deadlines, and captains of code. And between us, there is this central idea. The thing we need to agree is good for our company, good for our customers, something that makes the world a slightly better place. Let's call it a toaster. And really a presentation is just a mechanism to exchange information about that idea, to facilitate decisions and action one way or another, to make this thing fly or crash right back down to Earth.
+
+**[2:36]** So dear presenter, these are the key things you need to understand. What are your objectives for this presentation? Clarify your objectives. Are you trying to get this work approved by your superiors or successfully communicate with engineers? Maybe you're pitching a new idea. Try to imagine what succeeding looks like and work backwards from there. Identify the questions you need your audience to help you answer. State these and your goals up front. And understand the objectives of your audience.
+
+**[3:22]** What do they care about? Remember, your objectives include addressing theirs. Try not to dive in to details and minutia before you clarify the bigger picture. Next is a big one: feedback. As designers, we feel vulnerable and exposed, painting our finest pictures and teeing them up to be torn to shreds. Try to entertain the mindset that there is no failure, only feedback. Take all of it seriously even when you disagree. If you are presenting, you are
+
+**[4:08]** asking for feedback. It's the whole point and clarify the problems the audience identify. Sometimes people offer solutions that are unworkable, but the problem they are addressing is totally valid. So when you have exhausted all possibilities, remember this, you really haven't. People in your audience will know things you don't. So be willing to change your position, especially when new information has been presented. Don't pretend to understand unclear feedback.
+
+**[4:54]** Clarify the problem this person is trying to address. Don't respond like that. And don't be dismissive or get overly defensive. It really won't help your case. Seek advice. Use the wisdom of your colleagues. Don't be afraid to ask for help. They know how this works. Their input is priceless. Practice with them. Sense check your deck. Do a full practice run if it merits it. Do not deliver it blind. The feedback will make a huge difference. And honestly, don't try to do
+
+**[5:39]** everything yourself. Teamwork makes the dream work plus it's really hard to keep track of too many disparate things as one person, let alone try and explain them to others in a single presentation. Use your own voice. Be genuine. Have fun. Make terrible jokes. Quote Bruce Lee. You wouldn't be giving this presentation at all if you didn't have the credibility. You've earned it. Express your opinion. You are the expert here. The audience wants to know what you think and that doesn't mean you have to have all the answers. Show your passion.
+
+**[6:25]** Why do you care about this? And explain your process. Show the journey you've been on. How and why did you reach these conclusions? Don't be overconfident or insincere. Sometimes designers can adopt a posture of being super confident, bordering on arrogant and avoid that. It's just not cool. And don't say what you think people want to hear. Your vote counts for a lot. The audience. It's not a presentation without an audience. Make sure you show them that respect. You need their cooperation to give life to your ideas.
+
+**[7:10]** And if you've presented to this audience before, you'll get -- start to get an idea of what they respond to. Tailor to them as much as you can and always have an agenda. Here's what we're going to talk about in this order. This is also your chance to assert the point at which you'd like to field feedback. It almost certainly won't work that way but still do try. And if you've met previously, recap what happened. Like when you're engrossed in a series but then life happens and when you pick it up again, you really grateful for that 30 second refresher. Hey, Zach. Here's a study of the character
+
+**[7:55]** that you asked for. Good feedback. I'm not sure about those emoji either. Integrate their feedback. Let them know how it affected your designs. Show that you're listening and responding. Terrible. Make no assumptions, you know -- people know what things mean or why decisions were made. You are much further along this path than your audience. Anticipate their questions. Pay attention to their reactions. And be willing to explain. Do not show up without a plan or try to wing it.
+
+**[8:40]** It's not a good look. And also showing your working files, not good. These things are lazy and disrespectful of people's time. And, of course, don't be dismissive of -- again, don't be dismissive of anyone's input. Try to be patient and objective. Make it relatable to your audience. If not, they may well start to tune out. Let people see themselves in your story. If you can elicit an emotional response, excitement, worry, or even fear, it will enhance their sense of commitment. Ellis goes crazy for that
+
+**[9:26]** elderberry jam. Use what you know about your audience to your advantage. Describe what you see and feel. Don't talk about users like they are a distant third party. Flow diagrams can be really useful with engineers but when communicating concepts, there's a big disconnect. Instead, speak in the first person. Here I am at my desk working on my e-mail and ding, a handy reminder it's time for breakfast. I hit the notification and bam, straightaway I can load my toast without even stepping away from my desk. Just one swipe down and we're toasting.
+
+**[10:11]** And a few minutes later I know to be on my way, perfect timing. And how cool is that? I can even see my stats. Clearly, this is more powerful if you can demo a prototype. And engage in dialogue. A presentation should be a dialogue. Engage with your audience. Design for the aha moment. If you can lead people through your story, their minds will try and predict the ending. This will keep them engaged. Ask them questions. Keep them dialed in. You're here for their feedback after all. Do not deliver a monologue.
+
+**[10:56]** This is boring and naive. Think of it as a discussion more than a speech. And finally, the idea. It is crucial to explain why. Define each problem in a single sentence. It's a great exercise to really get to the heart of the matter. You'll need to find agreement on those problem statements with your audience. Otherwise, you'll be barking up the wrong tree. Continue to revisit, refine, and refer back to those statements as you progress and, of course, where you can, show evidence that these problems exist. Boom. Cold, burnt toast.
+
+**[11:42]** Tragic problems in this world. Avoid using subjective reasoning for your decisions. I chose this color because I like it is not remotely persuasive, especially if your audience don't share your preferences. And the truth is that people really won't remember your slides. They'll remember how your story made them feel if it resonated with them so sketch out the narrative of your presentation early. The most successful designers I know do this. It's another thing that will help you focus and use your time effectively. So where you can, incorporate a
+
+**[12:27]** story with a distinct beginning, middle, and an end. People intuitively get stories. And it'll really help them follow along. Contrast today's reality with a better future. Nancy Duarte, a master of presentations, discovered in her research that some of the greatest and most effective presentations follow this structure. And the key thing here is providing the contrast between what is today's reality and what could be, what the future could look like if we make the ideas we're presenting our new reality. Today, people are frustrated,
+
+**[13:13]** cold, joyless toast. It's an epidemic. But imagine happy, flawless toast at the top of the button on your iPhone. But don't get too carried away. That is a rookie mistake. Keep it simple. The main thing is to keep the main thing the main thing. I love this quote. And I always find myself coming back to it. It's such a perfect expression. If I had more time, I would have written a shorter letter. Relevant not only for presentations and writing
+
+**[13:58]** e-mails but as a philosophy toward design. Don't overload people with too much information. Strip away everything that isn't essential to your mission or your message. And finally, don't forget to summarize. Know your objectives, otherwise what's the point? Embrace feedback. It's what you're here for. Seek advice. Your colleagues are smart. And use your own voice. It's the best one you have. Respect your audience or they won't respect you. Make it relatable, otherwise they'll forget it. Engage in dialogue to keep them
+
+**[14:45]** present and explain why. It's the million dollar question. Utilize storytelling because it works. And keep it simple even though it's not. Good luck with your

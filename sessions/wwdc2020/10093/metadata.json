@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10093",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10093,
+  "title": "Build for the iPadOS pointer",
+  "description": "Help people who use iPad with a Magic Keyboard, mouse, trackpad or other input device get the most out of your app. We’ll show you how to add customizations to the pointer on iPad using pointer interaction APIs, create pointer effects for your buttons and custom views, and change the pointer shape in specific areas of your app to highlight them.\n\nTo learn more about pointer interactions on iPad and to get the most out of this session, we recommend also watching “Design for the iPadOS pointer” and “Handle trackpad and mouse input.”",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10093",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10093",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "better ipad",
+    "cursor",
+    "dynamic",
+    "keyboard",
+    "magic",
+    "magic keyboard",
+    "mouse",
+    "pointer",
+    "trackpad",
+    "uikit",
+    "uitouch"
+  ],
+  "topics": [
+    "Design",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1370,
+  "hasTranscript": true,
+  "transcriptWordCount": 2863,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10093/4/3B8A69F7-49AD-49B5-AFD5-1F1AF706199D/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10093/4/3B8A69F7-49AD-49B5-AFD5-1F1AF706199D/wwdc2020_10093_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10093/4/3B8A69F7-49AD-49B5-AFD5-1F1AF706199D/wwdc2020_10093_hd.mp4",
+    "duration": 1370
+  },
+  "codeSnippets": [
+    {
+      "title": "UIButton Pointer Effects",
+      "language": "swift",
+      "startTimeSeconds": 364,
+      "code": "// Enable the button's built-in pointer interaction.\nmyButton.isPointerInteractionEnabled = true\n\n// Customize the default interaction effect.\nmyButton.pointerStyleProvider = { button, proposedEffect, proposedShape -> UIPointerStyle? in\n\t\t// In this example, we'll switch to using the .lift effect by creating a new\n    // UIPointerEffect with the .lift type using the proposedEffect's preview.\n    return UIPointerStyle(effect: .lift(proposedEffect.preview), shape: proposedShape)\n}"
+    },
+    {
+      "title": "Pointer Content Effect",
+      "language": "swift",
+      "startTimeSeconds": 425,
+      "code": "// Create a UIPointerStyle that applies the .highlight effect. \n\n// Outset the view's frame so the pointer shape has some generous padding around the view's contents.\n// Note that this frame must be in the provided UITargetedPreview's container's coordinate space. \n// In the majority of cases (where the preview doesn't have a custom container), this is just the view's superview.\nlet rect = myView.frame.insetBy(dx: -8.0, dy: -4.0)\nlet preview = UITargetedPreview(view: myView)\n\nreturn UIPointerStyle(effect: .highlight(preview), shape: .roundedRect(rect))"
+    },
+    {
+      "title": "Pointer Shape Customization",
+      "language": "swift",
+      "startTimeSeconds": 482,
+      "code": "// Create a UIPointerStyle that changes the pointer into a vertical beam. \n\nlet beamLength = myFont.lineHeight\nreturn UIPointerStyle(shape: .verticalBeam(length: beamLength), constrainedAxes: .vertical)"
+    },
+    {
+      "title": "UIPointerInteraction Region Entrance Animation",
+      "language": "swift",
+      "startTimeSeconds": 1291,
+      "code": "func pointerInteraction(_ interaction: UIPointerInteraction, \n                          willEnter region: UIPointerRegion, \n                          animator: UIPointerInteractionAnimating) {\n\n     // Fade out separator when entering region.\n     animator.addAnimations {\n          self.separatorView.alpha = 0.0\n     }\n}"
+    },
+    {
+      "title": "UIPointerInteraction Region Exit Animation",
+      "language": "swift",
+      "startTimeSeconds": 1311,
+      "code": "func pointerInteraction(_ interaction: UIPointerInteraction, \n                          willExit region: UIPointerRegion, \n                          animator: UIPointerInteractionAnimating) {\n\n     // Fade separator back in when exiting region.\n     animator.addAnimations {\n          self.separatorView.alpha = 1.0\n     }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Enhancing your iPad app with pointer interactions",
+      "url": "https://developer.apple.com/documentation/UIKit/enhancing-your-ipad-app-with-pointer-interactions",
+      "type": "samplecode",
+      "description": "Provide a great user experience with pointing devices, by incorporating pointer content effects and shape customizations.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/enhancing-your-ipad-app-with-pointer-interactions",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/enhancing-your-ipad-app-with-pointer-interactions.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10093/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10093/metadata.json",
+    "readme": "sessions/wwdc2020/10093/README.md",
+    "transcript": "sessions/wwdc2020/10093/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10093/transcript.json"
+  }
+}

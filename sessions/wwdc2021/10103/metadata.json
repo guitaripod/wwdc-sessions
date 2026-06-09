@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10103",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10103,
+  "title": "Optimize for 5G networks",
+  "description": "5G enables new opportunities for your app or game through better performance for data transfer, higher bandwidth, lower latency, and much more. Discover how you can take advantage of the latest networking technology and Apple hardware to create adaptive experiences for your content that best suit someone’s data connection and optimize network traffic.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10103",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10103",
+  "type": "Video",
+  "publishedAt": "2021-06-11T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "avfoundation",
+    "networking",
+    "network performance",
+    "urlsession"
+  ],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 819,
+  "hasTranscript": true,
+  "transcriptWordCount": 1970,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10103/5/345F6518-CBF1-4E40-A52F-0F46541D273E/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10103/5/345F6518-CBF1-4E40-A52F-0F46541D273E/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10103/5/345F6518-CBF1-4E40-A52F-0F46541D273E/downloads/wwdc2021-10103_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10103/5/345F6518-CBF1-4E40-A52F-0F46541D273E/downloads/wwdc2021-10103_hd.mp4",
+    "duration": 819
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Optimize your app for 5G",
+      "url": "https://developer.apple.com/news/?id=z0onzfy5",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/news/?id=z0onzfy5"
+    },
+    {
+      "title": "Network",
+      "url": "https://developer.apple.com/documentation/Network",
+      "type": "documentation",
+      "description": "Create network connections to send and receive data using transport and security protocols.",
+      "sosumiURL": "https://sosumi.ai/documentation/Network",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Network.json"
+    },
+    {
+      "title": "URLSession Programming Guide",
+      "url": "https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/library/content/documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html"
+    },
+    {
+      "title": "URLSession",
+      "url": "https://developer.apple.com/documentation/Foundation/URLSession",
+      "type": "documentation",
+      "description": "An object that coordinates a group of related, network data transfer tasks.",
+      "sosumiURL": "https://sosumi.ai/documentation/Foundation/URLSession",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Foundation/URLSession.json"
+    },
+    {
+      "title": "AVFoundation",
+      "url": "https://developer.apple.com/documentation/AVFoundation",
+      "type": "documentation",
+      "description": "Work with audiovisual assets, control device cameras, process audio, and configure system audio interactions.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10103/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10103/metadata.json",
+    "readme": "sessions/wwdc2021/10103/README.md",
+    "transcript": "sessions/wwdc2021/10103/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10103/transcript.json"
+  }
+}

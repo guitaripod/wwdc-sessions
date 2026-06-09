@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10059",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10059,
+  "title": "The craft of SwiftUI API design: Progressive disclosure",
+  "description": "Explore progressive disclosure — one of SwiftUI’s core principles — and learn how it influences the design of our APIs. We’ll show you how we use progressive disclosure, discuss how it can support quick iteration and exploration, and help you take advantage of it in your own code.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10059",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10059",
+  "type": "Video",
+  "publishedAt": "2022-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 907,
+  "hasTranscript": true,
+  "transcriptWordCount": 2150,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10059/3/689200F0-E14A-4B93-A3B2-7D95D747540F/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10059/3/689200F0-E14A-4B93-A3B2-7D95D747540F/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10059/3/689200F0-E14A-4B93-A3B2-7D95D747540F/downloads/wwdc2022-10059_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10059/3/689200F0-E14A-4B93-A3B2-7D95D747540F/downloads/wwdc2022-10059_hd.mp4",
+    "duration": 907
+  },
+  "codeSnippets": [
+    {
+      "title": "Declaration Site Example",
+      "language": "swift",
+      "startTimeSeconds": 119,
+      "code": "struct BookView: View {\n    let pageNumber: Int\n    let book: Book\n\n    init(book: Book, pageNumber: Int) {\n        self.book = book\n        self.pageNumber = pageNumber\n    }\n\n    var body: some View { ... }\n}"
+    },
+    {
+      "title": "Call Site Example",
+      "language": "swift",
+      "startTimeSeconds": 133,
+      "code": "VStack {\n    BookView(book: favoriteBook, page: 1)\n    BookView(book: savedBook, page: 234)\n}"
+    },
+    {
+      "title": "Button Label",
+      "language": "swift",
+      "startTimeSeconds": 258,
+      "code": "Button(\"Next Page\") {\n    currentPage += 1\n}"
+    },
+    {
+      "title": "Button label expanded",
+      "language": "swift",
+      "startTimeSeconds": 276,
+      "code": "Button {\n    currentPage += 1\n} label: {\n    Text(\"Next Page\")\n}"
+    },
+    {
+      "title": "Button label advanced case",
+      "language": "swift",
+      "startTimeSeconds": 283,
+      "code": "Button {\n    currentPage += 1\n} label: {\n    HStack {\n        Text(\"Next Page\")\n        NextPagePreview()\n    }\n}"
+    },
+    {
+      "title": "Button label common case",
+      "language": "swift",
+      "startTimeSeconds": 296,
+      "code": "Button(\"Next Page\") {\n    currentPage += 1\n}"
+    },
+    {
+      "title": "Text example",
+      "language": "swift",
+      "startTimeSeconds": 330,
+      "code": "Text(\"Hello WWDC22!\")"
+    },
+    {
+      "title": "Stacks of Text",
+      "language": "swift",
+      "startTimeSeconds": 372,
+      "code": "VStack {\n    Text(\"Hello WWDC22!\")\n    Text(\"Call to Code.\")\n}"
+    },
+    {
+      "title": "Toolbar",
+      "language": "swift",
+      "startTimeSeconds": 406,
+      "code": ".toolbar {\n    Button {\n        addItem()\n    } label: {\n        Label(\"Add\", systemImage: \"plus\")\n    }\n\n    Button {\n        sort()\n    } label: {\n        Label(\"Sort\", systemImage: \"arrow.up.arrow.down\")\n    }\n\n    Button {\n        openShareSheet()\n    }: label: {\n        Label(\"Share\", systemImage: \"square.and.arrow.up\")\n    }\n}"
+    },
+    {
+      "title": "Toolbar with explicit placement",
+      "language": "swift",
+      "startTimeSeconds": 440,
+      "code": ".toolbar {\n    ToolbarItemGroup(placement: .navigationBarLeading) {\n        Button {\n            addItem()\n        } label: {\n            Label(\"Add\", systemImage: \"plus\")\n        }\n\n        Button {\n            sort()\n        } label: {\n            Label(\"Sort\", systemImage: \"arrow.up.arrow.down\")\n        }\n\n        Button {\n            openShareSheet()\n        }: label: {\n            Label(\"Share\", systemImage: \"square.and.arrow.up\")\n        }\n    }\n}"
+    },
+    {
+      "title": "Advanced use case table",
+      "language": "swift",
+      "startTimeSeconds": 489,
+      "code": "@State var sortOrder = [KeyPathComparator(\\Book.title)]\n\nvar body: some View {\n    Table(sortOrder: $sortOrder) {\n        TableColumn(\"Title\", value: \\Book.title) { book in\n            Text(book.title).bold()\n        }\n        TableColumn(\"Author\", value: \\Book.author) { book in\n            Text(book.author).italic()\n        }\n    } rows: {\n        Section(\"Favorites\") {\n            ForEach(favorites) { book in\n                TableRow(book)\n            }\n        }\n        Section(\"Currently Reading\") {\n            ForEach(currentlyReading) { book in\n                TableRow(book)\n            }\n        }\n    }\n    .onChange(of: sortOrder) { newValue in\n        favorites.sort(using: newValue)\n        currentlyReading.sort(using: newValue)\n    }\n}"
+    },
+    {
+      "title": "Simpler table use case",
+      "language": "swift",
+      "startTimeSeconds": 521,
+      "code": "@State var sortOrder = [KeyPathComparator(\\Book.title)]\n\nvar body: some View {\n    Table(sortOrder: $sortOrder) {\n        TableColumn(\"Title\", value: \\Book.title) { book in\n            Text(book.title)\n        }\n        TableColumn(\"Author\", value: \\Book.author) { book in\n            Text(book.author)\n        }\n    } rows: {\n        ForEach(currentlyReading) { book in\n            TableRow(book)\n        }\n    }\n    .onChange(of: sortOrder) { newValue in\n        currentlyReading.sort(using: newValue)\n    }\n}"
+    },
+    {
+      "title": "Table collection convenience",
+      "language": "swift",
+      "startTimeSeconds": 598,
+      "code": "@State var sortOrder = [KeyPathComparator(\\Book.title)]\n\nvar body: some View {\n    Table(currentlyReading, sortOrder: $sortOrder) {\n        TableColumn(\"Title\", value: \\.title) { book in\n            Text(book.title)\n        }\n        TableColumn(\"Author\", value: \\.author) { book in\n            Text(book.author)\n        }\n    }\n    .onChange(of: sortOrder) { newValue in\n        currentlyReading.sort(using: newValue)\n    }\n}"
+    },
+    {
+      "title": "Table string key path convenience",
+      "language": "swift",
+      "startTimeSeconds": 623,
+      "code": "@State var sortOrder = [KeyPathComparator(\\Book.title)]\n\nvar body: some View {\n    Table(currentlyReading, sortOrder: $sortOrder) {\n        TableColumn(\"Title\", value: \\.title)\n        TableColumn(\"Author\", value: \\.author)\n    }\n    .onChange(of: sortOrder) { newValue in\n        currentlyReading.sort(using: newValue)\n    }\n}"
+    },
+    {
+      "title": "Table without sorting",
+      "language": "swift",
+      "startTimeSeconds": 651,
+      "code": "var body: some View {\n    Table(currentlyReading) {\n        TableColumn(\"Title\", value: \\.title)\n        TableColumn(\"Author\", value: \\.author)\n    }\n}"
+    },
+    {
+      "title": "Stack example: leading",
+      "language": "swift",
+      "startTimeSeconds": 817,
+      "code": "struct StackExample: View {\n    var body: some View {\n        HStack { // leading\n            Box().tint(.red)\n            Box().tint(.green)\n            Box().tint(.blue)\n        }\n    }\n}"
+    },
+    {
+      "title": "Stack example: centered",
+      "language": "swift",
+      "startTimeSeconds": 820,
+      "code": "struct StackExample: View {\n    var body: some View {\n        HStack { // centered\n            Spacer()\n            Box().tint(.red)\n            Box().tint(.green)\n            Box().tint(.blue)\n            Spacer()\n        }\n    }\n}"
+    },
+    {
+      "title": "Stack example: evenly spaced",
+      "language": "swift",
+      "startTimeSeconds": 822,
+      "code": "struct StackExample: View {\n    var body: some View {\n        HStack { // evenly spaced\n            Spacer()\n            Box().tint(.red)\n            Spacer()\n            Box().tint(.green)\n            Spacer()\n            Box().tint(.blue)\n            Spacer()\n        }\n    }\n}"
+    },
+    {
+      "title": "Stack example: space only between elements",
+      "language": "swift",
+      "startTimeSeconds": 823,
+      "code": "struct StackExample: View {\n    var body: some View {\n        HStack { // space only between elements\n            Box().tint(.red)\n            Spacer()\n            Box().tint(.green)\n            Spacer()\n            Box().tint(.blue)\n        }\n    }\n}"
+    },
+    {
+      "title": "Stack example: space only before last element",
+      "language": "swift",
+      "startTimeSeconds": 826,
+      "code": "struct StackExample: View {\n    var body: some View {\n        HStack { // space only before last element\n            Box().tint(.red)\n            Box().tint(.green)\n            Spacer()\n            Box().tint(.blue)\n        }\n    }\n}"
+    },
+    {
+      "title": "Stack example: space only after first element",
+      "language": "swift",
+      "startTimeSeconds": 827,
+      "code": "struct StackExample: View {\n    var body: some View {\n        HStack { // space only after first element\n            Box().tint(.red)\n            Spacer()\n            Box().tint(.green)\n            Box().tint(.blue)\n        }\n    }\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2022/10059/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10059/metadata.json",
+    "readme": "sessions/wwdc2022/10059/README.md",
+    "transcript": "sessions/wwdc2022/10059/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10059/transcript.json"
+  }
+}

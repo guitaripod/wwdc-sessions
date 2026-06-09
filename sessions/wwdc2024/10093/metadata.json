@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10093",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10093,
+  "title": "Bring your iOS or iPadOS game to visionOS",
+  "description": "Discover how to transform your iOS or iPadOS game into a uniquely visionOS experience. Increase the immersion (and fun factor!) with a 3D frame or an immersive background. And invite players further into your world by adding depth to the window with stereoscopy or head tracking.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10093",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10093",
+  "type": "Video",
+  "publishedAt": "2024-06-12T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "arkit",
+    "compositorservices",
+    "games",
+    "games on visionos",
+    "ios games",
+    "ipad games",
+    "metal",
+    "spatial computing"
+  ],
+  "topics": [
+    "Spatial Computing",
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1122,
+  "hasTranscript": true,
+  "transcriptWordCount": 3072,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10093/4/5B27E6E6-BA2A-4D7E-99D7-E3B10B2074D2/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10093/4/5B27E6E6-BA2A-4D7E-99D7-E3B10B2074D2/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10093/4/5B27E6E6-BA2A-4D7E-99D7-E3B10B2074D2/downloads/wwdc2024-10093_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10093/4/5B27E6E6-BA2A-4D7E-99D7-E3B10B2074D2/downloads/wwdc2024-10093_hd.mp4",
+    "duration": 1122
+  },
+  "codeSnippets": [
+    {
+      "title": "Render with Metal in a UIView",
+      "language": "swift",
+      "startTimeSeconds": 344,
+      "code": "// Render with Metal in a UIView.\n\nclass CAMetalLayerBackedView: UIView, CAMetalDisplayLinkDelegate {\n\n    var displayLink: CAMetalDisplayLink!\n\n    override class var layerClass : AnyClass { return CAMetalLayer.self }\n\n    func setup(device: MTLDevice) {\n        let displayLink = CAMetalDisplayLink(metalLayer: self.layer as! CAMetalLayer)\n        displayLink.add(to: .current, forMode: .default)\n        self.displayLink.delegate = self\n    }\n\n    func metalDisplayLink(_ link: CAMetalDisplayLink,\n              needsUpdate update: CAMetalDisplayLink.Update) {\n        let drawable = update.drawable\n        renderFunction?(drawable)\n    }\n}"
+    },
+    {
+      "title": "Render with Metal to a RealityKit LowLevelTexture",
+      "language": "swift",
+      "startTimeSeconds": 380,
+      "code": "// Render Metal to a RealityKit LowLevelTexture.\n\nlet lowLevelTexture = try! LowLevelTexture(descriptor: .init(\n    pixelFormat: .rgba8Unorm,\n    width: resolutionX,\n    height: resolutionY,\n    depth: 1,\n    mipmapLevelCount: 1,\n    textureUsage: [.renderTarget]\n))\n\nlet textureResource = try! TextureResource(\n    from: lowLevelTexture\n)\n// assign textureResource to a material\n\nlet commandBuffer: MTLCommandBuffer = queue.makeCommandBuffer()!\nlet mtlTexture: MTLTexture = texture.replace(using: commandBuffer)\n// Draw into the mtlTexture"
+    },
+    {
+      "title": "Metal viewport with a 3D RealityKit frame around it",
+      "language": "swift",
+      "startTimeSeconds": 426,
+      "code": "// Metal viewport with a 3D RealityKit frame \n// around it.\n\nstruct ContentView: View {\n\n    @State var game = Game()\n\n    var body: some View {\n        ZStack {\n           CAMetalLayerView { drawable in\n                             game.render(drawable) }\n\n           RealityView { content in\n                content.add(try! await \n                            Entity(named: \"Frame\"))\n            }.frame(depth: 0)\n        }\n    }\n}"
+    },
+    {
+      "title": "Windowed game with an immersive background",
+      "language": "swift",
+      "startTimeSeconds": 465,
+      "code": "// Windowed game with an immersive background\n\n@main\nstruct TestApp: App {\n\n    @State private var appModel = AppModel()\n\n    var body: some Scene {\n        WindowGroup {\n            // Metal render\n            ContentView(appModel)\n        }\n\n        ImmersiveSpace(id: \"ImmersiveSpace\") {\n            // RealityKit background\n            ImmersiveView(appModel)\n        }.immersionStyle(selection: .constant(.progressive),                                     in: .progressive)\n    }\n}"
+    },
+    {
+      "title": "Render to multiple views for stereoscopy",
+      "language": "swift",
+      "startTimeSeconds": 791,
+      "code": "// Render to multiple views for stereoscopy.\n\noverride func draw(provider: DrawableProviding) {\n\n    encodeShadowMapPass()\n\n    for viewIndex in 0..<provider.viewCount {\n        scene.update(viewMatrix: provider.viewMatrix(viewIndex: viewIndex),\n               projectionMatrix: provider.projectionMatrix(viewIndex: viewIndex))\n        var commandBuffer = beginDrawableCommands()\n        if let color = provider.colorTexture(viewIndex: viewIndex, for: commandBuffer),\n           let depthStencil = provider.depthStencilTexture(viewIndex: viewIndex,\n                                                                 for: commandBuffer)\n        {\n            encodePass(into: commandBuffer, color: color, depth: depth)\n        }\n        endFrame(commandBuffer)\n    }\n}"
+    },
+    {
+      "title": "Query the head position from ARKit every frame",
+      "language": "swift",
+      "startTimeSeconds": 835,
+      "code": "// Query the head position from ARKit every frame.\n\nimport ARKit\n\nlet arSession = ARKitSession()\nlet worldTracking = WorldTrackingProvider()\n\ntry await arSession.run([worldTracking])\n\n// Every frame\n\nguard let deviceAnchor = worldTracking.queryDeviceAnchor(\n    atTimestamp: CACurrentMediaTime() + presentationTime\n) else { return }\n\nlet transform: simd_float4x4 = deviceAnchor\n    .originFromAnchorTransform"
+    },
+    {
+      "title": "Convert the head position from the ImmersiveSpace to a window",
+      "language": "swift",
+      "startTimeSeconds": 862,
+      "code": "// Convert the head position from the ImmersiveSpace to a window.\n\nlet headPositionInImmersiveSpace: SIMD3<Float> = deviceAnchor\n    .originFromAnchorTransform\n    .position\n\nlet windowInImmersiveSpace: float4x4 = windowEntity\n    .transformMatrix(relativeTo: .immersiveSpace)\n\nlet headPositionInWindow: SIMD3<Float> = windowInImmersiveSpace\n    .inverse\n    .transform(headPositionInImmersiveSpace)\n\nrenderer.setCameraPosition(headPositionInWindow)"
+    },
+    {
+      "title": "Query the head position from ARKit every frame",
+      "language": "swift",
+      "startTimeSeconds": 905,
+      "code": "// Query the head position from ARKit every frame.\n\nimport ARKit\n\nlet arSession = ARKitSession()\nlet worldTracking = WorldTrackingProvider()\n\ntry await arSession.run([worldTracking])\n\n// Every frame\n\nguard let deviceAnchor = worldTracking.queryDeviceAnchor(\n    atTimestamp: CACurrentMediaTime() + presentationTime\n) else { return }\n\nlet transform: simd_float4x4 = deviceAnchor\n    .originFromAnchorTransform"
+    },
+    {
+      "title": "Build the camera and projection matrices",
+      "language": "swift",
+      "startTimeSeconds": 947,
+      "code": "// Build the camera and projection matrices.\n\nlet cameraPosition: SIMD3<Float>\nlet viewportBounds: BoundingBox\n\n// Camera facing -Z\nlet cameraTransform = simd_float4x4(AffineTransform3D(translation: Size3D(cameraPosition)))\n\nlet zNear: Float = viewportBounds.max.z - cameraPosition.z\nlet l /* left */: Float = viewportBounds.min.x - cameraPosition.x\nlet r /* right */: Float = viewportBounds.max.x - cameraPosition.x\nlet b /* bottom */: Float = viewportBounds.min.y - cameraPosition.y\nlet t /* top */: Float = viewportBounds.max.y - cameraPosition.y\n\nlet cameraProjection = simd_float4x4(rows: [\n    [2*zNear/(r-l),             0, (r+l)/(r-l),      0],\n    [            0, 2*zNear/(t-b), (t+b)/(t-b),      0],\n    [            0,             0,           1, -zNear],\n    [            0,             0,           1,      0]\n])"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Rendering a windowed game in stereo",
+      "url": "https://developer.apple.com/documentation/RealityKit/rendering-a-windowed-game-in-stereo",
+      "type": "samplecode",
+      "description": "Bring an iOS or iPadOS game to visionOS and enhance it.",
+      "sosumiURL": "https://sosumi.ai/documentation/RealityKit/rendering-a-windowed-game-in-stereo",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/RealityKit/rendering-a-windowed-game-in-stereo.json"
+    },
+    {
+      "title": "Forum: Graphics & Games",
+      "url": "https://developer.apple.com/forums/topics/graphics-and-games?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/graphics-and-games?cid=vf-a-0010"
+    }
+  ],
+  "path": "sessions/wwdc2024/10093/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10093/metadata.json",
+    "readme": "sessions/wwdc2024/10093/README.md",
+    "transcript": "sessions/wwdc2024/10093/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10093/transcript.json"
+  }
+}

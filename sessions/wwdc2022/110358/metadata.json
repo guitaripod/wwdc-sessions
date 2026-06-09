@@ -1,0 +1,206 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-110358",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 110358,
+  "title": "Swift Regex: Beyond the basics",
+  "description": "Go beyond the basics of string processing with Swift Regex. We'll share an overview of Regex and how it works, explore Foundation’s rich data parsers and discover how to integrate your own, and delve into captures. We’ll also provide best practices for matching strings and wielding Regex-powered algorithms with ease.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/110358",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/110358",
+  "type": "Video",
+  "publishedAt": "2022-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 1292,
+  "hasTranscript": true,
+  "transcriptWordCount": 2833,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110358/6/CCCFE7E0-48F7-4D00-A8C1-6DB5E768F833/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110358/6/CCCFE7E0-48F7-4D00-A8C1-6DB5E768F833/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110358/6/CCCFE7E0-48F7-4D00-A8C1-6DB5E768F833/downloads/wwdc2022-110358_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110358/6/CCCFE7E0-48F7-4D00-A8C1-6DB5E768F833/downloads/wwdc2022-110358_hd.mp4",
+    "duration": 1292
+  },
+  "codeSnippets": [
+    {
+      "title": "Regex matching \"Hi, WWDC22!\"",
+      "language": "swift",
+      "startTimeSeconds": 39,
+      "code": "Regex {\n    \"Hi, WWDC\"\n    Repeat(.digit, count: 2)\n    \"!\"\n}"
+    },
+    {
+      "title": "Simple Regex from a string",
+      "language": "swift",
+      "startTimeSeconds": 66,
+      "code": "let input = \"name:  John Appleseed,  user_id:  100\"\n\nlet regex = try Regex(#\"user_id:\\s*(\\d+)\"#)\n\nif let match = input.firstMatch(of: regex) {\n    print(\"Matched: \\(match[0])\")\n    print(\"User ID: \\(match[1])\")\n}"
+    },
+    {
+      "title": "Simple Regex from a literal",
+      "language": "swift",
+      "startTimeSeconds": 116,
+      "code": "let input = \"name:  John Appleseed,  user_id:  100\"\n\nlet regex = /user_id:\\s*(\\d+)/\n\nif let match = input.firstMatch(of: regex) {\n    print(\"Matched: \\(match.0)\")\n    print(\"User ID: \\(match.1)\")\n}"
+    },
+    {
+      "title": "Simple regex builder",
+      "language": "swift",
+      "startTimeSeconds": 128,
+      "code": "import RegexBuilder\n\nlet input = \"name:  John Appleseed,  user_id:  100\"\n\nlet regex = Regex {\n    \"user_id:\"\n    OneOrMore(.whitespace)\n    Capture(.localizedInteger)\n}\n\nif let match = input.firstMatch(of: regex) {\n    print(\"Matched: \\(match.0)\")\n    print(\"User ID: \\(match.1)\")\n}"
+    },
+    {
+      "title": "A trivial Regex interpreted by the Regex engine",
+      "language": "swift",
+      "startTimeSeconds": 158,
+      "code": "let regex = Regex {\n    OneOrMore(\"a\")\n    OneOrMore(.digit)\n}\n\nlet match = \"aaa12\".wholeMatch(of: regex)"
+    },
+    {
+      "title": "Regex-powered algorithms",
+      "language": "swift",
+      "startTimeSeconds": 229,
+      "code": "let input = \"name:  John Appleseed,  user_id:  100\"\n\nlet regex = /user_id:\\s*(\\d+)/\n\ninput.firstMatch(of: regex)           // Regex.Match<(Substring, Substring)>\ninput.wholeMatch(of: regex)           // nil\ninput.prefixMatch(of: regex)          // nil\n\ninput.starts(with: regex)             // false\ninput.replacing(regex, with: \"456\")   // \"name:  John Appleseed,  456\"\ninput.trimmingPrefix(regex)           // \"name:  John Appleseed,  user_id:  100\"\ninput.split(separator: /\\s*,\\s*/)     // [\"name:  John Appleseed\", \"user_id:  100\"]\n\nswitch \"abc\" {\ncase /\\w+/:\n    print(\"It's a word!\")\n}"
+    },
+    {
+      "title": "Use Foundation parsers in regex builder",
+      "language": "swift",
+      "startTimeSeconds": 314,
+      "code": "let statement = \"\"\"\n    DSLIP    04/06/20 Paypal  $3,020.85\n    CREDIT   04/03/20 Payroll $69.73\n    DEBIT    04/02/20 Rent    ($38.25)\n    DEBIT    03/31/20 Grocery ($27.44)\n    DEBIT    03/24/20 IRS     ($52,249.98)\n    \"\"\"\n\nlet regex = Regex {\n    Capture(.date(format: \"\\(month: .twoDigits)/\\(day: .twoDigits)/\\(year: .twoDigits)\"))\n    OneOrMore(.whitespace)\n    OneOrMore(.word)\n    OneOrMore(.whitespace)\n    Capture(.currency(code: \"USD\").sign(strategy: .accounting))\n}"
+    },
+    {
+      "title": "XCTest log regex (version 1)",
+      "language": "swift",
+      "startTimeSeconds": 384,
+      "code": "import RegexBuilder\n\nlet regex = Regex {\n    \"Test Suite '\"\n    /[a-zA-Z][a-zA-Z0-9]*/\n    \"' \"\n    ChoiceOf {\n        \"started\"\n        \"passed\"\n        \"failed\"\n    }\n    \" at \"\n    OneOrMore(.any)\n    Optionally(\".\")\n}"
+    },
+    {
+      "title": "Test our Regex against some inputs",
+      "language": "swift",
+      "startTimeSeconds": 385,
+      "code": "let testSuiteTestInputs = [\n    \"Test Suite 'RegexDSLTests' started at 2022-06-06 09:41:00.001\",\n    \"Test Suite 'RegexDSLTests' failed at 2022-06-06 09:41:00.001.\",\n    \"Test Suite 'RegexDSLTests' passed at 2022-06-06 09:41:00.001.\"\n]\n\nfor line in testSuiteTestInputs {\n    if let match = line.wholeMatch(of: regex) {\n        print(\"Matched: \\(match.output)\")\n    }\n}"
+    },
+    {
+      "title": "Example of capture",
+      "language": "swift",
+      "startTimeSeconds": 628,
+      "code": "let regex = Regex {\n   \"a\"\n   Capture(\"b\")\n   \"c\"\n   /d(e)f/\n}\n\nif let match = \"abcdef\".wholeMatch(of: regex) {\n    let (wholeMatch, b, e) = match.output\n}"
+    },
+    {
+      "title": "XCTest log regex (version 2, with captures)",
+      "language": "swift",
+      "startTimeSeconds": 670,
+      "code": "import RegexBuilder\n\nlet regex = Regex {\n    \"Test Suite '\"\n    Capture(/[a-zA-Z][a-zA-Z0-9]*/)\n    \"' \"\n    Capture {\n        ChoiceOf {\n            \"started\"\n            \"passed\"\n            \"failed\"\n        }\n    }\n    \" at \"\n    Capture(OneOrMore(.any))\n    Optionally(\".\")\n}"
+    },
+    {
+      "title": "Test our Regex (version 2) against some inputs",
+      "language": "swift",
+      "startTimeSeconds": 681,
+      "code": "let testSuiteTestInputs = [\n    \"Test Suite 'RegexDSLTests' started at 2022-06-06 09:41:00.001\",\n    \"Test Suite 'RegexDSLTests' failed at 2022-06-06 09:41:00.001.\",\n    \"Test Suite 'RegexDSLTests' passed at 2022-06-06 09:41:00.001.\"\n]\n\nfor line in testSuiteTestInputs {\n    if let (whole, name, status, dateTime) = line.wholeMatch(of: regex)?.output {\n        print(\"Matched: \\\"\\(name)\\\", \\\"\\(status)\\\", \\\"\\(dateTime)\\\"\")\n    }\n}"
+    },
+    {
+      "title": "XCTest log regex (version 3, with reluctant repetition)",
+      "language": "swift",
+      "startTimeSeconds": 711,
+      "code": "import RegexBuilder\n\nlet regex = Regex {\n    \"Test Suite '\"\n    Capture(/[a-zA-Z][a-zA-Z0-9]*/)\n    \"' \"\n    Capture {\n        ChoiceOf {\n            \"started\"\n            \"passed\"\n            \"failed\"\n        }\n    }\n    \" at \"\n    Capture(OneOrMore(.any, .reluctant))\n    Optionally(\".\")\n}"
+    },
+    {
+      "title": "Example of transforming capture",
+      "language": "swift",
+      "startTimeSeconds": 920,
+      "code": "Regex {\n    Capture {\n        OneOrMore(.digit)\n    } transform: {\n        Int($0)     // Int.init?(_: some StringProtocol)\n    }\n} // Regex<(Substring, Int?)>"
+    },
+    {
+      "title": "Example of transforming capture and removing optionality",
+      "language": "swift",
+      "startTimeSeconds": 955,
+      "code": "Regex {\n    TryCapture {\n        OneOrMore(.digit)\n    } transform: {\n        Int($0)     // Int.init?(_: some StringProtocol)\n    }\n} // Regex<(Substring, Int)>"
+    },
+    {
+      "title": "XCTest log regex (version 4, with transforming capture)",
+      "language": "swift",
+      "startTimeSeconds": 981,
+      "code": "enum TestStatus: String {\n    case started = \"started\"\n    case passed = \"passed\"\n    case failed = \"failed\"\n}\n\nlet regex = Regex {\n    \"Test Suite '\"\n    Capture(/[a-zA-Z][a-zA-Z0-9]*/)\n    \"' \"\n    TryCapture {\n        ChoiceOf {\n            \"started\"\n            \"passed\"\n            \"failed\"\n        }\n    } transform: {\n        TestStatus(rawValue: String($0))\n    }\n    \" at \"\n    Capture(OneOrMore(.any, .reluctant))\n    Optionally(\".\")\n} // Regex<(Substring, Substring, TestStatus, Substring)>"
+    },
+    {
+      "title": "XCTest log regex (version 5, with Foundation ISO 8601 date parser)",
+      "language": "swift",
+      "startTimeSeconds": 1043,
+      "code": "let regex = Regex {\n    \"Test Suite '\"\n    Capture(/[a-zA-Z][a-zA-Z0-9]*/)\n    \"' \"\n    TryCapture {\n        ChoiceOf {\n            \"started\"\n            \"passed\"\n            \"failed\"\n        }\n    } transform: {\n        TestStatus(rawValue: String($0))\n    }\n    \" at \"\n    Capture(.iso8601(\n        timeZone: .current, includingFractionalSeconds: true, dateTimeSeparator: .space))\n    Optionally(\".\")\n} // Regex<(Substring, Substring, TestStatus, Date)>"
+    },
+    {
+      "title": "XCTest log duration parser",
+      "language": "swift",
+      "startTimeSeconds": 1099,
+      "code": "let input = \"Test Case '-[RegexDSLTests testCharacterClass]' passed (0.001 seconds).\"\n\nlet regex = Regex {\n    \"Test Case \"\n    OneOrMore(.any, .reluctant)\n    \"(\"\n    Capture {\n        .localizedDouble\n    }\n    \" seconds).\"\n}\n\nif let match = input.wholeMatch(of: regex) {\n    print(\"Time: \\(match.output)\")\n}"
+    },
+    {
+      "title": "CDoubleParser definition",
+      "language": "swift",
+      "startTimeSeconds": 1156,
+      "code": "import Darwin\n\nstruct CDoubleParser: CustomConsumingRegexComponent {\n    typealias RegexOutput = Double\n\n    func consuming(\n        _ input: String, startingAt index: String.Index, in bounds: Range<String.Index>\n    ) throws -> (upperBound: String.Index, output: Double)? {\n        input[index...].withCString { startAddress in\n            var endAddress: UnsafeMutablePointer<CChar>!\n            let output = strtod(startAddress, &endAddress)\n            guard endAddress > startAddress else { return nil }\n            let parsedLength = startAddress.distance(to: endAddress)\n            let upperBound = input.utf8.index(index, offsetBy: parsedLength)\n            return (upperBound, output)\n        }\n    }\n}"
+    },
+    {
+      "title": "Use CDoubleParser in regex builder",
+      "language": "swift",
+      "startTimeSeconds": 1213,
+      "code": "let input = \"Test Case '-[RegexDSLTests testCharacterClass]' passed (0.001 seconds).\"\n\nlet regex = Regex {\n    \"Test Case \"\n    OneOrMore(.any, .reluctant)\n    \"(\"\n    Capture {\n        CDoubleParser()\n    }\n    \" seconds).\"\n} // Regex<(Substring, Double)>\n\nif let match = input.wholeMatch(of: regex) {\n    print(\"Time: \\(match.1)\")\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "SE-0357: Regex-powered algorithms",
+      "url": "https://github.com/apple/swift-evolution/blob/main/proposals/0357-regex-string-processing-algorithms.md",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "SE-0355: Regex syntax",
+      "url": "https://github.com/apple/swift-evolution/blob/main/proposals/0355-regex-syntax-run-time-construction.md",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "SE-0354: Regex literals",
+      "url": "https://github.com/apple/swift-evolution/blob/main/proposals/0354-regex-literals.md",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "SE-0351: Regex builder DSL",
+      "url": "https://github.com/apple/swift-evolution/blob/main/proposals/0351-regex-builder.md",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "SE-0350: Regex type and overview",
+      "url": "https://github.com/apple/swift-evolution/blob/main/proposals/0350-regex-type-overview.md",
+      "type": "guide",
+      "description": null
+    }
+  ],
+  "path": "sessions/wwdc2022/110358/",
+  "files": {
+    "metadata": "sessions/wwdc2022/110358/metadata.json",
+    "readme": "sessions/wwdc2022/110358/README.md",
+    "transcript": "sessions/wwdc2022/110358/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/110358/transcript.json"
+  }
+}

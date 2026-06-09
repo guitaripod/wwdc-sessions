@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "id": "tech-talks-10855",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2017,
+  "eventContentId": 10855,
+  "title": "Explore UI animation hitches and the render loop",
+  "description": "Explore how you can improve the performance of your app's user interface by identifying scrolling and animation hitches in your app. We'll take you through how hitches happen in the render loop, and explain how to measure hitch time ratio and fix the issues that most impact people using your app.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/10855",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10855",
+  "type": "Video",
+  "publishedAt": "2020-12-21T00:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "ui animation hitches",
+    "xcode"
+  ],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 714,
+  "hasTranscript": true,
+  "transcriptWordCount": 2035,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/10855/2/822707DC-DB98-4BD0-914C-F1FA37A6A1F0/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/tech-talks/10855/2/822707DC-DB98-4BD0-914C-F1FA37A6A1F0/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/10855/2/822707DC-DB98-4BD0-914C-F1FA37A6A1F0/downloads/tech-talks-10855_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/10855/2/822707DC-DB98-4BD0-914C-F1FA37A6A1F0/downloads/tech-talks-10855_hd.mp4",
+    "duration": 714
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/tech-talks/10855/",
+  "files": {
+    "metadata": "sessions/tech-talks/10855/metadata.json",
+    "readme": "sessions/tech-talks/10855/README.md",
+    "transcript": "sessions/tech-talks/10855/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/10855/transcript.json"
+  }
+}

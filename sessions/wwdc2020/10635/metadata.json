@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10635",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10635,
+  "title": "Accelerate your app with CarPlay",
+  "description": "CarPlay is the smarter, safer way for people to use iPhone in the car. We’ll show you how to build great apps for the car screen, and introduce you to developing CarPlay apps in categories like EV charging, parking, and quick food ordering. We'll also share how existing audio and communication apps can take advantage of improvements to the CarPlay framework to create a more flexible UI.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10635",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10635",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "🚗",
+    "🚙",
+    "audio",
+    "car",
+    "communication",
+    "ev charging",
+    "navigation",
+    "parking",
+    "quick food ordering"
+  ],
+  "topics": [
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1579,
+  "hasTranscript": true,
+  "transcriptWordCount": 4001,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10635/8/AE50DE64-E4A1-44A8-84A7-05B91F3FE006/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10635/8/AE50DE64-E4A1-44A8-84A7-05B91F3FE006/wwdc2020_10635_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10635/8/AE50DE64-E4A1-44A8-84A7-05B91F3FE006/wwdc2020_10635_hd.mp4",
+    "duration": 1579
+  },
+  "codeSnippets": [
+    {
+      "title": "CarPlay scene manifest",
+      "language": "xml",
+      "startTimeSeconds": 264,
+      "code": "// CarPlay Scene Manifest\n\n<key>UIApplicationSceneManifest</key>\n<dict>\n    <key>UISceneConfigurations</key>\n\t<dict>\n\t\t<key>CPTemplateApplicationSceneSessionRoleApplication</key>\n\t\t<array>\n\t\t\t<dict>\n\t\t\t\t<key>UISceneClassName</key>\n\t\t\t\t<string>CPTemplateApplicationScene</string>\n\t\t\t\t<key>UISceneConfigurationName</key>\n\t\t\t\t<string>MyApp—Car</string>\n\t\t\t\t<key>UISceneDelegateClassName</key>\n\t\t\t\t<string>MyApp.CarPlaySceneDelegate</string>\n\t\t\t</dict>\n\t\t</array>\n\t</dict>\n</dict>"
+    },
+    {
+      "title": "CarPlay app lifecycle",
+      "language": "swift",
+      "startTimeSeconds": 312,
+      "code": "// CarPlay App Lifecycle\n\nimport CarPlay\n\nclass CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate {\n    var interfaceController: CPInterfaceController?\n\n    func templateApplicationScene(_ templateApplicationScene: CPTemplateApplicationScene,\n            didConnect interfaceController: CPInterfaceController) {\n\n        self.interfaceController = interfaceController\n        let item = CPListItem(text: \"Rubber Soul\", detailText: \"The Beatles\") \n        let section = CPListSection(items: [item]) \n        let listTemplate = CPListTemplate(title: \"Albums\", sections: [section])\n        interfaceController.setRootTemplate(listTemplate, animated: true)\n    }\n\n  func templateApplicationScene(_ templateApplicationScene: CPTemplateApplicationScene,\n            didDisconnect interfaceController: CPInterfaceController) {\n    self.interfaceController = nil\n}"
+    },
+    {
+      "title": "Create a CPListTemplate",
+      "language": "swift",
+      "startTimeSeconds": 354,
+      "code": "// CPListTemplate\n\nimport CarPlay\n\nlet item = CPListItem(text: \"Rubber Soul\", detailText: \"The Beatles\") \nlet section = CPListSection(items: [item]) \nlet listTemplate = CPListTemplate(title: \"Albums\", sections: [section]) \nself.interfaceController.pushTemplate(listTemplate, animated: true)"
+    },
+    {
+      "title": "Handle user selection in a list item",
+      "language": "swift",
+      "startTimeSeconds": 369,
+      "code": "// CPListTemplate\n\nimport CarPlay\n\nlet item = CPListItem(text: \"Rubber Soul\", detailText: \"The Beatles\") \nitem.listItemHandler = { item, completion, [weak self] in\n    // Start playback, then...\n    self?.interfaceController.pushTemplate(CPNowPlayingTemplate.shared, animated: true)\n    completion()\n}\n\n// Later...\nitem.image = ..."
+    },
+    {
+      "title": "Create a CPTabBarTemplate",
+      "language": "swift",
+      "startTimeSeconds": 478,
+      "code": "// CPTabBarTemplate\n\nimport CarPlay\n\nlet item = CPListItem(text: \"Rubber Soul\", detailText: \"The Beatles\") \nlet section = CPListSection(items: [item]) \nlet favorites = CPListTemplate(title: \"Albums\", sections: [section])\nfavorites.tabSystemItem = .favorites\nfavorites.showsTabBadge = true\n\nlet albums: CPGridTemplate = ...\nalbums.tabTitle = \"Albums\"\nalbums.tabImage = ...\n\nlet tabBarTemplate = CPTabBarTemplate(templates: [favorites, albums])\nself.interfaceController.setRootTemplate(tabBarTemplate, animated: false)\n\n// Later...\nfavorites.showsTabBadge = false\ntabBarTemplate.updateTemplates([favorites, albums])"
+    },
+    {
+      "title": "Create a CPListImageRowItem",
+      "language": "swift",
+      "startTimeSeconds": 574,
+      "code": "// List Items for Audio Apps\n\nimport CarPlay\n\nlet gridImages: [UIImage] = ...\nlet imageRowItem = CPListImageRowItem(text: \"Recent Audiobooks\", images: gridImages) \n\nimageRowItem.listItemHandler = { item, completion in\n    print(\"Selected image row header!\")\n    completion()\n}\n\nimageRowItem.listImageRowHandler = { item, index, completion in\n    print(\"Selected artwork at index \\(index)!\")\n    completion()\n}\n\nlet section = CPListSection(items: [imageRowItem]) \nlet listTemplate = CPListTemplate(title: \"Listen Now\", sections: [section]) \nself.interfaceController.pushTemplate(listTemplate, animated: true)"
+    },
+    {
+      "title": "Configure the shared now playing template",
+      "language": "swift",
+      "startTimeSeconds": 770,
+      "code": "// Now Playing Template\n\nimport CarPlay\n\nclass CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate {\n\n    func templateApplicationScene(_ templateApplicationScene: CPTemplateApplicationScene,\n            didConnect interfaceController: CPInterfaceController) {\n\n        let nowPlayingTemplate = CPNowPlayingTemplate.shared\n\n        let rateButton = CPNowPlayingPlaybackRateButton() { button in\n\n            // Change the playback rate!\n\n        }\n        nowPlayingTemplate.updateNowPlayingButtons([rateButton])\n    }\n}"
+    },
+    {
+      "title": "Handle Point of Interest Template map region changes",
+      "language": "swift",
+      "startTimeSeconds": 1186,
+      "code": "// CPPointOfInterestTemplateDelegate\n\nfunc pointOfInterestTemplate(_ template: CPPointOfInterestTemplate, \n                             didChangeMapRegion region: MKCoordinateRegion) {\n\n    self.locationManager.locations(for: region) { locations in\n        template.setPointsOfInterest(locations, selectedIndex: 0)\n    }\n}"
+    },
+    {
+      "title": "Create points of interest",
+      "language": "swift",
+      "startTimeSeconds": 1223,
+      "code": "// CPPointOfInterest creation\n\nfunc locations(for region: MKCoordinateRegion, \n               handler: ([CPPointOfInterest]) -> Void) {\n    var tempateLocations: [CPPointOfInterest] = []\n\n    for clientModel in self.executeQuery(for: region) {\n        let templateModel : CPPointOfInterest = self.locations[clientModel.mapItem] ??\n                CPPointOfInterest(location: clientModel.mapItem,\n                                  title: clientModel.title,\n                                  subtitle: clientModel.subtitle,\n                                  informativeText: clientModel.informativeText,\n                                  image: clientModel.mapImage)\n\n\n        tempateLocations.append(templateModel)\n    }\n    handler(templateLocations)\n}"
+    },
+    {
+      "title": "Point of interest selection buttons",
+      "language": "swift",
+      "startTimeSeconds": 1265,
+      "code": "// Point of Interest Template location selection\n\nlet primaryButton = CPPointOfInterestButton(title: \"Select\") { button, [weak self] in\n            let selectedIndex = ...\n\n            if selectedIndex != NSNotFound {\n                // Remove any existing selected state on previous location\n                self?.selectedLocation.image = defaultMapImage\n                // Change annotation for selected POI\n                self?.selectedLocation = templateModel\n                templateModel.image = selectedMapImage\n                // Update the template with new values\n                self?.pointOfInterestTemplate.selectedIndex = selectedIndex\n            }\n        }\n\nlet templateModel: CPPointOfInterest = ...\n\ntemplateModel.primaryButton = primaryButton"
+    }
+  ],
+  "resources": [
+    {
+      "title": "CarPlay for developers",
+      "url": "https://developer.apple.com/carplay",
+      "type": "guide",
+      "description": "Guide to CarPlay development",
+      "sosumiURL": "https://sosumi.ai/carplay"
+    },
+    {
+      "title": "Human Interface Guidelines: CarPlay",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/carplay",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/carplay"
+    }
+  ],
+  "path": "sessions/wwdc2020/10635/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10635/metadata.json",
+    "readme": "sessions/wwdc2020/10635/README.md",
+    "transcript": "sessions/wwdc2020/10635/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10635/transcript.json"
+  }
+}

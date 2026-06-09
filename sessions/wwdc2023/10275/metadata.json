@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10275",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10275,
+  "title": "Explore AirPlay with interstitials",
+  "description": "Learn how you can use HLS Interstitials with AirPlay to create seamless transitions for your video content between advertisements. We’ll share best practices and tips for creating a great experience when sharing content from Apple devices to popular smart TVs.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10275",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10275",
+  "type": "Video",
+  "publishedAt": "2023-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 1191,
+  "hasTranscript": true,
+  "transcriptWordCount": 2734,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10275/5/9AAAFD03-718B-497E-8A61-C0B00CC14513/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10275/5/9AAAFD03-718B-497E-8A61-C0B00CC14513/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10275/5/9AAAFD03-718B-497E-8A61-C0B00CC14513/downloads/wwdc2023-10275_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10275/5/9AAAFD03-718B-497E-8A61-C0B00CC14513/downloads/wwdc2023-10275_hd.mp4",
+    "duration": 1191
+  },
+  "codeSnippets": [
+    {
+      "title": "Example: Navigation restriction client driven",
+      "language": "swift",
+      "startTimeSeconds": 559,
+      "code": "let player = AVPlayer(url: movieURL) //no ads in primary\nlet controller = AVPlayerInterstitialEventController( primaryPlayer: player )\n\nlet ad1Item = [AVPlayerItem(url: ad1Url)]\nlet ad1event = AVPlayerInterstitialEvent( primaryItem: player.currentItem,\n\t\t\t\t\t\t\t\t\t\t  time: CMTime(seconds: 5, preferredTimescale: 1) )\nad1event.identifier = \"ad1\"\nad1event.templateItems = ad1Item\n\n//set SKIP restriction on ad1 \nad1event.restrictions = [.requiresPlaybackAtPreferredRateForAdvancement]\n\ncontroller.events = [ad1event]\n\n code snippet."
+    },
+    {
+      "title": "Plan C: Sample code to override the restrictions",
+      "language": "swift",
+      "startTimeSeconds": 944,
+      "code": "let player = AVPlayer( url: movieURL )\nlet controller = AVPlayerInterstitialEventController( primaryPlayer: player )\n\nlet ad1Event = controller.events[0]\nlet ad2Event = controller.events[1]\n\nlet newEvent  = ad2Event.copy() as! AVPlayerInterstitialEvent\n//clear the restrictions on ad2 event\nnewEvent.restrictions = []\n\n//set the original ad1 Event and modified ad2 Event on controller\ncontroller.events = [ad1Event, newEvent]"
+    }
+  ],
+  "resources": [
+    {
+      "title": "AirPlay-Enabled TVs and Video Accessories",
+      "url": "https://www.apple.com/home-app/accessories/#section-tvs",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Media playback",
+      "url": "https://developer.apple.com/documentation/AVFoundation/media-playback",
+      "type": "documentation",
+      "description": "Manage the playback of media assets and interstitial content, independent of how you present that content in your interface.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/media-playback",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/media-playback.json"
+    },
+    {
+      "title": "Supporting AirPlay in your app",
+      "url": "https://developer.apple.com/documentation/AVFoundation/supporting-airplay-in-your-app",
+      "type": "documentation",
+      "description": "Set up your app to use AirPlay to send content wirelessly.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/supporting-airplay-in-your-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/supporting-airplay-in-your-app.json"
+    },
+    {
+      "title": "Getting Started with HLS Interstitials",
+      "url": "https://developer.apple.com/streaming/GettingStartedWithHLSInterstitials.pdf",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/streaming/GettingStartedWithHLSInterstitials.pdf"
+    }
+  ],
+  "path": "sessions/wwdc2023/10275/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10275/metadata.json",
+    "readme": "sessions/wwdc2023/10275/README.md",
+    "transcript": "sessions/wwdc2023/10275/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10275/transcript.json"
+  }
+}

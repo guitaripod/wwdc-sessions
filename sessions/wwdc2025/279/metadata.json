@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-279",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 279,
+  "title": "What’s new in passkeys",
+  "description": "Discover how iOS, iPadOS, macOS, and visionOS 26 enhance passkeys. We’ll explore key updates including: the new account creation API for streamlined sign-up, keeping passkeys up-to-date, new ways to drive passkey upgrades through automatic passkey upgrades and passkey management endpoints, and the secure import/export of passkeys. Learn how these improvements enhance user experience and security, and how to implement these updates in your apps to provide a smoother, more secure authentication experience. To get the most out of this video, first watch “Meet passkeys” from WWDC22.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/279",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/279",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Privacy & Security"
+  ],
+  "primaryTopic": "Privacy & Security",
+  "duration": 1322,
+  "hasTranscript": true,
+  "transcriptWordCount": 3178,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/279/5/39c2b950-9bc8-4e0a-a336-98ec2ed224a2/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/279/5/39c2b950-9bc8-4e0a-a336-98ec2ed224a2/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/279/5/39c2b950-9bc8-4e0a-a336-98ec2ed224a2/downloads/wwdc2025-279_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/279/5/39c2b950-9bc8-4e0a-a336-98ec2ed224a2/downloads/wwdc2025-279_hd.mp4",
+    "duration": 1322
+  },
+  "codeSnippets": [
+    {
+      "title": "Account creation",
+      "language": "swift",
+      "startTimeSeconds": 393,
+      "code": "// Account creation\n\n@Environment(\\.authorizationController) var authorizationController\n\nfunc performPasskeySignUp() async throws {\n    let provider = ASAuthorizationAccountCreationProvider()\n    let request = provider.createPlatformPublicKeyCredentialRegistrationRequest(\n        acceptedContactIdentifiers: [.email, .phoneNumber],\n        shouldRequestName: true,\n        relyingPartyIdentifier: \"example.com\",\n        challenge: try await fetchChallenge(),\n        userID: try await fetchUserID()\n    )\n\n    do {\n        let result = try await authorizationController.performRequest(request)\n        if case .passkeyAccountCreation(let account) = result {\n            // Register new account on backend\n        }\n    } catch\n        ASAuthorizationError\n        .deviceNotConfiguredForPasskeyCreation {\n        showPasswordSignUpForm = true\n    } catch ASAuthorizationError.canceled {\n        showPasswordSignUpForm = true\n    } catch\n        ASAuthorizationError.preferSignInWithApple {\n        await performSignInWithApple()\n    } catch { ... }\n}"
+    },
+    {
+      "title": "Changing the user name",
+      "language": "swift",
+      "startTimeSeconds": 750,
+      "code": "// Changing the user name\n\ntry await ASCredentialUpdater()\n    .reportPublicKeyCredentialUpdate(\n        relyingPartyIdentifier: \"example.com\",\n        userHandle: userHandle,\n        newName: \"andrew@example.com\"\n    )"
+    },
+    {
+      "title": "Changing the user name",
+      "language": "javascript",
+      "startTimeSeconds": 778,
+      "code": "// Changing the user name\n\nawait PublicKeyCredential.signalCurrentUserDetails({\n    rpId: \"example.com\",\n    userId: userHandle,\n    name: \"andrew@example.com\",\n    displayName: \"andrew@example.com\"\n});"
+    },
+    {
+      "title": "Revoking a passkey",
+      "language": "swift",
+      "startTimeSeconds": 787,
+      "code": "// Revoking a passkey\n\ntry await ASCredentialUpdater()\n    .reportAllAcceptedPublicKeyCredentials(\n        relyingPartyIdentifier: \"example.com\",\n        userHandle: userHandle,\n        acceptedCredentialIDs: acceptedCredentialIDs\n    )"
+    },
+    {
+      "title": "Revoking a passkey",
+      "language": "javascript",
+      "startTimeSeconds": 826,
+      "code": "// Revoking a passkey\n\nawait PublicKeyCredential.signalAllAcceptedCredentials({\n    rpId: \"example.com\",\n    userId: userHandle,\n    allAcceptedCredentalIds: acceptedCredentialIds\n});"
+    },
+    {
+      "title": "Removing a password",
+      "language": "swift",
+      "startTimeSeconds": 844,
+      "code": "// Removing a password\n\ntry await ASCredentialUpdater()\n    .reportUnusedPasswordCredential(\n        domain: \"example.com\",\n        username: \"andrew@example.com\"\n    )"
+    },
+    {
+      "title": "Automatic passkey upgrade",
+      "language": "swift",
+      "startTimeSeconds": 936,
+      "code": "// Automatic passkey upgrade\n\nfunc signIn() async throws {\n    let accountDetails = try await signInWithPassword()\n    guard !accountDetails.hasPasskey else { return }\n\n    let provider = ASAuthorizationPlatformPublicKeyCredentialProvider(\n        relyingPartyIdentifier: \"example.com\")\n\n    let request = provider.createCredentialRegistrationRequest(\n        challenge: try await fetchChallenge(),\n        name: accountDetails.userName,\n        userID: accountDetails.userID,\n        requestStyle: .conditional\n    )\n\n    do {\n        let passkey = try await authorizationController.performRequest(request)\n        // Save new passkey to the backend\n    } catch { ... }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Performing fast account creation with passkeys",
+      "url": "https://developer.apple.com/documentation/AuthenticationServices/performing-fast-account-creation-with-passkeys",
+      "type": "samplecode",
+      "description": "Allow people to quickly create an account with passkeys and associated domains.",
+      "sosumiURL": "https://sosumi.ai/documentation/AuthenticationServices/performing-fast-account-creation-with-passkeys",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AuthenticationServices/performing-fast-account-creation-with-passkeys.json"
+    },
+    {
+      "title": "ASCredentialExportManager",
+      "url": "https://developer.apple.com/documentation/AuthenticationServices/ASCredentialExportManager",
+      "type": "documentation",
+      "description": "A class to manage exporting credentials.",
+      "sosumiURL": "https://sosumi.ai/documentation/AuthenticationServices/ASCredentialExportManager",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AuthenticationServices/ASCredentialExportManager.json"
+    },
+    {
+      "title": "ASCredentialProviderViewController",
+      "url": "https://developer.apple.com/documentation/AuthenticationServices/ASCredentialProviderViewController",
+      "type": "documentation",
+      "description": "A view controller that a credential manager app uses to extend AutoFill.",
+      "sosumiURL": "https://sosumi.ai/documentation/AuthenticationServices/ASCredentialProviderViewController",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AuthenticationServices/ASCredentialProviderViewController.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/279/",
+  "files": {
+    "metadata": "sessions/wwdc2025/279/metadata.json",
+    "readme": "sessions/wwdc2025/279/README.md",
+    "transcript": "sessions/wwdc2025/279/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/279/transcript.json"
+  }
+}

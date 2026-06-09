@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10124",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10124,
+  "title": "What’s new in AppKit",
+  "description": "Discover the latest advances in Mac app development. Get an overview of the new features in macOS Sequoia, and how to adopt them in your app. Explore new ways to integrate your existing code with SwiftUI. Learn about the improvements made to numerous AppKit controls, like toolbars, menus, text input, and more.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10124",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10124",
+  "type": "Video",
+  "publishedAt": "2024-06-10T14:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [
+    "breathe",
+    "genmoji",
+    "image playground",
+    "symbols"
+  ],
+  "topics": [
+    "App Services",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1196,
+  "hasTranscript": true,
+  "transcriptWordCount": 2790,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10124/6/75BDBA0D-71A3-435A-8E9E-AE18B78981B0/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10124/6/75BDBA0D-71A3-435A-8E9E-AE18B78981B0/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10124/6/75BDBA0D-71A3-435A-8E9E-AE18B78981B0/downloads/wwdc2024-10124_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10124/6/75BDBA0D-71A3-435A-8E9E-AE18B78981B0/downloads/wwdc2024-10124_hd.mp4",
+    "duration": 1196
+  },
+  "codeSnippets": [
+    {
+      "title": "Adding the Image Playground experience",
+      "language": "swift",
+      "startTimeSeconds": 129,
+      "code": "extension DocumentCanvasViewController {\n\n    @IBAction\n    func importFromImagePlayground(_ sender: Any?) {\n        // Initialize the playground, get set up to be notified of lifecycle events.\n        let playground = ImagePlaygroundViewController()\n        playground.delegate = self\n\n        // Seed the playground with concepts and source imagery. (Optional)\n        playground.concepts = [.text(\"birthday card\")]\n        playground.sourceImage = NSImage(named: \"balloons\")\n\n        presentAsSheet(playground)\n    }\n\n}\n\nextension DocumentCanvasViewController: ImagePlaygroundViewController.Delegate {\n\n    func imagePlaygroundViewController(\n        _ imagePlaygroundViewController: ImagePlaygroundViewController,\n        didCreateImageAt resultingImageURL: URL\n    ) {\n        if let image = NSImage(contentsOf: resultingImageURL) {\n            imageView.image = image\n        } else {\n            logger.error(\"Could not read image at \\(resultingImageURL)\")\n        }\n        dismiss(imagePlaygroundViewController)\n    }\n\n}"
+    },
+    {
+      "title": "Using window resize increments",
+      "language": "swift",
+      "startTimeSeconds": 350,
+      "code": "window.resizeIncrements = NSSize(width: characterWidth, height: characterHeight)"
+    },
+    {
+      "title": "Build menus with SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 425,
+      "code": "struct ActionMenu: View {\n\n    var body: some View {\n        Toggle(\"Use Groups\", isOn: $useGroups)\n        Picker(\"Sort By\", selection: $sortOrder) {\n            ForEach(SortOrder.allCases) { Text($0.title) }\n        }.pickerStyle(.inline)\n        Button(\"Customize View…\") { <#Action#> }\n    }\n\n}\n\nlet menu = NSHostingMenu(rootView: ActionMenu())\n\nlet pullDown = NSPopUpButton(image: image, pullDownMenu: menu)"
+    },
+    {
+      "title": "Get animated with SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 463,
+      "code": "NSAnimationContext.animate(with: .spring(duration: 0.3)) {\n    drawer.isExpanded.toggle()\n}"
+    },
+    {
+      "title": "Get animated with SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 475,
+      "code": "class PaletteView: NSView {\n\n    @Invalidating(.layout)    \n    var isExpanded: Bool = false\n\n    private func onHover(_ isHovered: Bool) {\n        NSAnimationContext.animate(with: .spring) {\n            isExpanded = isHovered\n            layoutSubtreeIfNeeded()\n        }\n    }\n\n}"
+    },
+    {
+      "title": "Text highlighting",
+      "language": "swift",
+      "startTimeSeconds": 631,
+      "code": "let attributes: [NSAttributedString.Key: Any] = [\n    .textHighlight: NSAttributedString.TextHighlightStyle.systemDefault,\n    .textHighlightColorScheme: NSAttributedString.TextHighlightColorScheme.pink,\n]"
+    },
+    {
+      "title": "SF Symbols effects",
+      "language": "swift",
+      "startTimeSeconds": 671,
+      "code": "imageView.addSymbolEffect(.wiggle)\nimageView.addSymbolEffect(.rotate)\nimageView.addSymbolEffect(.breathe)"
+    },
+    {
+      "title": "SF Symbols playback (periodic)",
+      "language": "swift",
+      "startTimeSeconds": 684,
+      "code": "imageView.addSymbolEffect(.wiggle, options: .repeat(.periodic(3, delay: 0.5)))"
+    },
+    {
+      "title": "SF Symbols playback (continuous)",
+      "language": "swift",
+      "startTimeSeconds": 690,
+      "code": "imageView.addSymbolEffect(.wiggle, options: .repeat(.continuous))"
+    },
+    {
+      "title": "SF Symbols magic replace",
+      "language": "swift",
+      "startTimeSeconds": 697,
+      "code": "imageView.setSymbolImage(badgedSymbolImage, contentTransition: .replace)"
+    },
+    {
+      "title": "Save panel content types",
+      "language": "swift",
+      "startTimeSeconds": 739,
+      "code": "extension ImageViewController: NSOpenSavePanelDelegate {\n\n    @MainActor\n    @IBAction\n    internal func saveDocument(_ sender: Any?) {\n        Task {\n            let savePanel = NSSavePanel()\n            savePanel.delegate = self\n            savePanel.identifier = NSUserInterfaceItemIdentifier(\"ImageExport\")\n            savePanel.showsContentTypes = true\n            savePanel.allowedContentTypes = [.png, .jpeg]\n            let result = await savePanel.beginSheetModal(for: window)\n            switch result {\n                case .OK:\n                    let url = savePanel.url\n                    // Save the document to 'url'. It already has the appropriate extension.\n                case .cancel: break\n                default: break\n            }\n        }\n    }\n\n    func panel(_ panel: Any, displayNameFor type: UTType) -> String? {\n        switch type {\n            case .png:\n                NSLocalizedString(\"PNG (Greater Quality)\", comment: <#Comment#>)\n            case .jpeg:\n                NSLocalizedString(\"JPG (Smaller File Size)\", comment: <#Comment#>)\n            default:\n                nil\n        }\n    }\n\n}"
+    },
+    {
+      "title": "Frame-resize cursors",
+      "language": "swift",
+      "startTimeSeconds": 814,
+      "code": "let cursor = NSCursor.frameResize(position: .bottomRight, directions: .all)"
+    },
+    {
+      "title": "Column and row resize cursors",
+      "language": "swift",
+      "startTimeSeconds": 860,
+      "code": "let cursor = NSCursor.columnResize(directions: .left)\nlet cursor = NSCursor.rowResize(directions: .up)"
+    },
+    {
+      "title": "Zoom in and out cursors",
+      "language": "swift",
+      "startTimeSeconds": 869,
+      "code": "let cursor = NSCusor.zoomIn\nlet cursor = NSCusor.zoomOut"
+    },
+    {
+      "title": "Display mode customizable toolbar",
+      "language": "swift",
+      "startTimeSeconds": 957,
+      "code": "let toolbar = NSToolbar(identifier: NSToolbar.Identifier(\"ViewerWindow\"))\ntoolbar.allowsDisplayModeCustomization // Defaults to `true`."
+    },
+    {
+      "title": "Hidden toolbar items",
+      "language": "swift",
+      "startTimeSeconds": 1017,
+      "code": "let downloadsToolbarItem: NSToolbarItem\ndownloadsToolbarItem.isHidden = downloadsManager.downloads.isEmpty"
+    },
+    {
+      "title": "Text entry suggestions",
+      "language": "swift",
+      "startTimeSeconds": 1069,
+      "code": "class MYViewController: NSViewController {\n\n    let museumTextField = NSTextField(string: \"\")\n\n    let museumTextSuggestionsController = MuseumTextSuggestionsController()\n\n    override func viewDidLoad() {\n        super.viewDidLoad()\n\n        self.museumTextField.suggestionsDelegate = self.museumTextSuggestionsController\n    }\n\n}\n\nclass MuseumTextSuggestionsController: NSTextSuggestionsDelegate {\n\n    typealias SuggestionItemType = Museum\n\n    func textField(\n        _ textField: NSTextField,\n        provideUpdatedSuggestions responseHandler: @escaping ((ItemResponse) -> Void)\n    ) {\n        let searchString = textField.stringValue\n\n        func museumItem(_ museum: Museum) -> Item {\n            var item = NSSuggestionItem(representedValue: museum, title: museum.name)\n            item.secondaryTitle = museum.address\n            return item\n        }\n\n        let favoriteMuseums = Museum.favorites.filter({\n            $0.matches(searchString)\n        })\n\n        let favorites = NSSuggestionItemSection(\n            title: NSLocalizedString(\"Favorites\", comment: \"The title of suggestion results section containing favorite museums.\"),\n            items: favoriteMuseums.map(museumItem(_:))\n        )\n        var response = NSSuggestionItemResponse(itemSections: [favorites])\n        response.phase = .intermediate\n        responseHandler(response)\n\n        Task {\n            let otherMuseums = await Museum.allMatching(searchString)\n            let nonFavorites = NSSuggestionItemSection(items: otherMuseums.map(museumItem(_:)))\n\n            var response = NSSuggestionItemResponse(itemSections: [\n                favorites,\n                nonFavorites,\n            ])\n            response.phase = .final\n            responseHandler(response)\n        }\n    }\n\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "AppKit updates",
+      "url": "https://developer.apple.com/documentation/Updates/AppKit",
+      "type": "documentation",
+      "description": "Learn about important changes to AppKit.",
+      "sosumiURL": "https://sosumi.ai/documentation/Updates/AppKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Updates/AppKit.json"
+    },
+    {
+      "title": "Forum: UI Frameworks",
+      "url": "https://developer.apple.com/forums/topics/ui-frameworks?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/ui-frameworks?cid=vf-a-0010"
+    }
+  ],
+  "path": "sessions/wwdc2024/10124/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10124/metadata.json",
+    "readme": "sessions/wwdc2024/10124/README.md",
+    "transcript": "sessions/wwdc2024/10124/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10124/transcript.json"
+  }
+}

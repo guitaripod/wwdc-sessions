@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-243",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 243,
+  "title": "Integrating with Siri Event Suggestions",
+  "description": "Siri is the intelligence behind displaying what someone needs to know about at just the right moment. In iOS 13, we’re extending this capability to allow your apps to let Siri know when a reservation has been made and Siri can elevate checking in at the right time. Siri can also provide directions to the reservation in Maps, add the event to Calendar, and more. Discover how you can add the power of Siri Event Suggestions to your apps.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/243",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/243",
+  "type": "Session",
+  "publishedAt": "2019-06-07T16:20:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "🎙",
+    "🎤",
+    "add to siri",
+    "donate",
+    "donation",
+    "inrelevant",
+    "intents",
+    "inui",
+    "phrase",
+    "shortcut",
+    "siri",
+    "suggestion",
+    "voice"
+  ],
+  "topics": [
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1719,
+  "hasTranscript": true,
+  "transcriptWordCount": 4091,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/243ce6ir170wt9zmal/243/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/243ce6ir170wt9zmal/243/243_sd_integrating_with_siri_event_suggestions.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/243ce6ir170wt9zmal/243/243_hd_integrating_with_siri_event_suggestions.mp4",
+    "duration": 1719
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Integrating Your App with Siri Event Suggestions",
+      "url": "https://developer.apple.com/documentation/SiriKit/integrating-your-app-with-siri-event-suggestions",
+      "type": "samplecode",
+      "description": "Donate reservations and provide quick access to event details throughout the system.",
+      "sosumiURL": "https://sosumi.ai/documentation/SiriKit/integrating-your-app-with-siri-event-suggestions",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SiriKit/integrating-your-app-with-siri-event-suggestions.json"
+    },
+    {
+      "title": "Donating Shortcuts",
+      "url": "https://developer.apple.com/documentation/SiriKit/donating-shortcuts",
+      "type": "documentation",
+      "description": "Tell Siri about shortcuts to actions that the user performed in your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/SiriKit/donating-shortcuts",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SiriKit/donating-shortcuts.json"
+    },
+    {
+      "title": "SiriKit",
+      "url": "https://developer.apple.com/documentation/SiriKit",
+      "type": "documentation",
+      "description": "Empower users to interact with their devices through voice, intelligent suggestions, and personalized workflows.",
+      "sosumiURL": "https://sosumi.ai/documentation/SiriKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SiriKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/243/",
+  "files": {
+    "metadata": "sessions/wwdc2019/243/metadata.json",
+    "readme": "sessions/wwdc2019/243/README.md",
+    "transcript": "sessions/wwdc2019/243/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/243/transcript.json"
+  }
+}

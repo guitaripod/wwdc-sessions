@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2026-252",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 252,
+  "title": "Design no-code games with Reality Composer Pro 3",
+  "description": "Discover how you can use ScriptGraph in Reality Composer Pro 3 to create no-code 3D content for your apps and games. Learn how to take advantage of visual nodes to build animations, create interactive moments, and incorporate SwiftUI elements to add speech bubbles and other UI to your experience.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/252",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/252",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "apple vision pro",
+    "game design",
+    "reality composer pro",
+    "realitykit",
+    "squirrel game",
+    "visionos",
+    "visionos games",
+    "vision pro"
+  ],
+  "topics": [
+    "Developer Tools",
+    "Graphics & Games",
+    "Spatial Computing",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 1133,
+  "hasTranscript": true,
+  "transcriptWordCount": 2789,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/252/6/572c2388-69f6-4e57-9eba-c71b65f5f6ed/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/252/6/572c2388-69f6-4e57-9eba-c71b65f5f6ed/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/252/6/572c2388-69f6-4e57-9eba-c71b65f5f6ed/downloads/wwdc2026-252_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/252/6/572c2388-69f6-4e57-9eba-c71b65f5f6ed/downloads/wwdc2026-252_hd.mp4",
+    "duration": 1133
+  },
+  "codeSnippets": [
+    {
+      "title": "Squirrel Talk",
+      "language": "swift",
+      "startTimeSeconds": 1043,
+      "code": "// Advanced techniques\n\nif let scene = entity.scene {\n    scene.subscribe(forEventName: \"squirrelTalk\", on: { event in\n        if let sayThis: String = try? event.value(\"sayThis\") {\n            self.sayThis = sayThis\n        }\n     } ).store(in: &cancellables)\n}\n\n...\n} attachments: {\n    Attachment(id: \"squirrelTalk\") {\n        SquirrelTalkAttachmentView(text: sayThis)\n   }\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2026/252/",
+  "files": {
+    "metadata": "sessions/wwdc2026/252/metadata.json",
+    "readme": "sessions/wwdc2026/252/README.md",
+    "transcript": "sessions/wwdc2026/252/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/252/transcript.json"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10123",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10123,
+  "title": "Bring your game to Mac, Part 1: Make a game plan",
+  "description": "Bring modern, high-end games to Mac and iPad with the powerful features of Metal and Apple silicon. Discover the game porting toolkit and learn how it can help you evaluate your existing Windows game for graphics feature compatibility and performance. We’ll share best practices and technical resources for handling audio, input, and advanced display features.\n\nOnce you’ve watched this session, check out “Bring your game to Mac, Part 2: Compile your shaders” to learn more about bringing HLSL shaders to Metal.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10123",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10123",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "Essentials",
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 906,
+  "hasTranscript": true,
+  "transcriptWordCount": 2118,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10123/4/204C6242-388E-4884-864A-CCCBF869D651/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10123/4/204C6242-388E-4884-864A-CCCBF869D651/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10123/4/204C6242-388E-4884-864A-CCCBF869D651/downloads/wwdc2023-10123_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10123/4/204C6242-388E-4884-864A-CCCBF869D651/downloads/wwdc2023-10123_hd.mp4",
+    "duration": 906
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Achieving smooth frame rates with a Metal display link",
+      "url": "https://developer.apple.com/documentation/Metal/achieving-smooth-frame-rates-with-a-metal-display-link",
+      "type": "samplecode",
+      "description": "Pace rendering with minimal input latency while providing essential information to the operating system for power-efficient rendering, thermal mitigation, and the scheduling of sustainable workloads.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/achieving-smooth-frame-rates-with-a-metal-display-link",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/achieving-smooth-frame-rates-with-a-metal-display-link.json"
+    },
+    {
+      "title": "Download the Metal shader converter (Mac and Windows)",
+      "url": "https://developer.apple.com/download/all/?q=shader%20converter",
+      "type": "download",
+      "description": "Metal shader converter provides tools to convert existing DXIL shaders, compiled from HLSL, to Metal and take full advantage of Apple silicon performance with support for all shader stages, simplified shader conversion pipelines, and faster build times.",
+      "sosumiURL": "https://sosumi.ai/download/all/?q=shader%20converter"
+    },
+    {
+      "title": "Download the game porting toolkit",
+      "url": "https://developer.apple.com/download/all/?q=game%20porting%20toolkit",
+      "type": "download",
+      "description": "Use the game porting toolkit to eliminate months of up-front work and evaluate how well your game could run on the Mac before writing any code.",
+      "sosumiURL": "https://sosumi.ai/download/all/?q=game%20porting%20toolkit"
+    },
+    {
+      "title": "Game Controller",
+      "url": "https://developer.apple.com/documentation/GameController",
+      "type": "documentation",
+      "description": "Support hardware game controllers in your game.",
+      "sosumiURL": "https://sosumi.ai/documentation/GameController",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/GameController.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10123/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10123/metadata.json",
+    "readme": "sessions/wwdc2023/10123/README.md",
+    "transcript": "sessions/wwdc2023/10123/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10123/transcript.json"
+  }
+}

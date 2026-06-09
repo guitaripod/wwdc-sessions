@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10094",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10094,
+  "title": "Enhance your iPad and iPhone apps for the Shared Space",
+  "description": "Get ready to enhance your iPad and iPhone apps for the Shared Space! We’ll show you how to optimize your experience to make it feel great on visionOS and explore Designed for iPad app interaction, visual treatments, and media.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10094",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10094",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "Spatial Computing",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 723,
+  "hasTranscript": true,
+  "transcriptWordCount": 1660,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10094/4/701039CD-C751-471F-A029-A2407B622C61/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10094/4/701039CD-C751-471F-A029-A2407B622C61/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10094/4/701039CD-C751-471F-A029-A2407B622C61/downloads/wwdc2023-10094_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10094/4/701039CD-C751-471F-A029-A2407B622C61/downloads/wwdc2023-10094_hd.mp4",
+    "duration": 723
+  },
+  "codeSnippets": [
+    {
+      "title": "Tappable VStack with hover effect",
+      "language": "swift",
+      "startTimeSeconds": 182,
+      "code": "struct TappableCard: View {\n   // Sample card\n   var imageName = \"BearsInWater\"\n   var headline = \"Bear Fishing\"\n   var timeAgo = \"42 Minutes ago\"\n\n   var body: some View {\n      VStack {\n         VStack(alignment: .leading) {\n            Image(imageName)\n               .resizable()\n               .clipped()\n               .aspectRatio(contentMode: .fill)\n               .frame(width: 300, height: 250, alignment: .center)\n            Text(headline)\n               .padding([.leading])\n               .font(.title2)\n               .foregroundColor(.black)\n         }\n         Divider()\n         HStack {\n            HStack {\n               Text(timeAgo)\n                  .frame(alignment: .leading)\n                  .foregroundColor(.black)\n            }\n            .padding([.leading])\n            Spacer()\n            VStack(alignment: .trailing) {\n               Button { print(\"Present menu options\") } label: {\n                  Image(systemName: \"ellipsis\")\n                     .foregroundColor(.black)\n               }\n            }\n         }\n         .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))\n      }\n      .frame(width: 300, height: 350, alignment: .top)\n      .hoverEffect()\n      .background(.white)\n      .overlay(\n         RoundedRectangle(cornerRadius: 10)\n            .stroke(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.1), lineWidth: 3.0)\n      )\n      .cornerRadius(10)\n      .onTapGesture {\n         print(\"Present card detail\")\n      }\n   }\n}"
+    },
+    {
+      "title": "Custom player with tap targets that are larger than the hover effect bounds",
+      "language": "swift",
+      "startTimeSeconds": 248,
+      "code": "struct ContentView: View {\n   var body: some View {\n      VStack {\n         // Video player\n         HStack {\n            Button { print(\"Going back 10 seconds\") } label: {\n               Image(systemName: \"gobackward.10\")\n                  .padding(.trailing)\n                  .contentShape(.hoverEffect, CustomizedRectShape(customRect: CGRect(x: -75, y: -40, width: 100, height: 100)))\n                  .foregroundStyle(.white)\n                  .frame(width: 500, height: 834, alignment: .trailing)\n            }\n            Button { print(\"Play\") } label: {\n               Image(systemName: \"play.fill\")\n                  .font(.title)\n                  .foregroundStyle(.white)\n                  .frame(width: 100, height: 100, alignment: .center)\n            }\n            .padding()\n            Button { print(\"Going into the future 10 seconds\") } label: {\n               Image(systemName: \"goforward.10\")\n                  .padding(.leading)\n                  .contentShape(.hoverEffect, CustomizedRectShape(customRect: CGRect(x: 0, y: -40, width: 100, height: 100)))\n                  .foregroundStyle(.white)\n                  .frame(width: 500, height: 834, alignment: .leading)\n            }\n         }\n         .frame(\n              minWidth: 0,\n              maxWidth: .infinity,\n              minHeight: 0,\n              maxHeight: .infinity,\n              alignment: .center\n         )\n      }\n      .frame(\n           minWidth: 0,\n           maxWidth: .infinity,\n           minHeight: 0,\n           maxHeight: .infinity,\n           alignment: .topLeading\n      )\n      .background(.black)\n   }\n}\n\nstruct CustomizedRectShape: Shape {\n   var customRect: CGRect\n\n   func path(in rect: CGRect) -> Path {\n      var path = Path()\n\n      path.move(to: CGPoint(x: customRect.minX, y: customRect.minY))\n      path.addLine(to: CGPoint(x: customRect.maxX, y: customRect.minY))\n      path.addLine(to: CGPoint(x: customRect.maxX, y: customRect.maxY))\n      path.addLine(to: CGPoint(x: customRect.minX, y: customRect.maxY))\n      path.addLine(to: CGPoint(x: customRect.minX, y: customRect.minY))\n\n      return path\n   }\n}"
+    },
+    {
+      "title": "Button with custom buttonStyle, then adding a hover effect to the button",
+      "language": "swift",
+      "startTimeSeconds": 314,
+      "code": "struct ContentView: View {\n    var body: some View {\n        VStack {\n         Button(\"Howdy y'all\") { print(\"🤠\") }\n            .buttonStyle(SixColorButton())\n        }\n        .padding()\n    }\n}\n\nstruct SixColorButton: ButtonStyle {\n   func makeBody(configuration: Configuration) -> some View {\n      configuration.label\n         .padding()\n         .font(.title)\n         .foregroundStyle(.white)\n         .bold()\n         .background {\n            // Background color bands\n            ZStack {\n               Color.black\n               HStack(spacing: 0) {\n                  // GREEN\n                  Rectangle()\n                     .foregroundStyle(Color(red: 125/255, green: 186/255, blue: 66/255))\n                     .frame(width: 16)\n                  // YELLOW\n                  Rectangle()\n                     .foregroundStyle(Color(red: 240/255, green: 187/255, blue: 64/255))\n                     .frame(width: 16)\n                  // ORANGE\n                  Rectangle()\n                     .foregroundStyle(Color(red: 225/255, green: 137/255, blue: 50/255))\n                     .frame(width: 16)\n                  // RED\n                  Rectangle()\n                     .foregroundStyle(Color(red: 200/255, green: 73/255, blue: 65/255))\n                     .frame(width: 16)\n                  // PURPLE\n                  Rectangle()\n                     .foregroundStyle(Color(red: 134/255, green: 64/255, blue: 151/255))\n                     .frame(width: 16)\n                  // BLUE\n                  Rectangle()\n                     .foregroundStyle(Color(red: 75/255, green: 154/255, blue: 218/255))\n                     .frame(width: 16, height: 500)\n               }\n               .opacity(0.7)\n               .rotationEffect(.degrees(35))\n            }\n         }\n         .cornerRadius(10)\n         .hoverEffect()\n   }\n}"
+    },
+    {
+      "title": "Honey comb app with custom shape buttons, then adding hover effects that clip to bounds of the honey comb shape",
+      "language": "swift",
+      "startTimeSeconds": 346,
+      "code": "struct ContentView: View {\n    var body: some View {\n      VStack {\n         Button { print(\"🐝\") } label: {\n            // Button label\n            HoneyComb()\n               .fill(.yellow)\n               .frame(width: 300, height: 300)\n               .contentShape(.hoverEffect, HoneyComb())\n            }\n         }\n         .frame(width: 400, height: 400, alignment: .center)\n         .background(.black)\n         .padding()\n      }\n    }\n}\n\nstruct HoneyComb: Shape {\n   func path(in rect: CGRect) -> Path {\n      var path = Path()\n      path.move(to: CGPoint(x: rect.minX + (rect.width * 0.25), y: rect.minY))\n      path.addLine(to: CGPoint(x: rect.maxX - (rect.maxX * 0.25), y: rect.minY))\n      path.addLine(to: CGPoint(x: rect.maxX, y: rect.midY))\n      path.addLine(to: CGPoint(x: rect.maxX - (rect.maxX * 0.25), y: rect.maxY))\n      path.addLine(to: CGPoint(x: rect.minX + (rect.width * 0.25), y: rect.maxY))\n      path.addLine(to: CGPoint(x: rect.minX, y: rect.midY))\n      path.addLine(to: CGPoint(x: rect.minX + (rect.width * 0.25), y: rect.minY))\n      return path\n   }\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2023/10094/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10094/metadata.json",
+    "readme": "sessions/wwdc2023/10094/README.md",
+    "transcript": "sessions/wwdc2023/10094/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10094/transcript.json"
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10098",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10098,
+  "title": "Meet Web Push for Safari",
+  "description": "Bring better notifications to your websites and web apps in Safari on macOS with Web Push. We’ll show you how you can remotely send notifications to people through the web standards-based combination of Push API, Notifications API, and Service Workers.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10098",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10098",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Safari & Web"
+  ],
+  "primaryTopic": "Safari & Web",
+  "duration": 900,
+  "hasTranscript": true,
+  "transcriptWordCount": 2380,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10098/4/0243E8FF-8341-4FD5-BACD-CEB81B4730DF/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10098/4/0243E8FF-8341-4FD5-BACD-CEB81B4730DF/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10098/4/0243E8FF-8341-4FD5-BACD-CEB81B4730DF/downloads/wwdc2022-10098_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10098/4/0243E8FF-8341-4FD5-BACD-CEB81B4730DF/downloads/wwdc2022-10098_hd.mp4",
+    "duration": 900
+  },
+  "codeSnippets": [
+    {
+      "title": "BrowserPetsWorker.js",
+      "language": "javascript",
+      "startTimeSeconds": 507,
+      "code": "// BrowserPetsWorker.js\n\nfunction handleMessageEvent(event) {\n    // ...\n};\nself.addEventListener('message', (event) => {\n    handleMessageEvent(event);\n});\n\nfunction primeCaches() {\n    // ...\n};\nself.addEventListener('install', (event) => {\n    primeCaches();\n});\n\nself.addEventListener('fetch', (event) => {\n    event.respondWith(caches.match(event.request));\n});"
+    },
+    {
+      "title": "BrowserPetsMain.js",
+      "language": "javascript",
+      "startTimeSeconds": 522,
+      "code": "// BrowserPetsMain.js\n\nvar registration;\nif ('serviceWorker' in navigator) {\n    let registration = await navigator.serviceWorker.getRegistration();\n    if (!registration)\n        registration = await navigator.serviceWorker.register('BrowserPetsWorker.js');\n}"
+    },
+    {
+      "title": "BrowserPetsMain.js subscribeToPush()",
+      "language": "javascript",
+      "startTimeSeconds": 540,
+      "code": "// BrowserPetsMain.js\n\nasync function subscribeToPush() {\n    // ...\n}\n\n// BrowserPetsMain.html\n\n<button onclick=\"subscribeToPush()\">Register for Updates</button>"
+    },
+    {
+      "title": "BrowserPetsMain.js subscribe",
+      "language": "javascript",
+      "startTimeSeconds": 559,
+      "code": "// BrowserPetsMain.js\n\nasync function subscribeToPush() {\n    let serverPublicKey = VAPID_PUBLIC_KEY; \n\n    let subscriptionOptions = {\n        userVisibleOnly: true,\n        applicationServerKey: serverPublicKey\n    };\n\n    let subscription = await swRegistration.pushManager.subscribe(subscriptionOptions);\n\n    sendSubcriptionToServer(subscription);\n}"
+    },
+    {
+      "title": "BrowserPetsMain.js subscriptionOptions",
+      "language": "javascript",
+      "startTimeSeconds": 576,
+      "code": "// BrowserPetsMain.js\n\nasync function subscribeToPush() {\n    let serverPublicKey = VAPID_PUBLIC_KEY; \n\n    let subscriptionOptions = {\n        userVisibleOnly: true,\n        applicationServerKey: serverPublicKey\n    };\n\n    let subscription = await swRegistration.pushManager.subscribe(subscriptionOptions);\n\n    sendSubcriptionToServer(subscription);\n}"
+    },
+    {
+      "title": "BrowserPetsMain.js request permission to push",
+      "language": "swift",
+      "startTimeSeconds": 621,
+      "code": "// BrowserPetsMain.js\n\nasync function subscribeToPush() {\n    let serverPublicKey = VAPID_PUBLIC_KEY; \n\n    let subscriptionOptions = {\n        userVisibleOnly: true,\n        applicationServerKey: serverPublicKey\n    };\n\n    let subscription = await swRegistration.pushManager.subscribe(subscriptionOptions);\n\n    sendSubcriptionToServer(subscription);\n}"
+    },
+    {
+      "title": "BrowserPetsWorker.js push",
+      "language": "javascript",
+      "startTimeSeconds": 673,
+      "code": "// BrowserPetsWorker.js\n\nself.addEventListener('push', (event) => {\n    let pushMessageJSON = event.data.json();\n\n    // Our server puts everything needed to show the notification\n    // in our JSON data.\n    event.waitUntil(self.registration.showNotification(pushMessageJSON.title, {\n        body: pushMessageJSON.body,\n        tag: pushMessageJSON.tag,\n        actions: [{\n            action: pushMessageJSON.actionURL,\n            title: pushMessageJSON.actionTitle,\n        }]\n    }));\n}"
+    },
+    {
+      "title": "BrowserPetsWorker.js notification click",
+      "language": "javascript",
+      "startTimeSeconds": 726,
+      "code": "// BrowserPetsWorker.js\n\nself.addEventListener('notificationclick', async function(event) {\n    if (!event.action)\n        return;\n\n    // This always opens a new browser tab,\n    // even if the URL happens to already be open in a tab.\n    clients.openWindow(event.action);\n});"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Push API",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Push_API",
+      "type": "documentation",
+      "description": "The Push API gives web applications the ability to receive messages pushed to them from a server."
+    },
+    {
+      "title": "Notifications API",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API",
+      "type": "documentation",
+      "description": "The Notifications API allows web pages to control the display of system notifications to the end user."
+    },
+    {
+      "title": "Sending web push notifications in web apps and browsers",
+      "url": "https://developer.apple.com/documentation/UserNotifications/sending-web-push-notifications-in-web-apps-and-browsers",
+      "type": "documentation",
+      "description": "Update your web server and website to send push notifications that work in Safari, other browsers, and web apps, following cross-browser standards.",
+      "sosumiURL": "https://sosumi.ai/documentation/UserNotifications/sending-web-push-notifications-in-web-apps-and-browsers",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UserNotifications/sending-web-push-notifications-in-web-apps-and-browsers.json"
+    },
+    {
+      "title": "Service Worker API",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Learn more about bug reporting",
+      "url": "https://developer.apple.com/bug-reporting/",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/bug-reporting/"
+    }
+  ],
+  "path": "sessions/wwdc2022/10098/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10098/metadata.json",
+    "readme": "sessions/wwdc2022/10098/README.md",
+    "transcript": "sessions/wwdc2022/10098/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10098/transcript.json"
+  }
+}

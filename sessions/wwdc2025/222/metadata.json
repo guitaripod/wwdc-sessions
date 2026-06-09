@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-222",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 222,
+  "title": "Enhance your app’s multilingual experience",
+  "description": "Create a seamless experience for anyone who uses multiple languages. Learn how Language Discovery allows you to optimize your app using a person’s preferred languages. Explore advances in support for right-to-left languages, including Natural Selection for selecting multiple ranges in bidirectional text. We’ll also cover best practices for supporting multilingual scenarios in your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/222",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/222",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "🌍",
+    "🌎",
+    "🌏",
+    "alternate calendars",
+    "i18n",
+    "ltr",
+    "rtl"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1238,
+  "hasTranscript": true,
+  "transcriptWordCount": 2804,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/222/6/0c2c6210-4f59-409a-ba23-36a7895563d3/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/222/6/0c2c6210-4f59-409a-ba23-36a7895563d3/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/222/6/0c2c6210-4f59-409a-ba23-36a7895563d3/downloads/wwdc2025-222_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/222/6/0c2c6210-4f59-409a-ba23-36a7895563d3/downloads/wwdc2025-222_hd.mp4",
+    "duration": 1238
+  },
+  "codeSnippets": [
+    {
+      "title": "Language discover",
+      "language": "swift",
+      "startTimeSeconds": 335,
+      "code": "// Language discovery\n\nlet preferredLanguages = Locale.preferredLanguages\n\nlet preferredLocales = Locale.preferredLocales"
+    },
+    {
+      "title": "Match preferred locales with your app’s available locales",
+      "language": "swift",
+      "startTimeSeconds": 469,
+      "code": "let preferredLocales = Locale.preferredLocales\n\n// array of available Locale objects to translate from\nlet availableLocales = getAvailableLocalesForTranslatingFrom()\n\nvar matchedLocales: [Locale] = []\n\nfor locale in availableLocales {\n    for preferredLocale in preferredLocales {\n        if locale.language.isEquivalent(to:         preferredLocale.language) {\n            matchedLocales.append(locale)\n            break\n        }\n    }\n}"
+    },
+    {
+      "title": "Delete text in ranges",
+      "language": "swift",
+      "startTimeSeconds": 897,
+      "code": "let ranges = textView.selectedRanges.reversed()\nfor range in ranges {\n    textView.textStorage.deleteCharacters(in: range)\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Language Introspector",
+      "url": "https://developer.apple.com/documentation/Foundation/language-introspector",
+      "type": "samplecode",
+      "description": "Converts data into human-readable text using formatters and locales.",
+      "sosumiURL": "https://sosumi.ai/documentation/Foundation/language-introspector",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Foundation/language-introspector.json"
+    },
+    {
+      "title": "Human Interface Guidelines: Right to left",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/right-to-left",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/right-to-left"
+    },
+    {
+      "title": "Internationalization and Localization Guide",
+      "url": "https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/BPInternational/Introduction/Introduction.html",
+      "type": "guide",
+      "description": "Explains how to create a user interface and write code that can be localized into multiple languages.",
+      "sosumiURL": "https://sosumi.ai/library/content/documentation/MacOSX/Conceptual/BPInternational/Introduction/Introduction.html"
+    }
+  ],
+  "path": "sessions/wwdc2025/222/",
+  "files": {
+    "metadata": "sessions/wwdc2025/222/metadata.json",
+    "readme": "sessions/wwdc2025/222/README.md",
+    "transcript": "sessions/wwdc2025/222/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/222/transcript.json"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10194",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10194,
+  "title": "Design dynamic Live Activities ",
+  "description": "Live Activities allow your app to display live information in key system locations on iOS and iPadOS. Learn the best way to create graphically rich layouts that update seamlessly on the Lock Screen, in StandBy, and in the Dynamic Island. Incorporate interactivity and animation to help people stay in touch with live updating events from your app as they navigate outside of your app. ",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10194",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10194",
+  "type": "Video",
+  "publishedAt": "2023-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 900,
+  "hasTranscript": true,
+  "transcriptWordCount": 2772,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10194/5/1F92A457-3B0A-4F2A-A29C-9EC6753BEC87/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10194/5/1F92A457-3B0A-4F2A-A29C-9EC6753BEC87/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10194/5/1F92A457-3B0A-4F2A-A29C-9EC6753BEC87/downloads/wwdc2023-10194_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10194/5/1F92A457-3B0A-4F2A-A29C-9EC6753BEC87/downloads/wwdc2023-10194_hd.mp4",
+    "duration": 900
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Live Activities",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/live-activities",
+      "type": "documentation",
+      "description": "A Live Activity displays up-to-date information from your app, allowing people to view the progress of events or tasks at a glance.",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/live-activities"
+    },
+    {
+      "title": "Displaying live data with Live Activities",
+      "url": "https://developer.apple.com/documentation/ActivityKit/displaying-live-data-with-live-activities",
+      "type": "documentation",
+      "description": "Display up-to-date data and offer quick interactions in the Dynamic Island, on the Lock Screen, in CarPlay, and on a paired Mac or Apple Watch.",
+      "sosumiURL": "https://sosumi.ai/documentation/ActivityKit/displaying-live-data-with-live-activities",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ActivityKit/displaying-live-data-with-live-activities.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10194/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10194/metadata.json",
+    "readme": "sessions/wwdc2023/10194/README.md",
+    "transcript": "sessions/wwdc2023/10194/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10194/transcript.json"
+  }
+}

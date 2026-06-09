@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2026-289",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 289,
+  "title": "Modernize your AppKit app",
+  "description": "Bring your AppKit app up to date with modern macOS conventions. Dive into handling input with control events and gesture recognizers, moving beyond traditional tracking loops. Enhance keyboard navigation in your app, implement graceful state restoration after restarts, and take advantage of new corner concentricity APIs that let your interface blend seamlessly with the macOS aesthetic.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/289",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/289",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [
+    "⚡️"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1081,
+  "hasTranscript": true,
+  "transcriptWordCount": 2486,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/289/5/6a2a7cfa-56a1-4cbb-ae54-1f229e1708ae/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/289/5/6a2a7cfa-56a1-4cbb-ae54-1f229e1708ae/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/289/5/6a2a7cfa-56a1-4cbb-ae54-1f229e1708ae/downloads/wwdc2026-289_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/289/5/6a2a7cfa-56a1-4cbb-ae54-1f229e1708ae/downloads/wwdc2026-289_hd.mp4",
+    "duration": 1081
+  },
+  "codeSnippets": [
+    {
+      "title": "Modern dragging delegate",
+      "language": "swift",
+      "startTimeSeconds": 215,
+      "code": "// Modern dragging delegate methods\nfunc tableView(_ tableView: NSTableView,\n        pasteboardWriterForRow row: Int) -> (any NSPasteboardWriting)? {\n    let pasteboardItem = NSPasteboardItem()\n    pasteboardItem.setString(..., forType: .string)\n    return pasteboardItem\n}"
+    },
+    {
+      "title": "Control events",
+      "language": "swift",
+      "startTimeSeconds": 295,
+      "code": "// Use control events\nlet button = NSButton()\nbutton.addTarget(\n    self,\n    action: #selector(trackingEndedOutsideHandler),\n    for: .trackingEndedOutside\n)"
+    },
+    {
+      "title": "hitTest override",
+      "language": "swift",
+      "startTimeSeconds": 344,
+      "code": "override func hitTest(_ point: NSPoint) -> NSView? {\n    return nil\n}"
+    },
+    {
+      "title": "autorecalculatesKeyViewLoop",
+      "language": "swift",
+      "startTimeSeconds": 384,
+      "code": "window.autorecalculatesKeyViewLoop = true"
+    },
+    {
+      "title": "Expanded interface delegate — setup",
+      "language": "swift",
+      "startTimeSeconds": 457,
+      "code": "// Set the expanded interface delegate\n@main class LightAppDelegate: NSObject, NSApplicationDelegate {\n    lazy var lightStatusItem: NSStatusItem = { ... }()\n\n    func applicationDidFinishLaunching(_ notification: Notification) {\n        // ...\n        lightStatusItem.expandedInterfaceDelegate = self\n    }\n}"
+    },
+    {
+      "title": "Expanded interface delegate — methods",
+      "language": "swift",
+      "startTimeSeconds": 472,
+      "code": "// Implement the delegate methods\nextension LightAppDelegate: NSStatusItemExpandedInterfaceDelegate {\n    // ...\n    func statusItem(_ statusItem: NSStatusItem, didBegin session:\n                    NSStatusItemExpandedInterfaceSession) {\n        // Show window\n    }\n    func statusItemDidEndExpandedInterfaceSession(\n        _ statusItem: NSStatusItem, animated: Bool) {\n        // Hide window\n    }\n    func selectedAction() {\n        // Take the action\n        // Cancel session to request window dismissal\n        lightStatusItem.expandedInterfaceSession?.cancel()\n    }\n}"
+    },
+    {
+      "title": "Expanded interface delegate — cancel",
+      "language": "swift",
+      "startTimeSeconds": 496,
+      "code": "// Cancel the session when dismissing\nextension LightAppDelegate: NSStatusItemExpandedInterfaceDelegate {\n    // ...\n    func statusItem(_ statusItem: NSStatusItem, didBegin session:\n                    NSStatusItemExpandedInterfaceSession) {\n        // Show window\n    }\n    func statusItemDidEndExpandedInterfaceSession(\n        _ statusItem: NSStatusItem, animated: Bool) {\n        // Hide window\n    }\n    func selectedAction() {\n        // Take the action\n        // Cancel session to request window dismissal\n        lightStatusItem.expandedInterfaceSession?.cancel()\n    }\n}"
+    },
+    {
+      "title": "preventsApplicationTerminationWhenModal",
+      "language": "swift",
+      "startTimeSeconds": 585,
+      "code": "window.preventsApplicationTerminationWhenModal = false"
+    },
+    {
+      "title": "Set window identifiers for state restoration",
+      "language": "swift",
+      "startTimeSeconds": 618,
+      "code": "// Set window identifiers for state restoration\n@MainActor class MainWindowController: NSWindowController, NSWindowDelegate {\n    // ...\n    convenience init() {\n        let window = NSWindow( ... )\n        // ...\n        window.identifier = NSUserInterfaceItemIdentifier(WindowIdentifiers.mainWindow)\n        window.setFrameAutosaveName(WindowIdentifiers.mainWindow)\n        window.isRestorable = true\n        window.restorationClass = WindowRestorationHandler.self\n        // ...\n    }\n}"
+    },
+    {
+      "title": "encodeRestorableState",
+      "language": "swift",
+      "startTimeSeconds": 664,
+      "code": "// Preserve state to recreate the UI\n@MainActor class MainWindowController: NSWindowController, NSWindowDelegate {\n    // ...\n    override func encodeRestorableState(with coder: NSCoder) {\n        super.encodeRestorableState(with: coder)\n        // ...\n        coder.encode(selectedProduct?.identifier.uuid,\n                    forKey: RestorationKeys.productIdentifier)\n        // ...\n    }\n    // ...\n}"
+    },
+    {
+      "title": "invalidateRestorableState",
+      "language": "swift",
+      "startTimeSeconds": 710,
+      "code": "// Invalidate restorable state when the view hierarchy changes\n@MainActor class MainWindowController: NSWindowController, NSWindowDelegate {\n    // ...\n    convenience init() {\n        // ...\n        splitViewController.onProductSelected = { [weak self] product in\n            self?.invalidateRestorableState()\n        }\n    }\n}"
+    },
+    {
+      "title": "restoreWindow(withIdentifier:)",
+      "language": "swift",
+      "startTimeSeconds": 746,
+      "code": "// Restore windows\nclass WindowRestorationHandler: NSObject, NSWindowRestoration {\n    static func restoreWindow(\n        withIdentifier identifier: NSUserInterfaceItemIdentifier,\n        state: NSCoder,\n        completionHandler: @escaping (NSWindow?, Error?) -> Void\n    ) {\n        //...\n        if identifier == .mainWindow, let window = appDelegate.mainWindowController?.window {\n            completionHandler(window, nil)\n        } else if identifier == .imageWindow {\n            let controller = ImageWindowController()\n            appDelegate.imageWindowControllers.append(controller)\n            completionHandler(controller.window, nil)\n        } else {\n            completionHandler(nil, error)\n        }\n    }\n}"
+    },
+    {
+      "title": "restoreState",
+      "language": "swift",
+      "startTimeSeconds": 809,
+      "code": "// Restore window UI\n@MainActor class MainWindowController: NSWindowController, NSWindowDelegate {\n    //...\n    override func restoreState(with coder: NSCoder) {\n        super.restoreState(with: coder)\n        if let productId = coder.decodeObject(\n            of: [NSString.self],\n            forKey: RestorationKeys.productIdentifier) as? String {\n            splitViewController?.selectedProductId = productId\n        }\n        //...\n    }\n}"
+    },
+    {
+      "title": "cornerConfiguration",
+      "language": "swift",
+      "startTimeSeconds": 971,
+      "code": "// Subclass NSView to override cornerConfiguration\nclass LocalWeatherView: NSView {\n    // ...\n    override var cornerConfiguration: NSViewCornerConfiguration? {\n        let radius: NSViewCornerRadius = .containerConcentric(minimumCornerRadius)\n        return .uniformCorners(radius: radius)\n    }\n    // ...\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Use SwiftUI with AppKit",
+      "url": "https://developer.apple.com/videos/play/wwdc2022/10075/",
+      "type": "guide",
+      "description": "Discover how the Shortcuts app uses both SwiftUI and AppKit to create a top-tier experience on macOS. Follow along with the Shortcuts team as we explore how you can host SwiftUI views in AppKit code, handle layout and sizing, participate in the responder chain, enable navigational focus, and more. We'll also show you how to host AppKit views, helping you migrate existing code into a SwiftUI layout within your app.",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10075/"
+    },
+    {
+      "title": "Restoring your app’s state with AppKit",
+      "url": "https://developer.apple.com/documentation/AppKit/restoring-your-app-s-state-with-appkit",
+      "type": "documentation",
+      "description": "Provide continuity for people using your app by preserving current activities on macOS.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppKit/restoring-your-app-s-state-with-appkit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppKit/restoring-your-app-s-state-with-appkit.json"
+    },
+    {
+      "title": "Gestures",
+      "url": "https://developer.apple.com/documentation/AppKit/gestures",
+      "type": "documentation",
+      "description": "Encapsulate your app’s event-handling logic in gesture recognizers so that you can reuse that code throughout your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppKit/gestures",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppKit/gestures.json"
+    },
+    {
+      "title": "TN3212: Adopting gesture recognizers for Sidecar touch support",
+      "url": "https://developer.apple.com/documentation/Technotes/tn3212-adopting-gesture-recognizers-for-sidecar-touch-support",
+      "type": "documentation",
+      "description": "Use gesture recognizers to handle Sidecar touch input and update your event-handling code for macOS 27.",
+      "sosumiURL": "https://sosumi.ai/documentation/Technotes/tn3212-adopting-gesture-recognizers-for-sidecar-touch-support",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Technotes/tn3212-adopting-gesture-recognizers-for-sidecar-touch-support.json"
+    },
+    {
+      "title": "NSControl.Events",
+      "url": "https://developer.apple.com/documentation/AppKit/NSControl/Events",
+      "type": "documentation",
+      "description": "A set of events that a control can report to its target.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppKit/NSControl/Events",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppKit/NSControl/Events.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/289/",
+  "files": {
+    "metadata": "sessions/wwdc2026/289/metadata.json",
+    "readme": "sessions/wwdc2026/289/README.md",
+    "transcript": "sessions/wwdc2026/289/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/289/transcript.json"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10144",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10144,
+  "title": "Deliver reliable streams with HLS Content Steering",
+  "description": "HLS Content Steering dynamically steers clients to different servers based on load and redundancy. We'll take you through the latest updates to this framework and explore how you can introduce dynamically spawned CDNs to existing HLS clients with Pathway Cloning. We'll also share how you can achieve global traffic steering with bucket-based Steering Server rules and more.\n",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10144",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10144",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "adaptive playback",
+    "cdn switching",
+    "error fallback",
+    "load balance",
+    "traffic steering",
+    "video streaming"
+  ],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 1344,
+  "hasTranscript": true,
+  "transcriptWordCount": 3051,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10144/3/B295073D-367F-4EAB-A65F-6FBB86ECDD6E/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10144/3/B295073D-367F-4EAB-A65F-6FBB86ECDD6E/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10144/3/B295073D-367F-4EAB-A65F-6FBB86ECDD6E/downloads/wwdc2022-10144_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10144/3/B295073D-367F-4EAB-A65F-6FBB86ECDD6E/downloads/wwdc2022-10144_hd.mp4",
+    "duration": 1344
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "HTTP Live Streaming 2nd Edition",
+      "url": "https://datatracker.ietf.org/doc/draft-pantos-hls-rfc8216bis/",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Using Apple’s HTTP Live Streaming (HLS) Tools",
+      "url": "https://developer.apple.com/documentation/HTTP-Live-Streaming/using-apple-s-http-live-streaming-hls-tools",
+      "type": "documentation",
+      "description": "Segment your video stream and create media playlists for successful transmission",
+      "sosumiURL": "https://sosumi.ai/documentation/HTTP-Live-Streaming/using-apple-s-http-live-streaming-hls-tools",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HTTP-Live-Streaming/using-apple-s-http-live-streaming-hls-tools.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10144/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10144/metadata.json",
+    "readme": "sessions/wwdc2022/10144/README.md",
+    "transcript": "sessions/wwdc2022/10144/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10144/transcript.json"
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-290",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 290,
+  "title": "Set the scene with SwiftUI in visionOS",
+  "description": "Discover exciting new APIs to enhance windows, volumes, and immersive spaces in your visionOS app. Fine tune the behavior of your scenes when relaunched or locked in place. Make volumes adapt to their surroundings with clipping margins and snapping. Stream immersive content from Mac to Vision Pro. Elevate your existing UIKit-based apps with volumes and immersive spaces.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/290",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/290",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Design",
+    "Spatial Computing",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1491,
+  "hasTranscript": true,
+  "transcriptWordCount": 3349,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/290/4/fb07fe18-8745-4cfd-8448-1879b8f207dc/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/290/4/fb07fe18-8745-4cfd-8448-1879b8f207dc/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/290/4/fb07fe18-8745-4cfd-8448-1879b8f207dc/downloads/wwdc2025-290_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/290/4/fb07fe18-8745-4cfd-8448-1879b8f207dc/downloads/wwdc2025-290_hd.mp4",
+    "duration": 1491
+  },
+  "codeSnippets": [
+    {
+      "title": "Disabling restoration",
+      "language": "swift",
+      "startTimeSeconds": 250,
+      "code": "// Disabling restoration\n\nWindowGroup(\"Tools\", id: \"tools\") {\n    ToolsView()\n}\n.restorationBehavior(.disabled)"
+    },
+    {
+      "title": "Disabling restoration in UIKit",
+      "language": "swift",
+      "startTimeSeconds": 276,
+      "code": "// Disabling restoration\n\nwindowScene.destructionConditions = [\n    .systemDisconnection\n]"
+    },
+    {
+      "title": "Specifying launch window",
+      "language": "swift",
+      "startTimeSeconds": 302,
+      "code": "// Specifying launch window\n\n@AppStorage(\"isFirstLaunch\") private var isFirstLaunch = true\n\nvar body: some Scene {\n    WindowGroup(\"Stage Selection\", id: \"selection\") {\n        SelectionView()\n    }\n\n    WindowGroup(\"Welcome\", id: \"welcome\") {\n        WelcomeView()\n            .onAppear {\n                isFirstLaunch = false\n            }\n    }\n    .defaultLaunchBehavior(isFirstLaunch ? .presented : .automatic)\n\n    // ...\n}"
+    },
+    {
+      "title": "\"suppressed\" behavior",
+      "language": "swift",
+      "startTimeSeconds": 399,
+      "code": "// \"suppressed\" behavior\n\nWindowGroup(\"Tools\", id: \"tools\") {\n    ToolsView()\n}\n.restorationBehavior(.disabled)\n.defaultLaunchBehavior(.suppressed)"
+    },
+    {
+      "title": "Unique window",
+      "language": "swift",
+      "startTimeSeconds": 464,
+      "code": "// Unique window\n\n@AppStorage(\"isFirstLaunch\") private var isFirstLaunch = true\n\nvar body: some Scene {\n    // ...\n\n    Window(\"Welcome\", id: \"welcome\") {\n        WelcomeView()\n            .onAppear {\n                isFirstLaunch = false\n            }\n    }\n    .defaultLaunchBehavior(isFirstLaunch ? .presented : .automatic)\n\n    WindowGroup(\"Main Stage\", id: \"main\") {\n        StageView()\n    }\n\n    // ...\n}"
+    },
+    {
+      "title": "Surface snapping",
+      "language": "swift",
+      "startTimeSeconds": 624,
+      "code": "// Surface snapping\n\n@Environment(\\.surfaceSnappingInfo) private var snappingInfo\n@State private var hidePlatform = false\n\nvar body: some View { \n    RealityView { /* ... */ }\n    .onChange(of: snappingInfo) {\n        if snappingInfo.isSnapped &&\n            SurfaceSnappingInfo.authorizationStatus == .authorized\n        {\n            switch snappingInfo.classification {\n                case .table:\n                    hidePlatform = true\n                default:\n                    hidePlatform = false\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Clipping margins",
+      "language": "swift",
+      "startTimeSeconds": 881,
+      "code": "// Clipping margins\n\n@Environment(\\.windowClippingMargins) private var windowMargins\n@PhysicalMetric(from: .meters) private var pointsPerMeter = 1\n\nvar body: some View {\n    RealityView { content in\n        // ...\n        waterfall = createWaterfallEntity()\n        content.add(waterfall)\n    } update: { content in\n        waterfall.scale.y = Float(min(\n            windowMargins.bottom / pointsPerMeter,\n            maxWaterfallHeight))\n        // ...\n    }\n    .preferredWindowClippingMargins(.bottom, maxWaterfallHeight * pointsPerMeter)\n}"
+    },
+    {
+      "title": "World recenter",
+      "language": "swift",
+      "startTimeSeconds": 1004,
+      "code": "// World recenter\n\nvar body: some View {\n    RealityView { content in\n        // ...\n    }\n    .onWorldRecenter {\n        recomputePositions()\n    }\n}"
+    },
+    {
+      "title": "Progressive immersion style",
+      "language": "swift",
+      "startTimeSeconds": 1078,
+      "code": "// Progressive immersion style\n\n@State private var selectedStyle: ImmersionStyle = .progressive\n\nvar body: some Scene {\n    ImmersiveSpace(id: \"space\") {\n        ImmersiveView()\n    }\n    .immersionStyle(\n        selection: $selectedStyle,\n        in: .progressive(aspectRatio: .portrait))\n}"
+    },
+    {
+      "title": "Mixed immersion style",
+      "language": "swift",
+      "startTimeSeconds": 1117,
+      "code": "// Mixed immersion style\n\n@State private var selectedStyle: ImmersionStyle = .progressive\n\nvar body: some Scene {\n    ImmersiveSpace(id: \"space\") {\n        ImmersiveView()\n    }\n    .immersionStyle(selection: $selectedStyle, in: .mixed)\n    .immersiveEnvironmentBehavior(.coexist)\n}"
+    },
+    {
+      "title": "Remote immersive space",
+      "language": "swift",
+      "startTimeSeconds": 1214,
+      "code": "// Remote immersive space\n\n// Presented on visionOS\nRemoteImmersiveSpace(id: \"preview-space\") {\n    CompositorLayer(configuration: config) { /* ... */ }\n}\n\n// Presented on macOS\nWindowGroup(\"Main Stage\", id: \"main\") {\n    StageView()\n}"
+    },
+    {
+      "title": "'CompositorLayer' is a 'CompositorContent'",
+      "language": "swift",
+      "startTimeSeconds": 1248,
+      "code": "// 'CompositorLayer' is a 'CompositorContent'\n\nstruct ImmersiveContent: CompositorContent {\n    @Environment(\\.scenePhase) private var scenePhase\n\n    var body: some CompositorContent {\n        CompositorLayer { renderer in\n            // ...\n        }\n        .onImmersionChange { oldImmersion, newImmersion in\n            // ...\n        }\n    }\n}"
+    },
+    {
+      "title": "Scene bridging",
+      "language": "swift",
+      "startTimeSeconds": 1380,
+      "code": "// Scene bridging\n\nimport UIKit\nimport SwiftUI\n\n// Declare the scenes\nclass MyHostingSceneDelegate: NSObject, UIHostingSceneDelegate {\n    static var rootScene: some Scene {\n        WindowGroup(id: \"my-volume\") {\n            ContentView()\n        }\n        .windowStyle(.volumetric)\n    }\n}\n\n// Create a request for the scene\nlet requestWithId = UISceneSessionActivationRequest(\n    hostingDelegateClass: MyHostingSceneDelegate.self, id: \"my-volume\")!\n\n// Send a request\nUIApplication.shared.activateSceneSession(for: requestWithId)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Adopting best practices for persistent UI",
+      "url": "https://developer.apple.com/documentation/visionOS/adopting-best-practices-for-scene-restoration",
+      "type": "documentation",
+      "description": "Create persistent and contextually relevant spatial experiences by managing scene restoration, customizing window behaviors, and surface snapping data.",
+      "sosumiURL": "https://sosumi.ai/documentation/visionOS/adopting-best-practices-for-scene-restoration",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/visionOS/adopting-best-practices-for-scene-restoration.json"
+    },
+    {
+      "title": "Tracking accessories in volumetric windows",
+      "url": "https://developer.apple.com/documentation/ARKit/tracking-accessories-in-volumetric-windows",
+      "type": "samplecode",
+      "description": "Translate the position and velocity of tracked handheld accessories to throw virtual balls at a stack of cans.",
+      "sosumiURL": "https://sosumi.ai/documentation/ARKit/tracking-accessories-in-volumetric-windows",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ARKit/tracking-accessories-in-volumetric-windows.json"
+    },
+    {
+      "title": "Petite Asteroids: Building a volumetric visionOS game",
+      "url": "https://developer.apple.com/documentation/visionOS/petite-asteroids-building-a-volumetric-visionos-game",
+      "type": "samplecode",
+      "description": "Use the latest RealityKit APIs to create a beautiful video game for visionOS.",
+      "sosumiURL": "https://sosumi.ai/documentation/visionOS/petite-asteroids-building-a-volumetric-visionos-game",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/visionOS/petite-asteroids-building-a-volumetric-visionos-game.json"
+    },
+    {
+      "title": "Canyon Crosser: Building a volumetric hike-planning app",
+      "url": "https://developer.apple.com/documentation/visionOS/canyon-crosser-building-a-volumetric-hike-planning-app",
+      "type": "samplecode",
+      "description": "Create a hike planning app using SwiftUI and RealityKit.",
+      "sosumiURL": "https://sosumi.ai/documentation/visionOS/canyon-crosser-building-a-volumetric-hike-planning-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/visionOS/canyon-crosser-building-a-volumetric-hike-planning-app.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/290/",
+  "files": {
+    "metadata": "sessions/wwdc2025/290/metadata.json",
+    "readme": "sessions/wwdc2025/290/README.md",
+    "transcript": "sessions/wwdc2025/290/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/290/transcript.json"
+  }
+}

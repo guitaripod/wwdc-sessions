@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10129",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10129,
+  "title": "Manage software updates in your organization",
+  "description": "In a managed device environment, you often need to control the pace of software updates while you test the latest operating systems within your company or education institution. Discover the tools you have at your disposal to defer, deploy, and enforce software updates.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10129",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10129",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Store, Distribution & Marketing",
+    "Business & Education"
+  ],
+  "primaryTopic": "Business & Education",
+  "duration": 1101,
+  "hasTranscript": true,
+  "transcriptWordCount": 2750,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10129/6/7E46C26F-2722-4ABF-88BF-38CDBDC23E26/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10129/6/7E46C26F-2722-4ABF-88BF-38CDBDC23E26/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10129/6/7E46C26F-2722-4ABF-88BF-38CDBDC23E26/downloads/wwdc2021-10129_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10129/6/7E46C26F-2722-4ABF-88BF-38CDBDC23E26/downloads/wwdc2021-10129_hd.mp4",
+    "duration": 1101
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "AppleSeed",
+      "url": "https://appleseed.apple.com/",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Apple Platform Deployment",
+      "url": "https://support.apple.com/guide/deployment/",
+      "type": "documentation",
+      "description": null
+    }
+  ],
+  "path": "sessions/wwdc2021/10129/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10129/metadata.json",
+    "readme": "sessions/wwdc2021/10129/README.md",
+    "transcript": "sessions/wwdc2021/10129/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10129/transcript.json"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10658",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10658,
+  "title": "What's new in education",
+  "description": "For over 40 years, Apple has been working with educators to create technologies for students, teachers, and school administrators and help them share in a rich and meaningful learning experience. Explore the breadth of Apple's education technologies, including classroom management apps and tools and developer frameworks for assessment and curriculum integration — and discover how your app can have a critical role in them all.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10658",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10658",
+  "type": "Video",
+  "publishedAt": "2020-06-23T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "asm",
+    "assessment",
+    "classkit",
+    "classroom",
+    "configurator",
+    "schoolwork",
+    "student",
+    "testing"
+  ],
+  "topics": [
+    "Business & Education"
+  ],
+  "primaryTopic": "Business & Education",
+  "duration": 661,
+  "hasTranscript": true,
+  "transcriptWordCount": 1906,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10658/8/827B5251-1529-46D9-AFD4-274C9CECE198/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10658/8/827B5251-1529-46D9-AFD4-274C9CECE198/wwdc2020_10658_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10658/8/827B5251-1529-46D9-AFD4-274C9CECE198/wwdc2020_10658_hd.mp4",
+    "duration": 661
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Automatic Assessment Configuration",
+      "url": "https://developer.apple.com/documentation/AutomaticAssessmentConfiguration",
+      "type": "documentation",
+      "description": "Enter single-app mode and prevent students from accessing specific system features while taking an exam.",
+      "sosumiURL": "https://sosumi.ai/documentation/AutomaticAssessmentConfiguration",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AutomaticAssessmentConfiguration.json"
+    },
+    {
+      "title": "ClassKit",
+      "url": "https://developer.apple.com/documentation/ClassKit",
+      "type": "documentation",
+      "description": "Enable teachers to assign activities from your app’s content and to view student progress.",
+      "sosumiURL": "https://sosumi.ai/documentation/ClassKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ClassKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10658/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10658/metadata.json",
+    "readme": "sessions/wwdc2020/10658/README.md",
+    "transcript": "sessions/wwdc2020/10658/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10658/transcript.json"
+  }
+}

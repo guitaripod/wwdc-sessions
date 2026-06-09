@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10108",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10108,
+  "title": "What’s new in Wallet and Apple Pay",
+  "description": "Take passes and payments to the next level with new enhancements to Wallet and Apple Pay. Make your event tickets shine with rich pass designs in Wallet, and bring great Apple Pay experiences to even more people with third-party browser support. We’ll also look at how to disburse funds with Apple Pay on the Web and highlight new API changes that help you integrate Apple Pay into even more purchasing flows.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10108",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10108",
+  "type": "Video",
+  "publishedAt": "2024-06-13T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1108,
+  "hasTranscript": true,
+  "transcriptWordCount": 2882,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10108/4/C63602CE-99FE-4290-B5EC-B7BBAA6A08FA/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10108/4/C63602CE-99FE-4290-B5EC-B7BBAA6A08FA/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10108/4/C63602CE-99FE-4290-B5EC-B7BBAA6A08FA/downloads/wwdc2024-10108_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10108/4/C63602CE-99FE-4290-B5EC-B7BBAA6A08FA/downloads/wwdc2024-10108_hd.mp4",
+    "duration": 1108
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Loading the latest version of the Apple Pay JS SDK",
+      "url": "https://developer.apple.com/documentation/ApplePayontheWeb/loading-the-latest-version-of-apple-pay-js",
+      "type": "documentation",
+      "description": "Link to the most recent autoupdating version of the Apple Pay JS SDK or a version of your choice.",
+      "sosumiURL": "https://sosumi.ai/documentation/ApplePayontheWeb/loading-the-latest-version-of-apple-pay-js",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ApplePayontheWeb/loading-the-latest-version-of-apple-pay-js.json"
+    },
+    {
+      "title": "SemanticTags",
+      "url": "https://developer.apple.com/documentation/WalletPasses/SemanticTags",
+      "type": "documentation",
+      "description": "An object that contains machine-readable metadata the system uses to offer a pass and suggest related actions.",
+      "sosumiURL": "https://sosumi.ai/documentation/WalletPasses/SemanticTags",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WalletPasses/SemanticTags.json"
+    },
+    {
+      "title": "Looking Up an Artist",
+      "url": "https://help.apple.com/itc/musicartistspec/#/itc42ab20bc6",
+      "type": "documentation",
+      "description": "Query for artists by artist name."
+    },
+    {
+      "title": "Forum: App & System Services",
+      "url": "https://developer.apple.com/forums/topics/app-and-system-services?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/app-and-system-services?cid=vf-a-0010"
+    },
+    {
+      "title": "PassKit (Apple Pay and Wallet)",
+      "url": "https://developer.apple.com/documentation/PassKit",
+      "type": "documentation",
+      "description": "Process Apple Pay payments in your app, and create and distribute passes for the Wallet app.",
+      "sosumiURL": "https://sosumi.ai/documentation/PassKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/PassKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2024/10108/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10108/metadata.json",
+    "readme": "sessions/wwdc2024/10108/README.md",
+    "transcript": "sessions/wwdc2024/10108/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10108/transcript.json"
+  }
+}

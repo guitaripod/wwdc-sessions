@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10054",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10054,
+  "title": "What's new in AppKit",
+  "description": "Explore the latest advancements in Mac app development with AppKit. We’ll show how you can enhance your app’s design with new control features and SF Symbols 3, build powerful text experiences using TextKit 2, and harness the latest Swift features in your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10054",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10054",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [
+    "aqua",
+    "cocoa",
+    "shortcuts"
+  ],
+  "topics": [
+    "Essentials",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1292,
+  "hasTranscript": true,
+  "transcriptWordCount": 3363,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10054/7/D3581025-DC73-47FB-98A0-0C9599FAD509/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10054/7/D3581025-DC73-47FB-98A0-0C9599FAD509/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10054/7/D3581025-DC73-47FB-98A0-0C9599FAD509/downloads/wwdc2021-10054_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10054/7/D3581025-DC73-47FB-98A0-0C9599FAD509/downloads/wwdc2021-10054_hd.mp4",
+    "duration": 1292
+  },
+  "codeSnippets": [
+    {
+      "title": "Determining a button's background style",
+      "language": "swift",
+      "startTimeSeconds": 258,
+      "code": "class NSButtonCell {\n    /*\n        Use to adjust your drawing for the underlying state of the bezel\n\n        Returns .normal for colorless states\n\n        Returns .emphasized for colorful/emphasis states\n    */\n    var interiorBackgroundStyle: NSBackgroundStyle\n}"
+    },
+    {
+      "title": "Pick a color",
+      "language": "swift",
+      "startTimeSeconds": 880,
+      "code": "@IBAction func pickColor(_ sender: Any?) {\n    Task {\n        guard let color = await NSColorSampler().sample() else { return }\n        textField.textColor = color\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Introducing SF Symbols",
+      "url": "https://developer.apple.com/wwdc19/206",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/wwdc19/206"
+    },
+    {
+      "title": "Human Interface Guidelines: SF Symbols",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/sf-symbols",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/sf-symbols"
+    },
+    {
+      "title": "AppKit",
+      "url": "https://developer.apple.com/documentation/AppKit",
+      "type": "documentation",
+      "description": "Construct and manage a graphical, event-driven user interface for your macOS app.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10054/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10054/metadata.json",
+    "readme": "sessions/wwdc2021/10054/README.md",
+    "transcript": "sessions/wwdc2021/10054/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10054/transcript.json"
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10025",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10025,
+  "title": "Capture machine-readable codes and text with VisionKit",
+  "description": "Meet the Data Scanner in VisionKit: This framework combines AVCapture and Vision to enable live capture of machine-readable codes and text through a simple Swift API. We’ll show you how to control the types of content your app can capture by specifying barcode symbologies and language selection. We’ll also explore how you can enable guidance in your app, customize item highlighting or regions of interest, and handle interactions after your app detects an item.\n\nFor more on interacting with Live Text through still images or paused video frames, watch \"Add Live Text interaction to your app\" from WWDC22.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10025",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10025",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Photos & Camera",
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 731,
+  "hasTranscript": true,
+  "transcriptWordCount": 1890,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10025/4/5DB691AA-D403-4394-885D-0F1F18772715/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10025/4/5DB691AA-D403-4394-885D-0F1F18772715/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10025/4/5DB691AA-D403-4394-885D-0F1F18772715/downloads/wwdc2022-10025_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10025/4/5DB691AA-D403-4394-885D-0F1F18772715/downloads/wwdc2022-10025_hd.mp4",
+    "duration": 731
+  },
+  "codeSnippets": [
+    {
+      "title": "Creating a data scanner instance and present it",
+      "language": "swift",
+      "startTimeSeconds": 280,
+      "code": "import VisionKit\n\n// Specify the types of data to recognize\nlet recognizedDataTypes:Set<DataScannerViewController.RecognizedDataType> = [\n    .barcode(symbologies: [.qr]),\n  \t// uncomment to filter on specific languages (e.g., Japanese)\n    // .text(languages: [\"ja\"])\n    // uncomment to filter on specific content types (e.g., URLs)\n\t\t// .text(textContentType: .URL)\n]\n\n// Create the data scanner, present it, and start scanning!\nlet dataScanner = DataScannerViewController(recognizedDataTypes: recognizedDataTypes)\npresent(dataScanner, animated: true) {\n    try? dataScanner.startScanning()\n}"
+    },
+    {
+      "title": "Set a delegate",
+      "language": "swift",
+      "startTimeSeconds": 491,
+      "code": "// Specify the types of data to recognize\nlet recognizedDataTypes:Set<DataScannerViewController.RecognizedDataType> = [\n    .barcode(symbologies: [.qr]),\n    .text(textContentType: .URL)\n]\n\n// Create the data scanner, present it, and start scanning!\nlet dataScanner = DataScannerViewController(recognizedDataTypes: recognizedDataTypes)\ndataScanner.delegate = self.present(dataScanner, animated: true) {\n    try? dataScanner.startScanning()\n}"
+    },
+    {
+      "title": "Handling tap interactions",
+      "language": "swift",
+      "startTimeSeconds": 499,
+      "code": "func dataScanner(_ dataScanner: DataScannerViewController, didTapOn item: RecognizedItem) {\n    switch item {\n    case .text(let text):\n        print(\"text: \\(text.transcript)\")\n    case .barcode(let barcode):\n        print(\"barcode: \\(barcode.payloadStringValue ?? \"unknown\")\")\n    default:\n        print(\"unexpected item\")\n    }\n}"
+    },
+    {
+      "title": "Adding custom highlights via the didAdd delegate method",
+      "language": "swift",
+      "startTimeSeconds": 551,
+      "code": "// Dictionary to store our custom highlights keyed by their associated item ID.\nvar itemHighlightViews: [RecognizedItem.ID: HighlightView] = [:]\n\n// For each new item, create a new highlight view and add it to the view hierarchy.\nfunc dataScanner(_ dataScanner: DataScannerViewController, didAdd addItems: [RecognizedItem], allItems: [RecognizedItem]) {\n    for item in addedItems {\n        let newView = newHighlightView(forItem: item)\n        itemHighlightViews[item.id] = newView\n        dataScanner.overlayContainerView.addSubview(newView)\n    }\n}"
+    },
+    {
+      "title": "Animating custom highlights during the didUpdate delegate method",
+      "language": "swift",
+      "startTimeSeconds": 577,
+      "code": "// Animate highlight views to their new bounds\nfunc dataScanner(_ dataScanner: DataScannerViewController, didUpdate updatedItems: [RecognizedItem], allItems: [RecognizedItem]) {\n    for item in updatedItems {\n        if let view = itemHighlightViews[item.id] {\n            animate(view: view, toNewBounds: item.bounds)\n        }\n    }\n}"
+    },
+    {
+      "title": "Removing custom highlights during the didRemove delegate callback",
+      "language": "swift",
+      "startTimeSeconds": 603,
+      "code": "// Remove highlights when their associated items are removed.\nfunc dataScanner(_ dataScanner: DataScannerViewController, didRemove removedItems: [RecognizedItem], allItems: [RecognizedItem]) {\n    for item in removedItems {\n        if let view = itemHighlightViews[item.id] {\n            itemHighlightViews.removeValue(forKey: item.id)\n            view.removeFromSuperview()\n        }\n    }\n}"
+    },
+    {
+      "title": "Take a still photo and save it to the camera roll",
+      "language": "swift",
+      "startTimeSeconds": 654,
+      "code": "// Take a still photo and save to the camera roll\nif let image = try? await dataScanner.capturePhoto() {\n    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)\n}"
+    },
+    {
+      "title": "Using the recognizedItems async stream to keep track of items",
+      "language": "swift",
+      "startTimeSeconds": 670,
+      "code": "// Send a notification when the recognized items change.\nvar currentItems: [RecognizedItem] = []\n\nfunc updateViaAsyncStream() async {\n    guard let scanner = dataScannerViewController else { return }\n\n    let stream = scanner.recognizedItems\n    for await newItems: [RecognizedItem] in stream {\n        let diff = newItems.difference(from: currentItems) { a, b in\n            return a.id == b.id\n        }\n\n        if !diff.isEmpty {\n            currentItems = newItems\n            sendDidChangeNotification()\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Scanning data with the camera",
+      "url": "https://developer.apple.com/documentation/VisionKit/scanning-data-with-the-camera",
+      "type": "documentation",
+      "description": "Enable Live Text data scanning of text and codes that appear in the camera’s viewfinder.",
+      "sosumiURL": "https://sosumi.ai/documentation/VisionKit/scanning-data-with-the-camera",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/VisionKit/scanning-data-with-the-camera.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10025/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10025/metadata.json",
+    "readme": "sessions/wwdc2022/10025/README.md",
+    "transcript": "sessions/wwdc2022/10025/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10025/transcript.json"
+  }
+}

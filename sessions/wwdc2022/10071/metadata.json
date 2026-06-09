@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10071",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10071,
+  "title": "Adopt desktop-class editing interactions",
+  "description": "Discover advanced desktop-class editing features that can help people accelerate their productivity in your app. Learn how you can provide more interactions inline with your UI to help people quickly access editing features and make your iPadOS app feel right at home on macOS with Mac Catalyst. We’ll also explore the highly-customizable find interaction and learn how the system UI can help people consistently find content in your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10071",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10071",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1259,
+  "hasTranscript": true,
+  "transcriptWordCount": 2692,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10071/4/A7198C26-97D7-49C3-8FE7-907808F342DE/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10071/4/A7198C26-97D7-49C3-8FE7-907808F342DE/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10071/4/A7198C26-97D7-49C3-8FE7-907808F342DE/downloads/wwdc2022-10071_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10071/4/A7198C26-97D7-49C3-8FE7-907808F342DE/downloads/wwdc2022-10071_hd.mp4",
+    "duration": 1259
+  },
+  "codeSnippets": [
+    {
+      "title": "Adding items into text edit menus",
+      "language": "swift",
+      "startTimeSeconds": 162,
+      "code": "func textView(\n_ textView: UITextView, \neditMenuForTextIn range: NSRange, \nsuggestedActions: [UIMenuElement]) -> UIMenu?"
+    },
+    {
+      "title": "Adding actions into a text view's menu",
+      "language": "swift",
+      "startTimeSeconds": 243,
+      "code": "func textView(\n    _ textView: UITextView,\n    editMenuForTextIn range: NSRange,\n    suggestedActions: [UIMenuElement]\n) -> UIMenu? {\n    var additionalActions: [UIMenuElement] = []\n    if range.length > 0 {\n        let highlightAction = UIAction(title: \"Highlight\", ...)\n        additionalActions.append(highlightAction)\n    }\n    let insertPhotoAction = UIAction(title: \"Insert Photo\", ...)\n    additionalActions.append(insertPhotoAction)\n    return UIMenu(children: suggestedActions + additionalActions)\n}"
+    },
+    {
+      "title": "Presenting an edit menu with a custom gesture",
+      "language": "swift",
+      "startTimeSeconds": 324,
+      "code": "let editMenuInteraction = UIEditMenuInteraction(delegate: self)\nview.addInteraction(editMenuInteraction)\n\nlet tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTap(_:)))\ntapRecognizer.allowedTouchTypes = [UITouch.TouchType.direct.rawValue as NSNumber]\nview.addGestureRecognizer(tapRecognizer)\n\n@objc func didTap(_ recognizer: UITapGestureRecognizer) {\n    let location = recognizer.location(in: self.view)\n    if self.hasSelectedObjectView(at: location) {\n        let configuration = UIEditMenuConfiguration(identifier: nil, sourcePoint: location)\n        editMenuInteraction.presentEditMenu(with: configuration)\n    }\n}"
+    },
+    {
+      "title": "Implementing UIEditMenuInteractionDelegate",
+      "language": "swift",
+      "startTimeSeconds": 433,
+      "code": "func editMenuInteraction(\n    _ interaction: UIEditMenuInteraction,\n    targetRectFor configuration: UIEditMenuConfiguration\n) -> CGRect {\n    guard let selectedView = objectView(at: configuration.sourcePoint) else { return .null }\n    return selectedView.frame\n}\n\nfunc editMenuInteraction(\n    _ interaction: UIEditMenuInteraction,\n    menuFor configuration: UIEditMenuConfiguration,\n    suggestedActions: [UIMenuElement]\n) -> UIMenu? {\n    let duplicateAction = UIAction(title: \"Duplicate\") { ... }\n    return UIMenu(children: suggestedActions + [duplicateAction])\n}"
+    },
+    {
+      "title": "Using the \"keeps menu presented\" attribute",
+      "language": "swift",
+      "startTimeSeconds": 634,
+      "code": "UIAction(title: \"Increase\",\n         image: UIImage(systemName: \"increase.indent\"),\n         attributes: .keepsMenuPresented) { ... }\n\nUIAction(title: \"Decrease\",\n         image: UIImage(systemName: \"decrease.indent\"),\n         attributes: .keepsMenuPresented) { ... }"
+    },
+    {
+      "title": "Find with system views",
+      "language": "swift",
+      "startTimeSeconds": 766,
+      "code": "open var findInteraction: UIFindInteraction? { get }\ntextView.isFindInteractionEnabled = true"
+    },
+    {
+      "title": "Installing a UIFindInteraction on a custom view",
+      "language": "swift",
+      "startTimeSeconds": 1042,
+      "code": "let customDocument = MyDocument(string: \"\")\nlazy var customView = MyTextView(document: customDocument)\n\nlazy var findInteraction = UIFindInteraction(sessionDelegate: self)\n\noverride var canBecomeFirstResponder: Bool { true }\n\noverride func viewDidLoad() {\n    customView.addInteraction(findInteraction)\n}\n\nfunc findInteraction(_ interaction: UIFindInteraction, sessionFor view: UIView) -> UIFindSession? {\n    return UITextSearchingFindSession(searchableObject: customDocument)\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "UIFindInteraction",
+      "url": "https://developer.apple.com/documentation/UIKit/UIFindInteraction",
+      "type": "documentation",
+      "description": "An interaction that provides text finding and replacing operations using a system find panel.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UIFindInteraction",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UIFindInteraction.json"
+    },
+    {
+      "title": "UIEditMenuInteraction",
+      "url": "https://developer.apple.com/documentation/UIKit/UIEditMenuInteraction",
+      "type": "documentation",
+      "description": "An interaction that provides edit operations using a menu.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UIEditMenuInteraction",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UIEditMenuInteraction.json"
+    },
+    {
+      "title": "Building a desktop-class iPad app",
+      "url": "https://developer.apple.com/documentation/UIKit/building-a-desktop-class-ipad-app",
+      "type": "documentation",
+      "description": "Optimize your iPad app’s user experience by adopting desktop-class enhancements for multitasking with Stage Manager, document interactions, text editing, search, and more.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/building-a-desktop-class-ipad-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/building-a-desktop-class-ipad-app.json"
+    },
+    {
+      "title": "Supporting desktop-class features in your iPad app",
+      "url": "https://developer.apple.com/documentation/UIKit/supporting-desktop-class-features-in-your-ipad-app",
+      "type": "samplecode",
+      "description": "Enhance your iPad app by adding desktop-class features and document support.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/supporting-desktop-class-features-in-your-ipad-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/supporting-desktop-class-features-in-your-ipad-app.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10071/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10071/metadata.json",
+    "readme": "sessions/wwdc2022/10071/README.md",
+    "transcript": "sessions/wwdc2022/10071/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10071/transcript.json"
+  }
+}

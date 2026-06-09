@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10108",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10108,
+  "title": "Streamline local authorization flows",
+  "description": "Discover how you can use the latest authorization-focused APIs in LocalAuthentication to protect the privacy and security of people’s data. We’ll show you how LocalAuthentication can authorize access to secrets, keys, and other sensitive resources in your app, all while reducing complexity and relying on the security and usability of common local authentication methods such as Touch ID and Face ID.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10108",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10108",
+  "type": "Video",
+  "publishedAt": "2022-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "acl",
+    "biometric",
+    "lacontext",
+    "laright",
+    "lock",
+    "secure enclave",
+    "unlock"
+  ],
+  "topics": [
+    "Privacy & Security"
+  ],
+  "primaryTopic": "Privacy & Security",
+  "duration": 956,
+  "hasTranscript": true,
+  "transcriptWordCount": 2562,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10108/4/1F8BF487-ABEF-47CD-AC84-C3AC2E35885A/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10108/4/1F8BF487-ABEF-47CD-AC84-C3AC2E35885A/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10108/4/1F8BF487-ABEF-47CD-AC84-C3AC2E35885A/downloads/wwdc2022-10108_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10108/4/1F8BF487-ABEF-47CD-AC84-C3AC2E35885A/downloads/wwdc2022-10108_hd.mp4",
+    "duration": 956
+  },
+  "codeSnippets": [
+    {
+      "title": "LAContext (authorize a signature operation 1)",
+      "language": "swift",
+      "startTimeSeconds": 298,
+      "code": "let query: [String: Any] = [\n    kSecClass as String: kSecClassKey,\n    kSecAttrTokenID as String: kSecAttrTokenIDSecureEnclave,\n    kSecAttrApplicationTag as String: \"com.example.app.key\",\n    kSecReturnAttributes as String: true,\n]\n\nvar item: CFTypeRef? = nil\nguard SecItemCopyMatching(query as CFDictionary, &item) == errSecSuccess, let attrs = item as? NSDictionary, let accessControl = attrs[kSecAttrAccessControl] else {\n    throw .aclNotFound\n}"
+    },
+    {
+      "title": "LAContext (authorize a signature operation 2)",
+      "language": "swift",
+      "startTimeSeconds": 315,
+      "code": "let context = LAContext()\ntry await context.evaluateAccessControl(accessControl as! SecAccessControl, \n                      operation: .useKeySign, \n                       localizedReason: \"Authentication is required to proceed\")"
+    },
+    {
+      "title": "LAContext (authorize a signature operation 3)",
+      "language": "swift",
+      "startTimeSeconds": 344,
+      "code": "let query: [String: Any] = [\n    kSecClass as String: kSecClassKey,\n    kSecAttrTokenID as String: kSecAttrTokenIDSecureEnclave,\n    kSecAttrApplicationTag as String: \"com.example.app.key\",\n    kSecReturnRef as String: true,\n    kSecUseAuthenticationContext as String: context\n]\n\nvar item: CFTypeRef? = nil\nguard SecItemCopyMatching(query as CFDictionary, &item) == errSecSuccess, item != nil else { \n    throw .keyNotFound\n}"
+    },
+    {
+      "title": "LAContext (authorize a signature operation 4)",
+      "language": "swift",
+      "startTimeSeconds": 360,
+      "code": "let privateKey = item as! SecKey\n\nvar error: Unmanaged<CFError>?\nguard let sgt = SecKeyCreateSignature(privateKey, self.algorithm, blob, &error) as Data? else {\n    throw .signatureFailure\n}"
+    },
+    {
+      "title": "LA Right (basic usage)",
+      "language": "swift",
+      "startTimeSeconds": 508,
+      "code": "// LARight: Basic usage\n\nfunc login() async {\n   self.loginRight = LARight(requirement: .biometry(fallback: .devicePasscode))\n   do {\n       try await loginRight.checkCanAuthorize()\n   } catch {\n       navigateTo(section: .public)\n       return\n   }\n   do {\n      try await self.loginRight.authorize(localizedReason: self.localizedReason)\n navigateTo(section: .protected)\n   } catch {\n      showError(.authenticationRequired)\n   }\n}"
+    },
+    {
+      "title": "LARight (logout and deauthorization)",
+      "language": "swift",
+      "startTimeSeconds": 661,
+      "code": "// LARight: Basic usage\n\nfunc login() async {\n   self.loginRight = LARight(requirement: .biometry(fallback: .devicePasscode))\n   // ...\n   do {\n       try await self.loginRight.authorize(localizedReason: self.localizedReason)\n  navigateTo(section: .protected)\n   } catch {\n       showError(.authenticationRequired)\n   }\n}\n\nfunc logout() async {   \n   await self.loginRight.deauthorize()\n}"
+    },
+    {
+      "title": "LAPersistedRight",
+      "language": "swift",
+      "startTimeSeconds": 824,
+      "code": "// LAPersistedRight: Retrieval and private key usage\n\nfunc generateClientKeys() async throws -> Data {\n    let login2FA = LARight(requirement: .biometryCurrentSet)\n    let persisted2FA = try await LARightStore.shared.saveRight(login2FA, identifier: \"2fa\")\n    return try await persisted2FA.key.publicKey.bytes\n}\n\nfunc signChallenge(_ challenge: Data, algorithm: SecKeyAlgorithm) async throws -> Data {\n    let persisted2FA = try await LARightStore.shared.right(forIdentifier: \"2fa\")\n    let localizedReason = \"Biometric authentication is required to proceed\"\n    try await persisted2FA.authorize(localizedReason: localizedReason)\n    return try await persisted2FA.key.sign(challenge, algorithm: algorithm)\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Local Authentication",
+      "url": "https://developer.apple.com/documentation/LocalAuthentication",
+      "type": "documentation",
+      "description": "Authenticate users biometrically or with a passphrase they already know.",
+      "sosumiURL": "https://sosumi.ai/documentation/LocalAuthentication",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/LocalAuthentication.json"
+    },
+    {
+      "title": "Protecting keys with the Secure Enclave",
+      "url": "https://developer.apple.com/documentation/Security/protecting-keys-with-the-secure-enclave",
+      "type": "documentation",
+      "description": "Create an extra layer of security for your private keys.",
+      "sosumiURL": "https://sosumi.ai/documentation/Security/protecting-keys-with-the-secure-enclave",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Security/protecting-keys-with-the-secure-enclave.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10108/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10108/metadata.json",
+    "readme": "sessions/wwdc2022/10108/README.md",
+    "transcript": "sessions/wwdc2022/10108/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10108/transcript.json"
+  }
+}

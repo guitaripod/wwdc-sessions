@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10066",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10066,
+  "title": "Build immersive web experiences with WebXR",
+  "description": "Discover how WebXR empowers you to add fully immersive experiences to your website in visionOS. Find out how to build WebXR experiences that take full advantage of the input capabilities of visionOS, and learn how you can use Simulator to test WebXR experiences on macOS.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10066",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10066",
+  "type": "Video",
+  "publishedAt": "2024-06-12T08:00:00-07:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services",
+    "Spatial Computing",
+    "Safari & Web"
+  ],
+  "primaryTopic": "Safari & Web",
+  "duration": 1576,
+  "hasTranscript": true,
+  "transcriptWordCount": 4037,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10066/4/688EE2E3-325B-40BE-B36E-7067500DE40B/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10066/4/688EE2E3-325B-40BE-B36E-7067500DE40B/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10066/4/688EE2E3-325B-40BE-B36E-7067500DE40B/downloads/wwdc2024-10066_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10066/4/688EE2E3-325B-40BE-B36E-7067500DE40B/downloads/wwdc2024-10066_hd.mp4",
+    "duration": 1576
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Wonderland Engine",
+      "url": "https://wonderlandengine.com",
+      "type": "samplecode",
+      "description": "Web-based 3D engine for 3D, VR, and AR."
+    },
+    {
+      "title": "A-Frame WebXR framework",
+      "url": "https://aframe.io",
+      "type": "guide",
+      "description": "A web framework for building 3D/AR/VR experiences"
+    },
+    {
+      "title": "WebXR Chess Garden Demo",
+      "url": "https://webkit.org/demos/webxr-chess/",
+      "type": "documentation",
+      "description": "Example of a chess game that uses WebXR."
+    },
+    {
+      "title": "WebXR Device API | W3C",
+      "url": "https://www.w3.org/TR/webxr/",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Forum: Safari & Web",
+      "url": "https://developer.apple.com/forums/topics/safari-and-web?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/safari-and-web?cid=vf-a-0010"
+    },
+    {
+      "title": "WebKit.org – Report issues to the WebKit open-source project",
+      "url": "https://bugs.webkit.org",
+      "type": "documentation",
+      "description": "Bug tracking for WebKit open source project"
+    },
+    {
+      "title": "PlayCanvas – webGL and WebXR library",
+      "url": "https://playcanvas.com",
+      "type": "samplecode",
+      "description": "webGL and WebXR library"
+    },
+    {
+      "title": "babylon.js – webGL and WebXR library",
+      "url": "https://www.babylonjs.com",
+      "type": "samplecode",
+      "description": "Web rendering engine"
+    },
+    {
+      "title": "three.js – webGL and WebXR library",
+      "url": "https://threejs.org",
+      "type": "samplecode",
+      "description": "three.js – webGL and WebXR library"
+    },
+    {
+      "title": "Adding a web development tool to Safari Web Inspector",
+      "url": "https://developer.apple.com/documentation/SafariServices/adding-a-web-development-tool-to-safari-web-inspector",
+      "type": "documentation",
+      "description": "Expand the built-in Safari Web Inspector to include your custom tool, augmenting developers’ options for inspecting, testing, and debugging webpages.",
+      "sosumiURL": "https://sosumi.ai/documentation/SafariServices/adding-a-web-development-tool-to-safari-web-inspector",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SafariServices/adding-a-web-development-tool-to-safari-web-inspector.json"
+    },
+    {
+      "title": "Safari Release Notes",
+      "url": "https://developer.apple.com/documentation/safari-release-notes",
+      "type": "documentation",
+      "description": "Learn about changes for Safari and Safari View Controller for iOS, iPadOS, macOS, and in visionOS; WKWebView for iOS, iPadOS, macOS, watchOS, and in visionOS; and Web Inspector on macOS.",
+      "sosumiURL": "https://sosumi.ai/documentation/safari-release-notes",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/safari-release-notes.json"
+    },
+    {
+      "title": "WebKit Open Source Project",
+      "url": "https://webkit.org",
+      "type": "guide",
+      "description": "WebKit Open Source Project"
+    },
+    {
+      "title": "Web Inspector Reference",
+      "url": "https://webkit.org/web-inspector/",
+      "type": "documentation",
+      "description": "Web Inspector Documentation"
+    }
+  ],
+  "path": "sessions/wwdc2024/10066/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10066/metadata.json",
+    "readme": "sessions/wwdc2024/10066/README.md",
+    "transcript": "sessions/wwdc2024/10066/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10066/transcript.json"
+  }
+}

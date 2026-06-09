@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-260",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 260,
+  "title": "Introducing Photo Segmentation Mattes",
+  "description": "Photos captured in Portrait Mode on iOS 12 contain an embedded person segmentation matte that made it easy to create creative visual effects like background replacement. iOS 13 leverages on-device machine learning to provide new segmentation mattes for any captured photo. Learn about the new semantic segmentation mattes available to you from both AVCapture and Core Image to isolate a person's hair, skin, and teeth. Using any of these individual mattes or combining all of them, your app can now offer a tremendous amount of photo editing control.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/260",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/260",
+  "type": "Video",
+  "publishedAt": "2019-06-05T17:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "avcapture",
+    "camera",
+    "core image",
+    "hair",
+    "images",
+    "matte",
+    "photos",
+    "portrait effects",
+    "segmentation",
+    "skin",
+    "teeth"
+  ],
+  "topics": [
+    "Photos & Camera"
+  ],
+  "primaryTopic": "Photos & Camera",
+  "duration": 933,
+  "hasTranscript": true,
+  "transcriptWordCount": 2677,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/260dn5488jol0b/260/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/260dn5488jol0b/260/260_sd_introducing_photo_segmentation_mattes.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/260dn5488jol0b/260/260_hd_introducing_photo_segmentation_mattes.mp4",
+    "duration": 933
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/260/",
+  "files": {
+    "metadata": "sessions/wwdc2019/260/metadata.json",
+    "readme": "sessions/wwdc2019/260/README.md",
+    "transcript": "sessions/wwdc2019/260/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/260/transcript.json"
+  }
+}

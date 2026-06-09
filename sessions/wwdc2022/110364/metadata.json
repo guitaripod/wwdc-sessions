@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-110364",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 110364,
+  "title": "Demystify parallelization in Xcode builds",
+  "description": "Learn how the Xcode build system extracts maximum parallelism from your builds. We'll explore how you can structure your project to improve build efficiency, take you through the process for resolving relationships between targets’ build phases in Xcode, and share how you can take full advantage of available hardware resources when compiling in Swift. We'll also introduce you to Build Timeline — a powerful tool to help you monitor your build efficiency and performance.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/110364",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/110364",
+  "type": "Video",
+  "publishedAt": "2022-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 1515,
+  "hasTranscript": true,
+  "transcriptWordCount": 4257,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110364/4/BA2A87DE-2A6F-4BB2-A81F-2403413E96AB/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110364/4/BA2A87DE-2A6F-4BB2-A81F-2403413E96AB/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110364/4/BA2A87DE-2A6F-4BB2-A81F-2403413E96AB/downloads/wwdc2022-110364_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110364/4/BA2A87DE-2A6F-4BB2-A81F-2403413E96AB/downloads/wwdc2022-110364_hd.mp4",
+    "duration": 1515
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Swift Compiler Driver on GitHub",
+      "url": "https://github.com/apple/swift-driver",
+      "type": "documentation",
+      "description": "The GitHub repository for the Swift compiler driver project."
+    }
+  ],
+  "path": "sessions/wwdc2022/110364/",
+  "files": {
+    "metadata": "sessions/wwdc2022/110364/metadata.json",
+    "readme": "sessions/wwdc2022/110364/README.md",
+    "transcript": "sessions/wwdc2022/110364/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/110364/transcript.json"
+  }
+}

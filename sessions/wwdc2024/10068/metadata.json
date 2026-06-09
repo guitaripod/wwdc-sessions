@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10068",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10068,
+  "title": "Bring your Live Activity to Apple Watch",
+  "description": "Bring Live Activities into the Smart Stack on Apple Watch with iOS 18 and watchOS 11. We’ll cover how Live Activities are presented on Apple Watch, as well as how you can enhance their presentation for the Smart Stack. We’ll also explore additional considerations to ensure Live Activities on Apple Watch always present up-to-date information.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10068",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10068",
+  "type": "Video",
+  "publishedAt": "2024-06-10T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "activityattributes",
+    "activitykit",
+    "supplementalactivityfamilies"
+  ],
+  "topics": [
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 627,
+  "hasTranscript": true,
+  "transcriptWordCount": 1378,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10068/4/C621DA91-3F64-481C-8D10-25A5C5FCD587/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10068/4/C621DA91-3F64-481C-8D10-25A5C5FCD587/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10068/4/C621DA91-3F64-481C-8D10-25A5C5FCD587/downloads/wwdc2024-10068_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10068/4/C621DA91-3F64-481C-8D10-25A5C5FCD587/downloads/wwdc2024-10068_hd.mp4",
+    "duration": 627
+  },
+  "codeSnippets": [
+    {
+      "title": "Existing Live Activity views",
+      "language": "swift",
+      "startTimeSeconds": 88,
+      "code": "struct DeliveryLiveActivity: Widget {\n    var body: some WidgetConfiguration {\n        ActivityConfiguration(\n            for: DeliveryActivityAttributes.self\n        ) { context in\n            DeliveryActivityContent(context: context)\n        } dynamicIsland: { context in\n            DynamicIsland {\n                DynamicIslandExpandedRegion(.leading) {\n                    DeliveryExpandedLeadingView(context: context)\n                }\n                DynamicIslandExpandedRegion(.trailing) {\n                    DeliveryExpandedTrailingView(context: context)\n                }\n                DynamicIslandExpandedRegion(.bottom) {\n                    DeliveryExpandedBottomView(context: context)\n                }\n            } compactLeading: {\n                DeliveryCompactLeading(context: context)\n            } compactTrailing: {\n                DeliveryCompactTrailing(context: context)\n            } minimal: {\n                DeliveryMinimal(context: context)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Preview Live Activities with Xcode Previews",
+      "language": "swift",
+      "startTimeSeconds": 223,
+      "code": "extension DeliveryActivityAttributes.ContentState {\n    static var shippedOrder: DeliveryActivityAttributes.ContentState {\n        .init(\n            status: .shipped,\n            courierName: \"Johnny\"\n        )\n     }\n\n     static var packedOrder: DeliveryActivityAttributes.ContentState {\n         .init(\n            status: .packed,\n            courierName: \"Contacting Courier...\")\n     }\n}\n\n#Preview(\n    \"Dynamic Island Compact\",\n    as: .dynamicIsland(.compact),\n    using: DeliveryActivityAttributes.preview\n) {\n    DeliveryLiveActivity()\n} contentStates: {\n    DeliveryActivityAttributes.ContentState.packedOrder\n    DeliveryActivityAttributes.ContentState.shippedOrder\n}"
+    },
+    {
+      "title": "Add .supplementalActivityFamilies to indicate support for the Smart Stack",
+      "language": "swift",
+      "startTimeSeconds": 255,
+      "code": "struct DeliveryLiveActivity: Widget {\n    var body: some WidgetConfiguration {\n        ActivityConfiguration(\n            for: DeliveryActivityAttributes.self\n        ) { context in\n            DeliveryActivityContent(context: context)\n        } dynamicIsland: { context in\n            DynamicIsland {\n                DynamicIslandExpandedRegion(.leading) {\n                    DeliveryExpandedLeadingView(context: context)\n                }\n                DynamicIslandExpandedRegion(.trailing) {\n                    DeliveryExpandedTrailingView(context: context)\n                }\n                DynamicIslandExpandedRegion(.bottom) {\n                    DeliveryExpandedBottomView(context: context)\n                }\n            } compactLeading: {\n                DeliveryCompactLeading(context: context)\n            } compactTrailing: {\n                DeliveryCompactTrailing(context: context)\n            } minimal: {\n                DeliveryMinimal(context: context)\n            }\n        }\n        .supplementalActivityFamilies([.small])\n    }\n}"
+    },
+    {
+      "title": "Customize view layout for the small activity family",
+      "language": "swift",
+      "startTimeSeconds": 289,
+      "code": "struct DeliveryActivityContent: View {\n    @Environment(\\.activityFamily) var activityFamily\n    var context: ActivityViewContext<DeliveryActivityAttributes>\n\n    var body: some View {\n        switch activityFamily {\n        case .small:\n            DeliverySmallContent(context: context)\n        case .medium:\n            DeliveryMediumContent(context: context)\n        @unknown default:\n            DeliveryMediumContent(context: context)\n        }\n    }\n}"
+    },
+    {
+      "title": "Preview customized layouts for the Smart Stack",
+      "language": "swift",
+      "startTimeSeconds": 306,
+      "code": "#Preview(\"Content\", as: .content, using: DeliveryActivityAttributes.preview) {\n   DeliveryLiveActivity()\n} contentStates: {\n    DeliveryActivityAttributes.ContentState.packedOrder\n    DeliveryActivityAttributes.ContentState.shippedOrder\n}"
+    },
+    {
+      "title": "Use isLuminanceReduced to remove bright elements with Always On Display",
+      "language": "swift",
+      "startTimeSeconds": 517,
+      "code": "struct DeliveryGauge: View {\n    @Environment(\\.isLuminanceReduced) private var isLuminanceReduced\n    var context: ActivityViewContext<DeliveryActivityAttributes>\n\n    var body: some View {\n        Gauge(value: context.state.progressPercent) {\n            GaugeLabel(context: context)\n        }\n        .tint(isLuminanceReduced ? .gaugeDim : .gauge)\n    }\n}"
+    },
+    {
+      "title": "For Live Activities with a light appearance, use a light preferredColorScheme",
+      "language": "swift",
+      "startTimeSeconds": 537,
+      "code": "struct DeliveryActivityContent: View {\n    @Environment(\\.activityFamily) var activityFamily\n    var context: ActivityViewContext<DeliveryActivityAttributes>\n\n    var body: some View {\n        switch activityFamily {\n        case .small:\n            DeliverySmallContent(context: context)\n                .preferredColorScheme(.light)\n        case .medium:\n            DeliveryMediumContent(context: context)\n        @unknown default:\n            DeliveryMediumContent(context: context)\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Forum: App & System Services",
+      "url": "https://developer.apple.com/forums/topics/app-and-system-services?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/app-and-system-services?cid=vf-a-0010"
+    },
+    {
+      "title": "Starting and updating Live Activities with ActivityKit push notifications",
+      "url": "https://developer.apple.com/documentation/ActivityKit/starting-and-updating-live-activities-with-activitykit-push-notifications",
+      "type": "documentation",
+      "description": "Use ActivityKit to receive push tokens and to remotely start, update, and end your Live Activity with ActivityKit notifications.",
+      "sosumiURL": "https://sosumi.ai/documentation/ActivityKit/starting-and-updating-live-activities-with-activitykit-push-notifications",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ActivityKit/starting-and-updating-live-activities-with-activitykit-push-notifications.json"
+    },
+    {
+      "title": "Displaying live data with Live Activities",
+      "url": "https://developer.apple.com/documentation/ActivityKit/displaying-live-data-with-live-activities",
+      "type": "documentation",
+      "description": "Display up-to-date data and offer quick interactions in the Dynamic Island, on the Lock Screen, in CarPlay, and on a paired Mac or Apple Watch.",
+      "sosumiURL": "https://sosumi.ai/documentation/ActivityKit/displaying-live-data-with-live-activities",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ActivityKit/displaying-live-data-with-live-activities.json"
+    }
+  ],
+  "path": "sessions/wwdc2024/10068/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10068/metadata.json",
+    "readme": "sessions/wwdc2024/10068/README.md",
+    "transcript": "sessions/wwdc2024/10068/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10068/transcript.json"
+  }
+}

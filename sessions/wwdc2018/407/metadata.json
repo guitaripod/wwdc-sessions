@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2018-407",
+  "event": "wwdc2018",
+  "eventName": "WWDC18",
+  "year": 2018,
+  "eventContentId": 407,
+  "title": "Practical Approaches to Great App Performance",
+  "description": "All apps benefit from a focus on performance and an increase in overall responsiveness. This information packed session gives you strategies for fixing performance problems using Instruments and other tools. Additionally, get practical advice based on experience in tuning Apple's own apps including Xcode and Photos on iOS.",
+  "url": "https://developer.apple.com/videos/play/wwdc2018/407",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2018/407",
+  "type": "Session",
+  "publishedAt": "2018-06-06T17:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "debugging",
+    "dispatch",
+    "instruments",
+    "launch",
+    "memory",
+    "notification center",
+    "photos",
+    "scrolling",
+    "testing",
+    "time profiler"
+  ],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 3021,
+  "hasTranscript": true,
+  "transcriptWordCount": 8759,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/407akll3nbwls9yn4qt/407/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/407akll3nbwls9yn4qt/407/407_sd_practical_approaches_to_great_app_performance.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/407akll3nbwls9yn4qt/407/407_hd_practical_approaches_to_great_app_performance.mp4",
+    "duration": 3021
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2018/407/",
+  "files": {
+    "metadata": "sessions/wwdc2018/407/metadata.json",
+    "readme": "sessions/wwdc2018/407/README.md",
+    "transcript": "sessions/wwdc2018/407/transcript.md",
+    "transcriptJSON": "sessions/wwdc2018/407/transcript.json"
+  }
+}

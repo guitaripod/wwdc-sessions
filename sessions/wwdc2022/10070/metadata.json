@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10070",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10070,
+  "title": "Build a desktop-class iPad app",
+  "description": "Discover how you can create iPad apps that take advantage of desktop class features. Join Mohammed from the UIKit team as we explore the latest navigation, collection view, menu, and editing APIs and learn best practices for building powerful iPad apps. Code along with this session in real time or download our sample app to use as a reference for updating your own code.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10070",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10070",
+  "type": "Video",
+  "publishedAt": "2022-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1218,
+  "hasTranscript": true,
+  "transcriptWordCount": 2760,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10070/3/03E2BD27-04DD-4C07-A662-B94B7F784C65/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10070/3/03E2BD27-04DD-4C07-A662-B94B7F784C65/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10070/3/03E2BD27-04DD-4C07-A662-B94B7F784C65/downloads/wwdc2022-10070_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10070/3/03E2BD27-04DD-4C07-A662-B94B7F784C65/downloads/wwdc2022-10070_hd.mp4",
+    "duration": 1218
+  },
+  "codeSnippets": [
+    {
+      "title": "Enable UINavigationBar editor style.",
+      "language": "swift",
+      "startTimeSeconds": 216,
+      "code": "navigationItem.style = .editor"
+    },
+    {
+      "title": "Set a back action.",
+      "language": "swift",
+      "startTimeSeconds": 232,
+      "code": "navigationItem.backAction = UIAction(…)"
+    },
+    {
+      "title": "Create a document properties header.",
+      "language": "swift",
+      "startTimeSeconds": 288,
+      "code": "let properties = UIDocumentProperties(url: document.fileURL)\n\nif let itemProvider = NSItemProvider(contentsOf: document.fileURL) {\n    properties.dragItemsProvider = { _ in\n        [UIDragItem(itemProvider: itemProvider)]\n    }\n    properties.activityViewControllerProvider = {\n        UIActivityViewController(activityItems: [itemProvider], applicationActivities: nil)\n    }\n}\n\nnavigationItem.documentProperties = properties"
+    },
+    {
+      "title": "Adopt rename title menu action and rename UI",
+      "language": "swift",
+      "startTimeSeconds": 396,
+      "code": "override func viewDidLoad() {\n    navigationItem.renameDelegate = self\n}\n\nfunc navigationItem(_ navigationItem: UINavigationItem, didEndRenamingWith title: String) {\n    // Rename document using methods appropriate to the app’s data model\n}"
+    },
+    {
+      "title": "Adopt system provided title menu actions.",
+      "language": "swift",
+      "startTimeSeconds": 429,
+      "code": "override func duplicate(_ sender: Any?) {\n    // Duplicate document\n}\n\noverride func move(_ sender: Any?) {\n    // Move document\n}\n\nfunc didOpenDocument() {\n    ...\n    navigationItem.titleMenuProvider = { [unowned self] suggested in\n        var children = suggested\n\n        ...\n\n        return UIMenu(children: children)\n    }\n}"
+    },
+    {
+      "title": "Add custom title menu actions",
+      "language": "swift",
+      "startTimeSeconds": 430,
+      "code": "func didOpenDocument() {\n    ...\n    navigationItem.titleMenuProvider = { [unowned self] suggested in\n        var children = suggested\n        children += [\n            UIMenu(title: \"Export…\", \n                   image: UIImage(systemName: \"arrow.up.forward.square\"), \n                   children: [\n                UIAction(title: \"HTML\", image: UIImage(systemName: \"safari\")) { ... },\n                UIAction(title: \"PDF\", image: UIImage(systemName: \"doc\")) { ... }\n            ])\n        ]\n        return UIMenu(children: children)\n    }\n}"
+    },
+    {
+      "title": "Enable customization for center items",
+      "language": "swift",
+      "startTimeSeconds": 575,
+      "code": "navigationItem.customizationIdentifier = \"editorView\""
+    },
+    {
+      "title": "Define a fixed center item group.",
+      "language": "swift",
+      "startTimeSeconds": 600,
+      "code": "UIBarButtonItem(title: \"Sync Scrolling\", ...).creatingFixedGroup()"
+    },
+    {
+      "title": "Define an optional (customizable) center item group.",
+      "language": "swift",
+      "startTimeSeconds": 623,
+      "code": "UIBarButtonItem(title: \"Add Link\", ...).creatingOptionalGroup(customizationIdentifier: \"addLink\")"
+    },
+    {
+      "title": "Define a non-default optional center item group.",
+      "language": "swift",
+      "startTimeSeconds": 656,
+      "code": "UIBarButtonItemGroup.optionalGroup(customizationIdentifier: \"textFormat\",\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t isInDefaultCustomization: false,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t representativeItem: UIBarButtonItem(title: \"Format\", ...)\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t items: [\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t      UIBarButtonItem(title: \"Bold\", ...),\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t      UIBarButtonItem(title: \"Italics\", ...),\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t      UIBarButtonItem(title: \"Underline\", ...),\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t ])"
+    },
+    {
+      "title": "Define a custom menu representation for a bar button item group.",
+      "language": "swift",
+      "startTimeSeconds": 796,
+      "code": "sliderGroup.menuRepresentation = UIMenu(title: \"Text Size\",\n                                        preferredElementSize: .small,\n                                        children: [\n    UIAction(title: \"Decrease\",\n             image: UIImage(systemName: \"minus.magnifyingglass\"),\n             attributes: .keepsMenuPresented) { ... },\n    UIAction(title: \"Reset\",\n             image: UIImage(systemName: \"1.magnifyingglass\"),\n             attributes: .keepsMenuPresented) { ... },\n    UIAction(title: \"Increase\",\n             image: UIImage(systemName: \"plus.magnifyingglass\"),\n             attributes: .keepsMenuPresented) { ... },\n])"
+    },
+    {
+      "title": "Enable multiple selection and keyboard focus in a UICollectionView.",
+      "language": "swift",
+      "startTimeSeconds": 910,
+      "code": "// Enable multiple selection\ncollectionView.allowsMultipleSelection = true\n\n// Enable keyboard focus\ncollectionView.allowsFocus = true\n\n// Allow keyboard focus to drive selection \ncollectionView.selectionFollowsFocus = true"
+    },
+    {
+      "title": "Add a primary action to UICollectionView items.",
+      "language": "swift",
+      "startTimeSeconds": 971,
+      "code": "func collectionView(_ collectionView: UICollectionView, \n                    performPrimaryActionForItemAt indexPath: IndexPath) {\n\n    // Scroll to the tapped element\n    if let element = dataSource.itemIdentifier(for: indexPath) {\n        delegate?.outline(self, didChoose: element)\n    }\n}"
+    },
+    {
+      "title": "Add a multi-item menu to UICollectionView.",
+      "language": "swift",
+      "startTimeSeconds": 1016,
+      "code": "func collectionView(_ collectionView: UICollectionView, \n                      contextMenuConfigurationForItemsAt indexPaths: [IndexPath], \n                      point: CGPoint) -> UIContextMenuConfiguration? {\n\n    if indexPaths.count == 0 {\n        // Construct an empty space menu\n    } \n    else if indexPaths.count == 1 {\n        // Construct a single item menu\n    } \n    else {\n        // Construct a multi-item menu\n    }\n}"
+    },
+    {
+      "title": "Enable Find and Replace in UITextView.",
+      "language": "swift",
+      "startTimeSeconds": 1092,
+      "code": "textView.isFindInteractionEnabled = true"
+    },
+    {
+      "title": "Add custom actions to UITextView's edit menu.",
+      "language": "swift",
+      "startTimeSeconds": 1114,
+      "code": "func textView(_ textView: UITextView,\n              editMenuForTextIn range: NSRange,\n              suggestedActions: [UIMenuElement]) -> UIMenu? {\n\n    if textView.selectedRange.length > 0 {\n        let customActions = [ UIAction(title: \"Hide\", ... ) { ... } ]\n        return UIMenu(children: customActions + suggestedActions)\n    }\n\n    return nil\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "collectionView(_:performPrimaryActionForItemAt:)",
+      "url": "https://developer.apple.com/documentation/UIKit/UICollectionViewDelegate/collectionView(_:performPrimaryActionForItemAt:)",
+      "type": "documentation",
+      "description": "Tells the delegate to perform the primary action for the cell at the specified index path.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UICollectionViewDelegate/collectionView(_:performPrimaryActionForItemAt:)",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UICollectionViewDelegate/collectionView(_:performPrimaryActionForItemAt:).json"
+    },
+    {
+      "title": "titleMenuProvider",
+      "url": "https://developer.apple.com/documentation/UIKit/UINavigationItem/titleMenuProvider",
+      "type": "documentation",
+      "description": "A closure that generates the navigation item’s title menu.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UINavigationItem/titleMenuProvider",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UINavigationItem/titleMenuProvider.json"
+    },
+    {
+      "title": "UINavigationItem.ItemStyle",
+      "url": "https://developer.apple.com/documentation/UIKit/UINavigationItem/ItemStyle",
+      "type": "documentation",
+      "description": "Constants that determine how the content of the navigation item lays out in the navigation bar.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UINavigationItem/ItemStyle",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UINavigationItem/ItemStyle.json"
+    },
+    {
+      "title": "collectionView(_:contextMenuConfigurationForItemsAt:point:)",
+      "url": "https://developer.apple.com/documentation/UIKit/UICollectionViewDelegate/collectionView(_:contextMenuConfigurationForItemsAt:point:)",
+      "type": "documentation",
+      "description": "Asks the delegate for a context-menu configuration for the items at the specified index paths.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UICollectionViewDelegate/collectionView(_:contextMenuConfigurationForItemsAt:point:)",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UICollectionViewDelegate/collectionView(_:contextMenuConfigurationForItemsAt:point:).json"
+    },
+    {
+      "title": "centerItemGroups",
+      "url": "https://developer.apple.com/documentation/UIKit/UINavigationItem/centerItemGroups",
+      "type": "documentation",
+      "description": "Customizable item groups to display in the center section of the navigation bar.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UINavigationItem/centerItemGroups",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UINavigationItem/centerItemGroups.json"
+    },
+    {
+      "title": "UINavigationItemRenameDelegate",
+      "url": "https://developer.apple.com/documentation/UIKit/UINavigationItemRenameDelegate-5j4ws",
+      "type": "documentation",
+      "description": "Methods an object implements to rename a navigation item.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UINavigationItemRenameDelegate-5j4ws",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UINavigationItemRenameDelegate-5j4ws.json"
+    },
+    {
+      "title": "UIDocumentProperties",
+      "url": "https://developer.apple.com/documentation/UIKit/UIDocumentProperties",
+      "type": "documentation",
+      "description": "Information that UIKit uses to generate a document header for a navigation item’s title menu.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UIDocumentProperties",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UIDocumentProperties.json"
+    },
+    {
+      "title": "Building a desktop-class iPad app",
+      "url": "https://developer.apple.com/documentation/UIKit/building-a-desktop-class-ipad-app",
+      "type": "documentation",
+      "description": "Optimize your iPad app’s user experience by adopting desktop-class enhancements for multitasking with Stage Manager, document interactions, text editing, search, and more.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/building-a-desktop-class-ipad-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/building-a-desktop-class-ipad-app.json"
+    },
+    {
+      "title": "Supporting desktop-class features in your iPad app",
+      "url": "https://developer.apple.com/documentation/UIKit/supporting-desktop-class-features-in-your-ipad-app",
+      "type": "samplecode",
+      "description": "Enhance your iPad app by adding desktop-class features and document support.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/supporting-desktop-class-features-in-your-ipad-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/supporting-desktop-class-features-in-your-ipad-app.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10070/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10070/metadata.json",
+    "readme": "sessions/wwdc2022/10070/README.md",
+    "transcript": "sessions/wwdc2022/10070/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10070/transcript.json"
+  }
+}

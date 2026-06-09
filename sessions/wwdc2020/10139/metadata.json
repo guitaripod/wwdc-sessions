@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10139",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10139,
+  "title": "Leverage enterprise identity and authentication",
+  "description": "Empower your organization with the right tools while protecting privacy and security. Discover Apple’s identity management tools for enterprise, and how they can help you create a smoother experience for users when signing in to devices, apps and websites. We’ll show you how to take advantage of Federated Authentication and Single Sign-on extensions, including changes to Apple’s built-in Kerberos extension. And explore our other platform tools for enterprise users, including macOS account types and Shared iPad for Business.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10139",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10139",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "authentication",
+    "enterprise",
+    "kerberos",
+    "mdm",
+    "sso",
+    "vpn"
+  ],
+  "topics": [
+    "App Store, Distribution & Marketing",
+    "Business & Education"
+  ],
+  "primaryTopic": "Business & Education",
+  "duration": 2106,
+  "hasTranscript": true,
+  "transcriptWordCount": 5716,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10139/5/EE9B8782-2114-4EDC-A2CF-C26D03BB5E54/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10139/5/EE9B8782-2114-4EDC-A2CF-C26D03BB5E54/wwdc2020_10139_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10139/5/EE9B8782-2114-4EDC-A2CF-C26D03BB5E54/wwdc2020_10139_hd.mp4",
+    "duration": 2106
+  },
+  "codeSnippets": [
+    {
+      "title": "Calling App Information",
+      "language": "swift",
+      "startTimeSeconds": 814,
+      "code": "var localizedCallerDisplayName: String\n\nvar callerTeamIdentifier: String\n\nvar isCallerManaged: Bool"
+    },
+    {
+      "title": "Profile Removal Operation",
+      "language": "swift",
+      "startTimeSeconds": 852,
+      "code": "// existing operations\nstatic let operationLogin: ASAuthorization.OpenIDOperation\nstatic let operationRefresh: ASAuthorization.OpenIDOperation\nstatic let operationLogout: ASAuthorization.OpenIDOperation\n\n//new this year\nstatic let configurationRemoved: ASAuthorizationProviderAuthorizationOperation"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Kerberos Single Sign-on Extension User Guide",
+      "url": "https://www.apple.com/business/docs/site/Kerberos_Single_Sign_on_Extension_User_Guide.pdf",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Apple School Manager User Guide",
+      "url": "https://support.apple.com/guide/apple-school-manager/",
+      "type": "documentation",
+      "description": "Apple School Manager User Guide"
+    },
+    {
+      "title": "Authentication Services",
+      "url": "https://developer.apple.com/documentation/AuthenticationServices",
+      "type": "documentation",
+      "description": "Make it easy for users to log into apps and services.",
+      "sosumiURL": "https://sosumi.ai/documentation/AuthenticationServices",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AuthenticationServices.json"
+    },
+    {
+      "title": "Apple Business Manager User Guide",
+      "url": "https://support.apple.com/guide/apple-business-manager/",
+      "type": "guide",
+      "description": "Apple Business Manager User Guide"
+    },
+    {
+      "title": "Apple Platform Deployment",
+      "url": "https://support.apple.com/guide/deployment/",
+      "type": "documentation",
+      "description": null
+    }
+  ],
+  "path": "sessions/wwdc2020/10139/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10139/metadata.json",
+    "readme": "sessions/wwdc2020/10139/README.md",
+    "transcript": "sessions/wwdc2020/10139/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10139/transcript.json"
+  }
+}

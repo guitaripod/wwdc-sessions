@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10134",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10134,
+  "title": "What’s new in App Intents",
+  "description": "Learn about improvements and all-new features with App Intents, and discover how this framework can help you expose your app’s functionality to Siri, Spotlight, Shortcuts, and more. We’ll show you how to make your entities more meaningful to the platform with the Transferable API, File Representations, new IntentFile APIs, and Spotlight Indexing, opening up powerful functionality in Siri and the Shortcuts app. Empower your intents to take people deep into your app with URL Representable Entities. Explore new techniques to model your entities and intents with new APIs for error handling and union values.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10134",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10134",
+  "type": "Video",
+  "publishedAt": "2024-06-11T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "app intents",
+    "machine learning"
+  ],
+  "topics": [
+    "App Services",
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1076,
+  "hasTranscript": true,
+  "transcriptWordCount": 2869,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10134/4/E85B53EC-BD7E-4A59-BCB5-4CECA88B76DE/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10134/4/E85B53EC-BD7E-4A59-BCB5-4CECA88B76DE/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10134/4/E85B53EC-BD7E-4A59-BCB5-4CECA88B76DE/downloads/wwdc2024-10134_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10134/4/E85B53EC-BD7E-4A59-BCB5-4CECA88B76DE/downloads/wwdc2024-10134_hd.mp4",
+    "duration": 1076
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Accelerating app interactions with App Intents",
+      "url": "https://developer.apple.com/documentation/AppIntents/AcceleratingAppInteractionsWithAppIntents",
+      "type": "samplecode",
+      "description": "Enable people to use your app’s features quickly through Siri, Spotlight, and Shortcuts.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents/AcceleratingAppInteractionsWithAppIntents",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents/AcceleratingAppInteractionsWithAppIntents.json"
+    },
+    {
+      "title": "Forum: Machine Learning and AI",
+      "url": "https://developer.apple.com/forums/topics/machine-learning-and-ai?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/machine-learning-and-ai?cid=vf-a-0010"
+    },
+    {
+      "title": "App Intents",
+      "url": "https://developer.apple.com/documentation/AppIntents",
+      "type": "documentation",
+      "description": "Make content and actions discoverable by Apple Intelligence and support system experiences like Siri, Spotlight, Shortcuts, and widgets.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents.json"
+    }
+  ],
+  "path": "sessions/wwdc2024/10134/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10134/metadata.json",
+    "readme": "sessions/wwdc2024/10134/README.md",
+    "transcript": "sessions/wwdc2024/10134/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10134/transcript.json"
+  }
+}

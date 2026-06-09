@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-610",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 610,
+  "title": "Building Collaborative AR Experiences",
+  "description": "With iOS 13, ARKit and RealityKit enable apps to establish shared AR experiences faster and easier than ever. Understand how collaborative sessions allow multiple devices to build a combined world map and share AR anchors and updates in real-time. Learn how to incorporate collaborative sessions into ARKit-based apps, then roll into SwiftStrike, an engaging and immersive multiplayer AR game built using RealityKit and Swift.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/610",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/610",
+  "type": "Session",
+  "publishedAt": "2019-06-06T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 2117,
+  "hasTranscript": true,
+  "transcriptWordCount": 5308,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/610bh5ws7sw7lxoo/610/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/610bh5ws7sw7lxoo/610/610_sd_building_collaborative_ar_experiences.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/610bh5ws7sw7lxoo/610/610_hd_building_collaborative_ar_experiences.mp4",
+    "duration": 2117
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Creating a collaborative session",
+      "url": "https://developer.apple.com/documentation/ARKit/creating-a-collaborative-session",
+      "type": "samplecode",
+      "description": "Enable nearby devices to share an AR experience by using a peer-to-peer multiuser strategy.",
+      "sosumiURL": "https://sosumi.ai/documentation/ARKit/creating-a-collaborative-session",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ARKit/creating-a-collaborative-session.json"
+    },
+    {
+      "title": "RealityKit",
+      "url": "https://developer.apple.com/documentation/RealityKit",
+      "type": "documentation",
+      "description": "Simulate and render 3D content for use in your augmented reality apps.",
+      "sosumiURL": "https://sosumi.ai/documentation/RealityKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/RealityKit.json"
+    },
+    {
+      "title": "ARKit",
+      "url": "https://developer.apple.com/documentation/ARKit",
+      "type": "documentation",
+      "description": "Integrate hardware sensing features to produce augmented reality apps and games.",
+      "sosumiURL": "https://sosumi.ai/documentation/ARKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ARKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/610/",
+  "files": {
+    "metadata": "sessions/wwdc2019/610/metadata.json",
+    "readme": "sessions/wwdc2019/610/README.md",
+    "transcript": "sessions/wwdc2019/610/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/610/transcript.json"
+  }
+}

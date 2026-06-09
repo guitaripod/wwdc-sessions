@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2026-358",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 358,
+  "title": "Make your game great with touch",
+  "description": "Dive deeper into the techniques you can use to create compelling touch experiences for your games. We’ll share expert insights from indie to AAA game development, explore best practices for intuitive touch controls, and show you how to take advantage of Apple technologies like Touch Controller framework and Metal for great performance. ",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/358",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/358",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1463,
+  "hasTranscript": true,
+  "transcriptWordCount": 3094,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/358/4/fdd21d54-a233-49d4-8d00-4dc51284515d/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/358/4/fdd21d54-a233-49d4-8d00-4dc51284515d/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/358/4/fdd21d54-a233-49d4-8d00-4dc51284515d/downloads/wwdc2026-358_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/358/4/fdd21d54-a233-49d4-8d00-4dc51284515d/downloads/wwdc2026-358_hd.mp4",
+    "duration": 1463
+  },
+  "codeSnippets": [
+    {
+      "title": "GCController polling vs. change handlers",
+      "language": "swift",
+      "startTimeSeconds": 124,
+      "code": "// Polling\nif (button.isPressed) {\n    // ...\n}\n\n// Change handlers\npressedInput.pressedDidChangeHandler = { (element: any GCPhysicalInputElement,\n                                           input: any GCPressedStateInput,\n                                           pressed: Bool)\n    // ...\n}"
+    },
+    {
+      "title": "Set up a TCTouchController",
+      "language": "swift",
+      "startTimeSeconds": 194,
+      "code": "// Set up a TCTouchController\nprivate(set) var touchController: TCTouchController?\n\nlet descriptor = TCTouchControllerDescriptor(mtkView: mtkView)\nif TCTouchController.isSupported {\n    touchController = TCTouchController(descriptor: descriptor)\n}\ntouchController?.connect()\ntouchController?.render(using: renderEncoder)\n\noverride func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {\n    for touch in touches {\n        touchControls.handleTouchBegan(at: touch.location(in: view), index: touch.hash)\n    }\n}\n\nbuttonA?.valueChangedHandler = { (_ button: GCControllerButtonInput, _ value: Float,\n                                  _ pressed: Bool) in\n    // ...\n}"
+    },
+    {
+      "title": "Create a standard circular button B",
+      "language": "swift",
+      "startTimeSeconds": 513,
+      "code": "// Create a standard circular button B\nlet buttonBDesc = TCButtonDescriptor()\nbuttonBDesc.label = TCControlLabel.buttonB\nbuttonBDesc.anchor = .bottomRight\nbuttonBDesc.offset = adjustedOffset(CGPoint(x: -35, y: -106), for: buttonBDesc.anchor)\nbuttonBDesc.contents = .buttonContents(forSystemImageNamed: \"b.circle\",\n                                       size: buttonBDesc.size, shape: .circle,\n                                       controller: touchController)\n// Set other properties ...\ntouchController.addButton(descriptor: buttonBDesc)\n\nfunc adjustedOffset(_ offset: CGPoint, for anchor: TCControlLayoutAnchor) -> CGPoint {\n    // Adjust offset for other anchors ...\n    case .bottomRight:\n        x -= safeArea.right\n        y -= safeArea.bottom\n}"
+    },
+    {
+      "title": "Change icon image",
+      "language": "swift",
+      "startTimeSeconds": 648,
+      "code": "// Change icon image\nbuttonBDesc.contents = .buttonContents(forSystemImageNamed: \"figure.fencing\",\n                                       size: buttonBDesc.size,\n                                       shape: .circle,\n                                       controller: touchController)"
+    },
+    {
+      "title": "Update contents for button B based on context",
+      "language": "swift",
+      "startTimeSeconds": 711,
+      "code": "// Update contents for button B based on context\nfunc setButtonBContents(symbolName: String) {\n    for button in touchController.buttons {\n        if button.label == TCControlLabel.buttonB {\n            button.contents = .buttonContents(forSystemImageNamed: symbolName, size: buttonSize,\n                                              shape: .circle, controller: touchController)\n        }\n    }\n}\n\nfunc cyclePower() {\n    // Get the current power type ...\n    switch currentPower {\n        case .strike:       touchControls?.setButtonBContents(symbolName: \"figure.fencing\")\n        case .fireball:     touchControls?.setButtonBContents(symbolName: \"flame.fill\")\n        case .waterBlaster: touchControls?.setButtonBContents(symbolName: \"drop.fill\")\n    }\n}"
+    },
+    {
+      "title": "Hide left thumbstick when not touched",
+      "language": "swift",
+      "startTimeSeconds": 781,
+      "code": "// Hide left thumbstick when it is not touched\nlet leftStickDesc = TCThumbstickDescriptor()\nleftStickDesc.hidesWhenNotPressed = true\n// Set other properties ...\ntouchController.addThumbstick(descriptor: leftStickDesc)"
+    },
+    {
+      "title": "Show/hide the pick-up button",
+      "language": "swift",
+      "startTimeSeconds": 799,
+      "code": "// Show pickup button when there's an item nearby\nfunc showPickupButton(at projectedPosition: CGPoint) {\n    // Calculate the position(ptX, ptY) for pickup button ...\n    descriptor.offset = CGPoint(x: ptX, y: ptY)\n    // Set other properties ...\n    touchController.addButton(descriptor: descriptor)\n}\n\nfunc hidePickupButton() {\n    for button in touchController.buttons {\n        if button.label == TCControlLabel.buttonY {\n            touchController.removeControl(button)\n        }\n    }\n}"
+    },
+    {
+      "title": "Show power options as touch controls",
+      "language": "swift",
+      "startTimeSeconds": 836,
+      "code": "// Show power options as touch controls\nbuttonX?.pressedChangedHandler = { (_ button: GCControllerButtonInput, _ value: Float,\n                                    _ pressed: Bool) -> Void in\n    if pressed {\n        self.openPowerWheel()\n    }\n}\n\nfunc openPowerWheel() {\n    touchControls?.showPowerWheelButtons(fireballCount: fireballCount, has: hasWaterBlaster)\n    wirePowerWheelHandlers()\n    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in\n        guard let self = self, self.powerWheelActive else { return }\n        self.closePowerWheel()\n    }\n}"
+    },
+    {
+      "title": "Use the left half of the screen for character movement",
+      "language": "swift",
+      "startTimeSeconds": 934,
+      "code": "// Use the left half of the screen for character movement\nlet leftStickDesc = TCThumbstickDescriptor()\nleftStickDesc.colliderShape = .leftSide // Don't set as .circle\n// Set other properties ...\ntouchController.addThumbstick(descriptor: leftStickDesc)"
+    },
+    {
+      "title": "Calculate thumbstick tilt magnitude to trigger sprint",
+      "language": "swift",
+      "startTimeSeconds": 999,
+      "code": "// Calculate left thumbstick's tilt magnitude to trigger sprint\nfunc pollInput() {\n    if let gamePad = gameController.extendedGamepad {\n        let gamePadLeft = gamePad.leftThumbstick\n        var moveInput = simd_make_float2(gamePadLeft.xAxis.value, -gamePadLeft.yAxis.value)\n        let magnitude = simd_length(moveInput)\n        if magnitude > 0.8 {\n            self.runModifier = 1.3\n        }\n        self.characterDirection = moveInput\n    }\n}"
+    },
+    {
+      "title": "Replace right thumbstick with a touchpad",
+      "language": "swift",
+      "startTimeSeconds": 1056,
+      "code": "// Replace right thumbstick with touchpad\nlet touchpadDesc = TCTouchpadDescriptor()\ntouchpadDesc.label = TCControlLabel.rightThumbstick\ntouchpadDesc.colliderShape = .rightSide\ntouchpadDesc.reportsRelativeValues = true\n// Set other properties ...\ntouchController.addTouchpad(descriptor: touchpadDesc)"
+    },
+    {
+      "title": "Collapse two QTE buttons into one",
+      "language": "swift",
+      "startTimeSeconds": 1170,
+      "code": "// Collapse 2 QTE buttons into 1 single button\nfunc setupControls() {\n    let desc = TCButtonDescriptor()\n    desc.label = TCControlLabel(name: \"escape_button\", role: .button)\n    // Set up other properties ...\n    touchController.addButton(descriptor: desc)\n}\n\nfunc showEscapeButton() {\n    // Find escape button in touchController ...\n    escapeButton.isEnabled = true\n}\n\nfunc hideEscapeButton() {\n    // Find escape button in touchController ...\n    escapeButton.isEnabled = false\n}"
+    },
+    {
+      "title": "Use button B to aim, move, and release power",
+      "language": "swift",
+      "startTimeSeconds": 1228,
+      "code": "// Use button B to aim, move, and release power\nbuttonB?.valueChangedHandler = { (_ button: GCControllerButtonInput, _ value: Float,\n                                  _ pressed: Bool) -> Void in\n    self.releasePower(pressed: pressed)\n}\n\noverride func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {\n    for touch in touches {\n        let point = touch.location(in: metalView)\n        // Handle touch input ...\n        if let gc = gameController, gc.isAiming {\n            let prev = touch.previousLocation(in: metalView)\n            gc.aimTouchDelta += simd_float2(Float(point.x - prev.x), Float(point.y - prev.y))\n        }\n    }\n}"
+    },
+    {
+      "title": "Add a halo effect with custom TCControlContents",
+      "language": "swift",
+      "startTimeSeconds": 1312,
+      "code": "// Add a halo effect around left thumbstick with customized TCControlContents\nlet haloLayer = TCControlImage(texture: haloTexture, size: haloSize, highlight: nil,\n                               offset: .zero, tintColor: tint)\nlet normalBgImages = TCControlContents.thumbstickStickBackgroundContents(size: bgSize,\n                                                                         controller: controller).images\nhaloThumbstickBg = TCControlContents(images: [haloLayer] + normalBgImages)\nthumbstick.backgroundContents = active ? haloThumbstickBg : normalThumbstickBg"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2026/358/",
+  "files": {
+    "metadata": "sessions/wwdc2026/358/metadata.json",
+    "readme": "sessions/wwdc2026/358/README.md",
+    "transcript": "sessions/wwdc2026/358/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/358/transcript.json"
+  }
+}

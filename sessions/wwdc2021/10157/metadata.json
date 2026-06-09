@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10157",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10157,
+  "title": "Discover Metal debugging, profiling, and asset creation tools",
+  "description": "Explore how Xcode can help you take your Metal debugging, profiling and asset creation workflows to the next level. Discover the latest tools for ray tracing and GPU profiling, and learn about Metal Debugger workflows. We’ll also show you how to use the Texture Converter tool, which supports all modern GPU texture formats and can easily integrate into your multi-platform asset creation pipelines.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10157",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10157",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games",
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 2393,
+  "hasTranscript": true,
+  "transcriptWordCount": 5977,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10157/5/7C79C8DE-984A-4BD6-904D-3FCDFF5432CC/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10157/5/7C79C8DE-984A-4BD6-904D-3FCDFF5432CC/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10157/5/7C79C8DE-984A-4BD6-904D-3FCDFF5432CC/downloads/wwdc2021-10157_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10157/5/7C79C8DE-984A-4BD6-904D-3FCDFF5432CC/downloads/wwdc2021-10157_hd.mp4",
+    "duration": 2393
+  },
+  "codeSnippets": [
+    {
+      "title": "RGBM Encoding Pseudocode",
+      "language": "swift",
+      "startTimeSeconds": 1671,
+      "code": "float4 EncodeRGBM(float3 in)\n{ \n    float4 rgbm; \n    rgbm.a = max3(in.r, in.g, in.b) / RGBM_Range;\n    rgbm.rgb = in / (rgbm.a * RGBM_Range);\n    return rgbm;\n}"
+    },
+    {
+      "title": "RGBM Decoding Pseudocode",
+      "language": "swift",
+      "startTimeSeconds": 1721,
+      "code": "float3 DecodeRGBM(float4 sample)\n{ \n    const float RGBM_Range = 6.0f;\n    float scale = sample.a * RGBM_Range;\n    return sample.rgb * scale;\n}"
+    },
+    {
+      "title": "MetalTextureSwizzles",
+      "language": "objectivec",
+      "startTimeSeconds": 1855,
+      "code": "// Remap the X and Y channels to red and green channels for normal maps \ncompressed with ASTC.\n\nMTLTextureDescriptor* descriptor = [[MTLTextureDescriptor alloc] init];\n\nMTLTextureSwizzle r = MTLTextureSwizzleRed;\nMTLTextureSwizzle g = MTLTextureSwizzleAlpha;\nMTLTextureSwizzle b = MTLTextureSwizzleZero;\nMTLTextureSwizzle a = MTLTextureSwizzleZero;\n\ndescriptor.swizzle = MTLTextureSwizzleChannelsMake( r, g, b, a );"
+    },
+    {
+      "title": "ReconstructNormal",
+      "language": "objectivec",
+      "startTimeSeconds": 1915,
+      "code": "// Reconstruct z-axis from normal sample in shader code.\n\nfloat3 ReconstructNormal(float2 sample)\n{\n    float3 normal;\n\n    normal.xy = sample.xy * 2.0f - 1.0f;\n    normal.z  = sqrt( saturate( 1.0f - dot( normal.xy, normal.xy ) ) );\n\n    return normal;\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Metal Developer Tools on Windows",
+      "url": "https://developer.apple.com/download/more/?=Metal%20Developer%20Tools%20for%20Windows",
+      "type": "download",
+      "description": "Metal Developer Tools on Windows",
+      "sosumiURL": "https://sosumi.ai/download/more/?=Metal%20Developer%20Tools%20for%20Windows"
+    },
+    {
+      "title": "Debugging the shaders within a draw command or compute dispatch",
+      "url": "https://developer.apple.com/documentation/Xcode/Debugging-the-shaders-within-a-draw-command-or-compute-dispatch",
+      "type": "documentation",
+      "description": "Identify and fix problematic shaders in your app using the shader debugger.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/Debugging-the-shaders-within-a-draw-command-or-compute-dispatch",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/Debugging-the-shaders-within-a-draw-command-or-compute-dispatch.json"
+    },
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10157/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10157/metadata.json",
+    "readme": "sessions/wwdc2021/10157/README.md",
+    "transcript": "sessions/wwdc2021/10157/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10157/transcript.json"
+  }
+}

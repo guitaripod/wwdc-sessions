@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-110360",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 110360,
+  "title": "Use Xcode for server-side development",
+  "description": "Discover how you can create, build, and deploy a Swift server app alongside your pre-existing Xcode projects within the same workspace. We'll show you how to create your own local app and test endpoints using Xcode, and explore how you can structure and share code between server and client apps to ease your development process",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/110360",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/110360",
+  "type": "Video",
+  "publishedAt": "2022-06-10T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Swift",
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 1055,
+  "hasTranscript": true,
+  "transcriptWordCount": 2533,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110360/3/95EF8495-F291-49FD-8958-276AC76C222D/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110360/3/95EF8495-F291-49FD-8958-276AC76C222D/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110360/3/95EF8495-F291-49FD-8958-276AC76C222D/downloads/wwdc2022-110360_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110360/3/95EF8495-F291-49FD-8958-276AC76C222D/downloads/wwdc2022-110360_hd.mp4",
+    "duration": 1055
+  },
+  "codeSnippets": [
+    {
+      "title": "Simple, server package manifest",
+      "language": "swift",
+      "startTimeSeconds": 96,
+      "code": "// swift-tools-version: 5.7\n\nimport PackageDescription\n\nlet package = Package(\n    name: \"MyServer\",\n    platforms: [.macOS(\"12.0\")],\n    products: [\n        .executable(\n            name: \"MyServer\",\n            targets: [\"MyServer\"]),\n    ],\n    dependencies: [\n        .package(url: \"https://github.com/vapor/vapor.git\", .upToNextMajor(from: \"4.0.0\")),\n    ],\n    targets: [\n        .executableTarget(\n            name: \"MyServer\",\n            dependencies: [\n                .product(name: \"Vapor\", package: \"vapor\")\n            ]),\n        .testTarget(\n            name: \"MyServerTests\",\n            dependencies: [\"MyServer\"]),\n    ]\n)"
+    },
+    {
+      "title": "Simple, server code",
+      "language": "swift",
+      "startTimeSeconds": 120,
+      "code": "import Vapor\n\n@main\npublic struct MyServer {\n    public static func main() async throws {\n        let webapp = Application()\n        webapp.get(\"greet\", use: Self.greet)\n        webapp.post(\"echo\", use: Self.echo)\n        try webapp.run()\n    }\n\n    static func greet(request: Request) async throws -> String {\n        return \"Hello from Swift Server\"\n    }\n\n    static func echo(request: Request) async throws -> String {\n        if let body = request.body.string {\n            return body\n        }\n        return \"\"\n    }\n}"
+    },
+    {
+      "title": "Using curl to test the local server",
+      "language": "bash",
+      "startTimeSeconds": 222,
+      "code": "curl http://127.0.0.1:8080/greet; echo\ncurl http://127.0.0.1:8080/echo --data \"Hello from WWDC 2022\"; echo"
+    },
+    {
+      "title": "Simple, iOS app server abstraction",
+      "language": "swift",
+      "startTimeSeconds": 250,
+      "code": "import Foundation\n\nstruct MyServerClient {\n    let baseURL = URL(string: \"http://127.0.0.1:8080\")!\n\n    func greet() async throws -> String {\n        let url = baseURL.appendingPathComponent(\"greet\")\n        let (data, _) = try await URLSession.shared.data(for: URLRequest(url: url))\n        guard let responseBody = String(data: data, encoding: .utf8) else {\n            throw Errors.invalidResponseEncoding\n        }\n        return responseBody\n    }\n\n    enum Errors: Error {\n        case invalidResponseEncoding\n    }\n}"
+    },
+    {
+      "title": "Simple, iOS app server call SwiftUI integration",
+      "language": "swift",
+      "startTimeSeconds": 300,
+      "code": "import SwiftUI\n\nstruct ContentView: View {\n    @State var serverGreeting = \"\"\n    var body: some View {\n        Text(serverGreeting)\n            .padding()\n            .task {\n                do {\n                    let myServerClient = MyServerClient()\n                    self.serverGreeting = try await myServerClient.greet()\n                } catch {\n                    self.serverGreeting = String(describing: error)\n                }\n            }\n    }\n}\n\nstruct ContentView_Previews: PreviewProvider {\n    static var previews: some View {\n        ContentView()\n    }\n}"
+    },
+    {
+      "title": "Food truck, basic server",
+      "language": "swift",
+      "startTimeSeconds": 591,
+      "code": "import Foundation\nimport Vapor\n\n@main\nstruct FoodTruckServerBootstrap {\n    public static func main() async throws {\n        // initialize the server\n        let foodTruckServer = FoodTruckServer()\n        // initialize the web framework and configure the http routes\n        let webapp = Application()\n        webapp.get(\"donuts\", use: foodTruckServer.listDonuts)\n        try webapp.run()\n    }\n}\n\nstruct FoodTruckServer {\n    private let storage = Storage()\n\n    func listDonuts(request: Request) async -> Response.Donuts {\n        let donuts = self.storage.listDonuts()\n        return Response.Donuts(donuts: donuts)\n    }\n\n    enum Response {\n        struct Donuts: Content {\n            var donuts: [Model.Donut]\n        }\n    }\n}\n\nstruct Storage {\n    var donuts = [Model.Donut]()\n\n    func listDonuts() -> [Model.Donut] {\n        return self.donuts\n    }\n}\n\nenum Model {\n    struct Donut: Codable {\n        var id: Int\n        var name: String\n        var date: Date\n        var dough: Dough\n        var glaze: Glaze?\n        var topping: Topping?\n    }\n\n    struct Dough: Codable {\n        var name: String\n        var description: String\n        var flavors: FlavorProfile\n    }\n\n    struct Glaze: Codable {\n        var name: String\n        var description: String\n        var flavors: FlavorProfile\n    }\n\n    struct Topping: Codable {\n        var name: String\n        var description: String\n        var flavors: FlavorProfile\n    }\n\n    public struct FlavorProfile: Codable {\n        var salty: Int?\n        var sweet: Int?\n        var bitter: Int?\n        var sour: Int?\n        var savory: Int?\n        var spicy: Int?\n    }\n}"
+    },
+    {
+      "title": "Food truck, server donuts menu",
+      "language": "json",
+      "startTimeSeconds": 738,
+      "code": "[\n  {\n      \"id\": 0,\n      \"name\": \"Deep Space\",\n      \"date\": \"2022-04-20T00:00:00Z\",\n      \"dough\": {\n          \"name\": \"Space Strawberry\",\n          \"description\": \"The Space Strawberry plant grows its fruit as ready-to-pick donut dough.\",\n          \"flavors\": {\n              \"sweet\": 3,\n              \"savory\": 2\n          }\n      },\n      \"glaze\": {\n          \"name\": \"Delta Quadrant Slice\",\n          \"description\": \"Locally sourced, wormhole-to-table slice of the delta quadrant of the galaxy. Now with less hydrogen!\",\n          \"flavors\": {\n              \"salty\": 1,\n              \"sour\": 3,\n              \"spicy\": 1\n          }\n      },\n      \"topping\": {\n          \"name\": \"Rainbow Sprinkles\",\n          \"description\": \"Cultivated from the many naturally occurring rainbows on various ocean planets.\",\n          \"flavors\": {\n              \"salty\": 2,\n              \"sweet\": 2,\n              \"sour\": 1\n          }\n      }\n  },\n  {\n      \"id\": 1,\n      \"name\": \"Chocolate II\",\n      \"date\": \"2022-04-20T00:00:00Z\",\n      \"dough\": {\n          \"name\": \"Chocolate II\",\n          \"description\": \"When Harold Chocolate II discovered this substance in 3028, it finally unlocked the ability of interstellar travel.\",\n          \"flavors\": {\n              \"salty\": 1,\n              \"sweet\": 3,\n              \"bitter\": 1,\n              \"sour\": -1,\n              \"savory\": 1\n          }\n      },\n      \"glaze\": {\n          \"name\": \"Chocolate II\",\n          \"description\": \"A thin layer of melted Chocolate II, flash frozen to fit the standard Space Donut shape. Also useful for cleaning starship engines.\",\n          \"flavors\": {\n              \"salty\": 1,\n              \"sweet\": 2,\n              \"bitter\": 1,\n              \"sour\": -1,\n              \"savory\": 2\n          }\n      },\n      \"topping\": {\n          \"name\": \"Chocolate II\",\n          \"description\": \"Particles of Chocolate II moulded into a sprinkle fashion. Do not feed to space whales.\",\n          \"flavors\": {\n              \"salty\": 1,\n              \"sweet\": 2,\n              \"bitter\": 1,\n              \"sour\": -1,\n              \"savory\": 2\n          }\n      }\n  },\n  {\n      \"id\": 2,\n      \"name\": \"Coffee Caramel\",\n      \"date\": \"2022-04-20T00:00:00Z\",\n      \"dough\": {\n          \"name\": \"Hardened Coffee\",\n          \"description\": \"Unlike other donut sellers, our coffee dough is simply a lot of coffee compressed into an ultra dense torus.\",\n          \"flavors\": {\n              \"sweet\": -2,\n              \"bitter\": 4,\n              \"sour\": 2,\n              \"spicy\": 1\n          }\n      },\n      \"glaze\": {\n          \"name\": \"Caramel\",\n          \"description\": \"Some good old fashioned Earth caramel.\",\n          \"flavors\": {\n              \"salty\": 2,\n              \"sweet\": 3,\n              \"sour\": -1,\n              \"savory\": 1\n          }\n      },\n      \"topping\": {\n          \"name\": \"Nebula Bits\",\n          \"description\": \"Scooped up by starships traveling through a sugar nebula.\",\n          \"flavors\": {\n              \"sweet\": 4,\n              \"spicy\": 1\n          }\n      }\n  }\n]"
+    },
+    {
+      "title": "Food truck, server package manifest",
+      "language": "swift",
+      "startTimeSeconds": 743,
+      "code": "// swift-tools-version: 5.7\n\nimport PackageDescription\n\nlet package = Package(\n    name: \"FoodTruckServer\",\n    platforms: [.macOS(\"12.0\")],\n    products: [\n        .executable(\n            name: \"FoodTruckServer\",\n            targets: [\"FoodTruckServer\"]),\n    ],\n    dependencies: [\n        .package(url: \"https://github.com/vapor/vapor.git\", .upToNextMajor(from: \"4.0.0\")),\n    ],\n    targets: [\n        .executableTarget(\n            name: \"FoodTruckServer\",\n            dependencies: [\n                .product(name: \"Vapor\", package: \"vapor\")\n            ],\n            resources: [\n                .copy(\"menu.json\")\n            ]\n        ),\n        .testTarget(\n            name: \"FoodTruckServerTests\",\n            dependencies: [\"FoodTruckServer\"]),\n    ]\n)"
+    },
+    {
+      "title": "Food truck, server with integrated storage",
+      "language": "swift",
+      "startTimeSeconds": 750,
+      "code": "import Foundation\nimport Vapor\n\n@main\nstruct FoodTruckServerBootstrap {\n    public static func main() async throws {\n        // initialize the server\n        let foodTruckServer = FoodTruckServer()\n        try await foodTruckServer.bootstrap()\n        // initialize the web framework and configure the http routes\n        let webapp = Application()\n        webapp.get(\"donuts\", use: foodTruckServer.listDonuts)\n        try webapp.run()\n    }\n}\n\nstruct FoodTruckServer {\n    private let storage = Storage()\n\n    func bootstrap() async throws {\n        try await self.storage.load()\n    }\n\n    func listDonuts(request: Request) async -> Response.Donuts {\n        let donuts = await self.storage.listDonuts()\n        return Response.Donuts(donuts: donuts)\n    }\n\n    enum Response {\n        struct Donuts: Content {\n            var donuts: [Model.Donut]\n        }\n    }\n}\n\nactor Storage {\n    let jsonDecoder: JSONDecoder\n    var donuts = [Model.Donut]()\n\n    init() {\n        self.jsonDecoder = JSONDecoder()\n        self.jsonDecoder.dateDecodingStrategy = .iso8601\n    }\n\n    func load() throws {\n        guard let path = Bundle.module.path(forResource: \"menu\", ofType: \"json\") else {\n            throw Errors.menuFileNotFound\n        }\n        guard let data = FileManager.default.contents(atPath: path) else {\n            throw Errors.failedLoadingMenu\n        }\n\n        self.donuts = try self.jsonDecoder.decode([Model.Donut].self, from: data)\n    }\n\n    func listDonuts() -> [Model.Donut] {\n        return self.donuts\n    }\n\n    enum Errors: Error {\n        case menuFileNotFound\n        case failedLoadingMenu\n    }\n}\n\nenum Model {\n    struct Donut: Codable {\n        var id: Int\n        var name: String\n        var date: Date\n        var dough: Dough\n        var glaze: Glaze?\n        var topping: Topping?\n    }\n\n    struct Dough: Codable {\n        var name: String\n        var description: String\n        var flavors: FlavorProfile\n    }\n\n    struct Glaze: Codable {\n        var name: String\n        var description: String\n        var flavors: FlavorProfile\n    }\n\n    struct Topping: Codable {\n        var name: String\n        var description: String\n        var flavors: FlavorProfile\n    }\n\n    public struct FlavorProfile: Codable {\n        var salty: Int?\n        var sweet: Int?\n        var bitter: Int?\n        var sour: Int?\n        var savory: Int?\n        var spicy: Int?\n    }\n}"
+    },
+    {
+      "title": "Using curl and jq to test the local server",
+      "language": "bash",
+      "startTimeSeconds": 882,
+      "code": "curl http://127.0.0.1:8080/donuts | jq .\ncurl http://127.0.0.1:8080/donuts | jq '.donuts[] .name'"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Swift on Server",
+      "url": "https://www.swift.org/server/",
+      "type": "guide",
+      "description": null
+    }
+  ],
+  "path": "sessions/wwdc2022/110360/",
+  "files": {
+    "metadata": "sessions/wwdc2022/110360/metadata.json",
+    "readme": "sessions/wwdc2022/110360/README.md",
+    "transcript": "sessions/wwdc2022/110360/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/110360/transcript.json"
+  }
+}

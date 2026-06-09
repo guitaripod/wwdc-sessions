@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10291",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10291,
+  "title": "Explore the catalog with the Apple Music API",
+  "description": "Discover how you can use the Apple Music API to fetch music catalog metadata for your app. Explore the latest updates to the API as well as some advanced techniques for shaping your requests and highlighting the right metadata for a project.\n\nTo get the most out of this session, we recommend some familiarity with the Apple Music API.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10291",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10291",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "apple music",
+    "music",
+    "musickit",
+    "musickitjs"
+  ],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 470,
+  "hasTranscript": true,
+  "transcriptWordCount": 1177,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10291/3/F3E513AE-7D59-4677-BA86-19148C5DE3E4/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10291/3/F3E513AE-7D59-4677-BA86-19148C5DE3E4/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10291/3/F3E513AE-7D59-4677-BA86-19148C5DE3E4/downloads/wwdc2021-10291_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10291/3/F3E513AE-7D59-4677-BA86-19148C5DE3E4/downloads/wwdc2021-10291_hd.mp4",
+    "duration": 470
+  },
+  "codeSnippets": [
+    {
+      "title": "Search Suggestions Terms Request",
+      "language": "json",
+      "startTimeSeconds": 85,
+      "code": "/v1/catalog/us/search/suggestions?term=taylor&kinds=terms"
+    },
+    {
+      "title": "Search Suggestions Top Results Request",
+      "language": "json",
+      "startTimeSeconds": 129,
+      "code": "/v1/catalog/us/search/suggestions?term=taylor&kinds=topResults&types=artists,songs"
+    },
+    {
+      "title": "Search Suggestions Relate Albums Request",
+      "language": "json",
+      "startTimeSeconds": 227,
+      "code": "/v1/catalog/us/search/suggestions?term=taylor&kinds=topResults&types=artists,albums,songs&relate[songs]=albums"
+    },
+    {
+      "title": "Search Suggestions Extend artistUrl Request",
+      "language": "json",
+      "startTimeSeconds": 303,
+      "code": "/v1/catalog/us/search/suggestions?term=taylor&kinds=topResults&types=artists,albums,songs&relate[songs]=albums&extend[songs]=artistUrl"
+    },
+    {
+      "title": "Artist Top Songs View Request",
+      "language": "json",
+      "startTimeSeconds": 376,
+      "code": "/v1/catalog/us/artists/159260351?views=top-songs"
+    },
+    {
+      "title": "Top Charts Request",
+      "language": "json",
+      "startTimeSeconds": 419,
+      "code": "/v1/catalog/us/charts?types=playlists&with=dailyGlobalTopCharts,cityCharts"
+    }
+  ],
+  "resources": [
+    {
+      "title": "MusicKit",
+      "url": "https://developer.apple.com/musickit/",
+      "type": "documentation",
+      "description": "MusicKit lets users play Apple Music and their local music library natively from your apps and now websites. When a user provides permission to their Apple Music account, your app can create playlists, add songs to their library, and play any of the millions of songs in the Apple Music catalog.",
+      "sosumiURL": "https://sosumi.ai/musickit/"
+    }
+  ],
+  "path": "sessions/wwdc2021/10291/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10291/metadata.json",
+    "readme": "sessions/wwdc2021/10291/README.md",
+    "transcript": "sessions/wwdc2021/10291/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10291/transcript.json"
+  }
+}

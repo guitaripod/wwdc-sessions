@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10166",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10166,
+  "title": "Build compelling spatial photo and video experiences",
+  "description": "Learn how to adopt spatial photos and videos in your apps. Explore the different types of stereoscopic media and find out how to capture spatial videos in your iOS app on iPhone 15 Pro. Discover the various ways to detect and present spatial media, including the new QuickLook Preview Application API in visionOS. And take a deep dive into the metadata and stereo concepts that make a photo or video spatial.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10166",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10166",
+  "type": "Video",
+  "publishedAt": "2024-06-10T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "audio &amp; video",
+    "camera",
+    "machine learning",
+    "photokit",
+    "spatial photos and videos"
+  ],
+  "topics": [
+    "Photos & Camera",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 1312,
+  "hasTranscript": true,
+  "transcriptWordCount": 3726,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10166/5/6FC98319-6431-448D-9962-370826A7F6FC/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10166/5/6FC98319-6431-448D-9962-370826A7F6FC/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10166/5/6FC98319-6431-448D-9962-370826A7F6FC/downloads/wwdc2024-10166_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10166/5/6FC98319-6431-448D-9962-370826A7F6FC/downloads/wwdc2024-10166_hd.mp4",
+    "duration": 1312
+  },
+  "codeSnippets": [
+    {
+      "title": "Spatial video capture on iPhone 15 Pro",
+      "language": "swift",
+      "startTimeSeconds": 379,
+      "code": "class CaptureManager {\n    var session: AVCaptureSession!\n    var input: AVCaptureDeviceInput!\n    var output: AVCaptureMovieFileOutput!\n\n    func setupSession() throws -> Bool {\n        session = AVCaptureSession()\n        session.beginConfiguration()\n\n        guard let videoDevice = AVCaptureDevice.default(\n            .builtInDualWideCamera, for: .video, position: .back\n        ) else { return false }\n\n        var foundSpatialFormat = false\n        for format in videoDevice.formats {\n            if format.isSpatialVideoCaptureSupported {\n                try videoDevice.lockForConfiguration()\n                videoDevice.activeFormat = format\n                videoDevice.unlockForConfiguration()\n                foundSpatialFormat = true\n                break\n            }\n        }\n        guard foundSpatialFormat else { return false }\n\n        let videoDeviceInput = try AVCaptureDeviceInput(device: videoDevice)\n        guard session.canAddInput(videoDeviceInput) else { return false }\n        session.addInput(videoDeviceInput)\n        input = videoDeviceInput\n\n        let movieFileOutput = AVCaptureMovieFileOutput()\n        guard session.canAddOutput(movieFileOutput) else { return false }\n        session.addOutput(movieFileOutput)\n        output = movieFileOutput\n\n        guard let connection = output.connection(with: .video) else { return false }\n        guard connection.isVideoStabilizationSupported else { return false }\n        connection.preferredVideoStabilizationMode = .cinematicExtendedEnhanced\n\n        guard movieFileOutput.isSpatialVideoCaptureSupported else { return false }\n        movieFileOutput.isSpatialVideoCaptureEnabled = true\n\n        session.commitConfiguration()\n        session.startRunning()\n        return true\n    }\n\n}"
+    },
+    {
+      "title": "Observing spatial capture discomfort reasons",
+      "language": "swift",
+      "startTimeSeconds": 553,
+      "code": "let observation = videoDevice.observe(\\.spatialCaptureDiscomfortReasons) { (device, change) in\n    guard let newValue = change.newValue else { return }\n    if newValue.contains(.subjectTooClose) {\n        // Guide user to move back\n    }\n    if newValue.contains(.notEnoughLight) {\n        // Guide user to find a brighter environment\n    }\n}"
+    },
+    {
+      "title": "PhotosPicker",
+      "language": "swift",
+      "startTimeSeconds": 598,
+      "code": "import SwiftUI\nimport PhotosUI\n\nstruct PickerView: View {\n    @State var selectedItem: PhotosPickerItem?\n    var body: some View {\n        PhotosPicker(selection: $selectedItem, matching: .spatialMedia) {\n            Text(\"Choose a spatial photo or video\")\n        }\n    }\n}"
+    },
+    {
+      "title": "PhotoKit - all spatial assets",
+      "language": "swift",
+      "startTimeSeconds": 614,
+      "code": "import Photos\n\nfunc fetchSpatialAssets() {\n    let fetchOptions = PHFetchOptions()\n    fetchOptions.predicate = NSPredicate(\n        format: \"(mediaSubtypes & %d) != 0\",\n        argumentArray: [PHAssetMediaSubtype.spatialMedia.rawValue]\n    )\n    fetchResult = PHAsset.fetchAssets(with: fetchOptions)\n}"
+    },
+    {
+      "title": "AVAssetPlaybackAssistant",
+      "language": "swift",
+      "startTimeSeconds": 636,
+      "code": "import AVFoundation\n\nextension AVURLAsset {\n    func isSpatialVideo() async -> Bool {\n        let assistant = AVAssetPlaybackAssistant(asset: self)\n        let options = await assistant.playbackConfigurationOptions\n        return options.contains(.spatialVideo)\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Creating spatial photos and videos with spatial metadata",
+      "url": "https://developer.apple.com/documentation/ImageIO/Creating-spatial-photos-and-videos-with-spatial-metadata",
+      "type": "documentation",
+      "description": "Add spatial metadata to stereo photos and videos to create spatial media for viewing on Apple Vision Pro.",
+      "sosumiURL": "https://sosumi.ai/documentation/ImageIO/Creating-spatial-photos-and-videos-with-spatial-metadata",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ImageIO/Creating-spatial-photos-and-videos-with-spatial-metadata.json"
+    },
+    {
+      "title": "Writing spatial photos",
+      "url": "https://developer.apple.com/documentation/ImageIO/writing-spatial-photos",
+      "type": "samplecode",
+      "description": "Create spatial photos for visionOS by packaging a pair of left- and right-eye images as a stereo HEIC file with related spatial metadata.",
+      "sosumiURL": "https://sosumi.ai/documentation/ImageIO/writing-spatial-photos",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ImageIO/writing-spatial-photos.json"
+    },
+    {
+      "title": "Converting side-by-side 3D video to multiview HEVC and spatial video",
+      "url": "https://developer.apple.com/documentation/AVFoundation/converting-side-by-side-3d-video-to-multiview-hevc-and-spatial-video",
+      "type": "samplecode",
+      "description": "Create video content for visionOS by converting an existing 3D HEVC file to a multiview HEVC format, optionally adding spatial metadata to create a spatial video.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/converting-side-by-side-3d-video-to-multiview-hevc-and-spatial-video",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/converting-side-by-side-3d-video-to-multiview-hevc-and-spatial-video.json"
+    },
+    {
+      "title": "Forum: Spatial Computing",
+      "url": "https://developer.apple.com/forums/topics/spatial-computing?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/spatial-computing?cid=vf-a-0010"
+    },
+    {
+      "title": "AVCam: Building a camera app",
+      "url": "https://developer.apple.com/documentation/AVFoundation/avcam-building-a-camera-app",
+      "type": "samplecode",
+      "description": "Capture photos and record video using the front and rear iPhone and iPad cameras.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/avcam-building-a-camera-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/avcam-building-a-camera-app.json"
+    }
+  ],
+  "path": "sessions/wwdc2024/10166/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10166/metadata.json",
+    "readme": "sessions/wwdc2024/10166/README.md",
+    "transcript": "sessions/wwdc2024/10166/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10166/transcript.json"
+  }
+}

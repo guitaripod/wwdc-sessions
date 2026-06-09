@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2018-412",
+  "event": "wwdc2018",
+  "eventName": "WWDC18",
+  "year": 2018,
+  "eventContentId": 412,
+  "title": "Advanced Debugging with Xcode and LLDB",
+  "description": "Discover advanced techniques, and tips and tricks for enhancing your Xcode debugging workflows. Learn how to take advantage of LLDB and custom breakpoints for more powerful debugging. Get the most out of Xcode’s view debugging tools to solve UI issues in your app more efficiently.",
+  "url": "https://developer.apple.com/videos/play/wwdc2018/412",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2018/412",
+  "type": "Session",
+  "publishedAt": "2018-06-07T17:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "🌕",
+    "🌛",
+    "🌜",
+    "🌝",
+    "astronaut",
+    "catransaction",
+    "debugger",
+    "expression",
+    "flush",
+    "frame",
+    "gravity",
+    "jump",
+    "nudge",
+    "objc",
+    "objectivec",
+    "objective-c",
+    "poc",
+    "popover",
+    "swift",
+    "symbolic",
+    "thread",
+    "uiview",
+    "variable",
+    "view debugger"
+  ],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 3221,
+  "hasTranscript": true,
+  "transcriptWordCount": 10439,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/412zw88j5aa4mr9/412/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/412zw88j5aa4mr9/412/412_sd_advanced_debugging_with_xcode_and_lldb.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/412zw88j5aa4mr9/412/412_hd_advanced_debugging_with_xcode_and_lldb.mp4",
+    "duration": 3221
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Use Scripts to Add Custom Commands to LLDB",
+      "url": "https://developer.apple.com/sample-code/wwdc/2018/UseScriptsToAddCustomCommandsToLLDB.zip",
+      "type": "documentation",
+      "description": "An example Python script that adds a custom nudge command to modify the position of views while paused in the debugger. Use it as a basis for your own LLDB scripts.",
+      "sosumiURL": "https://sosumi.ai/sample-code/wwdc/2018/UseScriptsToAddCustomCommandsToLLDB.zip"
+    }
+  ],
+  "path": "sessions/wwdc2018/412/",
+  "files": {
+    "metadata": "sessions/wwdc2018/412/metadata.json",
+    "readme": "sessions/wwdc2018/412/README.md",
+    "transcript": "sessions/wwdc2018/412/transcript.md",
+    "transcriptJSON": "sessions/wwdc2018/412/transcript.json"
+  }
+}

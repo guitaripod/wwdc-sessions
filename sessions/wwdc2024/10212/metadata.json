@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10212",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10212,
+  "title": "What’s new in location authorization",
+  "description": "Location authorization is turning 2.0. Learn about new recommendations and techniques to get the authorization you need, and a new system of diagnostics that can let you know when an authorization goal can’t be met.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10212",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10212",
+  "type": "Video",
+  "publishedAt": "2024-06-12T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Privacy & Security",
+    "Maps & Location"
+  ],
+  "primaryTopic": "Maps & Location",
+  "duration": 1096,
+  "hasTranscript": true,
+  "transcriptWordCount": 3049,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10212/4/4E06515C-912A-4159-8C07-9468D1209F8F/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10212/4/4E06515C-912A-4159-8C07-9468D1209F8F/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10212/4/4E06515C-912A-4159-8C07-9468D1209F8F/downloads/wwdc2024-10212_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10212/4/4E06515C-912A-4159-8C07-9468D1209F8F/downloads/wwdc2024-10212_hd.mp4",
+    "duration": 1096
+  },
+  "codeSnippets": [
+    {
+      "title": "CLLocationUpdate and CLMonitor",
+      "language": "swift",
+      "startTimeSeconds": 31,
+      "code": "// Iterating liveUpdates to reflect current location\nTask {\n    let updates = CLLocationUpdate.liveUpdates()\n    for try await update in updates {\n        if let loc = update.location {\n            updateLocationUI(location: loc)\n        }\n    }\n}\n\n// Iterating monitor events to report condition state changes\nTask {\n    let monitor = await CLMonitor(monitorName)\n    await monitor.add(CLMonitor.CircularGeographicCondition(center: applePark, radius: 50),\n                      identifier: \"ApplePark\")\n\n    for try await event in await monitor.events {\n        updateConditionsUI(for: event.identifier, state: event.state)\n    }\n}"
+    },
+    {
+      "title": "Handle updates with CLLocationManagerDelegate",
+      "language": "swift",
+      "startTimeSeconds": 52,
+      "code": "// Adapting location authorization to Swift with a MainActor singleton\n@MainActor class LocationReflector: NSObject, CLLocationManagerDelegate, ObservableObject {\n    static let shared = LocationReflector()\n    private let manager = CLLocationManager()\n\n    override init() {\n        super.init()\n        manager.delegate = self\n    }\n\n    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager){\n        if (manager.authorizationStatus == .notDetermined) {\n            manager.requestWhenInUseAuthorization()\n        }\n    }\n\n    func locationManager(_ manager: CLLocationManager,\n                         didUpdateLocations locations:[CLLocation]) {\n        // Process locations[0]\n    }\n    // ...\n}"
+    },
+    {
+      "title": "CLServiceSession simplifies",
+      "language": "swift",
+      "startTimeSeconds": 67,
+      "code": "// CLServiceSession in action\n\nTask {\n    let session = CLServiceSession(authorization: .whenInUse)\n\n    for try await update in CLLocationUpdate.liveUpdates {\n        // Process update.location or update.authorizationDenied\n    }\n}"
+    },
+    {
+      "title": "Implicit service sessions",
+      "language": "swift",
+      "startTimeSeconds": 435,
+      "code": "// CLServiceSession in action\n\nTask {\n    let session = CLServiceSession(authorization: .whenInUse)\n\n    for try await update in CLLocationUpdate.liveUpdates {\n        // Process update.location or update.authorizationDenied\n    }\n}"
+    },
+    {
+      "title": "Implicit service sessions",
+      "language": "swift",
+      "startTimeSeconds": 454,
+      "code": "Task {\n    for try await update in CLLocationUpdate.liveUpdates {\n        // Process update.location or update.authorizationDenied\n    }\n}"
+    },
+    {
+      "title": "Diagnostics – Following the progress of location authorization",
+      "language": "swift",
+      "startTimeSeconds": 817,
+      "code": "// Following the progress of location authorization with CLServiceSession\nlet mySession = CLServiceSession(authorization:.whenInUse)\n\nfor try await diagnostic in mySession.diagnostics {\n    if (diagnostic.authorizationDenied) {\n        // Ok, let’s let them pick a location instead?\n    }\n}"
+    },
+    {
+      "title": "Diagnostics – Following the progress of location authorization",
+      "language": "swift",
+      "startTimeSeconds": 900,
+      "code": "// Following the progress of location authorization with CLServiceSession\nlet mySession = CLServiceSession(authorization:.whenInUse)\n\nfor try await diagnostic in mySession.diagnostics {\n    if (!diagnostic.authorizationRequestInProgress) {\n        // They’ve decided (maybe already).  We can move on!\n        break\n    }\n}"
+    },
+    {
+      "title": "Diagnostics – Following the progress of location authorization",
+      "language": "swift",
+      "startTimeSeconds": 925,
+      "code": "// Following the progress of location authorization with CLServiceSession\nlet mySession = CLServiceSession(authorization:.whenInUse)\n\nfor try await diagnostic in mySession.diagnostics {\n    if (!diagnostic.authorizationRequestInProgress) {\n       reactToChanges(authorized:!diagnostic.authorizationDenied)\n    }\n}"
+    },
+    {
+      "title": "Diagnostics – Following the progress of location authorization",
+      "language": "swift",
+      "startTimeSeconds": 946,
+      "code": "// Following the progress of location authorization with CLServiceSession\nTask {\n    let mySession = CLServiceSession(authorization:.whenInUse)\n\n    for try await diagnostic in mySession.diagnostics {\n        if (!diagnostic.authorizationRequestInProgress) {\n            reactToChanges(authorized:!diagnostic.authorizationDenied)\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Configuring your app to use location services",
+      "url": "https://developer.apple.com/documentation/CoreLocation/configuring-your-app-to-use-location-services",
+      "type": "documentation",
+      "description": "Prepare your app to start collecting location data.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreLocation/configuring-your-app-to-use-location-services",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreLocation/configuring-your-app-to-use-location-services.json"
+    },
+    {
+      "title": "Adopting live updates in Core Location",
+      "url": "https://developer.apple.com/documentation/CoreLocation/adopting-live-updates-in-core-location",
+      "type": "samplecode",
+      "description": "Simplify location delivery using asynchronous events in Swift.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreLocation/adopting-live-updates-in-core-location",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreLocation/adopting-live-updates-in-core-location.json"
+    },
+    {
+      "title": "Forum: Maps & Location",
+      "url": "https://developer.apple.com/forums/topics/maps-and-location?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/maps-and-location?cid=vf-a-0010"
+    }
+  ],
+  "path": "sessions/wwdc2024/10212/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10212/metadata.json",
+    "readme": "sessions/wwdc2024/10212/README.md",
+    "transcript": "sessions/wwdc2024/10212/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10212/transcript.json"
+  }
+}

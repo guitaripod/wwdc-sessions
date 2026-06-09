@@ -1,0 +1,42 @@
+---
+id: "wwdc2017-813"
+event: "wwdc2017"
+title: "Writing Great Alerts"
+url: "https://developer.apple.com/videos/play/wwdc2017/813"
+language: "eng"
+words: 1389
+---
+
+# Writing Great Alerts — Transcript
+
+[Session page](https://developer.apple.com/videos/play/wwdc2017/813) · [Metadata](metadata.json) · [Structured JSON](transcript.json)
+
+**[0:21]** In the next 10 minutes, we will learn how to use alerts to make your app better, your users happier, and your ratings and revenues higher. Good alerts can accomplish that because they are one of the most efficient problem-solving tools at your disposal. They help people enjoy your app, and navigate it easily, instead of getting stuck in some suboptimal state, getting frustrated, confused, quitting your app, de-installing your app, and giving you one-star ratings. So how do you create alerts that work? Before you get to the creating part, you should ask yourself a very important question. Should I be using an alert at
+
+**[1:06]** all? Is this the best way to achieve my goal? Let's look at some examples of good alert use. The most common one you are familiar with is to correct errors, like this one. Alerts are also used to request access to user data, such as contacts, location, or financial information. We provided a format for your use, and put a lot of thought in its content. It explains concisely and clearly what data is requested, and how it will be used. Alerts are also used to notify people of major updates, such as significant feature releases, or
+
+**[1:53]** critical security fixes. These announcements should be used judiciously and sparingly. Reserve them only for problems that merit immediate attention or features that would really benefit your audience, certainly not every update merits an alert, and on that note, let's talk about when alerts should not be used. I will introduce this topic with a very important point I would like you to remember. Alerts are disruptive by design. Oops, what are you doing here? Can't you see I'm in the middle of a talk? Don't you wish you could do this to all annoying alerts? So the lesson here is, do not
+
+**[2:38]** use alerts for non-essential content. Before putting any content in an alert, ask yourself, do people really need to know this, and do they need to know this now. If the answer to that question is not an absolute resounding yes, do not interrupt your audience. The next important point I would like you to remember is that alerts are lightweight by design. Their small format reflects and serves the purpose of facilitating quick, informed decisions, so that people can make a choice, and move on with whatever they were doing. Therefore, do not overload alerts with lengthy content, or
+
+**[3:24]** too many choices. These tasks are better left to larger UI elements. Let's look at some examples. Alerts are not settings, nor are they multiple choice questions. You can see that the actions are struggling to fit into the provided format, and here is a hint for you. If your alert takes most of the supported view port, it is time to cut down or relegate some of the tasks to larger elements. Alerts are full-scale diagnostic tools. Do not use them to expose technical data, especially error codes.
+
+**[4:09]** Alerts are not afterthoughts. Do not use them to fix preventable problems. For example, if you have password rules, articulate them clearly on the main screen. You can also disallow invalid character input. However, the thing to not do is to make users memorize a long, complicated list of characters, and then go back to fix the problem that should not have occurred in the first place. To summarize, the dos and don'ts of alerts, use them to correct errors, request access to customer data, or notify people of major updates. Do not use them for
+
+**[4:54]** non-essential or lengthy content. Do not offer complicated choices. And do not duplicate the tasks of other UI elements. Now, you have considered all these factors and decided that you need an alert after all. So how do you go about writing a successful one? It turns out that the structure of the alert, with its clear separation of visual elements already sets you on this path of success. Let's go back to our good alert example, and see how we can make use of that structure. In the title, state your main point in one sentence or less.
+
+**[5:39]** In the message details, provide brief additional information if necessary, such as the cause of the error, or the reason for your request. Offer actions that are easy to understand and perform. If you have to take people outside the app, or to a different state, make sure to navigate them there. Do not leave this job to the Back button, the Home button, the main screen, or otherwise leave users to find their way. If people scan the title and the actions, ideally, they should be able to understand what is going on without paying too much attention to the message details. While this is not always possible, it is a good goal to
+
+**[6:24]** aspire to. And if you need a quick mnemonic rule, a good alert answers three key questions. What happened? Why people are seeing this? And how this should proceed based on the information they've received. Now that you've mastered the structure of the alert, let's practice and apply these guidelines to fix some common problems. Let's read through this one. "App name" cannot open this file. The title is accurate, but not especially helpful. Which file do we mean? People may be working with multiple files. You may need to download the latest available updates for the
+
+**[7:09]** app. Do you want to visit the "app name" website for more information and troubleshooting tips? These instructions are vague and tentative, and suggest multiple outcomes, and that is also a lot of text. No. Yes. The actions are difficult to understand without going back and reading said lengthy instructions. Let's see how we can improve this. First, let's specify the file name for clarity. Next, let's pare down the instructions for simplicity. Finally, let's offer clear actionable choices, so that people understand what happens when they tap on any one of
+
+**[7:54]** them. Here is your before and after. Which one do you think looks better? Thought so. Now, let's take a look at an alert that seems to be written with all the guidelines in mind. Let's read through this one. Cancel download? If you cancel now, you will not receive this file. Cancel? Okay . There is nothing wrong with any individual part, the title states the question, the message describes the consequences, and even the actions use the recommended terminology. Cancel and okay.
+
+**[8:39]** However, this is a classic example of a confusing alert that happens even to the most experienced developers. So the lesson here is, even when using guidelines, always check the result for any ambiguity or confusion. Let's see how we can clarify this one. First, let's rephrase the title to remove ambiguity and mention the filename to be more specific. Next, let's apply similar changes to the message details. And for good measure, let's reiterate the choices and the actions, so people understand what happens if they click on any of them.
+
+**[9:24]** Here is your before and after. And I hope you would agree that the after looks a bit better than the before. Now, you have learned how to make use of the structure, let's talk a bit about style and quality. Here, I have a couple of tips for you. Avoid platitudes, jargon or fillers. All they do is take space without adding any return value. Use correct formatting, spelling, and punctuation. This seems like a very basic piece of advice, but it will go a very long way toward making your alerts and your app look polished and professional. Finally, consider your audience.
+
+**[10:10]** Whether you are writing for medical professionals, special needs students, or even a very smart cat who just learned how to use an iPad, make sure that your editorial voice matches their needs and expectations. In conclusion, here are the three simple things you can do now to make your alerts awesome. Keep them simple and helpful. Go practice. Take what you learned, go through your app, see if you need all the alerts that you created, and if you do, see how you can make them work harder. And for more information and an in-depth look on how to write alerts for iOS and macOS, read
+
+**[10:55]** the HIG available at the Apple website.

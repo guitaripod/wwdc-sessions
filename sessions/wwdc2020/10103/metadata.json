@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10103",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10103,
+  "title": "Design great widgets",
+  "description": "Widgets elevate timely information from your app to primary locations on iPhone, iPad and Mac. Discover the keys to designing glanceable widgets, developing a strong widget idea, and clearly communicating with content, color, sizing, layout, and typography.\n\nIf you'd like to learn more about the technical implementation for adding widgets into your app, check out \"Get Started with WidgetKit\" and our three-part code-along series.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10103",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10103",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 964,
+  "hasTranscript": true,
+  "transcriptWordCount": 3066,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10103/4/640B143D-B8DE-4811-87EC-9578EA46C952/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10103/4/640B143D-B8DE-4811-87EC-9578EA46C952/wwdc2020_10103_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10103/4/640B143D-B8DE-4811-87EC-9578EA46C952/wwdc2020_10103_hd.mp4",
+    "duration": 964
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Widgets",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/widgets",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/widgets"
+    },
+    {
+      "title": "Building Widgets Using WidgetKit and SwiftUI",
+      "url": "https://developer.apple.com/documentation/widgetkit/building_widgets_using_widgetkit_and_swiftui",
+      "type": "samplecode",
+      "description": "Create widgets to show your app’s content on the Home screen, with custom intents for user-customizable settings.",
+      "sosumiURL": "https://sosumi.ai/documentation/widgetkit/building_widgets_using_widgetkit_and_swiftui",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/widgetkit/building_widgets_using_widgetkit_and_swiftui.json"
+    },
+    {
+      "title": "Learn to Make Apps with SwiftUI",
+      "url": "https://developer.apple.com/tutorials/swiftui",
+      "type": "documentation",
+      "description": "Follow a series of guided tutorials to learn to make apps using SwiftUI and Xcode.",
+      "sosumiURL": "https://sosumi.ai/tutorials/swiftui"
+    },
+    {
+      "title": "SwiftUI",
+      "url": "https://developer.apple.com/documentation/SwiftUI",
+      "type": "documentation",
+      "description": "Declare the user interface and behavior for your app on every platform.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10103/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10103/metadata.json",
+    "readme": "sessions/wwdc2020/10103/README.md",
+    "transcript": "sessions/wwdc2020/10103/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10103/transcript.json"
+  }
+}

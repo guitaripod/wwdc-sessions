@@ -1,0 +1,299 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-284",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 284,
+  "title": "Build a UIKit app with the new design",
+  "description": "Update your UIKit app to take full advantage of the new design system. We’ll dive into key changes to tab views, split views, bars, presentations, search, and controls, and show you how to use Liquid Glass in your custom UI. To get the most out of this video, we recommend first watching “Get to know the new design system” for general design guidance.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/284",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/284",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "⚡️"
+  ],
+  "topics": [
+    "Design",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1552,
+  "hasTranscript": true,
+  "transcriptWordCount": 3347,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/284/4/afb20876-65b2-4aeb-bd50-66e4df1b2281/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/284/4/afb20876-65b2-4aeb-bd50-66e4df1b2281/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/284/4/afb20876-65b2-4aeb-bd50-66e4df1b2281/downloads/wwdc2025-284_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/284/4/afb20876-65b2-4aeb-bd50-66e4df1b2281/downloads/wwdc2025-284_hd.mp4",
+    "duration": 1552
+  },
+  "codeSnippets": [
+    {
+      "title": "Minimize tab bar on scroll",
+      "language": "swift",
+      "startTimeSeconds": 151,
+      "code": "// Minimize tab bar on scroll\n\ntabBarController.tabBarMinimizeBehavior = .onScrollDown"
+    },
+    {
+      "title": "Add a bottom accessory",
+      "language": "swift",
+      "startTimeSeconds": 188,
+      "code": "// Add a bottom accessory\n\nlet nowPlayingView = NowPlayingView()\nlet accessory = UITabAccessory(contentView: nowPlayingView)\ntabBarController.bottomAccessory = accessory"
+    },
+    {
+      "title": "Update the accessory with the tabAccessoryEnvironment trait",
+      "language": "swift",
+      "startTimeSeconds": 215,
+      "code": "// Update the accessory with the trait\n\nregisterForTraitChanges([UITraitTabAccessoryEnvironment.self]) { (view: MiniPlayerView, _) in\n    let isInline = view.traitCollection.tabAccessoryEnvironment == .inline\n    view.updatePlayerAppearance(inline: isInline)\n}\n\n// Automatic trait tracking with updateProperties()\noverride func updateProperties() {\n    super.updateProperties()\n    let isInline = traitCollection.tabAccessoryEnvironment == .inline\n    updatePlayerAppearance(inline: isInline)\n}"
+    },
+    {
+      "title": "Extend content under the sidebar",
+      "language": "swift",
+      "startTimeSeconds": 351,
+      "code": "// Extend content underneath the sidebar\n\nlet posterImageView = UIImageView(image: ...)\n\nlet extensionView = UIBackgroundExtensionView()\nextensionView.contentView = posterImageView\nview.addSubview(extensionView)\n\nlet detailsView = ShowDetailsView()\nview.addSubview(detailsView)"
+    },
+    {
+      "title": "Adjust the effect layout",
+      "language": "swift",
+      "startTimeSeconds": 411,
+      "code": "// Adjust the effect layout\n\nlet posterImageView = UIImageView(image: ...)\n\nlet extensionView = UIBackgroundExtensionView()\nextensionView.contentView = posterImageView\nextensionView.automaticallyPlacesContentView = false\nview.addSubview(extensionView)\n\nposterImageView.translatesAutoresizingMaskIntoConstraints = false\nNSLayoutConstraint.activate([\n    posterImageView.topAnchor.constraint(equalTo: extensionView.topAnchor),\n    posterImageView.leadingAnchor.constraint(equalTo: extensionView.safeAreaLayoutGuide.leadingAnchor),\n    posterImageView.trailingAnchor.constraint(equalTo: extensionView.safeAreaLayoutGuide.trailingAnchor),\n    posterImageView.bottomAnchor.constraint(equalTo: extensionView.safeAreaLayoutGuide.bottomAnchor),\n])"
+    },
+    {
+      "title": "Custom grouping",
+      "language": "swift",
+      "startTimeSeconds": 518,
+      "code": "// Custom grouping\n\nnavigationItem.rightBarButtonItems = [\n    doneButton,\n    flagButton,\n    folderButton,\n    infoButton,\n    .fixedSpace(0),\n    shareButton,\n    selectButton\n]"
+    },
+    {
+      "title": "UIBarButtonItem tint color and style",
+      "language": "swift",
+      "startTimeSeconds": 533,
+      "code": "// Tint color and style\n\nlet flagButton = UIBarButtonItem(image: UIImage(systemName: \"flag.fill\"))\nflagButton.tintColor = .systemOrange\nflagButton.style = .prominent"
+    },
+    {
+      "title": "Toolbar with evenly distributed items in a single background",
+      "language": "swift",
+      "startTimeSeconds": 550,
+      "code": "// Toolbar with evenly distributed items, grouped in a single background.\n\nlet flexibleSpace = UIBarButtonItem.flexibleSpace()\nflexibleSpace.hidesSharedBackground = false\n\ntoolbarItems = [\n   .init(image: UIImage(systemName: \"location\")),\n   flexibleSpace,\n   .init(image: UIImage(systemName: \"number\")),\n   flexibleSpace,\n   .init(image: UIImage(systemName: \"camera\")),\n   flexibleSpace,\n   .init(image: UIImage(systemName: \"trash\")),\n]"
+    },
+    {
+      "title": "Titles and subtitles",
+      "language": "swift",
+      "startTimeSeconds": 615,
+      "code": "// Titles and subtitles\n\nnavigationItem.title = \"Inbox\"\nnavigationItem.subtitle = \"49 Unread\""
+    },
+    {
+      "title": "Large subtitle view",
+      "language": "swift",
+      "startTimeSeconds": 627,
+      "code": "// Titles and subtitles\n\nnavigationItem.title = \"Inbox\"\nnavigationItem.largeSubtitleView = filterButton"
+    },
+    {
+      "title": "Edge effect for a custom container",
+      "language": "swift",
+      "startTimeSeconds": 680,
+      "code": "// Edge effect’s custom container\n\nlet interaction = UIScrollEdgeElementContainerInteraction()\ninteraction.scrollView = contentScrollView\ninteraction.edge = .bottom\n\nbuttonsContainerView.addInteraction(interaction)"
+    },
+    {
+      "title": "Hard edge effect style",
+      "language": "swift",
+      "startTimeSeconds": 708,
+      "code": "// Hard edge effect style\n\nscrollView.topEdgeEffect.style = .hard"
+    },
+    {
+      "title": "Morph popover from its source button",
+      "language": "swift",
+      "startTimeSeconds": 835,
+      "code": "// Morph popover from its source button\n\nviewController.popoverPresentationController?.sourceItem = barButtonItem"
+    },
+    {
+      "title": "Morph sheet from bar button",
+      "language": "swift",
+      "startTimeSeconds": 847,
+      "code": "// Morph sheet from bar button\n\nviewController.preferredTransition = .zoom { _ in \n     folderBarButtonItem\n}"
+    },
+    {
+      "title": "Source item for action sheets",
+      "language": "swift",
+      "startTimeSeconds": 886,
+      "code": "// Setting source item for action sheets\n\nalertController.popoverPresentationController?.sourceItem = barButtonItem"
+    },
+    {
+      "title": "Placing search in the toolbar",
+      "language": "swift",
+      "startTimeSeconds": 936,
+      "code": "// Place search bar in a toolbar\n\ntoolbarItems = [\n    navigationItem.searchBarPlacementBarButtonItem,\n    .flexibleSpace(),\n    addButton\n]"
+    },
+    {
+      "title": "Universally accessible search on iPad",
+      "language": "swift",
+      "startTimeSeconds": 961,
+      "code": "// Place search at the trailing edge of the navigation bar\n\nnavigationItem.searchBarPlacementAllowsExternalIntegration = true"
+    },
+    {
+      "title": "Activate the search field when search bar is tapped",
+      "language": "swift",
+      "startTimeSeconds": 1007,
+      "code": "// Activate the search field when search bar is tapped\n\nsearchTab.automaticallyActivatesSearch = true"
+    },
+    {
+      "title": "Search as a dedicated view",
+      "language": "swift",
+      "startTimeSeconds": 1023,
+      "code": "// Search as a dedicated view\n\nnavigationItem.preferredSearchBarPlacement = .integratedCentered"
+    },
+    {
+      "title": "Buttons",
+      "language": "swift",
+      "startTimeSeconds": 1072,
+      "code": "// Standard glass\nbutton.configuration = .glass()\n\n// Prominent glass\ntintedButton.configuration = .prominentGlass()"
+    },
+    {
+      "title": "Neutral slider with 5 ticks and a neutral value",
+      "language": "swift",
+      "startTimeSeconds": 1096,
+      "code": "// Neutral slider with 5 ticks and a neutral value\nslider.trackConfiguration = .init(allowsTickValuesOnly: true,\n                                  neutralValue: 0.2,\n                                  numberOfTicks: 5)"
+    },
+    {
+      "title": "Thumbless slider",
+      "language": "swift",
+      "startTimeSeconds": 1139,
+      "code": "// Thumbless slider\nslider.sliderStyle = .thumbless"
+    },
+    {
+      "title": "Glass for custom views",
+      "language": "swift",
+      "startTimeSeconds": 1228,
+      "code": "// Adopting glass for custom views\n\nlet effectView = UIVisualEffectView()\naddSubview(effectView)\n\nlet glassEffect = UIGlassEffect()\n// Animating setting the effect results in a materialize animation\nUIView.animate {\n    effectView.effect = glassEffect\n}"
+    },
+    {
+      "title": "Custom corner configuration",
+      "language": "swift",
+      "startTimeSeconds": 1249,
+      "code": "// Custom corner configuration\n\nUIView.animate {\n    effectView.cornerConfiguration = .fixed(8)\n}"
+    },
+    {
+      "title": "Dark mode",
+      "language": "swift",
+      "startTimeSeconds": 1254,
+      "code": "// Adapting to dark mode\n\nUIView.animate {\n    view.overrideUserInterfaceStyle = .dark\n}"
+    },
+    {
+      "title": "Adding glass to an existing glass container",
+      "language": "swift",
+      "startTimeSeconds": 1262,
+      "code": "// Adding glass to an existing glass container\n\nlet container = UIVisualEffectView()\ncontainer.effect = UIGlassEffect()\n\ncontainer.contentView.addSubview(effectView)"
+    },
+    {
+      "title": "Container relative corners",
+      "language": "swift",
+      "startTimeSeconds": 1268,
+      "code": "// Container relative corners\n\nUIView.animate {\n    effectView.cornerConfiguration = .containerRelative()\n    effectView.frame.origin = CGPoint(x: 10, y: 10)\n}"
+    },
+    {
+      "title": "Container relative corners, animated",
+      "language": "swift",
+      "startTimeSeconds": 1283,
+      "code": "// Container relative corners\n\nUIView.animate {\n    effectView.frame.origin = CGPoint(x: 30, y: 30)\n}"
+    },
+    {
+      "title": "Glass adapts based on its size",
+      "language": "swift",
+      "startTimeSeconds": 1290,
+      "code": "// Glass adapts based on its size\n\nUIView.animate {\n    view.overrideUserInterfaceStyle = .light\n    effectView.bounds.size = CGSize(width: 250, height: 88)\n}\n\nUIView.animate {\n    effectView.bounds.size = CGSize(width: 150, height: 44)\n}"
+    },
+    {
+      "title": "Adding content to glass views",
+      "language": "swift",
+      "startTimeSeconds": 1309,
+      "code": "// Adding content to glass views\n\nlet label = UILabel()\nlabel.text = \"WWDC25\"\nlabel.textColor = .secondaryLabel\n\neffectView.contentView.addSubview(label)"
+    },
+    {
+      "title": "Applying tint color to glass",
+      "language": "swift",
+      "startTimeSeconds": 1335,
+      "code": "// Applying tint color to glass\n\nlet glassEffect = UIGlassEffect()\nglassEffect.tintColor = .systemBlue\n\nUIView.animate {\n    effectView.effect = glassEffect\n    label.textColor = .label\n}"
+    },
+    {
+      "title": "Using custom colors with glass",
+      "language": "swift",
+      "startTimeSeconds": 1353,
+      "code": "// Using custom colors with glass\n\nlet glassEffect = UIGlassEffect()\nglassEffect.tintColor = UIColor(displayP3Red: r,\n                                green: g,\n                                blue: b,\n                                alpha: 1)\n\nUIView.animate {\n    effectView.effect = glassEffect\n    // Animate out the label\n    label.alpha = 0\n}"
+    },
+    {
+      "title": "Enabling interactive glass behavior",
+      "language": "swift",
+      "startTimeSeconds": 1383,
+      "code": "// Enabling interactive glass behavior\n\nlet glassEffect = UIGlassEffect()\nglassEffect.isInteractive = true\n\neffectView.effect = glassEffect"
+    },
+    {
+      "title": "Animating glass out using dematerialize animation",
+      "language": "swift",
+      "startTimeSeconds": 1400,
+      "code": "// Animating glass out using dematerialize animation\n\nUIView.animate {\n    effectView.effect = nil\n}"
+    },
+    {
+      "title": "Adding glass elements to a container",
+      "language": "swift",
+      "startTimeSeconds": 1432,
+      "code": "// Adding glass elements to a container\n\nlet container = UIGlassContainerEffect()\nlet containerView = UIVisualEffectView(effect: container)\n\nlet glassEffect = UIGlassEffect()\nlet view1 = UIVisualEffectView(effect: glassEffect)\nlet view2 = UIVisualEffectView(effect: glassEffect)\n\ncontainerEffectView.contentView.addSubview(view1)\ncontainerEffectView.contentView.addSubview(view2)"
+    },
+    {
+      "title": "Adjusting the container spacing",
+      "language": "swift",
+      "startTimeSeconds": 1452,
+      "code": "// Adjusting the container spacing\n\nlet containerEffect = UIGlassContainerEffect()\ncontainerEffect.spacing = 20\ncontainerEffectView.effect = containerEffect"
+    },
+    {
+      "title": "Merging two glass views",
+      "language": "swift",
+      "startTimeSeconds": 1467,
+      "code": "// Merging two glass views\n\nUIView.animate {\n    view1.frame = finalFrame\n    view2.frame = finalFrame\n}"
+    },
+    {
+      "title": "Dividing glass into multiple views",
+      "language": "swift",
+      "startTimeSeconds": 1473,
+      "code": "// Dividing glass into multiple views\n\nUIView.performWithoutAnimation {\n    for view in finalViews {\n        containerEffectView.contentView.addSubview(view)\n        view.frame = startFrame\n    }\n}\n\nUIView.animate {\n    for view in finalViews {\n        view.frame = finalFrame(for: view)\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Adopting Liquid Glass",
+      "url": "https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass",
+      "type": "documentation",
+      "description": "Find out how to bring the new material to your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/TechnologyOverviews/adopting-liquid-glass",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/TechnologyOverviews/adopting-liquid-glass.json"
+    },
+    {
+      "title": "Human Interface Guidelines",
+      "url": "https://developer.apple.com/design/human-interface-guidelines",
+      "type": "documentation",
+      "description": "The HIG contains guidance and best practices that can help you design a",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines"
+    }
+  ],
+  "path": "sessions/wwdc2025/284/",
+  "files": {
+    "metadata": "sessions/wwdc2025/284/metadata.json",
+    "readme": "sessions/wwdc2025/284/README.md",
+    "transcript": "sessions/wwdc2025/284/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/284/transcript.json"
+  }
+}

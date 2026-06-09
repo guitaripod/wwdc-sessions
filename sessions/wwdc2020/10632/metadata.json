@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10632",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10632,
+  "title": "Optimize Metal Performance for Apple silicon Macs",
+  "description": "Apple silicon Macs are a transformative new platform for graphics-intensive apps — and we’re going to show you how to fire up the GPU to create blazingly fast apps and games.\n\nDiscover how to take advantage of Apple’s unique Tile-Based Deferred Rendering (TBDR) GPU architecture within Apple silicon Macs and learn how to schedule workloads to provide maximum throughput, structure your rendering pipeline, and increase overall efficiency. And dive deep with our graphics team as we explore shader optimizations for the Apple GPU shader core.\n\nWe’ve designed this session in tandem with “Bring your Metal app to Apple silicon Macs,” and recommend you watch that first.\n\nFor more, watch “Harness Apple GPUs with Metal” to learn how TBDR applies to a variety of modern rendering techniques.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10632",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10632",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 2722,
+  "hasTranscript": true,
+  "transcriptWordCount": 7138,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10632/7/9639690B-2E3B-4B2D-A211-879DBACDE84E/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10632/7/9639690B-2E3B-4B2D-A211-879DBACDE84E/wwdc2020_10632_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10632/7/9639690B-2E3B-4B2D-A211-879DBACDE84E/wwdc2020_10632_hd.mp4",
+    "duration": 2722
+  },
+  "codeSnippets": [
+    {
+      "title": "Encoding with parallel render commands",
+      "language": "swift",
+      "startTimeSeconds": 676,
+      "code": "// Encoding with parallel render commands\n\nlet parallelDescriptor = MTLRenderPassDescriptor()\n// … setup render pass as usual … \n\nlet parallelEncoder = commandBuffer.makeParallelRenderCommandEncoder(descriptor:parallelDescriptor)\n\nlet subEncoder0 = parallelEncoder.makeRenderCommandEncoder()\nlet subEncoder1 = parallelEncoder.makeRenderCommandEncoder()\n\nlet syncPoint = DispatchGroup()\nDispatchQueue.global(qos: .userInteractive).async(group: syncPoint) { \n    /* … encode with subEncoder0 … */ }\nDispatchQueue.global(qos: .userInteractive).async(group: syncPoint) { \n    /* … encode with subEncoder1 … */ }\n\nsyncPoint.wait()\nparallelEncoder.end()"
+    },
+    {
+      "title": "Multiple render target setup",
+      "language": "swift",
+      "startTimeSeconds": 891,
+      "code": "// Multiple render target setup\n\nlet textureDescriptor = MTLTextureDescriptor.texture2DDescriptor(…)\nlet lightingTexture = device.makeTexture(descriptor: textureDescriptor)\n\ntextureDescriptor.storageMode = .memoryless\nlet attenuationTexture = device.makeTexture(descriptor: textureDescriptor) \n\nlet renderPassDesc = MTLRenderPassDescriptor()\nrenderPassDesc.colorAttachments[0].texture      = lightingTexture\nrenderPassDesc.colorAttachments[0].loadAction   = .clear\nrenderPassDesc.colorAttachments[0].storeAction  = .store\nrenderPassDesc.colorAttachments[1].texture      = attenuationTexture\nrenderPassDesc.colorAttachments[1].loadAction   = .clear\nrenderPassDesc.colorAttachments[1].storeAction  = .dontCare\n\nlet renderPass = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDesc);"
+    },
+    {
+      "title": "Write masking",
+      "language": "swift",
+      "startTimeSeconds": 1187,
+      "code": "let descriptor = MTLRenderPipelineDescriptor();\n// ...\ndescriptor.colorAttachments[0].writeMask = .red | .green;"
+    },
+    {
+      "title": "Write to all render pass attachments",
+      "language": "swift",
+      "startTimeSeconds": 1275,
+      "code": "struct FragInput { ... };\nstruct FragOutput { float3 albedo; float3 normals; float3 lighting; };\n\nfragment FragOutput GenerateGbuffer(\n                         FragInput in [[stage_in]]) {\n    FragOutput out;\n    out.albedo = sampleAlbedo(in);\n    out.normals = interpolateNormals(in);\n    out.lighting = float3(0, 0, 0);\n    return out;\n}"
+    },
+    {
+      "title": "Optimized tiled deferred render pass setup",
+      "language": "swift",
+      "startTimeSeconds": 1819,
+      "code": "let renderPassDesc = MTLRenderPassDescriptor()\n\nrenderPassDesc.tileWidth = 32\nrenderPassDesc.tileHeight = 32\n\nrenderPassDesc.threadgroupMemoryLength = MemoryLayout<LightInfo>.size * 8\n\nrenderPassDesc.colorAttachments[0].texture      = albedoMemorylessTexture\nrenderPassDesc.colorAttachments[0].loadAction   = .clear\nrenderPassDesc.colorAttachments[0].storeAction  = .dontCare\nrenderPassDesc.colorAttachments[1].texture      = normalsMemorylessTexture\nrenderPassDesc.colorAttachments[1].loadAction   = .clear\nrenderPassDesc.colorAttachments[1].storeAction  = .dontCare\nrenderPassDesc.colorAttachments[2].texture      = roughnessMemorylessTexture\nrenderPassDesc.colorAttachments[2].loadAction   = .clear\nrenderPassDesc.colorAttachments[2].storeAction  = .dontCare\nrenderPassDesc.colorAttachments[3].texture      = lightingTexture\nrenderPassDesc.colorAttachments[3].loadAction   = .clear\nrenderPassDesc.colorAttachments[3].storeAction  = .store"
+    },
+    {
+      "title": "Transitioning from deferred rendering to multi-layer alpha blending layout",
+      "language": "swift",
+      "startTimeSeconds": 1940,
+      "code": "// Transitioning from deferred rendering to multi-layer alpha blending layout\nstruct DeferredShadingFragment {\n    rgba8unorm<half4> albedo;\n    rg11b10f<half3>   normal;\n    float             depth;\n    rgb9e5<half3>     lighting;\n};\nstruct MultiLayerAlphaBlendFragments {\n    half4 color_and_transmittence[3];\n    float depth[3];\n};\nstruct FragmentOutput {\n    MultiLayerAlphaBlendFragments v [[imageblock_data]];\n};\nfragment FragmentOutput my_tile_shader(DeferredShadingFragment input [[imageblock_data]]) {\n    FragmentOutput output;\n    output.v.color_and_transmittence[0] = half4(input.lighting, 0.0h);\n    output.v.depth[0]                   = input.depth;\n    return output;\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Learn more about Apple Silicon",
+      "url": "https://developer.apple.com/documentation/apple-silicon",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/documentation/apple-silicon",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/apple-silicon.json"
+    },
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10632/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10632/metadata.json",
+    "readme": "sessions/wwdc2020/10632/README.md",
+    "transcript": "sessions/wwdc2020/10632/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10632/transcript.json"
+  }
+}

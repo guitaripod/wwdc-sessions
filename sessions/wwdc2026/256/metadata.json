@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2026-256",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 256,
+  "title": "Discover generated subtitles and subtitle styles",
+  "description": "Make your video content more accessible with generated subtitles — a powerful new feature that can transcribe spoken audio or translate subtitles from another language, using on-device models. Explore caption style preview, which lets people customize and preview subtitle styles during playback, and dive into implementation details for AVKit, AVPlayerLayer, and the Media Accessibility framework.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/256",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/256",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Accessibility & Inclusion",
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 660,
+  "hasTranscript": true,
+  "transcriptWordCount": 1378,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/256/4/d28efb5e-5550-468d-b1d1-caec51ce55e6/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/256/4/d28efb5e-5550-468d-b1d1-caec51ce55e6/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/256/4/d28efb5e-5550-468d-b1d1-caec51ce55e6/downloads/wwdc2026-256_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/256/4/d28efb5e-5550-468d-b1d1-caec51ce55e6/downloads/wwdc2026-256_hd.mp4",
+    "duration": 660
+  },
+  "codeSnippets": [
+    {
+      "title": "Implement subtitle style preview",
+      "language": "swift",
+      "startTimeSeconds": 463,
+      "code": "// Implement subtitle style preview\n\nimport AVFoundation\nimport MediaAccessibility\n\nfunc updateProfileList() {\n    subtitleStyleProfileIDs = MACaptionAppearanceCopyProfileIDs() as? [String] ?? []\n}\n\nfunc showPreviewStyle(subtitleStyleProfileID: String) {\n    playerLayer.setCaptionPreviewProfileID(subtitleStyleProfileID, position: .zero, text: nil)\n}\n\nfunc stopPreviewStyle() {\n    playerLayer.stopShowingCaptionPreview()\n}\n\nfunc setSubtitleStyle(subtitleStyleProfileID: CFString) {\n    MACaptionAppearanceSetActiveProfileID(subtitleStyleProfileID)\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "What's new in HTTP Live Streaming",
+      "url": "https://developer.apple.com/streaming/Whats-new-HLS.pdf",
+      "type": "documentation",
+      "description": "WWDC25 Updates to HTTP Live Streaming (HLS) specification",
+      "sosumiURL": "https://sosumi.ai/streaming/Whats-new-HLS.pdf"
+    }
+  ],
+  "path": "sessions/wwdc2026/256/",
+  "files": {
+    "metadata": "sessions/wwdc2026/256/metadata.json",
+    "readme": "sessions/wwdc2026/256/README.md",
+    "transcript": "sessions/wwdc2026/256/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/256/transcript.json"
+  }
+}

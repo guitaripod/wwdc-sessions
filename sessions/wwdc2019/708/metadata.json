@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-708",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 708,
+  "title": "Designing for Privacy",
+  "description": "Privacy is a more important issue than ever for your users. Learn about new features and privacy engineering techniques that can help you earn customer trust, create more personal experiences, and improve user engagement.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/708",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/708",
+  "type": "Session",
+  "publishedAt": "2019-06-05T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Privacy & Security"
+  ],
+  "primaryTopic": "Privacy & Security",
+  "duration": 2299,
+  "hasTranscript": true,
+  "transcriptWordCount": 5087,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/708pnd9swz5hx9anljy/708/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/708pnd9swz5hx9anljy/708/708_sd_designing_for_privacy.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/708pnd9swz5hx9anljy/708/708_hd_designing_for_privacy.mp4",
+    "duration": 2299
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Protecting the User’s Privacy",
+      "url": "https://developer.apple.com/documentation/UIKit/protecting-the-user-s-privacy",
+      "type": "documentation",
+      "description": "Secure personal data, and respect user preferences for how data is used.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/protecting-the-user-s-privacy",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/protecting-the-user-s-privacy.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/708/",
+  "files": {
+    "metadata": "sessions/wwdc2019/708/metadata.json",
+    "readme": "sessions/wwdc2019/708/README.md",
+    "transcript": "sessions/wwdc2019/708/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/708/transcript.json"
+  }
+}

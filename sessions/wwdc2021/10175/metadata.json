@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10175",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10175,
+  "title": "Support customers and handle refunds",
+  "description": "Great customer support is critical to running a successful business on the App Store. Discover how you can provide a frictionless support experience to customers who make in-app purchases, including APIs that make it easy for customers to manage or cancel their auto-renewable subscription, or request refunds from directly within your app. We’ll cover best practices for handling refunds, as well as additional APIs that can help you better support your customers.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10175",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10175",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "server",
+    "storekit"
+  ],
+  "topics": [
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 1495,
+  "hasTranscript": true,
+  "transcriptWordCount": 3649,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10175/5/AC32E663-B4D3-4BFF-B370-D1511009CCCB/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10175/5/AC32E663-B4D3-4BFF-B370-D1511009CCCB/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10175/5/AC32E663-B4D3-4BFF-B370-D1511009CCCB/downloads/wwdc2021-10175_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10175/5/AC32E663-B4D3-4BFF-B370-D1511009CCCB/downloads/wwdc2021-10175_hd.mp4",
+    "duration": 1495
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "App Store Server API",
+      "url": "https://developer.apple.com/documentation/AppStoreServerAPI",
+      "type": "documentation",
+      "description": "Manage your customers’ App Store transactions from your server.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreServerAPI",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreServerAPI.json"
+    },
+    {
+      "title": "Introducing StoreKit 2",
+      "url": "https://developer.apple.com/storekit/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/storekit/"
+    },
+    {
+      "title": "Human Interface Guidelines: In-app purchase",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/in-app-purchase",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/in-app-purchase"
+    },
+    {
+      "title": "In-app purchase overview",
+      "url": "https://developer.apple.com/in-app-purchase/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/in-app-purchase/"
+    },
+    {
+      "title": "App Store Server Notifications",
+      "url": "https://developer.apple.com/documentation/appstoreservernotifications",
+      "type": "documentation",
+      "description": "Monitor in-app purchase events in real time with server notifications from the App Store.",
+      "sosumiURL": "https://sosumi.ai/documentation/appstoreservernotifications",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/appstoreservernotifications.json"
+    },
+    {
+      "title": "Auto-renewable subscriptions overview",
+      "url": "https://developer.apple.com/app-store/subscriptions/",
+      "type": "documentation",
+      "description": "Auto-Renewable Subscriptions",
+      "sosumiURL": "https://sosumi.ai/app-store/subscriptions/"
+    },
+    {
+      "title": "StoreKit",
+      "url": "https://developer.apple.com/documentation/StoreKit",
+      "type": "documentation",
+      "description": "Support In-App Purchases and interactions with the App Store.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10175/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10175/metadata.json",
+    "readme": "sessions/wwdc2021/10175/README.md",
+    "transcript": "sessions/wwdc2021/10175/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10175/transcript.json"
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2026-339",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 339,
+  "title": "Bring an LLM provider to the Foundation Models framework",
+  "description": "Extend the Foundation Models framework by implementing a LanguageModelExecutor for new models. Explore how to interface with the LanguageModelSession’s transcript, manage session state effectively, and optimize KV cache utilization. Find out how to support custom segment types and unlock advanced capabilities for your generative AI features.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/339",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/339",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "ai",
+    "machine learning"
+  ],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1241,
+  "hasTranscript": true,
+  "transcriptWordCount": 3146,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/339/4/334f1ee9-4263-4c86-9b10-632f0f2edab1/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/339/4/334f1ee9-4263-4c86-9b10-632f0f2edab1/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/339/4/334f1ee9-4263-4c86-9b10-632f0f2edab1/downloads/wwdc2026-339_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/339/4/334f1ee9-4263-4c86-9b10-632f0f2edab1/downloads/wwdc2026-339_hd.mp4",
+    "duration": 1241
+  },
+  "codeSnippets": [
+    {
+      "title": "Choose a language model",
+      "language": "swift",
+      "startTimeSeconds": 120,
+      "code": "import FoundationModels\nimport MLXFoundationModels\n\n// On-device Apple Foundation Model\nlet model = SystemLanguageModel()\n\n// Private Cloud Compute model\n// let model = PrivateCloudComputeLanguageModel()\n\n// Custom Core AI model\n// let model = try await CoreAILanguageModel(resourcesAt: modelURL)\n\n// Open-source MLX model from HuggingFace\n// let model = MLXLanguageModel(modelID: \"mlx-community/my-model\")\n\nlet session = LanguageModelSession(model: model)\nlet response = try await session.respond(to: \"...\")\nprint(response.content)"
+    },
+    {
+      "title": "Configure Package.swift for your model package",
+      "language": "swift",
+      "startTimeSeconds": 226,
+      "code": "// Package.swift\n\nlet package = Package(\n    name: \"MyModel\",\n    platforms: [\n        .macOS(.v27), .iOS(.v27), .visionOS(.v27), .watchOS(.v27)\n    ],\n    products: [\n        .library(name: \"MyModel\", targets: [\"MyModel\"])\n    ],\n    dependencies: [\n        .package(url: \"...\", .upToNextMinor(from: \"1.0.0\"))\n    ],\n    targets: [\n        .target(name: \"MyModelRuntime\"),\n        // public: LanguageModel conformance\n        .target(name: \"MyModel\", dependencies: [\"MyModelRuntime\"]),\n        .testTarget(name: \"MyModelTests\", dependencies: [\"MyModel\"])\n    ]\n)"
+    },
+    {
+      "title": "LanguageModel and LanguageModelExecutor protocols",
+      "language": "swift",
+      "startTimeSeconds": 296,
+      "code": "// LanguageModel protocol\n\npublic protocol LanguageModel: Sendable {\n    var capabilities: LanguageModelCapabilities { get }\n    var executorConfiguration: Executor.Configuration { get }\n}\n\n// LanguageModelExecutor protocol\n\npublic protocol LanguageModelExecutor: Sendable {\n    init(configuration: Configuration) throws\n    func prewarm(model: Model, transcript: Transcript)\n    func respond(\n        to request: LanguageModelExecutorGenerationRequest,\n        model: Model,\n        streamingInto channel: LanguageModelExecutorGenerationChannel\n    ) async throws\n}"
+    },
+    {
+      "title": "Implement LanguageModel and Executor conformances",
+      "language": "swift",
+      "startTimeSeconds": 385,
+      "code": "// LanguageModel conformance\npublic struct MyLanguageModel: LanguageModel {\n    typealias Executor = MyLanguageModelExecutor\n\n    public var capabilities: LanguageModelCapabilities {\n        LanguageModelCapabilities(capabilities: [\n            .toolCalling, .guidedGeneration, .reasoning\n        ])\n    }\n\n    public var executorConfiguration: Executor.Configuration {\n        Executor.Configuration(/* ... */)\n    }\n}\n\n// Executor conformance\npublic struct MyLanguageModelExecutor: LanguageModelExecutor {\n    public typealias Model = MyLanguageModel\n\n    public struct Configuration: Hashable, Sendable { /* ... */ }\n\n    public init(configuration: Configuration) throws { /* ... */ }\n\n    public func respond(\n        to request: LanguageModelExecutorGenerationRequest,\n        model: MyLanguageModel,\n        streamingInto channel: LanguageModelExecutorGenerationChannel\n    ) async throws { /* ... */ }\n}"
+    },
+    {
+      "title": "Manage model resources with prewarm and respond",
+      "language": "swift",
+      "startTimeSeconds": 448,
+      "code": "// One approach to managing resources\n\nstruct MyLanguageModelExecutor: LanguageModelExecutor {\n\n    private mutating func loadModelIfNeeded() throws -> LoadedWeights {\n        let weights = try loadedModel ?? loadWeights()\n        loadedModel = weights\n        return weights\n    }\n\n    func prewarm(transcript: Transcript) {\n        loadedModel = try? loadModelIfNeeded()\n    }\n\n    func respond( ... ) async throws {\n        let weights = try loadModelIfNeeded()\n        // ...generate with 'weights'...\n    }\n}"
+    },
+    {
+      "title": "Map Transcript entries to model messages",
+      "language": "swift",
+      "startTimeSeconds": 540,
+      "code": "// Transcript entries\n\nlet transcript = Transcript(entries: [\n    .instructions( ... ),  // \"You are a helpful assistant\"\n\n    .prompt( ... ),        // \"What's the weather in Pittsburgh?\"\n    .toolCalls( ... ),     // getWeather(location: \"Pittsburgh\")\n    .toolOutput( ... ),    // 65°F, sunny\n    .response( ... ),      // \"It's 65°F and sunny in Pittsburgh\"\n\n    .prompt( ... ),        // \"What's the address of Apple Park?\"\n    .response( ... ),      // \"One Apple Park Way, Cupertino, CA 95014\"\n])"
+    },
+    {
+      "title": "Read generation and context options from the request",
+      "language": "swift",
+      "startTimeSeconds": 642,
+      "code": "// Parse generation and context options\n\nfunc respond(\n    to request: LanguageModelExecutorGenerationRequest,\n    model: MyLanguageModel,\n    streamingInto channel: LanguageModelExecutorGenerationChannel\n) async throws {\n    let reasoningLevel = request.contextOptions.reasoningLevel\n    let temperature = request.generationOptions.temperature\n    let maxTokens = request.generationOptions.maximumResponseTokens\n}"
+    },
+    {
+      "title": "Stream tokens and metadata through the channel",
+      "language": "swift",
+      "startTimeSeconds": 707,
+      "code": "// Streaming text tokens\n\nfunc respond( ... ) async throws {\n    // 1. Report metadata\n    await channel.send(.response(action: .updateMetadata([\n        \"modelID\": \"my-model-2026-06-08\",\n        \"requestID\": request.id.uuidString\n    ])))\n    // 2. Report prompt token usage before generating\n    await channel.send(.response(action: .updateUsage(\n        input: .init(totalTokenCount: promptTokens, cachedTokenCount: cachedTokens),\n        output: .init(totalTokenCount: 0, reasoningTokenCount: 0)\n    )))\n    // 3. Stream text deltas as the model generates\n    for try await token in tokens {\n        await channel.send(.response(action: .appendText(token)))\n    }\n}"
+    },
+    {
+      "title": "Honor the developer's intent or throw",
+      "language": "swift",
+      "startTimeSeconds": 813,
+      "code": "// Honor the developer's intention where possible\n\n// The developer set sampling: .greedy, but our service only takes temperature\nif request.generationOptions.sampling?.kind == .greedy {\n    serviceRequest.temperature = 0\n}\n\n// Otherwise, throw an error\n\n// The token budget is too small to satisfy the schema\nif let schema = request.schema,\n   let budget = request.generationOptions.maximumResponseTokens,\n   budget < minimumTokens(for: schema) {\n    throw LanguageModelError.unsupportedCapability(\n        .init(\n            capability: .guidedGeneration,\n            debugDescription: \"Token budget too small to satisfy this schema.\"\n        )\n    )\n}"
+    },
+    {
+      "title": "Built-in errors that any model can throw",
+      "language": "swift",
+      "startTimeSeconds": 837,
+      "code": "// Built-in errors that any model can throw\n\npublic enum LanguageModelError: LocalizedError, CustomDebugStringConvertible {\n    // Transcript grew past the model's context window. Trim entries and retry.\n    case contextSizeExceeded(     )\n    // Too many requests in a short window. Space them out or reduce load.\n    case rateLimited(     )\n    // Model declined to answer. Fall back to a message of your choosing.\n    case refusal(     )\n    // Safety guardrails tripped on the prompt or the response.\n    case guardrailViolation(     )\n    // Model lacks a feature you used, such as guided generation or tools.\n    case unsupportedCapability(     )\n    // Prompt contains content the model can't process (bad files, unknown formats).\n    case unsupportedTranscriptContent(     )\n    // A generation guide (e.g., a regex pattern) isn't supported by this model.\n    case unsupportedGenerationGuide(     )\n    // Prompt asked for output in a language or locale the model doesn't support.\n    case unsupportedLanguageOrLocale(     )\n    // Request timed out before the model produced a response.\n    case timeout(     )\n}"
+    },
+    {
+      "title": "Handle errors from your model executor",
+      "language": "swift",
+      "startTimeSeconds": 854,
+      "code": "// Custom errors\n\npublic enum MyModelError: Error, LocalizedError {\n    // User hit monthly token limit. Prompt upgrade or wait for reset.\n    case exceededSubscriptionTierLimit\n    // Model variant isn't enabled on this account.\n    case modelNotProvisioned\n    // Billing or policy review locked this account.\n    case accountSuspended\n\n    public var errorDescription: String? {\n        switch self {\n        case .exceededSubscriptionTierLimit:\n            String(localized: \"Your plan limit has been reached.\")\n        // ...\n        }\n    }\n}"
+    },
+    {
+      "title": "Attach custom metadata to responses",
+      "language": "swift",
+      "startTimeSeconds": 968,
+      "code": "// Attach service-specific performance metadata\n\nlet elapsed = Date().timeIntervalSince(startTime)\nlet tokensPerSecond = Double(tokenCount) / elapsed\nlet timeToFirstToken = firstTokenTime?.timeIntervalSince(startTime) ?? 0\n\nawait channel.send(.metadataUpdate([\n    \"tokensPerSecond\": tokensPerSecond,\n    \"timeToFirstToken\": timeToFirstToken\n]))"
+    },
+    {
+      "title": "Define and use custom Transcript segments",
+      "language": "swift",
+      "startTimeSeconds": 1025,
+      "code": "// Define a custom segment\npublic struct AudioSegment: Transcript.CustomSegment {\n    public var id: String\n    public var content: URL\n}\n\n// Pass it in a prompt\nlet recording = AudioSegment(id: UUID().uuidString, content: URL(filePath: \"/path/to/recording.m4a\"))\nlet response = try await session.respond {\n    \"Where was Frank Lloyd Wright's original architecture school located?\"\n    recording\n}\n\n// Emit a custom segment from the executor\nfor try await event in stream {\n    switch event {\n    case .audioFileGenerated(let file):\n        await channel.send(.response(action: .updateCustomSegment(\n            AudioSegment(id: file.id, content: file.url)\n        )))\n    }\n}"
+    },
+    {
+      "title": "Implement server-side tools in your model",
+      "language": "swift",
+      "startTimeSeconds": 1089,
+      "code": "// Configure server-side tools\npublic struct MyLanguageModel: LanguageModel {\n    public struct ServerTool: Sendable {\n        public static let webSearch: ServerTool = ...\n    }\n    public init(serverTools: [ServerTool] = []) { }\n}\n\n// Surface tool results through the channel\nlet client = MyServerClient(serverTools: model.serverTools)\nlet response = try await client.send(prompt: .init(request))\nfor try await chunk in response {\n    switch chunk {\n    case .webSearch(let webSearch):\n        await channel.send(.response(action: .updateCustomSegment(\n            WebSearchSegment(url: webSearch.url, content: webSearch.html)\n        )))\n    case .textDelta(let textDelta):\n        await channel.send(.response(action: .appendText(\n            textDelta.text, tokenCount: textDelta.tokenCount\n        )))\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Foundation Models",
+      "url": "https://developer.apple.com/documentation/FoundationModels",
+      "type": "documentation",
+      "description": "Perform tasks with models that specialize in language understanding, structured output, and tool calling.",
+      "sosumiURL": "https://sosumi.ai/documentation/FoundationModels",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/FoundationModels.json"
+    },
+    {
+      "title": "Core AI Models",
+      "url": "https://github.com/apple/coreai-models",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "MLX Swift LM on GitHub",
+      "url": "https://github.com/ml-explore/mlx-swift-lm",
+      "type": "documentation",
+      "description": null
+    }
+  ],
+  "path": "sessions/wwdc2026/339/",
+  "files": {
+    "metadata": "sessions/wwdc2026/339/metadata.json",
+    "readme": "sessions/wwdc2026/339/README.md",
+    "transcript": "sessions/wwdc2026/339/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/339/transcript.json"
+  }
+}

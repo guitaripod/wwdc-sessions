@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10224",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10224,
+  "title": "Meet Audio Workgroups",
+  "description": "Fine-tune your audio app or plug-in for Apple silicon Macs: We’ll show you how to register your realtime threads using Audio Workgroups and make your app sing. Learn more about the power efficiency of System on a Chip (SoC) and how you can take advantage of new APIs to improve the speed and sound of your apps and plug-ins.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10224",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10224",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 652,
+  "hasTranscript": true,
+  "transcriptWordCount": 1603,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10224/4/C98E1064-6167-4594-A904-DE63C2C65B6B/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10224/4/C98E1064-6167-4594-A904-DE63C2C65B6B/wwdc2020_10224_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10224/4/C98E1064-6167-4594-A904-DE63C2C65B6B/wwdc2020_10224_hd.mp4",
+    "duration": 652
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2020/10224/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10224/metadata.json",
+    "readme": "sessions/wwdc2020/10224/README.md",
+    "transcript": "sessions/wwdc2020/10224/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10224/transcript.json"
+  }
+}

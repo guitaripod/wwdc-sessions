@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-215",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 215,
+  "title": "Advances in Collection View Layout",
+  "description": "Collection View Layouts make it easy to build rich interactive collections. Learn how to make dynamic and responsive layouts that range in complexity from basic lists to an advanced, multi-dimensional browsing experience.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/215",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/215",
+  "type": "Session",
+  "publishedAt": "2019-06-05T11:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "app store",
+    "browse",
+    "custom layouts",
+    "layouts"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 3013,
+  "hasTranscript": true,
+  "transcriptWordCount": 8818,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/215wh1hurdxwcctfc8/215/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/215wh1hurdxwcctfc8/215/215_sd_advances_in_collection_view_layout.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/215wh1hurdxwcctfc8/215/215_hd_advances_in_collection_view_layout.mp4",
+    "duration": 3013
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Implementing modern collection views",
+      "url": "https://developer.apple.com/documentation/UIKit/implementing-modern-collection-views",
+      "type": "samplecode",
+      "description": "Bring compositional layouts to your app and simplify updating your user interface with diffable data sources.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/implementing-modern-collection-views",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/implementing-modern-collection-views.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/215/",
+  "files": {
+    "metadata": "sessions/wwdc2019/215/metadata.json",
+    "readme": "sessions/wwdc2019/215/README.md",
+    "transcript": "sessions/wwdc2019/215/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/215/transcript.json"
+  }
+}

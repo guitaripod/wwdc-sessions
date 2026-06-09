@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10009",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10009,
+  "title": "Edit and play back HDR video with AVFoundation",
+  "description": "Find out how you can support HDR editing and playback in your macOS app, and how you can determine if a specific hardware configuration is eligible for HDR playback. We'll show you how to use AVMutableVideoComposition with the built-in compositor and easily edit HDR content, explain how you can use Core Image's built-in image filters to create your own AVMutableVideoComposition, and demonstrate how to create and use a custom compositor to enable HDR editing.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10009",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10009",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "metal",
+    "performance",
+    "prores",
+    "video",
+    "videotoolbox"
+  ],
+  "topics": [
+    "Developer Tools",
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 1442,
+  "hasTranscript": true,
+  "transcriptWordCount": 3350,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10009/8/2BA74921-CA85-43BC-8CDD-0C0236B7A44F/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10009/8/2BA74921-CA85-43BC-8CDD-0C0236B7A44F/wwdc2020_10009_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10009/8/2BA74921-CA85-43BC-8CDD-0C0236B7A44F/wwdc2020_10009_hd.mp4",
+    "duration": 1442
+  },
+  "codeSnippets": [
+    {
+      "title": "Create AVVideoComposition with custom compositor class",
+      "language": "swift",
+      "startTimeSeconds": 403,
+      "code": "// Create AVVideoComposition with custom compositor class\nlet videoComposition = AVMutableVideoComposition()\n\nvideoComposition.instructions = [videoCompositionInstruction]\nvideoComposition.frameDuration = CMTimeMake(value: 1, timescale: 30)\nvideoComposition.renderSize = assetSize"
+    },
+    {
+      "title": "Create AVVideoComposition using “applyingCIFiltersWithHandler”",
+      "language": "swift",
+      "startTimeSeconds": 595,
+      "code": "// Create AVVideoComposition using “applyingCIFiltersWithHandler”\n\nlet videoComposition = \n AVMutableVideoComposition(asset: asset, \n applyingCIFiltersWithHandler: {\n     (request: AVAsynchronousCIImageFilteringRequest) -> Void in\n\n     let ciFilter = CIFilter(name: “CIZoomBlur”)\n\n     ciFilter!.setValue(request.sourceImage, forKey: kCIInputImageKey)\n\n         request.finish(with: ciFilter!.outputImage!, context: nil)\n     })"
+    },
+    {
+      "title": "First CIKernel",
+      "language": "objectivec",
+      "startTimeSeconds": 657,
+      "code": "// HDRHighlight.metal\n\n#include <metal_stdlib>\n#include <CoreImage/CoreImage.h>\nusing namespace metal;\n\nextern “C” float4 HDRHighlight(coreimage::sample_t s, coreimage::destination dest) {       \n\n    if (s.r > 1.0 || s.g > 1.0 || s.b > 1.0)\n\t\treturn float4(2.0, 0.0, 0.0, 1.0);\n\telse\n\t\treturn s;\n}"
+    },
+    {
+      "title": "Color Inverter CI Kernel",
+      "language": "objectivec",
+      "startTimeSeconds": 682,
+      "code": "// ColorInverter.metal - not HDR ready\n\n#include <metal_stdlib>\n#include <CoreImage/CoreImage.h>\nusing namespace metal;\n\nextern “C” float4 ColorInverter(coreimage::sample_t s, coreimage::destination dest) {       \n\n\treturn float4(1.0 - s.r, 1.0 - s.g, 1.0 - s.b, 1.0);\n}"
+    },
+    {
+      "title": "Custom compositor class",
+      "language": "swift",
+      "startTimeSeconds": 743,
+      "code": "// Custom compositor class\nclass SampleCustomCompositor: NSObject, AVVideoCompositing {\n…\n}\n\n\n// Create AVVideoComposition with custom compositor class\nlet videoComposition = AVMutableVideoComposition()\n\nvideoComposition.instructions = [videoCompositionInstruction]\nvideoComposition.frameDuration = CMTimeMake(value: 1, timescale: 30)\nvideoComposition.renderSize = assetSize\n\nvideoComposition.customVideoCompositorClass = SampleCustomCompositor.self"
+    },
+    {
+      "title": "Setting custom compositor to support HDR",
+      "language": "swift",
+      "startTimeSeconds": 838,
+      "code": "// Setting custom compositor to support HDR\n\nclass SampleCustomCompositor: NSObject, AVVideoCompositing {\n\tvar sourcePixelBufferAttributes: [String : Any]? =\n    [kCVPixelBufferPixelFormatTypeKey as String:\n                    [kCVPixelFormatType_420YpCbCr10BiPlanarVideoRange]]\n\n\tvar requiredPixelBufferAttributesForRenderContext: [String : Any] =\n\t\t\t[kCVPixelBufferPixelFormatTypeKey as String: \n                            [kCVPixelFormatType_420YpCbCr10BiPlanarVideoRange]]\n\n\tvar supportsHDRSourceFrames = true\n    var supportsWideColorSourceFrames = true\n\n\tfunc startRequest(_ request: AVAsynchronousVideoCompositionRequest) {\n\t\t\t ...\n\t}\n\n\tfunc renderContextChanged(_ newRenderContext: AVVideoCompositionRenderContext) {\n\t}\n}"
+    },
+    {
+      "title": "AVPlayer API definition",
+      "language": "swift",
+      "startTimeSeconds": 1261,
+      "code": "// API definition \nextension AVPlayer {\n    @available(macOS 10.15, *)\n    open class var eligibleForHDRPlayback: Bool { get }\n}"
+    },
+    {
+      "title": "AVPlayer API definition 2",
+      "language": "swift",
+      "startTimeSeconds": 1301,
+      "code": "// API definition \nextension AVPlayer {\n    @available(macOS 10.15, *)\n    open class var eligibleForHDRPlayback: Bool { get }\n}\n\n// Set video composition color properties based on HDR playback eligibility \nif AVPlayer.eligibleForHDRPlayback {\n     videoComposition.colorPrimaries = AVVideoColorPrimaries_ITU_R_2020\n\t videoComposition.colorTransferFunction = AVVideoTransferFunction_ITU_R_2100_HLG\n\t videoComposition.colorYCbCrMatrix = AVVideoYCbCrMatrix_ITU_R_2020\n}\nelse {\n\t videoComposition.colorPrimaries = AVVideoColorPrimaries_ITU_R_709_2\n\t videoComposition.colorTransferFunction = AVVideoTransferFunction_ITU_R_709_2\n\t videoComposition.colorYCbCrMatrix = AVVideoYCbCrMatrix_ITU_R_709_2\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Editing and playing HDR video",
+      "url": "https://developer.apple.com/documentation/AVFoundation/editing-and-playing-hdr-video",
+      "type": "samplecode",
+      "description": "Support high-dynamic-range (HDR) video content in your app by using the HDR editing and playback capabilities of AVFoundation.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/editing-and-playing-hdr-video",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/editing-and-playing-hdr-video.json"
+    },
+    {
+      "title": "AVFoundation",
+      "url": "https://developer.apple.com/documentation/AVFoundation",
+      "type": "documentation",
+      "description": "Work with audiovisual assets, control device cameras, process audio, and configure system audio interactions.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10009/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10009/metadata.json",
+    "readme": "sessions/wwdc2020/10009/README.md",
+    "transcript": "sessions/wwdc2020/10009/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10009/transcript.json"
+  }
+}

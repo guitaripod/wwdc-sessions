@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2026-241",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 241,
+  "title": "What’s new in the Foundation Models framework",
+  "description": "Explore what’s new in the Foundation Models framework. Learn how to access Private Cloud Compute, integrate third-party and open source models, and work with vision capabilities. Discover context management APIs, built-in semantic search, and powerful primitives for creating agentic experiences in your apps.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/241",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/241",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "ai",
+    "machine learning",
+    "models",
+    "prompt",
+    "xcode"
+  ],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1273,
+  "hasTranscript": true,
+  "transcriptWordCount": 2697,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/241/6/900558cb-1997-490a-9aac-2461b209e578/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/241/6/900558cb-1997-490a-9aac-2461b209e578/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/241/6/900558cb-1997-490a-9aac-2461b209e578/downloads/wwdc2026-241_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/241/6/900558cb-1997-490a-9aac-2461b209e578/downloads/wwdc2026-241_hd.mp4",
+    "duration": 1273
+  },
+  "codeSnippets": [
+    {
+      "title": "Context size and token counting",
+      "language": "swift",
+      "startTimeSeconds": 166,
+      "code": "// Context size and token counting\n\nlet model = SystemLanguageModel()\nprint(model.contextSize)\n// 8192\n\nlet count = try await model.tokenCount(for: \"What are the Japanese characters for origami?\")\nprint(count)"
+    },
+    {
+      "title": "Attachable image types",
+      "language": "swift",
+      "startTimeSeconds": 232,
+      "code": "// Insert c// Attachable image types\n\nlet response = try await session.respond {\n    \"What animal is this?\"\n    Attachment(UIImage(...))\n}ode snippet."
+    },
+    {
+      "title": "Inspecting usage",
+      "language": "swift",
+      "startTimeSeconds": 525,
+      "code": "// Inspecting usage\n\nlet response = try await session.respond(\n    to: \"Recommend a craft that doesn't require scissors.\",\n    contextOptions: ContextOptions(reasoningLevel: .light)\n)\n\nprint(response.usage.input.totalTokenCount)\nprint(response.usage.input.cachedTokenCount)\n\nprint(response.usage.output.totalTokenCount)\nprint(response.usage.output.reasoningTokenCount)"
+    },
+    {
+      "title": "Routing between craft analysis and brainstorm",
+      "language": "swift",
+      "startTimeSeconds": 715,
+      "code": "// Routing between craft analysis and brainstorm\n\n@Observable\nfinal class AppStates {\n    var mode: Mode\n}\n\nlet appStates: AppStates\nvar session: LanguageModelSession?\n\nfunc updateSession() {\n    let originalTranscript = session?.transcript.dropFirstInstructions() ?? Transcript()\n\n    // Create a new session with new instructions and tools\n    switch appStates.mode {\n    case .craftAnalysis:\n        session = LanguageModelSession(\n            tools: [\n                RecordImageAnalysisTool(),\n                SwitchModeTool(states: appStates)\n            ],\n            instructions: \"Analyze the user's craft project...\",\n            transcript: originalTranscript\n        )\n    case .brainstorm:\n        session = LanguageModelSession(\n            tools: [\n                RecordBrainstormTool(),\n            ],\n            instructions: \"Brainstorm some ideas...\",\n            transcript: originalTranscript\n        )\n    }\n}\n\nstruct SwitchModeTool: Tool {\n    let description = \"Switch to a different mode.\"\n    let states: AppStates\n\n    @Generable\n    struct Arguments {\n        let mode: Mode\n    }\n\n    func call(arguments: Arguments) async throws -> some PromptRepresentable {\n        appStates.mode = arguments.mode\n        return \"Successfully switched to \\(arguments.mode).\"\n    }\n}\n\n// If mode changes, update the session\nwithObservationTracking {\n    appStates.mode\n} onChange: {\n    updateSession()\n}"
+    },
+    {
+      "title": "Describing the profile for craft app",
+      "language": "swift",
+      "startTimeSeconds": 762,
+      "code": "// Describing the profile for craft app\n\nstruct CraftProfile: LanguageModelSession.DynamicProfile {\n    var body: some DynamicProfile {\n        Profile {\n            Instructions {\n                \"\"\"\n                You are an expert crafting assistant. \\\n                Record craft project image analyses   \\\n                using the recordImageAnalysis tool.\n                \"\"\"\n            }\n            RecordImageAnalysisTool()\n        }\n    }\n}\n\nlet session = LanguageModelSession(\n    profile: CraftProfile()\n)"
+    },
+    {
+      "title": "Describing the profile for craft app",
+      "language": "swift",
+      "startTimeSeconds": 876,
+      "code": "// Describing the profile for craft app\n\nstruct CraftProfile: LanguageModelSession.DynamicProfile {\n    let states: CraftProjectStates\n\n    var body: some DynamicProfile {\n        switch states.mode {\n        case .craftAnalysis:\n            Profile {\n                Instructions { /* ... */ }\n                RecordImageAnalysisTool()\n                SwitchModeTool(states: states)\n            }\n        case .brainstorm:\n            Profile {\n                Instructions { /* ... */ }\n                BrainstormRecordTool()\n            }\n            .model(states.privateCloudCompute)\n            .reasoningLevel(.deep)\n        }\n    }\n}"
+    },
+    {
+      "title": "Foundation Models SDK for Python",
+      "language": "swift",
+      "startTimeSeconds": 1109,
+      "code": "# Foundation Models SDK for Python\n\nimport apple_fm_sdk as fm\n\nmodel = fm.SystemLanguageModel()\n\n# Check the model's availability\nis_available, reason = model.is_available()\n\nif is_available:\n\n    # Create a session\n    session = fm.LanguageModelSession(model=model)\n\n    # Generate a response\n    response = await session.respond(prompt=\"Hello!\")\n    print(response)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Expanding generation with tool calling",
+      "url": "https://developer.apple.com/documentation/FoundationModels/expanding-generation-with-tool-calling",
+      "type": "documentation",
+      "description": "Build tools that enable the model to perform tasks that are specific to your use case.",
+      "sosumiURL": "https://sosumi.ai/documentation/FoundationModels/expanding-generation-with-tool-calling",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/FoundationModels/expanding-generation-with-tool-calling.json"
+    },
+    {
+      "title": "Analyzing images with multimodal prompting",
+      "url": "https://developer.apple.com/documentation/FoundationModels/analyzing-images-with-multimodal-prompting",
+      "type": "documentation",
+      "description": "Analyze and extract information from images by combining them with descriptive text prompts.",
+      "sosumiURL": "https://sosumi.ai/documentation/FoundationModels/analyzing-images-with-multimodal-prompting",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/FoundationModels/analyzing-images-with-multimodal-prompting.json"
+    },
+    {
+      "title": "Composing dynamic sessions with instructions and profiles",
+      "url": "https://developer.apple.com/documentation/FoundationModels/composing-dynamic-sessions-with-instructions-and-profiles",
+      "type": "documentation",
+      "description": "Adapt sessions dynamically at runtime by loading instructions and tools based",
+      "sosumiURL": "https://sosumi.ai/documentation/FoundationModels/composing-dynamic-sessions-with-instructions-and-profiles",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/FoundationModels/composing-dynamic-sessions-with-instructions-and-profiles.json"
+    },
+    {
+      "title": "Adding server-side intelligence with Private Cloud Compute",
+      "url": "https://developer.apple.com/documentation/FoundationModels/adding-server-side-intelligence-with-private-cloud-compute",
+      "type": "documentation",
+      "description": "Access a larger context window and stronger reasoning by routing session requests",
+      "sosumiURL": "https://sosumi.ai/documentation/FoundationModels/adding-server-side-intelligence-with-private-cloud-compute",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/FoundationModels/adding-server-side-intelligence-with-private-cloud-compute.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/241/",
+  "files": {
+    "metadata": "sessions/wwdc2026/241/metadata.json",
+    "readme": "sessions/wwdc2026/241/README.md",
+    "transcript": "sessions/wwdc2026/241/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/241/transcript.json"
+  }
+}

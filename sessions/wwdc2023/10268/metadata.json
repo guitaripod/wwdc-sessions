@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10268",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10268,
+  "title": "Meet mergeable libraries",
+  "description": "Discover how mergeable libraries combine the best parts of static and dynamic libraries to help improve your app’s productivity and runtime performance. Learn how you can enable faster development while shipping the smallest app. We’ll show you how to adopt mergeable libraries in Xcode 15 and share best practices for working with your code.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10268",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10268",
+  "type": "Video",
+  "publishedAt": "2023-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Swift",
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 1575,
+  "hasTranscript": true,
+  "transcriptWordCount": 3463,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10268/4/8ABBA81C-E5D8-4695-A921-FE326B1AC4E3/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10268/4/8ABBA81C-E5D8-4695-A921-FE326B1AC4E3/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10268/4/8ABBA81C-E5D8-4695-A921-FE326B1AC4E3/downloads/wwdc2023-10268_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10268/4/8ABBA81C-E5D8-4695-A921-FE326B1AC4E3/downloads/wwdc2023-10268_hd.mp4",
+    "duration": 1575
+  },
+  "codeSnippets": [
+    {
+      "title": "Enabling library merging",
+      "language": "bash",
+      "startTimeSeconds": 558,
+      "code": "MERGED_BINARY_TYPE"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Configuring your project to use mergeable libraries",
+      "url": "https://developer.apple.com/documentation/Xcode/configuring-your-project-to-use-mergeable-libraries",
+      "type": "documentation",
+      "description": "Use mergeable dynamic libraries to get app launch times similar to static linking in release builds, without losing dynamically linked build times in debug builds.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/configuring-your-project-to-use-mergeable-libraries",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/configuring-your-project-to-use-mergeable-libraries.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10268/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10268/metadata.json",
+    "readme": "sessions/wwdc2023/10268/README.md",
+    "transcript": "sessions/wwdc2023/10268/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10268/transcript.json"
+  }
+}

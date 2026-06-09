@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-503",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 503,
+  "title": "Delivering Intuitive Media Playback with AVKit",
+  "description": "AVKit is a high-level framework for building media user interfaces, complete with playback controls, chapter navigation, Picture-in-Picture, audio routing, support for subtitles and closed captioning, Siri and Now Playing integration, and support for keyboard, Touch Bar, and remote control. Learn best practices in how to integrate these technologies into your own apps on iOS, tvOS, and iPad apps on Mac.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/503",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/503",
+  "type": "Session",
+  "publishedAt": "2019-06-06T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "airplay",
+    "avfoundation",
+    "avkit",
+    "avplayer",
+    "avplayerviewcontroller",
+    "content",
+    "controls",
+    "externalmetadata",
+    "media",
+    "metadata",
+    "picture in picture",
+    "pip",
+    "player"
+  ],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 2405,
+  "hasTranscript": true,
+  "transcriptWordCount": 5711,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/503tnc2gfty50jit92m/503/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/503tnc2gfty50jit92m/503/503_sd_delivering_intuitive_media_playback_with_avkit.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/503tnc2gfty50jit92m/503/503_hd_delivering_intuitive_media_playback_with_avkit.mp4",
+    "duration": 2405
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "AVPlayerViewController",
+      "url": "https://developer.apple.com/documentation/AVKit/AVPlayerViewController",
+      "type": "documentation",
+      "description": "A view controller that displays content from a player and presents a native user interface to control playback.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVKit/AVPlayerViewController",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVKit/AVPlayerViewController.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/503/",
+  "files": {
+    "metadata": "sessions/wwdc2019/503/metadata.json",
+    "readme": "sessions/wwdc2019/503/README.md",
+    "transcript": "sessions/wwdc2019/503/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/503/transcript.json"
+  }
+}

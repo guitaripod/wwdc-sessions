@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10174",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10174,
+  "title": "Explore App Clips",
+  "description": "Help people experience the right parts of your app at the exact moment they need them. We’ll explain how to design and build an App Clip — a small part of your app that focuses on a specific task — and make it easily discoverable. Learn how to focus your App Clip on short and fast interactions and identify contextually-relevant situations where you can surface it, like a search in Maps or at a real-world location through QR codes, NFC, or App Clip codes. Find out a few key differences between apps and App Clips, and explore how App Clips interact with their corresponding apps.\n\nWe’ve designed this session to introduce you to App Clips. For more detailed information on designing, building, and implementing App Clips, check out “Create App Clips for other businesses,” “Streamline your App Clip,” and “Configure and link your App Clips.”",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10174",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10174",
+  "type": "Video",
+  "publishedAt": "2020-06-23T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "active compilation conditions",
+    "app clip codes",
+    "app clip experience",
+    "app clip url",
+    "applepay",
+    "asauthorizationcontroller",
+    "corresponding app",
+    "debug app clip",
+    "focused userflow",
+    "migrate data",
+    "on-demand binary",
+    "registered experience",
+    "shared asset catalog",
+    "shared data containers",
+    "sign in with apple",
+    "skoverlay",
+    "swiftui"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1186,
+  "hasTranscript": true,
+  "transcriptWordCount": 3035,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10174/3/75396F5A-4285-498E-9ED5-29F194CE11AA/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10174/3/75396F5A-4285-498E-9ED5-29F194CE11AA/wwdc2020_10174_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10174/3/75396F5A-4285-498E-9ED5-29F194CE11AA/wwdc2020_10174_hd.mp4",
+    "duration": 1186
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "App Clips",
+      "url": "https://developer.apple.com/documentation/AppClip",
+      "type": "documentation",
+      "description": "Create a lightweight, in-the-moment experience or demo version for your app that’s instantly available.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppClip",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppClip.json"
+    },
+    {
+      "title": "Creating an App Clip with Xcode",
+      "url": "https://developer.apple.com/documentation/AppClip/creating-an-app-clip-with-xcode",
+      "type": "documentation",
+      "description": "Add an App Clip target to your Xcode project and share code between the App Clip and its corresponding full app.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppClip/creating-an-app-clip-with-xcode",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppClip/creating-an-app-clip-with-xcode.json"
+    },
+    {
+      "title": "Fruta: Building a feature-rich app with SwiftUI",
+      "url": "https://developer.apple.com/documentation/AppClip/fruta-building-a-feature-rich-app-with-swiftui",
+      "type": "samplecode",
+      "description": "Create a shared codebase to build a multiplatform app that offers widgets and an App Clip.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppClip/fruta-building-a-feature-rich-app-with-swiftui",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppClip/fruta-building-a-feature-rich-app-with-swiftui.json"
+    },
+    {
+      "title": "Learn more about creating app clips",
+      "url": "https://developer.apple.com/app-clips/",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/app-clips/"
+    },
+    {
+      "title": "Human Interface Guidelines: App Clips",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/app-clips",
+      "type": "documentation",
+      "description": "An App Clip is a lightweight version of your app that lets people perform everyday tasks quickly, without downloading and installing your app.",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/app-clips"
+    },
+    {
+      "title": "Choosing the right functionality for your App Clip",
+      "url": "https://developer.apple.com/documentation/AppClip/choosing-the-right-functionality-for-your-app-clip",
+      "type": "documentation",
+      "description": "Review frameworks available to App Clips and identify functionality that makes a great App Clip.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppClip/choosing-the-right-functionality-for-your-app-clip",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppClip/choosing-the-right-functionality-for-your-app-clip.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10174/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10174/metadata.json",
+    "readme": "sessions/wwdc2020/10174/README.md",
+    "transcript": "sessions/wwdc2020/10174/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10174/transcript.json"
+  }
+}

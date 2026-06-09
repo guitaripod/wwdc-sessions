@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-110367",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 110367,
+  "title": "Simplify C++ templates with concepts",
+  "description": "Discover how C++20 features can take your C++ code to the next level. We’ll introduce concepts and explore how you can use it to find errors faster in your generic C++ code. We’ll also discuss the latest enhancements to the constexpr feature and show how you can leverage it to improve your app's performance by evaluating code at compile time.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/110367",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/110367",
+  "type": "Video",
+  "publishedAt": "2022-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 1626,
+  "hasTranscript": true,
+  "transcriptWordCount": 3758,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110367/3/0C225661-78FA-4245-9A79-C80C825B2DBE/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110367/3/0C225661-78FA-4245-9A79-C80C825B2DBE/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110367/3/0C225661-78FA-4245-9A79-C80C825B2DBE/downloads/wwdc2022-110367_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110367/3/0C225661-78FA-4245-9A79-C80C825B2DBE/downloads/wwdc2022-110367_hd.mp4",
+    "duration": 1626
+  },
+  "codeSnippets": [
+    {
+      "title": "snippet1",
+      "language": "cpp",
+      "startTimeSeconds": 2,
+      "code": "int main() { }"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Concepts library",
+      "url": "https://en.cppreference.com/w/cpp/concepts",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Constraints and concepts",
+      "url": "https://en.cppreference.com/w/cpp/language/constraints",
+      "type": "documentation",
+      "description": null
+    }
+  ],
+  "path": "sessions/wwdc2022/110367/",
+  "files": {
+    "metadata": "sessions/wwdc2022/110367/metadata.json",
+    "readme": "sessions/wwdc2022/110367/README.md",
+    "transcript": "sessions/wwdc2022/110367/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/110367/transcript.json"
+  }
+}

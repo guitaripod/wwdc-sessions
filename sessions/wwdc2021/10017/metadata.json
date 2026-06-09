@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10017",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10017,
+  "title": "Bring Core Data concurrency to Swift and SwiftUI",
+  "description": "Discover how Core Data is adopting the new concurrency capabilities of Swift 5.5, leading to more concise, efficient, and safe asynchronous code. We'll show you how to update Core Data in your apps to work with concurrency, and detail the many other improvements throughout the framework that make working with Swift and SwiftUI more expressive and powerful.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10017",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10017",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "async",
+    "await",
+    "batch insert request",
+    ".binary",
+    "core data",
+    "data persistence",
+    "dictionary",
+    "dynamic configuration",
+    "earthquakes app",
+    "enqueued",
+    "fetch request",
+    ".inmemory",
+    "lazy entity resolution",
+    "managed object",
+    "managed object context",
+    "nsattributedescription",
+    "nsattributedescription.attributetype",
+    "nsmanagedobjectcontext",
+    "nspersistentcontainer",
+    "nspersistentstorecoordinator",
+    "perform",
+    "performandwait",
+    "perform and wait",
+    "perform(.enqueued)",
+    "persist data",
+    "persistence",
+    "persistent store",
+    "predicates",
+    "routing errors",
+    "sectioned fetching",
+    "sectionedfetchrequest",
+    "sectionidentifier",
+    "shared data",
+    "sort descriptors",
+    "sort order",
+    ".sqlite",
+    "swift",
+    "swift concurrency",
+    "swiftui",
+    "try await",
+    ".xml"
+  ],
+  "topics": [
+    "Swift",
+    "SwiftUI & UI Frameworks",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 1624,
+  "hasTranscript": true,
+  "transcriptWordCount": 4075,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10017/4/F075C8AE-C8D2-40F9-8520-018581E3A771/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10017/4/F075C8AE-C8D2-40F9-8520-018581E3A771/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10017/4/F075C8AE-C8D2-40F9-8520-018581E3A771/downloads/wwdc2021-10017_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10017/4/F075C8AE-C8D2-40F9-8520-018581E3A771/downloads/wwdc2021-10017_hd.mp4",
+    "duration": 1624
+  },
+  "codeSnippets": [
+    {
+      "title": "FetchRequest dynamic configuration: sort descriptors",
+      "language": "swift",
+      "startTimeSeconds": 1236,
+      "code": "private let sorts = [(\n    name: \"Time\",\n    descriptors: [SortDescriptor(\\Quake.time, order: .reverse)]\n), (\n    name: \"Time\",\n    descriptors: [SortDescriptor(\\Quake.time, order: .forward)]\n), (\n    name: \"Magnitude\",\n    descriptors: [SortDescriptor(\\Quake.magnitude, order: .reverse)]\n), (\n    name: \"Magnitude\",\n    descriptors: [SortDescriptor(\\Quake.magnitude, order: .forward)]\n)]\n\nstruct ContentView: View {\n    @FetchRequest(sortDescriptors: [SortDescriptor(\\Quake.time, order: .reverse)])\n    private var quakes: FetchedResults<Quake>\n\n    @State private var selectedSort = SelectedSort()\n\n    var body: some View {\n        List(quakes) { quake in\n            QuakeRow(quake: quake)\n        }\n        .toolbar {\n            ToolbarItem(placement: .primaryAction) {\n                SortMenu(selection: $selectedSort)\n                .onChange(of: selectedSort) { _ in\n                    let sortBy = sorts[selectedSort.index]\n                    quakes.sortDescriptors = sortBy.descriptors\n                }\n            }\n        }\n    }\n\n    struct SelectedSort: Equatable {\n        var by = 0\n        var order = 0\n        var index: Int { by + order }\n    }\n\n    struct SortMenu: View {\n        @Binding private var selectedSort: SelectedSort\n\n        init(selection: Binding<SelectedSort>) {\n            _selectedSort = selection\n        }\n\n        var body: some View {\n            Menu {\n                Picker(\"Sort By\", selection: $selectedSort.by) {\n                    ForEach(Array(stride(from: 0, to: sorts.count, by: 2)), id: \\.self) { index in\n                        Text(sorts[index].name).tag(index)\n                    }\n                }\n                Picker(\"Sort Order\", selection: $selectedSort.order) {\n                    let sortBy = sorts[selectedSort.by + selectedSort.order]\n                    let sortOrders = sortOrders(for: sortBy.name)\n                    ForEach(0..<sortOrders.count, id: \\.self) { index in\n                        Text(sortOrders[index]).tag(index)\n                    }\n                }\n            } label: {\n                Label(\"More\", systemImage: \"ellipsis.circle\")\n            }\n            .pickerStyle(InlinePickerStyle())\n        }\n\n        private func sortOrders(for name: String) -> [String] {\n            switch name {\n            case \"Magnitude\":\n                return [\"Highest to Lowest\", \"Lowest to Highest\"]\n            case \"Time\":\n                return [\"Newest on Top\", \"Oldest on Top\"]\n            default:\n                return []\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "FetchRequest dynamic configuration: predicates",
+      "language": "swift",
+      "startTimeSeconds": 1293,
+      "code": "struct ContentView: View {\n    @FetchRequest(sortDescriptors: [SortDescriptor(\\Quake.time, order: .reverse)])\n    private var quakes: FetchedResults<Quake>\n\n    @State private var searchText = \"\"\n    var query: Binding<String> {\n        Binding {\n            searchText\n        } set: { newValue in\n            searchText = newValue\n            quakes.nsPredicate = newValue.isEmpty\n                               ? nil\n                               : NSPredicate(format: \"place CONTAINS %@\", newValue)\n        }\n    }\n\n    var body: some View {\n        List(quakes) { quake in\n            QuakeRow(quake: quake)\n        }\n        .searchable(text: query)\n    }\n}"
+    },
+    {
+      "title": "SectionedFetchRequest",
+      "language": "swift",
+      "startTimeSeconds": 1406,
+      "code": "extension Quake {\n    lazy var dateFormatter: DateFormatter = {\n        let formatter = DateFormatter()\n        formatter.dateFormat = \"MMMM d, yyyy\"\n        return formatter\n    }()\n\n    @objc var day: String {\n        return dateFormatter.string(from: time)\n    }\n}\n\nstruct ContentView: View {\n    @SectionedFetchRequest(\n        sectionIdentifier: \\.day,\n        sortDescriptors: [SortDescriptor(\\Quake.time, order: .reverse)])\n    private var quakes: SectionedFetchResults<String, Quake>\n\n    var body: some View {\n        List {\n            ForEach(quakes) { section in\n                Section(header: Text(section.id)) {\n                    ForEach(section) { quake in\n                        QuakeRow(quake: quake)\n                    }\n                }\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "SectionedFetchRequest dynamic configuration: sort descriptors",
+      "language": "swift",
+      "startTimeSeconds": 1496,
+      "code": "extension Quake {\n    lazy var dateFormatter: DateFormatter = {\n        let formatter = DateFormatter()\n        formatter.dateFormat = \"MMMM d, yyyy\"\n        return formatter\n    }()\n\n    @objc var day: String {\n        return dateFormatter.string(from: time)\n    }\n\n    @objc var magnitude_str: String {\n        return \"\\(magnitude)\"\n    }\n}\n\nprivate let sorts = [(\n    name: \"Time\",\n    descriptors: [SortDescriptor(\\Quake.time, order: .reverse)],\n    section: \\Quake.day\n), (\n    name: \"Time\",\n    descriptors: [SortDescriptor(\\Quake.time, order: .forward)],\n    section: \\Quake.day\n), (\n    name: \"Magnitude\",\n    descriptors: [SortDescriptor(\\Quake.magnitude, order: .reverse)],\n    section: \\Quake.magnitude_str\n), (\n    name: \"Magnitude\",\n    descriptors: [SortDescriptor(\\Quake.magnitude, order: .forward)],\n    section: \\Quake.magnitude_str\n)]\n\nstruct ContentView: View {\n    @SectionedFetchRequest(\n        sectionIdentifier: \\.day,\n        sortDescriptors: [SortDescriptor(\\Quake.time, order: .reverse)])\n    private var quakes: SectionedFetchResults<String, Quake>\n\n    @State private var selectedSort = SelectedSort()\n\n    var body: some View {\n        List {\n            ForEach(quakes) { section in\n                Section(header: Text(section.id)) {\n                    ForEach(section) { quake in\n                        QuakeRow(quake: quake)\n                    }\n                }\n            }\n        }\n        .toolbar {\n            ToolbarItem(placement: .primaryAction) {\n                SortMenu(selection: $selectedSort)\n                .onChange(of: selectedSort) { _ in\n                    let sortBy = sorts[selectedSort.index]\n                    let config = quakes\n                    config.sectionIdentifier = sortBy.section\n                    config.sortDescriptors = sortBy.descriptors\n                }\n            }\n        }\n    }\n\n    struct SelectedSort: Equatable {\n        var by = 0\n        var order = 0\n        var index: Int { by + order }\n    }\n\n    struct SortMenu: View {\n        @Binding private var selectedSort: SelectedSort\n\n        init(selection: Binding<SelectedSort>) {\n            _selectedSort = selection\n        }\n\n        var body: some View {\n            Menu {\n                Picker(\"Sort By\", selection: $selectedSort.by) {\n                    ForEach(Array(stride(from: 0, to: sorts.count, by: 2)), id: \\.self) { index in\n                        Text(sorts[index].name).tag(index)\n                    }\n                }\n                Picker(\"Sort Order\", selection: $selectedSort.order) {\n                    let sortBy = sorts[selectedSort.by + selectedSort.order]\n                    let sortOrders = sortOrders(for: sortBy.name)\n                    ForEach(0..<sortOrders.count, id: \\.self) { index in\n                        Text(sortOrders[index]).tag(index)\n                    }\n                }\n            } label: {\n                Label(\"More\", systemImage: \"ellipsis.circle\")\n            }\n            .pickerStyle(InlinePickerStyle())\n        }\n\n        private func sortOrders(for name: String) -> [String] {\n            switch name {\n            case \"Magnitude\":\n                return [\"Highest to Lowest\", \"Lowest to Highest\"]\n            case \"Time\":\n                return [\"Newest on Top\", \"Oldest on Top\"]\n            default:\n                return []\n            }\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Loading and displaying a large data feed",
+      "url": "https://developer.apple.com/documentation/SwiftUI/loading-and-displaying-a-large-data-feed",
+      "type": "documentation",
+      "description": "Consume data in the background, and lower memory use by batching imports and preventing duplicate records.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/loading-and-displaying-a-large-data-feed",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/loading-and-displaying-a-large-data-feed.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10017/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10017/metadata.json",
+    "readme": "sessions/wwdc2021/10017/README.md",
+    "transcript": "sessions/wwdc2021/10017/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10017/transcript.json"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "id": "tech-talks-801",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2017,
+  "eventContentId": 801,
+  "title": "Designing for iPhone X",
+  "description": "iPhone X features an all-screen Super Retina display, providing more space to display content and create deeply immersive experiences. Learn how to design your app or game to look and feel great on iPhone X, and all iOS devices.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/801",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/801",
+  "type": "Video",
+  "publishedAt": "2017-09-12T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "design",
+    "ios",
+    "ios 11",
+    "layout",
+    "ui",
+    "uikit",
+    "user experience",
+    "user interface",
+    "visual design"
+  ],
+  "topics": [
+    "Audio & Video",
+    "SwiftUI & UI Frameworks",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 770,
+  "hasTranscript": true,
+  "transcriptWordCount": 1720,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tutorials/20170912/801xy9x7h32rn/designing_for_iphone_x/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tutorials/20170912/801xy9x7h32rn/designing_for_iphone_x/designing_for_iphone_x_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tutorials/20170912/801xy9x7h32rn/designing_for_iphone_x/designing_for_iphone_x_hd.mp4",
+    "duration": 770
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Designing for iOS",
+      "url": "https://developer.apple.com/design/Human-Interface-Guidelines/designing-for-ios",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/Human-Interface-Guidelines/designing-for-ios"
+    }
+  ],
+  "path": "sessions/tech-talks/801/",
+  "files": {
+    "metadata": "sessions/tech-talks/801/metadata.json",
+    "readme": "sessions/tech-talks/801/README.md",
+    "transcript": "sessions/tech-talks/801/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/801/transcript.json"
+  }
+}

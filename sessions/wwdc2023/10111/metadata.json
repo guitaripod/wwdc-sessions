@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10111",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10111,
+  "title": "Go beyond the window with SwiftUI",
+  "description": "Get ready to launch into space — a new SwiftUI scene type that can help you make great immersive experiences for visionOS. We’ll show you how to create a new scene with ImmersiveSpace, place 3D content, and integrate RealityView. Explore how you can use the immersionStyle scene modifier to increase the level of immersion in an app and learn best practices for managing spaces, adding virtual hands with ARKit, adding support for SharePlay, and building an \"out of this world\" experience!",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10111",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10111",
+  "type": "Video",
+  "publishedAt": "2023-06-08T08:00:00-07:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Spatial Computing",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1433,
+  "hasTranscript": true,
+  "transcriptWordCount": 3650,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10111/4/D880BF62-C9CB-46EC-B2A2-802877B189DB/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10111/4/D880BF62-C9CB-46EC-B2A2-802877B189DB/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10111/4/D880BF62-C9CB-46EC-B2A2-802877B189DB/downloads/wwdc2023-10111_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10111/4/D880BF62-C9CB-46EC-B2A2-802877B189DB/downloads/wwdc2023-10111_hd.mp4",
+    "duration": 1433
+  },
+  "codeSnippets": [
+    {
+      "title": "Defining an ImmersiveSpace",
+      "language": "swift",
+      "startTimeSeconds": 258,
+      "code": "@main\nstruct WorldApp: App {\n    var body: some Scene {\n        ImmersiveSpace {\n            SolarSystem()\n        }\n    }\n}"
+    },
+    {
+      "title": "RealityView in an ImmersiveSpace",
+      "language": "swift",
+      "startTimeSeconds": 413,
+      "code": "ImmersiveSpace {\n    RealityView { content in\n        let starfield = await loadStarfield()\n        content.add(starfield)\n    }\n}"
+    },
+    {
+      "title": "ImmersiveSpace with a SolarSystem view",
+      "language": "swift",
+      "startTimeSeconds": 497,
+      "code": "@main\nstruct WorldApp: App {\n    var body: some Scene {\n        ImmersiveSpace(id: \"solar\") {\n            SolarSystem()\n        }\n    }\n}"
+    },
+    {
+      "title": "LaunchWindow",
+      "language": "swift",
+      "startTimeSeconds": 540,
+      "code": "struct LaunchWindow: Scene {\n    var body: some Scene {\n        WindowGroup {\n            VStack {\n                Text(\"The Solar System\")\n                    .font(.largeTitle)\n                Text(\"Every 365.25 days, the planet and its satellites [...]\")\n                SpaceControl()\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "SpaceControl button using Environment actions for opening and dismissing an ImmersiveSpace scene",
+      "language": "swift",
+      "startTimeSeconds": 551,
+      "code": "struct SpaceControl: View {\n    @Environment(\\.openImmersiveSpace) private var openImmersiveSpace\n    @Environment(\\.dismissImmersiveSpace) private var dismissImmersiveSpace\n    @State private var isSpaceHidden: Bool = true\n    var body: some View {\n        Button(isSpaceHidden ? \"View Outer Space\" : \"Exit the solar system\") {\n            Task {\n                if isSpaceHidden {\n                    let result = await openImmersiveSpace(id: \"solar\")\n                    switch result {\n                        // Handle result\n                    }\n                } else {\n                    await dismissImmersiveSpace()\n                    isSpaceHidden = true\n                }\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "WorldApp using LaunchWindow and ImmersiveSpace",
+      "language": "swift",
+      "startTimeSeconds": 644,
+      "code": "@main\nstruct WorldApp: App {\n    var body: some Scene {\n        LaunchWindow()\n        ImmersiveSpace(id: \"solar\") {\n            SolarSystem()\n        }\n    }\n}"
+    },
+    {
+      "title": "Model3D with phase handling",
+      "language": "swift",
+      "startTimeSeconds": 692,
+      "code": "Model3D(named: \"Earth\") { phase in\n    switch phase {\n        case .empty:\n            Text( \"Waiting\" )\n        case .failure(let error):\n            Text(\"Error \\(error.localizedDescription)\")\n        case .success(let model):\n            model.resizable()\n    }\n}"
+    },
+    {
+      "title": "Scene Phases",
+      "language": "swift",
+      "startTimeSeconds": 784,
+      "code": "@main\nstruct WorldApp: App {\n    @EnvironmentObject private var model: ViewModel\n    @Environment(\\.scenePhase) private var scenePhase\n\n    ImmersiveSpace(id: \"solar\") {\n        SolarSystem()\n            .onChange(of: scenePhase) {\n                switch scenePhase {\n                case .inactive, .background:\n                    model.solarEarth.scale = 0.5\n                case .active:\n                    model.solarEarth.scale = 1\n                }\n            }\n    }\n}"
+    },
+    {
+      "title": "Coordinate Conversions",
+      "language": "swift",
+      "startTimeSeconds": 861,
+      "code": "var body: some View {\n    GeometryReader3D { proxy in\n        ZStack {\n            Earth(\n                earthConfiguration: model.solarEarth,\n                satelliteConfiguration: [model.solarSatellite],\n                moonConfiguration: model.solarMoon,\n                showSun: true,\n                sunAngle: model.solarSunAngle,\n                animateUpdates: animateUpdates\n            )\n            .onTapGesture {\n                if let translation = proxy.transform(in: .immersiveSpace)?.translation {\n                    model.solarEarth.position = Point3D(translation)\n                }\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Immersion Styles",
+      "language": "swift",
+      "startTimeSeconds": 994,
+      "code": "@main\nstruct WorldApp: App {\n   @State private var currentStyle: ImmersionStyle = .mixed\n   var body: some Scene {\n        ImmersiveSpace(id: \"solar\") {\n            SolarSystem()\n                .simultaneousGesture(MagnifyGesture()\n                    .onChanged { value in\n                        let scale = value.magnification\n                        if scale > 5 {\n                            currentStyle = .progressive\n                        } else if scale > 10 {\n                            currentStyle = .full\n                        } else {\n                            currentStyle = .mixed\n                        }\n                    }\n                )\n        }\n        .immersionStyle(selection:$currentStyle, in: .mixed, .progressive, .full)\n   }\n}"
+    },
+    {
+      "title": "Surrounding Effects",
+      "language": "swift",
+      "startTimeSeconds": 1208,
+      "code": "@main\nstruct WorldApp: App {\n  @State private var currentStyle: ImmersionStyle = .progressive\n    var body: some Scene {\n        ImmersiveSpace(id: \"solar\") {\n            SolarSystem()\n                .preferredSurroundingsEffect( .systemDark)\n        }\n        .immersionStyle(selection: $currentStyle, in: .progressive)\n     }\n}"
+    },
+    {
+      "title": "Upper Limbs Visibility",
+      "language": "swift",
+      "startTimeSeconds": 1230,
+      "code": "@main\nstruct WorldApp: App {\n    @State private var currentStyle: ImmersionStyle = .full\n    var body: some Scene {\n        ImmersiveSpace(id: \"solar\") {\n            SolarSystem()\n        }\n        .immersionStyle(selection: $currentStyle, in: .full)\n        .upperLimbVisibility(.hidden)\n    }\n}"
+    },
+    {
+      "title": "Hand Anchoring",
+      "language": "swift",
+      "startTimeSeconds": 1252,
+      "code": "struct SpaceGloves2: View {\n\n    let arSession = ARKitSession()\n    let handTracking = HandTrackingProvider()\n\n    var body: some View {\n\n        RealityView { content in\n\n            let root = Entity()\n            content.add(root)\n\n            // Load Left glove\n            let leftGlove = try! Entity.loadModel(named: \"assets/gloves/LeftGlove_v001.usdz\")\n            root.addChild(leftGlove)\n\n            // Load Right glove\n            let rightGlove = try! Entity.loadModel(named: \"assets/gloves/RightGlove_v001.usdz\")\n            root.addChild(rightGlove)\n\n            // Start ARKit session and fetch anchorUpdates\n            Task {\n                do {\n                    try await arSession.run([handTracking])\n                } catch let error as ProviderError {\n                    print(\"Encountered an error while running providers: \\(error.localizedDescription)\")\n                } catch let error {\n                    print(\"Encountered an unexpected error: \\(error.localizedDescription)\")\n                }\n                for await anchorUpdate in handTracking.anchorUpdates {\n                    let anchor = anchorUpdate.anchor\n                    switch anchor.chirality {\n                    case .left:\n                        if let leftGlove = Entity.leftHand {\n                            leftGlove.transform = Transform(matrix: anchor.transform)\n                            for (index, jointName) in anchor.skeleton.definition.jointNames.enumerated() {\n                                leftGlove.jointTransforms[index].rotation = simd_quatf(anchor.skeleton.joint(named: jointName).localTransform)\n                            }\n                        }\n                    case .right:\n                        if let rightGlove = Entity.rightHand {\n                            rightGlove.transform = Transform(matrix: anchor.transform)\n                            for (index, jointName) in anchor.skeleton.definition.jointNames.enumerated() {\n                                rightGlove.jointTransforms[index].rotation = simd_quatf(anchor.skeleton.joint(named: jointName).localTransform)\n\n                            }\n                        }\n                    }\n                }\n            }\n        }\n    }\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2023/10111/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10111/metadata.json",
+    "readme": "sessions/wwdc2023/10111/README.md",
+    "transcript": "sessions/wwdc2023/10111/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10111/transcript.json"
+  }
+}

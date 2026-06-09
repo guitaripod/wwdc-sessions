@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-110349",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 110349,
+  "title": "Create engaging content for Swift Playgrounds",
+  "description": "Learn how you can build guided instructional content designed for Swift Playgrounds. Follow along with us as we explore how you can add a guide to a completed sample code project. We'll demonstrate how to add tasks to your learning center to show off relevant code and optional experiment tasks that encourage learners to extend the project with code of their own.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/110349",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/110349",
+  "type": "Video",
+  "publishedAt": "2022-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "swift playgrounds"
+  ],
+  "topics": [
+    "Business & Education",
+    "Developer Tools",
+    "Essentials",
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 1226,
+  "hasTranscript": true,
+  "transcriptWordCount": 3494,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110349/4/767821EC-6C4C-4F9E-8C8D-1B231B8E1226/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110349/4/767821EC-6C4C-4F9E-8C8D-1B231B8E1226/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110349/4/767821EC-6C4C-4F9E-8C8D-1B231B8E1226/downloads/wwdc2022-110349_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110349/4/767821EC-6C4C-4F9E-8C8D-1B231B8E1226/downloads/wwdc2022-110349_hd.mp4",
+    "duration": 1226
+  },
+  "codeSnippets": [
+    {
+      "title": "Dance Floor",
+      "language": "swift",
+      "startTimeSeconds": 87,
+      "code": "let numOfTiles = 100\nlet squareLength = 150.0\n\n    // Dance floor\n    ForEach(0 ..< numOfTiles, id: \\.self) { index in\n        let i: CGFloat = CGFloat(index / 10)\n        let j: CGFloat = CGFloat(index % 10)\n\n        let x = (squareLength * i) - (squareLength)\n        let y = (squareLength * j) - (squareLength * 2)\n\n        Rectangle()\n            .frame(width: squareLength, height: squareLength)\n            .border(.black, width: 3)\n            .position(x: x, y: y)\n            .randomizedColorEffect(startAnimation: startParty)\n    }\n    .blur(radius: 15)\n    .opacity(startParty ? 1.0 : 0.0)"
+    },
+    {
+      "title": "Dance",
+      "language": "swift",
+      "startTimeSeconds": 107,
+      "code": "ForEach(data.creatures) { creature in\n    Text(creature.emoji)\n        .resizableFont()\n        .animatedScalingEffect(startAnimation: startParty)\n        .randomizedOffsetEffect(startAnimation: startParty,\n                                x: midX * 0.6,\n                                y: midY * 0.6)\n        .animatedRotationEffect(startAnimation: startParty)\n        .opacity(startParty ? 1.0 : 0.0)\n}"
+    },
+    {
+      "title": "Disco Ball",
+      "language": "swift",
+      "startTimeSeconds": 128,
+      "code": "Text(\"🪩\")\n.resizableFont()\n.animatedRotationEffect(startAnimation: startParty)\n.opacity(startParty ? 1 : 0)"
+    },
+    {
+      "title": "Guidebook Directive",
+      "language": "markdown",
+      "startTimeSeconds": 312,
+      "code": "@GuideBook(title: \"Creature Party!\", icon: icon.png, background: background.png, firstFile: CreatureDance.swift) {\n\n}"
+    },
+    {
+      "title": "Welcome Message",
+      "language": "markdown",
+      "startTimeSeconds": 328,
+      "code": "@WelcomeMessage(title: \"Welcome to Creature Party!\") {\n\t\tIn Creature Party, you'll take this app of dancing creatures to the next level with the help of colors, shapes, animations, and plenty of emoji!\n}"
+    },
+    {
+      "title": "Guide and Step Directives",
+      "language": "markdown",
+      "startTimeSeconds": 337,
+      "code": "@Guide {\n        @Step(title: \"Pump up the jams\") {\n\n        }\n    }\n}"
+    },
+    {
+      "title": "Content and Media Directive",
+      "language": "markdown",
+      "startTimeSeconds": 353,
+      "code": "@ContentAndMedia {\n  \tTonight, the creatures are gonna party like it's 2022. 🐙💃🦝🕺🦦 \n}"
+    },
+    {
+      "title": "Task Group Directive",
+      "language": "markdown",
+      "startTimeSeconds": 435,
+      "code": "@TaskGroup(title: \"Walkthroughs\") {\n\t\tHere are the walkthroughs! These will help explain all of the new code.                 \n}"
+    },
+    {
+      "title": "First Walkthrough Task",
+      "language": "markdown",
+      "startTimeSeconds": 477,
+      "code": "@Task(type: walkthrough, id: \"partyMode\", title: \"Setting up the Party\", file: CreatureDance.swift) {\n}"
+    },
+    {
+      "title": "First Walkthrough Page",
+      "language": "markdown",
+      "startTimeSeconds": 524,
+      "code": "@Page(id: \"1.modifier\", title: \"\") {\n  \tThis is a [view modifier](https://developer.apple.com/documentation/swiftui/viewmodifier). Modifiers let you create unique versions of a view in SwiftUI. \n}"
+    },
+    {
+      "title": "Walkthrough Highlight",
+      "language": "swift",
+      "startTimeSeconds": 588,
+      "code": "ForEach(data.creatures) { creature in\n\t\tText(creature.emoji)\n\t\t\t.resizableFont()\n\t\t\t/*#-code-walkthrough(1.modifier)*/\n\t\t\t.animatedScalingEffect(startAnimation: startParty)\n\t\t\t/*#-code-walkthrough(1.modifier)*/\n      .randomizedOffsetEffect(startAnimation: startParty,\n      \t\t\t\t\t\t\t\t\t\t\t\tx: midX * 0.6,\n\t\t\t\t                      y: midY * 0.6)\n      .animatedRotationEffect(startAnimation: startParty)\n      .opacity(startParty ? 1.0 : 0.0)\n}"
+    },
+    {
+      "title": "First Walkthrough extra pages",
+      "language": "markdown",
+      "startTimeSeconds": 716,
+      "code": "@Page(id: \"1.struct\", title: \"\") {\n  \tCustom view modifiers are structures that contain code for explaining how to modify whatever view the given modifier is attached to.  \n}\n@Page(id: \"1.body\", title: \"\") {\n  \tThe body method allows you to add custom view modifications. For example, here you're adding a scaling animation that grows and shrinks the `Creature` over a certain period of time. \n}"
+    },
+    {
+      "title": "Second Walkthrough Task",
+      "language": "markdown",
+      "startTimeSeconds": 738,
+      "code": "@Task(type: walkthrough, id: \"protocol\", title: \"A Little More on Protocols\", file: CreatureDance.swift) {\n    @Page(id: \"2.protocol\", title: \"\") {\n      All custom view modifiers implement the `ViewModifier` protocol. \n    }\n    @Page(id: \"2.body\", title: \"\") {\n      The `ViewModifier` protocol requires all structures that implement it to write the `body(content:)` method.   \n    }\n    @Page(id: \"2.usage\", title: \"\") {\n      After you've written content for your `body(content:)` method, you can use it on any view you want. Here you'll use it on each `Creature` to add a rotation animation.\n    }\n}"
+    },
+    {
+      "title": "First Experiment Task",
+      "language": "markdown",
+      "startTimeSeconds": 861,
+      "code": "@TaskGroup(title: \"Experiments\") {\n    Time to set this party off! You can use experiments to add some extra pazazz to the dance floor.\n    @Task(type: experiment, id: \"colors\", title: \"Dancing in the Strobe Light\", file: CreatureDance.swift) {\n\n    }\n}"
+    },
+    {
+      "title": "First Experiment Page",
+      "language": "markdown",
+      "startTimeSeconds": 888,
+      "code": "@Page(id: \"3.code\", title: \"\", isAddable: true) {\n    ```\n    .colorMultiply(creatureColor)\n    ``` \n}"
+    },
+    {
+      "title": "Experiment Task Comment",
+      "language": "swift",
+      "startTimeSeconds": 955,
+      "code": "ForEach(data.creatures) { creature in\n\t\tText(creature.emoji)\n    \t\t.resizableFont()\n        /*#-code-walkthrough(1.modifier)*/\n        .animatedScalingEffect(startAnimation: startParty)\n        /*#-code-walkthrough(1.modifier)*/\n        .randomizedOffsetEffect(startAnimation: startParty,\n        \t\t\t\t\t\t\t\t\t\t\t\tx: midX * 0.6,\n        \t\t\t\t\t\t\t\t\t\t\t\ty: midY * 0.6)\n        /*#-code-walkthrough(2.usage)*/\n        .animatedRotationEffect(startAnimation: startParty)\n        /*#-code-walkthrough(2.usage)*/\n        .opacity(startParty ? 1.0 : 0.0)\n        //#-learning-task(colors)\n}"
+    },
+    {
+      "title": "Experiment Text",
+      "language": "markdown",
+      "startTimeSeconds": 1062,
+      "code": "@Page(id: \"3.lights\", title: \"\") {\n  \tNext, add some colors to the creatures so it looks like they're dancing under the lights! \n}"
+    },
+    {
+      "title": "Second Experiment Task",
+      "language": "markdown",
+      "startTimeSeconds": 1075,
+      "code": "@Task(type: experiment, id: \"timer\", title: \"Switch it Up\", file: CreatureDance.swift) {\n    @Page(id: \"4.lights\", title: \"\") {\n      \tNow that you have some colors, you can add some code to change the color of the creatures using a timer. Let's add one!\n    }\n    @Page(id: \"4.code\", title: \"\", isAddable: true) {\n        ```\n        .onTapGesture {\n          if let timer = timer {\n            timer.invalidate()\n            self.timer = nil\n          } else {\n            creatureColor = Color.randomColor\n            timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true, block: { timer in\n                                                                                       creatureColor = Color.randomColor\n                                                                                      })\n          }\n        }\n        ``` \n    }\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2022/110349/",
+  "files": {
+    "metadata": "sessions/wwdc2022/110349/metadata.json",
+    "readme": "sessions/wwdc2022/110349/README.md",
+    "transcript": "sessions/wwdc2022/110349/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/110349/transcript.json"
+  }
+}

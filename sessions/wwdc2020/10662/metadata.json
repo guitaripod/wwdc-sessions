@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10662",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10662,
+  "title": "What's new in Wallet and Apple Pay",
+  "description": "Apple Pay makes it simple to pay for goods and services in your app and on your website. Discover how you can integrate API updates like context-specific button types, contact data formatting, and cross-platform support to make the service more effective for you and people using it. And, if you’re building app clips, adopting Apple Pay can help you unlock new commerce experiences.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10662",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10662",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "banking",
+    "nfc",
+    "pass",
+    "ticket",
+    "transportation",
+    "web"
+  ],
+  "topics": [
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 897,
+  "hasTranscript": true,
+  "transcriptWordCount": 2621,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10662/10/5BB96234-A10B-43DF-9223-A782EE855E87/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10662/10/5BB96234-A10B-43DF-9223-A782EE855E87/wwdc2020_10662_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10662/10/5BB96234-A10B-43DF-9223-A782EE855E87/wwdc2020_10662_hd.mp4",
+    "duration": 897
+  },
+  "codeSnippets": [
+    {
+      "title": "Implementing Apple Pay on the Mac",
+      "language": "swift",
+      "startTimeSeconds": 464,
+      "code": "// PKPaymentAuthorizationControllerDelegate \n\nfunc presentationWindow(for controller: PKPaymentAuthorizationController) -> UIWindow? {\n    let purchaseWindow = yourViewController.view.window\n    return (purchaseWindow) // The window presenting the payment sheet.\n}\n\n\nfunc paymentAuthorizationController(_ controller: PKPaymentAuthorizationController, didRequestMerchantSessionUpdate handler: @escaping (PKPaymentRequestMerchantSessionUpdate) -> Void) {\n    // Get merchant session to enable the user to authorize a transaction.\n    var dict = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] {\n        let session = PKPaymentMerchantSession(dictionary: dict)\n        let update = PKPaymentRequestMerchantSessionUpdate(status: .success, merchantSession: session)\n        handler(update)\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Apple Pay on the Web",
+      "url": "https://developer.apple.com/documentation/apple_pay_on_the_web",
+      "type": "documentation",
+      "description": "Support Apple Pay on your website with JavaScript-based APIs.",
+      "sosumiURL": "https://sosumi.ai/documentation/apple_pay_on_the_web",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/apple_pay_on_the_web.json"
+    },
+    {
+      "title": "PassKit (Apple Pay and Wallet)",
+      "url": "https://developer.apple.com/documentation/PassKit",
+      "type": "documentation",
+      "description": "Process Apple Pay payments in your app, and create and distribute passes for the Wallet app.",
+      "sosumiURL": "https://sosumi.ai/documentation/PassKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/PassKit.json"
+    },
+    {
+      "title": "Apple Pay",
+      "url": "https://developer.apple.com/documentation/passkit/apple_pay",
+      "type": "documentation",
+      "description": "Request and process Apple Pay payments in your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/passkit/apple_pay",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/passkit/apple_pay.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10662/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10662/metadata.json",
+    "readme": "sessions/wwdc2020/10662/README.md",
+    "transcript": "sessions/wwdc2020/10662/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10662/transcript.json"
+  }
+}

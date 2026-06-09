@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10092",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10092,
+  "title": "Meet passkeys",
+  "description": "It’s time for a security upgrade: Learn how to add support for passkeys to create a quick and easy sign in experience for people, all while offering a radical increase to account security. Passkeys are simple and strong credentials built to eliminate phishing attacks. We’ll share how passkeys are designed with security in mind, show you how people will use them, go over how to integrate passkeys in your log in flow, and explore the platform and web APIs you need to adopt this feature.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10092",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10092",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Safari & Web",
+    "System Services",
+    "Privacy & Security"
+  ],
+  "primaryTopic": "Privacy & Security",
+  "duration": 2007,
+  "hasTranscript": true,
+  "transcriptWordCount": 4482,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10092/3/E39F623F-97FE-48C0-9987-898078EB9D8B/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10092/3/E39F623F-97FE-48C0-9987-898078EB9D8B/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10092/3/E39F623F-97FE-48C0-9987-898078EB9D8B/downloads/wwdc2022-10092_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10092/3/E39F623F-97FE-48C0-9987-898078EB9D8B/downloads/wwdc2022-10092_hd.mp4",
+    "duration": 2007
+  },
+  "codeSnippets": [
+    {
+      "title": "Associated Domains setup",
+      "language": "json",
+      "startTimeSeconds": 690,
+      "code": "{\n    \"webcredentials\": {\n        \"apps\": [ \"A1B2C3D4E5.com.example.Shiny\" ]\n    }\n}"
+    },
+    {
+      "title": "Annotating user name text field",
+      "language": "swift",
+      "startTimeSeconds": 707,
+      "code": "override func viewDidLoad() {\n    super.viewDidLoad()\n    //Additional setup…\n\n    userNameField.textContentType = .username\n}"
+    },
+    {
+      "title": "AutoFill-assisted passkey sign in",
+      "language": "swift",
+      "startTimeSeconds": 719,
+      "code": "// AutoFill-assisted passkey request\n\nfunc signIn() {\n    let challenge: Data = … // Fetched from server\n    let provider =\n        ASAuthorizationPlatformPublicKeyCredentialProvider(\n            relyingPartyIdentifier: \"example.com\")\n    let request =\n        provider.createCredentialAssertionRequest(\n            challenge: challenge)\n\n    let controller =\n        ASAuthorizationController(\n            authorizationRequests: [request])\n    controller.delegate = self\n    controller.presentationContextProvider = self\n\n    // Start the request\n    controller.performAutoFillAssistedRequests()\n}"
+    },
+    {
+      "title": "ASAuthorizationControllerDelegate callback",
+      "language": "swift",
+      "startTimeSeconds": 809,
+      "code": "// Completing a passkey sign in\n\nfunc authorizationController(controller: ASAuthorizationController,\n     didCompleteWithAuthorization authorization: ASAuthorization) {\n\n    guard let passkeyAssertion = authorization.credential as?\n        ASAuthorizationPlatformPublicKeyCredentialAssertion\n    else { … }\n\n    let signature = passkeyAssertion.signature\n    let clientDataJSON = passkeyAssertion.rawClientDataJSON\n\n    // Pass these values to your server, and complete the sign in\n…\n}"
+    },
+    {
+      "title": "Modal passkey sign in",
+      "language": "swift",
+      "startTimeSeconds": 965,
+      "code": "// Modal passkey request\n\nfunc signIn() {\n    let challenge: Data = … // Fetched from server\n    let provider =      \n        ASAuthorizationPlatformPublicKeyCredentialProvider(\n            relyingPartyIdentifier: \"example.com\")\n    let request = \n        provider.createCredentialAssertionRequest(\n            challenge: challenge)\n\n    let controller = \n        ASAuthorizationController(\n            authorizationRequests: [request])\n    controller.delegate = self\n    controller.presentationContextProvider = self\n\n    // Start the request\n    controller.performRequests()\n}"
+    },
+    {
+      "title": "HTML user name field annotation",
+      "language": "javascript",
+      "startTimeSeconds": 1013,
+      "code": "<input type=\"text\" id=\"username-field\" autocomplete=\"username webauthn\" >"
+    },
+    {
+      "title": "AutoFill-assisted passkey sign in on the web",
+      "language": "javascript",
+      "startTimeSeconds": 1029,
+      "code": "// AutoFill-assisted WebAuthn request (JavaScript)\n\nfunction signIn() {\n    if (!PublicKeyCredential.isConditionalMediationAvailable ||\n        !PublicKeyCredential.isConditionalMediationAvailable()) {\n        // Browser doesn't support AutoFill-assisted requests.\n        return;\n    }\n\n    const options = {\n        \"publicKey\": {\n            challenge: … // Fetched from server\n        },\n        mediation: \"conditional\"\n    };\n\n    navigator.credentials.get(options)\n        .then(assertion => { \n            // Pass the assertion to your server.\n        });\n}"
+    },
+    {
+      "title": "Modal passkey sign in on the web",
+      "language": "javascript",
+      "startTimeSeconds": 1094,
+      "code": "// Modal WebAuthn request (JavaScript)\n\nfunction signIn() {\n    var options = {\n        \"publicKey\": {\n            challenge: … // Fetched from server\n        }\n    };\n\n    navigator.credentials.get(options)\n        .then(function (assertion) { \n            // Pass the assertion to your server.\n    });\n}"
+    },
+    {
+      "title": "Modal passkey request with allow list",
+      "language": "swift",
+      "startTimeSeconds": 1255,
+      "code": "// Modal request with allow list\n\nfunc signIn(userName: String) {\n    let challenge: Data = … // Fetched from server\n    let provider = ASAuthorizationPlatformPublicKeyCredentialProvider(\n        relyingPartyIdentifier:\"example.com\")\n    let request = provider.createCredentialAssertionRequest(\n        challenge: challenge)\n\n    let credentialIDs: [Data] = … // Fetched from server for provided userName\n    request.allowedCredentials = credentialIDs.map(\n        ASAuthorizationPlatformPublicKeyCredentialDescriptor.init(credentialID:))\n\n    let controller = ASAuthorizationController(authorizationRequests: [request])\n    controller.delegate = self\n    controller.presentationContextProvider = self\n\n    // Start the request\n    controller.performRequests()\n}"
+    },
+    {
+      "title": "Modal passkey request with silent fallback",
+      "language": "swift",
+      "startTimeSeconds": 1376,
+      "code": "// Modal passkey request, silent fallback\n\nfunc signIn() {\n    let challenge: Data = … // Fetched from server\n    let provider = ASAuthorizationPlatformPublicKeyCredentialProvider(\n        relyingPartyIdentifier:\"example.com\")\n    let request = provider.createCredentialAssertionRequest(\n        challenge: challenge)\n\n    let controller = ASAuthorizationController(authorizationRequests: [request])\n    controller.delegate = self\n    controller.presentationContextProvider = self\n\n    // Start the request\n    controller.performRequests(options: .preferImmediatelyAvailableCredentials)\n}"
+    },
+    {
+      "title": "Silent fallback delegate callback",
+      "language": "swift",
+      "startTimeSeconds": 1386,
+      "code": "// Handling a silent fallback\n\nfunc authorizationController(controller: ASAuthorizationController, \n    didCompleteWithError error: Error) {\n\n    guard let error = error as? ASAuthorizationError else { … }\n\n    if error.code == .canceled {\n        // Either the user canceled the sheet, or there were no credentials available.\n        showSignInForm()\n    }\n}"
+    },
+    {
+      "title": "Combined credential request",
+      "language": "swift",
+      "startTimeSeconds": 1480,
+      "code": "// Combined credential modal request\n\nfunc signIn() {\n    let challenge: Data = … // Fetched from server\n    let passkeyProvider = ASAuthorizationPlatformPublicKeyCredentialProvider(\n        relyingPartyIdentifier:\"example.com\")\n    let passkeyRequest = passkeyProvider.createCredentialAssertionRequest(\n        challenge: challenge)\n\n    let passwordRequest = ASAuthorizationPasswordProvider().createRequest()\n    let signInWithAppleRequest = ASAuthorizationAppleIDProvider().createRequest()\n\n    let controller = ASAuthorizationController(\n        authorizationRequests: [passkeyRequest, passwordRequest, signInWithAppleRequest])\n    controller.delegate = self\n    controller.presentationContextProvider = self\n\n    // Start the request\n    controller.performRequests()\n}"
+    },
+    {
+      "title": "Combined credential callback",
+      "language": "swift",
+      "startTimeSeconds": 1502,
+      "code": "// Completing a combined credential request\n\nfunc authorizationController(controller: ASAuthorizationController, \n     didCompleteWithAuthorization authorization: ASAuthorization) {\n\n    switch authorization.credential {\n    case let passkeyAssertion as ASAuthorizationPlatformPublicKeyCredentialAssertion:\n        finishSignIn(with: passkeyAssertion)\n\n    case let signInWithAppleCredential as ASAuthorizationAppleIDCredential:\n        finishSignIn(with: signInWithAppleCredential)\n\n    case let passwordCredential as ASPasswordCredential:\n        finishSignIn(with: passwordCredential)\n\n    default:\n        // Handle other credential types\n        break\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "About the security of passkeys",
+      "url": "https://support.apple.com/en-us/HT213305",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "Connecting to a service with passkeys",
+      "url": "https://developer.apple.com/documentation/AuthenticationServices/connecting-to-a-service-with-passkeys",
+      "type": "samplecode",
+      "description": "Allow users to sign in to a service without typing a password.",
+      "sosumiURL": "https://sosumi.ai/documentation/AuthenticationServices/connecting-to-a-service-with-passkeys",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AuthenticationServices/connecting-to-a-service-with-passkeys.json"
+    },
+    {
+      "title": "Supporting passkeys",
+      "url": "https://developer.apple.com/documentation/AuthenticationServices/supporting-passkeys",
+      "type": "guide",
+      "description": "Eliminate passwords for your users when they sign in to apps and websites.",
+      "sosumiURL": "https://sosumi.ai/documentation/AuthenticationServices/supporting-passkeys",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AuthenticationServices/supporting-passkeys.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10092/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10092/metadata.json",
+    "readme": "sessions/wwdc2022/10092/README.md",
+    "transcript": "sessions/wwdc2022/10092/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10092/transcript.json"
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10109",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10109,
+  "title": "Support hardware keyboards in your app",
+  "description": "When people use hardware keyboards with your app, they’re not only getting a more tactile and familiar typing experience — they can quickly navigate or use keyboard shortcuts, too. Discover how you can best support hardware keyboards for your iPadOS and Mac Catalyst apps: We’ll demystify the responder chain and show you best practices for implementing custom keyboard shortcuts. Learn how easy it is to get up and running with common system keyboard shortcuts, use modifier flags with gesture recognizers, and leverage the raw keyboard event API to respond to key down and key up events.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10109",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10109",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "accelerators",
+    "event",
+    "magic keyboard",
+    "menu",
+    "shortcuts",
+    "text",
+    "uieventtype",
+    "uitextinput"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 694,
+  "hasTranscript": true,
+  "transcriptWordCount": 1923,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10109/2/B152D3FD-187C-4D34-80ED-152B996E5F6D/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10109/2/B152D3FD-187C-4D34-80ED-152B996E5F6D/wwdc2020_10109_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10109/2/B152D3FD-187C-4D34-80ED-152B996E5F6D/wwdc2020_10109_hd.mp4",
+    "duration": 694
+  },
+  "codeSnippets": [
+    {
+      "title": "PlayerViewController",
+      "language": "swift",
+      "startTimeSeconds": 1,
+      "code": "class PlayerViewController: UIViewController {\n\n    override var canBecomeFirstResponder: Bool {\n        return true \n    }\n\n    override func viewDidAppear(_ animated: Bool) {\n        becomeFirstResponder()\n    }\n\n    override var keyCommands: [UIKeyCommand]? {\n        return [\n            UIKeyCommand(title: NSLocalizedString(\"PLAY_PAUSE\", comment: \"…\"),\n                        action: #selector(playPause),\n                         input: \" \")\n        ]\n    }\n}"
+    },
+    {
+      "title": "SongListTableViewController",
+      "language": "swift",
+      "startTimeSeconds": 2,
+      "code": "class SongListTableViewController: UITableViewController {\n\n    override var canBecomeFirstResponder: Bool {\n        return true\n    }\n\n    override func viewDidAppear(_ animated: Bool) {\n        becomeFirstResponder()\n    }\n\n    /* UIResponderStandardEditActions */\n\n    override func selectAll(_ sender: Any?) { … }\n\n    override func copy(_ sender: Any?) { … }\n\n    override func paste(_ sender: Any?) { … }\n\n}"
+    },
+    {
+      "title": "UIKeyCommand",
+      "language": "swift",
+      "startTimeSeconds": 3,
+      "code": "class UIKeyCommand : UICommand {\n    ...\n}\n\noverride func buildMenu(with builder: UIMenuBuilder) {\n    builder.replaceChildren(ofMenu: .file) { children in\n        return [ UIKeyCommand() ] + children\n    }\n}"
+    },
+    {
+      "title": "Extending selection with keyboard",
+      "language": "swift",
+      "startTimeSeconds": 4,
+      "code": "optional func tableView(_ tableView: UITableView,\n       shouldBeginMultipleSelectionInteractionAt indexPath: IndexPath) -> Bool\n\noptional func tableView(_ tableView: UITableView,\n       didBeginMultipleSelectionInteractionAt indexPath: IndexPath)"
+    },
+    {
+      "title": "recognizedDragGesture",
+      "language": "swift",
+      "startTimeSeconds": 5,
+      "code": "func recognizedDragGesture(_ panGesture: UIPanGestureRecognizer) {\n\n    if panGesture.modifierFlags.contains(.command) {\n        snapToGrid = true\n    } else if panGesture.modifierFlags.contains(.shift) {\n        constrainAspectRatio = true\n    }\n\n    ...\n}"
+    },
+    {
+      "title": "Responding to raw keyboard events",
+      "language": "swift",
+      "startTimeSeconds": 6,
+      "code": "class UIResponder: NSObject {\n    func pressesBegan(_ presses: Set<UIPress>,\n                     with event: UIPressesEvent)\n\n    func pressesEnded(_ presses: Set<UIPress>,\n                     with event: UIPressesEvent)\n}"
+    },
+    {
+      "title": "CanvasViewController",
+      "language": "swift",
+      "startTimeSeconds": 7,
+      "code": "class CanvasViewController: UIViewController {\n\n     override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {\n         for press in presses {\n             guard let key = press.key else { continue }\n             switch key.keyCode {\n             case .keyboardUpArrow: startMoveUp()\n             case .keyboardDownArrow: startMoveDown()\n                 …\n             }\n     }\n     }\n\n     override func pressesEnded(_ presses: Set<UIPress>, with event: UIPressesEvent?) {\n         stopMoving()\n     }\n\n}"
+    },
+    {
+      "title": "CanvasViewController modifier flags",
+      "language": "swift",
+      "startTimeSeconds": 8,
+      "code": "class CanvasViewController: UIViewController {\n\n    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {\n        var selectWhileMoving = false\n        for press in presses {\n            guard let key = press.key else { continue }\n            if key.modifierFlags.contains(.shift) {\n                selectWhileMoving = true\n            }\n\n            switch key.keyCode {\n            case .keyboardUpArrow: startMoveUp()\n\n            }\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Adding hardware keyboard support to your app",
+      "url": "https://developer.apple.com/documentation/UIKit/adding-hardware-keyboard-support-to-your-app",
+      "type": "samplecode",
+      "description": "Enhance interactions with your app by handling raw keyboard events, writing custom keyboard shortcuts, and working with gesture recognizers.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/adding-hardware-keyboard-support-to-your-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/adding-hardware-keyboard-support-to-your-app.json"
+    },
+    {
+      "title": "UIResponderStandardEditActions",
+      "url": "https://developer.apple.com/documentation/UIKit/UIResponderStandardEditActions",
+      "type": "documentation",
+      "description": "A set of standard methods that apps can adopt to support editing.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UIResponderStandardEditActions",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UIResponderStandardEditActions.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10109/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10109/metadata.json",
+    "readme": "sessions/wwdc2020/10109/README.md",
+    "transcript": "sessions/wwdc2020/10109/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10109/transcript.json"
+  }
+}

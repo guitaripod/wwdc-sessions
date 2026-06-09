@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2026-347",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 347,
+  "title": "Secure your app: mitigate risks to agentic features",
+  "description": "Explore how to evaluate threats from indirect prompt injection, such as data exfiltration and unintended actions. Discover system safeguards and security best practices for using App Intents and the Foundation Models framework, including mitigations such as user confirmations, secure prompt design, and authentication.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/347",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/347",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "AI & Machine Learning",
+    "Privacy & Security"
+  ],
+  "primaryTopic": "Privacy & Security",
+  "duration": 1512,
+  "hasTranscript": true,
+  "transcriptWordCount": 4048,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/347/4/07cdbfeb-280a-49e3-aeba-c18fbb0d32b4/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/347/4/07cdbfeb-280a-49e3-aeba-c18fbb0d32b4/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/347/4/07cdbfeb-280a-49e3-aeba-c18fbb0d32b4/downloads/wwdc2026-347_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/347/4/07cdbfeb-280a-49e3-aeba-c18fbb0d32b4/downloads/wwdc2026-347_hd.mp4",
+    "duration": 1512
+  },
+  "codeSnippets": [
+    {
+      "title": "Tools",
+      "language": "swift",
+      "startTimeSeconds": 770,
+      "code": "// Tools\n\nstruct OrderTeaTool: Tool {\n  let name = \"orderTeaTool\"\n  let description: String = \"Orders a particular quantity of a tea from the store.\"\n  // Arguments\n  // Implementation\n}\n\nstruct PostAndFetchPublicFeedTool: Tool {\n  let name = \"postAndFetchPublicFeedTool\"\n  let description: String = \"Posts a message to the public feed.”\n  // Arguments\n  // Implementation\n}"
+    },
+    {
+      "title": "Profile",
+      "language": "swift",
+      "startTimeSeconds": 793,
+      "code": "// Profile\n\nclass LooseLeafAgent {\n  struct DefaultProfile: LanguageModelSession.DynamicProfile {\n    var body: some DynamicProfile {\n      Profile {\n        Instructions(\"You are a helpful, tea-loving assistant ... \")\n\n        OrderTeaTool()\n        PostAndFetchPublicFeedTool()\n      }\n      .model(SystemLanguageModel())\n    }\n  }\n}"
+    },
+    {
+      "title": "Session",
+      "language": "swift",
+      "startTimeSeconds": 808,
+      "code": "// Session \n\nclass LooseLeafAgent {\n  struct DefaultProfile: LanguageModelSession.DynamicProfile {\n    var body: some DynamicProfile {\n      Profile {\n        Instructions(\"You are a helpful, tea-loving assistant ... \")\n\n        OrderTeaTool()\n        PostAndFetchPublicFeedTool()\n      }\n      .model(SystemLanguageModel())\n    }\n  }\n\n  let session: LanguageModelSession\n\n  public init() {\n    self.session = LanguageModelSession(profile: DefaultProfile())\n  }\n}"
+    },
+    {
+      "title": "Confirmation via onToolCall",
+      "language": "swift",
+      "startTimeSeconds": 873,
+      "code": "// Confirmation via onToolCall\n\nvar body: some DynamicProfile {\n  Profile {\n    Instructions(\"You are a helpful, tea-loving assistant ... \")\n\n    OrderTeaTool() // Financial impact; risky tool.\n    // Other Tools\n  }\n\n  .onToolCall { call in\n    guard call.toolName == \"orderTeaTool\" else {\n      return\n    }\n    guard ConfirmationAction.confirmWithUser() else {\n      throw LooseLeafError.userConfirmationDenied\n    }\n  }\n}"
+    },
+    {
+      "title": "Spotlighting via historyTransform",
+      "language": "swift",
+      "startTimeSeconds": 956,
+      "code": "// Spotlighting via historyTransform\n\nvar body: some DynamicProfile {\n  Profile {\n    Instructions(\"You are a helpful, tea-loving assistant ... \")\n\n    PostAndFetchPublicFeedTool() // Returns untrusted data; requires spotlighting\n    // Other Tools\n  }\n\n  .historyTransform {γentries in\n    entries.map { entry in\n      guard case .toolOutput(var toolOutput) = entry,\n        toolOutput.toolName == \"postAndFetchPublicFeedTool\"\n      else {\n        return entry\n      }\n    }\n    toolOutput.segments = toolOutput.segments.map { segment in\n      delimit(segment: segment,\n              startDelimiter: \"<<UNTRUSTED>>\",\n              endDelimiter: \"<</UNTRUSTED>>\")\n    }\n    return .toolOutput(toolOutput)\n  }\n}\n\nfunc delimit(segment: Transcript.Segment,\n             startDelimiter: String,\n             endDelimiter: String) -> Transcript.Segment"
+    },
+    {
+      "title": "Redaction via historyTransform",
+      "language": "swift",
+      "startTimeSeconds": 1008,
+      "code": "// Redaction via historyTransform\n\nvar body: some DynamicProfile {\n  Profile {\n    Instructions(\"You are a helpful, tea-loving assistant ... \")\n\n    PostAndFetchPublicFeedTool() // Returns untrusted data; requires spotlighting\n    // Other Tools\n  }\n\n  .historyTransform {γentries in\n    entries.map { entry in\n      guard case .toolOutput(var toolOutput) = entry,\n        toolOutput.toolName == \"postAndFetchPublicFeedTool\"\n      else {\n        return entry\n      }\n    }\n    toolOutput.segments = toolOutput.segments.map { segment in\n      redactPII(segment: segment,\n                placeHolder: \"[REDACTED]\")\n    }\n    return .toolOutput(toolOutput)\n  }\n}\n\nfunc redactPII(segment: Transcript.Segment,\n               placeHolder: String) -> Transcript.Segment"
+    },
+    {
+      "title": "Intent authentication policy",
+      "language": "swift",
+      "startTimeSeconds": 1388,
+      "code": "// Intent authentication policy\n\nstruct DeletePhotoIntent: DeleteIntent {\n    var entities: [LooseLeafPhoto]\n\n    static var authenticationPolicy: IntentAuthenticationPolicy = .requiresAuthentication\n\n    func perform() async throws -> some IntentResult {\n        // Implementation\n    }\n}"
+    },
+    {
+      "title": "Schema authentication policy",
+      "language": "swift",
+      "startTimeSeconds": 1407,
+      "code": "// Schema authentication policy\n\n@AppIntent(schema: .photos.deleteAssets)\nstruct DeletePhotoIntent {\n    var entities: [LooseLeafPhoto]\n\n    // Example: Schema default authentication policy is .requiresAuthentication\n\n    func perform() async throws -> some IntentResult {\n        // Implementation\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Security Overview",
+      "url": "https://developer.apple.com/security/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/security/"
+    }
+  ],
+  "path": "sessions/wwdc2026/347/",
+  "files": {
+    "metadata": "sessions/wwdc2026/347/metadata.json",
+    "readme": "sessions/wwdc2026/347/README.md",
+    "transcript": "sessions/wwdc2026/347/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/347/transcript.json"
+  }
+}

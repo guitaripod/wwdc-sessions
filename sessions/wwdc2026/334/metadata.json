@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2026-334",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 334,
+  "title": "Build AI-powered scripts with the fm CLI and Python SDK",
+  "description": "Explore all the new ways to leverage Apple Foundation Models on macOS. The Foundation Models SDK for Python lets you integrate with popular tooling and evaluation packages in the Python ecosystem. Find out how to use the brand new fm command introduced in macOS 27 to streamline scripting, automate model workflows, and accelerate your development process.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/334",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/334",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [
+    "ai",
+    "machine learning"
+  ],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 996,
+  "hasTranscript": true,
+  "transcriptWordCount": 2605,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/334/4/65b71eea-f323-4f86-9096-889b6da91bdd/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/334/4/65b71eea-f323-4f86-9096-889b6da91bdd/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/334/4/65b71eea-f323-4f86-9096-889b6da91bdd/downloads/wwdc2026-334_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/334/4/65b71eea-f323-4f86-9096-889b6da91bdd/downloads/wwdc2026-334_hd.mp4",
+    "duration": 996
+  },
+  "codeSnippets": [
+    {
+      "title": "Prompt the on-device model with fm respond",
+      "language": "bash",
+      "startTimeSeconds": 307,
+      "code": "$ fm respond \"Provide a basic regex in Swift to parse an email address\"\n# Here is a basic regex to parse an email address in Swift: [...]\n\n$ fm respond \"Provide a comprehensive regex in Swift to parse an email address\" --model pcc\n# [...] Here's a robust Swift implementation using 'NSRegularExpression' to validate a typical email address:\n\n$ fm respond \"What app is the user using in this screenshot?\" --model pcc \\\n\t--image Screenshot.png\n# The user is using the Mail app.\n\n$ fm schema object --name AppsIdentified --string app_names --array > schema.json \n$ fm respond \"What apps are the user actively using in this screenshot?\" \\\n\t--image Screenshot.png --model pcc --schema schema.json\n# {\"app_names\": [\"Messages\", \"Mail\", \"Calendar\"]}\n\n$ fm respond --help"
+    },
+    {
+      "title": "Sort files with fm respond and a schema",
+      "language": "bash",
+      "startTimeSeconds": 475,
+      "code": "fm schema object --name \"TriagedFileList\" \\\n    --string 'final_files' --array \\\n    --string 'draft_files' --array > /tmp/schema.json\n\noutput=$(fm respond \\\n    --instructions \"I just completed a project, and I need help triaging the latest version of the files from the previous versions. I will give you a list of files. Return a list of the latest files (i.e., all files that, you can infer from their name in the list, are the latest versions), and then return separately a list of all draft files (i.e., all files that weren't considered final).\" \\\n    \"This is the list of all files:\\n\\n${files_list}\" \\\n    --schema /tmp/schema.json\n)\n\necho \"${output}\" | jq -r '.final_files[]' | while read -r file; do\n    cp \"${DIRECTORY_TO_TRIAGE}/${file}\" \"${FINAL_FILES_STORAGE_DIRECTORY}\"\ndone\n\necho \"${output}\" | jq -r '.draft_files[]' | while read -r file; do\n    mv \"${DIRECTORY_TO_TRIAGE}/${file}\" \"${DRAFT_FILES_STORAGE_DIRECTORY}\"\ndone"
+    },
+    {
+      "title": "Install the Foundation Models Python SDK",
+      "language": "bash",
+      "startTimeSeconds": 534,
+      "code": "pip install apple_fm_sdk"
+    },
+    {
+      "title": "Create a session and respond to a prompt",
+      "language": "python",
+      "startTimeSeconds": 600,
+      "code": "import apple_fm_sdk as fm\n\nINSTRUCTIONS = \"You're an AI assistant for Cupertino Mart, a grocery store with in-app ordering.\"\n\nasync def answer_question(prompt: str) -> str:\n\tsession = fm.LanguageModelSession(instructions=INSTRUCTIONS)\n  return await session.respond(prompt)"
+    },
+    {
+      "title": "Define a Tool for the language model",
+      "language": "python",
+      "startTimeSeconds": 621,
+      "code": "class GetPastOrdersTool(fm.Tool):\n  name = \"get_past_orders\"\n  description = \"Retrieves information about this user's past orders.\"\n\n  @fm.generable(\"Past orders query parameter\")\n  class Arguments:\n  \tnumber_orders: str = fm.guide(\"How many of the last orders to retrieve\")\n\n  @property\n  def arguments_schema(self) -> fm.GenerationSchema:\n  \treturn self.Arguments.generation_schema()\n\nasync def call(self, args: fm.GeneratedContent) -> str:\n\tnumber_orders = args.value(int, for_property=\"number_orders\")\n  return await Orders.load_last_orders(user_id=user_id, amount=number_orders)"
+    },
+    {
+      "title": "Generate structured output with @fm.generable",
+      "language": "python",
+      "startTimeSeconds": 635,
+      "code": "@fm.generable(\"Suggested items\")\nclass ItemsSuggestion:\n\titem_names: list[str] = fm.guide(\"Names of the suggested items\")\n\nINSTRUCTIONS = \"You're an AI assistant tasked with returning potential grocery items that the user might be interested in.\"\n\nasync def generate_suggested_cart_items(user_input: Optional[str]) -> ItemsSuggestion:\n\tsession = fm.LanguageModelSession(instructions=INSTRUCTIONS, tools=load_tools())\n\tprompt = \"\"\"Using the tools to load the user's previous orders, \\\n              return a list of items the user has already ordered \\\n              and that they might be interested in again \\\n              as they're getting ready to place a new grocery order.\"\"\"\n\tif user_input is not None:\n    prompt += f\"\\nAccount for the following request from the user: {user_input}\"\n    return await session.respond(prompt, generating=ItemsSuggestion)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Foundation Models SDK for Python on GitHub",
+      "url": "https://github.com/apple/python-apple-fm-sdk",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Foundation Models SDK for Python Documentation on GitHub",
+      "url": "https://apple.github.io/python-apple-fm-sdk/",
+      "type": "documentation",
+      "description": null
+    }
+  ],
+  "path": "sessions/wwdc2026/334/",
+  "files": {
+    "metadata": "sessions/wwdc2026/334/metadata.json",
+    "readme": "sessions/wwdc2026/334/README.md",
+    "transcript": "sessions/wwdc2026/334/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/334/transcript.json"
+  }
+}

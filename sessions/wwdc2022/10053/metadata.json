@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10053",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10053,
+  "title": "Discover Sign in with Apple at Work & School",
+  "description": "Learn how you can support Sign In with Apple for Managed Apple IDs in organizational settings. We'll introduce you to Sign In with Apple at Work & School and explore how education apps can harness the power of this REST API to streamline the import process for student and class information. We’ll also share how to configure Access Management controls for these features within Apple Business Manager and Apple School Manager.\n\nTo get the most out of this session, we recommend having familiarity with Sign In with Apple and REST APIs.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10053",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10053",
+  "type": "Video",
+  "publishedAt": "2022-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Business & Education"
+  ],
+  "primaryTopic": "Business & Education",
+  "duration": 1165,
+  "hasTranscript": true,
+  "transcriptWordCount": 2911,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10053/4/8898553F-A636-4C8D-AAAF-DE7463409879/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10053/4/8898553F-A636-4C8D-AAAF-DE7463409879/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10053/4/8898553F-A636-4C8D-AAAF-DE7463409879/downloads/wwdc2022-10053_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10053/4/8898553F-A636-4C8D-AAAF-DE7463409879/downloads/wwdc2022-10053_hd.mp4",
+    "duration": 1165
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Roster API",
+      "url": "https://developer.apple.com/documentation/RosterAPI",
+      "type": "documentation",
+      "description": "Read information about people and classes from an Apple School Manager organization.",
+      "sosumiURL": "https://sosumi.ai/documentation/RosterAPI",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/RosterAPI.json"
+    },
+    {
+      "title": "Configuring your webpage for Sign in with Apple",
+      "url": "https://developer.apple.com/documentation/signinwithapple/configuring-your-webpage-for-sign-in-with-apple",
+      "type": "documentation",
+      "description": "Prepare your webpage to authorize users through Sign in with Apple.",
+      "sosumiURL": "https://sosumi.ai/documentation/signinwithapple/configuring-your-webpage-for-sign-in-with-apple",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/signinwithapple/configuring-your-webpage-for-sign-in-with-apple.json"
+    },
+    {
+      "title": "Implementing User Authentication with Sign in with Apple",
+      "url": "https://developer.apple.com/documentation/AuthenticationServices/implementing-user-authentication-with-sign-in-with-apple",
+      "type": "samplecode",
+      "description": "Provide a way for users of your app to set up an account and start using your services.",
+      "sosumiURL": "https://sosumi.ai/documentation/AuthenticationServices/implementing-user-authentication-with-sign-in-with-apple",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AuthenticationServices/implementing-user-authentication-with-sign-in-with-apple.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10053/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10053/metadata.json",
+    "readme": "sessions/wwdc2022/10053/README.md",
+    "transcript": "sessions/wwdc2022/10053/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10053/transcript.json"
+  }
+}

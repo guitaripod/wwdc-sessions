@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10612",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10612,
+  "title": "What's new in RealityKit",
+  "description": "RealityKit is Apple’s rendering, animation, physics, and audio engine built from the ground up for augmented reality: It reimagines the traditional 3D renderer to make it easy for developers to prototype and produce high-quality AR experiences. Learn how to effectively implement each of the latest improvements to RealityKit in your app. Discover features like video textures, scene understanding using the LiDAR scanner on iPad Pro, Location Anchors, face tracking, and improved debugging tools.\n\nTo get the most out of this session, you should understand the building blocks of developing RealityKit-based apps and games. Watch “Introducing RealityKit and Reality Composer” for a primer.\n\nFor more on how you can integrate Reality Composer into your augmented reality workflow, watch \"The artist’s AR toolkit\".",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10612",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10612",
+  "type": "Video",
+  "publishedAt": "2020-06-23T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 1515,
+  "hasTranscript": true,
+  "transcriptWordCount": 3875,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10612/5/1B6C5C51-471E-4D93-9198-4D6B9AAE7D89/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10612/5/1B6C5C51-471E-4D93-9198-4D6B9AAE7D89/wwdc2020_10612_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10612/5/1B6C5C51-471E-4D93-9198-4D6B9AAE7D89/wwdc2020_10612_hd.mp4",
+    "duration": 1515
+  },
+  "codeSnippets": [
+    {
+      "title": "Loading a video material",
+      "language": "swift",
+      "startTimeSeconds": 292,
+      "code": "// Use AVFoundation to load a video\nlet asset = AVURLAsset(url: Bundle.main.url(forResource: \"glow\", withExtension: \"mp4\")!)\nlet playerItem = AVPlayerItem(asset: asset)\n\n// Create a Material and assign it to your model entity...\nlet player = AVPlayer()\nbugEntity.materials = [VideoMaterial(player: player)]\n\n// Tell the player to load and play\nplayer.replaceCurrentItem(with: playerItem)\nplayer.play()"
+    },
+    {
+      "title": "Implementing object avoidance with scene understanding",
+      "language": "swift",
+      "startTimeSeconds": 838,
+      "code": "// Get the position and forward direction of the bug in world space\nlet bugOrigin = bug.position(relativeTo: nil)\nlet bugForward = bug.convert(direction: [0, 0, 1], relativeTo: nil)\n\n// Perform a raycast \nlet collisionResults = arView.scene.raycast(origin: bugOrigin, direction: bugForward)\n\n// Get all hits against a Scene Understanding Entity\nlet filteredResults = collisionResults.filter { $0.entity as? HasSceneUnderstanding }\n\n// Pick the closest one and get the collision point\nguard let closestCollisionPoint = filteredResults.first?.position else {\n\treturn\n}\n\nif length(bugOrigin - closestCollisionPoint) < safeDistance {\n  // Avoid obstacle too close to object’s forward\n}"
+    },
+    {
+      "title": "Using collision events with a scene understanding entity",
+      "language": "swift",
+      "startTimeSeconds": 888,
+      "code": "// Subscribe to all collision events\narView.scene.subscribe(to: CollisionEvents.Began.self) { event in\n    // Get any entity if it conforms to HasSceneUnderstanding\n    guard let sceneUnderstandingEntity = (event.entityA as? HasSceneUnderstanding) \n                                      ?? (event.entityB as? HasSceneUnderstanding)   \n    else { \n       // Did not collide with real world    \n       return \n    } \n    // The bug entity is the one that is not the scene understanding entity\n    let bugEntity = (sceneUnderstandingEntity == event.entityA)\n                   ? event.entityB : event.entityA \n\n   // Disintegrate the bug entity\n   …\n}"
+    },
+    {
+      "title": "Real world collision filtering",
+      "language": "swift",
+      "startTimeSeconds": 960,
+      "code": "// Only collide with real world\nentity.collision?.filter.mask = [.sceneUnderstanding]\n\n// Never collide with real world\nentity.collision?.filter.mask = CollisionGroup.all.subtracting(.sceneUnderstanding)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Creating a game with scene understanding",
+      "url": "https://developer.apple.com/documentation/RealityKit/creating-a-game-with-scene-understanding",
+      "type": "samplecode",
+      "description": "Create AR games and experiences that interact with real-world objects on LiDAR-equipped iOS devices.",
+      "sosumiURL": "https://sosumi.ai/documentation/RealityKit/creating-a-game-with-scene-understanding",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/RealityKit/creating-a-game-with-scene-understanding.json"
+    },
+    {
+      "title": "RealityKit",
+      "url": "https://developer.apple.com/documentation/RealityKit",
+      "type": "documentation",
+      "description": "Simulate and render 3D content for use in your augmented reality apps.",
+      "sosumiURL": "https://sosumi.ai/documentation/RealityKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/RealityKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10612/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10612/metadata.json",
+    "readme": "sessions/wwdc2020/10612/README.md",
+    "transcript": "sessions/wwdc2020/10612/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10612/transcript.json"
+  }
+}

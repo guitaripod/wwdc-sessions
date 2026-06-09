@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10216",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10216,
+  "title": "Explore the Swift on Server ecosystem",
+  "description": "Swift is a great language for writing your server applications, and powers critical services across Apple’s cloud products. We’ll explore tooling, delve into the Swift server package ecosystem, and demonstrate how to interact with databases and add observability to applications.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10216",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10216",
+  "type": "Video",
+  "publishedAt": "2024-06-12T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 1000,
+  "hasTranscript": true,
+  "transcriptWordCount": 2459,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10216/4/DB423F7B-5B55-47AE-958F-68C8BF6077A6/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10216/4/DB423F7B-5B55-47AE-958F-68C8BF6077A6/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10216/4/DB423F7B-5B55-47AE-958F-68C8BF6077A6/downloads/wwdc2024-10216_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10216/4/DB423F7B-5B55-47AE-958F-68C8BF6077A6/downloads/wwdc2024-10216_hd.mp4",
+    "duration": 1000
+  },
+  "codeSnippets": [
+    {
+      "title": "EventService Package.swift",
+      "language": "swift",
+      "startTimeSeconds": 203,
+      "code": "// swift-tools-version:5.9\nimport PackageDescription\n\nlet package = Package(\n  name: \"EventService\",\n  platforms: [.macOS(.v14)],\n  dependencies: [\n    .package(\n      url: \"https://github.com/apple/swift-openapi-generator\",\n      from: \"1.2.1\"\n    ),\n    .package(\n      url: \"https://github.com/apple/swift-openapi-runtime\",\n      from: \"1.4.0\"\n    ),\n    .package(\n      url: \"https://github.com/vapor/vapor\",\n      from: \"4.99.2\"\n    ),\n    .package(\n      url: \"https://github.com/swift-server/swift-openapi-vapor\",\n      from: \"1.0.1\"\n    ),\n  ],\n  targets: [\n    .target(\n      name: \"EventAPI\",\n      dependencies: [\n        .product(\n          name: \"OpenAPIRuntime\",\n          package: \"swift-openapi-runtime\"\n        ),\n      ],\n      plugins: [\n        .plugin(\n          name: \"OpenAPIGenerator\",\n          package: \"swift-openapi-generator\"\n        )\n      ]\n    ),\n    .executableTarget(\n      name: \"EventService\",\n      dependencies: [\n        \"EventAPI\",\n        .product(\n          name: \"OpenAPIRuntime\",\n          package: \"swift-openapi-runtime\"\n        ),\n        .product(\n          name: \"OpenAPIVapor\",\n          package: \"swift-openapi-vapor\"\n        ),\n        .product(\n          name: \"Vapor\",\n          package: \"vapor\"\n        ),\n      ]\n    ),\n  ]\n)"
+    },
+    {
+      "title": "EventService openapi.yaml",
+      "language": "yaml",
+      "startTimeSeconds": 245,
+      "code": "openapi: \"3.1.0\"\ninfo:\n  title: \"EventService\"\n  version: \"1.0.0\"\nservers:\n  - url: \"https://localhost:8080/api\"\n    description: \"Example service deployment.\"\npaths:\n  /events:\n    get:\n      operationId: \"listEvents\"\n      responses:\n        \"200\":\n          description: \"A success response with all events.\"\n          content:\n            application/json:\n              schema:\n                type: \"array\"\n                items:\n                  $ref: \"#/components/schemas/Event\"\n    post:\n      operationId: \"createEvent\"\n      requestBody:\n        description: \"The event to create.\"\n        required: true\n        content:\n          application/json:\n            schema:\n              $ref: '#/components/schemas/Event'\n      responses:\n        '201':\n          description: \"A success indicating the event was created.\"\n        '400':\n          description: \"A failure indicating the event wasn't created.\"\ncomponents:\n  schemas:\n    Event:\n      type: \"object\"\n      description: \"An event.\"\n      properties:\n        name:\n          type: \"string\"\n          description: \"The event's name.\"\n        date:\n          type: \"string\"\n          format: \"date\"\n          description: \"The day of the event.\"\n        attendee:\n          type: \"string\"\n          description: \"The name of the person attending the event.\"\n      required:\n        - \"name\"\n        - \"date\"\n        - \"attendee\""
+    },
+    {
+      "title": "EventService initial implementation",
+      "language": "swift",
+      "startTimeSeconds": 275,
+      "code": "import OpenAPIRuntime\nimport OpenAPIVapor\nimport Vapor\nimport EventAPI\n\n@main\nstruct Service {\n  static func main() async throws {\n    let application = try await Vapor.Application.make()\n    let transport = VaporTransport(routesBuilder: application)\n\n    let service = Service()\n    try service.registerHandlers(\n      on: transport,\n      serverURL: URL(string: \"/api\")!\n    )\n\n    try await application.execute()\n  }\n}\n\nextension Service: APIProtocol {\n  func listEvents(\n    _ input: Operations.listEvents.Input\n  ) async throws -> Operations.listEvents.Output {\n    let events: [Components.Schemas.Event] = [\n      .init(name: \"Server-Side Swift Conference\", date: \"26.09.2024\", attendee: \"Gus\"),\n      .init(name: \"Oktoberfest\", date: \"21.09.2024\", attendee: \"Werner\"),\n    ]\n\n    return .ok(.init(body: .json(events)))\n  }\n\n  func createEvent(\n    _ input: Operations.createEvent.Input\n  ) async throws -> Operations.createEvent.Output {\n    return .undocumented(statusCode: 501, .init())\n  }\n}"
+    },
+    {
+      "title": "EventService Package.swift",
+      "language": "swift",
+      "startTimeSeconds": 416,
+      "code": "// swift-tools-version:5.9\nimport PackageDescription\n\nlet package = Package(\n  name: \"EventService\",\n  platforms: [.macOS(.v14)],\n  dependencies: [\n    .package(\n      url: \"https://github.com/apple/swift-openapi-generator\",\n      from: \"1.2.1\"\n    ),\n    .package(\n      url: \"https://github.com/apple/swift-openapi-runtime\",\n      from: \"1.4.0\"\n    ),\n    .package(\n      url: \"https://github.com/vapor/vapor\",\n      from: \"4.99.2\"\n    ),\n    .package(\n      url: \"https://github.com/swift-server/swift-openapi-vapor\",\n      from: \"1.0.1\"\n    ),\n    .package(\n      url: \"https://github.com/vapor/postgres-nio\",\n      from: \"1.19.1\"\n    ),\n  ],\n  targets: [\n    .target(\n      name: \"EventAPI\",\n      dependencies: [\n        .product(\n          name: \"OpenAPIRuntime\",\n          package: \"swift-openapi-runtime\"\n        ),\n      ],\n      plugins: [\n        .plugin(\n          name: \"OpenAPIGenerator\",\n          package: \"swift-openapi-generator\"\n        )\n      ]\n    ),\n    .executableTarget(\n      name: \"EventService\",\n      dependencies: [\n        \"EventAPI\",\n        .product(\n          name: \"OpenAPIRuntime\",\n          package: \"swift-openapi-runtime\"\n        ),\n        .product(\n          name: \"OpenAPIVapor\",\n          package: \"swift-openapi-vapor\"\n        ),\n        .product(\n          name: \"Vapor\",\n          package: \"vapor\"\n        ),\n        .product(\n            name: \"PostgresNIO\",\n          package: \"postgres-nio\"\n        ),\n      ]\n    ),\n  ]\n)"
+    },
+    {
+      "title": "Implementing the listEvents method",
+      "language": "swift",
+      "startTimeSeconds": 428,
+      "code": "import OpenAPIRuntime\nimport OpenAPIVapor\nimport Vapor\nimport EventAPI\nimport PostgresNIO\n\n@main\nstruct Service {\n  let postgresClient: PostgresClient\n\n  static func main() async throws {\n    let application = try await Vapor.Application.make()\n    let transport = VaporTransport(routesBuilder: application)\n\n    let postgresClient = PostgresClient(\n      configuration: .init(\n        host: \"localhost\",\n        username: \"postgres\",\n        password: nil,\n        database: nil,\n        tls: .disable\n      )\n    )\n    let service = Service(postgresClient: postgresClient)\n    try service.registerHandlers(\n      on: transport,\n      serverURL: URL(string: \"/api\")!\n    )\n\n    try await withThrowingDiscardingTaskGroup { group in\n      group.addTask {\n        await postgresClient.run()\n      }\n\n      group.addTask {\n        try await application.execute()\n      }\n    }\n  }\n}\n\nextension Service: APIProtocol {\n  func listEvents(\n    _ input: Operations.listEvents.Input\n  ) async throws -> Operations.listEvents.Output {\n    let rows = try await self.postgresClient.query(\"SELECT name, date, attendee FROM events\")\n\n    var events = [Components.Schemas.Event]()\n    for try await (name, date, attendee) in rows.decode((String, String, String).self) {\n      events.append(.init(name: name, date: date, attendee: attendee))\n    }\n\n    return .ok(.init(body: .json(events)))\n  }\n\n  func createEvent(\n    _ input: Operations.createEvent.Input\n  ) async throws -> Operations.createEvent.Output {\n    return .undocumented(statusCode: 501, .init())\n  }\n}"
+    },
+    {
+      "title": "Implementing the createEvent method",
+      "language": "swift",
+      "startTimeSeconds": 542,
+      "code": "func createEvent(\n  _ input: Operations.createEvent.Input\n) async throws -> Operations.createEvent.Output {\n  switch input.body {\n  case .json(let event):\n    try await self.postgresClient.query(\n      \"\"\"\n      INSERT INTO events (name, date, attendee)\n      VALUES (\\(event.name), \\(event.date), \\(event.attendee))\n      \"\"\"\n    )\n    return .created(.init())\n  }\n}"
+    },
+    {
+      "title": "Instrumenting the listEvents method",
+      "language": "swift",
+      "startTimeSeconds": 694,
+      "code": "func listEvents(\n  _ input: Operations.listEvents.Input\n) async throws -> Operations.listEvents.Output {\n  let logger = Logger(label: \"ListEvents\")\n  logger.info(\"Handling request\", metadata: [\"operation\": \"\\(Operations.listEvents.id)\"])\n\n  Counter(label: \"list.events.counter\").increment()\n\n  return try await withSpan(\"database query\") { span in\n    let rows = try await postgresClient.query(\"SELECT name, date, attendee FROM events\")\n    return try await .ok(.init(body: .json(decodeEvents(rows))))\n  }\n}"
+    },
+    {
+      "title": "EventService Package.swift",
+      "language": "swift",
+      "startTimeSeconds": 794,
+      "code": "// swift-tools-version:5.9\nimport PackageDescription\n\nlet package = Package(\n  name: \"EventService\",\n  platforms: [.macOS(.v14)],\n  dependencies: [\n    .package(\n      url: \"https://github.com/apple/swift-openapi-generator\",\n      from: \"1.2.1\"\n    ),\n    .package(\n      url: \"https://github.com/apple/swift-openapi-runtime\",\n      from: \"1.4.0\"\n    ),\n    .package(\n      url: \"https://github.com/vapor/vapor\",\n      from: \"4.99.2\"\n    ),\n    .package(\n      url: \"https://github.com/swift-server/swift-openapi-vapor\",\n      from: \"1.0.1\"\n    ),\n    .package(\n      url: \"https://github.com/vapor/postgres-nio\",\n      from: \"1.19.1\"\n    ),\n    .package(\n        url: \"https://github.com/apple/swift-log\",\n        from: \"1.5.4\"\n    ),\n  ],\n  targets: [\n    .target(\n      name: \"EventAPI\",\n      dependencies: [\n        .product(\n          name: \"OpenAPIRuntime\",\n          package: \"swift-openapi-runtime\"\n        ),\n      ],\n      plugins: [\n        .plugin(\n          name: \"OpenAPIGenerator\",\n          package: \"swift-openapi-generator\"\n        )\n      ]\n    ),\n    .executableTarget(\n      name: \"EventService\",\n      dependencies: [\n        \"EventAPI\",\n        .product(\n          name: \"OpenAPIRuntime\",\n          package: \"swift-openapi-runtime\"\n        ),\n        .product(\n          name: \"OpenAPIVapor\",\n          package: \"swift-openapi-vapor\"\n        ),\n        .product(\n          name: \"Vapor\",\n          package: \"vapor\"\n        ),\n        .product(\n            name: \"PostgresNIO\",\n          package: \"postgres-nio\"\n        ),\n        .product(\n            name: \"Logging\",\n            package: \"swift-log\"\n        ),\n      ]\n    ),\n  ]\n)"
+    },
+    {
+      "title": "Adding logging to the createEvent method",
+      "language": "swift",
+      "startTimeSeconds": 818,
+      "code": "func createEvent(\n  _ input: Operations.createEvent.Input\n) async throws -> Operations.createEvent.Output {\n  switch input.body {\n  case .json(let event):\n    do {\n      try await self.postgresClient.query(\n        \"\"\"\n        INSERT INTO events (name, date, attendee)\n        VALUES (\\(event.name), \\(event.date), \\(event.attendee))\n        \"\"\"\n      )\n      return .created(.init())\n    } catch let error as PSQLError {\n      let logger = Logger(label: \"CreateEvent\")\n\n      if let message = error.serverInfo?[.message] {\n        logger.info(\n          \"Failed to create event\",\n          metadata: [\"error.message\": \"\\(message)\"]\n        )\n      }\n\n      return .badRequest(.init())\n    }\n  }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Swift Server Workgroup",
+      "url": "https://www.swift.org/sswg/",
+      "type": "documentation",
+      "description": "Learn more about the Swift on Server workgroup"
+    },
+    {
+      "title": "Swift Package Ecosystem",
+      "url": "https://www.swift.org/packages/",
+      "type": "documentation",
+      "description": "Learn more about the Swift Package Ecosystem"
+    },
+    {
+      "title": "Forum: Programming Languages",
+      "url": "https://developer.apple.com/forums/topics/programming-languages-topic?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/programming-languages-topic?cid=vf-a-0010"
+    },
+    {
+      "title": "Swift on Server",
+      "url": "https://www.swift.org/server/",
+      "type": "guide",
+      "description": null
+    }
+  ],
+  "path": "sessions/wwdc2024/10216/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10216/metadata.json",
+    "readme": "sessions/wwdc2024/10216/README.md",
+    "transcript": "sessions/wwdc2024/10216/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10216/transcript.json"
+  }
+}

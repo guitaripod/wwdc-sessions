@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-206",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 206,
+  "title": "Introducing SF Symbols",
+  "description": "SF Symbols introduces a comprehensive library of vector-based symbols that you can incorporate into your app to simplify the layout of user interface elements through automatic alignment with surrounding text, and support for multiple weights and sizes. Learn how easy it is to adapt to different screen sizes and layouts, and improve the accessibility and localizability of your app. Get details on how to create new symbols for your specific needs that perfectly match the visual style of SF Symbols.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/206",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/206",
+  "type": "Session",
+  "publishedAt": "2019-06-04T15:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "baseline",
+    "font",
+    "san francisco",
+    "scale",
+    "sf hello",
+    "uiimage",
+    "weight"
+  ],
+  "topics": [
+    "Design",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 2372,
+  "hasTranscript": true,
+  "transcriptWordCount": 5938,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/206u451oe8jmzj52/206/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/206u451oe8jmzj52/206/206_sd_introducing_sf_symbols.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/206u451oe8jmzj52/206/206_hd_introducing_sf_symbols.mp4",
+    "duration": 2372
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: SF Symbols",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/sf-symbols",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/sf-symbols"
+    },
+    {
+      "title": "Apple Design Site",
+      "url": "https://developer.apple.com/design/",
+      "type": "guide",
+      "description": "Guidelines for designing great apps.",
+      "sosumiURL": "https://sosumi.ai/design/"
+    }
+  ],
+  "path": "sessions/wwdc2019/206/",
+  "files": {
+    "metadata": "sessions/wwdc2019/206/metadata.json",
+    "readme": "sessions/wwdc2019/206/README.md",
+    "transcript": "sessions/wwdc2019/206/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/206/transcript.json"
+  }
+}

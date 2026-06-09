@@ -1,0 +1,30 @@
+---
+id: "wwdc2023-10178"
+event: "wwdc2023"
+title: "What’s new in App Clips"
+url: "https://developer.apple.com/videos/play/wwdc2023/10178"
+language: "eng"
+words: 1017
+---
+
+# What’s new in App Clips — Transcript
+
+[Session page](https://developer.apple.com/videos/play/wwdc2023/10178) · [Metadata](metadata.json) · [Structured JSON](transcript.json)
+
+**[0:00]** ♪ ♪ Kevin: Hello and welcome. My name is Kevin, and I'm engineer on the App Clips team. App Clips are a light version of your app that allows users to try features of your app without downloading and installing. Users can discover App Clips throughout the system within links on their device: In Messages, points of interest in Maps, Safari and Safari View Controller, and spotlight search. They can also discover App Clips in the real world by scanning App Clip codes, QR codes, or NFC tags. We've built three new improvements to the App Clips experience:
+
+**[0:46]** A new size limit, a new way to configure your App Clips using default App Clip links, and the ability to invoke App Clips directly from your app. First, the new size limit. App Clips need to be small to ensure an instant experience, especially when targeting users who may be on the go and are invoking your App Clip from an NFC tag, App Clip Code, or QR code. But there are a variety of other use cases for App Clips, where the user may be on a fast home network, such as a game demo or online ordering experience. To enable an even broader set of App Clip experiences in iOS 17, I'm pleased to say there is a new 50 MB size limit for digital invocations. With more space at your disposal, you can build richer App Clip experiences.
+
+**[1:33]** If you'd like to make use of physical invocations, such as those through NFC tags or App Clip codes, you'll have to keep to the 15 MB limitation introduced in iOS 16. This is to ensure a fast user experience for when users are likely on the go. The increased size limit also lets you include more functionality in your App Clips. You may be downloading additional assets during your App Clip's runtime. With this new size limit, consider bundling more of these resources to have a more immersive experience at launch. If you're targeting iOS 15 or earlier, the original 10 MB limitation still applies. We're super excited to see the kinds of rich App Clip experiences you come up with using this new size limit. Next, default App Clip links.
+
+**[2:19]** App Clip invocations are powered by universal links. When someone interacts with an App Clip, your implementation can present them with different experiences. Many App Clips only require a single App Clip experience. This is the default App Clip experience and should be the most general use case, and encompass the core functionality of your app. To make default experiences recognizable by iOS, you must provide a website to host the relevant metadata, so Safari can recognize the App Clip and allow it to be invoked via that website's URL. For instance, the Backyard Birds default App Clip experience is invokable with this URL. For more information on configuring your App Clip experiences, refer to "Configure and link your App Clips"
+
+**[3:04]** from WWDC 2020. Default App Clip links are a new way for you to invoke your default App Clip experience. These are Apple generated URLs that are automatically created for you when you publish an App Clip in App Store Connect. Default App Clip links provide a way for your default experience to be invoked without any extra setup on your part, and are supported starting from iOS 16.4. They all have the domain of appclip.apple.com, and your App Clip's bundle ID is included as a URL parameter. You can attach app-specific parameters to the default App Clip links URL that can be retrieved in your App Clip at launch. For instance, a game demo App Clip might take
+
+**[3:50]** a parameter for which character to start users with. You can do this by retrieving the webpage URL from the NSUserActivity given to your App Clip at launch, just like any App Clip invocation. Once you have the webpage URL, you can parse the relevant query items using NSURLComponents. With Default App Clip Links, it's easier than ever before to get your App Clips up and running. Finally, invoking App Clips from any app. Users love the ability to launch your App Clips from various parts of the system. Now we're excited to bring that same awesome functionality directly to your apps as well in iOS 17. This opens up a lot of possibilities, like allowing someone to place a food pickup order
+
+**[4:36]** without leaving their choice of messaging or navigation app. Invoking an App Clip from your app is easy. You can use the link presentation API to generate a tappable rich preview of the App Clip that will allow it to be invoked. Once you've retrieved the metadata via a LPMetadaProvider request, you can pass that along to the LPLinkView to render a preview. If the experience you'd like to invoke from your app makes use of a default App Clip link, you can invoke it directly. In SwiftUI, you can simply use the Link view, or you can call open on your UIApplication. To give you an idea of how this works, I'll use Notes as an example. From here, I can quickly invoke the Backyard Birds App Clip.
+
+**[5:22]** I've put a link to Backyard Birds, and with just a tap, the App Clip card comes up immediately, and I can jump straight into the App Clip, all without going through Safari or Safari View Controller. This linking behavior works from within any app to any App Clip. I can't wait to see what kind of App Clip experiences you include in your apps. Build even richer, more expansive App Clip experiences using the increased size limit for digital invocations. Use default App Clip links to get your App Clip up and running even faster than before. You can spend time crafting a great App Clip experience for your customers without spending time tweaking your own web endpoint. And invoke App Clips from within your apps directly, and provide your users with even more opportunities to explore App Clips.
+
+**[6:10]** Thanks for watching. We can't wait to see what you build. ♪ ♪

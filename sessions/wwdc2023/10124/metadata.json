@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10124",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10124,
+  "title": "Bring your game to Mac, Part 2: Compile your shaders",
+  "description": "Discover how the Metal shader converter streamlines the process of bringing your HLSL shaders to Metal as we continue our three-part series on bringing your game to Mac. Find out how to build a fast, end-to-end shader pipeline from DXIL that supports all shader stages and allows you to leverage the advanced features of Apple GPUs. We’ll also show you how to reduce app launch time and stutters by generating GPU binaries with the offline compiler.\n\nTo get the most out of this session, we recommend first watching “Bring your game to Mac, Part 1: Make a game plan.\" And once you’re ready to level up, check out “Bring your game to Mac, Part 3: Render with Metal\" from WWDC23.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10124",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10124",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1137,
+  "hasTranscript": true,
+  "transcriptWordCount": 2891,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10124/4/8043B2FD-2363-4733-85E6-CCDF0BEE783F/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10124/4/8043B2FD-2363-4733-85E6-CCDF0BEE783F/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10124/4/8043B2FD-2363-4733-85E6-CCDF0BEE783F/downloads/wwdc2023-10124_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10124/4/8043B2FD-2363-4733-85E6-CCDF0BEE783F/downloads/wwdc2023-10124_hd.mp4",
+    "duration": 1137
+  },
+  "codeSnippets": [
+    {
+      "title": "Json Metal Script",
+      "language": "json",
+      "startTimeSeconds": 868,
+      "code": "{“libraries\": {\n    \"paths\": [\n   {\"path\": “ba.metallib”, \"label\": \"myMetalLib\"}\n\n    ]\n  },\n  \"pipelines\": {\n    \"render_pipelines\": [{\n      \"vertex_function\": \"alias:myMetalLib#v\",\n      \"fragment_function\": \"alias:myMetalLib#f\",\n      \"raster_sample_count\": 2,\n      \"color_attachments\": [{\n          \"pixel_format\": \"BGRA8Unorm\"\n      }],\n      \"depth_attachment_pixel_format\":      \n        \"Depth32Float\"\n    }]\n  }\n}"
+    },
+    {
+      "title": "Testing Binary Archive hit",
+      "language": "objectivec",
+      "startTimeSeconds": 990,
+      "code": "// Create Pipeline Descriptor\nMTLComputePipelineDescriptor *computeDesc = [MTLComputePipelineDescriptor new];\ncomputeDesc.binaryArchives = @[existingBinaryArchive];\ncomputeDesc.computeFunction = computeFn;\nid<MTLComputePipelineState> computePS = \n                     [device newComputePipelineStateWithDescriptor:computeDesc\n                                     options:MTLPipelineOptionFailonBinaryArchiveMiss\n                                     error:&err];                                                                                        \n\nif(computePS == nil)\n{\n    // Binary archive is missing compiled shader.\n}"
+    },
+    {
+      "title": "Loading appropriate Binary Archive",
+      "language": "objectivec",
+      "startTimeSeconds": 1023,
+      "code": "// Load OS-specific binary archives\n\n\nMTLComputePipelineDescriptor *computeDesc = [MTLComputePipelineDescriptor new];\n\nif (@available(macOS 14, *)) {\n    computeDesc.binaryArchives = @[binaryArchive_macOS14];\n} else {\n    computeDesc.binaryArchives = @[binaryArchive_macOS13_3];\n}  \ncomputeDesc.computeFunction = computeFn;\nid<MTLComputePipelineState> computePS = \n                     [device newComputePipelineStateWithDescriptor:computeDesc\n                                     options:nil\n                                     error:&err];"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Get started with Metal shader converter",
+      "url": "https://developer.apple.com/metal/shader-converter/",
+      "type": "documentation",
+      "description": "This document describes the IR conversion process, explains the binding model, synchronization considerations, and reflection capabilities, then provides general guidance and examples.",
+      "sosumiURL": "https://sosumi.ai/metal/shader-converter/"
+    },
+    {
+      "title": "Download the Metal shader converter (Mac and Windows)",
+      "url": "https://developer.apple.com/download/all/?q=shader%20converter",
+      "type": "download",
+      "description": "Metal shader converter provides tools to convert existing DXIL shaders, compiled from HLSL, to Metal and take full advantage of Apple silicon performance with support for all shader stages, simplified shader conversion pipelines, and faster build times.",
+      "sosumiURL": "https://sosumi.ai/download/all/?q=shader%20converter"
+    },
+    {
+      "title": "Download the game porting toolkit",
+      "url": "https://developer.apple.com/download/all/?q=game%20porting%20toolkit",
+      "type": "download",
+      "description": "Use the game porting toolkit to eliminate months of up-front work and evaluate how well your game could run on the Mac before writing any code.",
+      "sosumiURL": "https://sosumi.ai/download/all/?q=game%20porting%20toolkit"
+    },
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10124/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10124/metadata.json",
+    "readme": "sessions/wwdc2023/10124/README.md",
+    "transcript": "sessions/wwdc2023/10124/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10124/transcript.json"
+  }
+}

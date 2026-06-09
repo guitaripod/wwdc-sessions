@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-311",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 311,
+  "title": "Safely mix C, C++, and Swift",
+  "description": "Learn how to mix C, C++, and Swift while improving the safety of your apps. We’ll show you how to find where unsafe C and C++ APIs are called in your Swift code, how to call them more safely, and how to make your app’s existing C and C++ code safer by default.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/311",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/311",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 1931,
+  "hasTranscript": true,
+  "transcriptWordCount": 3787,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/311/4/10e5709a-8f4f-488a-92f6-f551b4ce97c5/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/311/4/10e5709a-8f4f-488a-92f6-f551b4ce97c5/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/311/4/10e5709a-8f4f-488a-92f6-f551b4ce97c5/downloads/wwdc2025-311_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/311/4/10e5709a-8f4f-488a-92f6-f551b4ce97c5/downloads/wwdc2025-311_hd.mp4",
+    "duration": 1931
+  },
+  "codeSnippets": [
+    {
+      "title": "Unsafety can be subtle",
+      "language": "swift",
+      "startTimeSeconds": 199,
+      "code": "// Swift\nvar imageData = [UInt8](repeating: 0, count: imageDataSize)\nfilterImage(&imageData, imageData.count)"
+    },
+    {
+      "title": "Strict memory safety",
+      "language": "swift",
+      "startTimeSeconds": 241,
+      "code": "// Swift\nvar imageData = [UInt8](repeating: 0, count: imageDataSize)\nfilterImage(&imageData, imageData.count)\n//warning: Expression uses unsafe constructs but is not marked with 'unsafe'"
+    },
+    {
+      "title": "Raw pointers don't prevent out-of-bounds errors",
+      "language": "cpp",
+      "startTimeSeconds": 480,
+      "code": "// C/C++\nvoid invertImage(uint8_t *imagePtr, size_t imageSize);"
+    },
+    {
+      "title": "Raw pointers don't prevent out-of-bounds errors",
+      "language": "swift",
+      "startTimeSeconds": 501,
+      "code": "// Swift\nvar imageData = [UInt8](repeating: 0, count: imageSize)\ninvertImage(&imageData, imageSize)"
+    },
+    {
+      "title": "Raw pointers don't prevent out-of-bounds errors",
+      "language": "swift",
+      "startTimeSeconds": 510,
+      "code": "// Swift\nvar imageData = [UInt8](repeating: 0, count: imageSize)\ninvertImage(&imageData, 1000000000000)"
+    },
+    {
+      "title": "Solution for out-of-bounds error",
+      "language": "swift",
+      "startTimeSeconds": 528,
+      "code": "// Swift\nfunc invertImage(_ imagePtr : inout MutableSpan<UInt8>)"
+    },
+    {
+      "title": "Solution for out-of-bounds error",
+      "language": "swift",
+      "startTimeSeconds": 534,
+      "code": "// Swift\nvar imageDataSpan = imageData.mutableSpan\ninvertImage(&imageDataSpan)"
+    },
+    {
+      "title": "Express bounds information using __counted_by",
+      "language": "cpp",
+      "startTimeSeconds": 598,
+      "code": "// C/C++\nvoid invertImage(uint8_t *__counted_by(imageSize) imagePtr __noescape, size_t imageSize);"
+    },
+    {
+      "title": "Unsafe function declaration taking a C++ span",
+      "language": "cpp",
+      "startTimeSeconds": 730,
+      "code": "// C++\nusing CxxSpanOfByte = std::span<uint8_t>;\nvoid applyGrayscale(CxxSpanOfByte imageView);"
+    },
+    {
+      "title": "Unsafe C++ function caching a C++ span",
+      "language": "cpp",
+      "startTimeSeconds": 801,
+      "code": "// C++\nCxxSpanOfByte cachedView;\nvoid applyGrayscale(CxxSpanOfByte imageView) {\n  cachedView = imageView;\n  // Apply effect on image ...\n}"
+    },
+    {
+      "title": "Swift Span prevents escaping scope",
+      "language": "swift",
+      "startTimeSeconds": 848,
+      "code": "// Swift\nvar cachedView: MutableSpan<UInt8>?\nfunc applyGrayscale(_ imageView: inout MutableSpan<UInt8>) {\n  cachedView = imageView // error: lifetime dependent value escapes its scope\n  // Apply effect on image ...\n}"
+    },
+    {
+      "title": "Express lifetime information using __noescape",
+      "language": "cpp",
+      "startTimeSeconds": 918,
+      "code": "// C++\nCxxSpanOfByte cachedView;\nvoid applyGrayscale(CxxSpanOfByte imageView __noescape) {\n  // Apply effect on image ...\n}"
+    },
+    {
+      "title": "Safely use a C++ Span as a Swift Span",
+      "language": "swift",
+      "startTimeSeconds": 956,
+      "code": "// Swift\nvar imageDataSpan = &imageData.mutableSpan\napplyGrayscale(&imageDataSpan)"
+    },
+    {
+      "title": "Returned C++ Span is unsafe",
+      "language": "cpp",
+      "startTimeSeconds": 1041,
+      "code": "// C++\nCxxSpanOfByte scanImageRow(CxxSpanOfByte imageView,\n                           size_t width, size_t rowIndex);"
+    },
+    {
+      "title": "Swift Spans prevent use-after-free by design",
+      "language": "swift",
+      "startTimeSeconds": 1086,
+      "code": "// Swift\nfunc scanImageRow(_ imageView : inout MutableSpan<UInt8>,\n                  _ width : Int, _ rowIndex : Int) -> MutableSpan<UInt8>\n// error: a function with a ~Escapable result requires '@lifetime(...)'"
+    },
+    {
+      "title": "Express lifetime dependency with __lifetimebound",
+      "language": "cpp",
+      "startTimeSeconds": 1127,
+      "code": "// C++\nCxxSpanOfByte scanImageRow(CxxSpanOfByte imageView __lifetimebound,\n                           size_t width, size_t rowIndex);"
+    },
+    {
+      "title": "Safely return a C++ Span as a Swift Span",
+      "language": "swift",
+      "startTimeSeconds": 1130,
+      "code": "// Swift\nvar imageDataSpan = imageData.mutableSpan\nvar rowView = scanImageRow(&imageDataSpan, width, y)"
+    },
+    {
+      "title": "Import a C++ view type as SWIFT_NONESCAPABLE",
+      "language": "cpp",
+      "startTimeSeconds": 1349,
+      "code": "// C++\nstruct ImageView {\n  std::span<uint8_t> pixelBytes;\n  int width;\n  int height;\n} SWIFT_NONESCAPABLE;"
+    },
+    {
+      "title": "Import a C++ reference-counted type",
+      "language": "cpp",
+      "startTimeSeconds": 1411,
+      "code": "// C++\nstruct ImageBuffer {\n  std::vector<uint8_t> data;\n  int width;\n  int height;\n  std::atomic<unsigned> refCount;\n} SWIFT_SHARED_REFERENCE(retain_image_buffer, release_image_buffer);\n\nvoid retain_image_buffer(ImageBuffer *_Nonnull buf);\nvoid release_image_buffer(ImageBuffer *_Nonnull buf);"
+    },
+    {
+      "title": "Safely return a reference-counted type",
+      "language": "cpp",
+      "startTimeSeconds": 1437,
+      "code": "// C++\nImageBuffer *_Nonnull createImage() SWIFT_RETURNS_RETAINED;\nImageBuffer *_Nonnull getCachedImage() SWIFT_RETURNS_UNRETAINED;"
+    },
+    {
+      "title": "C++ standard library hardening",
+      "language": "cpp",
+      "startTimeSeconds": 1671,
+      "code": "// C++\nvoid fill_array_with_indices(std::span<uint8_t> buffer) {\n  for (size_t i = 0; i < buffer.size(); ++i) {\n    buffer[i] = i;\n  }\n}"
+    },
+    {
+      "title": "C++ unsafe buffer usage errors",
+      "language": "cpp",
+      "startTimeSeconds": 1739,
+      "code": "// C++\nvoid fill_array_with_indices(uint8_t *buffer, size_t count) {\n  for (size_t i = 0; i < count; ++i) {\n    buffer[i] = i; // error: unsafe buffer access\n  }\n}"
+    },
+    {
+      "title": "Bounds safety extension for C",
+      "language": "cpp",
+      "startTimeSeconds": 1811,
+      "code": "// C\nvoid fill_array_with_indices(uint8_t *__counted_by(count) buf, size_t count) {\n  for (size_t i = 0; i < count; ++i) {\n    buf[i] = i;\n  }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Safely Mixing Swift and C++",
+      "url": "https://www.swift.org/documentation/cxx-interop/safe-interop/",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "-fbounds-safety: Enforcing bounds safety for C",
+      "url": "https://clang.llvm.org/docs/BoundsSafety.html",
+      "type": "documentation",
+      "description": "-fbounds-safety is a C extension to enforce bounds safety to prevent out-of-bounds (OOB) memory accesses, which remain a major source of security vulnerabilities in C."
+    }
+  ],
+  "path": "sessions/wwdc2025/311/",
+  "files": {
+    "metadata": "sessions/wwdc2025/311/metadata.json",
+    "readme": "sessions/wwdc2025/311/README.md",
+    "transcript": "sessions/wwdc2025/311/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/311/transcript.json"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10016",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10016,
+  "title": "Get more mileage out of your app with CarPlay",
+  "description": "CarPlay is a smarter, safer way to use your iPhone while you drive. Learn about the latest app types for CarPlay and discover how the CarPlay Simulator can help you develop and test apps without leaving your desk. We’ll also explore how navigation apps can connect with digital instrument clusters in supported vehicles.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10016",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10016",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "🚗",
+    "🚙",
+    "audio",
+    "car",
+    "communication",
+    "driving task",
+    "ev charging",
+    "fueling",
+    "navigation",
+    "parking",
+    "quick food ordering"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1254,
+  "hasTranscript": true,
+  "transcriptWordCount": 3140,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10016/4/4A58011C-EB98-4462-A8F7-8EDB8A69BBE7/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10016/4/4A58011C-EB98-4462-A8F7-8EDB8A69BBE7/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10016/4/4A58011C-EB98-4462-A8F7-8EDB8A69BBE7/downloads/wwdc2022-10016_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10016/4/4A58011C-EB98-4462-A8F7-8EDB8A69BBE7/downloads/wwdc2022-10016_hd.mp4",
+    "duration": 1254
+  },
+  "codeSnippets": [
+    {
+      "title": "Application scene manifest",
+      "language": "xml",
+      "startTimeSeconds": 943,
+      "code": "<key>UIApplicationSceneManifest</key>\n<dict>\n    <!-- Indicate support for CarPlay dashboard -->\n    <key>CPSupportsDashboardNavigationScene</key>\n    <true/>\n    <!-- Indicate support for instrument cluster displays -->\n    <key>CPSupportsInstrumentClusterNavigationScene</key>\n    <true/>\n    <!-- Indicate support for multiple scenes -->\n    <key>UIApplicationSupportsMultipleScenes</key>\n    <true/>\n    <key>UISceneConfigurations</key>\n    <dict>\n        <!-- For device scenes -->\n        <key>UIWindowSceneSessionRoleApplication</key>\n        <array>\n            <dict>\n                <key>UISceneClassName</key>\n                <string>UIWindowScene</string>\n                <key>UISceneConfigurationName</key>\n                <string>Phone</string>\n                <key>UISceneDelegateClassName</key>\n                <string>MyAppWindowSceneDelegate</string>\n            </dict>\n        </array>\n        <!-- For the main CarPlay scene -->\n        <key>CPTemplateApplicationSceneSessionRoleApplication</key>\n        <array>\n            <dict>\n                <key>UISceneClassName</key>\n                <string>CPTemplateApplicationScene</string>\n                <key>UISceneConfigurationName</key>\n                <string>CarPlay</string>\n                <key>UISceneDelegateClassName</key>\n                <string>MyAppCarPlaySceneDelegate</string>\n            </dict>\n        </array>\n        <!-- For the CarPlay Dashboard scene -->\n        <key>CPTemplateApplicationDashboardSceneSessionRoleApplication</key>\n        <array>\n            <dict>\n                <key>UISceneClassName</key>\n                <string>CPTemplateApplicationDashboardScene</string>\n                <key>UISceneConfigurationName</key>\n                <string>CarPlay-Dashboard</string>\n                <key>UISceneDelegateClassName</key>\n                <string>MyAppCarPlayDashboardSceneDelegate</string>\n            </dict>\n        </array>\n        <!-- For the CarPlay instrument cluster scene -->\n        <key>CPTemplateApplicationInstrumentClusterSceneSessionRoleApplication</key>\n        <array>\n            <dict>\n                <key>UISceneClassName</key>\n                <string>CPTemplateApplicationInstrumentClusterScene</string>\n                <key>UISceneConfigurationName</key>\n                <string>CarPlay-Instrument-Cluster</string>\n                <key>UISceneDelegateClassName</key>\n                <string>MyAppCarPlayInstrumentClusterSceneDelegate</string>\n            </dict>\n        </array>\n    </dict>\n</dict>"
+    },
+    {
+      "title": "Application instrument cluster scene delegate",
+      "language": "swift",
+      "startTimeSeconds": 960,
+      "code": "extension TemplateApplicationSceneDelegate: CPTemplateApplicationInstrumentClusterSceneDelegate {\n\n    func templateApplicationInstrumentClusterScene(\n        _ templateApplicationInstrumentClusterScene: CPTemplateApplicationInstrumentClusterScene,\n        didConnect instrumentClusterController: CPInstrumentClusterController) {\n        // Connected to Instrument Cluster\n        TemplateManager.shared.clusterController(instrumentClusterController, didConnectWith: templateApplicationInstrumentClusterScene.contentStyle)\n    }\n\n…\n\n    func instrumentClusterControllerDidConnect(_ instrumentClusterWindow: UIWindow) {\n        // Window in which to draw instrument cluster contents \n       self.instrumentClusterWindow = instrumentClusterWindow\n    }"
+    }
+  ],
+  "resources": [
+    {
+      "title": "CarPlay for developers",
+      "url": "https://developer.apple.com/carplay",
+      "type": "guide",
+      "description": "Guide to CarPlay development",
+      "sosumiURL": "https://sosumi.ai/carplay"
+    },
+    {
+      "title": "Human Interface Guidelines: CarPlay",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/carplay",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/carplay"
+    }
+  ],
+  "path": "sessions/wwdc2022/10016/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10016/metadata.json",
+    "readme": "sessions/wwdc2022/10016/README.md",
+    "transcript": "sessions/wwdc2022/10016/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10016/transcript.json"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2018-608",
+  "event": "wwdc2018",
+  "eventName": "WWDC18",
+  "year": 2018,
+  "eventContentId": 608,
+  "title": "Metal Shader Debugging and Profiling",
+  "description": "Metal provides powerful tools for analyzing shader behavior and optimizing performance. Dive into troubleshooting vertex-stage problems with new geometry viewing capabilities in Xcode. Use the shader debugger to step through vertex, fragment, and compute shader execution line-by-line. Get details about analyzing GPU workload, and check out shader profiler enhancements for A11 Bionic.",
+  "url": "https://developer.apple.com/videos/play/wwdc2018/608",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2018/608",
+  "type": "Session",
+  "publishedAt": "2018-06-07T15:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 2293,
+  "hasTranscript": true,
+  "transcriptWordCount": 5263,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/608u6qpg6mh0uq/608/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/608u6qpg6mh0uq/608/608_sd_metal_shader_debugging_and_profiling.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/608u6qpg6mh0uq/608/608_hd_metal_shader_debugging_and_profiling.mp4",
+    "duration": 2293
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Optimizing GPU performance",
+      "url": "https://developer.apple.com/documentation/Xcode/Optimizing-GPU-performance",
+      "type": "documentation",
+      "description": "Find and address performance bottlenecks using the Metal debugger.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/Optimizing-GPU-performance",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/Optimizing-GPU-performance.json"
+    },
+    {
+      "title": "Debugging the shaders within a draw command or compute dispatch",
+      "url": "https://developer.apple.com/documentation/Xcode/Debugging-the-shaders-within-a-draw-command-or-compute-dispatch",
+      "type": "documentation",
+      "description": "Identify and fix problematic shaders in your app using the shader debugger.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/Debugging-the-shaders-within-a-draw-command-or-compute-dispatch",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/Debugging-the-shaders-within-a-draw-command-or-compute-dispatch.json"
+    },
+    {
+      "title": "Analyzing resource dependencies",
+      "url": "https://developer.apple.com/documentation/Xcode/Analyzing-resource-dependencies",
+      "type": "documentation",
+      "description": "Avoid unnecessary work in your Metal app by understanding the relationships between resources.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/Analyzing-resource-dependencies",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/Analyzing-resource-dependencies.json"
+    }
+  ],
+  "path": "sessions/wwdc2018/608/",
+  "files": {
+    "metadata": "sessions/wwdc2018/608/metadata.json",
+    "readme": "sessions/wwdc2018/608/README.md",
+    "transcript": "sessions/wwdc2018/608/transcript.md",
+    "transcriptJSON": "sessions/wwdc2018/608/transcript.json"
+  }
+}

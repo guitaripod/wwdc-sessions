@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10640",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10640,
+  "title": "Design for the iPadOS pointer",
+  "description": "Bring the power of the pointer to your iPad app: We’ll show you how Apple's design team approached designing the iPadOS pointer to complement touch input, and how you can customize and refine pointer interactions in your app to make workflows more efficient and gratifying. Discover how the pointer’s adaptive precision enables people to quickly and confidently target interface elements regardless of their size. We’ll also share some best practices on adapting the pointer to complement your app's unique needs including how to select pointer effects and design pointer shapes, integrate trackpad gestures, and keyboard modifiers.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10640",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10640",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 2494,
+  "hasTranscript": true,
+  "transcriptWordCount": 7129,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10640/5/DFF319C6-2907-44A4-AE04-2439DACA8069/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10640/5/DFF319C6-2907-44A4-AE04-2439DACA8069/wwdc2020_10640_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10640/5/DFF319C6-2907-44A4-AE04-2439DACA8069/wwdc2020_10640_hd.mp4",
+    "duration": 2494
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Pointing devices",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/pointing-devices",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/pointing-devices"
+    },
+    {
+      "title": "Human Interface Guidelines: Designing for iOS",
+      "url": "https://developer.apple.com/design/Human-Interface-Guidelines/designing-for-ios",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/Human-Interface-Guidelines/designing-for-ios"
+    }
+  ],
+  "path": "sessions/wwdc2020/10640/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10640/metadata.json",
+    "readme": "sessions/wwdc2020/10640/README.md",
+    "transcript": "sessions/wwdc2020/10640/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10640/transcript.json"
+  }
+}

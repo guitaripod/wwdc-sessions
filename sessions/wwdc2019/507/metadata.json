@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-507",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 507,
+  "title": "HLS Authoring for AirPlay 2 Video",
+  "description": "AirPlay 2 Video lets you share video from Apple devices to popular smart TVs. Learn about the special considerations for seamless delivery of high quality video to these TVs, and how to utilize the validation tools to ensure your content is ready for primetime.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/507",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/507",
+  "type": "Video",
+  "publishedAt": "2019-06-04T17:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 416,
+  "hasTranscript": true,
+  "transcriptWordCount": 961,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/507fk9wyls0np6piwk/507/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/507fk9wyls0np6piwk/507/507_sd_hls_authoring_for_airplay_2_video.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/507fk9wyls0np6piwk/507/507_hd_hls_authoring_for_airplay_2_video.mp4",
+    "duration": 416
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Integrating AirPlay for long-form video apps",
+      "url": "https://developer.apple.com/documentation/AVFoundation/integrating-airplay-for-long-form-video-apps",
+      "type": "samplecode",
+      "description": "Integrate AirPlay features and implement a dedicated external playback experience by preparing the routing system for long-form video playback.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/integrating-airplay-for-long-form-video-apps",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/integrating-airplay-for-long-form-video-apps.json"
+    },
+    {
+      "title": "HTTP Live Streaming",
+      "url": "https://developer.apple.com/documentation/HTTP-Live-Streaming",
+      "type": "documentation",
+      "description": "Send audio and video to iOS, tvOS, and macOS devices.",
+      "sosumiURL": "https://sosumi.ai/documentation/HTTP-Live-Streaming",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HTTP-Live-Streaming.json"
+    },
+    {
+      "title": "HTTP Live Streaming - Overview",
+      "url": "https://developer.apple.com/streaming/",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/streaming/"
+    },
+    {
+      "title": "HTTP Live Streaming Tools",
+      "url": "https://developer.apple.com/download/more/?=hls",
+      "type": "download",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/download/more/?=hls"
+    },
+    {
+      "title": "HTTP Live Streaming (HLS) authoring specification for Apple devices",
+      "url": "https://developer.apple.com/documentation/HTTP-Live-Streaming/hls-authoring-specification-for-apple-devices",
+      "type": "documentation",
+      "description": "Learn the requirements for live and on-demand audio and video content delivery using",
+      "sosumiURL": "https://sosumi.ai/documentation/HTTP-Live-Streaming/hls-authoring-specification-for-apple-devices",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HTTP-Live-Streaming/hls-authoring-specification-for-apple-devices.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/507/",
+  "files": {
+    "metadata": "sessions/wwdc2019/507/metadata.json",
+    "readme": "sessions/wwdc2019/507/README.md",
+    "transcript": "sessions/wwdc2019/507/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/507/transcript.json"
+  }
+}

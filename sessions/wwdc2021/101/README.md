@@ -1,0 +1,25 @@
+---
+id: "wwdc2021-101"
+event: "wwdc2021"
+year: 2021
+title: "Keynote"
+type: "Special Event"
+url: "https://developer.apple.com/videos/play/wwdc2021/101"
+topics: ["Essentials"]
+platforms: ["iOS", "iPadOS", "macOS", "tvOS", "watchOS"]
+hasTranscript: false
+---
+
+# Keynote
+
+**Event:** WWDC21 · **Topic:** Essentials · **Platforms:** iOS, iPadOS, macOS, tvOS, watchOS · **Published:** 2021-06-07 · **Session:** [wwdc2021-101](https://developer.apple.com/videos/play/wwdc2021/101)
+
+The Apple Worldwide Developers Conference kicks off with exciting reveals, inspiration, and new opportunities. Join the worldwide developer community for an in-depth look at the future of Apple platforms, directly from Apple Park.
+
+## Video
+
+- HLS stream: https://p-events-delivery.akamaized.net/1805asrvgvurxcrkewleraugwqathmvg/m3u8/vod_index-YVvsDudyWzBdgmtcMPabYTdjaWWmbLaA.m3u8
+
+---
+
+_Source: [Apple Inc.](https://developer.apple.com/videos/play/wwdc2021/101) — developer.apple.com. Indexed for agent consumption._

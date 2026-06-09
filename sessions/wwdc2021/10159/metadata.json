@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10159",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10159,
+  "title": "Explore Core Image kernel improvements",
+  "description": "Discover how you can add Core Image kernels written in the Metal Shading Language into your app. We’ll explore how you can use Xcode rules and naming conventions for Core Image kernels written in the Metal Shading Language, and help you make sense of Metal’s Stitchable functions and dynamic library features to benefit Core Image kernels.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10159",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10159",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "coreimage",
+    "filters",
+    "hardware",
+    "image",
+    "image processing",
+    "metal",
+    "metal shading language",
+    "metal tools",
+    "photos"
+  ],
+  "topics": [
+    "Audio & Video",
+    "Photos & Camera",
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 543,
+  "hasTranscript": true,
+  "transcriptWordCount": 1288,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10159/4/40A32E20-B4FF-4586-9C5B-1994F3A585A2/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10159/4/40A32E20-B4FF-4586-9C5B-1994F3A585A2/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10159/4/40A32E20-B4FF-4586-9C5B-1994F3A585A2/downloads/wwdc2021-10159_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10159/4/40A32E20-B4FF-4586-9C5B-1994F3A585A2/downloads/wwdc2021-10159_hd.mp4",
+    "duration": 543
+  },
+  "codeSnippets": [
+    {
+      "title": "Extern CIKernels",
+      "language": "objectivec",
+      "startTimeSeconds": 234,
+      "code": "// MyKernels.ci.metal\n#include <CoreImage/CoreImage.h> // includes CIKernelMetalLib.h\n\nusing namespace metal;\n\nextern \"C\" float4 myKernel (coreimage::sample_t s, \n                            float param, \n                            coreimage::destination dest) \n{\n  float4 result = s;\n\n  // Example code to create striped pattern\n\tfloat diagLine = dest.coord().x + dest.coord().y;\n\tfloat stripe   = fract(diagLine/20.0 + param*2.0);\n\n  // Color range check\n\tif((stripe > 0.5) && ((s.r > 1) || (s.g > 1) || (s.b > 1)))\n\t\tresult = float4(2.0, 0.0, 0.0, 1.0);\n\n\treturn result;\n}"
+    },
+    {
+      "title": "Load your extern CI kernel and apply it to create a new image",
+      "language": "swift",
+      "startTimeSeconds": 272,
+      "code": "class MyFilter: CIFilter {\n    var inputImage: CIImage?\n\tvar inputParam: Float = 0.0\n    static var kernel: CIColorKernel = { () -> CIColorKernel in \n\t  let url = Bundle.main.url(forResource: \"MyKernels\", \n                              withExtension: \"ci.metallib\")!\n      let data = try! Data(contentsOf: url)\n\t  return try! CIColorKernel(functionName: \"MyKernel\", \n                              fromMetalLibraryData: data)\n\t}()\n\toverride var outputImage : CIImage? {\n      get { guard let input = inputImage else { return nil }\n\t\treturn MyFilter.kernel.apply(extent:input.extent, \n                                 arguments:[input, inputParam]) }\n\t}\n}"
+    },
+    {
+      "title": "Stitchable CI Kernel",
+      "language": "objectivec",
+      "startTimeSeconds": 378,
+      "code": "// MyKernels.ci.metal\n#include <CoreImage/CoreImage.h> // includes CIKernelMetalLib.h\n\nusing namespace metal;\n\n[[stitchable]] float4 myKernel (coreimage::sample_t s, \n                                float param, \n                                coreimage::destination d) \n{\n  float4 result = s;\n\n  // Example code to create striped pattern\n\tfloat diagLine = dest.coord().x + dest.coord().y;\n\tfloat stripe   = fract(diagLine/20.0 + param*2.0);\n\n  // Color range check\n\tif((stripe > 0.5) && ((s.r > 1) || (s.g > 1) || (s.b > 1)))\n\t\tresult = float4(2.0, 0.0, 0.0, 1.0);\n\n\treturn result;\n}"
+    },
+    {
+      "title": "Load your stitchable CI kernel and apply it to create a new image",
+      "language": "swift",
+      "startTimeSeconds": 400,
+      "code": "class MyFilter: CIFilter {\n    var inputImage: CIImage?\n\tvar inputParam: Float = 0.0\n    static var kernel: CIColorKernel = { () -> CIColorKernel in \n\t    let url = Bundle.main.url(forResource: \"default\", \n                                withExtension: \"metallib\")!\n\t\tlet data = try! Data(contentsOf: url)\n\t\treturn try! CIColorKernel(functionName: \"MyKernel\", fromMetalLibraryData: data)\n\t}()\n\toverride var outputImage : CIImage? {\n      get { guard let input = inputImage else { return nil }\n\t\treturn MyFilter.kernel.apply(extent:input.extent, arguments:[input, inputParam]) }\n\t}\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Core Image",
+      "url": "https://developer.apple.com/documentation/CoreImage",
+      "type": "documentation",
+      "description": "Use built-in or custom filters to process still and video images.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreImage",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreImage.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10159/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10159/metadata.json",
+    "readme": "sessions/wwdc2021/10159/README.md",
+    "transcript": "sessions/wwdc2021/10159/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10159/transcript.json"
+  }
+}

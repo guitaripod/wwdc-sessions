@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-219",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 219,
+  "title": "SwiftUI on watchOS",
+  "description": "SwiftUI allows a whole new world of possibilities when developing watchOS apps and notifications. From custom animations to providing an intuitive feel with Digital Crown haptics, SwiftUI helps you build exciting and immersive experiences for Apple Watch. See how easy it is to create custom elements with animations, embed gesture-driven animations within notifications, and learn about the enhanced debugging support to make watchOS app development faster than ever.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/219",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/219",
+  "type": "Session",
+  "publishedAt": "2019-06-05T14:00:00-07:00",
+  "platforms": [
+    "watchOS"
+  ],
+  "keywords": [
+    "⌚️",
+    "apple watch",
+    "canvas",
+    "clkcomplication",
+    "clockkit",
+    "complications",
+    "declarative",
+    "digital crown",
+    "dynamic notifications",
+    "extended runtime",
+    "independence",
+    "independent",
+    "interactive notifications",
+    "preview",
+    "watch",
+    "watchkit",
+    "watchos",
+    "wkinterface"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1853,
+  "hasTranscript": true,
+  "transcriptWordCount": 4825,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/219s60i7y7dovs8r4/219/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/219s60i7y7dovs8r4/219/219_sd_swiftui_on_watchos.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/219s60i7y7dovs8r4/219/219_hd_swiftui_on_watchos.mp4",
+    "duration": 1853
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Building a watchOS app",
+      "url": "https://developer.apple.com/documentation/watchOS-Apps/building_a_watchos_app",
+      "type": "documentation",
+      "description": "Set up your app’s life cycle and create its user interface with SwiftUI.",
+      "sosumiURL": "https://sosumi.ai/documentation/watchOS-Apps/building_a_watchos_app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/watchOS-Apps/building_a_watchos_app.json"
+    },
+    {
+      "title": "Learn to Make Apps with SwiftUI",
+      "url": "https://developer.apple.com/tutorials/swiftui",
+      "type": "documentation",
+      "description": "Follow a series of guided tutorials to learn to make apps using SwiftUI and Xcode.",
+      "sosumiURL": "https://sosumi.ai/tutorials/swiftui"
+    },
+    {
+      "title": "Building a watchOS app",
+      "url": "https://developer.apple.com/documentation/watchOS-Apps/building_a_watchos_app",
+      "type": "documentation",
+      "description": "Set up your app’s life cycle and create its user interface with SwiftUI.",
+      "sosumiURL": "https://sosumi.ai/documentation/watchOS-Apps/building_a_watchos_app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/watchOS-Apps/building_a_watchos_app.json"
+    },
+    {
+      "title": "SwiftUI",
+      "url": "https://developer.apple.com/documentation/SwiftUI",
+      "type": "documentation",
+      "description": "Declare the user interface and behavior for your app on every platform.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI.json"
+    },
+    {
+      "title": "WatchKit",
+      "url": "https://developer.apple.com/documentation/WatchKit",
+      "type": "documentation",
+      "description": "Build watchOS apps that use features the app delegate monitors or controls, such as background tasks and extended runtime sessions.",
+      "sosumiURL": "https://sosumi.ai/documentation/WatchKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WatchKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/219/",
+  "files": {
+    "metadata": "sessions/wwdc2019/219/metadata.json",
+    "readme": "sessions/wwdc2019/219/README.md",
+    "transcript": "sessions/wwdc2019/219/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/219/transcript.json"
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2026-203",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 203,
+  "title": "Read between the strokes with PencilKit",
+  "description": "Unlock handwriting recognition in your apps using the same powerful technology behind Apple apps like Freeform and Notes. Discover how to use handwriting recognition across a wide range of alphabets and languages, and explore new capabilities for integrating PencilKit into a wider variety of apps.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/203",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/203",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "🎈",
+    "pencil"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 910,
+  "hasTranscript": true,
+  "transcriptWordCount": 1641,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/203/4/eb979cd5-af5b-4091-87ec-4839e8d131b9/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/203/4/eb979cd5-af5b-4091-87ec-4839e8d131b9/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/203/4/eb979cd5-af5b-4091-87ec-4839e8d131b9/downloads/wwdc2026-203_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/203/4/eb979cd5-af5b-4091-87ec-4839e8d131b9/downloads/wwdc2026-203_hd.mp4",
+    "duration": 910
+  },
+  "codeSnippets": [
+    {
+      "title": "Recognized text",
+      "language": "swift",
+      "startTimeSeconds": 233,
+      "code": "import PencilKit\n\nlet recognizer = PKStrokeRecognizer()\nawait recognizer.updateDrawing(drawing)\nmyLabel.text = await recognizer.recognizedText()"
+    },
+    {
+      "title": "Indexable content",
+      "language": "swift",
+      "startTimeSeconds": 322,
+      "code": "import PencilKit\n\nlet recognizer = PKStrokeRecognizer()\nawait recognizer.updateDrawing(drawing)\nif let indexedContent = await recognizer.indexableContent {\n    index(text: indexedContent)\n}"
+    },
+    {
+      "title": "Find text",
+      "language": "swift",
+      "startTimeSeconds": 418,
+      "code": "import PencilKit\n\nlet recognizer = PKStrokeRecognizer()\nawait recognizer.updateDrawing(drawing)\nlet results = await recognizer.search(\"apple\")\nfor result in results {\n    highlight(bounds: result.bounds)\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Controlling stroke rendering for animation and editing",
+      "url": "https://developer.apple.com/documentation/PencilKit/controlling-stroke-rendering-for-animation-and-editing",
+      "type": "documentation",
+      "description": "Slice, animate, and blend PencilKit strokes in code, while keeping grain texture and wet ink intact.",
+      "sosumiURL": "https://sosumi.ai/documentation/PencilKit/controlling-stroke-rendering-for-animation-and-editing",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/PencilKit/controlling-stroke-rendering-for-animation-and-editing.json"
+    },
+    {
+      "title": "Recognizing handwriting and converting it to text",
+      "url": "https://developer.apple.com/documentation/PencilKit/recognizing-handwriting-and-converting-to-text",
+      "type": "documentation",
+      "description": "Analyze handwritten strokes in a PencilKit canvas using on-device recognition, and convert them to text that your app can display, copy, or index.",
+      "sosumiURL": "https://sosumi.ai/documentation/PencilKit/recognizing-handwriting-and-converting-to-text",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/PencilKit/recognizing-handwriting-and-converting-to-text.json"
+    },
+    {
+      "title": "Building a handwriting recognition experience with PencilKit",
+      "url": "https://developer.apple.com/documentation/PencilKit/building-a-handwriting-recognition-experience-with-pencilkit",
+      "type": "samplecode",
+      "description": "Integrate handwriting recognition into your app to identify written text across multiple languages, and explore path conversion and substrokes to enhance the drawing experience.",
+      "sosumiURL": "https://sosumi.ai/documentation/PencilKit/building-a-handwriting-recognition-experience-with-pencilkit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/PencilKit/building-a-handwriting-recognition-experience-with-pencilkit.json"
+    },
+    {
+      "title": "PencilKit",
+      "url": "https://developer.apple.com/documentation/PencilKit",
+      "type": "documentation",
+      "description": "Capture touch and Apple Pencil input as a drawing, and display that content from your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/PencilKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/PencilKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/203/",
+  "files": {
+    "metadata": "sessions/wwdc2026/203/metadata.json",
+    "readme": "sessions/wwdc2026/203/README.md",
+    "transcript": "sessions/wwdc2026/203/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/203/transcript.json"
+  }
+}

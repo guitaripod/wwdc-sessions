@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10203",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10203,
+  "title": "Develop your first immersive app",
+  "description": "Find out how you can build immersive apps for visionOS using Xcode and Reality Composer Pro. We’ll show you how to get started with a new visionOS project, use Xcode Previews for your SwiftUI development, and take advantage of RealityKit and RealityView to render 3D content. ",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10203",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10203",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Essentials",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 1868,
+  "hasTranscript": true,
+  "transcriptWordCount": 4712,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10203/6/469019B0-281D-4B3E-BAE3-B9302B204739/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10203/6/469019B0-281D-4B3E-BAE3-B9302B204739/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10203/6/469019B0-281D-4B3E-BAE3-B9302B204739/downloads/wwdc2023-10203_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10203/6/469019B0-281D-4B3E-BAE3-B9302B204739/downloads/wwdc2023-10203_hd.mp4",
+    "duration": 1868
+  },
+  "codeSnippets": [
+    {
+      "title": "Glass background effect",
+      "language": "swift",
+      "startTimeSeconds": 414,
+      "code": "VStack {\n    Toggle(\"Enlarge RealityView Content\", isOn: $enlarge)\n        .toggleStyle(.button)\n}\n.padding()\n.glassBackgroundEffect()"
+    },
+    {
+      "title": "RealityView",
+      "language": "swift",
+      "startTimeSeconds": 448,
+      "code": "RealityView { content in\n    // Add the initial RealityKit content\n    if let scene = try? await Entity(named: \"Scene\", in: realityKitContentBundle) {\n        content.add(scene)\n    }\n} update: { content in\n    // Update the RealityKit content when SwiftUI state changes\n    if let scene = content.entities.first {\n        let uniformScale: Float = enlarge ? 1.4 : 1.0\n        scene.transform.scale = [uniformScale, uniformScale, uniformScale]\n    }\n}\n.gesture(TapGesture().targetedToAnyEntity().onEnded { _ in\n    enlarge.toggle()\n})"
+    },
+    {
+      "title": "ImmersiveView",
+      "language": "swift",
+      "startTimeSeconds": 1231,
+      "code": "// MyFirstImmersiveApp.swift\n\n@main\nstruct MyFirstImmersiveApp: App {\n    var body: some Scene {\n        WindowGroup {\n            ContentView()\n        }.windowStyle(.volumetric)\n\n        ImmersiveSpace(id: \"ImmersiveSpace\") {\n            ImmersiveView()\n        }\n    }\n}"
+    },
+    {
+      "title": "Size that fits",
+      "language": "swift",
+      "startTimeSeconds": 1378,
+      "code": "#Preview {\n    ImmersiveView()\n        .previewLayout(.sizeThatFits)\n}"
+    },
+    {
+      "title": "openImmersiveSpace",
+      "language": "swift",
+      "startTimeSeconds": 1428,
+      "code": "struct ContentView: View {\n\n    @Environment(\\.openImmersiveSpace) var openImmersiveSpace\n\n    var body: some View {\n        Button(\"Open\") {\n            Task {\n                await openImmersiveSpace(id: \"ImmersiveSpace\")\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Entity targeting",
+      "language": "swift",
+      "startTimeSeconds": 1548,
+      "code": "import SwiftUI\nimport RealityKit\n\nstruct ContentView: View {\n    var body: some View {\n        RealityView { content in\n            // For entity targeting to work, entities must have a CollisionComponent\n            // and an InputTargetComponent!\n        }\n        .gesture(TapGesture().targetedToAnyEntity().onEnded { value in\n            print(\"Tapped entity \\(value.entity)!\")\n        })\n    }\n}"
+    },
+    {
+      "title": "Move animation",
+      "language": "swift",
+      "startTimeSeconds": 1736,
+      "code": ".gesture(TapGesture().targetedToAnyEntity().onEnded { value in\n    var transform = value.entity.transform\n    transform.translation += SIMD3(0.1, 0, -0.1)\n    value.entity.move(\n        to: transform,\n        relativeTo: nil,\n        duration: 3,\n        timingFunction: .easeInOut\n    )\n})"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2023/10203/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10203/metadata.json",
+    "readme": "sessions/wwdc2023/10203/README.md",
+    "transcript": "sessions/wwdc2023/10203/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10203/transcript.json"
+  }
+}

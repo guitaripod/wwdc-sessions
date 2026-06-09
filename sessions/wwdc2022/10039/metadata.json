@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10039",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10039,
+  "title": "What's new in StoreKit testing",
+  "description": "Discover the latest tools to help you test your in-app purchases and subscriptions. We’ll show you how to bring your products from App Store Connect into StoreKit Testing in Xcode, learn about improvements to the transaction manager, and explore your in-app purchase flow in Xcode Previews. We’ll also take you through best practices when setting up an Apple ID for the sandbox environment, and show you how to create tests for refund requests, price increase consent, billing retry, and much more.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10039",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10039",
+  "type": "Video",
+  "publishedAt": "2022-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 2086,
+  "hasTranscript": true,
+  "transcriptWordCount": 4865,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10039/5/38FCCB56-38F1-4E4D-B7D0-CF031642775A/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10039/5/38FCCB56-38F1-4E4D-B7D0-CF031642775A/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10039/5/38FCCB56-38F1-4E4D-B7D0-CF031642775A/downloads/wwdc2022-10039_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10039/5/38FCCB56-38F1-4E4D-B7D0-CF031642775A/downloads/wwdc2022-10039_hd.mp4",
+    "duration": 2086
+  },
+  "codeSnippets": [
+    {
+      "title": "Subscription option view",
+      "language": "swift",
+      "startTimeSeconds": 418,
+      "code": "VStack(alignment: .leading) {\n    Text(subscription.displayName)\n        .font(.headline.weight(.semibold))\n    Text(subscription.description)\n}"
+    },
+    {
+      "title": "Refund view",
+      "language": "swift",
+      "startTimeSeconds": 678,
+      "code": "struct RefundView: View {\n    @State private var selectedTransactionID: UInt64?\n    @State private var refundSheetIsPresented = false\n    @Environment(\\.dismiss) private var dismiss\n    var body: some View {\n        Button {\n            refundSheetIsPresented = true\n        } label: {\n            Text(\"Request a refund\")\n                .bold()\n                .padding(.vertical, 5)\n                .frame(maxWidth: .infinity)\n        }\n        .buttonStyle(.borderedProminent)\n        .padding([.horizontal, .bottom])\n        .disabled(selectedTransactionID == nil)\n        .refundRequestSheet(\n            for: selectedTransactionID ?? 0,\n            isPresented: $refundSheetIsPresented\n        ) { result in\n            if case .success(.success) = result {\n                dismiss()\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Refunds emit an updated value from the transaction updates sequence",
+      "language": "swift",
+      "startTimeSeconds": 753,
+      "code": "for await update in Transaction.updates {\n    let transaction = try update.payloadValue\n\n    if let revocationDate = transaction.revocationDate,\n  \t   let revocationReason = transaction.revocationReason {\n        print(\"\\(transaction.productID) revoked on \\(revocationDate)\")\n\n        switch revocationReason {\n        case .developerIssue: <#Handle developer issue#>\n        case .other: <#Handle other issue#>\n        default: <#Handle unknown reason#>\n        }\n\n        <#Revoke access to the product#>\n    }\n    <#...#>\n}"
+    },
+    {
+      "title": "Offer code view",
+      "language": "swift",
+      "startTimeSeconds": 861,
+      "code": "struct SubscriptionPurchaseView: View {\n    @State private var redeemSheetIsPresented = false\n\n    var body: some View {\n        Button(\"Redeem an offer\") {\n            redeemSheetIsPresented = true\n        }\n        .buttonStyle(.borderless)\n        .frame(maxWidth: .infinity)\n        .padding(.vertical)\n        .offerCodeRedeemSheet(isPresented: $redeemSheetIsPresented)\n    }\n\n}"
+    },
+    {
+      "title": "Offer redemptions emit updated values from Transaction.updates and Product.SubscriptionInfo.Status.updates",
+      "language": "swift",
+      "startTimeSeconds": 983,
+      "code": "for await verificationResult in Transaction.updates {\n    guard case .verified(let transaction) = verificationResult else {\n        <#Handle failed verification#>\n    }\n    <#Handle updated transaction#>\n}\n\nfor await updatedStatus in Product.SubscriptionInfo.Status.updates {\n    guard case .verified(let renewalInfo) = updatedStatus.renewalInfo else {\n        <#Handle failed verification#>\n    }\n    <#Handle updated status#>\n}"
+    },
+    {
+      "title": "Check the active offer on the transaction value",
+      "language": "swift",
+      "startTimeSeconds": 991,
+      "code": "for await status in Product.SubscriptionInfo.Status.updates {\n    let transaction = try status.transaction.payloadValue\n    let renewalInfo = try status.renewalInfo.payloadValue\n\n    if let currentOfferType = transaction.offerType {\n        switch currentType {\n        case .introductory: <#Handle introductory offer#>\n        case .promotional:  <#Handle promotional offer#>\n        case .code:         <#Handle offer for codes#>\n        default:            <#Handle unknown offer type#>\n        }\n        self.hasCurrentOffer = true\n    }\n\n    <#...#>\n\n}"
+    },
+    {
+      "title": "Check the next pending offer on the renewal info value",
+      "language": "swift",
+      "startTimeSeconds": 1009,
+      "code": "for await status in Product.SubscriptionInfo.Status.updates {\n    let transaction = try status.transaction.payloadValue\n    let renewalInfo = try status.renewalInfo.payloadValue\n\n    <#Check active current offer#>\n\n    if let nextOfferType = renewalInfo.offerType {\n        switch currentType {\n        case .introductory: <#Handle introductory offer#>\n        case .promotional: <#Handle promotional offer#>\n        case .code:\n            print(\"Customer has \\(renewalInfo.offerID) queued\")\n            <#Handle offer for codes#>\n        default: <#Handle unknown offer type#>\n        }\n        self.hasQueuedOffer = true\n    }\n    <#...#>\n}"
+    },
+    {
+      "title": "Messages updates loop",
+      "language": "swift",
+      "startTimeSeconds": 1125,
+      "code": "private var pendingMessages: [Message] = []\n\nprivate func updatesLoop() {\n    for await message in Message.messages {\n      if <#Check if sensitive view is presented#>,\n         let display: DisplayMessageAction = <#Get display message action#> {\n           try? display(message)\n      }\n      else {\n        pendingMessages.append(message)\n      }\n    }\n}"
+    },
+    {
+      "title": "Price increase changes emit an updated value from the status updates sequence",
+      "language": "swift",
+      "startTimeSeconds": 1253,
+      "code": "for await status in Product.SubscriptionInfo.Status.updates {\n    let renewalInfo = try status.renewalInfo.payloadValue\n\n    if renewalInfo.priceIncreaseStatus == .agreed {\n        print(\"Customer consented to price increase\")\n        <#Handle consented to price increase#>\n    }\n    if renewalInfo.expirationReason == .didNotConsentToPriceIncrease {\n        print(\"Customer did not consent to price increase\")\n        <#Handle expired due to not consenting to price increase#>\n    }\n\n    <#...#>\n\n}"
+    },
+    {
+      "title": "Unit testing price increases",
+      "language": "swift",
+      "startTimeSeconds": 1279,
+      "code": "let session: SKTestSession = try SKTestSession(configurationFileNamed: \"<#Configuration name#>\")\nsession.disableDialogs = true\n\n<#Purchase a subscription#>\n\nvar transaction: SKTestTransaction! = session.allTransactions().first\nsession.requestPriceIncreaseConsentForTransaction(identifier: transaction.identifier)\n\ntransaction = session.allTransactions().first\nXCTAssertTrue(transaction.isPendingPriceIncreaseConsent)\n\n<#Assert app updates for pending price increase#>\n\n// Write a test case for consenting and cancelling due to price increase:\n\nsession.consentToPriceIncreaseForTransaction(identifier: transaction.identifier)\n\n// OR\n\nsession.declinePriceIncreaseForTransaction(identifier: transaction.identifier)\nsession.expireSubscription(productIdentifier: \"<#Product ID#>\")\n\n<#Assert app updates for finished price increase#>"
+    },
+    {
+      "title": "Billing retry and grace period status changes emit an updated value from the status updates sequence",
+      "language": "swift",
+      "startTimeSeconds": 1497,
+      "code": "for await status in Product.SubscriptionInfo.Status.updates {\n    let renewalInfo = try status.renewalInfo.payloadValue\n\n    if let gracePeriodExpirationDate = renewalInfo.gracePeriodExpirationDate,\n       gracePeriodExpirationDate < .now {\n        print(\"In grace period until \\(gracePeriodExpirationDate)”)\n        <#Allow access to subscription#>\n    }\n    else if renewalInfo.isInBillingRetry {\n        <#Handle billing retry#>\n    }\n\n    <#...#>\n\n}"
+    },
+    {
+      "title": "Using the state property of a status value to check for billing retry states",
+      "language": "swift",
+      "startTimeSeconds": 1527,
+      "code": "struct SubscriptionStatusView: View {\n    let currentSubscription: Product\n    let status: Product.SubscriptionInfo.Status\n    @Environment(\\.openURL) var openURL\n    var body: some View {\n        Section(\"Your Subscription\") {\n            <#...#>\n            if status.state == .inBillingRetryPeriod || status.state == .inGracePeriod {\n                VStack {\n                    Text(\"\"\"\n                    There was a problem renewing your subscription. Open the App Store to\n                    update your payment information.\n                    \"\"\")\n                    Button(\"Open the App Store\") {\n                        openURL(URL(string: \"https://apps.apple.com/account/billing\")!)\n                    }\n                }\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Current entitlement APIs will account for grace period",
+      "language": "swift",
+      "startTimeSeconds": 1541,
+      "code": "for await entitlement in Transaction.currentEntitlements {\n    <#Grant access to product#>\n}"
+    },
+    {
+      "title": "Unit testing billing retry and grace period",
+      "language": "swift",
+      "startTimeSeconds": 1550,
+      "code": "let session: SKTestSession = try SKTestSession(configurationFileNamed: \"<#Configuration name#>\")\nsession.billingGracePeriodIsEnabled = true\nsession.shouldEnterBillingRetryOnRenewal = true\n\n<#Purchase a subscription#>\n\nwait(for: [<#XCTExpectation#>], timeout: 60)\n\nlet transaction: SKTestTransaction! = session.allTransactions().first\nXCTAssertTrue(transaction.hasPurchaseIssue)\n\n<#Assert app still allows access to subscription due to grace period#>\n\nwait(for: [<#XCTExpectation#>], timeout: 60)\n\n<#Assert app detects billing retry and no longer allows access to subscription#>\n\nsession.resolveIssueForTransaction(identifier: transaction.identifier)\n\n<#Assert app allows access to subscription#>"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Implementing offer codes in your app",
+      "url": "https://developer.apple.com/documentation/StoreKit/implementing-offer-codes-in-your-app",
+      "type": "documentation",
+      "description": "Enable customers to redeem offer codes through the App Store or within an app that uses receipts.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/implementing-offer-codes-in-your-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/implementing-offer-codes-in-your-app.json"
+    },
+    {
+      "title": "Learn more about setting up offer codes",
+      "url": "https://help.apple.com/app-store-connect/#/dev6a098e4b1",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "Reducing Involuntary Subscriber Churn",
+      "url": "https://developer.apple.com/documentation/StoreKit/reducing-involuntary-subscriber-churn",
+      "type": "documentation",
+      "description": "Prevent unintentional loss of subscribers due to billing issues.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/reducing-involuntary-subscriber-churn",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/reducing-involuntary-subscriber-churn.json"
+    },
+    {
+      "title": "Testing In-App Purchases with sandbox",
+      "url": "https://developer.apple.com/documentation/StoreKit/testing-in-app-purchases-with-sandbox",
+      "type": "documentation",
+      "description": "Test your implementation of In-App Purchases using real product information and server-to-server transactions in the sandbox environment.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/testing-in-app-purchases-with-sandbox",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/testing-in-app-purchases-with-sandbox.json"
+    },
+    {
+      "title": "Setting up StoreKit Testing in Xcode",
+      "url": "https://developer.apple.com/documentation/Xcode/setting-up-storekit-testing-in-xcode",
+      "type": "documentation",
+      "description": "Prepare your test environment to test in-app purchases with data you configure locally.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/setting-up-storekit-testing-in-xcode",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/setting-up-storekit-testing-in-xcode.json"
+    },
+    {
+      "title": "Handling Subscriptions Billing",
+      "url": "https://developer.apple.com/documentation/StoreKit/handling-subscriptions-billing",
+      "type": "documentation",
+      "description": "Build logic around the date and time constraints of subscription products, while planning for all scenarios where you control access to content.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/handling-subscriptions-billing",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/handling-subscriptions-billing.json"
+    },
+    {
+      "title": "Auto-renewable subscriptions overview",
+      "url": "https://developer.apple.com/app-store/subscriptions/",
+      "type": "documentation",
+      "description": "Auto-Renewable Subscriptions",
+      "sosumiURL": "https://sosumi.ai/app-store/subscriptions/"
+    }
+  ],
+  "path": "sessions/wwdc2022/10039/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10039/metadata.json",
+    "readme": "sessions/wwdc2022/10039/README.md",
+    "transcript": "sessions/wwdc2022/10039/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10039/transcript.json"
+  }
+}

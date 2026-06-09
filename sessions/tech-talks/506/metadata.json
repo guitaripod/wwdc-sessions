@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "id": "tech-talks-506",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2017,
+  "eventContentId": 506,
+  "title": "Apple TV Set Top Box APIs",
+  "description": "Learn about the Set Top Box APIs, what they do, and how they help make the Apple TV setup easier for your customers. Learn how this framework fits into the development for the Apple TV Distribution Program.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/506",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/506",
+  "type": "Video",
+  "publishedAt": "2019-05-10T00:02:00-07:00",
+  "platforms": [
+    "tvOS"
+  ],
+  "keywords": [
+    "apple tv",
+    "apple tv app",
+    "apple tv distribution program",
+    "apple tv set top box",
+    "authentication",
+    "authentication context",
+    "set top box",
+    "set top box api",
+    "set top box apis",
+    "set top box authentication overview",
+    "single sign on",
+    "sso",
+    "stb",
+    "stb api",
+    "tv",
+    "tv",
+    "video subscriber account",
+    "video subscriber account framework",
+    "vsa",
+    "zero sign on",
+    "zso"
+  ],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 187,
+  "hasTranscript": true,
+  "transcriptWordCount": 514,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tutorials/Apple_TV_Provider/Apple_TV_Set_Top_Box_APIs_AD/Apple_TV_Set_Top_Box_APIs_AD/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tutorials/Apple_TV_Provider/Apple_TV_Set_Top_Box_APIs_AD/Apple_TV_Set_Top_Box_APIs_AD/Apple_TV_Set_Top_Box_APIs_AD_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tutorials/Apple_TV_Provider/Apple_TV_Set_Top_Box_APIs_AD/Apple_TV_Set_Top_Box_APIs_AD/Apple_TV_Set_Top_Box_APIs_AD_hd.mp4",
+    "duration": 187
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Using Apple Set Top Box APIs",
+      "url": "https://help.apple.com/itc/tvpsso/#/itc1b8f4f78d",
+      "type": "guide",
+      "description": null
+    }
+  ],
+  "path": "sessions/tech-talks/506/",
+  "files": {
+    "metadata": "sessions/tech-talks/506/metadata.json",
+    "readme": "sessions/tech-talks/506/README.md",
+    "transcript": "sessions/tech-talks/506/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/506/transcript.json"
+  }
+}

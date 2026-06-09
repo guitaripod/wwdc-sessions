@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10073",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10073,
+  "title": "Explore ARKit 5",
+  "description": "Build the next generation of augmented reality apps with ARKit 5. Explore how you can use Location Anchors in additional regions and more easily onboard people into your location-based AR experience. Learn more about Face Tracking and Motion Capture. And discover best practices for placing your AR content in the real world. We’ll also show you how you can integrate App Clip Codes into your AR app for easy discovery and precise positioning of your virtual content.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10073",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10073",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "app clip codes",
+    "ar",
+    "arkit",
+    "augmented reality",
+    "body tracking",
+    "depth map",
+    "face tracking",
+    "lidar",
+    "location anchor",
+    "realitykit",
+    "scene reconstruction"
+  ],
+  "topics": [
+    "Graphics & Games",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 1228,
+  "hasTranscript": true,
+  "transcriptWordCount": 3516,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10073/7/53148F9F-7E28-46AA-AD05-CC2ABEC68EDC/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10073/7/53148F9F-7E28-46AA-AD05-CC2ABEC68EDC/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10073/7/53148F9F-7E28-46AA-AD05-CC2ABEC68EDC/downloads/wwdc2021-10073_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10073/7/53148F9F-7E28-46AA-AD05-CC2ABEC68EDC/downloads/wwdc2021-10073_hd.mp4",
+    "duration": 1228
+  },
+  "codeSnippets": [
+    {
+      "title": "Geo Tracking Recap I",
+      "language": "swift",
+      "startTimeSeconds": 209,
+      "code": "// Check device support for geo-tracking\nguard ARGeoTrackingConfiguration.isSupported else {\n    // Geo-tracking not supported on this device\n    return\n}\n\n// Check current location is supported for geo-tracking\nARGeoTrackingConfiguration.checkAvailability { (available, error) in\n    guard available else {\n        // Geo-tracking is not available at this location\n        return\n    }\n\n    // Run ARSession\n    let arView = ARView()\n    arView.session.run(ARGeoTrackingConfiguration())\n}"
+    },
+    {
+      "title": "Geo Tracking Recap II",
+      "language": "swift",
+      "startTimeSeconds": 222,
+      "code": "// Create Location Anchor and add to session\nlet coordinate = CLLocationCoordinate2D(latitude: 37.795313, longitude: -122.393792)\nlet geoAnchor = ARGeoAnchor(name: “Ferry Building”, coordinate: coordinate)\narView.session.add(anchor: geoAnchor)\n\n// Monitor geo-tracking status updates\nfunc session(_ session: ARSession, didChange geoTrackingStatus: ARGeoTrackingStatus) {\n    …\n}"
+    },
+    {
+      "title": "Geo Tracking Coaching Overlay",
+      "language": "swift",
+      "startTimeSeconds": 362,
+      "code": "// Declare coaching view\nlet coachingOverlay = ARCoachingOverlayView()\n\n// Set up coaching view (assuming ARView already exists)\ncoachingOverlay.session = self.arView.session\ncoachingOverlay.delegate = self\ncoachingOverlay.goal = .geoTracking\n\ncoachingOverlay.translatesAutoresizingMaskIntoConstraints = false\nself.arView.addSubview(coachingOverlay)\n\nNSLayoutConstraint.activate([\n    coachingOverlay.centerXAnchor.constraint(equalTo: view.centerXAnchor),\n    coachingOverlay.centerYAnchor.constraint(equalTo: view.centerYAnchor),\n    coachingOverlay.widthAnchor.constraint(equalTo: view.widthAnchor),\n    coachingOverlay.heightAnchor.constraint(equalTo: view.heightAnchor),\n])"
+    },
+    {
+      "title": "GeoTracking Distance Method",
+      "language": "swift",
+      "startTimeSeconds": 533,
+      "code": "// Method to compute distance (in meters) between points\nfunc distance(from location: CLLocation) -> CLLocationDistance"
+    },
+    {
+      "title": "App Clip Code: check device support",
+      "language": "swift",
+      "startTimeSeconds": 736,
+      "code": "func viewDidLoad() {\n    // Check device support for app clip code tracking\n    guard ARWorldTrackingConfiguration.supportsAppClipCodeTracking else { return }\n\n    let worldConfig = ARWorldTrackingConfiguration()\n    worldConfig.appClipCodeTrackingEnabled = true\n    arSession.run(worldConfig)\n}"
+    },
+    {
+      "title": "Accessing the URL of an App Clip Code",
+      "language": "swift",
+      "startTimeSeconds": 754,
+      "code": "/// Accessing the URL of an App Clip Code \noverride func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {\n    for anchor in anchors {\n        guard let appClipCodeAnchor = anchor as? ARAppClipCodeAnchor, appClipCodeAnchor.isTracked else { return }\n\n        switch appClipCodeAnchor.urlDecodingState {\n        case .decoding:\n            displayPlaceholderVisualizationOnTopOf(anchor: appClipCodeAnchor)\n        case .failed:\n            displayNoURLErrorMessageOnTopOf(anchor: appClipCodeAnchor)\n        case .decoded:\n            let url = appClipCodeAnchor.url!\n            let anchorEntity = AnchorEntity(anchor: appClipCodeAnchor)\n            arView.scene.addAnchor(anchorEntity)\n            let visualization = AppClipCodeVisualization(url: url, radius: appClipCodeAnchor.radius)\n            anchorEntity.addChild(visualization)\n          }\n    }\n}"
+    },
+    {
+      "title": "Adding a gesture recognizer",
+      "language": "swift",
+      "startTimeSeconds": 934,
+      "code": "/// Adding a gesture recognizer for user interaction\nfunc viewDidLoad() {\n    initializeARView()\n    initializeCoachingOverlays()\n\n    // Place sunflower on the ground when the user taps the screen\n    let tapGestureRecognizer = UITapGestureRecognizer(\n     target: self,\n     action: #selector(handleTap(recognizer:)))\n    arView.addGestureRecognizer(tapGestureRecognizer)\n}"
+    },
+    {
+      "title": "Tap to place the sunflower",
+      "language": "swift",
+      "startTimeSeconds": 945,
+      "code": "func handleTap(recognizer: UITapGestureRecognizer) {\n    let location = recognizer.location(in: arView)\n    // Attempt to find a 3D location on a horizontal\n    // surface underneath the user's touch location.\n    let results = arView.raycast(\n      from: location, \n      allowing: .estimatedPlane,\n      alignment: .horizontal)\n    guard let firstResult = results.first else { return }\n    // Fetch the last decoded app clip code URL\n    guard let appClipCodeURL = decodedURLs.last else { return }\n    // Add an ARAnchor & AnchorEntity at the touch location\n    let anchor = ARAnchor(transform: firstResult.worldTransform)\n    arView.session.add(anchor: anchor)\n    let anchorEntity = AnchorEntity(anchor: anchor)\n    arView.scene.addAnchor(anchorEntity)    \n    // Download the 3D model associated with this app clip code.\n    downloadAndDisplay(appClipCodeURL, on: anchorEntity)\n}"
+    },
+    {
+      "title": "Checking for supported video formats for face tracking",
+      "language": "swift",
+      "startTimeSeconds": 1113,
+      "code": "// Check if the ultra wide video format is available.\n// If so, set it on a face tracking configuration & run the session with that.\n\nlet config = ARFaceTrackingConfiguration()\nfor videoFormat in ARFaceTrackingConfiguration.supportedVideoFormats {\n    if videoFormat.captureDeviceType == .builtInUltraWideCamera {\n        config.videoFormat = videoFormat\n        break\n    }\n}\nsession.run(config)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: App Clip Codes",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/app-clips/overview/app-clip-codes",
+      "type": "documentation",
+      "description": "Human Interface Guidelines: App Clip Codes",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/app-clips/overview/app-clip-codes"
+    },
+    {
+      "title": "Interacting with App Clip Codes in AR",
+      "url": "https://developer.apple.com/documentation/AppClip/interacting-with-app-clip-codes-in-ar",
+      "type": "samplecode",
+      "description": "Display content and provide services in an AR experience with App Clip Codes.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppClip/interacting-with-app-clip-codes-in-ar",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppClip/interacting-with-app-clip-codes-in-ar.json"
+    },
+    {
+      "title": "Explore the ARKit Developer Forums",
+      "url": "https://developer.apple.com/forums/tags/arkit",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/tags/arkit"
+    },
+    {
+      "title": "Tracking geographic locations in AR",
+      "url": "https://developer.apple.com/documentation/ARKit/tracking-geographic-locations-in-ar",
+      "type": "samplecode",
+      "description": "Track specific geographic areas of interest and render them in an AR experience.",
+      "sosumiURL": "https://sosumi.ai/documentation/ARKit/tracking-geographic-locations-in-ar",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ARKit/tracking-geographic-locations-in-ar.json"
+    },
+    {
+      "title": "ARKit",
+      "url": "https://developer.apple.com/documentation/ARKit",
+      "type": "documentation",
+      "description": "Integrate hardware sensing features to produce augmented reality apps and games.",
+      "sosumiURL": "https://sosumi.ai/documentation/ARKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ARKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10073/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10073/metadata.json",
+    "readme": "sessions/wwdc2021/10073/README.md",
+    "transcript": "sessions/wwdc2021/10073/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10073/transcript.json"
+  }
+}

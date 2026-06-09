@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10161",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10161,
+  "title": "Explore HDR rendering with EDR",
+  "description": "EDR is Apple’s High Dynamic Range representation and rendering pipeline. Explore how you can render HDR content using EDR in your app and unleash the dynamic range capabilities of your HDR display including Apple’s internal displays and Pro Display XDR.\n\nWe’ll show you how game and pro app developers can take advantage of the native EDR APIs on macOS for even more control, and provide best practices for deciding when HDR is appropriate, applying tone-mapping, and delivering HDR content.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10161",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10161",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "display",
+    "display p3",
+    "edr",
+    "hdr",
+    "metal",
+    "metal shading language"
+  ],
+  "topics": [
+    "Audio & Video",
+    "Photos & Camera",
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 2056,
+  "hasTranscript": true,
+  "transcriptWordCount": 4512,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10161/5/A571AEFA-117F-4E9C-B4A0-C4543637CBFA/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10161/5/A571AEFA-117F-4E9C-B4A0-C4543637CBFA/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10161/5/A571AEFA-117F-4E9C-B4A0-C4543637CBFA/downloads/wwdc2021-10161_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10161/5/A571AEFA-117F-4E9C-B4A0-C4543637CBFA/downloads/wwdc2021-10161_hd.mp4",
+    "duration": 2056
+  },
+  "codeSnippets": [
+    {
+      "title": "AVPlayer automatically uses EDR with HDR content",
+      "language": "objectivec",
+      "startTimeSeconds": 960,
+      "code": "// Instantiate AVPlayer with HDR Video Content\n\nVPLayer*      player      = [AVPLayer playerWithURL:HDRVideoURL];\nAVPlayerLayer* playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];\n\n// Play HDR Video via EDR\n\nAVPlayerViewController* controller = [[AVPlayerViewController alloc] init];\n\ncontroller.player = player;\n\n[player play];"
+    },
+    {
+      "title": "EDR with CAMetalLayer 1",
+      "language": "objectivec",
+      "startTimeSeconds": 1072,
+      "code": "// Opt-in to EDR\n\nmetalLayer.wantsExtendedDynamicRangeContent = YES;\n\n// Set extended-range colorspace\n\nmetalLayer.colorspace =\n              CGColorSpaceCreateWithName(kCGColorSpaceExtendedLinearDisplayP3);\n\n// Select FP16 pixel buffer format\n\nmetalLayer.pixelFormat = MTLPixelFormatRGBA16Float;"
+    },
+    {
+      "title": "EDR with CAMetalLayer 2",
+      "language": "objectivec",
+      "startTimeSeconds": 1133,
+      "code": "// Create CGImage from HDR Image\n\nCGImageSourceRef isr = CGImageSourceCreateWithURL((CFURLRef)HDRimageURL, NULL);\nCGImageRef       img = CGImageSourceCreateImageAtIndex(isr, 0, NULL);\n\n// Draw into floating point bitmap context\n\nsize_t width  = CGImageGetWidth(img);\nsize_t height = CGImageGetHeight(img);\n\nCGBitmapInfo info = kCGBitmapByteOrder16Host | kCGImageAlphaPremultipliedLast |\n                    kCGBitmapFloatComponents;\n\nCGContextRef ctx = CGBitmapContextCreate(NULL, width, height, 16, 0,\n                                         metalLayer.colorspace, info);\n\nCGContextDrawImage(ctx, CGRectMake(0, 0, width, height), img);\n\n// Create floating point texture\n\nMTLTextureDescriptor* desc = [[MTLTextureDescriptor alloc] init];\n\ndesc.pixelFormat = MTLPixelFormatRGBA16Float;\ndesc.textureType = MTLTextureType2D;\n\nid<MTLTexture> tex = [metalLayer.device newTextureWithDescriptor:desc];\n\n// Load EDR bitmap into texture\n\nconst void* data = CGBitmapContextGetData(ctx);\n\n[tex replaceRegion:MTLRegionMake2D(0, 0, width, height)\n       mipmapLevel:0\n         withBytes:data\n       bytesPerRow:CGBitmapContextGetBytesPerRow(ctx)];\n\n// Draw with the texture in your EDR enabled metal pipeline"
+    },
+    {
+      "title": "EDR with NSOpenGLView",
+      "language": "objectivec",
+      "startTimeSeconds": 1230,
+      "code": "// Opt-in to EDR\n\n  - (void) viewWillMoveToWindow:(nullable NSWindow *)newWindow {\n     self.wantsExtendedDynamicRangeOpenGLSurface = YES;\n  }\n\n// Select OpenGL float pixel buffer format\n\n  NSOpenGLPixelFormatAttribute attribs[] = {\n    NSOpenGLPFADoubleBuffer,\n    NSOpenGLPFAMultiSample,\n    NSOpenGLPFAColorFloat,\n    NSOpenGLPFAColorSize, 64, \n    NSOpenGLPFAOpenGLProfile, NSOpenGLProfileVersion4_1Core,\n    0};\n\n  NSOpenGLPixelFormat* pf = [[NSOpenGLPixelFormat alloc] initWithAttributes:attribs];\n\n// Draw EDR content into NSOpenGLView"
+    },
+    {
+      "title": "EDR with NSOpenGLView",
+      "language": "objectivec",
+      "startTimeSeconds": 1306,
+      "code": "// Get existing colorspace from the window \n\nCGColorSpaceRef color_space = [view.window.colorSpace CGColorSpace];\n\n// Promote the colorspace to extended-range\n\nCGColorSpaceRef color_space_extended = CGColorSpaceCreateExtended(color_space);\n\n// Apply the extended-range colorspace to your app\n\nNSColorSpace* extended_ns_color_space\n                   = [[NSColorSpace alloc] initWithCGColorSpace:color_space_extended];\n\nview.window.colorSpace = extended_ns_color_space;\n\nCGColorSpaceRelease(color_space_extended);"
+    },
+    {
+      "title": "EDR display change notifications via NSScreen",
+      "language": "objectivec",
+      "startTimeSeconds": 1740,
+      "code": "// Read static values\n\nNSScreen* screen = window.screen;\n\ndouble maxPotentialEDR = screen.maximumPotentialExtendedDynamicRangeColorComponentValue;\ndouble maxReferenceEDR = screen.maximumReferenceExtendedDynamicRangeColorComponentValue;\n\n// Register for dynamic EDR notifications\n\nNSNotificationCenter* notification = [NSNotificationCenter defaultCenter];  \n\n[notification addObserver:self\n                 selector:@selector(screenChangedEvent:)\n                     name:NSApplicationDidChangeScreenParametersNotification\n                   object:nil];\n\n// Query for latest values\n\n- (void)screenChangedEvent:(NSNotification *)notification {  \n    double maxEDR = screen.maximumExtendedDynamicRangeColorComponentValue;\n}"
+    },
+    {
+      "title": "CAEDRMetadata tone-mapper",
+      "language": "objectivec",
+      "startTimeSeconds": 1828,
+      "code": "// HLG\n\nCAEDRMetadata* edrMetaData = [CAEDRMetadata HLGMetadata];\n\n// HDR10\n\nCAEDRMetadata* edrMetaData\n   = [CAEDRMetadata HDR10MetadataWithMinLuminance:minLuminance\n                                     maxLuminance:maxContentMasteringDisplayBrightness \n                               opticalOutputScale:outputScale]; \n\n// Set on CAMetalLayer\n\nmetalLayer.EDRMetadata = edrMetaData;"
+    },
+    {
+      "title": "Computing your app’s brightest pixel",
+      "language": "objectivec",
+      "startTimeSeconds": 1895,
+      "code": "// Create the linear pixel we want to render\n\ndouble EDRmaxComponents[4] = {EDRmax, EDRmax, EDRmax, 1.0};\n\nCGColorSpaceRef linearColorSpace =\n                   CGColorSpaceCreateWithName(kCGColorSpaceExtendedLinearDisplayP3);\n\nCGColorRef EDRmaxColorLinear = CGColorCreate(linearColorSpace, EDRmaxComponents);\n\n// Convert from linear to application’s colorspace\n\nCGColorSpaceRef winColorSpace = [self.window.colorSpace CGColorSpace];\n\nCGColorRef EDRmaxColor = CGColorCreateCopyByMatchingToColorSpace(winColorSpace,\n                                                                 kCGRenderingIntentDefault,\n                                                                 EDRmaxColorLinear,\n                                                                 NULL);"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Processing HDR images with Metal",
+      "url": "https://developer.apple.com/documentation/Metal/processing-hdr-images-with-metal",
+      "type": "samplecode",
+      "description": "Implement a post-processing pipeline using the latest features on Apple GPUs.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/processing-hdr-images-with-metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/processing-hdr-images-with-metal.json"
+    },
+    {
+      "title": "Edit and play back HDR video with AVFoundation",
+      "url": "https://apple.co/3orEzXX",
+      "type": "documentation",
+      "description": "Link to AVFoundation documentation."
+    },
+    {
+      "title": "Export HDR media in your app using AVFoundation",
+      "url": "https://apple.co/2NA4pft",
+      "type": "documentation",
+      "description": "Link to ACFoundation Documentation"
+    },
+    {
+      "title": "Editing and playing HDR video",
+      "url": "https://developer.apple.com/documentation/AVFoundation/editing-and-playing-hdr-video",
+      "type": "samplecode",
+      "description": "Support high-dynamic-range (HDR) video content in your app by using the HDR editing and playback capabilities of AVFoundation.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/editing-and-playing-hdr-video",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/editing-and-playing-hdr-video.json"
+    },
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    },
+    {
+      "title": "Metal Shading Language Specification",
+      "url": "https://developer.apple.com/metal/metal-shading-language-specification.pdf",
+      "type": "guide",
+      "description": "The Metal shading language is used to write graphics and compute functions that are executed on the GPU. Version 2.0 of the Metal shading language adds new features such as Raster Order Groups, Indirect Argument Buffers, Arrays of Samplers, Uniform Types, and much more.",
+      "sosumiURL": "https://sosumi.ai/metal/metal-shading-language-specification.pdf"
+    }
+  ],
+  "path": "sessions/wwdc2021/10161/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10161/metadata.json",
+    "readme": "sessions/wwdc2021/10161/README.md",
+    "transcript": "sessions/wwdc2021/10161/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10161/transcript.json"
+  }
+}

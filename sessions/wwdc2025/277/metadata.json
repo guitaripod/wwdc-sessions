@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-277",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 277,
+  "title": "Bring advanced speech-to-text to your app with SpeechAnalyzer",
+  "description": "Discover the new SpeechAnalyzer API for speech to text. We’ll learn about the Swift API and its capabilities, which power features in Notes, Voice Memos, Journal, and more. We’ll dive into details about how speech to text works and how SpeechAnalyzer and SpeechTranscriber can enable you to create exciting, performant features. And you’ll learn how to incorporate SpeechAnalyzer and live transcription into your app with a code-along.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/277",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/277",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "machine learning",
+    "speech-to-text"
+  ],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1147,
+  "hasTranscript": true,
+  "transcriptWordCount": 2839,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/277/4/9eedc53d-668f-48f3-9cca-4f2530bbb2ce/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/277/4/9eedc53d-668f-48f3-9cca-4f2530bbb2ce/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/277/4/9eedc53d-668f-48f3-9cca-4f2530bbb2ce/downloads/wwdc2025-277_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/277/4/9eedc53d-668f-48f3-9cca-4f2530bbb2ce/downloads/wwdc2025-277_hd.mp4",
+    "duration": 1147
+  },
+  "codeSnippets": [
+    {
+      "title": "Transcribe a file",
+      "language": "swift",
+      "startTimeSeconds": 321,
+      "code": "// Set up transcriber. Read results asynchronously, and concatenate them together.\nlet transcriber = SpeechTranscriber(locale: locale, preset: .offlineTranscription)\nasync let transcriptionFuture = try transcriber.results\n    .reduce(\"\") { str, result in str + result.text }\n\nlet analyzer = SpeechAnalyzer(modules: [transcriber])\nif let lastSample = try await analyzer.analyzeSequence(from: file) {\n    try await analyzer.finalizeAndFinish(through: lastSample)\n} else {\n    await analyzer.cancelAndFinishNow()\n}\n\nreturn try await transcriptionFuture"
+    },
+    {
+      "title": "Speech Transcriber setup (volatile results + timestamps)",
+      "language": "swift",
+      "startTimeSeconds": 662,
+      "code": "func setUpTranscriber() async throws {\n    transcriber = SpeechTranscriber(locale: Locale.current,\n                                    transcriptionOptions: [],\n                                    reportingOptions: [.volatileResults],\n                                    attributeOptions: [.audioTimeRange])\n}"
+    },
+    {
+      "title": "Speech Transcriber setup (volatile results, no timestamps)",
+      "language": "swift",
+      "startTimeSeconds": 707,
+      "code": "// transcriber = SpeechTranscriber(locale: Locale.current, preset: .progressiveLiveTranscription)"
+    },
+    {
+      "title": "Set up SpeechAnalyzer",
+      "language": "swift",
+      "startTimeSeconds": 714,
+      "code": "func setUpTranscriber() async throws {\n    transcriber = SpeechTranscriber(locale: Locale.current,\n                                    transcriptionOptions: [],\n                                    reportingOptions: [.volatileResults],\n                                    attributeOptions: [.audioTimeRange])\n\n    guard let transcriber else {\n        throw TranscriptionError.failedToSetupRecognitionStream\n    }\n\n    analyzer = SpeechAnalyzer(modules: [transcriber])\n}"
+    },
+    {
+      "title": "Get audio format",
+      "language": "swift",
+      "startTimeSeconds": 720,
+      "code": "func setUpTranscriber() async throws {\n    transcriber = SpeechTranscriber(locale: Locale.current,\n                                    transcriptionOptions: [],\n                                    reportingOptions: [.volatileResults],\n                                    attributeOptions: [.audioTimeRange])\n\n    guard let transcriber else {\n        throw TranscriptionError.failedToSetupRecognitionStream\n    }\n\n    analyzer = SpeechAnalyzer(modules: [transcriber])\n\n    self.analyzerFormat = await SpeechAnalyzer.bestAvailableAudioFormat(compatibleWith: [transcriber])\n}"
+    },
+    {
+      "title": "Ensure models",
+      "language": "swift",
+      "startTimeSeconds": 726,
+      "code": "func setUpTranscriber() async throws {\n    transcriber = SpeechTranscriber(locale: Locale.current,\n                                    transcriptionOptions: [],\n                                    reportingOptions: [.volatileResults],\n                                    attributeOptions: [.audioTimeRange])\n\n    guard let transcriber else {\n        throw TranscriptionError.failedToSetupRecognitionStream\n    }\n\n    analyzer = SpeechAnalyzer(modules: [transcriber])\n\n    self.analyzerFormat = await SpeechAnalyzer.bestAvailableAudioFormat(compatibleWith: [transcriber])\n\n    do {\n        try await ensureModel(transcriber: transcriber, locale: Locale.current)\n    } catch let error as TranscriptionError {\n        print(error)\n        return\n    }\n}"
+    },
+    {
+      "title": "Finish SpeechAnalyzer setup",
+      "language": "swift",
+      "startTimeSeconds": 735,
+      "code": "func setUpTranscriber() async throws {\n    transcriber = SpeechTranscriber(locale: Locale.current,\n                                    transcriptionOptions: [],\n                                    reportingOptions: [.volatileResults],\n                                    attributeOptions: [.audioTimeRange])\n\n    guard let transcriber else {\n        throw TranscriptionError.failedToSetupRecognitionStream\n    }\n\n    analyzer = SpeechAnalyzer(modules: [transcriber])\n\n    self.analyzerFormat = await SpeechAnalyzer.bestAvailableAudioFormat(compatibleWith: [transcriber])\n\n    do {\n        try await ensureModel(transcriber: transcriber, locale: Locale.current)\n    } catch let error as TranscriptionError {\n        print(error)\n        return\n    }\n\n    (inputSequence, inputBuilder) = AsyncStream<AnalyzerInput>.makeStream()\n\n    guard let inputSequence else { return }\n\n    try await analyzer?.start(inputSequence: inputSequence)\n}"
+    },
+    {
+      "title": "Check for language support",
+      "language": "swift",
+      "startTimeSeconds": 750,
+      "code": "public func ensureModel(transcriber: SpeechTranscriber, locale: Locale) async throws {\n    guard await supported(locale: locale) else {\n        throw TranscriptionError.localeNotSupported\n    }\n}\n\nfunc supported(locale: Locale) async -> Bool {\n    let supported = await SpeechTranscriber.supportedLocales\n    return supported.map { $0.identifier(.bcp47) }.contains(locale.identifier(.bcp47))\n}\n\nfunc installed(locale: Locale) async -> Bool {\n    let installed = await Set(SpeechTranscriber.installedLocales)\n    return installed.map { $0.identifier(.bcp47) }.contains(locale.identifier(.bcp47))\n}"
+    },
+    {
+      "title": "Check for model installation",
+      "language": "swift",
+      "startTimeSeconds": 759,
+      "code": "public func ensureModel(transcriber: SpeechTranscriber, locale: Locale) async throws {\n    guard await supported(locale: locale) else {\n        throw TranscriptionError.localeNotSupported\n    }\n\n    if await installed(locale: locale) {\n        return\n    } else {\n        try await downloadIfNeeded(for: transcriber)\n    }\n}\n\nfunc supported(locale: Locale) async -> Bool {\n    let supported = await SpeechTranscriber.supportedLocales\n    return supported.map { $0.identifier(.bcp47) }.contains(locale.identifier(.bcp47))\n}\n\nfunc installed(locale: Locale) async -> Bool {\n    let installed = await Set(SpeechTranscriber.installedLocales)\n    return installed.map { $0.identifier(.bcp47) }.contains(locale.identifier(.bcp47))\n}"
+    },
+    {
+      "title": "Download the model",
+      "language": "swift",
+      "startTimeSeconds": 772,
+      "code": "func downloadIfNeeded(for module: SpeechTranscriber) async throws {\n    if let downloader = try await AssetInventory.assetInstallationRequest(supporting: [module]) {\n        self.downloadProgress = downloader.progress\n        try await downloader.downloadAndInstall()\n    }\n}"
+    },
+    {
+      "title": "Deallocate an asset",
+      "language": "swift",
+      "startTimeSeconds": 799,
+      "code": "func deallocate() async {\n    let allocated = await AssetInventory.allocatedLocales\n    for locale in allocated {\n        await AssetInventory.deallocate(locale: locale)\n    }\n}"
+    },
+    {
+      "title": "Speech result handling",
+      "language": "swift",
+      "startTimeSeconds": 811,
+      "code": "recognizerTask = Task {\n    do {\n        for try await case let result in transcriber.results {\n            let text = result.text\n            if result.isFinal {\n                finalizedTranscript += text\n                volatileTranscript = \"\"\n                updateStoryWithNewText(withFinal: text)\n                print(text.audioTimeRange)\n            } else {\n                volatileTranscript = text\n                volatileTranscript.foregroundColor = .purple.opacity(0.4)\n            }\n        }\n    } catch {\n        print(\"speech recognition failed\")\n    }\n}"
+    },
+    {
+      "title": "Set up audio recording",
+      "language": "swift",
+      "startTimeSeconds": 913,
+      "code": "func record() async throws {\n        self.story.url.wrappedValue = url\n        guard await isAuthorized() else {\n            print(\"user denied mic permission\")\n            return\n        }\n#if os(iOS)\n        try setUpAudioSession()\n#endif\n        try await transcriber.setUpTranscriber()\n\n        for await input in try await audioStream() {\n            try await self.transcriber.streamAudioToTranscriber(input)\n        }\n    }"
+    },
+    {
+      "title": "Set up audio recording via AVAudioEngine",
+      "language": "swift",
+      "startTimeSeconds": 937,
+      "code": "#if os(iOS)\n    func setUpAudioSession() throws {\n        let audioSession = AVAudioSession.sharedInstance()\n        try audioSession.setCategory(.playAndRecord, mode: .spokenAudio)\n        try audioSession.setActive(true, options: .notifyOthersOnDeactivation)\n    }\n#endif\n\n    private func audioStream() async throws -> AsyncStream<AVAudioPCMBuffer> {\n        try setupAudioEngine()\n        audioEngine.inputNode.installTap(onBus: 0,\n                                         bufferSize: 4096,\n                                         format: audioEngine.inputNode.outputFormat(forBus: 0)) { [weak self] (buffer, time) in\n            guard let self else { return }\n            writeBufferToDisk(buffer: buffer)\n            self.outputContinuation?.yield(buffer)\n        }\n\n        audioEngine.prepare()\n        try audioEngine.start()\n\n        return AsyncStream(AVAudioPCMBuffer.self, bufferingPolicy: .unbounded) {\n            continuation in\n            outputContinuation = continuation\n        }\n    }"
+    },
+    {
+      "title": "Stream audio to SpeechAnalyzer and SpeechTranscriber",
+      "language": "swift",
+      "startTimeSeconds": 961,
+      "code": "func streamAudioToTranscriber(_ buffer: AVAudioPCMBuffer) async throws {\n    guard let inputBuilder, let analyzerFormat else {\n        throw TranscriptionError.invalidAudioDataType\n    }\n\n    let converted = try self.converter.convertBuffer(buffer, to: analyzerFormat)\n    let input = AnalyzerInput(buffer: converted)\n\n    inputBuilder.yield(input)\n}"
+    },
+    {
+      "title": "Finalize the transcript stream",
+      "language": "swift",
+      "startTimeSeconds": 989,
+      "code": "try await analyzer?.finalizeAndFinishThroughEndOfInput()"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Bringing advanced speech-to-text capabilities to your app",
+      "url": "https://developer.apple.com/documentation/Speech/bringing-advanced-speech-to-text-capabilities-to-your-app",
+      "type": "samplecode",
+      "description": "Learn how to incorporate live speech-to-text transcription into your app with SpeechAnalyzer.",
+      "sosumiURL": "https://sosumi.ai/documentation/Speech/bringing-advanced-speech-to-text-capabilities-to-your-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Speech/bringing-advanced-speech-to-text-capabilities-to-your-app.json"
+    },
+    {
+      "title": "Speech",
+      "url": "https://developer.apple.com/documentation/Speech",
+      "type": "documentation",
+      "description": "Perform speech recognition on live or prerecorded audio, and receive transcriptions, alternative interpretations, and confidence levels of the results.",
+      "sosumiURL": "https://sosumi.ai/documentation/Speech",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Speech.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/277/",
+  "files": {
+    "metadata": "sessions/wwdc2025/277/metadata.json",
+    "readme": "sessions/wwdc2025/277/README.md",
+    "transcript": "sessions/wwdc2025/277/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/277/transcript.json"
+  }
+}

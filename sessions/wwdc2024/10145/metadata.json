@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10145",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10145,
+  "title": "Enhance your UI animations and transitions",
+  "description": "Explore how to adopt the zoom transition in navigation and presentations to increase the sense of continuity in your app, and learn how to animate UIKit views with SwiftUI animations to make it easier to build animations that feel continuous.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10145",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10145",
+  "type": "Video",
+  "publishedAt": "2024-06-11T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "bracelets",
+    "friendship"
+  ],
+  "topics": [
+    "Design",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 854,
+  "hasTranscript": true,
+  "transcriptWordCount": 2257,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10145/4/53B7DA20-6508-44CC-9BC6-86943CE6BF32/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10145/4/53B7DA20-6508-44CC-9BC6-86943CE6BF32/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10145/4/53B7DA20-6508-44CC-9BC6-86943CE6BF32/downloads/wwdc2024-10145_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10145/4/53B7DA20-6508-44CC-9BC6-86943CE6BF32/downloads/wwdc2024-10145_hd.mp4",
+    "duration": 854
+  },
+  "codeSnippets": [
+    {
+      "title": "Zoom transition in SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 130,
+      "code": "NavigationLink {\n    BraceletEditor(bracelet)\n        .navigationTransitionStyle(\n            .zoom(\n                sourceID: bracelet.id,\n                in: braceletList\n            )\n        )\n} label: {\n    BraceletPreview(bracelet)\n}\n.matchedTransitionSource(\n    id: bracelet.id,\n    in: braceletList\n)"
+    },
+    {
+      "title": "Zoom transition in UIKit",
+      "language": "swift",
+      "startTimeSeconds": 182,
+      "code": "func showEditor(for bracelet: Bracelet) {\n    let braceletEditor = BraceletEditor(bracelet)\n    braceletEditor.preferredTransition = .zoom { context in\n        let editor = context.zoomedViewController\n            as! BraceletEditor\n        return cell(for: editor.bracelet)\n    }\n    navigationController?.pushViewController(braceletEditor, animated: true)\n}"
+    },
+    {
+      "title": "Animate UIView with SwiftUI animation",
+      "language": "swift",
+      "startTimeSeconds": 519,
+      "code": "UIView.animate(.spring(duration: 0.5)) {\n    bead.center = endOfBracelet\n}"
+    },
+    {
+      "title": "Animating representables",
+      "language": "swift",
+      "startTimeSeconds": 596,
+      "code": "struct BeadBoxWrapper: UIViewRepresentable {\n    @Binding var isOpen: Bool\n\n    func updateUIView(_ box: BeadBox, context: Context) {\n        context.animate {\n            box.lid.center.y = isOpen ? -100 : 100\n\t\t    }\n    }\n}\n\nstruct BraceletEditor: View {\n    @State private var isBeadBoxOpen = false\n    var body: some View {\n        BeadBoxWrapper($isBeadBoxOpen.animated())\n            .onTapGesture {\n                isBeadBoxOpen.toggle()\n            }\n    }\n}"
+    },
+    {
+      "title": "Gesture-driven animations",
+      "language": "swift",
+      "startTimeSeconds": 699,
+      "code": "switch gesture.state {\ncase .changed:\n    UIView.animate(.interactiveSpring) {\n        bead.center = gesture.translation\n    }\n\ncase .ended:\n    UIView.animate(.spring) {\n        bead.center = endOfBracelet\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Unifying your app’s animations",
+      "url": "https://developer.apple.com/documentation/SwiftUI/Unifying-your-app-s-animations",
+      "type": "documentation",
+      "description": "Create a consistent UI animation experience across SwiftUI, UIKit, and AppKit.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/Unifying-your-app-s-animations",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/Unifying-your-app-s-animations.json"
+    },
+    {
+      "title": "Forum: UI Frameworks",
+      "url": "https://developer.apple.com/forums/topics/ui-frameworks?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/ui-frameworks?cid=vf-a-0010"
+    }
+  ],
+  "path": "sessions/wwdc2024/10145/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10145/metadata.json",
+    "readme": "sessions/wwdc2024/10145/README.md",
+    "transcript": "sessions/wwdc2024/10145/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10145/transcript.json"
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10186",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10186,
+  "title": "What’s new in Core Data",
+  "description": "Elevate your app’s data persistence with improvements in Core Data. Learn how you can use composite attributes to create more intuitive data models. We’ll also show you how to migrate your schema through disruptive changes, when to defer intense migrations, and how to avoid overhead on a person’s device.\n\nTo get the most out of this session, you should be familiar with handling different data types in Core Data as well as the basics of lightweight migration.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10186",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10186",
+  "type": "Video",
+  "publishedAt": "2023-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "coredata",
+    "core data",
+    "custom",
+    "custom migration",
+    "data",
+    "data model",
+    "defer",
+    "deferred",
+    "deferred migration",
+    "lightweight",
+    "lightweight migration",
+    "migration",
+    "model",
+    "persistence",
+    "swift",
+    "swift data"
+  ],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 1403,
+  "hasTranscript": true,
+  "transcriptWordCount": 2513,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10186/4/169A3CA9-FA4A-40D0-A3A5-3635916BBCCE/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10186/4/169A3CA9-FA4A-40D0-A3A5-3635916BBCCE/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10186/4/169A3CA9-FA4A-40D0-A3A5-3635916BBCCE/downloads/wwdc2023-10186_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10186/4/169A3CA9-FA4A-40D0-A3A5-3635916BBCCE/downloads/wwdc2023-10186_hd.mp4",
+    "duration": 1403
+  },
+  "codeSnippets": [
+    {
+      "title": "Adding a composite attribute",
+      "language": "swift",
+      "startTimeSeconds": 339,
+      "code": "enum PaintColor: String, CaseIterable, Identifiable {\n    case none, white, blue, orange, red, gray, green, gold, yellow, black\n    var id: Self { self }\n}\n\nextension Aircraft {\n\n    @nonobjc public class func fetchRequest() -> NSFetchRequest<Aircraft> {\n        return NSFetchRequest<Aircraft>(entityName: \"Aircraft\")\n    }\n\n    @NSManaged public var aircraftCategory: String?\n    @NSManaged public var aircraftClass: String?\n    @NSManaged public var aircraftType: String?\n    @NSManaged public var colorScheme: [String: Any]?\n    @NSManaged public var photo: Data?\n    @NSManaged public var tailNumber: String?\n    @NSManaged public var logEntries: NSSet?\n\n}"
+    },
+    {
+      "title": "Setting a composite attribute",
+      "language": "swift",
+      "startTimeSeconds": 353,
+      "code": "private func addAircraft() {\n    viewContext.performAndWait {\n        let newAircraft = Aircraft(context: viewContext)\n\n        newAircraft.tailNumber = tailNumber\n        newAircraft.aircraftType = aircraftType\n        newAircraft.aircraftClass = aircraftClass\n        newAircraft.aircraftCategory = aircraftCategory\n\n        newAircraft.colorScheme = [\n            \"primary\": primaryColor.rawValue,\n            \"secondary\": secondaryColor.rawValue,\n            \"tertiary\": tertiaryColor.rawValue\n        ]\n\n        do {\n            try viewContext.save()\n        } catch {\n            // ...\n        }\n    }\n}"
+    },
+    {
+      "title": "Fetching a composite attribute",
+      "language": "swift",
+      "startTimeSeconds": 371,
+      "code": "private func findAircraft(with color: String) {\n    viewContext.performAndWait {\n        let fetchRequest = Aircraft.fetchRequest()\n        fetchRequest.predicate = NSPredicate(format: \"colorScheme.primary == %@\", color)\n\n        do {\n            var fetchedResults: [Aircraft]\n            fetchedResults = try viewContext.fetch(fetchRequest)\n\n            // ...\n        } catch {\n            // Handle any errors that may occur\n        }\n    }\n}"
+    },
+    {
+      "title": "Creating managed object model references for staged migration",
+      "language": "swift",
+      "startTimeSeconds": 960,
+      "code": "let v1ModelChecksum = \"kk8XL4OkE7gYLFHTrH6W+EhTw8w14uq1klkVRPiuiAk=\"\nlet v1ModelReference = NSManagedObjectModelReference(\n    modelName: \"modelV1\"\n    in: NSBundle.mainBundle\n    versionChecksum: v1ModelChecksum\n)\n\nlet v2ModelChecksum = \"PA0Gbxs46liWKg7/aZMCBtu9vVIF6MlskbhhjrCd7ms=\"\nlet v2ModelReference = NSManagedObjectModelReference(\n    modelName: \"modelV2\"                          \n    in: NSBundle.mainBundle                                                 \n    versionChecksum: v2ModelChecksum\n)\n\nlet v3ModelChecksum = \"iWKg7bxs46g7liWkk8XL4OkE7gYL/FHTrH6WF23Jhhs=\"\nlet v3ModelReference = NSManagedObjectModelReference(\n    modelName: \"modelV3\"\n    in: NSBundle.mainBundle\n    versionChecksum: v3ModelChecksum\n)"
+    },
+    {
+      "title": "Creating migration stages for staged migration",
+      "language": "swift",
+      "startTimeSeconds": 979,
+      "code": "let lightweightStage = NSLightweightMigrationStage([v1ModelChecksum])\nlightweightStage.label = \"V1 to V2: Add flightData attribute\"\n\nlet customStage = NSCustomMigrationStage(\n    migratingFrom: v2ModelReference,\n    to: v3ModelReference\n)\n\ncustomStage.label = \"V2 to V3: Denormalize model with FlightData entity\""
+    },
+    {
+      "title": "willMigrationHandler and didMigrationHandler of NSCustomMigrationStage",
+      "language": "swift",
+      "startTimeSeconds": 1014,
+      "code": "customStage.willMigrateHandler = { migrationManager, currentStage in\n    guard let container = migrationManager.container else {\n        return\n    }\n\n    let context = container.newBackgroundContext()\n    try context.performAndWait {\n        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: \"Aircraft\")\n        fetchRequest.predicate = NSPredicate(format: \"flightData != nil\")\n\n        do {\n           var fetchedResults: [NSManagedObject]\n           fetchedResults = try viewContext.fetch(fetchRequest)\n\n           for airplane in fetchedResults {\n                let fdEntity = NSEntityDescription.insertNewObject(\n                    forEntityName: \"FlightData,\n                    into: context\n                )\n\n                let flightData = airplane.value(forKey: \"flightData\")\n                fdEntity.setValue(flightData, forKey: “data”)\n                fdEntity.setValue(airplane, forKey: \"aircraft\")\n                airplane.setValue(nil, forKey: \"flightData\")\n            }\n            try context.save()\n        } catch {\n            // Handle any errors that may occur\n        }\n    }\n}"
+    },
+    {
+      "title": "Loading the persistent stores with an NSStagedMigrationManager",
+      "language": "swift",
+      "startTimeSeconds": 1061,
+      "code": "let migrationStages = [lightweightStage, customStage]\nlet migrationManager = NSStagedMigrationManager(migrationStages)\n\nlet persistentContainer = NSPersistentContainer(\n    path: \"/path/to/store.sqlite\",\n    managedObjectModel: myModel\n)\n\nvar storeDescription = persistentContainer?.persistentStoreDescriptions.first\n\nstoreDescription?.setOption(\n    migrationManager,\n    forKey: NSPersistentStoreStagedMigrationManagerOptionKey\n)\n\npersistentContainer?.loadPersistentStores { storeDescription, error in\n    if let error = error {\n        // Handle any errors that may occur\n    }\n}"
+    },
+    {
+      "title": "Adding a persistent store with NSPersistentStoreDeferredLightweightMigrationOptionKey option",
+      "language": "swift",
+      "startTimeSeconds": 1261,
+      "code": "let options = [\n    NSPersistentStoreDeferredLightweightMigrationOptionKey: true,\n    NSMigratePersistentStoresAutomaticallyOption: true,\n    NSInferMappingModelAutomaticallyOption: true\n]\n\nlet store = try coordinator.addPersistentStore(\n    ofType: NSSQLiteStoreType,\n    configurationName: nil,\n    at: storeURL,\n    options: options\n)"
+    },
+    {
+      "title": "Executing deferred migrations",
+      "language": "swift",
+      "startTimeSeconds": 1277,
+      "code": "// After using BGProcessingTask to run migration work   \nlet metadata = coordinator.metadata(for: store)\nif (metadata[NSPersistentStoreDeferredLightweightMigrationOptionKey] == true) {\n    coordinator.finishDeferredLightweightMigration()\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Migrating your data model automatically",
+      "url": "https://developer.apple.com/documentation/CoreData/migrating-your-data-model-automatically",
+      "type": "documentation",
+      "description": "Enable lightweight migrations to keep your data model and the underlying data in a consistent state.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreData/migrating-your-data-model-automatically",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreData/migrating-your-data-model-automatically.json"
+    },
+    {
+      "title": "Core Data",
+      "url": "https://developer.apple.com/documentation/CoreData",
+      "type": "documentation",
+      "description": "Persist or cache data on a single device, or sync data to multiple devices with CloudKit.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreData",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreData.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10186/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10186/metadata.json",
+    "readme": "sessions/wwdc2023/10186/README.md",
+    "transcript": "sessions/wwdc2023/10186/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10186/transcript.json"
+  }
+}

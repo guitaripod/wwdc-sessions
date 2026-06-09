@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "id": "tech-talks-111427",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2017,
+  "eventContentId": 111427,
+  "title": "Discover the Apple Design Resources",
+  "description": "Learn to bring your ideas to life with the Apple Design Resources. In this overview, we’ll explore the resources Apple has to offer, show you how to access them, and share quick and helpful tips for new designers.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/111427",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111427",
+  "type": "Video",
+  "publishedAt": "2026-01-06T08:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 334,
+  "hasTranscript": true,
+  "transcriptWordCount": 946,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/111427/1/53076005-fa99-43e2-bd5c-f3b928f40bc7/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/tech-talks/111427/1/53076005-fa99-43e2-bd5c-f3b928f40bc7/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/111427/1/53076005-fa99-43e2-bd5c-f3b928f40bc7/downloads/tech-talks-111427_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/111427/1/53076005-fa99-43e2-bd5c-f3b928f40bc7/downloads/tech-talks-111427_hd.mp4",
+    "duration": 334
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines",
+      "url": "https://developer.apple.com/design/human-interface-guidelines",
+      "type": "documentation",
+      "description": "The HIG contains guidance and best practices that can help you design a",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines"
+    },
+    {
+      "title": "Apple Design Resources",
+      "url": "https://developer.apple.com/design/resources/",
+      "type": "download",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/resources/"
+    }
+  ],
+  "path": "sessions/tech-talks/111427/",
+  "files": {
+    "metadata": "sessions/tech-talks/111427/metadata.json",
+    "readme": "sessions/tech-talks/111427/README.md",
+    "transcript": "sessions/tech-talks/111427/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/111427/transcript.json"
+  }
+}

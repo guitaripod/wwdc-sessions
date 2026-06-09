@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10127",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10127,
+  "title": "Create parametric 3D room scans with RoomPlan",
+  "description": "RoomPlan can help your app quickly create simplified parametric 3D scans of a room. Learn how you can use this API to easily add a room scanning experience. We'll show you how to adopt this API, explore the 3D parametric output, and share best practices to help your app get great results with every scan.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10127",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10127",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "ar",
+    "arkit",
+    "augmented reality"
+  ],
+  "topics": [
+    "Photos & Camera",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 989,
+  "hasTranscript": true,
+  "transcriptWordCount": 2140,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10127/3/C6A70FDB-501E-42BB-A50E-9794D4050C07/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10127/3/C6A70FDB-501E-42BB-A50E-9794D4050C07/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10127/3/C6A70FDB-501E-42BB-A50E-9794D4050C07/downloads/wwdc2022-10127_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10127/3/C6A70FDB-501E-42BB-A50E-9794D4050C07/downloads/wwdc2022-10127_hd.mp4",
+    "duration": 989
+  },
+  "codeSnippets": [
+    {
+      "title": "RoomCaptureView API - Scan & Process",
+      "language": "swift",
+      "startTimeSeconds": 276,
+      "code": "// RoomCaptureView API - Scan & Process\n\nimport UIKit\nimport RoomPlan\n\nclass RoomCaptureViewController: UIViewController {\n\n    var roomCaptureView: RoomCaptureView\n    var captureSessionConfig: RoomCaptureSession.Configuration\n\n   private func startSession() {\n        roomCaptureView?.captureSession.run(configuration: captureSessionConfig)\n     }\n\n    private func stopSession() {\n        roomCaptureView?.captureSession.stop()\n\t}\n}"
+    },
+    {
+      "title": "RoomCaptureView API - Export",
+      "language": "swift",
+      "startTimeSeconds": 300,
+      "code": "// RoomCaptureView API - Export\n\nimport UIKit\nimport RoomPlan\n\nclass RoomCaptureViewController: UIViewController {\n  …\n  func captureView(shouldPresent roomDataForProcessing: CapturedRoomData, error: Error?) -> Bool {\n    // Optionally opt out of post processed scan results.\n    return false\n  }\n\n  func captureView(didPresent processedResult: CapturedRoom, error: Error?) {\n    // Handle final, post processed results and optional error.\n    // Export processedResults\n    …\n    try processedResult.export(to: destinationURL)\n    …\n  }\n}"
+    },
+    {
+      "title": "RoomCaptureSession - setup previewVisualizer",
+      "language": "swift",
+      "startTimeSeconds": 410,
+      "code": "import UIKit\nimport RealityKit\nimport RoomPlan\nimport ARKit\n\nclass ViewController: UIViewController {\n    @IBOutlet weak var arView: ARView!\n    var previewVisualizer: Visualizer!\n    lazy var captureSession: RoomCaptureSession = {\n        let captureSession = RoomCaptureSession()\n        arView.session = captureSession.arSession\n        return captureSession\n    }()\n    override func viewDidLoad() {\n        super.viewDidLoad()\n        captureSession.delegate = self\n        // set up previewVisualizer\n    }\n}"
+    },
+    {
+      "title": "RoomCaptureSession - live results and user instructions",
+      "language": "swift",
+      "startTimeSeconds": 460,
+      "code": "// Getting live results and user instructions\n\nextension ViewController: RoomCaptureSessionDelegate {\n\n    func captureSession(_ session: RoomCaptureSession,\n                        didUpdate room: CapturedRoom) {\n        previewVisualizer.update(model: room)\n    }\n\n    func captureSession(_ session: RoomCaptureSession,\n                   didProvide instruction: Instruction) {\n        previewVisualizer.provide(instruction)\n    }\n}"
+    },
+    {
+      "title": "Setup RoomBuilder",
+      "language": "swift",
+      "startTimeSeconds": 552,
+      "code": "// RoomBuilder\nimport UIKit\nimport RealityKit\nimport RoomPlan\nimport ARKit\n\nclass ViewController: UIViewController {\n\n    @IBOutlet weak var arView: ARView!\n    var previewVisualizer: Visualizer!\n\n    // set up RoomBuilder\n    var roomBuilder = RoomBuilder(options: [.beautifyObjects])\n}"
+    },
+    {
+      "title": "RoomBuilder - generate final 3D CapturedRoom",
+      "language": "swift",
+      "startTimeSeconds": 570,
+      "code": "// RoomBuilder with the latest CapturedRoomData to generate final 3D CapturedRoom\n\nextension ViewController: RoomCaptureSessionDelegate\n{\n    func captureSession(_ session: RoomCaptureSession, \n                        didEndWith data: CapturedRoomData, error: Error?)\n    {\n        if let error = error {\n            print(\"Error: \\(error)\")\n        }\n        Task {\n            let finalRoom = try! await roomBuilder.capturedRoom(from: data)\n            previewVisualizer.update(model: finalRoom)\n        }\n    }\n}"
+    },
+    {
+      "title": "CapturedRoom and export",
+      "language": "swift",
+      "startTimeSeconds": 680,
+      "code": "// CapturedRoom and export\n\npublic struct CapturedRoom: Codable, Sendable\n{\n    public let walls: [Surface]\n    public let doors: [Surface]\n    public let windows: [Surface]\n    public let openings: [Surface]\n    public let objects: [Object]\n\n    public func export(to url: URL) throws\n\n    // Surface definitions ...\n\n    // Object definitions ...\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Create a 3D model of an interior room by guiding the user through an AR experience",
+      "url": "https://developer.apple.com/documentation/RoomPlan/create-a-3d-model-of-an-interior-room-by-guiding-the-user-through-an-ar-experience",
+      "type": "samplecode",
+      "description": "Highlight physical structures and display text that guides a user to scan the shape of their physical environment using a framework-provided view.",
+      "sosumiURL": "https://sosumi.ai/documentation/RoomPlan/create-a-3d-model-of-an-interior-room-by-guiding-the-user-through-an-ar-experience",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/RoomPlan/create-a-3d-model-of-an-interior-room-by-guiding-the-user-through-an-ar-experience.json"
+    },
+    {
+      "title": "RoomPlan",
+      "url": "https://developer.apple.com/documentation/RoomPlan",
+      "type": "documentation",
+      "description": "Create a 3D model of a room by interactively guiding people to scan their physical environment using a device’s camera.",
+      "sosumiURL": "https://sosumi.ai/documentation/RoomPlan",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/RoomPlan.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10127/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10127/metadata.json",
+    "readme": "sessions/wwdc2022/10127/README.md",
+    "transcript": "sessions/wwdc2022/10127/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10127/transcript.json"
+  }
+}

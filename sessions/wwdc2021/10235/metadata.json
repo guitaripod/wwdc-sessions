@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10235",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10235,
+  "title": "Build interactive tutorials using DocC",
+  "description": "Discover how you can author immersive tutorials from scratch with DocC. We’ll demonstrate how you can bring together rich instructions, example code, and images through the DocC syntax to showcase your Swift framework in action. And we’ll go over how to create progressive training that can provide interactive learning opportunities and help people better understand use cases for your framework.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10235",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10235",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "docc",
+    "documentation",
+    "documentation catalog",
+    "documentation compiler",
+    "tutorials"
+  ],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 1333,
+  "hasTranscript": true,
+  "transcriptWordCount": 3241,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10235/6/D2C51374-4073-4A41-97CB-4217A096F2B3/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10235/6/D2C51374-4073-4A41-97CB-4217A096F2B3/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10235/6/D2C51374-4073-4A41-97CB-4217A096F2B3/downloads/wwdc2021-10235_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10235/6/D2C51374-4073-4A41-97CB-4217A096F2B3/downloads/wwdc2021-10235_hd.mp4",
+    "duration": 1333
+  },
+  "codeSnippets": [
+    {
+      "title": "Tutorial Table of Contents File Content",
+      "language": "markdown",
+      "startTimeSeconds": 686,
+      "code": "@Tutorials(name: \"SlothCreator\") {\n    @Intro(title: \"Meet SlothCreator\") {\n        Create, catalog, and care for sloths using SlothCreator. Get started with SlothCreator by building the demo app _Slothy_.\n\n        @Image(source: slothcreator-intro.png, alt: \"An illustration of 3 iPhones in portrait mode, displaying the UI of finding, creating, and taking care of a sloth in Slothy — the sample app that you build in this collection of tutorials.\")\n    }\n\n    @Chapter(name: \"SlothCreator Essentials\") {\n        @Image(source: chapter1-slothcreatorEssentials.png, alt: \"A wireframe of an app interface that has an outline of a sloth and four buttons below the sloth. The buttons display the following symbols, from left to right: snowflake, fire, wind, and lightning.\")\n\n        Create custom sloths and edit their attributes and powers using SlothCreator.\n\n        @TutorialReference(tutorial: \"doc:Creating-Custom-Sloths\")\n    }\n}"
+    },
+    {
+      "title": "Tutorial File Name",
+      "language": "markdown",
+      "startTimeSeconds": 707,
+      "code": "Creating Custom Sloths"
+    },
+    {
+      "title": "Tutorial Title",
+      "language": "markdown",
+      "startTimeSeconds": 741,
+      "code": "Creating Custom Sloths"
+    },
+    {
+      "title": "Tutorial Overview",
+      "language": "markdown",
+      "startTimeSeconds": 747,
+      "code": "This tutorial guides you through building _Slothy_ — an app for creating and caring for custom sloths. You'll start by building the sloth creation view."
+    },
+    {
+      "title": "Tutorial Intro Image File Name",
+      "language": "markdown",
+      "startTimeSeconds": 784,
+      "code": "creating-intro.png"
+    },
+    {
+      "title": "Section 1 Title",
+      "language": "markdown",
+      "startTimeSeconds": 862,
+      "code": "Create a new project and add SlothCreator"
+    },
+    {
+      "title": "Section 1 Image File Name",
+      "language": "markdown",
+      "startTimeSeconds": 883,
+      "code": "01-creating-section1.png"
+    },
+    {
+      "title": "Section 1 Image Accessible Description",
+      "language": "markdown",
+      "startTimeSeconds": 884,
+      "code": "An arrow pointing from the SlothCreator framework icon to the Xcode app project icon."
+    },
+    {
+      "title": "Section 1 Step 1 Image File Name",
+      "language": "markdown",
+      "startTimeSeconds": 943,
+      "code": "creating-01-01.png"
+    },
+    {
+      "title": "Section 1 Step 1 Image Accessible Description",
+      "language": "markdown",
+      "startTimeSeconds": 945,
+      "code": "A screenshot of the template selector in Xcode. In the top row, iOS is selected as the platform. In the Application section, App is selected as the template; there's a highlight placed over the Next button at the lower-right of the sheet."
+    },
+    {
+      "title": "Section 1 Step 2 to Step 4",
+      "language": "markdown",
+      "startTimeSeconds": 957,
+      "code": "@Step {\n    Enter \"Slothy\" as the Product Name. \n\n    @Image(source: creating-01-02.png, alt: \"A screenshot of the project sheet, which shows the Product Name for the app being built as Slothy. The Interface is set to SwiftUI, and the Life Cycle is set to SwiftUI App.\")\n}\n\n@Step {\n    Select \"SwiftUI\" from the Interface pop-up menu and \"SwiftUI App\" from the Life Cycle pop-up menu, then click Next. Choose a location to save the Slothy project on your Mac.\n\n    @Image(source: creating-01-03.png, alt: \"A screenshot of the project sheet, which shows the Interface is set to SwiftUI and the Life Cycle is set to SwiftUI App.\")\n}\n\n@Step {\n    Add `SlothCreator` as a dependency to the project.\n\n    @Image(source: creating-01-04.png, alt:\"A screenshot shows the SlothCreator package in Xcode's navigator.\")\n}"
+    },
+    {
+      "title": "Section 2 Intro and Step 1 & 2",
+      "language": "markdown",
+      "startTimeSeconds": 1078,
+      "code": "@Section(title: \"Add a customization view\") {\n    @ContentAndMedia(layout: horizontal) {\n        Add the ability for users to customize sloths and select their powers.\n\n        @Image(source: 01-creating-section2.png, alt: \"An outline of a sloth surrounded by four power type icons. The power type icons are arranged in the following order, clockwise from the top: fire, wind, lightning, and ice.\")\n    }\n\n    @Steps {\n        @Step {\n            Create a new SwiftUI View file named `CustomizedSlothView.swift`.\n\n            @Code(name: \"CustomizedSlothView.swift\", file: 01-creating-code-02-01.swift) {\n                @Image(source: preview-01-creating-code-02-01.png, alt: \"A screenshot from the Xcode preview as it would appear on iPhone, with the text, Hello, World!, centered in the middle of the display.\")\n            }\n        }    \n\n        @Step {\n            Import the `SlothCreator` package.\n\n            @Code(name: \"<#display name#>\", file: <#filename.swift#>)\n        }    \n    }\n}"
+    },
+    {
+      "title": "Section 2 Step 2 Display Name",
+      "language": "markdown",
+      "startTimeSeconds": 1145,
+      "code": "CustomizedSlothView.swift"
+    },
+    {
+      "title": "Section 2 Step 2 Code File Name",
+      "language": "markdown",
+      "startTimeSeconds": 1148,
+      "code": "01-creating-code-02-02.swift"
+    },
+    {
+      "title": "Section 2 Step 2 Code File Preview Image",
+      "language": "markdown",
+      "startTimeSeconds": 1150,
+      "code": "{\n    @Image(source: preview-01-creating-code-02-01.png, alt: \"A screenshot from the Xcode preview as it would appear on iPhone, with the text, Hello, World!, centered in the middle of the display.\")\n}"
+    },
+    {
+      "title": "Section 2 Remaining Steps",
+      "language": "markdown",
+      "startTimeSeconds": 1165,
+      "code": "@Step {\n    Create a ``Sloth`` state variable called `sloth`.\n\n    @Code(name: \"CustomizedSlothView.swift\", file: 01-creating-code-02-03.swift) {\n         @Image(source: preview-01-creating-code-02-01.png, alt: \"A screenshot from the Xcode preview as it would appear on iPhone, with the text, Hello, World!, centered in the middle of the display.\")\n    }\n}    \n\n@Step {\n    Delete the template `Text` view, then add a new `VStack` with trailing padding.\n\n    This adds space around and between any views inside.\n\n    @Code(name: \"CustomizedSlothView.swift\", file: 01-creating-code-02-04.swift) {\n         @Image(source: preview-01-creating-code-02-04.png, alt: \"A screenshot of a blank preview canvas.\")\n    }\n}    \n\n@Step {\n    Add a `SlothView`. Specify the `sloth` state variable for the view's `sloth` binding.\n\n    @Code(name: \"CustomizedSlothView.swift\", file: 01-creating-code-02-05.swift) {\n         @Image(source: preview-01-creating-code-02-04.png, alt: \"A screenshot of a blank preview canvas.\")\n    }\n}    \n\n@Step {\n    Add a `PowerPicker`. Specify the `sloth`'s `power` for the picker view's `power` binding.\n\n    @Code(name: \"CustomizedSlothView.swift\", file: 01-creating-code-02-06.swift) {\n         @Image(source: preview-01-creating-code-02-04.png, alt: \"A screenshot of a blank preview canvas.\")\n    }\n}    \n\nThe following steps display your customized sloth view in the SwiftUI preview.\n\n@Step {\n    Add the `sloth` parameter to initialize the `CustomizedSlothView` in the preview provider, and pass a new `Sloth` instance for the value.\n\n    @Code(name: \"CustomizedSlothView.swift\", file: 01-creating-code-02-07.swift) {\n         @Image(source: preview-01-creating-code-02-07.png, alt: \"A portrait of a generic sloth displayed in the center of the canvas.\")\n    }\n}\n\n@Step {\n    Set the preview provider sloth's `name` to `\"Super Sloth\"`, `color` to `.blue`, and `power` to `.ice`.\n\n    @Code(name: \"CustomizedSlothView.swift\", file: 01-creating-code-02-08.swift) {\n         @Image(source: preview-01-creating-code-02-08.png, alt: \"A portrait of an ice sloth on top, followed by four power icons below. The power icons, clockwise from top left, include: ice, fire, wind, and lightning. The ice icon is selected.\")\n    }\n}"
+    },
+    {
+      "title": "Chapter 1 Tutorial 2 & 3",
+      "language": "markdown",
+      "startTimeSeconds": 1203,
+      "code": "@TutorialReference(tutorial: \"doc:Editing-Sloth\")\n@TutorialReference(tutorial: \"doc:Adding-Accessories\")"
+    },
+    {
+      "title": "Chapter 2 & 3",
+      "language": "markdown",
+      "startTimeSeconds": 1210,
+      "code": "@Chapter(name: \"Sloth Health & Happiness\") {\n    @Image(source: chapter2-healthAndHappiness.png, alt: \"A popover window pointing at a button with a leaf symbol on it. To the right of the leaf button, there is a button with a smiley face and a button with a dumbbell.\")\n\n    Discover how to track sloth's activity levels, measure their overall happiness, and feed them their favorite foods.\n\n    @TutorialReference(tutorial: \"doc:Feeding-Sloths\")\n    @TutorialReference(tutorial: \"doc:Tracking-Sloth-Activity\")\n    @TutorialReference(tutorial: \"doc:Measuring-Sloth-Happiness\")\n}\n\n@Chapter(name: \"Finding Hidden Sloths\") {\n    @Image(source: chapter3-findingHiddenSloths.png, alt: \"An illustration of a radar scanning over a map. The map displays a pin with a smiley sloth face in the upper left quadrant.\")\n\n    Find sloths as they move around their neighborhoods and make friends.\n\n    @TutorialReference(tutorial: \"doc:Locating-Sloths\")\n    @TutorialReference(tutorial: \"doc:Finding-Sloth-Habitats\")\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "DocC",
+      "url": "https://developer.apple.com/documentation/docc",
+      "type": "documentation",
+      "description": "Produce rich API reference documentation and interactive tutorials for your app, framework, or package.",
+      "sosumiURL": "https://sosumi.ai/documentation/docc",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/docc.json"
+    },
+    {
+      "title": "Interactive Tutorials",
+      "url": "https://developer.apple.com/documentation/docc",
+      "type": "documentation",
+      "description": "Teach developers your Swift and Objective-C APIs through step-by-step, interactive content.",
+      "sosumiURL": "https://sosumi.ai/documentation/docc",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/docc.json"
+    },
+    {
+      "title": "Building an Interactive Tutorial",
+      "url": "https://developer.apple.com/documentation/docc",
+      "type": "guide",
+      "description": "Construct a step-by-step guided learning experience for your app, framework, or package.",
+      "sosumiURL": "https://sosumi.ai/documentation/docc",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/docc.json"
+    },
+    {
+      "title": "SlothCreator: Building DocC documentation in Xcode",
+      "url": "https://developer.apple.com/documentation/Xcode/slothcreator-building-docc-documentation-in-xcode",
+      "type": "samplecode",
+      "description": "Build DocC documentation for a Swift package that contains a DocC Catalog.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/slothcreator-building-docc-documentation-in-xcode",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/slothcreator-building-docc-documentation-in-xcode.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10235/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10235/metadata.json",
+    "readme": "sessions/wwdc2021/10235/README.md",
+    "transcript": "sessions/wwdc2021/10235/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10235/transcript.json"
+  }
+}

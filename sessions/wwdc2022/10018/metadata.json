@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10018",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10018,
+  "title": "Bring Continuity Camera to your macOS app",
+  "description": "Discover how you can use iPhone as an external camera in any Mac app with Continuity Camera. Whether you’re building video conferencing software or an experience that makes creative use of cameras, we’ll show you how you can enhance your app with automatic camera switching. We’ll also explore how to recognize user-preferred and system-preferred cameras, take you through APIs for high-resolution and high-quality photo capture from iPhone’s video stream, and more.\n\nTo learn more about camera capture, watch \"Discover advancements in iOS camera capture\" from WWDC22.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10018",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10018",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Business & Education",
+    "Photos & Camera"
+  ],
+  "primaryTopic": "Photos & Camera",
+  "duration": 1181,
+  "hasTranscript": true,
+  "transcriptWordCount": 2384,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10018/6/1C7686E9-BB02-4797-B131-7FA5BD1B6133/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10018/6/1C7686E9-BB02-4797-B131-7FA5BD1B6133/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10018/6/1C7686E9-BB02-4797-B131-7FA5BD1B6133/downloads/wwdc2022-10018_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10018/6/1C7686E9-BB02-4797-B131-7FA5BD1B6133/downloads/wwdc2022-10018_hd.mp4",
+    "duration": 1181
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Supporting Continuity Camera in your macOS app",
+      "url": "https://developer.apple.com/documentation/AVFoundation/supporting-continuity-camera-in-your-macos-app",
+      "type": "samplecode",
+      "description": "Enable high-quality photo and video capture by using an iPhone camera as an external capture device.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/supporting-continuity-camera-in-your-macos-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/supporting-continuity-camera-in-your-macos-app.json"
+    },
+    {
+      "title": "Capture setup",
+      "url": "https://developer.apple.com/documentation/AVFoundation/capture-setup",
+      "type": "documentation",
+      "description": "Configure built-in cameras and microphones, and external capture devices, for media capture.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/capture-setup",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/capture-setup.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10018/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10018/metadata.json",
+    "readme": "sessions/wwdc2022/10018/README.md",
+    "transcript": "sessions/wwdc2022/10018/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10018/transcript.json"
+  }
+}

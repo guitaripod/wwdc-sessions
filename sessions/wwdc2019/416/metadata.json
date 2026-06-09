@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-416",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 416,
+  "title": "Binary Frameworks in Swift",
+  "description": "Xcode 11 now fully supports using and creating binary frameworks in Swift. Find out how to simultaneously support devices and Simulator with the new XCFramework bundle type, how Swift module interfaces work, and how to manage changes to your framework over time.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/416",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/416",
+  "type": "Session",
+  "publishedAt": "2019-06-06T15:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 2432,
+  "hasTranscript": true,
+  "transcriptWordCount": 6071,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/416h8485aty341c2/416/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/416h8485aty341c2/416/416_sd_binary_frameworks_in_swift.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/416h8485aty341c2/416/416_hd_binary_frameworks_in_swift.mp4",
+    "duration": 2432
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/416/",
+  "files": {
+    "metadata": "sessions/wwdc2019/416/metadata.json",
+    "readme": "sessions/wwdc2019/416/README.md",
+    "transcript": "sessions/wwdc2019/416/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/416/transcript.json"
+  }
+}

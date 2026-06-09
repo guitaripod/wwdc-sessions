@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10083",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10083,
+  "title": "Integrate your app with Wind Down",
+  "description": "Discover how you can help people get ready for a good night's sleep by surfacing your app's actions for Wind Down Shortcuts, part of the new Sleep experience. Learn more about how Wind Down works. Find out how you can build intents that expose features in your app like guided meditations, soothing audio stories, or many other categories. And explore how you can surface those features on someone's device before bedtime.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10083",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10083",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "intents",
+    "intentsui",
+    "shortcuts",
+    "siri",
+    "sirikit",
+    "sleep",
+    "wind down"
+  ],
+  "topics": [
+    "Health & Fitness",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 659,
+  "hasTranscript": true,
+  "transcriptWordCount": 1752,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10083/3/0A7396FB-7C58-496C-BB03-C3FC6F95A070/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10083/3/0A7396FB-7C58-496C-BB03-C3FC6F95A070/wwdc2020_10083_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10083/3/0A7396FB-7C58-496C-BB03-C3FC6F95A070/wwdc2020_10083_hd.mp4",
+    "duration": 659
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Adding Shortcuts for Wind Down",
+      "url": "https://developer.apple.com/documentation/SiriKit/adding-shortcuts-for-wind-down",
+      "type": "samplecode",
+      "description": "Reveal your app’s shortcuts inside the Health app.",
+      "sosumiURL": "https://sosumi.ai/documentation/SiriKit/adding-shortcuts-for-wind-down",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SiriKit/adding-shortcuts-for-wind-down.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10083/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10083/metadata.json",
+    "readme": "sessions/wwdc2020/10083/README.md",
+    "transcript": "sessions/wwdc2020/10083/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10083/transcript.json"
+  }
+}

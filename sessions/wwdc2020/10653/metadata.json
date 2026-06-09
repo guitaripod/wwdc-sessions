@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10653",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10653,
+  "title": "Detect Body and Hand Pose with Vision",
+  "description": "Explore how the Vision framework can help your app detect body and hand poses in photos and video. With pose detection, your app can analyze the poses, movements, and gestures of people to offer new video editing possibilities, or to perform action classification when paired with an action classifier built in Create ML. And we’ll show you how you can bring gesture recognition into your app through hand pose, delivering a whole new form of interaction.\n\nTo understand more about how you might apply body pose for Action Classification, be sure to also watch the \"Build an Action Classifier with Create ML\" and \"Explore the Action & Vision app\" sessions. And to learn more about other great features in Vision, check out the \"Explore Computer Vision APIs\" session.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10653",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10653",
+  "type": "Video",
+  "publishedAt": "2020-06-23T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "action classification",
+    "action classifier",
+    "bean bag toss",
+    "body pose",
+    "camera",
+    "cornhole",
+    "gesture",
+    "hand pose",
+    "machine learning",
+    "photo",
+    "pose estimation",
+    "ui control",
+    "video",
+    "vision"
+  ],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1461,
+  "hasTranscript": true,
+  "transcriptWordCount": 3945,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10653/8/E739CC44-25A9-46B9-8E40-1788530C5785/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10653/8/E739CC44-25A9-46B9-8E40-1788530C5785/wwdc2020_10653_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10653/8/E739CC44-25A9-46B9-8E40-1788530C5785/wwdc2020_10653_hd.mp4",
+    "duration": 1461
+  },
+  "codeSnippets": [
+    {
+      "title": "HandPoseCameraViewController",
+      "language": "swift",
+      "startTimeSeconds": 427,
+      "code": "extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {\n    public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {\n        var thumbTip: CGPoint?\n        var indexTip: CGPoint?\n\n        defer {\n            DispatchQueue.main.sync {\n                self.processPoints(thumbTip: thumbTip, indexTip: indexTip)\n            }\n        }\n\n        let handler = VNImageRequestHandler(cmSampleBuffer: sampleBuffer, orientation: .up, options: [:])\n        do {\n            // Perform VNDetectHumanHandPoseRequest\n            try handler.perform([handPoseRequest])\n            // Continue only when a hand was detected in the frame.\n            // Since we set the maximumHandCount property of the request to 1, there will be at most one observation.\n            guard let observation = handPoseRequest.results?.first as? VNRecognizedPointsObservation else {\n                return\n            }\n            // Get points for thumb and index finger.\n            let thumbPoints = try observation.recognizedPoints(forGroupKey: .handLandmarkRegionKeyThumb)\n            let indexFingerPoints = try observation.recognizedPoints(forGroupKey: .handLandmarkRegionKeyIndexFinger)\n            // Look for tip points.\n            guard let thumbTipPoint = thumbPoints[.handLandmarkKeyThumbTIP], let indexTipPoint = indexFingerPoints[.handLandmarkKeyIndexTIP] else {\n                return\n            }\n            // Ignore low confidence points.\n            guard thumbTipPoint.confidence > 0.3 && indexTipPoint.confidence > 0.3 else {\n                return\n            }\n            // Convert points from Vision coordinates to AVFoundation coordinates.\n            thumbTip = CGPoint(x: thumbTipPoint.location.x, y: 1 - thumbTipPoint.location.y)\n            indexTip = CGPoint(x: indexTipPoint.location.x, y: 1 - indexTipPoint.location.y)\n        } catch {\n            cameraFeedSession?.stopRunning()\n            let error = AppError.visionError(error: error)\n            DispatchQueue.main.async {\n                error.displayInViewController(self)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "HandPoseProcessPointsPair",
+      "language": "swift",
+      "startTimeSeconds": 509,
+      "code": "init(pinchMaxDistance: CGFloat = 40, evidenceCounterStateTrigger: Int = 3) {\n    self.pinchMaxDistance = pinchMaxDistance\n    self.evidenceCounterStateTrigger = evidenceCounterStateTrigger\n}\n\nfunc reset() {\n    state = .unknown\n    pinchEvidenceCounter = 0\n    apartEvidenceCounter = 0\n}\n\nfunc processPointsPair(_ pointsPair: PointsPair) {\n    lastProcessedPointsPair = pointsPair\n    let distance = pointsPair.indexTip.distance(from: pointsPair.thumbTip)\n    if distance < pinchMaxDistance {\n        // Keep accumulating evidence for pinch state.\n        pinchEvidenceCounter += 1\n        apartEvidenceCounter = 0\n        // Set new state based on evidence amount.\n        state = (pinchEvidenceCounter >= evidenceCounterStateTrigger) ? .pinched : .possiblePinch\n    } else {\n        // Keep accumulating evidence for apart state.\n        apartEvidenceCounter += 1\n        pinchEvidenceCounter = 0\n        // Set new state based on evidence amount.\n        state = (apartEvidenceCounter >= evidenceCounterStateTrigger) ? .apart : .possibleApart\n    }\n}"
+    },
+    {
+      "title": "HandPoseHandleGestureStateChange",
+      "language": "swift",
+      "startTimeSeconds": 565,
+      "code": "private func handleGestureStateChange(state: HandGestureProcessor.State) {\n    let pointsPair = gestureProcessor.lastProcessedPointsPair\n    var tipsColor: UIColor\n    switch state {\n    case .possiblePinch, .possibleApart:\n        // We are in one of the \"possible\": states, meaning there is not enough evidence yet to determine\n        // if we want to draw or not. For now, collect points in the evidence buffer, so we can add them\n        // to a drawing path when required.\n        evidenceBuffer.append(pointsPair)\n        tipsColor = .orange\n    case .pinched:\n        // We have enough evidence to draw. Draw the points collected in the evidence buffer, if any.\n        for bufferedPoints in evidenceBuffer {\n            updatePath(with: bufferedPoints, isLastPointsPair: false)\n        }\n        // Clear the evidence buffer.\n        evidenceBuffer.removeAll()\n        // Finally, draw current point\n        updatePath(with: pointsPair, isLastPointsPair: false)\n        tipsColor = .green\n    case .apart, .unknown:\n        // We have enough evidence to not draw. Discard any evidence buffer points.\n        evidenceBuffer.removeAll()\n        // And draw the last segment of our draw path.\n        updatePath(with: pointsPair, isLastPointsPair: true)\n        tipsColor = .red\n    }\n    cameraView.showPoints([pointsPair.thumbTip, pointsPair.indexTip], color: tipsColor)\n}"
+    },
+    {
+      "title": "HandPoseHandleGesture",
+      "language": "swift",
+      "startTimeSeconds": 615,
+      "code": "@IBAction func handleGesture(_ gesture: UITapGestureRecognizer) {\n    guard gesture.state == .ended else {\n        return\n    }\n    evidenceBuffer.removeAll()\n    drawPath.removeAllPoints()\n    drawOverlay.path = drawPath.cgPath\n}"
+    },
+    {
+      "title": "ActionVisionGameViewController",
+      "language": "swift",
+      "startTimeSeconds": 1248,
+      "code": "extension GameViewController: CameraViewControllerOutputDelegate {\n    func cameraViewController(_ controller: CameraViewController, didReceiveBuffer buffer: CMSampleBuffer, orientation: CGImagePropertyOrientation) {\n        let visionHandler = VNImageRequestHandler(cmSampleBuffer: buffer, orientation: orientation, options: [:])\n        if self.gameManager.stateMachine.currentState is GameManager.TrackThrowsState {\n            DispatchQueue.main.async {\n                // Get the frame of rendered view\n                let normalizedFrame = CGRect(x: 0, y: 0, width: 1, height: 1)\n                self.jointSegmentView.frame = controller.viewRectForVisionRect(normalizedFrame)\n                self.trajectoryView.frame = controller.viewRectForVisionRect(normalizedFrame)\n            }\n            // Perform the trajectory request in a separate dispatch queue\n            trajectoryQueue.async {\n                self.setUpDetectTrajectoriesRequest()\n                do {\n                    if let trajectoryRequest = self.detectTrajectoryRequest {\n                        try visionHandler.perform([trajectoryRequest])\n                    }\n                } catch {\n                    AppError.display(error, inViewController: self)\n                }\n            }\n        }\n        // Run bodypose request for additional GameConstants.maxPostReleasePoseObservations frames after the first trajectory observation is detected\n        if !(self.trajectoryView.inFlight && self.trajectoryInFlightPoseObservations >= GameConstants.maxTrajectoryInFlightPoseObservations) {\n            do {\n                try visionHandler.perform([detectPlayerRequest])\n                if let result = detectPlayerRequest.results?.first as? VNRecognizedPointsObservation {\n                    let box = humanBoundingBox(for: result)\n                    let boxView = playerBoundingBox\n                    DispatchQueue.main.async {\n                        let horizontalInset = CGFloat(-20.0)\n                        let verticalInset = CGFloat(-20.0)\n                        let viewRect = controller.viewRectForVisionRect(box).insetBy(dx: horizontalInset, dy: verticalInset)\n                        self.updateBoundingBox(boxView, withRect: viewRect)\n                        if !self.playerDetected && !boxView.isHidden {\n                            self.gameStatusLabel.alpha = 0\n                            self.resetTrajectoryRegions()\n                            self.gameManager.stateMachine.enter(GameManager.DetectedPlayerState.self)\n                        }\n                    }\n                }\n            } catch {\n                AppError.display(error, inViewController: self)\n            }\n        } else {\n            // Hide player bounding box\n            DispatchQueue.main.async {\n                if !self.playerBoundingBox.isHidden {\n                    self.playerBoundingBox.isHidden = true\n                    self.jointSegmentView.resetView()\n                }\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "ActionVisionHumanBoundingBox",
+      "language": "swift",
+      "startTimeSeconds": 1279,
+      "code": "func humanBoundingBox(for observation: VNRecognizedPointsObservation) -> CGRect {\n    var box = CGRect.zero\n    // Process body points only if the confidence is high\n    guard observation.confidence > 0.6 else {\n        return box\n    }\n    var normalizedBoundingBox = CGRect.null\n    guard let points = try? observation.recognizedPoints(forGroupKey: .all) else {\n        return box\n    }\n    for (_, point) in points {\n        // Only use point if human pose joint was detected reliably\n        guard point.confidence > 0.1 else { continue }\n        normalizedBoundingBox = normalizedBoundingBox.union(CGRect(origin: point.location, size: .zero))\n    }\n    if !normalizedBoundingBox.isNull {\n        box = normalizedBoundingBox\n    }\n    // Fetch body joints from the observation and overlay them on the player\n    DispatchQueue.main.async {\n        let joints = getBodyJointsFor(observation: observation)\n        self.jointSegmentView.joints = joints\n    }\n    // Store the body pose observation in playerStats when the game is in TrackThrowsState\n    // We will use these observations for action classification once the throw is complete\n    if gameManager.stateMachine.currentState is GameManager.TrackThrowsState {\n        playerStats.storeObservation(observation)\n        if trajectoryView.inFlight {\n            trajectoryInFlightPoseObservations += 1\n        }\n    }\n    return box\n}"
+    },
+    {
+      "title": "ActionVisionStoreObservation",
+      "language": "swift",
+      "startTimeSeconds": 1318,
+      "code": "mutating func storeObservation(_ observation: VNRecognizedPointsObservation) {\n    if poseObservations.count >= GameConstants.maxPoseObservations {\n        poseObservations.removeFirst()\n    }\n    poseObservations.append(observation)\n}"
+    },
+    {
+      "title": "ActionVisionGetLastThrowType",
+      "language": "swift",
+      "startTimeSeconds": 1341,
+      "code": "mutating func getLastThrowType() -> ThrowType {\n    let actionClassifier = PlayerActionClassifier().model\n    guard let poseMultiArray = prepareInputWithObservations(poseObservations) else {\n        return ThrowType.none\n    }\n    let input = PlayerActionClassifierInput(input: poseMultiArray)\n    guard let predictions = try? actionClassifier.prediction(from: input),\n        let output = predictions.featureValue(for: \"output\")?.multiArrayValue,\n            let outputBuffer = try? UnsafeBufferPointer<Float32>(output) else {\n        return ThrowType.none\n    }\n    let probabilities = Array(outputBuffer)\n    guard let maxConfidence = probabilities.prefix(3).max(), let maxIndex = probabilities.firstIndex(of: maxConfidence) else {\n        return ThrowType.none\n    }\n    let throwTypes = ThrowType.allCases\n    return throwTypes[maxIndex]\n}"
+    },
+    {
+      "title": "ActionVisionPrepareInputWithObservations",
+      "language": "swift",
+      "startTimeSeconds": 1362,
+      "code": "func prepareInputWithObservations(_ observations: [VNRecognizedPointsObservation]) -> MLMultiArray? {\n    let numAvailableFrames = observations.count\n    let observationsNeeded = 60\n    var multiArrayBuffer = [MLMultiArray]()\n\n    // swiftlint:disable identifier_name\n    for f in 0 ..< min(numAvailableFrames, observationsNeeded) {\n        let pose = observations[f]\n        do {\n            let oneFrameMultiArray = try pose.keypointsMultiArray()\n            multiArrayBuffer.append(oneFrameMultiArray)\n        } catch {\n            continue\n        }\n    }\n\n    // If poseWindow does not have enough frames (60) yet, we need to pad 0s\n    if numAvailableFrames < observationsNeeded {\n        for _ in 0 ..< (observationsNeeded - numAvailableFrames) {\n            do {\n                let oneFrameMultiArray = try MLMultiArray(shape: [1, 3, 18], dataType: .double)\n                try resetMultiArray(oneFrameMultiArray)\n                multiArrayBuffer.append(oneFrameMultiArray)\n            } catch {\n                continue\n            }\n        }\n    }\n    return MLMultiArray(concatenating: [MLMultiArray](multiArrayBuffer), axis: 0, dataType: MLMultiArrayDataType.double)\n}"
+    },
+    {
+      "title": "ActionVisionGetLastThrowType2",
+      "language": "swift",
+      "startTimeSeconds": 1399,
+      "code": "mutating func getLastThrowType() -> ThrowType {\n    let actionClassifier = PlayerActionClassifier().model\n    guard let poseMultiArray = prepareInputWithObservations(poseObservations) else {\n        return ThrowType.none\n    }\n    let input = PlayerActionClassifierInput(input: poseMultiArray)\n    guard let predictions = try? actionClassifier.prediction(from: input),\n        let output = predictions.featureValue(for: \"output\")?.multiArrayValue,\n            let outputBuffer = try? UnsafeBufferPointer<Float32>(output) else {\n        return ThrowType.none\n    }\n    let probabilities = Array(outputBuffer)\n    guard let maxConfidence = probabilities.prefix(3).max(), let maxIndex = probabilities.firstIndex(of: maxConfidence) else {\n        return ThrowType.none\n    }\n    let throwTypes = ThrowType.allCases\n    return throwTypes[maxIndex]\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Detecting Hand Poses with Vision",
+      "url": "https://developer.apple.com/documentation/Vision/detecting-hand-poses-with-vision",
+      "type": "samplecode",
+      "description": "Create a virtual drawing app by using Vision’s capability to detect hand poses.",
+      "sosumiURL": "https://sosumi.ai/documentation/Vision/detecting-hand-poses-with-vision",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Vision/detecting-hand-poses-with-vision.json"
+    },
+    {
+      "title": "Vision",
+      "url": "https://developer.apple.com/documentation/Vision",
+      "type": "documentation",
+      "description": "Analyze image and video content in your app using computer vision algorithms for object detection, text recognition, and image segmentation.",
+      "sosumiURL": "https://sosumi.ai/documentation/Vision",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Vision.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10653/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10653/metadata.json",
+    "readme": "sessions/wwdc2020/10653/README.md",
+    "transcript": "sessions/wwdc2020/10653/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10653/transcript.json"
+  }
+}

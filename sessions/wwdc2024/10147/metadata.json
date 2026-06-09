@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10147",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10147,
+  "title": "Elevate your tab and sidebar experience in iPadOS",
+  "description": "iPadOS 18 introduces a new navigation system that gives people the flexibility to choose between using a tab bar or sidebar. The newly redesigned tab bar provides more space for content and other functionality. Learn how to use SwiftUI and UIKit to enable customization features – like adding, removing and reordering tabs – to enable a more personal touch in your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10147",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10147",
+  "type": "Video",
+  "publishedAt": "2024-06-10T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "design",
+    "side bar",
+    "tab bar",
+    "tabs",
+    "zoom"
+  ],
+  "topics": [
+    "Design",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 946,
+  "hasTranscript": true,
+  "transcriptWordCount": 1888,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10147/4/4B3986F3-DBA0-4C52-8A2E-783346D6D1BA/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10147/4/4B3986F3-DBA0-4C52-8A2E-783346D6D1BA/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10147/4/4B3986F3-DBA0-4C52-8A2E-783346D6D1BA/downloads/wwdc2024-10147_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10147/4/4B3986F3-DBA0-4C52-8A2E-783346D6D1BA/downloads/wwdc2024-10147_hd.mp4",
+    "duration": 946
+  },
+  "codeSnippets": [
+    {
+      "title": "TabView updates in SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 267,
+      "code": "TabView {\n    Tab(\"Watch Now\", systemImage: \"play\") {\n        WatchNowView()\n    }\n    Tab(\"Library\", systemImage: \"books.vertical\") {\n        LibraryView()\n    }\n    // ...\n}"
+    },
+    {
+      "title": "UITabBarController updates in UIKIt",
+      "language": "swift",
+      "startTimeSeconds": 298,
+      "code": "tabBarController.tabs = [\n    UITab(title: \"Watch Now\", image: UIImage(systemName: \"play\"), identifier: \"Tabs.watchNow\") { _ in\n       WatchNowViewController()\n    },\n    UITab(title: \"Library\", image: UIImage(systemName: \"books.vertical\"), identifier: \"Tabs.library\") { _ in\n       LibraryViewController()\n    },\n    // ...\n]"
+    },
+    {
+      "title": "Search tab",
+      "language": "swift",
+      "startTimeSeconds": 358,
+      "code": "// SwiftUI\nTab(role: .search) {\n    SearchView()\n}\n\n// UIKit\nlet searchTab = UISearchTab {\n    SearchViewController()\n}"
+    },
+    {
+      "title": "Adding a sidebar in SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 401,
+      "code": "TabView {\n    Tab(\"Watch Now\", systemImage: \"play\") {\n        // ...\n    }\n    Tab(\"Library\", systemImage: \"books.vertical\") {\n        // ...\n    }\n    // ...\n    TabSection(\"Collections\") {\n        Tab(\"Cinematic Shots\", systemImage: \"list.and.film\") {\n            // ...\n        }\n        Tab(\"Forest Life\", systemImage: \"list.and.film\") {\n            // ...\n        }\n        // ...\n    }\n    TabSection(\"Animations\") {\n        // ...\n    }\n    Tab(role: .search) {\n        // ...\n    }\n}\n.tabViewStyle(.sidebarAdaptable)"
+    },
+    {
+      "title": "Adding a sidebar in UIKit",
+      "language": "swift",
+      "startTimeSeconds": 436,
+      "code": "let collectionsGroup = UITabGroup(\n    title: \"Collections\",\n    image: UIImage(systemName: \"folder\"),\n    identifier: \"Tabs.CollectionsGroup\"\n    children: self.collectionsTabs()) { _ in\n        // ...\n}\n\ntabBarController.mode = .tabSidebar\ntabBarController.tabs = [\n    UITab(title: \"Watch Now\", ...) { _ in\n        // ...\n    },\n    UITab(title: \"Library\", ...) { _ in\n        // ...\n    },\n    // ...\n    collectionsGroup,\n    UITabGroup(title: \"Animations\", ...) { _ in\n        // ...\n    },\n    UISearchTab { _ in\n        // ...\n    },\n]"
+    },
+    {
+      "title": "Updating a tab group in UIKit",
+      "language": "swift",
+      "startTimeSeconds": 455,
+      "code": "let collectionsGroup = UITabGroup(\n    title: \"Collections\",\n    image: UIImage(systemName: \"folder\"),\n    identifier: \"Tabs.CollectionsGroup\"\n    children: self.collectionsTabs()) { _ in\n        // ...\n}\n\n\nlet newCollection = UITab(...)\ncollectionsGroup.children.append(newCollection)"
+    },
+    {
+      "title": "Sidebar actions",
+      "language": "swift",
+      "startTimeSeconds": 465,
+      "code": "TabSection(...) {\n    // ...\n}\n.sectionActions {\n    Button(\"New Station\", ...) {\n        // action\n    }\n}\n\n// UIKit\n\nlet tabGroup = UITabGroup(...)\ntabGroup.sidebarActions = [\n    UIAction(title: \"New Station\", ...) { _ in\n        // action\n    },\n]"
+    },
+    {
+      "title": "Drop destinations in SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 492,
+      "code": "Tab(collection.name, image: collection.image) {\n    CollectionDetailView(collection)\n}\n.dropDestination(for: Photo.self) { photos in\n    // Add 'photos' to the specified collection\n}"
+    },
+    {
+      "title": "Drop destinations in UIKit",
+      "language": "swift",
+      "startTimeSeconds": 504,
+      "code": "func tabBarController(\n    _ tabBarController: UITabBarController,\n    tab: UITab, operationForAcceptingItemsFrom dropSession: any UIDropSession\n) -> UIDropOperation {\n    session.canLoadObjects(ofClass: Photo.self) ? .copy : .cancel\n}\n\nfunc tabBarController(\n    _ tabBarController: UITabBarController,\n    tab: UITab, acceptItemsFrom dropSession: any UIDropSession) {\n    session.loadObjects(ofClass: Photo.self) { photos in\n        // Add 'photos' to the specified collection\n    }\n}"
+    },
+    {
+      "title": "TabView customization in SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 645,
+      "code": "@AppStorage(\"MyTabViewCustomization\")\nprivate var customization: TabViewCustomization\n\nTabView {\n    Tab(\"Watch Now\", systemImage: \"play\", value: .watchNow) {\n        // ...\n    }\n    .customizationID(\"Tab.watchNow\")\n    // ...\n    TabSection(\"Collections\") {\n        ForEach(MyCollectionsTab.allCases) { tab in\n            Tab(...) {\n                // ...\n            }\n            .customizationID(tab.customizationID)\n        }\n    }\n    .customizationID(\"Tab.collections\")\n    // ...\n}\n.tabViewCustomization($customization)"
+    },
+    {
+      "title": "Customization behavior and visibility in SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 700,
+      "code": "Tab(\"Watch Now\", systemImage: \"play\", value: .watchNow) {\n    // ...\n}\n.customizationBehavior(.disabled, for: .sidebar, .tabBar)\n\n\nTab(\"Optional Tab\", ...) {\n    // ...\n}\n.customizationID(\"Tab.example.optional\")\n.defaultVisibility(.hidden, for: .tabBar)"
+    },
+    {
+      "title": "Tab customization in UIKit",
+      "language": "swift",
+      "startTimeSeconds": 758,
+      "code": "let myTab = UITab(...)\nmyTab.allowsHiding = true\nprint(myTab.isHidden)\n\n\n// .default, .optional, .movable, .pinned, .fixed, .sidebarOnly\nmyTab.preferredPlacement = .fixed\n\n\nlet myTabGroup = UITabGroup(...)\nmyTabGroup.allowsReordering = true\nmyTabGroup.displayOrderIdentifiers = [...]"
+    },
+    {
+      "title": "Observing customization changes in UIKit",
+      "language": "swift",
+      "startTimeSeconds": 759,
+      "code": "func tabBarController(_ tabBarController: UITabBarController, visibilityDidChangeFor tabs: [UITab]) {\n    // Read 'tab.isHidden' for the updated visibility.\n}\n\nfunc tabBarController(_ tabBarController: UITabBarController, displayOrderDidChangeFor group: UITabGroup) {\n    // Read 'group.displayOrderIdentifiers' for the updated order.\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Enhancing your app’s content with tab navigation",
+      "url": "https://developer.apple.com/documentation/SwiftUI/Enhancing-your-app-content-with-tab-navigation",
+      "type": "samplecode",
+      "description": "Keep your app content front and center while providing quick access to navigation using the tab bar.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/Enhancing-your-app-content-with-tab-navigation",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/Enhancing-your-app-content-with-tab-navigation.json"
+    },
+    {
+      "title": "Elevating your iPad app with a tab bar and sidebar",
+      "url": "https://developer.apple.com/documentation/UIKit/elevating-your-ipad-app-with-a-tab-bar-and-sidebar",
+      "type": "documentation",
+      "description": "Provide a compact, ergonomic tab bar for quick access to key parts of your app, and a sidebar for in-depth navigation.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/elevating-your-ipad-app-with-a-tab-bar-and-sidebar",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/elevating-your-ipad-app-with-a-tab-bar-and-sidebar.json"
+    },
+    {
+      "title": "Forum: UI Frameworks",
+      "url": "https://developer.apple.com/forums/topics/ui-frameworks?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/ui-frameworks?cid=vf-a-0010"
+    },
+    {
+      "title": "Destination Video",
+      "url": "https://developer.apple.com/documentation/visionOS/destination-video",
+      "type": "samplecode",
+      "description": "Leverage SwiftUI to build an immersive media experience in a multiplatform app.",
+      "sosumiURL": "https://sosumi.ai/documentation/visionOS/destination-video",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/visionOS/destination-video.json"
+    }
+  ],
+  "path": "sessions/wwdc2024/10147/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10147/metadata.json",
+    "readme": "sessions/wwdc2024/10147/README.md",
+    "transcript": "sessions/wwdc2024/10147/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10147/transcript.json"
+  }
+}

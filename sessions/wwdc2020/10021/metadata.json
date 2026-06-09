@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10021",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10021,
+  "title": "Build Metal-based Core Image kernels with Xcode",
+  "description": "Learn how to integrate and load Core Image kernels written in the Metal Shading Language into your application, and discover how you can apply these image filters to create unique effects. Explore how to use Xcode rules and naming conventions for Core Image kernels written in Metal Shading Language. We’ll explain how to best use Core Image APIs effectively and optimally with Metal and the Metal Shading Language.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10021",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10021",
+  "type": "Video",
+  "publishedAt": "2020-06-23T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "coreimage",
+    "graphics",
+    "image processing",
+    "metal",
+    "performance",
+    "video",
+    "xcode"
+  ],
+  "topics": [
+    "Audio & Video",
+    "Developer Tools",
+    "Photos & Camera",
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 372,
+  "hasTranscript": true,
+  "transcriptWordCount": 846,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10021/7/91A7268C-8211-46D3-B08E-9F554CE138A1/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10021/7/91A7268C-8211-46D3-B08E-9F554CE138A1/wwdc2020_10021_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10021/7/91A7268C-8211-46D3-B08E-9F554CE138A1/wwdc2020_10021_hd.mp4",
+    "duration": 372
+  },
+  "codeSnippets": [
+    {
+      "title": "Put your kernels in .ci.metal sources",
+      "language": "swift",
+      "startTimeSeconds": 188,
+      "code": "// MyKernels.ci.metal\n#include <CoreImage/CoreImage.h> // includes CIKernelMetalLib.h\nusing namespace metal;\n\nextern \"C\" float4 HDRZebra (coreimage::sample_t s, float time, coreimage::destination dest) \n{\n\tfloat diagLine = dest.coord().x + dest.coord().y;\n\tfloat zebra = fract(diagLine/20.0 + time*2.0);\n\tif ((zebra > 0.5) && (s.r > 1 || s.g > 1 || s.b > 1))\n\t\treturn float4(2.0, 0.0, 0.0, 1.0);\n\treturn s;\n}"
+    },
+    {
+      "title": "Loading your kernel and applying it to create a new image",
+      "language": "swift",
+      "startTimeSeconds": 298,
+      "code": "class HDRZebraFilter: CIFilter {\n    var inputImage: CIImage?\n\tvar inputTime: Float = 0.0\n\n    static var kernel: CIColorKernel = { () -> CIColorKernel in \n\t    let url = Bundle.main.url(forResource: \"MyKernels\", \n                                withExtension: \"ci.metallib\")!\n\t\tlet data = try! Data(contentsOf: url)\n\t\treturn try! CIColorKernel(functionName: \"HDRzebra\",                            fromMetalLibraryData: data)\n\t}()\n\n  \toverride var outputImage : CIImage? {\n\t\tget {\n\t\t\tguard let input = inputImage else {return nil}\n\t\t\treturn HDRZebraFilter.kernel.apply(extent: input.extent, \n\t\t\t\t\t\t\t\t\t\t\t arguments: [input, inputTime])\n\t\t}\n\t}\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Core Image",
+      "url": "https://developer.apple.com/documentation/CoreImage",
+      "type": "documentation",
+      "description": "Use built-in or custom filters to process still and video images.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreImage",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreImage.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10021/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10021/metadata.json",
+    "readme": "sessions/wwdc2020/10021/README.md",
+    "transcript": "sessions/wwdc2020/10021/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10021/transcript.json"
+  }
+}

@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10104",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10104,
+  "title": "Build a spatial drawing app with RealityKit",
+  "description": "Harness the power of RealityKit through the process of building a spatial drawing app. As you create an eye-catching spatial experience that integrates RealityKit with ARKit and SwiftUI, you’ll explore how resources work in RealityKit and how to use features like low-level mesh and texture APIs to achieve fast updates of the users’ brush strokes.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10104",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10104",
+  "type": "Video",
+  "publishedAt": "2024-06-11T08:00:00-07:00",
+  "platforms": [
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "3d text",
+    "anchor entity",
+    "anti aliasing",
+    "audio",
+    "blend modes",
+    "cross platform",
+    "gpu",
+    "hand tracking",
+    "ios",
+    "low level mesh",
+    "low level texture",
+    "macos",
+    "mesh extrusion",
+    "metal",
+    "reality composer pro",
+    "realitykit",
+    "rendering",
+    "spatial tracking",
+    "visionos"
+  ],
+  "topics": [
+    "Developer Tools",
+    "Graphics & Games",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 1945,
+  "hasTranscript": true,
+  "transcriptWordCount": 4420,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10104/3/818182EE-A12C-4B8F-A02B-93B2C730BFF0/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10104/3/818182EE-A12C-4B8F-A02B-93B2C730BFF0/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10104/3/818182EE-A12C-4B8F-A02B-93B2C730BFF0/downloads/wwdc2024-10104_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10104/3/818182EE-A12C-4B8F-A02B-93B2C730BFF0/downloads/wwdc2024-10104_hd.mp4",
+    "duration": 1945
+  },
+  "codeSnippets": [
+    {
+      "title": "Using SpatialTrackingSession",
+      "language": "swift",
+      "startTimeSeconds": 258,
+      "code": "// Retain the SpatialTrackingSession while your app needs access\n\nlet session = SpatialTrackingSession()\n\n// Declare needed tracking capabilities \nlet configuration = SpatialTrackingSession.Configuration(tracking: [.hand])\n\n// Request authorization for spatial tracking\nlet unapprovedCapabilities = await session.run(configuration)\n\nif let unapprovedCapabilities, unapprovedCapabilities.anchor.contains(.hand) {\n    // User has rejected hand data for your app.\n    // AnchorEntities will continue to remain anchored and update visually\n    // However, AnchorEntity.transform will not receive updates\n} else {\n    // User has approved hand data for your app.\n    // AnchorEntity.transform will report hand anchor pose\n}"
+    },
+    {
+      "title": "Use MeshResource extrusion",
+      "language": "swift",
+      "startTimeSeconds": 427,
+      "code": "// Use MeshResource(extruding:) to generate the canvas edge\n\nlet path = SwiftUI.Path { path in\n    // Generate two concentric circles as a SwiftUI.Path\n    path.addArc(center: .zero, radius: outerRadius,\n        startAngle: .degrees(0), endAngle: .degrees(360),\n        clockwise: true)\n    path.addArc(center: .zero, radius: innerRadius,\n        startAngle: .degrees(0), endAngle: .degrees(360),\n        clockwise: true)\n}.normalized(eoFill: true)\nvar options = MeshResource.ShapeExtrusionOptions()\noptions.boundaryResolution \n    = .uniformSegmentsPerSpan(segmentCount: 64)\noptions.extrusionMethod = .linear(depth: extrusionDepth)\n\nreturn try MeshResource(extruding: path, \n                        extrusionOptions: extrusionOptions)"
+    },
+    {
+      "title": "Highlight HoverEffectComponent",
+      "language": "swift",
+      "startTimeSeconds": 573,
+      "code": "// Use HoverEffectComponent with .highlight\n\nlet placementEntity: Entity = // ...\n\nlet hover = HoverEffectComponent(\n    .highlight(.init(\n        color: UIColor(/* ... */),\n        strength: 5.0)\n    )\n)\n\nplacementEntity.components.set(hover)"
+    },
+    {
+      "title": "Using Blend Modes",
+      "language": "swift",
+      "startTimeSeconds": 594,
+      "code": "// Create an UnlitMaterial with Additive Blend Mode\n\nvar descriptor = UnlitMaterial.Program.Descriptor()\ndescriptor.blendMode = .add\n\nlet prog = await UnlitMaterial.Program(descriptor: descriptor)\nvar material = UnlitMaterial(program: prog)\n\nmaterial.color \n    = UnlitMaterial.BaseColor(tint: UIColor(/* ... */))"
+    },
+    {
+      "title": "Shader based hover effects",
+      "language": "swift",
+      "startTimeSeconds": 825,
+      "code": "// Use shader-based hover effects\n\nlet hoverEffectComponent = HoverEffectComponent(.shader(.default))\nentity.components.set(hoverEffectComponent)\n\nlet material = try await ShaderGraphMaterial(named: \"/Root/SolidPresetBrushMaterial\",\n                                             from: \"PresetBrushMaterial\",\n                                             in: realityKitContentBundle)\n\nentity.components.set(ModelComponent(mesh: /* ... */, materials: [material]))"
+    },
+    {
+      "title": "Defining a vertex buffer struct for the solid brush",
+      "language": "swift",
+      "startTimeSeconds": 1016,
+      "code": "struct SolidBrushVertex {\n    packed_float3 position;\n    packed_float3 normal;\n    packed_float3 bitangent;\n    packed_float2 materialProperties;\n    float curveDistance;\n    packed_half3 color;\n};"
+    },
+    {
+      "title": "Defining LowLevelMesh Attributes for solid brush",
+      "language": "swift",
+      "startTimeSeconds": 1167,
+      "code": "extension SolidBrushVertex {\n    static var vertexAttributes: [LowLevelMesh.Attribute] {\n        typealias Attribute = LowLevelMesh.Attribute\n        return [\n            Attribute(semantic: .position, format: MTLVertexFormat.float3, layoutIndex: 0,\n                      offset: MemoryLayout.offset(of: \\Self.position)!),\n            Attribute(semantic: .normal, format: MTLVertexFormat.float3, layoutIndex: 0,\n                      offset: MemoryLayout.offset(of: \\Self.normal)!),\n            Attribute(semantic: .bitangent, format: MTLVertexFormat.float3, layoutIndex: 0,\n                      offset: MemoryLayout.offset(of: \\Self.bitangent)!),\n            Attribute(semantic: .color, format: MTLVertexFormat.half3, layoutIndex: 0,\n                      offset: MemoryLayout.offset(of: \\Self.color)!),\n            Attribute(semantic: .uv1, format: MTLVertexFormat.float, layoutIndex: 0,\n                      offset: MemoryLayout.offset(of: \\Self.curveDistance)!),\n            Attribute(semantic: .uv3, format: MTLVertexFormat.float2, layoutIndex: 0,\n                      offset: MemoryLayout.offset(of: \\Self.materialProperties)!)\n        ]\n    }\n}"
+    },
+    {
+      "title": "Make LowLevelMesh",
+      "language": "swift",
+      "startTimeSeconds": 1274,
+      "code": "private static func makeLowLevelMesh(vertexBufferSize: Int, indexBufferSize: Int, \n                                     meshBounds: BoundingBox) throws -> LowLevelMesh\n{\n    var descriptor = LowLevelMesh.Descriptor() // Similar to MTLVertexDescriptor\n\n    descriptor.vertexCapacity = vertexBufferSize\n    descriptor.indexCapacity = indexBufferSize\n    descriptor.vertexAttributes = SolidBrushVertex.vertexAttributes\n\n    let stride = MemoryLayout<SolidBrushVertex>.stride\n    descriptor.vertexLayouts = [LowLevelMesh.Layout(bufferIndex: 0, \n                                                    bufferOffset: 0, bufferStride: stride)]\n\n    let mesh = try LowLevelMesh(descriptor: descriptor)\n\n    mesh.parts.append(LowLevelMesh.Part(indexOffset: 0, indexCount: indexBufferSize,\n                                        topology: .triangleStrip, materialIndex: 0,\n                                        bounds: meshBounds))\n    return mesh\n}"
+    },
+    {
+      "title": "Creating a MeshResource",
+      "language": "swift",
+      "startTimeSeconds": 1348,
+      "code": "let mesh: LowLevelMesh\n\nlet resource = try MeshResource(from: mesh)\n\nentity.components[ModelComponent.self] = ModelComponent(mesh: resource, materials: [...])"
+    },
+    {
+      "title": "Updating vertex data of LowLevelMesh using withUnsafeMutableBytes API",
+      "language": "swift",
+      "startTimeSeconds": 1357,
+      "code": "let mesh: LowLevelMesh\n\nmesh.withUnsafeMutableBytes(bufferIndex: 0) { buffer in\n    let vertices: UnsafeMutableBufferPointer<SolidBrushVertex>\n        = buffer.bindMemory(to: SolidBrushVertex.self)\n\n    // Write to vertex buffer `vertices`\n}"
+    },
+    {
+      "title": "Updating LowLevelMesh index buffers using withUnsafeMutableBytes API",
+      "language": "swift",
+      "startTimeSeconds": 1387,
+      "code": "let mesh: LowLevelMesh\n\nmesh.withUnsafeMutableIndices { buffer in\n    let indices: UnsafeMutableBufferPointer<UInt32>\n        = buffer.bindMemory(to: UInt32.self)\n\n    // Write to index buffer `indices`\n}"
+    },
+    {
+      "title": "Creating a particle brush using LowLevelMesh",
+      "language": "swift",
+      "startTimeSeconds": 1438,
+      "code": "struct SparkleBrushAttributes {\n    packed_float3 position;\n    packed_half3 color;\n    float curveDistance;\n    float size;\n};\n\n// Describes a particle in the simulation\nstruct SparkleBrushParticle {\n    struct SparkleBrushAttributes attributes;\n    packed_float3 velocity;\n};\n\n// One quad (4 vertices) is created per particle\nstruct SparkleBrushVertex {\n    struct SparkleBrushAttributes attributes;\n    simd_half2 uv;\n};"
+    },
+    {
+      "title": "Defining LowLevelMesh Attributes for sparkle brush",
+      "language": "swift",
+      "startTimeSeconds": 1498,
+      "code": "extension SparkleBrushVertex {\n    static var vertexAttributes: [LowLevelMesh.Attribute] {\n        typealias Attribute = LowLevelMesh.Attribute\n        return [\n            Attribute(semantic: .position, format: .float3, layoutIndex: 0,\n                      offset: MemoryLayout.offset(of: \\Self.attributes.position)!),\n\n            Attribute(semantic: .color, format: .half3, layoutIndex: 0,\n                      offset: MemoryLayout.offset(of: \\Self.attributes.color)!),\n\n            Attribute(semantic: .uv0, format: .half2, layoutIndex: 0,\n                      offset: MemoryLayout.offset(of: \\Self.uv)!),\n\n            Attribute(semantic: .uv1, format: .float, layoutIndex: 0,\n                      offset: MemoryLayout.offset(of: \\Self.attributes.curveDistance)!),\n\n            Attribute(semantic: .uv2, format: .float, layoutIndex: 0,\n                      offset: MemoryLayout.offset(of: \\Self.attributes.size)!)\n        ]\n    }\n}"
+    },
+    {
+      "title": "Populate LowLevelMesh on GPU",
+      "language": "swift",
+      "startTimeSeconds": 1528,
+      "code": "let inputParticleBuffer: MTLBuffer\nlet lowLevelMesh: LowLevelMesh\n\nlet commandBuffer: MTLCommandBuffer\nlet encoder: MTLComputeCommandEncoder\nlet populatePipeline: MTLComputePipelineState\n\ncommandBuffer.enqueue()\nencoder.setComputePipelineState(populatePipeline)\n\nlet vertexBuffer: MTLBuffer = lowLevelMesh.replace(bufferIndex: 0, using: commandBuffer)\n\nencoder.setBuffer(inputParticleBuffer, offset: 0, index: 0)\nencoder.setBuffer(vertexBuffer, offset: 0, index: 1)\nencoder.dispatchThreadgroups(/* ... */)\n\n// ...\nencoder.endEncoding()\ncommandBuffer.commit()"
+    },
+    {
+      "title": "Use MeshResource extrusion to generate 3D text",
+      "language": "swift",
+      "startTimeSeconds": 1621,
+      "code": "// Use MeshResource(extruding:) to generate 3D text\n\nvar textString = AttributedString(\"RealityKit\")\ntextString.font = .systemFont(ofSize: 8.0)\n\nlet secondLineFont = UIFont(name: \"ArialRoundedMTBold\", \n                            size: 14.0)\nlet attributes = AttributeContainer([.font: secondLineFont])\n\ntextString.append(AttributedString(\"\\nDrawing App\", \n                                   attributes: attributes))\n\nlet paragraphStyle = NSMutableParagraphStyle()\nparagraphStyle.alignment = .center\nlet centerAttributes \n    = AttributeContainer([.paragraphStyle: paragraphStyle])\ntextString.mergeAttributes(centerAttributes)\n\nvar extrusionOptions = MeshResource.ShapeExtrusionOptions()\nextrusionOptions.extrusionMethod = .linear(depth: 2)\nextrusionOptions.materialAssignment\n        = .init(front: 0, back: 0, extrusion: 1,\n                frontChamfer: 1, backChamfer: 1)\nextrusionOptions.chamferRadius = 0.1\n\nlet textMesh = try await MeshResource(extruding: textString\n                          extrusionOptions: extrusionOptions)"
+    },
+    {
+      "title": "Use MeshResource extrusion to turn a SwiftUI Path into 3D mesh",
+      "language": "swift",
+      "startTimeSeconds": 1705,
+      "code": "// Use MeshResource(extruding:) to bring SwiftUI.Path to 3D\n\nlet graphic = SwiftUI.Path { path in\n    path.move(to: CGPoint(x: -0.7, y: 0.135413))\n    path.addCurve(to: CGPoint(x: -0.7, y: 0.042066),\n                  control1: CGPoint(x: -0.85, y: 0.067707),\n                  control2: CGPoint(x: -0.85, y: 0.021033))\n    // ...\n}\n\nvar options = MeshResource.ShapeExtrusionOptions()\n// ...\n\nlet graphicMesh = try await MeshResource(extruding: graphic\n                          extrusionOptions: options)"
+    },
+    {
+      "title": "Defining a LowLevelTexture",
+      "language": "swift",
+      "startTimeSeconds": 1784,
+      "code": "let descriptor = LowLevelTexture.Descriptor(pixelFormat: .rg16Float,\n                                            width: textureResolution, \n                                            height: textureResolution,\n                                            textureUsage: [.shaderWrite, .shaderRead])\n\nlet lowLevelTexture = try LowLevelTexture(descriptor: descriptor)\nvar textureResource = try TextureResource(from: lowLevelTexture)\n\nvar material = UnlitMaterial()\nmaterial.color = .init(tint: .white, texture: .init(textureResource))"
+    },
+    {
+      "title": "Update a LowLevelTexture on the GPU",
+      "language": "swift",
+      "startTimeSeconds": 1827,
+      "code": "let lowLevelTexture: LowLevelTexture\n\nlet commandBuffer: MTLCommandBuffer\nlet encoder: MTLComputeCommandEncoder\nlet computePipeline: MTLComputePipelineState\n\ncommandBuffer.enqueue()\nencoder.setComputePipelineState(computePipeline)\n\nlet writeTexture: MTLTexture = lowLevelTexture.replace(using: commandBuffer)\nencoder.setTexture(writeTexture, index: 0)\n\n// ...\n\nencoder.dispatchThreadgroups(/* ... */)\nencoder.endEncoding()\ncommandBuffer.commit()"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Drawing paths and shapes",
+      "url": "https://developer.apple.com/tutorials/SwiftUI/drawing-paths-and-shapes",
+      "type": "samplecode",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/tutorials/SwiftUI/drawing-paths-and-shapes"
+    },
+    {
+      "title": "Creating a spatial drawing app with RealityKit",
+      "url": "https://developer.apple.com/documentation/RealityKit/creating-a-spatial-drawing-app-with-realitykit",
+      "type": "samplecode",
+      "description": "Use low-level mesh and texture APIs to achieve fast updates to a person’s brush",
+      "sosumiURL": "https://sosumi.ai/documentation/RealityKit/creating-a-spatial-drawing-app-with-realitykit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/RealityKit/creating-a-spatial-drawing-app-with-realitykit.json"
+    },
+    {
+      "title": "Forum: Spatial Computing",
+      "url": "https://developer.apple.com/forums/topics/spatial-computing?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/spatial-computing?cid=vf-a-0010"
+    }
+  ],
+  "path": "sessions/wwdc2024/10104/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10104/metadata.json",
+    "readme": "sessions/wwdc2024/10104/README.md",
+    "transcript": "sessions/wwdc2024/10104/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10104/transcript.json"
+  }
+}

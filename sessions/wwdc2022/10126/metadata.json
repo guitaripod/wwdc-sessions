@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10126",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10126,
+  "title": "Discover ARKit 6",
+  "description": "Discover how you can build more refined and powerful augmented reality apps with ARKit 6. We'll explore how you can create AR experiences rendered in 4K HDR and take you through camera settings customizations for your app. We'll also share how you can export high-resolution still images from an ARKit session, take advantage of Plane Estimation and Motion Capture, and add AR Location Anchors in new regions.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10126",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10126",
+  "type": "Video",
+  "publishedAt": "2022-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "ar",
+    "arkit",
+    "augmented reality"
+  ],
+  "topics": [
+    "Essentials",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 1167,
+  "hasTranscript": true,
+  "transcriptWordCount": 2654,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10126/4/042EC236-E96E-4969-A68A-1D379C84D647/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10126/4/042EC236-E96E-4969-A68A-1D379C84D647/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10126/4/042EC236-E96E-4969-A68A-1D379C84D647/downloads/wwdc2022-10126_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10126/4/042EC236-E96E-4969-A68A-1D379C84D647/downloads/wwdc2022-10126_hd.mp4",
+    "duration": 1167
+  },
+  "codeSnippets": [
+    {
+      "title": "HighRes Capturing",
+      "language": "swift",
+      "startTimeSeconds": 300,
+      "code": "if let hiResCaptureVideoFormat = ARWorldTrackingConfiguration.recommendedVideoFormatForHighResolutionFrameCapturing {\n    // Assign the video format that supports hi-res capturing.\nconfig.videoFormat = hiResCaptureVideoFormat\n}\n// Run the session.\nsession.run(config)"
+    },
+    {
+      "title": "highRes background photos",
+      "language": "swift",
+      "startTimeSeconds": 655,
+      "code": "session.captureHighResolutionFrame { (frame, error) in\n   if let frame = frame {\n      saveHiResImage(frame.capturedImage)\n   }\n}"
+    },
+    {
+      "title": "HDR support",
+      "language": "swift",
+      "startTimeSeconds": 720,
+      "code": "if (config.videoFormat.isVideoHDRSupported) {\n    config.videoHDRAllowed = true\n}\nsession.run(config)"
+    },
+    {
+      "title": "AVCapture Session",
+      "language": "swift",
+      "startTimeSeconds": 755,
+      "code": "if let device = ARWorldTrackingConfiguration.configurableCaptureDeviceForPrimaryCamera {\n   do {\n      try device.lockForConfiguration()\n      // configure AVCaptureDevice settings\n      …\n      device.unlockForConfiguration()\n   } catch {\n      // error handling\n      …\n   }\n}"
+    },
+    {
+      "title": "plane anchors",
+      "language": "swift",
+      "startTimeSeconds": 960,
+      "code": "// Create a model entity sized to the plane's extent.\nlet planeEntity = ModelEntity(\n    mesh: .generatePlane (\n        width: planeExtent.width, \n        depth: planeExtent.height),\n    materials: [material])\n\n// Orient the entity.\nplaneEntity.transform = Transform(\n    pitch: 0, \n    yaw: planeExtent.rotationOnYAxis, \n    roll: 0)\n\n// Center the entity on the plane.\nplaneEntity.transform.translation = planeAnchor.center"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Augmented reality",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/augmented-reality",
+      "type": "documentation",
+      "description": "Human Interface Guidelines: Augmented reality",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/augmented-reality"
+    },
+    {
+      "title": "Explore the ARKit Developer Forums",
+      "url": "https://developer.apple.com/forums/tags/arkit",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/tags/arkit"
+    },
+    {
+      "title": "Tracking geographic locations in AR",
+      "url": "https://developer.apple.com/documentation/ARKit/tracking-geographic-locations-in-ar",
+      "type": "samplecode",
+      "description": "Track specific geographic areas of interest and render them in an AR experience.",
+      "sosumiURL": "https://sosumi.ai/documentation/ARKit/tracking-geographic-locations-in-ar",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ARKit/tracking-geographic-locations-in-ar.json"
+    },
+    {
+      "title": "ARKit",
+      "url": "https://developer.apple.com/documentation/ARKit",
+      "type": "documentation",
+      "description": "Integrate hardware sensing features to produce augmented reality apps and games.",
+      "sosumiURL": "https://sosumi.ai/documentation/ARKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ARKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10126/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10126/metadata.json",
+    "readme": "sessions/wwdc2022/10126/README.md",
+    "transcript": "sessions/wwdc2022/10126/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10126/transcript.json"
+  }
+}

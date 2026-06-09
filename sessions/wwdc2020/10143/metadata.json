@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10143",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10143,
+  "title": "What's new in Mac Catalyst",
+  "description": "Discover the latest updates to Mac Catalyst and find out how you can bring your iPadOS app to the Mac. Explore enhancements to the application lifecycle, integrate new extensions into your apps, and learn how the new look and feel of macOS impacts Mac Catalyst apps. Get a taste of the new Optimized for Mac mode. And learn more about all the improvements — including framework availability and beautiful new designs — that make bringing your iPad app to the Mac easier than ever.\n\nTo get the most out of this session, you should have a basic familiarity with Mac Catalyst. We recommend you watch “Introducing iPad Apps for Mac” to acquaint yourself. \n\nFor more on refining your Mac Catalyst app, consider watching “Optimize the interface of your Mac Catalyst app”.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10143",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10143",
+  "type": "Video",
+  "publishedAt": "2020-06-23T10:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [
+    "accent color",
+    "app lifecycle",
+    "color picker",
+    "color well",
+    "drag reordering",
+    "extensions",
+    "focus engine",
+    "ipad apps on mac",
+    "nscursor",
+    "optimized for mac",
+    "photo editing extensions",
+    "separator",
+    "sfsymbol",
+    "sf symbols",
+    "sidebar",
+    "toolbar",
+    "uidatepicker",
+    "uikit on mac",
+    "uisplitviewcontroller",
+    "uititlebartoolbarstyles",
+    "universal purchase"
+  ],
+  "topics": [
+    "App Store, Distribution & Marketing",
+    "Developer Tools",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 927,
+  "hasTranscript": true,
+  "transcriptWordCount": 2756,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10143/4/EBC484F8-F255-4FC2-8604-1EA888EF5523/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10143/4/EBC484F8-F255-4FC2-8604-1EA888EF5523/wwdc2020_10143_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10143/4/EBC484F8-F255-4FC2-8604-1EA888EF5523/wwdc2020_10143_hd.mp4",
+    "duration": 927
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Offering Universal Purchase",
+      "url": "https://developer.apple.com/support/universal-purchase",
+      "type": "documentation",
+      "description": "Distribute iOS, iPadOS, watchOS, macOS, and tvOS versions of your app as a universal purchase to let customers easily enjoy your app and in‑app purchases across platforms. They’ll only need to purchase once on the App Store.",
+      "sosumiURL": "https://sosumi.ai/support/universal-purchase"
+    }
+  ],
+  "path": "sessions/wwdc2020/10143/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10143/metadata.json",
+    "readme": "sessions/wwdc2020/10143/README.md",
+    "transcript": "sessions/wwdc2020/10143/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10143/transcript.json"
+  }
+}

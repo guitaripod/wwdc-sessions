@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/catalog.schema.json",
+  "title": "WWDC Sessions Catalog",
+  "description": "Master machine index of the WWDC sessions knowledge base. The entrypoint for agents.",
+  "type": "object",
+  "required": ["schemaVersion", "generatedAt", "source", "counts", "links", "events", "sessions"],
+  "properties": {
+    "schemaVersion": { "type": "integer" },
+    "generatedAt": { "type": "string", "format": "date-time", "description": "When this build ran (UTC)." },
+    "sourceUpdated": { "type": ["string", "null"], "description": "Apple feed's own updated timestamp." },
+    "source": { "type": "string" },
+    "license": { "type": "string" },
+    "counts": {
+      "type": "object",
+      "required": ["events", "sessions", "transcripts"],
+      "properties": {
+        "events": { "type": "integer" },
+        "sessions": { "type": "integer" },
+        "transcripts": { "type": "integer" }
+      }
+    },
+    "links": {
+      "type": "object",
+      "description": "Relative paths to the other aggregate files and schemas.",
+      "additionalProperties": { "type": "string" }
+    },
+    "events": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/eventSummary" }
+    },
+    "sessions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/sessionSummary" }
+    }
+  },
+  "$defs": {
+    "eventSummary": {
+      "type": "object",
+      "required": ["id", "sessionCount", "transcriptCount", "index"],
+      "properties": {
+        "id": { "type": "string", "examples": ["wwdc2026", "tech-talks"] },
+        "name": { "type": ["string", "null"] },
+        "year": { "type": ["integer", "null"] },
+        "startTime": { "type": ["string", "null"] },
+        "sessionCount": { "type": "integer" },
+        "transcriptCount": { "type": "integer" },
+        "index": { "type": "string", "description": "Relative path to the per-event index." }
+      }
+    },
+    "sessionSummary": {
+      "type": "object",
+      "description": "Lightweight session record for client-side filtering. Full detail lives at `path`/metadata.json.",
+      "required": ["id", "event", "title", "url", "hasTranscript", "path"],
+      "properties": {
+        "id": { "type": "string", "description": "Apple's stable id, e.g. wwdc2026-298.", "examples": ["wwdc2026-298"] },
+        "event": { "type": "string", "examples": ["wwdc2026"] },
+        "year": { "type": ["integer", "null"] },
+        "eventContentId": { "type": ["integer", "null"], "description": "Apple's numeric session id; the repo path leaf." },
+        "title": { "type": "string" },
+        "type": { "type": ["string", "null"], "examples": ["Video", "Special Event", "Article"] },
+        "url": { "type": "string", "format": "uri" },
+        "sosumiURL": { "type": ["string", "null"], "format": "uri" },
+        "duration": { "type": ["integer", "null"], "description": "Seconds." },
+        "publishedAt": { "type": ["string", "null"] },
+        "platforms": { "type": "array", "items": { "type": "string" } },
+        "primaryTopic": { "type": ["string", "null"] },
+        "topics": { "type": "array", "items": { "type": "string" } },
+        "keywords": { "type": "array", "items": { "type": "string" } },
+        "hasTranscript": { "type": "boolean" },
+        "transcriptWordCount": { "type": "integer" },
+        "availableLanguages": { "type": "array", "items": { "type": "string" }, "description": "Language codes Apple publishes (eng, zho, jpn, kor, spa, por, fra)." },
+        "resourceCount": { "type": "integer" },
+        "codeSnippetCount": { "type": "integer" },
+        "path": { "type": "string", "description": "Repo directory for this session, e.g. sessions/wwdc2026/298/." },
+        "description": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

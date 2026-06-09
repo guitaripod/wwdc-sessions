@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10094",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10094,
+  "title": "Handle trackpad and mouse input",
+  "description": "Provide a more versatile experience when you optimize your iPad or Mac Catalyst app for indirect input from trackpads and mice. Discover how to make your app responsive to new events from these devices. Learn how to work with pointer movement, enable pointer locking, handle scroll input and trackpad gestures, and accept or reject events on your gesture recognizers. We’ll also show you how to implement advanced features like changing gesture behaviors with keyboard modifiers or pointing device buttons to delight pro users and bring a richer experience to your app.\n\nTo learn more about pointer-based interactions and to get the most out of this session, we recommend watching “Build for the iPadOS pointer,” “Bring keyboard and mouse gaming to iPad,” and “Support hardware keyboards in your app.”",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10094",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10094",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "catalyst",
+    "event",
+    "magic keyboard",
+    "mouse",
+    "trackpad"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1445,
+  "hasTranscript": true,
+  "transcriptWordCount": 3238,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10094/3/856B2AFB-E481-490E-A7AC-9446F47C0CFA/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10094/3/856B2AFB-E481-490E-A7AC-9446F47C0CFA/wwdc2020_10094_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10094/3/856B2AFB-E481-490E-A7AC-9446F47C0CFA/wwdc2020_10094_hd.mp4",
+    "duration": 1445
+  },
+  "codeSnippets": [
+    {
+      "title": "UIHoverGestureRecognizer",
+      "language": "swift",
+      "startTimeSeconds": 109,
+      "code": "let controlsHover = UIHoverGestureRecognizer(target: self, action: #selector(handleHover))\n\n@objc func handleHover(_ recognizer: UIHoverGestureRecognizer) {\n    switch recognizer.state {\n    case .began:\n        // Pointer entered our view - show controls\n        self.showsPlaybackControls = true\n    case .ended:\n        // Pointer exited our view - hide controls\n        self.showsPlaybackControls = false\n    default:\n        break\n    }\n}"
+    },
+    {
+      "title": "prefersPointerLocked",
+      "language": "swift",
+      "startTimeSeconds": 333,
+      "code": "class GameViewController: UIViewController {\n\n    var shouldLockPointer: Bool = true\n\n    override var prefersPointerLocked: Bool {\n        return self.shouldLockPointer\n    }\n\n    func disablePointerLock() {\n        self.shouldLockPointer = false\n        self.setNeedsUpdateOfPrefersPointerLocked()\n    }\n}"
+    },
+    {
+      "title": "UIPointerLockState.isLocked",
+      "language": "swift",
+      "startTimeSeconds": 353,
+      "code": "if let pointerLockState = self.window.windowScene?.pointerLockState {\n    self.observer = notificationCenter.addObserver(forName: UIPointerLockState.didChangeNotification,\n                                                   object: pointerLockState,\n                                                   queue: OperationQueue.main) { (note) in\n        guard let lockState = note.object as? UIPointerLockState else { return }\n        gameEngine.performExpensiveOperationWhile(lockState.isLocked)\n    }\n}"
+    },
+    {
+      "title": "UIPanGestureRecognizer.allowedScrollTypesMask",
+      "language": "swift",
+      "startTimeSeconds": 594,
+      "code": "// Enable scroll input for touch surface devices\n\nself.drawerPan.allowedScrollTypesMask = [.continuous]\n\n\n// Enable scroll input for scroll wheel devices as well\n\nself.pullToRefreshPan.allowedScrollTypesMask = [.all]"
+    },
+    {
+      "title": "Requiring a 3rd mouse button click",
+      "language": "swift",
+      "startTimeSeconds": 888,
+      "code": "self.thirdMouseButtonTap.buttonMaskRequired = .button(3)"
+    },
+    {
+      "title": "Changing response for .alternate keyboard modifier",
+      "language": "swift",
+      "startTimeSeconds": 907,
+      "code": "func handleHover(_ recognizer: UIHoverGestureRecognizer) {\n\n    // Show chapter controls if alt is pressed\n    let showChapterControls = recognizer.modifierFlags.contains(.alternate)\n\n    // ...\n}"
+    },
+    {
+      "title": "Only handle secondary clicks",
+      "language": "swift",
+      "startTimeSeconds": 998,
+      "code": "class SecondaryClickGesture: UIGestureRecognizer {\n\n    override func shouldReceive(_ event: UIEvent) -> Bool {\n        // Must look at the event’s mask, not the gesture’s \n        return event.buttonMask == .secondary\n    }\n\n    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {\n        // Touch handling code ...\n    }\n}"
+    },
+    {
+      "title": "Only handle secondary clicks or control clicks",
+      "language": "swift",
+      "startTimeSeconds": 1056,
+      "code": "class SecondaryClickGesture: UIGestureRecognizer {\n\n    override func shouldReceive(_ event: UIEvent) -> Bool {\n        // Must look at the event’s properties, not the gesture’s\n        let secondaryClick = event.buttonMask == .secondary\n\n        let controlClick = event.buttonMask == .primary && event.modifierFlags == .control \n\n        return secondaryClick || controlClick\n    }\n\n    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {\n        // Touch handling code ...\n    }\n}"
+    },
+    {
+      "title": "Only receive hover events with the .alternate modifier pressed",
+      "language": "swift",
+      "startTimeSeconds": 1090,
+      "code": "let ccHover = UIHoverGestureRecognizer(target: self, \n                                       action: #selector(handleClosedCaptionHover))\n\nccHover.delegate = self\n\nfunc gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, \n                       shouldReceive event: UIEvent) -> Bool {\n\n    if gestureRecognizer == self.closedCaptionHover {\n        return event.modifierFlags.contains(.alternate)\n    }\n\n    return true\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2020/10094/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10094/metadata.json",
+    "readme": "sessions/wwdc2020/10094/README.md",
+    "transcript": "sessions/wwdc2020/10094/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10094/transcript.json"
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10029",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10029,
+  "title": "Build widgets for the Smart Stack on Apple Watch",
+  "description": "Follow along as we build a widget for the Smart Stack on watchOS 10 using the latest SwiftUI and WidgetKit APIs. Learn tips, techniques, and best practices for creating widgets that show relevant information on Apple Watch.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10029",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10029",
+  "type": "Video",
+  "publishedAt": "2023-06-07T08:00:00-07:00",
+  "platforms": [
+    "watchOS"
+  ],
+  "keywords": [
+    "watchos",
+    "watchos 10"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1448,
+  "hasTranscript": true,
+  "transcriptWordCount": 2850,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10029/5/A6F20D9A-932C-44D8-99FA-FBFE3D6E5CBE/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10029/5/A6F20D9A-932C-44D8-99FA-FBFE3D6E5CBE/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10029/5/A6F20D9A-932C-44D8-99FA-FBFE3D6E5CBE/downloads/wwdc2023-10029_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10029/5/A6F20D9A-932C-44D8-99FA-FBFE3D6E5CBE/downloads/wwdc2023-10029_hd.mp4",
+    "duration": 1448
+  },
+  "codeSnippets": [
+    {
+      "title": "TimelineEntry",
+      "language": "swift",
+      "startTimeSeconds": 255,
+      "code": "struct SimpleEntry: TimelineEntry {\n    var date: Date\n    var configuration: ConfigurationAppIntent\n    var backyard: Backyard\n\n    var bird: Bird? {\n        return backyard.visitorEventForDate(date: date)?.bird\n    }\n\n    var waterDuration: Duration {\n        return Duration.seconds(abs(self.date.distance(to: self.backyard.waterRefillDate)))\n    }\n\n    var foodDuration: Duration {\n        return Duration.seconds(abs(self.date.distance(to: self.backyard.foodRefillDate)))\n    }\n\n    var relevance: TimelineEntryRelevance? {\n        if let visitor = backyard.visitorEventForDate(date: date) {\n            return TimelineEntryRelevance(score: 10, duration: visitor.endDate.timeIntervalSince(date))\n        }\n        return TimelineEntryRelevance(score: 0)\n    }\n}"
+    },
+    {
+      "title": "placeholder function",
+      "language": "swift",
+      "startTimeSeconds": 470,
+      "code": "func placeholder(in context: Context) -> SimpleEntry {\n  return SimpleEntry(date: Date(), configuration: ConfigurationAppIntent(), backyard: Backyard.anyBackyard(modelContext: modelContext))\n}"
+    },
+    {
+      "title": "snapshot function",
+      "language": "swift",
+      "startTimeSeconds": 495,
+      "code": "func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {\n  if let backyard = Backyard.backyardForID(modelContext: modelContext, backyardID: configuration.backyardID) {\n    if let event = backyard.visitorEvents.first {\n      return SimpleEntry(date: event.startDate, configuration: configuration, backyard: backyard)\n    } else {\n      return SimpleEntry(date: Date(), configuration: configuration, backyard: backyard)\n    }\n  }\n\n  let yard = Backyard.anyBackyard(modelContext: modelContext)\n  return SimpleEntry(date: Date(), configuration: ConfigurationAppIntent(), backyard: yard)\n}"
+    },
+    {
+      "title": "Widget Entry View",
+      "language": "swift",
+      "startTimeSeconds": 626,
+      "code": "struct BackyardBirdsWidgetEntryView: View {\n    @Environment(\\.widgetFamily) private var family\n    var entry: SimpleEntry\n\n    var body: some View {\n        switch family {\n        case .accessoryRectangular:\n            RectangularBackyardView(entry: entry)\n        default:\n            Text(entry.date, style: .time)\n        }\n    }\n}"
+    },
+    {
+      "title": "Backyard Rectangular View",
+      "language": "swift",
+      "startTimeSeconds": 683,
+      "code": "struct RectangularBackyardView: View {\n    var entry: SimpleEntry\n\n    var body: some View {\n        HStack {\n            if let bird = entry.bird {\n                ComposedBird(bird: bird)\n                    .scaledToFit()\n                    .widgetAccentable()\n                    .frame(width: 50, height: 50)\n                VStack(alignment: .leading) {\n                    Text(bird.speciesName)\n                        .font(.headline)\n                        .foregroundStyle(bird.colors.wing.color)\n                        .widgetAccentable()\n                        .minimumScaleFactor(0.75)\n                    Text(entry.backyard.name)\n                        .minimumScaleFactor(0.75)\n                    HStack {\n                        Image(systemName: \"drop.fill\")\n                        Text(entry.waterDuration, format: remainingHoursFormatter)\n                        Image(systemName: \"fork.knife\")\n                        Text(entry.foodDuration, format: remainingHoursFormatter)\n                    }\n                    .imageScale(.small)\n                    .minimumScaleFactor(0.75)\n                    .foregroundStyle(.secondary)\n                }\n                .frame(maxWidth: .infinity, alignment: .leading)\n            } else {\n                Image(.fountainFill)\n                    .foregroundStyle(entry.backyard.backgroundColor)\n                    .imageScale(.large)\n                    .scaledToFit()\n                    .widgetAccentable()\n                    .frame(width: 50, height: 50)\n                VStack(alignment: .leading) {\n                    Text(entry.backyard.name)\n                        .font(.headline)\n                        .foregroundStyle(entry.backyard.backgroundColor)\n                        .widgetAccentable()\n                        .minimumScaleFactor(0.75)\n                    HStack {\n                        Image(systemName: \"drop.fill\")\n                        Text(entry.waterDuration, format: remainingHoursFormatter)\n                        Image(systemName: \"fork.knife\")\n                        Text(entry.foodDuration, format: remainingHoursFormatter)\n                    }\n                    .imageScale(.small)\n                    .minimumScaleFactor(0.75)\n                    Text(\"\\(entry.backyard.historicalEvents.count) visitors\")\n                        .minimumScaleFactor(0.75)\n                        .foregroundStyle(.secondary)\n                }\n                .frame(maxWidth: .infinity, alignment: .leading)\n            }\n        }\n        .containerBackground(entry.backyard.backgroundColor.gradient, for: .widget)\n    }\n}"
+    },
+    {
+      "title": "Timeline Function",
+      "language": "swift",
+      "startTimeSeconds": 990,
+      "code": "func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {\n  var entries: [SimpleEntry] = []\n\n  if let backyard = Backyard.backyardForID(modelContext: modelContext, backyardID: configuration.backyardID) {\n    for event in backyard.visitorEvents {\n      let entry = SimpleEntry(date: event.startDate, configuration: configuration, backyard: backyard)\n      entries.append(entry)\n      let afterEntry = SimpleEntry(date: event.endDate, configuration: configuration, backyard: backyard)\n      entries.append(afterEntry)\n    }\n  }\n  return Timeline(entries: entries, policy: .atEnd)\n}"
+    },
+    {
+      "title": "Recommendations Function",
+      "language": "swift",
+      "startTimeSeconds": 1115,
+      "code": "func recommendations() -> [AppIntentRecommendation<ConfigurationAppIntent>] {\n  var recs = [AppIntentRecommendation<ConfigurationAppIntent>]()\n\n  for backyard in Backyard.allBackyards(modelContext: modelContext) {\n    let configIntent = ConfigurationAppIntent()\n    configIntent.backyardID = backyard.id.uuidString\n    let gardenRecommendation = AppIntentRecommendation(intent: configIntent, description: backyard.name)\n    recs.append(gardenRecommendation)\n  }\n\n  return recs\n}"
+    },
+    {
+      "title": "Relevant Intents Function",
+      "language": "swift",
+      "startTimeSeconds": 1247,
+      "code": "func updateBackyardRelevantIntents() async {\n    let modelContext = ModelContext(DataGeneration.container)\n    var relevantIntents = [RelevantIntent]()\n\n    for backyard in Backyard.allBackyards(modelContext: modelContext) {\n\n        let configIntent = ConfigurationAppIntent()\n        configIntent.backyardID = backyard.id.uuidString\n        let relevantFoodDateContext = RelevantContext.date(from: backyard.lowSuppliesDate(for: .food), to: backyard.expectedEmptyDate(for: .food))\n        let relevantFoodIntent = RelevantIntent(configIntent, widgetKind: \"BackyardVisitorsWidget\", relevance: relevantFoodDateContext)\n        relevantIntents.append(relevantFoodIntent)\n\n        let relevantWaterDateContext = RelevantContext.date(from: backyard.lowSuppliesDate(for: .water), to: backyard.expectedEmptyDate(for: .water))\n        let relevantWaterIntent = RelevantIntent(configIntent, widgetKind: \"BackyardVisitorsWidget\", relevance: relevantWaterDateContext)\n        relevantIntents.append(relevantWaterIntent)\n    }\n\n    do {\n        try await RelevantIntentManager.shared.updateRelevantIntents(relevantIntents)\n    } catch { }\n}"
+    },
+    {
+      "title": "Update Relevant Intents",
+      "language": "swift",
+      "startTimeSeconds": 1380,
+      "code": "Task {\n  await updateBackyardRelevantIntents()\n  WidgetCenter.shared.reloadTimelines(ofKind: \"BackyardVisitorsWidget\")\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Updating your app and widgets for watchOS 10",
+      "url": "https://developer.apple.com/documentation/watchOS-Apps/updating-your-app-and-widgets-for-watchos-10",
+      "type": "samplecode",
+      "description": "Integrate SwiftUI elements and watch-specific features, and build widgets for the Smart Stack.",
+      "sosumiURL": "https://sosumi.ai/documentation/watchOS-Apps/updating-your-app-and-widgets-for-watchos-10",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/watchOS-Apps/updating-your-app-and-widgets-for-watchos-10.json"
+    },
+    {
+      "title": "WidgetKit",
+      "url": "https://developer.apple.com/documentation/WidgetKit",
+      "type": "documentation",
+      "description": "Extend the reach of your app by creating widgets, watch complications, Live Activities, and controls.",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit.json"
+    },
+    {
+      "title": "Human Interface Guidelines: Widgets",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/widgets",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/widgets"
+    }
+  ],
+  "path": "sessions/wwdc2023/10029/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10029/metadata.json",
+    "readme": "sessions/wwdc2023/10029/README.md",
+    "transcript": "sessions/wwdc2023/10029/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10029/transcript.json"
+  }
+}

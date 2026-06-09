@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "id": "tech-talks-508",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2017,
+  "eventContentId": 508,
+  "title": "Apple TV App and Universal Search Video Integration - Part 1",
+  "description": "This video provides a feature overview of the Apple TV App and Universal Search services, and introduces how 3rd party video services integrate with them through metadata feeds. Requirements for providing metadata about your movies, tv shows, and sporting events are detailed — in addition how to control the presentation of your video service for your content in the Apple TV App. To help get you started with the development of metadata feeds, tools and resources available are also covered.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/508",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/508",
+  "type": "Video",
+  "publishedAt": "2019-07-25T00:00:00-07:00",
+  "platforms": [
+    "tvOS"
+  ],
+  "keywords": [
+    "apple tv",
+    "apple tv app",
+    "metadata feeds",
+    "tv",
+    "tv app",
+    "tv provider",
+    "universal search",
+    "universal services",
+    "video integration"
+  ],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 921,
+  "hasTranscript": true,
+  "transcriptWordCount": 2837,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tutorials/Apple_TV_Provider/apple_tv_app_universal_search_part_01/apple_tv_app_universal_search_part_01/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tutorials/Apple_TV_Provider/apple_tv_app_universal_search_part_01/apple_tv_app_universal_search_part_01/apple_tv_app_universal_search_part_01_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tutorials/Apple_TV_Provider/apple_tv_app_universal_search_part_01/apple_tv_app_universal_search_part_01/apple_tv_app_universal_search_part_01_hd.mp4",
+    "duration": 921
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/tech-talks/508/",
+  "files": {
+    "metadata": "sessions/tech-talks/508/metadata.json",
+    "readme": "sessions/tech-talks/508/README.md",
+    "transcript": "sessions/tech-talks/508/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/508/transcript.json"
+  }
+}

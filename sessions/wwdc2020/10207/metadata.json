@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10207",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10207,
+  "title": "SF Symbols 2",
+  "description": "SF Symbols make it easy to adopt high-quality, Apple-designed symbols created to look great with San Francisco, the system font for all Apple platforms. Discover how you can use SF Symbols in AppKit, UIKit, and SwiftUI. Learn how to work with SF Symbols in common design tools and how to use them in code. And we’ll walk you through the latest updates, including additions to the repertoire, alignment improvements, changes with right-to-left localization, and multicolor symbols.\n\nThis session focuses on the latest features in SF Symbols 2. While not required, we recommend watching \"Introducing SF Symbols\" from WWDC19. If you’re planning to incorporate symbol assets into SwiftUI, you may also benefit from watching “Building Custom Views with SwiftUI.\"",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10207",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10207",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 1134,
+  "hasTranscript": true,
+  "transcriptWordCount": 2964,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10207/4/56001BC4-A5FE-4734-A5EB-377771B6FED3/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10207/4/56001BC4-A5FE-4734-A5EB-377771B6FED3/wwdc2020_10207_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10207/4/56001BC4-A5FE-4734-A5EB-377771B6FED3/wwdc2020_10207_hd.mp4",
+    "duration": 1134
+  },
+  "codeSnippets": [
+    {
+      "title": "Symbol usage demo, part 1",
+      "language": "swift",
+      "startTimeSeconds": 329,
+      "code": "// SF Symbols: simple usage and symbol configuration\n\nimport UIKit\n\nclass MainPlayerViewController: UIViewController {\n\n    @IBOutlet weak var playButton: UIButton!\n    @IBOutlet weak var shuffleButton: UIButton!\n    @IBOutlet weak var playImageView: UIImageView!\n    @IBOutlet weak var shuffleImageView: UIImageView!\n\n    override func viewDidLoad() {\n        super.viewDidLoad()\n        setupButtons()\n    }\n\n    func setupButtons() {\n        playImageView.image = UIImage(systemName: \"\")\n        shuffleImageView.image = UIImage(systemName: \"\")\n    }\n\n    @IBAction func playAction(_ sender: Any) {\n    }\n\n    @IBAction func shuffleAction(_ sender: Any) {\n    }\n\n}"
+    },
+    {
+      "title": "Symbol usage demo, wrong string to initializer",
+      "language": "swift",
+      "startTimeSeconds": 367,
+      "code": "// do NOT use symbol characters in code\n\nlet shuffleImage = UIImage(systemName: \"􀊝\")\n\n\n\n\n\n\n// always use symbol names in code\n\nlet shuffleImage = UIImage(systemName: \"shuffle\")"
+    },
+    {
+      "title": "Symbol usage demo, scales",
+      "language": "swift",
+      "startTimeSeconds": 421,
+      "code": "// SF Symbols: simple usage and symbol configuration\n\nimport UIKit\n\nclass MainPlayerViewController: UIViewController {\n\n    @IBOutlet weak var playButton: UIButton!\n    @IBOutlet weak var shuffleButton: UIButton!\n    @IBOutlet weak var playImageView: UIImageView!\n    @IBOutlet weak var shuffleImageView: UIImageView!\n\n    override func viewDidLoad() {\n        super.viewDidLoad()\n        setupButtons()\n    }\n\n    func setupButtons() {\n        let buttonConfig = UIImage.SymbolConfiguration(scale: .small)\n        playImageView.preferredSymbolConfiguration = buttonConfig\n        playImageView.image = UIImage(systemName: \"play.fill\")\n        shuffleImageView.preferredSymbolConfiguration = buttonConfig\n        shuffleImageView.image = UIImage(systemName: \"shuffle\")\n    }\n\n    @IBAction func playAction(_ sender: Any) {\n    }\n\n    @IBAction func shuffleAction(_ sender: Any) {\n    }\n\n}"
+    },
+    {
+      "title": "Symbol usage demo, textStyles",
+      "language": "swift",
+      "startTimeSeconds": 433,
+      "code": "// SF Symbols: simple usage and symbol configuration\n\nimport UIKit\n\nclass MainPlayerViewController: UIViewController {\n\n    @IBOutlet weak var playButton: UIButton!\n    @IBOutlet weak var shuffleButton: UIButton!\n    @IBOutlet weak var playImageView: UIImageView!\n    @IBOutlet weak var shuffleImageView: UIImageView!\n\n    override func viewDidLoad() {\n        super.viewDidLoad()\n        setupButtons()\n    }\n\n    func setupButtons() {\n        let buttonConfig = UIImage.SymbolConfiguration(textStyle: .headline, scale: .small)\n        playImageView.preferredSymbolConfiguration = buttonConfig\n        playImageView.image = UIImage(systemName: \"play.fill\")\n        shuffleImageView.preferredSymbolConfiguration = buttonConfig\n        shuffleImageView.image = UIImage(systemName: \"shuffle\")\n    }\n\n    @IBAction func playAction(_ sender: Any) {\n    }\n\n    @IBAction func shuffleAction(_ sender: Any) {\n    }\n\n}"
+    },
+    {
+      "title": "SwiftUI symbol usage",
+      "language": "swift",
+      "startTimeSeconds": 464,
+      "code": "// SF Symbols in SwiftUI\nimport SwiftUI\n\nstruct ContentView: View {\n    var body: some View {\n        Image(systemName: \"shuffle\")\n            .font(.headline)\n            .imageScale(.small)\n    }\n}"
+    },
+    {
+      "title": "SF Symbols in SwiftUI (Label)",
+      "language": "swift",
+      "startTimeSeconds": 490,
+      "code": "// SF Symbols in SwiftUI\nimport SwiftUI\n\nstruct ContentView: View {\n    var body: some View {\n        Label(\"Sharing location\", \n              systemImage: \"location.fill\")\n    }\n}"
+    },
+    {
+      "title": "SF Symbols in SwiftUI (Text + Image)",
+      "language": "swift",
+      "startTimeSeconds": 492,
+      "code": "// SF Symbols in SwiftUI\nimport SwiftUI\n\nstruct ContentView: View {\n    var body: some View {\n        let glyph = Image(systemName: \"location.fill\")\n        return Text(\"\\(glyph) Sharing location\")\n    }\n}"
+    },
+    {
+      "title": "Using SF Symbols in AppKit",
+      "language": "swift",
+      "startTimeSeconds": 532,
+      "code": "// Using SF Symbols in AppKit\n\nif let shuffleImage = NSImage(\n    systemSymbolName: \"shuffle\", accessibilityDescription: \"shuffle\") {\n    shuffleImageView.image = shuffleImage\n\n    // Configure symbols\n    let config = NSImage.SymbolConfiguration(textStyle: .body, scale: .small)\n    let shuffleButtonImage = shuffleImage.withSymbolConfiguration(config)\n}"
+    },
+    {
+      "title": "Symbol initializer for old and new templates",
+      "language": "swift",
+      "startTimeSeconds": 705,
+      "code": "// loading symbols from Template V1 and V2\n\nlet shuffleImage = UIImage(systemName: \"shuffle\")"
+    },
+    {
+      "title": "Tinting symbols in AppKit",
+      "language": "swift",
+      "startTimeSeconds": 944,
+      "code": "// Tinting symbols\n\nif let folder = NSImage(\n    systemSymbolName: \"folder.badge.plus\", accessibilityDescription: \"add folder\") {\n    folder.isTemplate = true\n}\n\nif let folder = NSImage(\n    systemSymbolName: \"folder.badge.plus\", accessibilityDescription: \"add folder\") {\n    folder.isTemplate = false\n}"
+    },
+    {
+      "title": "Using symbols in AppKit, recap",
+      "language": "swift",
+      "startTimeSeconds": 1090,
+      "code": "// Using SF Symbols in AppKit\n\nif let shuffleImage = NSImage(\n    systemSymbolName: \"shuffle\", accessibilityDescription: \"shuffle\") {\n    shuffleImageView.image = shuffleImage\n\n    // Configure symbols\n    let config = NSImage.SymbolConfiguration(textStyle: .body, scale: .small)\n    let shuffleButtonImage = shuffleImage.withSymbolConfiguration(config)\n}"
+    },
+    {
+      "title": "Using color symbols recap",
+      "language": "swift",
+      "startTimeSeconds": 1104,
+      "code": "// Tinting symbols\n\nfolder.isTemplate = true\n\nfolder.isTemplate = false"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2020/10207/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10207/metadata.json",
+    "readme": "sessions/wwdc2020/10207/README.md",
+    "transcript": "sessions/wwdc2020/10207/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10207/transcript.json"
+  }
+}

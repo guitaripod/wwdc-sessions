@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2026-284",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 284,
+  "title": "Collaborate on structured 3D models in visionOS",
+  "description": "Learn how to bring structured 3D models to life in visionOS. We’ll cover USDZ preparation, show you how to manipulate individual entities within hierarchical assemblies, and inspect the internal components within a model with a cross-sectional plane. Create stunning exploded-view animations for design review and collaboration experiences on Apple Vision Pro.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/284",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/284",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [
+    "3d",
+    "3d content",
+    "3d model",
+    "design",
+    "hierarchical",
+    "hierarchy",
+    "review",
+    "shareplay",
+    "spatial computing",
+    "visionos"
+  ],
+  "topics": [
+    "Graphics & Games",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 1516,
+  "hasTranscript": true,
+  "transcriptWordCount": 4040,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/284/4/fa1d15b1-3f28-415a-907a-8ae1bb344494/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/284/4/fa1d15b1-3f28-415a-907a-8ae1bb344494/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/284/4/fa1d15b1-3f28-415a-907a-8ae1bb344494/downloads/wwdc2026-284_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/284/4/fa1d15b1-3f28-415a-907a-8ae1bb344494/downloads/wwdc2026-284_hd.mp4",
+    "duration": 1516
+  },
+  "codeSnippets": [
+    {
+      "title": "Opening an assembly",
+      "language": "swift",
+      "startTimeSeconds": 430,
+      "code": "func openAssembly() {\n    components[ManipulationComponent.self] = nil\n    components[InputTargetComponent.self] = nil\n\n    for child in assemblyChildren {\n        child.components.set(InputTargetComponent())\n\n        var manipulation = ManipulationComponent()\n        manipulation.releaseBehavior = .stay\n        child.manipulationComponent = manipulation\n    }\n}"
+    },
+    {
+      "title": "Closing an assembly",
+      "language": "swift",
+      "startTimeSeconds": 431,
+      "code": "func closeAssembly() {\n    for child in assemblyChildren {\n        child.manipulationComponent = nil\n        child.components[InputTargetComponent.self] = nil\n    }\n\n    components.set(InputTargetComponent())\n    var manipulation = ManipulationComponent()\n    manipulation.releaseBehavior = .stay\n    manipulationComponent = manipulation\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Manipulating models with RealityKit",
+      "url": "https://developer.apple.com/documentation/RealityKit/manipulating-models-with-realitykit",
+      "type": "documentation",
+      "description": "Interact with detailed 3D models using manipulation and clipping controls.",
+      "sosumiURL": "https://sosumi.ai/documentation/RealityKit/manipulating-models-with-realitykit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/RealityKit/manipulating-models-with-realitykit.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/284/",
+  "files": {
+    "metadata": "sessions/wwdc2026/284/metadata.json",
+    "readme": "sessions/wwdc2026/284/README.md",
+    "transcript": "sessions/wwdc2026/284/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/284/transcript.json"
+  }
+}

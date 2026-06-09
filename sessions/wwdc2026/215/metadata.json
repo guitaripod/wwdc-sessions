@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2026-215",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 215,
+  "title": "Get started with the HTML Model Element",
+  "description": "Learn how the model element brings interactive 3D content to your websites — now on iOS, iPadOS, macOS, and visionOS. Discover tools for creating and optimizing 3D assets. Explore model element’s features and see how web standards are shaping the future of 3D on the web.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/215",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/215",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "css",
+    "html",
+    "javascript",
+    "model",
+    "spatial",
+    "web"
+  ],
+  "topics": [
+    "Spatial Computing",
+    "Safari & Web"
+  ],
+  "primaryTopic": "Safari & Web",
+  "duration": 952,
+  "hasTranscript": true,
+  "transcriptWordCount": 2118,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/215/4/b7d159c9-ee29-45d9-80f5-87b6a1c90565/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/215/4/b7d159c9-ee29-45d9-80f5-87b6a1c90565/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/215/4/b7d159c9-ee29-45d9-80f5-87b6a1c90565/downloads/wwdc2026-215_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/215/4/b7d159c9-ee29-45d9-80f5-87b6a1c90565/downloads/wwdc2026-215_hd.mp4",
+    "duration": 952
+  },
+  "codeSnippets": [
+    {
+      "title": "Load a model",
+      "language": "xml",
+      "startTimeSeconds": 259,
+      "code": "<!-- Using the src attribute -->\n<model src=\"mallet.usdz\"></model>\n\n<!-- Using a <source> child for MIME type -->\n<model>\n    <source src=\"mallet.usdz\" type=\"model/vnd.usdz+zip\">\n</model>"
+    },
+    {
+      "title": "Image fallback",
+      "language": "xml",
+      "startTimeSeconds": 279,
+      "code": "<model id=\"mallet\" src=\"mallet.usdz\">\n    <img src=\"mallet.png\"\n         alt=\"Rubber mallet with wooden handle\">\n</model>"
+    },
+    {
+      "title": "Ready promise",
+      "language": "xml",
+      "startTimeSeconds": 309,
+      "code": "<model id=\"mallet\" src=\"mallet.usdz\"></model>\n\n<script>\n    const model = document.getElementById(\"mallet\");\n    model.ready.then(result => {\n        // Hide the loading indicator\n    }).catch(error => {\n        // Loading failed, show fallback\n    });\n</script>"
+    },
+    {
+      "title": "Polyfill fallback",
+      "language": "xml",
+      "startTimeSeconds": 339,
+      "code": "<script type=\"module\">\n    if (!window.HTMLModelElement) {\n        import(\"model-element-polyfill.js\").then(() => {\n            // Polyfill ready to use\n        });\n    }\n</script>"
+    },
+    {
+      "title": "Model background",
+      "language": "xml",
+      "startTimeSeconds": 373,
+      "code": "<model id=\"mallet\" src=\"mallet.usdz\"></model>\n<style>\n    model {\n        background-color: #f4f1ec;\n    }\n</style>"
+    },
+    {
+      "title": "Stage mode",
+      "language": "xml",
+      "startTimeSeconds": 407,
+      "code": "<model id=\"mallet\"\n       src=\"mallet.usdz\"\n       stagemode=\"orbit\">\n</model>"
+    },
+    {
+      "title": "Custom transforms",
+      "language": "xml",
+      "startTimeSeconds": 451,
+      "code": "<model id=\"boot\" src=\"boot.usdz\"></model>\n<button id=\"button-side\">Side</button>\n<button id=\"button-reset\">Reset</button>\n\n<script>\n    const model = document.getElementById(\"boot\");\n    const initialTransform = model.entityTransform;\n\n    document.getElementById(\"button-side\")\n            .addEventListener(\"click\", () => {\n        const transform = new DOMMatrix();\n        transform.rotateSelf(0, 135, 0);\n        model.entityTransform = transform;\n    });\n\n    document.getElementById(\"button-reset\")\n            .addEventListener(\"click\", () => {\n        model.entityTransform = initialTransform;\n    });\n</script>"
+    },
+    {
+      "title": "Transition animation",
+      "language": "xml",
+      "startTimeSeconds": 515,
+      "code": "<script>\n    const model = document.getElementById(\"boot\");\n    const duration = 500;\n    let currentAngle = 0;\n    let animationId = null;\n\n    function animateTo(targetAngle) {\n        if (animationId) cancelAnimationFrame(animationId);\n        const startAngle = currentAngle;\n        const startTime = performance.now();\n\n        function step(now) {\n            const progress = Math.min((now - startTime) / duration, 1);\n            const ease = 1 - Math.pow(1 - progress, 3);\n            currentAngle = startAngle + (targetAngle - startAngle) * ease;\n            model.entityTransform = new DOMMatrix().rotateSelf(0, currentAngle, 0);\n            if (progress < 1) animationId = requestAnimationFrame(step);\n        }\n\n        requestAnimationFrame(step);\n    }\n\n    document.getElementById(\"button-side\").addEventListener(\"click\", () => animateTo(135));\n    document.getElementById(\"button-reset\").addEventListener(\"click\", () => animateTo(0));\n</script>"
+    },
+    {
+      "title": "Animation playback",
+      "language": "xml",
+      "startTimeSeconds": 607,
+      "code": "<model id=\"bottle\" src=\"bottle.usdz\"></model>\n<button id=\"button-play\" onclick=\"play(5)\">\n    Play\n</button>\n<button id=\"button-reverse\" onclick=\"play(-5)\">\n    Reverse\n</button>\n\n<script>\n    const model = document.getElementById(\"bottle\");\n\n    function play(rate) {\n        model.playbackRate = rate;\n        model.play();\n    }\n</script>"
+    },
+    {
+      "title": "AR Quick Look",
+      "language": "xml",
+      "startTimeSeconds": 666,
+      "code": "<a rel=\"ar\" href=\"bottle.usdz\">\n    <model id=\"boot\" src=\"bottle.usdz\"></model>\n</a>"
+    }
+  ],
+  "resources": [
+    {
+      "title": "WebKit.org - Theater Ticket Sales immersive website environment demo for Apple Vision Pro",
+      "url": "https://webkit.org/demos/model-demos/ticket-sales.html",
+      "type": "documentation",
+      "description": "Test drive an example ticket sales website where you can explore the view of the stage from any seat you choose. Then, on Apple Vision Pro explore the view from inside the theater with the immersive website experience. Use Web Inspector to explore the code that makes this experience possible with Safari 27.0 in visionOS."
+    },
+    {
+      "title": "The HTML model element in Apple Vision Pro",
+      "url": "https://webkit.org/blog/17118/a-step-into-the-spatial-web-the-html-model-element-in-apple-vision-pro/",
+      "type": "documentation",
+      "description": "visionOS 26 brings a major update to an important building block for the spatial web: The HTML model element is enabled by default, with a new API that’s ready to use today."
+    },
+    {
+      "title": "GitHub: model element samples",
+      "url": "https://immersive-web.github.io/model-element-samples/",
+      "type": "samplecode",
+      "description": "Various examples of HTML model element."
+    },
+    {
+      "title": "WebKit.org – Report issues to the WebKit open-source project",
+      "url": "https://bugs.webkit.org",
+      "type": "documentation",
+      "description": "Bug tracking for WebKit open source project"
+    },
+    {
+      "title": "AOUSD – Alliance for OpenUSD",
+      "url": "https://aousd.org",
+      "type": "documentation",
+      "description": "Alliance for OpenUSD"
+    },
+    {
+      "title": "w3.org – Model element",
+      "url": "https://immersive-web.github.io/model-element",
+      "type": "documentation",
+      "description": "w3.org – Model element"
+    },
+    {
+      "title": "Submit feedback",
+      "url": "http://feedbackassistant.apple.com",
+      "type": "documentation",
+      "description": null
+    }
+  ],
+  "path": "sessions/wwdc2026/215/",
+  "files": {
+    "metadata": "sessions/wwdc2026/215/metadata.json",
+    "readme": "sessions/wwdc2026/215/README.md",
+    "transcript": "sessions/wwdc2026/215/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/215/transcript.json"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-217",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 217,
+  "title": "ResearchKit and CareKit Reimagined",
+  "description": "The ResearchKit and CareKit frameworks are the fastest route to delivering powerful native iOS apps for the research and patient care field.  Learn about the newest audio and speech active-tasks, a completely redesigned user experience, and modular architecture designed to make it a breeze to create care plan apps for any use case.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/217",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/217",
+  "type": "Session",
+  "publishedAt": "2019-06-05T11:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "Health & Fitness"
+  ],
+  "primaryTopic": "Health & Fitness",
+  "duration": 3039,
+  "hasTranscript": true,
+  "transcriptWordCount": 7906,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/217hlrq3o5glluc/217/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/217hlrq3o5glluc/217/217_sd_researchkit_and_carekit_reimagined.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/217hlrq3o5glluc/217/217_hd_researchkit_and_carekit_reimagined.mp4",
+    "duration": 3039
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "ResearchKit Repository",
+      "url": "https://github.com/researchkit/researchkit",
+      "type": "guide",
+      "description": "ResearchKit Repository"
+    },
+    {
+      "title": "CareKit",
+      "url": "https://developer.apple.com/CareKit/documentation/carekit/",
+      "type": "guide",
+      "description": "Create apps that help people better understand and manage their health.",
+      "sosumiURL": "https://sosumi.ai/CareKit/documentation/carekit/"
+    },
+    {
+      "title": "ResearchKit Overview",
+      "url": "http://researchkit.org/docs/docs/Overview/GuideOverview.html",
+      "type": "guide",
+      "description": "ResearchKit Overview"
+    },
+    {
+      "title": "CareKit Repository",
+      "url": "https://github.com/carekit-apple/CareKit",
+      "type": "guide",
+      "description": "CareKit Source Repository"
+    },
+    {
+      "title": "ResearchKit Open Source Website",
+      "url": "http://researchkit.org",
+      "type": "guide",
+      "description": "ResearchKit Open Source Website"
+    },
+    {
+      "title": "CareKit Open Source Website",
+      "url": "http://carekit.org",
+      "type": "guide",
+      "description": "CareKit Open Source Website"
+    }
+  ],
+  "path": "sessions/wwdc2019/217/",
+  "files": {
+    "metadata": "sessions/wwdc2019/217/metadata.json",
+    "readme": "sessions/wwdc2019/217/README.md",
+    "transcript": "sessions/wwdc2019/217/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/217/transcript.json"
+  }
+}

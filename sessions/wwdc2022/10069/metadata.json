@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10069",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10069,
+  "title": "Meet desktop-class iPad",
+  "description": "Learn how you can bring desktop-class features to your iPad app. Explore updates to UINavigationBar that bring more discoverability and customizability to your app’s features. Find out how the latest updates to UIKit can help make it easier and faster for people to explore content in your app. Lastly, we’ll share a few updates on how it’s easier than ever to bring your iPad app to the desktop with Mac Catalyst.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10069",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10069",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 971,
+  "hasTranscript": true,
+  "transcriptWordCount": 1867,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10069/4/1646A8BA-EEFA-4533-A631-3BCDF704A4EB/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10069/4/1646A8BA-EEFA-4533-A631-3BCDF704A4EB/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10069/4/1646A8BA-EEFA-4533-A631-3BCDF704A4EB/downloads/wwdc2022-10069_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10069/4/1646A8BA-EEFA-4533-A631-3BCDF704A4EB/downloads/wwdc2022-10069_hd.mp4",
+    "duration": 971
+  },
+  "codeSnippets": [
+    {
+      "title": "Creating a fixed UIBarButtonItemGroup from a single UIBarButtonItem",
+      "language": "swift",
+      "startTimeSeconds": 267,
+      "code": "let insertGroup = UIBarButtonItem(title: \"Insert\", image: UIImage(systemName: \"photo\"), primaryAction: UIAction { _ in }).creatingFixedGroup()"
+    },
+    {
+      "title": "Convenient form",
+      "language": "swift",
+      "startTimeSeconds": 295,
+      "code": "// Creating the 'Draw' group\n\n// Convenient form of\n// UIBarButtonItemGroup.movableGroup(customizationIdentifier:representativeItem:items:)\nlet drawGroup = UIBarButtonItem(title: \"Draw\", …)\n    .creatingMovableGroup(customizationIdentifier: \"Draw\")"
+    },
+    {
+      "title": "Creating an optional group with multiple UIBarButtonItems using UIBarButtonItemGroup",
+      "language": "swift",
+      "startTimeSeconds": 330,
+      "code": "let shapeGroup = UIBarButtonItemGroup.optionalGroup(\ncustomizationIdentifier: \"Shapes\",\nrepresentativeItem: UIBarButtonItem(title: \"Shapes\", image: UIImage(systemName: \"square.on.circle\")),\nitems: [\n    UIBarButtonItem(title: \"Square\", image: UIImage(systemName: \"square\"), primaryAction: UIAction { _ in }),\n    UIBarButtonItem(title: \"Circle\", image: UIImage(systemName: \"circle\"), primaryAction: UIAction { _ in }),\n    UIBarButtonItem(title: \"Rectangle\", image: UIImage(systemName: \"rectangle\"), primaryAction: UIAction { _ in }),\n    UIBarButtonItem(title: \"Diamond\", image: UIImage(systemName: \"diamond\"), primaryAction: UIAction { _ in }),\n])"
+    },
+    {
+      "title": "Setting up customizable centerItemGroups on a UINavigationItem",
+      "language": "swift",
+      "startTimeSeconds": 416,
+      "code": "navigationItem.customizationIdentifier = \"com.jetpack.blueprints.maineditor\"\nnavigationItem.centerItemGroups = [\n    // groups in the default customization\n    UIBarButtonItem(title: \"Insert\", image: UIImage(systemName: \"photo\"), primaryAction: UIAction { _ in }).creatingFixedGroup(),\n    UIBarButtonItem(title: \"Draw\", image: UIImage(systemName: \"scribble\"), primaryAction: UIAction { _ in }).creatingMovableGroup(customizationIdentifier: \"Draw\"),\n    .optionalGroup(customizationIdentifier: \"Shapes\",\n                   representativeItem: UIBarButtonItem(title: \"Shapes\", image: UIImage(systemName: \"square.on.circle\")),\n                   items: [\n                    UIBarButtonItem(title: \"Square\", image: UIImage(systemName: \"square\"), primaryAction: UIAction { _ in }),\n                    UIBarButtonItem(title: \"Circle\", image: UIImage(systemName: \"circle\"), primaryAction: UIAction { _ in }),\n                    UIBarButtonItem(title: \"Rectangle\", image: UIImage(systemName: \"rectangle\"), primaryAction: UIAction { _ in }),\n                    UIBarButtonItem(title: \"Diamond\", image: UIImage(systemName: \"diamond\"), primaryAction: UIAction { _ in }),\n                   ]),\n    .optionalGroup(customizationIdentifier: \"Text\",\n                   items: [\n                    UIBarButtonItem(title: \"Label\", image: UIImage(systemName: \"character.textbox\"), primaryAction: UIAction { _ in }),\n                    UIBarButtonItem(title: \"Text\", image: UIImage(systemName: \"text.bubble\"), primaryAction: UIAction { _ in }),\n                   ]),\n\n    // additional group not in the default customization\n    .optionalGroup(customizationIdentifier: \"Format\",\n                   isInDefaultCustomization: false,\n                   representativeItem: UIBarButtonItem(title: \"BIU\", image: UIImage(systemName: \"bold.italic.underline\")),\n                   items:[\n                    UIBarButtonItem(title: \"Bold\", image: UIImage(systemName: \"bold\"), primaryAction: UIAction { _ in }),\n                    UIBarButtonItem(title: \"Italic\", image: UIImage(systemName: \"italic\"), primaryAction: UIAction { _ in }),\n                    UIBarButtonItem(title: \"Underline\", image: UIImage(systemName: \"underline\"), primaryAction: UIAction { _ in }),\n                   ])\n]"
+    },
+    {
+      "title": "Adding a \"Comments\" item to the default title menu",
+      "language": "swift",
+      "startTimeSeconds": 570,
+      "code": "navigationItem.titleMenuProvider = { suggestedActions in\n    var children = suggestedActions\n    children += [\n        UIAction(title: \"Comments\", image: UIImage(systemName: \"text.bubble\")) { _ in }\n    ]\n    return UIMenu(children: children)\n}"
+    },
+    {
+      "title": "Supporting Drag & Drop and Sharing from the title menu",
+      "language": "swift",
+      "startTimeSeconds": 615,
+      "code": "let url = <#T##URL#>\nlet documentProperties = UIDocumentProperties(url: url)\n\nif let itemProvider = NSItemProvider(contentsOf: url) {\n    documentProperties.dragItemsProvider = { _ in\n        [UIDragItem(itemProvider: itemProvider)]\n    }\n\n    documentProperties.activityViewControllerProvider = {\n        UIActivityViewController(activityItems: [itemProvider], applicationActivities: nil)\n    }\n}\n\nnavigationItem.documentProperties = documentProperties"
+    },
+    {
+      "title": "Implementing inline rename",
+      "language": "swift",
+      "startTimeSeconds": 765,
+      "code": "class ViewController: UIViewController {\n    override func viewDidLoad() {\n        super.viewDidLoad()\n        navigationItem.renameDelegate = self\n    }\n}\n\nextension ViewController: UINavigationItemRenameDelegate {\n    func navigationItem(_ navigationItem: UINavigationItem, didEndRenamingWith title: String) {\n        // Try renaming our document, the completion handler will have the updated URL or return an error.\n        documentBrowserViewController.renameDocument(at: <#T##URL#>, proposedName: title, completionHandler: <#T##(URL?, Error?) -> Void#>)\n    }\n}"
+    },
+    {
+      "title": "Implementing Search Suggestions",
+      "language": "swift",
+      "startTimeSeconds": 845,
+      "code": "class ViewController: UIViewController {\n    override func viewDidLoad() {\n        super.viewDidLoad()\n        searchController.searchResultsUpdater = self\n    }\n}\n\nextension ViewController: UISearchResultsUpdating {\n    func fetchQuerySuggestions(for searchController: UISearchController) -> [(String, UIImage?)] {\n        let queryText = searchController.searchBar.text\n        // Here you would decide how to transform the queryText into search results. This example just returns something fixed.\n        return [(\"Sample Suggestion\", UIImage(systemName: \"rectangle.and.text.magnifyingglass\"))]\n    }\n\n    func updateSearch(_ searchController: UISearchController, query: String) {\n        // This method is used to update the search UI from our query text change\n        // You should also update internal state related to when the query changes, as you might for when the user changes the query by typing.\n        searchController.searchBar.text = query\n    }\n\n    func updateSearchResults(for searchController: UISearchController) {\n        let querySuggestions = self.fetchQuerySuggestions(for: searchController)\n        searchController.searchSuggestions = querySuggestions.map { name, icon in\n            UISearchSuggestionItem(localizedSuggestion: name, localizedDescription: nil, iconImage: icon)\n        }\n    }\n\n    func updateSearchResults(for searchController: UISearchController, selecting searchSuggestion: UISearchSuggestion) {\n        if let suggestion = searchSuggestion.localizedSuggestion {\n            updateSearch(searchController, query: suggestion)\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "titleMenuProvider",
+      "url": "https://developer.apple.com/documentation/UIKit/UINavigationItem/titleMenuProvider",
+      "type": "documentation",
+      "description": "A closure that generates the navigation item’s title menu.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UINavigationItem/titleMenuProvider",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UINavigationItem/titleMenuProvider.json"
+    },
+    {
+      "title": "UINavigationItem.ItemStyle",
+      "url": "https://developer.apple.com/documentation/UIKit/UINavigationItem/ItemStyle",
+      "type": "documentation",
+      "description": "Constants that determine how the content of the navigation item lays out in the navigation bar.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UINavigationItem/ItemStyle",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UINavigationItem/ItemStyle.json"
+    },
+    {
+      "title": "searchSuggestions",
+      "url": "https://developer.apple.com/documentation/UIKit/UISearchController/searchSuggestions",
+      "type": "documentation",
+      "description": "A list of suggestions to offer as shortcuts below the search field.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UISearchController/searchSuggestions",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UISearchController/searchSuggestions.json"
+    },
+    {
+      "title": "centerItemGroups",
+      "url": "https://developer.apple.com/documentation/UIKit/UINavigationItem/centerItemGroups",
+      "type": "documentation",
+      "description": "Customizable item groups to display in the center section of the navigation bar.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UINavigationItem/centerItemGroups",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UINavigationItem/centerItemGroups.json"
+    },
+    {
+      "title": "UINavigationItemRenameDelegate",
+      "url": "https://developer.apple.com/documentation/UIKit/UINavigationItemRenameDelegate-5j4ws",
+      "type": "documentation",
+      "description": "Methods an object implements to rename a navigation item.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UINavigationItemRenameDelegate-5j4ws",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UINavigationItemRenameDelegate-5j4ws.json"
+    },
+    {
+      "title": "UIDocumentProperties",
+      "url": "https://developer.apple.com/documentation/UIKit/UIDocumentProperties",
+      "type": "documentation",
+      "description": "Information that UIKit uses to generate a document header for a navigation item’s title menu.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UIDocumentProperties",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UIDocumentProperties.json"
+    },
+    {
+      "title": "Building a desktop-class iPad app",
+      "url": "https://developer.apple.com/documentation/UIKit/building-a-desktop-class-ipad-app",
+      "type": "documentation",
+      "description": "Optimize your iPad app’s user experience by adopting desktop-class enhancements for multitasking with Stage Manager, document interactions, text editing, search, and more.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/building-a-desktop-class-ipad-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/building-a-desktop-class-ipad-app.json"
+    },
+    {
+      "title": "Supporting desktop-class features in your iPad app",
+      "url": "https://developer.apple.com/documentation/UIKit/supporting-desktop-class-features-in-your-ipad-app",
+      "type": "samplecode",
+      "description": "Enhance your iPad app by adding desktop-class features and document support.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/supporting-desktop-class-features-in-your-ipad-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/supporting-desktop-class-features-in-your-ipad-app.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10069/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10069/metadata.json",
+    "readme": "sessions/wwdc2022/10069/README.md",
+    "transcript": "sessions/wwdc2022/10069/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10069/transcript.json"
+  }
+}

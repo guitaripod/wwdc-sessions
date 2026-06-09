@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-426",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 426,
+  "title": "Building Activity Classification Models in Create ML",
+  "description": "Your iPhone and Apple Watch are loaded with a number of powerful sensors including an accelerometer and gyroscope. Activity Classifiers can be trained on data from these sensors to bring some magic to your app, such as knowing when someone is running or swinging a bat. Learn how the Create ML app makes it easy to train and evaluate one of these Core ML models. Gain a deeper understanding of how to collect the raw data needed for training. See the use of these models in action.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/426",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/426",
+  "type": "Video",
+  "publishedAt": "2019-06-06T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "accelerometer",
+    "activity",
+    "ai",
+    "artificial intelligence",
+    "classifier",
+    "core ml",
+    "core motion",
+    "create ml",
+    "gyroscope",
+    "machine learning",
+    "motion",
+    "training"
+  ],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 901,
+  "hasTranscript": true,
+  "transcriptWordCount": 1517,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/426s9m91e962yqv9/426/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/426s9m91e962yqv9/426/426_sd_building_activity_classification_models_in_create_ml.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/426s9m91e962yqv9/426/426_hd_building_activity_classification_models_in_create_ml.mp4",
+    "duration": 901
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/426/",
+  "files": {
+    "metadata": "sessions/wwdc2019/426/metadata.json",
+    "readme": "sessions/wwdc2019/426/README.md",
+    "transcript": "sessions/wwdc2019/426/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/426/transcript.json"
+  }
+}

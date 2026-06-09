@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10141",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10141,
+  "title": "What’s new in App Store server APIs",
+  "description": "Discover the latest updates to the App Store Server API and App Store Server Notifications. Explore the current API offerings and learn how to track subscription status with notifications, work with transactions on your server, and efficiently recover missed notifications. We’ll also show you how your server can support apps using StoreKit or StoreKit 2, and share an important deprecation in the API and suggested migration workflow.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10141",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10141",
+  "type": "Video",
+  "publishedAt": "2023-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Store, Distribution & Marketing",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1266,
+  "hasTranscript": true,
+  "transcriptWordCount": 2702,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10141/4/D21B22C2-4C48-48FB-93A7-3B2712DBBDD9/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10141/4/D21B22C2-4C48-48FB-93A7-3B2712DBBDD9/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10141/4/D21B22C2-4C48-48FB-93A7-3B2712DBBDD9/downloads/wwdc2023-10141_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10141/4/D21B22C2-4C48-48FB-93A7-3B2712DBBDD9/downloads/wwdc2023-10141_hd.mp4",
+    "duration": 1266
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "onlyFailures",
+      "url": "https://developer.apple.com/documentation/AppStoreServerAPI/onlyFailures",
+      "type": "documentation",
+      "description": "A Boolean value that indicates whether the response includes only notifications that failed to reach your server.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreServerAPI/onlyFailures",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreServerAPI/onlyFailures.json"
+    },
+    {
+      "title": "status",
+      "url": "https://developer.apple.com/documentation/AppStoreServerNotifications/status",
+      "type": "documentation",
+      "description": "The status of an auto-renewable subscription at the time the App Store signs the notification.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreServerNotifications/status",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreServerNotifications/status.json"
+    },
+    {
+      "title": "Get Transaction Info",
+      "url": "https://developer.apple.com/documentation/AppStoreServerAPI/Get-Transaction-Info",
+      "type": "documentation",
+      "description": "Get information about a single transaction for your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreServerAPI/Get-Transaction-Info",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreServerAPI/Get-Transaction-Info.json"
+    },
+    {
+      "title": "App Store Server Notifications changelog",
+      "url": "https://developer.apple.com/documentation/AppStoreServerNotifications/app-store-server-notifications-changelog",
+      "type": "documentation",
+      "description": "Learn about changes to the App Store Server Notifications service.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreServerNotifications/app-store-server-notifications-changelog",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreServerNotifications/app-store-server-notifications-changelog.json"
+    },
+    {
+      "title": "App Store Server API changelog",
+      "url": "https://developer.apple.com/documentation/AppStoreServerAPI/app-store-server-api-changelog",
+      "type": "documentation",
+      "description": "Learn about new features and updates in the App Store Server API.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreServerAPI/app-store-server-api-changelog",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreServerAPI/app-store-server-api-changelog.json"
+    },
+    {
+      "title": "Generating JSON Web Tokens for API requests",
+      "url": "https://developer.apple.com/documentation/AppStoreServerAPI/generating-json-web-tokens-for-api-requests",
+      "type": "documentation",
+      "description": "Create JSON Web Tokens signed with your private key to authorize requests for App Store Server API and External Purchase Server API.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreServerAPI/generating-json-web-tokens-for-api-requests",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreServerAPI/generating-json-web-tokens-for-api-requests.json"
+    },
+    {
+      "title": "Submit feedback",
+      "url": "http://feedbackassistant.apple.com",
+      "type": "documentation",
+      "description": null
+    }
+  ],
+  "path": "sessions/wwdc2023/10141/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10141/metadata.json",
+    "readme": "sessions/wwdc2023/10141/README.md",
+    "transcript": "sessions/wwdc2023/10141/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10141/transcript.json"
+  }
+}

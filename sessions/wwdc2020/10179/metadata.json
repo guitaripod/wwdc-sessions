@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10179",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10179,
+  "title": "Make your app a living room star",
+  "description": "",
+  "url": "https://developer.apple.com/news/?id=3u6hkp67",
+  "sosumiURL": "https://sosumi.ai/news/?id=3u6hkp67",
+  "type": "Article",
+  "publishedAt": "2020-06-22T00:00:18-07:00",
+  "platforms": [
+    "tvOS"
+  ],
+  "keywords": [
+    "apple tv",
+    "apple tv 4k",
+    "living room",
+    "mulituser",
+    "personalizable",
+    "personalize",
+    "picture in picture",
+    "picture-in-picture",
+    "pip",
+    "profile",
+    "profiles",
+    "swiftui",
+    "tv app",
+    "tv app design",
+    "tv app development",
+    "tv dev",
+    "tv developer",
+    "tvos",
+    "tv room",
+    "uisearchcontroller",
+    "video"
+  ],
+  "topics": [
+    "Audio & Video",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": null,
+  "duration": null,
+  "hasTranscript": false,
+  "transcriptWordCount": 0,
+  "availableLanguages": [],
+  "media": {},
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Playing video",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/playing-video",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/playing-video"
+    },
+    {
+      "title": "Personalizing Your App for Each User on Apple TV",
+      "url": "https://developer.apple.com/documentation/TVServices/personalizing-your-app-for-each-user-on-apple-tv",
+      "type": "documentation",
+      "description": "Use account-specific storage to segregate data on a multiuser system.",
+      "sosumiURL": "https://sosumi.ai/documentation/TVServices/personalizing-your-app-for-each-user-on-apple-tv",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/TVServices/personalizing-your-app-for-each-user-on-apple-tv.json"
+    },
+    {
+      "title": "UISearchController",
+      "url": "https://developer.apple.com/documentation/UIKit/UISearchController",
+      "type": "documentation",
+      "description": "A view controller that manages the display of search results based on interactions with a search bar.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UISearchController",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UISearchController.json"
+    },
+    {
+      "title": "Adopting Picture in Picture in a Standard Player",
+      "url": "https://developer.apple.com/documentation/AVKit/adopting-picture-in-picture-in-a-standard-player",
+      "type": "documentation",
+      "description": "Add Picture in Picture (PiP) playback to your app using a player view controller.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVKit/adopting-picture-in-picture-in-a-standard-player",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVKit/adopting-picture-in-picture-in-a-standard-player.json"
+    },
+    {
+      "title": "Adopting Picture in Picture in a Custom Player",
+      "url": "https://developer.apple.com/documentation/AVKit/adopting-picture-in-picture-in-a-custom-player",
+      "type": "documentation",
+      "description": "Add controls to your custom player user interface to invoke Picture in Picture (PiP) playback.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVKit/adopting-picture-in-picture-in-a-custom-player",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVKit/adopting-picture-in-picture-in-a-custom-player.json"
+    },
+    {
+      "title": "Human Interface Guidelines: Designing for tvOS",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/designing-for-tvos",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/designing-for-tvos"
+    }
+  ],
+  "path": "sessions/wwdc2020/10179/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10179/metadata.json",
+    "readme": "sessions/wwdc2020/10179/README.md"
+  }
+}

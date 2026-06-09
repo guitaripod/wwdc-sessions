@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-110340",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 110340,
+  "title": "Design an effective chart",
+  "description": "Learn how to design focused, approachable, and accessible charts. We'll show you how to design great charts with clear marks, axes, descriptions, interaction, and color and help you create useful experiences for everyone.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/110340",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/110340",
+  "type": "Video",
+  "publishedAt": "2022-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Essentials",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 1501,
+  "hasTranscript": true,
+  "transcriptWordCount": 3915,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110340/3/B5BDA6B6-597F-460B-A88C-959265B6715D/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110340/3/B5BDA6B6-597F-460B-A88C-959265B6715D/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110340/3/B5BDA6B6-597F-460B-A88C-959265B6715D/downloads/wwdc2022-110340_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110340/3/B5BDA6B6-597F-460B-A88C-959265B6715D/downloads/wwdc2022-110340_hd.mp4",
+    "duration": 1501
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Swift Charts",
+      "url": "https://developer.apple.com/documentation/Charts",
+      "type": "documentation",
+      "description": "Construct and customize charts on every Apple platform.",
+      "sosumiURL": "https://sosumi.ai/documentation/Charts",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Charts.json"
+    },
+    {
+      "title": "Creating a chart using Swift Charts",
+      "url": "https://developer.apple.com/documentation/Charts/Creating-a-chart-using-Swift-Charts",
+      "type": "guide",
+      "description": "Make a chart by combining chart building blocks in SwiftUI.",
+      "sosumiURL": "https://sosumi.ai/documentation/Charts/Creating-a-chart-using-Swift-Charts",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Charts/Creating-a-chart-using-Swift-Charts.json"
+    },
+    {
+      "title": "Visualizing your app’s data",
+      "url": "https://developer.apple.com/documentation/Charts/visualizing-your-app-s-data",
+      "type": "samplecode",
+      "description": "Build complex and interactive charts using Swift Charts.",
+      "sosumiURL": "https://sosumi.ai/documentation/Charts/visualizing-your-app-s-data",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Charts/visualizing-your-app-s-data.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/110340/",
+  "files": {
+    "metadata": "sessions/wwdc2022/110340/metadata.json",
+    "readme": "sessions/wwdc2022/110340/README.md",
+    "transcript": "sessions/wwdc2022/110340/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/110340/transcript.json"
+  }
+}

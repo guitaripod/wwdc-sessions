@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-110379",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 110379,
+  "title": "Create a more responsive media app",
+  "description": "Discover how you can use AVFoundation to keep people focused on your media app’s content — not your loading spinner. We’ll show you how to support a responsive and fluid interface in your app, all while you create rich audiovisual compositions, load audiovisual assets, and prepare media thumbnails. Find out how you can perform these tasks on your app’s main thread while I/O processes in parallel, learn how to get top-notch playback performance when loading data from custom storage, and more. \n\nTo get the most out of this session, we recommend first watching \"What's new in AVFoundation” from WWDC21.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/110379",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/110379",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "async load",
+    "avasset",
+    "avassetresourceloader",
+    "avasynchronouskeyvalueloading",
+    "avcomposition",
+    "latency",
+    "thumbnail"
+  ],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 627,
+  "hasTranscript": true,
+  "transcriptWordCount": 1649,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110379/3/072CE81E-54AA-400F-82CC-3667BB3549E1/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110379/3/072CE81E-54AA-400F-82CC-3667BB3549E1/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110379/3/072CE81E-54AA-400F-82CC-3667BB3549E1/downloads/wwdc2022-110379_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110379/3/072CE81E-54AA-400F-82CC-3667BB3549E1/downloads/wwdc2022-110379_hd.mp4",
+    "duration": 627
+  },
+  "codeSnippets": [
+    {
+      "title": "Generate a thumbnail",
+      "language": "swift",
+      "startTimeSeconds": 101,
+      "code": "func thumbnail() async throws -> UIImage {\n    let generator = AVAssetImageGenerator(asset: asset)\n    generator.requestedTimeToleranceBefore = .zero\n    generator.requestedTimeToleranceAfter = CMTime(seconds: 3, preferredTimescale: 600)\n    let thumbnail = try await generator.image(at: time).image\n    return UIImage(cgImage: thumbnail)\n}"
+    },
+    {
+      "title": "Generate a series of thumbnails",
+      "language": "swift",
+      "startTimeSeconds": 176,
+      "code": "func timelineThumbnails(for times: [CMTime]) async {\n    for await result in generator.images(for: times) {\n        switch result {\n        case .success(requestedTime: let requestedTime, image: let image, actualTime: _):\n            updateThumbnail(for: requestedTime, with: image)\n        case .failed(requestedTime: let requestedTime, error: _):\n            updateThumbnail(for: requestedTime, with: placeholder)\n        }\n    }\n}"
+    },
+    {
+      "title": "Generate a series of thumbnails",
+      "language": "swift",
+      "startTimeSeconds": 229,
+      "code": "func timelineThumbnails(for times: [CMTime]) async {\n    for await result in generator.images(for: times) {\n        updateThumbnail(for: result.requestedTime, with: (try? result.image) ?? placeholder)\n    }\n}"
+    },
+    {
+      "title": "AVMutableComposition",
+      "language": "swift",
+      "startTimeSeconds": 280,
+      "code": "let composition = AVMutableComposition()\ntry await composition.insertTimeRange(timeRange, of: asset, at: startTime)"
+    },
+    {
+      "title": "AVVideoComposition",
+      "language": "swift",
+      "startTimeSeconds": 297,
+      "code": "let videoComposition = try await AVVideoComposition .videoComposition(withPropertiesOf: asset)\n\ntry await videoComposition.isValid(for: asset, timeRange: range, validationDelegate: delegate)"
+    },
+    {
+      "title": "Asset inspection",
+      "language": "swift",
+      "startTimeSeconds": 333,
+      "code": "asset.loadValuesAsynchronously(forKeys: [\"duration\", \"tracks\"]) {\n    guard asset.statusOfValue(forKey: \"duration\", error: &error) == .loaded else { ... }\n    guard asset.statusOfValue(forKey: \"tracks\", error: &error) == .loaded else { ... }\n    myFunction(thatUses: asset.duration, and: asset.tracks)\n}\n\nlet (duration, tracks) = try await asset.load(.duration, .tracks)\nmyFunction(thatUses: duration, and: tracks)"
+    },
+    {
+      "title": "Synchronously insert track segments into a composition",
+      "language": "swift",
+      "startTimeSeconds": 426,
+      "code": "// videoTrack1: AVAssetTrack, videoTrack2: AVAssetTrack\n\n// Create a composition and add an empty track\nlet composition = AVMutableComposition()\nguard let compositionTrack = composition\n    .addMutableTrack(withMediaType: .video,\n                     preferredTrackID: 1) else { return }\n\n// Append the first 5 seconds of track 1\ntry compositionTrack\n    .insertTimeRange(firstFiveSeconds,\n                     of: videoTrack1, at: .zero)\n\n// Append the first 5 seconds of track 2\ntry compositionTrack\n    .insertTimeRange(firstFiveSeconds,\n                     of: videoTrack2, at: fiveSeconds)\nmyFunction(thatUses: composition.duration,\n           and: composition.tracks)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Creating images from a video asset",
+      "url": "https://developer.apple.com/documentation/AVFoundation/creating-images-from-a-video-asset",
+      "type": "documentation",
+      "description": "Display images for specific times within the media timeline by generating images from a video’s frames.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/creating-images-from-a-video-asset",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/creating-images-from-a-video-asset.json"
+    },
+    {
+      "title": "Loading media data asynchronously",
+      "url": "https://developer.apple.com/documentation/AVFoundation/loading-media-data-asynchronously",
+      "type": "documentation",
+      "description": "Build responsive apps by using language-level concurrency features to efficiently load media data.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/loading-media-data-asynchronously",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/loading-media-data-asynchronously.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/110379/",
+  "files": {
+    "metadata": "sessions/wwdc2022/110379/metadata.json",
+    "readme": "sessions/wwdc2022/110379/README.md",
+    "transcript": "sessions/wwdc2022/110379/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/110379/transcript.json"
+  }
+}

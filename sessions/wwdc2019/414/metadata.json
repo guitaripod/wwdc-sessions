@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-414",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 414,
+  "title": "Developing a Great Profiling Experience",
+  "description": "Learn how to add useful tracing to your reusable classes, subsystems, or frameworks. By making it easy to trace your code, you provide adopters with valuable insight and confidence. We'll show you best practices for tracing your Swift and Objective-C code, building custom instruments, and visualizing data in Instruments 11. Share your expertise in a tools experience so others can understand the contracts of your APIs and avoid anti-patterns that impact performance.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/414",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/414",
+  "type": "Session",
+  "publishedAt": "2019-06-07T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "debugging",
+    "frameworks",
+    "instruments",
+    "performance",
+    "profiling",
+    "sdk",
+    "signposts",
+    "tools",
+    "xcode"
+  ],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 2344,
+  "hasTranscript": true,
+  "transcriptWordCount": 6038,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/414ipe55m84vk1h53/414/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/414ipe55m84vk1h53/414/414_sd_developing_a_great_profiling_experience.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/414ipe55m84vk1h53/414/414_hd_developing_a_great_profiling_experience.mp4",
+    "duration": 2344
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Logging",
+      "url": "https://developer.apple.com/documentation/os/logging",
+      "type": "documentation",
+      "description": "Capture telemetry from your app for debugging and performance analysis using the unified logging system.",
+      "sosumiURL": "https://sosumi.ai/documentation/os/logging",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/os/logging.json"
+    },
+    {
+      "title": "Learn more about Profiles and Logs",
+      "url": "https://developer.apple.com/bug-reporting/profiles-and-logs/",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/bug-reporting/profiles-and-logs/"
+    }
+  ],
+  "path": "sessions/wwdc2019/414/",
+  "files": {
+    "metadata": "sessions/wwdc2019/414/metadata.json",
+    "readme": "sessions/wwdc2019/414/README.md",
+    "transcript": "sessions/wwdc2019/414/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/414/transcript.json"
+  }
+}

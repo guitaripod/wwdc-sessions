@@ -1,22 +1,258 @@
-# Graphics & Games — WWDC26 Sessions
+# Graphics & Games
 
-18 sessions.
+215 sessions across all events.
 
-- [Bringing Cyberpunk 2077 to Mac](../sessions/wwdc2026-356/README.md) · 📝 transcript
-- [Build next-generation experiences with visionOS 27](../sessions/wwdc2026-287/README.md) · 📝 transcript
-- [Build real-time neural rendering pipelines with Metal](../sessions/wwdc2026-359/README.md) · 📝 transcript
-- [Collaborate on structured 3D models in visionOS](../sessions/wwdc2026-284/README.md) · 📝 transcript
-- [Design immersive environments for visionOS apps and the spatial web](../sessions/wwdc2026-234/README.md) · 📝 transcript
-- [Design no-code games with Reality Composer Pro 3](../sessions/wwdc2026-252/README.md) · 📝 transcript
-- [Discover USDKit and what’s new in OpenUSD](../sessions/wwdc2026-285/README.md) · 📝 transcript
-- [Discover the Spatial Preview framework](../sessions/wwdc2026-282/README.md) · 📝 transcript
-- [Explore advances in RealityKit](../sessions/wwdc2026-279/README.md) · 📝 transcript
-- [Explore enhancements to visionOS object tracking](../sessions/wwdc2026-283/README.md) · 📝 transcript
-- [Extend Reality Composer Pro 3 functionality with Xcode](../sessions/wwdc2026-281/README.md) · 📝 transcript
-- [Find and fix performance issues in your Metal games](../sessions/wwdc2026-388/README.md) · 📝 transcript
-- [Iterate your spatial scenes faster with Reality Composer Pro 3](../sessions/wwdc2026-280/README.md) · 📝 transcript
-- [Make your game great with touch](../sessions/wwdc2026-358/README.md) · 📝 transcript
-- [Optimize custom machine learning operations with Metal tensors](../sessions/wwdc2026-330/README.md) · 📝 transcript
-- [Speedrun your game port with agentic coding](../sessions/wwdc2026-357/README.md) · 📝 transcript
-- [Supercharge your spatial workflows with Reality Composer Pro 3](../sessions/wwdc2026-393/README.md) · 📝 transcript
-- [Use foveated streaming to bring immersive content to visionOS](../sessions/wwdc2026-286/README.md) · 📝 transcript
+
+### WWDC26
+
+- [Bringing Cyberpunk 2077 to Mac](../sessions/wwdc2026/356/README.md)
+- [Build next-generation experiences with visionOS 27](../sessions/wwdc2026/287/README.md)
+- [Build real-time neural rendering pipelines with Metal](../sessions/wwdc2026/359/README.md)
+- [Collaborate on structured 3D models in visionOS](../sessions/wwdc2026/284/README.md)
+- [Design immersive environments for visionOS apps and the spatial web](../sessions/wwdc2026/234/README.md)
+- [Design no-code games with Reality Composer Pro 3](../sessions/wwdc2026/252/README.md)
+- [Discover USDKit and what’s new in OpenUSD](../sessions/wwdc2026/285/README.md)
+- [Discover the Spatial Preview framework](../sessions/wwdc2026/282/README.md)
+- [Explore advances in RealityKit](../sessions/wwdc2026/279/README.md)
+- [Explore enhancements to visionOS object tracking](../sessions/wwdc2026/283/README.md)
+- [Extend Reality Composer Pro 3 functionality with Xcode](../sessions/wwdc2026/281/README.md)
+- [Find and fix performance issues in your Metal games](../sessions/wwdc2026/388/README.md)
+- [Iterate your spatial scenes faster with Reality Composer Pro 3](../sessions/wwdc2026/280/README.md)
+- [Make your game great with touch](../sessions/wwdc2026/358/README.md)
+- [Optimize custom machine learning operations with Metal tensors](../sessions/wwdc2026/330/README.md)
+- [Speedrun your game port with agentic coding](../sessions/wwdc2026/357/README.md)
+- [Supercharge your spatial workflows with Reality Composer Pro 3](../sessions/wwdc2026/393/README.md)
+- [Use foveated streaming to bring immersive content to visionOS](../sessions/wwdc2026/286/README.md)
+
+### Meet with Apple
+
+- [Apple Arcade: From concept to catalog](../sessions/meet-with-apple/244/README.md)
+- [Boost discoverability and engagement with the Apple Games app](../sessions/meet-with-apple/248/README.md)
+- [Bring your PC and console games to Mac](../sessions/meet-with-apple/241/README.md)
+- [Bring your SceneKit project to RealityKit ](../sessions/wwdc2025/288/README.md)
+- [Chart your game's course to Apple platforms](../sessions/meet-with-apple/239/README.md)
+- [Combine Metal 4 machine learning and graphics](../sessions/wwdc2025/262/README.md)
+- [Design great interfaces for handheld games](../sessions/meet-with-apple/243/README.md)
+- [Discover Apple-Hosted Background Assets](../sessions/wwdc2025/325/README.md)
+- [Discover Metal 4](../sessions/wwdc2025/205/README.md)
+- [Discover game development on Apple platforms](../sessions/meet-with-apple/238/README.md)
+- [Discover how DREDGE was reimagined for Apple platforms | Black Salt Games](../sessions/meet-with-apple/247/README.md)
+- [Engage players with the Apple Games app](../sessions/wwdc2025/215/README.md)
+- [Explore Metal 4 games](../sessions/wwdc2025/254/README.md)
+- [Explore game curation and featuring on the App Store](../sessions/meet-with-apple/249/README.md)
+- [Explore power, performance, and scale for games on iPhone and iPad](../sessions/meet-with-apple/242/README.md)
+- [Explore spatial accessory input on visionOS](../sessions/wwdc2025/289/README.md)
+- [Get started with Game Center](../sessions/wwdc2025/214/README.md)
+- [Go further with Metal 4 games](../sessions/wwdc2025/211/README.md)
+- [Level up with Apple game technologies](../sessions/meet-with-apple/240/README.md)
+- [Level up your games](../sessions/wwdc2025/209/README.md)
+- [Optimize CPU performance with Instruments](../sessions/wwdc2025/308/README.md)
+- [Optimize your custom environments for visionOS](../sessions/wwdc2025/305/README.md)
+- [Transform your game with Apple Vision Pro](../sessions/meet-with-apple/245/README.md)
+- [Unlock success with premium games on the App Store](../sessions/meet-with-apple/246/README.md)
+- [What’s new in Metal rendering for immersive apps](../sessions/wwdc2025/294/README.md)
+- [What’s new in RealityKit](../sessions/wwdc2025/287/README.md)
+- [What’s new in visionOS 26](../sessions/wwdc2025/317/README.md)
+
+### WWDC24
+
+- [Accelerate machine learning with Metal](../sessions/wwdc2024/10218/README.md)
+- [Break into the RealityKit debugger](../sessions/wwdc2024/10172/README.md)
+- [Bring your iOS or iPadOS game to visionOS](../sessions/wwdc2024/10093/README.md)
+- [Build a spatial drawing app with RealityKit](../sessions/wwdc2024/10104/README.md)
+- [Capture HDR content with ScreenCaptureKit](../sessions/wwdc2024/10088/README.md)
+- [Create custom visual effects with SwiftUI](../sessions/wwdc2024/10151/README.md)
+- [Design advanced games for Apple platforms](../sessions/wwdc2024/10085/README.md)
+- [Design great visionOS apps](../sessions/wwdc2024/10086/README.md)
+- [Discover RealityKit APIs for iOS, macOS, and visionOS](../sessions/wwdc2024/10103/README.md)
+- [Discover area mode for Object Capture](../sessions/wwdc2024/10107/README.md)
+- [Enhance your spatial computing app with RealityKit audio](../sessions/wwdc2024/111801/README.md)
+- [Explore game input in visionOS](../sessions/wwdc2024/10094/README.md)
+- [Meet TabletopKit for visionOS](../sessions/wwdc2024/10091/README.md)
+- [Optimize your 3D assets for spatial computing](../sessions/wwdc2024/10186/README.md)
+- [Port advanced games to Apple platforms](../sessions/wwdc2024/10089/README.md)
+- [Render Metal with passthrough in visionOS](../sessions/wwdc2024/10092/README.md)
+- [What’s new in Quick Look for visionOS](../sessions/wwdc2024/10105/README.md)
+- [What’s new in USD and MaterialX](../sessions/wwdc2024/10106/README.md)
+
+### WWDC23
+
+- [Bring your Unity VR app to a fully immersive space](../sessions/wwdc2023/10093/README.md)
+- [Bring your game to Mac, Part 1: Make a game plan](../sessions/wwdc2023/10123/README.md)
+- [Bring your game to Mac, Part 2: Compile your shaders](../sessions/wwdc2023/10124/README.md)
+- [Bring your game to Mac, Part 3: Render with Metal](../sessions/wwdc2023/10125/README.md)
+- [Build great games for spatial computing](../sessions/wwdc2023/10096/README.md)
+- [Create immersive Unity apps](../sessions/wwdc2023/10088/README.md)
+- [Discover Metal for immersive apps](../sessions/wwdc2023/10089/README.md)
+- [Enhance your spatial computing app with RealityKit](../sessions/wwdc2023/10081/README.md)
+- [Explore materials in Reality Composer Pro](../sessions/wwdc2023/10202/README.md)
+- [Explore the USD ecosystem](../sessions/wwdc2023/10086/README.md)
+- [Optimize GPU renderers with Metal](../sessions/wwdc2023/10127/README.md)
+- [What’s new in Background Assets](../sessions/wwdc2023/10108/README.md)
+- [What’s new in ScreenCaptureKit](../sessions/wwdc2023/10136/README.md)
+- [Your guide to Metal ray tracing](../sessions/wwdc2023/10128/README.md)
+
+### WWDC22
+
+- [Accelerate machine learning with Metal](../sessions/wwdc2022/10063/README.md)
+- [Add accessibility to your Unity games](../sessions/wwdc2022/10151/README.md)
+- [Boost performance with MetalFX Upscaling](../sessions/wwdc2022/10103/README.md)
+- [Bring your world into augmented reality](../sessions/wwdc2022/10128/README.md)
+- [Challenge: Bindless ray tracing](../sessions/wwdc2022/110952/README.md)
+- [Challenge: Draw with metal-cpp](../sessions/wwdc2022/110953/README.md)
+- [Challenge: SwiftUI Animation Extravaganza!](../sessions/wwdc2022/110493/README.md)
+- [Discover Metal 3](../sessions/wwdc2022/10066/README.md)
+- [Display EDR content with Core Image, Metal, and SwiftUI](../sessions/wwdc2022/10114/README.md)
+- [Display HDR video in EDR with AVFoundation and Metal](../sessions/wwdc2022/110565/README.md)
+- [Explore EDR on iOS](../sessions/wwdc2022/10113/README.md)
+- [Explore USD tools and rendering](../sessions/wwdc2022/10141/README.md)
+- [Go bindless with Metal 3](../sessions/wwdc2022/10101/README.md)
+- [Load resources faster with Metal 3](../sessions/wwdc2022/10104/README.md)
+- [Maximize your Metal ray tracing performance](../sessions/wwdc2022/10105/README.md)
+- [Meet ScreenCaptureKit](../sessions/wwdc2022/10156/README.md)
+- [Plug-in and play: Add Apple frameworks to your Unity game projects](../sessions/wwdc2022/10065/README.md)
+- [Profile and optimize your game's memory](../sessions/wwdc2022/10106/README.md)
+- [Program Metal in C++ with metal-cpp](../sessions/wwdc2022/10160/README.md)
+- [Reach new players with Game Center dashboard](../sessions/wwdc2022/10064/README.md)
+- [Scale compute workloads across Apple GPUs](../sessions/wwdc2022/10159/README.md)
+- [Take ScreenCaptureKit to the next level](../sessions/wwdc2022/10155/README.md)
+- [Target and optimize GPU binaries with Metal 3](../sessions/wwdc2022/10102/README.md)
+- [Transform your geometry with Metal mesh shaders](../sessions/wwdc2022/10162/README.md)
+- [Understand USD fundamentals](../sessions/wwdc2022/10129/README.md)
+
+### WWDC21
+
+- [AR Quick Look, meet Object Capture ](../sessions/wwdc2021/10078/README.md)
+- [Accelerate machine learning with Metal Performance Shaders Graph](../sessions/wwdc2021/10152/README.md)
+- [Add rich graphics to your SwiftUI app](../sessions/wwdc2021/10021/README.md)
+- [Bring Recurring Leaderboards to your game](../sessions/wwdc2021/10067/README.md)
+- [Capture and process ProRAW images](../sessions/wwdc2021/10160/README.md)
+- [Create 3D models with Object Capture](../sessions/wwdc2021/10076/README.md)
+- [Create 3D workflows with USD](../sessions/wwdc2021/10077/README.md)
+- [Create image processing apps powered by Apple silicon](../sessions/wwdc2021/10153/README.md)
+- [Discover Metal debugging, profiling, and asset creation tools](../sessions/wwdc2021/10157/README.md)
+- [Discover compilation workflows in Metal](../sessions/wwdc2021/10229/README.md)
+- [Discover geometry-aware audio with the Physical Audio Spatialization Engine (PHASE)](../sessions/wwdc2021/10079/README.md)
+- [Discover rolling clips with ReplayKit](../sessions/wwdc2021/10101/README.md)
+- [Dive into RealityKit 2](../sessions/wwdc2021/10074/README.md)
+- [Enhance your app with Metal ray tracing](../sessions/wwdc2021/10149/README.md)
+- [Explore ARKit 5](../sessions/wwdc2021/10073/README.md)
+- [Explore Core Image kernel improvements](../sessions/wwdc2021/10159/README.md)
+- [Explore HDR rendering with EDR](../sessions/wwdc2021/10161/README.md)
+- [Explore advanced rendering with RealityKit 2](../sessions/wwdc2021/10075/README.md)
+- [Explore bindless rendering in Metal](../sessions/wwdc2021/10286/README.md)
+- [Explore hybrid rendering with Metal ray tracing](../sessions/wwdc2021/10150/README.md)
+- [Optimize for variable refresh rate displays](../sessions/wwdc2021/10147/README.md)
+- [Optimize high-end games for Apple GPUs](../sessions/wwdc2021/10148/README.md)
+- [Practice audio haptic design](../sessions/wwdc2021/10278/README.md)
+- [Tap into virtual and physical game controllers](../sessions/wwdc2021/10081/README.md)
+- [What’s new in Game Center: Widgets, friends, and multiplayer improvements](../sessions/wwdc2021/10066/README.md)
+
+### WWDC20
+
+- [Advancements in Game Controllers](../sessions/wwdc2020/10614/README.md)
+- [Augment reality](../sessions/wwdc2020/10675/README.md)
+- [Bring keyboard and mouse gaming to iPad](../sessions/wwdc2020/10617/README.md)
+- [Bring your Metal app to Apple silicon Macs](../sessions/wwdc2020/10631/README.md)
+- [Build GPU binaries with Metal](../sessions/wwdc2020/10615/README.md)
+- [Build Metal-based Core Image kernels with Xcode](../sessions/wwdc2020/10021/README.md)
+- [Build customized ML models with the Metal Performance Shaders Graph](../sessions/wwdc2020/10677/README.md)
+- [Capture and stream apps on the Mac with ReplayKit](../sessions/wwdc2020/10633/README.md)
+- [Core Image](../sessions/wwdc2020/10014/README.md)
+- [Debug GPU-side errors in Metal](../sessions/wwdc2020/10616/README.md)
+- [Decode ProRes with AVFoundation and VideoToolbox](../sessions/wwdc2020/10090/README.md)
+- [Design for Game Center](../sessions/wwdc2020/10145/README.md)
+- [Discover Core Image debugging techniques](../sessions/wwdc2020/10089/README.md)
+- [Discover ray tracing with Metal](../sessions/wwdc2020/10012/README.md)
+- [Explore ARKit 4](../sessions/wwdc2020/10611/README.md)
+- [Gain insights into your Metal app with Xcode 12](../sessions/wwdc2020/10605/README.md)
+- [Get to know Metal function pointers](../sessions/wwdc2020/10013/README.md)
+- [Harness Apple GPUs with Metal](../sessions/wwdc2020/10602/README.md)
+- [Optimize Metal Performance for Apple silicon Macs](../sessions/wwdc2020/10632/README.md)
+- [Optimize Metal apps and games with GPU counters](../sessions/wwdc2020/10603/README.md)
+- [Optimize the Core Image pipeline for your video app](../sessions/wwdc2020/10008/README.md)
+- [Pedal to the Metal](../sessions/wwdc2020/10685/README.md)
+- [Ray tracing and function pointers in Metal](../sessions/wwdc2020/10018/README.md)
+- [Shop online with AR Quick Look](../sessions/wwdc2020/10604/README.md)
+- [Support performance-intensive apps and games](../sessions/wwdc2020/10621/README.md)
+- [Tap into Game Center: Dashboard, Access Point, and Profile](../sessions/wwdc2020/10618/README.md)
+- [Tap into Game Center: Leaderboards, Achievements, and Multiplayer](../sessions/wwdc2020/10619/README.md)
+- [The artist’s AR toolkit](../sessions/wwdc2020/10601/README.md)
+- [The game developer’s toolkit](../sessions/wwdc2020/10181/README.md)
+- [What's new in RealityKit](../sessions/wwdc2020/10612/README.md)
+- [What's new in USD](../sessions/wwdc2020/10613/README.md)
+
+### WWDC19
+
+- [Advances in AR Quick Look](../sessions/wwdc2019/612/README.md)
+- [Bringing OpenGL Apps to Metal](../sessions/wwdc2019/611/README.md)
+- [Bringing People into AR](../sessions/wwdc2019/607/README.md)
+- [Building AR Experiences with Reality Composer](../sessions/wwdc2019/609/README.md)
+- [Building Apps with RealityKit](../sessions/wwdc2019/605/README.md)
+- [Building Collaborative AR Experiences](../sessions/wwdc2019/610/README.md)
+- [Debugging in Xcode 11](../sessions/wwdc2019/412/README.md)
+- [Delivering Optimized Metal Apps and Games](../sessions/wwdc2019/606/README.md)
+- [Designing Award Winning Apps and Games](../sessions/wwdc2019/802/README.md)
+- [Expanding the Sensory Experience with Core Haptics](../sessions/wwdc2019/223/README.md)
+- [Game Center Player Identifiers](../sessions/wwdc2019/615/README.md)
+- [Getting the Most Out of Simulator](../sessions/wwdc2019/418/README.md)
+- [Introducing ARKit 3](../sessions/wwdc2019/604/README.md)
+- [Introducing RealityKit and Reality Composer](../sessions/wwdc2019/603/README.md)
+- [Metal for Machine Learning](../sessions/wwdc2019/614/README.md)
+- [Metal for Pro Apps](../sessions/wwdc2019/608/README.md)
+- [Modern Rendering with Metal](../sessions/wwdc2019/601/README.md)
+- [Ray Tracing with Metal](../sessions/wwdc2019/613/README.md)
+- [Supporting New Game Controllers](../sessions/wwdc2019/616/README.md)
+- [Working with USD](../sessions/wwdc2019/602/README.md)
+
+### WWDC18
+
+- [Metal Game Performance Optimization](../sessions/wwdc2018/612/README.md)
+- [Metal Shader Debugging and Profiling](../sessions/wwdc2018/608/README.md)
+
+### Tech Talks
+
+- [Accelerate your machine learning workloads with the M5 and A19 GPUs](../sessions/tech-talks/111432/README.md)
+- [Add SharePlay to your multiplayer game with Game Center](../sessions/tech-talks/110338/README.md)
+- [Boost your graphics performance with the M5 and A19 GPUs](../sessions/tech-talks/111431/README.md)
+- [Bring your high-end game to iPhone 15 Pro](../sessions/tech-talks/111372/README.md)
+- [Design Tips for Great Games](../sessions/wwdc2017/811/README.md)
+- [Discover Metal Performance HUD](../sessions/tech-talks/110339/README.md)
+- [Discover Metal enhancements for A14 Bionic](../sessions/tech-talks/10858/README.md)
+- [Discover Reference Mode](../sessions/tech-talks/110337/README.md)
+- [Discover advances in Metal for A15 Bionic ](../sessions/tech-talks/10876/README.md)
+- [Discover new Metal profiling tools for M3 and A17 Pro](../sessions/tech-talks/111374/README.md)
+- [Explore GPU advancements in M3 and A17 Pro](../sessions/tech-talks/111375/README.md)
+- [Explore Live GPU Profiling with Metal Counters](../sessions/tech-talks/10001/README.md)
+- [Get Started with Display P3](../sessions/wwdc2017/821/README.md)
+- [Going Beyond 2D with SpriteKit](../sessions/wwdc2017/609/README.md)
+- [High Efficiency Image File Format](../sessions/wwdc2017/513/README.md)
+- [Learn performance best practices for Metal shaders](../sessions/tech-talks/111373/README.md)
+- [Manage Game Center with the App Store Connect API](../sessions/tech-talks/111377/README.md)
+- [Meet rule-based matchmaking in Game Center](../sessions/tech-talks/111376/README.md)
+- [Metal 2 on A11 - Imageblock Sample Coverage Control](../sessions/tech-talks/606/README.md)
+- [Metal 2 on A11 - Imageblocks](../sessions/tech-talks/603/README.md)
+- [Metal 2 on A11 - Overview](../sessions/tech-talks/602/README.md)
+- [Metal 2 on A11 - Raster Order Groups](../sessions/tech-talks/605/README.md)
+- [Metal 2 on A11 - Tile Shading](../sessions/tech-talks/604/README.md)
+- [Metal Compute on MacBook Pro](../sessions/tech-talks/10580/README.md)
+- [Metal Enhancements for A13 Bionic](../sessions/tech-talks/608/README.md)
+- [SceneKit in Swift Playgrounds](../sessions/wwdc2017/605/README.md)
+- [SceneKit: What's New](../sessions/wwdc2017/604/README.md)
+- [Tune CPU job scheduling for Apple silicon games](../sessions/tech-talks/110147/README.md)
+
+### WWDC16
+
+- [Advanced Metal Shader Optimization](../sessions/wwdc2016/606/README.md)
+
+### WWDC15
+
+- [Managing 3D Assets with Model I/O](../sessions/wwdc2015/602/README.md)
+- [What's New in Core Motion](../sessions/wwdc2015/705/README.md)
+
+### WWDC14
+
+- [Ingredients of Great Games](../sessions/wwdc2014/602/README.md)
+- [Working with Metal: Advanced](../sessions/wwdc2014/605/README.md)
+- [Working with Metal: Fundamentals](../sessions/wwdc2014/604/README.md)
+- [Working with Metal: Overview](../sessions/wwdc2014/603/README.md)

@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-251",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 251,
+  "title": "Enhance your app’s audio recording capabilities",
+  "description": "Learn how to improve your app’s audio recording functionality. Explore the flexibility of audio device selection using the input picker interaction on iOS and iPadOS 26. Discover APIs available for high-quality voice recording using AirPods. We’ll also introduce spatial audio recording and editing capabilities that allow you to isolate speech and ambient background sounds — all using the the AudioToolbox, AVFoundation, and Cinematic frameworks.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/251",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/251",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Audio & Video",
+    "Spatial Computing",
+    "Photos & Camera"
+  ],
+  "primaryTopic": "Photos & Camera",
+  "duration": 1159,
+  "hasTranscript": true,
+  "transcriptWordCount": 2444,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/251/4/d14e1f6d-5996-4c7a-8576-c7cb4e6eaf02/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/251/4/d14e1f6d-5996-4c7a-8576-c7cb4e6eaf02/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/251/4/d14e1f6d-5996-4c7a-8576-c7cb4e6eaf02/downloads/wwdc2025-251_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/251/4/d14e1f6d-5996-4c7a-8576-c7cb4e6eaf02/downloads/wwdc2025-251_hd.mp4",
+    "duration": 1159
+  },
+  "codeSnippets": [
+    {
+      "title": "Input route selection",
+      "language": "swift",
+      "startTimeSeconds": 130,
+      "code": "import AVKit\n\nclass AppViewController {\n\n    // Configure AudioSession\n\n    // AVInputPickerInteraction is a NSObject subclass that presents an input picker\n    let inputPickerInteraction = AVInputPickerInteraction()   \n    inputPickerInteraction.delegate = self\n\n    // connect the PickerInteraction to a UI element for displaying the picker\n    @IBOutlet weak var selectMicButton: UIButton!\n    self.selectMicButton.addInteraction(self.inputPickerInteraction)\n\n    // button press callback: present input picker UI\n    @IBAction func handleSelectMicButton(_ sender: UIButton) {\n\t    inputPickerInteraction.present()\n    }\n}"
+    },
+    {
+      "title": "AirPods high quality recording",
+      "language": "swift",
+      "startTimeSeconds": 237,
+      "code": "// AVAudioSession clients opt-in - session category option\nAVAudioSessionCategoryOptions.bluetoothHighQualityRecording\n\n// AVCaptureSession clients opt-in - captureSession property\nsession.configuresApplicationAudioSessionForBluetoothHighQualityRecording = true"
+    },
+    {
+      "title": "Audio Mix with AVPlayer",
+      "language": "swift",
+      "startTimeSeconds": 806,
+      "code": "import Cinematic\n\n// Audio Mix parameters (consider using UI elements to change these values)\nvar intensity: Float32 = 0.5 // values between 0.0 and 1.0\nvar style = CNSpatialAudioRenderingStyle.cinematic\n\n// Initializes an instance of CNAssetAudioInfo for an AVAsset asynchronously\nlet audioInfo = try await CNAssetSpatialAudioInfo(asset: myAVAsset)\n\n// Returns an AVAudioMix with effect intensity and rendering style.\nlet newAudioMix: AVAudioMix = audioInfo.audioMix(effectIntensity: intensity,\n                                                 renderingStyle: style)\n\n// Set the new AVAudioMix on your AVPlayerItem\nmyAVPlayerItem.audioMix = newAudioMix"
+    },
+    {
+      "title": "Get remix metadata from input file",
+      "language": "swift",
+      "startTimeSeconds": 1005,
+      "code": "// Get Spatial Audio remix metadata from input AVAsset\n\nlet audioInfo = try await CNAssetSpatialAudioInfo(asset: myAVAsset)\n\n// extract the remix metadata. Set on AUAudioMix with AudioUnitSetProperty()\nlet remixMetadata = audioInfo.spatialAudioMixMetadata as CFData"
+    }
+  ],
+  "resources": [
+    {
+      "title": "TN3177: Understanding alternate audio track groups in movie files",
+      "url": "https://developer.apple.com/documentation/Technotes/tn3177-understanding-alternate-audio-track-groups-in-movie-files",
+      "type": "documentation",
+      "description": "Learn how alternate groups collect audio tracks, and how to choose which audio track to use in your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/Technotes/tn3177-understanding-alternate-audio-track-groups-in-movie-files",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Technotes/tn3177-understanding-alternate-audio-track-groups-in-movie-files.json"
+    },
+    {
+      "title": "Capturing Spatial Audio in your iOS app",
+      "url": "https://developer.apple.com/documentation/AVFoundation/capturing-spatial-audio-in-your-ios-app",
+      "type": "samplecode",
+      "description": "Enhance your app’s audio recording capabilities by supporting Spatial Audio capture.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/capturing-spatial-audio-in-your-ios-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/capturing-spatial-audio-in-your-ios-app.json"
+    },
+    {
+      "title": "Editing Spatial Audio with an audio mix",
+      "url": "https://developer.apple.com/documentation/Cinematic/editing-spatial-audio-with-an-audio-mix",
+      "type": "samplecode",
+      "description": "Add Spatial Audio editing capabilities with the Audio Mix API in the Cinematic framework.",
+      "sosumiURL": "https://sosumi.ai/documentation/Cinematic/editing-spatial-audio-with-an-audio-mix",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Cinematic/editing-spatial-audio-with-an-audio-mix.json"
+    },
+    {
+      "title": "Cinematic",
+      "url": "https://developer.apple.com/documentation/Cinematic",
+      "type": "documentation",
+      "description": "Integrate playback and editing of assets captured in Cinematic mode into your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/Cinematic",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Cinematic.json"
+    },
+    {
+      "title": "AVFoundation",
+      "url": "https://developer.apple.com/documentation/AVFoundation",
+      "type": "documentation",
+      "description": "Work with audiovisual assets, control device cameras, process audio, and configure system audio interactions.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/251/",
+  "files": {
+    "metadata": "sessions/wwdc2025/251/metadata.json",
+    "readme": "sessions/wwdc2025/251/README.md",
+    "transcript": "sessions/wwdc2025/251/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/251/transcript.json"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10016",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10016,
+  "title": "Build custom workouts with WorkoutKit",
+  "description": "WorkoutKit makes it easy to create, preview, and schedule planned workouts for the Workout app on Apple Watch. Learn how to build custom intervals, create alerts, and use the built-in preview UI to send your own workout routines to Apple Watch.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10016",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10016",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Essentials",
+    "Health & Fitness"
+  ],
+  "primaryTopic": "Health & Fitness",
+  "duration": 1282,
+  "hasTranscript": true,
+  "transcriptWordCount": 3311,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10016/5/CD68A862-7DFB-45FF-B1A6-B18140FDED96/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10016/5/CD68A862-7DFB-45FF-B1A6-B18140FDED96/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10016/5/CD68A862-7DFB-45FF-B1A6-B18140FDED96/downloads/wwdc2023-10016_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10016/5/CD68A862-7DFB-45FF-B1A6-B18140FDED96/downloads/wwdc2023-10016_hd.mp4",
+    "duration": 1282
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Customizing workouts with WorkoutKit",
+      "url": "https://developer.apple.com/documentation/WorkoutKit/customizing-workouts-with-workoutkit",
+      "type": "samplecode",
+      "description": "Create, preview, and sync workouts for use in the Workout app on Apple Watch.",
+      "sosumiURL": "https://sosumi.ai/documentation/WorkoutKit/customizing-workouts-with-workoutkit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WorkoutKit/customizing-workouts-with-workoutkit.json"
+    },
+    {
+      "title": "watchOS updates",
+      "url": "https://developer.apple.com/documentation/Updates/watchos",
+      "type": "documentation",
+      "description": "Learn about important changes to watchOS.",
+      "sosumiURL": "https://sosumi.ai/documentation/Updates/watchos",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Updates/watchos.json"
+    },
+    {
+      "title": "WorkoutKit",
+      "url": "https://developer.apple.com/documentation/WorkoutKit",
+      "type": "documentation",
+      "description": "Create, preview, and sync workout compositions to the Workout app.",
+      "sosumiURL": "https://sosumi.ai/documentation/WorkoutKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WorkoutKit.json"
+    },
+    {
+      "title": "HealthKit",
+      "url": "https://developer.apple.com/documentation/HealthKit",
+      "type": "documentation",
+      "description": "Access and share health and fitness data while maintaining the user’s privacy and control.",
+      "sosumiURL": "https://sosumi.ai/documentation/HealthKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HealthKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10016/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10016/metadata.json",
+    "readme": "sessions/wwdc2023/10016/README.md",
+    "transcript": "sessions/wwdc2023/10016/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10016/transcript.json"
+  }
+}

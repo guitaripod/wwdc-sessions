@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2016-606",
+  "event": "wwdc2016",
+  "eventName": "WWDC16",
+  "year": 2016,
+  "eventContentId": 606,
+  "title": "Advanced Metal Shader Optimization",
+  "description": "The Metal shading language is an easy-to-use programming language for writing graphics and compute functions which execute on the GPU. Dive deeper into understanding the design patterns, memory access models, and detailed shader coding best practices which reduce bottlenecks and hide latency. Intended for experienced shader authors with a solid understanding of GPU architecture and hoping to extract every possible cycle.",
+  "url": "https://developer.apple.com/videos/play/wwdc2016/606",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2016/606",
+  "type": "Session",
+  "publishedAt": "2016-06-15T15:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "3d",
+    "3d graphics",
+    "compiler",
+    "compute",
+    "gpgpu",
+    "gpu",
+    "metl",
+    "mtl",
+    "mtldevice",
+    "opengl",
+    "opengl es",
+    "renderer",
+    "shader",
+    "simd"
+  ],
+  "topics": [
+    "Developer Tools",
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 2475,
+  "hasTranscript": true,
+  "transcriptWordCount": 7521,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2016/606oluchfgwakjbymy8/606/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2016/606oluchfgwakjbymy8/606/606_sd_advanced_metal_shader_optimization.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2016/606oluchfgwakjbymy8/606/606_hd_advanced_metal_shader_optimization.mp4",
+    "duration": 2475
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2016/606/",
+  "files": {
+    "metadata": "sessions/wwdc2016/606/metadata.json",
+    "readme": "sessions/wwdc2016/606/README.md",
+    "transcript": "sessions/wwdc2016/606/transcript.md",
+    "transcriptJSON": "sessions/wwdc2016/606/transcript.json"
+  }
+}

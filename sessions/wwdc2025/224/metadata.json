@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-224",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 224,
+  "title": "Evaluate your app for Accessibility Nutrition Labels",
+  "description": "Use Accessibility Nutrition Labels on your App Store product page to highlight the accessibility features supported by your app. You’ll learn how to evaluate your app’s accessibility features — such as VoiceOver, Larger Text, Captions, and more — and choose accurate and informative Accessibility Nutrition Labels. You’ll also find out how to approach accessibility throughout the design phase.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/224",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/224",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Accessibility & Inclusion"
+  ],
+  "primaryTopic": "Accessibility & Inclusion",
+  "duration": 1448,
+  "hasTranscript": true,
+  "transcriptWordCount": 3698,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/224/5/da32cbb0-5f05-4589-8055-fe7a473056e9/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/224/5/da32cbb0-5f05-4589-8055-fe7a473056e9/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/224/5/da32cbb0-5f05-4589-8055-fe7a473056e9/downloads/wwdc2025-224_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/224/5/da32cbb0-5f05-4589-8055-fe7a473056e9/downloads/wwdc2025-224_hd.mp4",
+    "duration": 1448
+  },
+  "codeSnippets": [
+    {
+      "title": "Add an accessibility label",
+      "language": "swift",
+      "startTimeSeconds": 787,
+      "code": "// Add an accessibility label\n\nimport SwiftUI\n\nstruct LandmarkDetailView: View {\n  @Environment(ModelData.self) var modelData\n  let landmark: Landmark\n\n  var body: some View {\n    @Bindable var modelData = modelData\n    DetailContentView()\n      .toolbar {\n        ToolbarItemGroup {\n          Button {\n          } label: {\n            Image(systemName: \"square.arrow.up\")\n          }\n\t\t\t\t\t.accessibilityLabel(\"Share\")\n        }\n      }\n   }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Overview of Accessibility Nutrition Labels",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-app-accessibility/overview-of-accessibility-nutrition-labels",
+      "type": "documentation",
+      "description": "An overview of Accessibility Nutrition Labels that includes links to the detailed evaluation criteria for each label type.",
+      "sosumiURL": "https://sosumi.ai/help/app-store-connect/manage-app-accessibility/overview-of-accessibility-nutrition-labels"
+    },
+    {
+      "title": "Human Interface Guidelines: Accessibility",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/accessibility",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/accessibility"
+    },
+    {
+      "title": "Accessibility",
+      "url": "https://developer.apple.com/documentation/swiftui/view-accessibility",
+      "type": "documentation",
+      "description": "Make your SwiftUI apps accessible to everyone, including people with disabilities.",
+      "sosumiURL": "https://sosumi.ai/documentation/swiftui/view-accessibility",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/swiftui/view-accessibility.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/224/",
+  "files": {
+    "metadata": "sessions/wwdc2025/224/metadata.json",
+    "readme": "sessions/wwdc2025/224/README.md",
+    "transcript": "sessions/wwdc2025/224/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/224/transcript.json"
+  }
+}

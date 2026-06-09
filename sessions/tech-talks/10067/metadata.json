@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "id": "tech-talks-10067",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2017,
+  "eventContentId": 10067,
+  "title": "Bring desktop class sync to iOS with FileProvider",
+  "description": "Discover how you can sync files faster and more efficiently within your iPhone and iPad apps when you create a File Provider extension. Sync up with the File Provider team and learn how to build a modern File Provider for iOS. We’ll show you how to architect your app to support seamless file sync, uploads, and downloads. And we’ll explore how you can go stateless and fortify your file provider against unexpected conditions.\n\nTo get the most out of this session, we recommend having experience with File Providers on macOS.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/10067",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10067",
+  "type": "Video",
+  "publishedAt": "2022-10-11T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "cloud",
+    "download",
+    "fileprovider",
+    "file provider",
+    "files",
+    "filesystem",
+    "file system",
+    "sync",
+    "synchronization",
+    "synchronize",
+    "upload"
+  ],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 627,
+  "hasTranscript": true,
+  "transcriptWordCount": 1483,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/10067/3/F8DADC3E-4CC2-4165-AD4A-5B6A2DBFCF29/cmaf.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/10067/3/F8DADC3E-4CC2-4165-AD4A-5B6A2DBFCF29/downloads/tech-talks-10067_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/10067/3/F8DADC3E-4CC2-4165-AD4A-5B6A2DBFCF29/downloads/tech-talks-10067_hd.mp4",
+    "duration": 627
+  },
+  "codeSnippets": [
+    {
+      "title": "Implement a Progress Cancellation Handler",
+      "language": "swift",
+      "startTimeSeconds": 364,
+      "code": "// Implementing a progress cancellation handler\n\npublic func modifyItem(_ item: ..., completionHandler: (..., Error?) -> Void) -> Progress {\n    let progress = Progress()\n    let uploadTask = Task {\n        do {\n            // ...\n            try Task.checkCancellation()\n            // ...\n        } catch let error {\n            completionHandler(nil, [], false, error)\n        }\n    }\n\n    progress.cancellationHandler = {\n        uploadTask.cancel()\n    }\n    return progress\n}"
+    },
+    {
+      "title": "Register for Push Notifications",
+      "language": "swift",
+      "startTimeSeconds": 413,
+      "code": "// Registering for push notifications\n\nimport PushKit\n\nlet pushRegistry = PKPushRegistry(queue: queue)\n\npushRegistry.delegate = self\npushRegistry.desiredPushTypes = Set([PKPushType.fileProvider])\n\n...\n\n// On the server: push\n//\n// {\n//    \"container-identifier\" = \"NSFileProviderWorkingSetContainerItemIdentifier\"\n//    \"domain\" = \"<domain identifier>\"\n// }\n//\n// with topic \"<your application identifier>.pushkit.fileprovider\""
+    },
+    {
+      "title": "Drag and Drop: Implement Dragging",
+      "language": "swift",
+      "startTimeSeconds": 533,
+      "code": "// Sending out drags\n\nvar body: some View {\n    Text(\"🥐\")\n    .onDrag {\n        let itemProvider = NSItemProvider()\n        itemProvider.registerFileRepresentation(for: .folder,\n                                                openInPlace: true) { completionHandler in\n            self.manager.getUserVisibleURL(for: folderItemID) { fileURL, error in\n                guard let fileURL = fileURL else {\n                    completionHandler(nil, false, error)\n                    return\n                }\n                completionHandler(fileURL, true, nil)\n            }\n            return Progress()  \n        }\n        return itemProvider\n    }\n}"
+    },
+    {
+      "title": "Drag and Drop: Implement Dropping",
+      "language": "swift",
+      "startTimeSeconds": 564,
+      "code": "// Receiving drops\n\nvar body: some View {\n    Text(\"🥬\")\n    .onDrop(of: [.folder], isTargeted: $dropTarget) { providers in\n        guard let prov = providers.first(where: { provider in\n            !provider.registeredContentTypes(conformingTo: .folder).isEmpty\n        }) else {\n            return false\n        }\n        prov.loadFileRepresentation(for: .folder, openInPlace: true) { url, inPlace, err in\n            guard let url = url else { return }\n            Task {\n                url.startAccessingSecurityScopedResource()\n                // use URL\n                url.stopAccessingSecurityScopedResource()\n            }\n        }\n        return true\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Synchronizing files using file provider extensions",
+      "url": "https://developer.apple.com/documentation/FileProvider/synchronizing-files-using-file-provider-extensions",
+      "type": "samplecode",
+      "description": "Make remote files available in macOS and iOS, and synchronize their states by using file provider extensions.",
+      "sosumiURL": "https://sosumi.ai/documentation/FileProvider/synchronizing-files-using-file-provider-extensions",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/FileProvider/synchronizing-files-using-file-provider-extensions.json"
+    },
+    {
+      "title": "Sending notification requests to APNs",
+      "url": "https://developer.apple.com/documentation/UserNotifications/sending-notification-requests-to-apns",
+      "type": "documentation",
+      "description": "Transmit your remote notification payload and device token information to Apple Push Notification service (APNs).",
+      "sosumiURL": "https://sosumi.ai/documentation/UserNotifications/sending-notification-requests-to-apns",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UserNotifications/sending-notification-requests-to-apns.json"
+    },
+    {
+      "title": "File Provider UI",
+      "url": "https://developer.apple.com/documentation/FileProviderUI",
+      "type": "documentation",
+      "description": "Add actions to the document browser’s context menu.",
+      "sosumiURL": "https://sosumi.ai/documentation/FileProviderUI",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/FileProviderUI.json"
+    },
+    {
+      "title": "File Provider",
+      "url": "https://developer.apple.com/documentation/FileProvider",
+      "type": "documentation",
+      "description": "An extension other apps use to access files and folders managed by your app and synced with a remote storage.",
+      "sosumiURL": "https://sosumi.ai/documentation/FileProvider",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/FileProvider.json"
+    }
+  ],
+  "path": "sessions/tech-talks/10067/",
+  "files": {
+    "metadata": "sessions/tech-talks/10067/metadata.json",
+    "readme": "sessions/tech-talks/10067/README.md",
+    "transcript": "sessions/tech-talks/10067/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/10067/transcript.json"
+  }
+}

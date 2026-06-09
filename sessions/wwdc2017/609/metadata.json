@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2017-609",
+  "event": "wwdc2017",
+  "eventName": "WWDC17",
+  "year": 2017,
+  "eventContentId": 609,
+  "title": "Going Beyond 2D with SpriteKit",
+  "description": "SpriteKit makes it easy to create high-performance, power-efficient 2D games and more. See how to take SpriteKit objects into Augmented Reality through seamless integration with ARKit. Learn about mixing 2D and 3D content and applying realistic transformations. Take direct control over SpriteKit rendering and walk through offline rendering into a Metal texture.",
+  "url": "https://developer.apple.com/videos/play/wwdc2017/609",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2017/609",
+  "type": "Session",
+  "publishedAt": "2017-06-09T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "2d",
+    "action",
+    "animation",
+    "arkit",
+    "audio",
+    "camera",
+    "collision",
+    "collisions",
+    "constraint",
+    "gpu",
+    "graphics",
+    "inverse kinematics",
+    "lighting",
+    "metal",
+    "opengl",
+    "physics",
+    "platformer",
+    "puzzle",
+    "render",
+    "shaders",
+    "shading",
+    "skaction",
+    "skaudionode",
+    "skcameranode",
+    "sknode",
+    "skreferencenode",
+    "spatial",
+    "sprite"
+  ],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1937,
+  "hasTranscript": true,
+  "transcriptWordCount": 5201,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/609ir1t2xrat06i/609/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/609ir1t2xrat06i/609/609_sd_going_beyond_2d_with_spritekit.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/609ir1t2xrat06i/609/609_hd_going_beyond_2d_with_spritekit.mp4",
+    "duration": 1937
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "SpriteKit",
+      "url": "https://developer.apple.com/documentation/SpriteKit",
+      "type": "documentation",
+      "description": "Add high-performance 2D content with smooth animations to your app, or create a game with a high-level set of 2D game-based tools.",
+      "sosumiURL": "https://sosumi.ai/documentation/SpriteKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SpriteKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2017/609/",
+  "files": {
+    "metadata": "sessions/wwdc2017/609/metadata.json",
+    "readme": "sessions/wwdc2017/609/README.md",
+    "transcript": "sessions/wwdc2017/609/transcript.md",
+    "transcriptJSON": "sessions/wwdc2017/609/transcript.json"
+  }
+}

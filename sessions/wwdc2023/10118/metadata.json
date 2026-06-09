@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10118",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10118,
+  "title": "What’s new in Web Inspector",
+  "description": "Web Inspector provides a powerful set of tools to debug and inspect web pages, web extensions, and WKWebViews on macOS, iOS and iPadOS. We’ll share the latest updates, including improved typography inspection, editing tools for variable fonts, controls to emulate people’s preferences, element badges in the DOM node tree, and Symbolic breakpoints.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10118",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10118",
+  "type": "Video",
+  "publishedAt": "2023-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "breakpoint",
+    "css",
+    "font"
+  ],
+  "topics": [
+    "Developer Tools",
+    "Safari & Web"
+  ],
+  "primaryTopic": "Safari & Web",
+  "duration": 1695,
+  "hasTranscript": true,
+  "transcriptWordCount": 4259,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10118/4/A2DA3123-3E74-4ECF-9961-EA390BE9B502/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10118/4/A2DA3123-3E74-4ECF-9961-EA390BE9B502/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10118/4/A2DA3123-3E74-4ECF-9961-EA390BE9B502/downloads/wwdc2023-10118_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10118/4/A2DA3123-3E74-4ECF-9961-EA390BE9B502/downloads/wwdc2023-10118_hd.mp4",
+    "duration": 1695
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Adding a web development tool to Safari Web Inspector",
+      "url": "https://developer.apple.com/documentation/SafariServices/adding-a-web-development-tool-to-safari-web-inspector",
+      "type": "documentation",
+      "description": "Expand the built-in Safari Web Inspector to include your custom tool, augmenting developers’ options for inspecting, testing, and debugging webpages.",
+      "sosumiURL": "https://sosumi.ai/documentation/SafariServices/adding-a-web-development-tool-to-safari-web-inspector",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SafariServices/adding-a-web-development-tool-to-safari-web-inspector.json"
+    },
+    {
+      "title": "Safari Technology Preview",
+      "url": "https://developer.apple.com/safari/technology-preview/",
+      "type": "download",
+      "description": "Safari Technology Preview",
+      "sosumiURL": "https://sosumi.ai/safari/technology-preview/"
+    },
+    {
+      "title": "Safari Release Notes",
+      "url": "https://developer.apple.com/documentation/safari-release-notes",
+      "type": "documentation",
+      "description": "Learn about changes for Safari and Safari View Controller for iOS, iPadOS, macOS, and in visionOS; WKWebView for iOS, iPadOS, macOS, watchOS, and in visionOS; and Web Inspector on macOS.",
+      "sosumiURL": "https://sosumi.ai/documentation/safari-release-notes",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/safari-release-notes.json"
+    },
+    {
+      "title": "WebKit Open Source Project",
+      "url": "https://webkit.org",
+      "type": "guide",
+      "description": "WebKit Open Source Project"
+    },
+    {
+      "title": "Web Inspector Reference",
+      "url": "https://webkit.org/web-inspector/",
+      "type": "documentation",
+      "description": "Web Inspector Documentation"
+    },
+    {
+      "title": "Submit feedback",
+      "url": "http://feedbackassistant.apple.com",
+      "type": "documentation",
+      "description": null
+    }
+  ],
+  "path": "sessions/wwdc2023/10118/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10118/metadata.json",
+    "readme": "sessions/wwdc2023/10118/README.md",
+    "transcript": "sessions/wwdc2023/10118/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10118/transcript.json"
+  }
+}

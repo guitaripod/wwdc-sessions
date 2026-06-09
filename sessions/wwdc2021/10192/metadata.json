@@ -1,0 +1,332 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10192",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10192,
+  "title": "What‘s new in Swift",
+  "description": "Join us for an update on Swift. Discover the latest language advancements that make your code easier to read and write. Explore the growing number of APIs available as Swift packages. And we’ll introduce you to Swift’s async/await syntax, structured concurrency, and actors.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10192",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10192",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "algorithms",
+    "arc",
+    "argumentparser",
+    "asynchronous",
+    "automatic reference counting",
+    "aws",
+    "builds",
+    "cgfloat",
+    "codable",
+    "collections",
+    "concurrent",
+    "deque",
+    "diversity",
+    "docc",
+    "documentation",
+    "double",
+    "driver",
+    "enum",
+    "evolution",
+    "fish",
+    "flexible",
+    "float16",
+    "functions",
+    "incremental",
+    "index",
+    "lambda",
+    "lifetimes",
+    "linux",
+    "memory",
+    "mentorship",
+    "numerics",
+    "open source",
+    "optimize",
+    "ordereddictionary",
+    "orderedset",
+    "path",
+    "property wrappers",
+    "result builders",
+    "server",
+    "static member lookup",
+    "swiftui",
+    "system",
+    "toggle",
+    "windows"
+  ],
+  "topics": [
+    "Essentials",
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 1965,
+  "hasTranscript": true,
+  "transcriptWordCount": 4927,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10192/4/1EE1B691-9DDB-4920-BD8C-7E91BDD75BB8/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10192/4/1EE1B691-9DDB-4920-BD8C-7E91BDD75BB8/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10192/4/1EE1B691-9DDB-4920-BD8C-7E91BDD75BB8/downloads/wwdc2021-10192_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10192/4/1EE1B691-9DDB-4920-BD8C-7E91BDD75BB8/downloads/wwdc2021-10192_hd.mp4",
+    "duration": 1965
+  },
+  "codeSnippets": [
+    {
+      "title": "Deque",
+      "language": "swift",
+      "startTimeSeconds": 376,
+      "code": "import Collections\n\nvar colors: Deque = [\"red\", \"yellow\", \"blue\"]\n\ncolors.prepend(\"green\")\ncolors.append(\"orange\")\n// `colors` is now [\"green\", \"red\", \"yellow\", \"blue\", “orange\"]\n\ncolors.popFirst() // \"green\"\ncolors.popLast() // \"orange\"\n// `colors` is back to [\"red\", \"yellow\", \"blue\"]"
+    },
+    {
+      "title": "Ordered set",
+      "language": "swift",
+      "startTimeSeconds": 385,
+      "code": "import Collections\n\nvar buildingMaterials: OrderedSet = [\"straw\", \"sticks\", \"bricks\"]\n\nfor i in 0 ..< buildingMaterials.count {\n    print(\"Little piggie #\\(i) built a house of \\(buildingMaterials[i])\")\n}\n// Little piggie #0 built a house of straw\n// Little piggie #1 built a house of sticks\n// Little piggie #2 built a house of bricks\n\nbuildingMaterials.append(\"straw\") // (inserted: false, index: 0)"
+    },
+    {
+      "title": "Ordered dictionary",
+      "language": "swift",
+      "startTimeSeconds": 402,
+      "code": "import Collections\n\nvar responses: OrderedDictionary = [200: \"OK\", 403: \"Forbidden\", 404: \"Not Found\"]\n\nfor (code, phrase) in responses {\n    print(\"\\(code) (\\(phrase))\")\n}\n// 200 (OK)\n// 403 (Forbidden)\n// 404 (Not Found)"
+    },
+    {
+      "title": "Swift Algorithms",
+      "language": "swift",
+      "startTimeSeconds": 459,
+      "code": "import Algorithms\n\nlet testAccounts = [ ... ]\n\nfor testGroup in testAccounts.uniquePermutations(ofCount: 0...) {\n    try validate(testGroup)\n}\n\nlet randomGroup = testAccounts.randomSample(count: 5)"
+    },
+    {
+      "title": "Swift System",
+      "language": "swift",
+      "startTimeSeconds": 472,
+      "code": "import System\n\nlet fd: FileDescriptor = try .open(\n    \"/tmp/a.txt\", .writeOnly,\n    options: [.create, .truncate], permissions: .ownerReadWrite)\ntry fd.closeAfter {\n    try fd.writeAll(\"Hello, WWDC!\\n\".utf8)\n}"
+    },
+    {
+      "title": "FilePath manipulation APIs",
+      "language": "swift",
+      "startTimeSeconds": 486,
+      "code": "import System\n\nvar path: FilePath = \"/tmp/WWDC2021.txt\"\nprint(path.lastComponent)         // \"WWDC2021.txt\"\n\nprint(path.extension)             // \"txt\"\npath.extension = \"pdf\"            // path == \"/tmp/WWDC2021.pdf\"\npath.extension = nil              // path == \"/tmp/WWDC2021\"\nprint(path.extension)             // nil\n\npath.push(\"../foo/bar/./\")        // path == \"/tmp/wwdc2021/../foo/bar/.\"\npath.lexicallyNormalize()         // path == \"/tmp/foo/bar\"\nprint(path.ends(with: \"foo/bar\")) // true!"
+    },
+    {
+      "title": "Float16 support on Apple silicon Macs",
+      "language": "swift",
+      "startTimeSeconds": 541,
+      "code": "import Numerics\n\nlet x: Float16 = 1.5\nlet y = Float16.exp(x)"
+    },
+    {
+      "title": "Complex elementary functions",
+      "language": "swift",
+      "startTimeSeconds": 545,
+      "code": "import Numerics\n\nlet z = Complex(0, Float16.pi) // πi\nlet w = Complex.exp(z)         // exp(πi) ≅ -1"
+    },
+    {
+      "title": "AWS Lambda runtime now with async/await",
+      "language": "swift",
+      "startTimeSeconds": 667,
+      "code": "import AWSLambdaRuntime\nimport AWSLambdaEvents\n\n@main\nstruct HelloWorld: LambdaHandler {\n    typealias In = APIGatewayV2Request\n    typealias Out = APIGatewayV2Response\n    func handle(event: In, context: Lambda.Context) async throws -> Out {\n        .init(statusCode: .ok, body: \"Hello World\")\n    }\n}"
+    },
+    {
+      "title": "Memory management",
+      "language": "swift",
+      "startTimeSeconds": 892,
+      "code": "class Traveler {\n    var destination: String\n}\n\nfunc test() {\n    let traveler1 = Traveler(destination: \"Unknown\")\n    // retain\n    let traveler2 = traveler1\n    // release\n    traveler2.destination = \"Big Sur\"\n    // release\n    print(\"Done traveling\")\n}"
+    },
+    {
+      "title": "Codable synthesis for enums with associated values: A two-case enum",
+      "language": "swift",
+      "startTimeSeconds": 1024,
+      "code": "enum Command {\n    case load(key: String)\n    case store(key: String, value: Int)\n}"
+    },
+    {
+      "title": "Codable synthesis for enums with associated values: Before",
+      "language": "swift",
+      "startTimeSeconds": 1031,
+      "code": "// You used to have to manually implement all of this boilerplate.\n\nenum Command: Codable {\n    case load(key: String)\n    case store(key: String, value: Int)\n\n    init(from decoder: Decoder) throws {\n        let container = try decoder.container(keyedBy: CodingKeys.self)\n        if container.allKeys.count != 1 {\n            let context = DecodingError.Context(\n                codingPath: container.codingPath,\n                debugDescription: \"Invalid number of keys found, expected one.\")\n            throw DecodingError.typeMismatch(Command.self, context)\n        }\n\n        switch container.allKeys.first.unsafelyUnwrapped {\n        case .load:\n            let nested = try container.nestedContainer(\n                keyedBy: LoadCodingKeys.self,\n                forKey: .load)\n            self = .load(\n                key: try nested.decode(String.self, forKey: .key))\n        case .store:\n            let nested = try container.nestedContainer(\n                keyedBy: StoreCodingKeys.self,\n                forKey: .store)\n            self = .store(\n                key: try nested.decode(String.self, forKey: .key),\n                value: try nested.decode(Int.self, forKey: .value))\n        }\n    }\n\n    func encode(to encoder: Encoder) throws {\n        var container = encoder.container(keyedBy: CodingKeys.self)\n        switch self {\n        case let .load(key):\n            var nested = container.nestedContainer(keyedBy: LoadCodingKeys.self, \n                                                   forKey: .load)\n            try nested.encode(key, forKey: .key)\n        case let .store(key, value):\n            var nested = container.nestedContainer(keyedBy: StoreCodingKeys.self, \n                                                   forKey: .store)\n            try nested.encode(key, forKey: .key)\n            try nested.encode(value, forKey: .value)\n        }\n    }\n\n    /// Contains keys for all cases of the enum.\n    enum CodingKeys: CodingKey {\n        case load\n        case store\n    }\n\n    /// Contains keys for all associated values of `case load`.\n    enum LoadCodingKeys: CodingKey {\n        case key\n    }\n\n    /// Contains keys for all associated values of `case store`.\n    enum StoreCodingKeys: CodingKey {\n        case key\n        case value\n    }\n}"
+    },
+    {
+      "title": "Codable synthesis for enums with associated values: After",
+      "language": "swift",
+      "startTimeSeconds": 1035,
+      "code": "enum Command: Codable {\n    case load(key: String)\n    case store(key: String, value: Int)\n}"
+    },
+    {
+      "title": "Static member lookup",
+      "language": "swift",
+      "startTimeSeconds": 1046,
+      "code": "enum Coffee {\n    case regular\n    case decaf\n}\n\nfunc brew(_ coffee: Coffee) { ... }\n\nbrew(.regular)"
+    },
+    {
+      "title": "Flexible static member lookup",
+      "language": "swift",
+      "startTimeSeconds": 1069,
+      "code": "protocol Coffee { ... }\nstruct RegularCoffee: Coffee { }\nstruct Cappuccino: Coffee { }\nextension Coffee where Self == Cappucino {\n    static var cappucino: Cappucino { Cappucino() }\n}\n\nfunc brew<CoffeeType: Coffee>(_ coffee: CoffeeType) { ... }\n\nbrew(.cappucino.large)"
+    },
+    {
+      "title": "Property wrappers on parameters",
+      "language": "swift",
+      "startTimeSeconds": 1105,
+      "code": "@propertyWrapper\nstruct NonEmpty<Value: Collection> {\n    init(wrappedValue: Value) {\n        precondition(!wrappedValue.isEmpty)\n        self.wrappedValue = wrappedValue\n    }\n\n    var wrappedValue: Value {\n        willSet { precondition(!newValue.isEmpty) }\n    }\n}\n\nfunc logIn(@NonEmpty _ username: String) {\n    print(\"Logging in: \\(username)\")\n}"
+    },
+    {
+      "title": "Ergonomic improvements in SwiftUI code: Before",
+      "language": "swift",
+      "startTimeSeconds": 1142,
+      "code": "// Instead of writing this...\n\nimport SwiftUI\n\nstruct SettingsView: View {\n    @State var settings: [Setting]\n\n    private let padding = 10.0\n\n    var body: some View {\n        List(0 ..< settings.count) { index in\n            #if os(macOS)\n            Toggle(settings[index].displayName, isOn: $settings[index].isOn)\n                .toggleStyle(CheckboxToggleStyle())\n            #else\n            Toggle(settings[index].displayName, isOn: $settings[index].isOn)\n                .toggleStyle(SwitchToggleStyle())\n            #endif\n        }\n        .padding(CGFloat(padding))\n    }\n}"
+    },
+    {
+      "title": "Ergonomic improvements in SwiftUI code: After",
+      "language": "swift",
+      "startTimeSeconds": 1177,
+      "code": "// You can now write this.\n\nimport SwiftUI\n\nstruct SettingsView: View {\n    @State var settings: [Setting]\n\n    private let padding = 10.0\n\n    var body: some View {\n        List($settings) { $setting in\n            Toggle(setting.displayName, isOn: $setting.isOn)\n              #if os(macOS)\n              .toggleStyle(.checkbox)\n              #else\n              .toggleStyle(.switch)\n              #endif\n        }\n        .padding(padding)\n    }\n}"
+    },
+    {
+      "title": "Asynchronous programming with async/await: Before",
+      "language": "swift",
+      "startTimeSeconds": 1340,
+      "code": "// Instead of writing this...\n\nfunc fetchImage(id: String, completion: (UIImage?, Error?) -> Void) {\n    let request = self.imageURLRequest(for: id)\n    let task = URLSession.shared.dataTask(with: request) {\n        data, urlResponse, error in\n        if let error = error {\n            completion(nil, error)\n        } else if let httpResponse = urlResponse as? HTTPURLResponse,\n                httpResponse.statusCode != 200 {\n            completion(nil, MyTransferError())\n        } else if let data = data, let image = UIImage(data: data) {\n            completion(image, nil)\n        } else {\n            completion(nil, MyOtherError())\n        }\n    }\n   task.resume()\n}"
+    },
+    {
+      "title": "Asynchronous programming with async/await: URLSession.shared.data(for:)",
+      "language": "swift",
+      "startTimeSeconds": 1438,
+      "code": "let (data, response) = try await URLSession.shared.data(for: request)"
+    },
+    {
+      "title": "Asynchronous programming with async/await: After",
+      "language": "swift",
+      "startTimeSeconds": 1480,
+      "code": "// You can now write this.\n\nfunc fetchImage(id: String) async throws -> UIImage {\n    let request = self.imageURLRequest(for: id)\n    let (data, response) = try await URLSession.shared.data(for: request)\n    if let httpResponse = response as? HTTPURLResponse,\n       httpResponse.statusCode != 200 {\n        throw TransferFailure()\n    }\n    guard let image = UIImage(data: data) else {\n        throw ImageDecodingFailure()\n    }\n    return image\n}"
+    },
+    {
+      "title": "Structured concurrency",
+      "language": "swift",
+      "startTimeSeconds": 1626,
+      "code": "func titleImage() async throws -> Image {\n    async let background = renderBackground()\n    async let foreground = renderForeground()\n    let title = try renderTitle()\n    return try await merge(background,\n                           foreground,\n                           title)\n}"
+    },
+    {
+      "title": "Actors",
+      "language": "swift",
+      "startTimeSeconds": 1766,
+      "code": "actor Statistics {\n    private var counter: Int = 0\n    func increment() {\n        counter += 1\n    }\n    func publish() async {\n        await sendResults(counter)\n    }\n}\n\nvar statistics = Statistics()\nawait statistics.increment()"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Package Collections",
+      "url": "https://swift.org/blog/package-collections",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Swift Compiler Driver on GitHub",
+      "url": "https://github.com/apple/swift-driver",
+      "type": "documentation",
+      "description": "The GitHub repository for the Swift compiler driver project."
+    },
+    {
+      "title": "Swift System on GitHub",
+      "url": "https://github.com/apple/swift-system",
+      "type": "documentation",
+      "description": "GitHub repository for the Swift System package."
+    },
+    {
+      "title": "Swift Collections on GitHub",
+      "url": "https://github.com/apple/swift-collections",
+      "type": "documentation",
+      "description": "GitHub repository for the Swift Collections package."
+    },
+    {
+      "title": "Swift Algorithms on GitHub",
+      "url": "https://github.com/apple/swift-algorithms",
+      "type": "documentation",
+      "description": "GitHub repository for the Swift Algorithms package."
+    },
+    {
+      "title": "Swift Package Index",
+      "url": "https://swiftpackageindex.com/",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Swift Mentorship Program",
+      "url": "https://swift.org/mentorship/",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Diversity in Swift",
+      "url": "https://swift.org/diversity/",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Swift Forums",
+      "url": "https://forums.swift.org",
+      "type": "developerForum",
+      "description": "Forums for the Swift open-source project."
+    },
+    {
+      "title": "The Swift Programming Language: Concurrency",
+      "url": "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency/",
+      "type": "guide",
+      "description": "The chapter of the Language Guide in The Swift Programming Language that covers asynchronous and parallel code, including asynchronous functions (async/await), asynchronous sequences (AsyncSequence), async let, tasks, task groups, and actors."
+    },
+    {
+      "title": "DocC",
+      "url": "https://developer.apple.com/documentation/docc",
+      "type": "documentation",
+      "description": "Produce rich API reference documentation and interactive tutorials for your app, framework, or package.",
+      "sosumiURL": "https://sosumi.ai/documentation/docc",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/docc.json"
+    },
+    {
+      "title": "Swift AWS Lambda Runtime on GitHub",
+      "url": "https://github.com/swift-server/swift-aws-lambda-runtime/",
+      "type": "guide",
+      "description": "The Swift AWS Lambda Runtime GitHub repository where you can find sample code, scripts, documentation and more."
+    },
+    {
+      "title": "Swift Argument Parser on GitHub",
+      "url": "https://github.com/apple/swift-argument-parser",
+      "type": "documentation",
+      "description": "Straightforward, type-safe argument parsing for Swift."
+    },
+    {
+      "title": "Swift Evolution",
+      "url": "https://apple.github.io/swift-evolution/",
+      "type": "guide",
+      "description": "The list of Swift Evolution proposals."
+    },
+    {
+      "title": "Swift Numerics on GitHub",
+      "url": "https://github.com/apple/swift-numerics",
+      "type": "documentation",
+      "description": "Swift Numerics provides a set of modules that support numerical computing in Swift."
+    }
+  ],
+  "path": "sessions/wwdc2021/10192/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10192/metadata.json",
+    "readme": "sessions/wwdc2021/10192/README.md",
+    "transcript": "sessions/wwdc2021/10192/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10192/transcript.json"
+  }
+}

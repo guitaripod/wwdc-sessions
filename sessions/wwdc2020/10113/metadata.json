@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10113",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10113,
+  "title": "Build local push connectivity for restricted networks",
+  "description": "Leverage local push connectivity and deliver notifications from your application server to devices on networks without an internet connection. Learn how to construct notifications for apps running in restricted network environments, helping people communicate with the same reliability and experience they would expect when connected to the internet. We’ll explore the technical details for this technology, when you might want to use it, and how to implement it in your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10113",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10113",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 826,
+  "hasTranscript": true,
+  "transcriptWordCount": 2065,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10113/4/246C06C8-0984-49BA-A51A-0EEFDABB9EF3/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10113/4/246C06C8-0984-49BA-A51A-0EEFDABB9EF3/wwdc2020_10113_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10113/4/246C06C8-0984-49BA-A51A-0EEFDABB9EF3/wwdc2020_10113_hd.mp4",
+    "duration": 826
+  },
+  "codeSnippets": [
+    {
+      "title": "Create Configuration",
+      "language": "swift",
+      "startTimeSeconds": 607,
+      "code": "import NetworkExtension\n\nlet manager = NEAppPushManager()\nmanager.matchSSIDs = [ \"Cruise Ship Wi-Fi\", \"Cruise Ship Staff Wi-Fi\" ]\nmanager.providerBundleIdentifier = \"com.myexample.SimplePush.Provider\"\nmanager.providerConfiguration = [ \"host\": \"cruiseship.example.com\" ]\nmanager.isEnabled = true\n\nmanager.saveToPreferences { (error) in\n    if let error = error {\n        // Handle error\n        return\n    }\n    // Report success\n}"
+    },
+    {
+      "title": "App Extension life cycle management and reporting VoIP call",
+      "language": "swift",
+      "startTimeSeconds": 671,
+      "code": "// Manage App Extension life cycle and report VoIP call \n\nclass SimplePushProvider: NEAppPushProvider {\n\n    override func start(completionHandler: @escaping (Error?) -> Void) {\n        // Connect to your provider server       \n        completionHandler(nil)\n    }\n\n    override func stop(with reason: NEProviderStopReason,\n                                   completionHandler: @escaping () -> Void) {\n        // Disconnect your provider server\n        completionHandler()\n    }\n\n    func handleIncomingVoIPCall(callInfo: [AnyHashable : Any]) {\n        reportIncomingCall(userInfo: callInfo)\n    }\n}"
+    },
+    {
+      "title": "Handling incoming VoIP call in the containing app",
+      "language": "swift",
+      "startTimeSeconds": 717,
+      "code": "class AppDelegate: UIResponder, UIApplicationDelegate, NEAppPushDelegate {\n    func application(_ application: UIApplication,\n                     didFinishLaunchingWithOptions launchOptions:       \n                     [UIApplication.LaunchOptionsKey: Any]?) -> Bool {\n        NEAppPushManager.loadAllFromPreferences { (managers, error) in\n            // Handle non-nil error\n            for manager in managers {\n                manager.delegate = self\n            }\n        }\n        return true\n    }\n\n    func appPushManager(_ manager: NEAppPushManager,\n                didReceiveIncomingCallWithUserInfo userInfo: [AnyHashable: Any] = [:]) {\n        // Report incoming call to CallKit and let it display call UI\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Receiving Voice and Text Communications on a Local Network",
+      "url": "https://developer.apple.com/documentation/NetworkExtension/receiving-voice-and-text-communications-on-a-local-network",
+      "type": "samplecode",
+      "description": "Provide voice and text communication on a local network isolated from Apple Push Notification service by adopting Local Push Connectivity.",
+      "sosumiURL": "https://sosumi.ai/documentation/NetworkExtension/receiving-voice-and-text-communications-on-a-local-network",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/NetworkExtension/receiving-voice-and-text-communications-on-a-local-network.json"
+    },
+    {
+      "title": "NEAppPushProvider entitlement application",
+      "url": "https://developer.apple.com/contact/request/network-extension-app-push-provider",
+      "type": "guide",
+      "description": "Link to NEAppPushProvider entitlement application for developers to seek permission to use this entitlement.",
+      "sosumiURL": "https://sosumi.ai/contact/request/network-extension-app-push-provider"
+    },
+    {
+      "title": "CallKit",
+      "url": "https://developer.apple.com/documentation/CallKit",
+      "type": "documentation",
+      "description": "Display the system-calling UI for your app’s VoIP services, and coordinate your calling services with other apps and the system.",
+      "sosumiURL": "https://sosumi.ai/documentation/CallKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CallKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10113/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10113/metadata.json",
+    "readme": "sessions/wwdc2020/10113/README.md",
+    "transcript": "sessions/wwdc2020/10113/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10113/transcript.json"
+  }
+}

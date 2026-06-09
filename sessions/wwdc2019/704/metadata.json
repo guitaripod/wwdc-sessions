@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-704",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 704,
+  "title": "Core ML 3 Framework",
+  "description": "Core ML 3 now enables support for advanced model types that were never before available in on-device machine learning. Learn how model personalization brings amazing personalization opportunities to your app. Gain a deeper understanding of strategies for linking models and improvements to Core ML tools used for conversion of existing models.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/704",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/704",
+  "type": "Session",
+  "publishedAt": "2019-06-04T16:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "ai",
+    "artificial intelligence",
+    "core ml",
+    "core ml tools",
+    "create ml",
+    "deep learning",
+    "learning",
+    "machine learning",
+    "model",
+    "natural language",
+    "neural network",
+    "sound",
+    "speech",
+    "training",
+    "vision"
+  ],
+  "topics": [
+    "Developer Tools",
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 2438,
+  "hasTranscript": true,
+  "transcriptWordCount": 6079,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/704t1nfga5vi1x60x/704/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/704t1nfga5vi1x60x/704/704_sd_core_ml_3_framework.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/704t1nfga5vi1x60x/704/704_hd_core_ml_3_framework.mp4",
+    "duration": 2438
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Core ML",
+      "url": "https://developer.apple.com/documentation/CoreML",
+      "type": "documentation",
+      "description": "Integrate machine learning models into your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreML",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreML.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/704/",
+  "files": {
+    "metadata": "sessions/wwdc2019/704/metadata.json",
+    "readme": "sessions/wwdc2019/704/README.md",
+    "transcript": "sessions/wwdc2019/704/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/704/transcript.json"
+  }
+}

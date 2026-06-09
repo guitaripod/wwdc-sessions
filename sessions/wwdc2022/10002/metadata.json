@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10002",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10002,
+  "title": "Create macOS or Linux virtual machines",
+  "description": "Learn how you can use the Virtualization framework to quickly create virtual machines on your Mac. We'll show you how to create a virtual Mac and quickly test changes to your app in an isolated environment. We'll also explore how you can install and run full Linux distributions on Apple silicon, and share how you can take advantage of Rosetta 2 to run x86-64 Linux binaries.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10002",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10002",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Business & Education",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 1380,
+  "hasTranscript": true,
+  "transcriptWordCount": 3599,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10002/5/F229C2EC-A6BC-4671-91A0-65FBC9D71DDF/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10002/5/F229C2EC-A6BC-4671-91A0-65FBC9D71DDF/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10002/5/F229C2EC-A6BC-4671-91A0-65FBC9D71DDF/downloads/wwdc2022-10002_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10002/5/F229C2EC-A6BC-4671-91A0-65FBC9D71DDF/downloads/wwdc2022-10002_hd.mp4",
+    "duration": 1380
+  },
+  "codeSnippets": [
+    {
+      "title": "Running the virtual machine",
+      "language": "swift",
+      "startTimeSeconds": 251,
+      "code": "let virtualMachine = VZVirtualMachine(configuration: configuration)\ntry await virtualMachine.start()"
+    },
+    {
+      "title": "Showing the virtual machine’s display",
+      "language": "swift",
+      "startTimeSeconds": 273,
+      "code": "let virtualMachineView = VZVirtualMachineView()\nvirtualMachineView.virtualMachine = virtualMachine"
+    },
+    {
+      "title": "Start from the base",
+      "language": "swift",
+      "startTimeSeconds": 463,
+      "code": "var configuration = VZVirtualMachineConfiguration()\nconfiguration.cpuCount = 4\nconfiguration.memorySize = (4 * 1024 * 1024 * 1024) as UInt64\nconfiguration.storageDevices = [newBlockDevice()]\nconfiguration.pointingDevices = [newPointingDevice()]"
+    },
+    {
+      "title": "Set up the platform",
+      "language": "swift",
+      "startTimeSeconds": 467,
+      "code": "let platform = VZMacPlatformConfiguration()\n\nlet hardwareModel = VZMacHardwareModel(dataRepresentation: savedHardwareModel)\nplatform.hardwareModel = hardwareModel!\n\nlet auxiliaryStorage = VZMacAuxiliaryStorage(contentsOf: auxiliaryStorageURL)\nplatform.auxiliaryStorage = auxiliaryStorage\n\nlet machineIdentifier = VZMacMachineIdentifier(dataRepresentation: savedIdentifier)\nplatform.machineIdentifier = machineIdentifier!\n\nconfiguration.platform = platform"
+    },
+    {
+      "title": "Boot loader",
+      "language": "swift",
+      "startTimeSeconds": 511,
+      "code": "configuration.bootLoader = VZMacOSBootLoader()"
+    },
+    {
+      "title": "1. Getting an image",
+      "language": "swift",
+      "startTimeSeconds": 556,
+      "code": "let restoreImage = try await VZMacOSRestoreImage.latestSupported\n\ntry await download(restoreImage.url)"
+    },
+    {
+      "title": "2. Create a compatible configuration",
+      "language": "swift",
+      "startTimeSeconds": 569,
+      "code": "let requirements = restoreImage.mostFeaturefulSupportedConfiguration\n\nguard let requirements = requirements else {\n    // No compatible configuration.\n    return\n}\n\nplatform.hardwareModel = requirements.hardwareModel\n\nconfiguration.cpuCount = requirements.minimumSupportedCPUCount\nconfiguration.memorySize = requirements.minimumSupportedMemorySize"
+    },
+    {
+      "title": "3. Install macOS",
+      "language": "swift",
+      "startTimeSeconds": 610,
+      "code": "let virtualMachine = VZVirtualMachine(configuration: configuration)\n\nlet installer = VZMacOSInstaller(virtualMachine: virtualMachine,\n                                 restoringFromImageAt: imageURL)\ntry await installer.install()"
+    },
+    {
+      "title": "Setting up GPU acceleration",
+      "language": "swift",
+      "startTimeSeconds": 658,
+      "code": "let graphicsConfiguration = VZMacGraphicsDeviceConfiguration()\ngraphicsConfiguration.displays = [\n    VZMacGraphicsDisplayConfiguration(widthInPixels: 1920,\n                                      heightInPixels: 1200,\n                                      pixelsPerInch: 80)\n]\n\nconfiguration.graphicsDevices = [graphicsConfiguration]"
+    },
+    {
+      "title": "Setting up the Mac trackpad",
+      "language": "swift",
+      "startTimeSeconds": 708,
+      "code": "let trackpad = VZMacTrackpadConfiguration()\nconfiguration.pointingDevices = [trackpad]"
+    },
+    {
+      "title": "Share a folder",
+      "language": "swift",
+      "startTimeSeconds": 753,
+      "code": "let sharedDirectory = VZSharedDirectory(url: directoryURL, readOnly: false)\nlet share = VZSingleDirectoryShare(directory: sharedDirectory)\n\nlet tag = VZVirtioFileSystemDeviceConfiguration.macOSGuestAutomountTag\nlet sharingDevice = VZVirtioFileSystemDeviceConfiguration(tag: tag)\nsharingDevice.share = share\n\nconfiguration.directorySharingDevices = [sharingDevice]"
+    },
+    {
+      "title": "Setting up USB Mass Storage device configuration",
+      "language": "swift",
+      "startTimeSeconds": 970,
+      "code": "let diskImageURL = URL(fileURLWithPath: \"linux.iso\")\nlet attachment = try! VZDiskImageStorageDeviceAttachment(url: diskImageURL, readOnly: true)\nlet usbDeviceConfiguration = VZUSBMassStorageDeviceConfiguration(attachment: attachment)\n\nconfiguration.storageDevices = [usbDeviceConfiguration, createBlockDevice()]"
+    },
+    {
+      "title": "Booting Linux",
+      "language": "swift",
+      "startTimeSeconds": 1047,
+      "code": "let efi = VZEFIBootLoader()\nefi.variableStore = VZEFIVariableStore(creatingVariableStoreAt: storeURL,\n                                       options: [])\nconfiguration.bootLoader = efi"
+    },
+    {
+      "title": "Setting up Virtio graphics",
+      "language": "swift",
+      "startTimeSeconds": 1104,
+      "code": "let virtioGPU = VZVirtioGraphicsDeviceConfiguration()\nvirtioGPU.scanouts = [\n    VZVirtioGraphicsScanoutConfiguration(widthInPixels: 1280, heightInPixels: 720)\n]\n\nconfiguration.graphicsDevices = [virtioGPU]"
+    },
+    {
+      "title": "Setting up Rosetta",
+      "language": "swift",
+      "startTimeSeconds": 1262,
+      "code": "let rosettaDirectoryShare = try! VZLinuxRosettaDirectoryShare()\nlet directorySharingDevice = VZVirtioFileSystemDeviceConfiguration(tag: \"RosettaShare\")\ndirectorySharingDevice.share = rosettaDirectoryShare\n\nconfiguration.directorySharingDevices = [directorySharingDevice]"
+    },
+    {
+      "title": "Setting up Linux",
+      "language": "bash",
+      "startTimeSeconds": 1297,
+      "code": "mount -t virtiofs RosettaShare /mnt/Rosetta\n\nsudo /usr/sbin/update-binfmts --install rosetta /mnt/Rosetta/rosetta \\\n  --magic \"\\x7fELF\\x02\\x01\\x01\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x02\\x00\\x3e\\x00\" \\\n  --mask \"\\xff\\xff\\xff\\xff\\xff\\xfe\\xfe\\x00\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xfe\\xff\\xff\\xff\" \\\n  --credentials yes --preserve no --fix-binary yes"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Hypervisor",
+      "url": "https://developer.apple.com/documentation/Hypervisor",
+      "type": "documentation",
+      "description": "Build virtualization solutions on top of a lightweight hypervisor, without third-party kernel extensions.",
+      "sosumiURL": "https://sosumi.ai/documentation/Hypervisor",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Hypervisor.json"
+    },
+    {
+      "title": "Running GUI Linux in a virtual machine on a Mac",
+      "url": "https://developer.apple.com/documentation/Virtualization/running-gui-linux-in-a-virtual-machine-on-a-mac",
+      "type": "samplecode",
+      "description": "Install and run GUI Linux in a virtual machine using the Virtualization framework.",
+      "sosumiURL": "https://sosumi.ai/documentation/Virtualization/running-gui-linux-in-a-virtual-machine-on-a-mac",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Virtualization/running-gui-linux-in-a-virtual-machine-on-a-mac.json"
+    },
+    {
+      "title": "Virtualization",
+      "url": "https://developer.apple.com/documentation/Virtualization",
+      "type": "documentation",
+      "description": "Create virtual machines and run macOS and Linux-based operating systems.",
+      "sosumiURL": "https://sosumi.ai/documentation/Virtualization",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Virtualization.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10002/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10002/metadata.json",
+    "readme": "sessions/wwdc2022/10002/README.md",
+    "transcript": "sessions/wwdc2022/10002/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10002/transcript.json"
+  }
+}

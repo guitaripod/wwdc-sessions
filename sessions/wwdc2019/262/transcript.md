@@ -1,0 +1,30 @@
+---
+id: "wwdc2019-262"
+event: "wwdc2019"
+title: "Embedding and Sharing Visually Rich Links"
+url: "https://developer.apple.com/videos/play/wwdc2019/262"
+language: "eng"
+words: 996
+---
+
+# Embedding and Sharing Visually Rich Links — Transcript
+
+[Session page](https://developer.apple.com/videos/play/wwdc2019/262) · [Metadata](metadata.json) · [Structured JSON](transcript.json)
+
+**[0:06]** Hi, I'm Tim Horton from the Safari and WebKit Team. I'm here to show you how to present rich links in your app. In iOS 10 and macOS Sierra, we introduced rich links in messages as a way to make URLs more beautiful and more useful. In order to maximize the benefit, we built specializations for certain kinds of links. This includes things like inline video and audio playback, a special presentation for Tweets including those with multiple images and many other things like Apple Maps links. This year iOS 13 and macOS 10.15 bring new APIs that allow you to present rich links in your own apps so that you get those same benefits with a minimal amount
+
+**[0:51]** of work. In this video, we're going to follow the development of this very simple recipe book marking app as we progressively adopt features of the new link presentation framework to go from a bland list of URLs to a rich grid of links like this in no time at all. To achieve this I'm going to cover 3 topics. First, how to present metadata given a URL. Second, how to easily present that metadata to the user. And third, how to use fetched metadata to accelerate the presentation of the new Share Sheet experience in iOS 13. So let's start with retrieving metadata. In the recipe app, let's say
+
+**[1:36]** that you already have some mechanism for users to get URLs into the app. You could just present them in a table and call it quits, but URLs are not very user-friendly and in this case, it's quite hard to distinguish between them. You could instead ask the user for a title for each link, but we can make it even easier. Using the new link presentation framework it's very easy to use the LP metadata provider class to retrieve rich metadata from the website. You just pass it the URL and it returns you an LPLinkMetadata object with a representative title in any media that is available. Let's see what this looks like. First you create an LPMetadataProvider and then call
+
+**[2:22]** startFetchingMetadata with the URL you're interested in. When the completion handler is called, be sure to check the error. If the server doesn't respond or is too slow or your user doesn't have a network connection, the metadata fetched can fail. Finally, you use the metadata for whatever you want. We'll come back to this in a moment. Before we continue there are a few things to keep in mind when using metadataProvider and LinkMetadata. First, the resultant metadata object can include any of a title, icon, image or video or none at all if the site doesn't specify any. It is also serializable within a secure coding. This is important because LPMetadataProvider hits the Internet to do its job and you
+
+**[3:08]** don't want to do that work nor make your users pay that data and performance cost every time you present the same link. You should cache retrieved metadata locally as much as possible. Also, you can fetch metadata for local file URLs in which case the new QuickLook thumbnailing API will be used to retrieve a representative thumbnail for the file, if possible. Now let's talk about how to put the metadata we retrieve to use by presenting it in our app. Once again, it's straightforward. You can just take the object from earlier and create an LPLinkView with it. It's that simple. Let's return to the recipe app
+
+**[3:53]** and put LPLinkViews inside our table view cells. Much better. Now you have a very familiar presentation that makes each recipe easy to identify at a glance. LPLinkView has an intrinsic size, but it also responds to size that fits with the ideal size to use given a constraining size and we'll try to present something reasonable when laid out at any size. The last thing I'm going to talk about is how to make use of LinkMetadata to accelerate the presentation of the new Share Sheet experience in iOS 13. For existing apps that share URLs, the Share Sheet will automatically present a preview of the link at the top of the card. However, this requires reaching out to the server to retrieve metadata once the Share Sheet is
+
+**[4:39]** presented. So the title and icon show up asynchronously. Let's watch that again. Keep a close eye on the Share Sheet's header. If you already have an LPLinkMetadata object for URL, you should just pass it to the Share Sheet and the preview will appear instantly without loading from the network. You can use the new activityViewControllerLink Metadata method on your implementation of UIActivityItemSource and just return the metadata object. Let's look at the difference in our recipe app if we provide the data that we already use in the table view. Much nicer. It's also good to note that if the user chooses to share to messages the same metadata is
+
+**[5:25]** passed directly through providing a smooth and seamless experience with no unnecessary loading. One last thing. Say your app already has a database of recipes with titles and images that weren't fetched by linked presentation. You don't have to re-fetch the metadata from the Internet in order to accelerate the Share Sheet or to present a rich link. Instead, you can just fill in the fields of LPLinkMetadata yourself from your pre-existing source of data. You simply create an LPLinkMetadata object and fill in at least the original URL and URL fields plus whatever additional information you have. So our 3 key takeaways today are you can use LP metadata provider to fetch rich metadata for URL
+
+**[6:10]** in order to provide more context about arbitrary URLs. You should use LP link view to present links in your app in a way that is both beautiful and consistent with the system and you should prefetch or use existing LPLinkMetadata to accelerate the Share Sheet preview in your app. For more information visit developer.apple.com.

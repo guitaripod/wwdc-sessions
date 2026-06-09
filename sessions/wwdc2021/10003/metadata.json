@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10003",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10003,
+  "title": "There and back again: Data transfer on Apple Watch",
+  "description": "Advances in Apple Watch give you more ways to communicate to and from your app, and new audiences to consider. Learn what strategies are available for data communication and how to choose the right tool for the job. Compare and contrast the benefits of using technologies such as iCloud Keychain, Watch Connectivity, Core Data, and more.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10003",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10003",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "watchOS"
+  ],
+  "keywords": [
+    "⌚️",
+    "background app refresh",
+    "cloudkit",
+    "core data",
+    "family setup",
+    "icloud",
+    "keychain",
+    "oauth2token",
+    "password autofill",
+    "sockets",
+    "urlsession",
+    "watch connectivity",
+    "wcsession"
+  ],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 1909,
+  "hasTranscript": true,
+  "transcriptWordCount": 4455,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10003/7/2AE1FFC2-BFF3-43AC-9488-AA5514C204FB/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10003/7/2AE1FFC2-BFF3-43AC-9488-AA5514C204FB/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10003/7/2AE1FFC2-BFF3-43AC-9488-AA5514C204FB/downloads/wwdc2021-10003_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10003/7/2AE1FFC2-BFF3-43AC-9488-AA5514C204FB/downloads/wwdc2021-10003_hd.mp4",
+    "duration": 1909
+  },
+  "codeSnippets": [
+    {
+      "title": "Password Autofill",
+      "language": "swift",
+      "startTimeSeconds": 260,
+      "code": "struct LoginView: View {\n\n    @State private var username = \"\"\n    @State private var password = \"\"\n\n    var body: some View {\n        Form {\n            TextField(\"User:\", text: $username)\n                .textContentType(.username)\n\n            SecureField(\"Password\", text: $password) \n                .textContentType(.password)\n\n            Button {\n                processLogin()\n            } label: {\n                Text(\"Login\")\n            }\n\n            Button(role: .cancel) {\n                cancelLogin()\n            } label: {\n                Label(\"Cancel\", systemImage: \"xmark.circle\")\n            }\n        }\n    }\n\n    private func cancelLogin() {\n        // Implement your cancel logic here\n    }\n\n    private func processLogin() {\n        // Implement your login logic here\n    }\n}"
+    },
+    {
+      "title": "Store Item in Keychain",
+      "language": "swift",
+      "startTimeSeconds": 385,
+      "code": "func storeToken(_ token: OAuth2Token, for server: String, account: String) throws {\n    let query: [String: Any] = [\n      kSecClass as String: kSecClassInternetPassword,\n      kSecAttrServer as String: server,\n      kSecAttrAccount as String: account,\n      kSecAttrSynchronizable as String: true,\n    ]\n\n    let tokenData = try encodeToken(token)\n    let attributes: [String: Any] = [kSecValueData as String: tokenData]\n\n    let status = SecItemUpdate(query as CFDictionary, attributes as CFDictionary)\n\n    guard status != errSecItemNotFound else {\n        try addTokenData(tokenData, for: server, account: account)\n        return\n    }\n\n    guard status == errSecSuccess else {\n        throw OAuthKeychainError.updateError(status)\n    }\n}"
+    },
+    {
+      "title": "Add Item to Keychain",
+      "language": "swift",
+      "startTimeSeconds": 479,
+      "code": "func addTokenData(_ tokenData: Data,\n                  for server: String,\n                  account: String) throws {\n    let attributes: [String: Any] = [\n      kSecClass as String: kSecClassInternetPassword,\n      kSecAttrServer as String: server,\n      kSecAttrAccount as String: account,\n      kSecAttrSynchronizable as String: true,\n      kSecValueData as String: tokenData,\n    ]\n\n    let status = SecItemAdd(attributes as CFDictionary, nil)\n\n    guard status == errSecSuccess else {\n        throw OAuthKeychainError.addError(status)\n    }\n}"
+    },
+    {
+      "title": "Retrieve Item from Keychain",
+      "language": "swift",
+      "startTimeSeconds": 505,
+      "code": "func retrieveToken(for server: String, account: String) throws -> OAuth2Token? {\n    let query: [String: Any] = [\n      kSecClass as String: kSecClassInternetPassword,\n      kSecAttrServer as String: server,\n      kSecAttrAccount as String: account,\n      kSecAttrSynchronizable as String: true,\n      kSecReturnAttributes as String: false,\n      kSecReturnData as String: true,\n    ]\n\n    var item: CFTypeRef?\n    let status = SecItemCopyMatching(query as CFDictionary,\n                                     &item)\n\n    guard status != errSecItemNotFound else {\n        // No token stored for this server account combination.\n        return nil\n    }\n\n    guard status == errSecSuccess else {\n        throw OAuthKeychainError.retrievalError(status)\n    }\n\n    guard let existingItem = item as? [String : Any] else {\n        throw OAuthKeychainError.invalidKeychainItemFormat\n    }\n\n    guard let tokenData = existingItem[kSecValueData as String] as? Data else {\n        throw OAuthKeychainError.missingTokenDataFromKeychainItem\n    }\n\n    do {\n        return try JSONDecoder().decode(OAuth2Token.self, from: tokenData)\n    } catch {\n        throw OAuthKeychainError.tokenDecodingError(error.localizedDescription)\n    }\n}"
+    },
+    {
+      "title": "Remove Item from Keychain",
+      "language": "swift",
+      "startTimeSeconds": 579,
+      "code": "func removeToken(for server: String, account: String) throws {\n    let query: [String: Any] = [\n      kSecClass as String: kSecClassInternetPassword,\n      kSecAttrServer as String: server,\n      kSecAttrAccount as String: account,\n      kSecAttrSynchronizable as String: true,\n    ]\n\n    let status = SecItemDelete(query as CFDictionary)\n\n    guard status == errSecSuccess || status == errSecItemNotFound else {\n        throw OAuthKeychainError.deleteError(status)\n    }\n}"
+    },
+    {
+      "title": "Core Data SwiftUI View",
+      "language": "swift",
+      "startTimeSeconds": 719,
+      "code": "import CoreData\nimport SwiftUI\n\nstruct CoreDataView: View {\n\n    @Environment(\\.managedObjectContext) private var viewContext\n\n    @FetchRequest(\n        sortDescriptors: [NSSortDescriptor(keyPath: \\Setting.itemKey, ascending: true)],\n        animation: .easeIn)\n    private var settings: FetchedResults<Setting>\n\n    var body: some View {\n        List {\n            ForEach(settings) { setting in\n                SettingRow(setting)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Background URL Session Configuration",
+      "language": "swift",
+      "startTimeSeconds": 1384,
+      "code": "class BackgroundURLSession: NSObject, ObservableObject, Identifiable {\n    private let sessionIDPrefix = \"com.example.backgroundURLSessionID.\"\n\n    enum Status {\n        case notStarted\n        case queued\n        case inProgress(Double)\n        case completed\n        case failed(Error)\n    }\n\n    private var url: URL\n\n    /// Data to send with the URL request.\n    ///\n    /// If this is set, the HTTP method for the request will be POST\n    var body: Data?\n\n    /// Optional content type for the URL request\n    var contentType: String?\n\n    private(set) var id = UUID()\n\n    /// The current status of the session\n    @Published var status = Status.notStarted\n\n    /// The downloaded data (populated when status == .completed)\n    @Published var downloadedURL: URL?\n\n    private var backgroundTasks = [WKURLSessionRefreshBackgroundTask]()\n\n    private lazy var urlSession: URLSession = {\n        let config = URLSessionConfiguration.background(withIdentifier: sessionID)\n            // Set isDiscretionary = true if you are sending or receiving large \n            // amounts of data. Let Watch users know that their transfers might \n            // not start until they are connected to Wi-Fi and power.\n            config.isDiscretionary = false\n            config.sessionSendsLaunchEvents = true\n            return URLSession(configuration: config,\n                              delegate: self, delegateQueue: nil)\n        }()\n\n    private var sessionID: String {\n        \"\\(sessionIDPrefix)\\(id.uuidString)\"\n    }\n\n    /// Initialize the session\n    /// - Parameter url: The URL for the Background URL Request\n    init(url: URL) {\n        self.url = url\n        super.init()\n    }\n\n}"
+    },
+    {
+      "title": "Enqueue the background data transfer",
+      "language": "swift",
+      "startTimeSeconds": 1462,
+      "code": "// This is a member of the BackgroundURLSession class in the example. \n// Enqueue the URLRequest to send in the background. \nfunc enqueueTransfer() {\n    var request = URLRequest(url: url)\n    request.httpBody = body\n    if body != nil {\n        request.httpMethod = \"POST\"\n    }\n    if let contentType = contentType {\n        request.setValue(contentType, forHTTPHeaderField: \"Content-type\")\n    }\n    let task = urlSession.downloadTask(with: request)\n    task.earliestBeginDate = nextTaskStartDate\n\n    BackgroundURLSessions.sharedInstance().sessions[sessionID] = self\n\n    task.resume()\n    status = .queued\n}"
+    },
+    {
+      "title": "WatchKit Extension Delegate",
+      "language": "swift",
+      "startTimeSeconds": 1545,
+      "code": "class ExtensionDelegate: NSObject, WKExtensionDelegate {\n\n    func applicationDidFinishLaunching() {\n        // For Watch Connectivity, activate your WCSession as early as possible\n        WatchConnectivityModel.shared.activateSession()\n    }\n\n    func applicationDidBecomeActive() {\n        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.\n    }\n\n    func applicationWillResignActive() {\n        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.\n        // Use this method to pause ongoing tasks, disable timers, etc.\n    }\n\n    func handle(_ backgroundTasks: Set<WKRefreshBackgroundTask>) {\n        // Sent when the system needs to launch the application in the background to process tasks. Tasks arrive in a set, so loop through and process each one.\n        for task in backgroundTasks {\n            // Use a switch statement to check the task type\n            switch task {\n            case let backgroundTask as WKApplicationRefreshBackgroundTask:\n                // Be sure to complete the background task once you’re done.\n                backgroundTask.setTaskCompletedWithSnapshot(false)\n            case let snapshotTask as WKSnapshotRefreshBackgroundTask:\n                // Snapshot tasks have a unique completion call, make sure to set your expiration date\n                snapshotTask.setTaskCompleted(restoredDefaultState: true, estimatedSnapshotExpiration: Date.distantFuture, userInfo: nil)\n            case let connectivityTask as WKWatchConnectivityRefreshBackgroundTask:\n                // Be sure to complete the connectivity task once you’re done.\n                connectivityTask.setTaskCompletedWithSnapshot(false)\n            case let urlSessionTask as WKURLSessionRefreshBackgroundTask:\n                if let session = BackgroundURLSessions.sharedInstance()\n                        .sessions[urlSessionTask.sessionIdentifier] {\n                    session.addBackgroundRefreshTask(urlSessionTask)\n                } else {\n                    // There is no model for this session, just set it complete\n                    urlSessionTask.setTaskCompletedWithSnapshot(false)\n                }\n            case let relevantShortcutTask as WKRelevantShortcutRefreshBackgroundTask:\n                // Be sure to complete the relevant-shortcut task once you're done.\n                relevantShortcutTask.setTaskCompletedWithSnapshot(false)\n            case let intentDidRunTask as WKIntentDidRunRefreshBackgroundTask:\n                // Be sure to complete the intent-did-run task once you're done.\n                intentDidRunTask.setTaskCompletedWithSnapshot(false)\n            default:\n                // make sure to complete unhandled task types\n                task.setTaskCompletedWithSnapshot(false)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Connect the WatchKit Extension Delegate to the App",
+      "language": "swift",
+      "startTimeSeconds": 1603,
+      "code": "@main\nstruct MyWatchApp: App {\n\n    @WKExtensionDelegateAdaptor(ExtensionDelegate.self) var extensionDelegate\n\n    @SceneBuilder var body: some Scene {\n        WindowGroup {\n            NavigationView {\n                ContentView()\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Store the Background Refresh Task it can be completed",
+      "language": "swift",
+      "startTimeSeconds": 1627,
+      "code": "// This is a member of the BackgroundURLSession class in the example. \n// Add the Background Refresh Task to the list so it can be set to completed when the URL task is done.\nfunc addBackgroundRefreshTask(_ task: WKURLSessionRefreshBackgroundTask) {\n    backgroundTasks.append(task)\n}"
+    },
+    {
+      "title": "Process Downloaded Data",
+      "language": "swift",
+      "startTimeSeconds": 1651,
+      "code": "extension BackgroundURLSession : URLSessionDownloadDelegate {\n\n    private func saveDownloadedData(_ downloadedURL: URL) {\n        // Move or quickly process this file before you return from this function.\n        // The file is in a temporary location and will be deleted.\n    }\n\n    func urlSession(_ session: URLSession,\n                    downloadTask: URLSessionDownloadTask,\n                    didFinishDownloadingTo location: URL) {\n        saveDownloadedData(location)\n\n        // We don't need more updates on this session, so let it go.\n        BackgroundURLSessions.sharedInstance().sessions[sessionID] = nil\n\n        DispatchQueue.main.async {\n            self.status = .completed\n        }\n\n        for task in backgroundTasks {\n            task.setTaskCompletedWithSnapshot(false)\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Keeping your complications up to date",
+      "url": "https://developer.apple.com/documentation/ClockKit/keeping-your-complications-up-to-date",
+      "type": "documentation",
+      "description": "Replace or extend the data in your complication’s timeline.",
+      "sosumiURL": "https://sosumi.ai/documentation/ClockKit/keeping-your-complications-up-to-date",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ClockKit/keeping-your-complications-up-to-date.json"
+    },
+    {
+      "title": "Downloading files from websites",
+      "url": "https://developer.apple.com/documentation/Foundation/downloading-files-from-websites",
+      "type": "documentation",
+      "description": "Download files directly to the filesystem.",
+      "sosumiURL": "https://sosumi.ai/documentation/Foundation/downloading-files-from-websites",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Foundation/downloading-files-from-websites.json"
+    },
+    {
+      "title": "WCSession",
+      "url": "https://developer.apple.com/documentation/WatchConnectivity/WCSession",
+      "type": "documentation",
+      "description": "The object that initiates communication between a WatchKit extension and its companion iOS app.",
+      "sosumiURL": "https://sosumi.ai/documentation/WatchConnectivity/WCSession",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WatchConnectivity/WCSession.json"
+    },
+    {
+      "title": "Sharing access to keychain items among a collection of apps",
+      "url": "https://developer.apple.com/documentation/Security/sharing-access-to-keychain-items-among-a-collection-of-apps",
+      "type": "documentation",
+      "description": "Enable apps to share keychain items with each other by adding the apps to an access group.",
+      "sosumiURL": "https://sosumi.ai/documentation/Security/sharing-access-to-keychain-items-among-a-collection-of-apps",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Security/sharing-access-to-keychain-items-among-a-collection-of-apps.json"
+    },
+    {
+      "title": "Keeping your watchOS content up to date",
+      "url": "https://developer.apple.com/documentation/watchOS-Apps/keeping-your-watchos-app-s-content-up-to-date",
+      "type": "guide",
+      "description": "Ensure that your app’s content is relevant and up to date.",
+      "sosumiURL": "https://sosumi.ai/documentation/watchOS-Apps/keeping-your-watchos-app-s-content-up-to-date",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/watchOS-Apps/keeping-your-watchos-app-s-content-up-to-date.json"
+    },
+    {
+      "title": "Supporting Associated Domains",
+      "url": "https://developer.apple.com/documentation/xcode/supporting-associated-domains",
+      "type": "documentation",
+      "description": "Connect your app and a website to provide both a native app and a browser experience.",
+      "sosumiURL": "https://sosumi.ai/documentation/xcode/supporting-associated-domains",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/xcode/supporting-associated-domains.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10003/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10003/metadata.json",
+    "readme": "sessions/wwdc2021/10003/README.md",
+    "transcript": "sessions/wwdc2021/10003/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10003/transcript.json"
+  }
+}

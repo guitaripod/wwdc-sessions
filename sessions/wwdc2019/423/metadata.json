@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-423",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 423,
+  "title": "Optimizing App Launch",
+  "description": "Slow app launches are frustrating. Learn about the new app launch instrument and discover how to make your app launch fast. Gain insights into what happens during app launch and how to minimize, prioritize, and optimize work at this critical time. Hear tips and tricks from the engineers making iOS apps launch fast.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/423",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/423",
+  "type": "Session",
+  "publishedAt": "2019-06-07T16:20:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "dyld",
+    "dyld3",
+    "fast",
+    "instruments",
+    "launch",
+    "measure",
+    "performance",
+    "rocket",
+    "slow",
+    "speed",
+    "uikit",
+    "xcode"
+  ],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 2598,
+  "hasTranscript": true,
+  "transcriptWordCount": 5907,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/423lzf3qsjedrzivc7/423/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/423lzf3qsjedrzivc7/423/423_sd_optimizing_app_launch.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/423lzf3qsjedrzivc7/423/423_hd_optimizing_app_launch.mp4",
+    "duration": 2598
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/423/",
+  "files": {
+    "metadata": "sessions/wwdc2019/423/metadata.json",
+    "readme": "sessions/wwdc2019/423/README.md",
+    "transcript": "sessions/wwdc2019/423/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/423/transcript.json"
+  }
+}

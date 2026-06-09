@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10110",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10110,
+  "title": "Support local network privacy in your app",
+  "description": "Local network privacy provides added transparency when apps connect to devices on a person's home network. If your app interacts with devices using Bonjour or other local networking protocols, you must add support for local network privacy permissions in iOS 14. Learn more about the new permission flow and follow along as we guide you through the necessary steps to update your app. We’ll also provide you with some best practices to help you create a frictionless privacy experience.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10110",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10110",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "open network",
+    "ssid",
+    "wifi"
+  ],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 736,
+  "hasTranscript": true,
+  "transcriptWordCount": 1644,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10110/4/DC28151E-DCDB-4D97-9BDF-EEF1FDD14F13/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10110/4/DC28151E-DCDB-4D97-9BDF-EEF1FDD14F13/wwdc2020_10110_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10110/4/DC28151E-DCDB-4D97-9BDF-EEF1FDD14F13/wwdc2020_10110_hd.mp4",
+    "duration": 736
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Building a custom peer-to-peer protocol",
+      "url": "https://developer.apple.com/documentation/Network/building-a-custom-peer-to-peer-protocol",
+      "type": "samplecode",
+      "description": "Use networking frameworks to create a custom protocol for playing a game across iOS, iPadOS, watchOS, and tvOS devices.",
+      "sosumiURL": "https://sosumi.ai/documentation/Network/building-a-custom-peer-to-peer-protocol",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Network/building-a-custom-peer-to-peer-protocol.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10110/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10110/metadata.json",
+    "readme": "sessions/wwdc2020/10110/README.md",
+    "transcript": "sessions/wwdc2020/10110/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10110/transcript.json"
+  }
+}

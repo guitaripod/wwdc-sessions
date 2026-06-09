@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-328",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 328,
+  "title": "What’s new in App Store Connect",
+  "description": "Get the latest updates for App Store Connect, including the new web UI for build delivery and enhancements to TestFlight notifications. We’ll also discuss new app discovery features and enhancements, such as keywords for custom product pages, Accessibility Nutrition Labels, and age ratings updates. Additionally, learn about new functionalities like In-App Purchase offer codes and review summarization tools. ",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/328",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/328",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "metadata",
+    "offers"
+  ],
+  "topics": [
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 1551,
+  "hasTranscript": true,
+  "transcriptWordCount": 3981,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/328/6/e2b4ccaa-ad5a-421e-898e-2f1825e6c7ab/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/328/6/e2b4ccaa-ad5a-421e-898e-2f1825e6c7ab/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/328/6/e2b4ccaa-ad5a-421e-898e-2f1825e6c7ab/downloads/wwdc2025-328_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/328/6/e2b4ccaa-ad5a-421e-898e-2f1825e6c7ab/downloads/wwdc2025-328_hd.mp4",
+    "duration": 1551
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Ratings and reviews overview",
+      "url": "https://developer.apple.com/help/app-store-connect/monitor-ratings-and-reviews/ratings-and-reviews-overview",
+      "type": "documentation",
+      "description": "Users can rate your app on a scale from 1 to 5 stars on all platforms. Additionally, users can submit written reviews for your iOS, macOS, and visionOS apps.",
+      "sosumiURL": "https://sosumi.ai/help/app-store-connect/monitor-ratings-and-reviews/ratings-and-reviews-overview"
+    },
+    {
+      "title": "Age ratings",
+      "url": "https://developer.apple.com/help/app-store-connect/reference/age-ratings/",
+      "type": "documentation",
+      "description": "The age rating is a required app information property used by the parental controls. Learn how to set an app age rating.",
+      "sosumiURL": "https://sosumi.ai/help/app-store-connect/reference/age-ratings/"
+    },
+    {
+      "title": "Apple Developer Support",
+      "url": "https://developer.apple.com/support/",
+      "type": "documentation",
+      "description": "Get help with tools and technologies, connect with Apple experts, and more.",
+      "sosumiURL": "https://sosumi.ai/support/"
+    },
+    {
+      "title": "Request and manage promo codes",
+      "url": "https://developer.apple.com/help/app-store-connect/offer-promo-codes/request-and-manage-promo-codes",
+      "type": "documentation",
+      "description": "Promo codes provide potential App Store customers or reviewers with a free copy of apps or in-app purchases (including subscriptions) on iOS, macOS, or tvOS.",
+      "sosumiURL": "https://sosumi.ai/help/app-store-connect/offer-promo-codes/request-and-manage-promo-codes"
+    },
+    {
+      "title": "Configure multiple product page versions",
+      "url": "https://developer.apple.com/help/app-store-connect/create-custom-product-pages/configure-multiple-product-page-versions",
+      "type": "documentation",
+      "description": "You can create multiple versions of your app’s product page to highlight features or specific content on the App Store, each with a different set of screenshots, previews, and promotional text. Custom pages are fully localizable, and shareable through a unique URL.",
+      "sosumiURL": "https://sosumi.ai/help/app-store-connect/create-custom-product-pages/configure-multiple-product-page-versions"
+    },
+    {
+      "title": "App Store Connect Help",
+      "url": "https://developer.apple.com/help/app-store-connect/",
+      "type": "documentation",
+      "description": "Learn about managing your App Store Connect account.",
+      "sosumiURL": "https://sosumi.ai/help/app-store-connect/"
+    },
+    {
+      "title": "Overview of Accessibility Nutrition Labels",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-app-accessibility/overview-of-accessibility-nutrition-labels",
+      "type": "documentation",
+      "description": "An overview of Accessibility Nutrition Labels that includes links to the detailed evaluation criteria for each label type.",
+      "sosumiURL": "https://sosumi.ai/help/app-store-connect/manage-app-accessibility/overview-of-accessibility-nutrition-labels"
+    }
+  ],
+  "path": "sessions/wwdc2025/328/",
+  "files": {
+    "metadata": "sessions/wwdc2025/328/metadata.json",
+    "readme": "sessions/wwdc2025/328/README.md",
+    "transcript": "sessions/wwdc2025/328/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/328/transcript.json"
+  }
+}

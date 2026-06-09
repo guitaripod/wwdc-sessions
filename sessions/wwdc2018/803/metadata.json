@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2018-803",
+  "event": "wwdc2018",
+  "eventName": "WWDC18",
+  "year": 2018,
+  "eventContentId": 803,
+  "title": "Designing Fluid Interfaces",
+  "description": "Discover the techniques used to create the fluid gestural interface of iPhone X. Learn how to design with gestures and motion that feel intuitive and natural, making your app a delight to use.",
+  "url": "https://developer.apple.com/videos/play/wwdc2018/803",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2018/803",
+  "type": "Session",
+  "publishedAt": "2018-06-06T17:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "animation",
+    "behavior",
+    "design",
+    "fluid",
+    "gesture",
+    "iphone x",
+    "motion",
+    "physics",
+    "smooth"
+  ],
+  "topics": [
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 3881,
+  "hasTranscript": true,
+  "transcriptWordCount": 10179,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/803lpnlacvg2jsndx/803/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/803lpnlacvg2jsndx/803/803_sd_designing_fluid_interfaces.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/803lpnlacvg2jsndx/803/803_hd_designing_fluid_interfaces.mp4",
+    "duration": 3881
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Explore the Human Interface Guidelines",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/"
+    },
+    {
+      "title": "Positioning content relative to the safe area",
+      "url": "https://developer.apple.com/documentation/UIKit/positioning-content-relative-to-the-safe-area",
+      "type": "documentation",
+      "description": "Position views so that they aren’t obstructed by other content.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/positioning-content-relative-to-the-safe-area",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/positioning-content-relative-to-the-safe-area.json"
+    },
+    {
+      "title": "UIView",
+      "url": "https://developer.apple.com/documentation/UIKit/UIView",
+      "type": "documentation",
+      "description": "An object that manages the content for a rectangular area on the screen.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UIView",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UIView.json"
+    }
+  ],
+  "path": "sessions/wwdc2018/803/",
+  "files": {
+    "metadata": "sessions/wwdc2018/803/metadata.json",
+    "readme": "sessions/wwdc2018/803/README.md",
+    "transcript": "sessions/wwdc2018/803/transcript.md",
+    "transcriptJSON": "sessions/wwdc2018/803/transcript.json"
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10604",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10604,
+  "title": "Shop online with AR Quick Look",
+  "description": "AR Quick Look adds a new dimension to online shopping: We'll show you how to easily showcase your products in augmented reality for a \"try before you buy\" experience. Discover how to display a product banner in AR Quick Look, integrate Apple Pay, or display custom actions like \"add to cart\".\n\nTo get the most out of this session, we recommend you familiarize yourself with “Advances in AR Quick Look” from WWDC 2019. \n\nOnce you’ve discovered the potential of AR Quick Look and Apple Pay to create interactive online shopping experiences, learn more about creating 3D objects and attaching interactions to them by watching “What's new in USD.”",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10604",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10604",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services",
+    "Graphics & Games",
+    "Safari & Web",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 1118,
+  "hasTranscript": true,
+  "transcriptWordCount": 2800,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10604/7/5565A027-6950-4B1D-804F-2A555245FBA3/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10604/7/5565A027-6950-4B1D-804F-2A555245FBA3/wwdc2020_10604_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10604/7/5565A027-6950-4B1D-804F-2A555245FBA3/wwdc2020_10604_hd.mp4",
+    "duration": 1118
+  },
+  "codeSnippets": [
+    {
+      "title": "Customization Options - Recap",
+      "language": "javascript",
+      "startTimeSeconds": 347,
+      "code": "<a rel=\"ar\" href=\"alarm-clock.usdz#canonicalWebPageURL=https://developer.apple.com/alarm-clock-product-page/&allowsContentScaling=0\">\n    <img src=\"alarm-clock-thumbnail.jpg\">\n</a>"
+    },
+    {
+      "title": "Apple Pay Banner",
+      "language": "javascript",
+      "startTimeSeconds": 533,
+      "code": "<a rel=\"ar\" id=\"ar-link\" href=\"alarm-clock.usdz#applePayButtonType=plain&checkoutTitle=Retro%20Alarm%20Clock&checkoutSubtitle=Charming%20old-school%20look%20with%20built-in%20FM%20tuner&price=$92.50\">\n    <img src=\"alarm-clock-thumbnail.jpg\">\n</a>"
+    },
+    {
+      "title": "Custom Action Banner",
+      "language": "javascript",
+      "startTimeSeconds": 702,
+      "code": "<a rel=\"ar\" id=\"ar-link\" href=\"kids-slide.usdz#callToAction=Preorder&checkoutTitle=Kids%20Slide&checkoutSubtitle=Enjoy%20the%20playground,%20right%20from%20your%20home&price=$145\">\n    <img src=\"kids-slide-thumbnail.jpg\">\n</a>"
+    },
+    {
+      "title": "Custom Banner",
+      "language": "javascript",
+      "startTimeSeconds": 819,
+      "code": "<a rel=\"ar\" id=\"ar-link\" href=\"solar-panels.usdz#custom=https://developer.apple.com/solar_panels_banner.html&customHeight=small\">\n    <img src=\"solar-panels-thumbnail.jpg\">\n</a>"
+    },
+    {
+      "title": "Custom Banner - Medium Height",
+      "language": "javascript",
+      "startTimeSeconds": 844,
+      "code": "<a rel=\"ar\" id=\"ar-link\" href=\"solar-panels.usdz#custom=https://developer.apple.com/solar_panels_banner.html&customHeight=medium\">\n    <img src=\"solar-panels-thumbnail.jpg\">\n</a>"
+    },
+    {
+      "title": "Custom Banner - Large Height",
+      "language": "javascript",
+      "startTimeSeconds": 849,
+      "code": "<a rel=\"ar\" id=\"ar-link\" href=\"solar-panels.usdz#custom=https://developer.apple.com/solar_panels_banner.html&customHeight=large\">\n    <img src=\"solar-panels-thumbnail.jpg\">\n</a>"
+    },
+    {
+      "title": "Full Apple Pay with Event Listener Example",
+      "language": "javascript",
+      "startTimeSeconds": 991,
+      "code": "<a rel=\"ar\" id=\"ar-link\" href=\"alarm-clock.usdz#applePayButtonType=plain&checkoutTitle=Retro%20Alarm%20Clock&checkoutSubtitle=Charming%20old-school%20look%20with%20built-in%20FM%20tuner&price=$92.50\">\n    <img src=\"alarm-clock-thumbnail.jpg\">\n</a>\n\n\n\n<script type=\"application/javascript\">\n    const linkElement = document.getElementById(\"ar-link\");\n    linkElement.addEventListener(\"message\", function (event) {\n        if (event.data == \"_apple_ar_quicklook_button_tapped\") {\n            // handle the user tap.   \n        }\n    }, false);\n</script>"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Acceptable Use Guidelines for Apple Pay on the Web",
+      "url": "https://developer.apple.com/apple-pay/acceptable-use-guidelines-for-websites/",
+      "type": "documentation",
+      "description": "Acceptable Use Guidelines for Apple Pay on the Web",
+      "sosumiURL": "https://sosumi.ai/apple-pay/acceptable-use-guidelines-for-websites/"
+    },
+    {
+      "title": "Adding an Apple Pay Button or a Custom Action in AR Quick Look",
+      "url": "https://developer.apple.com/documentation/ARKit/adding-an-apple-pay-button-or-a-custom-action-in-ar-quick-look",
+      "type": "samplecode",
+      "description": "Provide a banner that users can tap to make a purchase or perform a custom action in an AR experience.",
+      "sosumiURL": "https://sosumi.ai/documentation/ARKit/adding-an-apple-pay-button-or-a-custom-action-in-ar-quick-look",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ARKit/adding-an-apple-pay-button-or-a-custom-action-in-ar-quick-look.json"
+    },
+    {
+      "title": "AR Quick Look Gallery",
+      "url": "https://developer.apple.com/arkit/gallery",
+      "type": "download",
+      "description": "AR Quick Look Gallery Page",
+      "sosumiURL": "https://sosumi.ai/arkit/gallery"
+    },
+    {
+      "title": "ARKit",
+      "url": "https://developer.apple.com/documentation/ARKit",
+      "type": "documentation",
+      "description": "Integrate hardware sensing features to produce augmented reality apps and games.",
+      "sosumiURL": "https://sosumi.ai/documentation/ARKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ARKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10604/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10604/metadata.json",
+    "readme": "sessions/wwdc2020/10604/README.md",
+    "transcript": "sessions/wwdc2020/10604/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10604/transcript.json"
+  }
+}

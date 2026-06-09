@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-282",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 282,
+  "title": "Make your UIKit app more flexible",
+  "description": "Find out how your UIKit app can become more flexible on iPhone, iPad, Mac, and Apple Vision Pro by using scenes and container view controllers. Learn to unlock your app’s full potential by transitioning from an app-centric to a scene-based lifecycle, including enhanced window resizing and improved multitasking. Explore enhancements to UISplitViewController, such as interactive column resizing and first-class support for inspector columns. And make your views and controls more adaptive by adopting new layout APIs.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/282",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/282",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "⚡️"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1003,
+  "hasTranscript": true,
+  "transcriptWordCount": 2241,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/282/4/24e46505-a3b3-4027-ac3f-0bd2b53dcdeb/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/282/4/24e46505-a3b3-4027-ac3f-0bd2b53dcdeb/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/282/4/24e46505-a3b3-4027-ac3f-0bd2b53dcdeb/downloads/wwdc2025-282_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/282/4/24e46505-a3b3-4027-ac3f-0bd2b53dcdeb/downloads/wwdc2025-282_hd.mp4",
+    "duration": 1003
+  },
+  "codeSnippets": [
+    {
+      "title": "Specify the scene configuration",
+      "language": "swift",
+      "startTimeSeconds": 182,
+      "code": "// Specify the scene configuration\n\n@main\nclass AppDelegate: UIResponder, UIApplicationDelegate {\n\n    func application(_ application: UIApplication,\n                     configurationForConnecting sceneSession: UISceneSession,\n                     options: UIScene.ConnectionOptions) -> UISceneConfiguration {\n\n        if sceneSession.role == .windowExternalDisplayNonInteractive {\n            return UISceneConfiguration(name: \"Timer Scene\",\n                                        sessionRole: sceneSession.role)\n        } else {\n            return UISceneConfiguration(name: \"Main Scene\",\n                                        sessionRole: sceneSession.role)\n        }\n    }\n}"
+    },
+    {
+      "title": "Configure the UI",
+      "language": "swift",
+      "startTimeSeconds": 210,
+      "code": "// Configure the UI\n\nclass SceneDelegate: UIResponder, UIWindowSceneDelegate {\n    var window: UIWindow?\n    var timerModel = TimerModel()\n\n    func scene(_ scene: UIScene,\n               willConnectTo session: UISceneSession,\n               options connectionOptions: UIScene.ConnectionOptions) {\n\n        let windowScene = scene as! UIWindowScene\n        let window = UIWindow(windowScene: windowScene)\n        window.rootViewController = TimerViewController(model: timerModel)\n        window.makeKeyAndVisible()\n        self.window = window\n    }\n}"
+    },
+    {
+      "title": "Handle life cycle events",
+      "language": "swift",
+      "startTimeSeconds": 236,
+      "code": "// Handle life cycle events\n\nclass SceneDelegate: UIResponder, UIWindowSceneDelegate {\n    var window: UIWindow?\n    var timerModel = TimerModel()\n\n    // ...\n\n    func sceneDidEnterBackground(_ scene: UIScene) {\n        timerModel.pause()\n    }\n}"
+    },
+    {
+      "title": "Restore UI state",
+      "language": "swift",
+      "startTimeSeconds": 249,
+      "code": "// Restore UI state\n\nclass SceneDelegate: UIResponder, UIWindowSceneDelegate {\n    var window: UIWindow?\n    var timerModel = TimerModel()\n\n    // ...\n\n    func stateRestorationActivity(for scene: UIScene) -> NSUserActivity? {\n        let userActivity = NSUserActivity(activityType: \"com.example.timer.ui-state\")\n        userActivity.userInfo = [\"selectedTimeFormat\": timerModel.selectedTimeFormat]\n        return userActivity\n    }\n\n    func scene(_ scene: UIScene restoreInteractionStateWith userActivity: NSUserActivity) {\n        if let selectedTimeFormat = userActivity?[\"selectedTimeFormat\"] as? String {\n            timerModel.selectedTimeFormat = selectedTimeFormat\n        }\n\n}"
+    },
+    {
+      "title": "Adapt for the split view controller layout environment",
+      "language": "swift",
+      "startTimeSeconds": 286,
+      "code": "// Adapt for the split view controller layout environment\n\noverride func updateConfiguration(using state: UICellConfigurationState) {\n\n    // ...\n\n    if state.traitCollection.splitViewControllerLayoutEnvironment == .collapsed {\n        accessories = [.disclosureIndicator()]\n    } else {\n        accessories = []\n    }\n}"
+    },
+    {
+      "title": "Customize the minimum, maximum, and preferred column widths",
+      "language": "swift",
+      "startTimeSeconds": 371,
+      "code": "// Customize the minimum, maximum, and preferred column widths\n\nlet splitViewController = // ...\n\nsplitViewController.minimumPrimaryColumnWidth = 200.0\nsplitViewController.maximumPrimaryColumnWidth = 400.0\nsplitViewController.preferredSupplementaryColumnWidth = 500.0"
+    },
+    {
+      "title": "Show an inspector column",
+      "language": "swift",
+      "startTimeSeconds": 457,
+      "code": "// Show an inspector column\n\nlet splitViewController = // ... \nsplitViewController.setViewController(inspectorViewController, for: .inspector)\n\nsplitViewController.show(.inspector)"
+    },
+    {
+      "title": "Managing tab groups",
+      "language": "swift",
+      "startTimeSeconds": 559,
+      "code": "// Managing tab groups\n\nlet group = UITabGroup(title: \"Library\", ...)\ngroup.managingNavigationController = UINavigationController()\n\n// ...\n\n// MARK: - UITabBarControllerDelegate\n\nfunc tabBarController(\n    _ tabBarController: UITabBarController,\n    displayedViewControllersFor tab: UITab,\n    proposedViewControllers: [UIViewController]) -> [UIViewController] {\n\n    if tab.identifier == \"Library\" && !self.allowsSelectingLibraryTab {\n        return []\n    } else {\n        return proposedViewControllers\n    }\n}"
+    },
+    {
+      "title": "Preferred minimum size",
+      "language": "swift",
+      "startTimeSeconds": 625,
+      "code": "// Specify a preferred minimum size\n\nclass SceneDelegate: UIResponder, UIWindowSceneDelegate {\n\n    func scene(_ scene: UIScene,\n               willConnectTo session: UISceneSession,\n               options connectionOptions: UIScene.ConnectionOptions) {\n\n        let windowScene = scene as! UIWindowScene\n        windowScene.sizeRestrictions?.minimumSize.width = 500.0\n    }\n}"
+    },
+    {
+      "title": "Position content using the layout margins guide",
+      "language": "swift",
+      "startTimeSeconds": 717,
+      "code": "// Position content using the layout margins guide\n\nlet containerView = // ...\nlet contentView = // ...\n\nlet contentGuide = containerView.layoutMarginsGuide\n\nNSLayoutConstraint.activate([\n    contentView.topAnchor.constraint(equalTo: contentGuide.topAnchor),\n    contentView.leadingAnchor.constraint(equalTo: contentGuide.leadingAnchor),\n    contentView.bottomAnchor.constraint(equalTo: contentGuide.bottomAnchor)\n    contentView.trailingAnchor.constraint(equalTo: contentGuide.trailingAnchor)\n])"
+    },
+    {
+      "title": "Specify the window control style",
+      "language": "swift",
+      "startTimeSeconds": 754,
+      "code": "// Specify the window control style\n\nclass SceneDelegate: UIResponder, UIWindowSceneDelegate {\n\n    func preferredWindowingControlStyle(\n        for scene: UIWindowScene) -> UIWindowScene.WindowingControlStyle {\n        return .unified\n    }\n}"
+    },
+    {
+      "title": "Respect the window control area",
+      "language": "swift",
+      "startTimeSeconds": 784,
+      "code": "// Respect the window control area\n\nlet containerView = // ...\nlet contentView = // ...\n\nlet contentGuide = containerView.layoutGuide(for: .margins(cornerAdaptation: .horizontal)\n\nNSLayoutConstraint.activate([\n    contentView.topAnchor.constraint(equalTo: contentGuide.topAnchor),\n    contentView.leadingAnchor.constraint(equalTo: contentGuide.leadingAnchor),\n    contentView.bottomAnchor.constraint(equalTo: contentGuide.bottomAnchor),\n    contentView.trailingAnchor.constraint(equalTo: contentGuide.trailingAnchor)\n])"
+    },
+    {
+      "title": "Request orientation lock",
+      "language": "swift",
+      "startTimeSeconds": 837,
+      "code": "// Request orientation lock\n\nclass RaceViewController: UIViewController {\n\n    override var prefersInterfaceOrientationLocked: Bool {\n        return isDriving\n    }\n\n    // ...\n\n    var isDriving: Bool = false {\n        didSet {\n            if isDriving != oldValue {\n                setNeedsUpdateOfPrefersInterfaceOrientationLocked()\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Observe the interface orientation lock",
+      "language": "swift",
+      "startTimeSeconds": 858,
+      "code": "// Observe the interface orientation lock\n\nclass SceneDelegate: UIResponder, UIWindowSceneDelegate {\n    var game = Game()\n\n    func windowScene(\n        _ windowScene: UIWindowScene,\n        didUpdateEffectiveGeometry previousGeometry: UIWindowScene.Geometry) {\n\n        let wasLocked = previousGeometry.isInterfaceOrientationLocked\n        let isLocked = windowScene.effectiveGeometry.isInterfaceOrientationLocked\n\n        if wasLocked != isLocked {\n    game.pauseIfNeeded(isInterfaceOrientationLocked: isLocked)\n        }\n    }\n}"
+    },
+    {
+      "title": "Query whether the scene is resizing",
+      "language": "swift",
+      "startTimeSeconds": 884,
+      "code": "// Query whether the scene is resizing\n\nclass SceneDelegate: UIResponder, UIWindowSceneDelegate {\n    var gameAssetManager = GameAssetManager()\n    var previousSceneSize = CGSize.zero\n\n    func windowScene(\n        _ windowScene: UIWindowScene,\n        didUpdateEffectiveGeometry previousGeometry: UIWindowScene.Geometry) {\n\n        let geometry = windowScene.effectiveGeometry\n        let sceneSize = geometry.coordinateSpace.bounds.size\n\n        if !geometry.isInteractivelyResizing && sceneSize != previousSceneSize {\n            previousSceneSize = sceneSize\n            gameAssetManager.updateAssets(sceneSize: sceneSize)\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "TN3187: Migrating to the UIKit scene-based life cycle",
+      "url": "https://developer.apple.com/documentation/Technotes/tn3187-Migrating-to-the-UIKit-scene-based-life-cycle",
+      "type": "documentation",
+      "description": "Update your app to receive scene-based life-cycle events and manage your user interface using scene objects and methods.",
+      "sosumiURL": "https://sosumi.ai/documentation/Technotes/tn3187-Migrating-to-the-UIKit-scene-based-life-cycle",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Technotes/tn3187-Migrating-to-the-UIKit-scene-based-life-cycle.json"
+    },
+    {
+      "title": "UIKit updates",
+      "url": "https://developer.apple.com/documentation/Updates/UIKit",
+      "type": "documentation",
+      "description": "Learn about important changes to UIKit.",
+      "sosumiURL": "https://sosumi.ai/documentation/Updates/UIKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Updates/UIKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/282/",
+  "files": {
+    "metadata": "sessions/wwdc2025/282/metadata.json",
+    "readme": "sessions/wwdc2025/282/README.md",
+    "transcript": "sessions/wwdc2025/282/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/282/transcript.json"
+  }
+}

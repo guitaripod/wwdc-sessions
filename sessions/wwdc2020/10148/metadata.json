@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10148",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10148,
+  "title": "Inspect, modify, and construct PencilKit drawings",
+  "description": "Make Apple Pencil an even more useful tool for drawing and writing within your app. With PencilKit, you can delve into the strokes, inks, paths, and points that comprise a drawing, use these to build features that use recognition, and modify drawings in response to input. Discover how you can dynamically generate shapes and drawings and learn more about APIs like PKDrawings and PKStrokes.\n\nTo get the most out of this session, we recommend first checking out “Introducing PencilKit,” which provides an overview of the PencilKit framework in its WWDC19 debut, and WWDC20’s “What's new in PencilKit.”",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10148",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10148",
+  "type": "Video",
+  "publishedAt": "2020-06-23T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "calligraphy",
+    "cursive",
+    "engine",
+    "handwriting",
+    "stylus"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 964,
+  "hasTranscript": true,
+  "transcriptWordCount": 2222,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10148/5/A365E915-A01A-478B-9396-0F737E6C8930/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10148/5/A365E915-A01A-478B-9396-0F737E6C8930/wwdc2020_10148_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10148/5/A365E915-A01A-478B-9396-0F737E6C8930/wwdc2020_10148_hd.mp4",
+    "duration": 964
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Inspecting, Modifying, and Constructing PencilKit Drawings",
+      "url": "https://developer.apple.com/documentation/PencilKit/inspecting-modifying-and-constructing-pencilkit-drawings",
+      "type": "samplecode",
+      "description": "Score users’ ability to match PencilKit drawings generated from text, by accessing the strokes and points inside PencilKit drawings.",
+      "sosumiURL": "https://sosumi.ai/documentation/PencilKit/inspecting-modifying-and-constructing-pencilkit-drawings",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/PencilKit/inspecting-modifying-and-constructing-pencilkit-drawings.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10148/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10148/metadata.json",
+    "readme": "sessions/wwdc2020/10148/README.md",
+    "transcript": "sessions/wwdc2020/10148/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10148/transcript.json"
+  }
+}

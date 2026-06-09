@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2015-719",
+  "event": "wwdc2015",
+  "eventName": "WWDC15",
+  "year": 2015,
+  "eventContentId": 719,
+  "title": "Your App and Next Generation Networks",
+  "description": "IPv6 is growing exponentially and carriers worldwide are moving to pure IPv6 APNs. Learn about new tools to test your apps for compatibility and get expert advice on making sure your apps work in all network environments.  iOS 9 and OS X 10.11 now support the latest TCP standards. Hear from the experts on TCP Fast Open and Explicit Congestion Notification, and find out how it benefits your apps.",
+  "url": "https://developer.apple.com/videos/play/wwdc2015/719",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2015/719",
+  "type": "Session",
+  "publishedAt": "2015-06-12T11:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "ipv6",
+    "tcp"
+  ],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 3161,
+  "hasTranscript": true,
+  "transcriptWordCount": 7384,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2015/719ui2k57m/719/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2015/719ui2k57m/719/719_sd_your_app_and_next_generation_networks.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2015/719ui2k57m/719/719_hd_your_app_and_next_generation_networks.mp4",
+    "duration": 3161
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2015/719/",
+  "files": {
+    "metadata": "sessions/wwdc2015/719/metadata.json",
+    "readme": "sessions/wwdc2015/719/README.md",
+    "transcript": "sessions/wwdc2015/719/transcript.md",
+    "transcriptJSON": "sessions/wwdc2015/719/transcript.json"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10045",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10045,
+  "title": "Detect animal poses in Vision",
+  "description": "Go beyond detecting cats and dogs in images. We’ll show you how to use Vision to detect the individual joints and poses of these animals as well — all in real time — and share how you can enable exciting features like animal tracking for a camera app, creative embellishment on an animal photo, and more. We’ll also explore other important enhancements to Vision and share best practices.\n\nTo learn even more about what’s new in the Vision framework, watch \"Explore 3D body pose and person segmentation in Vision” and \"Lift subjects from images in your app.” And to learn more about building live camera-tracking experiences, check out \"Integrate with motorized iPhone stands using DockKit\"\n",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10045",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10045",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 827,
+  "hasTranscript": true,
+  "transcriptWordCount": 1686,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10045/4/CD4F90B5-A291-452A-93CC-2694D9A8FB9E/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10045/4/CD4F90B5-A291-452A-93CC-2694D9A8FB9E/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10045/4/CD4F90B5-A291-452A-93CC-2694D9A8FB9E/downloads/wwdc2023-10045_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10045/4/CD4F90B5-A291-452A-93CC-2694D9A8FB9E/downloads/wwdc2023-10045_hd.mp4",
+    "duration": 827
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Vision",
+      "url": "https://developer.apple.com/documentation/Vision",
+      "type": "documentation",
+      "description": "Analyze image and video content in your app using computer vision algorithms for object detection, text recognition, and image segmentation.",
+      "sosumiURL": "https://sosumi.ai/documentation/Vision",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Vision.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10045/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10045/metadata.json",
+    "readme": "sessions/wwdc2023/10045/README.md",
+    "transcript": "sessions/wwdc2023/10045/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10045/transcript.json"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-422",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 422,
+  "title": "Designing for Adverse Network and Temperature Conditions",
+  "description": "World-class apps deliver a great user experience, even in the most strenuous environments. Learn how to use Xcode to simulate adverse network and temperature conditions. Put your app through its paces and get a firsthand view of how it performs. Hear about best practices that you can adopt to respond to challenging conditions.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/422",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/422",
+  "type": "Session",
+  "publishedAt": "2019-06-07T16:20:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "conditioner",
+    "test",
+    "thermal"
+  ],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 2169,
+  "hasTranscript": true,
+  "transcriptWordCount": 6133,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/422vrf3slx9wnqm6/422/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/422vrf3slx9wnqm6/422/422_sd_designing_for_adverse_network_and_temperature_conditions.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/422vrf3slx9wnqm6/422/422_hd_designing_for_adverse_network_and_temperature_conditions.mp4",
+    "duration": 2169
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Xcode Help: Override environment system settings in the debugger",
+      "url": "https://help.apple.com/xcode/mac/current/#/dev04113b16d",
+      "type": "documentation",
+      "description": "Describes the environment overrides."
+    },
+    {
+      "title": "Xcode Help: Test under adverse device conditions",
+      "url": "https://help.apple.com/xcode/mac/current/#/dev308429d42",
+      "type": "documentation",
+      "description": null
+    }
+  ],
+  "path": "sessions/wwdc2019/422/",
+  "files": {
+    "metadata": "sessions/wwdc2019/422/metadata.json",
+    "readme": "sessions/wwdc2019/422/README.md",
+    "transcript": "sessions/wwdc2019/422/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/422/transcript.json"
+  }
+}

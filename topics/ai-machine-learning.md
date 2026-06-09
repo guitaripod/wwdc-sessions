@@ -1,38 +1,161 @@
-# AI & Machine Learning — WWDC26 Sessions
+# AI & Machine Learning
 
-34 sessions.
+130 sessions across all events.
 
-- [Best practices for integrating visual intelligence in your app](../sessions/wwdc2026-297/README.md) · 📝 transcript
-- [Bring an LLM provider to the Foundation Models framework](../sessions/wwdc2026-339/README.md) · 📝 transcript
-- [Bringing Cyberpunk 2077 to Mac](../sessions/wwdc2026-356/README.md) · 📝 transcript
-- [Build AI-powered scripts with the fm CLI and Python SDK](../sessions/wwdc2026-334/README.md) · 📝 transcript
-- [Build agentic app experiences with the Foundation Models framework](../sessions/wwdc2026-242/README.md) · 📝 transcript
-- [Build intelligent Siri experiences with App Schemas](../sessions/wwdc2026-240/README.md) · 📝 transcript
-- [Build real-time neural rendering pipelines with Metal](../sessions/wwdc2026-359/README.md) · 📝 transcript
-- [Build with the new Apple Foundation Model on Private Cloud Compute](../sessions/wwdc2026-319/README.md) · 📝 transcript
-- [Code-along: Make your app available to Siri](../sessions/wwdc2026-344/README.md) · 📝 transcript
-- [Create UI prototypes using agents in Xcode](../sessions/wwdc2026-227/README.md) · 📝 transcript
-- [Create high quality images using Image Playground](../sessions/wwdc2026-375/README.md) · 📝 transcript
-- [Create robust evaluations for agentic apps](../sessions/wwdc2026-299/README.md) · 📝 transcript
-- [Debug and profile agentic app experiences with Instruments](../sessions/wwdc2026-243/README.md) · 📝 transcript
-- [Design immersive environments for visionOS apps and the spatial web](../sessions/wwdc2026-234/README.md) · 📝 transcript
-- [Discover new capabilities in the App Intents framework](../sessions/wwdc2026-345/README.md) · 📝 transcript
-- [Dive into Core AI model authoring and optimization](../sessions/wwdc2026-325/README.md) · 📝 transcript
-- [Explore advanced App Intents features for Siri and Apple Intelligence](../sessions/wwdc2026-343/README.md) · 📝 transcript
-- [Explore distributed inference and training with MLX](../sessions/wwdc2026-233/README.md) · 📝 transcript
-- [Explore numerical computing in Swift with MLX](../sessions/wwdc2026-328/README.md) · 📝 transcript
-- [Improve your prompts by hill-climbing with Evaluations](../sessions/wwdc2026-335/README.md) · 📝 transcript
-- [Integrate on-device AI models into your app using Core AI](../sessions/wwdc2026-326/README.md) · 📝 transcript
-- [LLM search using Core Spotlight](../sessions/wwdc2026-246/README.md) · 📝 transcript
-- [Meet Core AI](../sessions/wwdc2026-324/README.md) · 📝 transcript
-- [Meet the Evaluations framework](../sessions/wwdc2026-298/README.md) · 📝 transcript
-- [Meet the Music Understanding framework](../sessions/wwdc2026-253/README.md) · 📝 transcript
-- [Optimize custom machine learning operations with Metal tensors](../sessions/wwdc2026-330/README.md) · 📝 transcript
-- [Run local agentic AI on the Mac using MLX](../sessions/wwdc2026-232/README.md) · 📝 transcript
-- [Secure your app: mitigate risks to agentic features](../sessions/wwdc2026-347/README.md) · 📝 transcript
-- [Speedrun your game port with agentic coding](../sessions/wwdc2026-357/README.md) · 📝 transcript
-- [Translate your app using agents in Xcode](../sessions/wwdc2026-213/README.md) · 📝 transcript
-- [Validate your App Intents adoption with AppIntentsTesting](../sessions/wwdc2026-295/README.md) · 📝 transcript
-- [What’s new in Shortcuts](../sessions/wwdc2026-310/README.md) · 📝 transcript
-- [What’s new in image understanding](../sessions/wwdc2026-237/README.md) · 📝 transcript
-- [What’s new in the Foundation Models framework](../sessions/wwdc2026-241/README.md) · 📝 transcript
+
+### WWDC26
+
+- [Best practices for integrating visual intelligence in your app](../sessions/wwdc2026/297/README.md)
+- [Bring an LLM provider to the Foundation Models framework](../sessions/wwdc2026/339/README.md)
+- [Bringing Cyberpunk 2077 to Mac](../sessions/wwdc2026/356/README.md)
+- [Build AI-powered scripts with the fm CLI and Python SDK](../sessions/wwdc2026/334/README.md)
+- [Build agentic app experiences with the Foundation Models framework](../sessions/wwdc2026/242/README.md)
+- [Build intelligent Siri experiences with App Schemas](../sessions/wwdc2026/240/README.md)
+- [Build real-time neural rendering pipelines with Metal](../sessions/wwdc2026/359/README.md)
+- [Build with the new Apple Foundation Model on Private Cloud Compute](../sessions/wwdc2026/319/README.md)
+- [Code-along: Make your app available to Siri](../sessions/wwdc2026/344/README.md)
+- [Create UI prototypes using agents in Xcode](../sessions/wwdc2026/227/README.md)
+- [Create high quality images using Image Playground](../sessions/wwdc2026/375/README.md)
+- [Create robust evaluations for agentic apps](../sessions/wwdc2026/299/README.md)
+- [Debug and profile agentic app experiences with Instruments](../sessions/wwdc2026/243/README.md)
+- [Design immersive environments for visionOS apps and the spatial web](../sessions/wwdc2026/234/README.md)
+- [Discover new capabilities in the App Intents framework](../sessions/wwdc2026/345/README.md)
+- [Dive into Core AI model authoring and optimization](../sessions/wwdc2026/325/README.md)
+- [Explore advanced App Intents features for Siri and Apple Intelligence](../sessions/wwdc2026/343/README.md)
+- [Explore distributed inference and training with MLX](../sessions/wwdc2026/233/README.md)
+- [Explore numerical computing in Swift with MLX](../sessions/wwdc2026/328/README.md)
+- [Improve your prompts by hill-climbing with Evaluations](../sessions/wwdc2026/335/README.md)
+- [Integrate on-device AI models into your app using Core AI](../sessions/wwdc2026/326/README.md)
+- [LLM search using Core Spotlight](../sessions/wwdc2026/246/README.md)
+- [Meet Core AI](../sessions/wwdc2026/324/README.md)
+- [Meet the Evaluations framework](../sessions/wwdc2026/298/README.md)
+- [Meet the Music Understanding framework](../sessions/wwdc2026/253/README.md)
+- [Optimize custom machine learning operations with Metal tensors](../sessions/wwdc2026/330/README.md)
+- [Run local agentic AI on the Mac using MLX](../sessions/wwdc2026/232/README.md)
+- [Secure your app: mitigate risks to agentic features](../sessions/wwdc2026/347/README.md)
+- [Speedrun your game port with agentic coding](../sessions/wwdc2026/357/README.md)
+- [Translate your app using agents in Xcode](../sessions/wwdc2026/213/README.md)
+- [Validate your App Intents adoption with AppIntentsTesting](../sessions/wwdc2026/295/README.md)
+- [What’s new in Shortcuts](../sessions/wwdc2026/310/README.md)
+- [What’s new in image understanding](../sessions/wwdc2026/237/README.md)
+- [What’s new in the Foundation Models framework](../sessions/wwdc2026/241/README.md)
+
+### WWDC25
+
+- [Bring advanced speech-to-text to your app with SpeechAnalyzer](../sessions/wwdc2025/277/README.md)
+- [Code along with the Foundation Models framework](../sessions/meet-with-apple/205/README.md)
+- [Code-along: Bring on-device AI to your app using the Foundation Models framework](../sessions/wwdc2025/259/README.md)
+- [Combine Metal 4 machine learning and graphics](../sessions/wwdc2025/262/README.md)
+- [Deep dive into the Foundation Models framework](../sessions/wwdc2025/301/README.md)
+- [Design interactive snippets](../sessions/wwdc2025/281/README.md)
+- [Develop for Shortcuts and Spotlight with App Intents](../sessions/wwdc2025/260/README.md)
+- [Discover machine learning & AI frameworks on Apple platforms](../sessions/wwdc2025/360/README.md)
+- [Dive deeper into Writing Tools](../sessions/wwdc2025/265/README.md)
+- [Explore large language models on Apple silicon with MLX](../sessions/wwdc2025/298/README.md)
+- [Explore new advances in App Intents](../sessions/wwdc2025/275/README.md)
+- [Explore prompt design & safety for on-device foundation models](../sessions/wwdc2025/248/README.md)
+- [Get started with MLX for Apple silicon](../sessions/wwdc2025/315/README.md)
+- [Get to know App Intents](../sessions/wwdc2025/244/README.md)
+- [Meet the Foundation Models framework](../sessions/wwdc2025/286/README.md)
+- [Optimize CPU performance with Instruments](../sessions/wwdc2025/308/README.md)
+- [Read documents using the Vision framework](../sessions/wwdc2025/272/README.md)
+- [What’s new in BNNS Graph](../sessions/wwdc2025/276/README.md)
+
+### WWDC24
+
+- [Accelerate machine learning with Metal](../sessions/wwdc2024/10218/README.md)
+- [Bring your app to Siri](../sessions/wwdc2024/10133/README.md)
+- [Bring your app’s core features to users with App Intents](../sessions/wwdc2024/10210/README.md)
+- [Bring your machine learning and AI models to Apple silicon](../sessions/wwdc2024/10159/README.md)
+- [Build a great Lock Screen camera capture experience](../sessions/wwdc2024/10204/README.md)
+- [Deploy machine learning and AI models on-device with Core ML](../sessions/wwdc2024/10161/README.md)
+- [Design App Intents for system experiences](../sessions/wwdc2024/10176/README.md)
+- [Discover Swift enhancements in the Vision framework](../sessions/wwdc2024/10163/README.md)
+- [Explore machine learning on Apple platforms](../sessions/wwdc2024/10223/README.md)
+- [Explore object tracking for visionOS](../sessions/wwdc2024/10101/README.md)
+- [Get started with Writing Tools](../sessions/wwdc2024/10168/README.md)
+- [Introducing enterprise APIs for visionOS](../sessions/wwdc2024/10139/README.md)
+- [Keep colors consistent across captures](../sessions/wwdc2024/10162/README.md)
+- [Meet the Translation API](../sessions/wwdc2024/10117/README.md)
+- [Support real-time ML inference on the CPU](../sessions/wwdc2024/10211/README.md)
+- [Support semantic search with Core Spotlight](../sessions/wwdc2024/10131/README.md)
+- [Train your machine learning and AI models on Apple GPUs](../sessions/wwdc2024/10160/README.md)
+- [Use HDR for dynamic image experiences in your app](../sessions/wwdc2024/10177/README.md)
+- [What’s new in App Intents](../sessions/wwdc2024/10134/README.md)
+- [What’s new in Create ML](../sessions/wwdc2024/10183/README.md)
+- [What’s new in DockKit](../sessions/wwdc2024/10164/README.md)
+
+### WWDC23
+
+- [Customize on-device speech recognition](../sessions/wwdc2023/10101/README.md)
+- [Detect animal poses in Vision](../sessions/wwdc2023/10045/README.md)
+- [Discover machine learning enhancements in Create ML](../sessions/wwdc2023/10044/README.md)
+- [Explore 3D body pose and person segmentation in Vision](../sessions/wwdc2023/111241/README.md)
+- [Explore Natural Language multilingual models](../sessions/wwdc2023/10042/README.md)
+- [Improve Core ML integration with async prediction](../sessions/wwdc2023/10049/README.md)
+- [Integrate with motorized iPhone stands using DockKit](../sessions/wwdc2023/10304/README.md)
+- [Lift subjects from images in your app](../sessions/wwdc2023/10176/README.md)
+- [Optimize machine learning for Metal apps](../sessions/wwdc2023/10050/README.md)
+- [Use Core ML Tools for machine learning model compression](../sessions/wwdc2023/10047/README.md)
+- [What’s new in VisionKit](../sessions/wwdc2023/10048/README.md)
+
+### WWDC22
+
+- [Accelerate machine learning with Metal](../sessions/wwdc2022/10063/README.md)
+- [Capture machine-readable codes and text with VisionKit](../sessions/wwdc2022/10025/README.md)
+- [Compose advanced models with Create ML Components](../sessions/wwdc2022/10020/README.md)
+- [Explore the machine learning development experience](../sessions/wwdc2022/10017/README.md)
+- [Get to know Create ML Components](../sessions/wwdc2022/10019/README.md)
+- [Optimize your Core ML usage](../sessions/wwdc2022/10027/README.md)
+- [What's new in Create ML](../sessions/wwdc2022/110332/README.md)
+- [What's new in Vision](../sessions/wwdc2022/10024/README.md)
+
+### WWDC21
+
+- [Accelerate machine learning with Metal Performance Shaders Graph](../sessions/wwdc2021/10152/README.md)
+- [Build dynamic iOS apps with the Create ML framework](../sessions/wwdc2021/10037/README.md)
+- [Classify hand poses and actions with Create ML](../sessions/wwdc2021/10039/README.md)
+- [Detect people, faces, and poses using Vision](../sessions/wwdc2021/10040/README.md)
+- [Discover built-in sound classification in SoundAnalysis](../sessions/wwdc2021/10036/README.md)
+- [Discoverable design](../sessions/wwdc2021/10126/README.md)
+- [Extract document data using Vision](../sessions/wwdc2021/10041/README.md)
+- [The process of inclusive design](../sessions/wwdc2021/10304/README.md)
+- [Tune your Core ML models](../sessions/wwdc2021/10038/README.md)
+- [Use Accelerate to improve performance and incorporate encrypted archives](../sessions/wwdc2021/10233/README.md)
+
+### WWDC20
+
+- [Build Image and Video Style Transfer models in Create ML](../sessions/wwdc2020/10642/README.md)
+- [Build an Action Classifier with Create ML](../sessions/wwdc2020/10043/README.md)
+- [Build customized ML models with the Metal Performance Shaders Graph](../sessions/wwdc2020/10677/README.md)
+- [Control training in Create ML with Swift](../sessions/wwdc2020/10156/README.md)
+- [Detect Body and Hand Pose with Vision](../sessions/wwdc2020/10653/README.md)
+- [Explore Computer Vision APIs](../sessions/wwdc2020/10673/README.md)
+- [Explore the Action & Vision app](../sessions/wwdc2020/10099/README.md)
+- [Get models on device using Core ML Converters](../sessions/wwdc2020/10153/README.md)
+- [Make apps smarter with Natural Language](../sessions/wwdc2020/10657/README.md)
+- [Use model deployment and security with Core ML](../sessions/wwdc2020/10152/README.md)
+
+### WWDC19
+
+- [Advances in Natural Language Framework](../sessions/wwdc2019/232/README.md)
+- [Advances in Speech Recognition](../sessions/wwdc2019/256/README.md)
+- [Building Activity Classification Models in Create ML](../sessions/wwdc2019/426/README.md)
+- [Core ML 3 Framework](../sessions/wwdc2019/704/README.md)
+- [Creating Great Apps Using Core ML and ARKit](../sessions/wwdc2019/228/README.md)
+- [Designing Great ML Experiences](../sessions/wwdc2019/803/README.md)
+- [Introducing the Create ML App](../sessions/wwdc2019/430/README.md)
+- [Metal for Machine Learning](../sessions/wwdc2019/614/README.md)
+- [Text Recognition in Vision Framework](../sessions/wwdc2019/234/README.md)
+- [Training Object Detection Models in Create ML](../sessions/wwdc2019/424/README.md)
+- [Training Recommendation Models in Create ML](../sessions/wwdc2019/427/README.md)
+- [Training Sound Classification Models in Create ML](../sessions/wwdc2019/425/README.md)
+- [Training Text Classifiers in Create ML](../sessions/wwdc2019/428/README.md)
+- [Understanding Images in Vision Framework](../sessions/wwdc2019/222/README.md)
+- [What's New in Machine Learning](../sessions/wwdc2019/209/README.md)
+
+### Tech Talks
+
+- [Accelerate your machine learning workloads with the M5 and A19 GPUs](../sessions/tech-talks/111432/README.md)
+- [Boost your graphics performance with the M5 and A19 GPUs](../sessions/tech-talks/111431/README.md)
+- [Explore and manipulate data in Swift with TabularData](../sessions/tech-talks/10100/README.md)

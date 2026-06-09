@@ -1,19 +1,193 @@
-# Spatial Computing — WWDC26 Sessions
+# Spatial Computing
 
-15 sessions.
+162 sessions across all events.
 
-- [Build live production tools for Apple Immersive Video](../sessions/wwdc2026-338/README.md) · 📝 transcript
-- [Build next-generation experiences with visionOS 27](../sessions/wwdc2026-287/README.md) · 📝 transcript
-- [Collaborate on structured 3D models in visionOS](../sessions/wwdc2026-284/README.md) · 📝 transcript
-- [Design immersive environments for visionOS apps and the spatial web](../sessions/wwdc2026-234/README.md) · 📝 transcript
-- [Design no-code games with Reality Composer Pro 3](../sessions/wwdc2026-252/README.md) · 📝 transcript
-- [Discover USDKit and what’s new in OpenUSD](../sessions/wwdc2026-285/README.md) · 📝 transcript
-- [Discover the Spatial Preview framework](../sessions/wwdc2026-282/README.md) · 📝 transcript
-- [Explore advances in RealityKit](../sessions/wwdc2026-279/README.md) · 📝 transcript
-- [Explore enhancements to visionOS object tracking](../sessions/wwdc2026-283/README.md) · 📝 transcript
-- [Explore immersive website environments in visionOS](../sessions/wwdc2026-320/README.md) · 📝 transcript
-- [Extend Reality Composer Pro 3 functionality with Xcode](../sessions/wwdc2026-281/README.md) · 📝 transcript
-- [Get started with the HTML Model Element](../sessions/wwdc2026-215/README.md) · 📝 transcript
-- [Iterate your spatial scenes faster with Reality Composer Pro 3](../sessions/wwdc2026-280/README.md) · 📝 transcript
-- [Supercharge your spatial workflows with Reality Composer Pro 3](../sessions/wwdc2026-393/README.md) · 📝 transcript
-- [Use foveated streaming to bring immersive content to visionOS](../sessions/wwdc2026-286/README.md) · 📝 transcript
+
+### WWDC26
+
+- [Build live production tools for Apple Immersive Video](../sessions/wwdc2026/338/README.md)
+- [Build next-generation experiences with visionOS 27](../sessions/wwdc2026/287/README.md)
+- [Collaborate on structured 3D models in visionOS](../sessions/wwdc2026/284/README.md)
+- [Design immersive environments for visionOS apps and the spatial web](../sessions/wwdc2026/234/README.md)
+- [Design no-code games with Reality Composer Pro 3](../sessions/wwdc2026/252/README.md)
+- [Discover USDKit and what’s new in OpenUSD](../sessions/wwdc2026/285/README.md)
+- [Discover the Spatial Preview framework](../sessions/wwdc2026/282/README.md)
+- [Explore advances in RealityKit](../sessions/wwdc2026/279/README.md)
+- [Explore enhancements to visionOS object tracking](../sessions/wwdc2026/283/README.md)
+- [Explore immersive website environments in visionOS](../sessions/wwdc2026/320/README.md)
+- [Extend Reality Composer Pro 3 functionality with Xcode](../sessions/wwdc2026/281/README.md)
+- [Get started with the HTML Model Element](../sessions/wwdc2026/215/README.md)
+- [Iterate your spatial scenes faster with Reality Composer Pro 3](../sessions/wwdc2026/280/README.md)
+- [Supercharge your spatial workflows with Reality Composer Pro 3](../sessions/wwdc2026/393/README.md)
+- [Use foveated streaming to bring immersive content to visionOS](../sessions/wwdc2026/286/README.md)
+
+### Meet with Apple
+
+- [An introduction to capturing Apple Immersive Video](../sessions/meet-with-apple/224/README.md)
+- [Apple Immersive Video-enabled workflows | Blackmagic Design](../sessions/meet-with-apple/226/README.md)
+- [Better together: SwiftUI and RealityKit](../sessions/wwdc2025/274/README.md)
+- [Build shared experiences for visionOS](../sessions/meet-with-apple/221/README.md)
+- [Build spatial experiences with RealityKit](../sessions/meet-with-apple/220/README.md)
+- [Capturing live events for Apple Immersive Video: Learnings from "Metallica"](../sessions/meet-with-apple/231/README.md)
+- [Create immersive media experiences for visionOS - Day 1](../sessions/meet-with-apple/209/README.md)
+- [Create immersive media experiences for visionOS - Day 2](../sessions/meet-with-apple/210/README.md)
+- [Create stories with immersive video and audio](../sessions/meet-with-apple/218/README.md)
+- [Dailies and mastering for Apple Immersive Video | Colorfront](../sessions/meet-with-apple/227/README.md)
+- [Design hover interactions for visionOS](../sessions/wwdc2025/303/README.md)
+- [Design immersive and interactive experiences](../sessions/meet-with-apple/219/README.md)
+- [Design widgets for visionOS](../sessions/wwdc2025/255/README.md)
+- [Enhance your app’s audio recording capabilities](../sessions/wwdc2025/251/README.md)
+- [Explore enhancements to your spatial business app](../sessions/wwdc2025/223/README.md)
+- [Explore spatial accessory input on visionOS](../sessions/wwdc2025/289/README.md)
+- [Explore video experiences for visionOS](../sessions/wwdc2025/304/README.md)
+- [Hands-on experience with Spatial Audio for Apple Immersive Video](../sessions/meet-with-apple/236/README.md)
+- [Hands-on experience with editing for Apple Immersive Video](../sessions/meet-with-apple/234/README.md)
+- [Hands-on experience with visual effects for Apple Immersive Video](../sessions/meet-with-apple/235/README.md)
+- [Hosting and distributing Apple Immersive Video | SpatialGen](../sessions/meet-with-apple/228/README.md)
+- [Learn about Apple Immersive Video technologies](../sessions/wwdc2025/403/README.md)
+- [Learn about the Apple Projected Media Profile](../sessions/wwdc2025/297/README.md)
+- [Meet Apple Spatial Audio Format and APAC](../sessions/meet-with-apple/223/README.md)
+- [Meet SwiftUI spatial layout](../sessions/wwdc2025/273/README.md)
+- [Meet the Apple Immersive Video format](../sessions/meet-with-apple/222/README.md)
+- [Optimize your custom environments for visionOS](../sessions/wwdc2025/305/README.md)
+- [Preserving presence for Apple Immersive Video: Learnings from post production](../sessions/meet-with-apple/233/README.md)
+- [Previsualization for Apple Immersive: Learnings from “Open Hearts” by The Weeknd](../sessions/meet-with-apple/229/README.md)
+- [Production expectations for Apple Immersive Video: Learnings from “Submerged”](../sessions/meet-with-apple/230/README.md)
+- [Set the scene with SwiftUI in visionOS](../sessions/wwdc2025/290/README.md)
+- [Share visionOS experiences with nearby people](../sessions/wwdc2025/318/README.md)
+- [Spatial Audio workflows for Apple Immersive Video](../sessions/meet-with-apple/225/README.md)
+- [Support immersive video playback in visionOS apps](../sessions/wwdc2025/296/README.md)
+- [The power of simplicity: Lessons from unscripted Apple Immersive titles](../sessions/meet-with-apple/232/README.md)
+- [What’s new for the spatial web](../sessions/wwdc2025/237/README.md)
+- [What’s new in Metal rendering for immersive apps](../sessions/wwdc2025/294/README.md)
+- [What’s new in RealityKit](../sessions/wwdc2025/287/README.md)
+- [What’s new in SwiftUI](../sessions/wwdc2025/256/README.md)
+- [What’s new in immersive media for visionOS](../sessions/meet-with-apple/216/README.md)
+- [What’s new in interactive media for visionOS](../sessions/meet-with-apple/217/README.md)
+- [What’s new in visionOS 26](../sessions/wwdc2025/317/README.md)
+
+### WWDC24
+
+- [Break into the RealityKit debugger](../sessions/wwdc2024/10172/README.md)
+- [Bring your iOS or iPadOS game to visionOS](../sessions/wwdc2024/10093/README.md)
+- [Build a spatial drawing app with RealityKit](../sessions/wwdc2024/10104/README.md)
+- [Build compelling spatial photo and video experiences](../sessions/wwdc2024/10166/README.md)
+- [Build immersive web experiences with WebXR](../sessions/wwdc2024/10066/README.md)
+- [Compose interactive 3D content in Reality Composer Pro](../sessions/wwdc2024/10102/README.md)
+- [Create custom environments for your immersive apps in visionOS](../sessions/wwdc2024/10087/README.md)
+- [Create custom hover effects in visionOS](../sessions/wwdc2024/10152/README.md)
+- [Create enhanced spatial computing experiences with ARKit](../sessions/wwdc2024/10100/README.md)
+- [Customize spatial Persona templates in SharePlay](../sessions/wwdc2024/10201/README.md)
+- [Design great visionOS apps](../sessions/wwdc2024/10086/README.md)
+- [Design interactive experiences for visionOS](../sessions/wwdc2024/10096/README.md)
+- [Discover RealityKit APIs for iOS, macOS, and visionOS](../sessions/wwdc2024/10103/README.md)
+- [Discover area mode for Object Capture](../sessions/wwdc2024/10107/README.md)
+- [Dive deep into volumes and immersive spaces](../sessions/wwdc2024/10153/README.md)
+- [Enhance the immersion of media viewing in custom environments](../sessions/wwdc2024/10115/README.md)
+- [Enhance your spatial computing app with RealityKit audio](../sessions/wwdc2024/111801/README.md)
+- [Explore game input in visionOS](../sessions/wwdc2024/10094/README.md)
+- [Explore multiview video playback in visionOS](../sessions/wwdc2024/10116/README.md)
+- [Explore object tracking for visionOS](../sessions/wwdc2024/10101/README.md)
+- [Get started with HealthKit in visionOS](../sessions/wwdc2024/10083/README.md)
+- [Introducing enterprise APIs for visionOS](../sessions/wwdc2024/10139/README.md)
+- [Meet TabletopKit for visionOS](../sessions/wwdc2024/10091/README.md)
+- [Optimize for the spatial web](../sessions/wwdc2024/10065/README.md)
+- [Optimize your 3D assets for spatial computing](../sessions/wwdc2024/10186/README.md)
+- [Render Metal with passthrough in visionOS](../sessions/wwdc2024/10092/README.md)
+- [What’s new in Quick Look for visionOS](../sessions/wwdc2024/10105/README.md)
+- [What’s new in SwiftUI](../sessions/wwdc2024/10144/README.md)
+- [What’s new in USD and MaterialX](../sessions/wwdc2024/10106/README.md)
+- [Work with windows in SwiftUI](../sessions/wwdc2024/10149/README.md)
+
+### WWDC23
+
+- [Bring your Unity VR app to a fully immersive space](../sessions/wwdc2023/10093/README.md)
+- [Build great games for spatial computing](../sessions/wwdc2023/10096/README.md)
+- [Build spatial SharePlay experiences](../sessions/wwdc2023/10087/README.md)
+- [Build spatial experiences with RealityKit](../sessions/wwdc2023/10080/README.md)
+- [Create 3D models for Quick Look spatial experiences ](../sessions/wwdc2023/10274/README.md)
+- [Create a great spatial playback experience](../sessions/wwdc2023/10070/README.md)
+- [Create accessible spatial experiences](../sessions/wwdc2023/10034/README.md)
+- [Create immersive Unity apps](../sessions/wwdc2023/10088/README.md)
+- [Deliver video content for spatial experiences](../sessions/wwdc2023/10071/README.md)
+- [Design considerations for vision and motion](../sessions/wwdc2023/10078/README.md)
+- [Design for spatial input](../sessions/wwdc2023/10073/README.md)
+- [Design for spatial user interfaces](../sessions/wwdc2023/10076/README.md)
+- [Design spatial SharePlay experiences](../sessions/wwdc2023/10075/README.md)
+- [Develop your first immersive app](../sessions/wwdc2023/10203/README.md)
+- [Discover Metal for immersive apps](../sessions/wwdc2023/10089/README.md)
+- [Discover Quick Look for spatial computing](../sessions/wwdc2023/10085/README.md)
+- [Elevate your windowed app for spatial computing](../sessions/wwdc2023/10110/README.md)
+- [Enhance your app’s audio experience with AirPods](../sessions/wwdc2023/10233/README.md)
+- [Enhance your iPad and iPhone apps for the Shared Space](../sessions/wwdc2023/10094/README.md)
+- [Enhance your spatial computing app with RealityKit](../sessions/wwdc2023/10081/README.md)
+- [Evolve your ARKit app for spatial experiences](../sessions/wwdc2023/10091/README.md)
+- [Explore App Store Connect for spatial computing](../sessions/wwdc2023/10012/README.md)
+- [Explore enhancements to RoomPlan](../sessions/wwdc2023/10192/README.md)
+- [Explore immersive sound design](../sessions/wwdc2023/10271/README.md)
+- [Explore materials in Reality Composer Pro](../sessions/wwdc2023/10202/README.md)
+- [Explore rendering for spatial computing](../sessions/wwdc2023/10095/README.md)
+- [Explore the USD ecosystem](../sessions/wwdc2023/10086/README.md)
+- [Get started with building apps for spatial computing](../sessions/wwdc2023/10260/README.md)
+- [Go beyond the window with SwiftUI](../sessions/wwdc2023/10111/README.md)
+- [Meet ARKit for spatial computing](../sessions/wwdc2023/10082/README.md)
+- [Meet Core Location for spatial computing](../sessions/wwdc2023/10146/README.md)
+- [Meet Object Capture for iOS](../sessions/wwdc2023/10191/README.md)
+- [Meet Reality Composer Pro](../sessions/wwdc2023/10083/README.md)
+- [Meet RealityKit Trace](../sessions/wwdc2023/10099/README.md)
+- [Meet SwiftUI for spatial computing](../sessions/wwdc2023/10109/README.md)
+- [Meet UIKit for spatial computing](../sessions/wwdc2023/111215/README.md)
+- [Optimize app power and performance for spatial computing](../sessions/wwdc2023/10100/README.md)
+- [Principles of spatial design](../sessions/wwdc2023/10072/README.md)
+- [Run your iPad and iPhone apps in the Shared Space](../sessions/wwdc2023/10090/README.md)
+- [Take SwiftUI to the next dimension](../sessions/wwdc2023/10113/README.md)
+- [What’s new in privacy](../sessions/wwdc2023/10053/README.md)
+- [Work with Reality Composer Pro content in Xcode](../sessions/wwdc2023/10273/README.md)
+
+### WWDC22
+
+- [Bring your world into augmented reality](../sessions/wwdc2022/10128/README.md)
+- [Create parametric 3D room scans with RoomPlan](../sessions/wwdc2022/10127/README.md)
+- [Discover ARKit 6](../sessions/wwdc2022/10126/README.md)
+- [Explore USD tools and rendering](../sessions/wwdc2022/10141/README.md)
+- [Qualities of great AR experiences](../sessions/wwdc2022/10131/README.md)
+- [Understand USD fundamentals](../sessions/wwdc2022/10129/README.md)
+
+### WWDC21
+
+- [AR Quick Look, meet Object Capture ](../sessions/wwdc2021/10078/README.md)
+- [Classify hand poses and actions with Create ML](../sessions/wwdc2021/10039/README.md)
+- [Create 3D models with Object Capture](../sessions/wwdc2021/10076/README.md)
+- [Create 3D workflows with USD](../sessions/wwdc2021/10077/README.md)
+- [Design for spatial interaction](../sessions/wwdc2021/10245/README.md)
+- [Dive into RealityKit 2](../sessions/wwdc2021/10074/README.md)
+- [Explore ARKit 5](../sessions/wwdc2021/10073/README.md)
+- [Explore ShazamKit](../sessions/wwdc2021/10044/README.md)
+- [Explore advanced rendering with RealityKit 2](../sessions/wwdc2021/10075/README.md)
+- [Practice audio haptic design](../sessions/wwdc2021/10278/README.md)
+
+### WWDC20
+
+- [Augment reality](../sessions/wwdc2020/10675/README.md)
+- [Explore ARKit 4](../sessions/wwdc2020/10611/README.md)
+- [Shop online with AR Quick Look](../sessions/wwdc2020/10604/README.md)
+- [The artist’s AR toolkit](../sessions/wwdc2020/10601/README.md)
+- [What's new in RealityKit](../sessions/wwdc2020/10612/README.md)
+- [What's new in USD](../sessions/wwdc2020/10613/README.md)
+
+### WWDC19
+
+- [Advances in AR Quick Look](../sessions/wwdc2019/612/README.md)
+- [Bringing People into AR](../sessions/wwdc2019/607/README.md)
+- [Building AR Experiences with Reality Composer](../sessions/wwdc2019/609/README.md)
+- [Building Apps with RealityKit](../sessions/wwdc2019/605/README.md)
+- [Building Collaborative AR Experiences](../sessions/wwdc2019/610/README.md)
+- [Creating Great Apps Using Core ML and ARKit](../sessions/wwdc2019/228/README.md)
+- [Introducing ARKit 3](../sessions/wwdc2019/604/README.md)
+- [Introducing RealityKit and Reality Composer](../sessions/wwdc2019/603/README.md)
+- [Working with USD](../sessions/wwdc2019/602/README.md)
+
+### Tech Talks
+
+- [Face Tracking with ARKit](../sessions/tech-talks/601/README.md)
+- [SceneKit: What's New](../sessions/wwdc2017/604/README.md)

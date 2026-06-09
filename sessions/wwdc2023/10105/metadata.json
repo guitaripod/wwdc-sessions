@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10105",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10105,
+  "title": "Create a more responsive camera experience",
+  "description": "Discover how AVCapture and PhotoKit can help you create more responsive and delightful apps. Learn about the camera capture process and find out how deferred photo processing can help create the best quality photo. We’ll show you how zero shutter lag uses time travel to capture the perfect action photo, dive into building a responsive capture pipeline, and share how you can adopt the Video Effects API to recognize pre-defined gestures that trigger real-time video effects.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10105",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10105",
+  "type": "Video",
+  "publishedAt": "2023-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services",
+    "Photos & Camera"
+  ],
+  "primaryTopic": "Photos & Camera",
+  "duration": 2097,
+  "hasTranscript": true,
+  "transcriptWordCount": 5379,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10105/4/E34149DA-EEF7-4E25-A6B3-DDEB0BB7BF1C/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10105/4/E34149DA-EEF7-4E25-A6B3-DDEB0BB7BF1C/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10105/4/E34149DA-EEF7-4E25-A6B3-DDEB0BB7BF1C/downloads/wwdc2023-10105_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10105/4/E34149DA-EEF7-4E25-A6B3-DDEB0BB7BF1C/downloads/wwdc2023-10105_hd.mp4",
+    "duration": 2097
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "AVCam: Building a camera app",
+      "url": "https://developer.apple.com/documentation/AVFoundation/avcam-building-a-camera-app",
+      "type": "samplecode",
+      "description": "Capture photos and record video using the front and rear iPhone and iPad cameras.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/avcam-building-a-camera-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/avcam-building-a-camera-app.json"
+    },
+    {
+      "title": "Learn more about AVFoundation",
+      "url": "https://developer.apple.com/av-foundation/",
+      "type": "guide",
+      "description": "Full featured framework for working with time-based audiovisual media on iOS, macOS, watchOS and tvOS.",
+      "sosumiURL": "https://sosumi.ai/av-foundation/"
+    },
+    {
+      "title": "AVFoundation",
+      "url": "https://developer.apple.com/documentation/AVFoundation",
+      "type": "documentation",
+      "description": "Work with audiovisual assets, control device cameras, process audio, and configure system audio interactions.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10105/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10105/metadata.json",
+    "readme": "sessions/wwdc2023/10105/README.md",
+    "transcript": "sessions/wwdc2023/10105/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10105/transcript.json"
+  }
+}

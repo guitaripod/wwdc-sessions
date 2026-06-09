@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-314",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 314,
+  "title": "Get ahead with quantum-secure cryptography",
+  "description": "Learn how to protect your app’s sensitive user data from the emerging threat of quantum computing, and safeguard user privacy. We’ll explore different quantum attacks, their impact on existing cryptographic protocols, and how to defend against them using quantum-secure cryptography. You’ll learn how to use quantum-secure TLS to secure network data, and use CryptoKit’s quantum-secure APIs for securing application data.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/314",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/314",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "🎈"
+  ],
+  "topics": [
+    "System Services",
+    "Privacy & Security"
+  ],
+  "primaryTopic": "Privacy & Security",
+  "duration": 1209,
+  "hasTranscript": true,
+  "transcriptWordCount": 2655,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/314/4/69450908-6907-44d0-9f37-9ffdec893aa2/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/314/4/69450908-6907-44d0-9f37-9ffdec893aa2/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/314/4/69450908-6907-44d0-9f37-9ffdec893aa2/downloads/wwdc2025-314_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/314/4/69450908-6907-44d0-9f37-9ffdec893aa2/downloads/wwdc2025-314_hd.mp4",
+    "duration": 1209
+  },
+  "codeSnippets": [
+    {
+      "title": "HPKE code sample",
+      "language": "swift",
+      "startTimeSeconds": 900,
+      "code": "let ciphersuite = HPKE.Ciphersuite.XWingMLKEM768X25519_SHA256_AES_GCM_256\n\n// Recipient\nlet privateKey = try XWingMLKEM768X25519.PrivateKey.generate()\nlet publicKey = privateKey.publicKey\n\n// Sender\nvar sender = try HPKE.Sender(recipientKey: publicKey, ciphersuite: ciphersuite, info: info)\nlet encapsulatedKey = sender.encapsulatedKey\n\n// Recipient\nvar recipient = try HPKE.Recipient(privateKey: privateKey, ciphersuite: ciphersuite, info: info, encapsulatedKey: encapsulatedKey) \n\n// Sender encrypts data\nlet ciphertext = try sender.seal(userData, authenticating: metadata)\n\n// Recipient decrypts message\nlet decryptedData = try recipient.open(ciphertext, authenticating: metadata)\n#expect(userData == decryptedData)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Enhancing your app’s privacy and security with quantum-secure workflows",
+      "url": "https://developer.apple.com/documentation/CryptoKit/enhancing-your-app-s-privacy-and-security-with-quantum-secure-workflows",
+      "type": "samplecode",
+      "description": "Use quantum-secure cryptography to protect your app from quantum attacks.",
+      "sosumiURL": "https://sosumi.ai/documentation/CryptoKit/enhancing-your-app-s-privacy-and-security-with-quantum-secure-workflows",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CryptoKit/enhancing-your-app-s-privacy-and-security-with-quantum-secure-workflows.json"
+    },
+    {
+      "title": "Prepare your network for quantum-secure encryption in TLS",
+      "url": "https://support.apple.com/122756",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "Message with PQ3: The new state of the art in quantum-secure messaging at scale",
+      "url": "https://security.apple.com/blog/imessage-pq3/",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Apple CryptoKit",
+      "url": "https://developer.apple.com/documentation/CryptoKit",
+      "type": "documentation",
+      "description": "Perform cryptographic operations securely and efficiently.",
+      "sosumiURL": "https://sosumi.ai/documentation/CryptoKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CryptoKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/314/",
+  "files": {
+    "metadata": "sessions/wwdc2025/314/metadata.json",
+    "readme": "sessions/wwdc2025/314/README.md",
+    "transcript": "sessions/wwdc2025/314/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/314/transcript.json"
+  }
+}

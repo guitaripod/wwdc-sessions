@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-307",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 307,
+  "title": "Explore Swift and Java interoperability",
+  "description": "Learn how you can mix Swift and Java in a single codebase. We’ll introduce the swift-java interoperability project, which allows you to use Swift in Java programs or vice versa. We’ll show you how to use the tools and libraries offered by swift-java to write safe and performant code that interoperates between these two runtimes.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/307",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/307",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 1282,
+  "hasTranscript": true,
+  "transcriptWordCount": 3467,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/307/5/79c0d8b7-243d-484f-890b-ecebf507a1e7/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/307/5/79c0d8b7-243d-484f-890b-ecebf507a1e7/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/307/5/79c0d8b7-243d-484f-890b-ecebf507a1e7/downloads/wwdc2025-307_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/307/5/79c0d8b7-243d-484f-890b-ecebf507a1e7/downloads/wwdc2025-307_hd.mp4",
+    "duration": 1282
+  },
+  "codeSnippets": [
+    {
+      "title": "Implement JNI native methods in Swift",
+      "language": "swift",
+      "startTimeSeconds": 545,
+      "code": "import JavaKit\nimport JavaRuntime\n\nimport Crypto\n\n@JavaImplementation(\"com.example.JNIExample\")\nextension JNIExample: JNIExampleNativeMethods {\n\n  @JavaMethod\n  func compute(_ a: JavaInteger?, _ b: JavaInteger?) -> [UInt8] {\n    guard let a else { fatalError(\"Expected non-null parameter 'a'\") }\n    guard let a else { fatalError(\"Expected non-null parameter 'b'\") }\n\n    let digest = SHA256Digest([a.intValue(), b.intValue()]) // convenience init defined elsewhere\n    return digest.toArray()\n  }\n}"
+    },
+    {
+      "title": "Resolve Java dependencies with swift-java",
+      "language": "swift",
+      "startTimeSeconds": 750,
+      "code": "swift-java resolve --module-name JavaApacheCommonsCSV"
+    },
+    {
+      "title": "Use a Java library from Swift",
+      "language": "swift",
+      "startTimeSeconds": 785,
+      "code": "import JavaKit\nimport JavaKitIO\nimport JavaApacheCommonsCSV\n\nlet jvm = try JavaVirtualMachine.shared()\n\nlet reader = FileReader(\"sample.csv\") // java.io.StringReader\n\nfor record in try JavaClass<CSVFormat>().RFC4180.parse(reader)!.getRecords()! {\n  for field in record.toList()! {      // Field: hello\n    print(\"Field: \\(field)\")           // Field: example\n  }                                    // Field: csv\n}\n\nprint(\"Done.\")"
+    },
+    {
+      "title": "Wrap Swift types for Java",
+      "language": "swift",
+      "startTimeSeconds": 982,
+      "code": "swift-java --input-swift Sources/SwiftyBusiness \\ \n--java-package com.example.business \\\n--output-swift .build/.../outputs/SwiftyBusiness \\\n--output-java .build/.../outputs/Java ..."
+    },
+    {
+      "title": "Create Swift objects from Java",
+      "language": "csharp",
+      "startTimeSeconds": 1135,
+      "code": "try (var arena = SwiftArena.ofConfined()) {\n  var business = new SwiftyBusiness(..., arena);\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "SwiftJava",
+      "url": "https://github.com/swiftlang/swift-java",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "The Swift website",
+      "url": "https://www.swift.org",
+      "type": "documentation",
+      "description": "The Swift website, where you can find information on how to get started, packages in the ecosystem, blog posts, and more."
+    },
+    {
+      "title": "The Swift Programming Language",
+      "url": "https://docs.swift.org/swift-book/",
+      "type": "guide",
+      "description": "The definitive guide to Swift, Apple’s programming language for building iOS, macOS, watchOS, and tvOS apps."
+    }
+  ],
+  "path": "sessions/wwdc2025/307/",
+  "files": {
+    "metadata": "sessions/wwdc2025/307/metadata.json",
+    "readme": "sessions/wwdc2025/307/README.md",
+    "transcript": "sessions/wwdc2025/307/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/307/transcript.json"
+  }
+}

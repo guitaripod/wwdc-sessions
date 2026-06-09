@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10137",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10137,
+  "title": "Support Cinematic mode videos in your app",
+  "description": "Discover how the Cinematic Camera API helps your app work with Cinematic mode videos captured in the Camera app. We’ll share the fundamentals — including Decision layers — that make up Cinematic mode video, show you how to access and update Decisions in your app, and help you save and load those changes.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10137",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10137",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Audio & Video",
+    "Photos & Camera"
+  ],
+  "primaryTopic": "Photos & Camera",
+  "duration": 1493,
+  "hasTranscript": true,
+  "transcriptWordCount": 3686,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10137/5/88C7D972-0671-4705-94CB-4EF627EED532/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10137/5/88C7D972-0671-4705-94CB-4EF627EED532/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10137/5/88C7D972-0671-4705-94CB-4EF627EED532/downloads/wwdc2023-10137_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10137/5/88C7D972-0671-4705-94CB-4EF627EED532/downloads/wwdc2023-10137_hd.mp4",
+    "duration": 1493
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Cinematic",
+      "url": "https://developer.apple.com/documentation/Cinematic",
+      "type": "documentation",
+      "description": "Integrate playback and editing of assets captured in Cinematic mode into your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/Cinematic",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Cinematic.json"
+    },
+    {
+      "title": "Learn more about AVFoundation",
+      "url": "https://developer.apple.com/av-foundation/",
+      "type": "guide",
+      "description": "Full featured framework for working with time-based audiovisual media on iOS, macOS, watchOS and tvOS.",
+      "sosumiURL": "https://sosumi.ai/av-foundation/"
+    },
+    {
+      "title": "AVFoundation",
+      "url": "https://developer.apple.com/documentation/AVFoundation",
+      "type": "documentation",
+      "description": "Work with audiovisual assets, control device cameras, process audio, and configure system audio interactions.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10137/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10137/metadata.json",
+    "readme": "sessions/wwdc2023/10137/README.md",
+    "transcript": "sessions/wwdc2023/10137/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10137/transcript.json"
+  }
+}

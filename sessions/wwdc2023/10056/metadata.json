@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10056",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10056,
+  "title": "Build better document-based apps",
+  "description": "Discover how you can use the latest features in iPadOS to improve your document-based apps. We’ll show you how to take advantage of UIDocument as well as existing desktop-class iPad and document-based APIs to add new features in your app. Find out how to convert data models to UIDocument, present documents with UIDocumentViewController, learn how to migrate your apps to the latest APIs, and explore best practices.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10056",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10056",
+  "type": "Video",
+  "publishedAt": "2023-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services",
+    "System Services",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 836,
+  "hasTranscript": true,
+  "transcriptWordCount": 1921,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10056/4/288B8B11-EFDD-4A1E-8F4E-B5C863A03ADC/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10056/4/288B8B11-EFDD-4A1E-8F4E-B5C863A03ADC/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10056/4/288B8B11-EFDD-4A1E-8F4E-B5C863A03ADC/downloads/wwdc2023-10056_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10056/4/288B8B11-EFDD-4A1E-8F4E-B5C863A03ADC/downloads/wwdc2023-10056_hd.mp4",
+    "duration": 836
+  },
+  "codeSnippets": [
+    {
+      "title": "Loading a document",
+      "language": "swift",
+      "startTimeSeconds": 234,
+      "code": "override func load(fromContents contents: Any, ofType typeName: String?) throws {\n    // Load your document from contents\n    guard let data = contents as? Data,\n          let text = String(data: data, encoding: .utf8) else {\n        throw DocumentError.readError\n    }\n    self.text = text\n}"
+    },
+    {
+      "title": "Saving a document",
+      "language": "swift",
+      "startTimeSeconds": 248,
+      "code": "override func contents(forType typeName: String) throws -> Any {\n    // Encode your document with an instance of NSData or NSFileWrapper\n    guard let data = self.text?.data(using: .utf8) else {\n        throw DocumentError.writeError\n    }\n    return data\n}"
+    },
+    {
+      "title": "Manually saving and loading a document",
+      "language": "swift",
+      "startTimeSeconds": 274,
+      "code": "override func save(to url: URL,\n                   for saveOperation: UIDocument.SaveOperation,\n                   completionHandler: ((Bool) -> Void)? = nil) {\n    self.performAsynchronousFileAccess {\n        // Set up file coordination and write file to URL\n   }\n}\n\noverride func read(from url: URL) throws {\n    // Set up file coordination and read file from URL\n}"
+    },
+    {
+      "title": "Defining document that require saving",
+      "language": "swift",
+      "startTimeSeconds": 308,
+      "code": "class Document: UIDocument {\n    var text: String? {\n        didSet {\n            if oldValue != nil && oldValue != text {\n                self.updateChangeCount(.done)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Updating the view hierarchy for a document",
+      "language": "swift",
+      "startTimeSeconds": 390,
+      "code": "override func documentDidOpen() {\n    configureViewForCurrentDocument()\n}\n\noverride func viewDidLoad() {\n    super.viewDidLoad()\n    configureViewForCurrentDocument()\n}\n\nfunc configureViewForCurrentDocument() {\n    guard let document = markdownDocument,\n          !document.documentState.contains(.closed)\n            && isViewLoaded else { return }\n    // Configure views for document\n}"
+    },
+    {
+      "title": "Updating navigation items for a document",
+      "language": "swift",
+      "startTimeSeconds": 437,
+      "code": "override func navigationItemDidUpdate() {\n    // Customize navigation item\n}"
+    },
+    {
+      "title": "Manually opening a document",
+      "language": "swift",
+      "startTimeSeconds": 481,
+      "code": "documentController.openDocument { success in\n    if success {\n        self.present(documentController, animated: true)\n    }\n}"
+    },
+    {
+      "title": "Renaming a UIDocument without UIDocumentViewController",
+      "language": "swift",
+      "startTimeSeconds": 560,
+      "code": "navigationItem.renameDelegate = document"
+    }
+  ],
+  "resources": [
+    {
+      "title": "UIDocument",
+      "url": "https://developer.apple.com/documentation/UIKit/UIDocument",
+      "type": "documentation",
+      "description": "An abstract base class for managing discrete portions of your app’s data.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UIDocument",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UIDocument.json"
+    },
+    {
+      "title": "UIDocumentViewController",
+      "url": "https://developer.apple.com/documentation/UIKit/UIDocumentViewController",
+      "type": "documentation",
+      "description": "A view controller that manages and presents a document stored locally or in the cloud.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UIDocumentViewController",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UIDocumentViewController.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10056/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10056/metadata.json",
+    "readme": "sessions/wwdc2023/10056/README.md",
+    "transcript": "sessions/wwdc2023/10056/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10056/transcript.json"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-110373",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 110373,
+  "title": "Bring your driver to iPad with DriverKit",
+  "description": "Discover how you can easily connect Thunderbolt and USB accessories to iPad with DriverKit. We’ll show you how to convert your existing Mac drivers without any code changes, learn how to add real-time audio support with AudioDriverKit, and provide best practices and tips for developing drivers for iPad.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/110373",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/110373",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Audio & Video",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 1082,
+  "hasTranscript": true,
+  "transcriptWordCount": 2366,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110373/5/9E0B243C-9E0C-4E4E-91FF-AACD903146B2/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110373/5/9E0B243C-9E0C-4E4E-91FF-AACD903146B2/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110373/5/9E0B243C-9E0C-4E4E-91FF-AACD903146B2/downloads/wwdc2022-110373_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110373/5/9E0B243C-9E0C-4E4E-91FF-AACD903146B2/downloads/wwdc2022-110373_hd.mp4",
+    "duration": 1082
+  },
+  "codeSnippets": [
+    {
+      "title": "Register real-time callback in AudioDriverKit",
+      "language": "cpp",
+      "startTimeSeconds": 145,
+      "code": "// Declare a IOOperationHandler block to set on the IOUserAudioDevice.\n// The block will be called from a real time context when a i/o operation\n// occurs on the IOUserAudioStream buffers for the device.\nio_operation = ^kern_return_t(IOUserAudioObjectID in_device,\n                              IOUserAudioIOOperation in_io_operation,\n                              uint32_t in_io_buffer_frame_size,\n                              uint64_t in_sample_time,\n                              uint64_t in_host_time)\n{\n    // Add custom code to make modifications to the buffers as necessary\n    if (in_io_operation == IOUserAudioIOOperationWriteEnd) {\n        ...\n    } else if (in_io_operation == IOUserAudioIOOperationBeginRead) {\n        ...\n    }\n    return kIOReturnSuccess;\n};\nthis->SetIOOperationHandler(io_operation);"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Communicating between a DriverKit extension and a client app",
+      "url": "https://developer.apple.com/documentation/DriverKit/communicating-between-a-driverkit-extension-and-a-client-app",
+      "type": "samplecode",
+      "description": "Send and receive different kinds of data securely by validating inputs and asynchronously by storing and using a callback.",
+      "sosumiURL": "https://sosumi.ai/documentation/DriverKit/communicating-between-a-driverkit-extension-and-a-client-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/DriverKit/communicating-between-a-driverkit-extension-and-a-client-app.json"
+    },
+    {
+      "title": "Implementing drivers, system extensions, and kexts",
+      "url": "https://developer.apple.com/documentation/kernel/implementing_drivers_system_extensions_and_kexts",
+      "type": "documentation",
+      "description": "Create drivers and system extensions to communicate with hardware and provide low-level services, and only use kernel extensions for a few tasks. ",
+      "sosumiURL": "https://sosumi.ai/documentation/kernel/implementing_drivers_system_extensions_and_kexts",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/kernel/implementing_drivers_system_extensions_and_kexts.json"
+    },
+    {
+      "title": "System Extensions and DriverKit",
+      "url": "https://developer.apple.com/system-extensions/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/system-extensions/"
+    }
+  ],
+  "path": "sessions/wwdc2022/110373/",
+  "files": {
+    "metadata": "sessions/wwdc2022/110373/metadata.json",
+    "readme": "sessions/wwdc2022/110373/README.md",
+    "transcript": "sessions/wwdc2022/110373/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/110373/transcript.json"
+  }
+}

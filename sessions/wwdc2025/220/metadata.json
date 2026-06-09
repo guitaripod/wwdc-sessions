@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-220",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 220,
+  "title": "Say hello to the new look of app icons",
+  "description": "Get an overview of the new app icon appearances for iOS, iPadOS, and macOS, including light and dark tints, and clear options. Learn how to use frostiness and translucency to make your app icon more vibrant, dynamic, and expressive, and find out how to ensure your icon works well with specular highlights.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/220",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/220",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "branding",
+    "color",
+    "dock",
+    "home screen",
+    "identity",
+    "launching",
+    "layered images",
+    "lighting",
+    "materials"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 714,
+  "hasTranscript": true,
+  "transcriptWordCount": 1893,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/220/4/eb340303-3d49-4fcc-84c9-9dc98543ddaf/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/220/4/eb340303-3d49-4fcc-84c9-9dc98543ddaf/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/220/4/eb340303-3d49-4fcc-84c9-9dc98543ddaf/downloads/wwdc2025-220_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/220/4/eb340303-3d49-4fcc-84c9-9dc98543ddaf/downloads/wwdc2025-220_hd.mp4",
+    "duration": 714
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: App icons",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/app-icons",
+      "type": "documentation",
+      "description": "Link to app icons page in the HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/app-icons"
+    }
+  ],
+  "path": "sessions/wwdc2025/220/",
+  "files": {
+    "metadata": "sessions/wwdc2025/220/metadata.json",
+    "readme": "sessions/wwdc2025/220/README.md",
+    "transcript": "sessions/wwdc2025/220/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/220/transcript.json"
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10132",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10132,
+  "title": "Discover PhotoKit change history",
+  "description": "PhotoKit can help you build rich, photo-centric features. Learn how you can easily track changes to image assets with the latest APIs in PhotoKit. We’ll introduce you to the PHPhotoLibrary change history API and demonstrate how you can persist change tokens across launches to help your app recognize additions, deletions, and updates to someone’s photo library.\n\nTo learn more about Photos library integration, be sure to watch \"What's new in the Photos picker\" from WWDC22 and \"Improve access to Photos in your app\" from WWDC21.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10132",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10132",
+  "type": "Video",
+  "publishedAt": "2022-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Photos & Camera"
+  ],
+  "primaryTopic": "Photos & Camera",
+  "duration": 600,
+  "hasTranscript": true,
+  "transcriptWordCount": 1387,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10132/3/E1001357-38F4-429C-A7E2-495996D84893/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10132/3/E1001357-38F4-429C-A7E2-495996D84893/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10132/3/E1001357-38F4-429C-A7E2-495996D84893/downloads/wwdc2022-10132_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10132/3/E1001357-38F4-429C-A7E2-495996D84893/downloads/wwdc2022-10132_hd.mp4",
+    "duration": 600
+  },
+  "codeSnippets": [
+    {
+      "title": "Tracking photo library changes",
+      "language": "swift",
+      "startTimeSeconds": 1,
+      "code": "// Discover added assets\nlet options = PHFetchOptions()\noptions.predicate = NSPredicate(format: \"creationDate > %@\", lastLaunchDate as CVarArg)\nlet insertedAssets = PHAsset.fetchAssets(with: options)"
+    },
+    {
+      "title": "Tracking photo library changes (2)",
+      "language": "swift",
+      "startTimeSeconds": 2,
+      "code": "let fetchResult = PHAsset.fetchAssets(with: localIdentifiers, options: nil)\n// Discover all modified and deleted assets\nfetchResult.enumerateObjects { asset, idx, stop in\n    if asset.modificationDate?.compare(lastLaunchDate) == .orderedDescending {\n        // Asset could have been modified\n    }\n    if !localIdentifiers.contains(asset.localIdentifier) {\n        // Asset could have been deleted\n    }\n}"
+    },
+    {
+      "title": "Fetching persistent changes using persistent change token",
+      "language": "swift",
+      "startTimeSeconds": 3,
+      "code": "let persistentChanges = try! PHPhotoLibrary.shared().fetchPersistentChanges(since: self.lastStoredToken)\n\nfor persistentChange in persistentChanges { \n   if let changeDetails = persistentChange.changeDetails(for: PHObjectType.asset) {\n        let updatedIdentifiers = changeDetails.updatedLocalIdentifiers\n        let deletedIdentifiers = changeDetails.deletedLocalIdentifiers\n        let insertedIdentifiers = changeDetails.insertedLocalIdentifiers\n    }\n}\n\n// After processing change details\nself.lastStoredToken = lastPersistentChange.changeToken"
+    },
+    {
+      "title": "Identifying important changes",
+      "language": "swift",
+      "startTimeSeconds": 4,
+      "code": "// Get last stored change token\nlet changeToken = self.lastStoredToken\n\n// Fetch persistent changes\nlet persistentChanges = try!   \n         library.fetchPersistentChanges(since: changeToken)\n\nfor persistentChange in persistentChanges {\n    // Grab change details and process updates\n}"
+    },
+    {
+      "title": "Using inserted identifiers",
+      "language": "swift",
+      "startTimeSeconds": 5,
+      "code": "let insertedAssets = PHAsset.fetchAssets(with: insertedIdentifiers, options: nil)\ninsertedAssets.enumerateObjects { asset, idx, stop in\n   for hike in hikes {\n        let dateInterval = NSDateInterval(start: hike.startDate, end: hike.endDate)\n        if dateInterval.contains(asset.creationDate) {\n            // This hike contains a new added asset\n        }\n    }\n}"
+    },
+    {
+      "title": "Using updated identifiers",
+      "language": "swift",
+      "startTimeSeconds": 6,
+      "code": "let updatedAssets = PHAsset.fetchAssets(with: updatedIdentifiers, options: nil)\nupdatedAssets.enumerateObjects { asset, idx, stop in\n    if asset.hasAdjustments {\n        // This asset has edits\n    }\n}"
+    },
+    {
+      "title": "Using deleted identifiers",
+      "language": "swift",
+      "startTimeSeconds": 7,
+      "code": "for deletedIdentifier in deletedIdentifiers {\n    for collage in collages {\n        if collage.assetLocalIdentifiers.contains(deletedIdentifier) {\n            // This collage needs to be redrawn\n        }\n    }\n}"
+    },
+    {
+      "title": "Handling errors",
+      "language": "swift",
+      "startTimeSeconds": 8,
+      "code": "do {\n    let persistentChanges = try library.fetchPersistentChanges(since: changeToken)\n} catch PHPhotosError.persistentChangeTokenExpired,\n        PHPhotosError.persistentChangeDetailsUnavailable {\n    let fetchResult = PHAsset.fetchAssets(with: trackedIdentifiers, options: options)\n    // Use fetch result\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "PhotoKit",
+      "url": "https://developer.apple.com/documentation/photokit",
+      "type": "documentation",
+      "description": "Work with image and video assets managed by the Photos app, including those from iCloud Photos and Live Photos.",
+      "sosumiURL": "https://sosumi.ai/documentation/photokit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/photokit.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10132/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10132/metadata.json",
+    "readme": "sessions/wwdc2022/10132/README.md",
+    "transcript": "sessions/wwdc2022/10132/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10132/transcript.json"
+  }
+}

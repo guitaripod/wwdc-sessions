@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-703",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 703,
+  "title": "All About Notarization",
+  "description": "Notarization is all about identifying and blocking malicious Mac software prior to distribution, without requiring App Review or the Mac App Store.  Introduced last year and already widely adopted by Mac app developers, this is your opportunity to take an in depth tour of Notarization workflows and find out what’s new with the Notarization service.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/703",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/703",
+  "type": "Session",
+  "publishedAt": "2019-06-04T15:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [
+    "gatekeeper",
+    "notarization"
+  ],
+  "topics": [
+    "Developer Tools",
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 2020,
+  "hasTranscript": true,
+  "transcriptWordCount": 5370,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/703yqvyjv9mi5ur6/703/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/703yqvyjv9mi5ur6/703/703_sd_all_about_notarization.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/703yqvyjv9mi5ur6/703/703_hd_all_about_notarization.mp4",
+    "duration": 2020
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Xcode Help: Upload a macOS app to be notarized",
+      "url": "https://help.apple.com/xcode/mac/current/#/dev88332a81e",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Resolving common notarization issues",
+      "url": "https://developer.apple.com/documentation/Security/resolving-common-notarization-issues",
+      "type": "documentation",
+      "description": "Handle common problems reported in the notarization log file, or that arise during ticket stapling.",
+      "sosumiURL": "https://sosumi.ai/documentation/Security/resolving-common-notarization-issues",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Security/resolving-common-notarization-issues.json"
+    },
+    {
+      "title": "Signing Your Apps for Gatekeeper",
+      "url": "https://developer.apple.com/developer-id/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/developer-id/"
+    }
+  ],
+  "path": "sessions/wwdc2019/703/",
+  "files": {
+    "metadata": "sessions/wwdc2019/703/metadata.json",
+    "readme": "sessions/wwdc2019/703/README.md",
+    "transcript": "sessions/wwdc2019/703/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/703/transcript.json"
+  }
+}

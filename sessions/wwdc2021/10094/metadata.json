@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10094",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10094,
+  "title": "Accelerate networking with HTTP/3 and QUIC",
+  "description": "The web is changing, and the next major version of HTTP is here. Learn how HTTP/3 reduces latency and improves reliability for your app and discover how its underlying transport, QUIC, unlocks new innovations in your own custom protocols using new transport functionality and multi-streaming connection groups.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10094",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10094",
+  "type": "Video",
+  "publishedAt": "2021-06-11T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Safari & Web",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 1191,
+  "hasTranscript": true,
+  "transcriptWordCount": 2615,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10094/7/81661D98-9D24-4A8F-8805-9460365F986B/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10094/7/81661D98-9D24-4A8F-8805-9460365F986B/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10094/7/81661D98-9D24-4A8F-8805-9460365F986B/downloads/wwdc2021-10094_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10094/7/81661D98-9D24-4A8F-8805-9460365F986B/downloads/wwdc2021-10094_hd.mp4",
+    "duration": 1191
+  },
+  "codeSnippets": [
+    {
+      "title": "Using QUIC in your app",
+      "language": "swift",
+      "startTimeSeconds": 800,
+      "code": "// Create a connection using QUIC\nlet connection = NWConnection(host: \"example.com\", port: 443, using: .quic(alpn: [\"myproto\"]))\n\n// Set the state update handler to be notified when the connection is ready\nconnection.stateUpdateHandler = { newState in\n    switch newState {\n    case .ready:\n        print(\"Connected using QUIC!\")\n    default:\n        break\n    }\n}\n\n// Start the connection with callback queue\nconnection.start(queue: queue)"
+    },
+    {
+      "title": "Establish a tunnel with NWMultiplexGroup",
+      "language": "swift",
+      "startTimeSeconds": 908,
+      "code": "// Establish a tunnel with NWMultiplexGroup\n\n// Create a group\nlet descriptor = NWMultiplexGroup(to: .hostPort(host: \"example.com\", port: 443))\nlet group = NWConnectionGroup(with: descriptor, using: .quic(alpn: [\"myproto\"]))\n\n// Set the state update handler to be notified when the group is ready\ngroup.stateUpdateHandler = { newState in\n    switch newState {\n    case .ready:\n        print(\"Connected using QUIC!\")\n    default:\n        break\n    }\n}\n\n// Start the group with callback queue\ngroup.start(queue: queue)"
+    },
+    {
+      "title": "Manage streams with NWConnectionGroup",
+      "language": "swift",
+      "startTimeSeconds": 945,
+      "code": "// Manage streams with NWConnectionGroup\n\n// Create a new outgoing stream\nlet connection = NWConnection(from: group)\n\n// Receive new incoming streams initiated by the remote endpoint\ngroup.newConnectionHandler = { newConnection in\n\n    // Set state update handler on incoming stream\n    newConnection.stateUpdateHandler = { newState in\n        // Handle stream states\n    }\n\n    // Start the incoming stream\n    newConnection.start(queue: queue)\n\n}"
+    },
+    {
+      "title": "Receive incoming QUIC tunnels from NWListener",
+      "language": "swift",
+      "startTimeSeconds": 1003,
+      "code": "// Receive incoming QUIC tunnels from NWListener\n\n// Set the new connection group handler\nlistener.newConnectionGroupHandler = { group in\n\n    group.stateUpdateHandler = { newState in\n        // Handle tunnel states\n    }\n\n    group.newConnectionHandler = { stream in\n        // Set up and start new incoming streams\n    }\n\n    group.start(queue: queue)\n\n}"
+    },
+    {
+      "title": "Access QUIC metadata",
+      "language": "swift",
+      "startTimeSeconds": 1042,
+      "code": "// Access QUIC metadata to learn about and modify streams\n\n// Find the stream ID of a particular QUIC stream\nif let metadata = connection.metadata(definition: NWProtocolQUIC.definition)\n                             as? NWProtocolQUIC.Metadata {\n    print(\"QUIC Stream ID is \\(metadata.streamIdentifier)\")\n\n    // Some time later...\n\n    // Set the application error, if appropriate, before cancelling the stream\n    metadata.applicationError = 0x100\n    connection.cancel()\n\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2021/10094/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10094/metadata.json",
+    "readme": "sessions/wwdc2021/10094/README.md",
+    "transcript": "sessions/wwdc2021/10094/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10094/transcript.json"
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2026-232",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 232,
+  "title": "Run local agentic AI on the Mac using MLX",
+  "description": "Run AI agents locally with privacy, low latency, and offline access. Dive into how MLX advancements and Mac hardware make powerful agentic workflows possible entirely on-device. You’ll explore code agents such as OpenCode, see how they integrate into Xcode, learn techniques for multi-Mac scaling, and discover how to integrate tools seamlessly — without ever leaving your machine.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/232",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/232",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 817,
+  "hasTranscript": true,
+  "transcriptWordCount": 2032,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/232/4/f309be4a-8e5b-4c0f-843a-fcbd84c5e2d1/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/232/4/f309be4a-8e5b-4c0f-843a-fcbd84c5e2d1/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/232/4/f309be4a-8e5b-4c0f-843a-fcbd84c5e2d1/downloads/wwdc2026-232_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/232/4/f309be4a-8e5b-4c0f-843a-fcbd84c5e2d1/downloads/wwdc2026-232_hd.mp4",
+    "duration": 817
+  },
+  "codeSnippets": [
+    {
+      "title": "Set up MLX-LM and start the local server",
+      "language": "bash",
+      "startTimeSeconds": 280,
+      "code": "# Step 1: Install MLX-LM\npip install mlx-lm\n\n# Step 2: Start the server\nmlx_lm.server --model mlx-community/Qwen-3.5-4B-8bit\n\n# Step 3: Point your agent to the server\ncurl -X POST \\\n  http://127.0.0.1:8080/v1/chat/completions \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"model\":\"default_model\",\"messages\":[{\"role\":\"user\",\"content\":\"Hello!\"}]}'"
+    },
+    {
+      "title": "Configure an agent to use your local MLX server",
+      "language": "json",
+      "startTimeSeconds": 318,
+      "code": "{\n  \"$schema\": \"https://opencode.ai/config.json\",\n  \"model\": \"mlx/default_model\",\n  \"small_model\": \"mlx/default_model\",\n  \"provider\": {\n    \"mlx\": {\n      \"npm\": \"@ai-sdk/openai-compatible\",\n      \"name\": \"MLX (local)\",\n      \"options\": {\n        \"baseURL\": \"http://127.0.0.1:8080/v1\"\n      },\n      \"models\": {\n        \"default_model\": {\n          \"name\": \"Default MLX Model\"\n        }\n      }\n    }\n  }\n}"
+    },
+    {
+      "title": "Launch distributed inference with MLX",
+      "language": "bash",
+      "startTimeSeconds": 513,
+      "code": "mlx.launch --hostfile hosts.json \\\n--backend jaccl \\\n/remote/path/to/mlx_lm.server \\\n--model mlx-community/Qwen-3.5-122B-A3B-8bit"
+    }
+  ],
+  "resources": [
+    {
+      "title": "MLX Swift LM on GitHub",
+      "url": "https://github.com/ml-explore/mlx-swift-lm",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "MLX Swift Examples",
+      "url": "https://github.com/ml-explore/mlx-swift-examples",
+      "type": "samplecode",
+      "description": "MLX Swift Examples"
+    },
+    {
+      "title": "MLX Examples",
+      "url": "https://github.com/ml-explore/mlx-examples",
+      "type": "samplecode",
+      "description": "This repo contains a variety of standalone examples using the MLX framework."
+    },
+    {
+      "title": "MLX Swift",
+      "url": "https://github.com/ml-explore/mlx-swift",
+      "type": "documentation",
+      "description": "MLX Swift is a Swift API for MLX."
+    },
+    {
+      "title": "MLX  LM - Python API",
+      "url": "https://github.com/ml-explore/mlx-lm",
+      "type": "documentation",
+      "description": "MLX LM is a Python package for generating text and fine-tuning large language models on Apple silicon with MLX."
+    },
+    {
+      "title": "MLX Explore - Python API",
+      "url": "https://github.com/ml-explore/mlx",
+      "type": "documentation",
+      "description": "MLX is an array framework for machine learning on Apple silicon, brought to you by Apple machine learning research."
+    },
+    {
+      "title": "MLX Framework",
+      "url": "https://mlx-framework.org",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "MLX",
+      "url": "https://ml-explore.github.io/mlx/",
+      "type": "documentation",
+      "description": "MLX is an array framework for machine learning on Apple silicon, brought to you by Apple machine learning research."
+    }
+  ],
+  "path": "sessions/wwdc2026/232/",
+  "files": {
+    "metadata": "sessions/wwdc2026/232/metadata.json",
+    "readme": "sessions/wwdc2026/232/README.md",
+    "transcript": "sessions/wwdc2026/232/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/232/transcript.json"
+  }
+}

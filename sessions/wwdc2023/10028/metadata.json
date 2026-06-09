@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10028",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10028,
+  "title": "Bring widgets to life",
+  "description": "Learn how to make animated and interactive widgets for your apps and games. We’ll show you how to tweak animations for entry transitions and add interactivity using SwiftUI Button and Toggle so that you can create powerful moments right from the Home Screen and Lock Screen.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10028",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10028",
+  "type": "Video",
+  "publishedAt": "2023-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Essentials",
+    "SwiftUI & UI Frameworks",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1127,
+  "hasTranscript": true,
+  "transcriptWordCount": 2483,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10028/4/3BBB0693-B39D-476B-AC4A-2F1A8BB53FCE/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10028/4/3BBB0693-B39D-476B-AC4A-2F1A8BB53FCE/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10028/4/3BBB0693-B39D-476B-AC4A-2F1A8BB53FCE/downloads/wwdc2023-10028_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10028/4/3BBB0693-B39D-476B-AC4A-2F1A8BB53FCE/downloads/wwdc2023-10028_hd.mp4",
+    "duration": 1127
+  },
+  "codeSnippets": [
+    {
+      "title": "Usage for the container background modifier",
+      "language": "swift",
+      "startTimeSeconds": 234,
+      "code": ".containerBackground(for: .widget) {\n    Color.cosmicLatte\n}"
+    },
+    {
+      "title": "Define a preview for the caffeine tracker widget",
+      "language": "swift",
+      "startTimeSeconds": 262,
+      "code": "#Preview(as: WidgetFamily.systemSmall) {\n    CaffeineTrackerWidget()\n} timeline: {\n    CaffeineLogEntry.log1\n    CaffeineLogEntry.log2\n    CaffeineLogEntry.log3\n    CaffeineLogEntry.log4\n}"
+    },
+    {
+      "title": "Add a numeric text content transition",
+      "language": "swift",
+      "startTimeSeconds": 341,
+      "code": "struct TotalCaffeineView: View {\n    let totalCaffeine: Measurement<UnitMass>\n\n    var body: some View {\n        VStack(alignment: .leading) {\n            Text(\"Total Caffeine\")\n                .font(.caption)\n\n            Text(totalCaffeine.formatted())\n                .font(.title)\n                .minimumScaleFactor(0.8)\n                .contentTransition(.numericText(value: totalCaffeine.value))\n        }\n        .foregroundColor(.espresso)\n        .bold()\n        .frame(maxWidth: .infinity, alignment: .leading)\n    }\n}"
+    },
+    {
+      "title": "Set up transition on LastDrinkView",
+      "language": "swift",
+      "startTimeSeconds": 381,
+      "code": "struct LastDrinkView: View {\n    let log: CaffeineLog\n\n    var body: some View {\n        VStack(alignment: .leading) {\n            Text(log.drink.name)\n                .bold()\n            Text(\"\\(log.date, format: Self.dateFormatStyle) · \\(caffeineAmount)\")\n        }\n        .font(.caption)\n        .id(log)\n        .transition(.push(from: .bottom))\n    }\n\n    var caffeineAmount: String {\n        log.drink.caffeine.formatted()\n    }\n\n    static var dateFormatStyle = Date.FormatStyle(\n        date: .omitted, time: .shortened)\n}"
+    },
+    {
+      "title": "Configuring animation for the transition",
+      "language": "swift",
+      "startTimeSeconds": 438,
+      "code": "struct LastDrinkView: View {\n    let log: CaffeineLog\n\n    var body: some View {\n        VStack(alignment: .leading) {\n            Text(log.drink.name)\n                .bold()\n            Text(\"\\(log.date, format: Self.dateFormatStyle) · \\(caffeineAmount)\")\n        }\n        .font(.caption)\n        .id(log)\n        .transition(.push(from: .bottom))\n        .animation(.smooth(duration: 1.8), value: log)\n    }\n\n    var caffeineAmount: String {\n        log.drink.caffeine.formatted()\n    }\n\n    static var dateFormatStyle = Date.FormatStyle(\n        date: .omitted, time: .shortened)\n}"
+    },
+    {
+      "title": "Reload the timeline for a widget",
+      "language": "swift",
+      "startTimeSeconds": 558,
+      "code": "WidgetCenter.shared.reloadTimelines(ofKind: \"LocationForecast\")"
+    },
+    {
+      "title": "App intent to log a caffeine drink",
+      "language": "swift",
+      "startTimeSeconds": 786,
+      "code": "import AppIntents\n\nstruct LogDrinkIntent: AppIntent {\n    static var title: LocalizedStringResource = \"Log a drink\"\n    static var description = IntentDescription(\"Log a drink and its caffeine amount.\")\n\n    @Parameter(title: \"Drink\", optionsProvider: DrinksOptionsProvider())\n    var drink: Drink\n\n    init() {}\n\n    init(drink: Drink) {\n        self.drink = drink\n    }\n\n    func perform() async throws -> some IntentResult {\n        await DrinksLogStore.shared.log(drink: drink)\n        return .result()\n    }\n}"
+    },
+    {
+      "title": "Create view to log a new drink",
+      "language": "swift",
+      "startTimeSeconds": 910,
+      "code": "struct LogDrinkView: View {\n    var body: some View {\n        Button(intent: LogDrinkIntent(drink: .espresso)) {\n            Label(\"Espresso\", systemImage: \"plus\")\n                .font(.caption)\n        }\n        .tint(.espresso)\n    }\n}"
+    },
+    {
+      "title": "Use the invalidatable content modifier",
+      "language": "swift",
+      "startTimeSeconds": 988,
+      "code": "struct TotalCaffeineView: View {\n    let totalCaffeine: Measurement<UnitMass>\n\n    var body: some View {\n        VStack(alignment: .leading) {\n            Text(\"Total Caffeine\")\n                .font(.caption)\n\n            Text(totalCaffeine.formatted())\n                .font(.title)\n                .minimumScaleFactor(0.8)\n                .contentTransition(.numericText(value: totalCaffeine.value))\n                .invalidatableContent()\n        }\n        .foregroundColor(.espresso)\n        .bold()\n        .frame(maxWidth: .infinity, alignment: .leading)\n    }\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2023/10028/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10028/metadata.json",
+    "readme": "sessions/wwdc2023/10028/README.md",
+    "transcript": "sessions/wwdc2023/10028/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10028/transcript.json"
+  }
+}

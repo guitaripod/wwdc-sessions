@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-213",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 213,
+  "title": "Introducing Parameters for Shortcuts",
+  "description": "Parameters take Siri Shortcuts to the next level, enabling an interactive voice experience in Siri with follow-up questions, and allowing people to customize shortcuts in the Shortcuts app, now built into iOS. Walk through setting up your shortcuts to take advantage of parameters and learn how your shortcuts can pass output to other actions when creating multi-step shortcuts in the Shortcuts app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/213",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/213",
+  "type": "Session",
+  "publishedAt": "2019-06-05T09:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "🎙",
+    "🎤",
+    "add to siri",
+    "donate",
+    "donation",
+    "inrelevant",
+    "intents",
+    "inui",
+    "parameters",
+    "phrase",
+    "shortcut",
+    "siri",
+    "suggestion",
+    "voice"
+  ],
+  "topics": [
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1919,
+  "hasTranscript": true,
+  "transcriptWordCount": 4872,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/213q1mftanbup84jc/213/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/213q1mftanbup84jc/213/213_sd_introducing_parameters_for_shortcuts.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/213q1mftanbup84jc/213/213_hd_introducing_parameters_for_shortcuts.mp4",
+    "duration": 1919
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Soup Chef: Accelerating App Interactions with Shortcuts",
+      "url": "https://developer.apple.com/documentation/SiriKit/soup-chef-accelerating-app-interactions-with-shortcuts",
+      "type": "samplecode",
+      "description": "Make it easy for people to use Siri with your app by providing shortcuts to your app’s actions.",
+      "sosumiURL": "https://sosumi.ai/documentation/SiriKit/soup-chef-accelerating-app-interactions-with-shortcuts",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SiriKit/soup-chef-accelerating-app-interactions-with-shortcuts.json"
+    },
+    {
+      "title": "Donating Shortcuts",
+      "url": "https://developer.apple.com/documentation/SiriKit/donating-shortcuts",
+      "type": "documentation",
+      "description": "Tell Siri about shortcuts to actions that the user performed in your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/SiriKit/donating-shortcuts",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SiriKit/donating-shortcuts.json"
+    },
+    {
+      "title": "SiriKit",
+      "url": "https://developer.apple.com/documentation/SiriKit",
+      "type": "documentation",
+      "description": "Empower users to interact with their devices through voice, intelligent suggestions, and personalized workflows.",
+      "sosumiURL": "https://sosumi.ai/documentation/SiriKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SiriKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/213/",
+  "files": {
+    "metadata": "sessions/wwdc2019/213/metadata.json",
+    "readme": "sessions/wwdc2019/213/README.md",
+    "transcript": "sessions/wwdc2019/213/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/213/transcript.json"
+  }
+}

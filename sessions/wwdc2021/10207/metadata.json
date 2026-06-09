@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10207",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10207,
+  "title": "Embrace Expected Failures in XCTest",
+  "description": "Testing is a crucial part of building a great app: Great tests can help you track down important issues before release, improve your workflow, and provide a quality experience upon release. For issues that can’t be immediately resolved, however, XCTest can help provide better context around those problems with XCTExpectFailure. Learn how this API works, its strict behavior, and how to improve the signal-to-noise ratio in your tests to identify new issues more efficiently.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10207",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10207",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "expected failure",
+    "test failure",
+    "xctest",
+    "xctexpectfailure"
+  ],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 709,
+  "hasTranscript": true,
+  "transcriptWordCount": 1742,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10207/5/1AF9A073-9D29-4091-9876-AE8868480EDA/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10207/5/1AF9A073-9D29-4091-9876-AE8868480EDA/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10207/5/1AF9A073-9D29-4091-9876-AE8868480EDA/downloads/wwdc2021-10207_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10207/5/1AF9A073-9D29-4091-9876-AE8868480EDA/downloads/wwdc2021-10207_hd.mp4",
+    "duration": 709
+  },
+  "codeSnippets": [
+    {
+      "title": "XCTSkip unless device is iPad",
+      "language": "swift",
+      "startTimeSeconds": 211,
+      "code": "try XCTSkipUnless(UIDevice.current.userInterfaceIdiom == .pad, \"Only supported on iPad\")"
+    },
+    {
+      "title": "XCTExpectFailure",
+      "language": "swift",
+      "startTimeSeconds": 271,
+      "code": "XCTExpectFailure(\"<https://dev.myco.com/bugs/4923> myValidationFunction is returning false\")"
+    },
+    {
+      "title": "Scoped XCTExpectFailure",
+      "language": "swift",
+      "startTimeSeconds": 434,
+      "code": "XCTExpectFailure(\"<https://dev.myco.com/bugs/4923> fix myValidationFunction\") {\n    XCTAssert(myValidationFunction())\n}"
+    },
+    {
+      "title": "XCTExpectFailure with issue matcher",
+      "language": "swift",
+      "startTimeSeconds": 514,
+      "code": "let options = XCTExpectedFailure.Options()\noptions.issueMatcher = { issue in\n    return issue.type == .assertionFailure\n}\n\nXCTExpectFailure(\"<https://dev.myco.com/bugs/4923> fix myValidationFunction\", options: options)"
+    },
+    {
+      "title": "Disable XCTExpectFailure for some platforms",
+      "language": "swift",
+      "startTimeSeconds": 543,
+      "code": "let options = XCTExpectedFailure.Options()\n#if os(macOS)\noptions.isEnabled = false\n#endif\n\nXCTExpectFailure(\"<https://dev.myco.com/bugs/4923> fix myValidationFunction\", options: options) {\n    XCTAssert(myValidationFunction())\n}"
+    },
+    {
+      "title": "Disable strict XCTExpectFailure behavior via options",
+      "language": "swift",
+      "startTimeSeconds": 639,
+      "code": "let options = XCTExpectedFailure.Options()\noptions.isStrict = false\n\nXCTExpectFailure(\"<https://dev.myco.com/bugs/4923> fix myValidationFunction\", options: options) {\n    XCTAssert(myValidationFunction())\n}"
+    },
+    {
+      "title": "Disable strict XCTExpectFailure behavior via parameter",
+      "language": "swift",
+      "startTimeSeconds": 653,
+      "code": "XCTExpectFailure(\"<https://dev.myco.com/bugs/4923> fix myValidationFunction\", strict: false) {\n    XCTAssert(myValidationFunction())\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Expected Failures",
+      "url": "https://developer.apple.com/documentation/XCTest/expected-failures",
+      "type": "documentation",
+      "description": "Anticipate known test failures to prevent failing tests from affecting your workflows.",
+      "sosumiURL": "https://sosumi.ai/documentation/XCTest/expected-failures",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/XCTest/expected-failures.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10207/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10207/metadata.json",
+    "readme": "sessions/wwdc2021/10207/README.md",
+    "transcript": "sessions/wwdc2021/10207/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10207/transcript.json"
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10114",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10114,
+  "title": "What’s new in Wallet and Apple Pay",
+  "description": "Discover the latest updates to Wallet and Apple Pay. Learn how to take advantage of preauthorized payments, funds transfer, and Apple Pay Later merchandising to create great Apple Pay experiences in your app or for the web. Explore improved support for Mail, Messages, Safari, and third-party apps in Wallet Order Tracking, and find out how you can add more information to an order’s transaction or receipt details. And we’ll introduce you to Tap to Present ID on iPhone (or ID Verifier), a new way to accept IDs in Wallet using iPhone — no additional hardware needed.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10114",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10114",
+  "type": "Video",
+  "publishedAt": "2023-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 2011,
+  "hasTranscript": true,
+  "transcriptWordCount": 5143,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10114/5/208CF134-3A8A-417E-8DF3-0B8A1F60B130/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10114/5/208CF134-3A8A-417E-8DF3-0B8A1F60B130/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10114/5/208CF134-3A8A-417E-8DF3-0B8A1F60B130/downloads/wwdc2023-10114_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10114/5/208CF134-3A8A-417E-8DF3-0B8A1F60B130/downloads/wwdc2023-10114_hd.mp4",
+    "duration": 2011
+  },
+  "codeSnippets": [
+    {
+      "title": "Performing a display request to verify age",
+      "language": "swift",
+      "startTimeSeconds": 1731,
+      "code": "import ProximityReader\n\n// Check the current device supports mobile document reading.\nguard MobileDocumentReader.isSupported else { return }\n\nlet reader = MobileDocumentReader()\n\nlet readerSession: MobileDocumentReaderSession = try await reader.prepare()\n\nlet request = MobileDriversLicenseDisplayRequest(elements: [.ageAtLeast(21)])\n\ntry await readerSession.requestDocument(request)"
+    },
+    {
+      "title": "Displaying brand information during a document request",
+      "language": "swift",
+      "startTimeSeconds": 1855,
+      "code": "let reader = MobileDocumentReader()\n\nlet identifier = try await reader.configuration.readerInstanceIdentifier\nlet readerToken = try await WebService().fetchToken(for: identifier)\n\nlet readerSession = try await reader.prepare(using: .init(readerToken))\n\nlet request = MobileDriversLicenseDisplayRequest(elements: [.ageAtLeast(21)])\n\ntry await readerSession.requestDocument(request)"
+    },
+    {
+      "title": "Performing a data request",
+      "language": "swift",
+      "startTimeSeconds": 1910,
+      "code": "let session: MobileDocumentReaderSession = /* ... */\n\nvar request = MobileDriversLicenseDataRequest()\nrequest.retainedElements = [.givenName, .familyName, .dateOfBirth, .portrait]\nrequest.nonRetainedElements = [.address, .documentExpirationDate, .drivingPrivileges]\n\nlet response = try await session.requestDocument(request)\n\n// Process document elements from document response.\nself.processResponse(response.documentElements)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Generating reader tokens for the Verifier API",
+      "url": "https://developer.apple.com/documentation/ProximityReader/generating-reader-tokens-for-the-verifier-api",
+      "type": "documentation",
+      "description": "Configure your server to generate reader tokens to prepare a device for mobile document reading.",
+      "sosumiURL": "https://sosumi.ai/documentation/ProximityReader/generating-reader-tokens-for-the-verifier-api",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ProximityReader/generating-reader-tokens-for-the-verifier-api.json"
+    },
+    {
+      "title": "Checking IDs with the Verifier API",
+      "url": "https://developer.apple.com/documentation/ProximityReader/checking-ids-with-the-verifier-api",
+      "type": "samplecode",
+      "description": "Read and verify mobile driver’s license, photo ID, and National ID information without any additional hardware.",
+      "sosumiURL": "https://sosumi.ai/documentation/ProximityReader/checking-ids-with-the-verifier-api",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ProximityReader/checking-ids-with-the-verifier-api.json"
+    },
+    {
+      "title": "Adopting the Verifier API in your iPhone app",
+      "url": "https://developer.apple.com/documentation/ProximityReader/adopting-the-verifier-api-in-your-iphone-app",
+      "type": "documentation",
+      "description": "Configure and test ID Verifier support in your app for reading mobile documents.",
+      "sosumiURL": "https://sosumi.ai/documentation/ProximityReader/adopting-the-verifier-api-in-your-iphone-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ProximityReader/adopting-the-verifier-api-in-your-iphone-app.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10114/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10114/metadata.json",
+    "readme": "sessions/wwdc2023/10114/README.md",
+    "transcript": "sessions/wwdc2023/10114/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10114/transcript.json"
+  }
+}

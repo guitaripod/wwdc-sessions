@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10216",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10216,
+  "title": "ARC in Swift: Basics and beyond",
+  "description": "Learn about the basics of object lifetimes and ARC in Swift. Dive deep into what language features make object lifetimes observable, consequences of relying on observed object lifetimes and some safe techniques to fix them.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10216",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10216",
+  "type": "Video",
+  "publishedAt": "2021-06-11T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "arc",
+    "memory",
+    "object life cycle",
+    "retain",
+    "unknown",
+    "weak"
+  ],
+  "topics": [
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 1242,
+  "hasTranscript": true,
+  "transcriptWordCount": 2579,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10216/4/884C234F-2424-47DF-A4CF-A9010D869C66/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10216/4/884C234F-2424-47DF-A4CF-A9010D869C66/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10216/4/884C234F-2424-47DF-A4CF-A9010D869C66/downloads/wwdc2021-10216_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10216/4/884C234F-2424-47DF-A4CF-A9010D869C66/downloads/wwdc2021-10216_hd.mp4",
+    "duration": 1242
+  },
+  "codeSnippets": [
+    {
+      "title": "ARC Example",
+      "language": "swift",
+      "startTimeSeconds": 109,
+      "code": "class Traveler {\n    var name: String\n    var destination: String?\n}\n\nfunc test() {\n    let traveler1 = Traveler(name: \"Lily\")\n    let traveler2 = traveler1\n    traveler2.destination = \"Big Sur\"\n    print(\"Done traveling\")\n}"
+    },
+    {
+      "title": "Reference Cycle Example",
+      "language": "swift",
+      "startTimeSeconds": 397,
+      "code": "class Traveler {\n    var name: String\n    var account: Account?\n    func printSummary() {\n        if let account = account {\n            print(\"\\(name) has \\(account.points) points\")\n        }\n    }\n}\n\nclass Account {\n    var traveler: Traveler\n    var points: Int\n}\n\nfunc test() {\n    let traveler = Traveler(name: \"Lily\")\n    let account = Account(traveler: traveler, points: 1000)\n    traveler.account = account\n    traveler.printSummary()\n}"
+    },
+    {
+      "title": "Weak Reference Example",
+      "language": "swift",
+      "startTimeSeconds": 545,
+      "code": "class Traveler {\n    var name: String\n    var account: Account?\n    func printSummary() {\n        if let account = account {\n            print(\"\\(name) has \\(account.points) points\")\n        }\n    }\n}\n\nclass Account {\n    weak var traveler: Traveler?\n    var points: Int\n}\n\nfunc test() {\n    let traveler = Traveler(name: \"Lily\")\n    let account = Account(traveler: traveler, points: 1000)\n    traveler.account = account\n    traveler.printSummary()\n}"
+    },
+    {
+      "title": "Accessing an object via weak reference",
+      "language": "swift",
+      "startTimeSeconds": 605,
+      "code": "class Traveler {\n    var name: String\n    var account: Account?\n}\n\nclass Account {\n    weak var traveler: Traveler?\n    var points: Int\n    func printSummary() {\n        print(\"\\(traveler!.name) has \\(points) points\")\n    }\n}\n\nfunc test() {\n    let traveler = Traveler(name: \"Lily\")\n    let account = Account(traveler: traveler, points: 1000)\n    traveler.account = account\n    account.printSummary()\n}"
+    },
+    {
+      "title": "Accessing an object via optional binding of weak reference",
+      "language": "swift",
+      "startTimeSeconds": 674,
+      "code": "class Traveler {\n    var name: String\n    var account: Account?\n}\n\nclass Account {\n    weak var traveler: Traveler?\n    var points: Int\n    func printSummary() {\n         if let traveler = traveler {\n            print(\"\\(traveler.name) has \\(points) points\") \n         }\n    }\n}\n\nfunc test() {\n    let traveler = Traveler(name: \"Lily\")\n    let account = Account(traveler: traveler, points: 1000)\n    traveler.account = account\n    account.printSummary()\n}"
+    },
+    {
+      "title": "Safe techniques for handling weak references - withExtendedLifetime()",
+      "language": "swift",
+      "startTimeSeconds": 705,
+      "code": "func test() {\n    let traveler = Traveler(name: \"Lily\")\n    let account = Account(traveler: traveler, points: 1000)\n    traveler.account = account\n    withExtendedLifetime(traveler) {\n        account.printSummary()\n    }\n}\n\nfunc test() {\n    let traveler = Traveler(name: \"Lily\")\n    let account = Account(traveler: traveler, points: 1000)\n    traveler.account = account\n    account.printSummary()\n    withExtendedLifetime(traveler) {}\n}\n\nfunc test() {\n    let traveler = Traveler(name: \"Lily\")\n    let account = Account(traveler: traveler, points: 1000)\n    defer {withExtendedLifetime(traveler) {}}\n    traveler.account = account\n    account.printSummary()\n}"
+    },
+    {
+      "title": "Safe techniques for handling weak references - Redesign to access via strong reference",
+      "language": "swift",
+      "startTimeSeconds": 775,
+      "code": "class Traveler {\n    var name: String\n    var account: Account?\n    func printSummary() {\n        if let account = account {\n            print(\"\\(name) has \\(account.points) points\")\n        }\n    }\n}\n\nclass Account {\n    private weak var traveler: Traveler?\n    var points: Int\n}\n\nfunc test() {\n    let traveler = Traveler(name: \"Lily\")\n    let account = Account(traveler: traveler, points: 1000)\n    traveler.account = account\n    traveler.printSummary()\n}"
+    },
+    {
+      "title": "Safe techniques for handling weak references - Redesign to avoid weak/unowned reference",
+      "language": "swift",
+      "startTimeSeconds": 860,
+      "code": "class PersonalInfo {\n    var name: String\n}\n\nclass Traveler {\n    var info: PersonalInfo\n    var account: Account?\n}\n\nclass Account {\n    var info: PersonalInfo\n    var points: Int\n}"
+    },
+    {
+      "title": "Deinitializer Example",
+      "language": "swift",
+      "startTimeSeconds": 923,
+      "code": "class Traveler {\n  var name: String\n  var destination: String?\n  deinit {\n    print(\"\\(name) is deinitializing\")\n  }\n}\n\nfunc test() {\n    let traveler1 = Traveler(name: \"Lily\")\n    let traveler2 = traveler1\n    traveler2.destination = \"Big Sur\"\n    print(\"Done traveling\")\n}"
+    },
+    {
+      "title": "Sequencing deinitializer side-effects with external program effects",
+      "language": "swift",
+      "startTimeSeconds": 970,
+      "code": "class Traveler {\n    var name: String\n    var id: UInt\n    var destination: String?\n    var travelMetrics: TravelMetrics\n    // Update destination and record travelMetrics\n    func updateDestination(_ destination: String) {\n        self.destination = destination\n        travelMetrics.destinations.append(self.destination)\n    }\n    // Publish computed metrics\n    deinit {\n        travelMetrics.publish()\n    }\n}\n\nclass TravelMetrics {\n    let id: UInt\n    var destinations = [String]()\n    var category: String?\n    // Finds the most interested travel category based on recorded destinations\n    func computeTravelInterest()\n    // Publishes id, destinations.count and travel interest category\n    func publish()\n}\n\nfunc test() {\n    let traveler = Traveler(name: \"Lily\", id: 1)\n    let metrics = traveler.travelMetrics\n    ...\n    traveler.updateDestination(\"Big Sur\")\n    ...\n    traveler.updateDestination(\"Catalina\")\n    metrics.computeTravelInterest()\n}\n\nverifyGlobalTravelMetrics()"
+    },
+    {
+      "title": "Safe techniques for handing deinitalizer side effects - withExtendedLifetime()",
+      "language": "swift",
+      "startTimeSeconds": 1076,
+      "code": "func test() {\n    let traveler = Traveler(name: \"Lily\", id: 1)\n    let metrics = traveler.travelMetrics\n    ...\n    traveler.updateDestination(\"Big Sur\")\n    ...\n    traveler.updateDestination(\"Catalina\")\n    withExtendedLifetime(traveler) {\n        metrics.computeTravelInterest()\n    }\n}"
+    },
+    {
+      "title": "Safe techniques for handing deinitalizer side effects - Redesign to limit visibility of internal class details",
+      "language": "swift",
+      "startTimeSeconds": 1111,
+      "code": "class Traveler {\n    ...\n    private var travelMetrics: TravelMetrics\n    deinit {\n        travelMetrics.computeTravelInterest()\n        travelMetrics.publish()\n    }\n}\n\nfunc test() {\n    let traveler = Traveler(name: \"Lily\", id: 1)\n    ...\n    traveler.updateDestination(\"Big Sur\")\n    ...\n    traveler.updateDestination(\"Catalina\")\n}"
+    },
+    {
+      "title": "Safe techniques for handling deinitalizer side effects - Redesign to avoid deinitializer side-effects",
+      "language": "swift",
+      "startTimeSeconds": 1148,
+      "code": "class Traveler {\n    ...\n    private var travelMetrics: TravelMetrics\n\n    func publishAllMetrics() {\n        travelMetrics.computeTravelInterest()\n        travelMetrics.publish()\n    }\n\n    deinit {\n\t\t\t\tassert(travelMetrics.published)\n    }\n}\n\nclass TravelMetrics {\n    ...\n    var published: Bool\n    ...\n}\n\nfunc test() {\n    let traveler = Traveler(name: \"Lily\", id: 1)\n    defer { traveler.publishAllMetrics() }\n    ...\n    traveler.updateDestination(\"Big Sur\")\n    ...\n    traveler.updateDestination(\"Catalina\")\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "ARC - The Swift Programming Language",
+      "url": "https://docs.swift.org/swift-book/LanguageGuide/AutomaticReferenceCounting.html",
+      "type": "guide",
+      "description": null
+    }
+  ],
+  "path": "sessions/wwdc2021/10216/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10216/metadata.json",
+    "readme": "sessions/wwdc2021/10216/README.md",
+    "transcript": "sessions/wwdc2021/10216/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10216/transcript.json"
+  }
+}

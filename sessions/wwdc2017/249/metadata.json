@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2017-249",
+  "event": "wwdc2017",
+  "eventName": "WWDC17",
+  "year": 2017,
+  "eventContentId": 249,
+  "title": "Filtering Unwanted Messages with Identity Lookup",
+  "description": "Unwanted SMS and MMS messages are a persistent, frustrating nuisance. Identity Lookup is a new framework that allows you to participate in the process of filtering incoming messages. Get the details of how to identify and prevent these unsolicited messages. Understand the options for on-device detection as well as more dynamic server-based integration in order to ensure a better user experience.",
+  "url": "https://developer.apple.com/videos/play/wwdc2017/249",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2017/249",
+  "type": "Video",
+  "publishedAt": "2017-06-04T17:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "carrier",
+    "cellular",
+    "china",
+    "extension",
+    "identitylookup",
+    "junk",
+    "messagefilter",
+    "spam"
+  ],
+  "topics": [
+    "Privacy & Security"
+  ],
+  "primaryTopic": "Privacy & Security",
+  "duration": 1054,
+  "hasTranscript": true,
+  "transcriptWordCount": 2772,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/249alewpia5158ow5k/249/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/249alewpia5158ow5k/249/249_sd_filtering_unwanted_messages_with_identity_lookup.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/249alewpia5158ow5k/249/249_hd_filtering_unwanted_messages_with_identity_lookup.mp4",
+    "duration": 1054
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "SMS and Call Reporting",
+      "url": "https://developer.apple.com/documentation/IdentityLookup",
+      "type": "documentation",
+      "description": "Create app extensions to manage and report unwanted SMS messages and spam calls.",
+      "sosumiURL": "https://sosumi.ai/documentation/IdentityLookup",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/IdentityLookup.json"
+    }
+  ],
+  "path": "sessions/wwdc2017/249/",
+  "files": {
+    "metadata": "sessions/wwdc2017/249/metadata.json",
+    "readme": "sessions/wwdc2017/249/README.md",
+    "transcript": "sessions/wwdc2017/249/transcript.md",
+    "transcriptJSON": "sessions/wwdc2017/249/transcript.json"
+  }
+}

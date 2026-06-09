@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10163",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10163,
+  "title": "Advancements in the Objective-C runtime",
+  "description": "Dive into the microscopic world of low-level bits and bytes that underlie every Objective-C and Swift class. Find out how recent changes to internal data structures, method lists, and tagged pointers provide better performance and lower memory usage. We’ll demonstrate how to recognize and fix crashes in code that depend on internal details, and show you how to keep your code unaffected by changes to the runtime.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10163",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10163",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 1385,
+  "hasTranscript": true,
+  "transcriptWordCount": 3867,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10163/5/69E6CEAB-D828-495C-B745-D48BF721F796/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10163/5/69E6CEAB-D828-495C-B745-D48BF721F796/wwdc2020_10163_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10163/5/69E6CEAB-D828-495C-B745-D48BF721F796/wwdc2020_10163_hd.mp4",
+    "duration": 1385
+  },
+  "codeSnippets": [
+    {
+      "title": "Use the heap command to calculate memory savings",
+      "language": "bash",
+      "startTimeSeconds": 337,
+      "code": "heap Mail | egrep 'class_rw|COUNT'"
+    },
+    {
+      "title": "Use the APIs",
+      "language": "objectivec",
+      "startTimeSeconds": 455,
+      "code": "class_getName\n\nclass_getSuperclass\n\nclass_copyMethodList"
+    },
+    {
+      "title": "Use the APIs",
+      "language": "objectivec",
+      "startTimeSeconds": 878,
+      "code": "method_getName\n\nmethod_getTypeEncoding\n\nmethod_getImplementation"
+    },
+    {
+      "title": "Use the APIs",
+      "language": "objectivec",
+      "startTimeSeconds": 1312,
+      "code": "if ([obj isKindOfClass:[NSString class]]) {\n    // a string\n}\nNSUInteger length = [obj length];\n\n\nif (CFGetTypeID(obj) == CFStringGetTypeID()) {\n    // a string\n}\nCFIndex length = CFStringGetLength(obj);"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Objective-C Runtime",
+      "url": "https://developer.apple.com/documentation/ObjectiveC/objective-c-runtime",
+      "type": "documentation",
+      "description": "Describes the macOS Objective-C runtime library support functions and data structures.",
+      "sosumiURL": "https://sosumi.ai/documentation/ObjectiveC/objective-c-runtime",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ObjectiveC/objective-c-runtime.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10163/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10163/metadata.json",
+    "readme": "sessions/wwdc2020/10163/README.md",
+    "transcript": "sessions/wwdc2020/10163/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10163/transcript.json"
+  }
+}

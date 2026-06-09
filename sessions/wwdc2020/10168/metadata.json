@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10168",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10168,
+  "title": "Explore logging in Swift",
+  "description": "Meet the latest generation of Swift unified logging APIs. Learn how to log events and errors in your app while preserving privacy. Take advantage of powerful yet readable options for formatting data — all without sacrificing performance. And we’ll show you how you can gather and process log messages to help you understand and debug unexpected behavior in your apps.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10168",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10168",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Privacy & Security",
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 1043,
+  "hasTranscript": true,
+  "transcriptWordCount": 2777,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10168/6/0D041A0B-E4FC-4830-B955-576922C47E29/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10168/6/0D041A0B-E4FC-4830-B955-576922C47E29/wwdc2020_10168_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10168/6/0D041A0B-E4FC-4830-B955-576922C47E29/wwdc2020_10168_hd.mp4",
+    "duration": 1043
+  },
+  "codeSnippets": [
+    {
+      "title": "Example illustrating how to add logging to your app in three simple steps",
+      "language": "swift",
+      "startTimeSeconds": 164,
+      "code": "// Add logging to your app in three simple steps\n\nimport os\n\nlet logger = Logger(subsystem: \"com.example.Fruta\", category: \"giftcards\")\n\nfunc beginTask(url: URL, handler: (Data) -> Void) {\n    launchTask(with: url) {\n       handler($0)\n    }\n\n    logger.log(\"Started a task\")\n}"
+    },
+    {
+      "title": "An example code that logs a message with run-time data",
+      "language": "swift",
+      "startTimeSeconds": 212,
+      "code": "// Add runtime data to the log messsage using string interpolation\n\nimport os\n\nlet logger = Logger(subsystem: \"com.example.Fruta\", category: \"giftcards\")\n\nfunc beginTask(url: URL, handler: (Data) -> Void) {\n    launchTask(with: url) {\n       handler($0)\n    }\n    logger.log(\"Started a task \\(taskId)\")\n}"
+    },
+    {
+      "title": "Example illustrating why nonnumeric types are redacted in the logs by default",
+      "language": "swift",
+      "startTimeSeconds": 268,
+      "code": "logger.log(\"Paid with bank account \\(accountNumber)\")"
+    },
+    {
+      "title": "Code that shows how to mark public data so that it is displayed in the logs",
+      "language": "swift",
+      "startTimeSeconds": 301,
+      "code": "logger.log(\"Ordered smoothie \\(smoothieName, privacy: .public)\")"
+    },
+    {
+      "title": "Code shown during first demo",
+      "language": "swift",
+      "startTimeSeconds": 363,
+      "code": "import SwiftUI\nimport os\n\nlet logger = Logger(subsystem: \"com.example.Fruta\", category: \"giftcards\")\n\nstruct GiftCardView: View {\n    // Denotes whether there is an active task for loading gift cards.\n    @State private var taskRunning: Bool = false\n\n    // A UUID that uniquely identifies a task.\n    @State private var currentTaskID: UUID = UUID()\n\n    // An unrecoverable error seen during execution.\n    @State private var error: Error? = nil\n\n    // A model that stores information about gift cards.\n    @ObservedObject var model: GiftCardModel\n\n    var body: some View {\n        // Display a list of gifts which can be tapped on and scrolled through.\n        GiftCardList(model: model, taskRunning: $taskRunning, currentTaskID: $currentTaskID, error: $error, downloadAction: beginTask, stopAction: endTask)\n            .navigationTitle(\"Gift Cards\")\n    }\n\n    // Start a task to download gift cards from a server.\n    func beginTask(serverURL: URL, cardDownloadHandler: @escaping (Data) -> Void) {\n        logger.log(\"Starting a new task for loading cards \\(currentTaskID, privacy: .public)\")        \n        launchTask(with: serverURL) {\n            cardDownloadHandler($0)\n        }\n    }\n\n    // Stop the currently running task for downloading cards from a server.\n    func endTask() {\n        guard taskRunning else {\n            logger.fault(\"Task \\(currentTaskID, privacy: .public) is not runinng, cannot be stopped!\")\n            error = TaskError.noActiveTask\n            return\n        }\n        taskRunning = false\n        logger.log(\"Task \\(currentTaskID, privacy: .public) interrupted\")\n    }\n\n    // Start a URLSession dataTask with the given URL.\n    func launchTask(with url: URL, handler: @escaping (Data) -> Void) {\n        guard error == nil else {\n            return\n        }\n        taskRunning = true\n        let task = URLSession.shared.dataTask(with: url) {\n            data, response, error in\n            if let error = error {\n                self.error = ConnectionError.other(error)\n            }\n            if let data = data {\n                handler(data)\n            }\n        }\n        task.resume()\n    }\n\n}"
+    },
+    {
+      "title": "Illustration of how debug-level logging will not evaluate the code that constructs log message",
+      "language": "swift",
+      "startTimeSeconds": 711,
+      "code": "logger.debug(\"\\(slowFunction(data))\")"
+    },
+    {
+      "title": "Code that shows how to display run-time data with a fixed width and how to set precision of a floating-point value using formatting options",
+      "language": "swift",
+      "startTimeSeconds": 778,
+      "code": "import SwiftUI\nimport os\n\nlet statisticsLogger = Logger(subsystem: \"com.example.Fruta\", category: \"statistics\")\n\n// Log statistics about communication with a server.\nfunc logStatistics(taskID: UUID, giftCardID: String, serverID: Int, seconds: Double) {\n    statisticsLogger.log(\"\\(taskID) \\(giftCardID, align: .left(columns: GiftCard.maxIDLength)) \\(serverID) \\(seconds, format: .fixed(precision: 2))\")\n}"
+    },
+    {
+      "title": "Example of formatting log messages",
+      "language": "swift",
+      "startTimeSeconds": 900,
+      "code": "logger.log(\"\\(data, format: .hex, align: .right(columns: width))\")"
+    },
+    {
+      "title": "Example illustrating the use of a hash to redact private data, which ensures that identical data get the same hash",
+      "language": "swift",
+      "startTimeSeconds": 965,
+      "code": "logger.log(\"Paid with bank account: \\(accountNumber, privacy: .private(mask: .hash))\")"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2020/10168/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10168/metadata.json",
+    "readme": "sessions/wwdc2020/10168/README.md",
+    "transcript": "sessions/wwdc2020/10168/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10168/transcript.json"
+  }
+}

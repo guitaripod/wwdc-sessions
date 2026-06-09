@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2018-714",
+  "event": "wwdc2018",
+  "eventName": "WWDC18",
+  "year": 2018,
+  "eventContentId": 714,
+  "title": "Optimizing Your App for Today’s Internet",
+  "description": "Learn what Apple has been doing to help your app get the most out of the network with the least effort. Let Apple’s networking APIs do the heavy lifting for you. Learn best practices for getting top networking performance from your app using the URLSession APIs.",
+  "url": "https://developer.apple.com/videos/play/wwdc2018/714",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2018/714",
+  "type": "Session",
+  "publishedAt": "2018-06-07T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 2291,
+  "hasTranscript": true,
+  "transcriptWordCount": 5340,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/714px070n75l8ri/714/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/714px070n75l8ri/714/714_sd_optimizing_your_app_for_todays_internet.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/714px070n75l8ri/714/714_hd_optimizing_your_app_for_todays_internet.mp4",
+    "duration": 2291
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "WWDC2015 - Networking with NSURLSession",
+      "url": "https://developer.apple.com/videos/play/wwdc2015/711/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2015/711/"
+    },
+    {
+      "title": "WWDC2014 - What's New in Foundation Networking",
+      "url": "https://developer.apple.com/videos/play/wwdc2014/707/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2014/707/"
+    },
+    {
+      "title": "WWDC2013 - What's New in Foundation Networking",
+      "url": "https://developer.apple.com/videos/play/wwdc2013/705/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2013/705/"
+    },
+    {
+      "title": "URLSession",
+      "url": "https://developer.apple.com/documentation/Foundation/URLSession",
+      "type": "documentation",
+      "description": "An object that coordinates a group of related, network data transfer tasks.",
+      "sosumiURL": "https://sosumi.ai/documentation/Foundation/URLSession",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Foundation/URLSession.json"
+    },
+    {
+      "title": "Supporting IPv6 DNS64/NAT64 Networks",
+      "url": "https://developer.apple.com/library/content/documentation/NetworkingInternetWeb/Conceptual/NetworkingOverview/UnderstandingandPreparingfortheIPv6Transition/UnderstandingandPreparingfortheIPv6Transition.html#//apple_ref/doc/uid/TP40010220-CH213-SW1",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/library/content/documentation/NetworkingInternetWeb/Conceptual/NetworkingOverview/UnderstandingandPreparingfortheIPv6Transition/UnderstandingandPreparingfortheIPv6Transition.html#//apple_ref/doc/uid/TP40010220-CH213-SW1"
+    }
+  ],
+  "path": "sessions/wwdc2018/714/",
+  "files": {
+    "metadata": "sessions/wwdc2018/714/metadata.json",
+    "readme": "sessions/wwdc2018/714/README.md",
+    "transcript": "sessions/wwdc2018/714/transcript.md",
+    "transcriptJSON": "sessions/wwdc2018/714/transcript.json"
+  }
+}

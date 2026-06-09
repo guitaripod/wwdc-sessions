@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-268",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 268,
+  "title": "Embracing Swift concurrency",
+  "description": "Join us to learn the core Swift concurrency concepts. Concurrency helps you improve app responsiveness and performance, and Swift is designed to make asynchronous and concurrent code easier to write correctly. We’ll cover the steps you need to take an app through from single-threaded to concurrent. We’ll also help you determine how and when to make the best use of Swift concurrency features – whether it’s making your code more asynchronous, moving it to the background, or sharing data across concurrent tasks.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/268",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/268",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 1681,
+  "hasTranscript": true,
+  "transcriptWordCount": 4444,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/268/4/9de10aea-96a5-468d-a7b9-211a8f9b2d0a/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/268/4/9de10aea-96a5-468d-a7b9-211a8f9b2d0a/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/268/4/9de10aea-96a5-468d-a7b9-211a8f9b2d0a/downloads/wwdc2025-268_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/268/4/9de10aea-96a5-468d-a7b9-211a8f9b2d0a/downloads/wwdc2025-268_hd.mp4",
+    "duration": 1681
+  },
+  "codeSnippets": [
+    {
+      "title": "Single-threaded program",
+      "language": "swift",
+      "startTimeSeconds": 200,
+      "code": "var greeting = \"Hello, World!\"\n\nfunc readArguments() { }\n\nfunc greet() {\n  print(greeting)\n}\n\nreadArguments()\ngreet()"
+    },
+    {
+      "title": "Data types in a the app",
+      "language": "swift",
+      "startTimeSeconds": 253,
+      "code": "struct Image {\n}\n\nfinal class ImageModel {\n  var imageCache: [URL: Image] = [:]\n}\n\nfinal class Library {\n  static let shared: Library = Library()\n}"
+    },
+    {
+      "title": "Load and display a local image",
+      "language": "swift",
+      "startTimeSeconds": 297,
+      "code": "import Foundation\n\nclass Image {\n}\n\nfinal class View {\n  func displayImage(_ image: Image) {\n  }\n}\n\nfinal class ImageModel {\n  var imageCache: [URL: Image] = [:]\n  let view = View()\n\n  func fetchAndDisplayImage(url: URL) throws {\n    let data = try Data(contentsOf: url)\n    let image = decodeImage(data)\n    view.displayImage(image)\n  }\n\n  func decodeImage(_ data: Data) -> Image {\n    Image()\n  }\n}\n\nfinal class Library {\n  static let shared: Library = Library()\n}"
+    },
+    {
+      "title": "Fetch and display an image over the network",
+      "language": "swift",
+      "startTimeSeconds": 336,
+      "code": "import Foundation\n\nstruct Image {\n}\n\nfinal class View {\n  func displayImage(_ image: Image) {\n  }\n}\n\nfinal class ImageModel {\n  var imageCache: [URL: Image] = [:]\n  let view = View()\n\n  func fetchAndDisplayImage(url: URL) throws {\n    let (data, _) = try URLSession.shared.data(from: url)\n    let image = decodeImage(data)\n    view.displayImage(image)\n  }\n\n  func decodeImage(_ data: Data) -> Image {\n    Image()\n  }\n}\n\nfinal class Library {\n  static let shared: Library = Library()\n}"
+    },
+    {
+      "title": "Fetch and display image over the network asynchronously",
+      "language": "swift",
+      "startTimeSeconds": 370,
+      "code": "import Foundation\n\nclass Image {\n}\n\nfinal class View {\n  func displayImage(_ image: Image) {\n  }\n}\n\nfinal class ImageModel {\n  var imageCache: [URL: Image] = [:]\n  let view = View()\n\n  func fetchAndDisplayImage(url: URL) async throws {\n    let (data, _) = try await URLSession.shared.data(from: url)\n    let image = decodeImage(data)\n    view.displayImage(image)\n  }\n\n  func decodeImage(_ data: Data) -> Image {\n    Image()\n  }\n}\n\nfinal class Library {\n  static let shared: Library = Library()\n}"
+    },
+    {
+      "title": "Creating a task to perform asynchronous work",
+      "language": "swift",
+      "startTimeSeconds": 451,
+      "code": "import Foundation\n\nclass Image {\n}\n\nfinal class View {\n  func displayImage(_ image: Image) {\n  }\n}\n\nfinal class ImageModel {\n  var imageCache: [URL: Image] = [:]\n  let view = View()\n  var url: URL = URL(\"https://swift.org\")!\n\n  func onTapEvent() {\n    Task {\n      do {\n\ttry await fetchAndDisplayImage(url: url)\n      } catch let error {\n        displayError(error)\n      }\n    }\n  }\n\n  func displayError(_ error: any Error) {\n  }\n\n  func fetchAndDisplayImage(url: URL) async throws {\n  }\n}\n\nfinal class Library {\n  static let shared: Library = Library()\n}"
+    },
+    {
+      "title": "Ordered operations in a task",
+      "language": "swift",
+      "startTimeSeconds": 555,
+      "code": "import Foundation\n\nclass Image {\n  func applyImageEffect() async { }\n}\n\nfinal class ImageModel {\n  func displayImage(_ image: Image) {\n  }\n\n  func loadImage() async -> Image {\n    Image()\n  }\n\n  func onButtonTap() {\n    Task {\n      let image = await loadImage()\n      await image.applyImageEffect()\n      displayImage(image)\n    }\n  }\n}"
+    },
+    {
+      "title": "Fetch and display image over the network asynchronously",
+      "language": "swift",
+      "startTimeSeconds": 578,
+      "code": "import Foundation\n\nclass Image {\n}\n\nfinal class View {\n  func displayImage(_ image: Image) {\n  }\n}\n\nfinal class ImageModel {\n  var imageCache: [URL: Image] = [:]\n  let view = View()\n\n  func fetchAndDisplayImage(url: URL) async throws {\n    let (data, _) = try await URLSession.shared.data(from: url)\n    let image = decodeImage(data)\n    view.displayImage(image)\n  }\n\n  func decodeImage(_ data: Data) -> Image {\n    Image()\n  }\n}"
+    },
+    {
+      "title": "Fetch and display image over the network asynchronously",
+      "language": "swift",
+      "startTimeSeconds": 640,
+      "code": "import Foundation\n\nclass Image {\n}\n\nfinal class View {\n  func displayImage(_ image: Image) {\n  }\n}\n\nfinal class ImageModel {\n  var imageCache: [URL: Image] = [:]\n  let view = View()\n\n  func fetchAndDisplayImage(url: URL) async throws {\n    let (data, _) = try await URLSession.shared.data(from: url)\n    let image = decodeImage(data, at: url)\n    view.displayImage(image)\n  }\n\n  func decodeImage(_ data: Data, at url: URL) -> Image {\n    Image()\n  }\n}"
+    },
+    {
+      "title": "Fetch over network asynchronously and decode concurrently",
+      "language": "swift",
+      "startTimeSeconds": 671,
+      "code": "import Foundation\n\nclass Image {\n}\n\nfinal class View {\n  func displayImage(_ image: Image) {\n  }\n}\n\nfinal class ImageModel {\n  var imageCache: [URL: Image] = [:]\n  let view = View()\n\n  func fetchAndDisplayImage(url: URL) async throws {\n    let (data, _) = try await URLSession.shared.data(from: url)\n    let image = await decodeImage(data, at: url)\n    view.displayImage(image)\n  }\n\n  @concurrent\n  func decodeImage(_ data: Data, at url: URL) async -> Image {\n    Image()\n  }\n}"
+    },
+    {
+      "title": "Implementation of decodeImage",
+      "language": "swift",
+      "startTimeSeconds": 690,
+      "code": "final class View {\n  func displayImage(_ image: Image) {\n  }\n}\n\nfinal class ImageModel {\n  var cachedImage: [URL: Image] = [:]\n  let view = View()\n\n  func fetchAndDisplayImage(url: URL) async throws {\n    let (data, _) = try await URLSession.shared.data(from: url)\n    let image = await decodeImage(data, at: url)\n    view.displayImage(image)\n  }\n\n  @concurrent\n  func decodeImage(_ data: Data, at url: URL) async -> Image {\n    if let image = cachedImage[url] {\n      return image\n    }\n\n    // decode image\n    let image = Image()\n    cachedImage[url] = image\n    return image\n  }\n}"
+    },
+    {
+      "title": "Correct implementation of fetchAndDisplayImage with caching and concurrency",
+      "language": "swift",
+      "startTimeSeconds": 757,
+      "code": "import Foundation\n\nclass Image {\n}\n\nfinal class View {\n  func displayImage(_ image: Image) {\n  }\n}\n\nfinal class ImageModel {\n  var cachedImage: [URL: Image] = [:]\n  let view = View()\n\n  func fetchAndDisplayImage(url: URL) async throws {\n    if let image = cachedImage[url] {\n      view.displayImage(image)\n      return\n    }\n\n    let (data, _) = try await URLSession.shared.data(from: url)\n    let image = await decodeImage(data)\n    view.displayImage(image)\n  }\n\n  @concurrent\n  func decodeImage(_ data: Data) async -> Image {\n    // decode image\n    Image()\n  }\n}"
+    },
+    {
+      "title": "JSONDecoder API should be non isolated",
+      "language": "swift",
+      "startTimeSeconds": 810,
+      "code": "// Foundation\nimport Foundation\n\nnonisolated\npublic class JSONDecoder {\n  public func decode<T: Decodable>(_ type: T.Type, from data: Data) -> T {\n    fatalError(\"not implemented\")\n  }\n}"
+    },
+    {
+      "title": "Fetch over network asynchronously and decode concurrently",
+      "language": "swift",
+      "startTimeSeconds": 918,
+      "code": "import Foundation\n\nclass Image {\n}\n\nfinal class View {\n  func displayImage(_ image: Image) {\n  }\n}\n\nfinal class ImageModel {\n  var imageCache: [URL: Image] = [:]\n  let view = View()\n\n  func fetchAndDisplayImage(url: URL) async throws {\n    let (data, _) = try await URLSession.shared.data(from: url)\n    let image = await decodeImage(data, at: url)\n    view.displayImage(image)\n  }\n\n  @concurrent\n  func decodeImage(_ data: Data, at url: URL) async -> Image {\n    Image()\n  }\n}"
+    },
+    {
+      "title": "Example of value types",
+      "language": "swift",
+      "startTimeSeconds": 990,
+      "code": "// Value types are common in Swift\nimport Foundation\n\nstruct Post {\n  var author: String\n  var title: String\n  var date: Date\n  var categories: [String]\n}"
+    },
+    {
+      "title": "Sendable value types",
+      "language": "swift",
+      "startTimeSeconds": 1016,
+      "code": "import Foundation\n\n// Value types are Sendable\nextension URL: Sendable {}\n\n// Collections of Sendable elements\nextension Array: Sendable where Element: Sendable {}\n\n// Structs and enums with Sendable storage\nstruct ImageRequest: Sendable {\n  var url: URL\n}\n\n// Main-actor types are implicitly Sendable\n@MainActor class ImageModel {}"
+    },
+    {
+      "title": "Fetch over network asynchronously and decode concurrently",
+      "language": "swift",
+      "startTimeSeconds": 1045,
+      "code": "import Foundation\n\nclass Image {\n}\n\nfinal class View {\n  func displayImage(_ image: Image) {\n  }\n}\n\nfinal class ImageModel {\n  var imageCache: [URL: Image] = [:]\n  let view = View()\n\n  func fetchAndDisplayImage(url: URL) async throws {\n    let (data, _) = try await URLSession.shared.data(from: url)\n    let image = await self.decodeImage(data, at: url)\n    view.displayImage(image)\n  }\n\n  @concurrent\n  func decodeImage(_ data: Data, at url: URL) async -> Image {\n    Image()\n  }\n}"
+    },
+    {
+      "title": "MyImage class with reference semantics",
+      "language": "swift",
+      "startTimeSeconds": 1114,
+      "code": "import Foundation\n\nstruct Color { }\n\nnonisolated class MyImage {\n  var width: Int\n  var height: Int\n  var pixels: [Color]\n  var url: URL\n\n  init() {\n    width = 100\n    height = 100\n    pixels = []\n    url = URL(\"https://swift.org\")!\n  }\n\n  func scale(by factor: Double) {\n  }\n}\n\nlet image = MyImage()\nlet otherImage = image // refers to the same object as 'image'\nimage.scale(by: 0.5)   // also changes otherImage!"
+    },
+    {
+      "title": "Concurrently scaling while displaying an image is a data race",
+      "language": "swift",
+      "startTimeSeconds": 1159,
+      "code": "import Foundation\n\nstruct Color { }\n\nnonisolated class MyImage {\n  var width: Int\n  var height: Int\n  var pixels: [Color]\n  var url: URL\n\n  init() {\n    width = 100\n    height = 100\n    pixels = []\n    url = URL(\"https://swift.org\")!\n  }\n\n  func scaleImage(by factor: Double) {\n  }\n}\n\nfinal class View {\n  func displayImage(_ image: MyImage) {\n  }\n}\n\nfinal class ImageModel {\n  var cachedImage: [URL: MyImage] = [:]\n  let view = View()\n\n  // Slide content start\n  func scaleAndDisplay(imageName: String) {\n    let image = loadImage(imageName)\n    Task { @concurrent in\n      image.scaleImage(by: 0.5)\n    }\n\n    view.displayImage(image)\n  }\n  // Slide content end\n\n  func loadImage(_ imageName: String) -> MyImage {\n    // decode image\n    return MyImage()\n  }\n}"
+    },
+    {
+      "title": "Scaling and then displaying an image eliminates the data race",
+      "language": "swift",
+      "startTimeSeconds": 1238,
+      "code": "import Foundation\n\nstruct Color { }\n\nnonisolated class MyImage {\n  var width: Int\n  var height: Int\n  var pixels: [Color]\n  var url: URL\n\n  init() {\n    width = 100\n    height = 100\n    pixels = []\n    url = URL(\"https://swift.org\")!\n  }\n\n  func scaleImage(by factor: Double) {\n  }\n}\n\nfinal class View {\n  func displayImage(_ image: MyImage) {\n  }\n}\n\nfinal class ImageModel {\n  var cachedImage: [URL: MyImage] = [:]\n  let view = View()\n\n  func scaleAndDisplay(imageName: String) {\n    Task { @concurrent in\n      let image = loadImage(imageName)\n      image.scaleImage(by: 0.5)\n      await view.displayImage(image)\n    }\n  }\n\n  nonisolated\n  func loadImage(_ imageName: String) -> MyImage {\n    // decode image\n    return MyImage()\n  }\n}"
+    },
+    {
+      "title": "Scaling and then displaying an image within a concurrent asynchronous function",
+      "language": "swift",
+      "startTimeSeconds": 1254,
+      "code": "import Foundation\n\nstruct Color { }\n\nnonisolated class MyImage {\n  var width: Int\n  var height: Int\n  var pixels: [Color]\n  var url: URL\n\n  init() {\n    width = 100\n    height = 100\n    pixels = []\n    url = URL(\"https://swift.org\")!\n  }\n\n  func scaleImage(by factor: Double) {\n  }\n}\n\nfinal class View {\n  func displayImage(_ image: MyImage) {\n  }\n}\n\nfinal class ImageModel {\n  var cachedImage: [URL: MyImage] = [:]\n  let view = View()\n\n  @concurrent\n  func scaleAndDisplay(imageName: String) async {\n    let image = loadImage(imageName)\n    image.scaleImage(by: 0.5)\n    await view.displayImage(image)\n  }\n\n  nonisolated\n  func loadImage(_ imageName: String) -> MyImage {\n    // decode image\n    return MyImage()\n  }\n}"
+    },
+    {
+      "title": "Scaling, then displaying and concurrently modifying an image is a data race",
+      "language": "swift",
+      "startTimeSeconds": 1271,
+      "code": "import Foundation\n\nstruct Color { }\n\nnonisolated class MyImage {\n  var width: Int\n  var height: Int\n  var pixels: [Color]\n  var url: URL\n\n  init() {\n    width = 100\n    height = 100\n    pixels = []\n    url = URL(\"https://swift.org\")!\n  }\n\n  func scaleImage(by factor: Double) {\n  }\n\n  func applyAnotherEffect() {\n  }\n}\n\nfinal class View {\n  func displayImage(_ image: MyImage) {\n  }\n}\n\nfinal class ImageModel {\n  var cachedImage: [URL: MyImage] = [:]\n  let view = View()\n\n  // Slide content start\n  @concurrent\n  func scaleAndDisplay(imageName: String) async {\n    let image = loadImage(imageName)\n    image.scaleImage(by: 0.5)\n    await view.displayImage(image)\n    image.applyAnotherEffect()\n  }\n  // Slide content end\n\n  nonisolated\n  func loadImage(_ imageName: String) -> MyImage {\n    // decode image\n    return MyImage()\n  }\n}"
+    },
+    {
+      "title": "Applying image transforms before sending to the main actor",
+      "language": "swift",
+      "startTimeSeconds": 1280,
+      "code": "import Foundation\n\nstruct Color { }\n\nnonisolated class MyImage {\n  var width: Int\n  var height: Int\n  var pixels: [Color]\n  var url: URL\n\n  init() {\n    width = 100\n    height = 100\n    pixels = []\n    url = URL(\"https://swift.org\")!\n  }\n\n  func scaleImage(by factor: Double) {\n  }\n\n  func applyAnotherEffect() {\n  }\n}\n\nfinal class View {\n  func displayImage(_ image: MyImage) {\n  }\n}\n\nfinal class ImageModel {\n  var cachedImage: [URL: MyImage] = [:]\n  let view = View()\n\n  // Slide content start\n  @concurrent\n  func scaleAndDisplay(imageName: String) async {\n    let image = loadImage(imageName)\n    image.scaleImage(by: 0.5)\n    image.applyAnotherEffect()\n    await view.displayImage(image)\n  }\n  // Slide content end\n\n  nonisolated\n  func loadImage(_ imageName: String) -> MyImage {\n    // decode image\n    return MyImage()\n  }\n}"
+    },
+    {
+      "title": "Closures create shared state",
+      "language": "swift",
+      "startTimeSeconds": 1326,
+      "code": "import Foundation\n\nstruct Color { }\n\nnonisolated class MyImage {\n  var width: Int\n  var height: Int\n  var pixels: [Color]\n  var url: URL\n\n  init() {\n    width = 100\n    height = 100\n    pixels = []\n    url = URL(\"https://swift.org\")!\n  }\n\n  func scale(by factor: Double) {\n  }\n\n  func applyAnotherEffect() {\n  }\n}\n\nfinal class View {\n  func displayImage(_ image: MyImage) {\n  }\n}\n\nfinal class ImageModel {\n  var cachedImage: [URL: MyImage] = [:]\n  let view = View()\n\n  // Slide content start\n  @concurrent\n  func scaleAndDisplay(imageName: String) async throws {\n    let image = loadImage(imageName)\n    try await perform(afterDelay: 0.1) {\n      image.scale(by: 0.5)\n    }\n    await view.displayImage(image)\n  }\n\n  nonisolated\n  func perform(afterDelay delay: Double, body: () -> Void) async throws {\n    try await Task.sleep(for: .seconds(delay))\n    body()\n  }\n  // Slide content end\n\n  nonisolated\n  func loadImage(_ imageName: String) -> MyImage {\n    // decode image\n    return MyImage()\n  }\n}pet."
+    },
+    {
+      "title": "Network manager class",
+      "language": "swift",
+      "startTimeSeconds": 1427,
+      "code": "import Foundation\n\nnonisolated class MyImage { }\n\nstruct Connection {\n  func data(from url: URL) async throws -> Data { Data() }\n}\n\nfinal class NetworkManager {\n  var openConnections: [URL: Connection] = [:]\n\n  func openConnection(for url: URL) async -> Connection {\n    if let connection = openConnections[url] {\n      return connection\n    }\n\n    let connection = Connection()\n    openConnections[url] = connection\n    return connection\n  }\n\n  func closeConnection(_ connection: Connection, for url: URL) async {\n    openConnections.removeValue(forKey: url)\n  }\n\n}\n\nfinal class View {\n  func displayImage(_ image: MyImage) {\n  }\n}\n\nfinal class ImageModel {\n  var cachedImage: [URL: MyImage] = [:]\n  let view = View()\n  let networkManager: NetworkManager = NetworkManager()\n\n  func fetchAndDisplayImage(url: URL) async throws {\n    if let image = cachedImage[url] {\n      view.displayImage(image)\n      return\n    }\n\n    let connection = await networkManager.openConnection(for: url)\n    let data = try await connection.data(from: url)\n    await networkManager.closeConnection(connection, for: url)\n\n    let image = await decodeImage(data)\n    view.displayImage(image)\n  }\n\n  @concurrent\n  func decodeImage(_ data: Data) async -> MyImage {\n    // decode image\n    return MyImage()\n  }\n}"
+    },
+    {
+      "title": "Network manager as an actor",
+      "language": "swift",
+      "startTimeSeconds": 1510,
+      "code": "import Foundation\n\nnonisolated class MyImage { }\n\nstruct Connection {\n  func data(from url: URL) async throws -> Data { Data() }\n}\n\nactor NetworkManager {\n  var openConnections: [URL: Connection] = [:]\n\n  func openConnection(for url: URL) async -> Connection {\n    if let connection = openConnections[url] {\n      return connection\n    }\n\n    let connection = Connection()\n    openConnections[url] = connection\n    return connection\n  }\n\n  func closeConnection(_ connection: Connection, for url: URL) async {\n    openConnections.removeValue(forKey: url)\n  }\n\n}\n\nfinal class View {\n  func displayImage(_ image: MyImage) {\n  }\n}\n\nfinal class ImageModel {\n  var cachedImage: [URL: MyImage] = [:]\n  let view = View()\n  let networkManager: NetworkManager = NetworkManager()\n\n  func fetchAndDisplayImage(url: URL) async throws {\n    if let image = cachedImage[url] {\n      view.displayImage(image)\n      return\n    }\n\n    let connection = await networkManager.openConnection(for: url)\n    let data = try await connection.data(from: url)\n    await networkManager.closeConnection(connection, for: url)\n\n    let image = await decodeImage(data)\n    view.displayImage(image)\n  }\n\n  @concurrent\n  func decodeImage(_ data: Data) async -> MyImage {\n    // decode image\n    return MyImage()\n  }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Swift Migration Guide",
+      "url": "https://www.swift.org/migration/documentation/migrationguide/",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "The Swift Programming Language: Concurrency",
+      "url": "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency/",
+      "type": "guide",
+      "description": "The chapter of the Language Guide in The Swift Programming Language that covers asynchronous and parallel code, including asynchronous functions (async/await), asynchronous sequences (AsyncSequence), async let, tasks, task groups, and actors."
+    }
+  ],
+  "path": "sessions/wwdc2025/268/",
+  "files": {
+    "metadata": "sessions/wwdc2025/268/metadata.json",
+    "readme": "sessions/wwdc2025/268/README.md",
+    "transcript": "sessions/wwdc2025/268/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/268/transcript.json"
+  }
+}

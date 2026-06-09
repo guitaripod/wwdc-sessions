@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10231",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10231,
+  "title": "Donate intents and expand your app’s presence",
+  "description": "Discover how you can make key parts of your app available for someone at exactly the right moment — without them ever needing to open it. Learn how to craft and donate intents to the system, helping you surface relevant and contextual information about your app in Siri, Focus, Shortcuts, the Smart Stack, and more. We’ll explore how the system intelligently identifies information and show you techniques for structuring intents to help increase engagement and visibility for your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10231",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10231",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "intelligence",
+    "intent",
+    "shortcuts",
+    "shortcuts app",
+    "sirikit",
+    "sirikit media intents",
+    "suggestions",
+    "system intelligence"
+  ],
+  "topics": [
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1209,
+  "hasTranscript": true,
+  "transcriptWordCount": 3095,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10231/3/E4613D08-78BF-4C2F-AE4E-E1A4B7A68D78/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10231/3/E4613D08-78BF-4C2F-AE4E-E1A4B7A68D78/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10231/3/E4613D08-78BF-4C2F-AE4E-E1A4B7A68D78/downloads/wwdc2021-10231_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10231/3/E4613D08-78BF-4C2F-AE4E-E1A4B7A68D78/downloads/wwdc2021-10231_hd.mp4",
+    "duration": 1209
+  },
+  "codeSnippets": [
+    {
+      "title": "Intent donation example",
+      "language": "swift",
+      "startTimeSeconds": 1,
+      "code": "// Donate your intent.\n\nlet intent = CheckWeatherIntent()\nintent.location = weatherLocation\n\nlet interaction = INInteraction(intent: intent, response: nil)\ninteraction.donate { (error) in\n    // Handle the error.\n}"
+    },
+    {
+      "title": "Intent deletion example",
+      "language": "swift",
+      "startTimeSeconds": 2,
+      "code": "// Donate your intent.\nlet interaction = INInteraction(intent: intent, response: response)\ninteraction.identifier = \"68753A44-4D6F-1226-9C60-0050E4C00067\"\ninteraction.groupIdentifier = \"san-diego\"\ninteraction.donate { (error) in\n    // Handle the error.\n}\n\n// Delete individual donations.\nINInteraction.delete(with: [\"68753A44-4D6F-1226-9C60-0050E4C00067\"]) { (error) in\n    // Handle the error.\n}\n\n// Delete group donations.\nINInteraction.delete(with: \"san-diego\") { (error) in\n    // Handle the error.\n}"
+    },
+    {
+      "title": "Intent donation example 2",
+      "language": "swift",
+      "startTimeSeconds": 3,
+      "code": "// Donate your intent.\n\nlet intent = OrderCoffeeIntent()\nintent.item = item\nintent.size = size\nintent.date = date\n\nlet interaction = INInteraction(intent: intent, response: nil)\ninteraction.donate { (error) in\n    // Handle the error.\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Donating Shortcuts",
+      "url": "https://developer.apple.com/documentation/SiriKit/donating-shortcuts",
+      "type": "documentation",
+      "description": "Tell Siri about shortcuts to actions that the user performed in your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/SiriKit/donating-shortcuts",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SiriKit/donating-shortcuts.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10231/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10231/metadata.json",
+    "readme": "sessions/wwdc2021/10231/README.md",
+    "transcript": "sessions/wwdc2021/10231/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10231/transcript.json"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "id": "tech-talks-207",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2017,
+  "eventContentId": 207,
+  "title": "Building Apps for iPhone XS, iPhone XS Max, and iPhone XR",
+  "description": "If your app has already adopted safe area insets, there's not much you will need to do to update your app for iPhone XS, iPhone XS Max, and iPhone XR. Learn how to set a collection view’s section inset reference to the safe area with no code changes. Hear about an API change unique to iPhone XS Max, iPhone XR. Make sure your full-screen app is scaled correctly by using the proper number of points and the correct resolution. Defend against some common pitfalls to ensure your app provides its full feature-set to all of your customers while maintaining best practices that will save you time and effort in the future.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/207",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/207",
+  "type": "Video",
+  "publishedAt": "2018-09-12T11:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 541,
+  "hasTranscript": true,
+  "transcriptWordCount": 1529,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tutorials/20180912/207naklypn7hewo9/building_apps_for_iphone_xs_iphone_xs_max_and_iphone_xr/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tutorials/20180912/207naklypn7hewo9/building_apps_for_iphone_xs_iphone_xs_max_and_iphone_xr/building_apps_for_iphone_xs_iphone_xs_max_and_iphone_xr_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tutorials/20180912/207naklypn7hewo9/building_apps_for_iphone_xs_iphone_xs_max_and_iphone_xr/building_apps_for_iphone_xs_iphone_xs_max_and_iphone_xr_hd.mp4",
+    "duration": 541
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/tech-talks/207/",
+  "files": {
+    "metadata": "sessions/tech-talks/207/metadata.json",
+    "readme": "sessions/tech-talks/207/README.md",
+    "transcript": "sessions/tech-talks/207/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/207/transcript.json"
+  }
+}

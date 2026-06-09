@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10102",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10102,
+  "title": "Compose interactive 3D content in Reality Composer Pro",
+  "description": "Discover how the Timeline view in Reality Composer Pro can bring your 3D content to life. Learn how to create an animated story in which characters and objects interact with each other and the world around them using inverse kinematics, blend shapes, and skeletal poses. We’ll also show you how to use built-in and custom actions, sequence your actions, apply triggers, and implement natural movements.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10102",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10102",
+  "type": "Video",
+  "publishedAt": "2024-06-10T14:00:00-07:00",
+  "platforms": [
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "animation",
+    "blend shapes",
+    "content creation",
+    "cross platform",
+    "inverse kinematics",
+    "ios",
+    "macos",
+    "rcp",
+    "reality composer pro",
+    "realitykit",
+    "skeletal poses",
+    "timelines",
+    "visionos",
+    "vision pro"
+  ],
+  "topics": [
+    "Developer Tools",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 2076,
+  "hasTranscript": true,
+  "transcriptWordCount": 4920,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10102/4/5895A2B6-4F9A-4D45-A5F6-C7689F50F571/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10102/4/5895A2B6-4F9A-4D45-A5F6-C7689F50F571/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10102/4/5895A2B6-4F9A-4D45-A5F6-C7689F50F571/downloads/wwdc2024-10102_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10102/4/5895A2B6-4F9A-4D45-A5F6-C7689F50F571/downloads/wwdc2024-10102_hd.mp4",
+    "duration": 2076
+  },
+  "codeSnippets": [
+    {
+      "title": "Setup IKComponent",
+      "language": "swift",
+      "startTimeSeconds": 1231,
+      "code": "// Setup IKComponent\nimport RealityKit\n\nstruct HeroRobotRuntimeComponent: Component {\n        var rig = try? IKRig(for: modelSkeleton)\n\n        rig.maxIterations = 30\n        rig.globalFkWeight = 0.02\n\n        let hipsJointName = \"root/hips\"\n        let chestJointName = \"root/hips/spine1/spine2/chest\"\n        let leftHandJointName = \"root/hips/spine1/spine2/chest/…/L_arm3/L_arm4/L_arm5/L_wrist\"\n\n        rig.constraints = [\n            .parent(named: \"hips_constraint\",\n                    on: hipsJointName,\n                    positionWeight: SIMD3(repeating: 90.0),\n                    orientationWeight: SIMD3(repeating: 90.0)),\n            .parent(named: \"chest_constraint\",\n                    on: chestJointName,\n                    positionWeight: SIMD3(repeating: 120.0),\n                    orientationWeight: SIMD3(repeating: 120.0)),\n            .point(named: \"left_hand_constraint\",\n                   on: leftHandJointName,\n                   positionWeight: SIMD3(repeating: 10.0))\n                ]\n\n        let resource = try? IKResource(rig: rig)                \n        modelComponentEntity.components.set(IKComponent(resource: resource))\n}"
+    },
+    {
+      "title": "Update IKComponent",
+      "language": "swift",
+      "startTimeSeconds": 1293,
+      "code": "// Update IKComponent\nimport RealityKit\n\nstruct HeroRobotRuntimeComponent: Component {\n        guard let reachTarget = sceneRoot.findEntity(named: \"reachTargetName\") else {\n            return\n        }\n\n        var reachPosition = reachTarget.position(relativeTo: entity)\n\n        let time = sin(simTime)\n        reachPosition.x += (20.0 + 50.0 * time)\n        reachPosition.y += (40.0 + 30.0 * abs(time))\n        reachPosition.z += (20.0 + 20.0 * abs(time))\n\n       guard let ikComponent = modelComponentEntity.components[IKComponent.self] else {\n           return\n       }\n\n       var reachPosition = reachTarget.position(relativeTo: entity)\n       ...\n       var leftHandConstraint = ikComponent.solvers.first?.constraints[\"left_hand_constraint\"]\n       leftHandConstraint?.target.translation = reachPosition\n\n       // A blendValue = 0 means no influence on the constraint.\n       // A blendValue = 1 means full influence on the constraint.\n       var blendValue = isEnabled ? (time / totalBlendTime) : (1.0 - time / totalBlendTime)\n       leftHandConstraint?.animationOverrideWeight.position = blendValue\n\n       modelComponentEntity.components.set(ikComponent)\n}"
+    },
+    {
+      "title": "Sequence and play animation actions",
+      "language": "swift",
+      "startTimeSeconds": 1476,
+      "code": "// Play Animation Actions\nimport RealityKit\n\nstruct HeroRobotRuntimeComponent: Component {\n       let rotateAnimationResource = createRotateAnimationResource()\n       let walkAndMoveAnimationGroup = createWalkAndMoveAnimationGroup()\n       let alignAtHomeActionResource = createAlignAtHomeActionResource()\n       let robotTravelHomeCompleteActionResource = createRobotTravelHomeCompleteAction()\n\n       // Build a sequence of the rotate, move and align animations/actions to play.\n       let moveHomeSequence = try? AnimationResource.sequence(with: [rotateAnimationResource,\n                                                                    walkAndMoveAnimationGroup,\n                                                                    alignAtHomeActionResource,\n                                                       robotTravelHomeCompleteActionResource])\n\n       // Play the move-to-home sequence.\n       _ = robotEntity.playAnimation(moveHomeSequence)\n}"
+    },
+    {
+      "title": "Setup EntityActions",
+      "language": "swift",
+      "startTimeSeconds": 1559,
+      "code": "// Setup EntityActions\nimport RealityKit\n\nstruct HeroRobotRuntimeComponent: Component {\n    struct RobotMoveToHomeComplete: EntityAction {\n        var animatedValueType: (any AnimatableData.Type)? { nil }\n    }\n\n    let travelCompleteAction = RobotMoveToHomeComplete()\n\n    let actionResource = try! AnimationResource.makeActionAnimation(for: travelCompleteAction,\n                                                                    duration: 0.1)\n\n    let _ = robotEntity.playAnimation(actionResource)\n}"
+    },
+    {
+      "title": "EntityAction subscription",
+      "language": "swift",
+      "startTimeSeconds": 1599,
+      "code": "// EntityAction subscription\nimport RealityKit\n\nstruct HeroRobotRuntimeComponent: Component {\n                  // Subscribe to know when the EntityAction has started.\n                RobotMoveToHomeComplete.subscribe(to: .started) { event in\n                    if event.playbackController.entity != nil {\n                        event.playbackController.stop()\n                    }\n                }\n\n                // Possible states of the robot.\n                public enum HeroRobotState: String, Codable {\n                    case available\n                    …\n                    case arrivedHome\n                }\n\n               // Subscribe to know when the EntityAction has ended.\n                RobotMoveToHomeComplete.subscribe(to: .ended) { event in\n                    if let robotEntity = event.playbackController.entity,\n                    var component = robotEntity.components[HeroRobotRuntimeComponent.self] {\n                       component.setState(newState:.arrivedHome)\n                    }\n                }\n}"
+    },
+    {
+      "title": "Setup BlendshapeWeightsComponent",
+      "language": "swift",
+      "startTimeSeconds": 1757,
+      "code": "// Setup BlendShapeWeightsComponent\nimport RealityKit\n\nstruct HeroPlantComponent: Component, Codable {\n        guard let modelComponentEntity = findModelComponentEntity(entity: entity),\n              let modelComponent = modelComponentEntity.components[ModelComponent.self]\n        else { return }\n\n            let blendShapeWeightsMapping\n               = BlendShapeWeightsMapping(meshResource: modelComponent.mesh)\n\n            // Create the blend shape weights component.\n            entity.components.set(BlendShapeWeightsComponent(weightsMapping:\n                                                            blendShapeWeightsMapping))\n}"
+    },
+    {
+      "title": "Update BlendshapeWeightsComponent",
+      "language": "swift",
+      "startTimeSeconds": 1778,
+      "code": "// Update BlendShapeWeightsComponent\n\nstruct HeroPlantComponent: Component, Codable {\n        guard let component = entity.components[BlendShapeWeightsComponent.self]\n        else { return }\n\n        var blendWeightSet = blendShapeComponent.weightSet\n\n        // Update the weights in the BlendShapeWeightsSet\n        for weightIndex in 0..<blendWeightSet[blendWeightsIndex].weights.count {\n            blendWeightSet[blendWeightsIndex].weights[weightIndex] = 0.0\n        }\n\n        // Assign the new weights to the blend shape component.\n       for index in 0..<blendWeightSet.count {\n            component?.weightSet[blendWeightsIndex].weights = blendWeightSet[index].weights\n        }\n}"
+    },
+    {
+      "title": "Setup and update Skeletal Poses",
+      "language": "swift",
+      "startTimeSeconds": 1921,
+      "code": "// Update Skeletal Poses\nimport RealityKit\n\nstruct StationaryRobotRuntimeComponent: Component {\n\n        guard var component = entity.components[SkeletalPosesComponent.self] \n        else {\n            return\n        }\n\n        let neckRotation = calculateRotation()\n\n        component.poses.default?.jointTransforms[neckJointIndex].rotation = neckRotation\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Composing interactive 3D content with RealityKit and Reality Composer Pro",
+      "url": "https://developer.apple.com/documentation/RealityKit/composing-interactive-3d-content-with-realitykit-and-reality-composer-pro",
+      "type": "samplecode",
+      "description": "Build an interactive scene using an animation timeline.",
+      "sosumiURL": "https://sosumi.ai/documentation/RealityKit/composing-interactive-3d-content-with-realitykit-and-reality-composer-pro",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/RealityKit/composing-interactive-3d-content-with-realitykit-and-reality-composer-pro.json"
+    },
+    {
+      "title": "Forum: Spatial Computing",
+      "url": "https://developer.apple.com/forums/topics/spatial-computing?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/spatial-computing?cid=vf-a-0010"
+    }
+  ],
+  "path": "sessions/wwdc2024/10102/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10102/metadata.json",
+    "readme": "sessions/wwdc2024/10102/README.md",
+    "transcript": "sessions/wwdc2024/10102/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10102/transcript.json"
+  }
+}

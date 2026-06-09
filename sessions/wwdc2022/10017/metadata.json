@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10017",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10017,
+  "title": "Explore the machine learning development experience",
+  "description": "Learn how to bring great machine learning (ML) based experiences to your app. We'll take you through model discovery, conversion, and training and provide tips and best practices for ML. We'll share considerations to take into account as you begin your ML journey, demonstrate techniques for evaluating model performance, and explore how you can tune models to achieve real-time performance on device.\n\nTo learn more about the techniques covered in this session, watch \"Optimize your Core ML usage\" and \"Accelerate machine learning with Metal\" from WWDC22.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10017",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10017",
+  "type": "Video",
+  "publishedAt": "2022-06-10T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1039,
+  "hasTranscript": true,
+  "transcriptWordCount": 2351,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10017/3/6F4C9F52-725A-4AD2-83BD-A3D43D29A914/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10017/3/6F4C9F52-725A-4AD2-83BD-A3D43D29A914/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10017/3/6F4C9F52-725A-4AD2-83BD-A3D43D29A914/downloads/wwdc2022-10017_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10017/3/6F4C9F52-725A-4AD2-83BD-A3D43D29A914/downloads/wwdc2022-10017_hd.mp4",
+    "duration": 1039
+  },
+  "codeSnippets": [
+    {
+      "title": "Colorization pre-processing",
+      "language": "python",
+      "startTimeSeconds": 186,
+      "code": "from skimage import color\n\nin_lab = color.rgb2lab(in_rgb)\nin_l = in_lab[:,:,0]"
+    },
+    {
+      "title": "Colorization post-processing",
+      "language": "python",
+      "startTimeSeconds": 219,
+      "code": "from skimage import color\nimport numpy as np\nimport torch\n\nout_lab = torch.cat((in_l, out_ab), dim=1)\nout_rgb = color.lab2rgb(out_lab.data.numpy()[0,…].transpose((1,2,0)))"
+    },
+    {
+      "title": "Convert colorizer model to Core ML",
+      "language": "python",
+      "startTimeSeconds": 236,
+      "code": "import coremltools as ct\nimport torch\nimport Colorizer\n\ntorch_model = Colorizer().eval()\n\nexample_input = torch.rand([1, 1, 256, 256])\ntraced_model = torch.jit.trace(torch_model, example_input)\n\ncoreml_model = ct.convert(traced_model, \n                          inputs=[ct.TensorType(name=\"input\", shape=example_input.shape)])\n\ncoreml_model.save(\"Colorizer.mlpackage\")"
+    },
+    {
+      "title": "Core ML model verification using Core ML Tools",
+      "language": "python",
+      "startTimeSeconds": 266,
+      "code": "import coremltools as ct\nfrom PIL import Image\nfrom skimage import color\n\nin_img = Image.open(“image.png\").convert(\"RGB\")\nin_rgb = np.array(in_img)\nin_lab = color.rgb2lab(in_rgb, channel_axis=2)\n\nlab_components = np.split(in_lab, indices_or_sections=3, axis=-1)\n(in_l, _, _) = [\n    np.expand_dims(array.transpose((2, 0, 1)).astype(np.float32), 0)\n    for array in lab_components\n]\nout_ab = coreml_model.predict({\"input\": in_l})[0]\n\nout_lab = np.squeeze(np.concatenate([in_l, out_ab], axis=1), axis=0).transpose((1, 2, 0))\nout_rgb = color.lab2rgb(out_lab, channel_axis=2).astype(np.uint8)\nout_img = Image.fromarray(out_rgb)"
+    },
+    {
+      "title": "Colorization in Swift",
+      "language": "swift",
+      "startTimeSeconds": 431,
+      "code": "import CoreImage\nimport CoreML\n\nfunc colorize(image inputImage: CIImage) throws -> CIImage {\n\n    let lightness: CIImage = extractLightness(from: inputImage)\n\n    let modelInput = try ColorizerInput(inputWith: lightness.cgImage!)\n\n    let modelOutput: ColorizerOutput = try colorizer.prediction(input: modelInput)\n\n    let (aChannel, bChannel): (CIImage, CIImage) = extractColorChannels(from: modelOutput)\n\n    let colorizedImage = reconstructRGBImage(l: lightness, a: aChannel, b: bChannel)\n    return colorizedImage\n}"
+    },
+    {
+      "title": "Extract lightness from RGB image using Core Image",
+      "language": "swift",
+      "startTimeSeconds": 461,
+      "code": "import CoreImage.CIFilterBuiltins\n\nfunc extractLightness(from inputImage: CIImage) -> CIImage {\n\n    let rgbToLabFilter = CIFilter.convertRGBtoLab()\n    rgbToLabFilter.inputImage = inputImage\n    rgbToLabFilter.normalize = true\n    let labImage = rgbToLabFilter.outputImage\n\n    let matrixFilter = CIFilter.colorMatrix()\n    matrixFilter.inputImage = labImage\n    matrixFilter.rVector = CIVector(x: 1, y: 0, z: 0)\n    matrixFilter.gVector = CIVector(x: 1, y: 0, z: 0)\n    matrixFilter.bVector = CIVector(x: 1, y: 0, z: 0)\n    let lightness = matrixFilter.outputImage!\n    return lightness\n}"
+    },
+    {
+      "title": "Create two color channel CIImages from model output",
+      "language": "swift",
+      "startTimeSeconds": 511,
+      "code": "func extractColorChannels(from output: ColorizerOutput) -> (CIImage, CIImage) {\n\n    let outA: [Float] = output.output_aShapedArray.scalars\n    let outB: [Float] = output.output_bShapedArray.scalars\n    let dataA = Data(bytes: outA, count: outA.count * MemoryLayout<Float>.stride)\n    let dataB = Data(bytes: outB, count: outB.count * MemoryLayout<Float>.stride)\n\n    let outImageA = CIImage(bitmapData: dataA,\n        bytesPerRow: 4 * 256,\n        size: CGSize(width: 256, height: 256),\n        format: CIFormat.Lh,\n        colorSpace: CGColorSpaceCreateDeviceGray())\n    let outImageB = CIImage(bitmapData: dataB,\n        bytesPerRow: 4 * 256,\n        size: CGSize(width: 256, height: 256),\n        format: CIFormat.Lh,\n        colorSpace: CGColorSpaceCreateDeviceGray())\n   return (outImageA, outImageB)\n}"
+    },
+    {
+      "title": "Reconstruct RGB image from Lab images",
+      "language": "swift",
+      "startTimeSeconds": 531,
+      "code": "func reconstructRGBImage(l lightness: CIImage,\n                         a aChannel: CIImage,\n                         b bChannel: CIImage) -> CIImage {\n    guard\n        let kernel = try? CIKernel.kernels(withMetalString: source)[0] as? CIColorKernel,\n        let kernelOutputImage = kernel.apply(extent: lightness.extent,\n                                             arguments: [lightness, aChannel, bChannel])\n    else { fatalError() }\n\n    let labToRGBFilter = CIFilter.convertLabToRGBFilter()\n    labToRGBFilter.inputImage = kernelOutputImage\n    labToRGBFilter.normalize = true\n    let rgbImage = labToRGBFilter.outputImage!\n    return rgbImage\n}"
+    },
+    {
+      "title": "Custom CIKernel to combine L, a* and b* channels.",
+      "language": "swift",
+      "startTimeSeconds": 548,
+      "code": "let source = \"\"\"\n#include <CoreImage/CoreImage.h>\n[[stichable]] float4 labCombine(coreimage::sample_t imL, coreimage::sample_t imA, coreimage::sample_t imB)\n{\n   return float4(imL.r, imA.r, imB.r, imL.a);\n}\n\"\"\""
+    }
+  ],
+  "resources": [
+    {
+      "title": "Core ML Converters",
+      "url": "https://coremltools.readme.io/docs",
+      "type": "documentation",
+      "description": "Reference documentation on coremltools including Core ML Converters"
+    },
+    {
+      "title": "Core ML Tools PyTorch Conversion Documentation",
+      "url": "https://coremltools.readme.io/docs/pytorch-conversion",
+      "type": "documentation",
+      "description": "Full documentation of coremltools for PyTorch model conversion."
+    },
+    {
+      "title": "Integrating a Core ML Model into Your App",
+      "url": "https://developer.apple.com/documentation/CoreML/integrating-a-core-ml-model-into-your-app",
+      "type": "samplecode",
+      "description": "Add a simple model to an app,",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreML/integrating-a-core-ml-model-into-your-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreML/integrating-a-core-ml-model-into-your-app.json"
+    },
+    {
+      "title": "Core ML",
+      "url": "https://developer.apple.com/documentation/CoreML",
+      "type": "documentation",
+      "description": "Integrate machine learning models into your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreML",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreML.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10017/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10017/metadata.json",
+    "readme": "sessions/wwdc2022/10017/README.md",
+    "transcript": "sessions/wwdc2022/10017/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10017/transcript.json"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10041",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10041,
+  "title": "Explore advances in declarative device management ",
+  "description": "Learn how you can help IT administrators get the tools they need to manage their organization’s devices. Discover the latest changes to declarative device management, including software update management, additional asset types, status reporting for FileVault, and more.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10041",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10041",
+  "type": "Video",
+  "publishedAt": "2023-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Business & Education"
+  ],
+  "primaryTopic": "Business & Education",
+  "duration": 2196,
+  "hasTranscript": true,
+  "transcriptWordCount": 4671,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10041/5/3291DDC3-9C1C-4F82-885B-351107EFC8AF/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10041/5/3291DDC3-9C1C-4F82-885B-351107EFC8AF/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10041/5/3291DDC3-9C1C-4F82-885B-351107EFC8AF/downloads/wwdc2023-10041_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10041/5/3291DDC3-9C1C-4F82-885B-351107EFC8AF/downloads/wwdc2023-10041_hd.mp4",
+    "duration": 2196
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Device Management Client Schema on GitHub",
+      "url": "http://github.com/apple/device-management",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Device Management",
+      "url": "https://developer.apple.com/documentation/DeviceManagement",
+      "type": "documentation",
+      "description": "Manage your organization’s devices remotely.",
+      "sosumiURL": "https://sosumi.ai/documentation/DeviceManagement",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/DeviceManagement.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10041/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10041/metadata.json",
+    "readme": "sessions/wwdc2023/10041/README.md",
+    "transcript": "sessions/wwdc2023/10041/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10041/transcript.json"
+  }
+}

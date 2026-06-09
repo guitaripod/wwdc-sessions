@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-294",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 294,
+  "title": "What’s new in Metal rendering for immersive apps",
+  "description": "Discover the latest improvements in Metal rendering for immersive apps with Compositor Services. Learn how to add hover effects to highlight your app’s interactive elements, and how to render in higher fidelity with dynamic render quality. Find out about the new progressive immersion style. And explore how you can bring immersive experiences to macOS apps by directly rendering Metal content from Mac to Vision Pro. \n\nTo get the most out of this session, first watch “Discover Metal for immersive apps” from WWDC23.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/294",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/294",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 1480,
+  "hasTranscript": true,
+  "transcriptWordCount": 3412,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/294/4/e0a53a43-a861-4846-9d3a-45232b5e959a/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/294/4/e0a53a43-a861-4846-9d3a-45232b5e959a/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/294/4/e0a53a43-a861-4846-9d3a-45232b5e959a/downloads/wwdc2025-294_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/294/4/e0a53a43-a861-4846-9d3a-45232b5e959a/downloads/wwdc2025-294_hd.mp4",
+    "duration": 1480
+  },
+  "codeSnippets": [
+    {
+      "title": "Scene render loop",
+      "language": "swift",
+      "startTimeSeconds": 1,
+      "code": "// Scene render loop\n\nextension Renderer {\n    func renderFrame(with scene: MyScene) {\n        guard let frame = layerRenderer.queryNextFrame() else { return }\n\n        frame.startUpdate()\n        scene.performFrameIndependentUpdates()\n        frame.endUpdate()\n\n        let drawables = frame.queryDrawables()\n        guard !drawables.isEmpty else { return }\n\n        guard let timing = frame.predictTiming() else { return }\n        LayerRenderer.Clock().wait(until: timing.optimalInputTime)\n        frame.startSubmission()\n        scene.render(to: drawable)\n        frame.endSubmission()\n    }\n}"
+    },
+    {
+      "title": "Layer configuration",
+      "language": "swift",
+      "startTimeSeconds": 354,
+      "code": "// Layer configuration\n\nstruct MyConfiguration: CompositorLayerConfiguration {\n    func makeConfiguration(capabilities: LayerRenderer.Capabilities,\n                           configuration: inout LayerRenderer.Configuration) {\n        // Configure other aspects of LayerRenderer\n\n        let trackingAreasFormat: MTLPixelFormat = .r8Uint\n        if capabilities.supportedTrackingAreasFormats.contains(trackingAreasFormat) {\n            configuration.trackingAreasFormat = trackingAreasFormat\n        }\n    }\n}"
+    },
+    {
+      "title": "Object render function",
+      "language": "swift",
+      "startTimeSeconds": 474,
+      "code": "// Object render function\n\nextension MyObject {\n    func render(drawable: Drawable, renderEncoder: MTLRenderCommandEncoder) {\n        var renderValue: LayerRenderer.Drawable.TrackingArea.RenderValue? = nil\n        if self.isInteractive {\n            let trackingArea = drawable.addTrackingArea(identifier: self.identifier)\n            if self.usesHoverEffect {\n                trackingArea.addHoverEffect(.automatic)\n            }\n            renderValue = trackingArea.renderValue\n        }\n\t\tself.draw(with: commandEncoder, trackingAreaRenderValue: renderValue)\n    }\n}"
+    },
+    {
+      "title": "Metal fragment shader",
+      "language": "cpp",
+      "startTimeSeconds": 506,
+      "code": "// Metal fragment shader\n\nstruct FragmentOut\n{\n    float4 color [[color(0)]];\n    uint16_t trackingAreaRenderValue [[color(1)]];\n};\n\nfragment FragmentOut fragmentShader( /* ... */ )\n{\n    // ...\n\n    return FragmentOut {\n        float4(outColor, 1.0),\n        uniforms.trackingAreaRenderValue\n    };\n}"
+    },
+    {
+      "title": "Event processing",
+      "language": "swift",
+      "startTimeSeconds": 609,
+      "code": "// Event processing\n\nextension Renderer {\n    func processEvent(_ event: SpatialEventCollection.Event) {\n       let object = scene.objects.first {\n           $0.identifier == event.trackingAreaIdentifier\n       }\n       if let object {\n           object.performAction()\n       }\n   }\n}"
+    },
+    {
+      "title": "Quality constants",
+      "language": "swift",
+      "startTimeSeconds": 788,
+      "code": "// Quality constants\n\nextension MyScene {\n    struct Constants {\n        static let menuRenderQuality: LayerRenderer.RenderQuality = .init(0.8)\n        static let worldRenderQuality: LayerRenderer.RenderQuality = .init(0.6)\n        static var maxRenderQuality: LayerRenderer.RenderQuality { menuRenderQuality }\n    }\n}"
+    },
+    {
+      "title": "Layer configuration",
+      "language": "swift",
+      "startTimeSeconds": 812,
+      "code": "// Layer configuration\n\nstruct MyConfiguration: CompositorLayerConfiguration {\n    func makeConfiguration(capabilities: LayerRenderer.Capabilities,\n                           configuration: inout LayerRenderer.Configuration) {\n       // Configure other aspects of LayerRenderer\n\n       if configuration.isFoveationEnabled {\n           configuration.maxRenderQuality = MyScene.Constants.maxRenderQuality\n       }\n}"
+    },
+    {
+      "title": "Set runtime render quality",
+      "language": "swift",
+      "startTimeSeconds": 837,
+      "code": "// Set runtime render quality\n\nextension MyScene {\n    var renderQuality: LayerRenderer.RenderQuality {\n        switch type {\n        case .world: Constants.worldRenderQuality\n        case .menu: Constants.menuRenderQuality\n        }\n    }\n}\n\nextension Renderer {\n    func adjustRenderQuality(for scene: MyScene) {\n        guard layerRenderer.configuration.isFoveationEnabled else {\n            return;\n        }\n        layerRenderer.renderQuality = scene.renderQuality\n    }\n}"
+    },
+    {
+      "title": "SwiftUI immersion style",
+      "language": "swift",
+      "startTimeSeconds": 1018,
+      "code": "// SwiftUI immersion style\n\n@main\nstruct MyApp: App {\n    @State var immersionStyle: ImmersionStyle\n\n    var body: some Scene {\n        ImmersiveSpace(id: \"MyImmersiveSpace\") {\n            CompositorLayer(configuration: MyConfiguration()) { @MainActor layerRenderer in\n                Renderer.startRenderLoop(layerRenderer)\n            }\n        }\n        .immersionStyle(selection: $immersionStyle, in: .progressive, .full)\n    }\n}"
+    },
+    {
+      "title": "Layer configuration",
+      "language": "swift",
+      "startTimeSeconds": 1032,
+      "code": "// Layer configuration\n\nstruct MyConfiguration: CompositorLayerConfiguration {\n    func makeConfiguration(capabilities: LayerRenderer.Capabilities,\n                           configuration: inout LayerRenderer.Configuration) {\n        // Configure other aspects of LayerRenderer\n\n        if configuration.layout == .layered {\n            let stencilFormat: MTLPixelFormat = .stencil8 \n            if capabilities.drawableRenderContextSupportedStencilFormats.contains(\n                stencilFormat\n            ) {\n                configuration.drawableRenderContextStencilFormat = stencilFormat \n            }\n            configuration.drawableRenderContextRasterSampleCount = 1\n        }\n    }\n}"
+    },
+    {
+      "title": "Render loop",
+      "language": "swift",
+      "startTimeSeconds": 1060,
+      "code": "// Render loop\n\nstruct Renderer {\n    let portalStencilValue: UInt8 = 200 // Value not used in other stencil operations\n\n    func renderFrame(with scene: MyScene,\n                     drawable: LayerRenderer.Drawable,\n                     commandBuffer: MTLCommandBuffer) {\n        let drawableRenderContext = drawable.addRenderContext(commandBuffer: commandBuffer)\n        let renderEncoder = configureRenderPass(commandBuffer: commandBuffer)\n        drawableRenderContext.drawMaskOnStencilAttachment(commandEncoder: renderEncoder,\n                                                          value: portalStencilValue)\n        renderEncoder.setStencilReferenceValue(UInt32(portalStencilValue))\n\n        scene.render(to: drawable, renderEncoder: renderEncoder)\n\n        drawableRenderContext.endEncoding(commandEncoder: commandEncoder)\n        drawable.encodePresent(commandBuffer: commandBuffer)\n    }\n}"
+    },
+    {
+      "title": "App structure",
+      "language": "swift",
+      "startTimeSeconds": 1255,
+      "code": "// App structure\n\n@main\nstruct MyImmersiveMacApp: App {\n    @State var immersionStyle: ImmersionStyle = .full\n\n    var body: some Scene {\n        WindowGroup {\n            MyAppContent()\n        }\n\n        RemoteImmersiveSpace(id: \"MyRemoteImmersiveSpace\") {\n            MyCompositorContent()\n        }\n        .immersionStyle(selection: $immersionStyle, in: .full, .progressive)\n   }\n}"
+    },
+    {
+      "title": "App UI",
+      "language": "swift",
+      "startTimeSeconds": 1274,
+      "code": "// App UI\n\nstruct MyAppContent: View {\n    @Environment(\\.supportsRemoteScenes) private var supportsRemoteScenes\n    @Environment(\\.openImmersiveSpace) private var openImmersiveSpace\n    @State private var spaceState: OpenImmersiveSpaceAction.Result?\n\n    var body: some View {\n        if !supportsRemoteScenes {\n            Text(\"Remote SwiftUI scenes are not supported on this Mac.\")\n        } else if spaceState != nil {\n            MySpaceStateView($spaceState)\n        } else {\n            Button(\"Open remote immersive space\") {\n                Task {\n                    spaceState = await openImmersiveSpace(id: \"MyRemoteImmersiveSpace\")\n                }\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Compositor content and ARKit session",
+      "language": "swift",
+      "startTimeSeconds": 1295,
+      "code": "// Compositor content and ARKit session\n\nstruct MyCompositorContent: CompositorContent {\n    @Environment(\\.remoteDeviceIdentifier) private var remoteDeviceIdentifier\n\n    var body: some CompositorContent {\n        CompositorLayer(configuration: MyConfiguration()) { @MainActor layerRenderer in\n            guard let remoteDeviceIdentifier else { return }\n            let arSession = ARKitSession(device: remoteDeviceIdentifier)\n            Renderer.startRenderLoop(layerRenderer, arSession)\n        }\n    }\n}"
+    },
+    {
+      "title": "C interoperability",
+      "language": "cpp",
+      "startTimeSeconds": 1397,
+      "code": "// Swift\nlet remoteDevice: ar_device_t = remoteDeviceIdentifier.cDevice Renderer.start_rendering(layerRenderer, remoteDevice)\n\n// C\nvoid start_rendering(cp_layer_renderer_t layer_renderer, ar_device_t remoteDevice) {     ar_session_t session = ar_session_create_with_device(remoteDevice);     // ... }"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Analyzing the performance of your Metal app",
+      "url": "https://developer.apple.com/documentation/Xcode/Analyzing-the-performance-of-your-Metal-app",
+      "type": "documentation",
+      "description": "Ensure consistent, smooth rendering by profiling your app’s frame time.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/Analyzing-the-performance-of-your-Metal-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/Analyzing-the-performance-of-your-Metal-app.json"
+    },
+    {
+      "title": "Rendering hover effects in Metal immersive apps",
+      "url": "https://developer.apple.com/documentation/CompositorServices/rendering_hover_effects_in_metal_immersive_apps",
+      "type": "samplecode",
+      "description": "Change the appearance of a rendered onscreen element when a player gazes at it.",
+      "sosumiURL": "https://sosumi.ai/documentation/CompositorServices/rendering_hover_effects_in_metal_immersive_apps",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CompositorServices/rendering_hover_effects_in_metal_immersive_apps.json"
+    },
+    {
+      "title": "Optimizing GPU performance",
+      "url": "https://developer.apple.com/documentation/Xcode/Optimizing-GPU-performance",
+      "type": "documentation",
+      "description": "Find and address performance bottlenecks using the Metal debugger.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/Optimizing-GPU-performance",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/Optimizing-GPU-performance.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/294/",
+  "files": {
+    "metadata": "sessions/wwdc2025/294/metadata.json",
+    "readme": "sessions/wwdc2025/294/README.md",
+    "transcript": "sessions/wwdc2025/294/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/294/transcript.json"
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10185",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10185,
+  "title": "Build multilingual-ready apps",
+  "description": "Ensure your app works properly and effectively for multilingual users. Learn best practices for text input, display, search, and formatting. Get details on typing in multiple languages without switching between keyboards. And find out how the latest advances in the String Catalog can make localization even easier.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10185",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10185",
+  "type": "Video",
+  "publishedAt": "2024-06-12T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "🌍",
+    "🌎",
+    "🌏",
+    "automatic grammar agreement",
+    "formatter",
+    "hindi",
+    "i10n",
+    "keyboard layout guide",
+    "l18n",
+    "nstextview",
+    "sf symbols",
+    "stringsdict",
+    "textkit",
+    "uitextview"
+  ],
+  "topics": [
+    "App Services",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1001,
+  "hasTranscript": true,
+  "transcriptWordCount": 2698,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10185/4/B7C5A64E-515C-41CE-A821-E441DE74E0A1/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10185/4/B7C5A64E-515C-41CE-A821-E441DE74E0A1/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10185/4/B7C5A64E-515C-41CE-A821-E441DE74E0A1/downloads/wwdc2024-10185_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10185/4/B7C5A64E-515C-41CE-A821-E441DE74E0A1/downloads/wwdc2024-10185_hd.mp4",
+    "duration": 1001
+  },
+  "codeSnippets": [
+    {
+      "title": "Specify textInputContextIdentifier",
+      "language": "swift",
+      "startTimeSeconds": 198,
+      "code": "override var textInputContextIdentifier: String? {\n    uniqueID\n}"
+    },
+    {
+      "title": "Place a view directly above the keyboard",
+      "language": "swift",
+      "startTimeSeconds": 221,
+      "code": "textView.inputAccessoryView = viewAboveKeyboard"
+    },
+    {
+      "title": "Use keyboardLayoutGuide to adapt to keyboard",
+      "language": "swift",
+      "startTimeSeconds": 240,
+      "code": "view.keyboardLayoutGuide.topAnchor.constraint(equalToSystemSpacingBelow: textView.bottomAnchor, multiplier: 1.0).isActive = true"
+    },
+    {
+      "title": "Check for marked text before modifying",
+      "language": "swift",
+      "startTimeSeconds": 282,
+      "code": "if textView.markedTextRange.empty {\n    // Perform actions involving editing text\n}"
+    },
+    {
+      "title": "Use localizedStandardRange when searching",
+      "language": "swift",
+      "startTimeSeconds": 358,
+      "code": "let range = text.localizedStandardRange(of: search)"
+    },
+    {
+      "title": "Use color differences to highlight text",
+      "language": "swift",
+      "startTimeSeconds": 444,
+      "code": "attributedString[range].foregroundColor = highlightColor"
+    },
+    {
+      "title": "Text Styles",
+      "language": "swift",
+      "startTimeSeconds": 579,
+      "code": "// Text Styles\n\n// SwiftUI\nText(\"Hello, world!\") // uses .body Text Style by default\nText(\"Hello, world!\").font(.title)\n\n// UIKit\nlet label = UILabel()\nlabel.text = \"Hello, world!\"\nlabel.font = UIFont.preferredFont(forTextStyle: .body)\n\n// AppKit\nlet textField = NSTextField(labelWithString: \"Hello, world!\")\ntextField.font = NSFont.preferredFont(forTextStyle: .body)\n\n// Keep clipsToBounds off\nclipsToBounds = false"
+    },
+    {
+      "title": "Typesetting language",
+      "language": "swift",
+      "startTimeSeconds": 603,
+      "code": "// Typesetting language\n\n// SwiftUI\nText(verbatim: \"Hello, world!\").typesettingLanguage(.init(languageCode: .english))\n\n// UIKit\nlet label = UILabel()\nlabel.text = \"Hello, world!\"\nlabel.traitOverrides.typesettingLanguage = Locale.Language(languageCode: .english)"
+    },
+    {
+      "title": "Formatting names",
+      "language": "swift",
+      "startTimeSeconds": 629,
+      "code": "// Formatting names\n\nlet nameComponents = PersonNameComponents\n  (givenName: \"瑗珺\", familyName: \"汪\", nickname: \"珺珺\")\n\n// Short Name (respects settings like “Prefer Nicknames”)\nlet shortName =   nameComponents.formatted(.name(style: .short)) // 珺珺\n\n// Abbreviated Name (can be used for monograms)\nlet monogram =   nameComponents.formatted(.name(style: .abbreviated)) // 汪"
+    },
+    {
+      "title": "Examples of personalizing text",
+      "language": "markdown",
+      "startTimeSeconds": 740,
+      "code": "\"^[Nuestro %@](inflect: true) está ^[hecho](agreeWithArgument: 1) de %@.\"\n\"अगर आप पहुँच नहीं ^[पाते हैं](inflect: true)\"\n\"예: ‘^[%@을](inflect: true) 켤 때’\""
+    },
+    {
+      "title": "Format numbers using Text",
+      "language": "swift",
+      "startTimeSeconds": 823,
+      "code": "Text(\"\\(numberOfDays)-day forecast\")"
+    },
+    {
+      "title": "Format numbers using AttributedString",
+      "language": "swift",
+      "startTimeSeconds": 861,
+      "code": "AttributedString(localized: \"10-day forecast\")\nAttributedString(localized: \"0.5× zoom\")"
+    },
+    {
+      "title": "Launch to your app’s settings",
+      "language": "swift",
+      "startTimeSeconds": 923,
+      "code": "// Launch to your app’s settings\nif let url =\nURL(string: UIApplication.openSettingsURLString) {\n   await UIApplication.shared.open(url)\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Forum: UI Frameworks",
+      "url": "https://developer.apple.com/forums/topics/ui-frameworks?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/ui-frameworks?cid=vf-a-0010"
+    },
+    {
+      "title": "Expanding Your App to New Markets",
+      "url": "https://developer.apple.com/localization/",
+      "type": "guide",
+      "description": "Internationalization and Localization. Expanding Your App to New Markets.",
+      "sosumiURL": "https://sosumi.ai/localization/"
+    }
+  ],
+  "path": "sessions/wwdc2024/10185/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10185/metadata.json",
+    "readme": "sessions/wwdc2024/10185/README.md",
+    "transcript": "sessions/wwdc2024/10185/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10185/transcript.json"
+  }
+}

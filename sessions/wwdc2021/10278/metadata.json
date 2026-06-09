@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10278",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10278,
+  "title": "Practice audio haptic design",
+  "description": "Discover how you can deliver rich app experiences that include animation, sound, and haptics on iPhone. Learn key concepts for designing multimodal experiences within the Core Haptics framework. We’ll take you through our sample HapticRicochet app — where haptic and sound feedback is designed in harmony with key interactive moments — and show you how to create magical and delightful experiences.\n\nTo get the most out of this session, we recommend first watching “Expanding the Sensory Experience with Core Haptics” from WWDC19, and checking out the HapticBounce sample project (which requires Xcode, iPhone 8 or newer, and a basic knowledge of Swift). Familiarity with Core Haptics is helpful, but not required.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10278",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10278",
+  "type": "Video",
+  "publishedAt": "2021-06-11T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Design",
+    "Graphics & Games",
+    "Spatial Computing",
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 960,
+  "hasTranscript": true,
+  "transcriptWordCount": 2094,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10278/6/22D440E4-3CF8-4968-8FCB-6F21B4587DAD/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10278/6/22D440E4-3CF8-4968-8FCB-6F21B4587DAD/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10278/6/22D440E4-3CF8-4968-8FCB-6F21B4587DAD/downloads/wwdc2021-10278_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10278/6/22D440E4-3CF8-4968-8FCB-6F21B4587DAD/downloads/wwdc2021-10278_hd.mp4",
+    "duration": 960
+  },
+  "codeSnippets": [
+    {
+      "title": "Shield",
+      "language": "swift",
+      "startTimeSeconds": 485,
+      "code": "// Initialize shield.\nfunc initializeShieldHaptics() {\n    // Create a pattern from the shield asset.\n    let pattern = createPatternFromAHAP(\"ShieldTransient\")!\n\n    // Create a player from the shield pattern.\n    shieldPlayer = try? engine.makePlayer(with: pattern)\n}\n\n/ Play shield transformation.\nfunc shield() {\n    // …\n    // start player for haptics and audio.\n    startPlayer(shieldPlayer)\n\n    // Play shield animation\n    isAnimating = true\n    sphereView.layer.add(shieldAnimation, forKey: \"Width\")\n    // …\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Delivering Rich App Experiences with Haptics",
+      "url": "https://developer.apple.com/documentation/CoreHaptics/delivering-rich-app-experiences-with-haptics",
+      "type": "samplecode",
+      "description": "Enhance your app’s experience by incorporating haptic and sound feedback into key interactive moments.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreHaptics/delivering-rich-app-experiences-with-haptics",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreHaptics/delivering-rich-app-experiences-with-haptics.json"
+    },
+    {
+      "title": "Core Haptics",
+      "url": "https://developer.apple.com/documentation/CoreHaptics",
+      "type": "documentation",
+      "description": "Compose and play haptic patterns to customize your iOS app’s haptic feedback.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreHaptics",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreHaptics.json"
+    },
+    {
+      "title": "Human Interface Guidelines: Playing haptics",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/playing-haptics",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/playing-haptics"
+    }
+  ],
+  "path": "sessions/wwdc2021/10278/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10278/metadata.json",
+    "readme": "sessions/wwdc2021/10278/README.md",
+    "transcript": "sessions/wwdc2021/10278/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10278/transcript.json"
+  }
+}

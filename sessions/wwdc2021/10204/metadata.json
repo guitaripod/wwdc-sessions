@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10204",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10204,
+  "title": "Distribute apps in Xcode with cloud signing",
+  "description": "Discover how to distribute your apps directly to App Store Connect and all the distribution methods supported in Xcode. Explore how to automate distribution for your apps, and learn about improvements to the distribution workflow like cloud signing, app record creation, and build number management.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10204",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10204",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "app record",
+    "app store connect",
+    "archive build",
+    "build number",
+    "cloud signing",
+    "distribution",
+    "organizer",
+    "testflight"
+  ],
+  "topics": [
+    "App Store, Distribution & Marketing",
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 1310,
+  "hasTranscript": true,
+  "transcriptWordCount": 3342,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10204/4/CF00E449-A95A-4F82-8CCF-DF5B980665A5/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10204/4/CF00E449-A95A-4F82-8CCF-DF5B980665A5/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10204/4/CF00E449-A95A-4F82-8CCF-DF5B980665A5/downloads/wwdc2021-10204_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10204/4/CF00E449-A95A-4F82-8CCF-DF5B980665A5/downloads/wwdc2021-10204_hd.mp4",
+    "duration": 1310
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Learn more about App Store Connect",
+      "url": "https://help.apple.com/app-store-connect/",
+      "type": "guide",
+      "description": null
+    }
+  ],
+  "path": "sessions/wwdc2021/10204/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10204/metadata.json",
+    "readme": "sessions/wwdc2021/10204/README.md",
+    "transcript": "sessions/wwdc2021/10204/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10204/transcript.json"
+  }
+}

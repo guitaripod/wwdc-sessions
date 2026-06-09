@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10241",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10241,
+  "title": "Share files with SharePlay",
+  "description": "Discover how to work with files and attachments in a SharePlay activity. We’ll explain how to use the GroupSessionJournal API to sync large amounts of data faster and show you how to adopt it in a demo of the sample app DrawTogether.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10241",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10241",
+  "type": "Video",
+  "publishedAt": "2023-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "group activities"
+  ],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 579,
+  "hasTranscript": true,
+  "transcriptWordCount": 1600,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10241/4/CB916690-4807-421C-AD85-6D36695D722C/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10241/4/CB916690-4807-421C-AD85-6D36695D722C/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10241/4/CB916690-4807-421C-AD85-6D36695D722C/downloads/wwdc2023-10241_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10241/4/CB916690-4807-421C-AD85-6D36695D722C/downloads/wwdc2023-10241_hd.mp4",
+    "duration": 579
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: SharePlay",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/shareplay/overview/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/shareplay/overview/"
+    },
+    {
+      "title": "SharePlay for Developers",
+      "url": "https://developer.apple.com/shareplay/",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/shareplay/"
+    }
+  ],
+  "path": "sessions/wwdc2023/10241/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10241/metadata.json",
+    "readme": "sessions/wwdc2023/10241/README.md",
+    "transcript": "sessions/wwdc2023/10241/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10241/transcript.json"
+  }
+}

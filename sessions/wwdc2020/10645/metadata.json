@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10645",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10645,
+  "title": "Support multiple users in your tvOS app",
+  "description": "Share your living room —&nbsp;not your Apple TV apps. When you support profiles within your app, you can customize your experience for each person who uses Apple TV within the same house. Discover how the “Runs as Current User” feature lets someone interact with your app, download local content, and log into iCloud or Game Center,&nbsp;all without affecting their family or housemates. We’ll show you how to implement this capability in your app, save recent data before switching profiles, handle notifications, and safeguard privacy.\n\nTo get the most out of this session, you should have a basic understanding of modern tvOS frameworks and controls. Watching “Mastering the Living Room with tvOS” will give you a great overview.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10645",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10645",
+  "type": "Video",
+  "publishedAt": "2020-06-23T10:00:00-07:00",
+  "platforms": [
+    "tvOS"
+  ],
+  "keywords": [
+    "apple tv",
+    "apple tv 4k",
+    "apple tv app",
+    "game developer",
+    "games",
+    "mulituser",
+    "personalizable",
+    "personalization",
+    "personalize",
+    "profile",
+    "profiles",
+    "runs as current user",
+    "tv",
+    "tv app",
+    "tv apps",
+    "tv dev",
+    "tv developer",
+    "tvos",
+    "video"
+  ],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 526,
+  "hasTranscript": true,
+  "transcriptWordCount": 1358,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10645/5/2E2B228F-1C9A-450E-927C-0FC486316517/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10645/5/2E2B228F-1C9A-450E-927C-0FC486316517/wwdc2020_10645_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10645/5/2E2B228F-1C9A-450E-927C-0FC486316517/wwdc2020_10645_hd.mp4",
+    "duration": 526
+  },
+  "codeSnippets": [
+    {
+      "title": "Application Lifecycle",
+      "language": "swift",
+      "startTimeSeconds": 255,
+      "code": "func applicationWillTerminate(_ application: UIApplication) {\n    guard game.hasUnsavedChanges else { return }\n\n    let semaphore = DispatchSemaphore(value: 0)\n    game.save { _ in semaphore.signal() }\n    semaphore.wait()\n}"
+    },
+    {
+      "title": "CloudKit Notifications",
+      "language": "swift",
+      "startTimeSeconds": 317,
+      "code": "func application(\n    _ application: UIApplication,\n    didReceiveRemoteNotification userInfo: [AnyHashable : Any],\n    fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void\n) {\n    if let notification = CKNotification(fromRemoteNotificationDictionary: userInfo),\n       notification.subscriptionOwnerUserRecordID == game.currentUserRecordID {\n        game.handle(notification, completionHandler: completionHandler)\n    }\n    else {\n        completionHandler(.noData)\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Supporting Multiple Users in Your tvOS App",
+      "url": "https://developer.apple.com/documentation/TVServices/supporting-multiple-users-in-your-tvos-app",
+      "type": "documentation",
+      "description": "Store separate data for each user with the new Runs as Current User capability.",
+      "sosumiURL": "https://sosumi.ai/documentation/TVServices/supporting-multiple-users-in-your-tvos-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/TVServices/supporting-multiple-users-in-your-tvos-app.json"
+    },
+    {
+      "title": "Personalizing Your App for Each User on Apple TV",
+      "url": "https://developer.apple.com/documentation/TVServices/personalizing-your-app-for-each-user-on-apple-tv",
+      "type": "documentation",
+      "description": "Use account-specific storage to segregate data on a multiuser system.",
+      "sosumiURL": "https://sosumi.ai/documentation/TVServices/personalizing-your-app-for-each-user-on-apple-tv",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/TVServices/personalizing-your-app-for-each-user-on-apple-tv.json"
+    },
+    {
+      "title": "Human Interface Guidelines: Designing for tvOS",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/designing-for-tvos",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/designing-for-tvos"
+    }
+  ],
+  "path": "sessions/wwdc2020/10645/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10645/metadata.json",
+    "readme": "sessions/wwdc2020/10645/README.md",
+    "transcript": "sessions/wwdc2020/10645/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10645/transcript.json"
+  }
+}

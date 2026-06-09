@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "id": "tech-talks-110350",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2017,
+  "eventContentId": 110350,
+  "title": "Manage auto-renewable subscription pricing in App Store Connect",
+  "description": "Discover how you can use App Store Connect to manage prices for your auto-renewable subscriptions. We'll provide guidance to help you plan subscription price increases and decreases, show you how to remove preserved pricing, and explore how to edit upcoming price changes.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/110350",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110350",
+  "type": "Video",
+  "publishedAt": "2022-11-02T00:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 677,
+  "hasTranscript": true,
+  "transcriptWordCount": 1586,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/110350/5/45A161E7-FA35-4C69-9BBE-218984917589/cmaf.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/110350/5/45A161E7-FA35-4C69-9BBE-218984917589/downloads/tech-talks-110350_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/110350/5/45A161E7-FA35-4C69-9BBE-218984917589/downloads/tech-talks-110350_hd.mp4",
+    "duration": 677
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Manage pricing for auto-renewable subscriptions",
+      "url": "https://help.apple.com/app-store-connect/#/devc9870599e",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "Auto-renewable subscriptions overview",
+      "url": "https://developer.apple.com/app-store/subscriptions/",
+      "type": "documentation",
+      "description": "Auto-Renewable Subscriptions",
+      "sosumiURL": "https://sosumi.ai/app-store/subscriptions/"
+    }
+  ],
+  "path": "sessions/tech-talks/110350/",
+  "files": {
+    "metadata": "sessions/tech-talks/110350/metadata.json",
+    "readme": "sessions/tech-talks/110350/README.md",
+    "transcript": "sessions/tech-talks/110350/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/110350/transcript.json"
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-713",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 713,
+  "title": "Advances in Networking, Part 2",
+  "description": "Take your networking apps to the next level with advances in Bonjour, custom message framing handlers, and the latest in security. You’ll also learn how to understand your networking performance by collecting metrics, and how best to use the modern networking frameworks on Apple platforms.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/713",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/713",
+  "type": "Session",
+  "publishedAt": "2019-06-06T17:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "network",
+    "urlsession"
+  ],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 3685,
+  "hasTranscript": true,
+  "transcriptWordCount": 9144,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/713b310k72bjpcmz6xn/713/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/713b310k72bjpcmz6xn/713/713_sd_advances_in_networking_part_2.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/713b310k72bjpcmz6xn/713/713_hd_advances_in_networking_part_2.mp4",
+    "duration": 3685
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Collecting Network Connection Metrics",
+      "url": "https://developer.apple.com/documentation/Network/collecting-network-connection-metrics",
+      "type": "samplecode",
+      "description": "Use reports to understand how DNS and protocol handshakes impact",
+      "sosumiURL": "https://sosumi.ai/documentation/Network/collecting-network-connection-metrics",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Network/collecting-network-connection-metrics.json"
+    },
+    {
+      "title": "Building a custom peer-to-peer protocol",
+      "url": "https://developer.apple.com/documentation/Network/building-a-custom-peer-to-peer-protocol",
+      "type": "samplecode",
+      "description": "Use networking frameworks to create a custom protocol for playing a game across iOS, iPadOS, watchOS, and tvOS devices.",
+      "sosumiURL": "https://sosumi.ai/documentation/Network/building-a-custom-peer-to-peer-protocol",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Network/building-a-custom-peer-to-peer-protocol.json"
+    },
+    {
+      "title": "Network",
+      "url": "https://developer.apple.com/documentation/Network",
+      "type": "documentation",
+      "description": "Create network connections to send and receive data using transport and security protocols.",
+      "sosumiURL": "https://sosumi.ai/documentation/Network",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Network.json"
+    },
+    {
+      "title": "URLSession",
+      "url": "https://developer.apple.com/documentation/Foundation/URLSession",
+      "type": "documentation",
+      "description": "An object that coordinates a group of related, network data transfer tasks.",
+      "sosumiURL": "https://sosumi.ai/documentation/Foundation/URLSession",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Foundation/URLSession.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/713/",
+  "files": {
+    "metadata": "sessions/wwdc2019/713/metadata.json",
+    "readme": "sessions/wwdc2019/713/README.md",
+    "transcript": "sessions/wwdc2019/713/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/713/transcript.json"
+  }
+}

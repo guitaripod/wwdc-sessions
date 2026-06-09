@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10184",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10184,
+  "title": "Synchronize health data with HealthKit",
+  "description": "HealthKit provides you the tools to smartly manage health data anywhere, whether across multiple HealthKit-enabled devices such as iPhone and Apple Watch or with an external server to share data across a care team. In this session, we’ll dive into managing data versions via HealthKit's built-in sync identifier metadata, how to detect changes in health data using an HKAnchoredObjectQuery, and cover best practices for ensuring you're always working with the right data everywhere.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10184",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10184",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "care",
+    "fitness"
+  ],
+  "topics": [
+    "Health & Fitness"
+  ],
+  "primaryTopic": "Health & Fitness",
+  "duration": 1342,
+  "hasTranscript": true,
+  "transcriptWordCount": 3709,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10184/3/6519C262-9ECD-4F15-BE9D-15A6B37D1394/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10184/3/6519C262-9ECD-4F15-BE9D-15A6B37D1394/wwdc2020_10184_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10184/3/6519C262-9ECD-4F15-BE9D-15A6B37D1394/wwdc2020_10184_hd.mp4",
+    "duration": 1342
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Creating a Mobility Health App",
+      "url": "https://developer.apple.com/documentation/HealthKit/creating-a-mobility-health-app",
+      "type": "samplecode",
+      "description": "Create a health app that allows a clinical care team to send and receive mobility data.",
+      "sosumiURL": "https://sosumi.ai/documentation/HealthKit/creating-a-mobility-health-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HealthKit/creating-a-mobility-health-app.json"
+    },
+    {
+      "title": "HealthKit",
+      "url": "https://developer.apple.com/documentation/HealthKit",
+      "type": "documentation",
+      "description": "Access and share health and fitness data while maintaining the user’s privacy and control.",
+      "sosumiURL": "https://sosumi.ai/documentation/HealthKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HealthKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10184/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10184/metadata.json",
+    "readme": "sessions/wwdc2020/10184/README.md",
+    "transcript": "sessions/wwdc2020/10184/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10184/transcript.json"
+  }
+}

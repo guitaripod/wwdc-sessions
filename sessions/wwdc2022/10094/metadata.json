@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10094",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10094,
+  "title": "Add Shared with You to your app",
+  "description": "Shared with You helps people easily find content in your app that someone has shared with them in Messages. Learn how you can support Shared with You in your app and continue the messaging experience right with the content. We'll show you how pinning can give implicit Shared with You permission and can elevate content to be automatically shared. We'll also go over how to present Shared with You content in a Shared with You shelf and visually represent shared items with a Shared with You attribution view.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10094",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10094",
+  "type": "Video",
+  "publishedAt": "2022-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services",
+    "SwiftUI & UI Frameworks",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 1109,
+  "hasTranscript": true,
+  "transcriptWordCount": 2225,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10094/4/6D2459BF-7717-4646-BE9A-E73C7E602DB9/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10094/4/6D2459BF-7717-4646-BE9A-E73C7E602DB9/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10094/4/6D2459BF-7717-4646-BE9A-E73C7E602DB9/downloads/wwdc2022-10094_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10094/4/6D2459BF-7717-4646-BE9A-E73C7E602DB9/downloads/wwdc2022-10094_hd.mp4",
+    "duration": 1109
+  },
+  "codeSnippets": [
+    {
+      "title": "Enumerate Shared with You shelf",
+      "language": "swift",
+      "startTimeSeconds": 726,
+      "code": "// Enumerate Shared with You shelf\n\nclass SharedWithYouViewController: UIViewController, SWHighlightCenterDelegate {\n    let highlightCenter = SWHighlightCenter()\n\n    override func viewDidLoad() {\n        super.viewDidLoad()\n        highlightCenter.delegate = self\n    }\n\n    func highlightCenterHighlightsDidChange(_ highlightCenter: SWHighlightCenter) {\n        for highlight in highlightCenter.highlights {\n            let highlightURL = highlight.url\n            // Generate a rich preview for the Highlight\n        }\n    }\n}"
+    },
+    {
+      "title": "Setting appearance of Attribution View",
+      "language": "swift",
+      "startTimeSeconds": 822,
+      "code": "// Setting appearance of Attribution View\n\nlet attributionView = SWAttributionView()\nattributionView.highlight = self.highlightCenter.highlights[index]\nattributionView.preferredMaxLayoutWidth = maximumWidthForView"
+    },
+    {
+      "title": "Horizontal Alignment for Attribution View",
+      "language": "swift",
+      "startTimeSeconds": 876,
+      "code": "// Horizontal Alignment for Attribution View\n\nlet attributionView = SWAttributionView()\nattributionView.highlight = self.highlightCenter.highlights[index]\nattributionView.preferredMaxLayoutWidth = maximumWidthForView\nattributionView.horizontalAlignment = .leading"
+    },
+    {
+      "title": "Display Context for Attribution View",
+      "language": "swift",
+      "startTimeSeconds": 919,
+      "code": "// Display Context for Attribution View\n\nlet attributionView = SWAttributionView()\nattributionView.highlight = self.highlightCenter.highlights[index]\nattributionView.preferredMaxLayoutWidth = maximumWidthForView\nattributionView.horizontalAlignment = .center\nattributionView.displayContext = .summary"
+    },
+    {
+      "title": "Add Shared with You Content Menu to your app’s content",
+      "language": "swift",
+      "startTimeSeconds": 1032,
+      "code": "// Add Shared with You Content Menu to your app’s content\n\nlet attributionView = SWAttributionView()\nattributionView.highlight = self.highlightCenter.highlights[index]\nattributionView.menuTitleForHideAction = \"Remove Item\"\n\nlet contextMenuConfig = UIContextMenuConfiguration(identifier: nil,previewProvider: nil) { [weak self] _ in\n        let additionalMenu = attributionView.supplementalMenu\n        // Append additionalMenu items to your content’s menu items\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2022/10094/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10094/metadata.json",
+    "readme": "sessions/wwdc2022/10094/README.md",
+    "transcript": "sessions/wwdc2022/10094/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10094/transcript.json"
+  }
+}

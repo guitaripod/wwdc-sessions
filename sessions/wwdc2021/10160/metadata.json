@@ -1,0 +1,283 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10160",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10160,
+  "title": "Capture and process ProRAW images",
+  "description": "When you support ProRAW in your app, you can help photographers easily capture and edit images by combining standard RAW information with Apple’s advanced computational photography techniques. We’ll take you through an overview of the format, including the look and feel of ProRAW images, quality metrics, and compatibility with your app. From there, we’ll explore how you can incorporate ProRAW into your app at every stage of the production pipeline, including capturing imagery with AVFoundation, storage using PhotoKit, and editing with Core Image.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10160",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10160",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "coreimage",
+    "filters",
+    "photo effects",
+    "photography",
+    "photos"
+  ],
+  "topics": [
+    "Graphics & Games",
+    "Photos & Camera"
+  ],
+  "primaryTopic": "Photos & Camera",
+  "duration": 1591,
+  "hasTranscript": true,
+  "transcriptWordCount": 4111,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10160/6/08FEC739-8354-4B2F-B06F-F7F8FCD5E6ED/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10160/6/08FEC739-8354-4B2F-B06F-F7F8FCD5E6ED/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10160/6/08FEC739-8354-4B2F-B06F-F7F8FCD5E6ED/downloads/wwdc2021-10160_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10160/6/08FEC739-8354-4B2F-B06F-F7F8FCD5E6ED/downloads/wwdc2021-10160_hd.mp4",
+    "duration": 1591
+  },
+  "codeSnippets": [
+    {
+      "title": "Setting up device and session",
+      "language": "swift",
+      "startTimeSeconds": 472,
+      "code": "// Use the .photo preset\n\nprivate let session = AVCaptureSession()\nprivate func configureSession() {\n  session.beginConfiguration()\n\tsession.sessionPreset = .photo\n\t//...\n}"
+    },
+    {
+      "title": "Setting up device and session",
+      "language": "swift",
+      "startTimeSeconds": 483,
+      "code": "// Or optionally find a format that supports highest quality photos\n\nguard let format = device.formats.first(where: { $0.isHighestPhotoQualitySupported }) else {\n  // handle failure to find a format that supports highest quality stills\n} \ndo \n{\t\n  try device.lockForConfiguration()\n  {\n    // ...\n  }\n  device.unlockForConfiguration()\n} \ncatch \n{\n  // handle the exception\n}"
+    },
+    {
+      "title": "Setting up photo output 1",
+      "language": "swift",
+      "startTimeSeconds": 519,
+      "code": "// Enable ProRAW on the photo output\n\nprivate let photoOutput = AVCapturePhotoOutput()\nprivate func configurePhotoOutput() {\n  photoOutput.isHighResolutionCaptureEnabled = true\n\tphotoOutput.isAppleProRAWEnabled = photoOutput.isAppleProRAWSupported\n\t//...\n}"
+    },
+    {
+      "title": "Setting up photo output 2",
+      "language": "swift",
+      "startTimeSeconds": 539,
+      "code": "// Select the desired photo quality prioritization\n\nprivate let photoOutput = AVCapturePhotoOutput()\nprivate func configurePhotoOutput() {\n\tphotoOutput.isHighResolutionCaptureEnabled = true\n\tphotoOutput.isAppleProRAWEnabled           = photoOutput.isAppleProRAWSupported\n\tphotoOutput.maxPhotoQualityPrioritization  = .quality // or .speed .balanced\n  //...\n}"
+    },
+    {
+      "title": "Prepare for ProRAW capture 1",
+      "language": "swift",
+      "startTimeSeconds": 566,
+      "code": "// Find a supported ProRAW pixel format\n\nguard let proRawPixelFormat = photoOutput.availableRawPhotoPixelFormatTypes.first(\n  where: {\n    AVCapturePhotoOutput.isAppleProRAWPixelFormat($0) \n  }) \nelse {\n\t// Apple ProRAW is not supported with this device / format\n}\n\n// For Bayer RAW pixel format use\n\nAVCapturePhotoOutput.isBayerRAWPixelFormat()"
+    },
+    {
+      "title": "Prepare for ProRAW capture 2",
+      "language": "swift",
+      "startTimeSeconds": 609,
+      "code": "// Create photo settings for ProRAW only capture\n\nlet photoSettings = AVCapturePhotoSettings(rawPixelFormatType: proRawPixelFormat)\n\n// Create photo settings for processed photo + ProRAW capture\n\nguard let processedPhotoCodecType = photoOutput.availablePhotoCodecTypes.first \nelse \n{\n\t// handle failure to find a processed photo codec type\n}\nlet photoSettings = AVCapturePhotoSettings(rawPixelFormatType: proRawPixelFormat,\n\tprocessedFormat: [AVVideoCodecKey: processedPhotoCodecType])"
+    },
+    {
+      "title": "Prepare for ProRAW capture 3",
+      "language": "swift",
+      "startTimeSeconds": 653,
+      "code": "// Select a supported thumbnail codec type and thumbnail dimensions\n\nguard let thumbnailPhotoCodecType = photoSettings.availableRawEmbeddedThumbnailPhotoCodecTypes.first \nelse \n{\n  // handle failure to find an available thumbnail photo codec type\n}\n\nlet dimensions = device.activeFormat.highResolutionStillImageDimensions\n\nphotoSettings.rawEmbeddedThumbnailPhotoFormat = [\n  AVVideoCodecKey: thumbnailPhotoCodecType,\n  AVVideoWidthKey: dimensions.width,\n  AVVideoHeightKey: dimensions.height]"
+    },
+    {
+      "title": "Prepare for ProRAW capture 4",
+      "language": "swift",
+      "startTimeSeconds": 668,
+      "code": "// Select the desired quality prioritization for the capture\n\nphotoSettings.photoQualityPrioritization = .quality // or .speed .balanced\n\n// Optionally, request a preview image\n\nif let previewPixelFormat = photoSettings.availablePreviewPhotoPixelFormatTypes.first\n{\t\n  photoSettings.previewPhotoFormat = [kCVPixelBufferPixelFormatTypeKey as String: previewPixelFormat]\n}\n\n// Capture!\n\nphotoOutput.capturePhoto(with: photoSettings, delegate: delegate)"
+    },
+    {
+      "title": "Consuming captured ProRAW 1",
+      "language": "swift",
+      "startTimeSeconds": 704,
+      "code": "func photoOutput(_ output: AVCapturePhotoOutput,\n                 didFinishProcessingPhoto photo: AVCapturePhoto,\n                 error: Error?) \n{\n  guard error == nil \n  else \n  {\n    // handle failure from the photo capture\n  }\n\tif let preview = photo.previewPixelBuffer \n  { \n    // photo.previewCGImageRepresentation()\n    // display the preview\n  }\n\tif photo.isRawPhoto \n  {\n\t\tguard let proRAWFileDataRepresentation = photo.fileDataRepresentation() \n    else \n    {\n      // handle failure to get ProRAW DNG file data representation\n    }\n\t\tguard let proRAWPixelBuffer = photo.pixelBuffer \n    else \n    {\n      // handle failure to get ProRAW pixel data\n    }\n\t\t// use the file or pixel data\n\t}"
+    },
+    {
+      "title": "Consuming captured ProRAW 2",
+      "language": "swift",
+      "startTimeSeconds": 772,
+      "code": "// Provide settings for lossless compression with less bits\n\nclass AppleProRAWCustomizer: NSObject, AVCapturePhotoFileDataRepresentationCustomizer \n{\n\tfunc replacementAppleProRAWCompressionSettings(for photo: AVCapturePhoto,\n                                                 defaultSettings: [String : Any],\n                                                 maximumBitDepth: Int) -> [String : Any] \n  {\n    return [AVVideoAppleProRAWBitDepthKey: min(10, maximumBitDepth),\n            AVVideoQualityKey: 1.00]\n  }\n}"
+    },
+    {
+      "title": "Consuming captured ProRAW 3",
+      "language": "swift",
+      "startTimeSeconds": 815,
+      "code": "// Provide settings for lossy compression\n\nclass AppleProRAWCustomizer: NSObject, AVCapturePhotoFileDataRepresentationCustomizer \n{\n\tfunc replacementAppleProRAWCompressionSettings(\n    for photo: AVCapturePhoto,\n    defaultSettings: [String : Any],\n    maximumBitDepth: Int) -> [String : Any] \n  {\n    return [AVVideoAppleProRAWBitDepthKey: min(8, maximumBitDepth),\n            AVVideoQualityKey: 0.90]\n  }\n}"
+    },
+    {
+      "title": "Consuming captured ProRAW 4",
+      "language": "swift",
+      "startTimeSeconds": 831,
+      "code": "// Customizing the compression settings for the captured ProRAW photo\n\nfunc photoOutput(_ output: AVCapturePhotoOutput,\n                 didFinishProcessingPhoto photo: AVCapturePhoto,\n                 error: Error?) \n{\n  guard error == nil \n  else \n  {\n    // handle failure from the photo capture\n  }\n    if photo.isRawPhoto \n  {\n\t\tlet customizer = AppleProRAWCustomizer()\n\t\tguard let customizedFileData = photo.fileDataRepresentation(with: customizer) \n    else \n    {\n      // handle failure to get customized ProRAW DNG file data representation\n    }\n\t\t// use the file data\n\t}"
+    },
+    {
+      "title": "Saving a ProRAW asset with PhotoKit",
+      "language": "swift",
+      "startTimeSeconds": 919,
+      "code": "PHPhotoLibrary.shared().performChanges \n{\n    let creationRequest = PHAssetCreationRequest.forAsset()\n\n    creationRequest.addResource(with:.photo, \n                                fileURL:proRawFileURL, \n                                options:nil)\n} \ncompletionHandler: \n{ \n  success, error in\n  // handle the success and possible error\n}"
+    },
+    {
+      "title": "Fetching RAW assets from the photo library",
+      "language": "swift",
+      "startTimeSeconds": 945,
+      "code": "// New enum PHAssetCollectionSubtype.smartAlbumRAW\n\nPHAssetCollection.fetchAssetCollections(with: .smartAlbum, \n                                        subtype: .smartAlbumRAW, \n                                        options: nil)"
+    },
+    {
+      "title": "Retrieving RAW resources from a PHAsset",
+      "language": "swift",
+      "startTimeSeconds": 1036,
+      "code": "let resources = PHAssetResource.assetResources(for: asset)\nfor resource in resources \n{\n  if (resource.type == .photo || resource.type == .alternatePhoto) \n  {\n    if let resourceUTType = UTType(resource.uniformTypeIdentifier) \n    {\n      if resourceUTType.conforms(to: UTType.rawImage) \n      {\n        let resourceManager = PHAssetResourceManager.default()\n        resourceManager.requestData(for: resource, options: nil) \n        { \n          data in\n          // use the data\n        } \n        completionHandler: \n        { \n          error in\n          // handle any error \n        }\n      }\n    }\n  }\n}"
+    },
+    {
+      "title": "Getting CIImages from a ProRAW",
+      "language": "swift",
+      "startTimeSeconds": 1108,
+      "code": "// Getting the preview image\n\nlet isrc  = CGImageSourceCreateWithURL(url as CFURL, nil)\nlet cgimg = CGImageSourceCreateThumbnailAtIndex(isrc!, 0, nil)\n\nreturn CIImage(cgImage: cgimg)"
+    },
+    {
+      "title": "Getting CIImages from a ProRAW  2 (New in iOS 15 and macOS 12)",
+      "language": "swift",
+      "startTimeSeconds": 1116,
+      "code": "// Getting the preview image\n\nlet rawFilter = CIRAWFilter(imageURL: url)\n\nreturn rawFilter.previewImage"
+    },
+    {
+      "title": "Getting CIImages from a ProRAW 3",
+      "language": "swift",
+      "startTimeSeconds": 1124,
+      "code": "// Getting the preview image\n\nlet rawFilter = CIRAWFilter(imageURL: url)\n\nreturn rawFilter.previewImage\n\n// Getting segmentation mattes images\n\nreturn CIImage(contentsOf: url,\n               options: [.auxiliarySemanticSegmentationSkinMatte : true])"
+    },
+    {
+      "title": "Getting CIImages from a ProRAW 4",
+      "language": "swift",
+      "startTimeSeconds": 1136,
+      "code": "// Getting the preview image\n\nlet rawFilter = CIRAWFilter(imageURL: url)\n\nreturn rawFilter.previewImage\n\n// Getting segmentation mattes images\n\nlet rawFilter = CIRAWFilter(imageURL: url)\n\nreturn rawFilter.semanticSegmentationSkinMatte"
+    },
+    {
+      "title": "Getting CIImages from a ProRAW 5",
+      "language": "swift",
+      "startTimeSeconds": 1149,
+      "code": "// Getting the primary image\n\nreturn CIImage(contentsOf: url, options:nil)\n\nlet rawFilter = CIFilter(imageURL: url, options:nil)\n\nreturn rawFilter.outputImage"
+    },
+    {
+      "title": "Applying common user adjustments",
+      "language": "swift",
+      "startTimeSeconds": 1171,
+      "code": "func get_adjusted_raw_image (url: URL) -> CIImage?\n{\n    // Load the image\n    let rawFilter = CIFilter(imageURL: url, options:nil)\n\n    // Change one or more filter inputs\n    rawFilter.setValue(value, forKey: CIRAWFilterOption.keyName.rawValue)\n\n    // Get the adjusted image\n    return rawFilter.outputImage\n}"
+    },
+    {
+      "title": "Applying common user adjustments 2",
+      "language": "swift",
+      "startTimeSeconds": 1194,
+      "code": "func get_adjusted_raw_image (url: URL) -> CIImage?\n{\n    // Load the image\n    let rawFilter = CIRAWFilter(imageURL: url)\n\n    // Change one or more filter inputs\n    rawFilter.property = value\n\n    // Get the adjusted image\n    return rawFilter.outputImage\n}"
+    },
+    {
+      "title": "Applying common user adjustments 3",
+      "language": "swift",
+      "startTimeSeconds": 1217,
+      "code": "// Exposure\n\nrawFilter.exposure = -1.0\n\n// Temperature and tint\n\nrawFilter.neutralTemperature = 6500  // in °K\nrawFilter.neutralTint        = 0.0\n\n// Sharpness\n\nrawFilter.sharpnessAmount = 0.5\n\n// Local tone map strength\n\nrawFilter.localToneMapAmount = 0.5"
+    },
+    {
+      "title": "Getting linear scene-referred output 1",
+      "language": "swift",
+      "startTimeSeconds": 1300,
+      "code": "// Turn off the filter inputs that apply the default look to the RAW\n\nrawFilter.baselineExposure      = 0.0\nrawFilter.shadowBias            = 0.0\nrawFilter.boostAmount           = 0.0\nrawFilter.localToneMapAmount    = 0.0\nrawFilter.isGamutMappingEnabled = false\n\nlet linearRawImage = rawFilter.outputImage"
+    },
+    {
+      "title": "Getting linear scene-referred output 2",
+      "language": "swift",
+      "startTimeSeconds": 1320,
+      "code": "// Use the linear image with other filters\n\nlet histogram = CIFilter.areaHistogram()\n\nhistogram.inputImage = linearRawImage\nhistogram.extent     = linearRawImage.extent\n\n// Or render it to a RGBAh buffer\n\nlet rd = CIRenderDestination(bitmapData: data.mutableBytes,\n                             width: 􀠪imageWidth, \n                             height: 􀠪imageHeight, \n                             bytesPerRow: 􀠪rowBytes,\n                             format: .RGBAh)\n\nrd.colorSpace = CGColorSpace(name: CGColorSpace.extendedLinearITUR_2020)\n\nlet task = context.startTask(toRender: rawFilter.outputImage, \n                             from: rect, \n                             to: rd, \n                             at: point)\n\ntask.waitUntilCompleted()"
+    },
+    {
+      "title": "Saving edits to other file formats 1 (8-bit HEIC)",
+      "language": "swift",
+      "startTimeSeconds": 1434,
+      "code": "// Saving to 8-bit HEIC\n\ntry ciContext.writeHEIFRepresentation(of: rawFilter!.outputImage!,\n                                      to: theURL,\n                                      format: .RGBA8,\n                                      colorSpace: CGColorSpace(name: CGColorSpace.displayP3)!,\n                                      options: [:])"
+    },
+    {
+      "title": "Saving edits to other file formats 2 (10-bit HEIC)",
+      "language": "swift",
+      "startTimeSeconds": 1452,
+      "code": "// Saving to 10-bit HEIC\n\ntry ciContext.writeHEIF10Representation(of: rawFilter!.outputImage!,\n                                        to: theURL,\n                                        format: .RGBA8,\n                                        colorSpace: CGColorSpace(name: CGColorSpace.displayP3)!, \n                                        options: [:])"
+    },
+    {
+      "title": "Displaying to a Metal Kit View in EDR on Mac",
+      "language": "swift",
+      "startTimeSeconds": 1491,
+      "code": "class MyView : MTKView {\n  var context: CIContext\n  var commandQueue: MTLCommandQueue\n  //...\n}"
+    },
+    {
+      "title": "Displaying to a Metal Kit View in EDR on Mac",
+      "language": "swift",
+      "startTimeSeconds": 1513,
+      "code": "// Create a Metal Kit View subclass\n\nclass MyView : MTKView {\n  var context: CIContext\n  var commandQueue: MTLCommandQueue\n  //...\n}\n\n// Init your Metal Kit View for EDR\n\ncolorPixelFormat = MTLPixelFormat.rgba16Float\n\nif let caml = layer as? CAMetalLayer {\n  caml.wantsExtendedDynamicRangeContent = true\n  //...\n}\n\n// Ask the filter for an image designed for EDR and render it\n\nrawFilter.extendedDynamicRangeAmount = 1.0\n\ncontext.startTask(toRender: rawFilter.outputImage, \n                  from: rect, \n                  to: rd, \n                  at: point)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Capturing still and Live Photos",
+      "url": "https://developer.apple.com/documentation/AVFoundation/capturing-still-and-live-photos",
+      "type": "documentation",
+      "description": "Configure and capture single or multiple still images, Live Photos, and other forms of photography.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/capturing-still-and-live-photos",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/capturing-still-and-live-photos.json"
+    },
+    {
+      "title": "Capturing photos in RAW and Apple ProRAW formats",
+      "url": "https://developer.apple.com/documentation/AVFoundation/capturing-photos-in-raw-and-apple-proraw-formats",
+      "type": "documentation",
+      "description": "Support professional photography workflows by enabling minimally processed image capture in your camera app.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/capturing-photos-in-raw-and-apple-proraw-formats",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/capturing-photos-in-raw-and-apple-proraw-formats.json"
+    },
+    {
+      "title": "PhotoKit",
+      "url": "https://developer.apple.com/documentation/photokit",
+      "type": "documentation",
+      "description": "Work with image and video assets managed by the Photos app, including those from iCloud Photos and Live Photos.",
+      "sosumiURL": "https://sosumi.ai/documentation/photokit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/photokit.json"
+    },
+    {
+      "title": "Core Image",
+      "url": "https://developer.apple.com/documentation/CoreImage",
+      "type": "documentation",
+      "description": "Use built-in or custom filters to process still and video images.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreImage",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreImage.json"
+    },
+    {
+      "title": "Photos",
+      "url": "https://developer.apple.com/documentation/photokit",
+      "type": "documentation",
+      "description": "Work with image and video assets managed by the Photos app, including those from iCloud Photo Library and Live Photos. Fetch and cache full-sized assets or thumbnails asynchronously, revise content, and sync revisions to multiple devices.",
+      "sosumiURL": "https://sosumi.ai/documentation/photokit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/photokit.json"
+    },
+    {
+      "title": "Capture setup",
+      "url": "https://developer.apple.com/documentation/AVFoundation/capture-setup",
+      "type": "documentation",
+      "description": "Configure built-in cameras and microphones, and external capture devices, for media capture.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/capture-setup",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/capture-setup.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10160/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10160/metadata.json",
+    "readme": "sessions/wwdc2021/10160/README.md",
+    "transcript": "sessions/wwdc2021/10160/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10160/transcript.json"
+  }
+}

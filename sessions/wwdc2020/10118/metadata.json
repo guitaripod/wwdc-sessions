@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10118",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10118,
+  "title": "Create App Clips for other businesses",
+  "description": "Create App Clips for table reservations, food ordering, and more on behalf of brands, businesses, or services that appear within your app. We’ll show you how you can deliver customized experiences for each business, offering them a unique look, invocation card, and icon — all within a single App Clips binary. Learn best practices for uploading unique metadata, handling links, routing notifications, and keeping track of session states. And discover different types of icons in the context of App Clips, where they appear, and how to customize them.\n\nFor more on designing and creating App Clips, make sure to watch “Explore App Clips” and “Configure and link your App Clips.”",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10118",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10118",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "action",
+    "aggregates many businesses",
+    "app clip experience",
+    "brand identity",
+    "catalog",
+    "category of business",
+    "invocation card",
+    "nsuseractivity",
+    "promote business",
+    "sheet image",
+    "targetcontentidentifier",
+    "universal links",
+    "white-label",
+    "white label apps"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1142,
+  "hasTranscript": true,
+  "transcriptWordCount": 3145,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10118/7/FF98722E-1BF9-4118-8FAA-F5EF0C9B4FAF/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10118/7/FF98722E-1BF9-4118-8FAA-F5EF0C9B4FAF/wwdc2020_10118_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10118/7/FF98722E-1BF9-4118-8FAA-F5EF0C9B4FAF/wwdc2020_10118_hd.mp4",
+    "duration": 1142
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "App Clips",
+      "url": "https://developer.apple.com/documentation/AppClip",
+      "type": "documentation",
+      "description": "Create a lightweight, in-the-moment experience or demo version for your app that’s instantly available.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppClip",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppClip.json"
+    },
+    {
+      "title": "Responding to invocations",
+      "url": "https://developer.apple.com/documentation/AppClip/responding-to-invocations",
+      "type": "documentation",
+      "description": "Add code to respond to invocations and offer a focused launch experience.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppClip/responding-to-invocations",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppClip/responding-to-invocations.json"
+    },
+    {
+      "title": "Configuring App Clip experiences",
+      "url": "https://developer.apple.com/documentation/AppClip/configuring-the-launch-experience-of-your-app-clip",
+      "type": "documentation",
+      "description": "Review how people launch your App Clip with invocation URLs, default and demo links, and advanced App Clip experiences.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppClip/configuring-the-launch-experience-of-your-app-clip",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppClip/configuring-the-launch-experience-of-your-app-clip.json"
+    },
+    {
+      "title": "Fruta: Building a feature-rich app with SwiftUI",
+      "url": "https://developer.apple.com/documentation/AppClip/fruta-building-a-feature-rich-app-with-swiftui",
+      "type": "samplecode",
+      "description": "Create a shared codebase to build a multiplatform app that offers widgets and an App Clip.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppClip/fruta-building-a-feature-rich-app-with-swiftui",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppClip/fruta-building-a-feature-rich-app-with-swiftui.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10118/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10118/metadata.json",
+    "readme": "sessions/wwdc2020/10118/README.md",
+    "transcript": "sessions/wwdc2020/10118/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10118/transcript.json"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "id": "tech-talks-10887",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2017,
+  "eventContentId": 10887,
+  "title": "Support customers with StoreKit 2 and App Store Server API",
+  "description": "Discover how you can use StoreKit 2, App Store Server API, and App Store Server Notifications to create great in-app purchase experiences for your customers and offer support and refunds. We’ll explore implementation approaches, provide best practices and take you through customer management and managing refunds.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/10887",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10887",
+  "type": "Video",
+  "publishedAt": "2021-12-07T10:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "app store server api",
+    "storekit",
+    "storekit 2"
+  ],
+  "topics": [
+    "Developer Tools",
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 2438,
+  "hasTranscript": true,
+  "transcriptWordCount": 6696,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/10887/4/EB88AACE-281A-4A82-99A8-A333E927A842/cmaf.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/10887/4/EB88AACE-281A-4A82-99A8-A333E927A842/downloads/tech-talks-10887_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/10887/4/EB88AACE-281A-4A82-99A8-A333E927A842/downloads/tech-talks-10887_hd.mp4",
+    "duration": 2438
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "App Store Server API",
+      "url": "https://developer.apple.com/documentation/AppStoreServerAPI",
+      "type": "documentation",
+      "description": "Manage your customers’ App Store transactions from your server.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreServerAPI",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreServerAPI.json"
+    },
+    {
+      "title": "Introducing StoreKit 2",
+      "url": "https://developer.apple.com/storekit/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/storekit/"
+    },
+    {
+      "title": "In-app purchase overview",
+      "url": "https://developer.apple.com/in-app-purchase/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/in-app-purchase/"
+    },
+    {
+      "title": "Handling refund notifications",
+      "url": "https://developer.apple.com/documentation/StoreKit/handling-refund-notifications",
+      "type": "documentation",
+      "description": "Respond to notifications about customer refunds for consumable, non-consumable, and non-renewing subscription products.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/handling-refund-notifications",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/handling-refund-notifications.json"
+    },
+    {
+      "title": "In-App Purchase",
+      "url": "https://developer.apple.com/documentation/StoreKit/in-app-purchase",
+      "type": "documentation",
+      "description": "Offer content and services in your app across Apple platforms using a Swift-based interface.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/in-app-purchase",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/in-app-purchase.json"
+    },
+    {
+      "title": "Enabling App Store Server Notifications",
+      "url": "https://developer.apple.com/documentation/StoreKit/enabling-app-store-server-notifications",
+      "type": "documentation",
+      "description": "Configure your server and provide an HTTPS URL to receive notifications about in-app purchase events and unreported external purchase tokens.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/enabling-app-store-server-notifications",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/enabling-app-store-server-notifications.json"
+    },
+    {
+      "title": "Auto-renewable subscriptions overview",
+      "url": "https://developer.apple.com/app-store/subscriptions/",
+      "type": "documentation",
+      "description": "Auto-Renewable Subscriptions",
+      "sosumiURL": "https://sosumi.ai/app-store/subscriptions/"
+    }
+  ],
+  "path": "sessions/tech-talks/10887/",
+  "files": {
+    "metadata": "sessions/tech-talks/10887/metadata.json",
+    "readme": "sessions/tech-talks/10887/README.md",
+    "transcript": "sessions/tech-talks/10887/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/10887/transcript.json"
+  }
+}

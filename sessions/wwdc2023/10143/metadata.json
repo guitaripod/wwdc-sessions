@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10143",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10143,
+  "title": "Meet the App Store Server Library ",
+  "description": "Discover the App Store Server Library and learn how you can take advantage of resources and configurations for your apps. We’ll show you how to set up the library, call the App Store Server API, verify App Store Server Notifications, and use app receipts. Explore insights and best practices for using App Store Server API endpoints, verifying App Store signed data, and migrating away from verifyReceipt.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10143",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10143",
+  "type": "Video",
+  "publishedAt": "2023-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Store, Distribution & Marketing",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1360,
+  "hasTranscript": true,
+  "transcriptWordCount": 3275,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10143/4/2A530FC7-FDC1-4CB7-AE05-57F3F22675C7/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10143/4/2A530FC7-FDC1-4CB7-AE05-57F3F22675C7/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10143/4/2A530FC7-FDC1-4CB7-AE05-57F3F22675C7/downloads/wwdc2023-10143_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10143/4/2A530FC7-FDC1-4CB7-AE05-57F3F22675C7/downloads/wwdc2023-10143_hd.mp4",
+    "duration": 1360
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Online Certificate Status Protocol - OCSP",
+      "url": "https://www.rfc-editor.org/rfc/rfc6960",
+      "type": "documentation",
+      "description": "This document specifies a protocol useful in determining the current status of a digital certificate without requiring Certificate Revocation Lists (CRLs)."
+    },
+    {
+      "title": "Apple Certificate Authority",
+      "url": "https://www.apple.com/certificateauthority/",
+      "type": "download",
+      "description": "Apple established the Apple PKI in support of the generation, issuance, distribution, revocation, administration, and management of public/private cryptographic keys that are contained in CA-signed X.509 Certificates."
+    },
+    {
+      "title": "In-App Purchase - Promotional offers",
+      "url": "https://developer.apple.com/app-store/subscriptions/#promotional-offers",
+      "type": "download",
+      "description": "Give existing or previous subscribers a free or discounted subscription for a specific duration.",
+      "sosumiURL": "https://sosumi.ai/app-store/subscriptions/#promotional-offers"
+    },
+    {
+      "title": "Apple App Store Server Swift Library",
+      "url": "https://github.com/apple/app-store-server-library-swift",
+      "type": "download",
+      "description": "The Swift server library for the App Store Server API and App Store Server Notifications"
+    },
+    {
+      "title": "Apple App Store Server Python Library",
+      "url": "https://github.com/apple/app-store-server-library-python",
+      "type": "download",
+      "description": "The Python server library for the App Store Server API and App Store Server Notifications"
+    },
+    {
+      "title": "Apple App Store Server Node.js Library",
+      "url": "https://github.com/apple/app-store-server-library-node",
+      "type": "download",
+      "description": "The Node.js server library for the App Store Server API and App Store Server Notifications"
+    },
+    {
+      "title": "Apple App Store Server Java Library",
+      "url": "https://github.com/apple/app-store-server-library-java",
+      "type": "download",
+      "description": "The Java server library for the App Store Server API and App Store Server Notifications"
+    },
+    {
+      "title": "App Store Server API",
+      "url": "https://developer.apple.com/documentation/AppStoreServerAPI",
+      "type": "documentation",
+      "description": "Manage your customers’ App Store transactions from your server.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreServerAPI",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreServerAPI.json"
+    },
+    {
+      "title": "Submit feedback",
+      "url": "http://feedbackassistant.apple.com",
+      "type": "documentation",
+      "description": null
+    }
+  ],
+  "path": "sessions/wwdc2023/10143/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10143/metadata.json",
+    "readme": "sessions/wwdc2023/10143/README.md",
+    "transcript": "sessions/wwdc2023/10143/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10143/transcript.json"
+  }
+}

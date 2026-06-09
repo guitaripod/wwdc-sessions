@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10304",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10304,
+  "title": "The process of inclusive design",
+  "description": "Discover how you can deliver inclusive apps that can foster amazing experiences for everyone who uses your software. We’ll take you through best practices for creating and empowering diverse teams and explore how inclusivity influences every stage of the design and development process.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10304",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10304",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Accessibility & Inclusion",
+    "AI & Machine Learning",
+    "Essentials",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 2194,
+  "hasTranscript": true,
+  "transcriptWordCount": 5528,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10304/4/5F0C8CED-8F09-4528-BEFE-98A248B6088B/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10304/4/5F0C8CED-8F09-4528-BEFE-98A248B6088B/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10304/4/5F0C8CED-8F09-4528-BEFE-98A248B6088B/downloads/wwdc2021-10304_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10304/4/5F0C8CED-8F09-4528-BEFE-98A248B6088B/downloads/wwdc2021-10304_hd.mp4",
+    "duration": 2194
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Inclusion",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/inclusion/",
+      "type": "documentation",
+      "description": "An inclusive app puts people first by prioritizing respectful communication and presenting content and functionality in ways that everyone can access and understand.",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/inclusion/"
+    }
+  ],
+  "path": "sessions/wwdc2021/10304/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10304/metadata.json",
+    "readme": "sessions/wwdc2021/10304/README.md",
+    "transcript": "sessions/wwdc2021/10304/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10304/transcript.json"
+  }
+}

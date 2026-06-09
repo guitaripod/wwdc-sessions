@@ -1,0 +1,40 @@
+---
+id: "wwdc2026-389"
+event: "wwdc2026"
+title: "Discover container machines"
+url: "https://developer.apple.com/videos/play/wwdc2026/389"
+language: "eng"
+words: 1214
+---
+
+# Discover container machines — Transcript
+
+[Session page](https://developer.apple.com/videos/play/wwdc2026/389) · [Metadata](metadata.json) · [Structured JSON](transcript.json)
+
+**[0:07]** Hi, my name is Michael, and today I want to introduce a new feature built on top of Containerization. Containerization is a swift framework for running Linux containers, with a focus on security, privacy, and performance. Linux containers are a great way to build, test, and deploy server-side applications. Building on this foundation, Container machine, is a new feature that provides a highly integrated Linux environment, that works seamlessly on your Mac. A Container machine is fast and lightweight, like a container, and persistent like a virtual machine.
+
+**[0:52]** Along with host integrations, a Container machine feels native to macOS. Before learning more, about Container machine, lets take some time to review the Containerization framework. Then, we will look the design principles that shaped Container machine. Finally, we will explore how Container machine provides a seamless workflow for cross-platform development. At WWDC 25 we open sourced Containerization. Containerization is a Swift framework for running Linux containers on macOS. It provides APIs for storage, networking, execution, and a Linux init system.
+
+**[1:38]** It is designed to provide each container with Virtual machine based isolation. These lightweight Virtual machines are performant, and provide sub-second start times. Along with Containerization, the container tool was open sourced. It provides CLI commands for image creation, distribution, and lifecycle management for Linux containers. If you want to learn more about the overall architecture of Containerization and the container tool, watch "Meet Containerization" from WWDC 25. Now, let's take a look at the design principles for container machine. These environments should be fast and lightweight, to integrate into existing workflows.
+
+**[2:25]** Switching between macOS and Linux should be easy. Users should be able to customize and create new environments quickly. Quick creation allows multiple projects to have their own, dedicated environment, without the worry of conflicting dependencies or toolchains. Different tools and dependencies are often required during the development lifecycle. Having a persistent environment, allows additional tools to be added and used over time. Finally, these Linux environments should integrate into your existing work-flow. Developing for multiple platforms shouldn't involve a large context switch. There shouldn't be the need to learn new tools,
+
+**[3:11]** when targeting a different environment. We kept these design principles in mind when building Container machine. A Container machine must be fast and lightweight. They must be simple to manage. They must provide persistence, allowing users to revisit over time. And a Container machine must feel like an extension of macOS. With these design principles in mind, lets look at how Container machine improves cross platform workflows. Building on top of Containerization, each Container machine runs inside of its own, lightweight virtual machine, and use the same image format as containers. It is a first class feature of the container tool and has a familiar UX.
+
+**[3:57]** Images built with the container tool, can to be used as the starting point for a new Container machine. A Container machine is stateful and persists modifications made while you are working in it. Start and stop projects as needed, Container machine ensures your environment can continue where you left it. And with automatic user mapping, shared filesystem support, and the ability to enter your Linux environment, no matter where you are in a terminal, Container machine provides a smooth transition, from macOS into Linux, and back again. Now, lets see Container machine in action. Lets start with container machine.
+
+**[4:48]** This shows an overview of the actions we can perform, including ones like create, run, and stop. To create a new Container machine, I'll use container machine create. I'll provide it a name and set it as the default machine on my Mac. This way, we don't have to provide the name for every command. Container machine uses the same OCI images that containers use. A common container image is alpine. Great, our Container machine is created. Next, I want to execute commands inside of this Container machine.
+
+**[5:34]** I'll use container machine run to execute the echo command. Great, let try this with uname. On macOS uname prints Darwin. Container machine run uname, prints Linux, reflecting the runtime environment. Container machine automatically mirrors your username and current working directory from your Mac. If I run whoami on my Mac, it returns Michael. Running pwd shows that I'm located in my user's home directory on macOS.
+
+**[6:23]** Lets run an interactive shell inside of the Container machine. Container machine run, without additional arguments, will start an interactive session. From inside my container machine, running whoami and pwd, returns the same username and path from my Mac. Great! Automatic user creation, filesystem sharing, and having a consistent working directory results in a seamless experience. Lets explore more, by looking at an application I'm building. I have a Vapor-based web server that I'd like to run and deploy on Linux.
+
+**[7:13]** For my work-flow, I edit the project using Xcode on my Mac. I use macOS tools, to edit images for the application. I'll build and run this in Linux, then, test my changes on macOS by accessing the web server from Safari. Let's work on this application. In the terminal, running ls shows my project files. I have a Package.swift, my Source code, and a Public directory holding assets. I have a Container machine with the swift toolchain installed. container machine list will display the name, IP address, and resource information of all my Container machines.
+
+**[8:07]** I will copy the IP address for later. I'm ready to test my application in Linux. I'll start with an interactive shell, inside of my Container machine, by running container machine run. With automatic directory sharing, all my project files are available. My Container machine has an isolated network. For Safari on my Mac to access the web server, running inside the Container machine, I need to ensure that Vapor listens on the external interface.
+
+**[8:52]** Let's update the server's configuration in Xcode. I will set the configuration's hostname to the IP address of my Container machine. We copied this value earlier. I edited this file in Xcode on my Mac, but these changes are already available to my Container machine. Moving back to my terminal, I'm ready to compile and run my application. Great, the server is running so lets view our site in Safari. I will open Safari and paste the IP for my container machine, into the address bar. I will also add port 8080. Great, access works and I could stare at this all day!
+
+**[9:39]** But, let's make one last change. I used Icon Composer, to create the storage icon on screen. I want to change the icon's background to a gradient. I will open my existing icon file, in Icon Composer to make this change. Now, I will export this icon to my project and overwrite the existing file. Without copying files into my Container machine, I expect refreshing the page in Safari, to automatically display my updated icon.
+
+**[10:24]** Lets go back to Safari. Great! my update is working. Container machine builds on the usability and speed of containers, with the persistence of a Virtual machine. The seamless integrations provide a Linux environment that feels like an extension of your Mac. We're excited for you to try out Container machine. Download the latest release of the container tool on Github. We look forward to your feedback. Thanks for watching!

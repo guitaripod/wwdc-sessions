@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2017-706",
+  "event": "wwdc2017",
+  "eventName": "WWDC17",
+  "year": 2017,
+  "eventContentId": 706,
+  "title": "Modernizing Grand Central Dispatch Usage",
+  "description": "macOS 10.13 and iOS 11 have reinvented how Grand Central Dispatch and the Darwin kernel collaborate, enabling your applications to run concurrent workloads more efficiently. Learn how to modernize your code to take advantage of these improvements and make optimal use of hardware resources.",
+  "url": "https://developer.apple.com/videos/play/wwdc2017/706",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2017/706",
+  "type": "Session",
+  "publishedAt": "2017-06-07T11:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "gcd",
+    "runtime",
+    "thread"
+  ],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 3277,
+  "hasTranscript": true,
+  "transcriptWordCount": 9735,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/706byvveyendgv5l/706/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/706byvveyendgv5l/706/706_sd_modernizing_grand_central_dispatch_usage.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/706byvveyendgv5l/706/706_hd_modernizing_grand_central_dispatch_usage.mp4",
+    "duration": 3277
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Dispatch",
+      "url": "https://developer.apple.com/documentation/Dispatch",
+      "type": "documentation",
+      "description": "Execute code concurrently on multicore hardware by submitting work to dispatch queues managed by the system.",
+      "sosumiURL": "https://sosumi.ai/documentation/Dispatch",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Dispatch.json"
+    }
+  ],
+  "path": "sessions/wwdc2017/706/",
+  "files": {
+    "metadata": "sessions/wwdc2017/706/metadata.json",
+    "readme": "sessions/wwdc2017/706/README.md",
+    "transcript": "sessions/wwdc2017/706/transcript.md",
+    "transcriptJSON": "sessions/wwdc2017/706/transcript.json"
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10176",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10176,
+  "title": "Design App Intents for system experiences",
+  "description": "App Intents power system experiences in controls, Spotlight, Siri, and more. Find out how to identify the functionality that’s best for App Intents, and how to use parameters to make these intents flexible. Learn how to use App Intents to allow people to take action outside your app, and see examples of when to navigate into your app to show contextual information.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10176",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10176",
+  "type": "Video",
+  "publishedAt": "2024-06-12T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "AI & Machine Learning",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 559,
+  "hasTranscript": true,
+  "transcriptWordCount": 1469,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10176/4/A71031F6-5E78-4CA6-87CC-F203DCA5A133/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10176/4/A71031F6-5E78-4CA6-87CC-F203DCA5A133/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10176/4/A71031F6-5E78-4CA6-87CC-F203DCA5A133/downloads/wwdc2024-10176_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10176/4/A71031F6-5E78-4CA6-87CC-F203DCA5A133/downloads/wwdc2024-10176_hd.mp4",
+    "duration": 559
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Accelerating app interactions with App Intents",
+      "url": "https://developer.apple.com/documentation/AppIntents/AcceleratingAppInteractionsWithAppIntents",
+      "type": "samplecode",
+      "description": "Enable people to use your app’s features quickly through Siri, Spotlight, and Shortcuts.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents/AcceleratingAppInteractionsWithAppIntents",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents/AcceleratingAppInteractionsWithAppIntents.json"
+    },
+    {
+      "title": "Creating your first app intent",
+      "url": "https://developer.apple.com/documentation/AppIntents/Creating-your-first-app-intent",
+      "type": "documentation",
+      "description": "Create your first app intent that makes your app available in system experiences like Spotlight or the Shortcuts app.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents/Creating-your-first-app-intent",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents/Creating-your-first-app-intent.json"
+    },
+    {
+      "title": "Forum: Design",
+      "url": "https://developer.apple.com/forums/topics/design?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/design?cid=vf-a-0010"
+    },
+    {
+      "title": "App Intents",
+      "url": "https://developer.apple.com/documentation/AppIntents",
+      "type": "documentation",
+      "description": "Make content and actions discoverable by Apple Intelligence and support system experiences like Siri, Spotlight, Shortcuts, and widgets.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents.json"
+    }
+  ],
+  "path": "sessions/wwdc2024/10176/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10176/metadata.json",
+    "readme": "sessions/wwdc2024/10176/README.md",
+    "transcript": "sessions/wwdc2024/10176/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10176/transcript.json"
+  }
+}

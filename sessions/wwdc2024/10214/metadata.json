@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10214",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10214,
+  "title": "Squeeze the most out of Apple Pencil",
+  "description": "New in iOS 18, iPadOS 18, and visionOS 2, the PencilKit tool picker gains the ability to have completely custom tools, with custom attributes. Learn how to express your custom drawing experience in the tool picker using the same great tool picking experience available across the system. Discover how to access the new features of the Apple Pencil Pro, including roll angle, the squeeze gesture, and haptic feedback.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10214",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10214",
+  "type": "Video",
+  "publishedAt": "2024-06-11T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "barrel roll",
+    "draw",
+    "finger",
+    "haptics",
+    "hover",
+    "pencil kit",
+    "roll"
+  ],
+  "topics": [
+    "App Services",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 898,
+  "hasTranscript": true,
+  "transcriptWordCount": 2271,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10214/4/AFB648F1-CAD7-4F62-8916-9DF4372C33C4/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10214/4/AFB648F1-CAD7-4F62-8916-9DF4372C33C4/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10214/4/AFB648F1-CAD7-4F62-8916-9DF4372C33C4/downloads/wwdc2024-10214_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10214/4/AFB648F1-CAD7-4F62-8916-9DF4372C33C4/downloads/wwdc2024-10214_hd.mp4",
+    "duration": 898
+  },
+  "codeSnippets": [
+    {
+      "title": "Respond to squeeze in UIKit",
+      "language": "swift",
+      "startTimeSeconds": 624,
+      "code": "class MyViewController: UIViewController, UIPencilInteractionDelegate {\n\n    func pencilInteraction(_ interaction: UIPencilInteraction, \n               didReceiveSqueeze squeeze: UIPencilInteraction.Squeeze) {\n\n        if UIPencilInteraction.preferredSqueezeAction == .showContextualPalette &&\n           squeeze.phase == .ended {\n           let anchorPoint = squeeze.hoverPose?.location ?? myDefaultLocation\n           presentMyContextualPaletteAtPosition(anchorPoint)\n        }\n    }\n}"
+    },
+    {
+      "title": "Respond to squeeze in SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 646,
+      "code": "@Environment(\\.preferredPencilSqueezeAction) var preferredAction\n@State var contextualPalettePresented = false\n@State var contextualPaletteAnchor = MyPaletteAnchor.default\n\nvar body: some View {\n    MyView()\n        .onPencilSqueeze { phase in\n            if preferredAction == .showContextualPalette, case let .ended(value) = phase {\n                if let anchorPoint = value.hoverPose?.anchor {\n                    contextualPaletteAnchor = .point(anchorPoint)\n                }\n                contextualPalettePresented = true\n            }\n        }\n}"
+    },
+    {
+      "title": "Provide canvas feedback in UIKit",
+      "language": "swift",
+      "startTimeSeconds": 710,
+      "code": "class MyViewController: UIViewController {\n    @ViewLoading var feedbackGenerator: UICanvasFeedbackGenerator\n\n    override func viewDidLoad() {\n        super.viewDidLoad()\n        feedbackGenerator = UICanvasFeedbackGenerator(view: view)\n    }\n\n    func dragAlignedToGuide(_ sender: MyDragGesture) {\n        feedbackGenerator.alignmentOccurred(at: sender.location(in: view))\n    }\n\n    func snappedToShape(_ sender: MyDrawGesture) {\n        feedbackGenerator.pathCompleted(at: sender.location(in: view))\n    }\n}"
+    },
+    {
+      "title": "Provide canvas feedback in SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 749,
+      "code": "@State var dragAlignedToGuide = 0\n@State var snappedToShape = 0\n var body: some View {\n    MyView()\n        .sensoryFeedback(.alignment, trigger: dragAlignedToGuide)\n        .sensoryFeedback(.pathComplete, trigger: snappedToShape)\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Playing haptic feedback in your app",
+      "url": "https://developer.apple.com/documentation/ApplePencil/playing-haptic-feedback-in-your-app",
+      "type": "documentation",
+      "description": "Provide tactile feedback when people perform certain actions in your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/ApplePencil/playing-haptic-feedback-in-your-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ApplePencil/playing-haptic-feedback-in-your-app.json"
+    },
+    {
+      "title": "Apple Pencil",
+      "url": "https://developer.apple.com/documentation/ApplePencil",
+      "type": "documentation",
+      "description": "Enhance your iPad app’s user experience by supporting drawing, handwriting, and other features of Apple Pencil.",
+      "sosumiURL": "https://sosumi.ai/documentation/ApplePencil",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ApplePencil.json"
+    },
+    {
+      "title": "Configuring the PencilKit tool picker",
+      "url": "https://developer.apple.com/documentation/PencilKit/configuring-the-pencilkit-tool-picker",
+      "type": "samplecode",
+      "description": "Incorporate a custom PencilKit tool picker with a variety of system and custom tools into a drawing app.",
+      "sosumiURL": "https://sosumi.ai/documentation/PencilKit/configuring-the-pencilkit-tool-picker",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/PencilKit/configuring-the-pencilkit-tool-picker.json"
+    },
+    {
+      "title": "Apple Pencil updates",
+      "url": "https://developer.apple.com/documentation/Updates/ApplePencil",
+      "type": "documentation",
+      "description": "Learn about important changes to Apple Pencil.",
+      "sosumiURL": "https://sosumi.ai/documentation/Updates/ApplePencil",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Updates/ApplePencil.json"
+    },
+    {
+      "title": "Forum: UI Frameworks",
+      "url": "https://developer.apple.com/forums/topics/ui-frameworks?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/ui-frameworks?cid=vf-a-0010"
+    },
+    {
+      "title": "Human Interface Guidelines: Apple Pencil and Scribble",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/apple-pencil-and-scribble",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/apple-pencil-and-scribble"
+    }
+  ],
+  "path": "sessions/wwdc2024/10214/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10214/metadata.json",
+    "readme": "sessions/wwdc2024/10214/README.md",
+    "transcript": "sessions/wwdc2024/10214/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10214/transcript.json"
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10095",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10095,
+  "title": "The Push Notifications primer",
+  "description": "Help people get the most out of your app with push notifications for important events and updates — and by delivering up-to-date data in the background, so that it is ready when they open your app. Discover how you can use notifications and alert people to timely and relevant information. Learn the differences between alert and background notifications, how to adopt them in your apps, and avoid mistakes by using the right APIs for the job.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10095",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10095",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "alert",
+    "background",
+    "push"
+  ],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 706,
+  "hasTranscript": true,
+  "transcriptWordCount": 1814,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10095/3/ED74BA77-B586-4360-B7A1-ABA71109064A/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10095/3/ED74BA77-B586-4360-B7A1-ABA71109064A/wwdc2020_10095_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10095/3/ED74BA77-B586-4360-B7A1-ABA71109064A/wwdc2020_10095_hd.mp4",
+    "duration": 706
+  },
+  "codeSnippets": [
+    {
+      "title": "Registering for notifications",
+      "language": "swift",
+      "startTimeSeconds": 122,
+      "code": "class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {\n\nfunc application(_ application: UIApplication,\n                 didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {\n    UIApplication.shared.registerForRemoteNotifications()\n    UNUserNotificationCenter.current().delegate = self\n    return true\n}"
+    },
+    {
+      "title": "UIApplicationDelegate callbacks",
+      "language": "swift",
+      "startTimeSeconds": 156,
+      "code": "func application(_ application: UIApplication,\n                   didFailToRegisterForRemoteNotificationsWithError error: Error) {\n    // The token is not currently available.\n    print(\"Remote notification is unavailable: \\(error.localizedDescription)\")\n}\n\nfunc application(_ application: UIApplication,\n                   didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {\n     // Forward the token to your provider, using a custom method.\n     self.forwardTokenToServer(token: deviceToken)\n}"
+    },
+    {
+      "title": "Forward token to server",
+      "language": "swift",
+      "startTimeSeconds": 185,
+      "code": "func forwardTokenToServer(token: Data) {\n    let tokenComponents = token.map { data in String(format: \"%02.2hhx\", data) }\n    let deviceTokenString = tokenComponents.joined()\n    let queryItems = [URLQueryItem(name: \"deviceToken\", value: deviceTokenString)]\n    var urlComps = URLComponents(string: \"www.example.com/register\")!\n    urlComps.queryItems = queryItems\n    guard let url = urlComps.url else {\n        return\n    }\n\n    let task = URLSession.shared.dataTask(with: url) { data, response, error in\n        // Handle data\n    }\n\n    task.resume()\n}"
+    },
+    {
+      "title": "Request authorization",
+      "language": "swift",
+      "startTimeSeconds": 227,
+      "code": "@IBAction func subscribeToNotifications(_ sender: Any) {\n    let userNotificationCenter = UNUserNotificationCenter.current()\n    userNotificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in\n        print(\"Permission granted: \\(granted)\")\n    }\n}"
+    },
+    {
+      "title": "Payload JSON",
+      "language": "json",
+      "startTimeSeconds": 283,
+      "code": "{\n    \"aps\" : {\n       \"alert\" : {\n            \"title\" : \"Check out our new special!\",\n            \"body\" : \"Avocado Bacon Burger on sale\"\n        },\n        \"sound\" : \"default\",\n        \"badge\" : 1,\n   },\n    \"special\" : \"avocado_bacon_burger\",\n    \"price\" : \"9.99\"\n}"
+    },
+    {
+      "title": "didReceive response",
+      "language": "swift",
+      "startTimeSeconds": 371,
+      "code": "func userNotificationCenter(_ center: UNUserNotificationCenter,\n                            didReceive response: UNNotificationResponse,\n                            withCompletionHandler completionHandler: @escaping () -> Void) {\n    let userInfo = response.notification.request.content.userInfo\n    guard let specialName = userInfo[\"special\"] as? String,\n          let specialPriceString = userInfo[\"price\"] as? String,\n          let specialPrice = Float(specialPriceString) else {\n        // Always call the completion handler when done.\n        completionHandler()\n        return\n    }\n\n    let item = Item(name: specialName, price: specialPrice)\n\t\taddItemToCart(item)\n  \tshowCartViewController()\n    completionHandler()\n }"
+    },
+    {
+      "title": "Register for remote notifications (Background)",
+      "language": "swift",
+      "startTimeSeconds": 496,
+      "code": "class AppDelegate: UIResponder, UIApplicationDelegate {\n\nfunc application(_ application: UIApplication,\n                 didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {\n   UIApplication.shared.registerForRemoteNotifications()\n   return true\n}"
+    },
+    {
+      "title": "Background Notification Payload",
+      "language": "json",
+      "startTimeSeconds": 545,
+      "code": "{\n    \"aps\" : {\n       \"content-available\" : 1\n    },\n    \"myCustomKey\" : \"myCustomData\"\n}"
+    },
+    {
+      "title": "didReceiveRemoteNotification",
+      "language": "swift",
+      "startTimeSeconds": 573,
+      "code": "func application(_ application: UIApplication,\n                     didReceiveRemoteNotification userInfo: [AnyHashable : Any],\n                     fetchCompletionHandler completionHandler:\n                     @escaping (UIBackgroundFetchResult) -> Void) {\n    guard let url = URL(string: \"www.example.com/todays-menu\") else {\n        completionHandler(.failed)\n        return\n    }\n\n    let task = URLSession.shared.dataTask(with: url) { data, response, error in\n        guard let data = data else {\n            completionHandler(.noData)\n            return\n        }\n\n        updateMenu(withData: data)\n        completionHandler(.newData)\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Implementing Background Push Notifications",
+      "url": "https://developer.apple.com/documentation/UserNotifications/implementing-background-push-notifications",
+      "type": "samplecode",
+      "description": "Add background notifications to your app by using the UserNotifications framework.",
+      "sosumiURL": "https://sosumi.ai/documentation/UserNotifications/implementing-background-push-notifications",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UserNotifications/implementing-background-push-notifications.json"
+    },
+    {
+      "title": "Implementing Alert Push Notifications",
+      "url": "https://developer.apple.com/documentation/UserNotifications/implementing-alert-push-notifications",
+      "type": "samplecode",
+      "description": "Add visible alert notifications to your app by using the UserNotifications framework.",
+      "sosumiURL": "https://sosumi.ai/documentation/UserNotifications/implementing-alert-push-notifications",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UserNotifications/implementing-alert-push-notifications.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10095/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10095/metadata.json",
+    "readme": "sessions/wwdc2020/10095/README.md",
+    "transcript": "sessions/wwdc2020/10095/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10095/transcript.json"
+  }
+}

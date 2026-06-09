@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10103",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10103,
+  "title": "Explore enhancements to App Intents",
+  "description": "Bring your widgets to life with App Intents! Explore the latest updates and learn how you can take advantage of dynamic options and user interactivity to build better experiences for your App Shortcuts. We’ll share how you can integrate with Apple Pay, structure your code more efficiently, and take your Shortcuts app integration to the next level.\n\nFor more on App Intents and App Shortcuts, watch “Spotlight your app with App Shortcuts\" from WWDC23.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10103",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10103",
+  "type": "Video",
+  "publishedAt": "2023-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1783,
+  "hasTranscript": true,
+  "transcriptWordCount": 4270,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10103/4/D65BF0C4-53B8-450E-8B16-DF92AA76A73A/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10103/4/D65BF0C4-53B8-450E-8B16-DF92AA76A73A/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10103/4/D65BF0C4-53B8-450E-8B16-DF92AA76A73A/downloads/wwdc2023-10103_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10103/4/D65BF0C4-53B8-450E-8B16-DF92AA76A73A/downloads/wwdc2023-10103_hd.mp4",
+    "duration": 1783
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "App Shortcuts",
+      "url": "https://developer.apple.com/documentation/AppIntents/app-shortcuts",
+      "type": "documentation",
+      "description": "Improve the experience of using your app intents and entities in system experiences like Siri, Spotlight, and the Shortcuts app.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents/app-shortcuts",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents/app-shortcuts.json"
+    },
+    {
+      "title": "App Intents",
+      "url": "https://developer.apple.com/documentation/AppIntents",
+      "type": "documentation",
+      "description": "Make content and actions discoverable by Apple Intelligence and support system experiences like Siri, Spotlight, Shortcuts, and widgets.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10103/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10103/metadata.json",
+    "readme": "sessions/wwdc2023/10103/README.md",
+    "transcript": "sessions/wwdc2023/10103/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10103/transcript.json"
+  }
+}

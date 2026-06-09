@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10233",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10233,
+  "title": "Enhance your app’s audio experience with AirPods",
+  "description": "Discover how you can create transformative audio experiences in your app using AirPods. Learn how to incorporate AirPods Automatic Switching, use AVAudioApplication to support Mute Control, and take advantage of Spatial Audio to create immersive soundscapes in your app or game.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10233",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10233",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Spatial Computing",
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 899,
+  "hasTranscript": true,
+  "transcriptWordCount": 1708,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10233/4/67656F5A-221D-451B-9BD0-45BCA4922204/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10233/4/67656F5A-221D-451B-9BD0-45BCA4922204/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10233/4/67656F5A-221D-451B-9BD0-45BCA4922204/downloads/wwdc2023-10233_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10233/4/67656F5A-221D-451B-9BD0-45BCA4922204/downloads/wwdc2023-10233_hd.mp4",
+    "duration": 899
+  },
+  "codeSnippets": [
+    {
+      "title": "Press to Mute and Unmute API",
+      "language": "swift",
+      "startTimeSeconds": 505,
+      "code": "// Adopting AVAudioApplication into your App\nimport AVFAudio\n\n// Get the started instance \nlet instance = AVAudioApplication.shared\n\n// Register for mute gesture notifications on Notification Center \nAVAudioApplication.inputMuteStateChangeNotification\n\n// Key for mute state\nAVAudioApplication.muteStateKey\n\n// Updating AVAudioApplication’s mute state\ninstance.setInputMuted(...)\n\n// Reading AVAudioApplication’s mute state\ninstance.isInputMuted"
+    },
+    {
+      "title": "Configure the Input Mute State Change handler (macOS only)",
+      "language": "swift",
+      "startTimeSeconds": 652,
+      "code": "// Configure the Input Mute State Change handler (macOS only)\ninstance.setInputMuteStateChangeHandler { isMuted in\n\t//...\n\treturn didSucceed\n}\n\n// Optional: let CoreAudio mute your input for you (macOS only)\n// Define the Core Audio property\nvar inputeMutePropertyAddress = AudioObjectPropertyAddress(\n\tmSelector: kAudioHardwarePropertyProcessInputMute,\n\tmScope: kAudioObjectPropertyScopeInput,\n\tmElement:kAudioObjectPropertyElementMain)\n\n// Enable this property when you want to mute your input\nUInt32 isMuted = 1; // 1 = muted, 0 = unmuted\nAudioObjectSetPropertyData(kAudioObjectSystemObject,\n\t\t\t\t\t\t   &inputeMutePropertyAddress,\n\t\t\t\t\t\t   0,\n\t\t\t\t\t\t   nil,\n\t\t\t\t\t\t   UInt32(MemoryLayout.size(ofValue: isMuted),\n\t\t\t\t\t\t   &isMuted)"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2023/10233/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10233/metadata.json",
+    "readme": "sessions/wwdc2023/10233/README.md",
+    "transcript": "sessions/wwdc2023/10233/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10233/transcript.json"
+  }
+}

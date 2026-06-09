@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-306",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 306,
+  "title": "Optimize SwiftUI performance with Instruments",
+  "description": "Discover the new SwiftUI instrument. We’ll cover how SwiftUI updates views, how changes in your app’s data affect those updates, and how the new instrument helps you visualize those causes and effects. \n\nTo get the most out of this session, we recommend being familiar with writing apps in SwiftUI.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/306",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/306",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Swift",
+    "SwiftUI & UI Frameworks",
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 2136,
+  "hasTranscript": true,
+  "transcriptWordCount": 5679,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/306/4/cc55ba18-71e2-4481-8491-3473e650fdcc/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/306/4/cc55ba18-71e2-4481-8491-3473e650fdcc/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/306/4/cc55ba18-71e2-4481-8491-3473e650fdcc/downloads/wwdc2025-306_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/306/4/cc55ba18-71e2-4481-8491-3473e650fdcc/downloads/wwdc2025-306_hd.mp4",
+    "duration": 2136
+  },
+  "codeSnippets": [
+    {
+      "title": "LandmarkListItemView",
+      "language": "swift",
+      "startTimeSeconds": 527,
+      "code": "import SwiftUI\nimport CoreLocation\n\n/// A view that shows a single landmark in a list.\nstruct LandmarkListItemView: View {\n    @Environment(ModelData.self) private var modelData\n\n    let landmark: Landmark\n\n    var body: some View {\n        Image(landmark.thumbnailImageName)\n            .resizable()\n            .aspectRatio(contentMode: .fill)\n            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)\n            .overlay { ... }\n            .clipped()\n            .cornerRadius(Constants.cornerRadius)\n            .overlay(alignment: .bottom) {\n                VStack(spacing: 6) {\n                    Text(landmark.name)\n                        .font(.title3).fontWeight(.semibold)\n                        .multilineTextAlignment(.center)\n                        .foregroundColor(.white)\n\n                    if let distance {\n                        Text(distance)\n                            .font(.callout)\n                            .foregroundStyle(.white.opacity(0.9))\n                            .padding(.bottom)\n                    }\n                }\n            }\n            .contextMenu { ... }\n    }\n\n    private var distance: String? {\n        guard let currentLocation = modelData.locationFinder.currentLocation else { return nil }\n        let distance = currentLocation.distance(from: landmark.clLocation)\n\n        let numberFormatter = NumberFormatter()\n        numberFormatter.numberStyle = .decimal\n        numberFormatter.maximumFractionDigits = 0\n\n        let formatter = MeasurementFormatter()\n        formatter.locale = Locale.current\n        formatter.unitStyle = .medium\n        formatter.unitOptions = .naturalScale\n        formatter.numberFormatter = numberFormatter\n        return formatter.string(from: Measurement(value: distance, unit: UnitLength.meters))\n    }\n}"
+    },
+    {
+      "title": "LocationFinder Class with Cached Distance Strings",
+      "language": "swift",
+      "startTimeSeconds": 733,
+      "code": "import CoreLocation\n\n/// A class the app uses to find the current location.\n@Observable\nclass LocationFinder: NSObject {\n    var currentLocation: CLLocation?\n    private let currentLocationManager: CLLocationManager = CLLocationManager()\n\n    private let formatter: MeasurementFormatter\n\n    override init() {\n        // Format the numeric distance\n        let numberFormatter = NumberFormatter()\n        numberFormatter.numberStyle = .decimal\n        numberFormatter.maximumFractionDigits = 0\n\n        // Format the measurement based on the current locale\n        let formatter = MeasurementFormatter()\n        formatter.locale = Locale.current\n        formatter.unitStyle = .medium\n        formatter.unitOptions = .naturalScale\n        formatter.numberFormatter = numberFormatter\n        self.formatter = formatter\n\n        super.init()\n\n        currentLocationManager.desiredAccuracy = kCLLocationAccuracyKilometer\n        currentLocationManager.delegate = self\n    }\n\n    // MARK: - Landmark Distance\n\n    var landmarks: [Landmark] = [] {\n        didSet {\n            updateDistances()\n        }\n    }\n\n    private var distanceCache: [Landmark.ID: String] = [:]\n\n    private func updateDistances() {\n        guard let currentLocation else { return }\n\n        // Populate the cache with each formatted distance string\n        self.distanceCache = landmarks.reduce(into: [:]) { result, landmark in\n            let distance = self.formatter.string(\n                from: Measurement(\n                    value: currentLocation.distance(from: landmark.clLocation),\n                    unit: UnitLength.meters\n                )\n            )\n            result[landmark.id] = distance\n        }\n    }\n\n    // Call this function from the view to access the cached value\n    func distance(from landmark: Landmark) -> String? {\n        distanceCache[landmark.id]\n    }\n}\n\nextension LocationFinder: CLLocationManagerDelegate {\n    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {\n        switch currentLocationManager.authorizationStatus {\n        case .authorizedWhenInUse, .authorizedAlways:\n            currentLocationManager.requestLocation()\n        case .notDetermined:\n            currentLocationManager.requestWhenInUseAuthorization()\n        default:\n            currentLocationManager.stopUpdatingLocation()\n        }\n    }\n\n    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {\n        print(\"Found a location.\")\n        currentLocation = locations.last\n        // Update the distance strings when the location changes\n        updateDistances() \n    }\n\n    func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {\n        print(\"Received an error while trying to find a location: \\(error.localizedDescription).\")\n        currentLocationManager.stopUpdatingLocation()\n    }\n}"
+    },
+    {
+      "title": "LandmarkListItemView with Favorite Button",
+      "language": "swift",
+      "startTimeSeconds": 1011,
+      "code": "import SwiftUI\nimport CoreLocation\n\n/// A view that shows a single landmark in a list.\nstruct LandmarkListItemView: View {\n    @Environment(ModelData.self) private var modelData\n\n    let landmark: Landmark\n\n    var body: some View {\n        Image(landmark.thumbnailImageName)\n            .resizable()\n            .aspectRatio(contentMode: .fill)\n            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)\n            .overlay { ... }\n            .clipped()\n            .cornerRadius(Constants.cornerRadius)\n            .overlay(alignment: .bottom) { ... }\n            .contextMenu { ... }\n            .overlay(alignment: .topTrailing) {\n                let isFavorite = modelData.isFavorite(landmark)\n                Button {\n                    modelData.toggleFavorite(landmark)\n                } label: {\n                    Label {\n                        Text(isFavorite ? \"Remove Favorite\" : \"Add Favorite\")\n                    } icon: {\n                        Image(systemName: \"heart\")\n                            .symbolVariant(isFavorite ? .fill : .none)\n                            .contentTransition(.symbolEffect)\n                            .font(.title)\n                            .foregroundStyle(.background)\n                            .shadow(color: .primary.opacity(0.25), radius: 2, x: 0, y: 0)\n                    }\n                }\n                .labelStyle(.iconOnly)\n                .padding()\n            }\n    }\n}"
+    },
+    {
+      "title": "ModelData Class",
+      "language": "swift",
+      "startTimeSeconds": 1040,
+      "code": "/// A structure that defines a collection of landmarks.\n@Observable\nclass LandmarkCollection: Identifiable {\n    // ...\n    var landmarks: [Landmark] = []\n    // ...\n}\n\n/// A class the app uses to store and manage model data.\n@Observable @MainActor\nclass ModelData {\n    // ...\n    var favoritesCollection: LandmarkCollection!\n    // ...\n\n    func isFavorite(_ landmark: Landmark) -> Bool {\n        var isFavorite: Bool = false\n\n        if favoritesCollection.landmarks.firstIndex(of: landmark) != nil {\n            isFavorite = true\n        }\n\n        return isFavorite\n    }\n\n    func toggleFavorite(_ landmark: Landmark) {\n        if isFavorite(landmark) {\n            removeFavorite(landmark)\n        } else {\n            addFavorite(landmark)\n        }\n    }\n\n    func addFavorite(_ landmark: Landmark) {\n        favoritesCollection.landmarks.append(landmark)\n    }\n\n    func removeFavorite(_ landmark: Landmark) {\n        if let landmarkIndex = favoritesCollection.landmarks.firstIndex(of: landmark) {\n            favoritesCollection.landmarks.remove(at: landmarkIndex)\n        }\n    }\n    // ...\n}"
+    },
+    {
+      "title": "OnOffView",
+      "language": "swift",
+      "startTimeSeconds": 1250,
+      "code": "struct OnOffView: View {\n    @State private var isOn = true\n    var body: some View {\n        Text(isOn ? \"On\" : \"Off\")\n    }\n}"
+    },
+    {
+      "title": "Favorites View Model Class",
+      "language": "swift",
+      "startTimeSeconds": 1761,
+      "code": "@Observable class ViewModel {\n    var isFavorite: Bool\n\n    init(isFavorite: Bool = false) {\n        self.isFavorite = isFavorite\n    }\n}"
+    },
+    {
+      "title": "ModelData Class with New ViewModel",
+      "language": "swift",
+      "startTimeSeconds": 1761,
+      "code": "@Observable @MainActor\nclass ModelData {\n    // ...\n    var favoritesCollection: LandmarkCollection!\n    // ...\n\n    @Observable class ViewModel {\n        var isFavorite: Bool\n        init(isFavorite: Bool = false) {\n            self.isFavorite = isFavorite\n        }\n    }\n\n    // Don't observe this property because we only need to react to changes\n    // to each view model individually, rather than the whole dictionary\n    @ObservationIgnored private var viewModels: [Landmark.ID: ViewModel] = [:]\n\n    private func viewModel(for landmark: Landmark) -> ViewModel {\n        // Create a new view model for a landmark on first access\n        if viewModels[landmark.id] == nil {\n            viewModels[landmark.id] = ViewModel()\n        }\n        return viewModels[landmark.id]!\n    }\n\n    func isFavorite(_ landmark: Landmark) -> Bool {\n        // When a SwiftUI view, such as LandmarkListItemView, calls\n        // `isFavorite` from its body, accessing `isFavorite` on the \n        // view model here establishes a direct dependency between\n        // the view and the view model\n        viewModel(for: landmark).isFavorite\n    }\n\n    func toggleFavorite(_ landmark: Landmark) {\n        if isFavorite(landmark) {\n            removeFavorite(landmark)\n        } else {\n            addFavorite(landmark)\n        }\n    }\n\n    func addFavorite(_ landmark: Landmark) {\n        favoritesCollection.landmarks.append(landmark)\n        viewModel(for: landmark).isFavorite = true\n    }\n\n    func removeFavorite(_ landmark: Landmark) {\n        if let landmarkIndex = favoritesCollection.landmarks.firstIndex(of: landmark) {\n            favoritesCollection.landmarks.remove(at: landmarkIndex)\n        }\n        viewModel(for: landmark).isFavorite = false\n    }\n    // ...\n}"
+    },
+    {
+      "title": "Cause and effect: EnvironmentValues",
+      "language": "swift",
+      "startTimeSeconds": 1894,
+      "code": "struct View1: View {\n    @Environment(\\.colorScheme)\n    private var colorScheme\n\n    var body: some View {\n        Text(colorScheme == .dark\n                ? \"Dark Mode\"\n                : \"Light Mode\")\n    }\n}\n\nstruct View2: View {\n    @Environment(\\.counter) private var counter\n\n    var body: some View {\n        Text(\"\\(counter)\")\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Performance and metrics",
+      "url": "https://developer.apple.com/documentation/Xcode/performance-and-metrics",
+      "type": "documentation",
+      "description": "Measure, investigate, and address the use of system resources and issues impacting performance using Instruments and Xcode Organizer.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/performance-and-metrics",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/performance-and-metrics.json"
+    },
+    {
+      "title": "Measuring your app’s power use with Power Profiler",
+      "url": "https://developer.apple.com/documentation/Xcode/measuring-your-app-s-power-use-with-power-profiler",
+      "type": "documentation",
+      "description": "Profile your app’s power impact whether or not your device is connected to Xcode.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/measuring-your-app-s-power-use-with-power-profiler",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/measuring-your-app-s-power-use-with-power-profiler.json"
+    },
+    {
+      "title": "Understanding and improving SwiftUI performance",
+      "url": "https://developer.apple.com/documentation/Xcode/understanding-and-improving-swiftui-performance",
+      "type": "documentation",
+      "description": "Identify and address long-running view updates, and reduce the frequency of updates.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/understanding-and-improving-swiftui-performance",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/understanding-and-improving-swiftui-performance.json"
+    },
+    {
+      "title": "Analyzing the performance of your visionOS app",
+      "url": "https://developer.apple.com/documentation/visionOS/analyzing-the-performance-of-your-visionOS-app",
+      "type": "documentation",
+      "description": "Use the RealityKit Trace template in Instruments to evaluate and improve the performance of your visionOS app.",
+      "sosumiURL": "https://sosumi.ai/documentation/visionOS/analyzing-the-performance-of-your-visionOS-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/visionOS/analyzing-the-performance-of-your-visionOS-app.json"
+    },
+    {
+      "title": "Improving app responsiveness",
+      "url": "https://developer.apple.com/documentation/Xcode/improving-app-responsiveness",
+      "type": "documentation",
+      "description": "Create a user experience that feels responsive by removing hangs and hitches from your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/improving-app-responsiveness",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/improving-app-responsiveness.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/306/",
+  "files": {
+    "metadata": "sessions/wwdc2025/306/metadata.json",
+    "readme": "sessions/wwdc2025/306/README.md",
+    "transcript": "sessions/wwdc2025/306/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/306/transcript.json"
+  }
+}

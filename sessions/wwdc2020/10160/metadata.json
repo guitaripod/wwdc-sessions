@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10160",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10160,
+  "title": "Formatters: Make data human-friendly",
+  "description": "Save yourself time and frustration: When you display data in your app — including dates, times, measurements, names, lists, numbers, or strings — learn how to format it correctly and provide a great experience. We'll walk you through the Formatter APIs as well as how SwiftUI works with stringsdict, and show you how they can help do the heavy lifting of formatting data. Learn about best practices and how to avoid common mistakes.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10160",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10160",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "internationalization",
+    "localization",
+    "nsformatter"
+  ],
+  "topics": [
+    "Accessibility & Inclusion"
+  ],
+  "primaryTopic": "Accessibility & Inclusion",
+  "duration": 918,
+  "hasTranscript": true,
+  "transcriptWordCount": 2686,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10160/4/CC254390-2967-444F-B9EA-01A5DE7E8D39/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10160/4/CC254390-2967-444F-B9EA-01A5DE7E8D39/wwdc2020_10160_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10160/4/CC254390-2967-444F-B9EA-01A5DE7E8D39/wwdc2020_10160_hd.mp4",
+    "duration": 918
+  },
+  "codeSnippets": [
+    {
+      "title": "Dates and times",
+      "language": "swift",
+      "startTimeSeconds": 145,
+      "code": "// Dates and Times\n\n// Date with Day/Month/Year and Time\nlet dateFormatter = DateFormatter()\ndateFormatter.dateStyle = .medium\ndateFormatter.timeStyle = .short\ndateFormatter.string(from: Date())\n\n// Day of Week + Date + Month\nlet dateFormatter = DateFormatter()\ndateFormatter.setLocalizedDateFormatFromTemplate\n    (\"MMMMdEEEE\")\ndateFormatter.string(from: Date())\n\n// Abbreviated Day of Week\nlet dateFormatter = DateFormatter()\ndateFormatter.setLocalizedDateFormatFromTemplate\n    (\"ccccc\")\ndateFormatter.string(from: Date())"
+    },
+    {
+      "title": "Date components formatter",
+      "language": "swift",
+      "startTimeSeconds": 356,
+      "code": "// Dates and Times\n\n// Date and Time Components\nlet formatter = DateComponentsFormatter()\nformatter.unitsStyle = .abbreviated\nlet components = DateComponents(hour: 2, minute: 26)\nformatter.string(from: components)\n\n// Date and Time Intervals\nlet formatter = DateIntervalFormatter()\nformatter.dateTemplate = \"dMMM\"\nformatter.string(from: startDate, to: endDate)\n\n// Relative Dates and Times\nlet formatter = RelativeDateTimeFormatter()\nformatter.dateTimeStyle = .named\nformatter.localizedString(from: DateComponents(day: -1))"
+    },
+    {
+      "title": "Measurements",
+      "language": "swift",
+      "startTimeSeconds": 389,
+      "code": "// Measurements\n\n// Temperature\nlet formatter = MeasurementFormatter()\nlet temperature = Measurement<UnitTemperature>\n    (value: 16, unit: .celsius)\nformatter.numberFormatter.maximumFractionDigits = 0\nformatter.string(from: temperature)\n\n// Speed\nlet speed = Measurement<UnitSpeed>\n    (value: 14, unit: .kilometersPerHour)\nformatter.string(from: speed)\n\n// Pressure\nlet pressure = Measurement<UnitPressure>\n    (value: 1.01885, unit: .bars)\nformatter.string(from: pressure)"
+    },
+    {
+      "title": "Names",
+      "language": "swift",
+      "startTimeSeconds": 469,
+      "code": "// Names\n\nlet formatter = PersonNameComponentsFormatter()\nvar nameComponents = PersonNameComponents()\nnameComponents.familyName = \"Iwasaki\"\nnameComponents.givenName = \"Akiya\"\nnameComponents.nickname = \"Aki-chan\"\n\n// Full Name\nformatter.string(from: nameComponents)\n\n// Short Name: Respects User Preferences\nformatter.style = .short\nformatter.string(from: nameComponents)\n\n// Abbreviated Name\nformatter.style = .abbreviated\nformatter.string(from: nameComponents)"
+    },
+    {
+      "title": "Abbreviated name (monogram)",
+      "language": "swift",
+      "startTimeSeconds": 511,
+      "code": "// Abbreviated Name: Monogram\nformatter.style = .abbreviated\nlet monogram = formatter.string(from: nameComponents)\nif (monogram.count <= 2) {\n    // Use Monogram\n}\nelse {\n    // Use Icon\n}"
+    },
+    {
+      "title": "Name formatter",
+      "language": "swift",
+      "startTimeSeconds": 563,
+      "code": "// Names\n\nlet formatter = PersonNameComponentsFormatter()\nvar nameComponents = PersonNameComponents()\nnameComponents.familyName = \"岩崎\"\nnameComponents.givenName = \"晃也\"\nnameComponents.nickname = \"あきちゃん\"\n\n// Full Name\nformatter.string(from: nameComponents)\n\n// Short Name: Respects User Preferences\nformatter.style = .short\nformatter.string(from: nameComponents)\n\n// Abbreviated Name\nformatter.style = .abbreviated\nformatter.string(from: nameComponents)"
+    },
+    {
+      "title": "Lists",
+      "language": "swift",
+      "startTimeSeconds": 615,
+      "code": "// Lists\n\n// English Localization\n\nlet items = [ \"English\", \"French\", \"Spanish\" ] ListFormatter.localizedString(byJoining: items)\n\nlet items = [ \"English\", \"Spanish\" ] ListFormatter.localizedString(byJoining: items)\n\nlet items = [ \"Spanish\", \"English\" ] ListFormatter.localizedString(byJoining: items)\n\n// Spanish Localization\n\nlet items = [ \"Inglés\", \"Español\" ] ListFormatter.localizedString(byJoining: items)\n\nlet items = [ \"Español\", \"Inglés\" ] ListFormatter.localizedString(byJoining: items)"
+    },
+    {
+      "title": "Numbers",
+      "language": "swift",
+      "startTimeSeconds": 721,
+      "code": "// Numbers\n\nlet formatter = NumberFormatter()\nformatter.numberStyle = .decimal\nformatter.string(from: 32.768) // French (France)\n\nlet formatter = NumberFormatter()\nformatter.numberStyle = .decimal\nformatter.string(from: 32.768) // Arabic (Egypt)\n\nformatter.percentSymbol\n\nformatter.decimalSeparator"
+    },
+    {
+      "title": "Numbers formatter",
+      "language": "swift",
+      "startTimeSeconds": 753,
+      "code": "// Numbers\n\nlet formatter = NumberFormatter()\nformatter.numberStyle = .percent\nformatter.string(from: 0.71) // English (US)\n\nlet formatter = NumberFormatter()\nformatter.numberStyle = .percent\nformatter.string(from: 0.71) // Turkish (Turkey)"
+    },
+    {
+      "title": "Strings",
+      "language": "swift",
+      "startTimeSeconds": 804,
+      "code": "// Strings\n\nvar body: some View {\n    Text(\"\\(photosCount) Photos Selected\")\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Expanding Your App to New Markets",
+      "url": "https://developer.apple.com/localization/",
+      "type": "guide",
+      "description": "Internationalization and Localization. Expanding Your App to New Markets.",
+      "sosumiURL": "https://sosumi.ai/localization/"
+    },
+    {
+      "title": "Xcode Help: Add language plural variants",
+      "url": "https://help.apple.com/xcode/mac/current/#/devd9af5f7ae",
+      "type": "documentation",
+      "description": "Add language plural variants."
+    },
+    {
+      "title": "Unicode Date Field Symbol Table",
+      "url": "https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table",
+      "type": "guide",
+      "description": "Unicode Date Field Symbol Table"
+    },
+    {
+      "title": "Displaying Human-Friendly Content",
+      "url": "https://developer.apple.com/documentation/Foundation/displaying-human-friendly-content",
+      "type": "samplecode",
+      "description": "Convert data into readable strings or Swift objects using formatters.",
+      "sosumiURL": "https://sosumi.ai/documentation/Foundation/displaying-human-friendly-content",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Foundation/displaying-human-friendly-content.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10160/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10160/metadata.json",
+    "readme": "sessions/wwdc2020/10160/README.md",
+    "transcript": "sessions/wwdc2020/10160/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10160/transcript.json"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10162",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10162,
+  "title": "The SwiftUI cookbook for focus",
+  "description": "The SwiftUI team is back in the coding \"kitchen\" with powerful tools to shape your app’s focus experience. Join us and learn about the staple ingredients that support focus-driven interactions in your app. Discover focus interactions for custom views, find out about key-press handlers for keyboard input, and learn how to support movement and hierarchy with focus sections. We’ll also go through some tasty recipes for common focus patterns in your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10162",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10162",
+  "type": "Video",
+  "publishedAt": "2023-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1397,
+  "hasTranscript": true,
+  "transcriptWordCount": 3480,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10162/4/6C82F6E0-81BE-4742-B8F1-A77694DA6074/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10162/4/6C82F6E0-81BE-4742-B8F1-A77694DA6074/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10162/4/6C82F6E0-81BE-4742-B8F1-A77694DA6074/downloads/wwdc2023-10162_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10162/4/6C82F6E0-81BE-4742-B8F1-A77694DA6074/downloads/wwdc2023-10162_hd.mp4",
+    "duration": 1397
+  },
+  "codeSnippets": [
+    {
+      "title": "Focusable views",
+      "language": "swift",
+      "startTimeSeconds": 305,
+      "code": "// Focusable views\n\nstruct RecipeGrid: View {\n    var body: some View {\n        LazyVGrid(columns: [GridItem(), GridItem()]) {\n            ForEach(0..<4) { _ in Capsule() }\n        }\n        .focusable(interactions: .edit)\n    }\n}\n\nstruct RatingPicker: View {\n    var body: some View {\n        HStack { Capsule() ; Capsule() }\n            .focusable(interactions: .activate)\n    }\n}"
+    },
+    {
+      "title": "Focus state",
+      "language": "swift",
+      "startTimeSeconds": 372,
+      "code": "// Focus state\n\nstruct GroceryListView: View {\n    @FocusState private var isItemFocused\n    @State private var itemName = \"\"\n\n    var body: some View {\n        TextField(\"Item Name\", text: $itemName)\n            .focused($isItemFocused)\n\n        Button(\"Done\") { isItemFocused = false }\n            .disabled(!isItemFocused)\n    }\n}"
+    },
+    {
+      "title": "Focused values",
+      "language": "swift",
+      "startTimeSeconds": 452,
+      "code": "// Focused values\n\nstruct SelectedRecipeKey: FocusedValueKey {\n    typealias Value = Binding<Recipe>\n}\n\nextension FocusedValues {\n    var selectedRecipe: Binding<Recipe>? {\n        get { self[SelectedRecipeKey.self] }\n        set { self[SelectedRecipeKey.self] = newValue }\n    }\n}\n\nstruct RecipeView: View {\n    @Binding var recipe: Recipe\n\n    var body: some View {\n        VStack {\n            Text(recipe.title)\n        }\n        .focusedSceneValue(\\.selectedRecipe, $recipe)\n    }\n}\n\nstruct RecipeCommands: Commands {\n    @FocusedBinding(\\.selectedRecipe) private var selectedRecipe: Recipe?\n\n    var body: some Commands {\n        CommandMenu(\"Recipe\") {\n            Button(\"Add to Grocery List\") {\n                if let selectedRecipe {\n                    addRecipe(selectedRecipe)\n                }\n            }\n            .disabled(selectedRecipe == nil)\n        }\n    }\n\n    private func addRecipe(_ recipe: Recipe) { /* ... */ }\n}\n\nstruct Recipe: Hashable, Identifiable {\n    let id = UUID()\n    var title = \"\"\n    var isFavorite = false\n}"
+    },
+    {
+      "title": "Focus sections",
+      "language": "swift",
+      "startTimeSeconds": 603,
+      "code": "// Focus sections\n\nstruct ContentView: View {\n    @State private var favorites = Recipe.examples\n    @State private var selection = Recipe.examples.first!\n\n    var body: some View {\n        VStack {\n            HStack {\n                ForEach(favorites) { recipe in\n                    Button(recipe.name) { selection = recipe }\n                }\n            }\n\n            Image(selection.imageName)\n\n            HStack {\n                Spacer()\n                Button(\"Add to Grocery List\") { addIngredients(selection) }\n                Spacer()\n            }\n            .focusSection()\n        }\n    }\n\n    private func addIngredients(_ recipe: Recipe) { /* ... */ }\n}\n\nstruct Recipe: Hashable, Identifiable {\n    static let examples: [Recipe] = [\n        Recipe(name: \"Apple Pie\"),\n        Recipe(name: \"Baklava\"),\n        Recipe(name: \"Crème Brûlée\")\n    ]\n\n    let id = UUID()\n    var name = \"\"\n    var imageName = \"\"\n}"
+    },
+    {
+      "title": "Controlling focus",
+      "language": "swift",
+      "startTimeSeconds": 689,
+      "code": "struct GroceryListView: View {\n    @State private var list = GroceryList.examples\n    @FocusState private var focusedItem: GroceryList.Item.ID?\n\n    var body: some View {\n        NavigationStack {\n            List($list.items) { $item in\n                HStack {\n                    Toggle(\"Obtained\", isOn: $item.isObtained)\n                    TextField(\"Item Name\", text: $item.name)\n                        .onSubmit { addEmptyItem() }\n                        .focused($focusedItem, equals: item.id)\n                }\n            }\n            .defaultFocus($focusedItem, list.items.last?.id)\n            .toggleStyle(.checklist)\n        }\n        .toolbar {\n            Button(action: addEmptyItem) {\n                Label(\"New Item\", systemImage: \"plus\")\n            }\n        }\n    }\n\n    private func addEmptyItem() {\n        let newItem = list.addItem()\n        focusedItem = newItem.id\n    }\n}\n\nstruct GroceryList: Codable {\n    static let examples = GroceryList(items: [\n        GroceryList.Item(name: \"Apples\"),\n        GroceryList.Item(name: \"Lasagna\"),\n        GroceryList.Item(name: \"\")\n    ])\n\n    struct Item: Codable, Hashable, Identifiable {\n        var id = UUID()\n        var name: String\n        var isObtained: Bool = false\n    }\n\n    var items: [Item] = []\n\n    mutating func addItem() -> Item {\n        let item = GroceryList.Item(name: \"\")\n        items.append(item)\n        return item\n    }\n}\n\nstruct ChecklistToggleStyle: ToggleStyle {\n    func makeBody(configuration: Configuration) -> some View {\n        Button {\n            configuration.isOn.toggle()\n        } label: {\n            Image(systemName: configuration.isOn ? \"checkmark.circle.fill\" : \"circle.dashed\")\n                .foregroundStyle(configuration.isOn ? .green : .gray)\n                .font(.system(size: 20))\n                .contentTransition(.symbolEffect)\n                .animation(.linear, value: configuration.isOn)\n        }\n        .buttonStyle(.plain)\n        .contentShape(.circle)\n    }\n}\n\nextension ToggleStyle where Self == ChecklistToggleStyle {\n    static var checklist: ChecklistToggleStyle { .init() }\n}"
+    },
+    {
+      "title": "Custom focusable control",
+      "language": "swift",
+      "startTimeSeconds": 925,
+      "code": "struct RatingPicker: View {\n    @Environment(\\.layoutDirection) private var layoutDirection\n    @Binding var rating: Rating?\n\n    #if os(watchOS)\n    @State private var digitalCrownRotation = 0.0\n    #endif\n\n    var body: some View {\n        EmojiContainer { ratingOptions }\n            .contentShape(.capsule)\n            .focusable(interactions: .activate)\n            #if os(macOS)\n            .onMoveCommand { direction in\n                selectRating(direction, layoutDirection: layoutDirection)\n            }\n            #endif\n            #if os(watchOS)\n            .digitalCrownRotation($digitalCrownRotation, from: 0, through: Double(Rating.allCases.count - 1), by: 1, sensitivity: .low)\n            .onChange(of: digitalCrownRotation) { oldValue, newValue in\n                if let rating = Rating(rawValue: Int(round(digitalCrownRotation))) {\n                    self.rating = rating\n                }\n            }\n            #endif\n    }\n\n    private var ratingOptions: some View {\n        ForEach(Rating.allCases) { rating in\n            EmojiView(rating: rating, isSelected: self.rating == rating) {\n                self.rating = rating\n            }\n        }\n    }\n\n    #if os(macOS)\n    private func selectRating(\n        _ direction: MoveCommandDirection, layoutDirection: LayoutDirection\n    ) {\n        var direction = direction\n\n        if layoutDirection == .rightToLeft {\n            switch direction {\n            case .left: direction = .right\n            case .right: direction = .left\n            default: break\n            }\n        }\n\n        if let rating {\n            switch direction {\n            case .left:\n                guard let previousRating = rating.previous else { return }\n                self.rating = previousRating\n            case .right:\n                guard let nextRating = rating.next else { return }\n                self.rating = nextRating\n            default:\n                break\n            }\n        }\n    }\n    #endif\n}\n\nprivate struct EmojiContainer<Content: View>: View {\n    @Environment(\\.isFocused) private var isFocused\n    private var content: Content\n\n    #if os(watchOS)\n    private var strokeColor: Color {\n        isFocused ? .green : .clear\n    }\n    #endif\n\n    init(@ViewBuilder content: @escaping () -> Content) {\n        self.content = content()\n    }\n\n    var body: some View {\n        HStack(spacing: 2) {\n            content\n        }\n            .frame(height: 32)\n            .font(.system(size: 24))\n            .padding(.horizontal, 8)\n            .padding(.vertical, 6)\n            .background(.quaternary)\n            .clipShape(.capsule)\n            #if os(watchOS)\n            .overlay(\n                Capsule()\n                    .strokeBorder(strokeColor, lineWidth: 1.5)\n            )\n            #endif\n    }\n}\n\nprivate struct EmojiView: View {\n    var rating: Rating\n    var isSelected: Bool\n    var action: () -> Void\n\n    var body: some View {\n        ZStack {\n            Circle()\n                .fill(isSelected ? Color.accentColor : Color.clear)\n            Text(verbatim: rating.emoji)\n                .onTapGesture { action() }\n                .accessibilityLabel(rating.localizedName)\n        }\n    }\n}\n\nenum Rating: Int, CaseIterable, Identifiable {\n    case meh\n    case yummy\n    case delicious\n\n    var id: RawValue { rawValue }\n\n    var emoji: String {\n        switch self {\n        case .meh:\n            return \"😕\"\n        case .yummy:\n            return \"🙂\"\n        case .delicious:\n            return \"🥰\"\n        }\n    }\n\n    var localizedName: LocalizedStringKey {\n        switch self {\n        case .meh:\n            return \"Meh\"\n        case .yummy:\n            return \"Yummy\"\n        case .delicious:\n            return \"Delicious\"\n        }\n    }\n\n    var previous: Rating? {\n        let ratings = Rating.allCases\n        let index = ratings.firstIndex(of: self)!\n\n        guard index != ratings.startIndex else {\n            return nil\n        }\n\n        let previousIndex = ratings.index(before: index)\n        return ratings[previousIndex]\n    }\n\n    var next: Rating? {\n        let ratings = Rating.allCases\n        let index = ratings.firstIndex(of: self)!\n\n        let nextIndex = ratings.index(after: index)\n        guard nextIndex != ratings.endIndex else {\n            return nil\n        }\n\n        return ratings[nextIndex]\n    }\n}"
+    },
+    {
+      "title": "Grid view",
+      "language": "swift",
+      "startTimeSeconds": 1130,
+      "code": "struct ContentView: View {\n    @State private var recipes = Recipe.examples\n    @State private var selection: Recipe.ID = Recipe.examples.first!.id\n    @Environment(\\.layoutDirection) private var layoutDirection\n\n    var body: some View {\n        LazyVGrid(columns: columns) {\n            ForEach(recipes) { recipe in\n                RecipeTile(recipe: recipe, isSelected: recipe.id == selection)\n                    .id(recipe.id)\n                    #if os(macOS)\n                    .onTapGesture { selection = recipe.id }\n                    .simultaneousGesture(TapGesture(count: 2).onEnded {\n                        navigateToRecipe(id: recipe.id)\n                    })\n                    #else\n                    .onTapGesture { navigateToRecipe(id: recipe.id) }\n                    #endif\n            }\n        }\n        .focusable()\n        .focusEffectDisabled()\n        .focusedValue(\\.selectedRecipe, $selection)\n        .onMoveCommand { direction in\n            selectRecipe(direction, layoutDirection: layoutDirection)\n        }\n        .onKeyPress(.return) {\n            navigateToRecipe(id: selection)\n            return .handled\n        }\n        .onKeyPress(characters: .alphanumerics, phases: .down) { keyPress in\n            selectRecipe(matching: keyPress.characters)\n        }\n    }\n\n    private var columns: [GridItem] {\n        [ GridItem(.adaptive(minimum: RecipeTile.size), spacing: 0) ]\n    }\n\n    private func navigateToRecipe(id: Recipe.ID) {\n        // ...\n    }\n\n    private func selectRecipe(\n        _ direction: MoveCommandDirection, layoutDirection: LayoutDirection\n    ) {\n        // ...\n    }\n\n    private func selectRecipe(matching characters: String) -> KeyPress.Result {\n        // ...\n        return .handled\n    }\n}\n\nstruct RecipeTile: View {\n    static let size = 240.0\n    static let selectionStrokeWidth = 4.0\n\n    var recipe: Recipe\n    var isSelected: Bool\n\n    private var strokeStyle: AnyShapeStyle {\n        isSelected\n            ? AnyShapeStyle(.selection)\n            : AnyShapeStyle(.clear)\n    }\n\n    var body: some View {\n        VStack {\n            RoundedRectangle(cornerRadius: 20)\n                .fill(.background)\n                .strokeBorder(\n                    strokeStyle,\n                    lineWidth: Self.selectionStrokeWidth)\n                .frame(width: Self.size, height: Self.size)\n            Text(recipe.name)\n        }\n    }\n}\n\nstruct SelectedRecipeKey: FocusedValueKey {\n    typealias Value = Binding<Recipe.ID>\n}\n\nextension FocusedValues {\n    var selectedRecipe: Binding<Recipe.ID>? {\n        get { self[SelectedRecipeKey.self] }\n        set { self[SelectedRecipeKey.self] = newValue }\n    }\n}\n\nstruct RecipeCommands: Commands {\n    @FocusedBinding(\\.selectedRecipe) private var selectedRecipe: Recipe.ID?\n\n    var body: some Commands {\n        CommandMenu(\"Recipe\") {\n            Button(\"Add to Grocery List\") {\n                if let selectedRecipe {\n                    addRecipe(selectedRecipe)\n                }\n            }\n            .disabled(selectedRecipe == nil)\n        }\n    }\n\n    private func addRecipe(_ recipe: Recipe.ID) { /* ... */ }\n}\n\nstruct Recipe: Hashable, Identifiable {\n    static let examples: [Recipe] = [\n        Recipe(name: \"Apple Pie\"),\n        Recipe(name: \"Baklava\"),\n        Recipe(name: \"Crème Brûlée\")\n    ]\n\n    let id = UUID()\n    var name = \"\"\n    var imageName = \"\"\n}"
+    },
+    {
+      "title": "Focusable grid on tvOS",
+      "language": "swift",
+      "startTimeSeconds": 1288,
+      "code": "struct ContentView: View {\n    var body: some View {\n        HStack {\n            VStack {\n                List([\"Dessert\", \"Pancake\", \"Salad\", \"Sandwich\"], id: \\.self) {\n                    NavigationLink($0, destination: Color.gray)\n                }\n                Spacer()\n            }\n            .focusSection()\n\n            ScrollView {\n                LazyVGrid(columns: [GridItem(), GridItem()]) {\n                    RoundedRectangle(cornerRadius: 5.0)\n                        .focusable()\n                }\n            }\n            .focusSection()\n        }\n    }\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2023/10162/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10162/metadata.json",
+    "readme": "sessions/wwdc2023/10162/README.md",
+    "transcript": "sessions/wwdc2023/10162/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10162/transcript.json"
+  }
+}

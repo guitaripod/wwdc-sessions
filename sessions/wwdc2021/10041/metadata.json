@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10041",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10041,
+  "title": "Extract document data using Vision",
+  "description": "Discover how Vision can provide expert image recognition and analysis in your app to extract information from documents, recognize text in multiple languages, and identify barcodes. We’ll explore the latest updates to Text Recognition and Barcode Detection, show you how to bring all these tools together with Core ML, and help your app make greater sense of the world through images or the live camera.\n\nTo learn more about Vision, watch “Detect people, faces, and poses using Vision” from WWDC21 as well as “Explore Computer Vision APIs” from WWDC20.\n\nFor further understanding of all that Vision has to offer, watch “Detect people, faces, and poses using Vision” from WWDC21 as well as “Explore Computer Vision APIs” from WWDC20.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10041",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10041",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "barcode",
+    "barcode detection",
+    "computer vision",
+    "core ml",
+    "machine learning",
+    "ocr",
+    "text recognition",
+    "vision"
+  ],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1152,
+  "hasTranscript": true,
+  "transcriptWordCount": 2688,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10041/6/1CB4D0E9-CCA8-4C66-80DA-5887CF8F06C5/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10041/6/1CB4D0E9-CCA8-4C66-80DA-5887CF8F06C5/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10041/6/1CB4D0E9-CCA8-4C66-80DA-5887CF8F06C5/downloads/wwdc2021-10041_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10041/6/1CB4D0E9-CCA8-4C66-80DA-5887CF8F06C5/downloads/wwdc2021-10041_hd.mp4",
+    "duration": 1152
+  },
+  "codeSnippets": [
+    {
+      "title": "Barcode Scan",
+      "language": "swift",
+      "startTimeSeconds": 378,
+      "code": "import Foundation\nimport Vision\n\nlet url = URL(fileReferenceLiteralResourceName: \"codeall_4.png\") as CFURL\n\nguard let imageSource = CGImageSourceCreateWithURL(url, nil),\n      let barcodeImage = CGImageSourceCreateImageAtIndex(imageSource, 0, nil) else {\n    fatalError(\"Unable to create barcode image.\")\n}\n\nlet imageRequestHandler = VNImageRequestHandler(cgImage: barcodeImage)\n\nlet detectBarcodesRequest = VNDetectBarcodesRequest()\ndetectBarcodesRequest.revision = VNDetectBarcodesRequestRevision2\ndetectBarcodesRequest.symbologies = [.codabar]\n\ntry imageRequestHandler.perform([detectBarcodesRequest])\n\nif let detectedBarcodes = detectBarcodesRequest.results {\n\n    drawBarcodes(detectedBarcodes, sourceImage: barcodeImage)\n\n    detectedBarcodes.forEach {\n        print($0.payloadStringValue ?? \"\")\n    }\n}\n\n\n\n\npublic func createCGPathForTopLeftCCWQuadrilateral(_ topLeft: CGPoint,\n                                            _ bottomLeft: CGPoint,\n                                            _ bottomRight: CGPoint,\n                                            _ topRight: CGPoint,\n                                            _ transform: CGAffineTransform) -> CGPath\n{\n    let path = CGMutablePath()\n    path.move(to: topLeft, transform: transform)\n    path.addLine(to: bottomLeft, transform: transform)\n    path.addLine(to: bottomRight, transform: transform)\n    path.addLine(to: topRight, transform: transform)\n    path.addLine(to: topLeft, transform: transform)\n    path.closeSubpath()\n    return path\n}\n\n\npublic func drawBarcodes(_ observations: [VNBarcodeObservation], sourceImage: CGImage) -> CGImage? {\n    let size = CGSize(width: sourceImage.width, height: sourceImage.height)\n    let imageSpaceTransform = CGAffineTransform(scaleX:size.width, y:size.height)\n    let colorSpace = CGColorSpace.init(name: CGColorSpace.sRGB)\n    let cgContext = CGContext.init(data: nil, width: Int(size.width), height: Int(size.height), bitsPerComponent: 8, bytesPerRow: 8 * 4 * Int(size.width), space: colorSpace!, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)!\n    cgContext.setStrokeColor(CGColor.init(srgbRed: 1.0,  green: 0.0,  blue: 0.0,  alpha: 0.7))\n    cgContext.setLineWidth(25.0)\n    cgContext.draw(sourceImage, in: CGRect(x: 0.0, y: 0.0, width: size.width, height: size.height))\n\n    for currentObservation in observations {\n        let path = createCGPathForTopLeftCCWQuadrilateral(currentObservation.topLeft,\n                                                        currentObservation.bottomLeft,\n                                                        currentObservation.bottomRight,\n                                                        currentObservation.topRight,\n                                                        imageSpaceTransform)\n        cgContext.addPath(path)\n        cgContext.strokePath()\n    }\n    return cgContext.makeImage()\n}"
+    },
+    {
+      "title": "Survey Scan",
+      "language": "swift",
+      "startTimeSeconds": 842,
+      "code": "import Foundation\nimport CoreImage\nimport Vision\nimport CoreML\n\nguard var inputImage = CIImage(contentsOf: #fileLiteral(resourceName: \"IMG_0001.HEIC\"))\nelse { fatalError(\"image not found\") }\n\ninputImage\n\nlet requestHandler = VNImageRequestHandler(ciImage: inputImage)\nlet documentDetectionRequest = VNDetectDocumentSegmentationRequest()\ntry requestHandler.perform([documentDetectionRequest])\n\nguard let document = documentDetectionRequest.results?.first,\n      let documentImage = perspectiveCorrectedImage(from: inputImage, rectangleObservation: document) else {\n          fatalError(\"Unable to get document image.\")\n      }\n\ndocumentImage\nlet documentRequestHandler = VNImageRequestHandler(ciImage: documentImage)\n\n/*\n TODO\n  Detect barcodes\n  Detect rectangles\n  Recognize text\n  Perform those requests\n  Scan checkboxes\n */\n\nvar documentTitle = \"Don't know yet\"\n\nlet barcodesDetection = VNDetectBarcodesRequest() { request, _ in\n    guard let result = request.results?.first as? VNBarcodeObservation,\n          let payload = result.payloadStringValue else { return }\n    documentTitle = \"\\(payload) was: \"\n}\nbarcodesDetection.symbologies = [.qr]\n\nvar checkBoxImages: [CIImage] = []\nvar rectangles: [VNRectangleObservation] = []\n\nlet rectanglesDetection = VNDetectRectanglesRequest { request, error in\n    rectangles = request.results as! [VNRectangleObservation]\n    // sort by vertical coordinates\n    rectangles.sort{$0.boundingBox.origin.y > $1.boundingBox.origin.y}\n\n    for rectangle in rectangles {\n        guard let checkBoxImage = perspectiveCorrectedImage(from: documentImage, rectangleObservation: rectangle)\n        else { print(\"Could not extract document\"); return }\n        checkBoxImages.append(checkBoxImage)\n    }\n}\nrectanglesDetection.minimumSize = 0.1\nrectanglesDetection.maximumObservations = 0\n\nvar textBlocks: [VNRecognizedTextObservation] = []\n\nlet ocrRequest = VNRecognizeTextRequest { request, error in\n    textBlocks = request.results as! [VNRecognizedTextObservation]\n}\n\ndo {\n    try documentRequestHandler.perform([ocrRequest, rectanglesDetection, barcodesDetection])\n} catch {\n    print(error)\n}\n\n\nlet classificationRequest = createclassificationRequest()\n\nvar index = 0\nfor checkBoxImage in checkBoxImages {\n    let checkBoxRequestHandler = VNImageRequestHandler(ciImage: checkBoxImage)\n    do {\n        try checkBoxRequestHandler.perform([classificationRequest])\n        if let classifications = classificationRequest.results as? [VNClassificationObservation] {\n            if let topClassification = classifications.first\n            {\n                if topClassification.identifier == \"Yes\" && topClassification.confidence >= 0.9 {\n                    for currentText in textBlocks {\n                        if observationLinesUp(rectangles[index], with: currentText) {\n                            let foundTextObservation = currentText.topCandidates(1)\n                            documentTitle += foundTextObservation.first!.string + \" \"\n                        }\n                    }\n                }\n            }\n        }\n    } catch {\n        print(error)\n    }\n    index += 1\n}\n\nprint(documentTitle)\n\n\n\nextension CGPoint {\n    func scaled(to size: CGSize) -> CGPoint {\n        return CGPoint(x: self.x * size.width, y: self.y * size.height)\n    }\n}\nextension CGRect {\n    func scaled(to size: CGSize) -> CGRect {\n        return CGRect(\n            x: self.origin.x * size.width,\n            y: self.origin.y * size.height,\n            width: self.size.width * size.width,\n            height: self.size.height * size.height\n        )\n    }\n}\n\npublic func observationLinesUp(_ observation: VNRectangleObservation, with textObservation: VNRecognizedTextObservation ) -> Bool {\n    // calculate center\n    let midPoint =  CGPoint(x:textObservation.boundingBox.midX, y:observation.boundingBox.midY)\n    return textObservation.boundingBox.contains(midPoint)\n}\n\npublic func perspectiveCorrectedImage(from inputImage: CIImage, rectangleObservation: VNRectangleObservation ) -> CIImage? {\n    let imageSize = inputImage.extent.size\n\n    // Verify detected rectangle is valid.\n    let boundingBox = rectangleObservation.boundingBox.scaled(to: imageSize)\n    guard inputImage.extent.contains(boundingBox)\n    else { print(\"invalid detected rectangle\"); return nil}\n\n    // Rectify the detected image and reduce it to inverted grayscale for applying model.\n    let topLeft = rectangleObservation.topLeft.scaled(to: imageSize)\n    let topRight = rectangleObservation.topRight.scaled(to: imageSize)\n    let bottomLeft = rectangleObservation.bottomLeft.scaled(to: imageSize)\n    let bottomRight = rectangleObservation.bottomRight.scaled(to: imageSize)\n    let correctedImage = inputImage\n        .cropped(to: boundingBox)\n        .applyingFilter(\"CIPerspectiveCorrection\", parameters: [\n            \"inputTopLeft\": CIVector(cgPoint: topLeft),\n            \"inputTopRight\": CIVector(cgPoint: topRight),\n            \"inputBottomLeft\": CIVector(cgPoint: bottomLeft),\n            \"inputBottomRight\": CIVector(cgPoint: bottomRight)\n        ])\n    return correctedImage\n}\n\npublic func createclassificationRequest() -> VNCoreMLRequest\n{\n    let classificationRequest: VNCoreMLRequest = {\n        // Load the ML model through its generated class and create a Vision request for it.\n        do {\n            let coreMLModel = try MLModel(contentsOf: #fileLiteral(resourceName: \"CheckboxClassifier.mlmodelc\"))\n            let model = try VNCoreMLModel(for: coreMLModel)\n\n            return VNCoreMLRequest(model: model)\n        } catch {\n            fatalError(\"can't load Vision ML model: \\(error)\")\n        }\n    }()\n    return classificationRequest\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Vision",
+      "url": "https://developer.apple.com/documentation/Vision",
+      "type": "documentation",
+      "description": "Analyze image and video content in your app using computer vision algorithms for object detection, text recognition, and image segmentation.",
+      "sosumiURL": "https://sosumi.ai/documentation/Vision",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Vision.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10041/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10041/metadata.json",
+    "readme": "sessions/wwdc2021/10041/README.md",
+    "transcript": "sessions/wwdc2021/10041/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10041/transcript.json"
+  }
+}

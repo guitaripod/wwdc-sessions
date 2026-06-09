@@ -1,0 +1,339 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10167",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10167,
+  "title": "Expand on Swift macros",
+  "description": "Discover how Swift macros can help you reduce boilerplate in your codebase and adopt complex features more easily. Learn how macros can analyze code, emit rich compiler errors to guide developers towards correct usage, and generate new code that is automatically incorporated back into your project. We’ll also take you through important concepts like macro roles, compiler plugins, and syntax trees.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10167",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10167",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 2383,
+  "hasTranscript": true,
+  "transcriptWordCount": 6782,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10167/4/EAAEDDF4-5E7C-4AE9-A20C-CCD2E061E331/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10167/4/EAAEDDF4-5E7C-4AE9-A20C-CCD2E061E331/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10167/4/EAAEDDF4-5E7C-4AE9-A20C-CCD2E061E331/downloads/wwdc2023-10167_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10167/4/EAAEDDF4-5E7C-4AE9-A20C-CCD2E061E331/downloads/wwdc2023-10167_hd.mp4",
+    "duration": 2383
+  },
+  "codeSnippets": [
+    {
+      "title": "The #unwrap expression macro, with a more complicated argument",
+      "language": "swift",
+      "startTimeSeconds": 44,
+      "code": "let image = #unwrap(request.downloadedImage, message: \"was already checked\")\n\n// Begin expansion for \"#unwrap\"\n{ [wrappedValue = request.downloadedImage] in\n    guard let wrappedValue else {\n        preconditionFailure(\n            \"Unexpectedly found nil: ‘request.downloadedImage’ \" + \n                \"was already checked\",\n            file: \"main/ImageLoader.swift\",\n            line: 42\n        )\n    }\n    return wrappedValue\n}()\n// End expansion for \"#unwrap\""
+    },
+    {
+      "title": "Existing features using expansions (1)",
+      "language": "swift",
+      "startTimeSeconds": 50,
+      "code": "struct Smoothie: Codable {\n    var id, title, description: String\n    var measuredIngredients: [MeasuredIngredient]\n\n    static let berryBlue =\n        Smoothie(id: \"berry-blue\", title: \"Berry Blue\") {\n            \"\"\"\n            Filling and refreshing, this smoothie \\\n            will fill you with joy!\n            \"\"\"\n\n            Ingredient.orange\n                .measured(with: .cups).scaled(by: 1.5)\n            Ingredient.blueberry\n                .measured(with: .cups)\n            Ingredient.avocado\n                .measured(with: .cups).scaled(by: 0.2)\n        }\n}"
+    },
+    {
+      "title": "Existing features using expansions (2)",
+      "language": "swift",
+      "startTimeSeconds": 71,
+      "code": "struct Smoothie: Codable {\n    var id, title, description: String\n    var measuredIngredients: [MeasuredIngredient]\n\n        // Begin expansion for Codable\n        private enum CodingKeys: String, CodingKey {\n            case id, title, description,\n                 measuredIngredients\n        }\n\n        init(from decoder: Decoder) throws { … }\n\n        func encode(to encoder Encoder) throws { … }\n        // End expansion for Codable\n\n    static let berryBlue =\n        Smoothie(id: \"berry-blue\", title: \"Berry Blue\") {\n            \"\"\"\n            Filling and refreshing, this smoothie \\\n            will fill you with joy!\n            \"\"\"\n\n            Ingredient.orange\n                .measured(with: .cups).scaled(by: 1.5)\n            Ingredient.blueberry\n                .measured(with: .cups)\n            Ingredient.avocado\n                .measured(with: .cups).scaled(by: 0.2)\n        }\n}"
+    },
+    {
+      "title": "Macros inputs are complete, type-checked, and validated",
+      "language": "swift",
+      "startTimeSeconds": 196,
+      "code": "#unwrap(1 + )    // error: expected expression after operator\n\n\n\n\n@AddCompletionHandler(parameterName: 42)    // error: cannot convert argument of type 'Int' to expected type 'String'\nfunc sendRequest() async throws -> Response\n\n\n\n\n@DictionaryStorage class Options { … }    // error: '@DictionaryStorage' can only be applied to a 'struct'"
+    },
+    {
+      "title": "Macro expansions are inserted in predictable ways",
+      "language": "swift",
+      "startTimeSeconds": 225,
+      "code": "func doThingy() {\n    startDoingThingy()\n\n    #someUnknownMacro()\n\n    finishDoingThingy()\n}"
+    },
+    {
+      "title": "How macros work, featuring #stringify",
+      "language": "swift",
+      "startTimeSeconds": 291,
+      "code": "func printAdd(_ a: Int, _ b: Int) {\n    let (result, str) = #stringify(a + b)\n\n        // Begin expansion for \"#stringify\"\n        (a + b, \"a + b\")\n        // End expansion for \"#stringify\"\n\n    print(\"\\(str) = \\(result)\")\n}\n\nprintAdd(1, 2)    // prints \"a + b = 3\""
+    },
+    {
+      "title": "Macro declaration for #stringify",
+      "language": "swift",
+      "startTimeSeconds": 343,
+      "code": "/// Creates a tuple containing both the result of `expr` and its source code represented as a\n/// `String`.\n@freestanding(expression)\nmacro stringify<T>(_ expr: T) -> (T, String)"
+    },
+    {
+      "title": "What’s an expression?",
+      "language": "swift",
+      "startTimeSeconds": 431,
+      "code": "let numPixels = (x + width) * (y + height)\n//              ^~~~~~~~~~~~~~~~~~~~~~~~~~ This is an expression\n//               ^~~~~~~~~                 But so is this\n//                   ^~~~~                 And this"
+    },
+    {
+      "title": "The #unwrap expression macro: motivation",
+      "language": "swift",
+      "startTimeSeconds": 454,
+      "code": "// Some teams are nervous about this:\nlet image = downloadedImage!\n\n// Alternatives are super wordy:\nguard let image = downloadedImage else {\n    preconditionFailure(\"Unexpectedly found nil: downloadedImage was already checked\")\n}"
+    },
+    {
+      "title": "The #unwrap expression macro: macro declaration",
+      "language": "swift",
+      "startTimeSeconds": 483,
+      "code": "/// Force-unwraps the optional value passed to `expr`.\n/// - Parameter message: Failure message, followed by `expr` in single quotes\n@freestanding(expression)\nmacro unwrap<Wrapped>(_ expr: Wrapped?, message: String) -> Wrapped"
+    },
+    {
+      "title": "The #unwrap expression macro: usage",
+      "language": "swift",
+      "startTimeSeconds": 501,
+      "code": "let image = #unwrap(downloadedImage, message: \"was already checked\")\n\n// Begin expansion for \"#unwrap\"\n{ [downloadedImage] in\n    guard let downloadedImage else {\n        preconditionFailure(\n            \"Unexpectedly found nil: ‘downloadedImage’ \" + \"was already checked\",\n            file: \"main/ImageLoader.swift\",\n            line: 42\n        )\n    }\n    return downloadedImage\n}()\n// End expansion for \"#unwrap\""
+    },
+    {
+      "title": "The #makeArrayND declaration macro: motivation",
+      "language": "swift",
+      "startTimeSeconds": 549,
+      "code": "public struct Array2D<Element>: Collection {\n    public struct Index: Hashable, Comparable { var storageIndex: Int }\n\n    var storage: [Element]\n    var width1: Int\n\n    public func makeIndex(_ i0: Int, _ i1: Int) -> Index {\n        Index(storageIndex: i0 * width1 + i1)\n    }\n\n    public subscript (_ i0: Int, _ i1: Int) -> Element {\n        get { self[makeIndex(i0, i1)] }\n        set { self[makeIndex(i0, i1)] = newValue }\n    }\n\n    public subscript (_ i: Index) -> Element {\n        get { storage[i.storageIndex] }\n        set { storage[i.storageIndex] = newValue }\n    }\n\n    // Note: Omitted additional members needed for 'Collection' conformance\n}\n\npublic struct Array3D<Element>: Collection {\n    public struct Index: Hashable, Comparable { var storageIndex: Int }\n\n    var storage: [Element]\n    var width1, width2: Int\n\n    public func makeIndex(_ i0: Int, _ i1: Int, _ i2: Int) -> Index {\n        Index(storageIndex: (i0 * width1 + i1) * width2 + i2)\n    }\n\n    public subscript (_ i0: Int, _ i1: Int, _ i2: Int) -> Element {\n        get { self[makeIndex(i0, i1, i2)] }\n        set { self[makeIndex(i0, i1, i2)] = newValue }\n    }\n\n    public subscript (_ i: Index) -> Element {\n        get { storage[i.storageIndex] }\n        set { storage[i.storageIndex] = newValue }\n    }\n\n    // Note: Omitted additional members needed for 'Collection' conformance\n}"
+    },
+    {
+      "title": "The #makeArrayND declaration macro: macro declaration",
+      "language": "swift",
+      "startTimeSeconds": 603,
+      "code": "/// Declares an `n`-dimensional array type named `Array<n>D`.\n/// - Parameter n: The number of dimensions in the array.\n@freestanding(declaration, names: arbitrary)\nmacro makeArrayND(n: Int)"
+    },
+    {
+      "title": "The #makeArrayND declaration macro: usage",
+      "language": "swift",
+      "startTimeSeconds": 615,
+      "code": "#makeArrayND(n: 2)\n\n// Begin expansion for \"#makeArrayND\"\npublic struct Array2D<Element>: Collection {\n    public struct Index: Hashable, Comparable { var storageIndex: Int }\n    var storage: [Element]\n    var width1: Int\n    public func makeIndex(_ i0: Int, _ i1: Int) -> Index {\n        Index(storageIndex: i0 * width1 + i1)\n    }\n    public subscript (_ i0: Int, _ i1: Int) -> Element {\n        get { self[makeIndex(i0, i1)] }\n        set { self[makeIndex(i0, i1)] = newValue }\n    }\n    public subscript (_ i: Index) -> Element {\n        get { storage[i.storageIndex] }\n        set { storage[i.storageIndex] = newValue }\n    }\n}\n// End expansion for \"#makeArrayND\"\n\n#makeArrayND(n: 3)\n#makeArrayND(n: 4)\n#makeArrayND(n: 5)"
+    },
+    {
+      "title": "The @AddCompletionHandler peer macro: motivation",
+      "language": "swift",
+      "startTimeSeconds": 683,
+      "code": "/// Fetch the avatar for the user with `username`.\nfunc fetchAvatar(_ username: String) async -> Image? {\n    ...\n}\n\nfunc fetchAvatar(_ username: String, onCompletion: @escaping (Image?) -> Void) {\n    Task.detached { onCompletion(await fetchAvatar(username)) }\n}"
+    },
+    {
+      "title": "The @AddCompletionHandler peer macro: macro declaration",
+      "language": "swift",
+      "startTimeSeconds": 711,
+      "code": "/// Overload an `async` function to add a variant that takes a completion handler closure as\n/// a parameter.\n@attached(peer, names: overloaded)\nmacro AddCompletionHandler(parameterName: String = \"completionHandler\")"
+    },
+    {
+      "title": "The @AddCompletionHandler peer macro: usage",
+      "language": "swift",
+      "startTimeSeconds": 719,
+      "code": "/// Fetch the avatar for the user with `username`.\n@AddCompletionHandler(parameterName: \"onCompletion\")\nfunc fetchAvatar(_ username: String) async -> Image? {\n    ...\n}\n\n    // Begin expansion for \"@AddCompletionHandler\"\n\n    /// Fetch the avatar for the user with `username`.\n    /// Equivalent to ``fetchAvatar(username:)`` with\n    /// a completion handler.\n    func fetchAvatar(\n        _ username: String,\n        onCompletion: @escaping (Image?) -> Void\n    ) {\n        Task.detached {\n            onCompletion(await fetchAvatar(username))\n        }\n    }\n\n    // End expansion for \"@AddCompletionHandler\""
+    },
+    {
+      "title": "The @DictionaryStorage accessor macro: motivation",
+      "language": "swift",
+      "startTimeSeconds": 756,
+      "code": "struct Person: DictionaryRepresentable {\n    init(dictionary: [String: Any]) { self.dictionary = dictionary }\n    var dictionary: [String: Any]\n\n    var name: String {\n        get { dictionary[\"name\"]! as! String }\n        set { dictionary[\"name\"] = newValue }\n    }\n    var height: Measurement<UnitLength> {\n        get { dictionary[\"height\"]! as! Measurement<UnitLength> }\n        set { dictionary[\"height\"] = newValue }\n    }\n    var birthDate: Date? {\n        get { dictionary[\"birth_date\"] as! Date? }\n        set { dictionary[\"birth_date\"] = newValue as Any? }\n    }\n}"
+    },
+    {
+      "title": "The @DictionaryStorage accessor macro: declaration",
+      "language": "swift",
+      "startTimeSeconds": 784,
+      "code": "/// Adds accessors to get and set the value of the specified property in a dictionary\n/// property called `storage`.\n@attached(accessor)\nmacro DictionaryStorage(key: String? = nil)"
+    },
+    {
+      "title": "The @DictionaryStorage accessor macro: usage",
+      "language": "swift",
+      "startTimeSeconds": 800,
+      "code": "struct Person: DictionaryRepresentable {\n    init(dictionary: [String: Any]) { self.dictionary = dictionary }\n    var dictionary: [String: Any]\n\n    @DictionaryStorage var name: String\n        // Begin expansion for \"@DictionaryStorage\"\n        {\n            get { dictionary[\"name\"]! as! String }\n            set { dictionary[\"name\"] = newValue }\n        }\n        // End expansion for \"@DictionaryStorage\"\n\n    @DictionaryStorage var height: Measurement<UnitLength>\n        // Begin expansion for \"@DictionaryStorage\"\n        {\n            get { dictionary[\"height\"]! as! Measurement<UnitLength> }\n            set { dictionary[\"height\"] = newValue }\n        }\n        // End expansion for \"@DictionaryStorage\"\n\n    @DictionaryStorage(key: \"birth_date\") var birthDate: Date?\n        // Begin expansion for \"@DictionaryStorage\"\n        {\n            get { dictionary[\"birth_date\"] as! Date? }\n            set { dictionary[\"birth_date\"] = newValue as Any? }\n        }\n        // End expansion for \"@DictionaryStorage\"\n}"
+    },
+    {
+      "title": "The @DictionaryStorage member attribute macro: macro declaration",
+      "language": "swift",
+      "startTimeSeconds": 836,
+      "code": "/// Adds accessors to get and set the value of the specified property in a dictionary\n/// property called `storage`.\n@attached(memberAttribute)\n@attached(accessor)\nmacro DictionaryStorage(key: String? = nil)"
+    },
+    {
+      "title": "The @DictionaryStorage member attribute macro: usage",
+      "language": "swift",
+      "startTimeSeconds": 886,
+      "code": "@DictionaryStorage\nstruct Person: DictionaryRepresentable {\n    init(dictionary: [String: Any]) { self.dictionary = dictionary }\n    var dictionary: [String: Any]\n\n        // Begin expansion for \"@DictionaryStorage\"\n        @DictionaryStorage\n        // End expansion for \"@DictionaryStorage\"\n    var name: String\n\n        // Begin expansion for \"@DictionaryStorage\"\n        @DictionaryStorage\n        // End expansion for \"@DictionaryStorage\"\n    var height: Measurement<UnitLength>\n\n    @DictionaryStorage(key: \"birth_date\") var birthDate: Date?\n}"
+    },
+    {
+      "title": "The @DictionaryStorage member macro: macro definition",
+      "language": "swift",
+      "startTimeSeconds": 952,
+      "code": "/// Adds accessors to get and set the value of the specified property in a dictionary\n/// property called `storage`.\n@attached(member, names: named(dictionary), named(init(dictionary:)))\n@attached(memberAttribute)\n@attached(accessor)\nmacro DictionaryStorage(key: String? = nil)"
+    },
+    {
+      "title": "The @DictionaryStorage member macro: usage",
+      "language": "swift",
+      "startTimeSeconds": 986,
+      "code": "// The @DictionaryStorage member macro\n\n@DictionaryStorage struct Person: DictionaryRepresentable {\n        // Begin expansion for \"@DictionaryStorage\"\n        init(dictionary: [String: Any]) {\n            self.dictionary = dictionary\n        }\n        var dictionary: [String: Any]\n        // End expansion for \"@DictionaryStorage\"\n\n    var name: String\n    var height: Measurement<UnitLength>\n    @DictionaryStorage(key: \"birth_date\") var birthDate: Date?\n}"
+    },
+    {
+      "title": "The @DictionaryStorage conformance macro: macro definition",
+      "language": "swift",
+      "startTimeSeconds": 1019,
+      "code": "/// Adds accessors to get and set the value of the specified property in a dictionary\n/// property called `storage`.\n@attached(conformance)\n@attached(member, names: named(dictionary), named(init(dictionary:)))\n@attached(memberAttribute)\n@attached(accessor)\nmacro DictionaryStorage(key: String? = nil)"
+    },
+    {
+      "title": "The @DictionaryStorage conformance macro: usage",
+      "language": "swift",
+      "startTimeSeconds": 1029,
+      "code": "struct Person\n        // Begin expansion for \"@DictionaryStorage\"\n        : DictionaryRepresentable\n        // End expansion for \"@DictionaryStorage\"\n{\n    var name: String\n    var height: Measurement<UnitLength>\n    @DictionaryStorage(key: \"birth_date\") var birthDate: Date?\n}"
+    },
+    {
+      "title": "@DictionaryStorage starting point",
+      "language": "swift",
+      "startTimeSeconds": 1048,
+      "code": "struct Person: DictionaryRepresentable {\n    init(dictionary: [String: Any]) { self.dictionary = dictionary }\n    var dictionary: [String: Any]\n\n    var name: String {\n        get { dictionary[\"name\"]! as! String }\n        set { dictionary[\"name\"] = newValue }\n    }\n    var height: Measurement<UnitLength> {\n        get { dictionary[\"height\"]! as! Measurement<UnitLength> }\n        set { dictionary[\"height\"] = newValue }\n    }\n    var birthDate: Date? {\n        get { dictionary[\"birth_date\"] as! Date? }\n        set { dictionary[\"birth_date\"] = newValue as Any? }\n    }\n}"
+    },
+    {
+      "title": "@DictionaryStorage ending point",
+      "language": "swift",
+      "startTimeSeconds": 1052,
+      "code": "@DictionaryStorage\nstruct Person\n        // Begin expansion for \"@DictionaryStorage\"\n        : DictionaryRepresentable\n        // End expansion for \"@DictionaryStorage\"\n{\n        // Begin expansion for \"@DictionaryStorage\"\n        init(dictionary: [String: Any]) { self.dictionary = dictionary }\n        var dictionary: [String: Any]\n        // End expansion for \"@DictionaryStorage\"\n\n        // Begin expansion for \"@DictionaryStorage\"\n        @DictionaryStorage\n        // End expansion for \"@DictionaryStorage\"\n    var name: String\n        // Begin expansion for \"@DictionaryStorage\"\n        {\n            get { dictionary[\"name\"]! as! String }\n            set { dictionary[\"name\"] = newValue }\n        }\n        // End expansion for \"@DictionaryStorage\"\n\n        // Begin expansion for \"@DictionaryStorage\"\n        @DictionaryStorage\n        // End expansion for \"@DictionaryStorage\"\n    var height: Measurement<UnitLength>\n        // Begin expansion for \"@DictionaryStorage\"\n        {\n            get { dictionary[\"height\"]! as! Measurement<UnitLength> }\n            set { dictionary[\"height\"] = newValue }\n        }\n        // End expansion for \"@DictionaryStorage\"\n\n    @DictionaryStorage(key: \"birth_date\")\n    var birthDate: Date?\n        // Begin expansion for \"@DictionaryStorage\"\n        {\n            get { dictionary[\"birth_date\"] as! Date? }\n            set { dictionary[\"birth_date\"] = newValue as Any? }\n        }\n        // End expansion for \"@DictionaryStorage\"\n}"
+    },
+    {
+      "title": "@DictionaryStorage ending point (without expansions)",
+      "language": "swift",
+      "startTimeSeconds": 1055,
+      "code": "@DictionaryStorage\nstruct Person {\n    var name: String\n    var height: Measurement<UnitLength>\n\n    @DictionaryStorage(key: \"birth_date\")\n    var birthDate: Date?\n}"
+    },
+    {
+      "title": "Macro implementations",
+      "language": "swift",
+      "startTimeSeconds": 1081,
+      "code": "/// Creates a tuple containing both the result of `expr` and its source code represented as a\n/// `String`.\n@freestanding(expression)\nmacro stringify<T>(_ expr: T) -> (T, String) = #externalMacro(\n                                                   module: \"MyLibMacros\",\n                                                   type: \"StringifyMacro\"\n                                               )"
+    },
+    {
+      "title": "Implementing @DictionaryStorage’s @attached(member) role (1)",
+      "language": "swift",
+      "startTimeSeconds": 1158,
+      "code": "import SwiftSyntax\nimport SwiftSyntaxMacros\nimport SwiftSyntaxBuilder\n\nstruct DictionaryStorageMacro: MemberMacro {\n    static func expansion(\n        of attribute: AttributeSyntax,\n        providingMembersOf declaration: some DeclGroupSyntax,\n        in context: some MacroExpansionContext\n    ) throws -> [DeclSyntax] {\n        return [\n           \"init(dictionary: [String: Any]) { self.dictionary = dictionary }\",\n           \"var dictionary: [String: Any]\"\n        ]\n    }\n}"
+    },
+    {
+      "title": "Code used to demonstrate SwiftSyntax trees",
+      "language": "swift",
+      "startTimeSeconds": 1192,
+      "code": "@DictionaryStorage\nstruct Person {\n    var name: String\n    var height: Measurement<UnitLength>\n    @DictionaryStorage(key: \"birth_date\")\n    var birthDate: Date?\n}"
+    },
+    {
+      "title": "Implementing @DictionaryStorage’s @attached(member) role (2)",
+      "language": "swift",
+      "startTimeSeconds": 1320,
+      "code": "import SwiftSyntax\nimport SwiftSyntaxMacros\nimport SwiftSyntaxBuilder\n\nstruct DictionaryStorageMacro: MemberMacro {\n    static func expansion(\n        of attribute: AttributeSyntax,\n        providingMembersOf declaration: some DeclGroupSyntax,\n        in context: some MacroExpansionContext\n    ) throws -> [DeclSyntax] {\n        return [\n           \"init(dictionary: [String: Any]) { self.dictionary = dictionary }\",\n           \"var dictionary: [String: Any]\"\n        ]\n    }\n}"
+    },
+    {
+      "title": "A type that @DictionaryStorage isn’t compatible with",
+      "language": "swift",
+      "startTimeSeconds": 1469,
+      "code": "@DictionaryStorage\nenum Gender {\n    case other(String)\n    case female\n    case male\n\n        // Begin expansion for \"@DictionaryStorage\"\n        init(dictionary: [String: Any]) { self.dictionary = dictionary }\n        var dictionary: [String: Any]\n        // End expansion for \"@DictionaryStorage\"\n}"
+    },
+    {
+      "title": "Expansion method with error checking",
+      "language": "swift",
+      "startTimeSeconds": 1517,
+      "code": "import SwiftSyntax\nimport SwiftSyntaxMacros\nimport SwiftSyntaxBuilder\n\nstruct DictionaryStorageMacro: MemberMacro {\n    static func expansion(\n        of attribute: AttributeSyntax,\n        providingMembersOf declaration: some DeclGroupSyntax,\n        in context: some MacroExpansionContext\n    ) throws -> [DeclSyntax] {\n        guard declaration.is(StructDeclSyntax.self) else {\n            let structError = Diagnostic(\n                node: attribute,\n                message: MyLibDiagnostic.notAStruct\n            )\n            context.diagnose(structError)\n            return []\n        }\n        return [\n            \"init(dictionary: [String: Any]) { self.dictionary = dictionary }\",\n            \"var dictionary: [String: Any]\"\n        ]\n    }\n}\n\nenum MyLibDiagnostic: String, DiagnosticMessage {\n    case notAStruct\n\n    var severity: DiagnosticSeverity { return .error }\n\n    var message: String {\n        switch self {\n        case .notAStruct:\n            return \"'@DictionaryStorage' can only be applied to a 'struct'\"\n        }\n    }\n\n    var diagnosticID: MessageID {\n        MessageID(domain: \"MyLibMacros\", id: rawValue)\n    }\n}"
+    },
+    {
+      "title": "Parameter list for `ArrayND.makeIndex`",
+      "language": "swift",
+      "startTimeSeconds": 1772,
+      "code": "FunctionParameterListSyntax {\n    for dimension in 0 ..< numDimensions {\n        FunctionParameterSyntax(\n            firstName: .wildcardToken(),\n            secondName: .identifier(\"i\\(dimension)\"),\n            type: TypeSyntax(\"Int\")\n        )\n    }\n}"
+    },
+    {
+      "title": "The #unwrap expression macro: revisited",
+      "language": "swift",
+      "startTimeSeconds": 1817,
+      "code": "let image = #unwrap(downloadedImage, message: \"was already checked\")\n\n// Begin expansion for \"#unwrap\"\n{ [downloadedImage] in\n    guard let downloadedImage else {\n        preconditionFailure(\n            \"Unexpectedly found nil: ‘downloadedImage’ \" + \"was already checked\",\n            file: \"main/ImageLoader.swift\",\n            line: 42\n        )\n    }\n    return downloadedImage\n}()\n// End expansion for \"#unwrap\""
+    },
+    {
+      "title": "Implementing the #unwrap expression macro: start",
+      "language": "swift",
+      "startTimeSeconds": 1838,
+      "code": "static func makeGuardStmt() -> StmtSyntax {\n    return \"\"\"\n        guard let downloadedImage else {\n            preconditionFailure(\n                \"Unexpectedly found nil: ‘downloadedImage’ \" + \"was already checked\",\n                file: \"main/ImageLoader.swift\",\n                line: 42\n            )\n        }\n    \"\"\"\n}"
+    },
+    {
+      "title": "Implementing the #unwrap expression macro: the message string",
+      "language": "swift",
+      "startTimeSeconds": 1857,
+      "code": "static func makeGuardStmt(message: ExprSyntax) -> StmtSyntax {\n    return \"\"\"\n        guard let downloadedImage else {\n            preconditionFailure(\n                \"Unexpectedly found nil: ‘downloadedImage’ \" + \\(message),\n                file: \"main/ImageLoader.swift\",\n                line: 42\n            )\n        }\n    \"\"\"\n}"
+    },
+    {
+      "title": "Implementing the #unwrap expression macro: the variable name",
+      "language": "swift",
+      "startTimeSeconds": 1881,
+      "code": "static func makeGuardStmt(wrapped: TokenSyntax, message: ExprSyntax) -> StmtSyntax {\n    return \"\"\"\n        guard let \\(wrapped) else {\n            preconditionFailure(\n                \"Unexpectedly found nil: ‘downloadedImage’ \" + \\(message),\n                file: \"main/ImageLoader.swift\",\n                line: 42\n            )\n        }\n    \"\"\"\n}"
+    },
+    {
+      "title": "Implementing the #unwrap expression macro: interpolating a string as a literal",
+      "language": "swift",
+      "startTimeSeconds": 1904,
+      "code": "static func makeGuardStmt(wrapped: TokenSyntax, message: ExprSyntax) -> StmtSyntax {\n    let messagePrefix = \"Unexpectedly found nil: ‘downloadedImage’ \"\n\n    return \"\"\"\n        guard let \\(wrapped) else {\n            preconditionFailure(\n                \\(literal: messagePrefix) + \\(message),\n                file: \"main/ImageLoader.swift\",\n                line: 42\n            )\n        }\n    \"\"\"\n}"
+    },
+    {
+      "title": "Implementing the #unwrap expression macro: adding an expression as a string",
+      "language": "swift",
+      "startTimeSeconds": 1931,
+      "code": "static func makeGuardStmt(wrapped: TokenSyntax,\n                           originalWrapped: ExprSyntax,\n                           message: ExprSyntax) -> StmtSyntax {\n    let messagePrefix = \"Unexpectedly found nil: ‘\\(originalWrapped.description)’ \"\n\n    return \"\"\"\n        guard let \\(wrapped) else {\n            preconditionFailure(\n                \\(literal: messagePrefix) + \\(message),\n                file: \"main/ImageLoader.swift\",\n                line: 42\n            )\n        }\n    \"\"\"\n}"
+    },
+    {
+      "title": "Implementing the #unwrap expression macro: inserting the file and line numbers",
+      "language": "swift",
+      "startTimeSeconds": 1980,
+      "code": "static func makeGuardStmt(wrapped: TokenSyntax,\n                           originalWrapped: ExprSyntax,\n                           message: ExprSyntax,\n                           in context: some MacroExpansionContext) -> StmtSyntax {\n    let messagePrefix = \"Unexpectedly found nil: ‘\\(originalWrapped.description)’ \"\n    let originalLoc = context.location(of: originalWrapped)!\n\n    return \"\"\"\n        guard let \\(wrapped) else {\n            preconditionFailure(\n                \\(literal: messagePrefix) + \\(message),\n                file: \\(originalLoc.file),\n                line: \\(originalLoc.line)\n            )\n        }\n    \"\"\"\n}"
+    },
+    {
+      "title": "The #unwrap expression macro, with a name conflict",
+      "language": "swift",
+      "startTimeSeconds": 2045,
+      "code": "let wrappedValue = \"🎁\"\nlet image = #unwrap(request.downloadedImage, message: \"was \\(wrappedValue)\")\n\n            // Begin expansion for \"#unwrap\"\n            { [wrappedValue = request.downloadedImage] in\n                guard let wrappedValue else {\n                    preconditionFailure(\n                        \"Unexpectedly found nil: ‘request.downloadedImage’ \" +\n                            \"was \\(wrappedValue)\",\n                        file: \"main/ImageLoader.swift\",\n                        line: 42\n                    )\n                }\n                return wrappedValue\n            }()\n            // End expansion for \"#unwrap\""
+    },
+    {
+      "title": "The MacroExpansion.makeUniqueName() method",
+      "language": "swift",
+      "startTimeSeconds": 2070,
+      "code": "let captureVar = context.makeUniqueName()\n\nreturn  \"\"\"\n        { [\\(captureVar) = \\(originalWrapped)] in\n            \\(makeGuardStmt(wrapped: captureVar, …))\n            \\(makeReturnStmt(wrapped: captureVar))\n        }\n        \"\"\""
+    },
+    {
+      "title": "Declaring a macro’s names",
+      "language": "swift",
+      "startTimeSeconds": 2144,
+      "code": "@attached(conformance)\n@attached(member, names: named(dictionary), named(init(dictionary:)))\n@attached(memberAttribute)\n@attached(accessor)\nmacro DictionaryStorage(key: String? = nil)\n\n\n\n@attached(peer, names: overloaded)\nmacro AddCompletionHandler(parameterName: String = \"completionHandler\")\n\n\n\n@freestanding(declaration, names: arbitrary)\nmacro makeArrayND(n: Int)"
+    },
+    {
+      "title": "Macros are testable",
+      "language": "swift",
+      "startTimeSeconds": 2308,
+      "code": "import MyLibMacros\nimport XCTest\nimport SwiftSyntaxMacrosTestSupport\n\nfinal class MyLibTests: XCTestCase {\n    func testMacro() {\n        assertMacroExpansion(\n            \"\"\"\n            @DictionaryStorage var name: String\n            \"\"\",\n            expandedSource: \"\"\"\n            var name: String {\n                get { dictionary[\"name\"]! as! String }\n                set { dictionary[\"name\"] = newValue }\n            }\n            \"\"\",\n            macros: [\"DictionaryStorage\": DictionaryStorageMacro.self])\n    }\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2023/10167/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10167/metadata.json",
+    "readme": "sessions/wwdc2023/10167/README.md",
+    "transcript": "sessions/wwdc2023/10167/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10167/transcript.json"
+  }
+}

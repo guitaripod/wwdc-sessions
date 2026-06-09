@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-110369",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 110369,
+  "title": "Improve the discoverability of your Swift-DocC content",
+  "description": "Explore the navigation experience for Swift-DocC on the web. We'll show you how you can organize and optimize your content to help guide developers through documentation about your frameworks and applications. We'll also share enhanced techniques to help readers browse your documentation with ease.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/110369",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/110369",
+  "type": "Video",
+  "publishedAt": "2022-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 669,
+  "hasTranscript": true,
+  "transcriptWordCount": 1574,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110369/4/7FCC1556-7EF4-4CFA-B757-DBCDC51B836A/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110369/4/7FCC1556-7EF4-4CFA-B757-DBCDC51B836A/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110369/4/7FCC1556-7EF4-4CFA-B757-DBCDC51B836A/downloads/wwdc2022-110369_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110369/4/7FCC1556-7EF4-4CFA-B757-DBCDC51B836A/downloads/wwdc2022-110369_hd.mp4",
+    "duration": 669
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "SwiftDocCPlugin",
+      "url": "https://apple.github.io/swift-docc-plugin/documentation/swiftdoccplugin/",
+      "type": "documentation",
+      "description": "The Swift-DocC plugin is a Swift Package Manager command plugin that supports building documentation for SwiftPM libraries and executables."
+    },
+    {
+      "title": "DocC",
+      "url": "https://developer.apple.com/documentation/docc",
+      "type": "documentation",
+      "description": "Produce rich API reference documentation and interactive tutorials for your app, framework, or package.",
+      "sosumiURL": "https://sosumi.ai/documentation/docc",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/docc.json"
+    },
+    {
+      "title": "Adding supplemental content to a documentation catalog",
+      "url": "https://developer.apple.com/documentation/Xcode/adding-supplemental-content-to-a-documentation-catalog",
+      "type": "guide",
+      "description": "Include articles and extension files to extend your source documentation comments or provide supporting conceptual content.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/adding-supplemental-content-to-a-documentation-catalog",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/adding-supplemental-content-to-a-documentation-catalog.json"
+    },
+    {
+      "title": "Adding structure to your documentation pages",
+      "url": "https://developer.apple.com/documentation/Xcode/adding-structure-to-your-documentation-pages",
+      "type": "guide",
+      "description": "Make symbols easier to find by arranging them into groups and collections.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/adding-structure-to-your-documentation-pages",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/adding-structure-to-your-documentation-pages.json"
+    },
+    {
+      "title": "SlothCreator: Building DocC documentation in Xcode",
+      "url": "https://developer.apple.com/documentation/Xcode/slothcreator-building-docc-documentation-in-xcode",
+      "type": "samplecode",
+      "description": "Build DocC documentation for a Swift package that contains a DocC Catalog.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/slothcreator-building-docc-documentation-in-xcode",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/slothcreator-building-docc-documentation-in-xcode.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/110369/",
+  "files": {
+    "metadata": "sessions/wwdc2022/110369/metadata.json",
+    "readme": "sessions/wwdc2022/110369/README.md",
+    "transcript": "sessions/wwdc2022/110369/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/110369/transcript.json"
+  }
+}

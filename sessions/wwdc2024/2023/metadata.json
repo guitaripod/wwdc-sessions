@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-2023",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 2023,
+  "title": "Meet FinanceKit",
+  "description": "Learn how FinanceKit lets your financial management apps seamlessly and securely share on-device data from Apple Cash, Apple Card, and more, with user consent and control. Find out how to request one-time and ongoing access to accounts, transactions, and balances — and how to build great experiences for iOS and iPadOS.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/2023",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/2023",
+  "type": "Video",
+  "publishedAt": "2024-06-11T08:00:00-07:00",
+  "platforms": [
+    "iOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1425,
+  "hasTranscript": true,
+  "transcriptWordCount": 3932,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/2023/4/74A8DE5D-5007-4431-929F-17401D6F80CB/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/2023/4/74A8DE5D-5007-4431-929F-17401D6F80CB/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/2023/4/74A8DE5D-5007-4431-929F-17401D6F80CB/downloads/wwdc2024-2023_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/2023/4/74A8DE5D-5007-4431-929F-17401D6F80CB/downloads/wwdc2024-2023_hd.mp4",
+    "duration": 1425
+  },
+  "codeSnippets": [
+    {
+      "title": "Check if financial data is available",
+      "language": "swift",
+      "startTimeSeconds": 338,
+      "code": "// Check if financial data is available\n\nimport FinanceKit\n\nlet available = FinanceStore.isDataAvailable(\n    .financialData\n)\n\nguard available else {\n    // No meaningful action can be performed\n    return\n}"
+    },
+    {
+      "title": "Present the transaction picker",
+      "language": "swift",
+      "startTimeSeconds": 488,
+      "code": "// Present the transaction picker\n\nimport SwiftUI\nimport FinanceKit\nimport FinanceKitUI\n\nstruct TransactionSelector: View {\n  @State private var selectedItems: [FinanceKit.Transaction] = []\n\n  var body: some View {\n    if FinanceStore.isDataAvailable(.financialData) {\n      TransactionPicker(selection: $selectedItems) {\n        Text(\"Show Transaction Picker\")\n      }\n    }\n}"
+    },
+    {
+      "title": "Requesting authorization for financial data",
+      "language": "swift",
+      "startTimeSeconds": 736,
+      "code": "// Requesting authorization for financial data\n\nimport FinanceKit\n\nlet store = FinanceStore.shared\n\nguard store.isDataAvailable(for: .financialData) else {\n    // No meaningful action can be performed\n    return\n}\n\nlet authStatus = await store.requestAuthorization()\n\nguard authStatus == .authorized else {\n    // User did not grant access to financial data, stop here\n    return\n}"
+    },
+    {
+      "title": "Simple query to retrieve all Apple accounts",
+      "language": "swift",
+      "startTimeSeconds": 924,
+      "code": "// Simple query to retrieve all Apple accounts\n\nlet store = FinanceStore.shared\n\nlet sortDescriptor = SortDescriptor(\\Account.displayName)\n\nlet predicate = #Predicate<Account> { account in\n   account.institutionName == \"Apple\"\n}\n\nlet query = AccountQuery(\n   sortDescriptors: [sortDescriptor],\n   predicate: predicate\n)\n\nlet accounts : [Account] = try await store.accounts(query: query)"
+    },
+    {
+      "title": "Get latest 7 available balances for account",
+      "language": "swift",
+      "startTimeSeconds": 1092,
+      "code": "// Get latest 7 available balances for account\n\nfunc getBalances(account: Account) async throws -> [AccountBalance] {\n\n    let sortDescriptor = SortDescriptor(\\AccountBalance.asOfDate, order: .reverse)\n\n    let predicate = #Predicate<AccountBalance> { balance in\n        balance.available != nil &&\n        balance.accountId == account.id\n    }\n\n    let query = AccountBalanceQuery(\n        sortDescriptors: [sortDescriptor],\n        predicate: predicate,\n        limit: 7\n    )\n    return try await store.accountBalances(query: query).reversed()\n}"
+    },
+    {
+      "title": "Retrieve all the transaction history for an account",
+      "language": "swift",
+      "startTimeSeconds": 1227,
+      "code": "// Retrieve all the transaction history for an account\n\nimport FinanceKit\n\nlet store = FinanceStore.shared\nlet account: Account = ...\n\nlet transactionSequence = store.transactionHistory(\n    forAccountID: account.id\n)\n\nfor try await change in transactionSequence {\n    processChanges(change.inserted, change.updated, change.deleted)\n}"
+    },
+    {
+      "title": "Use the history token to resume queries",
+      "language": "swift",
+      "startTimeSeconds": 1264,
+      "code": "// Use the history token to resume queries\n\nimport FinanceKit\n\nlet store = FinanceStore.shared\nlet account: Account = ...\nlet currentToken = loadToken()\n\nlet transactionSequence = store.transactionHistory(\n    forAccountID: account.id,\n    since: currentToken\n)\n\nfor try await change in transactionSequence {\n    processChanges(change.inserted, change.updated, change.deleted)\n    persist(token: change.newToken)\n}"
+    },
+    {
+      "title": "Non monitoring resumable queries",
+      "language": "swift",
+      "startTimeSeconds": 1301,
+      "code": "import FinanceKit\n\nlet store = FinanceStore.shared\nlet account: Account = ...\nlet currentToken = loadToken()\n\nlet transactionSequence = store.transactionHistory(\n    forAccountID: account.id,\n    since: currentToken,\n    isMonitoring: false\n)\n\nfor try await change in transactionSequence {\n    processChanges(change.inserted, change.updated, change.deleted)\n    persist(token: change.newToken)\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "FinanceKit",
+      "url": "https://developer.apple.com/documentation/FinanceKit",
+      "type": "documentation",
+      "description": "Securely store orders and financial information details about eligible accounts in Apple Wallet.",
+      "sosumiURL": "https://sosumi.ai/documentation/FinanceKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/FinanceKit.json"
+    },
+    {
+      "title": "Forum: App & System Services",
+      "url": "https://developer.apple.com/forums/topics/app-and-system-services?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/app-and-system-services?cid=vf-a-0010"
+    }
+  ],
+  "path": "sessions/wwdc2024/2023/",
+  "files": {
+    "metadata": "sessions/wwdc2024/2023/metadata.json",
+    "readme": "sessions/wwdc2024/2023/README.md",
+    "transcript": "sessions/wwdc2024/2023/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/2023/transcript.json"
+  }
+}

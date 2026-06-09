@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10122",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10122,
+  "title": "Use CloudKit Console to monitor and optimize database activity",
+  "description": "Discover the new observability features in CloudKit Console. Learn how to use Telemetry and Logging to troubleshoot and optimize your app. Find out how to set up alerts to monitor your application’s behavior and notifications to stay on top of the container events that are most important to you.\n\nTo get the most out of this session, we recommend being familiar with CloudKit containers.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10122",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10122",
+  "type": "Video",
+  "publishedAt": "2024-06-13T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 806,
+  "hasTranscript": true,
+  "transcriptWordCount": 1998,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10122/4/2EABAF45-AE74-4287-A9D1-CF9F23D51E90/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10122/4/2EABAF45-AE74-4287-A9D1-CF9F23D51E90/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10122/4/2EABAF45-AE74-4287-A9D1-CF9F23D51E90/downloads/wwdc2024-10122_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10122/4/2EABAF45-AE74-4287-A9D1-CF9F23D51E90/downloads/wwdc2024-10122_hd.mp4",
+    "duration": 806
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Forum: App & System Services",
+      "url": "https://developer.apple.com/forums/topics/app-and-system-services?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/app-and-system-services?cid=vf-a-0010"
+    }
+  ],
+  "path": "sessions/wwdc2024/10122/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10122/metadata.json",
+    "readme": "sessions/wwdc2024/10122/README.md",
+    "transcript": "sessions/wwdc2024/10122/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10122/transcript.json"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10047",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10047,
+  "title": "Use Core ML Tools for machine learning model compression",
+  "description": "Discover how to reduce the footprint of machine learning models in your app with Core ML Tools. Learn how to use techniques like palettization, pruning, and quantization to dramatically reduce model size while still achieving great accuracy. Explore comparisons between compression during the training stages and on fully trained models, and learn how compressed models can run even faster when your app takes full advantage of the Apple Neural Engine.\n\nFor more on optimizing Core ML, check out “Improve Core ML integration with async prediction\" from WWDC23.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10047",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10047",
+  "type": "Video",
+  "publishedAt": "2023-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1518,
+  "hasTranscript": true,
+  "transcriptWordCount": 3599,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10047/4/E4F2FB98-2605-4693-8FA8-978D1AD634F4/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10047/4/E4F2FB98-2605-4693-8FA8-978D1AD634F4/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10047/4/E4F2FB98-2605-4693-8FA8-978D1AD634F4/downloads/wwdc2023-10047_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10047/4/E4F2FB98-2605-4693-8FA8-978D1AD634F4/downloads/wwdc2023-10047_hd.mp4",
+    "duration": 1518
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Core ML Converters",
+      "url": "https://coremltools.readme.io/docs",
+      "type": "documentation",
+      "description": "Reference documentation on coremltools including Core ML Converters"
+    },
+    {
+      "title": "Core ML Tools PyTorch Conversion Documentation",
+      "url": "https://coremltools.readme.io/docs/pytorch-conversion",
+      "type": "documentation",
+      "description": "Full documentation of coremltools for PyTorch model conversion."
+    },
+    {
+      "title": "Core ML",
+      "url": "https://developer.apple.com/documentation/CoreML",
+      "type": "documentation",
+      "description": "Integrate machine learning models into your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreML",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreML.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10047/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10047/metadata.json",
+    "readme": "sessions/wwdc2023/10047/README.md",
+    "transcript": "sessions/wwdc2023/10047/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10047/transcript.json"
+  }
+}

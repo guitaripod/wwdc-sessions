@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10147",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10147,
+  "title": "Create a great video playback experience",
+  "description": "Find out how you can use the latest iOS and iPadOS system media players to build amazing media apps. We’ll share how we designed the updated player and give you best practices and tips to help you design media experiences of your own. We’ll also explore Live Text for video and show you how to integrate interstitials and playback speed controls into your apps.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10147",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10147",
+  "type": "Video",
+  "publishedAt": "2022-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Health & Fitness",
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 1447,
+  "hasTranscript": true,
+  "transcriptWordCount": 3566,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10147/5/B7675782-6F3F-4D44-B56D-06CCE29D9E22/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10147/5/B7675782-6F3F-4D44-B56D-06CCE29D9E22/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10147/5/B7675782-6F3F-4D44-B56D-06CCE29D9E22/downloads/wwdc2022-10147_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10147/5/B7675782-6F3F-4D44-B56D-06CCE29D9E22/downloads/wwdc2022-10147_hd.mp4",
+    "duration": 1447
+  },
+  "codeSnippets": [
+    {
+      "title": "Setting content external metadata",
+      "language": "swift",
+      "startTimeSeconds": 248,
+      "code": "// Setting content external metadata\n\nlet titleItem = AVMutableMetadataItem()\ntitleItem.identifier = .commonIdentifierTitle\ntitleItem.value = // Title string\n\nlet subtitleItem = AVMutableMetadataItem()\nsubtitleItem.identifier = .iTunesMetadataTrackSubTitle\nsubtitleItem.value = // Subtitle string\n\nlet infoItem = AVMutableMetadataItem()\ninfoItem.identifier = .commonIdentifierDescription\ninfoItem.value = // Descriptive info paragraph\n\nplayerItem.externalMetadata = [titleItem, subtitleItem, infoItem]"
+    },
+    {
+      "title": "Creating a skip button for a preroll ad",
+      "language": "swift",
+      "startTimeSeconds": 1143,
+      "code": "// Creating a skip button for a preroll ad\n\nlet eventController = AVPlayerInterstitialEventController(primaryPlayer: mediaPlayer)\n\nlet event = AVPlayerInterstitialEvent(primaryItem: interstitialItem, time: .zero)\nevent.restrictions = [\n\t.requiresPlaybackAtPreferredRateForAdvancement,\n\t.constrainsSeekingForwardInPrimaryContent\n]\n\neventController.events.append(event)\n\n\nfunc playerViewController(playerViewController: AVPlayerViewController, willPresent interstitial: AVInterstitialTimeRange) {\n\tshowSkipButton(afterTime: 5.0, onPress: {\n\t\teventController.cancelCurrentEvent(withResumptionOffset: CMTime.zero)\n\t})\n}"
+    },
+    {
+      "title": "Setting custom playback speeds",
+      "language": "swift",
+      "startTimeSeconds": 1274,
+      "code": "// Setting custom playback speeds\n\n\nlet player = AVPlayerViewController()\nplayer.player = // Some AVPlayer\n\npresent(player, animated: true)\n\n\nlet newSpeed = AVPlaybackSpeed(rate: 2.5, localizedName: \"Two and a half times speed”)\n\nplayer.speeds.append(newSpeed)"
+    },
+    {
+      "title": "Hiding the playback speed menu",
+      "language": "swift",
+      "startTimeSeconds": 1382,
+      "code": "// Hiding the playback speed menu\n\n\nlet player = AVPlayerViewController()\nplayer.player = // Some AVPlayer\n\npresent(player, animated: true)\n\n\nplayer.speeds = []"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Playing video",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/playing-video",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/playing-video"
+    }
+  ],
+  "path": "sessions/wwdc2022/10147/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10147/metadata.json",
+    "readme": "sessions/wwdc2022/10147/README.md",
+    "transcript": "sessions/wwdc2022/10147/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10147/transcript.json"
+  }
+}

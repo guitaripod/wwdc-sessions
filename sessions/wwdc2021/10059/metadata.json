@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10059",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10059,
+  "title": "What's new in UIKit",
+  "description": "Discover the latest updates and improvements to UIKit and learn how to build better iPadOS, iOS, and Mac Catalyst apps. We’ll take you through UI refinements, productivity updates, and API enhancements, and help you explore performance improvements and security & privacy features.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10059",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10059",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "aqua",
+    "async",
+    "cocoa",
+    "collection view",
+    "color picker",
+    "content size categories",
+    "context menus",
+    "copy and paste",
+    "date picker",
+    "drag &amp; drop",
+    "dynamic type",
+    "ios",
+    "ipados",
+    "keyboard navigation",
+    "keyboard shortcuts",
+    "mac catalyst",
+    "multitasking",
+    "multi-window",
+    "paste",
+    "pasteboard",
+    "pointer",
+    "privacy",
+    "sf symbols",
+    "shortcuts",
+    "state restoration",
+    "symbols",
+    "table view",
+    "uibutton",
+    "uicolor",
+    "uicolorpicker",
+    "uicontextmenuinteraction",
+    "uidatepicker",
+    "uiimage",
+    "uipasteboard",
+    "uiscene",
+    "uitabbar",
+    "uitoolbar",
+    "uiwindowscene"
+  ],
+  "topics": [
+    "Essentials",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1612,
+  "hasTranscript": true,
+  "transcriptWordCount": 3914,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10059/5/A2B84844-AAFE-437F-B1A2-7D4CC79957E2/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10059/5/A2B84844-AAFE-437F-B1A2-7D4CC79957E2/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10059/5/A2B84844-AAFE-437F-B1A2-7D4CC79957E2/downloads/wwdc2021-10059_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10059/5/A2B84844-AAFE-437F-B1A2-7D4CC79957E2/downloads/wwdc2021-10059_hd.mp4",
+    "duration": 1612
+  },
+  "codeSnippets": [
+    {
+      "title": "Building an \"Open in New Window\" action",
+      "language": "swift",
+      "startTimeSeconds": 101,
+      "code": "// Building an \"Open in New Window\" action\n\nlet newSceneAction = UIWindowScene.ActivationAction({ _ in\n\n    // Create the user activity that represents the new scene content\n    let userActivity = NSUserActivity(activityType: \"com.myapp.detailscene\")\n\n    // Return the activation configuration\n    return UIWindowScene.ActivationConfiguration(userActivity: userActivity)\n\n})"
+    },
+    {
+      "title": "UIMenuBuilder",
+      "language": "swift",
+      "startTimeSeconds": 186,
+      "code": "class AppDelegate: UIResponder, UIApplicationDelegate {\n\n    override func buildMenu(with builder: UIMenuBuilder) {\n\n        // Use the builder to modify the main menu...\n    }\n}"
+    },
+    {
+      "title": "UIBarAppearance",
+      "language": "swift",
+      "startTimeSeconds": 386,
+      "code": "let appearance = UITabBarAppearance()\nappearance.backgroundEffect = nil\nappearance.backgroundColor = .blue\n\ntabBar.scrollEdgeAppearance = appearance\n\n\nlet scrollView = ... // Content scroll view in your app\nviewController.setContentScrollView(scrollView, for: .bottom)"
+    },
+    {
+      "title": "Creating a button with UIButton.Configuration",
+      "language": "swift",
+      "startTimeSeconds": 691,
+      "code": "// Creating a button with UIButton.Configuration\n\nvar config = UIButton.Configuration.tinted()\n\nconfig.title = \"Add to Cart\"\nconfig.image = UIImage(systemName: \"cart.badge.plus\")\nconfig.imagePlacement = .trailing\nconfig.buttonSize = .large\nconfig.cornerStyle = .capsule\n\nself.addToCartButton = UIButton(configuration: config)"
+    },
+    {
+      "title": "Using a hierarchical color symbol",
+      "language": "swift",
+      "startTimeSeconds": 810,
+      "code": "// Using a hierarchical color symbol\n\nlet configuration = UIImage.SymbolConfiguration(\n    hierarchicalColor: UIColor.systemOrange\n)\n\nlet image = UIImage(\n    systemName: \"sun.max.circle.fill\",\n    withConfiguration: configuration\n)"
+    },
+    {
+      "title": "New UICollectionViewCell.configurationUpdateHandler closures",
+      "language": "swift",
+      "startTimeSeconds": 1170,
+      "code": "// New UICollectionViewCell.configurationUpdateHandler closures\n\nlet cell: UICollectionViewCell = ...\n\ncell.configurationUpdateHandler = { cell, state in\n    var content = UIListContentConfiguration.cell().updated(for: state)\n    content.text = \"Hello world!\"\n    if state.isDisabled {\n        content.textProperties.color = .systemGray\n    }\n    cell.contentConfiguration = content\n}"
+    },
+    {
+      "title": "Image display preparation",
+      "language": "swift",
+      "startTimeSeconds": 1261,
+      "code": "// Image display preparation\n\nif let image = UIImage(contentsOfFile: pathToImage) {\n    // Prepare the image for display asynchronously.\n    Task {\n        let preparedImage = await image.byPreparingForDisplay()\n\n        imageView.image = preparedImage\n    }\n}"
+    },
+    {
+      "title": "Image thumbnailing",
+      "language": "swift",
+      "startTimeSeconds": 1289,
+      "code": "// Image thumbnailing\n\nif let bigImage = UIImage(contentsOfFile: pathToBigImage) {\n    // Prepare the thumbnail asynchronously.\n    Task {\n        let smallImage = await bigImage.byPreparingThumbnail(ofSize: smallSize)\n\n        imageView.image = smallImage\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Introducing Private Click Measurement, PCM",
+      "url": "https://webkit.org/blog/11529/introducing-private-click-measurement-pcm/",
+      "type": "documentation",
+      "description": "This blog post covers a new feature called Private Click Measurement, or PCM, for measuring ad clicks across websites and from iOS apps to websites. It is part of iOS and iPadOS 14.5."
+    },
+    {
+      "title": "UIKit",
+      "url": "https://developer.apple.com/documentation/UIKit",
+      "type": "documentation",
+      "description": "Construct and manage a graphical, event-driven user interface for your iOS, iPadOS, or tvOS app.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10059/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10059/metadata.json",
+    "readme": "sessions/wwdc2021/10059/README.md",
+    "transcript": "sessions/wwdc2021/10059/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10059/transcript.json"
+  }
+}

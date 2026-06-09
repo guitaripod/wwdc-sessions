@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10079",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10079,
+  "title": "Improve DNS security for apps and servers",
+  "description": "Discover the latest ways to ensure that DNS — the foundation of internet addressing — is secure within your app. Learn how to authenticate DNS responses in your app with DNSSEC and enable DNS encryption automatically with Discovery of Designated Resolvers (DDR).",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10079",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10079",
+  "type": "Video",
+  "publishedAt": "2022-06-10T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Privacy & Security",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 1103,
+  "hasTranscript": true,
+  "transcriptWordCount": 1745,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10079/5/31E85A57-3035-4B6A-9BA4-4A73D156F55E/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10079/5/31E85A57-3035-4B6A-9BA4-4A73D156F55E/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10079/5/31E85A57-3035-4B6A-9BA4-4A73D156F55E/downloads/wwdc2022-10079_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10079/5/31E85A57-3035-4B6A-9BA4-4A73D156F55E/downloads/wwdc2022-10079_hd.mp4",
+    "duration": 1103
+  },
+  "codeSnippets": [
+    {
+      "title": "Require DNSSEC validation in your URL request at session level",
+      "language": "swift",
+      "startTimeSeconds": 541,
+      "code": "let configuration = URLSessionConfiguration.default\nconfiguration.requiresDNSSECValidation = true\nlet session = URLSession(configuration: configuration)"
+    },
+    {
+      "title": "Require DNSSEC validation in your URL request at request level",
+      "language": "swift",
+      "startTimeSeconds": 578,
+      "code": "var request = URLRequest(url: URL(string: \"https://www.example.org\")!)\nrequest.requiresDNSSECValidation = true\nlet (data, response) = try await URLSession.shared.data(for: request)"
+    },
+    {
+      "title": "Require DNSSEC validation in your network request",
+      "language": "swift",
+      "startTimeSeconds": 608,
+      "code": "let parameters = NWParameters.tls\nparameters.requiresDNSSECValidation = true\nlet connection = NWConnection(host: \"www.example.org\", port: .https, using: parameters)"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2022/10079/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10079/metadata.json",
+    "readme": "sessions/wwdc2022/10079/README.md",
+    "transcript": "sessions/wwdc2022/10079/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10079/transcript.json"
+  }
+}

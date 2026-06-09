@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10076",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10076,
+  "title": "Create 3D models with Object Capture",
+  "description": "Object Capture provides a quick and easy way to create lifelike 3D models of real-world objects using just a few images. Learn how you can get started and bring your assets to life with Photogrammetry for macOS. And discover best practices with object selection and image capture to help you achieve the highest-quality results.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10076",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10076",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "3d content creation",
+    "3d graphics",
+    "ar",
+    "arkit",
+    "augmented reality",
+    "photogrammetry",
+    "realitykit",
+    "usdz"
+  ],
+  "topics": [
+    "Graphics & Games",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 1676,
+  "hasTranscript": true,
+  "transcriptWordCount": 4385,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10076/9/616F3DCB-8F4E-4C91-924E-6DB20B3D2A27/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10076/9/616F3DCB-8F4E-4C91-924E-6DB20B3D2A27/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10076/9/616F3DCB-8F4E-4C91-924E-6DB20B3D2A27/downloads/wwdc2021-10076_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10076/9/616F3DCB-8F4E-4C91-924E-6DB20B3D2A27/downloads/wwdc2021-10076_hd.mp4",
+    "duration": 1676
+  },
+  "codeSnippets": [
+    {
+      "title": "Creating a PhotogrammetrySession with a folder of images",
+      "language": "swift",
+      "startTimeSeconds": 416,
+      "code": "import RealityKit\n\nlet inputFolderUrl = URL(fileURLWithPath: \"/tmp/Sneakers/\", isDirectory: true)\nlet session = try! PhotogrammetrySession(input: inputFolderUrl,\n                                         configuration: PhotogrammetrySession.Configuration())"
+    },
+    {
+      "title": "Creating the async message stream dispatcher",
+      "language": "swift",
+      "startTimeSeconds": 566,
+      "code": "// Create an async message stream dispatcher task\n\nTask {\n    do {\n        for try await output in session.outputs {\n            switch output {\n            case .requestProgress(let request, let fraction):\n                print(\"Request progress: \\(fraction)\")\n            case .requestComplete(let request, let result):\n                if case .modelFile(let url) = result {\n                    print(\"Request result output at \\(url).\")\n                }\n            case .requestError(let request, let error):\n                print(\"Error: \\(request) error=\\(error)\")\n            case .processingComplete:\n                print(\"Completed!\")\n                handleComplete()\n            default:  // Or handle other messages...\n                break\n            }\n        }\n    } catch {\n       print(\"Fatal session error! \\(error)\")\n    }\n}"
+    },
+    {
+      "title": "Calling process on two models simultaneously",
+      "language": "swift",
+      "startTimeSeconds": 824,
+      "code": "try! session.process(requests: [\n    .modelFile(\"/tmp/Outputs/model-reduced.usdz\", detail: .reduced),\n    .modelFile(\"/tmp/Outputs/model-medium.usdz\", detail: .medium)\n])"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Creating a photogrammetry command-line app",
+      "url": "https://developer.apple.com/documentation/RealityKit/creating-a-photogrammetry-command-line-app",
+      "type": "samplecode",
+      "description": "Generate 3D objects from images using RealityKit Object Capture.",
+      "sosumiURL": "https://sosumi.ai/documentation/RealityKit/creating-a-photogrammetry-command-line-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/RealityKit/creating-a-photogrammetry-command-line-app.json"
+    },
+    {
+      "title": "Capturing photographs for RealityKit Object Capture",
+      "url": "https://developer.apple.com/documentation/RealityKit/capturing-photographs-for-realitykit-object-capture",
+      "type": "samplecode",
+      "description": "Take high-quality images of objects to generate 3D models.",
+      "sosumiURL": "https://sosumi.ai/documentation/RealityKit/capturing-photographs-for-realitykit-object-capture",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/RealityKit/capturing-photographs-for-realitykit-object-capture.json"
+    },
+    {
+      "title": "Creating 3D objects from photographs",
+      "url": "https://developer.apple.com/documentation/RealityKit/creating-3d-objects-from-photographs",
+      "type": "guide",
+      "description": "Construct virtual objects to use in your AR experiences.",
+      "sosumiURL": "https://sosumi.ai/documentation/RealityKit/creating-3d-objects-from-photographs",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/RealityKit/creating-3d-objects-from-photographs.json"
+    },
+    {
+      "title": "Capturing photographs for RealityKit Object Capture",
+      "url": "https://developer.apple.com/documentation/RealityKit/capturing-photographs-for-realitykit-object-capture",
+      "type": "guide",
+      "description": "Take high-quality images of objects to generate 3D models.",
+      "sosumiURL": "https://sosumi.ai/documentation/RealityKit/capturing-photographs-for-realitykit-object-capture",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/RealityKit/capturing-photographs-for-realitykit-object-capture.json"
+    },
+    {
+      "title": "PhotogrammetrySample",
+      "url": "https://developer.apple.com/documentation/RealityKit/PhotogrammetrySample",
+      "type": "documentation",
+      "description": "An object that represents one image and its corresponding metadata.",
+      "sosumiURL": "https://sosumi.ai/documentation/RealityKit/PhotogrammetrySample",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/RealityKit/PhotogrammetrySample.json"
+    },
+    {
+      "title": "PhotogrammetrySession",
+      "url": "https://developer.apple.com/documentation/RealityKit/PhotogrammetrySession",
+      "type": "documentation",
+      "description": "Manages the creation of a 3D model from a set of images.",
+      "sosumiURL": "https://sosumi.ai/documentation/RealityKit/PhotogrammetrySession",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/RealityKit/PhotogrammetrySession.json"
+    },
+    {
+      "title": "Explore the RealityKit Developer Forums",
+      "url": "https://developer.apple.com/forums/tags/realitykit",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/tags/realitykit"
+    }
+  ],
+  "path": "sessions/wwdc2021/10076/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10076/metadata.json",
+    "readme": "sessions/wwdc2021/10076/README.md",
+    "transcript": "sessions/wwdc2021/10076/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10076/transcript.json"
+  }
+}

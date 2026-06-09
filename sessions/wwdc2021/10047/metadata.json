@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10047",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10047,
+  "title": "What’s new in camera capture",
+  "description": "Learn how you can interact with Video Effects in Control Center including Center Stage, Portrait mode, and Mic modes. We’ll show you how to detect when these features have been enabled for your app and explore ways to adopt custom interfaces to make them controllable from within your app. Discover how to enable 10-bit HDR video capture and take advantage of minimum-focus-distance reporting for improved camera capture experiences. Explore support for IOSurface compression and delivering optimal performance in camera capture.\n\nTo learn more about camera capture, we also recommend watching \"Capture high-quality photos using video formats\" from WWDC21.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10047",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10047",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "avcapture",
+    "camera",
+    "microphone",
+    "photo",
+    "photography",
+    "video",
+    "video effects"
+  ],
+  "topics": [
+    "Photos & Camera"
+  ],
+  "primaryTopic": "Photos & Camera",
+  "duration": 2162,
+  "hasTranscript": true,
+  "transcriptWordCount": 4693,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10047/3/642D1BFE-7823-4CA8-8572-B2478B9C4B44/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10047/3/642D1BFE-7823-4CA8-8572-B2478B9C4B44/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10047/3/642D1BFE-7823-4CA8-8572-B2478B9C4B44/downloads/wwdc2021-10047_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10047/3/642D1BFE-7823-4CA8-8572-B2478B9C4B44/downloads/wwdc2021-10047_hd.mp4",
+    "duration": 2162
+  },
+  "codeSnippets": [
+    {
+      "title": "Optimize QR code scanning",
+      "language": "swift",
+      "startTimeSeconds": 1,
+      "code": "// Optimize the user experience for scanning QR codes down to sizes of 20mm x 20mm.\n\nlet deviceFieldOfView = self.videoDeviceInput.device.activeFormat.videoFieldOfView\n\nlet minSubjectDistance = minSubjectDistanceForCode(\n  fieldOfView: deviceFieldOfView,\n  minimumCodeSize: 20,\n  previewFillPercentage: Float(rectOfInterestWidth))"
+    },
+    {
+      "title": "minSubjectDistance",
+      "language": "swift",
+      "startTimeSeconds": 2,
+      "code": "private func minSubjectDistance(\n  fieldOfView: Float,\n  minimumCodeSize: Float,\n  previewFillPercentage: Float) -> Float {\n    let radians = degreesToRadians(fieldOfView / 2)\n    let filledCodeSize = minimumCodeSize / previewFillPercentage\n    return filledCodeSize / tan(radians)\n}"
+    },
+    {
+      "title": "Lock device for configuration",
+      "language": "swift",
+      "startTimeSeconds": 3,
+      "code": "let deviceMinimumFocusDistance = Float(self.videoDeviceInput.device.minimumFocusDistance)\nif minimumSubjectDistanceForCode < deviceMinimumFocusDistance {\n  let zoomFactor = deviceMinimumFocusDistance / minimumSubjectDistanceForCode\n  do {\n    try videoDeviceInput.device.lockForConfiguration()\n    videoDeviceInput.device.videoZoomFactor = CGFloat(zoomFactor)\n    videoDeviceInput.device.unlockForConfiguration()\n  } catch {\n    print(\"Could not lock for configuration: \\(error)\")\n  }\n}"
+    },
+    {
+      "title": "firstTenBitFormatOfDevice",
+      "language": "swift",
+      "startTimeSeconds": 4,
+      "code": "func firstTenBitFormatOfDevice(device: AVCaptureDevice) -> AVCaptureDevice.Format? {\n  for format in device.formats {\n    let pixelFormat = CMFormatDescriptionGetMediaSubType(format.formatDescription)\n\n    if pixelFormat == kCVPixelFormatType_420YpCbCr10BiPlanarVideoRange /* 'x420' */ {\n      return format\n    }\n  }\n  return nil\n}"
+    },
+    {
+      "title": "captureOutput",
+      "language": "swift",
+      "startTimeSeconds": 5,
+      "code": "func captureOutput(\n  _ output: AVCaptureOutput,\n  didDrop sampleBuffer: CMSampleBuffer,\n  from connection: AVCaptureConnection) {\n    guard let attachment = sampleBuffer.attachments[.droppedFrameReason],\n          let reason = attachment.value as? String else { return }\n    switch reason as CFString {\n    case kCMSampleBufferDroppedFrameReason_FrameWasLate:\n      // Handle the late frame case.\n      break\n    case kCMSampleBufferDroppedFrameReason_OutOfBuffer:\n      // Handle the out of buffers case.\n      break\n    case kCMSampleBufferDroppedFrameReason_Discontinuity:\n      // Handle the discontinuity case.\n      break\n    default:\n      fatalError(\"A frame dropped for an undefined reason.\")\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Capture setup",
+      "url": "https://developer.apple.com/documentation/AVFoundation/capture-setup",
+      "type": "documentation",
+      "description": "Configure built-in cameras and microphones, and external capture devices, for media capture.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/capture-setup",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/capture-setup.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10047/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10047/metadata.json",
+    "readme": "sessions/wwdc2021/10047/README.md",
+    "transcript": "sessions/wwdc2021/10047/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10047/transcript.json"
+  }
+}

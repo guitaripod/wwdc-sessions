@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10611",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10611,
+  "title": "Explore ARKit 4",
+  "description": "ARKit 4 enables you to build the next generation of augmented reality apps to transform how people connect with the world around them. We’ll walk you through the latest improvements to Apple’s augmented reality platform, including how to use Location Anchors to connect virtual objects with a real-world longitude, latitude, and altitude. Discover how to harness the LiDAR Scanner on iPad Pro and obtain a depth map of your environment. And learn how to track faces in AR on more devices, including the iPad Air (3rd generation), iPad mini (5th generation), and all devices with the A12 Bionic chip or later that have a front-facing camera. \n\nTo get the most out of this session, you should be familiar with how your apps can take advantage of LiDAR Scanner on iPad Pro. Watch “Advanced Scene Understanding in AR” for more information. \n\nOnce you’ve learned how to leverage ARKit 4 in your iOS and iPadOS apps, explore realistic rendering improvements in “What’s New in RealityKit” and other ARKit features like People Occlusion and Motion Capture with “Introducing ARKit 3”.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10611",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10611",
+  "type": "Video",
+  "publishedAt": "2020-06-23T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 1658,
+  "hasTranscript": true,
+  "transcriptWordCount": 4425,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10611/8/203AC69C-0F17-4709-B622-08C2740C7539/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10611/8/203AC69C-0F17-4709-B622-08C2740C7539/wwdc2020_10611_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10611/8/203AC69C-0F17-4709-B622-08C2740C7539/wwdc2020_10611_hd.mp4",
+    "duration": 1658
+  },
+  "codeSnippets": [
+    {
+      "title": "Availability",
+      "language": "swift",
+      "startTimeSeconds": 418,
+      "code": "// Check device support for geo-tracking\nguard ARGeoTrackingConfiguration.isSupported else {\n    // Geo-tracking not supported on this device\n    return\n}\n\n// Check current location is supported for geo-tracking\nARGeoTrackingConfiguration.checkAvailability { (available, error) in\n    guard available else {\n        // Geo-tracking not supported at current location\n        return\n    }\n    // Run ARSession\n    let arView = ARView()\n    arView.session.run(ARGeoTrackingConfiguration())\n}"
+    },
+    {
+      "title": "Adding Location Anchors",
+      "language": "swift",
+      "startTimeSeconds": 518,
+      "code": "// Create coordinates\nlet coordinate = CLLocationCoordinate2D(latitude: 37.795313, longitude: -122.393792)\n\n// Create Location Anchor\nlet geoAnchor = ARGeoAnchor(name: \"Ferry Building\", coordinate: coordinate)\n\n// Add Location Anchor to session\narView.session.add(anchor: geoAnchor)\n\n// Create a RealityKit anchor entity \nlet geoAnchorEntity = AnchorEntity(anchor: geoAnchor)\n\n// Anchor content under the RealityKit anchor\ngeoAnchorEntity.addChild(generateSignEntity())\n\n// Add the RealityKit anchor to the scene\narView.scene.addAnchor(geoAnchorEntity)"
+    },
+    {
+      "title": "Positioning Content",
+      "language": "swift",
+      "startTimeSeconds": 632,
+      "code": "// Create a new entity for our virtual content\nlet signEntity = generateSignEntity();\n\n// Add the virtual content entity to the Geo Anchor entity\ngeoAnchorEntity.addChild(signEntity)\n\n// Rotate text to face the city\nlet orientation = simd_quatf.init(angle: -Float.pi / 3.5, axis: SIMD3<Float>(0, 1, 0))\nsignEntity.setOrientation(orientation, relativeTo: geoAnchorEntity)\n\n// Elevate text to 35 meters above ground level\nlet position = SIMD3<Float>(0, 35, 0)\nsignEntity.setPosition(position, relativeTo: geoAnchorEntity)"
+    },
+    {
+      "title": "User Interactive Location Anchors",
+      "language": "swift",
+      "startTimeSeconds": 848,
+      "code": "let session = ARSession()\nlet worldPosition = raycastLocationFromUserTap()\nsession.getGeoLocation(forPoint: worldPosition) { (location, altitude, error) in\n    if let error = error {\n        ...\n    }\n    let geoAnchor = ARGeoAnchor(coordinate: location, altitude: altitude)\n}"
+    },
+    {
+      "title": "Enabling the Depth API",
+      "language": "swift",
+      "startTimeSeconds": 1232,
+      "code": "// Enabling the depth API\n\nlet session = ARSession()\nlet configuration = ARWorldTrackingConfiguration()\n\n// Check if configuration and device supports .sceneDepth\nif type(of: configuration).supportsFrameSemantics(.sceneDepth) {\n    // Activate sceneDepth\n    configuration.frameSemantics = .sceneDepth\n}\nsession.run(configuration)\n\n...\n\n// Accessing depth data\nfunc session(_ session: ARSession, didUpdate frame: ARFrame) {\n    guard let depthData = frame.sceneDepth else { return }\n    // Use depth data\n}"
+    },
+    {
+      "title": "Depth API alongside person occlusion",
+      "language": "swift",
+      "startTimeSeconds": 1272,
+      "code": "// Using the depth API alongside person occlusion\n\nlet session = ARSession()\nlet configuration = ARWorldTrackingConfiguration()\n\n// Set required frame semantics\nlet semantics: ARConfiguration.FrameSemantics = .personSegmentationWithDepth\n\n// Check if configuration and device supports the required semantics\nif type(of: configuration).supportsFrameSemantics(semantics) {\n    // Activate .personSegmentationWithDepth\n    configuration.frameSemantics = semantics\n}\nsession.run(configuration)"
+    },
+    {
+      "title": "Raycasting",
+      "language": "swift",
+      "startTimeSeconds": 1541,
+      "code": "let session = ARSession()\nhitTest(point, types: [.existingPlaneUsingGeometry,\n                       .estimatedVerticalPlane,\n                       .estimatedHorizontalPlane])\n\nlet query = arView.makeRaycastQuery(from: point,\n                                    allowing: .estimatedPlane,\n                                    alignment: .any)\n\nlet raycast = session.trackedRaycast(query) { results in\n   // result updates\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Displaying a point cloud using scene depth",
+      "url": "https://developer.apple.com/documentation/ARKit/displaying-a-point-cloud-using-scene-depth",
+      "type": "samplecode",
+      "description": "Present a visualization of the physical environment by placing points based a scene’s depth data.",
+      "sosumiURL": "https://sosumi.ai/documentation/ARKit/displaying-a-point-cloud-using-scene-depth",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ARKit/displaying-a-point-cloud-using-scene-depth.json"
+    },
+    {
+      "title": "Tracking geographic locations in AR",
+      "url": "https://developer.apple.com/documentation/ARKit/tracking-geographic-locations-in-ar",
+      "type": "samplecode",
+      "description": "Track specific geographic areas of interest and render them in an AR experience.",
+      "sosumiURL": "https://sosumi.ai/documentation/ARKit/tracking-geographic-locations-in-ar",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ARKit/tracking-geographic-locations-in-ar.json"
+    },
+    {
+      "title": "Creating a fog effect using scene depth",
+      "url": "https://developer.apple.com/documentation/ARKit/creating-a-fog-effect-using-scene-depth",
+      "type": "samplecode",
+      "description": "Apply virtual fog to the physical environment.",
+      "sosumiURL": "https://sosumi.ai/documentation/ARKit/creating-a-fog-effect-using-scene-depth",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ARKit/creating-a-fog-effect-using-scene-depth.json"
+    },
+    {
+      "title": "ARKit",
+      "url": "https://developer.apple.com/documentation/ARKit",
+      "type": "documentation",
+      "description": "Integrate hardware sensing features to produce augmented reality apps and games.",
+      "sosumiURL": "https://sosumi.ai/documentation/ARKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ARKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10611/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10611/metadata.json",
+    "readme": "sessions/wwdc2020/10611/README.md",
+    "transcript": "sessions/wwdc2020/10611/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10611/transcript.json"
+  }
+}

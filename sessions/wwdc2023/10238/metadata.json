@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10238",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10238,
+  "title": "Tune up your AirPlay audio experience",
+  "description": "Learn how you can upgrade your app’s AirPlay audio experience to be more robust and responsive. We’ll show you how to adopt enhanced audio buffering with AVQueuePlayer, explore alternatives when building a custom player in your app, and share best practices.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10238",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10238",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 633,
+  "hasTranscript": true,
+  "transcriptWordCount": 1493,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10238/4/5BA02CFE-52D4-497B-BD99-75E591F41885/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10238/4/5BA02CFE-52D4-497B-BD99-75E591F41885/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10238/4/5BA02CFE-52D4-497B-BD99-75E591F41885/downloads/wwdc2023-10238_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10238/4/5BA02CFE-52D4-497B-BD99-75E591F41885/downloads/wwdc2023-10238_hd.mp4",
+    "duration": 633
+  },
+  "codeSnippets": [
+    {
+      "title": "Set the audio type",
+      "language": "swift",
+      "startTimeSeconds": 240,
+      "code": "let audioSession = AVAudioSession.sharedInstance()\ntry audioSession.setCategory(. playback ,xmode: . default , policy:.longFormAudio )"
+    },
+    {
+      "title": "AVQueuePlayer",
+      "language": "swift",
+      "startTimeSeconds": 443,
+      "code": "let player = AVQueuePlayer()\n\nlet url = URL(string: \"http://www.examplecontenturl.com\")\nlet asset = AVAsset(url: url)\nlet item = AVPlayItem(asset: asset)\n\nplayer.insert(item, after: nil)\nplayer.play()"
+    },
+    {
+      "title": "Add the audio renderer to the render synchronizer",
+      "language": "swift",
+      "startTimeSeconds": 508,
+      "code": "let serializationQueue = DispatchQueue(label: \"sample.buffer.player.serialization.queue\")\nlet audioRenderer = AVSampleBufferAudioRenderer()\nlet renderSynchronizer = AVSampleBufferRenderSynchronizer()\n\nrenderSynchronizer.addRenderer(audioRenderer)"
+    },
+    {
+      "title": "Enqueue audio data",
+      "language": "swift",
+      "startTimeSeconds": 530,
+      "code": "serializationQueue.async { [weak self] in\n    guard let self = self else { return }\n    // Start processing audio data and stop when there's no more data.\n    self.audioRenderer.requestMediaDataWhenReady(on: serializationQueue) { [weak self] in\n        guard let self = self else { return }\n        while self.audioRenderer.isReadyForMoreMediaData {\n            let sampleBuffer = self.nextSampleBuffer() // Returns nil at end of data.\n            if let sampleBuffer = sampleBuffer {\n                self.audioRenderer.enqueue(sampleBuffer)\n            } else {\n                // Tell the renderer to stop requesting audio data.\n                audioRenderer.stopRequestingMediaData()\n            }\n        }\n    }\n\n    // Start playback at the natural rate of the media.\n    self.renderSynchronizer.rate = 1.0\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Playing custom audio with your own player",
+      "url": "https://developer.apple.com/documentation/AVFAudio/playing-custom-audio-with-your-own-player",
+      "type": "samplecode",
+      "description": "Construct an audio player to play your custom audio data, and optionally take advantage of the advanced features of AirPlay 2.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFAudio/playing-custom-audio-with-your-own-player",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFAudio/playing-custom-audio-with-your-own-player.json"
+    },
+    {
+      "title": "AVQueuePlayer",
+      "url": "https://developer.apple.com/documentation/AVFoundation/AVQueuePlayer",
+      "type": "documentation",
+      "description": "An object that plays a sequence of player items.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/AVQueuePlayer",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/AVQueuePlayer.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10238/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10238/metadata.json",
+    "readme": "sessions/wwdc2023/10238/README.md",
+    "transcript": "sessions/wwdc2023/10238/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10238/transcript.json"
+  }
+}

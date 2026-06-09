@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10085",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10085,
+  "title": "Discover Quick Look for spatial computing",
+  "description": "Learn how to use Quick Look on visionOS to add powerful previews for 3D content, spatial images and videos, and much more. We’ll show you the different ways that the system presents these experiences, demonstrate how someone can drag and drop Quick Look content from an app or website to create a separate window with that content, and explore how you can present Quick Look directly within an app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10085",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10085",
+  "type": "Video",
+  "publishedAt": "2023-06-08T08:00:00-07:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 684,
+  "hasTranscript": true,
+  "transcriptWordCount": 1912,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10085/4/6383EC8A-F55A-4286-A743-31FE670C9CD7/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10085/4/6383EC8A-F55A-4286-A743-31FE670C9CD7/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10085/4/6383EC8A-F55A-4286-A743-31FE670C9CD7/downloads/wwdc2023-10085_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10085/4/6383EC8A-F55A-4286-A743-31FE670C9CD7/downloads/wwdc2023-10085_hd.mp4",
+    "duration": 684
+  },
+  "codeSnippets": [
+    {
+      "title": "drag support for quick look from apps",
+      "language": "swift",
+      "startTimeSeconds": 315,
+      "code": "import Foundation\nimport SwiftUI\nimport UniformTypeIdentifiers\n\nstruct FileList: View {\n\n    @State var files: [File]\n    @State var previewedURL: URL? = nil\n    @State var selectedFile: File? {\n        didSet {\n            self.previewedURL = selectedFile?.url\n        }\n    }\n\n    var body: some View {\n        List(files, selection: $selectedFile) { file in\n            Button(file.name) {\n                selectedFile = file\n            }\n            .onDrag {\n                return NSItemProvider(contentsOf: file.url) ?? NSItemProvider()\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "swiftUI quick look preview function",
+      "language": "swift",
+      "startTimeSeconds": 525,
+      "code": "import Foundation import SwiftUI\nstruct FileList: View {\n\n@State var files: [File]\n@State var previewedURL: URL? = nil\n@State var selectedFile: File? {\n\tdidSet {\n\t\tself.previewedURL = selectedFile?.url\n\t\t}\n  }\n\nvar body: some View {\n\tList(files, selection: $selectedFile) { file in\n\t\t\tButton(file.name) {\n\t\t\t\tselectedFile = file\n\t\t\t}\n\t\t}\n\t\t.quickLookPreview($previewedURL, in: files.map { $0.url })\n  \t}\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2023/10085/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10085/metadata.json",
+    "readme": "sessions/wwdc2023/10085/README.md",
+    "transcript": "sessions/wwdc2023/10085/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10085/transcript.json"
+  }
+}

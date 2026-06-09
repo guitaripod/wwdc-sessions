@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10074",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10074,
+  "title": "Dive into RealityKit 2",
+  "description": "Creating engaging AR experiences has never been easier with RealityKit 2. Explore the latest enhancements to the RealityKit framework and take a deep dive into this underwater sample project. We’ll take you through the improved Entity Component System, streamlined animation pipeline, and the plug-and-play character controller with enhancements to face mesh and audio.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10074",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10074",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "3d graphics",
+    "ar",
+    "arkit",
+    "augmented reality",
+    "lidar",
+    "physics",
+    "realitykit",
+    "scenekit",
+    "usdz"
+  ],
+  "topics": [
+    "Graphics & Games",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 1507,
+  "hasTranscript": true,
+  "transcriptWordCount": 4086,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10074/4/67629E8A-3351-47A6-941D-B3C60B778BAF/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10074/4/67629E8A-3351-47A6-941D-B3C60B778BAF/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10074/4/67629E8A-3351-47A6-941D-B3C60B778BAF/downloads/wwdc2021-10074_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10074/4/67629E8A-3351-47A6-941D-B3C60B778BAF/downloads/wwdc2021-10074_hd.mp4",
+    "duration": 1507
+  },
+  "codeSnippets": [
+    {
+      "title": "FlockingSystem",
+      "language": "swift",
+      "startTimeSeconds": 430,
+      "code": "class FlockingSystem: RealityKit.System {\n\nrequired init(scene: RealityKit.Scene) { }\n\nstatic var dependencies: [SystemDependency] { [.before(MotionSystem.self)] }\n\nprivate static let query = EntityQuery(where: .has(FlockingComponent.self)\n                                            && .has(MotionComponent.self)\n                                            && .has(SettingsComponent.self))"
+    },
+    {
+      "title": "FlockingSystem.update",
+      "language": "swift",
+      "startTimeSeconds": 514,
+      "code": "func update(context: SceneUpdateContext) {\n\n    context.scene.performQuery(Self.query).forEach { entity in\n\n        guard var motion: MotionComponent = entity.components[MotionComponent.self]\n            else { continue }\n\n        // ... Using a Boids simulation, add forces to the MotionComponent\n        motion.forces.append(/* separation, cohesion, alignment forces */)\n\n        entity.components[MotionComponent.self] = motion\n    }\n}"
+    },
+    {
+      "title": "Store Subscription While Entity Active",
+      "language": "swift",
+      "startTimeSeconds": 718,
+      "code": "arView.scene.subscribe(to: CollisionEvents.Began.self, on: fish) { [weak self] event in\n    // ... handle collisions with this particular fish\n}.storeWhileEntityActive(fish)"
+    },
+    {
+      "title": "SwiftUI + RealityKit Settings Instance",
+      "language": "swift",
+      "startTimeSeconds": 756,
+      "code": "class Settings: ObservableObject {\n    @Published var separationWeight: Float = 1.6\n    // ...\n}\n\nstruct ContentView : View {\n    @StateObject var settings = Settings()\n    var body: some View { \n        ZStack {\n            ARViewContainer(settings: settings) \n            MovementSettingsView()\n              .environmentObject(settings)\n        }\n    }\n} \n\n\n\n\n\nstruct SettingsComponent: RealityKit.Component {\n    var settings: Settings\n}\n\nclass UnderwaterView: ARView {\n    let settings: Settings\n    private func addEntity(_ entity: Entity) {\n        entity.components[SettingsComponent.self] = \n          SettingsComponent(settings: self.settings)\n    }\n}"
+    },
+    {
+      "title": "FaceMesh",
+      "language": "swift",
+      "startTimeSeconds": 1286,
+      "code": "static let sceneUnderstandingQuery = \n    EntityQuery(where: .has(SceneUnderstandingComponent.self) && .has(ModelComponent.self))\n\nfunc findFaceEntity(scene: RealityKit.Scene) -> HasModel? {\n    let faceEntity = scene.performQuery(sceneUnderstandingQuery).first {\n        $0.components[SceneUnderstandingComponent.self]?.entityType == .face\n    }\n    return faceEntity as? HasModel\n}"
+    },
+    {
+      "title": "FaceMesh - Painting material",
+      "language": "swift",
+      "startTimeSeconds": 1323,
+      "code": "func updateFaceEntityTextureUsing(cgImage: CGImage) {\n  guard let faceEntity = self.faceEntity else { return }\n  guard let faceTexture =\n  try? TextureResource.generate(from: cgImage,\n                                options: .init(semantic: .color))\n  else { return }\n\n  var faceMaterial = PhysicallyBasedMaterial()        \n  faceMaterial.roughness = 0.1\n  faceMaterial.metallic = 1.0\n  faceMaterial.blending = .transparent(opacity: .init(scale: 1.0))\n\n  let sparklyNormalMap = try! TextureResource.load(named: \"sparkly\")\n  faceMaterial.normal.texture = PhysicallyBasedMaterial.Texture.init(sparklyNormalMap)\n\n  faceMaterial.baseColor.texture = PhysicallyBasedMaterial.Texture.init(faceTexture)\n\n  faceEntity.model!.materials = [faceMaterial]\n}"
+    },
+    {
+      "title": "AudioBufferResource",
+      "language": "swift",
+      "startTimeSeconds": 1389,
+      "code": "let synthesizer = AVSpeechSynthesizer()\n\nfunc speakText(_ text: String, forEntity entity: Entity) {\n\n    let utterance = AVSpeechUtterance(string: text)\n    utterance.voice = AVSpeechSynthesisVoice(language: \"en-IE\")\n\n    synthesizer.write(utterance) { audioBuffer in\n\n        guard\n            let audioResource = try? AudioBufferResource(buffer: audioBuffer,\n                                                         inputMode: .spatial,\n                                                         shouldLoop: true)\n        else { return }\n\n        entity.playAudio(audioResource)\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Creating an App for Face-Painting in AR",
+      "url": "https://developer.apple.com/documentation/RealityKit/creating-an-app-for-face-painting-in-ar",
+      "type": "samplecode",
+      "description": "Combine RealityKit’s face detection with PencilKit to implement virtual face-painting.",
+      "sosumiURL": "https://sosumi.ai/documentation/RealityKit/creating-an-app-for-face-painting-in-ar",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/RealityKit/creating-an-app-for-face-painting-in-ar.json"
+    },
+    {
+      "title": "Building an immersive experience with RealityKit",
+      "url": "https://developer.apple.com/documentation/RealityKit/building-an-immersive-experience-with-realitykit",
+      "type": "samplecode",
+      "description": "Use systems and postprocessing effects to create a realistic underwater scene.",
+      "sosumiURL": "https://sosumi.ai/documentation/RealityKit/building-an-immersive-experience-with-realitykit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/RealityKit/building-an-immersive-experience-with-realitykit.json"
+    },
+    {
+      "title": "Applying realistic material and lighting effects to entities",
+      "url": "https://developer.apple.com/documentation/RealityKit/applying-realistic-material-and-lighting-effects-to-entities",
+      "type": "documentation",
+      "description": "Enhance the appearance of objects in a RealityKit scene with Physically Based Rendering",
+      "sosumiURL": "https://sosumi.ai/documentation/RealityKit/applying-realistic-material-and-lighting-effects-to-entities",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/RealityKit/applying-realistic-material-and-lighting-effects-to-entities.json"
+    },
+    {
+      "title": "PhysicallyBasedMaterial",
+      "url": "https://developer.apple.com/documentation/RealityKit/PhysicallyBasedMaterial",
+      "type": "documentation",
+      "description": "A material that simulates the appearance of real-world objects.",
+      "sosumiURL": "https://sosumi.ai/documentation/RealityKit/PhysicallyBasedMaterial",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/RealityKit/PhysicallyBasedMaterial.json"
+    },
+    {
+      "title": "Explore the RealityKit Developer Forums",
+      "url": "https://developer.apple.com/forums/tags/realitykit",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/tags/realitykit"
+    },
+    {
+      "title": "Creating a fog effect using scene depth",
+      "url": "https://developer.apple.com/documentation/ARKit/creating-a-fog-effect-using-scene-depth",
+      "type": "samplecode",
+      "description": "Apply virtual fog to the physical environment.",
+      "sosumiURL": "https://sosumi.ai/documentation/ARKit/creating-a-fog-effect-using-scene-depth",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ARKit/creating-a-fog-effect-using-scene-depth.json"
+    },
+    {
+      "title": "RealityKit",
+      "url": "https://developer.apple.com/documentation/RealityKit",
+      "type": "documentation",
+      "description": "Simulate and render 3D content for use in your augmented reality apps.",
+      "sosumiURL": "https://sosumi.ai/documentation/RealityKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/RealityKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10074/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10074/metadata.json",
+    "readme": "sessions/wwdc2021/10074/README.md",
+    "transcript": "sessions/wwdc2021/10074/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10074/transcript.json"
+  }
+}

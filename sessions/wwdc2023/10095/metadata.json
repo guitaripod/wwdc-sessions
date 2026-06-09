@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10095",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10095,
+  "title": "Explore rendering for spatial computing",
+  "description": "Find out how you can take control of RealityKit rendering to improve the look and feel of your apps and games on visionOS. Discover how you can customize lighting, add grounding shadows, and control tone mapping for your content. We’ll also go over best practices for two key treatments on the platform: rasterization rate maps and dynamic content scaling.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10095",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10095",
+  "type": "Video",
+  "publishedAt": "2023-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 1019,
+  "hasTranscript": true,
+  "transcriptWordCount": 2332,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10095/4/CCE7B88E-E0C4-4BA3-87E7-9C1D644FA6CB/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10095/4/CCE7B88E-E0C4-4BA3-87E7-9C1D644FA6CB/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10095/4/CCE7B88E-E0C4-4BA3-87E7-9C1D644FA6CB/downloads/wwdc2023-10095_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10095/4/CCE7B88E-E0C4-4BA3-87E7-9C1D644FA6CB/downloads/wwdc2023-10095_hd.mp4",
+    "duration": 1019
+  },
+  "codeSnippets": [
+    {
+      "title": "Image based lighting",
+      "language": "swift",
+      "startTimeSeconds": 185,
+      "code": "RealityView { content in\n    async let satellite = Entity(named: \"Satellite\", in: worldAssetsBundle)\n    async let environment = EnvironmentResource(named: \"Sunlight\")\n\n    if let satellite = try? await satellite, let environment = try? await environment {\n        content.add(satellite)\n\n        satellite.components.set(ImageBasedLightComponent(\n           source: .single(environment)))\n\n        satellite.components.set(ImageBasedLightReceiverComponent(\n           imageBasedLight: satellite))\n   }\n}"
+    },
+    {
+      "title": "Grounding shadows",
+      "language": "swift",
+      "startTimeSeconds": 268,
+      "code": "RealityView { content in\n    if let vase = try? await Entity(named: \"flower_tulip\") {\n        content.add(vase)\n\n        vase.components.set(GroundingShadowComponent(castsShadow: true))\n    }\n}"
+    },
+    {
+      "title": "Disable tone mapping",
+      "language": "swift",
+      "startTimeSeconds": 528,
+      "code": "RealityView { content in\n    if let trafficLight = try? await Entity(named: \"traffic_light\") {\n        content.add(trafficLight)\n\n        if let lamp = trafficLight.findEntity(named: \"red_light\") {\n            if var model = lamp.components[ModelComponent.self] {\n                let material = UnlitMaterial(color: .init(color), \n                                             applyPostProcessToneMap: false)\n\n                model.materials = [material]\n\n                lamp.components[ModelComponent.self] = model\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Dynamic content scaling",
+      "language": "swift",
+      "startTimeSeconds": 934,
+      "code": "// Enable dynamic content scaling on CALayer with:\n\nvar wantsDynamicContentScaling: Bool { get set }"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Rendering at different rasterization rates",
+      "url": "https://developer.apple.com/documentation/Metal/rendering-at-different-rasterization-rates",
+      "type": "documentation",
+      "description": "Configure a rasterization rate map to vary rasterization rates depending on the amount of detail needed.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/rendering-at-different-rasterization-rates",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/rendering-at-different-rasterization-rates.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10095/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10095/metadata.json",
+    "readme": "sessions/wwdc2023/10095/README.md",
+    "transcript": "sessions/wwdc2023/10095/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10095/transcript.json"
+  }
+}

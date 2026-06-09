@@ -1,27 +1,245 @@
-# App Services — WWDC26 Sessions
+# App Services
 
-23 sessions.
+208 sessions across all events.
 
-- [Best practices for integrating visual intelligence in your app](../sessions/wwdc2026-297/README.md) · 📝 transcript
-- [Build intelligent Siri experiences with App Schemas](../sessions/wwdc2026-240/README.md) · 📝 transcript
-- [Code-along: Add persistence with SwiftData](../sessions/wwdc2026-275/README.md) · 📝 transcript
-- [Code-along: Build powerful drag and drop in SwiftUI](../sessions/wwdc2026-271/README.md) · 📝 transcript
-- [Code-along: Make your app available to Siri](../sessions/wwdc2026-344/README.md) · 📝 transcript
-- [Create live communication experiences ](../sessions/wwdc2026-226/README.md) · 📝 transcript
-- [Discover new capabilities in the App Intents framework](../sessions/wwdc2026-345/README.md) · 📝 transcript
-- [Elevate your app’s text experience with TextKit](../sessions/wwdc2026-370/README.md) · 📝 transcript
-- [Enhance your presence on the App Store](../sessions/wwdc2026-205/README.md) · 📝 transcript
-- [Explore Retention Messaging in App Store Connect](../sessions/wwdc2026-309/README.md) · 📝 transcript
-- [Explore advanced App Intents features for Siri and Apple Intelligence](../sessions/wwdc2026-343/README.md) · 📝 transcript
-- [Live Activities essentials](../sessions/wwdc2026-223/README.md) · 📝 transcript
-- [Read between the strokes with PencilKit](../sessions/wwdc2026-203/README.md) · 📝 transcript
-- [Secure your apps with App Attest](../sessions/wwdc2026-201/README.md) · 📝 transcript
-- [Unlock in-game content with StoreKit and Background Assets](../sessions/wwdc2026-378/README.md) · 📝 transcript
-- [Unwrap PaperKit](../sessions/wwdc2026-372/README.md) · 📝 transcript
-- [Use SwiftUI with AppKit and UIKit](../sessions/wwdc2026-272/README.md) · 📝 transcript
-- [What’s new in Apple In-App Purchase](../sessions/wwdc2026-210/README.md) · 📝 transcript
-- [What’s new in SwiftData](../sessions/wwdc2026-274/README.md) · 📝 transcript
-- [What’s new in SwiftUI](../sessions/wwdc2026-269/README.md) · 📝 transcript
-- [What’s new in Wallet](../sessions/wwdc2026-209/README.md) · 📝 transcript
-- [What’s new in assessment on macOS](../sessions/wwdc2026-230/README.md) · 📝 transcript
-- [What’s new in image understanding](../sessions/wwdc2026-237/README.md) · 📝 transcript
+
+### WWDC26
+
+- [Best practices for integrating visual intelligence in your app](../sessions/wwdc2026/297/README.md)
+- [Build intelligent Siri experiences with App Schemas](../sessions/wwdc2026/240/README.md)
+- [Code-along: Add persistence with SwiftData](../sessions/wwdc2026/275/README.md)
+- [Code-along: Build powerful drag and drop in SwiftUI](../sessions/wwdc2026/271/README.md)
+- [Code-along: Make your app available to Siri](../sessions/wwdc2026/344/README.md)
+- [Create live communication experiences ](../sessions/wwdc2026/226/README.md)
+- [Discover new capabilities in the App Intents framework](../sessions/wwdc2026/345/README.md)
+- [Elevate your app’s text experience with TextKit](../sessions/wwdc2026/370/README.md)
+- [Enhance your presence on the App Store](../sessions/wwdc2026/205/README.md)
+- [Explore Retention Messaging in App Store Connect](../sessions/wwdc2026/309/README.md)
+- [Explore advanced App Intents features for Siri and Apple Intelligence](../sessions/wwdc2026/343/README.md)
+- [Live Activities essentials](../sessions/wwdc2026/223/README.md)
+- [Read between the strokes with PencilKit](../sessions/wwdc2026/203/README.md)
+- [Secure your apps with App Attest](../sessions/wwdc2026/201/README.md)
+- [Unlock in-game content with StoreKit and Background Assets](../sessions/wwdc2026/378/README.md)
+- [Unwrap PaperKit](../sessions/wwdc2026/372/README.md)
+- [Use SwiftUI with AppKit and UIKit](../sessions/wwdc2026/272/README.md)
+- [What’s new in Apple In-App Purchase](../sessions/wwdc2026/210/README.md)
+- [What’s new in SwiftData](../sessions/wwdc2026/274/README.md)
+- [What’s new in SwiftUI](../sessions/wwdc2026/269/README.md)
+- [What’s new in Wallet](../sessions/wwdc2026/209/README.md)
+- [What’s new in assessment on macOS](../sessions/wwdc2026/230/README.md)
+- [What’s new in image understanding](../sessions/wwdc2026/237/README.md)
+
+### WWDC25
+
+- [Code-along: Explore localization with Xcode](../sessions/wwdc2025/225/README.md)
+- [Discover Apple-Hosted Background Assets](../sessions/wwdc2025/325/README.md)
+- [Dive deeper into Writing Tools](../sessions/wwdc2025/265/README.md)
+- [Dive into App Store server APIs for In-App Purchase](../sessions/wwdc2025/249/README.md)
+- [Enhance child safety with PermissionKit](../sessions/wwdc2025/293/README.md)
+- [Enhance your app’s multilingual experience](../sessions/wwdc2025/222/README.md)
+- [Explore enhancements to your spatial business app](../sessions/wwdc2025/223/README.md)
+- [Meet PaperKit](../sessions/wwdc2025/285/README.md)
+- [Meet WebKit for SwiftUI](../sessions/wwdc2025/231/README.md)
+- [Meet the HealthKit Medications API](../sessions/wwdc2025/321/README.md)
+- [SwiftData: Dive into inheritance and schema migration](../sessions/wwdc2025/291/README.md)
+- [Track workouts with HealthKit on iOS and iPadOS](../sessions/wwdc2025/322/README.md)
+- [Turbocharge your app for CarPlay](../sessions/wwdc2025/216/README.md)
+- [Unlock GPU computing with WebGPU](../sessions/wwdc2025/236/README.md)
+- [Verify identity documents on the web](../sessions/wwdc2025/232/README.md)
+- [Wake up to the AlarmKit API](../sessions/wwdc2025/230/README.md)
+- [What’s new in AdAttributionKit](../sessions/wwdc2025/221/README.md)
+- [What’s new in Apple Pay](../sessions/wwdc2025/201/README.md)
+- [What’s new in Safari and WebKit](../sessions/wwdc2025/233/README.md)
+- [What’s new in StoreKit and In-App Purchase](../sessions/wwdc2025/241/README.md)
+- [What’s new in Wallet](../sessions/wwdc2025/202/README.md)
+
+### WWDC24
+
+- [Bring your Live Activity to Apple Watch](../sessions/wwdc2024/10068/README.md)
+- [Bring your app to Siri](../sessions/wwdc2024/10133/README.md)
+- [Bring your app’s core features to users with App Intents](../sessions/wwdc2024/10210/README.md)
+- [Broadcast updates to your Live Activities](../sessions/wwdc2024/10069/README.md)
+- [Build custom swimming workouts with WorkoutKit](../sessions/wwdc2024/10084/README.md)
+- [Build immersive web experiences with WebXR](../sessions/wwdc2024/10066/README.md)
+- [Build multilingual-ready apps](../sessions/wwdc2024/10185/README.md)
+- [Create a custom data store with SwiftData](../sessions/wwdc2024/10138/README.md)
+- [Customize feature discovery with TipKit](../sessions/wwdc2024/10070/README.md)
+- [Customize spatial Persona templates in SharePlay](../sessions/wwdc2024/10201/README.md)
+- [Design Live Activities for Apple Watch](../sessions/wwdc2024/10098/README.md)
+- [Enhanced suggestions for your journaling app](../sessions/wwdc2024/10209/README.md)
+- [Explore wellbeing APIs in HealthKit](../sessions/wwdc2024/10109/README.md)
+- [Extend your app’s controls across the system](../sessions/wwdc2024/10157/README.md)
+- [Implement App Store Offers](../sessions/wwdc2024/10110/README.md)
+- [Introducing enterprise APIs for visionOS](../sessions/wwdc2024/10139/README.md)
+- [Meet AdAttributionKit](../sessions/wwdc2024/10060/README.md)
+- [Meet FinanceKit](../sessions/wwdc2024/2023/README.md)
+- [Meet the Contact Access Button](../sessions/wwdc2024/10121/README.md)
+- [Meet the Translation API](../sessions/wwdc2024/10117/README.md)
+- [Squeeze the most out of Apple Pencil](../sessions/wwdc2024/10214/README.md)
+- [Streamline sign-in with passkey upgrades and credential managers](../sessions/wwdc2024/10125/README.md)
+- [Support semantic search with Core Spotlight](../sessions/wwdc2024/10131/README.md)
+- [Swift Charts: Vectorized and function plots](../sessions/wwdc2024/10155/README.md)
+- [Track model changes with SwiftData history](../sessions/wwdc2024/10075/README.md)
+- [Train your machine learning and AI models on Apple GPUs](../sessions/wwdc2024/10160/README.md)
+- [Unlock the power of places with MapKit](../sessions/wwdc2024/10097/README.md)
+- [What’s new in App Intents](../sessions/wwdc2024/10134/README.md)
+- [What’s new in AppKit](../sessions/wwdc2024/10124/README.md)
+- [What’s new in StoreKit and In-App Purchase](../sessions/wwdc2024/10061/README.md)
+- [What’s new in SwiftData](../sessions/wwdc2024/10137/README.md)
+- [What’s new in UIKit](../sessions/wwdc2024/10118/README.md)
+- [What’s new in Wallet and Apple Pay](../sessions/wwdc2024/10108/README.md)
+- [What’s new in watchOS 11](../sessions/wwdc2024/10205/README.md)
+
+### WWDC23
+
+- [Animate symbols in your app](../sessions/wwdc2023/10258/README.md)
+- [Bring widgets to life](../sessions/wwdc2023/10028/README.md)
+- [Bring widgets to new places](../sessions/wwdc2023/10027/README.md)
+- [Build better document-based apps](../sessions/wwdc2023/10056/README.md)
+- [Create a great ShazamKit experience](../sessions/wwdc2023/10051/README.md)
+- [Create a more responsive camera experience](../sessions/wwdc2023/10105/README.md)
+- [Create animated symbols](../sessions/wwdc2023/10257/README.md)
+- [Discover Calendar and EventKit](../sessions/wwdc2023/10052/README.md)
+- [Discover streamlined location updates](../sessions/wwdc2023/10180/README.md)
+- [Explore enhancements to App Intents](../sessions/wwdc2023/10103/README.md)
+- [Explore testing in-app purchases](../sessions/wwdc2023/10142/README.md)
+- [Get started with privacy manifests](../sessions/wwdc2023/10060/README.md)
+- [Integrate your media app with HomePod](../sessions/wwdc2023/10104/README.md)
+- [Keep up with the keyboard](../sessions/wwdc2023/10281/README.md)
+- [Lift subjects from images in your app](../sessions/wwdc2023/10176/README.md)
+- [Make features discoverable with TipKit](../sessions/wwdc2023/10229/README.md)
+- [Meet ActivityKit](../sessions/wwdc2023/10184/README.md)
+- [Meet Core Location Monitor](../sessions/wwdc2023/10147/README.md)
+- [Meet Core Location for spatial computing](../sessions/wwdc2023/10146/README.md)
+- [Meet StoreKit for SwiftUI](../sessions/wwdc2023/10013/README.md)
+- [Meet the App Store Server Library ](../sessions/wwdc2023/10143/README.md)
+- [Spotlight your app with App Shortcuts](../sessions/wwdc2023/10102/README.md)
+- [Unleash the UIKit trait system](../sessions/wwdc2023/10057/README.md)
+- [Update Live Activities with push notifications](../sessions/wwdc2023/10185/README.md)
+- [Verify app dependencies with digital signatures](../sessions/wwdc2023/10061/README.md)
+- [What’s new in App Clips](../sessions/wwdc2023/10178/README.md)
+- [What’s new in App Store server APIs](../sessions/wwdc2023/10141/README.md)
+- [What’s new in AppKit](../sessions/wwdc2023/10054/README.md)
+- [What’s new in Background Assets](../sessions/wwdc2023/10108/README.md)
+- [What’s new in Core Motion](../sessions/wwdc2023/10179/README.md)
+- [What’s new in StoreKit 2 and StoreKit Testing in Xcode](../sessions/wwdc2023/10140/README.md)
+- [What’s new in UIKit](../sessions/wwdc2023/10055/README.md)
+- [What’s new in VisionKit](../sessions/wwdc2023/10048/README.md)
+- [What’s new in Wallet and Apple Pay](../sessions/wwdc2023/10114/README.md)
+- [What’s new with text and text interactions](../sessions/wwdc2023/10058/README.md)
+
+### WWDC22
+
+- [Add Live Text interaction to your app](../sessions/wwdc2022/10026/README.md)
+- [Add Shared with You to your app](../sessions/wwdc2022/10094/README.md)
+- [Challenge: WidgetKit workshop](../sessions/wwdc2022/110450/README.md)
+- [Complications and widgets: Reloaded](../sessions/wwdc2022/10050/README.md)
+- [Design App Shortcuts](../sessions/wwdc2022/10169/README.md)
+- [Display ads and interstitials in SharePlay](../sessions/wwdc2022/110380/README.md)
+- [Dive into App Intents](../sessions/wwdc2022/10032/README.md)
+- [Efficiency awaits: Background tasks in SwiftUI](../sessions/wwdc2022/10142/README.md)
+- [Enhance collaboration experiences with Messages](../sessions/wwdc2022/10095/README.md)
+- [Get more mileage out of your app with CarPlay](../sessions/wwdc2022/10016/README.md)
+- [Go further with Complications in WidgetKit](../sessions/wwdc2022/10051/README.md)
+- [Implement App Shortcuts with App Intents](../sessions/wwdc2022/10170/README.md)
+- [Integrate your custom collaboration app with Messages](../sessions/wwdc2022/10093/README.md)
+- [Make a great SharePlay experience](../sessions/wwdc2022/10139/README.md)
+- [Meet Background Assets](../sessions/wwdc2022/110403/README.md)
+- [Meet Focus filters](../sessions/wwdc2022/10121/README.md)
+- [Meet WeatherKit](../sessions/wwdc2022/10003/README.md)
+- [Support multiple users in tvOS apps](../sessions/wwdc2022/110384/README.md)
+- [What's new in App Clips](../sessions/wwdc2022/10097/README.md)
+- [What's new in MapKit](../sessions/wwdc2022/10035/README.md)
+- [What's new in Nearby Interaction](../sessions/wwdc2022/10008/README.md)
+- [What's new in PDFKit](../sessions/wwdc2022/10089/README.md)
+- [What's new in Screen Time API](../sessions/wwdc2022/110336/README.md)
+- [What's new in SharePlay](../sessions/wwdc2022/10140/README.md)
+- [What's new in WKWebView](../sessions/wwdc2022/10049/README.md)
+- [What's new with SKAdNetwork](../sessions/wwdc2022/10038/README.md)
+- [What’s new in Wallet and Apple Pay](../sessions/wwdc2022/10041/README.md)
+
+### WWDC21
+
+- [Add intelligence to your widgets](../sessions/wwdc2021/10049/README.md)
+- [Build Mail app extensions](../sessions/wwdc2021/10168/README.md)
+- [Build light and fast App Clips](../sessions/wwdc2021/10013/README.md)
+- [Design for Group Activities](../sessions/wwdc2021/10184/README.md)
+- [Design great actions for Shortcuts, Siri, and Suggestions](../sessions/wwdc2021/10283/README.md)
+- [Donate intents and expand your app’s presence](../sessions/wwdc2021/10231/README.md)
+- [Explore Safari Web Extension improvements](../sessions/wwdc2021/10027/README.md)
+- [Explore UWB-based car keys](../sessions/wwdc2021/10084/README.md)
+- [Meet Shortcuts for macOS](../sessions/wwdc2021/10232/README.md)
+- [Principles of great widgets](../sessions/wwdc2021/10048/README.md)
+- [Send communication and Time Sensitive notifications](../sessions/wwdc2021/10091/README.md)
+- [Sync files to the cloud with FileProvider on macOS](../sessions/wwdc2021/10182/README.md)
+- [What's new in App Clips](../sessions/wwdc2021/10012/README.md)
+- [What's new in Wallet and Apple Pay](../sessions/wwdc2021/10092/README.md)
+- [What’s new in Game Center: Widgets, friends, and multiplayer improvements](../sessions/wwdc2021/10066/README.md)
+
+### WWDC20
+
+- [Accelerate your app with CarPlay](../sessions/wwdc2020/10635/README.md)
+- [Add configuration and intelligence to your widgets](../sessions/wwdc2020/10194/README.md)
+- [Broaden your reach with Siri Event Suggestions](../sessions/wwdc2020/10197/README.md)
+- [Build SwiftUI views for widgets](../sessions/wwdc2020/10033/README.md)
+- [Build a great car experience](../sessions/wwdc2020/10797/README.md)
+- [Create quick interactions with Shortcuts on watchOS](../sessions/wwdc2020/10190/README.md)
+- [Decipher and deal with common Siri errors](../sessions/wwdc2020/10074/README.md)
+- [Design for intelligence](../sessions/wwdc2020/10203/README.md)
+- [Design for intelligence: Apps, evolved](../sessions/wwdc2020/10086/README.md)
+- [Design for intelligence: Discover new opportunities](../sessions/wwdc2020/10088/README.md)
+- [Design for intelligence: Make friends with "The System"](../sessions/wwdc2020/10087/README.md)
+- [Design for intelligence: Meet people where they are](../sessions/wwdc2020/10200/README.md)
+- [Design high quality Siri media interactions](../sessions/wwdc2020/10060/README.md)
+- [Empower your intents](../sessions/wwdc2020/10073/README.md)
+- [Evaluate and optimize voice interaction for your app](../sessions/wwdc2020/10071/README.md)
+- [Expand your SiriKit Media Intents to more platforms](../sessions/wwdc2020/10061/README.md)
+- [Feature your actions in the Shortcuts app](../sessions/wwdc2020/10084/README.md)
+- [Integrate your app with Wind Down](../sessions/wwdc2020/10083/README.md)
+- [Introducing Car Keys](../sessions/wwdc2020/10006/README.md)
+- [Meet WidgetKit](../sessions/wwdc2020/10028/README.md)
+- [Optimize your Shortcuts](../sessions/wwdc2020/10080/README.md)
+- [Shop online with AR Quick Look](../sessions/wwdc2020/10604/README.md)
+- [Siri, Shortcuts, and SiriKit](../sessions/wwdc2020/10069/README.md)
+- [What's new in SiriKit and Shortcuts](../sessions/wwdc2020/10068/README.md)
+- [What's new in Wallet and Apple Pay](../sessions/wwdc2020/10662/README.md)
+- [Widgets Code-along, part 1: The adventure begins](../sessions/wwdc2020/10034/README.md)
+- [Widgets Code-along, part 2: Alternate timelines](../sessions/wwdc2020/10035/README.md)
+- [Widgets Code-along, part 3: Advancing timelines](../sessions/wwdc2020/10036/README.md)
+- [Widgets code-along](../sessions/wwdc2020/10030/README.md)
+
+### WWDC19
+
+- [Advances in CarPlay Systems](../sessions/wwdc2019/252/README.md)
+- [Advances in Speech Recognition](../sessions/wwdc2019/256/README.md)
+- [Building Great Shortcuts](../sessions/wwdc2019/805/README.md)
+- [Designing Great Shortcuts](../sessions/wwdc2019/806/README.md)
+- [Integrating with Siri Event Suggestions](../sessions/wwdc2019/243/README.md)
+- [Introducing Parameters for Shortcuts](../sessions/wwdc2019/213/README.md)
+- [Introducing SiriKit Media Intents](../sessions/wwdc2019/207/README.md)
+- [Mastering the Living Room With tvOS](../sessions/wwdc2019/211/README.md)
+
+### WWDC18
+
+- [CarPlay Audio and Navigation Apps](../sessions/wwdc2018/213/README.md)
+- [Introduction to Siri Shortcuts](../sessions/wwdc2018/211/README.md)
+
+### Tech Talks
+
+- [Developing Complications for Apple Watch Series 4](../sessions/tech-talks/208/README.md)
+- [Developing Wireless CarPlay Systems](../sessions/wwdc2017/717/README.md)
+- [Discover the Journaling Suggestions API](../sessions/tech-talks/111384/README.md)
+- [Express Yourself!](../sessions/wwdc2017/820/README.md)
+- [Extend Your App's Presence With Sharing](../sessions/wwdc2017/247/README.md)
+- [Get started with Apple Pay on the Web](../sessions/tech-talks/111381/README.md)
+- [Implement Apple Pay and order management](../sessions/tech-talks/110336/README.md)
+- [Integrate SiriKit Media Intents with HomePod](../sessions/tech-talks/10854/README.md)
+- [Migrate custom intents to App Intents](../sessions/tech-talks/10168/README.md)
+- [What's New in Core NFC](../sessions/tech-talks/702/README.md)
+- [What's New in Sharing](../sessions/tech-talks/210/README.md)
+
+### WWDC16
+
+- [Developing CarPlay Systems, Part 1](../sessions/wwdc2016/722/README.md)
+- [Developing CarPlay Systems, Part 2](../sessions/wwdc2016/723/README.md)
+- [Speech Recognition API](../sessions/wwdc2016/509/README.md)

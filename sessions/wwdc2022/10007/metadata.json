@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10007",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10007,
+  "title": "What's new with in-app purchase",
+  "description": "Learn how you can make your in-app purchase experience even better on iPhone, iPad, Mac, and Apple Watch. We’ll take you through enhancements to StoreKit 2 and App Store Server API, and explore improvements to App Store Server Notifications. Discover how you can verify app purchases with App Transaction API, add properties to your StoreKit models, incorporate SwiftUI-friendly APIs and StoreKit Messages, and preserve applicationUsername in transactions. For those working server-side, we’ll show you how to make the most of App Store Server Notifications, additional ways to retrieve user transaction history, and recovery steps when your server experiences an outage.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10007",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10007",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "storekit"
+  ],
+  "topics": [
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 2855,
+  "hasTranscript": true,
+  "transcriptWordCount": 7641,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10007/4/2E07F67B-3E73-4DC2-A300-93EB4AF56295/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10007/4/2E07F67B-3E73-4DC2-A300-93EB4AF56295/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10007/4/2E07F67B-3E73-4DC2-A300-93EB4AF56295/downloads/wwdc2022-10007_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10007/4/2E07F67B-3E73-4DC2-A300-93EB4AF56295/downloads/wwdc2022-10007_hd.mp4",
+    "duration": 2855
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Get Notification History",
+      "url": "https://developer.apple.com/documentation/AppStoreServerAPI/Get-Notification-History",
+      "type": "documentation",
+      "description": "Get a list of notifications that the App Store server attempted to send to your server.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreServerAPI/Get-Notification-History",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreServerAPI/Get-Notification-History.json"
+    },
+    {
+      "title": "Get Test Notification Status",
+      "url": "https://developer.apple.com/documentation/AppStoreServerAPI/Get-Test-Notification-Status",
+      "type": "documentation",
+      "description": "Check the status of the test App Store server notification sent to your server.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreServerAPI/Get-Test-Notification-Status",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreServerAPI/Get-Test-Notification-Status.json"
+    },
+    {
+      "title": "Request a Test Notification",
+      "url": "https://developer.apple.com/documentation/AppStoreServerAPI/Request-a-Test-Notification",
+      "type": "documentation",
+      "description": "Ask App Store Server Notifications to send a test notification to your server.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreServerAPI/Request-a-Test-Notification",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreServerAPI/Request-a-Test-Notification.json"
+    },
+    {
+      "title": "Get Transaction History",
+      "url": "https://developer.apple.com/documentation/AppStoreServerAPI/Get-Transaction-History",
+      "type": "documentation",
+      "description": "Get a customer’s in-app purchase transaction history for your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreServerAPI/Get-Transaction-History",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreServerAPI/Get-Transaction-History.json"
+    },
+    {
+      "title": "recentSubscriptionStartDate",
+      "url": "https://developer.apple.com/documentation/AppStoreServerAPI/recentSubscriptionStartDate",
+      "type": "documentation",
+      "description": "The earliest start date of a subscription in a series of auto-renewable subscription purchases that ignores all lapses of paid service shorter than 60 days.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreServerAPI/recentSubscriptionStartDate",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreServerAPI/recentSubscriptionStartDate.json"
+    },
+    {
+      "title": "environment",
+      "url": "https://developer.apple.com/documentation/AppStoreServerAPI/environment",
+      "type": "documentation",
+      "description": "The server environment, either sandbox or production.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreServerAPI/environment",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreServerAPI/environment.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10007/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10007/metadata.json",
+    "readme": "sessions/wwdc2022/10007/README.md",
+    "transcript": "sessions/wwdc2022/10007/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10007/transcript.json"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "id": "meet-with-apple-242",
+  "event": "meet-with-apple",
+  "eventName": "Meet with Apple",
+  "year": 2025,
+  "eventContentId": 242,
+  "title": "Explore power, performance, and scale for games on iPhone and iPad",
+  "description": "Discover the Apple tools and technologies you can use to optimize game performance and power usage on iPhone and iPad. Learn how to use the Metal Performance HUD, Instruments, and Metal debugger to identify bottlenecks, improve efficiency, and scale your game across Apple devices.\n\nThis session was originally presented as part of the Meet with Apple activity “Press Start: Game development on Apple platforms.” Watch the full video for more insights and related sessions.",
+  "url": "https://developer.apple.com/videos/play/meet-with-apple/242",
+  "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/242",
+  "type": "Video",
+  "publishedAt": "2025-12-15T00:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 943,
+  "hasTranscript": true,
+  "transcriptWordCount": 2205,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/242/2/8815931a-275a-4692-9d12-78581be0ea37/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/242/2/8815931a-275a-4692-9d12-78581be0ea37/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/242/2/8815931a-275a-4692-9d12-78581be0ea37/downloads/meet-with-apple-242_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/242/2/8815931a-275a-4692-9d12-78581be0ea37/downloads/meet-with-apple-242_hd.mp4",
+    "duration": 943
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Metal Developer Resources",
+      "url": "https://developer.apple.com/metal/",
+      "type": "guide",
+      "description": "Accelerate graphics and much more with Metal. Metal powers hardware-accelerated graphics on Apple platforms by providing a low-overhead API, rich shading language, tight integration between graphics and compute, and an unparalleled suite of GPU profiling and debugging tools. Your games and pro apps can take full advantage of the incredible performance and efficiency of Apple silicon across iPhone, iPad, Mac, and Apple TV.",
+      "sosumiURL": "https://sosumi.ai/metal/"
+    }
+  ],
+  "path": "sessions/meet-with-apple/242/",
+  "files": {
+    "metadata": "sessions/meet-with-apple/242/metadata.json",
+    "readme": "sessions/meet-with-apple/242/README.md",
+    "transcript": "sessions/meet-with-apple/242/transcript.md",
+    "transcriptJSON": "sessions/meet-with-apple/242/transcript.json"
+  }
+}

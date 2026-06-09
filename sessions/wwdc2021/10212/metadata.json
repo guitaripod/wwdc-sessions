@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10212",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10212,
+  "title": "Analyze HTTP traffic in Instruments ",
+  "description": "Learn to use the Instruments Network template to record and analyze your app's HTTP traffic. We'll show you how to explore and visualize the behavior of sessions, tasks, and individual HTTP requests to ensure data is transmitted efficiently and respects people's privacy.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10212",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10212",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Privacy & Security",
+    "System Services",
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 2037,
+  "hasTranscript": true,
+  "transcriptWordCount": 4827,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10212/4/20646031-B78D-4268-9B08-A74EC6ABB639/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10212/4/20646031-B78D-4268-9B08-A74EC6ABB639/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10212/4/20646031-B78D-4268-9B08-A74EC6ABB639/downloads/wwdc2021-10212_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10212/4/20646031-B78D-4268-9B08-A74EC6ABB639/downloads/wwdc2021-10212_hd.mp4",
+    "duration": 2037
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Analyzing HTTP traffic with Instruments",
+      "url": "https://developer.apple.com/documentation/Foundation/analyzing-http-traffic-with-instruments",
+      "type": "documentation",
+      "description": "Measure HTTP-based network performance and usage of your apps.",
+      "sosumiURL": "https://sosumi.ai/documentation/Foundation/analyzing-http-traffic-with-instruments",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Foundation/analyzing-http-traffic-with-instruments.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10212/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10212/metadata.json",
+    "readme": "sessions/wwdc2021/10212/README.md",
+    "transcript": "sessions/wwdc2021/10212/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10212/transcript.json"
+  }
+}

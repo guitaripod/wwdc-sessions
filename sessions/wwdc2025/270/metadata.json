@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-270",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 270,
+  "title": "Code-along: Elevate an app with Swift concurrency",
+  "description": "Learn how to optimize your app’s user experience with Swift concurrency as we update an existing sample app. We’ll start with a main-actor app, then gradually introduce asynchronous code as we need to. We’ll use tasks to optimize code running on the main actor, and discover how to parallelize code by offloading work to the background. We’ll explore what data-race safety provides, and work through interpreting and fixing data-race safety errors. Finally, we’ll show how you can make the most out of structured concurrency in the context of an app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/270",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/270",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 1976,
+  "hasTranscript": true,
+  "transcriptWordCount": 3975,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/270/4/fec27360-7913-4e07-8025-e80187a8d00a/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/270/4/fec27360-7913-4e07-8025-e80187a8d00a/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/270/4/fec27360-7913-4e07-8025-e80187a8d00a/downloads/wwdc2025-270_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/270/4/fec27360-7913-4e07-8025-e80187a8d00a/downloads/wwdc2025-270_hd.mp4",
+    "duration": 1976
+  },
+  "codeSnippets": [
+    {
+      "title": "Asynchronously loading the selected photo from the photo library",
+      "language": "swift",
+      "startTimeSeconds": 389,
+      "code": "func loadPhoto(_ item: SelectedPhoto) async {\n    var data: Data? = try? await item.loadTransferable(type: Data.self)\n\n    if let cachedData = getCachedData(for: item.id) { data = cachedData }\n\n    guard let data else { return }\n    processedPhotos[item.id] = Image(data: data)\n\n    cacheData(item.id, data)\n}"
+    },
+    {
+      "title": "Calling an asynchronous function when the SwiftUI View appears",
+      "language": "swift",
+      "startTimeSeconds": 419,
+      "code": "StickerPlaceholder()\n.task {\n    await viewModel.loadPhoto(selectedPhoto)\n}"
+    },
+    {
+      "title": "Synchronously extracting the sticker and the colors from a photo",
+      "language": "swift",
+      "startTimeSeconds": 585,
+      "code": "func loadPhoto(_ item: SelectedPhoto) async {\n    var data: Data? = try? await item.loadTransferable(type: Data.self)\n\n    if let cachedData = getCachedData(for: item.id) { data = cachedData }\n\n    guard let data else { return }\n    processedPhotos[item.id] = PhotoProcessor().process(data: data)\n\n    cacheData(item.id, data)\n}"
+    },
+    {
+      "title": "Storing the processed photo in the dictionary",
+      "language": "swift",
+      "startTimeSeconds": 596,
+      "code": "var processedPhotos = [SelectedPhoto.ID: ProcessedPhoto]()"
+    },
+    {
+      "title": "Displaying the sticker with a gradient background in the carousel",
+      "language": "swift",
+      "startTimeSeconds": 645,
+      "code": "import SwiftUI\nimport PhotosUI\n\nstruct StickerCarousel: View {\n    @State var viewModel: StickerViewModel\n    @State private var sheetPresented: Bool = false\n\n    var body: some View {\n        ScrollView(.horizontal) {\n            LazyHStack(spacing: 16) {\n                ForEach(viewModel.selection) { selectedPhoto in\n                    VStack {\n                        if let processedPhoto = viewModel.processedPhotos[selectedPhoto.id] {\n                            GradientSticker(processedPhoto: processedPhoto)\n                        } else if viewModel.invalidPhotos.contains(selectedPhoto.id) {\n                            InvalidStickerPlaceholder()\n                        } else {\n                            StickerPlaceholder()\n                                .task {\n                                    await viewModel.loadPhoto(selectedPhoto)\n                                }\n                        }\n                    }\n                    .containerRelativeFrame(.horizontal)\n                }\n            }\n        }\n        .configureCarousel(\n            viewModel,\n            sheetPresented: $sheetPresented\n        )\n        .sheet(isPresented: $sheetPresented) {\n            StickerGrid(viewModel: viewModel)\n        }\n    }\n}"
+    },
+    {
+      "title": "Allowing photo processing to run on the background thread",
+      "language": "swift",
+      "startTimeSeconds": 853,
+      "code": "nonisolated struct PhotoProcessor {\n\n    let colorExtractor = ColorExtractor()\n\n    @concurrent\n    func process(data: Data) async -> ProcessedPhoto? {\n        let sticker = extractSticker(from: data)\n        let colors = extractColors(from: data)\n\n        guard let sticker = sticker, let colors = colors else { return nil }\n\n        return ProcessedPhoto(sticker: sticker, colorScheme: colors)\n    }\n\n    private func extractColors(from data: Data) -> PhotoColorScheme? {\n        // ...\n    }\n\n    private func extractSticker(from data: Data) -> Image? {\n        // ...\n    }\n}"
+    },
+    {
+      "title": "Running the photo processing operations off the main thread",
+      "language": "swift",
+      "startTimeSeconds": 931,
+      "code": "func loadPhoto(_ item: SelectedPhoto) async {\n    var data: Data? = try? await item.loadTransferable(type: Data.self)\n\n    if let cachedData = getCachedData(for: item.id) { data = cachedData }\n\n    guard let data else { return }\n    processedPhotos[item.id] = await PhotoProcessor().process(data: data)\n\n    cacheData(item.id, data)\n}"
+    },
+    {
+      "title": "Running sticker and color extraction in parallel.",
+      "language": "swift",
+      "startTimeSeconds": 1255,
+      "code": "nonisolated struct PhotoProcessor {\n\n    @concurrent\n    func process(data: Data) async -> ProcessedPhoto? {\n        async let sticker = extractSticker(from: data)\n        async let colors = extractColors(from: data)\n\n        guard let sticker = await sticker, let colors = await colors else { return nil }\n\n        return ProcessedPhoto(sticker: sticker, colorScheme: colors)\n    }\n\n    private func extractColors(from data: Data) -> PhotoColorScheme? {\n        let colorExtractor = ColorExtractor()\n        return colorExtractor.extractColors(from: data)\n    }\n\n    private func extractSticker(from data: Data) -> Image? {\n        // ...\n    }\n}"
+    },
+    {
+      "title": "Applying the visual effect on each sticker in the carousel",
+      "language": "swift",
+      "startTimeSeconds": 1460,
+      "code": "import SwiftUI\nimport PhotosUI\n\nstruct StickerCarousel: View {\n    @State var viewModel: StickerViewModel\n    @State private var sheetPresented: Bool = false\n\n    var body: some View {\n        ScrollView(.horizontal) {\n            LazyHStack(spacing: 16) {\n                ForEach(viewModel.selection) { selectedPhoto in\n                    VStack {\n                        if let processedPhoto = viewModel.processedPhotos[selectedPhoto.id] {\n                            GradientSticker(processedPhoto: processedPhoto)\n                        } else if viewModel.invalidPhotos.contains(selectedPhoto.id) {\n                            InvalidStickerPlaceholder()\n                        } else {\n                            StickerPlaceholder()\n                                .task {\n                                    await viewModel.loadPhoto(selectedPhoto)\n                                }\n                        }\n                    }\n                    .containerRelativeFrame(.horizontal)\n                    .visualEffect { [selection = viewModel.selection] content, proxy in\n                        let frame = proxy.frame(in: .scrollView(axis: .horizontal))\n                        let distance = min(0, frame.minX)\n                        let isLast = selectedPhoto.id == selection.last?.id\n\n                        return content\n                            .hueRotation(.degrees(frame.origin.x / 10))\n                            .scaleEffect(1 + distance / 700)\n                            .offset(x: isLast ? 0 : -distance / 1.25)\n                            .brightness(-distance / 400)\n                            .blur(radius: isLast ? 0 : -distance / 50)\n                            .opacity(isLast ? 1.0 : min(1.0, 1.0 - (-distance / 400)))\n                    }\n                }\n            }\n        }\n        .configureCarousel(\n            viewModel,\n            sheetPresented: $sheetPresented\n        )\n        .sheet(isPresented: $sheetPresented) {\n            StickerGrid(viewModel: viewModel)\n        }\n    }\n}"
+    },
+    {
+      "title": "Accessing a reference type from a concurrent task",
+      "language": "swift",
+      "startTimeSeconds": 1575,
+      "code": "Task { @concurrent in\n    await viewModel.loadPhoto(selectedPhoto)      \n}"
+    },
+    {
+      "title": "Processing all photos at once with a task group",
+      "language": "swift",
+      "startTimeSeconds": 1740,
+      "code": "func processAllPhotos() async {\n    await withTaskGroup { group in\n        for item in selection {\n            guard processedPhotos[item.id] == nil else { continue }\n            group.addTask {\n                let data = await self.getData(for: item)\n                let photo = await PhotoProcessor().process(data: data)\n                return photo.map { ProcessedPhotoResult(id: item.id, processedPhoto: $0) }\n            }\n        }\n\n        for await result in group {\n            if let result {\n                processedPhotos[result.id] = result.processedPhoto\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Kicking off photo processing and configuring the share link in a sticker grid view.",
+      "language": "swift",
+      "startTimeSeconds": 1800,
+      "code": "import SwiftUI\n\nstruct StickerGrid: View {\n    let viewModel: StickerViewModel\n    @State private var finishedLoading: Bool = false\n\n    var body: some View {\n        NavigationStack {\n            VStack {\n                if finishedLoading {\n                    GridContent(viewModel: viewModel)\n                } else {\n                    ProgressView()\n                        .frame(maxWidth: .infinity, maxHeight: .infinity)\n                        .padding()\n                }\n            }\n            .task {\n                await viewModel.processAllPhotos()\n                finishedLoading = true\n            }\n            .toolbar {\n                ToolbarItem(placement: .topBarTrailing) {\n                    if finishedLoading {\n                        ShareLink(\"Share\", items: viewModel.selection.compactMap {\n                            viewModel.processedPhotos[$0.id]?.sticker\n                        }) { sticker in\n                            SharePreview(\n                                \"Sticker Preview\",\n                                image: sticker,\n                                icon: Image(systemName: \"photo\")\n                            )\n                        }\n                    }\n                }\n            }\n            .configureStickerGrid()\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Code-along: Elevating an app with Swift concurrency",
+      "url": "https://developer.apple.com/documentation/Swift/code-along-elevating-an-app-with-swift-concurrency",
+      "type": "samplecode",
+      "description": "Code along with the WWDC presenter to elevate a SwiftUI app with Swift concurrency.",
+      "sosumiURL": "https://sosumi.ai/documentation/Swift/code-along-elevating-an-app-with-swift-concurrency",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Swift/code-along-elevating-an-app-with-swift-concurrency.json"
+    },
+    {
+      "title": "Swift Migration Guide",
+      "url": "https://www.swift.org/migration/documentation/migrationguide/",
+      "type": "documentation",
+      "description": null
+    }
+  ],
+  "path": "sessions/wwdc2025/270/",
+  "files": {
+    "metadata": "sessions/wwdc2025/270/metadata.json",
+    "readme": "sessions/wwdc2025/270/README.md",
+    "transcript": "sessions/wwdc2025/270/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/270/transcript.json"
+  }
+}

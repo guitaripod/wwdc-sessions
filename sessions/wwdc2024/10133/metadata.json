@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10133",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10133,
+  "title": "Bring your app to Siri",
+  "description": "Learn how to use SiriKit and App Intents to expose your app’s functionality to Siri and Apple Intelligence. Discover which intents are already available for your use, and how to adopt App Intent domains to integrate actions from your app into the system. Find out what metadata to provide, how to make your entities searchable with Spotlight, how to integrate your app with in-app search, and much more.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10133",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10133",
+  "type": "Video",
+  "publishedAt": "2024-06-10T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "ai",
+    "app intents",
+    "machine learning",
+    "siri",
+    "siri intents editor"
+  ],
+  "topics": [
+    "App Services",
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1309,
+  "hasTranscript": true,
+  "transcriptWordCount": 3174,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10133/4/8167BB3B-00DE-4F39-A88C-4A719DF29D02/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10133/4/8167BB3B-00DE-4F39-A88C-4A719DF29D02/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10133/4/8167BB3B-00DE-4F39-A88C-4A719DF29D02/downloads/wwdc2024-10133_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10133/4/8167BB3B-00DE-4F39-A88C-4A719DF29D02/downloads/wwdc2024-10133_hd.mp4",
+    "duration": 1309
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "App schema domains",
+      "url": "https://developer.apple.com/documentation/AppIntents/app-schema-domains",
+      "type": "documentation",
+      "description": "Declare support for well-known actions and content by applying system-defined schemas to",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents/app-schema-domains",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents/app-schema-domains.json"
+    },
+    {
+      "title": "Integrating your photo app with Apple Intelligence",
+      "url": "https://developer.apple.com/documentation/AppIntents/integrating-your-photo-app-with-apple-intelligence",
+      "type": "samplecode",
+      "description": "Adopt photo schemas so people can edit and manage photos with Siri.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents/integrating-your-photo-app-with-apple-intelligence",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents/integrating-your-photo-app-with-apple-intelligence.json"
+    },
+    {
+      "title": "Forum: Machine Learning and AI",
+      "url": "https://developer.apple.com/forums/topics/machine-learning-and-ai?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/machine-learning-and-ai?cid=vf-a-0010"
+    }
+  ],
+  "path": "sessions/wwdc2024/10133/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10133/metadata.json",
+    "readme": "sessions/wwdc2024/10133/README.md",
+    "transcript": "sessions/wwdc2024/10133/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10133/transcript.json"
+  }
+}

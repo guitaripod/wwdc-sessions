@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10038",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10038,
+  "title": "Tune your Core ML models",
+  "description": "Bring the power of machine learning directly to your apps with Core ML. Discover how you can take advantage of the CPU, GPU, and Neural Engine to provide maximum performance while remaining on device and protecting privacy. Explore MLShapedArray, which makes it easy to work with multi-dimensional data in Swift, and learn more about ML Package support in Core ML, which includes support for ML Programs. This modern, programmatic approach to machine learning provides typed execution and tremendous flexibility. We’ll also show you how to analyze performance of your models and tune the execution of each operation in a model using ML Programs.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10038",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10038",
+  "type": "Video",
+  "publishedAt": "2021-06-11T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "ai",
+    "core ml",
+    "core ml converters",
+    "core ml tools",
+    "machine learning",
+    "neural network",
+    "neural networks",
+    "python"
+  ],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1470,
+  "hasTranscript": true,
+  "transcriptWordCount": 4086,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10038/3/84EFF5EC-346B-4A8C-BDAC-47F3258352D9/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10038/3/84EFF5EC-346B-4A8C-BDAC-47F3258352D9/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10038/3/84EFF5EC-346B-4A8C-BDAC-47F3258352D9/downloads/wwdc2021-10038_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10038/3/84EFF5EC-346B-4A8C-BDAC-47F3258352D9/downloads/wwdc2021-10038_hd.mp4",
+    "duration": 1470
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Core ML Converters",
+      "url": "https://coremltools.readme.io/docs",
+      "type": "documentation",
+      "description": "Reference documentation on coremltools including Core ML Converters"
+    },
+    {
+      "title": "Core ML",
+      "url": "https://developer.apple.com/documentation/CoreML",
+      "type": "documentation",
+      "description": "Integrate machine learning models into your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreML",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreML.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10038/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10038/metadata.json",
+    "readme": "sessions/wwdc2021/10038/README.md",
+    "transcript": "sessions/wwdc2021/10038/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10038/transcript.json"
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-274",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 274,
+  "title": "Better together: SwiftUI and RealityKit",
+  "description": "Discover how to seamlessly blend SwiftUI and RealityKit in visionOS 26. We’ll explore enhancements to Model3D, including animation and ConfigurationCatalog support, and demonstrate smooth transitions to RealityView. You’ll learn how to leverage SwiftUI animations to drive RealityKit component changes, implement interactive manipulation, use new SwiftUI components for richer interactions, and observe RealityKit changes from your SwiftUI code. We’ll also cover how to use unified coordinate conversion for cross-framework coordinate transformations.\n",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/274",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/274",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Design",
+    "Spatial Computing",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1825,
+  "hasTranscript": true,
+  "transcriptWordCount": 4181,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/274/4/af6a131e-f3ee-4d68-8371-4f52e9c4a3d6/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/274/4/af6a131e-f3ee-4d68-8371-4f52e9c4a3d6/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/274/4/af6a131e-f3ee-4d68-8371-4f52e9c4a3d6/downloads/wwdc2025-274_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/274/4/af6a131e-f3ee-4d68-8371-4f52e9c4a3d6/downloads/wwdc2025-274_hd.mp4",
+    "duration": 1825
+  },
+  "codeSnippets": [
+    {
+      "title": "Sparky in Model3D",
+      "language": "swift",
+      "startTimeSeconds": 102,
+      "code": "struct ContentView: View {\n  var body: some View {\n    Model3D(named: \"sparky\")\n  }\n}"
+    },
+    {
+      "title": "Sparky in Model3D with a name sign",
+      "language": "swift",
+      "startTimeSeconds": 112,
+      "code": "struct ContentView: View {\n  var body: some View {\n    HStack {\n      NameSign()\n      Model3D(named: \"sparky\")\n    }\n  }\n}"
+    },
+    {
+      "title": "Display a model asset in a Model3D and present playback controls​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​",
+      "language": "swift",
+      "startTimeSeconds": 198,
+      "code": "struct RobotView: View {\n  @State private var asset: Model3DAsset?\n  var body: some View {\n    if asset == nil {\n      ProgressView().task { asset = try? await Model3DAsset(named: \"sparky\") }\n    }\n  }\n}"
+    },
+    {
+      "title": "Display a model asset in a Model3D and present playback controls​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​",
+      "language": "swift",
+      "startTimeSeconds": 214,
+      "code": "struct RobotView: View {\n  @State private var asset: Model3DAsset?\n  var body: some View {\n    if asset == nil {\n      ProgressView().task { asset = try? await Model3DAsset(named: \"sparky\") }\n    } else if let asset {\n      VStack {\n        Model3D(asset: asset)\n        AnimationPicker(asset: asset)\n      }\n    }\n  }\n}"
+    },
+    {
+      "title": "Display a model asset in a Model3D and present playback controls​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​",
+      "language": "swift",
+      "startTimeSeconds": 243,
+      "code": "struct RobotView: View {\n  @State private var asset: Model3DAsset?\n  var body: some View {\n    if asset == nil {\n      ProgressView().task { asset = try? await Model3DAsset(named: \"sparky\") }\n    } else if let asset {\n      VStack {\n        Model3D(asset: asset)\n        AnimationPicker(asset: asset)\n        if let animationController = asset.animationPlaybackController {\n          RobotAnimationControls(playbackController: animationController)\n        }\n      }\n    }\n  }\n}"
+    },
+    {
+      "title": "Pause, resume, stop, and change the move the play head in the animation​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​",
+      "language": "swift",
+      "startTimeSeconds": 272,
+      "code": "struct RobotAnimationControls: View {\n  @Bindable var controller: AnimationPlaybackController\n\n  var body: some View {\n    HStack {\n      Button(controller.isPlaying ? \"Pause\" : \"Play\") {\n        if controller.isPlaying { controller.pause() }\n        else { controller.resume() }\n      }\n\n      Slider(\n        value: $controller.time,\n        in: 0...controller.duration\n      ).id(controller)\n    }\n  }\n}"
+    },
+    {
+      "title": "Load a Model3D using a ConfigurationCatalog​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​",
+      "language": "swift",
+      "startTimeSeconds": 341,
+      "code": "struct ConfigCatalogExample: View {\n  @State private var configCatalog: Entity.ConfigurationCatalog?\n  @State private var configurations = [String: String]()\n  @State private var showConfig = false\n  var body: some View {\n    if let configCatalog {\n      Model3D(from: configCatalog, configurations: configurations)\n        .popover(isPresented: $showConfig, arrowEdge: .leading) {\n          ConfigPicker(\n            name: \"outfits\",\n            configCatalog: configCatalog,\n            chosenConfig: $configurations[\"outfits\"])\n        }\n    } else {\n      ProgressView()\n        .task {\n          await loadConfigurationCatalog()\n        }\n    }\n  }\n}"
+    },
+    {
+      "title": "Switching from Model3D to RealityView",
+      "language": "swift",
+      "startTimeSeconds": 411,
+      "code": "struct RobotView: View {\n  let url: URL = Bundle.main.url(forResource: \"sparky\", withExtension: \"reality\")!\n\n  var body: some View {\n    HStack {\n      NameSign()\n      RealityView { content in\n        if let sparky = try? await Entity(contentsOf: url) {\n          content.add(sparky)\n        }\n      }\n    }\n  }\n}"
+    },
+    {
+      "title": "Switching from Model3D to RealityView with layout behavior",
+      "language": "swift",
+      "startTimeSeconds": 445,
+      "code": "struct RobotView: View {\n  let url: URL = Bundle.main.url(forResource: \"sparky\", withExtension: \"reality\")!\n\n  var body: some View {\n    HStack {\n      NameSign()\n      RealityView { content in\n        if let sparky = try? await Entity(contentsOf: url) {\n          content.add(sparky)\n        }\n      }\n      .realityViewLayoutBehavior(.fixedSize)\n    }\n  }\n}"
+    },
+    {
+      "title": "Switching from Model3D to RealityView with layout behavior and RealityKit animation",
+      "language": "swift",
+      "startTimeSeconds": 528,
+      "code": "struct RobotView: View {\n  let url: URL = Bundle.main.url(forResource: \"sparky\", withExtension: \"reality\")!\n\n  var body: some View {\n    HStack {\n      NameSign()\n      RealityView { content in\n        if let sparky = try? await Entity(contentsOf: url) {\n          content.add(sparky)\n          sparky.playAnimation(getAnimation())\n        }\n      }\n      .realityViewLayoutBehavior(.fixedSize)\n    }\n  }\n}"
+    },
+    {
+      "title": "Add 2 particle emitters; one to each side of the robot's head",
+      "language": "swift",
+      "startTimeSeconds": 634,
+      "code": "func setupSparks(robotHead: Entity) {\n  let leftSparks = Entity()\n  let rightSparks = Entity()\n\n  robotHead.addChild(leftSparks)\n  robotHead.addChild(rightSparks)\n\n  rightSparks.components.set(sparksComponent())\n  leftSparks.components.set(sparksComponent())\n\n  leftSparks.transform.rotation = simd_quatf(Rotation3D(\n    angle: .degrees(180),\n    axis: .y))\n\n  leftSparks.transform.translation = leftEarOffset()\n  rightSparks.transform.translation = rightEarOffset()\n}\n\n// Create and configure the ParticleEmitterComponent\nfunc sparksComponent() -> ParticleEmitterComponent { ... }"
+    },
+    {
+      "title": "Apply the manipulable view modifier",
+      "language": "swift",
+      "startTimeSeconds": 750,
+      "code": "struct RobotView: View {\n  let url: URL\n  var body: some View {\n    HStack {\n      NameSign()\n      Model3D(url: url)\n        .manipulable()\n    }\n  }\n}"
+    },
+    {
+      "title": "Allow translate, 1- and 2-handed rotation, but not scaling",
+      "language": "swift",
+      "startTimeSeconds": 753,
+      "code": "struct RobotView: View {\n  let url: URL\n  var body: some View {\n    HStack {\n      NameSign()\n      Model3D(url: url)\n        .manipulable(\n          operations: [.translation,\n                       .primaryRotation,\n                       .secondaryRotation]\n       )\n    }\n  }\n}"
+    },
+    {
+      "title": "The model feels heavy with high inertia",
+      "language": "swift",
+      "startTimeSeconds": 761,
+      "code": "struct RobotView: View {\n  let url: URL\n  var body: some View {\n    HStack {\n      NameSign()\n      Model3D(url: url)\n        .manipulable(inertia: .high)\n    }\n  }\n}"
+    },
+    {
+      "title": "Add a ManipulationComponent to an entity​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​",
+      "language": "swift",
+      "startTimeSeconds": 798,
+      "code": "RealityView { content in\n  let sparky = await loadSparky()\n  content.add(sparky)\n  ManipulationComponent.configureEntity(sparky)\n}"
+    },
+    {
+      "title": "Add a ManipulationComponent to an entity​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​ with configuration",
+      "language": "swift",
+      "startTimeSeconds": 832,
+      "code": "RealityView { content in\n  let sparky = await loadSparky()\n  content.add(sparky)\n  ManipulationComponent.configureEntity(\n    sparky,\n    hoverEffect: .spotlight(.init(color: .purple)),\n    allowedInputTypes: .all,\n    collisionShapes: myCollisionShapes()\n  )\n}"
+    },
+    {
+      "title": "Manipulation interaction events",
+      "language": "swift",
+      "startTimeSeconds": 848,
+      "code": "public enum ManipulationEvents {\n\n  /// When an interaction is about to begin on a ManipulationComponent's entity\n  public struct WillBegin: Event { }\n\n  /// When an entity's transform was updated during a ManipulationComponent\n  public struct DidUpdateTransform: Event { }\n\n  /// When an entity was released\n  public struct WillRelease: Event { }\n\n  /// When the object has reached its destination and will no longer be updated\n  public struct WillEnd: Event { }\n\n  /// When the object is directly handed off from one hand to another\n  public struct DidHandOff: Event { }\n}"
+    },
+    {
+      "title": "Replace the standard sounds with custom ones",
+      "language": "swift",
+      "startTimeSeconds": 872,
+      "code": "RealityView { content in\n  let sparky = await loadSparky()\n  content.add(sparky)\n\n  var manipulation = ManipulationComponent()\n  manipulation.audioConfiguration = .none\n  sparky.components.set(manipulation)\n\n  didHandOff = content.subscribe(to: ManipulationEvents.DidHandOff.self) { event in\n    sparky.playAudio(handoffSound)\n  }\n}"
+    },
+    {
+      "title": "Builder based attachments",
+      "language": "swift",
+      "startTimeSeconds": 979,
+      "code": "struct RealityViewAttachments: View {\n  var body: some View {\n    RealityView { content, attachments in\n      let bolts = await loadAndSetupBolts()\n      if let nameSign = attachments.entity(\n        for: \"name-sign\"\n      ) {\n        content.add(nameSign)\n        place(nameSign, above: bolts)\n      }\n      content.add(bolts)\n    } attachments: {\n      Attachment(id: \"name-sign\") {\n        NameSign(\"Bolts\")\n      }\n    }\n    .realityViewLayoutBehavior(.centered)\n  }\n}"
+    },
+    {
+      "title": "Attachments created with ViewAttachmentComponent",
+      "language": "swift",
+      "startTimeSeconds": 997,
+      "code": "struct AttachmentComponentAttachments: View {\n  var body: some View {\n    RealityView { content in\n      let bolts = await loadAndSetupBolts()\n      let attachment = ViewAttachmentComponent(\n          rootView: NameSign(\"Bolts\"))\n      let nameSign = Entity(components: attachment)\n      place(nameSign, above: bolts)\n      content.add(bolts)\n      content.add(nameSign)\n    }\n    .realityViewLayoutBehavior(.centered)\n  }\n}"
+    },
+    {
+      "title": "Targeted to entity gesture API",
+      "language": "swift",
+      "startTimeSeconds": 1024,
+      "code": "struct AttachmentComponentAttachments: View {\n  @State private var bolts = Entity()\n  @State private var nameSign = Entity()\n\n  var body: some View {\n    RealityView { ... }\n    .realityViewLayoutBehavior(.centered)\n    .gesture(\n      TapGesture()\n        .targetedToEntity(bolts)\n        .onEnded { value in\n          nameSign.isEnabled.toggle()\n        }\n    )\n  }\n}"
+    },
+    {
+      "title": "Gestures with GestureComponent",
+      "language": "swift",
+      "startTimeSeconds": 1030,
+      "code": "struct AttachmentComponentAttachments: View {\n  var body: some View {\n    RealityView { content in\n      let bolts = await loadAndSetupBolts()\n      let attachment = ViewAttachmentComponent(\n          rootView: NameSign(\"Bolts\"))\n      let nameSign = Entity(components: attachment)\n      place(nameSign, above: bolts)\n      bolts.components.set(GestureComponent(\n        TapGesture().onEnded {\n          nameSign.isEnabled.toggle()\n        }\n      ))\n      content.add(bolts)\n      content.add(nameSign)\n    }\n    .realityViewLayoutBehavior(.centered)\n  }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Rendering hover effects in Metal immersive apps",
+      "url": "https://developer.apple.com/documentation/CompositorServices/rendering_hover_effects_in_metal_immersive_apps",
+      "type": "samplecode",
+      "description": "Change the appearance of a rendered onscreen element when a player gazes at it.",
+      "sosumiURL": "https://sosumi.ai/documentation/CompositorServices/rendering_hover_effects_in_metal_immersive_apps",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CompositorServices/rendering_hover_effects_in_metal_immersive_apps.json"
+    },
+    {
+      "title": "Canyon Crosser: Building a volumetric hike-planning app",
+      "url": "https://developer.apple.com/documentation/visionOS/canyon-crosser-building-a-volumetric-hike-planning-app",
+      "type": "samplecode",
+      "description": "Create a hike planning app using SwiftUI and RealityKit.",
+      "sosumiURL": "https://sosumi.ai/documentation/visionOS/canyon-crosser-building-a-volumetric-hike-planning-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/visionOS/canyon-crosser-building-a-volumetric-hike-planning-app.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/274/",
+  "files": {
+    "metadata": "sessions/wwdc2025/274/metadata.json",
+    "readme": "sessions/wwdc2025/274/README.md",
+    "transcript": "sessions/wwdc2025/274/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/274/transcript.json"
+  }
+}

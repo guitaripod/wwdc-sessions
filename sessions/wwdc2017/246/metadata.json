@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2017-246",
+  "event": "wwdc2017",
+  "eventName": "WWDC17",
+  "year": 2017,
+  "eventContentId": 246,
+  "title": "Deep Linking on tvOS",
+  "description": "Design features such as the tvOS Top Shelf and Universal Links help customers immerse themselves in your content more quickly and easily. Learn how to create seamless app launch experiences when deep linking into content of UIKit or TVMLKit apps.",
+  "url": "https://developer.apple.com/videos/play/wwdc2017/246",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2017/246",
+  "type": "Video",
+  "publishedAt": "2017-06-04T17:00:00-07:00",
+  "platforms": [
+    "tvOS"
+  ],
+  "keywords": [
+    "tv app",
+    "universal link"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 438,
+  "hasTranscript": true,
+  "transcriptWordCount": 1300,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/246oh3k8zgxi921jxq/246/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/246oh3k8zgxi921jxq/246/246_sd_deep_linking_on_tvos.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/246oh3k8zgxi921jxq/246/246_hd_deep_linking_on_tvos.mp4",
+    "duration": 438
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "tvOS Deep Linking Demo",
+      "url": "https://developer.apple.com/sample-code/wwdc/2017/tvOS-Deep-Linking-Demo.zip",
+      "type": "samplecode",
+      "description": "Demonstrates best practices for handling deep links in your tvOS application.",
+      "sosumiURL": "https://sosumi.ai/sample-code/wwdc/2017/tvOS-Deep-Linking-Demo.zip"
+    }
+  ],
+  "path": "sessions/wwdc2017/246/",
+  "files": {
+    "metadata": "sessions/wwdc2017/246/metadata.json",
+    "readme": "sessions/wwdc2017/246/README.md",
+    "transcript": "sessions/wwdc2017/246/transcript.md",
+    "transcriptJSON": "sessions/wwdc2017/246/transcript.json"
+  }
+}

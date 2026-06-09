@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10176",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10176,
+  "title": "Craft search experiences in SwiftUI",
+  "description": "Discover how you can help people quickly find specific content within your apps. Learn how to use SwiftUI’s .searchable modifier in conjunction with other views to best incorporate search for your app. And we’ll show you how to elevate your implementation by providing search suggestions to help people understand the types of searches they can perform.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10176",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10176",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "collections of data",
+    "configured search field",
+    "filter",
+    "finding data",
+    "implement search",
+    "issearching",
+    "native search",
+    "navigationview",
+    "navigation view",
+    ".onsubmit",
+    "results",
+    "search",
+    "searchable",
+    ".searchable",
+    "searchable modifier",
+    "search bar",
+    ".searchcompletion",
+    "search completion",
+    "search field",
+    "search field column",
+    "search query",
+    "search tab",
+    "side bar",
+    "suggestions",
+    "swiftui",
+    "toolbar",
+    "two column",
+    "weather app"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 702,
+  "hasTranscript": true,
+  "transcriptWordCount": 1894,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10176/7/5699E756-ACAC-4EFA-801B-5709E5EDF434/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10176/7/5699E756-ACAC-4EFA-801B-5709E5EDF434/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10176/7/5699E756-ACAC-4EFA-801B-5709E5EDF434/downloads/wwdc2021-10176_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10176/7/5699E756-ACAC-4EFA-801B-5709E5EDF434/downloads/wwdc2021-10176_hd.mp4",
+    "duration": 702
+  },
+  "codeSnippets": [
+    {
+      "title": "Colors Suggestions",
+      "language": "swift",
+      "startTimeSeconds": 10,
+      "code": "struct ColorsContentView: View {\n    @State var text = \"\"\n\n    var body: some View {\n        NavigationView {\n            Sidebar()\n            DetailView()\n        }\n        .searchable(text: $text) {\n           ForEach(suggestions) { suggestion in\n                Button {\n                    text = suggestion.text\n                } label: {\n                    ColorsSuggestionLabel(suggestion)\n                }\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "New Searchable Modifier",
+      "language": "swift",
+      "startTimeSeconds": 77,
+      "code": "ContentView()\n.searchable(text: $text)"
+    },
+    {
+      "title": "Weather Search",
+      "language": "swift",
+      "startTimeSeconds": 118,
+      "code": "NavigationView {\n    WeatherList(text: $text) {\n        ForEach(data) { item in\n            WeatherCell(item)\n        }\n    }\n}\n.searchable(text: $text)"
+    },
+    {
+      "title": "Weather List",
+      "language": "swift",
+      "startTimeSeconds": 191,
+      "code": "struct WeatherList: View {\n    @Binding var text: String\n\n    @Environment(\\.isSearching)\n    private var isSearching: Bool\n\n    var body: some View {\n        WeatherCitiesList()\n            .overlay {\n                if isSearching && !text.isEmpty {\n                    WeatherSearchResults()\n                }\n            }\n    }\n}"
+    },
+    {
+      "title": "Colors Search",
+      "language": "swift",
+      "startTimeSeconds": 307,
+      "code": "struct ColorsContentView: View {\n    @State var text = \"\"\n\n    var body: some View {\n        NavigationView {\n            Sidebar()\n            DetailView()\n        }\n        .searchable(text: $text)\n    }\n}"
+    },
+    {
+      "title": "Colors Search with TV",
+      "language": "swift",
+      "startTimeSeconds": 435,
+      "code": "struct ColorsContentView: View {\n    @State var text = \"\"\n\n    var body: some View {\n        NavigationView {\n            #if os(tvOS)\n            TabView {\n                Sidebar()\n                ColorsSearch()\n                    .searchable(text: $text)\n            }\n            #else\n            Sidebar()\n            DetailView()\n            #endif\n        }\n        #if !os(tvOS)\n        .searchable(text: $text)\n        #endif\n    }\n}"
+    },
+    {
+      "title": "Colors Search Completions",
+      "language": "swift",
+      "startTimeSeconds": 549,
+      "code": "struct ColorsContentView: View {\n    @State var text = \"\"\n\n    var body: some View {\n        NavigationView {\n            Sidebar()\n            DetailView()\n        }\n        .searchable(text: $text) {\n           ForEach(suggestions) { suggestion in\n                ColorsSuggestionLabel(suggestion)\n                    .searchCompletion(suggestion.text)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "On Submit",
+      "language": "swift",
+      "startTimeSeconds": 621,
+      "code": "ContentView()\n.searchable(text: $text) {\n    MySearchSuggestions()\n}\n.onSubmit(of: .search) {\n    fetchResults()\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2021/10176/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10176/metadata.json",
+    "readme": "sessions/wwdc2021/10176/README.md",
+    "transcript": "sessions/wwdc2021/10176/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10176/transcript.json"
+  }
+}

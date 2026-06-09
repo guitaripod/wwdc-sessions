@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10057",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10057,
+  "title": "Unleash the UIKit trait system",
+  "description": "Discover powerful enhancements to the trait system in UIKit. Learn how you can define custom traits to add your own data to UITraitCollection, modify the data propagated to view controllers and views with trait override APIs, and adopt APIs to improve flexibility and performance. We’ll also show you how to bridge UIKit traits with SwiftUI environment keys to seamlessly access data from both UIKit and SwiftUI components in your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10057",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10057",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services",
+    "Essentials",
+    "System Services",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1790,
+  "hasTranscript": true,
+  "transcriptWordCount": 4207,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10057/4/D79F0058-1869-464A-BABD-A1457AE857A0/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10057/4/D79F0058-1869-464A-BABD-A1457AE857A0/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10057/4/D79F0058-1869-464A-BABD-A1457AE857A0/downloads/wwdc2023-10057_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10057/4/D79F0058-1869-464A-BABD-A1457AE857A0/downloads/wwdc2023-10057_hd.mp4",
+    "duration": 1790
+  },
+  "codeSnippets": [
+    {
+      "title": "Working with trait collections",
+      "language": "swift",
+      "startTimeSeconds": 111,
+      "code": "// Build a new trait collection instance from scratch\nlet myTraits = UITraitCollection { mutableTraits in\n    mutableTraits.userInterfaceIdiom = .phone\n    mutableTraits.horizontalSizeClass = .regular\n}\n\n// Get a new instance by modifying traits of an existing one\nlet otherTraits = myTraits.modifyingTraits { mutableTraits in\n    mutableTraits.horizontalSizeClass = .compact\n    mutableTraits.userInterfaceStyle = .dark\n}"
+    },
+    {
+      "title": "Implementing a simple custom trait",
+      "language": "swift",
+      "startTimeSeconds": 546,
+      "code": "struct ContainedInSettingsTrait: UITraitDefinition {\n    static let defaultValue = false\n}\n\nlet traitCollection = UITraitCollection { mutableTraits in\n    mutableTraits[ContainedInSettingsTrait.self] = true\n}\n\nlet value = traitCollection[ContainedInSettingsTrait.self]\n// true"
+    },
+    {
+      "title": "Implementing a simple custom trait with a property",
+      "language": "swift",
+      "startTimeSeconds": 623,
+      "code": "struct ContainedInSettingsTrait: UITraitDefinition {\n    static let defaultValue = false\n}\n\nextension UITraitCollection {\n    var isContainedInSettings: Bool { self[ContainedInSettingsTrait.self] }\n}\n\nextension UIMutableTraits {\n    var isContainedInSettings: Bool {\n        get { self[ContainedInSettingsTrait.self] }\n        set { self[ContainedInSettingsTrait.self] = newValue }\n    }\n}\n\nlet traitCollection = UITraitCollection { mutableTraits in\n    mutableTraits.isContainedInSettings = true\n}\n\nlet value = traitCollection.isContainedInSettings\n// true"
+    },
+    {
+      "title": "Implementing a custom theme trait",
+      "language": "swift",
+      "startTimeSeconds": 660,
+      "code": "enum MyAppTheme: Int {\n    case standard, pastel, bold, monochrome\n}\n\nstruct MyAppThemeTrait: UITraitDefinition {\n    static let defaultValue = MyAppTheme.standard\n    static let affectsColorAppearance = true\n    static let name = \"Theme\"\n    static let identifier = \"com.myapp.theme\"\n}\n\nextension UITraitCollection {\n    var myAppTheme: MyAppTheme { self[MyAppThemeTrait.self] }\n}\n\nextension UIMutableTraits {\n    var myAppTheme: MyAppTheme {\n        get { self[MyAppThemeTrait.self] }\n        set { self[MyAppThemeTrait.self] = newValue }\n    }\n}"
+    },
+    {
+      "title": "Using a custom theme trait",
+      "language": "swift",
+      "startTimeSeconds": 753,
+      "code": "let customBackgroundColor = UIColor { traitCollection in\n    switch traitCollection.myAppTheme {\n    case .standard:    return UIColor(named: \"StandardBackground\")!\n    case .pastel:      return UIColor(named: \"PastelBackground\")!\n    case .bold:        return UIColor(named: \"BoldBackground\")!\n    case .monochrome:  return UIColor(named: \"MonochromeBackground\")!\n    }\n}\n\nlet view = UIView()\nview.backgroundColor = customBackgroundColor"
+    },
+    {
+      "title": "Managing trait overrides",
+      "language": "swift",
+      "startTimeSeconds": 1085,
+      "code": "func toggleThemeOverride(_ overrideTheme: MyAppTheme) {\n    if view.traitOverrides.contains(MyAppThemeTrait.self) {\n        // There's an existing theme override; remove it\n        view.traitOverrides.remove(MyAppThemeTrait.self)\n    } else {\n        // There's no existing theme override; apply one\n        view.traitOverrides.myAppTheme = overrideTheme\n    }\n}"
+    },
+    {
+      "title": "Trait change handling on older iOS versions",
+      "language": "swift",
+      "startTimeSeconds": 1260,
+      "code": "// Efficient implementation that only updates when necessary\noverride func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {\n    if traitCollection.horizontalSizeClass != previousTraitCollection?.horizontalSizeClass {\n        updateViews(sizeClass: traitCollection.horizontalSizeClass)\n    }\n}\n\nfunc updateViews(sizeClass: UIUserInterfaceSizeClass) {\n    // Update views for the new size class...\n}"
+    },
+    {
+      "title": "Registering for trait changes using a closure",
+      "language": "swift",
+      "startTimeSeconds": 1288,
+      "code": "// Register for horizontal size class changes on self\nregisterForTraitChanges(\n    [UITraitHorizontalSizeClass.self]\n) { (self: Self, previousTraitCollection: UITraitCollection) in\n    self.updateViews(sizeClass: self.traitCollection.horizontalSizeClass)\n}\n\n// Register for changes to multiple traits on another view\nlet anotherView: MyView\nanotherView.registerForTraitChanges(\n    [UITraitHorizontalSizeClass.self, ContainedInSettingsTrait.self]\n) { (view: MyView, previousTraitCollection: UITraitCollection) in\n    // Handle the trait change for this view...\n}"
+    },
+    {
+      "title": "Registering for trait changes using a target-action",
+      "language": "swift",
+      "startTimeSeconds": 1368,
+      "code": "// Register for horizontal size class changes on self\nregisterForTraitChanges(\n    [UITraitHorizontalSizeClass.self],\n    action: #selector(UIView.setNeedsLayout)\n)\n\n// Register for changes to multiple traits on another view\nlet anotherView: MyView\nanotherView.registerForTraitChanges(\n    [UITraitHorizontalSizeClass.self, ContainedInSettingsTrait.self],\n    target: self,\n    action: #selector(handleTraitChange(view:previousTraitCollection:))\n)\n\n@objc func handleTraitChange(view: MyView, previousTraitCollection: UITraitCollection) {\n    // Handle the trait change for this view...\n}"
+    },
+    {
+      "title": "Registering for changes to system traits affecting color appearance",
+      "language": "swift",
+      "startTimeSeconds": 1460,
+      "code": "registerForTraitChanges(\n    UITraitCollection.systemTraitsAffectingColorAppearance,\n    action: #selector(handleColorAppearanceChange)\n)\n\n@objc func handleColorAppearanceChange() {\n    // Handle the color appearance trait changes...\n}"
+    },
+    {
+      "title": "Manually unregistering for trait changes",
+      "language": "swift",
+      "startTimeSeconds": 1477,
+      "code": "// Store the returned registration token\nlet registration = registerForTraitChanges([UITraitHorizontalSizeClass.self], action: #selector(handleTraitChange))\n\n// Later, use the stored registration token to manually unregister\nunregisterForTraitChanges(registration)\n\n@objc func handleTraitChange() {\n    // Handle the trait change...\n}"
+    },
+    {
+      "title": "Implementing a bridged UIKit trait and SwiftUI environment key",
+      "language": "swift",
+      "startTimeSeconds": 1579,
+      "code": "enum MyAppTheme: Int {\n    case standard, pastel, bold, monochrome\n}\n\n// Custom UIKit trait\nstruct MyAppThemeTrait: UITraitDefinition {\n    static let defaultValue = MyAppTheme.standard\n    static let affectsColorAppearance = true\n}\n\nextension UITraitCollection {\n    var myAppTheme: MyAppTheme { self[MyAppThemeTrait.self] }\n}\n\nextension UIMutableTraits {\n    var myAppTheme: MyAppTheme {\n        get { self[MyAppThemeTrait.self] }\n        set { self[MyAppThemeTrait.self] = newValue }\n    }\n}\n\n// Custom SwiftUI environment key\nstruct MyAppThemeKey: EnvironmentKey {\n    static let defaultValue = MyAppTheme.standard\n}\n\nextension EnvironmentValues {\n    var myAppTheme: MyAppTheme {\n        get { self[MyAppThemeKey.self] }\n        set { self[MyAppThemeKey.self] = newValue }\n    }\n}\n\n// Bridge SwiftUI environment key with UIKit trait\nextension MyAppThemeKey: UITraitBridgedEnvironmentKey {\n    static func read(from traitCollection: UITraitCollection) -> MyAppTheme {\n        traitCollection.myAppTheme\n    }\n\n    static func write(to mutableTraits: inout UIMutableTraits, value: MyAppTheme) {\n        mutableTraits.myAppTheme = value\n    }\n}"
+    },
+    {
+      "title": "Setting a UIKit trait and reading the bridged environment value from SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 1621,
+      "code": "// UIKit trait override applied to the window scene\nlet windowScene: UIWindowScene\nwindowScene.traitOverrides.myAppTheme = .monochrome\n\n// Cell in a UICollectionView configured to display a SwiftUI view\nlet cell: UICollectionViewCell\ncell.contentConfiguration = UIHostingConfiguration {\n    CellView()\n}\n\n// SwiftUI view displayed in the cell, which reads the bridged value from the environment\nstruct CellView: View {\n    @Environment(\\.myAppTheme) var theme: MyAppTheme\n\n    var body: some View {\n        Text(\"Settings\")\n            .foregroundStyle(theme == .monochrome ? .gray : .blue)\n    }\n}"
+    },
+    {
+      "title": "Setting a SwiftUI environment value and reading the bridged trait from UIKit",
+      "language": "swift",
+      "startTimeSeconds": 1696,
+      "code": "// SwiftUI environment value applied to a UIViewControllerRepresentable\nstruct SettingsView: View {\n    var body: some View {\n        SettingsControllerRepresentable()\n            .environment(\\.myAppTheme, .standard)\n    }\n}\n\nfinal class SettingsControllerRepresentable: UIViewControllerRepresentable {\n    func makeUIViewController(context: Context) -> SettingsViewController {\n        SettingsViewController()\n    }\n\n    func updateUIViewController(_ uiViewController: SettingsViewController, context: Context) {\n        // Update the view controller...\n    }\n}\n\n// UIKit view controller contained in the SettingsControllerRepresentable\nclass SettingsViewController: UIViewController {\n    override func viewWillLayoutSubviews() {\n        super.viewWillLayoutSubviews()\n        title = settingsTitle(for: traitCollection.myAppTheme)\n    }\n\n    func settingsTitle(for theme: MyAppTheme) -> String {\n        switch theme {\n        case .standard:   return \"Standard\"\n        case .pastel:     return \"Pastel\"\n        case .bold:       return \"Bold\"\n        case .monochrome: return \"Monochrome\"\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "UIMutableTraits",
+      "url": "https://developer.apple.com/documentation/UIKit/UIMutableTraits-13ja5",
+      "type": "documentation",
+      "description": "A mutable container of traits.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UIMutableTraits-13ja5",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UIMutableTraits-13ja5.json"
+    },
+    {
+      "title": "UITraitDefinition",
+      "url": "https://developer.apple.com/documentation/UIKit/UITraitDefinition-64c15",
+      "type": "documentation",
+      "description": "A type representing a trait in a trait collection.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UITraitDefinition-64c15",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UITraitDefinition-64c15.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10057/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10057/metadata.json",
+    "readme": "sessions/wwdc2023/10057/README.md",
+    "transcript": "sessions/wwdc2023/10057/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10057/transcript.json"
+  }
+}

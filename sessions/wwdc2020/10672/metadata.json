@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10672",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10672,
+  "title": "What's new in ClassKit",
+  "description": "The ClassKit framework helps you surface educational activities within your app to teachers through the Schoolwork app. Discover how to provide a richer assignment experience for students and teachers through enhanced metadata properties and progress reporting. We’ll also show you how the new ClassKit Catalog APIs decouple management of your content from that of your app and improve overall discoverability.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10672",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10672",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "classroom",
+    "education",
+    "educators",
+    "school",
+    "testing"
+  ],
+  "topics": [
+    "Business & Education"
+  ],
+  "primaryTopic": "Business & Education",
+  "duration": 1488,
+  "hasTranscript": true,
+  "transcriptWordCount": 3542,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10672/4/F7DFFF2A-0E82-4B7F-BE8A-7C92F5A2E21C/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10672/4/F7DFFF2A-0E82-4B7F-BE8A-7C92F5A2E21C/wwdc2020_10672_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10672/4/F7DFFF2A-0E82-4B7F-BE8A-7C92F5A2E21C/wwdc2020_10672_hd.mp4",
+    "duration": 1488
+  },
+  "codeSnippets": [
+    {
+      "title": "Add Thumbnail and Summary to Quiz Context",
+      "language": "swift",
+      "startTimeSeconds": 385,
+      "code": "// Create a context for quiz\nlet quizContext = CLSContext.init(type: CLSContextType.quiz, identifier: \"science_Investigation_quiz\", title: \"Measurements Quiz\")\n\n// Add a summary describing this context\nquizContext.summary = \"A short quiz to test how much students know about scientific measurements and how to examine and analyze scientific data.\"\n\n// Add a thumbnail for this context — ClassKit will downsize thumbnails to 330 x 330 px if needed\nlet bundle = Bundle.main\nif let resourceURL = bundle.resourceURL {\n    let imageURL = resourceURL.appendingPathComponent(\"measurements_quiz.jpg\")\n    if let thumbnail = thumbnailFromImage(atURL: imageURL) {\n        quizContext.thumbnail = thumbnail\n    }\n}"
+    },
+    {
+      "title": "thumbnailFromImage",
+      "language": "swift",
+      "startTimeSeconds": 412,
+      "code": "// Create a thumbnail of maximum dimension 330 x 330 px from an image file\nfunc thumbnailFromImage(atURL: URL) -> CGImage? {\n   if let imageSource = CGImageSourceCreateWithURL(atURL as CFURL, nil) {\n       let thumbnailOptions = [kCGImageSourceCreateThumbnailFromImageAlways as String: true,\n                               kCGImageSourceThumbnailMaxPixelSize as String: 330]\n       return CGImageSourceCreateThumbnailAtIndex(\n           imageSource, 0, thumbnailOptions as CFDictionary);\n   }\n   return nil\n}"
+    },
+    {
+      "title": "Add suggestedAge and suggestedCompletionTime",
+      "language": "swift",
+      "startTimeSeconds": 479,
+      "code": "// Add suggested age range appropriate for the content — ages 9 to 11 years\n\nquizContext.suggestedAge = NSRange(9...11)\n\n// Add suggested time to complete this quiz — 15 to 20 minutes\n\nquizContext.suggestedCompletionTime = NSRange(15...20)"
+    },
+    {
+      "title": "Add progress reporting capabilities",
+      "language": "swift",
+      "startTimeSeconds": 495,
+      "code": "// Add progress reporting capabilities\n\nlet reportingPercentDetails = \"Reports percentage of progress\"\nlet reportingCapabilityPercent = CLSProgressReportingCapability.init(\n        kind: .percent,\n        details: reportingPercentDetails)\n\nlet reportingQuantityDetails = \"Reports number of hints used\"\nlet reportingCapabilityQuantity = CLSProgressReportingCapability.init(\n        kind: .quantity,\n        details: reportingQuantityDetails)\n\nquizContext.addProgressReportingCapabilities([reportingCapabilityPercent,\n                                       reportingCapabilityQuantity])"
+    }
+  ],
+  "resources": [
+    {
+      "title": "ClassKit",
+      "url": "https://developer.apple.com/documentation/ClassKit",
+      "type": "documentation",
+      "description": "Enable teachers to assign activities from your app’s content and to view student progress.",
+      "sosumiURL": "https://sosumi.ai/documentation/ClassKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ClassKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10672/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10672/metadata.json",
+    "readme": "sessions/wwdc2020/10672/README.md",
+    "transcript": "sessions/wwdc2020/10672/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10672/transcript.json"
+  }
+}

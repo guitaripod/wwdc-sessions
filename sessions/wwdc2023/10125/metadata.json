@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10125",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10125,
+  "title": "Bring your game to Mac, Part 3: Render with Metal",
+  "description": "Discover how you can support Metal in your rendering code as we close out our three-part series on bringing your game to Mac. Once you’ve evaluated your existing Windows binary with the game porting toolkit and brought your HLSL shaders over to Metal, learn how you can optimally implement the features that high-end, modern games require. We’ll show you how to manage GPU resource bindings, residency, and synchronization. Find out how to optimize GPU commands submission, render rich visuals with MetalFX Upscaling, and more.\n\nTo get the most out of this session, we recommend first watching “Bring your game to Mac, Part 1: Make a game plan” and “Bring your game to Mac, Part 2: Compile your shaders\" from WWDC23.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10125",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10125",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1605,
+  "hasTranscript": true,
+  "transcriptWordCount": 3270,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10125/4/1283FC25-C4D6-40B5-AAEC-221E3E4C6D16/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10125/4/1283FC25-C4D6-40B5-AAEC-221E3E4C6D16/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10125/4/1283FC25-C4D6-40B5-AAEC-221E3E4C6D16/downloads/wwdc2023-10125_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10125/4/1283FC25-C4D6-40B5-AAEC-221E3E4C6D16/downloads/wwdc2023-10125_hd.mp4",
+    "duration": 1605
+  },
+  "codeSnippets": [
+    {
+      "title": "Encode the texture tables.",
+      "language": "objectivec",
+      "startTimeSeconds": 235,
+      "code": "// Encode the texture tables outside of the rendering loop.\n\n\nid<MTLBuffer> textureTable  = [device newBufferWithLength:sizeof(MTLResourceID) * texturesCount\n                                                  options:MTLResourceStorageModeShared];\n\n\nMTLResourceID* textureTableCPUPtr = (MTLResourceID*)textureTable.contents;\nfor (uint32_t i = 0; i < texturesCount; ++i)\n{\n    // create the textures.\n    id<MTLTexture> texture = [device newTextureWithDescriptor:textureDesc[i]];\n\n    // encode texture in argument buffer\n    textureTableCPUPtr[i] = texture.gpuResourceID;\n}"
+    },
+    {
+      "title": "Encode the sampler tables.",
+      "language": "objectivec",
+      "startTimeSeconds": 273,
+      "code": "// Encode the sampler tables outside of the rendering loop.\n\n\nid<MTLBuffer> samplerTable  = [device newBufferWithLength:sizeof(MTLResourceID) * samplersCount\n                                                  options:MTLResourceStorageModeShared];\n\nMTLResourceID* samplerTableCPUPtr = (MTLResourceID*)samplerTable.contents;\nfor (uint32_t i = 0; i < samplersCount; ++i)\n{\n    // create sampler descriptor\n    MTLSamplerDescriptor* desc  = [MTLSamplerDescriptor new];\n    desc.supportArgumentBuffers = YES;\n    . . .\n\n    // create a sampler\n    id<MTLSamplerState> sampler = [device newSamplerStateWithDescriptor:desc];\n\n    // encode the sampler in argument buffer\n    samplerTableCPUPtr[i] = sampler.gpuResourceID;\n}"
+    },
+    {
+      "title": "Encode the top level argument buffer.",
+      "language": "objectivec",
+      "startTimeSeconds": 305,
+      "code": "// Encode the top level argument buffer.\n\n\nstruct TopLevelAB\n{\n    MTLResourceID* textureTable;\n    float*         myBuffer;\n    uint32_t       myConstant;\n    MTLResourceID* samplerTable;\n};\n\nid<MTLBuffer> topAB = [device newBufferWithLength:sizeof(TopLevelAB)\n                                          options:MTLResourceStorageModeShared];\n\n\nTopLevelAB* topABCPUPtr     = (TopLevelAB*)topAB.contents;\ntopABCPUPtr->textureTable   = (MTLResourceID*)textureTable.gpuAddress;\ntopABCPUPtr->myBuffer       = (float*)myBuffer.gpuAddress;\ntopABCPUPtr->myConstant     = 128;\ntopABCPUPtr->samplerTable   = (MTLResourceID*)samplerTable.gpuAddress;"
+    },
+    {
+      "title": "Allocate the read-only resources.",
+      "language": "objectivec",
+      "startTimeSeconds": 409,
+      "code": "// Allocate the read-only resources from a heap.\n\nMTLHeapDescriptor* heapDesc = [MTLHeapDescriptor new];\nheapDesc.size               = requiredSize;\nheapDesc.type               = MTLHeapTypeAutomatic;\n\nid<MTLHeap> heap = [device newHeapWithDescriptor:heapDesc];\n\n\n\n// Allocate the textures and the buffers from the heap.\n\nid<MTLTexture> texture = [heap newTextureWithDescriptor:desc];\nid<MTLBuffer>  buffer = [heap newBufferWithLength:length options:options];\n. . .\n\n\n// Make the heap resident once for each encoder that uses it.\n\n[encoder useHeap:heap];"
+    },
+    {
+      "title": "Allocate the writable resources.",
+      "language": "objectivec",
+      "startTimeSeconds": 454,
+      "code": "// Allocate the writable resources individually.\n\nid<MTLTexture> textureRW = [device newTextureWithDescriptor:desc];\nid<MTLBuffer>  bufferRW  = [device newBufferWithLength:length options:options];\n\n\n\n// Mark these resources resident when they're needed in the current encoder.\n// Specify the resource usage in the encoder using MTLResourceUsage.\n\n[encoder useResource:textureRW usage:MTLResourceUsageWrite stages:stage];\n[encoder useResource:bufferRW  usage:MTLResourceUsageRead  stages:stage];"
+    },
+    {
+      "title": "Encode the execute indirect",
+      "language": "objectivec",
+      "startTimeSeconds": 1171,
+      "code": "// Encode the execute indirect command as a series of indirect draw calls.\n\nfor (uint32_t i = 0; i < maxDrawCount; ++i)\n{\n    // Encode the current indirect draw call.\n    [renderEncoder drawIndexedPrimitives:MTLPrimitiveTypeTriangle\n                       \t\t\t\t indexType:MTLIndexTypeUInt16\n                             indexBuffer:indexBuffer\n                       indexBufferOffset:indexBufferOffset\n                          indirectBuffer:drawArgumentsBuffer\n                    indirectBufferOffset:drawArgumentsBufferOffset];\n\n    // Advance the draw arguments buffer offset to the next indirect arguments.\n    drawArgumentsBufferOffset += sizeof(MTLDrawIndexedPrimitivesIndirectArguments);\n}"
+    },
+    {
+      "title": "Translate the indirect draw arguments to ICB.",
+      "language": "cpp",
+      "startTimeSeconds": 1308,
+      "code": "// Kernel written in Metal Shading Language to translate the indirect draw arguments to an ICB. \n\n\nkernel void translateToICB(device const Command* indirectCommands [[ buffer(0) ]],\n                           device const ICBContainerAB* icb [[ buffer(1) ]],\n                           . . .)\n{\n    . . .\n\n    device const Command* indirectCommand = &indirectCommands[commandIndex];\n    device const MTLDrawIndexedPrimitivesIndirectArguments* args =\n    &command->mdiBuffer[mdiIndex];\n\n    render_command drawCall(icb->buffer, indirectCommand->mdiCmdStart + mdiIndex);\n\n    if(args->indexCount > 0 && args->instanceCount > 0) {\n        encodeCommand(indirectCommand, args, drawCall);\n    }\n    else {\n        cmd.reset();\n    }\n}\n\n// Encode a render command on the GPU.\nvoid encodeCommand(device const Command* indirectCommand,\n                   device const MTLDrawIndexedPrimitivesIndirectArguments* args,\n                   thread render_command& drawCall)\n{\n    drawCall.set_render_pipeline_state(indirectCommand->pso);\n\n    for(ushort i = 0; i < indirectCommand->vertexBuffersCount; ++i) {\n        drawCall.set_vertex_buffer(indirectCommand->vertexBuffer[i].buffer,\n                              indirectCommand->vertexBuffer[i].slot);\n    }\n\n    for(ushort i = 0; i < indirectCommand->fragmentBuffersCount; ++i) {\n        drawCall.set_fragment_buffer(indirectCommand->fragmentBuffer[i].buffer,\n                                indirectCommand->fragmentBuffer[i].slot);\n    }\n\n    drawCall.draw_indexed_primitives(primitive_type::triangle,\n                                args->indexCount,\n                                indirectCommand->indexBuffer + args->indexStart,\n                                args->instanceCount,\n                                args->baseVertex,\n                                args->baseInstance);\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Applying temporal antialiasing and upscaling using MetalFX",
+      "url": "https://developer.apple.com/documentation/MetalFX/applying-temporal-antialiasing-and-upscaling-using-metalfx",
+      "type": "samplecode",
+      "description": "Reduce render workloads while increasing image detail with MetalFX.",
+      "sosumiURL": "https://sosumi.ai/documentation/MetalFX/applying-temporal-antialiasing-and-upscaling-using-metalfx",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MetalFX/applying-temporal-antialiasing-and-upscaling-using-metalfx.json"
+    },
+    {
+      "title": "MetalFX",
+      "url": "https://developer.apple.com/documentation/MetalFX",
+      "type": "documentation",
+      "description": "Boost your Metal app’s performance by upscaling lower-resolution content to save GPU time.",
+      "sosumiURL": "https://sosumi.ai/documentation/MetalFX",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MetalFX.json"
+    },
+    {
+      "title": "Modern rendering with Metal",
+      "url": "https://developer.apple.com/documentation/Metal/modern-rendering-with-metal",
+      "type": "samplecode",
+      "description": "Use advanced Metal features such as indirect command buffers, sparse textures, and variable rate rasterization to implement complex rendering techniques.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/modern-rendering-with-metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/modern-rendering-with-metal.json"
+    },
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10125/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10125/metadata.json",
+    "readme": "sessions/wwdc2023/10125/README.md",
+    "transcript": "sessions/wwdc2023/10125/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10125/transcript.json"
+  }
+}

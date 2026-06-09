@@ -1,0 +1,438 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10663",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10663,
+  "title": "What's new for web developers",
+  "description": "Explore the latest features and improvements for Safari and WebKit. We’ll walk you through updated web APIs, CSS and media features, JavaScript syntax, and more to help you build great experiences for people when they use your website, home screen web apps, or embedded WebKit views.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10663",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10663",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "airplay",
+    "animate",
+    "app-clip-bundle-id",
+    "app clips",
+    "apple-itunes-app",
+    "apple pay",
+    "ar quick look",
+    "aspect ratio",
+    "async clipboard",
+    "attribute",
+    "bigint",
+    "clipboard",
+    "constructor",
+    "copy",
+    "css",
+    "css animations",
+    "css shadow part",
+    "css transitions",
+    "custom elements",
+    "customevent",
+    "dom",
+    "dynamic-range",
+    "element",
+    "emsg",
+    "enterkeyhint",
+    "eventtarget",
+    "exif",
+    "ext-x-daterange",
+    "face id",
+    "fetch",
+    "fmp4",
+    "font-family",
+    "graphics tab",
+    "hdr",
+    "high dynamic range",
+    "html",
+    "html banner",
+    "image-orientation",
+    "instant back",
+    "javascript",
+    "keyframeeffect",
+    "line-break",
+    "logical assignment",
+    "metadata",
+    "nullish coalescing",
+    "observe",
+    "operators",
+    "optional chaining",
+    "paste",
+    "pdf",
+    "performance",
+    "picture-in-picture",
+    "pointer events",
+    "pseudo-selector",
+    "public class fields",
+    "readtext",
+    "remote playback",
+    "replaceall",
+    "resizeobserver",
+    "safari technology preview",
+    "security key",
+    "service workers",
+    "svg",
+    "system-ui",
+    "texttrackcue",
+    "touch id",
+    "ui-sans-serif",
+    "ui-serif",
+    "usb key",
+    "web animations",
+    "web api",
+    "web assembly",
+    "web authentication",
+    "webauthn",
+    "web component",
+    "web inspector",
+    "webp",
+    "writetext",
+    "xhr",
+    "yubikey"
+  ],
+  "topics": [
+    "Safari & Web"
+  ],
+  "primaryTopic": "Safari & Web",
+  "duration": 2165,
+  "hasTranscript": true,
+  "transcriptWordCount": 5336,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10663/5/07AE41F3-7DC1-47F7-BD89-EF68948C4935/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10663/5/07AE41F3-7DC1-47F7-BD89-EF68948C4935/wwdc2020_10663_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10663/5/07AE41F3-7DC1-47F7-BD89-EF68948C4935/wwdc2020_10663_hd.mp4",
+    "duration": 2165
+  },
+  "codeSnippets": [
+    {
+      "title": "Web Animations API code example",
+      "language": "javascript",
+      "startTimeSeconds": 262,
+      "code": "// Web Animations API Code Example\n\nlet needle = document.getElementById(\"needle\");\nlet logo = document.getElementById(\"logo\");\nlogo.addEventListener(\"click\", () => {\n    needle.animate({\n        transform: [\n            \"rotateX(35deg) rotateZ(13deg)\", \n            \"rotateX(35deg) rotateZ(733deg)\",\n        ],\n        easing: [\"ease-out\"],\n    }, 800);\n});"
+    },
+    {
+      "title": "Resize observer example",
+      "language": "javascript",
+      "startTimeSeconds": 403,
+      "code": "// Resize Observer Example\n\nlet formatPanelObserver = new ResizeObserver((entries) => {\n    entries.forEach((entry) => {\n        let container = entry.target;\n        container.classList.toggle(\"small\", entry.contentRect.width < 175);\n   }\n});\n\nformatPanelObserver.observe(document.getElementById(\"format-panel\"));"
+    },
+    {
+      "title": "Async Clipboard API plain text programmatic copy",
+      "language": "javascript",
+      "startTimeSeconds": 495,
+      "code": "// Programmatic copy\ncopyButtonElement.addEventListener(\"click\", (event) => {\n    navigator.clipboard.writeText(\"Plain text to copy.\").then(() => {\n       // Successful copy\n    }, () => {\n       // Copy failed\n    });\n});"
+    },
+    {
+      "title": "Async Clipboard API plain text examples",
+      "language": "javascript",
+      "startTimeSeconds": 502,
+      "code": "// Programmatic copy\ncopyButtonElement.addEventListener(\"click\", (event) => {\n    navigator.clipboard.writeText(\"Plain text to copy.\").then(() => {\n       // Successful copy\n    }, () => {\n       // Copy failed\n    });\n});\n\n// Programmatic paste\npasteButtonElement.addEventListener(\"click\", (event) => {\n    navigator.clipboard.readText().then((clipText) => {\n        document.querySelector(\".editor\").innerText += clipText);\n    });\n});"
+    },
+    {
+      "title": "Web Component example markup",
+      "language": "xml",
+      "startTimeSeconds": 625,
+      "code": "<template id=\"format-button\">\n    <button class=\"format\">\n        <span class=\"icon\"></span>\n        <span class=\"label\"></span>\n    </button>\n</template>"
+    },
+    {
+      "title": "Registering the Web Component",
+      "language": "javascript",
+      "startTimeSeconds": 636,
+      "code": "let template = document.getElementById(\"format-button\");\nwindow.customElements.define(template.id, class extends HTMLElement {\n    constructor() {\n        super();\n\n        this.attachShadow({mode: \"open\"});\n        let newButtonElement = template.content.cloneNode(true);\n\n        let parts = newButtonElement.querySelectorAll(\"span\");\n        parts[0].textContent = this.getAttribute(\"data-icon\");\n        parts[1].textContent = this.textContent;\n\n        this.shadowRoot.appendChild(newButtonElement);\n        this.addEventListener(\"click\", this.handleClick.bind(this));\n    }\n});"
+    },
+    {
+      "title": "Web Component custom elements",
+      "language": "xml",
+      "startTimeSeconds": 662,
+      "code": "<format-button id=\"bold\" data-icon=\"B\">Bold</format-button>\n<format-button id=\"italic\" data-icon=\"I\">Italic</format-button>\n<format-button id=\"underline\" data-icon=\"U\">Underline</format-button>\n<format-button id=\"strikethrough\" data-icon=\"S\">Strikethrough</format-button>\n<format-button id=\"paste\" data-icon=\"&#x1f4cb;\">Paste</format-button>"
+    },
+    {
+      "title": "Original example Web Component template",
+      "language": "xml",
+      "startTimeSeconds": 748,
+      "code": "<template id=\"format-button\">\n    <button class=\"format\">\n        <span class=\"icon\"></span>\n        <span class=\"label\"></span>\n    </button>\n</template>"
+    },
+    {
+      "title": "Example Web Component template with CSS Shadow Parts",
+      "language": "xml",
+      "startTimeSeconds": 750,
+      "code": "<template id=\"format-button\">\n    <button class=\"format\">\n        <span part=\"icon\" class=\"icon\"></span>\n        <span part=\"label\" class=\"label\"></span>\n    </button>\n</template>"
+    },
+    {
+      "title": "CSS Shadow Part styles",
+      "language": "swift",
+      "startTimeSeconds": 758,
+      "code": "#bold::part(icon) {\n    color: var(--formatting-button-icon-color);\n    font-weight: bold;\n}\n\n#italic::part(icon) {\n    color: var(--formatting-button-icon-color);\n    font-style: italic;\n}\n\n#underline::part(icon) {\n    color: var(--formatting-button-icon-color);\n    text-decoration: underline;\n}"
+    },
+    {
+      "title": "HTML enterkeyhint attribute",
+      "language": "xml",
+      "startTimeSeconds": 796,
+      "code": "<div id=\"editor\" contenteditable=\"true\" enterkeyhint=\"send\"></div>"
+    },
+    {
+      "title": "System font families",
+      "language": "swift",
+      "startTimeSeconds": 872,
+      "code": "font-family: system-ui;\nfont-family: ui-sans-serif;\nfont-family: ui-serif;\nfont-family: ui-monospace;\nfont-family: ui-rounded;"
+    },
+    {
+      "title": "San Francisco font family",
+      "language": "swift",
+      "startTimeSeconds": 885,
+      "code": "body {\n    font-family: system-ui;\n    font-family: ui-sans-serif;\n}"
+    },
+    {
+      "title": "New York font family",
+      "language": "swift",
+      "startTimeSeconds": 893,
+      "code": "body {\n   font-family: ui-serif;\n}"
+    },
+    {
+      "title": "SF Mono font family",
+      "language": "swift",
+      "startTimeSeconds": 898,
+      "code": "body {\n   font-family: ui-monospace;\n}"
+    },
+    {
+      "title": "SF Rounded font family",
+      "language": "swift",
+      "startTimeSeconds": 903,
+      "code": "body {\n   font-family: ui-rounded;\n}"
+    },
+    {
+      "title": "line-break: auto",
+      "language": "swift",
+      "startTimeSeconds": 967,
+      "code": "code {\n    line-break: auto;\n}"
+    },
+    {
+      "title": "line-break: anywhere",
+      "language": "swift",
+      "startTimeSeconds": 1003,
+      "code": "code {\n    line-break: anywhere;\n}"
+    },
+    {
+      "title": "Removing margins from subsequent headings",
+      "language": "swift",
+      "startTimeSeconds": 1045,
+      "code": "h1, h2, h3, h4, h5, h6 {\n    margin-top: 3em;\n}\n\nh1 + h2,\nh2 + h3,\nh3 + h4,\nh4 + h5,\nh5 + h6 {\n    margin-top: 0;\n}"
+    },
+    {
+      "title": "Removing margins from any subsequent headings",
+      "language": "swift",
+      "startTimeSeconds": 1076,
+      "code": "h1, h2, h3, h4, h5, h6 {\n    margin-top: 3em;\n}\n\nh1 + h2, h1 + h3, h1 + h4, h1 + h5, h1 + h6,\nh2 + h3, h2 + h3, h2 + h4, h2 + h5, h2 + h6,\nh3 + h4, h3 + h3, h3 + h4, h3 + h5, h3 + h6,\nh4 + h5, h4 + h3, h4 + h4, h4 + h5, h4 + h6,\nh5 + h6, h5 + h3, h5 + h4, h5 + h5, h5 + h6 {\n    margin-top: 0;\n}"
+    },
+    {
+      "title": "Using :is() to remove margins from subsequent headings",
+      "language": "swift",
+      "startTimeSeconds": 1082,
+      "code": "h1, h2, h3, h4, h5, h6 {\n    margin-top: 3em;\n}\n\n:is(h1, h2, h3, h4, h5, h6) + :is(h1, h2, h3, h4, h5, h6) {\n    margin-top: 0;\n}"
+    },
+    {
+      "title": ":is() specificity prevents the override from working",
+      "language": "swift",
+      "startTimeSeconds": 1111,
+      "code": ":is(.intro, .pullquote, #hero) + p {\n    text-transform: uppercase;\n}\n\nh2 + p,\nh3 + p,\nh4 + p,\nh5 + p,\nh6 + p {\n    text-transform: none;\n}"
+    },
+    {
+      "title": ":where () resets specificity",
+      "language": "swift",
+      "startTimeSeconds": 1147,
+      "code": ":where(.intro, .pullquote, #hero) + p {\n    text-transform: uppercase;\n}\nh2 + p,\nh3 + p,\nh4 + p,\nh5 + p,\nh6 + p {\n    text-transform: none;\n}"
+    },
+    {
+      "title": "WebP graceful fallback to JPG",
+      "language": "xml",
+      "startTimeSeconds": 1193,
+      "code": "<picture>\n  <source srcset=\"example.webp\" type=\"image/webp\">\n  <img src=\"example.jpg\" alt=\"Example Image\">\n</picture>"
+    },
+    {
+      "title": "WebP graceful fallback to JPG and server-side detection",
+      "language": "xml",
+      "startTimeSeconds": 1194,
+      "code": "<picture>\n  <source srcset=\"example.webp\" type=\"image/webp\">\n  <img src=\"example.jpg\" alt=\"Example Image\">\n</picture>\n\nAccept: image/webp,image/png,image/svg+xml,image/*;…"
+    },
+    {
+      "title": "Image with no size attributes",
+      "language": "xml",
+      "startTimeSeconds": 1277,
+      "code": "<img src=\"MexicoCity.png\">"
+    },
+    {
+      "title": "Image with size attributes",
+      "language": "xml",
+      "startTimeSeconds": 1279,
+      "code": "<img src=\"MexicoCity.png\" width=\"560\" height=\"747\">"
+    },
+    {
+      "title": "Respect EXIF image orientation default behavior",
+      "language": "swift",
+      "startTimeSeconds": 1309,
+      "code": "image-orientation: from-image;"
+    },
+    {
+      "title": "Override image orientation to use the raw image capture",
+      "language": "swift",
+      "startTimeSeconds": 1333,
+      "code": "image-orientation: none;"
+    },
+    {
+      "title": "HDR display CSS media query",
+      "language": "xml",
+      "startTimeSeconds": 1357,
+      "code": "<style>\n@media only screen (dynamic-range: high) {\n    /* HDR-only CSS rules */\n}\n</style>"
+    },
+    {
+      "title": "HDR display CSS media query and JavaScript matchMedia detection",
+      "language": "xml",
+      "startTimeSeconds": 1362,
+      "code": "<style>\n@media only screen (dynamic-range: high) {\n    /* HDR-only CSS rules */\n}\n</style>\n\n<script>\nif (window.matchMedia(\"dynamic-range: high\")) {\n    // HDR-specific JavaScript\n}\n</script>"
+    },
+    {
+      "title": "Remote Playback API example",
+      "language": "xml",
+      "startTimeSeconds": 1399,
+      "code": "<video id=\"videoElement\" src=\"https://site.example/video.mp4\"></video>\n<button id=\"deviceButton\">Send video to a remote device</button>\n\n<script>\n    let videoElement = document.getElementById(\"videoElement\");\n    let deviceButton = document.getElementById(\"deviceButton\");\n    deviceButton.addEventListener(\"click\", (event) => {\n        videoElement.remote.prompt().then(updateRemotePlaybackState);\n    });\n</script>"
+    },
+    {
+      "title": "Picture in Picture example",
+      "language": "xml",
+      "startTimeSeconds": 1460,
+      "code": "<video id=\"videoElement\" src=\"https://site.example/video.mp4\"></video>\n<button id=\"pipButton\">Enter picture-in-picture mode</button>\n\n<script>\n    let videoElement = document.getElementById(\"videoElement\");\n    let pipButton = document.getElementById(\"pipButton\");\n    pipButton.addEventListener(\"click\", (event) => {\n        videoElement.requestPictureInPicture().then(handlePictureInPicture);\n    });\n</script>"
+    },
+    {
+      "title": "BigInt example with division examples",
+      "language": "javascript",
+      "startTimeSeconds": 1631,
+      "code": "let bigInt = BigInt(Number.MAX_SAFE_INTEGER);\n// 9007199254740991n\n\nconsole.log(8n / 2n);\n// 4n\n\nconsole.log(9n / 2n);\n// 4n"
+    },
+    {
+      "title": "Nullish coalescing operator",
+      "language": "javascript",
+      "startTimeSeconds": 1682,
+      "code": "class Person {\n    constructor(firstName, lastName, age) {\n        this.firstName = firstName ?? \"Unknown\";\n        this.lastName = lastName ?? \"Unknown\";\n        this.age = age ?? NaN;\n   }\n}\n\nconsole.log(new Person());  \n// { firstName: \"Unknown\", lastName: \"Unknown\", age: NaN }\n\nconsole.log(new Person(false, false, true));\n// { firstName: false, lastName: false, age: true }\n\nconsole.log(new Person(\"John\", \"\", 0));  \n// { firstName: \"John\", lastName: \"\", age: 0 }\n\nconsole.log(new Person(\"John\", \"Appleseed\", 42));  \n// { firstName: \"John\", lastName: \"Appleseed\", age: 42 }"
+    },
+    {
+      "title": "JavaScript optional chaining example",
+      "language": "javascript",
+      "startTimeSeconds": 1749,
+      "code": "class Person {\n    constructor(firstName, lastName, age) {\n        this.firstName = firstName ?? \"Unknown\";\n        this.lastName = lastName ?? \"Unknown\";\n        this.age = age ?? NaN;\n        this.name = { firstName: this.firstName, lastName: this.lastName };\n  }\n}\n\nfunction register(person) {\n    // Before optional chaining\n    if (person !== undefined && person.name !== undefined)\n        console.log(person.name.firstName);\n}\n\nregister(new Person());\n// undefined\n\nregister(new Person(\"John\", \"Appleseed\"));\n// \"John\""
+    },
+    {
+      "title": "JavaScript optional chaining example",
+      "language": "javascript",
+      "startTimeSeconds": 1781,
+      "code": "class Person {\n    constructor(firstName, lastName, age) {\n        this.firstName = firstName ?? \"Unknown\";\n        this.lastName = lastName ?? \"Unknown\";\n        this.age = age ?? NaN;\n        this.name = { firstName: this.firstName, lastName: this.lastName };\n  }\n}\n\nfunction register(person) {\n    // With optional chaining\n    console.log(person?.name.firstName);\n}\n\nregister(new Person());\n􀆊 undefined\n\nregister(new Person(\"John\", \"Appleseed\"));\n􀆊 \"John\""
+    },
+    {
+      "title": "JavaScript optional chaining with indexes",
+      "language": "javascript",
+      "startTimeSeconds": 1789,
+      "code": "// Without optional chaining\nconsole.log(person.children[0]);\n// TypeError: undefined is not an object\n\n// With optional chaining\nconsole.log(person.children?.[0]);\n// undefined"
+    },
+    {
+      "title": "JavaScript optional chaining with methods",
+      "language": "javascript",
+      "startTimeSeconds": 1802,
+      "code": "// Without optional chaining\nconsole.log(person.fullName());\n􀆊 TypeError: person.fullName is not a function.\n\n// With optional chaining\nconsole.log(person.fullName?.());\n􀆊 undefined"
+    },
+    {
+      "title": "Logical assignment operators",
+      "language": "javascript",
+      "startTimeSeconds": 1823,
+      "code": "a &&= b // and assignment operator\na ||= b // or assignment operator\na ??= b // nullish assignment operator"
+    },
+    {
+      "title": "Nullish coalescing approach",
+      "language": "javascript",
+      "startTimeSeconds": 1844,
+      "code": "// Nullish coalescing approach\nelement.innerHTML = element.innerHTML ?? \"Hello World!\""
+    },
+    {
+      "title": "Logical assignment operator",
+      "language": "swift",
+      "startTimeSeconds": 1852,
+      "code": "a &&= b // and assignment operator\na ||= b // or assignment operator\na ??= b // nullish assignment operator\n\n// Nullish coalescing approach\nelement.innerHTML = element.innerHTML ?? \"Hello World!\"\n\n// Logical assignment operator\nelement.innerHTML ??= \"Hello World!\""
+    },
+    {
+      "title": "Public class fields",
+      "language": "javascript",
+      "startTimeSeconds": 1853,
+      "code": "class Person {\n    firstName = \"\";\n    lastName = \"\";\n    age = NaN;\n    children = [];\n\n    constructor(firstName, lastName, age) {\n        this.firstName = firstName ?? \"Unknown\";\n        this.lastName = lastName ?? \"Unknown\";\n        this.age = age ?? NaN;\n    }\n}"
+    },
+    {
+      "title": "String.prototype.replace example",
+      "language": "javascript",
+      "startTimeSeconds": 1918,
+      "code": "\"This doesn't work, and doesn't make sense\".replace (\"doesn't\", \"does\");\n› This does work, and doesn't make sense"
+    },
+    {
+      "title": "String.prototype.replaceAll example",
+      "language": "javascript",
+      "startTimeSeconds": 1929,
+      "code": "\"This doesn't work, and doesn't make sense\".replaceAll(\"doesn't\",\n\"does\");\n› This does work, and does make sense"
+    },
+    {
+      "title": "App Clips banner",
+      "language": "xml",
+      "startTimeSeconds": 2033,
+      "code": "<meta name=\"apple-itunes-app\"\ncontent=\"app-id=myAppStoreID,\n         app-clip-bundle-id=clipBundleID,\n         affiliate-data=myAffiliateData,\n         app-argument=myURL\">"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Safari Technology Preview",
+      "url": "https://developer.apple.com/safari/technology-preview/",
+      "type": "download",
+      "description": "Safari Technology Preview",
+      "sosumiURL": "https://sosumi.ai/safari/technology-preview/"
+    },
+    {
+      "title": "Safari Release Notes",
+      "url": "https://developer.apple.com/documentation/safari-release-notes",
+      "type": "documentation",
+      "description": "Learn about changes for Safari and Safari View Controller for iOS, iPadOS, macOS, and in visionOS; WKWebView for iOS, iPadOS, macOS, watchOS, and in visionOS; and Web Inspector on macOS.",
+      "sosumiURL": "https://sosumi.ai/documentation/safari-release-notes",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/safari-release-notes.json"
+    },
+    {
+      "title": "WebKit Open Source Project",
+      "url": "https://webkit.org",
+      "type": "guide",
+      "description": "WebKit Open Source Project"
+    },
+    {
+      "title": "Web Inspector Reference",
+      "url": "https://webkit.org/web-inspector/",
+      "type": "documentation",
+      "description": "Web Inspector Documentation"
+    }
+  ],
+  "path": "sessions/wwdc2020/10663/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10663/metadata.json",
+    "readme": "sessions/wwdc2020/10663/README.md",
+    "transcript": "sessions/wwdc2020/10663/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10663/transcript.json"
+  }
+}

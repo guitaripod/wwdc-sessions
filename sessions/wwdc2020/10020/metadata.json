@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10020",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10020,
+  "title": "Make your app visually accessible",
+  "description": "When you design with accessibility in mind, you empower everyone to use your app. Discover how to create an adaptive interface for your app that takes a thoughtful approach to color, provides readable text, and accommodates other visual settings to maintain a great experience throughout.\n\nWe’ve designed this session like our user interfaces —&nbsp;to be accessible to all. If you’d like to learn even more about accessibility and design, you may also enjoy “Visual Design and Accessibility,” “Accessibility Inspector,” “Building Apps with Dynamic Type,” and “Introducing SF Symbols.”",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10020",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10020",
+  "type": "Video",
+  "publishedAt": "2020-06-23T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "accessibility",
+    "color",
+    "color blind",
+    "design",
+    "labels",
+    "reduce motion"
+  ],
+  "topics": [
+    "Design",
+    "SwiftUI & UI Frameworks",
+    "Accessibility & Inclusion"
+  ],
+  "primaryTopic": "Accessibility & Inclusion",
+  "duration": 964,
+  "hasTranscript": true,
+  "transcriptWordCount": 2561,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10020/6/E082026F-7D80-4814-9A23-5A52E4CBF628/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10020/6/E082026F-7D80-4814-9A23-5A52E4CBF628/wwdc2020_10020_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10020/6/E082026F-7D80-4814-9A23-5A52E4CBF628/wwdc2020_10020_hd.mp4",
+    "duration": 964
+  },
+  "codeSnippets": [
+    {
+      "title": "Button Shapes",
+      "language": "swift",
+      "startTimeSeconds": 194,
+      "code": "func observeButtonShapesNotification() {\n    // Make buttons more visible by using shapes.\n    // If your default design does not include button shapes, observe this notification to make visual changes.\n    NotificationCenter.default.addObserver(self, selector: #selector(updateButtonShapes), name: UIAccessibility.buttonShapesEnabledStatusDidChangeNotification, object: nil)\n}\n\n@objc func updateButtonShapes() {\n    if UIAccessibility.buttonShapesEnabled {\n        // Use extra visualizations for buttons.\n    } else {\n        // Use default design for buttons.\n    }\n}"
+    },
+    {
+      "title": "Differentiate Without Color",
+      "language": "swift",
+      "startTimeSeconds": 211,
+      "code": "func observeDifferentiateWithoutColorNotification() {\n    // Use symbols or shapes to convey meaning instead of relying on color alone.\n    // If your default design does not differentiate without color, observe this notification to make visual changes.\n    NotificationCenter.default.addObserver(self, selector: #selector(updateColorAndSymbols), name: NSNotification.Name(UIAccessibility.differentiateWithoutColorDidChangeNotification), object: nil)\n}\n\n@objc func updateColorAndSymbols() {\n    if UIAccessibility.shouldDifferentiateWithoutColor {\n        // Use symbols or shapes to convey meaning.\n    } else {\n        // Use default design.\n    }\n}"
+    },
+    {
+      "title": "Smart Invert Colors",
+      "language": "swift",
+      "startTimeSeconds": 467,
+      "code": "extension UIView {\n    @available(iOS 11.0, tvOS 11.0)\n    var accessibilityIgnoresInvertColors: Bool { get set }\n}"
+    },
+    {
+      "title": "Large Text",
+      "language": "swift",
+      "startTimeSeconds": 597,
+      "code": "// ZodiacConstellationCell.swift\n\n\noverride func traitCollectionDidChange (_ previousTraitCollection: UITraitCollection?) {\n\n     if (traitCollection.preferredContentSizeCategory       \n         < .accessibilityMedium) { // Default font sizes\n\n         stackView.axis = .horizontal\n         stackView.alignment = .center\n\n     } else { // Accessibility font sizes\n\n         stackView.axis = .vertical\n         stackView.alignment = .leading\n\n     }\n}"
+    },
+    {
+      "title": "Bold Text",
+      "language": "swift",
+      "startTimeSeconds": 693,
+      "code": "func observeBoldTextNotification() {\n    // Update labels to use bold or heavy font styles.\n    // If you aren't using system font styles, observe this notification to make visual changes.\n    NotificationCenter.default.addObserver(self, selector: #selector(updateLabelWeight), name: UIAccessibility.boldTextStatusDidChangeNotification, object: nil)\n}\n\n@objc func updateLabelWeight() {\n    if UIAccessibility.isBoldTextEnabled {\n        // Use bold or heavy font weight\n    } else {\n        // Use font weight that is default to your design.\n    }\n}"
+    },
+    {
+      "title": "Reduce Motion",
+      "language": "swift",
+      "startTimeSeconds": 788,
+      "code": "func observeReduceMotionNotification() {\n    // Observe this notification to reduce or remove the frequency and intensity of motion effects.\n    NotificationCenter.default.addObserver(self, selector: #selector(updateMotionEffects), name: UIAccessibility.reduceMotionStatusDidChangeNotification, object: nil)\n}\n\n@objc func updateMotionEffects() {\n    if UIAccessibility.isReduceMotionEnabled {\n        // Reduce or remove extraneous motion effects.\n    } else {\n        // Use default motion effects.\n    }\n}"
+    },
+    {
+      "title": "Prefers Cross-fade Transitions",
+      "language": "swift",
+      "startTimeSeconds": 831,
+      "code": "func observeCrossFadeTransitionsNotification() {\n    // Reduce or remove sliding animations for transitioning views.\n    // If you aren't using system-provided navigation, observe this notification to make visual changes.\n    NotificationCenter.default.addObserver(self, selector: #selector(updateTransitionEffects), name: UIAccessibility.prefersCrossFadeTransitionsStatusDidChange, object: nil)\n}\n\n@objc func updateTransitionEffects() {\n    if UIAccessibility.prefersCrossFadeTransitions {\n        // Replace sliding transitions with cross-fade animations.\n    } else {\n        // Use default sliding transitions.\n    }\n}"
+    },
+    {
+      "title": "Reduce Transparency",
+      "language": "swift",
+      "startTimeSeconds": 907,
+      "code": "func observeReduceTransparencyNotification() {\n    // Reduce or remove transparency by adjusting these effects to be completely opaque.\n    // If you aren't using system-provided visual effects for blurs or vibrancy, observe this notification to make visual changes.\n    NotificationCenter.default.addObserver(self, selector: #selector(updateTransparencyEffects), name: UIAccessibility.reduceTransparencyStatusDidChangeNotification, object: nil)\n}\n\n@objc func updateTransparencyEffects() {\n    if UIAccessibility.isReduceTransparencyEnabled {\n        // Make transparency effects opaque.\n    } else {\n        // Use default transparency.\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Accessibility for UIKit",
+      "url": "https://developer.apple.com/documentation/UIKit/accessibility-for-uikit",
+      "type": "documentation",
+      "description": "Make your UIKit apps accessible to everyone who uses iOS and tvOS.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/accessibility-for-uikit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/accessibility-for-uikit.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10020/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10020/metadata.json",
+    "readme": "sessions/wwdc2020/10020/README.md",
+    "transcript": "sessions/wwdc2020/10020/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10020/transcript.json"
+  }
+}

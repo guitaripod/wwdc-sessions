@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10132",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10132,
+  "title": "Meet async/await in Swift",
+  "description": "Swift now supports asynchronous functions — a pattern commonly known as async/await. Discover how the new syntax can make your code easier to read and understand. Learn what happens when a function suspends, and find out how to adapt existing completion handlers to asynchronous functions.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10132",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10132",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "await",
+    "bypreparingthumbnail",
+    "completionhandler",
+    "continuation",
+    "datatask",
+    "expectation",
+    "preparethumbnail",
+    "preparingthumbnail",
+    "resume",
+    "suspension",
+    "testing",
+    "urlsession",
+    "withcheckedcontinuation",
+    "withcheckedthrowingcontinuation",
+    "xctestexpectation"
+  ],
+  "topics": [
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 2019,
+  "hasTranscript": true,
+  "transcriptWordCount": 4956,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10132/5/33A0E99C-1E53-4143-8A63-809D2E6CBA66/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10132/5/33A0E99C-1E53-4143-8A63-809D2E6CBA66/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10132/5/33A0E99C-1E53-4143-8A63-809D2E6CBA66/downloads/wwdc2021-10132_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10132/5/33A0E99C-1E53-4143-8A63-809D2E6CBA66/downloads/wwdc2021-10132_hd.mp4",
+    "duration": 2019
+  },
+  "codeSnippets": [
+    {
+      "title": "Writing a function using completion handlers",
+      "language": "swift",
+      "startTimeSeconds": 223,
+      "code": "func fetchThumbnail(for id: String, completion: @escaping (UIImage?, Error?) -> Void) {\n    let request = thumbnailURLRequest(for: id)\n    let task = URLSession.shared.dataTask(with: request) { data, response, error in\n        if let error = error {\n            completion(nil, error)\n        } else if (response as? HTTPURLResponse)?.statusCode != 200 {\n            completion(nil, FetchError.badID)\n        } else {\n            guard let image = UIImage(data: data!) else {\n                completion(nil, FetchError.badImage)\n                return\n            }\n            image.prepareThumbnail(of: CGSize(width: 40, height: 40)) { thumbnail in\n                guard let thumbnail = thumbnail else {\n                    completion(nil, FetchError.badImage)\n                    return\n                }\n                completion(thumbnail, nil)\n            }\n        }\n    }\n    task.resume()\n}"
+    },
+    {
+      "title": "Using completion handlers with the Result type",
+      "language": "swift",
+      "startTimeSeconds": 480,
+      "code": "func fetchThumbnail(for id: String, completion: @escaping (Result<UIImage, Error>) -> Void) {\n    let request = thumbnailURLRequest(for: id)\n    let task = URLSession.shared.dataTask(with: request) { data, response, error in\n        if let error = error {\n            completion(.failure(error))\n        } else if (response as? HTTPURLResponse)?.statusCode != 200 {\n            completion(.failure(FetchError.badID))\n        } else {\n            guard let image = UIImage(data: data!) else {\n                completion(.failure(FetchError.badImage))\n                return\n            }\n            image.prepareThumbnail(of: CGSize(width: 40, height: 40)) { thumbnail in\n                guard let thumbnail = thumbnail else {\n                    completion(.failure(FetchError.badImage))\n                    return\n                }\n                completion(.success(thumbnail))\n            }\n        }\n    }\n    task.resume()\n}"
+    },
+    {
+      "title": "Using async/await",
+      "language": "swift",
+      "startTimeSeconds": 510,
+      "code": "func fetchThumbnail(for id: String) async throws -> UIImage {\n    let request = thumbnailURLRequest(for: id)  \n    let (data, response) = try await URLSession.shared.data(for: request)\n    guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw FetchError.badID }\n    let maybeImage = UIImage(data: data)\n    guard let thumbnail = await maybeImage?.thumbnail else { throw FetchError.badImage }\n    return thumbnail\n}"
+    },
+    {
+      "title": "Async properties",
+      "language": "swift",
+      "startTimeSeconds": 795,
+      "code": "extension UIImage {\n    var thumbnail: UIImage? {\n        get async {\n            let size = CGSize(width: 40, height: 40)\n            return await self.byPreparingThumbnail(ofSize: size)\n        }\n    }\n}"
+    },
+    {
+      "title": "Async sequences",
+      "language": "swift",
+      "startTimeSeconds": 857,
+      "code": "for await id in staticImageIDsURL.lines {\n    let thumbnail = await fetchThumbnail(for: id)\n    collage.add(thumbnail)\n}\nlet result = await collage.draw()"
+    },
+    {
+      "title": "Testing using XCTestExpectation",
+      "language": "swift",
+      "startTimeSeconds": 1282,
+      "code": "class MockViewModelSpec: XCTestCase {\n    func testFetchThumbnails() throws {\n        let expectation = XCTestExpectation(description: \"mock thumbnails completion\")\n        self.mockViewModel.fetchThumbnail(for: mockID) { result, error in\n            XCTAssertNil(error)\n            expectation.fulfill()\n        }\n        wait(for: [expectation], timeout: 5.0)\n    }\n}"
+    },
+    {
+      "title": "Testing using async/await",
+      "language": "swift",
+      "startTimeSeconds": 1316,
+      "code": "class MockViewModelSpec: XCTestCase {\n    func testFetchThumbnails() async throws {\n        XCTAssertNoThrow(try await self.mockViewModel.fetchThumbnail(for: mockID))\n    }\n}"
+    },
+    {
+      "title": "Bridging from sync to async",
+      "language": "swift",
+      "startTimeSeconds": 1350,
+      "code": "struct ThumbnailView: View {\n    @ObservedObject var viewModel: ViewModel\n    var post: Post\n    @State private var image: UIImage?\n\n    var body: some View {\n        Image(uiImage: self.image ?? placeholder)\n            .onAppear {\n                Task {\n                    self.image = try? await self.viewModel.fetchThumbnail(for: post.id)\n                }\n            }\n    }\n}"
+    },
+    {
+      "title": "Async APIs in the SDK",
+      "language": "swift",
+      "startTimeSeconds": 1556,
+      "code": "import ClockKit\n\nextension ComplicationController: CLKComplicationDataSource {\n    func currentTimelineEntry(for complication: CLKComplication) async -> CLKComplicationTimelineEntry? {\n        let date = Date()\n        let thumbnail = try? await self.viewModel.fetchThumbnail(for: post.id)\n        guard let thumbnail = thumbnail else {\n            return nil\n        }\n\n        let entry = self.createTimelineEntry(for: thumbnail, date: date)\n        return entry\n    }\n}"
+    },
+    {
+      "title": "Async alternatives and continuations",
+      "language": "swift",
+      "startTimeSeconds": 1619,
+      "code": "// Existing function\nfunc getPersistentPosts(completion: @escaping ([Post], Error?) -> Void) {       \n    do {\n        let req = Post.fetchRequest()\n        req.sortDescriptors = [NSSortDescriptor(key: \"date\", ascending: true)]\n        let asyncRequest = NSAsynchronousFetchRequest<Post>(fetchRequest: req) { result in\n            completion(result.finalResult ?? [], nil)\n        }\n        try self.managedObjectContext.execute(asyncRequest)\n    } catch {\n        completion([], error)\n    }\n}\n\n// Async alternative\nfunc persistentPosts() async throws -> [Post] {       \n    typealias PostContinuation = CheckedContinuation<[Post], Error>\n    return try await withCheckedThrowingContinuation { (continuation: PostContinuation) in\n        self.getPersistentPosts { posts, error in\n            if let error = error { \n                continuation.resume(throwing: error) \n            } else {\n                continuation.resume(returning: posts)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Storing the continuation for delegate callbacks",
+      "language": "swift",
+      "startTimeSeconds": 1904,
+      "code": "class ViewController: UIViewController {\n    private var activeContinuation: CheckedContinuation<[Post], Error>?\n    func sharedPostsFromPeer() async throws -> [Post] {\n        try await withCheckedThrowingContinuation { continuation in\n            self.activeContinuation = continuation\n            self.peerManager.syncSharedPosts()\n        }\n    }\n}\n\nextension ViewController: PeerSyncDelegate {\n    func peerManager(_ manager: PeerManager, received posts: [Post]) {\n        self.activeContinuation?.resume(returning: posts)\n        self.activeContinuation = nil // guard against multiple calls to resume\n    }\n\n    func peerManager(_ manager: PeerManager, hadError error: Error) {\n        self.activeContinuation?.resume(throwing: error)\n        self.activeContinuation = nil // guard against multiple calls to resume\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "SE-0310: Effectful read-only properties",
+      "url": "https://github.com/apple/swift-evolution/blob/main/proposals/0310-effectful-readonly-properties.md",
+      "type": "documentation",
+      "description": "Swift evolution proposal"
+    },
+    {
+      "title": "SE-0300: Continuations for interfacing async tasks with synchronous code",
+      "url": "https://github.com/apple/swift-evolution/blob/main/proposals/0300-continuation.md",
+      "type": "documentation",
+      "description": "Swift evolution proposal"
+    },
+    {
+      "title": "SE-0297: Concurrency Interoperability with Objective-C",
+      "url": "https://github.com/apple/swift-evolution/blob/main/proposals/0297-concurrency-objc.md",
+      "type": "documentation",
+      "description": "Swift evolution proposal"
+    },
+    {
+      "title": "SE-0296: Async/await",
+      "url": "https://github.com/apple/swift-evolution/blob/main/proposals/0296-async-await.md",
+      "type": "documentation",
+      "description": "Swift evolution proposal"
+    },
+    {
+      "title": "The Swift Programming Language: Concurrency",
+      "url": "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency/",
+      "type": "guide",
+      "description": "The chapter of the Language Guide in The Swift Programming Language that covers asynchronous and parallel code, including asynchronous functions (async/await), asynchronous sequences (AsyncSequence), async let, tasks, task groups, and actors."
+    }
+  ],
+  "path": "sessions/wwdc2021/10132/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10132/metadata.json",
+    "readme": "sessions/wwdc2021/10132/README.md",
+    "transcript": "sessions/wwdc2021/10132/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10132/transcript.json"
+  }
+}

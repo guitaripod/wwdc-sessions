@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-607",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 607,
+  "title": "Bringing People into AR",
+  "description": "ARKit 3 enables a revolutionary capability for robust integration of real people into AR scenes. Learn how apps can use live motion capture to animate virtual characters or be applied to 2D and 3D simulation. See how People Occlusion enables even more immersive AR experiences by enabling virtual content to pass behind people in the real world.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/607",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/607",
+  "type": "Session",
+  "publishedAt": "2019-06-05T16:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 2366,
+  "hasTranscript": true,
+  "transcriptWordCount": 5758,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/607a2lcl8lpd7fnidym/607/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/607a2lcl8lpd7fnidym/607/607_sd_bringing_people_into_ar.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/607a2lcl8lpd7fnidym/607/607_hd_bringing_people_into_ar.mp4",
+    "duration": 2366
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Capturing Body Motion in 3D",
+      "url": "https://developer.apple.com/documentation/ARKit/capturing-body-motion-in-3d",
+      "type": "documentation",
+      "description": "Track a person in the physical environment and visualize their motion by applying the same body movements to a virtual character.",
+      "sosumiURL": "https://sosumi.ai/documentation/ARKit/capturing-body-motion-in-3d",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ARKit/capturing-body-motion-in-3d.json"
+    },
+    {
+      "title": "Effecting People Occlusion in Custom Renderers",
+      "url": "https://developer.apple.com/documentation/ARKit/effecting-people-occlusion-in-custom-renderers",
+      "type": "samplecode",
+      "description": "Occlude your app’s virtual content where ARKit recognizes people in the camera feed by using matte generator.",
+      "sosumiURL": "https://sosumi.ai/documentation/ARKit/effecting-people-occlusion-in-custom-renderers",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ARKit/effecting-people-occlusion-in-custom-renderers.json"
+    },
+    {
+      "title": "ARKit",
+      "url": "https://developer.apple.com/documentation/ARKit",
+      "type": "documentation",
+      "description": "Integrate hardware sensing features to produce augmented reality apps and games.",
+      "sosumiURL": "https://sosumi.ai/documentation/ARKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ARKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/607/",
+  "files": {
+    "metadata": "sessions/wwdc2019/607/metadata.json",
+    "readme": "sessions/wwdc2019/607/README.md",
+    "transcript": "sessions/wwdc2019/607/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/607/transcript.json"
+  }
+}

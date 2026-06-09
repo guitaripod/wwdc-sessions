@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-258",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 258,
+  "title": "What’s new in Apple device management and identity",
+  "description": "Designed for IT administrators, MDM developers, and identity providers, this session covers the latest updates to Declarative Device Management, Apple Business Manager, Apple School Manager, Platform Single Sign-On, and more. Learn how these advancements streamline deployment, strengthen security, and improve the user experience.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/258",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/258",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "enterprise"
+  ],
+  "topics": [
+    "Business & Education"
+  ],
+  "primaryTopic": "Business & Education",
+  "duration": 1183,
+  "hasTranscript": true,
+  "transcriptWordCount": 3248,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/258/4/00c0d5e4-631c-40a0-b535-65404ad0e9c1/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/258/4/00c0d5e4-631c-40a0-b535-65404ad0e9c1/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/258/4/00c0d5e4-631c-40a0-b535-65404ad0e9c1/downloads/wwdc2025-258_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/258/4/00c0d5e4-631c-40a0-b535-65404ad0e9c1/downloads/wwdc2025-258_hd.mp4",
+    "duration": 1183
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Apple School Manager and Apple Business APIs",
+      "url": "https://developer.apple.com/documentation/apple-school-and-business-manager-api",
+      "type": "documentation",
+      "description": "Automate device management actions and access data about devices that enroll using Automated Device Enrollment with the Apple School Manager and Apple Business APIs.",
+      "sosumiURL": "https://sosumi.ai/documentation/apple-school-and-business-manager-api",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/apple-school-and-business-manager-api.json"
+    },
+    {
+      "title": "ManagedApp",
+      "url": "https://developer.apple.com/documentation/ManagedApp",
+      "type": "documentation",
+      "description": "Customize your app for managed deployments by providing configurable features that rely on secure access to secrets and data that an administrator provisions.",
+      "sosumiURL": "https://sosumi.ai/documentation/ManagedApp",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ManagedApp.json"
+    },
+    {
+      "title": "Support - Apple Platform Deployment",
+      "url": "https://support.apple.com/guide/deployment/welcome/",
+      "type": "documentation",
+      "description": "Apple devices integrate hardware, software, apps, and services to let you manage your deployment projects easily. Get the control and flexibility you want by using Apple School Manager or Apple Business Manager and your chosen mobile device management solution."
+    },
+    {
+      "title": "Apple School Manager User Guide",
+      "url": "https://support.apple.com/guide/apple-school-manager/",
+      "type": "documentation",
+      "description": "Apple School Manager User Guide"
+    },
+    {
+      "title": "Apple Business Manager User Guide",
+      "url": "https://support.apple.com/guide/apple-business-manager/",
+      "type": "guide",
+      "description": "Apple Business Manager User Guide"
+    }
+  ],
+  "path": "sessions/wwdc2025/258/",
+  "files": {
+    "metadata": "sessions/wwdc2025/258/metadata.json",
+    "readme": "sessions/wwdc2025/258/README.md",
+    "transcript": "sessions/wwdc2025/258/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/258/transcript.json"
+  }
+}

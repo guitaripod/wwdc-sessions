@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10205",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10205,
+  "title": "Design with iOS pickers, menus and actions",
+  "description": "Create iPhone and iPad apps that look great and help people move quickly and directly to the information they need. Discover how you can integrate menus into your app for quick access to actions and settings, and learn where and when you should use them in your app. We’ll also walk you through the new Date Picker and Color Picker controls, and show you how to integrate them into your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10205",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10205",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 894,
+  "hasTranscript": true,
+  "transcriptWordCount": 2481,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10205/6/3F1FA0B1-A578-47C9-A8C8-77126E57FDBF/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10205/6/3F1FA0B1-A578-47C9-A8C8-77126E57FDBF/wwdc2020_10205_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10205/6/3F1FA0B1-A578-47C9-A8C8-77126E57FDBF/wwdc2020_10205_hd.mp4",
+    "duration": 894
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Designing for iOS",
+      "url": "https://developer.apple.com/design/Human-Interface-Guidelines/designing-for-ios",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/Human-Interface-Guidelines/designing-for-ios"
+    }
+  ],
+  "path": "sessions/wwdc2020/10205/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10205/metadata.json",
+    "readme": "sessions/wwdc2020/10205/README.md",
+    "transcript": "sessions/wwdc2020/10205/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10205/transcript.json"
+  }
+}

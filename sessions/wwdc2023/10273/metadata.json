@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10273",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10273,
+  "title": "Work with Reality Composer Pro content in Xcode",
+  "description": "Learn how to bring content from Reality Composer Pro to life in Xcode. We’ll show you how to load 3D scenes into Xcode, integrate your content with your code, and add interactivity to your app. We’ll also share best practices and tips for using these tools together in your development workflow.\n\nTo get the most out of this session, we recommend first watching “Meet Reality Composer Pro” and “Explore materials in Reality Composer Pro\" to learn more about creating 3D scenes.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10273",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10273",
+  "type": "Video",
+  "publishedAt": "2023-06-07T08:00:00-07:00",
+  "platforms": [
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 2055,
+  "hasTranscript": true,
+  "transcriptWordCount": 4909,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10273/5/056632D0-3346-457D-97ED-B1F066A11C1A/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10273/5/056632D0-3346-457D-97ED-B1F066A11C1A/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10273/5/056632D0-3346-457D-97ED-B1F066A11C1A/downloads/wwdc2023-10273_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10273/5/056632D0-3346-457D-97ED-B1F066A11C1A/downloads/wwdc2023-10273_hd.mp4",
+    "duration": 2055
+  },
+  "codeSnippets": [
+    {
+      "title": "Loading an entity",
+      "language": "swift",
+      "startTimeSeconds": 192,
+      "code": "RealityView { content in\n    do {\n        let entity = try await Entity(named: \"DioramaAssembled\", in: realityKitContentBundle)\n        content.add(entity)\n    } catch {\n        // Handle error\n    }\n}"
+    },
+    {
+      "title": "Adding a component",
+      "language": "swift",
+      "startTimeSeconds": 399,
+      "code": "let component = MyComponent()\nentity.components.set(component)"
+    },
+    {
+      "title": "Attachments data flow",
+      "language": "swift",
+      "startTimeSeconds": 741,
+      "code": "RealityView { _, _ in\n    // load entities from your Reality Composer Pro package bundle\n} update: { content, attachments in\n\n   if let attachmentEntity = attachments.entity(for: \"🐠\") {\n     \t\tcontent.add(attachmentEntity)\n \t }\n\n} attachments: {\n    Button { ... }\n       .background(.green)\n       .tag(\"🐠\")\n}"
+    },
+    {
+      "title": "Adding attachments",
+      "language": "swift",
+      "startTimeSeconds": 948,
+      "code": "let myEntity = Entity()\n\nRealityView { content, _ in\n    if let entity = try? await Entity(named: \"MyScene\", in: realityKitContentBundle) {\n        content.add(entity)\n    }\n} update: { content, attachments in\n\n    if let attachmentEntity = attachments.entity(for: \"🐠\") {\n        content.add(attachmentEntity)\n    }\n\n    content.add(myEntity)\n\n} attachments: {\n    Button { ... }\n       .background(.green)\n       .tag(\"🐠\")\n}"
+    },
+    {
+      "title": "Adding point of interest attachment entities",
+      "language": "swift",
+      "startTimeSeconds": 1243,
+      "code": "static let markersQuery = EntityQuery(where: .has(PointOfInterestComponent.self))\n@State var attachmentsProvider = AttachmentsProvider()\n\nrootEntity.scene?.performQuery(Self.markersQuery).forEach { entity in\n  guard let pointOfInterest = entity.components[PointOfInterestComponent.self] else { return }\n\n  let attachmentTag: ObjectIdentifier = entity.id\n\n  let view = LearnMoreView(name: pointOfInterest.name, description: pointOfInterest.description)\n                           .tag(attachmentTag)\n\n   attachmentsProvider.attachments[attachmentTag] = AnyView(view)\n}"
+    },
+    {
+      "title": "AttachmentsProvider",
+      "language": "swift",
+      "startTimeSeconds": 1300,
+      "code": "@Observable final class AttachmentsProvider {\n    var attachments: [ObjectIdentifier: AnyView] = [:]\n    var sortedTagViewPairs: [(tag: ObjectIdentifier, view: AnyView)] { ... }\n}\n\n...\n\n@State var attachmentsProvider = AttachmentsProvider()\n\nRealityView { _, _ in\n\n} update: { _, _ in\n\n} attachments: {\n    ForEach(attachmentsProvider.sortedTagViewPairs, id: \\.tag) { pair in\n        pair.view\n    }\n}"
+    },
+    {
+      "title": "Design-time and Run-time components",
+      "language": "swift",
+      "startTimeSeconds": 1351,
+      "code": "// Design-time component\npublic struct PointOfInterestComponent: Component, Codable {\n    public var region: Region = .yosemite\n    public var name: String = \"Ribbon Beach\"\n    public var description: String?\n}\n\n// Run-time component\npublic struct PointOfInterestRuntimeComponent: Component {\n    public let attachmentTag: ObjectIdentifier\n}"
+    },
+    {
+      "title": "Adding a run-time component for each design-time component",
+      "language": "swift",
+      "startTimeSeconds": 1538,
+      "code": "static let markersQuery = EntityQuery(where: .has(PointOfInterestComponent.self))\n@State var attachmentsProvider = AttachmentsProvider()\n\nrootEntity.scene?.performQuery(Self.markersQuery).forEach { entity in\n  guard let pointOfInterest = entity.components[PointOfInterestComponent.self] else { return }\n\n  let attachmentTag: ObjectIdentifier = entity.id\n\n  let view = LearnMoreView(name: pointOfInterest.name, description: pointOfInterest.description)\n                           .tag(attachmentTag)\n\n   attachmentsProvider.attachments[attachmentTag] = AnyView(view)\n   let runtimeComponent = PointOfInterestRuntimeComponent(attachmentTag: attachmentTag)\n   entity.components.set(runtimeComponent)\n}"
+    },
+    {
+      "title": "Adding and positioning the attachment entities",
+      "language": "swift",
+      "startTimeSeconds": 1579,
+      "code": "static let runtimeQuery = EntityQuery(where: .has(PointOfInterestRuntimeComponent.self))\n\nRealityView { _, _ in\n\n} update: { content, attachments in x\n\n    rootEntity.scene?.performQuery(Self.runtimeQuery).forEach { entity in\n        guard let component = entity.components[PointOfInterestRuntimeComponent.self],\n              let attachmentEntity = attachments.entity(for: component.attachmentTag) else { \n            return \n        }        \n        content.add(attachmentEntity)\n        attachmentEntity.setPosition([0, 0.5, 0], relativeTo: entity)\n    }\n} attachments: {\n    ForEach(attachmentsProvider.sortedTagViewPairs, id: \\.tag) { pair in\n        pair.view\n    }\n}"
+    },
+    {
+      "title": "Audio Playback",
+      "language": "swift",
+      "startTimeSeconds": 1735,
+      "code": "func playOceanSound() {\n\n    guard let entity = entity.findEntity(named: \"OceanEmitter\"),\n        let resource = try? AudioFileResource(named: \"/Root/Resources/Ocean_Sounds_wav\",\n                                   from: \"DioramaAssembled.usda\",\n                                   in: RealityContent.realityContentBundle) else { return }\n\n    let audioPlaybackController = entity.prepareAudio(resource)\n    audioPlaybackController.play()\n}"
+    },
+    {
+      "title": "Terrain material transition using the slider",
+      "language": "swift",
+      "startTimeSeconds": 1862,
+      "code": "@State private var sliderValue: Float = 0.0\n\nSlider(value: $sliderValue, in: (0.0)...(1.0))\n    .onChange(of: sliderValue) { _, _ in\n        guard let terrain = rootEntity.findEntity(named: \"DioramaTerrain\"),\n                var modelComponent = terrain.components[ModelComponent.self],\n                var shaderGraphMaterial = modelComponent.materials.first \n                    as? ShaderGraphMaterial else { return }\n        do {\n            try shaderGraphMaterial.setParameter(name: \"Progress\", value: .float(sliderValue))\n            modelComponent.materials = [shaderGraphMaterial]\n            terrain.components.set(modelComponent)\n        } catch { }\n    }\n}"
+    },
+    {
+      "title": "Audio transition using the slider",
+      "language": "swift",
+      "startTimeSeconds": 1917,
+      "code": "@State private var sliderValue: Float = 0.0\nstatic let audioQuery = EntityQuery(where: .has(RegionSpecificComponent.self) \n                                    && .has(AmbientAudioComponent.self))\n\nSlider(value: $sliderValue, in: (0.0)...(1.0))\n    .onChange(of: sliderValue) { _, _ in\n        // ... Change the terrain material property ...\n\n        rootEntity?.scene?.performQuery(Self.audioQuery).forEach({ audioEmitter in\n            guard var audioComponent = audioEmitter.components[AmbientAudioComponent.self],\n                  let regionComponent = audioEmitter.components[RegionSpecificComponent.self]\n            else { return }\n\n            let gain = regionComponent.region.gain(forSliderValue: sliderValue)\n            audioComponent.gain = gain\n            audioEmitter.components.set(audioComponent)\n        })\n    }\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2023/10273/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10273/metadata.json",
+    "readme": "sessions/wwdc2023/10273/README.md",
+    "transcript": "sessions/wwdc2023/10273/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10273/transcript.json"
+  }
+}

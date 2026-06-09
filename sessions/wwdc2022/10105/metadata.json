@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10105",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10105,
+  "title": "Maximize your Metal ray tracing performance",
+  "description": "Learn how to simplify your ray tracing code and increase performance with the power of Metal 3. We’ll explore the GPU debugging and profiling tools that can help you tune your ray tracing applications. We'll also show you how you can speed up intersection tests and reduce shader code memory accesses and indirections with per-primitive data in an acceleration structure. And we'll help you implement faster acceleration structure builds and refits to reduce load times and per-frame overhead. ",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10105",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10105",
+  "type": "Video",
+  "publishedAt": "2022-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "game dev",
+    "game developer",
+    "metal",
+    "metal 3",
+    "metal shading language",
+    "metal tools",
+    "optimization",
+    "proapps",
+    "raytracing",
+    "ray tracing"
+  ],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1883,
+  "hasTranscript": true,
+  "transcriptWordCount": 4840,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10105/7/A0348CEB-F711-422B-9FA4-D1A0E1DB8BF8/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10105/7/A0348CEB-F711-422B-9FA4-D1A0E1DB8BF8/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10105/7/A0348CEB-F711-422B-9FA4-D1A0E1DB8BF8/downloads/wwdc2022-10105_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10105/7/A0348CEB-F711-422B-9FA4-D1A0E1DB8BF8/downloads/wwdc2022-10105_hd.mp4",
+    "duration": 1883
+  },
+  "codeSnippets": [
+    {
+      "title": "Alpha testing with intersection functions",
+      "language": "objectivec",
+      "startTimeSeconds": 244,
+      "code": "float alpha = texture.sample(sampler, UV).w;\nreturn alpha >= 0.5f;"
+    },
+    {
+      "title": "Alpha testing intersection function",
+      "language": "objectivec",
+      "startTimeSeconds": 346,
+      "code": "[[intersection(triangle, raytracing::triangle_data, raytracing::instancing)]]\nbool alphaTestIntersection(float2               coordinates    [[barycentric_coord]],\n                           unsigned int         primitiveIndex [[primitive_id]],\n                           unsigned int         instanceIndex  [[instance_id]],\n                           device GlobalData   *globalData     [[buffer(1)]],\n                           device InstanceData *instanceData   [[buffer(0)]])\n{\n    device Material *materials = globalData->materials;\n    InstanceData instance = instanceData[instanceIndex];\n    float2 UV = calculateSamplingCoords(coordinates,\n                                        instance.uvs[primitiveIndex * 3 + 0],\n                                        instance.uvs[primitiveIndex * 3 + 1],\n                                        instance.uvs[primitiveIndex * 3 + 2]);\n    int materialIndex = instance.materialIndices[primitiveIndex];\n    float alpha = materials[materialIndex].texture.sample(sam, UV).w;\n    return alpha >= 0.5f;\n}"
+    },
+    {
+      "title": "Primitive Data",
+      "language": "objectivec",
+      "startTimeSeconds": 408,
+      "code": "struct PrimitiveData\n{\n    texture2d<float> texture;\n    float2 uvs[3];\n};"
+    },
+    {
+      "title": "Alpha testing intersection function using per-primitive data",
+      "language": "objectivec",
+      "startTimeSeconds": 428,
+      "code": "// Alpha testing intersection function\n[[intersection(triangle, raytracing::triangle_data, raytracing::instancing)]]\nbool alphaTestIntersection(float2               coordinates    [[barycentric_coord]],\n                     const device PrimitiveData *primitiveData [[primitive_data]])\n{\n    PrimitiveData ppd = *primitiveData;\n    float2 UV = calculateSamplingCoords(coordinates,\n                                        ppd.uvs[0],\n                                        ppd.uvs[1],\n                                        ppd.uvs[2]);\n    float alpha = ppd.texture.sample(sam, UV).w;\n    return alpha >= 0.5f;\n}"
+    },
+    {
+      "title": "Setting up per-primitive data",
+      "language": "swift",
+      "startTimeSeconds": 534,
+      "code": "geometryDescriptor.primitiveDataBuffer = primitiveDataBuffer\ngeometryDescriptor.primitiveDataElementSize = MemoryLayout<PrimitiveData>.size\ngeometryDescriptor.primitiveDataStride = MemoryLayout<PrimitiveData>.stride\ngeometryDescriptor.primitiveDataBufferOffset = primitiveDataOffset"
+    },
+    {
+      "title": "Using per-primitive data",
+      "language": "objectivec",
+      "startTimeSeconds": 558,
+      "code": "// Intersection function argument:\nconst device void *primitiveData [[primitive_data]]\n\n// Intersection result:\nprimitiveData = intersection.primitive_data;\n\n// Intersection query:\nprimitiveData = query.get_candidate_primitive_data();\nprimitiveData = query.get_committed_primitive_data();"
+    },
+    {
+      "title": "Buffers from intersection function tables",
+      "language": "objectivec",
+      "startTimeSeconds": 668,
+      "code": "device int *buffer = intersectionFunctionTable.get_buffer<device int *>(index);\n\nvisible_function_table<uint(uint)> table =\n    intersectionFunctionTable.get_visible_function_table<uint(uint)>(index);\n\nuint result = table[0](parameter);"
+    },
+    {
+      "title": "Ray tracing from indirect command buffers",
+      "language": "swift",
+      "startTimeSeconds": 696,
+      "code": "let icbDescriptor = MTLIndirectCommandBufferDescriptor()\n\nicbDescriptor.supportRayTracing = true"
+    },
+    {
+      "title": "Parallel acceleration structure builds",
+      "language": "swift",
+      "startTimeSeconds": 943,
+      "code": "for (index, accelerationStructure) in accelerationStructures.enumerated() {\n    encoder.build(accelerationStructure: accelerationStructure,\n                  descriptor: descriptors[index],\n                  scratchBuffer: scratchBuffers[index % numScratchBuffers],\n                  scratchBufferOffset: 0)\n}"
+    },
+    {
+      "title": "Setting vertex formats",
+      "language": "swift",
+      "startTimeSeconds": 1048,
+      "code": "let geometryDescriptor = MTLAccelerationStructureTriangleGeometryDescriptor()\n\ngeometryDescriptor.vertexFormat = .uint1010102Normalized"
+    },
+    {
+      "title": "Creating transformation matrix buffer",
+      "language": "swift",
+      "startTimeSeconds": 1109,
+      "code": "var scaleTransform =\n    MTLPackedFloat4x3(columns: (\n        MTLPackedFloat3Make( scale.x,      0.0,      0.0),\n        MTLPackedFloat3Make(     0.0,  scale.y,      0.0),\n        MTLPackedFloat3Make(     0.0,      0.0,  scale.z),\n        MTLPackedFloat3Make(offset.x, offset.y, offset.z))\n\nlet transformBuffer = device.makeBuffer(length: MemoryLayout<MTLPackedFloat4x3>.size,\n                                        options: .storageModeShared)!\n\ntransformBuffer.contents().copyMemory(from: &scaleTransform,\n                                      byteCount: MemoryLayout<MTLPackedFloat4x3>.size)"
+    },
+    {
+      "title": "Setting transformation matrix buffer on geometry descriptor",
+      "language": "swift",
+      "startTimeSeconds": 1131,
+      "code": "let geometryDescriptor = MTLAccelerationStructureTriangleGeometryDescriptor()\n\ngeometryDescriptor.transformationMatrixBuffer = transformBuffer\ngeometryDescriptor.transformationMatrixBufferOffset = 0"
+    },
+    {
+      "title": "Merging instances using transformation matrices",
+      "language": "swift",
+      "startTimeSeconds": 1212,
+      "code": "let sphereGeometryDescriptor = MTLAccelerationStructureTriangleGeometryDescriptor()\nsphereGeometryDescriptor.vertexBuffer = sphereVertexBuffer\nsphereGeometryDescriptor.indexBuffer = sphereIndexBuffer\nsphereGeometryDescriptor.transformationMatrixBuffer = sphereTransformBuffer\n\nlet redBoxGeometryDescriptor = MTLAccelerationStructureTriangleGeometryDescriptor()\nredBoxGeometryDescriptor.vertexBuffer = boxVertexBuffer\nredBoxGeometryDescriptor.indexBuffer = boxIndexBuffer\nredBoxGeometryDescriptor.transformationMatrixBuffer = redBoxTransformBuffer\n\nlet blueBoxGeometryDescriptor = MTLAccelerationStructureTriangleGeometryDescriptor()\nblueBoxGeometryDescriptor.vertexBuffer = boxVertexBuffer\nblueBoxGeometryDescriptor.indexBuffer = boxIndexBuffer blueBoxGeometryDescriptor.transformationMatrixBuffer = blueBoxTransformBuffer\n\nlet primitiveASDescriptor = MTLPrimitiveAccelerationStructureDescriptor()\n\nprimitiveASDescriptor.geometryDescriptors =\n    [sphereGeometryDescriptor, redBoxGeometryDescriptor, blueBoxGeometryDescriptor]"
+    },
+    {
+      "title": "Heap acceleration structure allocation",
+      "language": "swift",
+      "startTimeSeconds": 1353,
+      "code": "let heap = device.makeHeap(descriptor: heapDescriptor)!\n\nlet accelerationStructure = heap.makeAccelerationStructure(descriptor: descriptor)\n\nlet sizeAndAlign = device.heapAccelerationStructureSizeAndAlign(descriptor: descriptor)\n\nlet accelerationStructure = heap.makeAccelerationStructure(size: sizeAndAlign.size)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Accelerating ray tracing using Metal",
+      "url": "https://developer.apple.com/documentation/metal/metal_sample_code_library/accelerating_ray_tracing_using_metal",
+      "type": "samplecode",
+      "description": "Implement ray-traced rendering using GPU-based parallel processing.",
+      "sosumiURL": "https://sosumi.ai/documentation/metal/metal_sample_code_library/accelerating_ray_tracing_using_metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/metal/metal_sample_code_library/accelerating_ray_tracing_using_metal.json"
+    },
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10105/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10105/metadata.json",
+    "readme": "sessions/wwdc2022/10105/README.md",
+    "transcript": "sessions/wwdc2022/10105/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10105/transcript.json"
+  }
+}

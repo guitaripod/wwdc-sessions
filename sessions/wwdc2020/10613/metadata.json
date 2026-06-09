@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10613",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10613,
+  "title": "What's new in USD",
+  "description": "Discover proposed schema and structure updates to the Universal Scene Description (USD) standard. Learn how you can use Reality Composer to build AR content with interactive properties like anchoring, physics, behaviors, 3D text, and spatial audio that exports to USDZ. And, discover streamlined workflows that help you bring newly-created objects into your app.\n\nIf you're interested to learn more about USDZ as a distribution format, check out \"Working with USD.” And for more on creating AR content with Reality Composer, watch “The Artist's AR Toolkit.\"\n\nWe’d love to hear feedback about the preliminary schemas. After you watch this session, come join us on the Developer Forums and share your thoughts.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10613",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10613",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 1481,
+  "hasTranscript": true,
+  "transcriptWordCount": 4081,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10613/5/2355BD15-75EB-4F6F-951C-91C1A46242E1/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10613/5/2355BD15-75EB-4F6F-951C-91C1A46242E1/wwdc2020_10613_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10613/5/2355BD15-75EB-4F6F-951C-91C1A46242E1/wwdc2020_10613_hd.mp4",
+    "duration": 1481
+  },
+  "codeSnippets": [
+    {
+      "title": "USD scene structure",
+      "language": "javascript",
+      "startTimeSeconds": 704,
+      "code": "def Xform \"Root\" (\n    kind = \"sceneLibrary\"\n)\n{\n    def Cube \"MyCubeScene\" (\n        sceneName = \"My Cube Scene\"\n    )\n    { \n        ... \n    }\n\n    over Sphere \"MySphereScene\" (\n        sceneName = \"My Sphere Scene\"\n    )\n    { \n        ... \n    }\n}"
+    },
+    {
+      "title": "Adding anchoring to USD",
+      "language": "javascript",
+      "startTimeSeconds": 810,
+      "code": "def Cube \"ImageAnchoredCube\" (\n    prepend apiSchemas = [ \"Preliminary_AnchoringAPI\" ]\n)\n{\n    uniform token preliminary:anchoring:type = \"image\"\n    rel preliminary:imageAnchoring:referenceImage = <ImageReference>\n\n    def Preliminary_ReferenceImage \"ImageReference\"\n    {\n        uniform asset image = @image.png@\n        uniform double physicalWidth = 12\n    }\n\n    ...\n}"
+    },
+    {
+      "title": "Defining a behavior",
+      "language": "javascript",
+      "startTimeSeconds": 911,
+      "code": "def Preliminary_Behavior \"TapAndBounce\"\n{\n    rel triggers = [ <Tap> ]\n    rel actions = [ <Bounce> ]\n\n    def Preliminary_Trigger \"Tap\"\n    {\n        uniform token info:id = \"tap\"\n        rel affectedObjects = [ </Cube> ]\n    }\n\n    def Preliminary_Action \"Bounce\"\n    {\n        uniform token info:id = \"emphasize\" \n        uniform token motionType = \"bounce\"\n        rel affectedObjects = [ </Cube> ]\n    }\n\n    ...\n}"
+    },
+    {
+      "title": "Compound behavior",
+      "language": "swift",
+      "startTimeSeconds": 982,
+      "code": "def Preliminary_Behavior \"TapOrGetCloseAndBounceJiggleAndFlip\"\n{\n    rel triggers = [ <Tap>, <Proximity> ]\n    rel actions = [ <Bounce>, <Jiggle>, <Flip> ]\n\n    ...\n}"
+    },
+    {
+      "title": "Defining physics",
+      "language": "swift",
+      "startTimeSeconds": 1039,
+      "code": "def Sphere \"WoodenBall\" (\n    prepend apiSchemas = [ \"Preliminary_PhysicsColliderAPI\",\n                           \"Preliminary_PhysicsRigidBodyAPI\" ]\n)\n{\n    rel preliminary:physics:collider:convexShape = </WoodenBall>\n    double preliminary:physics:rigidBody:mass = 10.0\n}"
+    },
+    {
+      "title": "Applying a wood material for physics",
+      "language": "javascript",
+      "startTimeSeconds": 1095,
+      "code": "def Material \"Wood\" (\n    prepend apiSchemas = [\"Preliminary_PhysicsMaterialAPI\"]\n)\n{\n    double preliminary:physics:material:restitution = 0.603\n    double preliminary:physics:material:friction:static = 0.375\n    double preliminary:physics:material:friction:dynamic = 0.375\n}\n\ndef Sphere \"WoodenBall\" (\n    prepend apiSchemas = [ \"Preliminary_PhysicsColliderAPI\",\n                           \"Preliminary_PhysicsRigidBodyAPI\" ]\n)\n{\n    rel preliminary:physics:collider:convexShape = </WoodenBall>\n    double preliminary:physics:rigidBody:mass = 10.0\n    rel material:binding = </Wood>\n}"
+    },
+    {
+      "title": "Defining a ground plane",
+      "language": "javascript",
+      "startTimeSeconds": 1120,
+      "code": "def Xform \"MyScene\" (\n    prepend apiSchemas = [\"Preliminary_PhysicsColliderAPI\"]\n)\n{\n    def Preliminary_InfiniteColliderPlane \"groundPlane\" (\n        customData = {\n            bool preliminary_isSceneGroundPlane = 1\n        }\n    ) {\n        point3d position = (0, 0, -2)\n        vector3d normal = (0, 1, 0)\n        rel preliminary:physics:collider:convexShape = </MyScene/groundPlane>\n    }\n    rel material:binding = </Wood>\n}"
+    },
+    {
+      "title": "Adding gravity",
+      "language": "swift",
+      "startTimeSeconds": 1148,
+      "code": "def Preliminary_PhysicsGravitationalForce \"MoonsGravity\"\n{\n    vector3d physics:gravitationalForce:acceleration = (0, -1.625, 0)\n}"
+    },
+    {
+      "title": "Defining spatial audio",
+      "language": "javascript",
+      "startTimeSeconds": 1228,
+      "code": "def SpatialAudio \"HorseNeigh\"\n{\n    uniform asset filePath        = @Horse.m4a@\n    uniform token auralMode       = \"spatial\"\n    uniform timeCode startTime    =  65.0\n    uniform double mediaOffset    =  0.33333333333\n    double3 xformOp:translate = (0, 0.5, 0.1)\n    uniform token[] xformOpOrder = [\"xformOp:translate\"]\n}"
+    },
+    {
+      "title": "3D text",
+      "language": "javascript",
+      "startTimeSeconds": 1305,
+      "code": "def Preliminary_Text \"heading\"\n{\n    string content = \"#WWDC20\"\n    string[] font = [ \"Helvetica\", \"Arial\" ]\n    token wrapMode = \"singleLine\"\n    token horizontalAlignment = \"center\"\n    token verticalAlignment = \"baseline\"\n}"
+    },
+    {
+      "title": "Playback metadata",
+      "language": "javascript",
+      "startTimeSeconds": 1366,
+      "code": "#usda 1.0\n(\n    endTimeCode = 300\n    startTimeCode = 1\n    timeCodesPerSecond = 30\n    playbackMode = \"loop\"\n    autoPlay = false\n)\n\ndef Xform “AnimatedCube\"\n{\n    ...\n}"
+    },
+    {
+      "title": "Scene understanding metadata",
+      "language": "swift",
+      "startTimeSeconds": 1388,
+      "code": "def Xform \"Root\" (\n    kind = \"sceneLibrary\"\n)\n{\n    def Xform \"MyScene\" (\n        sceneName = \"My Scene\"\n        preliminary_collidesWithEnvironment = true\n    )\n    {\n        def Xform \"DigitalBug\"\n        {\n            ...\n        }\n    }\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2020/10613/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10613/metadata.json",
+    "readme": "sessions/wwdc2020/10613/README.md",
+    "transcript": "sessions/wwdc2020/10613/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10613/transcript.json"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2018-224",
+  "event": "wwdc2018",
+  "eventName": "WWDC18",
+  "year": 2018,
+  "eventContentId": 224,
+  "title": "Core Data Best Practices",
+  "description": "As your app gains more customers and becomes more feature-rich, you may find yourself with new problems to solve. Core Data is a powerful tool that has changed a lot over the years. Learn about the new best practices in Core Data, such as how to use concurrency and persistent history, and discover how to test for, and resolve, common problems using familiar technologies.",
+  "url": "https://developer.apple.com/videos/play/wwdc2018/224",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2018/224",
+  "type": "Session",
+  "publishedAt": "2018-06-07T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "concurrency",
+    "core data",
+    "nskeyedarchiver",
+    "performance",
+    "persistent history",
+    "sqlite",
+    "testing"
+  ],
+  "topics": [
+    "Developer Tools",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 2066,
+  "hasTranscript": true,
+  "transcriptWordCount": 5735,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/224esqliuhnac9p11/224/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/224esqliuhnac9p11/224/224_sd_core_data_best_practices.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/224esqliuhnac9p11/224/224_hd_core_data_best_practices.mp4",
+    "duration": 2066
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2018/224/",
+  "files": {
+    "metadata": "sessions/wwdc2018/224/metadata.json",
+    "readme": "sessions/wwdc2018/224/README.md",
+    "transcript": "sessions/wwdc2018/224/transcript.md",
+    "transcriptJSON": "sessions/wwdc2018/224/transcript.json"
+  }
+}

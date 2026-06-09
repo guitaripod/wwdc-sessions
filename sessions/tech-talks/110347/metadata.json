@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "id": "tech-talks-110347",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2017,
+  "eventContentId": 110347,
+  "title": "Get started with in-app events",
+  "description": "Discover how you can highlight your app or game’s content on the App Store. We'll take you through the in-app events feature and provide recommendations, tips, and best practices for helping people discover content and events within your app.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/110347",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110347",
+  "type": "Video",
+  "publishedAt": "2022-12-01T10:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 1385,
+  "hasTranscript": true,
+  "transcriptWordCount": 3512,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/110347/3/B47B1C93-B1DC-4555-B40E-B26E64BF7689/cmaf.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/110347/3/B47B1C93-B1DC-4555-B40E-B26E64BF7689/downloads/tech-talks-110347_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/110347/3/B47B1C93-B1DC-4555-B40E-B26E64BF7689/downloads/tech-talks-110347_hd.mp4",
+    "duration": 1385
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Create an in-app event",
+      "url": "https://help.apple.com/app-store-connect/#/dev89c5ee98f",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "In-app events overview",
+      "url": "https://developer.apple.com/app-store/in-app-events/",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/app-store/in-app-events/"
+    },
+    {
+      "title": "Allowing apps and websites to link to your content",
+      "url": "https://developer.apple.com/documentation/Xcode/allowing-apps-and-websites-to-link-to-your-content",
+      "type": "documentation",
+      "description": "Use universal links to link directly to content within your app and share data securely.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/allowing-apps-and-websites-to-link-to-your-content",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/allowing-apps-and-websites-to-link-to-your-content.json"
+    }
+  ],
+  "path": "sessions/tech-talks/110347/",
+  "files": {
+    "metadata": "sessions/tech-talks/110347/metadata.json",
+    "readme": "sessions/tech-talks/110347/README.md",
+    "transcript": "sessions/tech-talks/110347/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/110347/transcript.json"
+  }
+}

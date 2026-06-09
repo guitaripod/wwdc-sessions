@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2026-298",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 298,
+  "title": "Meet the Evaluations framework",
+  "description": "Learn how to evaluate model-driven experiences using the Evaluations framework. In a probabilistic world, unit tests alone won’t suffice. Discover how to define metrics, automatically grade outputs, and aggregate statistics to ensure your AI-powered features perform reliably across Apple’s platforms.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/298",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/298",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "ai",
+    "machine learning",
+    "testing",
+    "xcode",
+    "xctest"
+  ],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1546,
+  "hasTranscript": true,
+  "transcriptWordCount": 3703,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/298/5/0ffb7161-1edb-4e6f-872d-55be82c4402d/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/298/5/0ffb7161-1edb-4e6f-872d-55be82c4402d/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/298/5/0ffb7161-1edb-4e6f-872d-55be82c4402d/downloads/wwdc2026-298_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/298/5/0ffb7161-1edb-4e6f-872d-55be82c4402d/downloads/wwdc2026-298_hd.mp4",
+    "duration": 1546
+  },
+  "codeSnippets": [
+    {
+      "title": "Define an Evaluation",
+      "language": "swift",
+      "startTimeSeconds": 294,
+      "code": "// Evaluations\nimport Evaluations\n\nstruct BookTaggingEvaluation: Evaluation {\n\n}"
+    },
+    {
+      "title": "Run with Swift Testing and an optimization target",
+      "language": "swift",
+      "startTimeSeconds": 482,
+      "code": "// Optimization Target\n@Test(\"Book Tag Evaluations\", .evaluates(evaluation, info: evaluationInfo))\nfunc evaluateBookTagging() async throws {\n    let result = EvaluationContext.current.result\n\n    let rangeMetric = BookTagEvaluationTests.evaluation.tagCount\n    #expect(result.aggregateValue(.mean(of: rangeMetric)) >= 0.8)\n}"
+    },
+    {
+      "title": "Constrain output with a Generable @Guide",
+      "language": "swift",
+      "startTimeSeconds": 609,
+      "code": "// BookTags.swift\n@Generable\nstruct BookTags: Codable {\n    @Guide(description: \"Descriptive tags capturing themes, genres, moods, and topics from the summary\", .count(3...8))\n    var tags: [String]\n} snippet."
+    },
+    {
+      "title": "Define the dataset with ModelSample",
+      "language": "swift",
+      "startTimeSeconds": 675,
+      "code": "// BookTaggingEvaluation\nvar dataset = ArrayLoader(samples: [\n    ModelSample(prompt: \"okay I am OBSESSED and I need everyone to read this RIGHT NOW...\",\n                expected: BookTags(tags: [\"classic\", \"romance\", \"wit\", \"regency\"])),\n\n    ModelSample(prompt: \"Read this in one sitting between midnight and 4am and I cannot...\",\n                expected: BookTags(tags: [\"classic\", \"gothic\", \"horror\", \"vampire\", \"suspense\"])),\n])\n\n// Or load your whole library:\nvar dataset = ArrayLoader(samples:\n    Book.sampleBooks.map { book in\n        ModelSample(prompt: book.review, expected: BookTags(tags: book.tags))\n    }\n)"
+    },
+    {
+      "title": "Synthesize more samples with a SampleGenerator",
+      "language": "swift",
+      "startTimeSeconds": 773,
+      "code": "// Synthesizing more inputs\nlet samples: [ModelSample<String>] = [\n    ModelSample(prompt: \"The largest planet in our solar system...\", expected: \"Jupiter.\"),\n    ModelSample(prompt: \"The capital of Thailand...\", expected: \"Bangkok.\"),\n    ModelSample(prompt: \"Swift is...\", expected: \"a powerful programming language.\"),\n    ModelSample(prompt: \"All those moments will be lost in time...\", expected: \"Like tears in rain.\")\n]\n\nfor try await sample in samples.makeSamples(\n    \"\"\"\n    Generate diverse sentence completions about the listed topics:\n      - The Solar System\n      - World Capitals \n    \"\"\",\n    targetCount: 1000) {\n        samples.append(sample)\n}"
+    },
+    {
+      "title": "More evaluators: word count and genre",
+      "language": "swift",
+      "startTimeSeconds": 842,
+      "code": "let wordCount = Metric(\"WordCount\")\n\nEvaluator { _, subject in\n    for tag in subject.value.tags {\n        if tag.contains(\" \") {\n            return wordCount.failing(rationale: \"Tag \\(tag) contains multiple words\")\n        }\n    }\n    return wordCount.passing()\n}\n\nlet hasGenreTag = Metric(\"HasGenreTag\")\n\nEvaluator { _, subject in\n    let tags = subject.value.tags.map { $0.lowercased() }\n    let knownGenres = await BookTaggingService.knownGenres\n    for tag in tags {\n        if knownGenres.contains(tag) {\n            return hasGenreTag.passing(rationale: \"Matched \\(tag)\")\n        }\n    }\n    return hasGenreTag.failing() \n}"
+    },
+    {
+      "title": "Define a Metric and Evaluator",
+      "language": "swift",
+      "startTimeSeconds": 843,
+      "code": "let tagCount = Metric(\"TagCount\")\n\nvar evaluators: Evaluators {\n\n    // Tag count is within the required 3–8 range\n    Evaluator { _, subject in \n        let count = subject.value.tags.count\n        if (count >= 3 && count <= 8) {\n            return tagCount.passing(rationale: \"\\(count) tags\")\n        } \n        return tagCount.failing(rationale: \"Got \\(count) tags, expected 3–8\")\n    }\n}"
+    },
+    {
+      "title": "Aggregate metrics across samples",
+      "language": "swift",
+      "startTimeSeconds": 867,
+      "code": "let tagCount = Metric(\"TagCount\")\nlet tagTotal = Metric(\"TagTotal\")\n\nfunc aggregateMetrics(using aggregator: inout MetricsAggregator) {\n    aggregator.computeMean(of: tagCount)\n    aggregator.group(\"Distribution of Tag Totals\") { aggregator in\n        aggregator.computeStandardDeviation(of: tagTotal)\n        aggregator.computeMean(of: tagTotal)\n        aggregator.computeVariance(of: tagTotal)\n    }\n}"
+    },
+    {
+      "title": "Iterate the feature's instructions (hill-climbing)",
+      "language": "swift",
+      "startTimeSeconds": 933,
+      "code": "// BookTaggingService.swift\nlet instructions = Instructions {\n    \"\"\"\n    You are a librarian and literary analyst. Given a reader's\n    freeform summary of a book they read — describing their\n    thoughts, feelings, and what stood out — generate a set of\n    descriptive tags reflected in the summary.\n\n    Rules:\n     - Return between 3 and 8 tags.\n     - Tags should be lowercase, concise (single word or hyphenated), and descriptive.\n     - Tags should include the book's genre, chosen from the included list of known genres.\n\n    Known Genres:\n     - \\(Self.knownGenres.joined(separator: \", \"))\n    \"\"\"\n}"
+    },
+    {
+      "title": "Build a model judge",
+      "language": "swift",
+      "startTimeSeconds": 1133,
+      "code": "ModelJudgeEvaluator(\n    \"TagQuality\",\n    scale: .numeric([\n        4: \"Tags are relevant and helpful for browsing\",\n        3: \"Mostly relevant, one tag too vague or generic\",\n        2: \"Several tags are wrong or generic\",\n        1: \"Unhelpful or irrelevant\"\n    ]),   \n    judge: PrivateCloudComputeLanguageModel()\n)"
+    },
+    {
+      "title": "Split into score dimensions",
+      "language": "swift",
+      "startTimeSeconds": 1337,
+      "code": "// BookTaggingEvaluation.swift\nScoreDimension(\n    \"Relevance\",\n    description: \"\"\"\n        Whether each tag describes a quality, theme, or tone\n        of the book itself rather than incidental details or\n        the reader's personal reactions.\n        \"\"\",\n    scale: .numeric([\n        4: \"Every tag describes the book itself\",\n        3: \"Most tags describe the book\",\n        2: \"Some tags describe personal reactions\",\n        1: \"Tags don't meaningfully describe the book\"\n    ])    \n)\n// Define `usefulness` the same way as a second ScoreDimension."
+    },
+    {
+      "title": "Add dimensions to the judge",
+      "language": "swift",
+      "startTimeSeconds": 1352,
+      "code": "// BookTaggingEvaluation.swift\nvar evaluators: Evaluators {\n\n    Evaluator {  }  \n\n    Evaluator {  }\n\n    Evaluator {  }\n\n    ModelJudgeEvaluator(\n        judge: PrivateCloudComputeLanguageModel(),\n        dimensions: [relevance, usefulness]\n    )\n}"
+    },
+    {
+      "title": "Add app context with a ModelJudgePrompt",
+      "language": "swift",
+      "startTimeSeconds": 1397,
+      "code": "// BookTaggingEvaluation.swift\nModelJudgeEvaluator(\n    judge: PrivateCloudComputeLanguageModel(),\n    dimensions: [relevance, usefulness],\n    prompt: ModelJudgePrompt( \n        instructions: \"\"\"\n            You are evaluating tags generated for a personal book-tracking app where users\n            organize their library by browsing and filtering tags.\n            \"\"\",\n        evaluationTarget: { value in\n            \"\\(value.tags.count) Generated tags: \" + value.tags.joined(separator: \", \")\n        },\n        reference: { input, _ in \n            let expectedTags = input.expected?.tags.joined(separator: \", \")\n            return [\"Expected Tags\": expectedTags ?? \"No expected tags defined\"]\n        }\n    )\n)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Book Tracker: Using Evaluations to evaluate an intelligent feature",
+      "url": "https://developer.apple.com/documentation/Evaluations/book-tracker-using-evaluations-to-evaluate-an-intelligent-feature",
+      "type": "samplecode",
+      "description": "Measure and improve the quality of your app’s intelligence-powered features using the Evaluations framework.",
+      "sosumiURL": "https://sosumi.ai/documentation/Evaluations/book-tracker-using-evaluations-to-evaluate-an-intelligent-feature",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Evaluations/book-tracker-using-evaluations-to-evaluate-an-intelligent-feature.json"
+    },
+    {
+      "title": "Designing datasets to test your feature",
+      "url": "https://developer.apple.com/documentation/Evaluations/designing-evaluation-datasets",
+      "type": "documentation",
+      "description": "Build categorized test datasets that reflect the full range of real-world",
+      "sosumiURL": "https://sosumi.ai/documentation/Evaluations/designing-evaluation-datasets",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Evaluations/designing-evaluation-datasets.json"
+    },
+    {
+      "title": "Designing effective evaluations",
+      "url": "https://developer.apple.com/documentation/Evaluations/designing-effective-evaluations",
+      "type": "documentation",
+      "description": "Design evaluations that tell you how well your feature works,",
+      "sosumiURL": "https://sosumi.ai/documentation/Evaluations/designing-effective-evaluations",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Evaluations/designing-effective-evaluations.json"
+    },
+    {
+      "title": "Evaluating language model responses",
+      "url": "https://developer.apple.com/documentation/Evaluations/evaluating-language-model-responses",
+      "type": "documentation",
+      "description": "Build an evaluation that runs your intelligence-powered feature against samples and scores each response.",
+      "sosumiURL": "https://sosumi.ai/documentation/Evaluations/evaluating-language-model-responses",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Evaluations/evaluating-language-model-responses.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/298/",
+  "files": {
+    "metadata": "sessions/wwdc2026/298/metadata.json",
+    "readme": "sessions/wwdc2026/298/README.md",
+    "transcript": "sessions/wwdc2026/298/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/298/transcript.json"
+  }
+}

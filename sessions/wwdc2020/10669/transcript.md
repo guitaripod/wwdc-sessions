@@ -1,0 +1,34 @@
+---
+id: "wwdc2020-10669"
+event: "wwdc2020"
+title: "Handling FHIR without getting burned"
+url: "https://developer.apple.com/videos/play/wwdc2020/10669"
+language: "eng"
+words: 1088
+---
+
+# Handling FHIR without getting burned — Transcript
+
+[Session page](https://developer.apple.com/videos/play/wwdc2020/10669) · [Metadata](metadata.json) · [Structured JSON](transcript.json)
+
+**[0:03]** Hello and welcome to WWDC. Hi. My name is Pascal, and I'm here to talk about handling PHIR without getting burned. As you may know, since early 2018, the Health app supports Fast Healthcare Interoperability Resources, better known as "FHIR," to download clinical data to your phone. This is possible thanks to the open standards developed by HL7 and the SMART team, which the Health app leverages. To recap, for us it all starts with the Health app. Health establishes a secure connection directly to the health provider's API... and then downloads FHIR data directly to the iOS device.
+
+**[0:49]** This data is stored securely in HealthKit, which allows aggregation of data from multiple institutions. This data is then available to you via the HealthKit API. At the end of a download, clinical data is presented neatly laid out in the Health app. Now let's see how your app can obtain and work with this FHIR data. First, your app will request authorization from the user. The user is guided through the authorization process in three screens. On the first screen, general information about what granting access entails is shown. Next, the explanation text that you provide in your app's Info.plist
+
+**[1:34]** is presented alongside a link to your privacy policy. And, yes, we will review your privacy policy. In this simple example of a medication list app, only access to medications is requested. This follows our "proportional to what you need" data use principle. Finally, by default, only data already on the device will be shared with your app, so request authorization each and every time you query for FHIR data to ensure the user has a chance to authorize access to new data if applicable. The sheet won't appear if there is nothing to authorize for. More details about this process are available in our WWDC talk from 2018.
+
+**[2:21]** Now that your app has access to clinical health records, let's take a closer look at FHIR data. This is a simplified FHIR prescription resource. There are a variety of field types: simple strings, strings that can only be of certain values, so-called codes... date and times that come as strings in an ISO-8601-like format, other primitive types, such as Booleans and numbers, and complex nested structures comprised of primitives. Previously, you had to write your own Swift Codable if you wanted to work with FHIR data in a native format. This seems straightforward if you only want to look at certain data elements, and you know that the data is uniform. In this example, you only want the status, date and the medication of a prescription.
+
+**[3:10]** Soon, however, you start to realize the depth, complexity, and even just the sheer number of FHIR resources. Just indulge in this full definition of a prescription resource. Yes, you probably don't want to model this all by yourself. So, how can we help you work with FHIR data? Introducing FHIRModels. FHIRModels is an open-source Swift package available via GitHub allowing you to file issues, request features, and to generally provide feedback. There is support for multiple FHIR releases, and data models are provided for all the resources in a release. Resource integrity on encode and decode is enforced, preventing creation of structurally invalid resources.
+
+**[3:57]** There is date/time parsing, enums enforcing code fields, enums enforcing value polymorphic properties, and much, much more. And of course we will keep the package up to date with new FHIR and Swift releases. The package comes with libraries for the DSTU2, R4 and the latest build release. We'll add support for new releases as they emerge. It is available via GitHub, cohosted by our friends at CareKit. Now, let's handle some FHIR. Here's how you can get a full-fledged FHIR data model from clinical data that you obtain via the HealthKit API. First, import HealthKit and the DSTU2 library
+
+**[4:43]** from the FHIRModels package. Grab an HKClinicalRecord from HealthKit and its associated HK fhirResource. You can inspect HK fhirResource to know its type. Parse the resource's JSON data to receive, in this case, a MedicationOrder instance. You could then print the note. Let's complicate things a bit by presenting dosage instructions with an associated date range from a deeply nested structure. First, write an extension on TimingRepeat, a type provided by FHIRModels. We want to pull out the start and end dates of the bounds period. In the real world, you would want to make this far more extensive, like check for nullability and use a good old date formatter.
+
+**[5:30]** Then, map over all the prescription's dosage instructions. Use your new extension to prefix the instruction with a date range during which these instructions were valid. Another fun part of FHIR is the fact that different releases are in use out there in the wild. In the fall of 2014, the first draft standard for trial use, DSTU1, was released. It was followed by three more major releases up to today. Soon, release 5 will be let out of the barn. However, as I alluded to, when a new release is published, existing APIs aren't magically updated. You'll likely want to support the more popular releases,
+
+**[6:16]** especially DSTU2, for a few more years. So, let's see how you can support multiple FHIR releases with FHIRModels. First, import the appropriate libraries from FHIRModels. Then, assuming you have a FHIRRelease enum with values for all FHIR releases you want to support, switch over the release and use the JSON decoder with the appropriate model types. Here, we use MedicationOrder for DSTU2 and MedicationRequest for R4. Finally, walk the properties accordingly to arrive at the values you want to extract. This, and much more, is what you can do with FHIRModels. To wrap up, FHIRModels helps you deal with the complexity of FHIR resources
+
+**[7:04]** and even FHIR releases. Use the package when you are working with clinical data obtained via the HealthKit API. Also, take a look at "What's new in CareKit" to see how you can use FHIR with CareKit to build care apps... or, of course, enhance your own independent FHIR apps with the use of this package. Here's what you can do from here. Clone the library, add it to your project and start exploring the code. File issues, even if you just want to provide feedback or ask questions. Get our sample app which shows how you can integrate FHIRModels into an app that uses the HealthKit API. And finally, you can learn more about FHIR and chime in at chat.fhir.org.
+
+**[7:56]** Thank you, and happy coding.

@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-310",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 310,
+  "title": "Build an AppKit app with the new design",
+  "description": "Update your AppKit app to take full advantage of the new design system. We’ll dive into key changes to tab views, split views, bars, presentations, search, and controls, and show you how to use Liquid Glass in your custom UI. To get the most out of this video, we recommend first watching “Get to know the new design system” for general design guidance.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/310",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/310",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [
+    "⚡️"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1348,
+  "hasTranscript": true,
+  "transcriptWordCount": 3314,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/310/5/97dc5fb5-f986-4d12-beb4-c3a389390d36/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/310/5/97dc5fb5-f986-4d12-beb4-c3a389390d36/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/310/5/97dc5fb5-f986-4d12-beb4-c3a389390d36/downloads/wwdc2025-310_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/310/5/97dc5fb5-f986-4d12-beb4-c3a389390d36/downloads/wwdc2025-310_hd.mp4",
+    "duration": 1348
+  },
+  "codeSnippets": [
+    {
+      "title": "Removing toolbar item glass",
+      "language": "swift",
+      "startTimeSeconds": 191,
+      "code": "// Removing toolbar item glass\n\ntoolbarItem.isBordered = false"
+    },
+    {
+      "title": "Tinted toolbar controls",
+      "language": "swift",
+      "startTimeSeconds": 210,
+      "code": "// Tints the glass with the accent color.\ntoolbarItem.style = .prominent\n\n// Tints the glass with a specific color.\ntoolbarItem.backgroundTintColor = .systemGreen"
+    },
+    {
+      "title": "Toolbar badges",
+      "language": "swift",
+      "startTimeSeconds": 238,
+      "code": "// Numeric badge\nNSItemBadge.count(4)\n\n// Text badge\nNSItemBadge.text(\"New\")\n\n// Badge indicator\nNSItemBadge.indicator"
+    },
+    {
+      "title": "Content under the sidebar",
+      "language": "swift",
+      "startTimeSeconds": 325,
+      "code": "// Content under the sidebar\n\nsplitViewItem.automaticallyAdjustsSafeAreaInsets = true"
+    },
+    {
+      "title": "Avoiding a window corner",
+      "language": "swift",
+      "startTimeSeconds": 527,
+      "code": "// Avoiding a window corner\n\n\nfunc updateConstraints() {\n    guard !installedButtonConstraints else { return }\n\n    let safeArea = layoutGuide(for: .safeArea(cornerAdaptation: .horizontal))\n\n    NSLayoutConstraint.activate([\n        safeArea.leadingAnchor.constraint(equalTo: button.leadingAnchor),\n        safeArea.trailingAnchor.constraint(greaterThanOrEqualTo: button.trailingAnchor),\n        safeArea.bottomAnchor.constraint(equalTo: button.bottomAnchor)\n    ])\n    installedButtonConstraints = true\n}"
+    },
+    {
+      "title": "Levels of prominence",
+      "language": "swift",
+      "startTimeSeconds": 931,
+      "code": "// Create buttons with varying levels of prominence\n\n// Prefer a “secondary” tinted appearance for the shuffle and enqueue buttons\nshuffleButton.tintProminence = .secondary\nplayNextButton.tintProminence = .secondary\n\n// The \"play\" will automatically use primary prominence because it is the default button\nplayButton.keyEquivalent = \"\\r\""
+    },
+    {
+      "title": "Adopting NSGlassEffectView",
+      "language": "swift",
+      "startTimeSeconds": 1122,
+      "code": "// Adopting NSGlassEffectView\n\nlet userInfoView = UserInfoView()\nlet activityPickerView = ActivityPickerView()\n\nlet userInfoGlass = NSGlassEffectView()\nuserInfoGlass.contentView = userInfoView\n\nlet activityPickerGlass = NSGlassEffectView()\nactivityPickerGlass.contentView = activityPickerView\n\nlet stack = NSStackView(views: [userInfoGlass, \n                                activityPickerGlass])\nstack.orientation = .horizontal"
+    },
+    {
+      "title": "Adopting NSGlassEffectContainerView",
+      "language": "swift",
+      "startTimeSeconds": 1263,
+      "code": "// Adopting NSGlassEffectContainerView\n\nlet userInfoView = UserInfoView()\nlet activityPickerView = ActivityPickerView()\n\nlet userInfoGlass = NSGlassEffectView()\nuserInfoGlass.contentView = userInfoView\nuserInfoGlass.cornerRadius = 999\n\nlet activityPickerGlass = NSGlassEffectView()\nactivityPickerGlass.contentView = activityPickerView\nactivityPickerGlass.cornerRadius = 999\n\nlet stack = NSStackView(views: [userInfoGlass, \n                                activityPickerGlass])\nstack.orientation = .horizontal\n\nlet glassContainer = NSGlassEffectContainerView()\nglassContainer.contentView = stack"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Adopting Liquid Glass",
+      "url": "https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass",
+      "type": "documentation",
+      "description": "Find out how to bring the new material to your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/TechnologyOverviews/adopting-liquid-glass",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/TechnologyOverviews/adopting-liquid-glass.json"
+    },
+    {
+      "title": "Human Interface Guidelines: Designing for macOS",
+      "url": "https://developer.apple.com/design/Human-Interface-Guidelines/designing-for-macos",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/Human-Interface-Guidelines/designing-for-macos"
+    }
+  ],
+  "path": "sessions/wwdc2025/310/",
+  "files": {
+    "metadata": "sessions/wwdc2025/310/metadata.json",
+    "readme": "sessions/wwdc2025/310/README.md",
+    "transcript": "sessions/wwdc2025/310/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/310/transcript.json"
+  }
+}

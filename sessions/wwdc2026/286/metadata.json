@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2026-286",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 286,
+  "title": "Use foveated streaming to bring immersive content to visionOS",
+  "description": "Find out how foveated streaming delivers remotely rendered scenes to Apple Vision Pro in full fidelity. Explore how this framework combines native visionOS capabilities with third-party streaming technologies completely wirelessly, demonstrated using an OpenXR scene and NVIDIA CloudXR. Learn about the FoveatedStreaming framework, integration with the NVIDIA CloudXR SDK, and how dynamically foveated streaming provides benefits while still preserving privacy.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/286",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/286",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [
+    "3d content",
+    "enterprise",
+    "spatial",
+    "spatial accessories",
+    "spatial computing",
+    "visionos"
+  ],
+  "topics": [
+    "Graphics & Games",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 862,
+  "hasTranscript": true,
+  "transcriptWordCount": 1960,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/286/4/fa302edd-f95a-49f4-b51c-3899d49c6dec/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/286/4/fa302edd-f95a-49f4-b51c-3899d49c6dec/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/286/4/fa302edd-f95a-49f4-b51c-3899d49c6dec/downloads/wwdc2026-286_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/286/4/fa302edd-f95a-49f4-b51c-3899d49c6dec/downloads/wwdc2026-286_hd.mp4",
+    "duration": 862
+  },
+  "codeSnippets": [
+    {
+      "title": "Connect to a streaming endpoint",
+      "language": "swift",
+      "startTimeSeconds": 363,
+      "code": "// Connect to a streaming endpoint\n\nimport SwiftUI\nimport FoveatedStreaming\n\nstruct ConnectView: View {\n    let session: FoveatedStreamingSession\n\n    var body: some View {\n        Button(\"Connect\") {\n            Task {\n                try await session.connect()\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Display a Foveated Streaming session in your immersive space",
+      "language": "swift",
+      "startTimeSeconds": 404,
+      "code": "// Display a Foveated Streaming session in your immersive space\n\nimport SwiftUI\nimport FoveatedStreaming\n\n@main struct FoveatedStreamingSampleApp: App {\n    private let session = FoveatedStreamingSession()\n\n    var body: some SwiftUI.Scene {\n        ImmersiveSpace(foveatedStreaming: session)\n    }\n}"
+    },
+    {
+      "title": "Compose SwiftUI content with Foveated Streaming",
+      "language": "swift",
+      "startTimeSeconds": 415,
+      "code": "// Compose SwiftUI content with Foveated Streaming\n\nimport SwiftUI\nimport FoveatedStreaming\n\n@main struct FoveatedStreamingSampleApp: App {\n    private let session = FoveatedStreamingSession()\n    private let appModel = AppModel()\n\n    var body: some SwiftUI.Scene {\n        Window(\"Main\", id: appModel.mainWindowId) {\n            ContentView(session: session)\n                .environment(appModel)\n                .environment(session)\n                // ...\n        }\n\n        ImmersiveSpace(foveatedStreaming: session) {\n            SpatialContainer {\n                ReopenMainWindowView().environment(appModel)\n                TransformStreamWidgetView().environment(session)\n            }\n        }\n\n    }\n}"
+    },
+    {
+      "title": "Compose RealityKit content with Foveated Streaming",
+      "language": "swift",
+      "startTimeSeconds": 822,
+      "code": "// Compose RealityKit content with Foveated Streaming\n\nimport SwiftUI\nimport RealityKit\nimport FoveatedStreaming\n\n@main struct FoveatedStreamingSampleApp: App {\n    private let session = FoveatedStreamingSession()\n    private let appModel = AppModel()\n\n    var body: some SwiftUI.Scene {\n        ImmersiveSpace(foveatedStreaming: session) {\n            RealityView { content in\n                // ...\n            }\n        }\n\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Analyzing the performance of a foveated streaming session",
+      "url": "https://developer.apple.com/documentation/FoveatedStreaming/analyzing-the-performance-of-a-foveated-streaming-session",
+      "type": "documentation",
+      "description": "Use the Foveated Streaming Statistics instrument to evaluate the performance of your visionOS streaming client app.",
+      "sosumiURL": "https://sosumi.ai/documentation/FoveatedStreaming/analyzing-the-performance-of-a-foveated-streaming-session",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/FoveatedStreaming/analyzing-the-performance-of-a-foveated-streaming-session.json"
+    },
+    {
+      "title": "Establishing foveated streaming sessions with Apple Vision Pro",
+      "url": "https://developer.apple.com/documentation/FoveatedStreaming/establishing-foveated-streaming-sessions-with-apple-vision-pro",
+      "type": "documentation",
+      "description": "Discover, pair, and manage streaming sessions between Apple Vision Pro and local streaming endpoints by implementing the session management connection protocol.",
+      "sosumiURL": "https://sosumi.ai/documentation/FoveatedStreaming/establishing-foveated-streaming-sessions-with-apple-vision-pro",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/FoveatedStreaming/establishing-foveated-streaming-sessions-with-apple-vision-pro.json"
+    },
+    {
+      "title": "Streaming a CloudXR application to Apple Vision Pro with foveation",
+      "url": "https://developer.apple.com/documentation/FoveatedStreaming/streaming-a-cloudxr-application-to-apple-vision-pro-with-foveation",
+      "type": "documentation",
+      "description": "Integrate NVIDIA CloudXR™ and the session management connection protocol into your desktop or cloud application to stream high-fidelity spatial content to Apple Vision Pro.",
+      "sosumiURL": "https://sosumi.ai/documentation/FoveatedStreaming/streaming-a-cloudxr-application-to-apple-vision-pro-with-foveation",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/FoveatedStreaming/streaming-a-cloudxr-application-to-apple-vision-pro-with-foveation.json"
+    },
+    {
+      "title": "Creating a foveated streaming client on visionOS",
+      "url": "https://developer.apple.com/documentation/FoveatedStreaming/creating-a-foveated-streaming-client-on-visionos",
+      "type": "documentation",
+      "description": "Build a visionOS app that streams high-fidelity immersive content from a computer or the cloud using the Foveated Streaming framework.",
+      "sosumiURL": "https://sosumi.ai/documentation/FoveatedStreaming/creating-a-foveated-streaming-client-on-visionos",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/FoveatedStreaming/creating-a-foveated-streaming-client-on-visionos.json"
+    },
+    {
+      "title": "Foveated Streaming",
+      "url": "https://developer.apple.com/documentation/FoveatedStreaming",
+      "type": "documentation",
+      "description": "Foveated Streaming enables visionOS apps to display high-resolution, low-latency immersive content from streaming endpoints.",
+      "sosumiURL": "https://sosumi.ai/documentation/FoveatedStreaming",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/FoveatedStreaming.json"
+    },
+    {
+      "title": "StreamingSession: Streaming immersive content from a CloudXR™ application to visionOS and iOS",
+      "url": "https://github.com/apple/StreamingSession",
+      "type": "documentation",
+      "description": "This repository contains the supplementary materials necessary to support a streaming session, allowing you to connect, pair, and stream an OpenXR experience to a visionOS or iOS device."
+    }
+  ],
+  "path": "sessions/wwdc2026/286/",
+  "files": {
+    "metadata": "sessions/wwdc2026/286/metadata.json",
+    "readme": "sessions/wwdc2026/286/README.md",
+    "transcript": "sessions/wwdc2026/286/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/286/transcript.json"
+  }
+}

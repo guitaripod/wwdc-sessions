@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10106",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10106,
+  "title": "Move beyond passwords",
+  "description": "Despite their prevalence, passwords inherently come with challenges that make them poorly suited to securing someone’s online accounts. Learn more about the challenges passwords pose to modern security and how to move beyond them. Explore the next frontier in account security with secure-by-design, public-key-based credentials that use the Web Authentication standard. Discover in this technology preview how Apple is approaching this standard in iOS 15 and macOS Monterey.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10106",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10106",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "authenticationservices",
+    "icloud keychain",
+    "keychain",
+    "login",
+    "log in",
+    "logon",
+    "log on",
+    "passkey",
+    "passkeys",
+    "password",
+    "passwordless",
+    "passwords",
+    "phishing",
+    "privacy",
+    "safari",
+    "security",
+    "webauthn"
+  ],
+  "topics": [
+    "Safari & Web",
+    "Privacy & Security"
+  ],
+  "primaryTopic": "Privacy & Security",
+  "duration": 1521,
+  "hasTranscript": true,
+  "transcriptWordCount": 3666,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10106/5/CAC0BED2-732C-431A-9764-DA6A1206FE0E/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10106/5/CAC0BED2-732C-431A-9764-DA6A1206FE0E/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10106/5/CAC0BED2-732C-431A-9764-DA6A1206FE0E/downloads/wwdc2021-10106_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10106/5/CAC0BED2-732C-431A-9764-DA6A1206FE0E/downloads/wwdc2021-10106_hd.mp4",
+    "duration": 1521
+  },
+  "codeSnippets": [
+    {
+      "title": "Register an account",
+      "language": "swift",
+      "startTimeSeconds": 1052,
+      "code": "// Register an account\n\nfunc createAccount(with challenge: Data, name: String, userID: Data) {\n    let provider = ASAuthorizationPlatformPublicKeyCredentialProvider(\n            relyingPartyIdentifier: \"example.com\")\n\n    let registrationRequest = provider.createCredentialRegistrationRequest(\n            challenge: challenge, name: name, userID: userID)\n\n    let controller = ASAuthorizationController(\n            authorizationRequests: [ registrationRequest ])\n\n    controller.delegate = …\n    controller.presentationContextProvider = …\n\n    controller.performRequests()\n}"
+    },
+    {
+      "title": "Sign in",
+      "language": "swift",
+      "startTimeSeconds": 1059,
+      "code": "// Sign in\n\nfunc signIn(with challenge: Data) {\n    let provider = ASAuthorizationPlatformPublicKeyCredentialProvider(\n            relyingPartyIdentifier: \"example.com\")\n\n    let assertionRequest = provider.createCredentialAssertionRequest(challenge: challenge)\n\n\n    let controller = ASAuthorizationController(\n            authorizationRequests: [ assertionRequest ])\n\n    controller.delegate = …\n    controller.presentationContextProvider = …\n\n    controller.performRequests()\n}"
+    },
+    {
+      "title": "Handle returned credentials",
+      "language": "swift",
+      "startTimeSeconds": 1061,
+      "code": "// Handle returned credentials\nfunc authorizationController(controller: ASAuthorizationController, \n     didCompleteWithAuthorization authorization: ASAuthorization) {\n    switch authorization.credential {\n        case let registration as ASAuthorizationPlatformPublicKeyCredentialRegistration:\n            let attestationObject = registration.rawAttestationObject\n            let clientDataJSON = registration.rawClientDataJSON\n            // Verify on your server and finish creating the account.\n\n        case let assertion as ASAuthorizationPlatformPublicKeyCredentialAssertion:\n            let signature = assertion.signature\n            let clientDataJSON = assertion.rawClientDataJSON\n            // Verify on your server and finish signing in.\n\n        case …:\n            …\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Connecting to a service with passkeys",
+      "url": "https://developer.apple.com/documentation/AuthenticationServices/connecting-to-a-service-with-passkeys",
+      "type": "samplecode",
+      "description": "Allow users to sign in to a service without typing a password.",
+      "sosumiURL": "https://sosumi.ai/documentation/AuthenticationServices/connecting-to-a-service-with-passkeys",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AuthenticationServices/connecting-to-a-service-with-passkeys.json"
+    },
+    {
+      "title": "Supporting Security Key Authentication Using Physical Keys",
+      "url": "https://developer.apple.com/documentation/AuthenticationServices/supporting-security-key-authentication-using-physical-keys",
+      "type": "guide",
+      "description": "Allow users to authenticate using NFC, USB, and Lightning security keys in your app or service.",
+      "sosumiURL": "https://sosumi.ai/documentation/AuthenticationServices/supporting-security-key-authentication-using-physical-keys",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AuthenticationServices/supporting-security-key-authentication-using-physical-keys.json"
+    },
+    {
+      "title": "Supporting passkeys",
+      "url": "https://developer.apple.com/documentation/AuthenticationServices/supporting-passkeys",
+      "type": "guide",
+      "description": "Eliminate passwords for your users when they sign in to apps and websites.",
+      "sosumiURL": "https://sosumi.ai/documentation/AuthenticationServices/supporting-passkeys",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AuthenticationServices/supporting-passkeys.json"
+    },
+    {
+      "title": "2020 Data Breach Investigations Report",
+      "url": "https://enterprise.verizon.com/resources/reports/dbir/",
+      "type": "documentation",
+      "description": null
+    }
+  ],
+  "path": "sessions/wwdc2021/10106/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10106/metadata.json",
+    "readme": "sessions/wwdc2021/10106/README.md",
+    "transcript": "sessions/wwdc2021/10106/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10106/transcript.json"
+  }
+}

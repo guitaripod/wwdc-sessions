@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10101",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10101,
+  "title": "Discover rolling clips with ReplayKit",
+  "description": "Never again miss anyone's great moment in your game or app. Learn about ReplayKit's latest update — clips screen recording — which provides your app with a rolling buffer of past video and audio samples. When memorable moments happen, discover how you can record and save it for people, and find out how you can surface those clips when they’re most relevant. Lastly, we’ll take you through integrating ReplayKit into your iOS and macOS apps.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10101",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10101",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games",
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 520,
+  "hasTranscript": true,
+  "transcriptWordCount": 1339,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10101/7/50A5D34B-6D32-429A-B737-D3C0C9EB58B8/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10101/7/50A5D34B-6D32-429A-B737-D3C0C9EB58B8/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10101/7/50A5D34B-6D32-429A-B737-D3C0C9EB58B8/downloads/wwdc2021-10101_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10101/7/50A5D34B-6D32-429A-B737-D3C0C9EB58B8/downloads/wwdc2021-10101_hd.mp4",
+    "duration": 520
+  },
+  "codeSnippets": [
+    {
+      "title": "Start clip buffering",
+      "language": "swift",
+      "startTimeSeconds": 319,
+      "code": "// Start clip buffering API call\n\nfunc startClipBuffering() {\n    RPScreenRecorder.shared().startClipBuffering { error in\n        if error != nil {\n            print(\"Error attempting to start Clip Buffering\")\n            // Update the app recording state and UI.\n            self.setClipState(active: false)\n        } else {\n            // No error encountered attempting to start a clip session.\n            // Update the app recording state and UI.\n            self.setClipState(active: true)\n\n            // Set up camera View.\n            self.setupCameraView()\n        }\n    }\n}"
+    },
+    {
+      "title": "Stop clip buffering",
+      "language": "swift",
+      "startTimeSeconds": 346,
+      "code": "// Stop clip buffering\n\nfunc stopClipBuffering() {\n    RPScreenRecorder.shared().stopClipBuffering { error in\n        if error != nil {\n            print(\"Error attempting to stop clip buffering\")\n        }\n        // Update the app recording state and UI.\n        self.setClipState(active: false)\n\n        // Tear down camera view.\n        self.tearDownCameraView()\n    }\n}"
+    },
+    {
+      "title": "Export clip button",
+      "language": "swift",
+      "startTimeSeconds": 373,
+      "code": "// Export clip button\n\n@IBAction func exportClipButtonTapped(_ sender: Any) {\n    // If clip buffering is active, export clip\n    if self.isActive && self.getClipButton.isEnabled {\n        exportClip()\n    }\n}"
+    },
+    {
+      "title": "Export clip",
+      "language": "swift",
+      "startTimeSeconds": 401,
+      "code": "// Export clip\n\nfunc exportClip() {\n    let clipURL = getAppTempDirectory()\n    let interval = TimeInterval(5)\n\n    print(\"Generating clip at URL: \\(clipURL)\")\n    RPScreenRecorder.shared().exportClip(to: clipURL, duration: interval) { error in\n        if error != nil {\n            print(\"Error attempting to export clip\")\n        } else {\n            // No error, so save clip at URL to photos\n            self.saveToPhotos(tempURL: clipURL)\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Recording and Streaming Your macOS App",
+      "url": "https://developer.apple.com/documentation/ReplayKit/recording-and-streaming-your-macos-app",
+      "type": "samplecode",
+      "description": "Share screen recordings, or broadcast live audio and video of your app, by adding ReplayKit to your macOS apps and games.",
+      "sosumiURL": "https://sosumi.ai/documentation/ReplayKit/recording-and-streaming-your-macos-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ReplayKit/recording-and-streaming-your-macos-app.json"
+    },
+    {
+      "title": "ReplayKit",
+      "url": "https://developer.apple.com/documentation/ReplayKit",
+      "type": "documentation",
+      "description": "Record or stream video from the screen, and audio from the app and microphone.",
+      "sosumiURL": "https://sosumi.ai/documentation/ReplayKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ReplayKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10101/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10101/metadata.json",
+    "readme": "sessions/wwdc2021/10101/README.md",
+    "transcript": "sessions/wwdc2021/10101/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10101/transcript.json"
+  }
+}

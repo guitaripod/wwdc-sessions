@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2026-242",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 242,
+  "title": "Build agentic app experiences with the Foundation Models framework",
+  "description": "Learn how to take your intelligence features further with Foundation Models framework primitives for dynamic context and agentic workflows. We’ll walk through engineering shared context, setting up privacy boundaries, and managing key value caching. Discover how to orchestrate smooth handoffs between local and server models.\n",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/242",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/242",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "ai",
+    "machine learning",
+    "xcode"
+  ],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1303,
+  "hasTranscript": true,
+  "transcriptWordCount": 2984,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/242/4/7f05515d-be1a-43a0-9962-a1f77f115666/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/242/4/7f05515d-be1a-43a0-9962-a1f77f115666/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/242/4/7f05515d-be1a-43a0-9962-a1f77f115666/downloads/wwdc2026-242_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/242/4/7f05515d-be1a-43a0-9962-a1f77f115666/downloads/wwdc2026-242_hd.mp4",
+    "duration": 1303
+  },
+  "codeSnippets": [
+    {
+      "title": "DynamicInstructions",
+      "language": "swift",
+      "startTimeSeconds": 304,
+      "code": "// DynamicInstructions\n\nstruct BrainstormFacilitator: DynamicInstructions {\n    var orchestrator: CraftOrchestrator\n    var body: some DynamicInstructions {\n        Instructions {\n            \"You are a warm and friendly expert crafting brainstorm facilitator.\"\n        }\n        // Tools\n        GenerateProjectTitle()\n        // Conditionally include Origami knowledge\n        if orchestrator.techniques.contains(.origami) {\n            OrigamiExpert()\n        }\n    }\n}"
+    },
+    {
+      "title": "DynamicProfile",
+      "language": "swift",
+      "startTimeSeconds": 401,
+      "code": "// DynamicProfile\n\nstruct CraftProfile: LanguageModelSession.DynamicProfile {\n    var orchestrator: CraftOrchestrator\n    var body: some DynamicProfile {\n        switch orchestrator.mode {\n        case .brainstorming:\n            Profile { BrainstormFacilitator(orchestrator: orchestrator) }\n                .model(orchestrator.pccLanguageModel)\n                .temperature(1)\n        case .planning:\n            Profile { TutorialAuthor(orchestrator: orchestrator) }\n                .model(orchestrator.pccLanguageModel)\n                .reasoningLevel(.deep)\n        case .reviewing:\n            Profile { CraftCoach() }\n                .model(orchestrator.systemLanguageModel)\n        }\n    }\n}"
+    },
+    {
+      "title": "Initialize your session with your dynamic profile",
+      "language": "swift",
+      "startTimeSeconds": 403,
+      "code": "// Initialize your session with your dynamic profile\nlet session = LanguageModelSession(profile: CraftProfile(orchestrator: orchestrator))"
+    },
+    {
+      "title": "Transcript management",
+      "language": "swift",
+      "startTimeSeconds": 513,
+      "code": "// Transcript management\n\nstruct CraftProfile: LanguageModelSession.DynamicProfile {\n    var orchestrator: CraftOrchestrator\n    var body: some DynamicProfile {\n        switch orchestrator.mode {\n        case .reviewing:\n            Profile { CraftCoach() }\n                .model(orchestrator.systemLanguageModel)\n                .historyTransform { history in\n                    // Update the history for your profile\n                    guard let latestResponseIndex = lastResponseEntryIndex(history) else {\n                        return history\n                    }\n                    let filteredHistory = history[0..<latestResponseIndex].filter { entry in\n                        isToolCallsOrToolOutput(entry)\n                    }\n                    return filteredHistory + history[latestResponseIndex...]\n                }\n        }\n    }\n}"
+    },
+    {
+      "title": "Custom modifiers",
+      "language": "swift",
+      "startTimeSeconds": 555,
+      "code": "// Custom modifiers\n\nstruct DroppingToolCallsProfileModifier: LanguageModelSession.DynamicProfileModifier {\n    func body(content: Content) -> some DynamicProfile {\n        content\n            .historyTransform { history in\n                guard let latestResponseIndex = lastResponseEntryIndex(history) else {\n                    return history\n                }\n                let filteredHistory = history[0..<latestResponseIndex].filter { entry in\n                    isToolCallsOrToolOutput(entry)\n                }\n                return filteredHistory + history[latestResponseIndex...]\n            }\n    }\n}\n\nextension LanguageModelSession.DynamicProfile {\n    func droppingCompletedToolCalls() -> some DynamicProfile {\n        self.modifier(DroppingToolCallsProfileModifier())\n    }\n}"
+    },
+    {
+      "title": "History management modifiers",
+      "language": "swift",
+      "startTimeSeconds": 567,
+      "code": "// History management modifiers\n\nimport FoundationModelsUtilities\n\nstruct CraftProfile: LanguageModelSession.DynamicProfile {\n    var orchestrator: CraftOrchestrator\n    var body: some DynamicProfile {\n        switch orchestrator.mode {\n        case .reviewing:\n            Profile { CraftCoach() }\n                // Keep the most recent 10 entries\n                // after dropping finished tool calls\n                .rollingWindow(size: .entries(10))\n                .droppingCompletedToolCalls()\n        }\n    }\n}"
+    },
+    {
+      "title": "Lifecycle modifiers",
+      "language": "swift",
+      "startTimeSeconds": 648,
+      "code": "// Lifecycle modifiers\n\nstruct CraftProfile: LanguageModelSession.DynamicProfile {\n    @SessionProperty(\\.history) var history\n    var orchestrator: CraftOrchestrator\n    var body: some DynamicProfile {\n        switch orchestrator.mode {\n        case .planning:\n            Profile { TutorialAuthor(orchestrator: orchestrator) }\n                .model(orchestrator.pccLanguageModel)\n                .reasoningLevel(.deep)\n                .onResponse {\n                    // Update history\n                    if history.count > 50, let responseIndex = lastResponseIndex(history) {\n                        history = history[responseIndex...]\n                    }\n                }\n        }\n    }\n}"
+    },
+    {
+      "title": "Declare a custom session property",
+      "language": "swift",
+      "startTimeSeconds": 700,
+      "code": "// Session properties — declaration\n\nextension SessionPropertyValues {\n    @SessionPropertyEntry var summary: String?\n}"
+    },
+    {
+      "title": "Read and write session properties in a profile",
+      "language": "swift",
+      "startTimeSeconds": 744,
+      "code": "// Session properties\n\nstruct CraftProfile: LanguageModelSession.DynamicProfile {\n    @SessionProperty(\\.history) var history\n    @SessionProperty(\\.summary) var summary\n    var orchestrator: CraftOrchestrator\n    var body: some DynamicProfile {\n        switch orchestrator.mode {\n        case .planning:\n            Profile {\n                TutorialAuthor(orchestrator: orchestrator)\n                if let summary {\n                    Instructions { \"Summary: \\(summary)\" }\n                }\n            }\n            .onResponse {\n                if history.count > 50, let responseIndex = lastResponse(history.prefix(40)) {\n                    summary = try await summarize(history[0..<responseIndex])\n                    history = history[responseIndex...]\n                }\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Orchestration: baton-pass",
+      "language": "swift",
+      "startTimeSeconds": 782,
+      "code": "// Baton-pass\n\nstruct CraftProfile: LanguageModelSession.DynamicProfile {\n    var orchestrator: CraftOrchestrator\n    var body: some DynamicProfile {\n        switch orchestrator.mode {\n        case .brainstorm:\n            Profile {\n                BrainstormInstructions()\n                BatonPassTool()\n            }\n            .onToolCall { orchestrator.mode = .tutorial }\n            .model(orchestrator.serverModel)\n        case .tutorial:\n            Profile {\n                TutorialInstructions()\n                BatonPassTool()\n            }\n            .onToolCall { orchestrator.mode = .brainstorm }\n            .model(orchestrator.systemModel)\n        }\n    }\n}"
+    },
+    {
+      "title": "Orchestration: phone-a-friend",
+      "language": "swift",
+      "startTimeSeconds": 854,
+      "code": "// Phone-a-friend\n\nstruct CraftProfile: LanguageModelSession.DynamicProfile {\n    var body: some DynamicProfile {\n        Profile {\n            BrainstormInstructions()\n            PhoneFriendTool(\n                name: \"generate_title\",\n                description: \"Generate a creative project title\",\n                profile: TitleProfile()\n            )\n        }\n    }\n}\n\nstruct PhoneFriendTool<P: LanguageModelSession.DynamicProfile>: Tool {\n    func call(arguments: GeneratedContent) async throws -> String {\n        let session = LanguageModelSession(profile: profile())\n        let response = try await session.respond(to: arguments)\n        return response.content\n    }\n}"
+    },
+    {
+      "title": "The skills pattern",
+      "language": "swift",
+      "startTimeSeconds": 915,
+      "code": "// The skills pattern\n\nstruct CraftingSkills: LanguageModelSession.DynamicInstructions {\n    var activations: SkillActivations\n    var body: some DynamicInstructions {\n        Skills(activations: activations) {\n            Skill(\n                name: \"origami_folds\",\n                description: \"Details about specific types of folds\",\n                prompt: \"\"\"\n                    Valley Fold: Paper is folded toward you, creating a V-shaped crease\n                    Mountain Fold: Paper is folded away from you, creating an inverted V\n                    ...\n                    \"\"\"\n            )\n            Skill(...)\n            Skill(...)\n        }\n    }\n}"
+    },
+    {
+      "title": "Tool calling mode",
+      "language": "swift",
+      "startTimeSeconds": 931,
+      "code": "// Tool calling mode\n\npublic struct ToolCallingMode: Sendable {\n    public static let allowed: ToolCallingMode\n    public static let disallowed: ToolCallingMode\n    public static let required: ToolCallingMode\n}\n\n// Pass tool calling mode as a profile modifier\nstruct OrigamiExpert: LanguageModelSession.DynamicProfile {\n    var body: some LanguageModelSession.DynamicProfile {\n        Profile {\n            Instructions(\"You are an origami expert\")\n            QueryOrigamiDatabaseTool()\n            ShowDirectionsTool()\n        }\n        .toolCallingMode(.required)\n    }\n}\n\n// Or pass it as a generation option\nlet response = try await session.respond(\n    to: \"Write out the instructions for folding a paper crane.\",\n    options: GenerationOptions(toolCallingMode: .required)\n)"
+    },
+    {
+      "title": "Escaping a tool call loop",
+      "language": "swift",
+      "startTimeSeconds": 1007,
+      "code": "// Escaping a tool call loop\n\nstruct OrigamiExpert: LanguageModelSession.DynamicProfile {\n    let state: OrigamiAppState\n\n    var body: some LanguageModelSession.DynamicProfile {\n        Profile {\n            Instructions(\"Answer questions about how to fold origami\")\n            QueryOrigamiDatabaseTool()\n        }\n        .toolCallingMode(state.queriedDatabase ? .disallowed : .required)\n        .onToolCall { state.queriedDatabase = true }\n    }\n}"
+    },
+    {
+      "title": "Define a tool that throws an error",
+      "language": "swift",
+      "startTimeSeconds": 1017,
+      "code": "// Define a tool that throws an error\n    var output: String?\n\n    @Generable struct Arguments {\n        var answer: String\n    }\n\n    func call(arguments: Arguments) async throws -> Never {\n        output = arguments.answer\n        throw CancellationError()\n    }\n}"
+    },
+    {
+      "title": "Set the transcript error handling policy",
+      "language": "swift",
+      "startTimeSeconds": 1048,
+      "code": "// Specify transcript behavior on a profile\nstruct OrigamiExpert: LanguageModelSession.DynamicProfile {\n    let state: OrigamiAppState\n\n    var body: some LanguageModelSession.DynamicProfile {\n        Profile {\n            Instructions(\"Answer questions about how to fold origami\")\n            QueryOrigamiDatabaseTool()\n        }\n        .transcriptErrorHandlingPolicy(.preserveTranscript)\n    }\n}\n\n// Or specify it on a session\nlet session = LanguageModelSession()\nsession.transcriptErrorHandlingPolicy = .preserveTranscript\n\n// Policy options\nextension LanguageModelSession {\n    public struct TranscriptErrorHandlingPolicy: Sendable {\n        // Roll the transcript back to its previous state\n        public static let revertTranscript: TranscriptErrorHandlingPolicy\n        // Keep the transcript in state following an error\n        public static let preserveTranscript: TranscriptErrorHandlingPolicy\n    }\n}"
+    },
+    {
+      "title": "Transcript mutation",
+      "language": "swift",
+      "startTimeSeconds": 1071,
+      "code": "// Transcript mutation\n\npublic final class LanguageModelSession: Sendable {\n    public var transcriptErrorHandlingPolicy: TranscriptErrorHandlingPolicy { get set }\n\n    // Transcript is now settable\n    public var transcript: Transcript { get set }\n\n    // But you must not modify it during a response!\n    public var isResponding: Bool { get }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Composing dynamic sessions with instructions and profiles",
+      "url": "https://developer.apple.com/documentation/FoundationModels/composing-dynamic-sessions-with-instructions-and-profiles",
+      "type": "documentation",
+      "description": "Adapt sessions dynamically at runtime by loading instructions and tools based",
+      "sosumiURL": "https://sosumi.ai/documentation/FoundationModels/composing-dynamic-sessions-with-instructions-and-profiles",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/FoundationModels/composing-dynamic-sessions-with-instructions-and-profiles.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/242/",
+  "files": {
+    "metadata": "sessions/wwdc2026/242/metadata.json",
+    "readme": "sessions/wwdc2026/242/README.md",
+    "transcript": "sessions/wwdc2026/242/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/242/transcript.json"
+  }
+}

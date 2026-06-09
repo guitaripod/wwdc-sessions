@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "title": "WWDC Session Metadata",
+  "description": "Full structured record for one session: sessions/<event>/<n>/metadata.json.",
+  "type": "object",
+  "required": ["schemaVersion", "id", "event", "title", "url", "hasTranscript", "path", "files"],
+  "properties": {
+    "schemaVersion": { "type": "integer" },
+    "id": { "type": "string", "examples": ["wwdc2026-298"] },
+    "event": { "type": "string", "examples": ["wwdc2026"] },
+    "eventName": { "type": ["string", "null"] },
+    "year": { "type": ["integer", "null"] },
+    "eventContentId": { "type": ["integer", "null"] },
+    "title": { "type": "string" },
+    "description": { "type": ["string", "null"] },
+    "url": { "type": "string", "format": "uri" },
+    "sosumiURL": { "type": ["string", "null"], "format": "uri", "description": "developer.apple.com URL rehosted as Markdown via sosumi.ai." },
+    "type": { "type": ["string", "null"] },
+    "publishedAt": { "type": ["string", "null"] },
+    "platforms": { "type": "array", "items": { "type": "string" } },
+    "keywords": { "type": "array", "items": { "type": "string" } },
+    "topics": { "type": "array", "items": { "type": "string" } },
+    "primaryTopic": { "type": ["string", "null"] },
+    "duration": { "type": ["integer", "null"], "description": "Seconds." },
+    "hasTranscript": { "type": "boolean" },
+    "transcriptWordCount": { "type": "integer" },
+    "availableLanguages": { "type": "array", "items": { "type": "string" } },
+    "media": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "hls": { "type": "string" },
+        "downloadHLS": { "type": "string" },
+        "downloadSD": { "type": "string" },
+        "downloadHD": { "type": "string" },
+        "duration": { "type": "integer" }
+      }
+    },
+    "codeSnippets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code"],
+        "properties": {
+          "title": { "type": ["string", "null"] },
+          "language": { "type": "string" },
+          "startTimeSeconds": { "type": ["number", "null"] },
+          "code": { "type": "string" }
+        }
+      }
+    },
+    "resources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["url"],
+        "properties": {
+          "title": { "type": ["string", "null"] },
+          "url": { "type": "string", "format": "uri" },
+          "type": { "type": ["string", "null"], "examples": ["documentation", "samplecode"] },
+          "description": { "type": ["string", "null"] },
+          "sosumiURL": { "type": "string", "format": "uri", "description": "Markdown mirror of an Apple doc." },
+          "doccJSON": { "type": "string", "format": "uri", "description": "Machine-readable DocC render JSON." }
+        }
+      }
+    },
+    "path": { "type": "string" },
+    "files": {
+      "type": "object",
+      "required": ["metadata", "readme"],
+      "properties": {
+        "metadata": { "type": "string" },
+        "readme": { "type": "string" },
+        "transcript": { "type": "string" },
+        "transcriptJSON": { "type": "string" }
+      }
+    }
+  }
+}

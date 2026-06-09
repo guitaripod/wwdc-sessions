@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10236",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10236,
+  "title": "Host and automate your DocC documentation",
+  "description": "Find out how you can easily host your Swift package and framework DocC documentation online. We’ll take you through configuring your web server to host your generated DocC archives, and help you learn to use the xcodebuild tool to automate documentation generation and keep your web content synchronized and up to date.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10236",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10236",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "catalog",
+    "docc",
+    "documentation",
+    "documentation catalog",
+    "host",
+    "website",
+    "xcodebuild"
+  ],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 831,
+  "hasTranscript": true,
+  "transcriptWordCount": 1867,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10236/6/93E69517-B140-4720-B821-A542F64CC5C8/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10236/6/93E69517-B140-4720-B821-A542F64CC5C8/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10236/6/93E69517-B140-4720-B821-A542F64CC5C8/downloads/wwdc2021-10236_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10236/6/93E69517-B140-4720-B821-A542F64CC5C8/downloads/wwdc2021-10236_hd.mp4",
+    "duration": 831
+  },
+  "codeSnippets": [
+    {
+      "title": "Custom routing in a .htaccess file",
+      "language": "bash",
+      "startTimeSeconds": 289,
+      "code": "# Enable custom routing.\nRewriteEngine On\n\n# Route documentation and tutorial pages.\nRewriteRule ^(documentation|tutorials)\\/.*$ SlothCreator.doccarchive/index.html [L]\n\n# Route files within the documentation archive.\nRewriteRule ^(css|js|data|images|downloads|favicon\\.ico|favicon\\.svg|img|theme-settings\\.json|videos)\\/.*$ SlothCreator.doccarchive/$0 [L]"
+    },
+    {
+      "title": "Build documentation on the command line",
+      "language": "bash",
+      "startTimeSeconds": 557,
+      "code": "# Build documentation for the project.\nxcodebuild docbuild                    \\\n  -scheme \"SlothCreator\"               \\\n  -derivedDataPath MyDerivedDataFolder\n\n# Find all the built documentation archives\n# to copy them to another location.\nfind MyDerivedDataFolder               \\\n  -name \"*.doccarchive\""
+    },
+    {
+      "title": "Build and update the hosted documentation",
+      "language": "bash",
+      "startTimeSeconds": 558,
+      "code": "#!/bin/sh\n\n# Build the SlothCreator documentation.\nxcodebuild docbuild                  \\\n  -scheme \"SlothCreator\"             \\\n  -derivedDataPath MyDerivedDataPath\n\n# Copy the documentation archive to ~/www where we\n# host the SlothCreator website and documentation.\nfind MyDerivedDataPath               \\\n  -name \"*.doccarchive\"              \\\n  -exec cp -R {} ~/www \\;"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Distributing documentation to other developers",
+      "url": "https://developer.apple.com/documentation/Xcode/distributing-documentation-to-other-developers",
+      "type": "guide",
+      "description": "Share your documentation directly with Xcode users or host it on a web server.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/distributing-documentation-to-other-developers",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/distributing-documentation-to-other-developers.json"
+    },
+    {
+      "title": "SlothCreator: Building DocC documentation in Xcode",
+      "url": "https://developer.apple.com/documentation/Xcode/slothcreator-building-docc-documentation-in-xcode",
+      "type": "samplecode",
+      "description": "Build DocC documentation for a Swift package that contains a DocC Catalog.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/slothcreator-building-docc-documentation-in-xcode",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/slothcreator-building-docc-documentation-in-xcode.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10236/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10236/metadata.json",
+    "readme": "sessions/wwdc2021/10236/README.md",
+    "transcript": "sessions/wwdc2021/10236/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10236/transcript.json"
+  }
+}

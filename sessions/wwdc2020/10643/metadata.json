@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10643",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10643,
+  "title": "Build a SwiftUI view in Swift Playgrounds",
+  "description": "Easily prototype and play around with SwiftUI views when you use them with Swift Playgrounds. We’ll show you how to build a SwiftUI view in a Xcode-compatible playground, and explore tools to help you easily edit and preview your code.\n\nFor more on Swift Playgrounds, check out our interactive challenge, “Swan's Quest”, and learn to build your own by watching “Create Swift Playgrounds Content for iPad and Mac”.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10643",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10643",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "ipad",
+    "playgrounds",
+    "swift",
+    "swift playgrounds",
+    "swiftui"
+  ],
+  "topics": [
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 854,
+  "hasTranscript": true,
+  "transcriptWordCount": 2343,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10643/4/1EF945FC-088B-4D21-9838-F7CE638EF399/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10643/4/1EF945FC-088B-4D21-9838-F7CE638EF399/wwdc2020_10643_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10643/4/1EF945FC-088B-4D21-9838-F7CE638EF399/wwdc2020_10643_hd.mp4",
+    "duration": 854
+  },
+  "codeSnippets": [
+    {
+      "title": "Set up for SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 150,
+      "code": "import SwiftUI\nimport PlaygroundSupport"
+    },
+    {
+      "title": "Create a simple SwiftUI view",
+      "language": "swift",
+      "startTimeSeconds": 166,
+      "code": "struct ProgressView: View {\n\n  var body: some View {\n    Text(\"Hello, world!\")\n  }\n\n}"
+    },
+    {
+      "title": "Show a SwiftUI live view",
+      "language": "swift",
+      "startTimeSeconds": 192,
+      "code": "PlaygroundPage.current.setLiveView(ProgressView())"
+    },
+    {
+      "title": "Create a blue circle",
+      "language": "swift",
+      "startTimeSeconds": 241,
+      "code": "Circle()\n\t.stroke(lineWidth: 25)\n\t.foregroundColor(.blue)"
+    },
+    {
+      "title": "Add some padding",
+      "language": "swift",
+      "startTimeSeconds": 306,
+      "code": "ProgressView().padding(150)"
+    },
+    {
+      "title": "Create an empty ZStack",
+      "language": "swift",
+      "startTimeSeconds": 330,
+      "code": "ZStack { }"
+    },
+    {
+      "title": "Add a text view",
+      "language": "swift",
+      "startTimeSeconds": 351,
+      "code": "Text(\"25%\")"
+    },
+    {
+      "title": "Make a struct public",
+      "language": "swift",
+      "startTimeSeconds": 564,
+      "code": "public struct ProgressView: View {"
+    },
+    {
+      "title": "Make a view's body property public",
+      "language": "swift",
+      "startTimeSeconds": 578,
+      "code": "public var body: some View {"
+    },
+    {
+      "title": "Make a view's initializer public",
+      "language": "swift",
+      "startTimeSeconds": 585,
+      "code": "public init(_ progress: Double = 0.3) {"
+    },
+    {
+      "title": "Create another SwiftUI view",
+      "language": "swift",
+      "startTimeSeconds": 612,
+      "code": "struct Preview: View {\n\n  var body: some View {\n    // ...\n  }\n\n}"
+    },
+    {
+      "title": "Create a VStack of progress views",
+      "language": "swift",
+      "startTimeSeconds": 621,
+      "code": "VStack(spacing: 30) {\n  ProgressView()\n  ProgressView()\n}"
+    },
+    {
+      "title": "Add padding to a view",
+      "language": "swift",
+      "startTimeSeconds": 644,
+      "code": ".padding(100)"
+    },
+    {
+      "title": "Add a system background color to a view",
+      "language": "swift",
+      "startTimeSeconds": 651,
+      "code": ".background(Color(UIColor.secondarySystemBackground))"
+    },
+    {
+      "title": "Initialize the Preview view",
+      "language": "swift",
+      "startTimeSeconds": 679,
+      "code": "Preview()"
+    },
+    {
+      "title": "Use an environment modifier to preview dark mode",
+      "language": "swift",
+      "startTimeSeconds": 695,
+      "code": ".environment(\\.colorScheme, .dark)"
+    },
+    {
+      "title": "Create a state variable for tracking progress",
+      "language": "swift",
+      "startTimeSeconds": 732,
+      "code": "@State var progress = 0.25"
+    },
+    {
+      "title": "Pass the progress to the ProgressView initializer",
+      "language": "swift",
+      "startTimeSeconds": 738,
+      "code": "ProgressView(progress)"
+    },
+    {
+      "title": "Create a method for incrementing progress",
+      "language": "swift",
+      "startTimeSeconds": 752,
+      "code": "func increment() {\n  self.progress += 0.25\n}"
+    },
+    {
+      "title": "Add animation to the increment method",
+      "language": "swift",
+      "startTimeSeconds": 760,
+      "code": "func increment() {\n  withAnimation {\n    self.progress += 0.25\n  }\n}"
+    },
+    {
+      "title": "Create a button",
+      "language": "swift",
+      "startTimeSeconds": 772,
+      "code": "Button(action: increment)"
+    },
+    {
+      "title": "Add a text label to a button",
+      "language": "swift",
+      "startTimeSeconds": 781,
+      "code": "Button(action: increment) {\n  Text(\"Increment Progress\")\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2020/10643/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10643/metadata.json",
+    "readme": "sessions/wwdc2020/10643/README.md",
+    "transcript": "sessions/wwdc2020/10643/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10643/transcript.json"
+  }
+}

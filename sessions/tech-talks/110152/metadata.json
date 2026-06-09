@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "id": "tech-talks-110152",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2017,
+  "eventContentId": 110152,
+  "title": "Write clear purpose strings",
+  "description": "Learn how to write clear and succinct purpose strings to help people understand why your app needs access to protected resources like their camera, location, and health data. We’ll take you through best practices to help craft concise purpose strings and show you how you can improve wording in permission requests.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/110152",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/110152",
+  "type": "Video",
+  "publishedAt": "2022-12-01T10:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 637,
+  "hasTranscript": true,
+  "transcriptWordCount": 1743,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/110152/3/E551B6C8-0C14-4CB1-91A9-366D505E4CB3/cmaf.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/110152/3/E551B6C8-0C14-4CB1-91A9-366D505E4CB3/downloads/tech-talks-110152_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/110152/3/E551B6C8-0C14-4CB1-91A9-366D505E4CB3/downloads/tech-talks-110152_hd.mp4",
+    "duration": 637
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Requesting access to protected resources",
+      "url": "https://developer.apple.com/documentation/UIKit/requesting-access-to-protected-resources",
+      "type": "documentation",
+      "description": "Provide a purpose string that explains to a person why you need access to protected resources on their device.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/requesting-access-to-protected-resources",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/requesting-access-to-protected-resources.json"
+    },
+    {
+      "title": "Data Collection and Storage - App Store Review Guidelines",
+      "url": "https://developer.apple.com/app-store/review/guidelines/#data-collection-and-storage",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/app-store/review/guidelines/#data-collection-and-storage"
+    },
+    {
+      "title": "Explore the Human Interface Guidelines for privacy",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/privacy",
+      "type": "documentation",
+      "description": "Explore the Human Interface Guidelines for privacy.",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/privacy"
+    }
+  ],
+  "path": "sessions/tech-talks/110152/",
+  "files": {
+    "metadata": "sessions/tech-talks/110152/metadata.json",
+    "readme": "sessions/tech-talks/110152/README.md",
+    "transcript": "sessions/tech-talks/110152/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/110152/transcript.json"
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10137",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10137,
+  "title": "Improve MDM assignment of Apps and Books",
+  "description": "Discover the Apps and Books Management API and explore how you can assign an organization’s owned apps and books to managed users and devices. Learn about the latest API improvements and find out how you can subscribe to and receive notifications around asset counts, assignments, and registered users in your organization. And discover how you can take advantage of asynchronous processing to significantly reduce the number of requests you need to make for large assignments.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10137",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10137",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Store, Distribution & Marketing",
+    "Business & Education"
+  ],
+  "primaryTopic": "Business & Education",
+  "duration": 931,
+  "hasTranscript": true,
+  "transcriptWordCount": 2335,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10137/7/FB724053-0CDB-4228-A9A7-CA326DC41FBE/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10137/7/FB724053-0CDB-4228-A9A7-CA326DC41FBE/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10137/7/FB724053-0CDB-4228-A9A7-CA326DC41FBE/downloads/wwdc2021-10137_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10137/7/FB724053-0CDB-4228-A9A7-CA326DC41FBE/downloads/wwdc2021-10137_hd.mp4",
+    "duration": 931
+  },
+  "codeSnippets": [
+    {
+      "title": "Asset Management Notification",
+      "language": "json",
+      "startTimeSeconds": 163,
+      "code": "{\n    \"notification\": {\n        \"assignments\": [\n            {\n                \"adamId\": \"408709785\",\n                \"pricingParam\": \"STDQ\",\n                \"serialNumber\": \"C02Y402HLCM6\"\n            },\n            ...\n        ],\n        \"eventId\": \"87cbc650-16cc-4f9e-a833-e622f377a9f7\",\n        \"result\": \"SUCCESS\",\n        \"type\": \"ASSOCIATE\"\n    },\n    \"notificationId\": \"ba8bbb23-44c2-44f6-a928-eff6ba5ffac3\",\n    \"notificationType\": \"ASSET_MANAGEMENT\",\n    \"uId\": \"2049025000431439\"\n}"
+    },
+    {
+      "title": "Get Assets Response",
+      "language": "json",
+      "startTimeSeconds": 279,
+      "code": "{\n    \"assets\": [\n        {\n            \"adamId\": \"408709785\",\n            \"pricingParam\": \"STDQ\",\n            \"assignedCount\": 5000,\n            \"availableCount\": 10000,\n            \"totalCount\": 15000,\n            ...\n        }\n    ],\n    \"currentPageIndex\": 0,\n    \"size\": 1,\n    \"totalPages\": 1,\n    ...\n}"
+    },
+    {
+      "title": "Asset Count Notification",
+      "language": "json",
+      "startTimeSeconds": 309,
+      "code": "{\n    \"notification\": {\n        \"adamId\": \"408709785\",\n        \"countDelta\": 50,\n        \"pricingParam\": \"STDQ\"\n    },\n    \"notificationId\": \"4a7801be-53f0-42e1-9505-81c0d1dc9da3\",\n    \"notificationType\": \"ASSET_COUNT\",\n    \"uId\": \"2049025000431439\"\n}"
+    },
+    {
+      "title": "Get Users Response",
+      "language": "json",
+      "startTimeSeconds": 411,
+      "code": "{\n    \"currentPageIndex\": 0,\n    \"size\": 1,\n    \"totalPages\": 1,\n    \"users\": [\n        {\n            \"clientUserId\": \"client-100\",\n            \"email\": \"client-100@example.com\",\n            \"inviteCode\": \"f551b37da07146628e8dcbe0111f0364\",\n            \"status\": \"Registered\"\n        }\n    ],\n    \"versionId\": \"58507d60-9cd1-11eb-b916-1926dea207f9\",\n    ...\n}"
+    },
+    {
+      "title": "User Management Notification",
+      "language": "json",
+      "startTimeSeconds": 469,
+      "code": "{\n    \"notification\": {\n        \"users\": [\n            {\n                \"clientUserId\": \"client-100\",\n                \"idHash\": \"leSKk3IaE2vk2KLmv2k3/200D3=\",\n                \"status\": \"Associated\",\n                ...\n            },\n            ...\n        ],\n        \"eventId\": \"e0def1f8-9158-4343-9c52-8dd32da50b9b\",\n        \"result\": \"SUCCESS\",\n        \"type\": \"UPDATE\"\n    },\n    \"notificationId\": \"4c0bbb9b-d5a6-4860-83ef-5cf362783c1e\",\n    \"notificationType\": \"USER_MANAGEMENT\",\n    \"uId\": \"2049025000431439\"\n}"
+    },
+    {
+      "title": "User Associated Notification",
+      "language": "json",
+      "startTimeSeconds": 513,
+      "code": "{\n    \"notification\": {\n        \"associatedUsers\": [\n            {\n                \"clientUserId\": \"client-100\",\n                \"idHash\": \"leSKk3IaE2vk2KLmv2k3/200D3=\",\n                \"inviteCode\": \"f551b37da07146628e8dcbe0111f0364\",\n                \"status\": \"Associated\",\n                ...\n            }\n        ]\n    },\n    \"notificationId\": \"90b83144-fb93-4837-9c52-0ae147bdc421\",\n    \"notificationType\": \"USER_ASSOCIATED\",\n    \"uId\": \"2049025000431439\"\n}"
+    },
+    {
+      "title": "Associate Assets Request",
+      "language": "json",
+      "startTimeSeconds": 745,
+      "code": "{\n    \"assets\": [\n      {\n        \"adamId\": \"361309726\",\n        \"pricingParam\": \"STDQ\"\n      },\n      ...\n    ],\n    \"serialNumbers\": [\n      \"serial-1\",\n      ...\n      \"serial-1000\"\n    ]\n}"
+    },
+    {
+      "title": "Associate Assets Response",
+      "language": "json",
+      "startTimeSeconds": 771,
+      "code": "{\n    \"eventId\": \"92467a8e-8a50-4df9-9b30-f7ff4a99dea7\",\n    \"tokenExpirationDate\": \"2021-07-06T14:12:10+0000\",\n    \"uId\": \"2049025000431439\"\n}"
+    },
+    {
+      "title": "Asset Management Notification",
+      "language": "json",
+      "startTimeSeconds": 804,
+      "code": "{\n    \"notification\": {\n        \"assignments\": [\n            {\n                \"adamId\": \"361309726\",\n                \"pricingParam\": \"STDQ\",\n                \"serialNumber\": \"serial-1\"\n            },\n            ...\n        ],\n        \"eventId\": \"92467a8e-8a50-4df9-9b30-f7ff4a99dea7\",\n        \"result\": \"SUCCESS\",\n        \"type\": \"ASSOCIATE\"\n    },\n    ...\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Apple School Manager User Guide",
+      "url": "https://support.apple.com/guide/apple-school-manager/",
+      "type": "documentation",
+      "description": "Apple School Manager User Guide"
+    },
+    {
+      "title": "Apple Business Manager User Guide",
+      "url": "https://support.apple.com/guide/apple-business-manager/",
+      "type": "guide",
+      "description": "Apple Business Manager User Guide"
+    }
+  ],
+  "path": "sessions/wwdc2021/10137/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10137/metadata.json",
+    "readme": "sessions/wwdc2021/10137/README.md",
+    "transcript": "sessions/wwdc2021/10137/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10137/transcript.json"
+  }
+}

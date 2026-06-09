@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10032",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10032,
+  "title": "Meet Assistive Access",
+  "description": "Learn how Assistive Access can help people with cognitive disabilities more easily use iPhone and iPad. Discover the design principles that guide Assistive Access and find out how the system experience adapts to lighten cognitive load. We’ll show you how Assistive Access works and what you can do to support this experience in your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10032",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10032",
+  "type": "Video",
+  "publishedAt": "2023-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Accessibility & Inclusion"
+  ],
+  "primaryTopic": "Accessibility & Inclusion",
+  "duration": 489,
+  "hasTranscript": true,
+  "transcriptWordCount": 1075,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10032/3/A9BDC1BB-32F3-4A51-9207-FFB4C4B235A0/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10032/3/A9BDC1BB-32F3-4A51-9207-FFB4C4B235A0/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10032/3/A9BDC1BB-32F3-4A51-9207-FFB4C4B235A0/downloads/wwdc2023-10032_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10032/3/A9BDC1BB-32F3-4A51-9207-FFB4C4B235A0/downloads/wwdc2023-10032_hd.mp4",
+    "duration": 489
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "UISupportsFullScreenInAssistiveAccess",
+      "url": "https://developer.apple.com/documentation/BundleResources/Information-Property-List/UISupportsFullScreenInAssistiveAccess",
+      "type": "documentation",
+      "description": "A Boolean value that indicates if an iOS or iPadOS app appears as full screen in Assistive Access.",
+      "sosumiURL": "https://sosumi.ai/documentation/BundleResources/Information-Property-List/UISupportsFullScreenInAssistiveAccess",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/BundleResources/Information-Property-List/UISupportsFullScreenInAssistiveAccess.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10032/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10032/metadata.json",
+    "readme": "sessions/wwdc2023/10032/README.md",
+    "transcript": "sessions/wwdc2023/10032/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10032/transcript.json"
+  }
+}

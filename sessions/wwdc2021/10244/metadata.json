@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10244",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10244,
+  "title": "Mitigate fraud with App Attest and DeviceCheck",
+  "description": "Discover how to use App Attest and DeviceCheck, Apple’s powerful anti-fraud tools, created to safeguard your apps and content. Unlock the secrets of deploying App Attest by incorporating it into your app to block unauthorized modifications of your app and content. We'll also show you how to use DeviceCheck to ensure you can distinguish between customers who have received premium content in your app, and those who have attained it through illegitimate means.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10244",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10244",
+  "type": "Video",
+  "publishedAt": "2021-06-11T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "abuse",
+    "aggregator",
+    "appattest",
+    "app clip",
+    "artificial",
+    "assertion",
+    "boost",
+    "cheat",
+    "compromised",
+    "devicecheck",
+    "fake",
+    "fraud",
+    "free trial",
+    "genuine",
+    "islikelyrealuser",
+    "legitimate",
+    "modified",
+    "premium content",
+    "promotion",
+    "protect",
+    "receipt verification",
+    "risk assessment",
+    "safeguard",
+    "safety",
+    "scraping",
+    "secure",
+    "sign in with apple",
+    "trust",
+    "trust &amp; safety",
+    "verified",
+    "verify"
+  ],
+  "topics": [
+    "Privacy & Security"
+  ],
+  "primaryTopic": "Privacy & Security",
+  "duration": 1155,
+  "hasTranscript": true,
+  "transcriptWordCount": 2248,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10244/5/5C0B3E9F-163D-4DCB-AC48-F92DBE33E112/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10244/5/5C0B3E9F-163D-4DCB-AC48-F92DBE33E112/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10244/5/5C0B3E9F-163D-4DCB-AC48-F92DBE33E112/downloads/wwdc2021-10244_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10244/5/5C0B3E9F-163D-4DCB-AC48-F92DBE33E112/downloads/wwdc2021-10244_hd.mp4",
+    "duration": 1155
+  },
+  "codeSnippets": [
+    {
+      "title": "Create an App Attest key",
+      "language": "swift",
+      "startTimeSeconds": 482,
+      "code": "let appAttestService = DCAppAttestService.shared\n\nif appAttestService.isSupported {\n    appAttestService.generateKey { keyId, error in\n        guard error == nil else { /* Handle the error. */ }\n        // Cache keyId for subsequent operations.\n    }\n} else {\n   // Handle fallback as untrusted device\n}"
+    },
+    {
+      "title": "Generate key attestation",
+      "language": "swift",
+      "startTimeSeconds": 574,
+      "code": "appAttestService.attestKey(keyId, clientDataHash: clientDataHash) { attestationObject, error in\n    guard error == nil else { /* Handle error. */ }\n\n    // Send the attestation object to your server for verification.\n}"
+    },
+    {
+      "title": "Generate assertion",
+      "language": "swift",
+      "startTimeSeconds": 794,
+      "code": "appAttestService.generateAssertion(keyId, clientDataHash: clientDataHash) { assertionObject, error in\n    guard error == nil else { /* Handle error. */ }\n\n    // Send assertion object with your data to your server for verification\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Establishing your app’s integrity",
+      "url": "https://developer.apple.com/documentation/DeviceCheck/establishing-your-app-s-integrity",
+      "type": "documentation",
+      "description": "Ensure that requests your server receives come from legitimate instances of your",
+      "sosumiURL": "https://sosumi.ai/documentation/DeviceCheck/establishing-your-app-s-integrity",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/DeviceCheck/establishing-your-app-s-integrity.json"
+    },
+    {
+      "title": "Assessing fraud risk",
+      "url": "https://developer.apple.com/documentation/DeviceCheck/assessing-fraud-risk",
+      "type": "documentation",
+      "description": "Request and analyze risk data using server-to-server calls.",
+      "sosumiURL": "https://sosumi.ai/documentation/DeviceCheck/assessing-fraud-risk",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/DeviceCheck/assessing-fraud-risk.json"
+    },
+    {
+      "title": "Validating apps that connect to your server",
+      "url": "https://developer.apple.com/documentation/DeviceCheck/validating-apps-that-connect-to-your-server",
+      "type": "documentation",
+      "description": "Verify that connections to your server come from legitimate instances of your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/DeviceCheck/validating-apps-that-connect-to-your-server",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/DeviceCheck/validating-apps-that-connect-to-your-server.json"
+    },
+    {
+      "title": "Accessing and modifying per-device data",
+      "url": "https://developer.apple.com/documentation/DeviceCheck/accessing-and-modifying-per-device-data",
+      "type": "documentation",
+      "description": "Use a token from your app to query and modify two per-device binary digits stored",
+      "sosumiURL": "https://sosumi.ai/documentation/DeviceCheck/accessing-and-modifying-per-device-data",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/DeviceCheck/accessing-and-modifying-per-device-data.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10244/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10244/metadata.json",
+    "readme": "sessions/wwdc2021/10244/README.md",
+    "transcript": "sessions/wwdc2021/10244/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10244/transcript.json"
+  }
+}

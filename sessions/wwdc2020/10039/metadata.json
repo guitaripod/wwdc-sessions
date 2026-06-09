@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10039",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10039,
+  "title": "Build document-based apps in SwiftUI",
+  "description": "Learn how to build a document-based app entirely in SwiftUI! We’ll walk you through the DocumentGroup API and how it composes with your App and Scenes, allowing you to add out-of-the-box support for document management — such as document browsing and standard commands — no heavy lifting required. You’ll learn to set up Universal Type Identifiers as well as gain understanding into what makes a top-notch document-based app.\n\nTo get the most out of this session, you should first familiarize yourself with building apps in SwiftUI. Check out \"App essentials in SwiftUI\" to learn more.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10039",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10039",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "document",
+    "document app",
+    "document based app",
+    "document-based apps",
+    "documentgroup",
+    "exportedas",
+    "importedas",
+    "imported type identifier",
+    "windowgroup"
+  ],
+  "topics": [
+    "Swift",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 722,
+  "hasTranscript": true,
+  "transcriptWordCount": 1389,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10039/3/AB4F8C69-7A45-4CDB-A382-7D749ADB0891/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10039/3/AB4F8C69-7A45-4CDB-A382-7D749ADB0891/wwdc2020_10039_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10039/3/AB4F8C69-7A45-4CDB-A382-7D749ADB0891/wwdc2020_10039_hd.mp4",
+    "duration": 722
+  },
+  "codeSnippets": [
+    {
+      "title": "DocumentGroup TextEditor",
+      "language": "swift",
+      "startTimeSeconds": 132,
+      "code": "@main\nstruct TextEdit: App {\n    var body: some Scene {\n        DocumentGroup(newDocument: TextDocument()) { file in\n            TextEditor(text: file.$document.text)\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "DocumentGroup",
+      "url": "https://developer.apple.com/documentation/SwiftUI/DocumentGroup",
+      "type": "documentation",
+      "description": "A scene that enables support for opening, creating, and saving documents.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/DocumentGroup",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/DocumentGroup.json"
+    },
+    {
+      "title": "Uniform Type Identifiers",
+      "url": "https://developer.apple.com/documentation/UniformTypeIdentifiers",
+      "type": "documentation",
+      "description": "Provide uniform type identifiers that describe file types for storage or transfer.",
+      "sosumiURL": "https://sosumi.ai/documentation/UniformTypeIdentifiers",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UniformTypeIdentifiers.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10039/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10039/metadata.json",
+    "readme": "sessions/wwdc2020/10039/README.md",
+    "transcript": "sessions/wwdc2020/10039/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10039/transcript.json"
+  }
+}

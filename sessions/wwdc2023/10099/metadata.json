@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10099",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10099,
+  "title": "Meet RealityKit Trace",
+  "description": "Discover how you can use RealityKit Trace to improve the performance of your spatial computing apps. Explore performance profiling guidelines for this platform and learn how the RealityKit Trace template can help you optimize rendering for your apps. We’ll also provide guidance on profiling various types of content in your app to help pinpoint performance issues.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10099",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10099",
+  "type": "Video",
+  "publishedAt": "2023-06-07T08:00:00-07:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Spatial Computing",
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 1257,
+  "hasTranscript": true,
+  "transcriptWordCount": 3330,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10099/5/3AFC66A2-7703-40D9-BB5A-874A5091FE1A/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10099/5/3AFC66A2-7703-40D9-BB5A-874A5091FE1A/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10099/5/3AFC66A2-7703-40D9-BB5A-874A5091FE1A/downloads/wwdc2023-10099_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10099/5/3AFC66A2-7703-40D9-BB5A-874A5091FE1A/downloads/wwdc2023-10099_hd.mp4",
+    "duration": 1257
+  },
+  "codeSnippets": [
+    {
+      "title": "SwiftUI View with High Offscreens",
+      "language": "swift",
+      "startTimeSeconds": 650,
+      "code": "private struct Item: View {\n    var module: Module\n\n    // The corner radius of the item's hightlight when selected or hovering.\n    let cornerRadius = 20.0\n\n    var body: some View {\n        NavigationLink(value: module) {\n            VStack(alignment: .leading, spacing: 3) {\n                Text(module.eyebrow)\n                    .font(.titleHeading)\n                    .foregroundStyle(.secondary)\n                VStack(alignment: .leading, spacing: 7) {\n                    Text(module.heading)\n                        .font(.largeTitle)\n                    Text(module.abstract)\n                }\n            }\n            .padding(.horizontal, 5)\n            .padding(.vertical, 20)\n        }\n        .buttonStyle(.bordered)\n        .shadow(radius: 10)\n        .buttonBorderShape(.roundedRectangle(radius: cornerRadius))\n        .frame(minWidth: 150, maxWidth: 280)\n    }\n}"
+    },
+    {
+      "title": "EarthEntity Factory",
+      "language": "swift",
+      "startTimeSeconds": 993,
+      "code": "class EarthEntity: Entity {\n    static func makeGlobe() -> EarthEntity {\n        EarthEntity(earthModel: Entity.makeModel(\n            name: \"Earth\",\n            filename: \"Globe\",\n            radius: 0.35,\n            color: .blue)\n        )\n    }\n\n    static func makeCloudyEarth() -> EarthEntity {\n        let earthModel = Entity()\n        earthModel.name = \"Earth\"\n\n        Task {\n            if let scene = await loadFromRealityComposerPro(\n                named: WorldAssets.rootNodeName,\n                fromSceneNamed: WorldAssets.sceneName\n            ) {\n                earthModel.addChild(scene)\n            } else {\n                fatalError(\"Unable to load earth model\")\n            }\n        }\n\n        return EarthEntity(earthModel: earthModel)\n    }\n}"
+    },
+    {
+      "title": "Orbit SwiftUI View Body",
+      "language": "swift",
+      "startTimeSeconds": 1013,
+      "code": "struct Orbit: View {\n    @EnvironmentObject private var model: ViewModel\n\n    var body: some View {\n        Earth(\n            world: EarthEntity.makeGlobe(),\n            earthConfiguration: model.orbitEarth,\n            satelliteConfiguration: [model.orbitSatellite],\n            moonConfiguration: model.orbitMoon,\n\n            showSun: true,\n            sunAngle: model.orbitSunAngle,\n\n            animateUpdates: true\n        )\n        .place(\n            initialPosition: Point3D([475, -1200.0, -1200.0]),\n            useCustomGesture: model.useCustomGesture,\n            handOffset: model.customGestureHandOffset,\n            isCustomGestureAnimated: model.isCustomGestureAnimated,\n            debugCustomGesture: model.debugCustomGesture,\n            scale: $model.orbitEarth.scale)\n    }\n}"
+    },
+    {
+      "title": "SwiftUI ViewModel",
+      "language": "swift",
+      "startTimeSeconds": 1046,
+      "code": "class ViewModel: ObservableObject {\n    // MARK: - Navigation\n    @Published var navigationPath: [Module] = []\n    @Published var titleText: String = \"\"\n    @Published var isTitleFinished: Bool = false\n    var finalTitle: String = \"Hello World\"\n\n    // MARK: - Globe\n    @Published var globeEarthEntity: EarthEntity = .makeGlobe()\n\n    @Published var isShowingGlobe: Bool = false\n    @Published var globeEarth: EarthEntity.Configuration = .globeEarthDefault\n    @Published var globeEarthOffset: SIMD3<Double> = [0, 0, 0]\n    @Published var globePanelOffset: SIMD3<Double> = [0, -50, 30]\n\n    @Published var showSatelliteButton: Bool = false\n    @Published var isShowingSatellite: Bool = false\n\n    // MARK: - Orbit\n    @Published var orbitEarthEntity: EarthEntity = .makeGlobe()\n\n    @Published var useCustomGesture: Bool = true\n    @Published var customGestureHandOffset: SIMD3<Float> = [0, 0.21, -0.07]\n    @Published var isCustomGestureAnimated: Bool = false\n    @Published var debugCustomGesture: Bool = false\n\n    @Published var orbitSatelliteScale: Float = 0.9\n    @Published var orbitMoonScale: Float = 0.9\n    @Published var orbitTelescopeScale: Float = 0.8\n    @Published var orbitSatelliteZOffset: Double = 100\n    @Published var orbitMoonZOffset: Double = 100\n    @Published var orbitTelescopeZOffset: Double = 100\n\n    @Published var isShowingOrbit: Bool = false\n    @Published var orbitImmersionStyle: ImmersionStyle = .mixed\n    @Published var orbitEarth: EarthEntity.Configuration = .orbitEarthDefault\n    @Published var orbitSatellite: SatelliteEntity.Configuration = .orbitSatelliteDefault\n    @Published var orbitMoon: SatelliteEntity.Configuration = .orbitMoonDefault\n\n    @Published var orbitSunAngle: Angle = .degrees(150)\n    var orbitSunAngleBinding: Binding<Float> {\n        Binding<Float>(\n            get: { Float(self.orbitSunAngle.degrees) },\n            set: { self.orbitSunAngle = .degrees(Double($0)) }\n        )\n    }\n\n    // MARK: - Solar System\n    @Published var solarEarthEntity: EarthEntity = .makeCloudyEarth()\n\n    @Published var isShowingSolar: Bool = false\n    @Published var solarImmersionStyle: ImmersionStyle = .full\n    @Published var solarEarth: EarthEntity.Configuration = .solarEarthDefault\n    @Published var solarSatellite: SatelliteEntity.Configuration = .solarTelescopeDefault\n    @Published var solarMoon: SatelliteEntity.Configuration = .solarMoonDefault\n\n    @Published var solarSunDistance: Double = 700\n    @Published var solarSunAngle: Angle = .degrees(280)\n    @Published var solarSunSpotIntensity: Float = 10.5\n    @Published var solarSunEmissionIntensity: Float = 10.5\n    var solarSunPosition: SIMD3<Float> {\n        [Float(solarSunDistance * sin(solarSunAngle.radians)),\n         0,\n         Float(solarSunDistance * cos(solarSunAngle.radians))]\n    }\n}"
+    },
+    {
+      "title": "SwiftUI Orbit View Body",
+      "language": "swift",
+      "startTimeSeconds": 1053,
+      "code": "struct Orbit: View {\n    @EnvironmentObject private var model: ViewModel\n\n    var body: some View {\n        Earth(\n            world: model.globeEarthEntity,\n            earthConfiguration: model.orbitEarth,\n            satelliteConfiguration: [model.orbitSatellite],\n            moonConfiguration: model.orbitMoon,\n\n            showSun: true,\n            sunAngle: model.orbitSunAngle,\n\n            animateUpdates: true\n        )\n        .place(\n            initialPosition: Point3D([475, -1200.0, -1200.0]),\n            useCustomGesture: model.useCustomGesture,\n            handOffset: model.customGestureHandOffset,\n            isCustomGestureAnimated: model.isCustomGestureAnimated,\n            debugCustomGesture: model.debugCustomGesture,\n            scale: $model.orbitEarth.scale)\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Analyzing the performance of your visionOS app",
+      "url": "https://developer.apple.com/documentation/visionOS/analyzing-the-performance-of-your-visionOS-app",
+      "type": "documentation",
+      "description": "Use the RealityKit Trace template in Instruments to evaluate and improve the performance of your visionOS app.",
+      "sosumiURL": "https://sosumi.ai/documentation/visionOS/analyzing-the-performance-of-your-visionOS-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/visionOS/analyzing-the-performance-of-your-visionOS-app.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10099/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10099/metadata.json",
+    "readme": "sessions/wwdc2023/10099/README.md",
+    "transcript": "sessions/wwdc2023/10099/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10099/transcript.json"
+  }
+}

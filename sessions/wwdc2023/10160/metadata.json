@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10160",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10160,
+  "title": "Demystify SwiftUI performance",
+  "description": "Learn how you can build a mental model for performance in SwiftUI and write faster, more efficient code. We’ll share some of the common causes behind performance issues and help you triage hangs and hitches in SwiftUI to create more responsive views in your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10160",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10160",
+  "type": "Video",
+  "publishedAt": "2023-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1308,
+  "hasTranscript": true,
+  "transcriptWordCount": 3752,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10160/4/0FB203F2-03CD-4D44-B33B-C568C5A64F63/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10160/4/0FB203F2-03CD-4D44-B33B-C568C5A64F63/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10160/4/0FB203F2-03CD-4D44-B33B-C568C5A64F63/downloads/wwdc2023-10160_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10160/4/0FB203F2-03CD-4D44-B33B-C568C5A64F63/downloads/wwdc2023-10160_hd.mp4",
+    "duration": 1308
+  },
+  "codeSnippets": [
+    {
+      "title": "DogView",
+      "language": "swift",
+      "startTimeSeconds": 239,
+      "code": "struct DogView: View {\n  @Environment(\\.isPlayTime) private var isPlayTime\n  var dog: Dog\n  var body: some View {\n  \tText(dog.name)\n  \t\t.font(nameFont)\n  \tText(dog.breed)\n  \t\t.font(breedFont)\n  \t\t.foregroundStyle(.secondary)\n\n  \tScalableDogImage(dog)\n\n  \tDogDetailView(dog)\n\n  \tLetsPlayButton()\n  \t\t.disabled(dog.isTired)\n  }\n }\n}"
+    },
+    {
+      "title": "ScalableDogImage",
+      "language": "swift",
+      "startTimeSeconds": 240,
+      "code": "struct ScalableDogImage: View {\n\t@State private var scaleToFill = false\n\tvar dog: Dog\n\n\tvar body: some View {\n\t\tdog.image\n\t\t\t.resizable()\n\t\t\t.aspectRatio(\n\t\t\t\tcontentMode: scaleToFill ? .fill : .fit)\n\t\t\t.frame(maxHeight: scaleToFill ? 500 : nil)\n\t\t\t.padding(.vertical, 16)\n\t\t\t.onTapGesture {\n\t\t\t\twithAnimation { scaleToFill.toggle() }\n\t\t\t}\n\t}\n}"
+    },
+    {
+      "title": "printChanges",
+      "language": "bash",
+      "startTimeSeconds": 241,
+      "code": "expression Self._printChanges()"
+    },
+    {
+      "title": "ScalableDogImage + printChanges",
+      "language": "swift",
+      "startTimeSeconds": 242,
+      "code": "struct ScalableDogImage: View {\n\t@State private var scaleToFill = false\n\tvar dog: Dog\n\n\tvar body: some View {\n    let _ = Self._printChanges()\n\t\tdog.image\n\t\t\t.resizable()\n\t\t\t.aspectRatio(\n\t\t\t\tcontentMode: scaleToFill ? .fill : .fit)\n\t\t\t.frame(maxHeight: scaleToFill ? 500 : nil)\n\t\t\t.padding(.vertical, 16)\n\t\t\t.onTapGesture {\n\t\t\t\twithAnimation { scaleToFill.toggle() }\n\t\t\t}\n\t}\n}"
+    },
+    {
+      "title": "ScaleableDogImage",
+      "language": "swift",
+      "startTimeSeconds": 526,
+      "code": "struct ScalableDogImage: View {\n\t@State private var scaleToFill = false\n\tvar dog: Dog\n\n\tvar body: some View {\n\t\tdog.image\n\t\t\t.resizable()\n\t\t\t.aspectRatio(\n\t\t\t\tcontentMode: scaleToFill ? .fill : .fit)\n\t\t\t.frame(maxHeight: scaleToFill ? 500 : nil)\n\t\t\t.padding(.vertical, 16)\n\t\t\t.onTapGesture {\n\t\t\t\twithAnimation { scaleToFill.toggle() }\n\t\t\t}\n\t}\n}"
+    },
+    {
+      "title": "Updated DogView",
+      "language": "swift",
+      "startTimeSeconds": 527,
+      "code": "struct DogView: View {\n  @Environment(\\.isPlayTime) private var isPlayTime\n  var dog: Dog\n  var body: some View {\n  \tText(dog.name)\n  \t\t.font(nameFont)\n  \tText(dog.breed)\n  \t\t.font(breedFont)\n  \t\t.foregroundStyle(.secondary)\n\n  \tScalableDogImage(dog)\n\n  \tDogDetailView(dog)\n\n  \tLetsPlayButton()\n  \t\t.disabled(dog.isTired)\n  }\n }\n}"
+    },
+    {
+      "title": "Final DogView",
+      "language": "swift",
+      "startTimeSeconds": 528,
+      "code": "struct DogView: View {\n  @Environment(\\.isPlayTime) private var isPlayTime\n  var dog: Dog\n  var body: some View {\n  \tDogHeader(name: dog.name, breed: dog.breed)\n\n  \tScalableDogImage(dog.image)\n\n  \tDogDetailView(dog)\n\n  \tLetsPlayButton()\n  \t\t.disabled(dog.isTired)\n  }\n }\n}"
+    },
+    {
+      "title": "DogRootView and FetchModel",
+      "language": "swift",
+      "startTimeSeconds": 742,
+      "code": "struct DogRootView: View {\n\t@State private var model = FetchModel()\n\n\tvar body: some View {\n\t\tDogList(model.dogs)\n\t}\n}\n\n@Observable class FetchModel {\n\tvar dogs: [Dog]\n\n\tinit() {\n\t\tfetchDogs()\n\t}\n\n\tfunc fetchDogs() {\n\t\t// Takes a long time\n\t}\n}"
+    },
+    {
+      "title": "Updated DogRootView and FetchModel",
+      "language": "swift",
+      "startTimeSeconds": 743,
+      "code": "struct DogRootView: View {\n\t@State private var model = FetchModel()\n\n\tvar body: some View {\n\t\tDogList(model.dogs)\n\t\t\t.task { await model.fetchDogs() }\n\t}\n}\n\n@Observable class FetchModel {\n\tvar dogs: [Dog]\n\n\tinit() {}\n\n\tfunc fetchDogs() async {\n\t\t// Takes a long time\n\t}\n}"
+    },
+    {
+      "title": "List",
+      "language": "swift",
+      "startTimeSeconds": 912,
+      "code": "List {\n\tForEach(dogs) {\n\t\tDogCell(dog: $0)\n\t}\n}"
+    },
+    {
+      "title": "List Again",
+      "language": "swift",
+      "startTimeSeconds": 968,
+      "code": "List {\n\tForEach(dogs) {\n\t\tDogCell(dog: $0)\n\t}\n}"
+    },
+    {
+      "title": "List Fixed",
+      "language": "swift",
+      "startTimeSeconds": 1055,
+      "code": "List {\n\tForEach(tennisBallDogs) { dog in\n\t\tDogCell(dog)\n\t}\n}"
+    },
+    {
+      "title": "Sectioned List",
+      "language": "swift",
+      "startTimeSeconds": 1105,
+      "code": "// Sectioned example\nstruct DogsByToy: View {\n\tvar model: DogModel\n\tvar body: some View {\n\t\tList {\n\t\t\tForEach(model.dogToys) { toy in\n\t\t\t\tSection(toy.name) {\n\t\t\t\t\tForEach(model.dogs(toy: toy)) { dog in\n\t\t\t\t\t\tDogCell(dog)\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}"
+    },
+    {
+      "title": "DogTable",
+      "language": "swift",
+      "startTimeSeconds": 1161,
+      "code": "struct DogTable: View {\n\tvar dogs: [Dog]\n\tvar body: some View {\n\t\tTable(of: Dog.self) {\n\t\t\t// Columns\n\t\t} rows: {\n\t\t\tForEach(dogs) { dog in\n\t\t\t\tTableRow(dog)\n\t\t\t}\n\t\t}\n\t}\n}"
+    },
+    {
+      "title": "DogTable Brief",
+      "language": "swift",
+      "startTimeSeconds": 1162,
+      "code": "struct DogTable: View {\n\tvar dogs: [Dog]\n\tvar body: some View {\n\t\tTable(of: Dog.self) {\n\t\t\t// Columns\n\t\t} rows: {\n\t\t\tForEach(dogs)\n\t\t}\n\t}\n}"
+    },
+    {
+      "title": "DogTable Different IDs",
+      "language": "swift",
+      "startTimeSeconds": 1206,
+      "code": "struct DogTable: View {\n\tvar dogs: [Dog]\n\tvar body: some View {\n\t\tTable(of: Dog.self) {\n\t\t\t// Columns\n\t\t} rows: {\n\t\t\tForEach(dogs) { dog in\n\t\t\t\tTableRow(dog.bestFriend)\n\t\t\t}\n\t\t}\n\t}\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2023/10160/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10160/metadata.json",
+    "readme": "sessions/wwdc2023/10160/README.md",
+    "transcript": "sessions/wwdc2023/10160/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10160/transcript.json"
+  }
+}

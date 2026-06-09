@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-714",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 714,
+  "title": "Network Extensions for the Modern Mac",
+  "description": "Learn about powerful new APIs in macOS that you can use to create apps that extend and customize the networking capabilities of macOS without using kernel extensions.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/714",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/714",
+  "type": "Session",
+  "publishedAt": "2019-06-07T09:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [
+    "extension",
+    "kernel",
+    "network"
+  ],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 2359,
+  "hasTranscript": true,
+  "transcriptWordCount": 5319,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/714kr380j0vbvxv/714/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/714kr380j0vbvxv/714/714_sd_network_extensions_for_the_modern_mac.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/714kr380j0vbvxv/714/714_hd_network_extensions_for_the_modern_mac.mp4",
+    "duration": 2359
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Filtering Network Traffic",
+      "url": "https://developer.apple.com/documentation/NetworkExtension/filtering-network-traffic",
+      "type": "samplecode",
+      "description": "Use the Network Extension framework to allow or deny network connections.",
+      "sosumiURL": "https://sosumi.ai/documentation/NetworkExtension/filtering-network-traffic",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/NetworkExtension/filtering-network-traffic.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/714/",
+  "files": {
+    "metadata": "sessions/wwdc2019/714/metadata.json",
+    "readme": "sessions/wwdc2019/714/README.md",
+    "transcript": "sessions/wwdc2019/714/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/714/transcript.json"
+  }
+}

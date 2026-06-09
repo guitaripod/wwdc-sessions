@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10254",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10254,
+  "title": "Swift concurrency: Behind the scenes",
+  "description": "Dive into the details of Swift concurrency and discover how Swift provides greater safety from data races and thread explosion while simultaneously improving performance. We’ll explore how Swift tasks differ from Grand Central Dispatch, how the new cooperative threading model works, and how to ensure the best performance for your apps.\n\nTo get the most out of this session, we recommend first watching “Meet async/await in Swift,” “Explore structured concurrency in Swift,” and “Protect mutable state with Swift actors.”",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10254",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10254",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "actors",
+    "async",
+    "await",
+    "continuation",
+    "dispatchqueue",
+    "feed",
+    "gcd",
+    "heap",
+    "hopping",
+    "newsfeed",
+    "pool",
+    "queue",
+    "reader",
+    "stack",
+    "threads"
+  ],
+  "topics": [
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 2358,
+  "hasTranscript": true,
+  "transcriptWordCount": 5629,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10254/5/3F33D18D-8193-437C-A413-0281E15A1DDA/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10254/5/3F33D18D-8193-437C-A413-0281E15A1DDA/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10254/5/3F33D18D-8193-437C-A413-0281E15A1DDA/downloads/wwdc2021-10254_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10254/5/3F33D18D-8193-437C-A413-0281E15A1DDA/downloads/wwdc2021-10254_hd.mp4",
+    "duration": 2358
+  },
+  "codeSnippets": [
+    {
+      "title": "GCD code with hidden performance pitfalls",
+      "language": "swift",
+      "startTimeSeconds": 297,
+      "code": "func deserializeArticles(from data: Data) throws -> [Article] { /* ... */ }\nfunc updateDatabase(with articles: [Article], for feed: Feed) { /* ... */ }\n\nlet urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: concurrentQueue)\n\nfor feed in feedsToUpdate {\n    let dataTask = urlSession.dataTask(with: feed.url) { data, response, error in\n        // ...\n        guard let data = data else { return }\n        do {\n            let articles = try deserializeArticles(from: data)\n            databaseQueue.sync {\n                updateDatabase(with: articles, for: feed)\n            }\n        } catch { /* ... */ }\n    }\n    dataTask.resume()\n}"
+    },
+    {
+      "title": "Swift concurrency equivalent using a task group",
+      "language": "swift",
+      "startTimeSeconds": 798,
+      "code": "func deserializeArticles(from data: Data) throws -> [Article] { /* ... */ }\nfunc updateDatabase(with articles: [Article], for feed: Feed) async { /* ... */ }\n\nawait withThrowingTaskGroup(of: [Article].self) { group in\n    for feed in feedsToUpdate {\n        group.async {\n            let (data, response) = try await URLSession.shared.data(from: feed.url)\n            // ...\n            let articles = try deserializeArticles(from: data)\n            await updateDatabase(with: articles, for: feed)\n            return articles\n        }\n    }\n}"
+    },
+    {
+      "title": "Async functions: stack frames and async frames",
+      "language": "swift",
+      "startTimeSeconds": 916,
+      "code": "// on Database\nfunc save(_ newArticles: [Article], for feed: Feed) async throws -> [ID] { /* ... */ }\n\n// on Feed\nfunc add(_ newArticles: [Article]) async throws {\n    let ids = try await database.save(newArticles, for: self)\n    for (id, article) in zip(ids, newArticles) {\n        articles[id] = article\n    }\n}\n\nfunc updateDatabase(with articles: [Article], for feed: Feed) async throws {\n    // skip old articles ...\n    try await feed.add(articles)\n}"
+    },
+    {
+      "title": "Excessive context switching due to Main actor hoppping",
+      "language": "swift",
+      "startTimeSeconds": 2233,
+      "code": "// on database actor\nfunc loadArticle(with id: ID) async throws -> Article { /* ... */ }\n\n@MainActor func updateUI(for article: Article) async { /* ... */ }\n\n@MainActor func updateArticles(for ids: [ID]) async throws {\n    for id in ids {\n        let article = try await database.loadArticle(with: id)\n        await updateUI(for: article)\n    }\n}"
+    },
+    {
+      "title": "Batch UI work to reduce the number of context switches",
+      "language": "swift",
+      "startTimeSeconds": 2298,
+      "code": "// on database actor\nfunc loadArticles(with ids: [ID]) async throws -> [Article]\n\n@MainActor func updateUI(for articles: [Article]) async\n\n@MainActor func updateArticles(for ids: [ID]) async throws {\n    let articles = try await database.loadArticles(with: ids)\n    await updateUI(for: articles)\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "The Swift Programming Language: Concurrency",
+      "url": "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency/",
+      "type": "guide",
+      "description": "The chapter of the Language Guide in The Swift Programming Language that covers asynchronous and parallel code, including asynchronous functions (async/await), asynchronous sequences (AsyncSequence), async let, tasks, task groups, and actors."
+    }
+  ],
+  "path": "sessions/wwdc2021/10254/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10254/metadata.json",
+    "readme": "sessions/wwdc2021/10254/README.md",
+    "transcript": "sessions/wwdc2021/10254/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10254/transcript.json"
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-302",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 302,
+  "title": "In-App Purchases and Using Server-to-Server Notifications",
+  "description": "Learn about the latest updates in StoreKit and dive deep into best practices for using server-to-server notifications to manage your subscribers.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/302",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/302",
+  "type": "Session",
+  "publishedAt": "2019-06-07T11:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "in-app purchase",
+    "storekit",
+    "subscriptions"
+  ],
+  "topics": [
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 3017,
+  "hasTranscript": true,
+  "transcriptWordCount": 7194,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/302e9g1j6q9w575y3/302/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/302e9g1j6q9w575y3/302/302_sd_inapp_purchases_and_using_servertoserver_notifications.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/302e9g1j6q9w575y3/302/302_hd_inapp_purchases_and_using_servertoserver_notifications.mp4",
+    "duration": 3017
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Enabling App Store Server Notifications",
+      "url": "https://developer.apple.com/documentation/StoreKit/enabling-app-store-server-notifications",
+      "type": "documentation",
+      "description": "Configure your server and provide an HTTPS URL to receive notifications about in-app purchase events and unreported external purchase tokens.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/enabling-app-store-server-notifications",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/enabling-app-store-server-notifications.json"
+    },
+    {
+      "title": "SKStorefront",
+      "url": "https://developer.apple.com/documentation/StoreKit/SKStorefront",
+      "type": "documentation",
+      "description": "An object containing the location and unique identifier of an Apple App Store storefront.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/SKStorefront",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/SKStorefront.json"
+    },
+    {
+      "title": "Original API for In-App Purchase",
+      "url": "https://developer.apple.com/documentation/StoreKit/original-api-for-in-app-purchase",
+      "type": "documentation",
+      "description": "Offer additional content and services in your app using the Original In-App Purchase API.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/original-api-for-in-app-purchase",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/original-api-for-in-app-purchase.json"
+    },
+    {
+      "title": "Auto-renewable subscriptions overview",
+      "url": "https://developer.apple.com/app-store/subscriptions/",
+      "type": "documentation",
+      "description": "Auto-Renewable Subscriptions",
+      "sosumiURL": "https://sosumi.ai/app-store/subscriptions/"
+    },
+    {
+      "title": "In-App Purchase Programming Guide",
+      "url": "https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/StoreKitGuide",
+      "type": "guide",
+      "description": "Describes how to use the Store Kit API to embed a store inside an app.",
+      "sosumiURL": "https://sosumi.ai/library/content/documentation/NetworkingInternet/Conceptual/StoreKitGuide"
+    }
+  ],
+  "path": "sessions/wwdc2019/302/",
+  "files": {
+    "metadata": "sessions/wwdc2019/302/metadata.json",
+    "readme": "sessions/wwdc2019/302/README.md",
+    "transcript": "sessions/wwdc2019/302/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/302/transcript.json"
+  }
+}

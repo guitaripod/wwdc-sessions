@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10089",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10089,
+  "title": "Explore Verifiable Health Records",
+  "description": "Find out how you can securely request access to someone’s verifiable health records and incorporate that data safely into your app. The Health app helps people download, view, and share their health records, including their COVID-19 immunization and test results — and iOS 15 brings support for the SMART Health Card, a verifiable health record that incorporates the FHIR health data standard. We’ll show you how your app can go about requesting access to this record and how you can verify the signature of the file using CryptoKit and the issuer’s public key.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10089",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10089",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "healthkit",
+    "privacy"
+  ],
+  "topics": [
+    "Privacy & Security",
+    "Health & Fitness"
+  ],
+  "primaryTopic": "Health & Fitness",
+  "duration": 1104,
+  "hasTranscript": true,
+  "transcriptWordCount": 2738,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10089/4/9DC55E07-91AA-4A4C-860B-E447648389FB/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10089/4/9DC55E07-91AA-4A4C-860B-E447648389FB/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10089/4/9DC55E07-91AA-4A4C-860B-E447648389FB/downloads/wwdc2021-10089_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10089/4/9DC55E07-91AA-4A4C-860B-E447648389FB/downloads/wwdc2021-10089_hd.mp4",
+    "duration": 1104
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "HKVerifiableClinicalRecordQuery",
+      "url": "https://developer.apple.com/documentation/HealthKit/HKVerifiableClinicalRecordQuery",
+      "type": "documentation",
+      "description": "A query for one-time access to a SMART Health Card or EU Digital COVID Certificate.",
+      "sosumiURL": "https://sosumi.ai/documentation/HealthKit/HKVerifiableClinicalRecordQuery",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HealthKit/HKVerifiableClinicalRecordQuery.json"
+    },
+    {
+      "title": "HKVerifiableClinicalRecord",
+      "url": "https://developer.apple.com/documentation/HealthKit/HKVerifiableClinicalRecord",
+      "type": "documentation",
+      "description": "A sample that represents the contents of a SMART Health Card or EU Digital COVID Certificate.",
+      "sosumiURL": "https://sosumi.ai/documentation/HealthKit/HKVerifiableClinicalRecord",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HealthKit/HKVerifiableClinicalRecord.json"
+    },
+    {
+      "title": "Accessing Data from a SMART Health Card",
+      "url": "https://developer.apple.com/documentation/HealthKit/accessing-data-from-a-smart-health-card",
+      "type": "samplecode",
+      "description": "Query for and validate a verifiable clinical record.",
+      "sosumiURL": "https://sosumi.ai/documentation/HealthKit/accessing-data-from-a-smart-health-card",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HealthKit/accessing-data-from-a-smart-health-card.json"
+    },
+    {
+      "title": "Accessing a User’s Clinical Records",
+      "url": "https://developer.apple.com/documentation/HealthKit/accessing-a-user-s-clinical-records",
+      "type": "samplecode",
+      "description": "Request authorization to query HealthKit for a user’s clinical records and display them in your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/HealthKit/accessing-a-user-s-clinical-records",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HealthKit/accessing-a-user-s-clinical-records.json"
+    },
+    {
+      "title": "Accessing Health Records",
+      "url": "https://developer.apple.com/documentation/HealthKit/accessing-health-records",
+      "type": "guide",
+      "description": "Read clinical record data from the HealthKit store.",
+      "sosumiURL": "https://sosumi.ai/documentation/HealthKit/accessing-health-records",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HealthKit/accessing-health-records.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10089/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10089/metadata.json",
+    "readme": "sessions/wwdc2021/10089/README.md",
+    "transcript": "sessions/wwdc2021/10089/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10089/transcript.json"
+  }
+}

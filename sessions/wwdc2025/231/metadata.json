@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-231",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 231,
+  "title": "Meet WebKit for SwiftUI",
+  "description": "Discover how you can use WebKit to effortlessly integrate web content into your SwiftUI apps. Learn how to load and display web content, communicate with webpages, and more.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/231",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/231",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "browser",
+    "css",
+    "javascript",
+    "webkit"
+  ],
+  "topics": [
+    "Safari & Web",
+    "SwiftUI & UI Frameworks",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1319,
+  "hasTranscript": true,
+  "transcriptWordCount": 3179,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/231/5/b6c4d9dc-8351-437b-bc3b-95372381cf23/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/231/5/b6c4d9dc-8351-437b-bc3b-95372381cf23/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/231/5/b6c4d9dc-8351-437b-bc3b-95372381cf23/downloads/wwdc2025-231_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/231/5/b6c4d9dc-8351-437b-bc3b-95372381cf23/downloads/wwdc2025-231_hd.mp4",
+    "duration": 1319
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "SwiftUI",
+      "url": "https://developer.apple.com/documentation/SwiftUI",
+      "type": "documentation",
+      "description": "Declare the user interface and behavior for your app on every platform.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/231/",
+  "files": {
+    "metadata": "sessions/wwdc2025/231/metadata.json",
+    "readme": "sessions/wwdc2025/231/README.md",
+    "transcript": "sessions/wwdc2025/231/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/231/transcript.json"
+  }
+}

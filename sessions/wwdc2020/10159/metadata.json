@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10159",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10159,
+  "title": "Build an Endpoint Security app",
+  "description": "System Extensions improve the reliability and security of macOS. Learn about the modern replacement for Kernel Authorization KPIs and discover tips for making a great security product with the Endpoint Security framework.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10159",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10159",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [
+    "kauth",
+    "kernel",
+    "security"
+  ],
+  "topics": [
+    "Privacy & Security",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 2495,
+  "hasTranscript": true,
+  "transcriptWordCount": 6872,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10159/7/8B7397DB-B3A9-48C8-A9B7-2F8512EFDB29/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10159/7/8B7397DB-B3A9-48C8-A9B7-2F8512EFDB29/wwdc2020_10159_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10159/7/8B7397DB-B3A9-48C8-A9B7-2F8512EFDB29/wwdc2020_10159_hd.mp4",
+    "duration": 2495
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Monitoring System Events with Endpoint Security",
+      "url": "https://developer.apple.com/documentation/EndpointSecurity/monitoring-system-events-with-endpoint-security",
+      "type": "samplecode",
+      "description": "Receive notifications and authorization requests for sensitive operations by creating an Endpoint Security client for your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/EndpointSecurity/monitoring-system-events-with-endpoint-security",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/EndpointSecurity/monitoring-system-events-with-endpoint-security.json"
+    },
+    {
+      "title": "System Extensions and DriverKit",
+      "url": "https://developer.apple.com/system-extensions/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/system-extensions/"
+    }
+  ],
+  "path": "sessions/wwdc2020/10159/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10159/metadata.json",
+    "readme": "sessions/wwdc2020/10159/README.md",
+    "transcript": "sessions/wwdc2020/10159/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10159/transcript.json"
+  }
+}

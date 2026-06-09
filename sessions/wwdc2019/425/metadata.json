@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-425",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 425,
+  "title": "Training Sound Classification Models in Create ML",
+  "description": "Learn how to quickly and easily create Core ML models capable of classifying the sounds heard in audio files and live audio streams. In addition to providing you the ability to train and evaluate these models, the Create ML app allows you to test the model performance in real-time using the microphone on your Mac. Leverage these on-device models in your app using the new Sound Analysis framework.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/425",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/425",
+  "type": "Video",
+  "publishedAt": "2019-06-05T09:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "ai",
+    "artificial intelligence",
+    "audio",
+    "classifier",
+    "core ml",
+    "create ml",
+    "machine learning",
+    "sound",
+    "training"
+  ],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1211,
+  "hasTranscript": true,
+  "transcriptWordCount": 2697,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/425bfacxsewtyh8uye5/425/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/425bfacxsewtyh8uye5/425/425_sd_training_sound_classification_models_in_create_ml.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/425bfacxsewtyh8uye5/425/425_hd_training_sound_classification_models_in_create_ml.mp4",
+    "duration": 1211
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Classifying Sounds in an Audio Stream",
+      "url": "https://developer.apple.com/documentation/SoundAnalysis/classifying-sounds-in-an-audio-stream",
+      "type": "documentation",
+      "description": "Identify individual sounds in an audio data stream, such as from a microphone, with an audio stream analyzer.",
+      "sosumiURL": "https://sosumi.ai/documentation/SoundAnalysis/classifying-sounds-in-an-audio-stream",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SoundAnalysis/classifying-sounds-in-an-audio-stream.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/425/",
+  "files": {
+    "metadata": "sessions/wwdc2019/425/metadata.json",
+    "readme": "sessions/wwdc2019/425/README.md",
+    "transcript": "sessions/wwdc2019/425/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/425/transcript.json"
+  }
+}

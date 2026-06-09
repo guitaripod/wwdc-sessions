@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-605",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 605,
+  "title": "Building Apps with RealityKit",
+  "description": "Gain a practical understanding of RealityKit capabilities by developing a game using its easy-to-learn API. Learn the recommended approach for loading assets, building a scene, applying animations, and handling game input. See how entities and components express the powerful elements of RealityKit while providing flexibility for customization. Find out how to take advantage of built-in networking and get details about extending the game into an immersive muliti-player experience.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/605",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/605",
+  "type": "Session",
+  "publishedAt": "2019-06-05T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 2387,
+  "hasTranscript": true,
+  "transcriptWordCount": 6745,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/605a9razz1cphz/605/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/605a9razz1cphz/605/605_sd_building_apps_with_realitykit.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/605a9razz1cphz/605/605_hd_building_apps_with_realitykit.mp4",
+    "duration": 2387
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "RealityKit",
+      "url": "https://developer.apple.com/documentation/RealityKit",
+      "type": "documentation",
+      "description": "Simulate and render 3D content for use in your augmented reality apps.",
+      "sosumiURL": "https://sosumi.ai/documentation/RealityKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/RealityKit.json"
+    },
+    {
+      "title": "ARKit",
+      "url": "https://developer.apple.com/documentation/ARKit",
+      "type": "documentation",
+      "description": "Integrate hardware sensing features to produce augmented reality apps and games.",
+      "sosumiURL": "https://sosumi.ai/documentation/ARKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ARKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/605/",
+  "files": {
+    "metadata": "sessions/wwdc2019/605/metadata.json",
+    "readme": "sessions/wwdc2019/605/README.md",
+    "transcript": "sessions/wwdc2019/605/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/605/transcript.json"
+  }
+}

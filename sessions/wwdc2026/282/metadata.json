@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2026-282",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 282,
+  "title": "Discover the Spatial Preview framework",
+  "description": "Check out how the new Spatial Preview framework brings content from your Mac directly into visionOS. Discover how to build dynamic workflows with live-syncing and bidirectional editing across both platforms. Learn about the SpatialPreview API, device discovery, 2D and 3D session integration, and new Quick Look capabilities to elevate your Mac apps spatially.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/282",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/282",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "3d",
+    "3d content",
+    "document preview",
+    "mac virtual display",
+    "quick look",
+    "shareplay",
+    "spatial computing",
+    "spatial preview",
+    "usd",
+    "usdkit",
+    "usdz",
+    "visionos"
+  ],
+  "topics": [
+    "Graphics & Games",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 885,
+  "hasTranscript": true,
+  "transcriptWordCount": 2409,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/282/5/958c34c9-f20e-4c6d-826a-eeed7ce7ba9e/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/282/5/958c34c9-f20e-4c6d-826a-eeed7ce7ba9e/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/282/5/958c34c9-f20e-4c6d-826a-eeed7ce7ba9e/downloads/wwdc2026-282_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/282/5/958c34c9-f20e-4c6d-826a-eeed7ce7ba9e/downloads/wwdc2026-282_hd.mp4",
+    "duration": 885
+  },
+  "codeSnippets": [
+    {
+      "title": "Document Preview Session with Device Picker",
+      "language": "swift",
+      "startTimeSeconds": 238,
+      "code": "// Send and update documents using the Spatial Preview framework\n\nimport SwiftUI\nimport SpatialPreview\nlet deviceObserver = ConnectedSpatialEndpointObserver()\n\nlet previewSession = DocumentPreviewSession(name: \"Immersive.aivu\", contentType: .aivu)\n\nfunc startPreview(contentURL: URL, endpoint: SpatialPreviewEndpoint) async throws {\n    let endpoint = try await deviceObserver.endpoint\n    try await previewSession.start(endpoint: endpoint)\n    try await previewSession.updateContents(url: contentURL)\n}\n\n@State var showDevicePicker: Bool = false\n\nvar body: some View {\n    ...\n    .sheet(isPresented: $showDevicePicker) {\n        SpatialPreviewDevicePicker(isPresented: $showDevicePicker) { endpoint in\n            showDevicePicker = false\n            Task {\n                try await startPreview(filename: filename, endpoint: endpoint)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Update Document Contents",
+      "language": "swift",
+      "startTimeSeconds": 320,
+      "code": "// Send and update documents using the Spatial Preview framework\n\nimport SwiftUI\nimport SpatialPreview\n\nForEach(contentURLs, id: \\.self) { url in\n    Button {\n        Task { try await previewSession?.updateContents(url: url) }\n    }\n}\n.task(id: previewSession.map { ObjectIdentifier($0) }) {\n    for await state in Observations({ session.state }) {\n        if state.isInvalidated {\n            previewSession = nil\n            break\n        }\n    }\n}\n\ntry await previewSession?.close()"
+    },
+    {
+      "title": "Edit USD Live",
+      "language": "swift",
+      "startTimeSeconds": 456,
+      "code": "// Edit USD live using USDKit and Spatial Preview\n\nimport SpatialPreview\nimport USDKit\n\nlet deviceObserver = ConnectedSpatialEndpointObserver()\n\nvar usdSession: USDPreviewSession?\n\nfunc shareStage(to endpoint: SpatialPreviewEndpoint) async throws -> USDPreviewSession {\n    let endpoint = try await deviceObserver.endpoint\n\n    let stageURL = Bundle.main.url(forResource: \"sampleScene\", withExtension: \"usdz\")\n    let stage = try USDStage.open(stageURL)\n    usdSession = USDPreviewSession(stage: stage)\n\n    try await usdSession?.start(endpoint: endpoint)\n}"
+    },
+    {
+      "title": "Opt out of optimization",
+      "language": "swift",
+      "startTimeSeconds": 536,
+      "code": "// Optimization\n\nimport SpatialPreview\n\n\n\n\nlet endpoint = try await deviceObserver.endpoint\ndo {\n    try await usdSession.start(endpoint: endpoint, parameters: .unmodified)\n} catch USDPreviewSession.Error.assetUnshareable {\n    // Handle Asset Unshareable error\n}"
+    },
+    {
+      "title": "USD Layout Variants",
+      "language": "swift",
+      "startTimeSeconds": 610,
+      "code": "// LayoutVariants.usda\n#usda 1.0\nover \"furniture\" (\n    variantSets = \"Layout\"\n    variants = { string Layout = \"LayoutA\" }\n)\n{\n    variantSet \"Layout\" = {\n        \"LayoutA\" {\n            // Default furniture position and rotation\n        }\n        \"LayoutB\" {\n            // Moves furniture prims to a different position and rotation\n        }\n        ...\n    }\n}"
+    },
+    {
+      "title": "Edit USD live using USDKit and Spatial Preview",
+      "language": "swift",
+      "startTimeSeconds": 617,
+      "code": "// Edit USD live using USDKit and Spatial Preview\n\nimport SpatialPreview\nimport USDKit\n\nfunc applyLayoutVariant(named layoutVariantName: String) throws {\n    let prim = stage.prim(at: SdfPath(\"/root/furniture\"))\n    try prim.variantSets?.setSelection(\"Layout\", variantName: layoutVariantName)\n}"
+    },
+    {
+      "title": "USD Stage Observations",
+      "language": "swift",
+      "startTimeSeconds": 649,
+      "code": "// Edit USD live using Spatial Preview\n\nimport SpatialPreview\nimport USDKit\n\nlet observerToken: ObservationToken\n\nobserverToken = stage.addObserver(for: UsdStage.ObjectsDidChange.self) { notice in\n    for path in notice.resyncedPaths {\n        let prim = notice.stage.prim(at: path)\n        guard prim.isValid else { continue }\n        if prim.isAnnotation {\n            // Handle annotation change\n            break\n        }\n    }\n}"
+    },
+    {
+      "title": "Annotation Spec",
+      "language": "swift",
+      "startTimeSeconds": 673,
+      "code": "// Annotation spec example\n\nAppleTextAnnotation {\n    // The textual representation of this annotation\n    string text\n\n    // The identifier for this specific author\n    uniform string author\n\n    // An identifier that is unique to your data tracking system\n    uniform string identifier\n}\n\n/__documentAnnotationGroup__"
+    },
+    {
+      "title": "Metadata for Object Manipulation",
+      "language": "swift",
+      "startTimeSeconds": 693,
+      "code": "// Metadata required for object manipulation in Quick Look\n\ncustomData = {\n    dictionary apple = {\n        bool spatialEditable = 1\n    }\n}"
+    },
+    {
+      "title": "Session Options and Events",
+      "language": "swift",
+      "startTimeSeconds": 736,
+      "code": "// Spatial Preview session options and events\n\nimport SpatialPreview\nimport USDKit\n\nsession.start(endpoint: endpoint, options: [.annotations, .perObjectManipulation, .export])\n\nfunc listenForEvents(session: USDPreviewSession) async {\n    for await event in session.events {\n        if case .timeChanged(let time) = event {\n            playbackModel.timeCode = time\n        } else if case .playbackStateChanged(let isPlaying) = event {\n            playbackModel.playbackStateChanged(isPlaying)\n        }\n    }\n}"
+    },
+    {
+      "title": "Observe Session Progress",
+      "language": "swift",
+      "startTimeSeconds": 758,
+      "code": "// Observe Spatial Preview session progress\n\nimport SpatialPreview\nimport USDKit\n\n@State private var sessionProgress: Double = 0\n\nvar body: some View {\n    ...\n    .task(id: usdSession.map { ObjectIdentifier($0) }) {\n        guard let session = usdSession else { return }\n        for await fraction in Observations({ session.progress.fractionCompleted }) {\n            sessionProgress = fraction\n        }\n    }\n    .overlay(alignment: .bottom) {\n        ProgressView(value: sessionProgress)\n            .padding()\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Reducing the rendering cost of RealityKit content on visionOS",
+      "url": "https://developer.apple.com/documentation/visionOS/reducing-the-rendering-cost-of-RealityKit-content-on-visionOS",
+      "type": "documentation",
+      "description": "Optimize your app’s 3D augmented reality content to render efficiently on visionOS.",
+      "sosumiURL": "https://sosumi.ai/documentation/visionOS/reducing-the-rendering-cost-of-RealityKit-content-on-visionOS",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/visionOS/reducing-the-rendering-cost-of-RealityKit-content-on-visionOS.json"
+    },
+    {
+      "title": "Spatial Preview",
+      "url": "https://developer.apple.com/documentation/SpatialPreview",
+      "type": "documentation",
+      "description": "Preview spatial content from a macOS app on a connected visionOS device.",
+      "sosumiURL": "https://sosumi.ai/documentation/SpatialPreview",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SpatialPreview.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/282/",
+  "files": {
+    "metadata": "sessions/wwdc2026/282/metadata.json",
+    "readme": "sessions/wwdc2026/282/README.md",
+    "transcript": "sessions/wwdc2026/282/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/282/transcript.json"
+  }
+}

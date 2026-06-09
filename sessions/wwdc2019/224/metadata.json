@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-224",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 224,
+  "title": "Modernizing Your UI for iOS 13",
+  "description": "iOS 13 combines powerful new multitasking and productivity technologies with a refreshed look and feel for all applications. Familiarize yourself with new requirements to keep your app ready for upcoming versions of iOS. Discover improvements to search fields and a totally new way to present UI. Learn how to adopt new gestures around selection, access peek and pop on all hardware, and how to renew your app's look for iOS 13.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/224",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/224",
+  "type": "Session",
+  "publishedAt": "2019-06-05T17:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "borderless bars",
+    "card",
+    "cardui",
+    "presentation",
+    "sheet",
+    "uitextinteraction"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 3021,
+  "hasTranscript": true,
+  "transcriptWordCount": 7310,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/224xnuourakjstfak/224/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/224xnuourakjstfak/224/224_sd_modernizing_your_ui_for_ios_13.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/224xnuourakjstfak/224/224_hd_modernizing_your_ui_for_ios_13.mp4",
+    "duration": 3021
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Disabling the pull-down gesture for a sheet",
+      "url": "https://developer.apple.com/documentation/UIKit/disabling-the-pull-down-gesture-for-a-sheet",
+      "type": "samplecode",
+      "description": "Ensure a positive user experience when presenting a view controller as a sheet.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/disabling-the-pull-down-gesture-for-a-sheet",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/disabling-the-pull-down-gesture-for-a-sheet.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/224/",
+  "files": {
+    "metadata": "sessions/wwdc2019/224/metadata.json",
+    "readme": "sessions/wwdc2019/224/README.md",
+    "transcript": "sessions/wwdc2019/224/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/224/transcript.json"
+  }
+}

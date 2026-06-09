@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10137",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10137,
+  "title": "Swift Charts: Raise the bar ",
+  "description": "Dive deep into data visualizations: Learn how Swift Charts and SwiftUI can help your apps represent complex datasets through a wide variety of chart options. We’ll show you how to plot different kinds of data and compose marks to create more elaborate charts. We’ll also take you through Swift Charts’ extensive chart customization API to help you match the style of your charts to your app.\n\nTo get the most out of this session, we recommend you begin with “Hello Swift Charts” from WWDC22.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10137",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10137",
+  "type": "Video",
+  "publishedAt": "2022-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Health & Fitness",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1307,
+  "hasTranscript": true,
+  "transcriptWordCount": 3645,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10137/3/AB0A9BA9-E0B1-440B-98E6-E9C8A395FF34/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10137/3/AB0A9BA9-E0B1-440B-98E6-E9C8A395FF34/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10137/3/AB0A9BA9-E0B1-440B-98E6-E9C8A395FF34/downloads/wwdc2022-10137_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10137/3/AB0A9BA9-E0B1-440B-98E6-E9C8A395FF34/downloads/wwdc2022-10137_hd.mp4",
+    "duration": 1307
+  },
+  "codeSnippets": [
+    {
+      "title": "Top style chart",
+      "language": "swift",
+      "startTimeSeconds": 228,
+      "code": "import SwiftUI\nimport Charts\n\nstruct TopStyleChart: View {\n    let data = [\n        (name: \"Cachapa\", sales: 916),\n        (name: \"Injera\", sales: 850),\n        (name: \"Crêpe\", sales: 802),\n        (name: \"Jian Bing\", sales: 753),\n        (name: \"Dosa\", sales: 654),\n        (name: \"American\", sales: 618)\n    ]\n\n    var body: some View {\n        Chart(data, id: \\.name) {\n            BarMark(\n                x: .value(\"Sales\", $0.sales),\n                y: .value(\"Name\", $0.name)\n            )\n            // Set the foreground style of the bars.\n            .foregroundStyle(.pink)\n            // Customize the accessibility label and value.\n            .accessibilityLabel($0.name)\n            .accessibilityValue(\"\\($0.sales) sold\")\n        }\n    }\n}"
+    },
+    {
+      "title": "Daily sales chart",
+      "language": "swift",
+      "startTimeSeconds": 312,
+      "code": "struct DailySalesChart: View {\n    var body: some View {\n        Chart {\n            ForEach(dailySales, id: \\.day) {\n                // Try change to LineMark.\n                BarMark( \n                    x: .value(\"Day\", $0.day, unit: .day),\n                    y: .value(\"Sales\", $0.sales)\n                )\n            }\n        }\n    }\n\n    let dailySales: [(day: Date, sales: Int)] = [\n        (day: date(year: 2022, month: 5, day: 8), sales: 168),\n        (day: date(year: 2022, month: 5, day: 9), sales: 117),\n        (day: date(year: 2022, month: 5, day: 10), sales: 106),\n        (day: date(year: 2022, month: 5, day: 11), sales: 119),\n        (day: date(year: 2022, month: 5, day: 12), sales: 109),\n        (day: date(year: 2022, month: 5, day: 13), sales: 104),\n        (day: date(year: 2022, month: 5, day: 14), sales: 196),\n        (day: date(year: 2022, month: 5, day: 15), sales: 172),\n        (day: date(year: 2022, month: 5, day: 16), sales: 122),\n        (day: date(year: 2022, month: 5, day: 17), sales: 115),\n        (day: date(year: 2022, month: 5, day: 18), sales: 138),\n        (day: date(year: 2022, month: 5, day: 19), sales: 110),\n        (day: date(year: 2022, month: 5, day: 20), sales: 106),\n        (day: date(year: 2022, month: 5, day: 21), sales: 187),\n        (day: date(year: 2022, month: 5, day: 22), sales: 187),\n        (day: date(year: 2022, month: 5, day: 23), sales: 119),\n        (day: date(year: 2022, month: 5, day: 24), sales: 160),\n        (day: date(year: 2022, month: 5, day: 25), sales: 144),\n        (day: date(year: 2022, month: 5, day: 26), sales: 152),\n        (day: date(year: 2022, month: 5, day: 27), sales: 148),\n        (day: date(year: 2022, month: 5, day: 28), sales: 240),\n        (day: date(year: 2022, month: 5, day: 29), sales: 242),\n        (day: date(year: 2022, month: 5, day: 30), sales: 173),\n        (day: date(year: 2022, month: 5, day: 31), sales: 143),\n        (day: date(year: 2022, month: 6, day: 1), sales: 137),\n        (day: date(year: 2022, month: 6, day: 2), sales: 123),\n        (day: date(year: 2022, month: 6, day: 3), sales: 146),\n        (day: date(year: 2022, month: 6, day: 4), sales: 214),\n        (day: date(year: 2022, month: 6, day: 5), sales: 250),\n        (day: date(year: 2022, month: 6, day: 6), sales: 146)\n    ]\n}\n\nfunc date(year: Int, month: Int, day: Int = 1) -> Date {\n    Calendar.current.date(from: .init(year: year, month: month, day: day)) ?? Date()\n}"
+    },
+    {
+      "title": "Sales by location with line mark",
+      "language": "swift",
+      "startTimeSeconds": 376,
+      "code": "struct LocationsChart: View {\n    var body: some View {\n        Chart {\n            ForEach(seriesData, id: \\.city) { series in\n                ForEach(series.data, id: \\.weekday) {\n                    LineMark(\n                        x: .value(\"Weekday\", $0.weekday, unit: .day),\n                        y: .value(\"Sales\", $0.sales)\n                    )\n                }\n                .foregroundStyle(by: .value(\"City\", series.city))\n                .symbol(by: .value(\"City\", series.city))\n                .interpolationMethod(.catmullRom)\n            }\n        }\n    }\n\n    let seriesData = [\n        (\n            city: \"Cupertino\", data: [\n                (weekday: date(year: 2022, month: 5, day: 2), sales: 54),\n                (weekday: date(year: 2022, month: 5, day: 3), sales: 42),\n                (weekday: date(year: 2022, month: 5, day: 4), sales: 88),\n                (weekday: date(year: 2022, month: 5, day: 5), sales: 49),\n                (weekday: date(year: 2022, month: 5, day: 6), sales: 42),\n                (weekday: date(year: 2022, month: 5, day: 7), sales: 125),\n                (weekday: date(year: 2022, month: 5, day: 8), sales: 67)\n            ]\n        ),\n        (\n            city: \"San Francisco\", data: [\n                (weekday: date(year: 2022, month: 5, day: 2), sales: 81),\n                (weekday: date(year: 2022, month: 5, day: 3), sales: 90),\n                (weekday: date(year: 2022, month: 5, day: 4), sales: 52),\n                (weekday: date(year: 2022, month: 5, day: 5), sales: 72),\n                (weekday: date(year: 2022, month: 5, day: 6), sales: 84),\n                (weekday: date(year: 2022, month: 5, day: 7), sales: 84),\n                (weekday: date(year: 2022, month: 5, day: 8), sales: 137)\n            ]\n        )\n    ]\n}\n\nfunc date(year: Int, month: Int, day: Int = 1) -> Date {\n    Calendar.current.date(from: DateComponents(year: year, month: month, day: day)) ?? Date()\n}"
+    },
+    {
+      "title": "Sales by location with bar mark",
+      "language": "swift",
+      "startTimeSeconds": 439,
+      "code": "struct LocationsChart: View {\n    var body: some View {\n        Chart {\n            ForEach(seriesData, id: \\.city) { series in\n                ForEach(series.data, id: \\.weekday) {\n                    BarMark(\n                        x: .value(\"Weekday\", $0.weekday, unit: .day),\n                        y: .value(\"Sales\", $0.sales)\n                    )\n                }\n                .foregroundStyle(by: .value(\"City\", series.city))\n                .position(by: .value(\"City\", series.city))\n            }\n        }\n    }\n\n    let seriesData = [\n        (\n            city: \"Cupertino\", data: [\n                (weekday: date(year: 2022, month: 5, day: 2), sales: 54),\n                (weekday: date(year: 2022, month: 5, day: 3), sales: 42),\n                (weekday: date(year: 2022, month: 5, day: 4), sales: 88),\n                (weekday: date(year: 2022, month: 5, day: 5), sales: 49),\n                (weekday: date(year: 2022, month: 5, day: 6), sales: 42),\n                (weekday: date(year: 2022, month: 5, day: 7), sales: 125),\n                (weekday: date(year: 2022, month: 5, day: 8), sales: 67)\n            ]\n        ),\n        (\n            city: \"San Francisco\", data: [\n                (weekday: date(year: 2022, month: 5, day: 2), sales: 81),\n                (weekday: date(year: 2022, month: 5, day: 3), sales: 90),\n                (weekday: date(year: 2022, month: 5, day: 4), sales: 52),\n                (weekday: date(year: 2022, month: 5, day: 5), sales: 72),\n                (weekday: date(year: 2022, month: 5, day: 6), sales: 84),\n                (weekday: date(year: 2022, month: 5, day: 7), sales: 84),\n                (weekday: date(year: 2022, month: 5, day: 8), sales: 137)\n            ]\n        )\n    ]\n}\n\nfunc date(year: Int, month: Int, day: Int = 1) -> Date {\n    Calendar.current.date(from: DateComponents(year: year, month: month, day: day)) ?? Date()\n}"
+    },
+    {
+      "title": "Monthly sales with line and area marks",
+      "language": "swift",
+      "startTimeSeconds": 482,
+      "code": "struct MonthlySalesChart: View {\n    var body: some View {\n        Chart {\n            ForEach(data, id: \\.month) {\n                AreaMark(\n                    x: .value(\"Month\", $0.month, unit: .month),\n                    yStart: .value(\"Daily Min\", $0.dailyMin),\n                    yEnd: .value(\"Daily Max\", $0.dailyMax)\n                )\n                .opacity(0.3)\n                LineMark(\n                    x: .value(\"Month\", $0.month, unit: .month),\n                    y: .value(\"Daily Average\", $0.dailyAverage)\n                )\n            }\n        }\n    }\n\n    let data = [\n        (month: date(year: 2021, month: 7), sales: 3952, dailyAverage: 127, dailyMin: 95, dailyMax: 194),\n        (month: date(year: 2021, month: 8), sales: 4044, dailyAverage: 130, dailyMin: 96, dailyMax: 189),\n        (month: date(year: 2021, month: 9), sales: 3930, dailyAverage: 131, dailyMin: 101, dailyMax: 184),\n        (month: date(year: 2021, month: 10), sales: 4217, dailyAverage: 136, dailyMin: 96, dailyMax: 193),\n        (month: date(year: 2021, month: 11), sales: 4006, dailyAverage: 134, dailyMin: 104, dailyMax: 202),\n        (month: date(year: 2021, month: 12), sales: 3994, dailyAverage: 129, dailyMin: 96, dailyMax: 190),\n        (month: date(year: 2022, month: 1), sales: 4202, dailyAverage: 136, dailyMin: 96, dailyMax: 203),\n        (month: date(year: 2022, month: 2), sales: 3749, dailyAverage: 134, dailyMin: 98, dailyMax: 200),\n        (month: date(year: 2022, month: 3), sales: 4329, dailyAverage: 140, dailyMin: 104, dailyMax: 218),\n        (month: date(year: 2022, month: 4), sales: 4084, dailyAverage: 136, dailyMin: 93, dailyMax: 221),\n        (month: date(year: 2022, month: 5), sales: 4559, dailyAverage: 147, dailyMin: 104, dailyMax: 242),\n        (month: date(year: 2022, month: 6), sales: 1023, dailyAverage: 170, dailyMin: 120, dailyMax: 250)\n    ]\n}\n\nfunc date(year: Int, month: Int, day: Int = 1) -> Date {\n    Calendar.current.date(from: DateComponents(year: year, month: month, day: day)) ?? Date()\n}"
+    },
+    {
+      "title": "Monthly sales with bar and rectangle marks",
+      "language": "swift",
+      "startTimeSeconds": 526,
+      "code": "struct MonthlySalesChart: View {\n    var body: some View {\n        Chart {\n            ForEach(data, id: \\.month) {\n                BarMark(\n                    x: .value(\"Month\", $0.month, unit: .month),\n                    yStart: .value(\"Daily Min\", $0.dailyMin),\n                    yEnd: .value(\"Daily Max\", $0.dailyMax),\n                    width: .ratio(0.6)\n                )\n                .opacity(0.3)\n                RectangleMark(\n                    x: .value(\"Month\", $0.month, unit: .month),\n                    y: .value(\"Daily Average\", $0.dailyAverage),\n                    width: .ratio(0.6),\n                    height: 2\n                )\n            }\n        }\n    }\n\n    let data = [\n        (month: date(year: 2021, month: 7), sales: 3952, dailyAverage: 127, dailyMin: 95, dailyMax: 194),\n        (month: date(year: 2021, month: 8), sales: 4044, dailyAverage: 130, dailyMin: 96, dailyMax: 189),\n        (month: date(year: 2021, month: 9), sales: 3930, dailyAverage: 131, dailyMin: 101, dailyMax: 184),\n        (month: date(year: 2021, month: 10), sales: 4217, dailyAverage: 136, dailyMin: 96, dailyMax: 193),\n        (month: date(year: 2021, month: 11), sales: 4006, dailyAverage: 134, dailyMin: 104, dailyMax: 202),\n        (month: date(year: 2021, month: 12), sales: 3994, dailyAverage: 129, dailyMin: 96, dailyMax: 190),\n        (month: date(year: 2022, month: 1), sales: 4202, dailyAverage: 136, dailyMin: 96, dailyMax: 203),\n        (month: date(year: 2022, month: 2), sales: 3749, dailyAverage: 134, dailyMin: 98, dailyMax: 200),\n        (month: date(year: 2022, month: 3), sales: 4329, dailyAverage: 140, dailyMin: 104, dailyMax: 218),\n        (month: date(year: 2022, month: 4), sales: 4084, dailyAverage: 136, dailyMin: 93, dailyMax: 221),\n        (month: date(year: 2022, month: 5), sales: 4559, dailyAverage: 147, dailyMin: 104, dailyMax: 242),\n        (month: date(year: 2022, month: 6), sales: 1023, dailyAverage: 170, dailyMin: 120, dailyMax: 250)\n    ]\n}\n\nfunc date(year: Int, month: Int, day: Int = 1) -> Date {\n    Calendar.current.date(from: DateComponents(year: year, month: month, day: day)) ?? Date()\n}"
+    },
+    {
+      "title": "Monthly sales with average line and annotation",
+      "language": "swift",
+      "startTimeSeconds": 559,
+      "code": "struct MonthlySalesChart: View {\n    var body: some View {\n        Chart {\n            ForEach(data, id: \\.month) {\n                BarMark(\n                    x: .value(\"Month\", $0.month, unit: .month),\n                    yStart: .value(\"Daily Min\", $0.dailyMin),\n                    yEnd: .value(\"Daily Max\", $0.dailyMax),\n                    width: .ratio(0.6)\n                )\n                .opacity(0.3)\n                RectangleMark(\n                    x: .value(\"Month\", $0.month, unit: .month),\n                    y: .value(\"Daily Average\", $0.dailyAverage),\n                    width: .ratio(0.6),\n                    height: 2\n                )\n            }\n            .foregroundStyle(.gray.opacity(0.5))\n\n            RuleMark(\n                y: .value(\"Average\", averageValue)\n            )\n            .lineStyle(StrokeStyle(lineWidth: 3))\n            .annotation(position: .top, alignment: .leading) {\n                Text(\"Average: \\(averageValue, format: .number)\")\n                    .font(.headline)\n                    .foregroundStyle(.blue)\n            }\n        }\n    }\n\n    let data = [\n        (month: date(year: 2021, month: 7), sales: 3952, dailyAverage: 127, dailyMin: 95, dailyMax: 194),\n        (month: date(year: 2021, month: 8), sales: 4044, dailyAverage: 130, dailyMin: 96, dailyMax: 189),\n        (month: date(year: 2021, month: 9), sales: 3930, dailyAverage: 131, dailyMin: 101, dailyMax: 184),\n        (month: date(year: 2021, month: 10), sales: 4217, dailyAverage: 136, dailyMin: 96, dailyMax: 193),\n        (month: date(year: 2021, month: 11), sales: 4006, dailyAverage: 134, dailyMin: 104, dailyMax: 202),\n        (month: date(year: 2021, month: 12), sales: 3994, dailyAverage: 129, dailyMin: 96, dailyMax: 190),\n        (month: date(year: 2022, month: 1), sales: 4202, dailyAverage: 136, dailyMin: 96, dailyMax: 203),\n        (month: date(year: 2022, month: 2), sales: 3749, dailyAverage: 134, dailyMin: 98, dailyMax: 200),\n        (month: date(year: 2022, month: 3), sales: 4329, dailyAverage: 140, dailyMin: 104, dailyMax: 218),\n        (month: date(year: 2022, month: 4), sales: 4084, dailyAverage: 136, dailyMin: 93, dailyMax: 221),\n        (month: date(year: 2022, month: 5), sales: 4559, dailyAverage: 147, dailyMin: 104, dailyMax: 242),\n        (month: date(year: 2022, month: 6), sales: 1023, dailyAverage: 170, dailyMin: 120, dailyMax: 250)\n    ]\n\n    let averageValue = 137\n}\n\nfunc date(year: Int, month: Int, day: Int = 1) -> Date {\n    Calendar.current.date(from: DateComponents(year: year, month: month, day: day)) ?? Date()\n}"
+    },
+    {
+      "title": "Chart with custom scales for Y and foreground style",
+      "language": "swift",
+      "startTimeSeconds": 834,
+      "code": "struct LocationsChart: View {\n    var body: some View {\n        Chart {\n            ForEach(seriesData, id: \\.city) { series in\n                ForEach(series.data, id: \\.weekday) {\n                    LineMark(\n                        x: .value(\"Weekday\", $0.weekday, unit: .day),\n                        y: .value(\"Sales\", $0.sales)\n                    )\n                }\n                .foregroundStyle(by: .value(\"City\", series.city))\n                .symbol(by: .value(\"City\", series.city))\n                .interpolationMethod(.catmullRom)\n            }\n        }\n        .chartYScale(domain: 0 ... 200)\n        .chartForegroundStyleScale([\n            \"San Francisco\": .orange,\n            \"Cupertino\": .pink\n        ])\n    }\n\n    let seriesData = [\n        (\n            city: \"Cupertino\", data: [\n                (weekday: date(year: 2022, month: 5, day: 2), sales: 54),\n                (weekday: date(year: 2022, month: 5, day: 3), sales: 42),\n                (weekday: date(year: 2022, month: 5, day: 4), sales: 88),\n                (weekday: date(year: 2022, month: 5, day: 5), sales: 49),\n                (weekday: date(year: 2022, month: 5, day: 6), sales: 42),\n                (weekday: date(year: 2022, month: 5, day: 7), sales: 125),\n                (weekday: date(year: 2022, month: 5, day: 8), sales: 67)\n            ]\n        ),\n        (\n            city: \"San Francisco\", data: [\n                (weekday: date(year: 2022, month: 5, day: 2), sales: 81),\n                (weekday: date(year: 2022, month: 5, day: 3), sales: 90),\n                (weekday: date(year: 2022, month: 5, day: 4), sales: 52),\n                (weekday: date(year: 2022, month: 5, day: 5), sales: 72),\n                (weekday: date(year: 2022, month: 5, day: 6), sales: 84),\n                (weekday: date(year: 2022, month: 5, day: 7), sales: 84),\n                (weekday: date(year: 2022, month: 5, day: 8), sales: 137)\n            ]\n        )\n    ]\n}\n\nfunc date(year: Int, month: Int, day: Int = 1) -> Date {\n    Calendar.current.date(from: DateComponents(year: year, month: month, day: day)) ?? Date()\n}"
+    },
+    {
+      "title": "Chart with custom X axis",
+      "language": "swift",
+      "startTimeSeconds": 916,
+      "code": "struct MonthlySalesChart: View {\n    var body: some View {\n        Chart(data, id: \\.month) {\n            BarMark(\n                x: .value(\"Month\", $0.month, unit: .month),\n                y: .value(\"Sales\", $0.sales)\n            )\n        }\n        .chartXAxis {\n            AxisMarks( values: .stride(by: .month) ) { value in\n                AxisGridLine()\n                AxisTick()\n                AxisValueLabel(\n                    format: .dateTime.month(.narrow)\n                )\n            }\n        }\n    }\n\n    let data = [\n        (month: date(year: 2021, month: 7), sales: 3952),\n        (month: date(year: 2021, month: 8), sales: 4044),\n        (month: date(year: 2021, month: 9), sales: 3930),\n        (month: date(year: 2021, month: 10), sales: 4217),\n        (month: date(year: 2021, month: 11), sales: 4006),\n        (month: date(year: 2021, month: 12), sales: 3994),\n        (month: date(year: 2022, month: 1), sales: 4202),\n        (month: date(year: 2022, month: 2), sales: 3749),\n        (month: date(year: 2022, month: 3), sales: 4329),\n        (month: date(year: 2022, month: 4), sales: 4084),\n        (month: date(year: 2022, month: 5), sales: 4559),\n        (month: date(year: 2022, month: 6), sales: 1023)\n    ]\n\n    let averageValue = 137\n}\n\nfunc date(year: Int, month: Int, day: Int = 1) -> Date {\n    Calendar.current.date(from: DateComponents(year: year, month: month, day: day)) ?? Date()\n}"
+    },
+    {
+      "title": "Chart with custom X axis and conditional content for axis marks",
+      "language": "swift",
+      "startTimeSeconds": 977,
+      "code": "struct MonthlySalesChart: View {\n    var body: some View {\n        Chart(data, id: \\.month) {\n            BarMark(\n                x: .value(\"Month\", $0.month, unit: .month),\n                y: .value(\"Sales\", $0.sales)\n            )\n        }\n        .chartXAxis {\n            AxisMarks(values: .stride(by: .month)) { value in\n                if value.as(Date.self)!.isFirstMonthOfQuarter {\n                    AxisGridLine().foregroundStyle(.black)\n                    AxisTick().foregroundStyle(.black)\n                    AxisValueLabel(\n                        format: .dateTime.month(.narrow)\n                    )\n                } else {\n                    AxisGridLine()\n                }\n            }\n        }\n    }\n\n    let data = [\n        (month: date(year: 2021, month: 7), sales: 3952),\n        (month: date(year: 2021, month: 8), sales: 4044),\n        (month: date(year: 2021, month: 9), sales: 3930),\n        (month: date(year: 2021, month: 10), sales: 4217),\n        (month: date(year: 2021, month: 11), sales: 4006),\n        (month: date(year: 2021, month: 12), sales: 3994),\n        (month: date(year: 2022, month: 1), sales: 4202),\n        (month: date(year: 2022, month: 2), sales: 3749),\n        (month: date(year: 2022, month: 3), sales: 4329),\n        (month: date(year: 2022, month: 4), sales: 4084),\n        (month: date(year: 2022, month: 5), sales: 4559),\n        (month: date(year: 2022, month: 6), sales: 1023)\n    ]\n\n    let averageValue = 137\n}\n\nextension Date {\n    var isFirstMonthOfQuarter: Bool {\n        Calendar.current.component(.month, from: self) % 3 == 1\n    }\n}\n\nfunc date(year: Int, month: Int, day: Int = 1) -> Date {\n    Calendar.current.date(from: DateComponents(year: year, month: month, day: day)) ?? Date()\n}"
+    },
+    {
+      "title": "Chart with custom Y axis",
+      "language": "swift",
+      "startTimeSeconds": 1020,
+      "code": "struct MonthlySalesChart: View {\n    var body: some View {\n        Chart(data, id: \\.month) {\n            BarMark(\n                x: .value(\"Month\", $0.month, unit: .month),\n                y: .value(\"Sales\", $0.sales)\n            )\n        }\n        .chartYAxis {\n            AxisMarks( preset: .extended, position: .leading)\n        }\n    }\n\n    let data = [\n        (month: date(year: 2021, month: 7), sales: 3952),\n        (month: date(year: 2021, month: 8), sales: 4044),\n        (month: date(year: 2021, month: 9), sales: 3930),\n        (month: date(year: 2021, month: 10), sales: 4217),\n        (month: date(year: 2021, month: 11), sales: 4006),\n        (month: date(year: 2021, month: 12), sales: 3994),\n        (month: date(year: 2022, month: 1), sales: 4202),\n        (month: date(year: 2022, month: 2), sales: 3749),\n        (month: date(year: 2022, month: 3), sales: 4329),\n        (month: date(year: 2022, month: 4), sales: 4084),\n        (month: date(year: 2022, month: 5), sales: 4559),\n        (month: date(year: 2022, month: 6), sales: 1023)\n    ]\n\n    let averageValue = 137\n}\n\nfunc date(year: Int, month: Int, day: Int = 1) -> Date {\n    Calendar.current.date(from: DateComponents(year: year, month: month, day: day)) ?? Date()\n}"
+    },
+    {
+      "title": "Chart with plot area style",
+      "language": "swift",
+      "startTimeSeconds": 1106,
+      "code": "struct TopStyleChart: View {\n    var body: some View {\n        Chart(data, id: \\.name) {\n            BarMark(\n                x: .value(\"Sales\", $0.sales),\n                y: .value(\"Name\", $0.name)\n            )\n            // Set the foreground style of the bars.\n            .foregroundStyle(.pink)\n            // Customize the accessibility label and value.\n            .accessibilityLabel($0.name)\n            .accessibilityValue(\"\\($0.sales) sold\")\n        }\n        .chartPlotStyle { plotArea in\n            plotArea.frame(height: 60 * 6)\n                    .background(.pink.opacity(0.2))\n                    .border(.pink, width: 1)\n        }\n    }\n\n    let data = [\n        (name: \"Cachapa\", sales: 916),\n        (name: \"Injera\", sales: 850),\n        (name: \"Crêpe\", sales: 802),\n        (name: \"Jian Bing\", sales: 753),\n        (name: \"Dosa\", sales: 654),\n        (name: \"American\", sales: 618)\n    ]\n}"
+    },
+    {
+      "title": "Chart with brushing interaction",
+      "language": "swift",
+      "startTimeSeconds": 1203,
+      "code": "struct InteractiveBrushingChart: View {\n    @State var range: (Date, Date)? = nil\n\n    var body: some View {\n        Chart {\n            ForEach(data, id: \\.day) {\n                LineMark(\n                    x: .value(\"Month\", $0.day, unit: .day),\n                    y: .value(\"Sales\", $0.sales)\n                )\n                .interpolationMethod(.catmullRom)\n                .symbol(Circle().strokeBorder(lineWidth: 2))\n            }\n            if let (start, end) = range {\n                RectangleMark(\n                    xStart: .value(\"Selection Start\", start),\n                    xEnd: .value(\"Selection End\", end)\n                )\n                .foregroundStyle(.gray.opacity(0.2))\n            }\n        }\n        .chartOverlay { proxy in\n            GeometryReader { nthGeoItem in\n                Rectangle().fill(.clear).contentShape(Rectangle())\n                    .gesture(DragGesture()\n                        .onChanged { value in\n                            // Find the x-coordinates in the chart’s plot area.\n                            let xStart = value.startLocation.x - nthGeoItem[proxy.plotAreaFrame].origin.x\n                            let xCurrent = value.location.x - nthGeoItem[proxy.plotAreaFrame].origin.x\n                            // Find the date values at the x-coordinates.\n                            if let dateStart: Date = proxy.value(atX: xStart),\n                               let dateCurrent: Date = proxy.value(atX: xCurrent) {\n                                range = (dateStart, dateCurrent)\n                            }\n                        }\n                        .onEnded { _ in range = nil } // Clear the state on gesture end.\n                    )\n            }\n        }\n    }\n\n    let data: [(day: Date, sales: Int)] = [\n        (day: date(year: 2022, month: 5, day: 8), sales: 168),\n        (day: date(year: 2022, month: 5, day: 9), sales: 117),\n        (day: date(year: 2022, month: 5, day: 10), sales: 106),\n        (day: date(year: 2022, month: 5, day: 11), sales: 119),\n        (day: date(year: 2022, month: 5, day: 12), sales: 109),\n        (day: date(year: 2022, month: 5, day: 13), sales: 104),\n        (day: date(year: 2022, month: 5, day: 14), sales: 196),\n        (day: date(year: 2022, month: 5, day: 15), sales: 172),\n        (day: date(year: 2022, month: 5, day: 16), sales: 122),\n        (day: date(year: 2022, month: 5, day: 17), sales: 115),\n        (day: date(year: 2022, month: 5, day: 18), sales: 138),\n        (day: date(year: 2022, month: 5, day: 19), sales: 110),\n        (day: date(year: 2022, month: 5, day: 20), sales: 106),\n        (day: date(year: 2022, month: 5, day: 21), sales: 187),\n        (day: date(year: 2022, month: 5, day: 22), sales: 187),\n        (day: date(year: 2022, month: 5, day: 23), sales: 119),\n        (day: date(year: 2022, month: 5, day: 24), sales: 160),\n        (day: date(year: 2022, month: 5, day: 25), sales: 144),\n        (day: date(year: 2022, month: 5, day: 26), sales: 152),\n        (day: date(year: 2022, month: 5, day: 27), sales: 148),\n        (day: date(year: 2022, month: 5, day: 28), sales: 240),\n        (day: date(year: 2022, month: 5, day: 29), sales: 242),\n        (day: date(year: 2022, month: 5, day: 30), sales: 173),\n        (day: date(year: 2022, month: 5, day: 31), sales: 143),\n        (day: date(year: 2022, month: 6, day: 1), sales: 137),\n        (day: date(year: 2022, month: 6, day: 2), sales: 123),\n        (day: date(year: 2022, month: 6, day: 3), sales: 146),\n        (day: date(year: 2022, month: 6, day: 4), sales: 214),\n        (day: date(year: 2022, month: 6, day: 5), sales: 250),\n        (day: date(year: 2022, month: 6, day: 6), sales: 146)\n    ]\n}\n\nfunc date(year: Int, month: Int, day: Int = 1) -> Date {\n    Calendar.current.date(from: DateComponents(year: year, month: month, day: day)) ?? Date()\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Swift Charts",
+      "url": "https://developer.apple.com/documentation/Charts",
+      "type": "documentation",
+      "description": "Construct and customize charts on every Apple platform.",
+      "sosumiURL": "https://sosumi.ai/documentation/Charts",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Charts.json"
+    },
+    {
+      "title": "Creating a chart using Swift Charts",
+      "url": "https://developer.apple.com/documentation/Charts/Creating-a-chart-using-Swift-Charts",
+      "type": "guide",
+      "description": "Make a chart by combining chart building blocks in SwiftUI.",
+      "sosumiURL": "https://sosumi.ai/documentation/Charts/Creating-a-chart-using-Swift-Charts",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Charts/Creating-a-chart-using-Swift-Charts.json"
+    },
+    {
+      "title": "Visualizing your app’s data",
+      "url": "https://developer.apple.com/documentation/Charts/visualizing-your-app-s-data",
+      "type": "samplecode",
+      "description": "Build complex and interactive charts using Swift Charts.",
+      "sosumiURL": "https://sosumi.ai/documentation/Charts/visualizing-your-app-s-data",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Charts/visualizing-your-app-s-data.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10137/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10137/metadata.json",
+    "readme": "sessions/wwdc2022/10137/README.md",
+    "transcript": "sessions/wwdc2022/10137/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10137/transcript.json"
+  }
+}

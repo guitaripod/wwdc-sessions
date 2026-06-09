@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-701",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 701,
+  "title": "Advances in macOS Security",
+  "description": "We are on a journey to continuously improve macOS security, with a particular focus on preventing malware and protecting user data. Join us on the next step and learn more about what’s new in Gatekeeper—for keeping malware out of macOS—as well as new protections that help keep users’ data and activity under their control.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/701",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/701",
+  "type": "Session",
+  "publishedAt": "2019-06-04T09:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [
+    "data protection",
+    "gatekeeper"
+  ],
+  "topics": [
+    "Privacy & Security"
+  ],
+  "primaryTopic": "Privacy & Security",
+  "duration": 2446,
+  "hasTranscript": true,
+  "transcriptWordCount": 5762,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/701ngx868rfo8jlj/701/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/701ngx868rfo8jlj/701/701_sd_advances_in_macos_security.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/701ngx868rfo8jlj/701/701_hd_advances_in_macos_security.mp4",
+    "duration": 2446
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Signing Your Apps for Gatekeeper",
+      "url": "https://developer.apple.com/developer-id/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/developer-id/"
+    },
+    {
+      "title": "macOS Security Overview",
+      "url": "https://www.apple.com/business/resources/docs/macOS_Security_Overview.pdf",
+      "type": "guide",
+      "description": "Apple designed the macOS platform with an integrated approach to hardware, software, and services that provides security by design and makes it simple to configure, deploy, and manage. macOS includes the key security technologies that an IT professional needs to protect corporate data and integrate within secure enterprise networking environments."
+    }
+  ],
+  "path": "sessions/wwdc2019/701/",
+  "files": {
+    "metadata": "sessions/wwdc2019/701/metadata.json",
+    "readme": "sessions/wwdc2019/701/README.md",
+    "transcript": "sessions/wwdc2019/701/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/701/transcript.json"
+  }
+}

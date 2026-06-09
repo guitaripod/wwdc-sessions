@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10110",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10110,
+  "title": "Build global apps: Localization by example",
+  "description": "Learn how you can run your apps on devices around the world and help everyone have a great experience — regardless of the language they speak. We'll explore how Apple APIs can provide a solid foundation when creating apps for diverse audiences, and we'll share examples, challenges, and best practices from our own experiences.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10110",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10110",
+  "type": "Video",
+  "publishedAt": "2022-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "🌍",
+    "🌎",
+    "🌏",
+    "formatters",
+    "i10n",
+    "international",
+    "internationalization",
+    "l18n",
+    "stringsdict",
+    "swift packages",
+    "swiftui",
+    "translation"
+  ],
+  "topics": [
+    "Accessibility & Inclusion",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1337,
+  "hasTranscript": true,
+  "transcriptWordCount": 3848,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10110/3/9DDED4EB-547B-46DD-AEE5-9D3F2C60CFF8/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10110/3/9DDED4EB-547B-46DD-AEE5-9D3F2C60CFF8/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10110/3/9DDED4EB-547B-46DD-AEE5-9D3F2C60CFF8/downloads/wwdc2022-10110_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10110/3/9DDED4EB-547B-46DD-AEE5-9D3F2C60CFF8/downloads/wwdc2022-10110_hd.mp4",
+    "duration": 1337
+  },
+  "codeSnippets": [
+    {
+      "title": "Declare strings using String(localized)",
+      "language": "swift",
+      "startTimeSeconds": 119,
+      "code": "let windPerceptionLabelText = String(\n    localized: \"Wind is making it feel cooler\", \n    comment: \"Explains the wind is lowering the apparent temperature\"\n)"
+    },
+    {
+      "title": "Translation example 1",
+      "language": "swift",
+      "startTimeSeconds": 166,
+      "code": "let filter = String(localized: \"Archive.label\",\n                 defaultValue: \"Archive\", \n                      comment: \"Name of the Archive folder in the sidebar\")\n\nlet filter = String(localized: \"Archive.menuItem\",\n                 defaultValue: \"Archive\", \n                      comment: \"Menu item title for moving the email into the Archive folder\")"
+    },
+    {
+      "title": "Translation example 2",
+      "language": "swift",
+      "startTimeSeconds": 220,
+      "code": "String(localized: \"Show weather in \\(locationName)\", \n       comment: \"Title for a user activity to show weather at a specific city\")\n\nString(localized: \"Show weather in My Location\",\n       comment: \"Title for a user activity to show weather at the user's current location\")"
+    },
+    {
+      "title": "Comment example",
+      "language": "swift",
+      "startTimeSeconds": 298,
+      "code": "String(localized: \"Show weather in \\(locationName)\",\ncomment: \"Title for a user activity to show weather at a specific city\")"
+    },
+    {
+      "title": "Localized remote content example",
+      "language": "swift",
+      "startTimeSeconds": 400,
+      "code": "let allServerLanguages = [\"bg\", \"de\", \"en\", \"es\", \"kk\", \"uk\"]\nlet language = Bundle.preferredLocalizations(from: allServerLanguages).first"
+    },
+    {
+      "title": "Numbers in a string example 1",
+      "language": "swift",
+      "startTimeSeconds": 476,
+      "code": "String(localized: \"\\(amountOfRain) in last \\(numberOfHours) hour\",\n         comment: \"Label showing how much rain has fallen in the last number of hours\")\n\nString(localized: \"\\(amountOfRain) in last ^[\\(numberOfHours) hour](inflect: true)\",\n         comment: \"Label showing how much rain has fallen in the last number of hours\")"
+    },
+    {
+      "title": "Numbers in a string example 2",
+      "language": "swift",
+      "startTimeSeconds": 520,
+      "code": "if selectedCount == 1 {\n    return String(localized: \"Remove this city \n                              from your favorites\")\n} else {\n    return String(localized: \"Remove these cities \n                              from your favorites\")\n}"
+    },
+    {
+      "title": "Numbers in a string example 3",
+      "language": "swift",
+      "startTimeSeconds": 540,
+      "code": "String(localized: \"\\(amountOfRain) in last ^[\\(numberOfHours) hour](inflect: true).\",\ncomment: \"Label showing how much rain has fallen in the last number of hours\")"
+    },
+    {
+      "title": "Formatter example",
+      "language": "swift",
+      "startTimeSeconds": 569,
+      "code": "let humidity = 54\n\n// In a SwiftUI view\nText(humidity, format: .percent)\n\n// In Swift code\nhumidity.formatted(.percent)"
+    },
+    {
+      "title": "Formatter example 2",
+      "language": "swift",
+      "startTimeSeconds": 603,
+      "code": "date.formatted(\n    .dateTime.year()\n    .month()   \n) // Jun 2022\n\nwhatToExpect.formatted()\n// New features, exciting API, and advanced tips\n\namountOfRain.formatted(\n    .measurement(\n        width: .narrow,\n        usage: .rainfall)) // 12mm\n\n(date...<later).formatted(\n    .components(\n        style: .wide\n    )\n) // 24 minutes, 18 Seconds\n\ndate.formatted(\n    .relative(\n        presentation: \n            .numeric\n    )\n) // 2 minutes ago\n\nlet components = PersonNameComponents()\n…\nnameComponentsFormatter\n    .string(from: components)\n// Andreas Neusüß or 田中陽子\n\nexcitementLevel.formatted(\n    .number\n    .precision(\n        .fractionLength(2)\n    )\n) // 1,001.42\n\nprice.formatted(\n    .currency(\n        code: \"EUR\"\n    )\n) // $20.99\n\ndistance.formatted(\n    .measurement(\n        width: .wide,\n        usage: .road)\n) // 500 feet\n\nbytesCopied.formatted(\n    .byteCount(\n        style: .file\n)) // 42.23 MB"
+    },
+    {
+      "title": "Combine a formatter with text",
+      "language": "swift",
+      "startTimeSeconds": 670,
+      "code": "func expectedPrecipitationIn24Hours(for valueInMillimeters: Measurement<UnitLength>) -> String {\n    // Use user's preferred measures\n    let preferredUnit = UnitLength(forLocale: .current, usage: .rainfall)\n\n    let valueInPreferredSystem = valueInMillimeters.converted(to: preferredUnit)\n\n    // Format the amount of rainfall\n    let formattedValue = valueInPreferredSystem\n        .formatted(.measurement(width: .narrow, usage: .asProvided))\n\n    let integerValue = Int(valueInPreferredSystem.value.rounded())\n\n    // Load and use formatting string\n    return String(localized: \"EXPECTED_RAINFALL\", \n               defaultValue: \"\\(integerValue) \\(formattedValue) expected in next \\(24)h.\", \n                    comment: \"Label - How much precipitation (2nd formatted value, in mm or Inches) is expected in the next 24 hours (3rd, always 24).\")\n}"
+    },
+    {
+      "title": "Stringsdict examples in English and Spanish",
+      "language": "xml",
+      "startTimeSeconds": 742,
+      "code": "Localizable.stringsdict English:\n\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n<plist version=\"1.0\">\n<dict>\n    <key>EXPECTED_RAINFALL</key>\n    <dict>\n        <key>NSStringLocalizedFormatKey</key>\n        <string>%#@next_expected_precipitation_amount_24h@</string>\n        <key>next_expected_precipitation_amount_24h</key>\n        <dict>\n            <key>NSStringFormatSpecTypeKey</key>\n            <string>NSStringPluralRuleType</string>\n            <key>NSStringFormatValueTypeKey</key>\n            <string>d</string>\n            <key>other</key>\n            <string>%2$@ expected in next %3$dh.</string>\n        </dict>\n    </dict>\n</dict>\n</plist>\n\nLocalizable.stringsdict Spanish:\n\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n<plist version=\"1.0\">\n<dict>\n    <key>EXPECTED_RAINFALL</key>\n    <dict>\n        <key>NSStringLocalizedFormatKey</key>\n        <string>%#@next_expected_precipitation_amount_24h@</string>\n        <key>next_expected_precipitation_amount_24h</key>\n        <dict>\n            <key>NSStringFormatSpecTypeKey</key>\n            <string>NSStringPluralRuleType</string>\n            <key>NSStringFormatValueTypeKey</key>\n            <string>d</string>\n            <key>one</key>\n            <string>Se prevé %2$@ en las próximas %3$d h.</string>\n            <key>other</key>\n            <string>Se prevén %2$@ en las próximas %3$d h.</string>\n        </dict>\n    </dict>\n</dict>\n</plist>"
+    },
+    {
+      "title": "Swift Package localization example",
+      "language": "swift",
+      "startTimeSeconds": 820,
+      "code": "let package = Package(\n    name: \"FoodTruckKit\",\n\n    defaultLocalization: \"en\",\n\n    products: [\n       .library(\n            name: \"FoodTruckKit\",\n            targets: [\"FoodTruckKit\"]),\n    ],\n    …\n)"
+    },
+    {
+      "title": "Loading a string in a Swift Package",
+      "language": "swift",
+      "startTimeSeconds": 881,
+      "code": "let title = String(localized: \"Wind\",\n bundle: .module, \ncomment: \"Title for section that\n          shows data about wind.\")"
+    },
+    {
+      "title": "Grid example",
+      "language": "swift",
+      "startTimeSeconds": 1099,
+      "code": "// Requires data types \"Row\" and \"row\" to be defined\n\nstruct WeatherTestView: View {\n    var rows: [Row]\n    var body: some View {\n        Grid(alignment: .leading) {\n            ForEach(rows) { row in\n                GridRow {\n                    Text(row.dayOfWeek)\n\n                    Image(systemName: row.weatherCondition)\n                        .symbolRenderingMode(.multicolor)\n\n                    Text(row.minimumTemperature)\n                        .gridColumnAlignment(.trailing)\n\n                    Capsule().fill(Color.orange).frame(height: 4)\n\n                    Text(row.maximumTemperature)\n                }\n                .foregroundColor(.white)\n            }\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Localizing package resources",
+      "url": "https://developer.apple.com/documentation/Xcode/localizing-package-resources",
+      "type": "documentation",
+      "description": "Ensure that your Swift package provides localized resources for many locales.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/localizing-package-resources",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/localizing-package-resources.json"
+    },
+    {
+      "title": "Localization",
+      "url": "https://developer.apple.com/documentation/Xcode/localization",
+      "type": "documentation",
+      "description": "Expand the market for your app by supporting multiple languages and regions.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/localization",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/localization.json"
+    },
+    {
+      "title": "Expanding Your App to New Markets",
+      "url": "https://developer.apple.com/localization/",
+      "type": "guide",
+      "description": "Internationalization and Localization. Expanding Your App to New Markets.",
+      "sosumiURL": "https://sosumi.ai/localization/"
+    },
+    {
+      "title": "Internationalization and Localization Guide",
+      "url": "https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/BPInternational/Introduction/Introduction.html",
+      "type": "guide",
+      "description": "Explains how to create a user interface and write code that can be localized into multiple languages.",
+      "sosumiURL": "https://sosumi.ai/library/content/documentation/MacOSX/Conceptual/BPInternational/Introduction/Introduction.html"
+    }
+  ],
+  "path": "sessions/wwdc2022/10110/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10110/metadata.json",
+    "readme": "sessions/wwdc2022/10110/README.md",
+    "transcript": "sessions/wwdc2022/10110/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10110/transcript.json"
+  }
+}

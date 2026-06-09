@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-229",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 229,
+  "title": "Make your Mac app more accessible to everyone",
+  "description": "Learn how to integrate accessibility features that take full advantage of the power and flexibility of macOS. Go beyond the basics to learn how to support VoiceOver and Voice Control, improve the layout of your views, explore how assistive technologies navigate your content, and more.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/229",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/229",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Accessibility & Inclusion"
+  ],
+  "primaryTopic": "Accessibility & Inclusion",
+  "duration": 739,
+  "hasTranscript": true,
+  "transcriptWordCount": 1919,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/229/5/85268a8c-59ed-4f8c-942d-8835f8a76dd3/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/229/5/85268a8c-59ed-4f8c-942d-8835f8a76dd3/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/229/5/85268a8c-59ed-4f8c-942d-8835f8a76dd3/downloads/wwdc2025-229_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/229/5/85268a8c-59ed-4f8c-942d-8835f8a76dd3/downloads/wwdc2025-229_hd.mp4",
+    "duration": 739
+  },
+  "codeSnippets": [
+    {
+      "title": "Contain subviews within accessibility container",
+      "language": "swift",
+      "startTimeSeconds": 255,
+      "code": "// Contain subviews within accessibility container\n\nimport SwiftUI\n\nstruct ContentView: View {\n  var body: some View {\n    VStack {\n      FirstView()\n      SecondView()\n    }\n    .accessibilityElement(children: .contain)\n  }\n}"
+    },
+    {
+      "title": "Combine subviews into one accessibility element",
+      "language": "swift",
+      "startTimeSeconds": 263,
+      "code": "// Combine subviews into one accessibility element\n\nimport SwiftUI\n\nstruct ContentView: View {\n  var body: some View {\n    VStack {\n      FirstView()\n      SecondView()\n    }\n    .accessibilityElement(children: .combine)\n  }\n}"
+    },
+    {
+      "title": "Hide subviews from accessibility",
+      "language": "swift",
+      "startTimeSeconds": 273,
+      "code": "// Hide subviews from accessibility\n\nimport SwiftUI\n\nstruct ContentView: View {\n  var body: some View {\n    VStack {\n      FirstView()\n      SecondView()\n    }\n    .accessibilityElement(children: .ignore)\n  }\n}"
+    },
+    {
+      "title": "Contain style presets in accessibility container",
+      "language": "swift",
+      "startTimeSeconds": 312,
+      "code": "// Contain style presets in accessibility container\n\nimport SwiftUI\n\nstruct FormattingInspectorView: View {\n  var body: some View {\n    Form {\n      VStack {\n        StylePresetView(type: .title)\n        StylePresetView(type: .heading)\n        StylePresetView(type: .subHeading)\n        StylePresetView(type: .body)\n      }\n      .accessibilityElement(children: .contain)\n      .accessibilityLabel(\"Style Presets\")\n    }\n  }\n}"
+    },
+    {
+      "title": "Merge Title View and Button into one accessibility element",
+      "language": "swift",
+      "startTimeSeconds": 381,
+      "code": "// Merge Title View and Button into one accessibility element\n\nimport SwiftUI\n\nstruct StylePresetView: View {\n  let preset: StylePreset\n\n  var body: some View {\n    HStack {\n      PresetTitleView(preset: preset)\n      Button(\"Apply\") { /* ... */ }\n    }\n    .accessibilityElement(children: .combine)\n  }\n}"
+    },
+    {
+      "title": "Set the order of accessibility elements",
+      "language": "swift",
+      "startTimeSeconds": 421,
+      "code": "// Set the order of accessibility elements\n\nimport SwiftUI\n\nstruct BookDetailsView: View {\n  let book: Book\n\n  var body: some View {\n    VStack {\n      Text(book.author)\n      Text(book.title)\n        .accessibilitySortPriority(1)\n      DescriptionView(book: book)\n    }\n    .accessibilityElement(children: .combine)\n  }\n}"
+    },
+    {
+      "title": "Add an accessibility rotor for bookmarked pages",
+      "language": "swift",
+      "startTimeSeconds": 523,
+      "code": "// Add an accessibility rotor for bookmarked pages\n\nimport SwiftUI\n\nstruct PagesView: View {\n  @Binding var pages: [Page]\n\n  var body: some View {\n    List(pages) { page in\n      PageListItemView(page: page)\n    }\n    .accessibilityRotor(\"Bookmarks\") {\n      ForEach(pages) { page in\n        if page.isBookmarked {\n          AccessibilityRotorEntry(page.title, id: page.id)\n        }\n      }\n    }\n  }\n}"
+    },
+    {
+      "title": "Set the default VoiceOver focus",
+      "language": "swift",
+      "startTimeSeconds": 573,
+      "code": "// Set the default VoiceOver focus\n\nstruct MyView: View {\n  @AccessibilityFocusState(for: .voiceOver) var focusedForVoiceOver\n\n  var body: some View {\n    FirstView()\n    SecondView()\n      .accessibilityDefaultFocus($focusedForVoiceOver, true)\n    ThirdView()\n  }\n}"
+    },
+    {
+      "title": "Add an accessibility action to bookmark the page",
+      "language": "swift",
+      "startTimeSeconds": 628,
+      "code": "// Add an accessibility action to bookmark the page\n\nimport SwiftUI\n\nstruct PageListItemView: View {\n  var page: Page\n\n  var body: some View {\n    VStack() {\n      ThumbnailView(page: page)\n      Text(page.title)\n    }\n    .onHover { /* ... */ }\n    .accessibilityAction(named: page.isBookmarked ? \"Remove Bookmark\" : \"Bookmark\") {\n      page.isBookmarked.toggle()\n    }\n  }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Accessibility",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/accessibility",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/accessibility"
+    },
+    {
+      "title": "Accessibility",
+      "url": "https://developer.apple.com/documentation/swiftui/view-accessibility",
+      "type": "documentation",
+      "description": "Make your SwiftUI apps accessible to everyone, including people with disabilities.",
+      "sosumiURL": "https://sosumi.ai/documentation/swiftui/view-accessibility",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/swiftui/view-accessibility.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/229/",
+  "files": {
+    "metadata": "sessions/wwdc2025/229/metadata.json",
+    "readme": "sessions/wwdc2025/229/README.md",
+    "transcript": "sessions/wwdc2025/229/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/229/transcript.json"
+  }
+}

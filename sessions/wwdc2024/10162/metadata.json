@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10162",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10162,
+  "title": "Keep colors consistent across captures",
+  "description": "Meet the Constant Color API and find out how it can help people use your app to determine precise colors. You’ll learn how to adopt the API, explore its scientific and marketing potential, and discover best practices for making the most of the technology.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10162",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10162",
+  "type": "Video",
+  "publishedAt": "2024-06-12T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "camera",
+    "color",
+    "colorspace",
+    "machine learning",
+    "photos"
+  ],
+  "topics": [
+    "AI & Machine Learning",
+    "Photos & Camera"
+  ],
+  "primaryTopic": "Photos & Camera",
+  "duration": 1428,
+  "hasTranscript": true,
+  "transcriptWordCount": 3806,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10162/4/8F68B3B4-3EF6-4291-8940-FC4AD3151DAC/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10162/4/8F68B3B4-3EF6-4291-8940-FC4AD3151DAC/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10162/4/8F68B3B4-3EF6-4291-8940-FC4AD3151DAC/downloads/wwdc2024-10162_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10162/4/8F68B3B4-3EF6-4291-8940-FC4AD3151DAC/downloads/wwdc2024-10162_hd.mp4",
+    "duration": 1428
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Capturing consistent color images",
+      "url": "https://developer.apple.com/documentation/AVFoundation/capturing-consistent-color-images",
+      "type": "samplecode",
+      "description": "Add the power of a photography studio and lighting rig to your app with the new Constant Color API.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/capturing-consistent-color-images",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/capturing-consistent-color-images.json"
+    },
+    {
+      "title": "Forum: Photos & Camera",
+      "url": "https://developer.apple.com/forums/topics/media-technologies/photos-and-camera?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/media-technologies/photos-and-camera?cid=vf-a-0010"
+    }
+  ],
+  "path": "sessions/wwdc2024/10162/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10162/metadata.json",
+    "readme": "sessions/wwdc2024/10162/README.md",
+    "transcript": "sessions/wwdc2024/10162/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10162/transcript.json"
+  }
+}

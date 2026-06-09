@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10191",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10191,
+  "title": "Deliver a great playback experience on tvOS",
+  "description": "Find out how you can use Apple TV’s redesigned playback interface to build great media experiences in your apps. Learn how the latest interface helps people access relevant controls and information while maintaining focus on content. We’ll show you how you can adopt AVPlayerViewController and other APIs for your tvOS app to help people find, play, and enjoy content.\n\nTo get the most out of this session, we recommend having a basic understanding of AVKit.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10191",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10191",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "tvOS"
+  ],
+  "keywords": [
+    "avplayerviewcontroller",
+    "content tabs",
+    "contextual actions",
+    "title view",
+    "transport bar",
+    "transport bar controls",
+    "tvuikit"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 635,
+  "hasTranscript": true,
+  "transcriptWordCount": 1369,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10191/4/E98B040E-0A40-48C3-85D2-F7F18715F00F/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10191/4/E98B040E-0A40-48C3-85D2-F7F18715F00F/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10191/4/E98B040E-0A40-48C3-85D2-F7F18715F00F/downloads/wwdc2021-10191_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10191/4/E98B040E-0A40-48C3-85D2-F7F18715F00F/downloads/wwdc2021-10191_hd.mp4",
+    "duration": 635
+  },
+  "codeSnippets": [
+    {
+      "title": "Transport Bar Controls Example",
+      "language": "swift",
+      "startTimeSeconds": 282,
+      "code": "let favoriteAction = UIAction(title: \"Favorites\", image: UIImage(systemName: \"heart\")) {\n    // Add to favorites\n}\n\nlet submenu = UIMenu(title: \"Speed\", options: [.displayInline, .singleSelection],\n                     children: [ UIAction(…) ])\n\nlet menu = UIMenu(image: UIImage(systemName: \"gearshape\"), children: [submenu, UIAction(…)])\nplayerViewController.transportBarCustomMenuItems = [favoriteAction, menu]"
+    },
+    {
+      "title": "Content Tabs Example",
+      "language": "swift",
+      "startTimeSeconds": 371,
+      "code": "// Initialize content tab view controller\n\ncustomViewController.preferredContentSize = CGSize(width: 0, height: 140)\ncustomViewController.title = \"Recommended\""
+    },
+    {
+      "title": "TVMediaItemContentConfiguration Example",
+      "language": "swift",
+      "startTimeSeconds": 428,
+      "code": "// Configure 16:9 UICollectionView cell\nimport TVUIKit\n\nvar contentConfiguration = TVMediaItemContentConfiguration.wideCell()\ncontentConfiguration.image = UIImage(imageLiteralResourceName: \"tanu\")\ncontentConfiguration.text = \"Title\"\ncontentConfiguration.secondaryText = \"Secondary text\"\ncontentConfiguration.badgeText = \"NEW\"\ncontentConfiguration.badgeProperties.backgroundColor = .systemRed\ncontentConfiguration.playbackProgress = 0.75\n\ncell.contentConfiguration = contentConfiguration"
+    },
+    {
+      "title": "TVMonogramContentConfiguration Example",
+      "language": "swift",
+      "startTimeSeconds": 456,
+      "code": "// Configure monogram UICollectionView cell\nimport TVUIKit\n\nvar contentConfiguration = TVMonogramContentConfiguration.cell()\ncontentConfiguration.image = UIImage(imageLiteralResourceName: \"jad\")\ncontentConfiguration.text = \"Jad\"\n\ncell.contentConfiguration = contentConfiguration"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Customizing the tvOS Playback Experience",
+      "url": "https://developer.apple.com/documentation/AVKit/customizing-the-tvos-playback-experience",
+      "type": "documentation",
+      "description": "Adopt the latest features of the redesigned tvOS player user interface to provide a more streamlined way to watch your content.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVKit/customizing-the-tvos-playback-experience",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVKit/customizing-the-tvos-playback-experience.json"
+    },
+    {
+      "title": "AVKit",
+      "url": "https://developer.apple.com/documentation/AVKit",
+      "type": "documentation",
+      "description": "Create user interfaces for media playback, complete with transport controls, chapter navigation, picture-in-picture support, and display of subtitles and closed captions.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVKit.json"
+    },
+    {
+      "title": "Human Interface Guidelines: Designing for tvOS",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/designing-for-tvos",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/designing-for-tvos"
+    }
+  ],
+  "path": "sessions/wwdc2021/10191/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10191/metadata.json",
+    "readme": "sessions/wwdc2021/10191/README.md",
+    "transcript": "sessions/wwdc2021/10191/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10191/transcript.json"
+  }
+}

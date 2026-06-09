@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10188",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10188,
+  "title": "Discover WKWebView enhancements",
+  "description": "WKWebView is the best way to present rich, interactive web content right within your app. Explore new APIs that help you convert apps using WebViews or UIWebViews while adding entirely new capabilities. Learn about better ways to handle JavaScript, fine tune the rendering process, export web content, and more.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10188",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10188",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "allowscontentjavascript",
+    "app-bound domains",
+    "bitmap",
+    "browser",
+    "callasyncjavascript",
+    "console",
+    "createpdf",
+    "createwebarchivedata",
+    "css",
+    "evaluatejavascript",
+    "findstring",
+    "html",
+    "intelligent tracking prevention",
+    "itp",
+    "javascript",
+    "javascriptenabled",
+    "jscontext",
+    "mediastyle",
+    "mediatype",
+    "messagehandlers",
+    "pagezoom",
+    "postmessage",
+    "printoperationwithprintinfo",
+    "promise",
+    "safari technology preview",
+    "safari view controller",
+    "sfsafariviewcontroller",
+    "share as pdf",
+    "snapshot",
+    "takesnapshot",
+    "uiwebview",
+    "web archive",
+    "web content",
+    "web inspector",
+    "webkit",
+    "webpage",
+    "website",
+    "webview",
+    "web views",
+    "wkappbounddomains",
+    "wkcontentworld",
+    "wkpreferences",
+    "wkscriptmessagehandler",
+    "wkwebpagepreferences"
+  ],
+  "topics": [
+    "Safari & Web"
+  ],
+  "primaryTopic": "Safari & Web",
+  "duration": 1809,
+  "hasTranscript": true,
+  "transcriptWordCount": 4933,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10188/3/6E5129F2-8309-4EDE-BEEA-B2B32A39A5FB/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10188/3/6E5129F2-8309-4EDE-BEEA-B2B32A39A5FB/wwdc2020_10188_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10188/3/6E5129F2-8309-4EDE-BEEA-B2B32A39A5FB/wwdc2020_10188_hd.mp4",
+    "duration": 1809
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "WebKit Open Source Project",
+      "url": "https://webkit.org",
+      "type": "guide",
+      "description": "WebKit Open Source Project"
+    },
+    {
+      "title": "Web Inspector Reference",
+      "url": "https://webkit.org/web-inspector/",
+      "type": "documentation",
+      "description": "Web Inspector Documentation"
+    },
+    {
+      "title": "WebKit",
+      "url": "https://developer.apple.com/documentation/WebKit",
+      "type": "documentation",
+      "description": "Integrate web content seamlessly into your app, and customize content interactions to meet your app’s needs.",
+      "sosumiURL": "https://sosumi.ai/documentation/WebKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WebKit.json"
+    },
+    {
+      "title": "Intelligent Tracking Prevention",
+      "url": "https://webkit.org/tracking-prevention/",
+      "type": "documentation",
+      "description": "Intelligent Tracking Prevention"
+    },
+    {
+      "title": "WKWebView",
+      "url": "https://developer.apple.com/documentation/WebKit/WKWebView",
+      "type": "documentation",
+      "description": "An object that displays interactive web content, such as for an in-app browser.",
+      "sosumiURL": "https://sosumi.ai/documentation/WebKit/WKWebView",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WebKit/WKWebView.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10188/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10188/metadata.json",
+    "readme": "sessions/wwdc2020/10188/README.md",
+    "transcript": "sessions/wwdc2020/10188/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10188/transcript.json"
+  }
+}

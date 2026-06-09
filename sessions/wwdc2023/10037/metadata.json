@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10037",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10037,
+  "title": "Explore pie charts and interactivity in Swift Charts",
+  "description": "Swift Charts has come full circle: Get ready to bake up pie and donut charts in your app with the latest improvements to the framework. Learn how to make your charts scrollable, explore the chart selection API for revealing additional details in your data, and find out how enabling additional interactivity can make your charts even more delightful. ",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10037",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10037",
+  "type": "Video",
+  "publishedAt": "2023-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 614,
+  "hasTranscript": true,
+  "transcriptWordCount": 1480,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10037/4/77026DAB-A5CB-4FD8-8516-5E63DD12C236/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10037/4/77026DAB-A5CB-4FD8-8516-5E63DD12C236/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10037/4/77026DAB-A5CB-4FD8-8516-5E63DD12C236/downloads/wwdc2023-10037_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10037/4/77026DAB-A5CB-4FD8-8516-5E63DD12C236/downloads/wwdc2023-10037_hd.mp4",
+    "duration": 614
+  },
+  "codeSnippets": [
+    {
+      "title": "Stacked bar chart",
+      "language": "swift",
+      "startTimeSeconds": 126,
+      "code": "Chart(data, id: \\.name) { element in\n  BarMark(\n    x: .value(\"Sales\", element.sales),\n    stacking: .normalized\n  )\n  .foregroundStyle(by: .value(\"Name\", element.name))\n}\n.chartXAxis(.hidden)"
+    },
+    {
+      "title": "Pie chart",
+      "language": "swift",
+      "startTimeSeconds": 164,
+      "code": "Chart(data, id: \\.name) { element in\n  SectorMark(\n    angle: .value(\"Sales\", element.sales)\n  )\n  .foregroundStyle(by: .value(\"Name\", element.name))\n}"
+    },
+    {
+      "title": "Pie chart with angular inset",
+      "language": "swift",
+      "startTimeSeconds": 185,
+      "code": "Chart(data, id: \\.name) { element in\n  SectorMark(\n    angle: .value(\"Sales\", element.sales),\n    angularInset: 1.5\n  )\n  .foregroundStyle(by: .value(\"Name\", element.name))\n}"
+    },
+    {
+      "title": "Pie chart with corner radius",
+      "language": "swift",
+      "startTimeSeconds": 186,
+      "code": "Chart(data, id: \\.name) { element in\n  SectorMark(\n    angle: .value(\"Sales\", element.sales),\n    angularInset: 1.5\n  )\n  .cornerRadius(5)\n  .foregroundStyle(by: .value(\"Name\", element.name))\n}"
+    },
+    {
+      "title": "Donut chart",
+      "language": "swift",
+      "startTimeSeconds": 213,
+      "code": "Chart(data, id: \\.name) { element in\n  SectorMark(\n    angle: .value(\"Sales\", element.sales),\n    innerRadius: .ratio(0.618),\n    angularInset: 1.5\n  )\n  .cornerRadius(5)\n  .foregroundStyle(by: .value(\"Name\", element.name))\n}"
+    },
+    {
+      "title": "Donut chart with text in the center",
+      "language": "swift",
+      "startTimeSeconds": 242,
+      "code": "Chart(data, id: \\.name) { element in\n  SectorMark(\n    angle: .value(\"Sales\", element.sales),\n    innerRadius: .ratio(0.618),\n    angularInset: 1.5\n  )\n  .cornerRadius(5)\n  .foregroundStyle(by: .value(\"Name\", element.name))\n}\n.chartBackground { chartProxy in\n  GeometryReader { geometry in\n    let frame = geometry[chartProxy.plotAreaFrame]\n    VStack {\n      Text(\"Most Sold Style\")\n        .font(.callout)\n        .foregroundStyle(.secondary)\n      Text(mostSold)\n        .font(.title2.bold())\n        .foregroundColor(.primary)\n    }\n    .position(x: frame.midX, y: frame.midY)\n  }\n}"
+    },
+    {
+      "title": "Chart visualizing average sales by city",
+      "language": "swift",
+      "startTimeSeconds": 314,
+      "code": "struct LocationDetailsChart: View {\n  ...\n\n  var body: some View {\n    Chart {\n      ForEach(data) { series in\n        ForEach(series.sales, id: \\.day) { element in\n          LineMark(\n            x: .value(\"Day\", element.day, unit: .day),\n            y: .value(\"Sales\", element.sales)\n          )\n        }\n        .foregroundStyle(by: .value(\"City\", series.city))\n        .symbol(by: .value(\"City\", series.city))\n        .interpolationMethod(.catmullRom)\n      }\n    }\n    ...\n  }\n}"
+    },
+    {
+      "title": "Chart selection modifier",
+      "language": "swift",
+      "startTimeSeconds": 339,
+      "code": "struct LocationDetailsChart: View {\n  @Binding var rawSelectedDate: Date?\n\n  var body: some View {\n    Chart {\n      ForEach(data) { series in\n        ForEach(series.sales, id: \\.day) { element in\n          LineMark(\n            x: .value(\"Day\", element.day, unit: .day),\n            y: .value(\"Sales\", element.sales)\n          )\n        }\n        .foregroundStyle(by: .value(\"City\", series.city))\n        .symbol(by: .value(\"City\", series.city))\n        .interpolationMethod(.catmullRom)\n      }\n    }\n    .chartXSelection(value: $rawSelectedDate)\n  }\n}"
+    },
+    {
+      "title": "Processing raw selected date from chart selection binding",
+      "language": "swift",
+      "startTimeSeconds": 347,
+      "code": "struct LocationDetailsChart: View {\n  @Binding var rawSelectedDate: Date?\n\n  var selectedDate: Date? {\n    guard let rawSelectedDate else { return nil }\n    return data.first?.sales.first(where: {\n      let endOfDay = endOfDay(for: $0.day)\n      return ($0.day ... endOfDay).contains(rawSelectedDate)\n    })?.day\n  }\n\n  var body: some View {\n    Chart {\n      ForEach(data) { series in\n        ForEach(series.sales, id: \\.day) { element in\n          LineMark(\n            x: .value(\"Day\", element.day, unit: .day),\n            y: .value(\"Sales\", element.sales)\n          )\n        }\n        .foregroundStyle(by: .value(\"City\", series.city))\n        .symbol(by: .value(\"City\", series.city))\n        .interpolationMethod(.catmullRom)\n      }\n    }\n    .chartXSelection(value: $rawSelectedDate)\n  }\n}"
+    },
+    {
+      "title": "Rule mark as selection indicator",
+      "language": "swift",
+      "startTimeSeconds": 366,
+      "code": "Chart {\n  ForEach(data) { series in\n    ForEach(series.sales, id: \\.day) { element in\n      LineMark(\n        x: .value(\"Day\", element.day, unit: .day),\n        y: .value(\"Sales\", element.sales)\n      )\n    }\n  }\n  if let selectedDate {\n    RuleMark(\n      x: .value(\"Selected\", selectedDate, unit: .day)\n    )\n    .foregroundStyle(Color.gray.opacity(0.3))\n    .offset(yStart: -10)\n    .zIndex(-1)\n  }\n}\n.chartXSelection(value: $rawSelectedDate)"
+    },
+    {
+      "title": "Selection popover",
+      "language": "swift",
+      "startTimeSeconds": 380,
+      "code": "Chart {\n  ForEach(data) { series in\n    ForEach(series.sales, id: \\.day) { element in\n      LineMark(\n        x: .value(\"Day\", element.day, unit: .day),\n        y: .value(\"Sales\", element.sales)\n      )\n    }\n  }\n  if let selectedDate {\n    RuleMark(\n      x: .value(\"Selected\", selectedDate, unit: .day)\n    )\n    .foregroundStyle(Color.gray.opacity(0.3))\n    .offset(yStart: -10)\n    .zIndex(-1)\n    .annotation(\n      position: .top, spacing: 0,\n      overflowResolution: .init(\n        x: .fit(to: .chart),\n        y: .disabled\n      )\n    ) {\n      valueSelectionPopover\n    }\n  }\n}\n.chartXSelection(value: $rawSelectedDate)"
+    },
+    {
+      "title": "Range selection",
+      "language": "swift",
+      "startTimeSeconds": 427,
+      "code": "Chart(data) { series in\n  ForEach(series.sales, id: \\.day) { element in\n    LineMark(\n      x: .value(\"Day\", element.day, unit: .day),\n      y: .value(\"Sales\", element.sales)\n    )\n  }\n  ...\n}\n.chartXSelection(value: $rawSelectedDate)\n.chartXSelection(range: $rawSelectedRange)"
+    },
+    {
+      "title": "Overriding default selection gesture",
+      "language": "swift",
+      "startTimeSeconds": 442,
+      "code": "Chart(data) { series in\n  ForEach(series.sales, id: \\.day) { element in\n    LineMark(\n      x: .value(\"Day\", element.day, unit: .day),\n      y: .value(\"Sales\", element.sales)\n    )\n  }\n  ...\n}\n.chartXSelection(value: $rawSelectedDate)\n.chartGesture { proxy in\n  DragGesture(minimumDistance: 0)\n    .onChanged { proxy.selectXValue(at: $0.location.x) }\n    .onEnded { _ in selectedDate = nil }\n}"
+    },
+    {
+      "title": "Selection in pie charts and donut charts",
+      "language": "swift",
+      "startTimeSeconds": 451,
+      "code": "Chart(data, id: \\.name) { element in\n  SectorMark(\n    angle: .value(\"Sales\", element.sales),\n    innerRadius: .ratio(0.618),\n    angularInset: 1.5\n  )\n  .cornerRadius(5)\n  .foregroundStyle(by: .value(\"Name\", element.name))\n  .opacity(element.name == selectedName ? 1.0 : 0.3)\n}\n.chartAngleSelection(value: $selectedAngle)"
+    },
+    {
+      "title": "Daily sales chart",
+      "language": "swift",
+      "startTimeSeconds": 474,
+      "code": "Chart {\n  ForEach(SalesData.last365Days, id: \\.day) {\n    BarMark(\n      x: .value(\"Day\", $0.day, unit: .day),\n      y: .value(\"Sales\", $0.sales)\n    )\n  }\n  .foregroundStyle(.blue)\n}"
+    },
+    {
+      "title": "Daily sales chart with a scrollable axis",
+      "language": "swift",
+      "startTimeSeconds": 487,
+      "code": "Chart {\n  ForEach(SalesData.last365Days, id: \\.day) {\n    BarMark(\n      x: .value(\"Day\", $0.day, unit: .day),\n      y: .value(\"Sales\", $0.sales)\n    )\n  }\n  .foregroundStyle(.blue)\n}\n.chartScrollableAxes(.horizontal)"
+    },
+    {
+      "title": "Setting the visible domain for a scrollable chart",
+      "language": "swift",
+      "startTimeSeconds": 491,
+      "code": "Chart {\n  ForEach(SalesData.last365Days, id: \\.day) {\n    BarMark(\n      x: .value(\"Day\", $0.day, unit: .day),\n      y: .value(\"Sales\", $0.sales)\n    )\n  }\n  .foregroundStyle(.blue)\n}\n.chartScrollableAxes(.horizontal)\n.chartXVisibleDomain(length: 3600 * 24 * 30)"
+    },
+    {
+      "title": "Chart scroll position",
+      "language": "swift",
+      "startTimeSeconds": 498,
+      "code": "Chart {\n  ForEach(SalesData.last365Days, id: \\.day) {\n    BarMark(\n      x: .value(\"Day\", $0.day, unit: .day),\n      y: .value(\"Sales\", $0.sales)\n    )\n  }\n  .foregroundStyle(.blue)\n}\n.chartScrollableAxes(.horizontal)\n.chartXVisibleDomain(length: 3600 * 24 * 30)\n.chartScrollPosition(x: $scrollPosition)"
+    },
+    {
+      "title": "Snapping in a scrolling chart",
+      "language": "swift",
+      "startTimeSeconds": 530,
+      "code": "Chart {\n  ForEach(SalesData.last365Days, id: \\.day) {\n    BarMark(\n      x: .value(\"Day\", $0.day, unit: .day),\n      y: .value(\"Sales\", $0.sales)\n    )\n  }\n  .foregroundStyle(.blue)\n}\n.chartScrollableAxes(.horizontal)\n.chartXVisibleDomain(length: 3600 * 24 * 30)\n.chartScrollPosition(x: $scrollPosition)\n.chartScrollTargetBehavior(\n  .valueAligned(\n    matching: DateComponents(hour: 0),\n    majorAlignment: .matching(DateComponents(day: 1))))"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Visualizing your app’s data",
+      "url": "https://developer.apple.com/documentation/Charts/visualizing-your-app-s-data",
+      "type": "samplecode",
+      "description": "Build complex and interactive charts using Swift Charts.",
+      "sosumiURL": "https://sosumi.ai/documentation/Charts/visualizing-your-app-s-data",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Charts/visualizing-your-app-s-data.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10037/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10037/metadata.json",
+    "readme": "sessions/wwdc2023/10037/README.md",
+    "transcript": "sessions/wwdc2023/10037/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10037/transcript.json"
+  }
+}

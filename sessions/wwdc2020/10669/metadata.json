@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10669",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10669,
+  "title": "Handling FHIR without getting burned",
+  "description": "Learn how FHIRModels creates native data models for all FHIR resources, provides data validation to enforce resource integrity, and prevents the creation of structurally invalid resources — across multiple versions of the FHIR specification. Whether you're working with clinical data obtained from HealthKit or direct from a clinical system, FHIRModels makes FHIR easy to handle.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10669",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10669",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "fhir",
+    "health",
+    "health documents",
+    "medical records",
+    "open source",
+    "package",
+    "spm"
+  ],
+  "topics": [
+    "Health & Fitness"
+  ],
+  "primaryTopic": "Health & Fitness",
+  "duration": 487,
+  "hasTranscript": true,
+  "transcriptWordCount": 1088,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10669/4/63009C98-F22F-4CFE-9037-5DCC0A37017F/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10669/4/63009C98-F22F-4CFE-9037-5DCC0A37017F/wwdc2020_10669_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10669/4/63009C98-F22F-4CFE-9037-5DCC0A37017F/wwdc2020_10669_hd.mp4",
+    "duration": 487
+  },
+  "codeSnippets": [
+    {
+      "title": "Use FHIRModels with Health Records FHIR data from HealthKit",
+      "language": "swift",
+      "startTimeSeconds": 272,
+      "code": "// Use with Health Records FHIR data from HealthKit\nimport HealthKit\nimport ModelsDSTU2\n\n// Grab HKClinicalRecord from HealthKit API\nlet clinicalRecord: HKClinicalRecord\nlet resource = clinicalRecord.fhirResource!\n\n// Print the prescription note\nlet decoder = JSONDecoder()\nlet prescription = try decoder.decode(MedicationOrder.self, from: resource.data)\nprint(\"\\(prescription.note)\")"
+    },
+    {
+      "title": "Use FHIRModels with Health Records FHIR data from HealthKit, part 2",
+      "language": "swift",
+      "startTimeSeconds": 304,
+      "code": "// Make using \"TimingRepeat\" period dates easier by writing an extension\nextension TimingRepeat {\n    var periodDisplayString: String? {\n        if case .period(let period) = bounds {\n            return \"\\(period.start) - \\(period.end)\"\n        }\n        return nil\n    }\n}\n\n// Collect all dosage instructions on medication prescriptions\nlet instructions: [String] = prescription.dosageInstruction?.map { dosage in\n    guard let period = dosage.timing?.repeat?.periodDisplayString else {\n        return \"\\(dosage.text)\"\n    }\n    return \"\\(period): \\(dosage.text)\"\n}"
+    },
+    {
+      "title": "Supporting multiple FHIR releases",
+      "language": "swift",
+      "startTimeSeconds": 380,
+      "code": "// Supporting multiple releases\nimport ModelsDSTU2\nimport ModelsR4\n\nlet decoder = JSONDecoder()\nlet release: FHIRRelease\nlet data: Data\n\nlet note: String? = nil\nswitch release {\ncase .dstu2:\n    let model = try decoder.decode(ModelsDSTU2.MedicationOrder.self, from: data)\n    note = model.note?.value?.string\ncase .r4:\n    let model = try decoder.decode(ModelsR4.MedicationRequest.self, from: data)\n    note = model.note?.compactMap({ $0.text.value?.string }).joined(separator: \"\\n\")\ndefault:\n    note = \"Unsupported FHIR release \\(release)\"\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Accessing a User’s Clinical Records",
+      "url": "https://developer.apple.com/documentation/HealthKit/accessing-a-user-s-clinical-records",
+      "type": "samplecode",
+      "description": "Request authorization to query HealthKit for a user’s clinical records and display them in your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/HealthKit/accessing-a-user-s-clinical-records",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HealthKit/accessing-a-user-s-clinical-records.json"
+    },
+    {
+      "title": "FHIRModels Swift Package on GitHub",
+      "url": "https://github.com/apple/FHIRModels",
+      "type": "documentation",
+      "description": "FHIRModels Swift Package on GitHub"
+    }
+  ],
+  "path": "sessions/wwdc2020/10669/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10669/metadata.json",
+    "readme": "sessions/wwdc2020/10669/README.md",
+    "transcript": "sessions/wwdc2020/10669/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10669/transcript.json"
+  }
+}

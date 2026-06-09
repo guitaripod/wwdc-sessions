@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10051",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10051,
+  "title": "Create a great ShazamKit experience",
+  "description": "Discover how your app can offer a great audio matching experience with the latest updates to ShazamKit. We’ll take you through matching features, updates to audio recognition, and interactions with the Shazam library. Learn tips and best practices for using ShazamKit in your audio apps.\n\nFor more on ShazamKit, check out \"Create custom catalogs at scale with ShazamKit\" from WWDC22 as well as \"Explore ShazamKit\" and \"Create custom audio experiences with ShazamKit\" from WWDC21.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10051",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10051",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Audio & Video",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1318,
+  "hasTranscript": true,
+  "transcriptWordCount": 2984,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10051/4/609FFA81-2E88-4DC5-ACDB-5C4A0C42875D/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10051/4/609FFA81-2E88-4DC5-ACDB-5C4A0C42875D/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10051/4/609FFA81-2E88-4DC5-ACDB-5C4A0C42875D/downloads/wwdc2023-10051_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10051/4/609FFA81-2E88-4DC5-ACDB-5C4A0C42875D/downloads/wwdc2023-10051_hd.mp4",
+    "duration": 1318
+  },
+  "codeSnippets": [
+    {
+      "title": "Single match with SHManagedSession",
+      "language": "swift",
+      "startTimeSeconds": 406,
+      "code": "let managedSession = SHManagedSession()\n\nlet result = await managedSession.result()\n\nswitch result {\n case .match(let match):\n        print(\"Match found. MediaItemsCount: \\(match.mediaItems.count)\")\n case .noMatch(_):\n        print(\"No match found\")\n case .error(_, _):\n        print(\"An error occurred\")\n}"
+    },
+    {
+      "title": "Multiple matches with SHManagedSession",
+      "language": "swift",
+      "startTimeSeconds": 436,
+      "code": "let managedSession = SHManagedSession()\n\n// Continuously match \nfor await result in managedSession.results {\n\n switch result {\n  case .match(let match):\n        print(\"Match found. MediaItemsCount: \\(match.mediaItems.count)\")\n  case .noMatch(_):\n        print(\"No match found\")\n  case .error(_, _):\n        print(\"An error occurred\")\n }\n}"
+    },
+    {
+      "title": "Stop SHManagedSession",
+      "language": "swift",
+      "startTimeSeconds": 457,
+      "code": "let managedSession = SHManagedSession()\n\n// Cancel the session\nmanagedSession.cancel()"
+    },
+    {
+      "title": "ShazamKit Matcher with SHManagedSession",
+      "language": "swift",
+      "startTimeSeconds": 482,
+      "code": "import Foundation\nimport ShazamKit\n\nstruct MatchResult: Identifiable, Equatable {\n    let id = UUID()\n    let match: SHMatch?\n}\n\n@MainActor final class Matcher: ObservableObject {\n\n    @Published var isMatching = false\n    @Published var currentMatchResult: MatchResult?\n\n    var currentMediaItem: SHMatchedMediaItem? {\n        currentMatchResult?.match?.mediaItems.first\n    }\n\n    private let session: SHManagedSession\n\n    init() {\n\n        if let catalog = try? ResourcesProvider.catalog() {\n            session = SHManagedSession(catalog: catalog)\n        } else {\n            session = SHManagedSession()\n        }\n    }\n\n    func match() async {\n\n        isMatching = true\n\n        for await result in session.results {\n            switch result {\n            case .match(let match):\n                Task { @MainActor in\n                    self.currentMatchResult = MatchResult(match: match)\n                }\n            case .noMatch(_):\n                print(\"No match\")\n                endSession()\n            case .error(let error, _):\n                print(\"Error \\(error.localizedDescription)\")\n                endSession()\n            }\n            stopRecording()\n        }\n    }\n\n    func stopRecording() {\n\n        session.cancel()\n    }\n\n    func endSession() {\n\n        // Reset result of any previous match.\n        isMatching = false\n        currentMatchResult = MatchResult(match: nil)\n    }\n}"
+    },
+    {
+      "title": "Preparing SHManagedSession",
+      "language": "swift",
+      "startTimeSeconds": 607,
+      "code": "let managedSession = SHManagedSession()\n\nawait managedSession.prepare()\n\nlet result = await managedSession.result()"
+    },
+    {
+      "title": "SHManagedSession Idle State in SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 699,
+      "code": "struct MatchView: View {\n    let session: SHManagedSession\n\n    var body: some View {\n        VStack {\n             Text(session.state == .idle ? \"Hear Music?\" \n                : \"Matching\")\n             if session.state == .matching {\n                  ProgressView()\n             } else {\n                  Button {\n                      // start match\n                  } label: {\n                      Text(\"Learn the Dance\")\n                  }\n             }\n        }       \n}"
+    },
+    {
+      "title": "SHManagedSession Matching State in SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 745,
+      "code": "struct MatchView: View {\n    let session: SHManagedSession\n\n    var body: some View {\n        VStack {\n             Text(session.state == .idle ? \"Hear Music?\" \n                : \"Matching\")\n             if session.state == .matching {\n                  ProgressView()\n             } else {\n                  Button {\n                      // start match\n                  } label: {\n                      Text(\"Learn the Dance\")\n                  }\n             }\n        }    \n    }\n}"
+    },
+    {
+      "title": "Adding with SHLibrary",
+      "language": "swift",
+      "startTimeSeconds": 923,
+      "code": "func add(mediaItems: [SHMediaItem]) async throws {\n\n    try await SHLibrary.default.addItems(mediaItems)\n}"
+    },
+    {
+      "title": "Reading with SHLibrary",
+      "language": "swift",
+      "startTimeSeconds": 934,
+      "code": "struct LibraryView: View {\n    var body: some View {\n        List(SHLibrary.default.items) { item in\n            MediaItemView(item: item)\n        }\n    }\n}"
+    },
+    {
+      "title": "Reading with SHLibrary in a non-UI context",
+      "language": "swift",
+      "startTimeSeconds": 960,
+      "code": "// Determine a user’s most popular genre\n\nlet currentItems = await SHLibrary.default.items\n\nlet genres = currentItems.flatMap { $0.genres }\n\n// count frequency of genres and get the highest\nlet mostPopularGenre = highestOccurringGenre(from: genres)"
+    },
+    {
+      "title": "SHLibrary Remove",
+      "language": "swift",
+      "startTimeSeconds": 985,
+      "code": "func remove(mediaItems: [SHMediaItem]) async throws {\n\n    try await SHLibrary.default.removeItems(mediaItems)\n}"
+    },
+    {
+      "title": "RecentDancesView with SHLibrary read and delete implementation",
+      "language": "swift",
+      "startTimeSeconds": 1002,
+      "code": "import SwiftUI\nimport ShazamKit\n\nenum NavigationPath: Hashable {\n    case nowPlayingView(videoURL: URL)\n    case danceCompletionView\n}\n\nstruct RecentDancesView: View {\n    private enum ViewConstants {\n        static let emptyStateImageName: String = \"EmptyStateIcon\"\n        static let emptyStateTextTitle: String = \"No Dances Yet?\"\n        static let emptyStateTextSubtitle: String = \"Find some music to start learning\"\n        static let deleteSwipeViewOpacity: Double = 0.5\n        static let matchingStateTextTopPadding: CGFloat = 24\n        static let matchingStateTextBottomPadding: CGFloat = 16\n        static let progressViewScaleEffect: CGFloat = 1.1\n        static let progressViewBottomPadding: CGFloat = 12.0\n        static let learnDanceButtonWidth: CGFloat = 250\n        static let curvedTopSideRectangleHeight: CGFloat = 200\n        static let listRowBottomInset: CGFloat = 30.0\n        static let matchingStateText: String = \"Get Ready...\"\n        static let notMatchingStateText: String = \"Hear Music?\"\n        static let noMatchText: String = \"No dance video for audio\"\n        static let navigationTitleText: String = \"Recent Dances\"\n        static let learnDanceButtonText: String = \"Learn the Dance\"\n        static let retryButtonText: String = \"Try Again\"\n        static let cancelButtonText: String = \"Cancel\"\n    }\n\n    // MARK: Properties\n    private var isListEmpty: Bool {\n        SHLibrary.default.items.isEmpty\n    }\n\n    @State private var matchingState: String = ViewConstants.notMatchingStateText\n    @State private var matchButtonText: String = ViewConstants.learnDanceButtonText\n    @State private var canRetryMatchAttempt = false\n    @State private var navigationPath: [NavigationPath] = []\n\n    // MARK: Environment\n    @EnvironmentObject private var matcher: Matcher\n    @Environment(\\.openURL) var openURL\n    var body: some View {\n        NavigationStack(path: $navigationPath) {\n            ZStack(alignment: .bottom) {\n                List(SHLibrary.default.items, id: \\.self) { mediaItem in\n                        RecentDanceRowView(mediaItem: mediaItem)\n                            .onTapGesture(perform: {\n                                guard let appleMusicURL = mediaItem.appleMusicURL else {\n                                    return\n                                }\n                                openURL(appleMusicURL)\n                            })\n                            .swipeActions {\n                                Button {\n                                    Task { try? await SHLibrary.default.removeItems([mediaItem]) }\n                                } label: {\n                                    Image(systemName: \"trash\")\n                                        .symbolRenderingMode(.hierarchical)\n                                }\n                                .tint(.appPrimary.opacity(0.5))\n                            }\n                }\n                    .listStyle(.plain)\n                    .overlay {\n                        if isListEmpty {\n                            ContentUnavailableView {\n                                Label(ViewConstants.emptyStateTextTitle,\n                                      image: ImageResource(name: ViewConstants.emptyStateImageName, bundle: Bundle.main))\n                                    .font(.title)\n                                    .foregroundStyle(Color.white)\n                            } description: {\n                                Text(ViewConstants.emptyStateTextSubtitle)\n                                    .foregroundStyle(Color.white)\n                            }\n                        }\n                    }\n                    .safeAreaInset(edge: .bottom, spacing: ViewConstants.listRowBottomInset) {\n                        ZStack(alignment: .top) {\n                            CurvedTopSideRectangle()\n                            VStack {\n                                Text(matchingState)\n                                    .font(.body)\n                                    .foregroundStyle(.white)\n                                    .padding(.top, ViewConstants.matchingStateTextTopPadding)\n                                    .padding(.bottom, ViewConstants.matchingStateTextBottomPadding)\n                                if matcher.isMatching {\n                                    ProgressView()\n                                        .progressViewStyle(.circular)\n                                        .tint(.appPrimary)\n                                        .scaleEffect(x: ViewConstants.progressViewScaleEffect, y: ViewConstants.progressViewScaleEffect)\n                                        .padding(.bottom, ViewConstants.progressViewBottomPadding)\n                                    Button(ViewConstants.cancelButtonText) {\n                                        canRetryMatchAttempt = false\n                                        matcher.stopRecording()\n                                        matcher.endSession()\n                                    }\n                                    .foregroundStyle(Color.appPrimary)\n                                    .font(.subheadline)\n                                    .fontWeight(.semibold)\n                                } else {\n                                    Button {\n                                        Task { await matcher.match() }\n                                        matchingState = ViewConstants.matchingStateText\n                                        canRetryMatchAttempt = true\n                                    } label: {\n                                        Text(matchButtonText)\n                                            .foregroundStyle(.black)\n                                            .font(.title3)\n                                            .fontWeight(.heavy)\n                                            .frame(maxWidth: .infinity)\n                                    }\n                                    .frame(width: ViewConstants.learnDanceButtonWidth)\n                                    .padding()\n                                    .background(Color.appPrimary)\n                                    .clipShape(Capsule())\n                                }\n                            }\n                        }\n                        .edgesIgnoringSafeArea(.bottom)\n                        .frame(height: ViewConstants.curvedTopSideRectangleHeight)\n                    }\n            }\n            .background(Color.appSecondary)\n            .navigationTitle(isListEmpty ? \"\" : ViewConstants.navigationTitleText)\n            .preferredColorScheme(.dark)\n            .toolbarColorScheme(.dark, for: .navigationBar)\n            .navigationBarTitleDisplayMode(.large)\n            .toolbarBackground(Color.appSecondary, for: .navigationBar)\n            .frame(maxHeight: .infinity)\n            .onChange(of: matcher.currentMatchResult, { _, result in\n\n                guard navigationPath.isEmpty else {\n                    print(\"Dance video already displayed\")\n                    return\n                }\n\n                guard let match = result?.match,\n                      let url = ResourcesProvider.videoURL(forFilename: match.mediaItems.first?.videoTitle ?? \"\") else {\n\n                    matchingState = canRetryMatchAttempt ? ViewConstants.noMatchText : ViewConstants.notMatchingStateText\n                    matchButtonText = canRetryMatchAttempt ? ViewConstants.retryButtonText : ViewConstants.learnDanceButtonText\n                    return\n                }\n\n                canRetryMatchAttempt = false\n\n                // Add the video playing view to the navigation stack.\n                navigationPath.append(.nowPlayingView(videoURL: url))\n            })\n            .navigationDestination(for: NavigationPath.self, destination: { newNavigationPath in\n                switch newNavigationPath {\n                case .nowPlayingView(let videoURL):\n                    NowPlayingView(navigationPath: $navigationPath, nowPlayingViewModel: NowPlayingViewModel(player: AVPlayer(url: videoURL)))\n                case .danceCompletionView:\n                    DanceCompletionView(navigationPath: $navigationPath)\n                }\n            })\n            .onAppear {\n                if AVAudioSession.sharedInstance().category != .ambient {\n                    Task.detached { try? AVAudioSession.sharedInstance().setCategory(.ambient) }\n                }\n                matchingState = ViewConstants.notMatchingStateText\n                matchButtonText = ViewConstants.learnDanceButtonText\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Filtering for specific media items",
+      "language": "swift",
+      "startTimeSeconds": 1223,
+      "code": "func match(from televisionShowCatalog: SHCustomCatalog) async -> [SHMatchedMediaItem] {\n\n        let managedSession = SHManagedSession(catalog: televisionShowCatalog)\n\n        let result = await managedSession.result()\n\n        if case .match(let match) = result {\n\n            // filter for only media items related to a particular episode\n            let filteredMediaItems = match.mediaItems.filter { $0.title == \"Episode 2\" }\n            return filteredMediaItems\n        }\n\n        return []\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "ShazamKit",
+      "url": "https://developer.apple.com/documentation/ShazamKit",
+      "type": "documentation",
+      "description": "Find information about a specific audio recording when a segment of it’s part of captured sound in the Shazam catalog or your custom catalog.",
+      "sosumiURL": "https://sosumi.ai/documentation/ShazamKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ShazamKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10051/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10051/metadata.json",
+    "readme": "sessions/wwdc2023/10051/README.md",
+    "transcript": "sessions/wwdc2023/10051/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10051/transcript.json"
+  }
+}

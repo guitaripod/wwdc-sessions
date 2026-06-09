@@ -1,0 +1,313 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2026-216",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 216,
+  "title": "Create web extensions for Safari",
+  "description": "Get started with Safari web extensions by building and testing one from the ground up — no Xcode required. Explore how content blocking, page modification, native messaging, and the permissions mode work together to create a powerful, privacy-preserving browsing experience across platforms. ",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/216",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/216",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "app store connect",
+    "css",
+    "html",
+    "javascript",
+    "json",
+    "safari",
+    "web extensions"
+  ],
+  "topics": [
+    "App Store, Distribution & Marketing",
+    "Safari & Web"
+  ],
+  "primaryTopic": "Safari & Web",
+  "duration": 1602,
+  "hasTranscript": true,
+  "transcriptWordCount": 3967,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/216/5/4fceecc8-1e28-465c-b894-fd0d03067c18/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/216/5/4fceecc8-1e28-465c-b894-fd0d03067c18/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/216/5/4fceecc8-1e28-465c-b894-fd0d03067c18/downloads/wwdc2026-216_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/216/5/4fceecc8-1e28-465c-b894-fd0d03067c18/downloads/wwdc2026-216_hd.mp4",
+    "duration": 1602
+  },
+  "codeSnippets": [
+    {
+      "title": "Manifest file",
+      "language": "json",
+      "startTimeSeconds": 224,
+      "code": "{\n    \"manifest_version\": 3,\n    \"name\": \"Shiny OnTrack\",\n    \"description\": \"Stay on track while you browse the web\",\n    \"version\": 1.0\n}"
+    },
+    {
+      "title": "Adding an extension icon",
+      "language": "json",
+      "startTimeSeconds": 269,
+      "code": "{\n    \"manifest_version\": 3,\n    \"name\": \"Shiny OnTrack\",\n    \"description\": \"Stay on track while you browse the web\",\n    \"version\": 1.0,\n\n    \"icons\": {\n        \"512\": \"images/icon.svg\"\n    }\n}"
+    },
+    {
+      "title": "Adding an action button",
+      "language": "json",
+      "startTimeSeconds": 330,
+      "code": "{\n    \"manifest_version\": 3,\n    \"name\": \"Shiny OnTrack\",\n    \"description\": \"Stay on track while you browse the web\",\n    \"version\": 1.0,\n\n    \"action\": {\n        \"default_popup\": \"popup.html\"\n    }\n}"
+    },
+    {
+      "title": "Adding custom UI to your extension",
+      "language": "json",
+      "startTimeSeconds": 377,
+      "code": "{\n    \"manifest_version\": 3,\n    \"name\": \"Shiny OnTrack\",\n    \"description\": \"Stay on track while you browse the web\",\n    \"version\": 1.0,\n\n    \"options_ui\": {\n        \"page\": \"options.html\"\n    }\n}"
+    },
+    {
+      "title": "Including the UI in the extension manifest",
+      "language": "json",
+      "startTimeSeconds": 390,
+      "code": "{\n    \"manifest_version\": 3,\n    \"name\": \"Shiny OnTrack\",\n    \"description\": \"Stay on track while you browse the web\",\n    \"version\": 1.0,\n\n    \"icons\": {\n        \"512\": \"images/icon.svg\"\n    },\n\n    \"options_ui\": {\n        \"page\": \"options.html\"\n    }\n}"
+    },
+    {
+      "title": "Hello World",
+      "language": "xml",
+      "startTimeSeconds": 400,
+      "code": "<!DOCTYPE html>\n<html>\n    <body>\n    <p>Hello World</p>\n    </body>\n</html>"
+    },
+    {
+      "title": "Adding declarativeNetRequest permission",
+      "language": "json",
+      "startTimeSeconds": 498,
+      "code": "{\n    \"manifest_version\": 3,\n    \"name\": \"Shiny OnTrack\",\n    \"description\": \"Stay on track while you browse the web\",\n    \"version\": 1.0,\n\n    \"icons\": {\n        \"512\": \"images/icon.svg\"\n    },\n\n    \"options_ui\": {\n        \"page\": \"options.html\"\n    },\n\n    \"permissions\": [ \"declarativeNetRequest\" ]\n}"
+    },
+    {
+      "title": "Blocking network requests",
+      "language": "javascript",
+      "startTimeSeconds": 502,
+      "code": "// block rule\n{\n    id: 1,\n    priority: 1,\n    action: {\n        type: \"block\"\n    },\n    condition: {\n        urlFilter: \"||webkit.org\",\n        resourceTypes: [ \"main_frame\" ]\n    }\n}"
+    },
+    {
+      "title": "Modifying network requests",
+      "language": "json",
+      "startTimeSeconds": 521,
+      "code": "{\n    \"manifest_version\": 3,\n    \"name\": \"Shiny OnTrack\",\n    \"description\": \"Stay on track while you browse the web\",\n    \"version\": 1.0,\n\n    \"icons\": {\n        \"512\": \"images/icon.svg\"\n    },\n\n    \"options_ui\": {\n        \"page\": \"options.html\"\n    },\n\n    \"permissions\": [ \"declarativeNetRequest\" ],\n\n    \"declarativeNetRequest\": {\n        \"rule_resources\": [\n            {\n                \"id\": \"ruleset_id\",\n                \"enabled\": true,\n                \"path\": \"rules.json\"\n            }\n        ]\n    }\n}"
+    },
+    {
+      "title": "Updating dynamic rules",
+      "language": "javascript",
+      "startTimeSeconds": 530,
+      "code": "await browser.declarativeNetRequest.updateDynamicRules({\n    addRules: [ rule ]\n})"
+    },
+    {
+      "title": "Wiring up the static declarativeNetRequest rules",
+      "language": "json",
+      "startTimeSeconds": 559,
+      "code": "{\n    \"manifest_version\": 3,\n    \"name\": \"Shiny OnTrack\",\n    \"description\": \"Stay on track while you browse the web\",\n    \"version\": 1.0,\n\n    \"icons\": {\n        \"512\": \"images/icon.svg\"\n    },\n\n    \"options_ui\": {\n        \"page\": \"options.html\"\n    },\n\n    \"permissions\": [ \n      \"declarativeNetRequest\" \n    ]\n}"
+    },
+    {
+      "title": "Adding block rules dynamically",
+      "language": "javascript",
+      "startTimeSeconds": 580,
+      "code": "// A helper function to map the host to the declarative net request rule ID.\nexport function hostToRuleID(host) {\n\tlet hash = 0;\n\tfor (let i = 0; i < host.length; i++) {\n\t\thash = ((hash << 5) + hash) + host.charCodeAt(i);\n\t\thash |= 0;\n\t}\n\treturn Math.abs(hash) || 1;\n}\n\nfunction createBlockRule(host) {\n\treturn {\n\t\tid: hostToRuleID(host),\n\t\tpriority: 1,\n\t\taction: {\n\t\t\ttype: \"block\"\n\t\t},\n\t\tcondition: {\n\t\t\turlFilter: `||${host}`,\n\t\t\tresourceTypes: [\"main_frame\"]\n\t\t}\n\t}\n}\n\nexport async function createRules(hosts) {\n\ttry {\n\t\tawait browser.declarativeNetRequest.updateDynamicRules({\n\t\t\taddRules: hosts.map(createBlockRule)\n\t\t})\n\t} catch {\n\t\tconsole.log(\"Failed to create declarative net request rules\")\n\t}\n}"
+    },
+    {
+      "title": "Handling adding hosts to the settings",
+      "language": "javascript",
+      "startTimeSeconds": 610,
+      "code": "import { createRules, removeAllRules, removeRule } from './rules.js'\n\nexport async function addHost(host, blockingMode) {\n  if (!host)\n    return\n\n  if (blockingMode === \"full\")\n    await createRules([host])\n}"
+    },
+    {
+      "title": "Redirecting network requests",
+      "language": "javascript",
+      "startTimeSeconds": 648,
+      "code": "{\n    id: 1,\n    priority: 1,\n    action: {\n        type: \"redirect\",\n        redirect: {\n            extensionPath: \"/blocked.html\"\n        }\n    },\n    condition: {\n        urlFilter: \"||webkit.org\",\n        resourceTypes: [ \"main_frame\" ]\n    }\n}"
+    },
+    {
+      "title": "Declaring optional host permissions",
+      "language": "json",
+      "startTimeSeconds": 677,
+      "code": "{\n    \"manifest_version\": 3,\n    \"name\": \"Shiny OnTrack\",\n    \"description\": \"Stay on track while you browse the web\",\n    \"version\": 1.0,\n\n    \"icons\": {\n        \"512\": \"images/icon.svg\"\n    },\n\n    \"options_ui\": {\n        \"page\": \"options.html\"\n    },\n\n    \"permissions\": [ \"declarativeNetRequestWithHostAccess\" ],\n    \"optional_host_permissions\": [ \"https://webkit.org/*\" ]\n\n}"
+    },
+    {
+      "title": "Declaring optional host permissions for all sites",
+      "language": "json",
+      "startTimeSeconds": 714,
+      "code": "{\n    \"manifest_version\": 3,\n    \"name\": \"Shiny OnTrack\",\n    \"description\": \"Stay on track while you browse the web\",\n    \"version\": 1.0,\n\n    \"icons\": {\n        \"512\": \"images/icon.svg\"\n    },\n\n    \"options_ui\": {\n        \"page\": \"options.html\"\n    },\n\n    \"permissions\": [ \"declarativeNetRequestWithHostAccess\" ],\n    \"optional_host_permissions\": [ \"*://*/*\" ]\n\n}"
+    },
+    {
+      "title": "Add the redirect rule",
+      "language": "javascript",
+      "startTimeSeconds": 792,
+      "code": "// A helper function to map the host to the declarative net request rule ID.\nexport function hostToRuleID(host) {\n\tlet hash = 0;\n\tfor (let i = 0; i < host.length; i++) {\n\t\thash = ((hash << 5) + hash) + host.charCodeAt(i);\n\t\thash |= 0;\n\t}\n\treturn Math.abs(hash) || 1;\n}\n\nfunction createBlockRule(host) {\n\treturn {\n\t\tid: hostToRuleID(host),\n\t\tpriority: 1,\n\t\taction: {\n\t\t\ttype: \"block\"\n\t\t},\n\t\tcondition: {\n\t\t\turlFilter: `||${host}`,\n\t\t\tresourceTypes: [\"main_frame\"]\n\t\t}\n\t}\n}\n\nfunction createRedirectRule(host) {\n\treturn {\n\t\tid: hostToRuleID(host),\n\t\tpriority: 1,\n\t\taction: {\n\t\t\ttype: \"redirect\",\n\t\t\tredirect: { extensionPath: \"/blocked.html\" }\n\t\t},\n\t\tcondition: {\n\t\t\turlFilter: `||${host}`,\n\t\t\tresourceTypes: [\"main_frame\"]\n\t\t}\n\t}\n}\n\nexport async function createRules(hosts) {\n\ttry {\n\t\tawait browser.declarativeNetRequest.updateDynamicRules({\n\t\t\taddRules: hosts.map(createRedirectRule)\n\t\t})\n\t} catch {\n\t\tconsole.log(\"Failed to create declarative net request rules\")\n\t}\n}"
+    },
+    {
+      "title": "Dynamically ask for host permissions",
+      "language": "javascript",
+      "startTimeSeconds": 822,
+      "code": "import { createRules, removeAllRules, removeRule } from './rules.js'\n\nexport async function addHost(host, blockingMode) {\n  if (!host)\n    return\n\n  const granted = await browser.permissions.request({\n    origins: [`*://${host}/*`, `*://*.${host}/*`]\n  })\n  if (!granted)\n    return\n\n  if (blockingMode === \"full\")\n    await createRules([host])\n}"
+    },
+    {
+      "title": "Defining content scripts",
+      "language": "json",
+      "startTimeSeconds": 895,
+      "code": "{\n    \"manifest_version\": 3,\n    \"name\": \"Shiny OnTrack\",\n    \"description\": \"Stay on track while you browse the web\",\n    \"version\": 1.0,\n\n    \"icons\": {\n        \"512\": \"images/icon.svg\"\n    },\n\n    \"options_ui\": {\n        \"page\": \"options.html\"\n    },\n\n    \"permissions\": [ \"declarativeNetRequestWithHostAccess\" ],\n    \"optional_host_permissions\": [ \"*://*/*\" ],\n\n    \"content_scripts\": [\n        {\n            \"js\": [ \"content.js\" ],\n            \"css\": [ \"content.css\" ],\n            \"matches\": [ \"*://*.webkit.org/*\" ]\n        }\n    ]\n}"
+    },
+    {
+      "title": "Dynamically registering content scripts",
+      "language": "javascript",
+      "startTimeSeconds": 913,
+      "code": "let script = {\n    id: \"id\",\n    js: [ \"content.js\" ],\n    css: [ \"content.css\" ],\n    matches: [ \"*://*.webkit.org/*\" ],\n    persistAcrossSessions: true\n}\n\nawait browser.scripting.registerContentScripts([ script ])"
+    },
+    {
+      "title": "Adding the scripting permission",
+      "language": "json",
+      "startTimeSeconds": 931,
+      "code": "{\n    \"manifest_version\": 3,\n    \"name\": \"Shiny OnTrack\",\n    \"description\": \"Stay on track while you browse the web\",\n    \"version\": 1.0,\n\n    \"icons\": {\n        \"512\": \"images/icon.svg\"\n    },\n\n    \"options_page\": \"options.html\",\n\n    \"permissions\": [\n        \"declarativeNetRequestWithHostAccess\",\n        \"scripting\"\n    ],\n\n    \"optional_host_permissions\": [ \"*://*/*\" ]\n}"
+    },
+    {
+      "title": "Registering content scripts",
+      "language": "javascript",
+      "startTimeSeconds": 941,
+      "code": "// scripting.js\n\nfunction contentScript(host) {\n    return {\n        id: `cs-${host}`,\n        js: [ \"content.js\" ],\n        css: [ \"content.css\" ],\n        matches: [ `*://${host}/*`, `*://*.${host}/*` ],\n        persistAcrossSessions: true\n    }\n}\n\nexport function registerScripts(hosts) {\n    const scripts = hosts.map(contentScript)\n    try {\n        await browser.scripting.registerContentScripts(scripts)\n    } catch {\n        console.log(\"Failed to register content scripts\")\n    }\n}"
+    },
+    {
+      "title": "Adding a host",
+      "language": "javascript",
+      "startTimeSeconds": 962,
+      "code": "// host.js\n\nexport async function addHost(host, blockMode) {\n    if (!host)\n        return\n\n    const granted = await browser.permissions.request({\n        origins: [`*://${host}/*`, `*://*.${host}/*`]\n    })\n\n    if (!granted)\n        return\n\n    if (blockingMode === \"full\")\n        await createRules([ host ])\n\n    await registerScripts([ host ])\n}"
+    },
+    {
+      "title": "Web extensions storage APIs",
+      "language": "javascript",
+      "startTimeSeconds": 1026,
+      "code": "await browser.session.storage.set({\n  key: value\n})\n\nawait browser.local.storage.set({\n  key: value\n})"
+    },
+    {
+      "title": "Adding storage permission to the web extension manifest.json",
+      "language": "json",
+      "startTimeSeconds": 1041,
+      "code": "{\n    \"manifest_version\": 3,\n    \"name\": \"Shiny OnTrack\",\n    \"description\": \"Stay on track while you browse the web\",\n    \"version\": 1.0,\n\n    \"icons\": {\n        \"512\": \"images/icon.svg\"\n    },\n\n    \"options_page\": \"options.html\",\n\n    \"permissions\": [\n        \"declarativeNetRequestWithHostAccess\",\n        \"scripting\",\n        \"storage\"\n    ],\n\n    \"optional_host_permissions\": [ \"*://*/*\" ]\n}"
+    },
+    {
+      "title": "Saving data with storage",
+      "language": "javascript",
+      "startTimeSeconds": 1050,
+      "code": "// storage.js\n\nexport async function updateHosts(hosts) {\n    await browser.storage.local.set({ hosts: hosts })\n}\n\nexport async function getHosts() {\n    const { hosts = [] } = await browser.storage.local.get(\"hosts\")\n    return hosts\n}\n\nexport async function saveBlockMode(mode) {\n    await browser.storage.local.set({ blockMode: mode })\n}\n\nexport async function getBlockMode() {\n    const { blockMode = \"full\" } = await browser.storage.local.get(\"blockMode\")\n    return blockMode\n}"
+    },
+    {
+      "title": "Persisting hosts to storage",
+      "language": "javascript",
+      "startTimeSeconds": 1061,
+      "code": "// host.js\n\nexport async function addHost(host, blockMode) {\n    if (!host)\n        return\n\n    const granted = await browser.permissions.request({\n        origins: [`*://${host}/*`, `*://*.${host}/*`]\n    })\n\n    if (!granted)\n        return\n\n    if (blockingMode === \"full\")\n        await createRules([ host ])\n\n    await registerScripts([ host ])\n\n    let existingHosts = await getHosts()\n    let updatedHosts = [ ...existingHosts, host ]\n    await updateHosts(updatedHosts)\n}"
+    },
+    {
+      "title": "Reading from storage",
+      "language": "javascript",
+      "startTimeSeconds": 1071,
+      "code": "// options.js\n\nlet existingHosts = await getHosts()\nlet blockMode = await getBlockMode()\n\ndisplayBlocklist(existingHosts)"
+    },
+    {
+      "title": "Switching block modes",
+      "language": "javascript",
+      "startTimeSeconds": 1080,
+      "code": "// host.js\n\nexport async function userDidSwitchMode(blockMode) {\n    await saveBlockMode(blockMode)\n\n    if (blockMode === \"full\") {\n        let hosts = await getHosts()\n        await createRules(hosts)\n    } else\n        await removeAllRules()\n}"
+    },
+    {
+      "title": "Adding a background script",
+      "language": "json",
+      "startTimeSeconds": 1141,
+      "code": "{\n    \"manifest_version\": 3,\n    \"name\": \"Shiny OnTrack\",\n    \"description\": \"Stay on track while you browse the web\",\n    \"version\": 1.0,\n\n    \"icons\": {\n        \"512\": \"images/icon.svg\"\n    },\n\n    \"options_page\": \"options.html\",\n\n    \"permissions\": [\n        \"declarativeNetRequestWithHostAccess\",\n        \"scripting\",\n        \"storage\"\n    ],\n\n    \"optional_host_permissions\": [ \"*://*/*\" ],\n\n    \"background\": {\n        \"scripts\": [ \"background.js\" ],\n        \"type\": \"module\"\n    }\n}"
+    },
+    {
+      "title": "Background script",
+      "language": "javascript",
+      "startTimeSeconds": 1179,
+      "code": "// background.js\n\nimport { registerScripts } from \"./utilities/scripting.js\"\nimport { getHosts } from \"./utilities/storage.js\"\n\nbrowser.runtime.onInstalled.addListener(async (details) => {\n    if (details.reason !== \"update\")\n        return\n\n    const hosts = await getHosts()\n    await registerScripts(hosts)\n})"
+    },
+    {
+      "title": "Package your web extension into an app for Xcode",
+      "language": "bash",
+      "startTimeSeconds": 1369,
+      "code": "xcrun safari-web-extension-packager --copy-resources /path/to/ShinyOnTrack"
+    },
+    {
+      "title": "Adding the nativeMessaging permission",
+      "language": "json",
+      "startTimeSeconds": 1412,
+      "code": "{\n    \"manifest_version\": 3,\n    \"name\": \"Shiny OnTrack\",\n    \"description\": \"Stay on track while you browse the web\",\n    \"version\": 1.0,\n\n    \"icons\": {\n        \"512\": \"images/icon.svg\"\n    },\n\n    \"options_page\": \"options.html\",\n\n    \"permissions\": [\n        \"declarativeNetRequestWithHostAccess\",\n        \"scripting\",\n        \"storage\",\n        \"nativeMessaging\"\n    ],\n\n    \"optional_host_permissions\": [ \"*://*/*\" ],\n\n    \"background\": {\n        \"scripts\": [ \"background.js\" ],\n        \"type\": \"module\"\n    }\n}"
+    },
+    {
+      "title": "Sending a native message",
+      "language": "javascript",
+      "startTimeSeconds": 1420,
+      "code": "// background.js\n\nimport { registerScripts } from \"./utilities/scripting.js\"\nimport { getHosts } from \"./utilities/storage.js\"\n\nbrowser.runtime.onInstalled.addListener(async (details) => {\n    if (details.reason !== \"update\")\n        return\n\n    const hosts = await getHosts()\n    await registerScripts(hosts)\n})\n\nexport async function requestBioAuth() {\n    const message = { message: \"requestBioAuth\" }\n    const response = await browser.runtime.sendNativeMessage(message)\n    return response?.success\n}"
+    },
+    {
+      "title": "Handling native messages",
+      "language": "swift",
+      "startTimeSeconds": 1435,
+      "code": "// SafariWebExtensionHandler.swift\n\nimport LocalAuthentication\n\nclass SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {\n    func beginRequest(with context: NSExtensionContext) {\n        let request = context.inputItems.first as? NSExtensionItem\n        let message = request?.userInfo?[SFExtensionMessageKey] as? [String: Any]\n\n        if message?[\"message\"] as? String == \"requestBioAuth\" {\n            let lAContext = LAContext()\n            Task {\n                do {\n                    let success = try await lAContext.evaluatePolicy(\n                        .deviceOwnerAuthenticationWithBiometrics,\n                        localizedReason: \"Authenticate to change blocked sites\"\n                    )\n                    self.reply(context: context, success: success)\n                } catch {\n                    self.reply(context: context, success: false)\n                }\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Replying to a native message",
+      "language": "swift",
+      "startTimeSeconds": 1465,
+      "code": "// SafariWebExtensionHandler.swift\n\nimport LocalAuthentication\n\nclass SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {\n    func beginRequest(with context: NSExtensionContext) {\n        let request = context.inputItems.first as? NSExtensionItem\n        let message = request?.userInfo?[SFExtensionMessageKey] as? [String: Any]\n\n        if message?[\"message\"] as? String == \"requestBioAuth\" {\n            let lAContext = LAContext()\n            Task {\n                do {\n                    let success = try await lAContext.evaluatePolicy(\n                        .deviceOwnerAuthenticationWithBiometrics,\n                        localizedReason: \"Authenticate to change blocked sites\"\n                    )\n                    self.reply(context: context, success: success)\n                } catch {\n                    self.reply(context: context, success: false)\n                }\n            }\n        }\n    }\n\n    private func reply(context: NSExtensionContext, success: Bool) {\n        let response = NSExtensionItem()\n        response.userInfo = [SFExtensionMessageKey: [\"success\": success]]\n        context.completeRequest(returningItems: [response], completionHandler: nil)\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "w3.org — W3C WebExtensions Community Group",
+      "url": "https://www.w3.org/community/webextensions/",
+      "type": "documentation",
+      "description": "The WebExtensions Community Group specifies the model, permissions, and common core of APIs for web browser extensions."
+    },
+    {
+      "title": "Packaging and distributing Safari Web Extensions with App Store Connect",
+      "url": "https://developer.apple.com/documentation/SafariServices/packaging-and-distributing-safari-web-extensions-with-app-store-connect",
+      "type": "documentation",
+      "description": "Upload and distribute Safari Web Extensions without using a Mac or Xcode.",
+      "sosumiURL": "https://sosumi.ai/documentation/SafariServices/packaging-and-distributing-safari-web-extensions-with-app-store-connect",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SafariServices/packaging-and-distributing-safari-web-extensions-with-app-store-connect.json"
+    },
+    {
+      "title": "WebKit.org – Report issues to the WebKit open-source project",
+      "url": "https://bugs.webkit.org",
+      "type": "documentation",
+      "description": "Bug tracking for WebKit open source project"
+    },
+    {
+      "title": "Submit feedback",
+      "url": "http://feedbackassistant.apple.com",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "MDN Web Docs - Web Extensions API",
+      "url": "https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API",
+      "type": "documentation",
+      "description": "JavaScript APIs for web extensions."
+    }
+  ],
+  "path": "sessions/wwdc2026/216/",
+  "files": {
+    "metadata": "sessions/wwdc2026/216/metadata.json",
+    "readme": "sessions/wwdc2026/216/README.md",
+    "transcript": "sessions/wwdc2026/216/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/216/transcript.json"
+  }
+}

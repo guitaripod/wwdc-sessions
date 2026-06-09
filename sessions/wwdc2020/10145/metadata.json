@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10145",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10145,
+  "title": "Design for Game Center",
+  "description": "Get your game's interface ready for Game Center. We’ll show you how to deliver personalized touches to the GameKit interface that provide a rich experience for players, with features like achievements, leaderboards, and multiplayer gaming. Learn how to customize your game’s access point, design collectible card-style achievements and multiple leaderboards, and adapt your interface for all platforms and orientations.\n\nOnce you’ve learned about designing for Game Center, learn how to integrate the GameKit framework into your game with “Tap into Game Center” and watch “Bring keyboard and mouse gaming to iPad” and “Advancements in Game Controllers” to discover how to add specialty keyboard controls or game controllers.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10145",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10145",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "access point",
+    "achievement",
+    "arcade",
+    "dashboard",
+    "game",
+    "game best practices",
+    "game center",
+    "game center design",
+    "game design",
+    "game designer",
+    "game developer",
+    "gamekit",
+    "game kit",
+    "games",
+    "in game",
+    "leaderboard",
+    "main menu",
+    "multiplayer",
+    "pause menu",
+    "social",
+    "social gaming"
+  ],
+  "topics": [
+    "Graphics & Games",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 1087,
+  "hasTranscript": true,
+  "transcriptWordCount": 2988,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10145/4/4CE0B7D8-290B-4983-B7DE-0FD504DC54C9/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10145/4/4CE0B7D8-290B-4983-B7DE-0FD504DC54C9/wwdc2020_10145_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10145/4/4CE0B7D8-290B-4983-B7DE-0FD504DC54C9/wwdc2020_10145_hd.mp4",
+    "duration": 1087
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Game Center",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/game-center",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/game-center"
+    }
+  ],
+  "path": "sessions/wwdc2020/10145/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10145/metadata.json",
+    "readme": "sessions/wwdc2020/10145/README.md",
+    "transcript": "sessions/wwdc2020/10145/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10145/transcript.json"
+  }
+}

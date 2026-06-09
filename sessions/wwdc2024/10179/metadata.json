@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10179",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10179,
+  "title": "Meet Swift Testing",
+  "description": "Introducing Swift Testing: a new package for testing your code using Swift. Explore the building blocks of its powerful new API, discover how it can be applied in common testing workflows, and learn how it relates to XCTest and open source Swift.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10179",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10179",
+  "type": "Video",
+  "publishedAt": "2024-06-10T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Essentials",
+    "Swift",
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 1438,
+  "hasTranscript": true,
+  "transcriptWordCount": 3849,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10179/4/E0A34162-D87D-4510-A438-67CBEABAB16B/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10179/4/E0A34162-D87D-4510-A438-67CBEABAB16B/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10179/4/E0A34162-D87D-4510-A438-67CBEABAB16B/downloads/wwdc2024-10179_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10179/4/E0A34162-D87D-4510-A438-67CBEABAB16B/downloads/wwdc2024-10179_hd.mp4",
+    "duration": 1438
+  },
+  "codeSnippets": [
+    {
+      "title": "Write your first @Test function",
+      "language": "swift",
+      "startTimeSeconds": 114,
+      "code": "import Testing\n\n@Test func videoMetadata() {\n    // ...\n}"
+    },
+    {
+      "title": "Validate an expected condition using #expect",
+      "language": "swift",
+      "startTimeSeconds": 155,
+      "code": "import Testing\n@testable import DestinationVideo\n\n@Test func videoMetadata() {\n    let video = Video(fileName: \"By the Lake.mov\")\n    let expectedMetadata = Metadata(duration: .seconds(90))\n    #expect(video.metadata == expectedMetadata)\n}"
+    },
+    {
+      "title": "Fix a bug in the code being tested",
+      "language": "swift",
+      "startTimeSeconds": 264,
+      "code": "// In `Video.init(...)`\nself.metadata = Metadata(forContentsOfUrl: url)"
+    },
+    {
+      "title": "Add a display name to a @Test function",
+      "language": "swift",
+      "startTimeSeconds": 366,
+      "code": "@Test(\"Check video metadata\") func videoMetadata() {\n    let video = Video(fileName: \"By the Lake.mov\")\n    let expectedMetadata = Metadata(duration: .seconds(90))\n    #expect(video.metadata == expectedMetadata)\n}"
+    },
+    {
+      "title": "Add a second @Test function",
+      "language": "swift",
+      "startTimeSeconds": 418,
+      "code": "@Test func rating() async throws {\n    let video = Video(fileName: \"By the Lake.mov\")\n    #expect(video.contentRating == \"G\")\n}"
+    },
+    {
+      "title": "Organize @Test functions into a suite type",
+      "language": "swift",
+      "startTimeSeconds": 438,
+      "code": "struct VideoTests {\n\n    @Test(\"Check video metadata\") func videoMetadata() {\n        let video = Video(fileName: \"By the Lake.mov\")\n        let expectedMetadata = Metadata(duration: .seconds(90))\n        #expect(video.metadata == expectedMetadata)\n    }\n\n    @Test func rating() async throws {\n        let video = Video(fileName: \"By the Lake.mov\")\n        #expect(video.contentRating == \"G\")\n    }\n\n}"
+    },
+    {
+      "title": "Factor a common value into a stored property in the suite",
+      "language": "swift",
+      "startTimeSeconds": 484,
+      "code": "struct VideoTests {\n    let video = Video(fileName: \"By the Lake.mov\")\n\n    @Test(\"Check video metadata\") func videoMetadata() {\n        let expectedMetadata = Metadata(duration: .seconds(90))\n        #expect(video.metadata == expectedMetadata)\n    }\n\n    @Test func rating() async throws {\n        #expect(video.contentRating == \"G\")\n    }\n\n}"
+    },
+    {
+      "title": "Specify a runtime condition trait for a @Test function",
+      "language": "swift",
+      "startTimeSeconds": 572,
+      "code": "@Test(.enabled(if: AppFeatures.isCommentingEnabled))\nfunc videoCommenting() {\n    // ...\n}"
+    },
+    {
+      "title": "Unconditionally disable a @Test function",
+      "language": "swift",
+      "startTimeSeconds": 589,
+      "code": "@Test(.disabled(\"Due to a known crash\"))\nfunc example() {\n    // ...\n}"
+    },
+    {
+      "title": "Include a bug trait with a URL along with other traits",
+      "language": "swift",
+      "startTimeSeconds": 615,
+      "code": "@Test(.disabled(\"Due to a known crash\"),\n      .bug(\"example.org/bugs/1234\", \"Program crashes at <symbol>\"))\nfunc example() {\n    // ...\n}"
+    },
+    {
+      "title": "Conditionalize a test based on OS version",
+      "language": "swift",
+      "startTimeSeconds": 633,
+      "code": "@Test\n@available(macOS 15, *)\nfunc usesNewAPIs() {\n    // ...\n}"
+    },
+    {
+      "title": "Prefer @available on @Test function instead of #available within the function",
+      "language": "swift",
+      "startTimeSeconds": 642,
+      "code": "// ❌ Avoid checking availability at runtime using #available\n@Test func hasRuntimeVersionCheck() {\n    guard #available(macOS 15, *) else { return }\n\n    // ...\n}\n\n// ✅ Prefer @available attribute on test function\n@Test\n@available(macOS 15, *)\nfunc usesNewAPIs() {\n    // ...\n}"
+    },
+    {
+      "title": "Add a tag to a @Test function",
+      "language": "swift",
+      "startTimeSeconds": 682,
+      "code": "@Test(.tags(.formatting)) func rating() async throws {\n    #expect(video.contentRating == \"G\")\n}"
+    },
+    {
+      "title": "Add another data formatting-related test with the same tag",
+      "language": "swift",
+      "startTimeSeconds": 708,
+      "code": "@Test(.tags(.formatting)) func formattedDuration() async throws {\n    let videoLibrary = try await VideoLibrary()\n    let video = try #require(await videoLibrary.video(named: \"By the Lake\"))\n    #expect(video.formattedDuration == \"0m 19s\")\n}"
+    },
+    {
+      "title": "Group related tests into a sub-suite",
+      "language": "swift",
+      "startTimeSeconds": 716,
+      "code": "struct MetadataPresentation {\n    let video = Video(fileName: \"By the Lake.mov\")\n\n    @Test(.tags(.formatting)) func rating() async throws {\n        #expect(video.contentRating == \"G\")\n    }\n\n    @Test(.tags(.formatting)) func formattedDuration() async throws {\n        let videoLibrary = try await VideoLibrary()\n        let video = try #require(await videoLibrary.video(named: \"By the Lake\"))\n        #expect(video.formattedDuration == \"0m 19s\")\n    }\n}"
+    },
+    {
+      "title": "Move common tags trait to @Suite attribute, so the suite's @Test functions will inherit the tag",
+      "language": "swift",
+      "startTimeSeconds": 725,
+      "code": "@Suite(.tags(.formatting))\nstruct MetadataPresentation {\n    let video = Video(fileName: \"By the Lake.mov\")\n\n    @Test func rating() async throws {\n        #expect(video.contentRating == \"G\")\n    }\n\n    @Test func formattedDuration() async throws {\n        let videoLibrary = try await VideoLibrary()\n        let video = try #require(await videoLibrary.video(named: \"By the Lake\"))\n        #expect(video.formattedDuration == \"0m 19s\")\n    }\n}"
+    },
+    {
+      "title": "Example of some repetitive tests which can be consolidated into a parameterized @Test function",
+      "language": "swift",
+      "startTimeSeconds": 807,
+      "code": "struct VideoContinentsTests {\n\n    @Test func mentionsFor_A_Beach() async throws {\n        let videoLibrary = try await VideoLibrary()\n        let video = try #require(await videoLibrary.video(named: \"A Beach\"))\n        #expect(!video.mentionedContinents.isEmpty)\n        #expect(video.mentionedContinents.count <= 3)\n    }\n\n    @Test func mentionsFor_By_the_Lake() async throws {\n        let videoLibrary = try await VideoLibrary()\n        let video = try #require(await videoLibrary.video(named: \"By the Lake\"))\n        #expect(!video.mentionedContinents.isEmpty)\n        #expect(video.mentionedContinents.count <= 3)\n    }\n\n    @Test func mentionsFor_Camping_in_the_Woods() async throws {\n        let videoLibrary = try await VideoLibrary()\n        let video = try #require(await videoLibrary.video(named: \"Camping in the Woods\"))\n        #expect(!video.mentionedContinents.isEmpty)\n        #expect(video.mentionedContinents.count <= 3)\n    }\n\n    // ...and more, similar test functions\n}"
+    },
+    {
+      "title": "Refactor several similar tests into a parameterized @Test function",
+      "language": "swift",
+      "startTimeSeconds": 847,
+      "code": "struct VideoContinentsTests {\n\n    @Test(\"Number of mentioned continents\", arguments: [\n        \"A Beach\",\n        \"By the Lake\",\n        \"Camping in the Woods\",\n        \"The Rolling Hills\",\n        \"Ocean Breeze\",\n        \"Patagonia Lake\",\n        \"Scotland Coast\",\n        \"China Paddy Field\",\n    ])\n    func mentionedContinentCounts(videoName: String) async throws {\n        let videoLibrary = try await VideoLibrary()\n        let video = try #require(await videoLibrary.video(named: videoName))\n        #expect(!video.mentionedContinents.isEmpty)\n        #expect(video.mentionedContinents.count <= 3)\n    }\n\n}"
+    },
+    {
+      "title": "Example of using a for…in loop to repeat a test, instead of a parameterized @Test function (not recommended)",
+      "language": "swift",
+      "startTimeSeconds": 989,
+      "code": "// Using a for…in loop to repeat a test (not recommended)\n@Test func mentionedContinentCounts() async throws {\n    let videoNames = [\n        \"A Beach\",\n        \"By the Lake\",\n        \"Camping in the Woods\",\n    ]\n\n    let videoLibrary = try await VideoLibrary()\n    for videoName in videoNames {\n        let video = try #require(await videoLibrary.video(named: videoName))\n        #expect(!video.mentionedContinents.isEmpty)\n        #expect(video.mentionedContinents.count <= 3)\n    }\n}"
+    },
+    {
+      "title": "Refactor a test using a for…in loop into a parameterized @Test function",
+      "language": "swift",
+      "startTimeSeconds": 1035,
+      "code": "@Test(arguments: [\n    \"A Beach\",\n    \"By the Lake\",\n    \"Camping in the Woods\",\n])\nfunc mentionedContinentCounts(videoName: String) async throws {\n    let videoLibrary = try await VideoLibrary()\n    let video = try #require(await videoLibrary.video(named: videoName))\n    #expect(!video.mentionedContinents.isEmpty)\n    #expect(video.mentionedContinents.count <= 3)\n}"
+    },
+    {
+      "title": "A newly-created Swift package with two simple @Test functions",
+      "language": "swift",
+      "startTimeSeconds": 1367,
+      "code": "import Testing\n@testable import MyLibrary\n\n@Test func example() throws {\n    #expect(\"abc\" == \"abc\")\n}\n\n@Test func failingExample() throws {\n    #expect(123 == 456)\n}"
+    },
+    {
+      "title": "Running all tests for the package from Terminal",
+      "language": "bash",
+      "startTimeSeconds": 1376,
+      "code": "> swift test"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Swift Testing vision document",
+      "url": "https://github.com/apple/swift-testing/blob/main/Documentation/Vision.md",
+      "type": "guide",
+      "description": "The Vision document for Swift Testing. Learn more about the design and principles of Swift Testing."
+    },
+    {
+      "title": "Swift Testing GitHub repository",
+      "url": "https://github.com/apple/swift-testing",
+      "type": "guide",
+      "description": "Swift Testing Repository where you can contribute to the Swift Testing package."
+    },
+    {
+      "title": "Running tests and interpreting results",
+      "url": "https://developer.apple.com/documentation/Xcode/running-tests-and-interpreting-results",
+      "type": "documentation",
+      "description": "Determine whether your project’s code behaves as you expect by running tests and understanding the results.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/running-tests-and-interpreting-results",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/running-tests-and-interpreting-results.json"
+    },
+    {
+      "title": "Adding tests to your Xcode project",
+      "url": "https://developer.apple.com/documentation/Xcode/adding-tests-to-your-xcode-project",
+      "type": "documentation",
+      "description": "Include test targets that build code to test the logic in your functions, check for integration issues, automate UI workflows, and measure performance.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/adding-tests-to-your-xcode-project",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/adding-tests-to-your-xcode-project.json"
+    },
+    {
+      "title": "Swift Testing",
+      "url": "https://developer.apple.com/documentation/Testing",
+      "type": "documentation",
+      "description": "Create and run tests for your Swift packages and Xcode projects.",
+      "sosumiURL": "https://sosumi.ai/documentation/Testing",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Testing.json"
+    },
+    {
+      "title": "Forum: Developer Tools & Services",
+      "url": "https://developer.apple.com/forums/topics/developer-tools-and-services?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/developer-tools-and-services?cid=vf-a-0010"
+    },
+    {
+      "title": "Improving code assessment by organizing tests into test plans",
+      "url": "https://developer.apple.com/documentation/Xcode/organizing-tests-to-improve-feedback",
+      "type": "documentation",
+      "description": "Control the information you receive from your tests at different stages in the software engineering process by creating and configuring test plans.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/organizing-tests-to-improve-feedback",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/organizing-tests-to-improve-feedback.json"
+    }
+  ],
+  "path": "sessions/wwdc2024/10179/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10179/metadata.json",
+    "readme": "sessions/wwdc2024/10179/README.md",
+    "transcript": "sessions/wwdc2024/10179/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10179/transcript.json"
+  }
+}

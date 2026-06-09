@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "id": "meet-with-apple-243",
+  "event": "meet-with-apple",
+  "eventName": "Meet with Apple",
+  "year": 2025,
+  "eventContentId": 243,
+  "title": "Design great interfaces for handheld games",
+  "description": "Get practical guidance from Apple Design team member Dylan Edwards about adapting console and PC game interfaces to iPhone and iPad. Learn how to create flexible layouts, maximize the full screen, maintain legibility, and design intuitive and responsive touch controls that make handheld gaming feel natural.\n\nThis session was originally presented as part of the Meet with Apple activity “Press Start: Game development on Apple platforms.” Watch the full video for more insights and related sessions.",
+  "url": "https://developer.apple.com/videos/play/meet-with-apple/243",
+  "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/243",
+  "type": "Video",
+  "publishedAt": "2025-12-15T00:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1199,
+  "hasTranscript": true,
+  "transcriptWordCount": 3369,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/243/2/d40ce656-fd6d-43e8-a636-d4aa405bae4c/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/243/2/d40ce656-fd6d-43e8-a636-d4aa405bae4c/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/243/2/d40ce656-fd6d-43e8-a636-d4aa405bae4c/downloads/meet-with-apple-243_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/243/2/d40ce656-fd6d-43e8-a636-d4aa405bae4c/downloads/meet-with-apple-243_hd.mp4",
+    "duration": 1199
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Designing for games",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/designing-for-games",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/designing-for-games"
+    },
+    {
+      "title": "Human Interface Guidelines: Game controls",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/game-controls",
+      "type": "documentation",
+      "description": "HIG Game controls",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/game-controls"
+    }
+  ],
+  "path": "sessions/meet-with-apple/243/",
+  "files": {
+    "metadata": "sessions/meet-with-apple/243/metadata.json",
+    "readme": "sessions/meet-with-apple/243/README.md",
+    "transcript": "sessions/meet-with-apple/243/transcript.md",
+    "transcriptJSON": "sessions/meet-with-apple/243/transcript.json"
+  }
+}

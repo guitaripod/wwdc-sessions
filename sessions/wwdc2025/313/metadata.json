@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-313",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 313,
+  "title": "Bring Swift Charts to the third dimension",
+  "description": "Learn how to bring your 2D Swift Charts to the third dimension with Chart3D and visualize your data sets from completely new perspectives. Plot your data in 3D, visualize mathematical surfaces, and customize everything from the camera to the materials to make your 3D charts more intuitive and delightful. \n\nTo get the most out of this session, we recommend being familiar with creating 2D Swift Charts.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/313",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/313",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 677,
+  "hasTranscript": true,
+  "transcriptWordCount": 1450,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/313/5/01490c3f-6737-43db-b2fb-f3ccfb1e824c/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/313/5/01490c3f-6737-43db-b2fb-f3ccfb1e824c/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/313/5/01490c3f-6737-43db-b2fb-f3ccfb1e824c/downloads/wwdc2025-313_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/313/5/01490c3f-6737-43db-b2fb-f3ccfb1e824c/downloads/wwdc2025-313_hd.mp4",
+    "duration": 677
+  },
+  "codeSnippets": [
+    {
+      "title": "A scatterplot of a penguin's flipper length and weight",
+      "language": "swift",
+      "startTimeSeconds": 123,
+      "code": "// A scatterplot of a penguin's flipper length and weight\n\nimport SwiftUI\nimport Charts\n\nstruct PenguinChart: View {\n  var body: some View {\n    Chart(penguins) { penguin in\n      PointMark(\n        x: .value(\"Flipper Length\", penguin.flipperLength),\n        y: .value(\"Weight\", penguin.weight)\n      )\n      .foregroundStyle(by: .value(\"Species\", penguin.species))\n    }\n    .chartXAxisLabel(\"Flipper Length (mm)\")\n    .chartYAxisLabel(\"Weight (kg)\")\n    .chartXScale(domain: 160...240)\n    .chartYScale(domain: 2...7)\n    .chartXAxis {\n      AxisMarks(values: [160, 180, 200, 220, 240]) {\n        AxisTick()\n        AxisGridLine()\n        AxisValueLabel()\n      }\n    }\n    .chartYAxis {\n      AxisMarks(values: [2, 3, 4, 5, 6, 7]) {\n        AxisTick()\n        AxisGridLine()\n        AxisValueLabel()\n      }\n    }\n  }\n}"
+    },
+    {
+      "title": "A scatterplot of a penguin's beak length and weight",
+      "language": "swift",
+      "startTimeSeconds": 159,
+      "code": "// A scatterplot of a penguin's beak length and weight\n\nimport SwiftUI\nimport Charts\n\nstruct PenguinChart: View {\n  var body: some View {\n    Chart(penguins) { penguin in\n      PointMark(\n        x: .value(\"Beak Length\", penguin.beakLength),\n        y: .value(\"Weight\", penguin.weight)\n      )\n      .foregroundStyle(by: .value(\"Species\", penguin.species))\n    }\n    .chartXAxisLabel(\"Beak Length (mm)\")\n    .chartYAxisLabel(\"Weight (kg)\")\n    .chartXScale(domain: 30...60)\n    .chartYScale(domain: 2...7)\n    .chartXAxis {\n      AxisMarks(values: [30, 40, 50, 60]) {\n        AxisTick()\n        AxisGridLine()\n        AxisValueLabel()\n      }\n    }\n    .chartYAxis {\n      AxisMarks(values: [2, 3, 4, 5, 6, 7]) {\n        AxisTick()\n        AxisGridLine()\n        AxisValueLabel()\n      }\n    }\n  }\n}"
+    },
+    {
+      "title": "A scatterplot of a penguin's beak length and flipper length",
+      "language": "swift",
+      "startTimeSeconds": 171,
+      "code": "// A scatterplot of a penguin's beak length and flipper length\n\nimport SwiftUI\nimport Charts\n\nstruct PenguinChart: View {\n  var body: some View {\n    Chart(penguins) { penguin in\n      PointMark(\n        x: .value(\"Beak Length\", penguin.beakLength),\n        y: .value(\"Flipper Length\", penguin.flipperLength)\n      )\n      .foregroundStyle(by: .value(\"Species\", penguin.species))\n    }\n    .chartXAxisLabel(\"Beak Length (mm)\")\n    .chartYAxisLabel(\"Flipper Length (mm)\")\n    .chartXScale(domain: 30...60)\n    .chartYScale(domain: 160...240)\n    .chartXAxis {\n      AxisMarks(values: [30, 40, 50, 60]) {\n        AxisTick()\n        AxisGridLine()\n        AxisValueLabel()\n      }\n    }\n    .chartYAxis {\n      AxisMarks(values: [160, 180, 200, 220, 240]) {\n        AxisTick()\n        AxisGridLine()\n        AxisValueLabel()\n      }\n    }\n  }\n}"
+    },
+    {
+      "title": "A scatterplot of a penguin's flipper length, beak length, and weight",
+      "language": "swift",
+      "startTimeSeconds": 208,
+      "code": "// A scatterplot of a penguin's flipper length, beak length, and weight\n\nimport SwiftUI\nimport Charts\n\nstruct PenguinChart: View {\n  var body: some View {\n    Chart3D(penguins) { penguin in\n      PointMark(\n        x: .value(\"Flipper Length\", penguin.flipperLength),\n        y: .value(\"Weight\", penguin.weight),\n        z: .value(\"Beak Length\", penguin.beakLength)\n      )\n      .foregroundStyle(by: .value(\"Species\", penguin.species))\n    }\n    .chartXAxisLabel(\"Flipper Length (mm)\")\n    .chartYAxisLabel(\"Weight (kg)\")\n    .chartZAxisLabel(\"Beak Length (mm)\")\n    .chartXScale(domain: 160...240, range: -0.5...0.5)\n    .chartYScale(domain: 2...7, range: -0.5...0.5)\n    .chartZScale(domain: 30...60, range: -0.5...0.5)\n    .chartXAxis {\n      AxisMarks(values: [160, 180, 200, 220, 240]) {\n        AxisTick()\n        AxisGridLine()\n        AxisValueLabel()\n      }\n    }\n    .chartYAxis {\n      AxisMarks(values: [2, 3, 4, 5, 6, 7]) {\n        AxisTick()\n        AxisGridLine()\n        AxisValueLabel()\n      }\n    }\n    .chartZAxis {\n      AxisMarks(values: [30, 40, 50, 60]) {\n        AxisTick()\n        AxisGridLine()\n        AxisValueLabel()\n      }\n    }\n  }\n}"
+    },
+    {
+      "title": "A surface plot showing mathematical functions (x * z)",
+      "language": "swift",
+      "startTimeSeconds": 319,
+      "code": "// A surface plot showing mathematical functions\n\nimport SwiftUI\nimport Charts\n\nvar SurfacePlotChart: View {\n  var body: some View {\n    Chart3D {\n      SurfacePlot(x: \"X\", y: \"Y\", z: \"Z\") { x, z in\n        // (Double, Double) -> Double\n        x * z\n      }\n    }\n  }\n}"
+    },
+    {
+      "title": "A surface plot showing mathematical functions",
+      "language": "swift",
+      "startTimeSeconds": 343,
+      "code": "// A surface plot showing mathematical functions\n\nimport SwiftUI\nimport Charts\n\nvar SurfacePlotChart: View {\n  var body: some View {\n    Chart3D {\n      SurfacePlot(x: \"X\", y: \"Y\", z: \"Z\") { x, z in\n        // (Double, Double) -> Double\n        (sin(5 * x) + sin(5 * z)) / 2\n      }\n    }\n  }\n}"
+    },
+    {
+      "title": "A surface plot showing mathematical functions (-z)",
+      "language": "swift",
+      "startTimeSeconds": 346,
+      "code": "// A surface plot showing mathematical functions\n\nimport SwiftUI\nimport Charts\n\nvar SurfacePlotChart: View {\n  var body: some View {\n    Chart3D {\n      SurfacePlot(x: \"X\", y: \"Y\", z: \"Z\") { x, z in\n        // (Double, Double) -> Double\n        -z\n      }\n    }\n  }\n}"
+    },
+    {
+      "title": "Present a linear regression of the penguin data",
+      "language": "swift",
+      "startTimeSeconds": 379,
+      "code": "// Present a linear regression of the penguin data\n\nimport SwiftUI\nimport Charts\nimport CreateML\nimport TabularData\n\nfinal class LinearRegression: Sendable {\n  let regressor: MLLinearRegressor\n\n  init<Data: RandomAccessCollection>(\n    _ data: Data,\n    x xPath: KeyPath<Data.Element, Double>,\n    y yPath: KeyPath<Data.Element, Double>,\n    z zPath: KeyPath<Data.Element, Double>\n  ) {\n    let x = Column(name: \"X\", contents: data.map { $0[keyPath: xPath] })\n    let y = Column(name: \"Y\", contents: data.map { $0[keyPath: yPath] })\n    let z = Column(name: \"Z\", contents: data.map { $0[keyPath: zPath] })\n    let data = DataFrame(columns: [x, y, z].map { $0.eraseToAnyColumn() })\n    regressor = try! MLLinearRegressor(trainingData: data, targetColumn: \"Y\")\n  }\n\n  func callAsFunction(_ x: Double, _ z: Double) -> Double {\n    let x = Column(name: \"X\", contents: [x])\n    let z = Column(name: \"Z\", contents: [z])\n    let data = DataFrame(columns: [x, z].map { $0.eraseToAnyColumn() })\n    return (try? regressor.predictions(from: data))?.first as? Double ?? .nan\n  }\n}\n\nlet linearRegression = LinearRegression(\n  penguins,\n  x: \\.flipperLength,\n  y: \\.weight,\n  z: \\.beakLength\n)\n\nstruct PenguinChart: some View {\n  var body: some View {\n    Chart3D {\n      ForEach(penguins) { penguin in\n        PointMark(\n          x: .value(\"Flipper Length\", penguin.flipperLength),\n          y: .value(\"Weight\", penguin.weight),\n          z: .value(\"Beak Length\", penguin.beakLength),\n        )\n        .foregroundStyle(by: .value(\"Species\", penguin.species))\n      }\n\n      SurfacePlot(x: \"Flipper Length\", y: \"Weight\", z: \"Beak Length\") { flipperLength, beakLength in\n        linearRegression(flipperLength, beakLength)\n      }\n      .foregroundStyle(.gray)\n    }\n    .chartXAxisLabel(\"Flipper Length (mm)\")\n    .chartYAxisLabel(\"Weight (kg)\")\n    .chartZAxisLabel(\"Beak Length (mm)\")\n    .chartXScale(domain: 160...240, range: -0.5...0.5)\n    .chartYScale(domain: 2...7, range: -0.5...0.5)\n    .chartZScale(domain: 30...60, range: -0.5...0.5)\n    .chartXAxis {\n      AxisMarks(values: [160, 180, 200, 220, 240]) {\n        AxisTick()\n        AxisGridLine()\n        AxisValueLabel()\n      }\n    }\n    .chartYAxis {\n      AxisMarks(values: [2, 3, 4, 5, 6, 7]) {\n        AxisTick()\n        AxisGridLine()\n        AxisValueLabel()\n      }\n    }\n    .chartZAxis {\n      AxisMarks(values: [30, 40, 50, 60]) {\n        AxisTick()\n        AxisGridLine()\n        AxisValueLabel()\n      }\n    }\n  }\n}"
+    },
+    {
+      "title": "Adjust the initial chart pose (Default)",
+      "language": "swift",
+      "startTimeSeconds": 470,
+      "code": "// Adjust the initial chart pose\n\nimport SwiftUI\nimport Charts\n\nstruct PenguinChart: View {\n  @State var pose: Chart3DPose = .default\n\n  var body: some View {\n    Chart3D(penguins) { penguin in\n      PointMark(\n        x: .value(\"Flipper Length\", penguin.flipperLength),\n        y: .value(\"Weight\", penguin.weight),\n        z: .value(\"Beak Length\", penguin.beakLength)\n      )\n      .foregroundStyle(by: .value(\"Species\", penguin.species))\n    }\n    .chart3DPose($pose)\n    .chartXAxisLabel(\"Flipper Length (mm)\")\n    .chartYAxisLabel(\"Weight (kg)\")\n    .chartZAxisLabel(\"Beak Length (mm)\")\n    .chartXScale(domain: 160...240, range: -0.5...0.5)\n    .chartYScale(domain: 2...7, range: -0.5...0.5)\n    .chartZScale(domain: 30...60, range: -0.5...0.5)\n    .chartXAxis {\n      AxisMarks(values: [160, 180, 200, 220, 240]) {\n        AxisTick()\n        AxisGridLine()\n        AxisValueLabel()\n      }\n    }\n    .chartYAxis {\n      AxisMarks(values: [2, 3, 4, 5, 6, 7]) {\n        AxisTick()\n        AxisGridLine()\n        AxisValueLabel()\n      }\n    }\n    .chartZAxis {\n      AxisMarks(values: [30, 40, 50, 60]) {\n        AxisTick()\n        AxisGridLine()\n        AxisValueLabel()\n      }\n    }\n  }\n}"
+    },
+    {
+      "title": "Adjust the initial chart pose (Front)",
+      "language": "swift",
+      "startTimeSeconds": 482,
+      "code": "// Adjust the initial chart pose\n\nimport SwiftUI\nimport Charts\n\nstruct PenguinChart: View {\n  @State var pose: Chart3DPose = .front\n\n  var body: some View {\n    Chart3D(penguins) { penguin in\n      PointMark(\n        x: .value(\"Flipper Length\", penguin.flipperLength),\n        y: .value(\"Weight\", penguin.weight),\n        z: .value(\"Beak Length\", penguin.beakLength)\n      )\n      .foregroundStyle(by: .value(\"Species\", penguin.species))\n    }\n    .chart3DPose($pose)\n    .chartXAxisLabel(\"Flipper Length (mm)\")\n    .chartYAxisLabel(\"Weight (kg)\")\n    .chartZAxisLabel(\"Beak Length (mm)\")\n    .chartXScale(domain: 160...240, range: -0.5...0.5)\n    .chartYScale(domain: 2...7, range: -0.5...0.5)\n    .chartZScale(domain: 30...60, range: -0.5...0.5)\n    .chartXAxis {\n      AxisMarks(values: [160, 180, 200, 220, 240]) {\n        AxisTick()\n        AxisGridLine()\n        AxisValueLabel()\n      }\n    }\n    .chartYAxis {\n      AxisMarks(values: [2, 3, 4, 5, 6, 7]) {\n        AxisTick()\n        AxisGridLine()\n        AxisValueLabel()\n      }\n    }\n    .chartZAxis {\n      AxisMarks(values: [30, 40, 50, 60]) {\n        AxisTick()\n        AxisGridLine()\n        AxisValueLabel()\n      }\n    }\n  }\n}"
+    },
+    {
+      "title": "Adjust the initial chart pose (Custom)",
+      "language": "swift",
+      "startTimeSeconds": 489,
+      "code": "// Adjust the initial chart pose\n\nimport SwiftUI\nimport Charts\n\nstruct PenguinChart: View {\n  @State var pose = Chart3DPose(\n    azimuth: .degrees(20),\n    inclination: .degrees(7)\n  )\n\n  var body: some View {\n    Chart3D(penguins) { penguin in\n      PointMark(\n        x: .value(\"Flipper Length\", penguin.flipperLength),\n        y: .value(\"Weight\", penguin.weight),\n        z: .value(\"Beak Length\", penguin.beakLength)\n      )\n      .foregroundStyle(by: .value(\"Species\", penguin.species))\n    }\n    .chart3DPose($pose)\n    .chartXAxisLabel(\"Flipper Length (mm)\")\n    .chartYAxisLabel(\"Weight (kg)\")\n    .chartZAxisLabel(\"Beak Length (mm)\")\n    .chartXScale(domain: 160...240, range: -0.5...0.5)\n    .chartYScale(domain: 2...7, range: -0.5...0.5)\n    .chartZScale(domain: 30...60, range: -0.5...0.5)\n    .chartXAxis {\n      AxisMarks(values: [160, 180, 200, 220, 240]) {\n        AxisTick()\n        AxisGridLine()\n        AxisValueLabel()\n      }\n    }\n    .chartYAxis {\n      AxisMarks(values: [2, 3, 4, 5, 6, 7]) {\n        AxisTick()\n        AxisGridLine()\n        AxisValueLabel()\n      }\n    }\n    .chartZAxis {\n      AxisMarks(values: [30, 40, 50, 60]) {\n        AxisTick()\n        AxisGridLine()\n        AxisValueLabel()\n      }\n    }\n  }\n}"
+    },
+    {
+      "title": "Adjust the initial chart pose and camera projection",
+      "language": "swift",
+      "startTimeSeconds": 555,
+      "code": "// Adjust the initial chart pose and camera projection\n\nimport SwiftUI\nimport Charts\n\nstruct PenguinChart: View {\n  @State var pose = Chart3DPose(\n    azimuth: .degrees(20),\n    inclination: .degrees(7)\n  )\n\n  var body: some View {\n    Chart3D(penguins) { penguin in\n      PointMark(\n        x: .value(\"Flipper Length\", penguin.flipperLength),\n        y: .value(\"Weight\", penguin.weight),\n        z: .value(\"Beak Length\", penguin.beakLength)\n      )\n      .foregroundStyle(by: .value(\"Species\", penguin.species))\n    }\n    .chart3DPose($pose)\n    .chart3DCameraProjection(.perspective)\n    .chartXAxisLabel(\"Flipper Length (mm)\")\n    .chartYAxisLabel(\"Weight (kg)\")\n    .chartZAxisLabel(\"Beak Length (mm)\")\n    .chartXScale(domain: 160...240, range: -0.5...0.5)\n    .chartYScale(domain: 2...7, range: -0.5...0.5)\n    .chartZScale(domain: 30...60, range: -0.5...0.5)\n    .chartXAxis {\n      AxisMarks(values: [160, 180, 200, 220, 240]) {\n        AxisTick()\n        AxisGridLine()\n        AxisValueLabel()\n      }\n    }\n    .chartYAxis {\n      AxisMarks(values: [2, 3, 4, 5, 6, 7]) {\n        AxisTick()\n        AxisGridLine()\n        AxisValueLabel()\n      }\n    }\n    .chartZAxis {\n      AxisMarks(values: [30, 40, 50, 60]) {\n        AxisTick()\n        AxisGridLine()\n        AxisValueLabel()\n      }\n    }\n  }\n}"
+    },
+    {
+      "title": "Customize the surface styles for a sinc function",
+      "language": "swift",
+      "startTimeSeconds": 564,
+      "code": "// Customize the surface styles for a sinc function\n\nimport SwiftUI\nimport Charts\n\nstruct SurfacePlotChart: View {\n  var body: some View {\n    Chart3D {\n      SurfacePlot(x: \"X\", y: \"Y\", z: \"Z\") { x, z in\n        let h = hypot(x, z)\n        return sin(h) / h\n      }\n    }\n    .chartXScale(domain: -10...10, range: -0.5...0.5)\n    .chartZScale(domain: -10...10, range: -0.5...0.5)\n    .chartYScale(domain: -0.23...1, range: -0.5...0.5)\n  }\n}"
+    },
+    {
+      "title": "Customize the surface styles for a sinc function (EllipticalGradient)",
+      "language": "swift",
+      "startTimeSeconds": 569,
+      "code": "// Customize the surface styles for a sinc function\n\nimport SwiftUI\nimport Charts\n\nstruct SurfacePlotChart: View {\n  var body: some View {\n    Chart3D {\n      SurfacePlot(x: \"X\", y: \"Y\", z: \"Z\") { x, z in\n        let h = hypot(x, z)\n        return sin(h) / h\n      }\n      .foregroundStyle(EllipticalGradient(colors: [.red, .orange, .yellow, .green, .blue, .indigo, .purple]))\n    }\n    .chartXScale(domain: -10...10, range: -0.5...0.5)\n    .chartZScale(domain: -10...10, range: -0.5...0.5)\n    .chartYScale(domain: -0.23...1, range: -0.5...0.5)\n  }\n}"
+    },
+    {
+      "title": "Customize the surface styles for a sinc function (heightBased)",
+      "language": "swift",
+      "startTimeSeconds": 578,
+      "code": "// Customize the surface styles for a sinc function\n\nimport SwiftUI\nimport Charts\n\nstruct SurfacePlotChart: View {\n  var body: some View {\n    Chart3D {\n      SurfacePlot(x: \"X\", y: \"Y\", z: \"Z\") { x, z in\n        let h = hypot(x, z)\n        return sin(h) / h\n      }\n      .foregroundStyle(.heightBased)\n    }\n    .chartXScale(domain: -10...10, range: -0.5...0.5)\n    .chartZScale(domain: -10...10, range: -0.5...0.5)\n    .chartYScale(domain: -0.23...1, range: -0.5...0.5)\n  }\n}"
+    },
+    {
+      "title": "Customize the surface styles for a sinc function (normalBased)",
+      "language": "swift",
+      "startTimeSeconds": 587,
+      "code": "// Customize the surface styles for a sinc function\n\nimport SwiftUI\nimport Charts\n\nstruct SurfacePlotChart: View {\n  var body: some View {\n    Chart3D {\n      SurfacePlot(x: \"X\", y: \"Y\", z: \"Z\") { x, z in\n        let h = hypot(x, z)\n        return sin(h) / h\n      }\n      .foregroundStyle(.normalBased)\n    }\n    .chartXScale(domain: -10...10, range: -0.5...0.5)\n    .chartZScale(domain: -10...10, range: -0.5...0.5)\n    .chartYScale(domain: -0.23...1, range: -0.5...0.5)\n  }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Swift Charts updates",
+      "url": "https://developer.apple.com/documentation/Updates/SwiftCharts",
+      "type": "documentation",
+      "description": "Learn about important changes to Swift Charts.",
+      "sosumiURL": "https://sosumi.ai/documentation/Updates/SwiftCharts",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Updates/SwiftCharts.json"
+    },
+    {
+      "title": "Swift Charts",
+      "url": "https://developer.apple.com/documentation/Charts",
+      "type": "documentation",
+      "description": "Construct and customize charts on every Apple platform.",
+      "sosumiURL": "https://sosumi.ai/documentation/Charts",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Charts.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/313/",
+  "files": {
+    "metadata": "sessions/wwdc2025/313/metadata.json",
+    "readme": "sessions/wwdc2025/313/README.md",
+    "transcript": "sessions/wwdc2025/313/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/313/transcript.json"
+  }
+}

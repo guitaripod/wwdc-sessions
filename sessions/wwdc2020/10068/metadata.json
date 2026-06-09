@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10068",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10068,
+  "title": "What's new in SiriKit and Shortcuts",
+  "description": "Get a quick overview of everything new in Siri and Shortcuts to help people get more out of your app: We’ll demonstrate how you can design visually rich conversations, feel at home with the operating system by designing for the new compact Siri UI, and provide an overview of all the ways we’ve made it even easier for people to organize and set up actions from your apps.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10068",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10068",
+  "type": "Video",
+  "publishedAt": "2020-06-23T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "automation",
+    "extensions",
+    "in-app intent handling",
+    "intents",
+    "intentsui",
+    "shortcuts",
+    "shortcuts app",
+    "siri",
+    "sirikit",
+    "voice",
+    "watchos",
+    "watchos design"
+  ],
+  "topics": [
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 735,
+  "hasTranscript": true,
+  "transcriptWordCount": 1839,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10068/6/21534713-4524-4D0D-B555-7E3C2D960F96/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10068/6/21534713-4524-4D0D-B555-7E3C2D960F96/wwdc2020_10068_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10068/6/21534713-4524-4D0D-B555-7E3C2D960F96/wwdc2020_10068_hd.mp4",
+    "duration": 735
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Providing Hands-Free App Control with Intents",
+      "url": "https://developer.apple.com/documentation/SiriKit/providing-hands-free-app-control-with-intents",
+      "type": "samplecode",
+      "description": "Resolve, confirm, and handle intents without an extension.",
+      "sosumiURL": "https://sosumi.ai/documentation/SiriKit/providing-hands-free-app-control-with-intents",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SiriKit/providing-hands-free-app-control-with-intents.json"
+    },
+    {
+      "title": "Adding Shortcuts for Wind Down",
+      "url": "https://developer.apple.com/documentation/SiriKit/adding-shortcuts-for-wind-down",
+      "type": "samplecode",
+      "description": "Reveal your app’s shortcuts inside the Health app.",
+      "sosumiURL": "https://sosumi.ai/documentation/SiriKit/adding-shortcuts-for-wind-down",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SiriKit/adding-shortcuts-for-wind-down.json"
+    },
+    {
+      "title": "Soup Chef: Accelerating App Interactions with Shortcuts",
+      "url": "https://developer.apple.com/documentation/SiriKit/soup-chef-accelerating-app-interactions-with-shortcuts",
+      "type": "samplecode",
+      "description": "Make it easy for people to use Siri with your app by providing shortcuts to your app’s actions.",
+      "sosumiURL": "https://sosumi.ai/documentation/SiriKit/soup-chef-accelerating-app-interactions-with-shortcuts",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SiriKit/soup-chef-accelerating-app-interactions-with-shortcuts.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10068/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10068/metadata.json",
+    "readme": "sessions/wwdc2020/10068/README.md",
+    "transcript": "sessions/wwdc2020/10068/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10068/transcript.json"
+  }
+}

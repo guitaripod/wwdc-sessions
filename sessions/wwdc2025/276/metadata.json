@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-276",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 276,
+  "title": "What’s new in BNNS Graph",
+  "description": "The BNNS Graph Builder API now enables developers to write graphs of operations using the familiar Swift language to generate pre- and post-processing routines and small machine-learning models. BNNS compiles graphs ahead of execution and supports real-time and latency-sensitive use cases such as audio processing. In this session, we revisit last year’s bit-crusher example and simplify the Swift component by removing the reliance on a separate Python file and instead implement the audio effect entirely in Swift. The BNNS Graph Builder API is also suited to pre-processing image data before passing that data to a machine learning model. The session also includes a demonstration of clipping the transparent pixels from an image with an alpha channel.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/276",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/276",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "bnns",
+    "machine learning"
+  ],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1425,
+  "hasTranscript": true,
+  "transcriptWordCount": 3127,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/276/4/68973e7e-a4db-44eb-9c9f-f90f3dde4a75/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/276/4/68973e7e-a4db-44eb-9c9f-f90f3dde4a75/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/276/4/68973e7e-a4db-44eb-9c9f-f90f3dde4a75/downloads/wwdc2025-276_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/276/4/68973e7e-a4db-44eb-9c9f-f90f3dde4a75/downloads/wwdc2025-276_hd.mp4",
+    "duration": 1425
+  },
+  "codeSnippets": [
+    {
+      "title": "Introduction to BNNSGraphBuilder",
+      "language": "swift",
+      "startTimeSeconds": 511,
+      "code": "import Accelerate\n\n\n\nfunc demo() throws {\n\n    let context = try BNNSGraph.makeContext {\n        builder in\n\n        let x = builder.argument(name: \"x\",\n                                 dataType: Float.self,\n                                 shape: [8])\n        let y = builder.argument(name: \"y\",\n                                 dataType: Float.self,\n                                 shape: [8])\n\n        let product = x * y\n        let mean = product.mean(axes: [0], keepDimensions: true)\n\n        // Prints \"shape: [1] | stride: [1]\".\n        print(\"mean\", mean)\n\n        return [ product, mean]\n    }\n\n    var args = context.argumentNames().map {\n        name in\n        return context.tensor(argument: name,\n                              fillKnownDynamicShapes: false)!\n    }\n\n    // Output arguments\n    args[0].allocate(as: Float.self, count: 8)\n    args[1].allocate(as: Float.self, count: 1)\n\n    // Input arguments\n    args[2].allocate(\n        initializingFrom: [1, 2, 3, 4, 5, 6, 7, 8] as [Float])\n    args[3].allocate(\n        initializingFrom: [8, 7, 6, 5, 4, 3, 2, 1] as [Float])\n\n        try context.executeFunction(arguments: &args)\n\n    // [8.0, 14.0, 18.0, 20.0, 20.0, 18.0, 14.0, 8.0]\n    print(args[0].makeArray(of: Float.self))\n\n    // [15.0]\n    print(args[1].makeArray(of: Float.self))\n\n    args.forEach {\n        $0.deallocate()\n    }\n}"
+    },
+    {
+      "title": "Strong typing",
+      "language": "swift",
+      "startTimeSeconds": 724,
+      "code": "// Performs `result = mask0 .< mask1 ? bases.pow(exponents) : 0\n\nlet context = try BNNSGraph.makeContext {\n    builder in\n\n    let mask0 = builder.argument(dataType: Float16.self,\n                                 shape: [-1])\n    let mask1 = builder.argument(dataType: Float16.self,\n                                 shape: [-1])\n\n    let bases = builder.argument(dataType: Float16.self,\n                                 shape: [-1])\n    let exponents = builder.argument(dataType: Int32.self,\n                                     shape: [-1])\n\n    // `mask` contains Boolean values.\n    let mask = mask0 .< mask1\n\n    // Cast integer exponents to FP16.\n    var result = bases.pow(y: exponents.cast(to: Float16.self))\n    result = result * mask.cast(to: Float16.self)\n\n    return [result]\n}"
+    },
+    {
+      "title": "Slicing",
+      "language": "swift",
+      "startTimeSeconds": 855,
+      "code": "let srcImage = #imageLiteral(resourceName: \"squirrel.jpeg\").cgImage(\n    forProposedRect: nil,\n    context: nil,\n    hints: nil)!\n\nvar cgImageFormat = vImage_CGImageFormat(\n    bitsPerComponent: 32,\n    bitsPerPixel: 32 * 3,\n    colorSpace: CGColorSpaceCreateDeviceRGB(),\n    bitmapInfo: CGBitmapInfo(alpha: .none,\n                             component: .float,\n                             byteOrder: .order32Host))!\n\nlet source = try vImage.PixelBuffer(cgImage: srcImage,\n                                    cgImageFormat: &cgImageFormat,\n                                    pixelFormat: vImage.InterleavedFx3.self)\n\nlet cropSize = 640\nlet horizontalMargin = (source.width - cropSize) / 2\nlet verticalMargin = (source.height - cropSize) / 2\n\nlet destination = vImage.PixelBuffer(size: .init(width: cropSize,\n                                                 height: cropSize),\n                                     pixelFormat: vImage.InterleavedFx3.self)\n\nlet context = try BNNSGraph.makeContext {\n    builder in\n\n    let src = builder.argument(name: \"source\",\n                               dataType: Float.self,\n                               shape: [ -1, -1, 3])\n\n    let result = src [\n        BNNSGraph.Builder.SliceRange(startIndex: verticalMargin,\n                                     endIndex: -verticalMargin),\n        BNNSGraph.Builder.SliceRange(startIndex: horizontalMargin,\n                                     endIndex: -horizontalMargin),\n        BNNSGraph.Builder.SliceRange.fillAll\n    ]\n\n    return [result]\n}\n\nsource.withBNNSTensor { src in\n    destination.withBNNSTensor { dst in\n\n        var args = [dst, src]\n\n        print(src)\n        print(dst)\n\n        try! context.executeFunction(arguments: &args)\n    }\n}\n\nlet result = destination.makeCGImage(cgImageFormat: cgImageFormat)"
+    },
+    {
+      "title": "Preprocessing by thresholding on mean",
+      "language": "swift",
+      "startTimeSeconds": 1051,
+      "code": "let srcImage = #imageLiteral(resourceName: \"birds.jpeg\").cgImage(\n    forProposedRect: nil,\n    context: nil,\n    hints: nil)!\n\nvar cgImageFormat = vImage_CGImageFormat(\n    bitsPerComponent: 16,\n    bitsPerPixel: 16,\n    colorSpace: CGColorSpaceCreateDeviceGray(),\n    bitmapInfo: CGBitmapInfo(rawValue: CGBitmapInfo.byteOrder16Little.rawValue |\n                             CGBitmapInfo.floatComponents.rawValue |\n                             CGImageAlphaInfo.none.rawValue))!\n\nlet source = try! vImage.PixelBuffer<vImage.Planar16F>(cgImage: srcImage,\n                                                       cgImageFormat: &cgImageFormat)\nlet destination = vImage.PixelBuffer<vImage.Planar16F>(size: source.size)\n\nlet context = try BNNSGraph.makeContext {\n    builder in\n\n    let src = builder.argument(name: \"source\",\n                               dataType: Float16.self,\n                               shape: [-1, -1, 1])\n\n    let mean = src.mean(axes: [0, 1], keepDimensions: false)\n\n    let thresholded = src .> mean\n\n    let result = thresholded.cast(to: Float16.self)\n\n    return [result]\n}\n\nsource.withBNNSTensor { src in\n    destination.withBNNSTensor { dst in\n\n        var args = [dst, src]\n\n        try! context.executeFunction(arguments: &args)\n    }\n}\n\nlet result = destination.makeCGImage(cgImageFormat: cgImageFormat)"
+    },
+    {
+      "title": "Postprocessing",
+      "language": "swift",
+      "startTimeSeconds": 1144,
+      "code": "func postProcess(result: BNNSTensor, k: Int) throws -> ([Float32], [Int32]) {\n\n    let context = try BNNSGraph.makeContext {\n        builder in\n\n        let x = builder.argument(dataType: Float32.self,\n                                 shape: [-1])\n\n        let softmax = x.softmax(axis: 1)\n\n        let topk = softmax.topK(k, axis: 1, findLargest: true)\n\n        return [topk.values, topk.indices]\n    }\n\n    let indices = context.allocateTensor(argument: context.argumentNames()[0],\n                                         fillKnownDynamicShapes: false)!\n    let values = context.allocateTensor(argument: context.argumentNames()[1],\n                                        fillKnownDynamicShapes: false)!\n\n    var arguments = [values, indices, result]\n\n    try context.executeFunction(arguments: &arguments)\n\n    return (values.makeArray(of: Float32.self), indices.makeArray(of: Int32.self))\n}"
+    },
+    {
+      "title": "Bitcrusher in PyTorch",
+      "language": "python",
+      "startTimeSeconds": 1263,
+      "code": "import coremltools as ct\nfrom coremltools.converters.mil import Builder as mb\nfrom coremltools.converters.mil.mil import (\n    get_new_symbol\n)\n\nimport torch\nimport torch.nn as nn\nimport torch.nn.functional as F\n\nclass BitcrusherModel(nn.Module):\n    def __init__(self):\n        super(BitcrusherModel, self).__init__()\n\n    def forward(self, source, resolution, saturationGain, dryWet):\n        # saturation\n        destination = source * saturationGain\n        destination = F.tanh(destination)\n\n        # quantization\n        destination = destination * resolution\n        destination = torch.round(destination)\n        destination = destination / resolution\n\n        # mix\n        destination = destination * dryWet\n        destination = 1.0 - dryWet\n        source = source * dryWet\n\n        destination = destination + source\n\n        return destination"
+    },
+    {
+      "title": "Bitcrusher in Swift",
+      "language": "swift",
+      "startTimeSeconds": 1263,
+      "code": "typealias BITCRUSHER_PRECISION = Float16\n\nlet context = try! BNNSGraph.makeContext {\n    builder in\n\n    var source = builder.argument(name: \"source\",\n                                  dataType: BITCRUSHER_PRECISION.self,\n                                  shape: [sampleCount, 1, 1])\n\n    let resolution = builder.argument(name: \"resolution\",\n                                      dataType: BITCRUSHER_PRECISION.self,\n                                      shape: [1, 1, 1])\n\n    let saturationGain = builder.argument(name: \"saturationGain\",\n                                          dataType: BITCRUSHER_PRECISION.self,\n                                          shape: [1, 1, 1])\n\n    var dryWet = builder.argument(name: \"dryWet\",\n                                  dataType: BITCRUSHER_PRECISION.self,\n                                  shape: [1, 1, 1])\n\n    // saturation\n    var destination = source * saturationGain\n    destination = destination.tanh()\n\n    // quantization\n\n    destination = destination * resolution\n    destination = destination.round()\n    destination = destination / resolution\n\n    // mix\n    destination = destination * dryWet\n    dryWet = BITCRUSHER_PRECISION(1) - dryWet\n    source = source * dryWet\n\n    destination = destination + source\n\n    return [destination]\n}"
+    },
+    {
+      "title": "Changing precision",
+      "language": "swift",
+      "startTimeSeconds": 1354,
+      "code": "typealias BITCRUSHER_PRECISION = Float16\n\nlet context = try! BNNSGraph.makeContext {\n    builder in\n\n    var source = builder.argument(name: \"source\",\n                                  dataType: BITCRUSHER_PRECISION.self,\n                                  shape: [sampleCount, 1, 1])\n\n    let resolution = builder.argument(name: \"resolution\",\n                                      dataType: BITCRUSHER_PRECISION.self,\n                                      shape: [1, 1, 1])\n\n    let saturationGain = builder.argument(name: \"saturationGain\",\n                                          dataType: BITCRUSHER_PRECISION.self,\n                                          shape: [1, 1, 1])\n\n    var dryWet = builder.argument(name: \"dryWet\",\n                                  dataType: BITCRUSHER_PRECISION.self,\n                                  shape: [1, 1, 1])\n\n    // saturation\n    var destination = source * saturationGain\n    destination = destination.tanh()\n\n    // quantization\n\n    destination = destination * resolution\n    destination = destination.round()\n    destination = destination / resolution\n\n    // mix\n    destination = destination * dryWet\n    dryWet = BITCRUSHER_PRECISION(1) - dryWet\n    source = source * dryWet\n\n    destination = destination + source\n\n    return [destination]\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "vImage.PixelBuffer",
+      "url": "https://developer.apple.com/documentation/Accelerate/vImage/PixelBuffer",
+      "type": "documentation",
+      "description": "An image buffer that stores an image’s pixel data, dimensions, bit depth, and number of channels.",
+      "sosumiURL": "https://sosumi.ai/documentation/Accelerate/vImage/PixelBuffer",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Accelerate/vImage/PixelBuffer.json"
+    },
+    {
+      "title": "BNNS",
+      "url": "https://developer.apple.com/documentation/Accelerate/bnns-library",
+      "type": "documentation",
+      "description": "Implement and run neural networks for training and inference.",
+      "sosumiURL": "https://sosumi.ai/documentation/Accelerate/bnns-library",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Accelerate/bnns-library.json"
+    },
+    {
+      "title": "Supporting real-time ML inference on the CPU",
+      "url": "https://developer.apple.com/documentation/Accelerate/supporting-real-time-ml-inference-on-the-cpu",
+      "type": "samplecode",
+      "description": "Add real-time digital signal processing to apps like Logic Pro X and GarageBand with the BNNS Graph API.",
+      "sosumiURL": "https://sosumi.ai/documentation/Accelerate/supporting-real-time-ml-inference-on-the-cpu",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Accelerate/supporting-real-time-ml-inference-on-the-cpu.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/276/",
+  "files": {
+    "metadata": "sessions/wwdc2025/276/metadata.json",
+    "readme": "sessions/wwdc2025/276/README.md",
+    "transcript": "sessions/wwdc2025/276/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/276/transcript.json"
+  }
+}

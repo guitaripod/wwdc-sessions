@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10023",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10023,
+  "title": "What's new in the Photos picker",
+  "description": "PHPicker provides simple and secure integration between your app and the system Photos library. Learn how SwiftUI and Transferable can help you offer integration across iOS, iPadOS, macOS, and watchOS.\n\nWe’ll also show you how you can use AppKit and NSOpenPanel to bring the Photos picker on Mac into your macOS apps.\n\nFor even more on the Photos picker, watch \"Improve access to Photos in your app\" from WWDC21.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10023",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10023",
+  "type": "Video",
+  "publishedAt": "2022-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Essentials",
+    "Photos & Camera"
+  ],
+  "primaryTopic": "Photos & Camera",
+  "duration": 870,
+  "hasTranscript": true,
+  "transcriptWordCount": 1954,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10023/3/7AAE9501-211F-4201-B017-2AAC7F0C2556/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10023/3/7AAE9501-211F-4201-B017-2AAC7F0C2556/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10023/3/7AAE9501-211F-4201-B017-2AAC7F0C2556/downloads/wwdc2022-10023_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10023/3/7AAE9501-211F-4201-B017-2AAC7F0C2556/downloads/wwdc2022-10023_hd.mp4",
+    "duration": 870
+  },
+  "codeSnippets": [
+    {
+      "title": "PHPicker Example (UIKit)",
+      "language": "swift",
+      "startTimeSeconds": 1,
+      "code": "var configuration = PHPickerConfiguration()\nconfiguration.filter = .images\nconfiguration.selection = .ordered\nconfiguration.selectionLimit = 10\n\nlet picker = PHPickerViewController(configuration: configuration)"
+    },
+    {
+      "title": "PHPickerFilter",
+      "language": "swift",
+      "startTimeSeconds": 2,
+      "code": "var configuration = PHPickerConfiguration()\n\n// iOS 15\n// Shows videos and Live Photos\nconfiguration.filter = .any(of: [.videos, .livePhotos])\n\n// New: iOS 15\n// Shows screenshots only\nconfiguration.filter = .screenshots\n\n// New: iOS 15\n// Shows images excluding screenshots\nconfiguration.filter = .all(of: [.images, .not(.screenshots)])\n\n// New: iOS 16\n// Shows cinematic videos\nconfiguration.filter = .cinematicVideos"
+    },
+    {
+      "title": "PHPicker Example (AppKit)",
+      "language": "swift",
+      "startTimeSeconds": 3,
+      "code": "var configuration = PHPickerConfiguration()\nconfiguration.filter = .images\nconfiguration.selectionLimit = 10\n\nlet picker = PHPickerViewController(configuration: configuration)"
+    },
+    {
+      "title": "PhotosPicker Example (SwiftUI)",
+      "language": "swift",
+      "startTimeSeconds": 4,
+      "code": "struct ContentView: View {\n    @Binding selection: [PhotosPickerItem]\n\n    var body: some View {\n        PhotosPicker(\n            selection: $selection,\n            matching: .images\n        ) {\n            Text(\"Select Photos\")\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Selecting Photos and Videos in iOS",
+      "url": "https://developer.apple.com/documentation/PhotoKit/selecting-photos-and-videos-in-ios",
+      "type": "samplecode",
+      "description": "Improve the user experience of finding and selecting assets by using the Photos picker.",
+      "sosumiURL": "https://sosumi.ai/documentation/PhotoKit/selecting-photos-and-videos-in-ios",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/PhotoKit/selecting-photos-and-videos-in-ios.json"
+    },
+    {
+      "title": "PhotoKit",
+      "url": "https://developer.apple.com/documentation/photokit",
+      "type": "documentation",
+      "description": "Work with image and video assets managed by the Photos app, including those from iCloud Photos and Live Photos.",
+      "sosumiURL": "https://sosumi.ai/documentation/photokit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/photokit.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10023/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10023/metadata.json",
+    "readme": "sessions/wwdc2022/10023/README.md",
+    "transcript": "sessions/wwdc2022/10023/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10023/transcript.json"
+  }
+}

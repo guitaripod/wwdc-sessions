@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10165",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10165,
+  "title": "Embrace Swift type inference",
+  "description": "Swift uses type inference to help you write clean, concise code without compromising type safety. We’ll show you how the compiler seeks out clues in your code to solve the type inference puzzle. Discover what happens when the compiler can't come to a solution, and find out how Xcode 12 integrates error tracking to help you understand and fix mistakes at compile time.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10165",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10165",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 1253,
+  "hasTranscript": true,
+  "transcriptWordCount": 3171,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10165/4/F5BC5595-D6B4-4C08-B9EC-E801F766386B/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10165/4/F5BC5595-D6B4-4C08-B9EC-E801F766386B/wwdc2020_10165_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10165/4/F5BC5595-D6B4-4C08-B9EC-E801F766386B/wwdc2020_10165_hd.mp4",
+    "duration": 1253
+  },
+  "codeSnippets": [
+    {
+      "title": "SmoothieList",
+      "language": "swift",
+      "startTimeSeconds": 176,
+      "code": "import SwiftUI\n\nstruct SmoothieList: View {\n    var smoothies: [Smoothie]\n\n    @State var searchPhrase = \"\"\n\n    var body: some View {\n        FilteredList(\n            smoothies,\n            filterBy: \\.title,\n            isIncluded: { title in title.hasSubstring(searchPhrase) }\n        ) { smoothie in\n            SmoothieRowView(smoothie: smoothie)\n        }\n    }\n}\n\nextension String {\n    /// Returns `true` if this string contains the provided substring,\n    /// or if the substring is empty. Otherwise, returns `false`.\n    ///\n    /// - Parameter substring: The substring to search for within\n    ///   this string.\n    func hasSubstring(_ substring: String) -> Bool {\n        substring.isEmpty || contains(substring)\n    }\n}"
+    },
+    {
+      "title": "FilteredList",
+      "language": "swift",
+      "startTimeSeconds": 233,
+      "code": "import SwiftUI\n\npublic struct FilteredList<Element, FilterKey, RowContent>: View\n        where Element: Identifiable, RowContent: View {\n\n    private let data: [Element]\n    private let filterKey: KeyPath<Element, FilterKey>\n    private let isIncluded: (FilterKey) -> Bool\n    private let rowContent: (Element) -> RowContent\n\n    public init(\n        _ data: [Element],\n        filterBy key: KeyPath<Element, FilterKey>,\n        isIncluded: @escaping (FilterKey) -> Bool,\n        @ViewBuilder rowContent: @escaping (Element) -> RowContent\n    ) {\n        self.data = data\n        self.filterKey = key\n        self.isIncluded = isIncluded\n        self.rowContent = rowContent\n    }\n\n    public var body: some View {\n        let filteredData = data.filter {\n            isIncluded($0[keyPath: filterKey])\n        }\n\n        return List(filteredData, rowContent: rowContent)\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "The Swift Programming Language",
+      "url": "https://docs.swift.org/swift-book/",
+      "type": "guide",
+      "description": "The definitive guide to Swift, Apple’s programming language for building iOS, macOS, watchOS, and tvOS apps."
+    }
+  ],
+  "path": "sessions/wwdc2020/10165/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10165/metadata.json",
+    "readme": "sessions/wwdc2020/10165/README.md",
+    "transcript": "sessions/wwdc2020/10165/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10165/transcript.json"
+  }
+}

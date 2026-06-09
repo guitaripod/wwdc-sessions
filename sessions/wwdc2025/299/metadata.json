@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-299",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 299,
+  "title": "Deliver age-appropriate experiences in your app",
+  "description": "Learn how to deliver age-appropriate experiences in your app with the new Declared Age Range API. We’ll cover how parents can allow their child to share an age range with an app to ensure a safe experience in a privacy-preserving way. We’ll also explore how this framework can help you tailor your app’s content and features based on a user’s age, and show you how to implement age gates, understand caching, and respect user privacy while creating safer and more engaging experiences.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/299",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/299",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "🎈"
+  ],
+  "topics": [
+    "System Services",
+    "Privacy & Security"
+  ],
+  "primaryTopic": "Privacy & Security",
+  "duration": 817,
+  "hasTranscript": true,
+  "transcriptWordCount": 1959,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/299/4/ffa39510-a851-4af3-9584-7e37abdfc5bf/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/299/4/ffa39510-a851-4af3-9584-7e37abdfc5bf/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/299/4/ffa39510-a851-4af3-9584-7e37abdfc5bf/downloads/wwdc2025-299_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/299/4/ffa39510-a851-4af3-9584-7e37abdfc5bf/downloads/wwdc2025-299_hd.mp4",
+    "duration": 817
+  },
+  "codeSnippets": [
+    {
+      "title": "Request an age range",
+      "language": "swift",
+      "startTimeSeconds": 483,
+      "code": "// Request an age range\n\nimport SwiftUI\nimport DeclaredAgeRange\n\nstruct LandmarkDetail: View {\n    // ...\n    @State var photoSharingEnabled = false\n    @Environment(\\.requestAgeRange) var requestAgeRange\n\n    var body: some View {\n        ScrollView {\n            // ...\n            Button(\"Share Photos\") {}\n                .disabled(!photoSharingEnabled)\n        }\n        .task {\n            await requestAgeRangeHelper()\n        }\n    }\n\n    func requestAgeRangeHelper() async {\n        do {\n            // TODO: Check user region\n            let ageRangeResponse = try await requestAgeRange(ageGates: 16)\n            switch ageRangeResponse {\n            case let .sharing(range):\n                 // Age range shared\n                if let lowerBound = range.lowerBound, lowerBound >= 16 {\n                    photoSharingEnabled = true\n                }\n                // guardianDeclared, selfDeclared\n                print(range.ageRangeDeclaration)\n            case .declinedSharing:\n                // Declined to share\n                print(\"Declined to share\")\n            }\n        } catch AgeRangeService.Error.invalidRequest {\n            print(\"Handle invalid request error\")\n        } catch AgeRangeService.Error.notAvailable {\n            print(\"Handle not available error\")\n        } catch {\n            print(\"Unhandled error: \\(error)\")\n        }\n    }\n}"
+    },
+    {
+      "title": "Communication Limits",
+      "language": "swift",
+      "startTimeSeconds": 709,
+      "code": "// Request an age range\n\nfunc requestAgeRangeHelper() async {\n    do {\n        // TODO: Check user region\n        let ageRangeResponse = try await requestAgeRange(ageGates: 16)\n        switch ageRangeResponse {\n        case let .sharing(range):\n            if range.activeParentalControls.contains(.communicationLimits) {\n                print(\"Communication Limits enabled\")\n            }\n            // ...\n        case .declinedSharing:\n            // Declined to share\n            print(\"Declined to share\")\n        }\n    } catch {\n        // ...\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Design safe and age‑appropriate experiences for your apps and games",
+      "url": "https://developer.apple.com/kids/",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/kids/"
+    },
+    {
+      "title": "Helping Protect Kids Online",
+      "url": "https://developer.apple.com/support/downloads/Helping-Protect-Kids-Online-2025.pdf",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/support/downloads/Helping-Protect-Kids-Online-2025.pdf"
+    },
+    {
+      "title": "Declared Age Range",
+      "url": "https://developer.apple.com/documentation/DeclaredAgeRange",
+      "type": "documentation",
+      "description": "Create age-appropriate experiences in your app by asking people to share their age range.",
+      "sosumiURL": "https://sosumi.ai/documentation/DeclaredAgeRange",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/DeclaredAgeRange.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/299/",
+  "files": {
+    "metadata": "sessions/wwdc2025/299/metadata.json",
+    "readme": "sessions/wwdc2025/299/README.md",
+    "transcript": "sessions/wwdc2025/299/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/299/transcript.json"
+  }
+}

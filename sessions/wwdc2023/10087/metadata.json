@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10087",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10087,
+  "title": "Build spatial SharePlay experiences",
+  "description": "Discover how you can use the GroupActivities framework to build unique sharing and collaboration experiences for visionOS. We’ll introduce you to SharePlay on this platform, learn how to create experiences that make people feel present as if they were in the same space, and explore how immersive apps can respect shared context between participants.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10087",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10087",
+  "type": "Video",
+  "publishedAt": "2023-06-08T08:00:00-07:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [
+    "group activities"
+  ],
+  "topics": [
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 1471,
+  "hasTranscript": true,
+  "transcriptWordCount": 4094,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10087/4/36E3D439-2B36-408C-9249-3929F2E75FBD/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10087/4/36E3D439-2B36-408C-9249-3929F2E75FBD/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10087/4/36E3D439-2B36-408C-9249-3929F2E75FBD/downloads/wwdc2023-10087_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10087/4/36E3D439-2B36-408C-9249-3929F2E75FBD/downloads/wwdc2023-10087_hd.mp4",
+    "duration": 1471
+  },
+  "codeSnippets": [
+    {
+      "title": "Observe the local participant state",
+      "language": "swift",
+      "startTimeSeconds": 248,
+      "code": "for await session in ExploreActivity.sessions() {\n    guard let systemCoordinator = await session.systemCoordinator else { continue }\n\n    let isLocalParticipantSpatial = systemCoordinator.localParticipantState.isSpatial\n\n    Task.detached {\n        for await localParticipantState in systemCoordinator.localParticipantStates {\n            if localParticipantState.isSpatial {\n                // Start syncing scroll position\n            } else {\n                // Stop syncing scroll position\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Configure the spatial template preferences",
+      "language": "swift",
+      "startTimeSeconds": 370,
+      "code": "for await session in ExploreActivity.sessions() {\n    guard let systemCoordinator = await session.systemCoordinator else { continue }\n\n    var configuration = SystemCoordinator.Configuration()\n    configuration.spatialTemplatePreference = .sideBySide\n    systemCoordinator.configuration = configuration\n\n    session.join()\n}"
+    },
+    {
+      "title": "Configuring scene activation conditions",
+      "language": "swift",
+      "startTimeSeconds": 550,
+      "code": "@main\nstruct ExploreTogetherApp: App {\n    var body: some Scene {\n        WindowGroup {\n            ContentView()\n                .handlesExternalEvents(\n                    preferring: [\"com.example.explore-together.activity\"],\n                    allowing: [\"com.example.explore-together.activity\"]\n                )\n        }\n    }\n}"
+    },
+    {
+      "title": "Configuring scene activation conditions",
+      "language": "swift",
+      "startTimeSeconds": 570,
+      "code": "class SceneDelegate: NSObject, UISceneDelegate {\n\n    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {\n        // ...\n\n        scene.activationConditions.canActivateForTargetContentIdentifierPredicate =\n                NSPredicate(format: \"self == %@\", \"com.example.explore-together.activity\")\n\n        scene.activationConditions.prefersToActivateForTargetContentIdentifierPredicate =\n                NSPredicate(format: \"self == %@\", \"com.example.explore-together.activity\")\n    }\n}"
+    },
+    {
+      "title": "Setting scene association behavior",
+      "language": "swift",
+      "startTimeSeconds": 640,
+      "code": "struct ExploreActivity: GroupActivity {\n    var metadata: GroupActivityMetadata {\n        var metadata = GroupActivityMetadata()\n        // ...\n        metadata.sceneAssociationBehavior = .content(\"document-1\")\n        return metadata\n    }\n}"
+    },
+    {
+      "title": "Starting SharePlay",
+      "language": "swift",
+      "startTimeSeconds": 824,
+      "code": "// Create the activity\nlet activity = ExploreActivity()\n\n// Register the activity on the item provider\nlet itemProvider = NSItemProvider()\nitemProvider.registerGroupActivity(activity)\n\n// Create the activity items configuration\nlet configuration = UIActivityItemsConfiguration(itemProviders: [itemProvider])\n\n// Provide the metadata for the group activity\nconfiguration.metadataProvider = { key in\n    guard key == .linkPresentationMetadata else { return nil }\n    let metadata = LPLinkMetadata()\n    metadata.title = \"Explore Together\"\n    metadata.imageProvider = NSItemProvider(object: UIImage(named: \"explore-activity\")!)\n    return metadata\n}\nself.activityItemsConfiguration = configuration"
+    },
+    {
+      "title": "Configure group ImmersiveSpace",
+      "language": "swift",
+      "startTimeSeconds": 963,
+      "code": "for await session in ExploreActivity.sessions() {\n    guard let systemCoordinator = await session.systemCoordinator else { continue }\n\n    var configuration = SystemCoordinator.Configuration()\n    configuration.supportsGroupImmersiveSpace = true\n    systemCoordinator.configuration = configuration\n}"
+    },
+    {
+      "title": "System Experience Displacement",
+      "language": "swift",
+      "startTimeSeconds": 1071,
+      "code": "// Use immersiveSpaceDisplacement to offset contents in group immersive space\n\nvar body: some Scene {\n    ImmersiveSpace(id: \"earth\") {\n        GeometryReader3D { proxy in\n            let displacement = proxy.immersiveSpaceDisplacement(in: .global).inverse\n\n            Control()\n                .offset(displacement.position)\n                .rotation3DEffect(displacement.rotation)\n        }\n    }\n}"
+    },
+    {
+      "title": "Spatial Template Preferences",
+      "language": "swift",
+      "startTimeSeconds": 1246,
+      "code": "// Configure the spatial template preferences with content extent\n\nfor await session in ExploreSolarActivity.sessions() {\n    guard let systemCoordinator = await session.systemCoordinator else { continue }\n\n    var configuration = SystemCoordinator.Configuration()\n    configuration.supportsGroupImmersiveSpace = true\n    configuration.spatialTemplatePreference = .sideBySide.contentExtent(200)\n    systemCoordinator.configuration = configuration\n}"
+    },
+    {
+      "title": "Receive group immersion style to configure group immersive space",
+      "language": "swift",
+      "startTimeSeconds": 1352,
+      "code": "// Receive group immersion style to configure group immersive space\n\nfor await session in ExploreSolarActivity.sessions() {\n    guard let systemCoordinator = await session.systemCoordinator else { continue }\n\n    Task.detached {\n        for await immersionStyle in systemCoordinator.groupImmersionStyle {\n            if let immersionStyle {\n                // Open an immersive space with the same immersion style\n            } else {\n                // Dismiss the immersive space\n            }\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "SystemCoordinator",
+      "url": "https://developer.apple.com/documentation/GroupActivities/SystemCoordinator",
+      "type": "documentation",
+      "description": "A type you use to coordinate your interface’s behavior when an",
+      "sosumiURL": "https://sosumi.ai/documentation/GroupActivities/SystemCoordinator",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/GroupActivities/SystemCoordinator.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10087/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10087/metadata.json",
+    "readme": "sessions/wwdc2023/10087/README.md",
+    "transcript": "sessions/wwdc2023/10087/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10087/transcript.json"
+  }
+}

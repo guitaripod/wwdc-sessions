@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10189",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10189,
+  "title": "Migrate to SwiftData",
+  "description": "Discover how you can start using SwiftData in your apps. We’ll show you how to use Xcode to generate model classes from your existing Core Data object models, use SwiftData alongside your previous implementation, or even completely replace your existing solution.\n\nBefore watching this session, make sure you check out \"Meet SwiftData.\"",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10189",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10189",
+  "type": "Video",
+  "publishedAt": "2023-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "@attribute",
+    "coredata",
+    "core data",
+    "data",
+    "data model",
+    "macros",
+    "migration",
+    "model",
+    "@model",
+    "presistence",
+    "refactor",
+    "@relationship",
+    "swift",
+    "swiftdata",
+    "upgrade"
+  ],
+  "topics": [
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 673,
+  "hasTranscript": true,
+  "transcriptWordCount": 1782,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10189/4/87485DA7-96D9-41FA-979E-1D0224B540C2/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10189/4/87485DA7-96D9-41FA-979E-1D0224B540C2/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10189/4/87485DA7-96D9-41FA-979E-1D0224B540C2/downloads/wwdc2023-10189_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10189/4/87485DA7-96D9-41FA-979E-1D0224B540C2/downloads/wwdc2023-10189_hd.mp4",
+    "duration": 673
+  },
+  "codeSnippets": [
+    {
+      "title": "Creating a ModelContainer in SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 277,
+      "code": "@main\nstruct TripsApp: App {\n    var body: some Scene {\n        WindowGroup {\n            ContentView()\n        }\n        .modelContainer(\n            for: [Trip.self, BucketListItem.self, LivingAccommodation.self]\n        )\n    }\n}"
+    },
+    {
+      "title": "Object creation in Core Data",
+      "language": "swift",
+      "startTimeSeconds": 297,
+      "code": "@Environment(\\.managedObjectContext) private var viewContext\n\nlet newTrip = Trip(context: viewContext)\nnewTrip.name = name\nnewTrip.destination = destination\nnewTrip.startDate = startDate\nnewTrip.endDate = endDate"
+    },
+    {
+      "title": "Object creation in SwiftData",
+      "language": "swift",
+      "startTimeSeconds": 330,
+      "code": "@Environment(\\.modelContext) private var modelContext\n\nlet trip = Trip(\n    name: name, \n    destination: destination, \n    startDate: startDate, \n    endDate: endDate\n)\n\nmodelContext.insert(object: trip)"
+    },
+    {
+      "title": "Fetch with Query in SwiftData",
+      "language": "swift",
+      "startTimeSeconds": 376,
+      "code": "@Query(sort: \\.startDate, order: .forward)\n\nvar trips: [Trip]"
+    },
+    {
+      "title": "Setting store path and enabling persistent history tracking in Core Data",
+      "language": "swift",
+      "startTimeSeconds": 450,
+      "code": "let url = URL(fileURLWithPath: \"/path/to/Trips.store\")\n\nif let description = container.persistentStoreDescriptions.first {\n    description.url = url\n    description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)\n}"
+    },
+    {
+      "title": "Ensuring Core Data and SwiftData class names are unique",
+      "language": "swift",
+      "startTimeSeconds": 551,
+      "code": "class CDTrip: NSManagedObject {\n    // ...\n}\n\n\n@Model final class Trip {\n    // ...\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "SwiftData",
+      "url": "https://developer.apple.com/documentation/SwiftData",
+      "type": "documentation",
+      "description": "Write your model code declaratively to add managed persistence and efficient",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftData",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftData.json"
+    },
+    {
+      "title": "Adopting SwiftData for a Core Data app",
+      "url": "https://developer.apple.com/documentation/CoreData/adopting-swiftdata-for-a-core-data-app",
+      "type": "samplecode",
+      "description": "Persist data in your app intuitively with the Swift native persistence framework.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreData/adopting-swiftdata-for-a-core-data-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreData/adopting-swiftdata-for-a-core-data-app.json"
+    }
+  ],
+  "path": "sessions/wwdc2023/10189/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10189/metadata.json",
+    "readme": "sessions/wwdc2023/10189/README.md",
+    "transcript": "sessions/wwdc2023/10189/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10189/transcript.json"
+  }
+}

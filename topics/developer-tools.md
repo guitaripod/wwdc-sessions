@@ -1,19 +1,285 @@
-# Developer Tools — WWDC26 Sessions
+# Developer Tools
 
-15 sessions.
+242 sessions across all events.
 
-- [Build real-time apps and services with gRPC and Swift](../sessions/wwdc2026-265/README.md) · 📝 transcript
-- [Build, deliver, and automate with Xcode Cloud](../sessions/wwdc2026-261/README.md) · 📝 transcript
-- [Create UI prototypes using agents in Xcode](../sessions/wwdc2026-227/README.md) · 📝 transcript
-- [Design no-code games with Reality Composer Pro 3](../sessions/wwdc2026-252/README.md) · 📝 transcript
-- [Discover container machines](../sessions/wwdc2026-389/README.md) · 📝 transcript
-- [Enhance your presence on the App Store](../sessions/wwdc2026-205/README.md) · 📝 transcript
-- [Find and fix performance issues in your Metal games](../sessions/wwdc2026-388/README.md) · 📝 transcript
-- [Get the most out of Device Hub](../sessions/wwdc2026-260/README.md) · 📝 transcript
-- [Meet the new MetricKit](../sessions/wwdc2026-222/README.md) · 📝 transcript
-- [Migrate to Swift Testing](../sessions/wwdc2026-267/README.md) · 📝 transcript
-- [Profile, fix, and verify: Improve app responsiveness with Instruments](../sessions/wwdc2026-268/README.md) · 📝 transcript
-- [Translate your app using agents in Xcode](../sessions/wwdc2026-213/README.md) · 📝 transcript
-- [What’s new in Swift](../sessions/wwdc2026-262/README.md) · 📝 transcript
-- [What’s new in Xcode 27](../sessions/wwdc2026-258/README.md) · 📝 transcript
-- [Xcode, agents, and you](../sessions/wwdc2026-259/README.md) · 📝 transcript
+
+### WWDC26
+
+- [Build real-time apps and services with gRPC and Swift](../sessions/wwdc2026/265/README.md)
+- [Build, deliver, and automate with Xcode Cloud](../sessions/wwdc2026/261/README.md)
+- [Create UI prototypes using agents in Xcode](../sessions/wwdc2026/227/README.md)
+- [Design no-code games with Reality Composer Pro 3](../sessions/wwdc2026/252/README.md)
+- [Discover container machines](../sessions/wwdc2026/389/README.md)
+- [Enhance your presence on the App Store](../sessions/wwdc2026/205/README.md)
+- [Find and fix performance issues in your Metal games](../sessions/wwdc2026/388/README.md)
+- [Get the most out of Device Hub](../sessions/wwdc2026/260/README.md)
+- [Meet the new MetricKit](../sessions/wwdc2026/222/README.md)
+- [Migrate to Swift Testing](../sessions/wwdc2026/267/README.md)
+- [Profile, fix, and verify: Improve app responsiveness with Instruments](../sessions/wwdc2026/268/README.md)
+- [Translate your app using agents in Xcode](../sessions/wwdc2026/213/README.md)
+- [What’s new in Swift](../sessions/wwdc2026/262/README.md)
+- [What’s new in Xcode 27](../sessions/wwdc2026/258/README.md)
+- [Xcode, agents, and you](../sessions/wwdc2026/259/README.md)
+
+### WWDC25
+
+- [Code-along: Elevate an app with Swift concurrency](../sessions/wwdc2025/270/README.md)
+- [Code-along: Explore localization with Xcode](../sessions/wwdc2025/225/README.md)
+- [Get started with Game Center](../sessions/wwdc2025/214/README.md)
+- [Meet Containerization](../sessions/wwdc2025/346/README.md)
+- [Optimize CPU performance with Instruments](../sessions/wwdc2025/308/README.md)
+- [Optimize SwiftUI performance with Instruments](../sessions/wwdc2025/306/README.md)
+- [Profile and optimize power usage in your app](../sessions/wwdc2025/226/README.md)
+- [Record, replay, and review: UI automation with Xcode](../sessions/wwdc2025/344/README.md)
+- [Secure your app with Memory Integrity Enforcement](../sessions/meet-with-apple/206/README.md)
+- [What’s new in Swift](../sessions/wwdc2025/245/README.md)
+- [What’s new in SwiftUI](../sessions/wwdc2025/256/README.md)
+- [What’s new in Xcode 26](../sessions/wwdc2025/247/README.md)
+
+### WWDC24
+
+- [A Swift Tour: Explore Swift’s features and design](../sessions/wwdc2024/10184/README.md)
+- [Analyze heap memory](../sessions/wwdc2024/10173/README.md)
+- [Break into the RealityKit debugger](../sessions/wwdc2024/10172/README.md)
+- [Build a spatial drawing app with RealityKit](../sessions/wwdc2024/10104/README.md)
+- [Compose interactive 3D content in Reality Composer Pro](../sessions/wwdc2024/10102/README.md)
+- [Demystify explicitly built modules](../sessions/wwdc2024/10171/README.md)
+- [Discover RealityKit APIs for iOS, macOS, and visionOS](../sessions/wwdc2024/10103/README.md)
+- [Discover area mode for Object Capture](../sessions/wwdc2024/10107/README.md)
+- [Enhance your spatial computing app with RealityKit audio](../sessions/wwdc2024/111801/README.md)
+- [Extend your Xcode Cloud workflows](../sessions/wwdc2024/10200/README.md)
+- [Go further with Swift Testing](../sessions/wwdc2024/10195/README.md)
+- [Meet Swift Testing](../sessions/wwdc2024/10179/README.md)
+- [Migrate your app to Swift 6](../sessions/wwdc2024/10169/README.md)
+- [Port advanced games to Apple platforms](../sessions/wwdc2024/10089/README.md)
+- [Run, Break, Inspect: Explore effective debugging in LLDB](../sessions/wwdc2024/10198/README.md)
+- [What’s new in Swift](../sessions/wwdc2024/10136/README.md)
+- [What’s new in USD and MaterialX](../sessions/wwdc2024/10106/README.md)
+- [What’s new in Xcode 16](../sessions/wwdc2024/10135/README.md)
+- [Xcode essentials](../sessions/wwdc2024/10181/README.md)
+
+### WWDC23
+
+- [Analyze hangs with Instruments](../sessions/wwdc2023/10248/README.md)
+- [Beyond the basics of structured concurrency](../sessions/wwdc2023/10170/README.md)
+- [Bring your game to Mac, Part 1: Make a game plan](../sessions/wwdc2023/10123/README.md)
+- [Bring your game to Mac, Part 2: Compile your shaders](../sessions/wwdc2023/10124/README.md)
+- [Bring your game to Mac, Part 3: Render with Metal](../sessions/wwdc2023/10125/README.md)
+- [Build programmatic UI with Xcode Previews](../sessions/wwdc2023/10252/README.md)
+- [Create practical workflows in Xcode Cloud](../sessions/wwdc2023/10278/README.md)
+- [Create rich documentation with Swift-DocC](../sessions/wwdc2023/10244/README.md)
+- [Debug with structured logging](../sessions/wwdc2023/10226/README.md)
+- [Discover String Catalogs](../sessions/wwdc2023/10155/README.md)
+- [Enhance your iPad and iPhone apps for the Shared Space](../sessions/wwdc2023/10094/README.md)
+- [Expand on Swift macros](../sessions/wwdc2023/10167/README.md)
+- [Fix failures faster with Xcode test reports](../sessions/wwdc2023/10175/README.md)
+- [Generalize APIs with parameter packs](../sessions/wwdc2023/10168/README.md)
+- [Meet RealityKit Trace](../sessions/wwdc2023/10099/README.md)
+- [Meet Safari for spatial computing](../sessions/wwdc2023/10279/README.md)
+- [Meet Swift OpenAPI Generator](../sessions/wwdc2023/10171/README.md)
+- [Meet UIKit for spatial computing](../sessions/wwdc2023/111215/README.md)
+- [Meet mergeable libraries](../sessions/wwdc2023/10268/README.md)
+- [Mix Swift and C++](../sessions/wwdc2023/10172/README.md)
+- [Optimize GPU renderers with Metal](../sessions/wwdc2023/10127/README.md)
+- [Optimize app power and performance for spatial computing](../sessions/wwdc2023/10100/README.md)
+- [Perform accessibility audits for your app](../sessions/wwdc2023/10035/README.md)
+- [Prototype with Xcode Playgrounds](../sessions/wwdc2023/10250/README.md)
+- [Rediscover Safari developer features](../sessions/wwdc2023/10262/README.md)
+- [Run your iPad and iPhone apps in the Shared Space](../sessions/wwdc2023/10090/README.md)
+- [Simplify distribution in Xcode and Xcode Cloud](../sessions/wwdc2023/10224/README.md)
+- [What’s new in App Store Connect](../sessions/wwdc2023/10117/README.md)
+- [What’s new in Swift](../sessions/wwdc2023/10164/README.md)
+- [What’s new in Web Inspector](../sessions/wwdc2023/10118/README.md)
+- [What’s new in Xcode 15](../sessions/wwdc2023/10165/README.md)
+- [Write Swift macros](../sessions/wwdc2023/10166/README.md)
+
+### WWDC22
+
+- [Author fast and reliable tests for Xcode Cloud](../sessions/wwdc2022/110361/README.md)
+- [Build your first app in Swift Playgrounds](../sessions/wwdc2022/110348/README.md)
+- [Challenge: SwiftUI Animation Extravaganza!](../sessions/wwdc2022/110493/README.md)
+- [Challenge: You can build an app for that!](../sessions/wwdc2022/110956/README.md)
+- [Create Swift Package plugins](../sessions/wwdc2022/110401/README.md)
+- [Create engaging content for Swift Playgrounds](../sessions/wwdc2022/110349/README.md)
+- [Debug Swift debugging with LLDB](../sessions/wwdc2022/110370/README.md)
+- [Deep dive into Xcode Cloud for teams](../sessions/wwdc2022/110375/README.md)
+- [Demystify parallelization in Xcode builds](../sessions/wwdc2022/110364/README.md)
+- [Get the most out of Xcode Cloud](../sessions/wwdc2022/110374/README.md)
+- [Improve app size and runtime performance](../sessions/wwdc2022/110363/README.md)
+- [Improve the discoverability of your Swift-DocC content](../sessions/wwdc2022/110369/README.md)
+- [Link fast: Improve build and launch times](../sessions/wwdc2022/110362/README.md)
+- [Meet Swift Package plugins](../sessions/wwdc2022/110359/README.md)
+- [Power down: Improve battery consumption](../sessions/wwdc2022/10083/README.md)
+- [Simplify C++ templates with concepts](../sessions/wwdc2022/110367/README.md)
+- [Track down hangs with Xcode and on-device detection](../sessions/wwdc2022/10082/README.md)
+- [Use Xcode for server-side development](../sessions/wwdc2022/110360/README.md)
+- [Use Xcode to develop a multiplatform app](../sessions/wwdc2022/110371/README.md)
+- [What's new in Swift-DocC](../sessions/wwdc2022/110368/README.md)
+- [What's new in Xcode](../sessions/wwdc2022/110427/README.md)
+
+### WWDC21
+
+- [Analyze HTTP traffic in Instruments ](../sessions/wwdc2021/10212/README.md)
+- [Automate CloudKit tests with cktool and declarative schema](../sessions/wwdc2021/10118/README.md)
+- [Build interactive tutorials using DocC](../sessions/wwdc2021/10235/README.md)
+- [Build interfaces with style](../sessions/wwdc2021/10196/README.md)
+- [Customize your advanced Xcode Cloud workflows](../sessions/wwdc2021/10269/README.md)
+- [Detect and diagnose memory issues](../sessions/wwdc2021/10180/README.md)
+- [Detect bugs early with the static analyzer](../sessions/wwdc2021/10202/README.md)
+- [Diagnose Power and Performance regressions in your app](../sessions/wwdc2021/10087/README.md)
+- [Diagnose unreliable code with test repetitions](../sessions/wwdc2021/10296/README.md)
+- [Discover Metal debugging, profiling, and asset creation tools](../sessions/wwdc2021/10157/README.md)
+- [Discover and curate Swift Packages using Collections](../sessions/wwdc2021/10197/README.md)
+- [Discover breakpoint improvements](../sessions/wwdc2021/10209/README.md)
+- [Distribute apps in Xcode with cloud signing](../sessions/wwdc2021/10204/README.md)
+- [Elevate your DocC documentation in Xcode](../sessions/wwdc2021/10167/README.md)
+- [Embrace Expected Failures in XCTest](../sessions/wwdc2021/10207/README.md)
+- [Evaluate videos with the Advanced Video Quality Tool](../sessions/wwdc2021/10145/README.md)
+- [Explore Digital Crown, Trackpad, and iPad pointer automation](../sessions/wwdc2021/10208/README.md)
+- [Explore Xcode Cloud workflows](../sessions/wwdc2021/10268/README.md)
+- [Explore advanced project configuration in Xcode](../sessions/wwdc2021/10210/README.md)
+- [Faster and simpler notarization for Mac apps](../sessions/wwdc2021/10261/README.md)
+- [Host and automate your DocC documentation](../sessions/wwdc2021/10236/README.md)
+- [Localize your SwiftUI app](../sessions/wwdc2021/10220/README.md)
+- [Meet DocC documentation in Xcode](../sessions/wwdc2021/10166/README.md)
+- [Meet TestFlight on Mac](../sessions/wwdc2021/10170/README.md)
+- [Meet Xcode Cloud](../sessions/wwdc2021/10267/README.md)
+- [Optimize high-end games for Apple GPUs](../sessions/wwdc2021/10148/README.md)
+- [Review code and collaborate in Xcode ](../sessions/wwdc2021/10205/README.md)
+- [Symbolication: Beyond the basics](../sessions/wwdc2021/10211/README.md)
+- [Triage TestFlight crashes in Xcode Organizer](../sessions/wwdc2021/10203/README.md)
+- [Ultimate application performance survival guide](../sessions/wwdc2021/10181/README.md)
+- [Understand and eliminate hangs from your app](../sessions/wwdc2021/10258/README.md)
+
+### WWDC20
+
+- [Add custom views and modifiers to the Xcode Library](../sessions/wwdc2020/10649/README.md)
+- [Advancements in the Objective-C runtime](../sessions/wwdc2020/10163/README.md)
+- [Become a Simulator expert](../sessions/wwdc2020/10647/README.md)
+- [Broaden your reach with Siri Event Suggestions](../sessions/wwdc2020/10197/README.md)
+- [Build GPU binaries with Metal](../sessions/wwdc2020/10615/README.md)
+- [Build Image and Video Style Transfer models in Create ML](../sessions/wwdc2020/10642/README.md)
+- [Build Metal-based Core Image kernels with Xcode](../sessions/wwdc2020/10021/README.md)
+- [Build an Action Classifier with Create ML](../sessions/wwdc2020/10043/README.md)
+- [Build localization-friendly layouts using Xcode](../sessions/wwdc2020/10219/README.md)
+- [Core Data: Sundries and maxims](../sessions/wwdc2020/10017/README.md)
+- [Core Image](../sessions/wwdc2020/10014/README.md)
+- [Debug GPU-side errors in Metal](../sessions/wwdc2020/10616/README.md)
+- [Decipher and deal with common Siri errors](../sessions/wwdc2020/10074/README.md)
+- [Decode ProRes with AVFoundation and VideoToolbox](../sessions/wwdc2020/10090/README.md)
+- [Design high quality Siri media interactions](../sessions/wwdc2020/10060/README.md)
+- [Diagnose performance issues with the Xcode Organizer](../sessions/wwdc2020/10076/README.md)
+- [Discover Core Image debugging techniques](../sessions/wwdc2020/10089/README.md)
+- [Edit and play back HDR video with AVFoundation](../sessions/wwdc2020/10009/README.md)
+- [Eliminate animation hitches with XCTest](../sessions/wwdc2020/10077/README.md)
+- [Explore Packages and Projects with Xcode Playgrounds](../sessions/wwdc2020/10096/README.md)
+- [Explore the new system architecture of Apple silicon Macs](../sessions/wwdc2020/10686/README.md)
+- [Export HDR media in your app with AVFoundation](../sessions/wwdc2020/10010/README.md)
+- [Gain insights into your Metal app with Xcode 12](../sessions/wwdc2020/10605/README.md)
+- [Get your test results faster](../sessions/wwdc2020/10221/README.md)
+- [Handle interruptions and alerts in UI tests](../sessions/wwdc2020/10220/README.md)
+- [Identify trends with the Power and Performance API](../sessions/wwdc2020/10057/README.md)
+- [Improve performance and battery life in your app](../sessions/wwdc2020/10845/README.md)
+- [Introducing StoreKit Testing in Xcode](../sessions/wwdc2020/10659/README.md)
+- [Introduction to SwiftUI](../sessions/wwdc2020/10119/README.md)
+- [Optimize Metal apps and games with GPU counters](../sessions/wwdc2020/10603/README.md)
+- [Optimize the Core Image pipeline for your video app](../sessions/wwdc2020/10008/README.md)
+- [Optimize the interface of your Mac Catalyst app](../sessions/wwdc2020/10056/README.md)
+- [Port your Mac app to Apple silicon](../sessions/wwdc2020/10214/README.md)
+- [Refine Objective-C frameworks for Swift](../sessions/wwdc2020/10680/README.md)
+- [Structure your app for SwiftUI previews](../sessions/wwdc2020/10149/README.md)
+- [The suite life of testing](../sessions/wwdc2020/10746/README.md)
+- [Triage test failures with XCTIssue](../sessions/wwdc2020/10687/README.md)
+- [Use Swift on AWS Lambda with Xcode](../sessions/wwdc2020/10644/README.md)
+- [Use model deployment and security with Core ML](../sessions/wwdc2020/10152/README.md)
+- [Visually edit SwiftUI views](../sessions/wwdc2020/10185/README.md)
+- [What's new in Mac Catalyst](../sessions/wwdc2020/10143/README.md)
+- [What's new in MetricKit](../sessions/wwdc2020/10081/README.md)
+- [Write tests to fail](../sessions/wwdc2020/10091/README.md)
+- [XCTSkip your tests](../sessions/wwdc2020/10164/README.md)
+- [iPad and iPhone apps on Apple silicon Macs](../sessions/wwdc2020/10114/README.md)
+
+### WWDC19
+
+- [Accessibility Inspector](../sessions/wwdc2019/257/README.md)
+- [Adopting Swift Packages in Xcode](../sessions/wwdc2019/408/README.md)
+- [Advances in App Background Execution](../sessions/wwdc2019/707/README.md)
+- [All About Notarization](../sessions/wwdc2019/703/README.md)
+- [Binary Frameworks in Swift](../sessions/wwdc2019/416/README.md)
+- [Core ML 3 Framework](../sessions/wwdc2019/704/README.md)
+- [Debugging in Xcode 11](../sessions/wwdc2019/412/README.md)
+- [Delivering Optimized Metal Apps and Games](../sessions/wwdc2019/606/README.md)
+- [Designing for Adverse Network and Temperature Conditions](../sessions/wwdc2019/422/README.md)
+- [Developing a Great Profiling Experience](../sessions/wwdc2019/414/README.md)
+- [Getting Started with Instruments](../sessions/wwdc2019/411/README.md)
+- [Getting Started with Xcode](../sessions/wwdc2019/404/README.md)
+- [Getting the Most Out of Simulator](../sessions/wwdc2019/418/README.md)
+- [Great Developer Habits](../sessions/wwdc2019/239/README.md)
+- [Improving Battery Life and Performance](../sessions/wwdc2019/417/README.md)
+- [Introducing the Create ML App](../sessions/wwdc2019/430/README.md)
+- [LLDB: Beyond "po"](../sessions/wwdc2019/429/README.md)
+- [Mastering Xcode Previews](../sessions/wwdc2019/233/README.md)
+- [Modeling in Custom Instruments](../sessions/wwdc2019/421/README.md)
+- [Modern Swift API Design](../sessions/wwdc2019/415/README.md)
+- [Optimizing App Launch](../sessions/wwdc2019/423/README.md)
+- [Optimizing Storage in Your App](../sessions/wwdc2019/419/README.md)
+- [Testing in Xcode](../sessions/wwdc2019/413/README.md)
+- [What's New in App Store Connect](../sessions/wwdc2019/301/README.md)
+- [What's New in Clang and LLVM](../sessions/wwdc2019/409/README.md)
+- [What's New in Machine Learning](../sessions/wwdc2019/209/README.md)
+- [What's New in Xcode 11](../sessions/wwdc2019/401/README.md)
+
+### WWDC18
+
+- [Advanced Debugging with Xcode and LLDB](../sessions/wwdc2018/412/README.md)
+- [Behind the Scenes of the Xcode Build Process](../sessions/wwdc2018/415/README.md)
+- [Building Faster in Xcode](../sessions/wwdc2018/408/README.md)
+- [Core Data Best Practices](../sessions/wwdc2018/224/README.md)
+- [Creating Custom Instruments](../sessions/wwdc2018/410/README.md)
+- [Measuring Performance Using Logging](../sessions/wwdc2018/405/README.md)
+- [Metal Game Performance Optimization](../sessions/wwdc2018/612/README.md)
+- [Metal Shader Debugging and Profiling](../sessions/wwdc2018/608/README.md)
+- [Optimizing App Assets](../sessions/wwdc2018/227/README.md)
+- [Practical Approaches to Great App Performance](../sessions/wwdc2018/407/README.md)
+- [Testing Tips & Tricks](../sessions/wwdc2018/417/README.md)
+- [Understanding Crashes and Crash Logs](../sessions/wwdc2018/414/README.md)
+- [What's New in Cocoa for macOS](../sessions/wwdc2018/209/README.md)
+- [iOS Memory Deep Dive](../sessions/wwdc2018/416/README.md)
+
+### Tech Talks
+
+- [Connect your project to Xcode Cloud](../sessions/tech-talks/111369/README.md)
+- [Demystify and eliminate hitches in the render phase](../sessions/tech-talks/10857/README.md)
+- [Discover Metal Performance HUD](../sessions/tech-talks/110339/README.md)
+- [Discover Metal enhancements for A14 Bionic](../sessions/tech-talks/10858/README.md)
+- [Discover advances in Metal for A15 Bionic ](../sessions/tech-talks/10876/README.md)
+- [Explore UI animation hitches and the render loop](../sessions/tech-talks/10855/README.md)
+- [Find and fix hitches in the commit phase](../sessions/tech-talks/10856/README.md)
+- [Get started with custom offer codes](../sessions/tech-talks/110150/README.md)
+- [Get started with custom product pages](../sessions/tech-talks/10886/README.md)
+- [Get started with product page optimization](../sessions/tech-talks/10888/README.md)
+- [Manage Game Center with the App Store Connect API](../sessions/tech-talks/111377/README.md)
+- [Meet agentic coding in Xcode](../sessions/tech-talks/111428/README.md)
+- [Modernizing Grand Central Dispatch Usage](../sessions/wwdc2017/706/README.md)
+- [Optimize subscriptions for success: acquisition ](../sessions/tech-talks/110151/README.md)
+- [SceneKit: What's New](../sessions/wwdc2017/604/README.md)
+- [Support customers with StoreKit 2 and App Store Server API](../sessions/tech-talks/10887/README.md)
+- [Using Web Inspector with tvOS Apps](../sessions/tech-talks/402/README.md)
+- [Web Inspector Walkthrough](../sessions/tech-talks/401/README.md)
+- [What can you do on an Apple silicon Mac?](../sessions/tech-talks/10865/README.md)
+
+### WWDC16
+
+- [Advanced Metal Shader Optimization](../sessions/wwdc2016/606/README.md)
+- [Concurrent Programming With GCD in Swift 3](../sessions/wwdc2016/720/README.md)
+- [System Trace in Depth](../sessions/wwdc2016/411/README.md)
+
+### WWDC15
+
+- [Advanced Debugging and the Address Sanitizer](../sessions/wwdc2015/413/README.md)
+- [Swift and Objective-C Interoperability](../sessions/wwdc2015/401/README.md)
+- [What's New in LLDB](../sessions/wwdc2015/402/README.md)
+
+### WWDC14
+
+- [Ingredients of Great Games](../sessions/wwdc2014/602/README.md)

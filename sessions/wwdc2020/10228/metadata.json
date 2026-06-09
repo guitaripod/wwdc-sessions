@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10228",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10228,
+  "title": "What's new in Low-Latency HLS",
+  "description": "Apple has added Low-Latency extensions to the HTTP Live Streaming protocol that combine the quality and scalability of HLS with a stream delay of two seconds or less. Learn about the most recent developments in LL-HLS and how it allows you to make your video delivery competitive with broadcast and improve social media integration.\n\nFor an overview of Low-Latency HLS, watch “Introducing Low-Latency HLS” from WWDC19.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10228",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10228",
+  "type": "Video",
+  "publishedAt": "2020-06-23T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 354,
+  "hasTranscript": true,
+  "transcriptWordCount": 104,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10228/7/9BBA826D-6117-4305-A587-78FEE220580B/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10228/7/9BBA826D-6117-4305-A587-78FEE220580B/wwdc2020_10228_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10228/7/9BBA826D-6117-4305-A587-78FEE220580B/wwdc2020_10228_hd.mp4",
+    "duration": 354
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2020/10228/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10228/metadata.json",
+    "readme": "sessions/wwdc2020/10228/README.md",
+    "transcript": "sessions/wwdc2020/10228/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10228/transcript.json"
+  }
+}

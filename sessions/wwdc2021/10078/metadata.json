@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10078",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10078,
+  "title": "AR Quick Look, meet Object Capture ",
+  "description": "Discover simple ways to bring your Object Capture assets to AR Quick Look while optimizing for visual quality and file size. Explore ways you can integrate AR Quick Look and Object Capture to help create entirely new experiences.\n\nTo get the most out of this session, we recommend first watching “Advances in AR Quick Look” from WWDC19. You can also learn how to integrate Apple Pay and custom actions with AR on the web through “Shop online with AR Quick Look” from WWDC20.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10078",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10078",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "3d model",
+    "ar",
+    "arkit",
+    "augmented reality",
+    "object capture",
+    "reality composer",
+    "realitykit",
+    "usdz"
+  ],
+  "topics": [
+    "Essentials",
+    "Graphics & Games",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 866,
+  "hasTranscript": true,
+  "transcriptWordCount": 2277,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10078/7/D952E090-6CA8-4748-9B71-385AC16452AF/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10078/7/D952E090-6CA8-4748-9B71-385AC16452AF/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10078/7/D952E090-6CA8-4748-9B71-385AC16452AF/downloads/wwdc2021-10078_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10078/7/D952E090-6CA8-4748-9B71-385AC16452AF/downloads/wwdc2021-10078_hd.mp4",
+    "duration": 866
+  },
+  "codeSnippets": [
+    {
+      "title": "Integrating AR Quick Look in your app",
+      "language": "swift",
+      "startTimeSeconds": 482,
+      "code": "// File: MyPreviewController.swift\nfunc presentARQuickLook() {\n\tlet previewController = QLPreviewController()\n\tpreviewController.dataSource = self\n\tpresent(previewController, animated: true)\n}\n\n// MARK: QLPreviewControllerDataSource\nfunc previewController(\n  _ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {\n\t  let previewItem = ARQuickLookPreviewItem(fileAt: fileURL) // Local file URL\n\n\t  return previewItem\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Search developer forums for AR Quick Look",
+      "url": "https://developer.apple.com/forums/tags/ar-quick-look",
+      "type": "developerForum",
+      "description": "Search developer forums for AR Quick Look",
+      "sosumiURL": "https://sosumi.ai/forums/tags/ar-quick-look"
+    },
+    {
+      "title": "Adding an Apple Pay Button or a Custom Action in AR Quick Look",
+      "url": "https://developer.apple.com/documentation/ARKit/adding-an-apple-pay-button-or-a-custom-action-in-ar-quick-look",
+      "type": "samplecode",
+      "description": "Provide a banner that users can tap to make a purchase or perform a custom action in an AR experience.",
+      "sosumiURL": "https://sosumi.ai/documentation/ARKit/adding-an-apple-pay-button-or-a-custom-action-in-ar-quick-look",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ARKit/adding-an-apple-pay-button-or-a-custom-action-in-ar-quick-look.json"
+    },
+    {
+      "title": "AR Quick Look Gallery",
+      "url": "https://developer.apple.com/arkit/gallery",
+      "type": "download",
+      "description": "AR Quick Look Gallery Page",
+      "sosumiURL": "https://sosumi.ai/arkit/gallery"
+    },
+    {
+      "title": "ARKit",
+      "url": "https://developer.apple.com/documentation/ARKit",
+      "type": "documentation",
+      "description": "Integrate hardware sensing features to produce augmented reality apps and games.",
+      "sosumiURL": "https://sosumi.ai/documentation/ARKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ARKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10078/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10078/metadata.json",
+    "readme": "sessions/wwdc2021/10078/README.md",
+    "transcript": "sessions/wwdc2021/10078/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10078/transcript.json"
+  }
+}

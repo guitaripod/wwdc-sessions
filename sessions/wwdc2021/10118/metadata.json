@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10118",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10118,
+  "title": "Automate CloudKit tests with cktool and declarative schema",
+  "description": "It’s never been easier to test your CloudKit containers. We’ll introduce you to cktool, a command-line utility that makes quick work of CloudKit configuration, and learn about the new schema language that allows you to rapidly prototype and evolve containers. We’ll also show you how to combine these tools and configure your containers before running tests in Xcode.\n\nTo get the most out of this session, we recommend being familiar with CloudKit and its development and production environments, as well as a basic understanding of record and data types.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10118",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10118",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "cd",
+    "ci",
+    "cloud",
+    "command line",
+    "database",
+    "developer tool",
+    "mock data",
+    "mocking",
+    "schema",
+    "terminal",
+    "tool",
+    "xcode"
+  ],
+  "topics": [
+    "System Services",
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 574,
+  "hasTranscript": true,
+  "transcriptWordCount": 1798,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10118/4/9B80307B-4AD2-499D-81D9-ABD4D94DFE78/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10118/4/9B80307B-4AD2-499D-81D9-ABD4D94DFE78/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10118/4/9B80307B-4AD2-499D-81D9-ABD4D94DFE78/downloads/wwdc2021-10118_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10118/4/9B80307B-4AD2-499D-81D9-ABD4D94DFE78/downloads/wwdc2021-10118_hd.mp4",
+    "duration": 574
+  },
+  "codeSnippets": [
+    {
+      "title": "cktool: Save tokens, get teams",
+      "language": "bash",
+      "startTimeSeconds": 207,
+      "code": "xcrun cktool save-token --type management\n\nxcrun cktool save-token --type user\n\nxcrun cktool get-teams"
+    },
+    {
+      "title": "cktool: Export schema",
+      "language": "bash",
+      "startTimeSeconds": 225,
+      "code": "xcrun cktool export-schema \\\n--team-id XYZ1234567 \\\n--container-id iCloud.com.WWDC21.Example \\\n--environment development \\\n--output-file schema.ckdb"
+    },
+    {
+      "title": "cktool: Create record",
+      "language": "bash",
+      "startTimeSeconds": 247,
+      "code": "xcrun cktool create-record \\\n--team-id XYZ1234567 \\\n--container-id iCloud.com.WWDC21.Example \\\n--environment development \\\n--database-type public \\\n--record-type Book \\\n--fields-json '{\n     \"title\": { \"type\": \"stringType\", \"value\": \"Treasure Island\" },\n     \"pageCount\": { \"type\": \"int64Type\", \"value\": 304 }\n  }'"
+    },
+    {
+      "title": "cktool: Test pre-action script",
+      "language": "bash",
+      "startTimeSeconds": 305,
+      "code": "xcrun cktool reset-schema \\\n    --team-id XYZ1234567 \\\n    --container-id iCloud.com.WWDC21.Example\n\nxcrun cktool import-schema \\\n    --team-id XYZ1234567 \\\n    --container-id iCloud.com.WWDC21.Example \\\n    --environment development \\\n    --file $PROJECT_DIR/Example/CloudKitSchema.ckdb\n\nxcrun cktool create-record \\\n    --team-id XYZ1234567 \\\n    --container-id iCloud.com.WWDC21.Example \\\n    --environment development \\\n    --database-type public \\\n    --record-type Book \\\n    --fields-json '{\n       \"title\": { \"type\": \"stringType\", \"value\": \"Great Expectations\" },\n       \"pageCount\": { \"type\": \"int64Type\", \"value\": 544 },\n       \"description\": { \"type\": \"stringType\", \"value\": \"Depiction of the education of an orphan nicknamed Pip\" },\n       \"publishedOn\": { \"type\": \"timestampType\", \"value\": \"1860-12-01T03:23:07.415Z\" },\n       \"reviewStatus\": { \"type\": \"int64Type\", \"value\": 1 }\n    }'"
+    },
+    {
+      "title": "Schema language file: Example",
+      "language": "swift",
+      "startTimeSeconds": 351,
+      "code": "DEFINE SCHEMA\nRECORD TYPE Book (\n   \"___createTime\" TIMESTAMP,\n   \"___createdBy\"  REFERENCE,\n   \"___etag\"       STRING,\n   \"___modTime\"    TIMESTAMP,\n   \"___modifiedBy\" REFERENCE,\n   \"___recordID\"   REFERENCE QUERYABLE,\n   description     STRING,\n   pageCount       INT64,\n   publishedOn     TIMESTAMP,\n   reviewStatus    INT64,\n   // A single-line comment, for humans\n   title           STRING QUERYABLE,\n   GRANT WRITE TO \"_creator\",\n   GRANT CREATE TO \"_icloud\",\n   GRANT READ TO \"_world\"\n);"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Automating CloudKit Development",
+      "url": "https://developer.apple.com/icloud/cloudkit/automating/",
+      "type": "documentation",
+      "description": "This document describes CloudKit tools and authentication considerations for automating processes to support local integration testing and continuous integration (CI) systems.",
+      "sosumiURL": "https://sosumi.ai/icloud/cloudkit/automating/"
+    },
+    {
+      "title": "Integrating a Text-Based Schema into Your Workflow",
+      "url": "https://developer.apple.com/documentation/CloudKit/integrating-a-text-based-schema-into-your-workflow",
+      "type": "documentation",
+      "description": "Define and update your schema with the CloudKit Schema Language.",
+      "sosumiURL": "https://sosumi.ai/documentation/CloudKit/integrating-a-text-based-schema-into-your-workflow",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CloudKit/integrating-a-text-based-schema-into-your-workflow.json"
+    },
+    {
+      "title": "CloudKit",
+      "url": "https://developer.apple.com/documentation/CloudKit",
+      "type": "documentation",
+      "description": "Store structured app and user data in iCloud containers that all users of your app can share.",
+      "sosumiURL": "https://sosumi.ai/documentation/CloudKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CloudKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10118/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10118/metadata.json",
+    "readme": "sessions/wwdc2021/10118/README.md",
+    "transcript": "sessions/wwdc2021/10118/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10118/transcript.json"
+  }
+}

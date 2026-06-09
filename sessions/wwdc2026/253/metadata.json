@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2026-253",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 253,
+  "title": "Meet the Music Understanding framework",
+  "description": "Discover Music Understanding, a new framework that lets your app analyze audio across six dimensions, on device: key, rhythm, structure, pace, instrument activity, and loudness. And use the Music Understanding Lab sample app to visualize each result.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/253",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/253",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "AI & Machine Learning",
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 1000,
+  "hasTranscript": true,
+  "transcriptWordCount": 1879,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/253/5/db1c3715-aaaf-42db-8e9e-66d2a0011430/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/253/5/db1c3715-aaaf-42db-8e9e-66d2a0011430/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/253/5/db1c3715-aaaf-42db-8e9e-66d2a0011430/downloads/wwdc2026-253_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/253/5/db1c3715-aaaf-42db-8e9e-66d2a0011430/downloads/wwdc2026-253_hd.mp4",
+    "duration": 1000
+  },
+  "codeSnippets": [
+    {
+      "title": "Initialize the session",
+      "language": "swift",
+      "startTimeSeconds": 287,
+      "code": "import MusicUnderstanding\n\n.fileImporter(isPresented: $isPresented, allowedContentTypes: [.audio]) { result in\n    switch result {\n    case .success(let url):\n        let asset = AVURLAsset(url: url, \n                               options: [AVURLAssetPreferPreciseDurationAndTimingKey : true])\n        let session = try await MusicUnderstandingSession(asset: asset)\n        let results = try await session.analyze()\n    }\n}"
+    },
+    {
+      "title": "Inside SessionResult",
+      "language": "swift",
+      "startTimeSeconds": 324,
+      "code": "import MusicUnderstanding\n\npublic struct SessionResult: Codable, Sendable {\n    public let instrumentActivity: InstrumentActivityResult?\n    public let key: KeyResult?\n    public let loudness: LoudnessResult?\n    public let pace: PaceResult?\n    public let rhythm: RhythmResult?\n    public let structure: StructureResult?\n}"
+    },
+    {
+      "title": "TimedValue",
+      "language": "swift",
+      "startTimeSeconds": 353,
+      "code": "import MusicUnderstanding\n\npublic struct TimedValue<Value>: Codable, Equatable, Sendable\nwhere Value: Codable & Equatable & Sendable {\n    public let time: CMTime\n    public let value: Value\n}"
+    },
+    {
+      "title": "RangedValue",
+      "language": "swift",
+      "startTimeSeconds": 358,
+      "code": "import MusicUnderstanding\n\npublic struct RangedValue<Value>: Codable, Equatable, Sendable\nwhere Value: Codable & Equatable & Sendable {\n    public let range: CMTimeRange\n    public let value: Value\n}"
+    },
+    {
+      "title": "Key analysis",
+      "language": "swift",
+      "startTimeSeconds": 387,
+      "code": "public struct KeyResult: Codable, Sendable {\n    public let ranges: [MusicUnderstandingSession.RangedValue<KeySignature]\n}"
+    },
+    {
+      "title": "KeySignature",
+      "language": "swift",
+      "startTimeSeconds": 403,
+      "code": "public struct KeySignature: Codable, Hashable, Sendable {\n    public let tonic: Tonic\n    public let mode: Mode\n}"
+    },
+    {
+      "title": "Using tonic",
+      "language": "swift",
+      "startTimeSeconds": 408,
+      "code": "@frozen public enum Tonic: String, Codable, Hashable, Sendable {\n    case aFlat, aSharp, a, bFlat, b, c, cSharp, d, dFlat, dSharp, eFlat, e, f, fSharp, g, gFlat, gSharp\n}"
+    },
+    {
+      "title": "Using mode",
+      "language": "swift",
+      "startTimeSeconds": 419,
+      "code": "public enum Mode: String, Codable, Hashable, Sendable {\n    case major, minor\n}"
+    },
+    {
+      "title": "Rhythm analysis",
+      "language": "swift",
+      "startTimeSeconds": 436,
+      "code": "import MusicUnderstanding\n\npublic struct RhythmResult: Codable, Sendable {\n    public let beats: [CMTime]\n    public let bars: [CMTime]\n    public let beatsPerMinute: Float?\n}"
+    },
+    {
+      "title": "StructureResult",
+      "language": "swift",
+      "startTimeSeconds": 522,
+      "code": "import MusicUnderstanding\n\npublic struct StructureResult: Codable, Sendable {\n    public let sections: [CMTimeRange]\n    public let segments: [CMTimeRange]\n    public let phrases: [CMTimeRange]\n}"
+    },
+    {
+      "title": "Analyzing pace",
+      "language": "swift",
+      "startTimeSeconds": 566,
+      "code": "import MusicUnderstanding\n\npublic struct PaceResult: Codable, Sendable {\n    public let ranges: [MusicUnderstandingSession.RangedValue<Double>]\n}"
+    },
+    {
+      "title": "InstrumentActivityResult",
+      "language": "swift",
+      "startTimeSeconds": 613,
+      "code": "import MusicUnderstanding\n\npublic struct InstrumentActivityResult: Codable, Sendable {\n    public let ranges: [Instrument: [CMTimeRange]]\n    public let activity: [Instrument: [MusicUnderstandingSession.TimedValue<Float>]]\n}"
+    },
+    {
+      "title": "LoudnessResult",
+      "language": "swift",
+      "startTimeSeconds": 705,
+      "code": "import MusicUnderstanding\n\npublic struct LoudnessResult: Codable, Sendable {\n    public let integrated: MusicUnderstandingSession.TimedValue<Float>\n    public let momentary: [MusicUnderstandingSession.TimedValue<Float>]\n    public let shortTerm: [MusicUnderstandingSession.TimedValue<Float>]\n    public let peak: MusicUnderstandingSession.TimedValue<Float>\n}"
+    },
+    {
+      "title": "Streaming API for loudness",
+      "language": "swift",
+      "startTimeSeconds": 768,
+      "code": "import MusicUnderstanding\n\npublic var loudnessResults: some AsyncSequence<LoudnessResult, any Error> & Sendable"
+    },
+    {
+      "title": "Streaming API for loudness",
+      "language": "swift",
+      "startTimeSeconds": 775,
+      "code": "import MusicUnderstanding\n\nlet audioProvider = AudioProvider()\nlet session = MusicUnderstandingSession(audioProvider: audioProvider)\nawait withThrowingTaskGroup(of: Void.self) { taskGroup in\n    group.addTask {\n        for try await result in await session.loudnessResults {\n            updateAudioLevel(result.momentary.value)\n        }\n    }\n\n    group.addTask {\n        try await session.analyze(for: [.loudness])\n    }\n}"
+    },
+    {
+      "title": "Audio Provider",
+      "language": "swift",
+      "startTimeSeconds": 799,
+      "code": "import MusicUnderstanding\n\nstruct AudioProvider: AsyncSequence, AsyncIteratorProtocol {\n   func makeAsyncIterator() -> Self {\n        return self\n    }\n\n   mutating func next() async -> AVReadOnlyAudioPCMBuffer? {\n        // Return the next audio buffer, or nil to signal completion\n    }\n}"
+    },
+    {
+      "title": "Encode to JSON",
+      "language": "swift",
+      "startTimeSeconds": 835,
+      "code": "import MusicUnderstanding\n\nlet session = try await MusicUnderstandingSession(asset: asset)\nlet results = try await session.analyze()\n\nlet encoder = JSONEncoder()\ntry encoder.encode(results)"
+    },
+    {
+      "title": "Suggestion for using pace",
+      "language": "swift",
+      "startTimeSeconds": 887,
+      "code": "let timePerClip = 60 / paceValue"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Creating visuals with Music Understanding analysis results",
+      "url": "https://developer.apple.com/documentation/MusicUnderstanding/create-visuals-using-musicunderstanding-analysis-results",
+      "type": "samplecode",
+      "description": "Create a multiplatform app that presents analysis results from the Music Understanding framework.",
+      "sosumiURL": "https://sosumi.ai/documentation/MusicUnderstanding/create-visuals-using-musicunderstanding-analysis-results",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MusicUnderstanding/create-visuals-using-musicunderstanding-analysis-results.json"
+    },
+    {
+      "title": "MusicUnderstanding",
+      "url": "https://developer.apple.com/documentation/MusicUnderstanding",
+      "type": "documentation",
+      "description": "Analyze audio content and extract music information.",
+      "sosumiURL": "https://sosumi.ai/documentation/MusicUnderstanding",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MusicUnderstanding.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/253/",
+  "files": {
+    "metadata": "sessions/wwdc2026/253/metadata.json",
+    "readme": "sessions/wwdc2026/253/README.md",
+    "transcript": "sessions/wwdc2026/253/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/253/transcript.json"
+  }
+}

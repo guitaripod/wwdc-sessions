@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-717",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 717,
+  "title": "What's New in Universal Links",
+  "description": "Universal Links allow your users to intelligently follow links to content inside your app or to your website. Learn how the latest enhancements in Universal Links give your users the most integrated mobile and desktop experience, even when your app isn’t installed on their device.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/717",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/717",
+  "type": "Video",
+  "publishedAt": "2019-06-04T18:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Safari & Web",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 1029,
+  "hasTranscript": true,
+  "transcriptWordCount": 2840,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/717b3lem5m2glj/717/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/717b3lem5m2glj/717/717_sd_whats_new_in_universal_links.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/717b3lem5m2glj/717/717_hd_whats_new_in_universal_links.mp4",
+    "duration": 1029
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Supporting Associated Domains",
+      "url": "https://developer.apple.com/documentation/xcode/supporting-associated-domains",
+      "type": "documentation",
+      "description": "Connect your app and a website to provide both a native app and a browser experience.",
+      "sosumiURL": "https://sosumi.ai/documentation/xcode/supporting-associated-domains",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/xcode/supporting-associated-domains.json"
+    },
+    {
+      "title": "Associated Domains Entitlement",
+      "url": "https://developer.apple.com/documentation/BundleResources/Entitlements/com.apple.developer.associated-domains",
+      "type": "documentation",
+      "description": "The associated domains for specific services, such as shared web credentials, universal links, and App Clips.",
+      "sosumiURL": "https://sosumi.ai/documentation/BundleResources/Entitlements/com.apple.developer.associated-domains",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/BundleResources/Entitlements/com.apple.developer.associated-domains.json"
+    },
+    {
+      "title": "Allowing apps and websites to link to your content",
+      "url": "https://developer.apple.com/documentation/Xcode/allowing-apps-and-websites-to-link-to-your-content",
+      "type": "documentation",
+      "description": "Use universal links to link directly to content within your app and share data securely.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/allowing-apps-and-websites-to-link-to-your-content",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/allowing-apps-and-websites-to-link-to-your-content.json"
+    },
+    {
+      "title": "Universal Links for Developers",
+      "url": "https://developer.apple.com/ios/universal-links/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/ios/universal-links/"
+    },
+    {
+      "title": "Shared Web Credentials",
+      "url": "https://developer.apple.com/documentation/Security/shared-web-credentials",
+      "type": "documentation",
+      "description": "Share credentials between iOS apps and their website counterparts.",
+      "sosumiURL": "https://sosumi.ai/documentation/Security/shared-web-credentials",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Security/shared-web-credentials.json"
+    }
+  ],
+  "path": "sessions/wwdc2019/717/",
+  "files": {
+    "metadata": "sessions/wwdc2019/717/metadata.json",
+    "readme": "sessions/wwdc2019/717/README.md",
+    "transcript": "sessions/wwdc2019/717/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/717/transcript.json"
+  }
+}

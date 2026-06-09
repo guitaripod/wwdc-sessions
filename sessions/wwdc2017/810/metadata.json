@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2017-810",
+  "event": "wwdc2017",
+  "eventName": "WWDC17",
+  "year": 2017,
+  "eventContentId": 810,
+  "title": "What’s New in iOS 11",
+  "description": "See how the updates to UIKit controls and text styles in iOS 11 can help you design an app with a stronger visual hierarchy, clearer navigation, and a simpler interface that’s easier to use.",
+  "url": "https://developer.apple.com/videos/play/wwdc2017/810",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2017/810",
+  "type": "Video",
+  "publishedAt": "2017-06-04T17:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "design",
+    "design best practices",
+    "design studio",
+    "design studio shorts",
+    "ios",
+    "ios 11",
+    "ios design",
+    "short",
+    "shorts",
+    "uikit",
+    "what's new"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 527,
+  "hasTranscript": true,
+  "transcriptWordCount": 1200,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/810rf5oudq18pus/810/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/810rf5oudq18pus/810/810_sd_whats_new_in_ios_11.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/810rf5oudq18pus/810/810_hd_whats_new_in_ios_11.mp4",
+    "duration": 527
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Apple Design Site",
+      "url": "https://developer.apple.com/design/",
+      "type": "guide",
+      "description": "Guidelines for designing great apps.",
+      "sosumiURL": "https://sosumi.ai/design/"
+    },
+    {
+      "title": "UIKit",
+      "url": "https://developer.apple.com/documentation/UIKit",
+      "type": "documentation",
+      "description": "Construct and manage a graphical, event-driven user interface for your iOS, iPadOS, or tvOS app.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2017/810/",
+  "files": {
+    "metadata": "sessions/wwdc2017/810/metadata.json",
+    "readme": "sessions/wwdc2017/810/README.md",
+    "transcript": "sessions/wwdc2017/810/transcript.md",
+    "transcriptJSON": "sessions/wwdc2017/810/transcript.json"
+  }
+}

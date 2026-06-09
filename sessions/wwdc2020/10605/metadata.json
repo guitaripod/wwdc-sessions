@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10605",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10605,
+  "title": "Gain insights into your Metal app with Xcode 12",
+  "description": "Learn how to locate graphics issues in minutes with Metal’s debugging and performance optimization tools in Xcode 12. We’ll show you how to diagnose problems quickly using Metal Debugger. Discover the new summary view, which suggests ways to improve memory usage, bandwidth, performance, and implementation of the Metal API.\n\nYou should have a basic understanding of Metal to get the most out of this session. For background, watch “Harness Apple GPUs with Metal.”",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10605",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10605",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 857,
+  "hasTranscript": true,
+  "transcriptWordCount": 2452,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10605/5/DF0941E7-C0BC-41CD-AFEB-03940FC455E6/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10605/5/DF0941E7-C0BC-41CD-AFEB-03940FC455E6/wwdc2020_10605_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10605/5/DF0941E7-C0BC-41CD-AFEB-03940FC455E6/wwdc2020_10605_hd.mp4",
+    "duration": 857
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10605/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10605/metadata.json",
+    "readme": "sessions/wwdc2020/10605/README.md",
+    "transcript": "sessions/wwdc2020/10605/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10605/transcript.json"
+  }
+}

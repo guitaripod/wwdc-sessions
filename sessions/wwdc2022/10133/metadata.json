@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10133",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10133,
+  "title": "Build a productivity app for Apple Watch",
+  "description": "Your wrist has never been more productive. Discover how you can use SwiftUI and system features to build a great productivity app for Apple Watch. We’ll show you how you can design great work experiences for the wrist, and explore how you can get text input, display a basic chart, and share content with friends.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10133",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10133",
+  "type": "Video",
+  "publishedAt": "2022-06-08T08:00:00-07:00",
+  "platforms": [
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Essentials",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1446,
+  "hasTranscript": true,
+  "transcriptWordCount": 3481,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10133/4/BBFD71DD-1E5F-4843-861E-0D333BAA1A3F/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10133/4/BBFD71DD-1E5F-4843-861E-0D333BAA1A3F/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10133/4/BBFD71DD-1E5F-4843-861E-0D333BAA1A3F/downloads/wwdc2022-10133_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10133/4/BBFD71DD-1E5F-4843-861E-0D333BAA1A3F/downloads/wwdc2022-10133_hd.mp4",
+    "duration": 1446
+  },
+  "codeSnippets": [
+    {
+      "title": "Initial ListItem struct",
+      "language": "swift",
+      "startTimeSeconds": 372,
+      "code": "struct ListItem: Identifiable, Hashable {\n\n    let id = UUID()\n    var description: String\n\n    init(_ description: String) {\n        self.description = description\n    }\n}"
+    },
+    {
+      "title": "ItemListModel",
+      "language": "swift",
+      "startTimeSeconds": 384,
+      "code": "class ItemListModel: NSObject, ObservableObject {\n    @Published var items = [ListItem]()\n}"
+    },
+    {
+      "title": "Add the ItemListModel as an EnvironmentObject",
+      "language": "swift",
+      "startTimeSeconds": 390,
+      "code": "@main\nstruct WatchTaskListSampleApp: App {\n\n    @StateObject var itemListModel = ItemListModel()\n\n    @SceneBuilder var body: some Scene {\n        WindowGroup {\n            ContentView()\n                .environmentObject(itemListModel)\n        }\n    }\n}"
+    },
+    {
+      "title": "Create a simple SwiftUI List",
+      "language": "swift",
+      "startTimeSeconds": 397,
+      "code": "struct ContentView: View {\n    @EnvironmentObject private var model: ItemListModel\n\n    var body: some View {\n        List {\n            ForEach($model.items) { $item in\n                ItemRow(item: $item)\n            }\n\n            if model.items.isEmpty {\n                Text(\"No items to do!\")\n                    .foregroundStyle(.gray)\n            }\n        }\n        .navigationTitle(\"Tasks\")\n    }\n}"
+    },
+    {
+      "title": "TextFieldLink with a simple String",
+      "language": "swift",
+      "startTimeSeconds": 431,
+      "code": "struct ContentView: View {\n    @EnvironmentObject private var model: ItemListModel\n\n    var body: some View {\n        VStack {\n            TextFieldLink(\"Add\") {\n                model.items.append(ListItem($0))\n            }\n        }\n        .navigationTitle(\"Tasks\")\n    }\n}"
+    },
+    {
+      "title": "TextFieldLink with a Label",
+      "language": "swift",
+      "startTimeSeconds": 436,
+      "code": "struct ContentView: View {\n    @EnvironmentObject private var model: ItemListModel\n\n    var body: some View {\n        VStack {\n            TextFieldLink {\n                Label(\n                    \"Add\", \n                    systemImage: \"plus.circle.fill\")\n            } onSubmit: {\n                model.items.append(ListItem($0))\n            }\n        }\n        .navigationTitle(\"Tasks\")\n    }\n}"
+    },
+    {
+      "title": "TextFieldLink with foregroundStyle modifier",
+      "language": "swift",
+      "startTimeSeconds": 440,
+      "code": "struct ContentView: View {\n    @EnvironmentObject private var model: ItemListModel\n\n    var body: some View {\n        VStack {\n            TextFieldLink {\n                Label(\n                    \"Add\", \n                    systemImage: \"plus.circle.fill\")\n            } onSubmit: {\n                model.items.append(ListItem($0))\n            }\n            .foregroundStyle(.tint)\n        }\n        .navigationTitle(\"Tasks\")\n    }\n}"
+    },
+    {
+      "title": "TextFieldLink with buttonStyle modifier",
+      "language": "swift",
+      "startTimeSeconds": 447,
+      "code": "struct ContentView: View {\n    @EnvironmentObject private var model: ItemListModel\n\n    var body: some View {\n        VStack {\n            TextFieldLink {\n                Label(\n                    \"Add\", \n                    systemImage: \"plus.circle.fill\")\n            } onSubmit: {\n                model.items.append(ListItem($0))\n            }\n            .buttonStyle(.borderedProminent)\n        }\n        .navigationTitle(\"Tasks\")\n    }\n}"
+    },
+    {
+      "title": "Create the AddItemLink View to encapsulate the style and behavior of the TextFieldLink to add list items",
+      "language": "swift",
+      "startTimeSeconds": 450,
+      "code": "struct AddItemLink: View {\n    @EnvironmentObject private var model: ItemListModel\n\n    var body: some View {\n        TextFieldLink(prompt: Text(\"New Item\")) {\n            Label(\"Add\",\n                  systemImage: \"plus.circle.fill\")\n        } onSubmit: {\n            model.items.append(ListItem($0))\n        } \n    }\n}"
+    },
+    {
+      "title": "Add a toolbar item to allow people to add new list items",
+      "language": "swift",
+      "startTimeSeconds": 518,
+      "code": "struct ContentView: View {\n    @EnvironmentObject private var model: ItemListModel\n\n    var body: some View {\n        List {\n            ForEach($model.items) { $item in\n                ItemRow(item: $item)\n            }\n\n            if model.items.isEmpty {\n                Text(\"No items to do!\")\n                    .foregroundStyle(.gray)\n            }\n        }\n        .toolbar {\n            AddItemLink()\n        }\n        .navigationTitle(\"Tasks\")\n    }\n}"
+    },
+    {
+      "title": "Display a modal sheet",
+      "language": "swift",
+      "startTimeSeconds": 700,
+      "code": "struct ItemRow: View {\n    @EnvironmentObject private var model: ItemListModel\n\n    @Binding var item: ListItem\n    @State private var showDetail = false\n\n    var body: some View {\n        Button {\n            showDetail = true\n        } label: {\n            HStack {\n                Text(item.description)\n                    .strikethrough(item.isComplete)\n                Spacer()\n                Image(systemName: \"checkmark\").opacity(item.isComplete ? 100 : 0)\n            }\n        }\n        .sheet(isPresented: $showDetail) {\n            ItemDetail(item: $item)\n        }\n    }\n}"
+    },
+    {
+      "title": "Display a modal sheet with custom toolbar items",
+      "language": "swift",
+      "startTimeSeconds": 718,
+      "code": "struct ItemRow: View {\n    @EnvironmentObject private var model: ItemListModel\n\n    @Binding var item: ListItem\n    @State private var showDetail = false\n\n    var body: some View {\n        Button {\n            showDetail = true\n        } label: {\n            HStack {\n                Text(item.description)\n                    .strikethrough(item.isComplete)\n                Spacer()\n                Image(systemName: \"checkmark\").opacity(item.isComplete ? 100 : 0)\n            }\n        }\n        .sheet(isPresented: $showDetail) {\n            ItemDetail(item: $item)\n                .toolbar {\n                    ToolbarItem(placement: .confirmationAction) {\n                        Button(\"Done\") {\n                            showDetail = false\n                        }\n                    }\n                }\n        }\n    }\n}"
+    },
+    {
+      "title": "Add more properties to the ListItem",
+      "language": "swift",
+      "startTimeSeconds": 756,
+      "code": "struct ListItem: Identifiable, Hashable {\n\n    let id = UUID()\n    var description: String\n    var estimatedWork: Double = 1.0\n    var creationDate = Date()\n    var completionDate: Date?\n\n    init(_ description: String) {\n        self.description = description\n    }\n\n    var isComplete: Bool {\n        get {\n            completionDate != nil\n        }\n        set {\n            if newValue {\n                guard completionDate == nil else { return }\n                completionDate = Date()\n            } else {\n                completionDate = nil\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Create the ItemDetail View with the Stepper",
+      "language": "swift",
+      "startTimeSeconds": 768,
+      "code": "struct ItemDetail: View {\n    @Binding var item: ListItem\n\n    var body: some View {\n        Form {\n            Section(\"List Item\") {\n                TextField(\"Item\", text: $item.description, prompt: Text(\"List Item\"))\n            }\n            Section(\"Estimated Work\") {\n                Stepper(value: $item.estimatedWork,\n                        in: (0.0...14.0),\n                        step: 0.5,\n                        format: .number) {\n                    Text(\"\\(item.estimatedWork, specifier: \"%.1f\") days\")\n                }\n            }\n\n            Toggle(isOn: $item.isComplete) {\n                Text(\"Completed\")\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "A Stepper with Emoji",
+      "language": "swift",
+      "startTimeSeconds": 809,
+      "code": "// Use a Stepper to edit the stress level of an item\nstruct StressStepper: View {\n    private let stressLevels = [\n        \"😱\", \"😡\", \"😳\", \"🙁\", \"🫤\", \"🙂\", \"🥳\"\n    ]\n    @State private var stressLevelIndex = 5\n\n    var body: some View {\n        VStack {\n            Text(\"Stress Level\")\n                .font(.system(.footnote, weight: .bold))\n                .foregroundStyle(.tint)\n\n            Stepper(value: $stressLevelIndex,\n                    in: (0...stressLevels.count-1)) {\n                Text(stressLevels[stressLevelIndex])\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Add a ShareLink to the ItemDetail View",
+      "language": "swift",
+      "startTimeSeconds": 883,
+      "code": "struct ItemDetail: View {\n    @Binding var item: ListItem\n\n    var body: some View {\n        Form {\n            Section(\"List Item\") {\n                TextField(\"Item\", text: $item.description, prompt: Text(\"List Item\"))\n            }\n            Section(\"Estimated Work\") {\n                Stepper(value: $item.estimatedWork,\n                        in: (0.0...14.0),\n                        step: 0.5,\n                        format: .number) {\n                    Text(\"\\(item.estimatedWork, specifier: \"%.1f\") days\")\n                }\n            }\n\n            Toggle(isOn: $item.isComplete) {\n                Text(\"Completed\")\n            }\n\n            ShareLink(item: item.description,\n                      subject: Text(\"Please help!\"),\n                      message: Text(\"(I need some help finishing this.)\"),\n                      preview: SharePreview(\"\\(item.description)\"))\n            .buttonStyle(.borderedProminent)\n            .buttonBorderShape(.roundedRectangle)\n            .listRowInsets(\n                EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)\n            )\n        }\n    }\n}"
+    },
+    {
+      "title": "Page-style TabView with navigation titles for each page",
+      "language": "swift",
+      "startTimeSeconds": 999,
+      "code": "struct ContentView: View {\n    var body: some View {\n        TabView {\n            NavigationStack {\n                ItemList()\n            }\n            NavigationStack {\n                ProductivityChart()\n            }\n        }.tabViewStyle(.page)\n    }\n}"
+    },
+    {
+      "title": "ChartData struct for aggregate data",
+      "language": "swift",
+      "startTimeSeconds": 1040,
+      "code": "/// Aggregate data for charting productivity.\nstruct ChartData {\n    struct DataElement: Identifiable {\n        var id: Date { return date }\n        let date: Date\n        let itemsComplete: Double\n    }\n\n    /// Create aggregate chart data from list items.\n    /// - Parameter items: An array of list items to aggregate for charting.\n    /// - Returns: The chart data source.\n    static func createData(_ items: [ListItem]) -> [DataElement] {\n        return Dictionary(grouping: items, by: \\.completionDate)\n            .compactMap {\n                guard let date = $0 else { return nil }\n                return DataElement(date: date, itemsComplete: Double($1.count))\n            }\n            .sorted {\n                $0.date < $1.date\n            }\n    }\n}"
+    },
+    {
+      "title": "Static sample data for chart and basic bar chart",
+      "language": "swift",
+      "startTimeSeconds": 1056,
+      "code": "extension ChartData {\n\n    /// Some static sample data for displaying a `Chart`.\n    static var chartSampleData: [DataElement] {\n        let calendar = Calendar.autoupdatingCurrent\n        var startDateComponents = calendar.dateComponents(\n            [.year, .month, .day], from: Date())\n        startDateComponents.setValue(22, for: .day)\n        startDateComponents.setValue(5, for: .month)\n        startDateComponents.setValue(2022, for: .year)\n        startDateComponents.setValue(0, for: .hour)\n        startDateComponents.setValue(0, for: .minute)\n        startDateComponents.setValue(0, for: .second)\n        let startDate = calendar.date(from: startDateComponents)!\n\n        let itemsToAdd = [\n            6, 3, 1, 4, 1, 2, 7,\n            5, 2, 0, 5, 2, 3, 9\n        ]\n        var items = [DataElement]()\n        for dayOffset in (0..<itemsToAdd.count) {\n            items.append(DataElement(\n                date: calendar.date(byAdding: .day, value: dayOffset, to: startDate)!,\n                itemsComplete: Double(itemsToAdd[dayOffset])))\n        }\n\n        return items\n    }\n}\n\nstruct ProductivityChart: View {\n\n    let data = ChartData.createData(\n        ListItem.chartSampleData)\n\n    var body: some View {\n        Chart(data) { dataPoint in\n            BarMark(\n                x: .value(\"Date\", dataPoint.date),\n                y: .value(\n                    “Completed\", \n                    dataPoint.itemsComplete)\n            )\n            .foregroundStyle(Color.accentColor)\n        }\n        .navigationTitle(\"Productivity\")\n        .navigationBarTitleDisplayMode(.inline)\n    }\n}"
+    },
+    {
+      "title": "Chart with chartXAxis modifier",
+      "language": "swift",
+      "startTimeSeconds": 1070,
+      "code": "struct ProductivityChart: View {\n\n    let data = ChartData.createData(\n        ListItem.chartSampleData)\n\n    private var shortDateFormatStyle = DateFormatStyle(dateFormatTemplate: \"Md\")\n\n    var body: some View {\n        Chart(data) { dataPoint in\n            BarMark(\n                x: .value(\"Date\", dataPoint.date),\n                y: .value(\n                    “Completed\", \n                    dataPoint.itemsComplete)\n            )\n            .foregroundStyle(Color.accentColor)\n        }\n      \t.chartXAxis {\n            AxisMarks(format: shortDateFormatStyle)\n        }\n        .navigationTitle(\"Productivity\")\n        .navigationBarTitleDisplayMode(.inline)\n    }\n}\n\n/// `ProductivityChart` uses this type to format the dates on the x-axis.\nstruct DateFormatStyle: FormatStyle {\n    enum CodingKeys: CodingKey {\n        case dateFormatTemplate\n    }\n\n    private var dateFormatTemplate: String\n    private var formatter: DateFormatter\n\n    init(dateFormatTemplate: String) {\n        self.dateFormatTemplate = dateFormatTemplate\n        formatter = DateFormatter()\n        formatter.locale = Locale.autoupdatingCurrent\n        formatter.setLocalizedDateFormatFromTemplate(dateFormatTemplate)\n    }\n\n    init(from decoder: Decoder) throws {\n        let container = try decoder.container(keyedBy: CodingKeys.self)\n        dateFormatTemplate = try container.decode(String.self, forKey: .dateFormatTemplate)\n        formatter = DateFormatter()\n        formatter.setLocalizedDateFormatFromTemplate(dateFormatTemplate)\n    }\n\n    func encode(to encoder: Encoder) throws {\n        var container = encoder.container(keyedBy: CodingKeys.self)\n        try container.encode(dateFormatTemplate, forKey: .dateFormatTemplate)\n    }\n\n    func format(_ value: Date) -> String {\n        formatter.string(from: value)\n    }\n}"
+    },
+    {
+      "title": "Add the digitalCrownRotation modifier",
+      "language": "swift",
+      "startTimeSeconds": 1145,
+      "code": "struct ProductivityChart: View {\n\n    let data = ChartData.createData(\n        ListItem.chartSampleData)\n\n    /// The index of the highlighted chart value. This is for crown scrolling.\n    @State private var highlightedDateIndex: Int = 0\n\n    /// The current offset of the crown while it's rotating. This sample sets the offset with\n    /// the value in the DigitalCrownEvent and uses it to show an intermediate\n    /// (between detents) chart value in the view.\n    @State private var crownOffset: Double = 0.0\n\n    @State private var isCrownIdle = true\n\n    private var chart: some View {\n        Chart(data) { dataPoint in\n            BarMark(\n                x: .value(\"Date\", dataPoint.date),\n                y: .value(\n                    “Completed\", \n                    dataPoint.itemsComplete)\n            )\n            .foregroundStyle(Color.accentColor)\n        }\n      \t.chartXAxis {\n            AxisMarks(format: shortDateFormatStyle)\n        }\n    }\n\n    var body: some View {\n        chart\n            .focusable()\n            .digitalCrownRotation(\n                detent: $highlightedDateIndex,\n                from: 0,\n                through: data.count - 1,\n                by: 1,\n                sensitivity: .medium\n            ) { crownEvent in\n                isCrownIdle = false\n                crownOffset = crownEvent.offset\n            } onIdle: {\n                isCrownIdle = true\n            }\n            .navigationTitle(\"Productivity\")\n            .navigationBarTitleDisplayMode(.inline)\n    }\n}"
+    },
+    {
+      "title": "Add a RuleMark to the Chart to show the current Digital Crown position",
+      "language": "swift",
+      "startTimeSeconds": 1267,
+      "code": "/// The date value that corresponds to the crown offset.\nprivate var crownOffsetDate: Date {\n    let dateDistance = data[0].date.distance(\n        to: data[data.count - 1].date) * (crownOffset / Double(data.count - 1))\n    return data[0].date.addingTimeInterval(dateDistance)\n}\n\nprivate var chart: some View {\n    Chart(data) { dataPoint in\n        BarMark(\n            x: .value(\"Date\", dataPoint.date),\n            y: .value(\n                \"Completed\", \n                dataPoint.itemsComplete)\n        )\n        .foregroundStyle(Color.accentColor)\n\n        RuleMark(x: .value(\"Date\", crownOffsetDate))\n            .foregroundStyle(Color.appYellow)\n    }\n    .chartXAxis {\n        AxisMarks(format: shortDateFormatStyle)\n    }\n}"
+    },
+    {
+      "title": "Add animation to dim the crown position line when the scrolling idle state changes",
+      "language": "swift",
+      "startTimeSeconds": 1297,
+      "code": "struct ProductivityChart: View {\n\n    let data = ChartData.createData(\n        ListItem.chartSampleData)\n\n    /// The index of the highlighted chart value. This is for crown scrolling.\n    @State private var highlightedDateIndex: Int = 0\n\n    /// The current offset of the crown while it's rotating. This sample sets the offset with\n    /// the value in the DigitalCrownEvent and uses it to show an intermediate\n    /// (between detents) chart value in the view.\n    @State private var crownOffset: Double = 0.0\n\n    @State private var isCrownIdle = true\n\n    @State var crownPositionOpacity: CGFloat = 0.2\n\n    private var chart: some View {\n        Chart(data) { dataPoint in\n            BarMark(\n                x: .value(\"Date\", dataPoint.date),\n                y: .value(\n                    “Completed\", \n                    dataPoint.itemsComplete)\n            )\n            .foregroundStyle(Color.accentColor)\n\n            RuleMark(x: .value(\"Date\", crownOffsetDate))\n                .foregroundStyle(Color.appYellow.opacity(crownPositionOpacity))\n        }\n      \t.chartXAxis {\n            AxisMarks(format: shortDateFormatStyle)\n        }\n    }\n\n    var body: some View {\n        chart\n            .focusable()\n            .digitalCrownRotation(\n                detent: $highlightedDateIndex,\n                from: 0,\n                through: data.count - 1,\n                by: 1,\n                sensitivity: .medium\n            ) { crownEvent in\n                isCrownIdle = false\n                crownOffset = crownEvent.offset\n            } onIdle: {\n                isCrownIdle = true\n            }\n            .onChange(of: isCrownIdle) { newValue in\n                withAnimation(newValue ? .easeOut : .easeIn) {\n                    crownPositionOpacity = newValue ? 0.2 : 1.0\n                }\n            }\n            .navigationTitle(\"Productivity\")\n            .navigationBarTitleDisplayMode(.inline)\n    }\n}"
+    },
+    {
+      "title": "Add an annotation to the bar chart to display the current value",
+      "language": "swift",
+      "startTimeSeconds": 1334,
+      "code": "private func isLastDataPoint(_ dataPoint: ChartData.DataElement) -> Bool {\n    data[chartDataRange.upperBound].id == dataPoint.id\n}\n\nprivate var chart: some View {\n    Chart(chartData) { dataPoint in\n        BarMark(x: .value(\"Date\", dataPoint.date, unit: .day),\n        y: .value(\"Completed\", dataPoint.itemsComplete))\n        .foregroundStyle(Color.accentColor)\n        .annotation(\n            position: isLastDataPoint(dataPoint) ? .topLeading : .topTrailing,\n            spacing: 0\n        ) {\n            Text(\"\\(dataPoint.itemsComplete, format: .number)\")\n                .foregroundStyle(dataPoint.date == crownOffsetDate ? Color.appYellow : Color.clear)\n        }\n\n        RuleMark(x: .value(\"Date\", crownOffsetDate, unit: .day))\n            .foregroundStyle(Color.appYellow.opacity(crownPositionOpacity))\n    }\n    .chartXAxis {\n        AxisMarks(format: shortDateFormatStyle)\n    }\n}"
+    },
+    {
+      "title": "Make the chart data range scrollable",
+      "language": "swift",
+      "startTimeSeconds": 1364,
+      "code": "@State var chartDataRange = (0...6)\n\nprivate func updateChartDataRange() {\n    if (highlightedDateIndex - chartDataRange.lowerBound) < 2, chartDataRange.lowerBound > 0 {\n        let newLowerBound = max(0, chartDataRange.lowerBound - 1)\n        let newUpperBound = min(newLowerBound + 6, data.count - 1)\n        chartDataRange = (newLowerBound...newUpperBound)\n        return\n    }\n    if (chartDataRange.upperBound - highlightedDateIndex) < 2, chartDataRange.upperBound < data.count - 1 {\n        let newUpperBound = min(chartDataRange.upperBound + 1, data.count - 1)\n        let newLowerBound = max(0, newUpperBound - 6)\n        chartDataRange = (newLowerBound...newUpperBound)\n        return\n    }\n}\n\nprivate var chartData: [ChartData.DataElement] {\n    Array(data[chartDataRange.clamped(to: (0...data.count - 1))])\n}\n\nprivate var chart: some View {\n    Chart(chartData) { dataPoint in\n        BarMark(x: .value(\"Date\", dataPoint.date, unit: .day),\n                y: .value(\"Completed\", dataPoint.itemsComplete)\n        )\n        .foregroundStyle(Color.accentColor)\n        .annotation(\n            position: isLastDataPoint(dataPoint) ? .topLeading : .topTrailing,\n            spacing: 0\n        ) {\n            Text(\"\\(dataPoint.itemsComplete, format: .number)\")\n                .foregroundStyle(dataPoint.date == crownOffsetDate ? Color.appYellow : Color.clear)\n        }\n\n        RuleMark(x: .value(\"Date\", crownOffsetDate, unit: .day))\n            .foregroundStyle(Color.appYellow.opacity(crownPositionOpacity))\n    }\n    .chartXAxis {\n        AxisMarks(format: shortDateFormatStyle)\n    }\n}\n\nvar body: some View {\n    chart\n        .focusable()\n        .digitalCrownRotation(\n            detent: $highlightedDateIndex,\n            from: 0,\n            through: data.count - 1,\n            by: 1,\n            sensitivity: .medium\n        ) { crownEvent in\n            isCrownIdle = false\n            crownOffset = crownEvent.offset\n        } onIdle: {\n            isCrownIdle = true\n        }\n        .onChange(of: isCrownIdle) { newValue in\n            withAnimation(newValue ? .easeOut : .easeIn) {\n                crownPositionOpacity = newValue ? 0.2 : 1.0\n            }\n        }\n        .onChange(of: highlightedDateIndex) { newValue in\n            withAnimation {\n                updateChartDataRange()\n            }\n        }\n        .navigationTitle(\"Productivity\")\n        .navigationBarTitleDisplayMode(.inline)\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Building a productivity app for Apple Watch",
+      "url": "https://developer.apple.com/documentation/watchOS-Apps/building-a-productivity-app-for-apple-watch",
+      "type": "samplecode",
+      "description": "Create a watch app to manage and share a task list and visualize the status with a chart.",
+      "sosumiURL": "https://sosumi.ai/documentation/watchOS-Apps/building-a-productivity-app-for-apple-watch",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/watchOS-Apps/building-a-productivity-app-for-apple-watch.json"
+    },
+    {
+      "title": "watchOS apps",
+      "url": "https://developer.apple.com/documentation/watchOS-Apps",
+      "type": "documentation",
+      "description": "Build watchOS apps that combine complications, notifications, and Siri to create",
+      "sosumiURL": "https://sosumi.ai/documentation/watchOS-Apps",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/watchOS-Apps.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10133/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10133/metadata.json",
+    "readme": "sessions/wwdc2022/10133/README.md",
+    "transcript": "sessions/wwdc2022/10133/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10133/transcript.json"
+  }
+}

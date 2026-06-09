@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10200",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10200,
+  "title": "Extend your Xcode Cloud workflows",
+  "description": "Discover how Xcode Cloud can adapt to your development needs. We’ll show you how to streamline your workflows, automate testing and distribution with start conditions, custom aliases, custom scripts, webhooks, and the App Store Connect API.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10200",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10200",
+  "type": "Video",
+  "publishedAt": "2024-06-13T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Essentials",
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 1270,
+  "hasTranscript": true,
+  "transcriptWordCount": 3210,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10200/5/28E5AAA4-9AE8-427A-B577-512070861A1A/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10200/5/28E5AAA4-9AE8-427A-B577-512070861A1A/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10200/5/28E5AAA4-9AE8-427A-B577-512070861A1A/downloads/wwdc2024-10200_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10200/5/28E5AAA4-9AE8-427A-B577-512070861A1A/downloads/wwdc2024-10200_hd.mp4",
+    "duration": 1270
+  },
+  "codeSnippets": [
+    {
+      "title": "Custom Script",
+      "language": "bash",
+      "startTimeSeconds": 602,
+      "code": "#!/bin/sh\n\nset -e\n\nif [[ $CI_XCODEBUILD_ACTION == \"test-without-building\" && $CI_WORKFLOW_ID == \"82D89C93-B69C-46B5-A794-A2BCFD3EE487\" ]]\nthen\n    curl https://example.com/health --fail\nfi"
+    },
+    {
+      "title": "App Store Connect API - Client Extension",
+      "language": "swift",
+      "startTimeSeconds": 841,
+      "code": "extension Client {\n    func repoID(workflowID: String) async throws -> String {\n        return try await ciWorkflowsGetInstance(\n            path: .init(id: workflowID),\n            query: .init(include: [.repository])\n        ).ok.body.json.data.relationships!.repository!.data!.id\n    }\n\n    func branchID(repoID: String, name: String) async throws -> String {\n        return try await scmRepositoriesGitReferencesGetToManyRelated(\n            path: .init(id: repoID)\n        )\n        .ok.body.json.data\n        .filter { $0.attributes!.kind == .BRANCH && $0.attributes!.name == name }\n        .first!.id\n    }\n\n    func startBuild(workflowID: String, gitReferenceID: String) async throws {\n        _ = try await ciBuildRunsCreateInstance(\n            body: .json(.init(\n                data: .init(\n                    _type: .ciBuildRuns,\n                    relationships: .init(\n                        workflow: .init(data: .init(\n                            _type: .ciWorkflows,\n                            id: workflowID\n                        )),\n                        sourceBranchOrTag: .init(data: .init(\n                            _type: .scmGitReferences,\n                            id: gitReferenceID\n                        ))\n                    )\n                )\n            ))\n        ).created\n    }\n}"
+    },
+    {
+      "title": "App Store Connect API - Main Function",
+      "language": "swift",
+      "startTimeSeconds": 883,
+      "code": "static func main() async throws {\n    let client = try Client(\n        serverURL: Servers.server1(),\n        configuration: .init(dateTranscoder: .iso8601WithFractionalSeconds),\n        transport: URLSessionTransport(),\n        middlewares: [AuthMiddleware(token: ProcessInfo.processInfo.environment[\"TOKEN\"]!)]\n    )\n\n    let workflowID = \"82D89C93-B69C-46B5-A794-A2BCFD3EE487\"\n    let repoID = try await client.repoID(workflowID: workflowID)\n\n    let branchName = \"main\"\n    let branchID = try await client.branchID(repoID: repoID, name: branchName)\n\n    try await client.startBuild(workflowID: workflowID, gitReferenceID: branchID)\n}"
+    },
+    {
+      "title": "Webhook Handler Implementation",
+      "language": "swift",
+      "startTimeSeconds": 1029,
+      "code": "struct WebhookPayload: Content {\n    let ciWorkflow: CiWorkflow\n    let ciBuildRun: CiBuildRun\n\n    struct CiWorkflow: Content {\n        let id: String\n    }\n\n    struct CiBuildRun: Content {\n        let id: String\n        let executionProgress: String\n        let completionStatus: String\n    }\n}\n\nfunc routes(_ app: Application) throws {\n    let deploymentService = ExampleDeploymentClient()\n    let workflowID = \"82D89C93-B69C-46B5-A794-A2BCFD3EE487\"\n\n    app.post(\"webhook\") { req async throws -> HTTPStatus in\n\n        return HTTPStatus.ok\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Forum: Developer Tools & Services",
+      "url": "https://developer.apple.com/forums/topics/developer-tools-and-services?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/developer-tools-and-services?cid=vf-a-0010"
+    },
+    {
+      "title": "Sharing macOS and Xcode versions across Xcode Cloud workflows",
+      "url": "https://developer.apple.com/documentation/Xcode/Sharing-custom-aliases-across-Xcode-Cloud-workflows",
+      "type": "documentation",
+      "description": "Use custom aliases to share configurations with multiple workflows.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/Sharing-custom-aliases-across-Xcode-Cloud-workflows",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/Sharing-custom-aliases-across-Xcode-Cloud-workflows.json"
+    },
+    {
+      "title": "Configuring webhooks in Xcode Cloud",
+      "url": "https://developer.apple.com/documentation/Xcode/Configuring-Webhooks-in-Xcode-Cloud",
+      "type": "documentation",
+      "description": "Configure webhooks that connect Xcode Cloud to other services and tools.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/Configuring-Webhooks-in-Xcode-Cloud",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/Configuring-Webhooks-in-Xcode-Cloud.json"
+    },
+    {
+      "title": "Environment variable reference",
+      "url": "https://developer.apple.com/documentation/Xcode/Environment-Variable-Reference",
+      "type": "documentation",
+      "description": "Review predefined environment variables you use in custom build scripts.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/Environment-Variable-Reference",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/Environment-Variable-Reference.json"
+    },
+    {
+      "title": "Writing custom build scripts",
+      "url": "https://developer.apple.com/documentation/Xcode/Writing-Custom-Build-Scripts",
+      "type": "documentation",
+      "description": "Extend your Xcode Cloud workflows with custom build scripts that perform custom tasks or install additional tools.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/Writing-Custom-Build-Scripts",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/Writing-Custom-Build-Scripts.json"
+    },
+    {
+      "title": "Configuring start conditions",
+      "url": "https://developer.apple.com/documentation/Xcode/Configuring-Start-Conditions",
+      "type": "documentation",
+      "description": "Configure Xcode Cloud to start a build when you update a branch, pull request, or Git tag, or based on a schedule.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/Configuring-Start-Conditions",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/Configuring-Start-Conditions.json"
+    }
+  ],
+  "path": "sessions/wwdc2024/10200/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10200/metadata.json",
+    "readme": "sessions/wwdc2024/10200/README.md",
+    "transcript": "sessions/wwdc2024/10200/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10200/transcript.json"
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10006",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10006,
+  "title": "Meet Apple Maps Server APIs",
+  "description": "Simplify your app’s mapping architecture by implementing the Apple Maps stack across MapKit, MapKit JS, and Apple Maps Server APIs. Learn how these APIs can reduce network calls and increase power efficiency, which can help improve the overall performance of your app. We'll show you how to use geocoding and estimated time of arrival APIs to build functionality for a simple store locator, and explore the API authentication flow.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10006",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10006",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Safari & Web",
+    "Maps & Location"
+  ],
+  "primaryTopic": "Maps & Location",
+  "duration": 798,
+  "hasTranscript": true,
+  "transcriptWordCount": 1948,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10006/3/30C45DFC-CD54-4D31-894F-9954C9A58C93/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10006/3/30C45DFC-CD54-4D31-894F-9954C9A58C93/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10006/3/30C45DFC-CD54-4D31-894F-9954C9A58C93/downloads/wwdc2022-10006_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10006/3/30C45DFC-CD54-4D31-894F-9954C9A58C93/downloads/wwdc2022-10006_hd.mp4",
+    "duration": 798
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Apple Maps Server API",
+      "url": "https://developer.apple.com/documentation/AppleMapsServerAPI",
+      "type": "documentation",
+      "description": "Reduce API calls and conserve device power by streamlining your app’s georelated searches.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppleMapsServerAPI",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppleMapsServerAPI.json"
+    },
+    {
+      "title": "Maps Server API test environment",
+      "url": "https://maps.developer.apple.com/maps-server-api-playground",
+      "type": "documentation",
+      "description": "Test access and responses for a variety of Apple Maps features, such as\r\ngeocoding, search, and estimated time of arrival.",
+      "sosumiURL": "https://maps.developer.apple.com/maps-server-api-playground"
+    },
+    {
+      "title": "Creating and using tokens with Maps Server API",
+      "url": "https://developer.apple.com/documentation/AppleMapsServerAPI/creating-and-using-tokens-with-maps-server-api",
+      "type": "documentation",
+      "description": "Sign JSON Web Tokens to use Maps Server API and debug common signing errors.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppleMapsServerAPI/creating-and-using-tokens-with-maps-server-api",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppleMapsServerAPI/creating-and-using-tokens-with-maps-server-api.json"
+    },
+    {
+      "title": "Creating a Maps identifier and a private key",
+      "url": "https://developer.apple.com/documentation/AppleMapsServerAPI/creating-a-maps-identifier-and-a-private-key",
+      "type": "documentation",
+      "description": "Create a Maps identifier and a private key before generating tokens for MapKit JS.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppleMapsServerAPI/creating-a-maps-identifier-and-a-private-key",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppleMapsServerAPI/creating-a-maps-identifier-and-a-private-key.json"
+    },
+    {
+      "title": "Apple Developer: MapKit JS",
+      "url": "https://developer.apple.com/maps/mapkitjs/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/maps/mapkitjs/"
+    },
+    {
+      "title": "Maps for Developers",
+      "url": "https://developer.apple.com/maps/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/maps/"
+    }
+  ],
+  "path": "sessions/wwdc2022/10006/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10006/metadata.json",
+    "readme": "sessions/wwdc2022/10006/README.md",
+    "transcript": "sessions/wwdc2022/10006/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10006/transcript.json"
+  }
+}

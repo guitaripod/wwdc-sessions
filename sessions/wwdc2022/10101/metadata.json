@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10101",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10101,
+  "title": "Go bindless with Metal 3",
+  "description": "Learn how you can unleash powerful rendering techniques like ray tracing when you go bindless with Metal 3. We'll show you how to make your app’s bindless journey a joy by simplifying argument buffers, allocating acceleration structures from heaps, and benefitting from the improvements to the Metal’s validation layer and Debugger Tools. We'll also explore how you can command more CPU and GPU performance with long-term resource structures.\n",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10101",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10101",
+  "type": "Video",
+  "publishedAt": "2022-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "3d graphics",
+    "bindless",
+    "game",
+    "game dev",
+    "game developer",
+    "metal",
+    "metal shading language",
+    "metal tools",
+    "proapps",
+    "raytracing"
+  ],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 2054,
+  "hasTranscript": true,
+  "transcriptWordCount": 4943,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10101/4/E7651C9D-CAC8-44A9-9BF8-8D0DC317F4A2/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10101/4/E7651C9D-CAC8-44A9-9BF8-8D0DC317F4A2/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10101/4/E7651C9D-CAC8-44A9-9BF8-8D0DC317F4A2/downloads/wwdc2022-10101_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10101/4/E7651C9D-CAC8-44A9-9BF8-8D0DC317F4A2/downloads/wwdc2022-10101_hd.mp4",
+    "duration": 2054
+  },
+  "codeSnippets": [
+    {
+      "title": "Write argument buffers in Metal 3",
+      "language": "objectivec",
+      "startTimeSeconds": 338,
+      "code": "// Write argument buffers in Metal 3\n\nstruct Mesh\n{\n   uint64_t normals; // 64-bit uint for constant packed_float3*\n};\n\nNSUInteger meshArgumentSize = sizeof(struct Mesh);\n\nid<MTLBuffer> meshArgumentBuffer = [device newBufferWithLength:meshArgumentSize\n                                                       options:storageMode];\n\nstruct Mesh* meshes = (struct Mesh *)(meshArgumentBuffer.contents); \n\nmeshes->normals = normalBuffer.gpuAddress + normalBufferOffset;"
+    },
+    {
+      "title": "// Shader struct:",
+      "language": "objectivec",
+      "startTimeSeconds": 391,
+      "code": "// Shader struct:\n\nstruct Mesh\n{\n   constant packed_float3* normals;\n};\n\n// Host-side struct:\n\nstruct Mesh\n{\n    uint64_t normals;\n};"
+    },
+    {
+      "title": "Shared struct:",
+      "language": "objectivec",
+      "startTimeSeconds": 413,
+      "code": "// Shared struct:\n\n#if __METAL_VERSION__\n#define CONSTANT_PTR(x) constant x*\n#else\n#define CONSTANT_PTR(x) uint64_t\n#endif\n\nstruct Mesh\n{\n    CONSTANT_PTR(packed_float3) normals;\n};"
+    },
+    {
+      "title": "Write unbounded arrays of resources in Metal 3",
+      "language": "objectivec",
+      "startTimeSeconds": 473,
+      "code": "// Write unbounded arrays of resources in Metal 3\n\nstruct Mesh\n{\n   uint64_t normals; // 64-bit uint for constant packed_float3*\n};\n\nNSUInteger meshArgumentSize = sizeof(struct Mesh) * meshes.count;\n\nid<MTLBuffer> meshArgumentBuffer = [device newBufferWithLength:meshArgumentSize\n                                                        options:storageMode];\n\nstruct Mesh* meshes = (struct Mesh *)(meshArgumentBuffer.contents); \n\nfor ( NSUInteger i = 0; i < meshes.count; ++i )\n{\n   meshes[i].normals = normalBuffers[i].gpuAddress + normalBufferOffsets[i];\n}"
+    },
+    {
+      "title": "Metal shading language: unbounded arrays option 1",
+      "language": "objectivec",
+      "startTimeSeconds": 543,
+      "code": "// Metal shading language:\n\nstruct Mesh\n{\n   constant packed_float3* normals;\n};\n\n\nfragment half4 fragmentShader(ColorInOut v          [[stage_in]],\n                              constant Mesh* meshes [[buffer(0)]] )\n{\n    /* determine mesh to read, e.g. geometry_id */\n\n    packed_float3 n0 = meshes[ geometry_id ].normals[0];\n    packed_float3 n1 = meshes[ geometry_id ].normals[1];\n    packed_float3 n2 = meshes[ geometry_id ].normals[2];\n\n    /* interpolate normals and calculate shading */\n}"
+    },
+    {
+      "title": "Metal shading language: unbounded arrays option 2",
+      "language": "objectivec",
+      "startTimeSeconds": 565,
+      "code": "// Metal shading language:\nstruct Mesh\n{\n   constant packed_float3* normals;\n};\n\nstruct Scene\n{\n   constant Mesh*     meshes;     // mesh array\n   constant Material* materials;  // material array\n};\n\nfragment half4 fragmentShader(ColorInOut v          [[stage_in]],\n                              constant Scene& scene [[buffer(0)]] )\n{\n    /* determine mesh to read, e.g. geometry_id */\n    packed_float3 n0 = scene.meshes[ geometry_id ].normals[0];\n    packed_float3 n1 = scene.meshes[ geometry_id ].normals[1];\n    packed_float3 n2 = scene.meshes[ geometry_id ].normals[2];\n    /* interpolate normals and calculate shading */\n}"
+    },
+    {
+      "title": "Size and alignment for MTLAccelerationStructure in a MTLHeap",
+      "language": "objectivec",
+      "startTimeSeconds": 660,
+      "code": "heapAccelerationStructureSizeAndAlignWithDescriptor:"
+    },
+    {
+      "title": "Store individual indirect resources in NSMutableSet",
+      "language": "objectivec",
+      "startTimeSeconds": 829,
+      "code": "// Argument buffer loading\nfor (NSUInteger i = 0; i < mesh.submeshes.count; ++i) {\n\n    Submesh*      submesh     = mesh.submeshes[i];\n    id<MTLBuffer> indexBuffer = submesh.indexBuffer;\n    NSArray*      textures    = submesh.textures;\n\n    // Copy index buffer into argument buffer\n   submeshAB[i].indices = indexBuffer.gpuAddress;\n\n    // Copy material textures into argument buffer\n   for (NSUInteger m = 0; m < textures.count; ++m) {\n        submeshAB[i].textures[m] = textures[m].gpuResourceID;\n    }\n\n    // Remember indirect resources\n    [sceneResources addObject:indexBuffer];\n    [sceneResources addObjectsFromArray:textures];\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Rendering reflections in real time using ray tracing",
+      "url": "https://developer.apple.com/documentation/Metal/rendering-reflections-in-real-time-using-ray-tracing",
+      "type": "samplecode",
+      "description": "Implement realistic real-time lighting by dynamically generating reflection maps",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/rendering-reflections-in-real-time-using-ray-tracing",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/rendering-reflections-in-real-time-using-ray-tracing.json"
+    },
+    {
+      "title": "Metal for Accelerating Ray Tracing",
+      "url": "https://developer.apple.com/documentation/metal/metal_sample_code_library/accelerating_ray_tracing_using_metal",
+      "type": "documentation",
+      "description": "Use the Metal Performance Shaders ray intersector to perform ray-traced rendering.",
+      "sosumiURL": "https://sosumi.ai/documentation/metal/metal_sample_code_library/accelerating_ray_tracing_using_metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/metal/metal_sample_code_library/accelerating_ray_tracing_using_metal.json"
+    },
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10101/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10101/metadata.json",
+    "readme": "sessions/wwdc2022/10101/README.md",
+    "transcript": "sessions/wwdc2022/10101/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10101/transcript.json"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2017-604",
+  "event": "wwdc2017",
+  "eventName": "WWDC17",
+  "year": 2017,
+  "eventContentId": 604,
+  "title": "SceneKit: What's New",
+  "description": "SceneKit is a fast and fully featured high-level 3D graphics framework that enables your apps and games to create immersive scenes and effects. See the latest advances in camera control and effects for simulating real camera optics including bokeh and motion blur. Learn about surface subdivision and tessellation to create smooth-looking surfaces right on the GPU starting from a coarser mesh. Check out new integration with ARKit and workflow improvements enabled by the Xcode Scene Editor.",
+  "url": "https://developer.apple.com/videos/play/wwdc2017/604",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2017/604",
+  "type": "Session",
+  "publishedAt": "2017-06-07T11:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "3d",
+    "camera",
+    "collada",
+    "dae",
+    "france",
+    "french",
+    "graph",
+    "graphics",
+    "inverse kinematics",
+    "opengl",
+    "opensubdiv",
+    "pbr",
+    "physically based renderer",
+    "physics",
+    "renderer",
+    "rendering",
+    "scene",
+    "scnlayer",
+    "scnnode",
+    "scnview"
+  ],
+  "topics": [
+    "Developer Tools",
+    "Spatial Computing",
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 3232,
+  "hasTranscript": true,
+  "transcriptWordCount": 7774,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/604r7b4rnjq86/604/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/604r7b4rnjq86/604/604_sd_scenekit_whats_new.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/604r7b4rnjq86/604/604_hd_scenekit_whats_new.mp4",
+    "duration": 3232
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Fox2",
+      "url": "https://developer.apple.com/library/content/samplecode/scenekit-2017/Fox2SceneKitWWDC2017samplecode.zip",
+      "type": "samplecode",
+      "description": "SceneKit sample code demonstrated at WWDC 2017.",
+      "sosumiURL": "https://sosumi.ai/library/content/samplecode/scenekit-2017/Fox2SceneKitWWDC2017samplecode.zip"
+    },
+    {
+      "title": "SceneKit",
+      "url": "https://developer.apple.com/documentation/SceneKit",
+      "type": "documentation",
+      "description": "Create 3D games and add 3D content to apps using high-level scene descriptions, and easily add animations, physics simulation, particle effects, and realistic physically based rendering.",
+      "sosumiURL": "https://sosumi.ai/documentation/SceneKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SceneKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2017/604/",
+  "files": {
+    "metadata": "sessions/wwdc2017/604/metadata.json",
+    "readme": "sessions/wwdc2017/604/README.md",
+    "transcript": "sessions/wwdc2017/604/transcript.md",
+    "transcriptJSON": "sessions/wwdc2017/604/transcript.json"
+  }
+}

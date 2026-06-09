@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-429",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 429,
+  "title": "LLDB: Beyond \"po\"",
+  "description": "LLDB is a powerful tool for exploring and debugging your app at runtime. Discover the various ways to display values in your app, how to format custom data types, and how to extend LLDB using your own Python 3 scripts.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/429",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/429",
+  "type": "Video",
+  "publishedAt": "2019-06-04T18:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 1244,
+  "hasTranscript": true,
+  "transcriptWordCount": 3130,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/429s7ksrdjsg3bql/429/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/429s7ksrdjsg3bql/429/429_sd_lldb_beyond_po.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/429s7ksrdjsg3bql/429/429_hd_lldb_beyond_po.mp4",
+    "duration": 1244
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/429/",
+  "files": {
+    "metadata": "sessions/wwdc2019/429/metadata.json",
+    "readme": "sessions/wwdc2019/429/README.md",
+    "transcript": "sessions/wwdc2019/429/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/429/transcript.json"
+  }
+}

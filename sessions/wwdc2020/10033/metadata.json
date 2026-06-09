@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10033",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10033,
+  "title": "Build SwiftUI views for widgets",
+  "description": "Widgets are bite-sized pieces of information from your app that someone can choose to place on their home screen or Today view. Discover the process of building the views for a widget from scratch using SwiftUI. Brush up on the syntax that you’ll need for widget-specific construction and learn how to incorporate those commands and customize your widget’s interface for a great glanceable experience.\n\nTo learn more about widgets, be sure to check out \"Meet WidgetKit\" and \"Widgets Code-along\".",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10033",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10033",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "alignment",
+    "canvas",
+    "containerrelativeshape",
+    "corner radii",
+    "corner radius",
+    "declarative",
+    "dynamic type",
+    "family",
+    "hstack",
+    "lazy shape",
+    "leading edge",
+    "placeholder",
+    "preview",
+    "spacer",
+    "swiftui",
+    "system large",
+    "system medium",
+    "system small",
+    "views",
+    "vstack",
+    "widgetkit",
+    "widgets"
+  ],
+  "topics": [
+    "App Services",
+    "Swift",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1222,
+  "hasTranscript": true,
+  "transcriptWordCount": 2354,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10033/5/062E0EF4-4132-4E4F-A5E9-807F30DCCBCC/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10033/5/062E0EF4-4132-4E4F-A5E9-807F30DCCBCC/wwdc2020_10033_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10033/5/062E0EF4-4132-4E4F-A5E9-807F30DCCBCC/wwdc2020_10033_hd.mp4",
+    "duration": 1222
+  },
+  "codeSnippets": [
+    {
+      "title": "Concentric corner radius with ContainerRelativeShape",
+      "language": "swift",
+      "startTimeSeconds": 1120,
+      "code": "// Concentric corner radius with ContainerRelativeShape\n\nstruct PillView : View {\n    var title: Text\n    var color: Color\n\n    var body: some View {\n        Text(title)\n            .background(ContainerRelativeShape().fill(color))\n    }\n}"
+    },
+    {
+      "title": "Displaying date and time",
+      "language": "swift",
+      "startTimeSeconds": 1149,
+      "code": "// Displaying date and time\n\n// June 3, 2019\nText(event.startDate, style: .date)\n\n// 11:23PM\nText(event.startDate, style: .time)\n\n// 9:30AM - 3:30PM\nText(event.startDate...event.endDate)\n\n// +2 hours\n// -3 months\nText(event.startDate, style: .offset)\n\n// 2 hours, 23 minutes – Automatically updating as time pass\nText(event.startDate, style: .relative)\n\n// 36:59:01 – Automatically updating as time pass\nText(event.startDate, style: .timer)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "WidgetKit",
+      "url": "https://developer.apple.com/documentation/WidgetKit",
+      "type": "documentation",
+      "description": "Extend the reach of your app by creating widgets, watch complications, Live Activities, and controls.",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit.json"
+    },
+    {
+      "title": "Keeping a widget up to date",
+      "url": "https://developer.apple.com/documentation/WidgetKit/Keeping-a-Widget-Up-To-Date",
+      "type": "documentation",
+      "description": "Plan your widget’s timeline to show timely, relevant information using",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit/Keeping-a-Widget-Up-To-Date",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit/Keeping-a-Widget-Up-To-Date.json"
+    },
+    {
+      "title": "Creating a widget extension",
+      "url": "https://developer.apple.com/documentation/WidgetKit/Creating-a-Widget-Extension",
+      "type": "documentation",
+      "description": "Display your app’s content in a convenient, informative widget on various devices.",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit/Creating-a-Widget-Extension",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit/Creating-a-Widget-Extension.json"
+    },
+    {
+      "title": "Learn more about creating widgets",
+      "url": "https://developer.apple.com/widgets/",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/widgets/"
+    },
+    {
+      "title": "Human Interface Guidelines: Widgets",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/widgets",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/widgets"
+    },
+    {
+      "title": "Building Widgets Using WidgetKit and SwiftUI",
+      "url": "https://developer.apple.com/documentation/widgetkit/building_widgets_using_widgetkit_and_swiftui",
+      "type": "samplecode",
+      "description": "Create widgets to show your app’s content on the Home screen, with custom intents for user-customizable settings.",
+      "sosumiURL": "https://sosumi.ai/documentation/widgetkit/building_widgets_using_widgetkit_and_swiftui",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/widgetkit/building_widgets_using_widgetkit_and_swiftui.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10033/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10033/metadata.json",
+    "readme": "sessions/wwdc2020/10033/README.md",
+    "transcript": "sessions/wwdc2020/10033/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10033/transcript.json"
+  }
+}

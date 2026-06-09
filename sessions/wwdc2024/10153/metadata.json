@@ -1,0 +1,236 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10153",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10153,
+  "title": "Dive deep into volumes and immersive spaces",
+  "description": "Discover powerful new ways to customize volumes and immersive spaces in visionOS. Learn to fine-tune how volumes resize and respond to people moving around them. Make volumes and immersive spaces interact through the power of coordinate conversions. Find out how to make your app react when people adjust immersion with the Digital Crown, and use a surrounding effect to dynamically customize the passthrough tint in your immersive space experience.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10153",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10153",
+  "type": "Video",
+  "publishedAt": "2024-06-11T08:00:00-07:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Spatial Computing",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1937,
+  "hasTranscript": true,
+  "transcriptWordCount": 4301,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10153/4/0A359A0C-A9DB-4D61-872E-FCEA96763C78/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10153/4/0A359A0C-A9DB-4D61-872E-FCEA96763C78/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10153/4/0A359A0C-A9DB-4D61-872E-FCEA96763C78/downloads/wwdc2024-10153_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10153/4/0A359A0C-A9DB-4D61-872E-FCEA96763C78/downloads/wwdc2024-10153_hd.mp4",
+    "duration": 1937
+  },
+  "codeSnippets": [
+    {
+      "title": "Baseplate",
+      "language": "swift",
+      "startTimeSeconds": 189,
+      "code": "// Baseplate\n\nWindowGroup(id: \"RobotExploration\") {\n    ExplorationView()\n        .volumeBaseplateVisibility(.visible) // Default!\n}\n.windowStyle(.volumetric)"
+    },
+    {
+      "title": "Enabling resizability",
+      "language": "swift",
+      "startTimeSeconds": 269,
+      "code": "// Enabling resizability\n\nWindowGroup(id: \"RobotExploration\") {\n    let initialSize = Size3D(width: 900, height: 500, depth: 900)\n\n    ExplorationView()\n        .frame(minWidth: initialSize.width, maxWidth: initialSize.width * 2,\n               minHeight: initialSize.height, maxHeight: initialSize.height * 2)\n        .frame(minDepth: initialSize.depth, maxDepth: initialSize.depth * 2)\n}\n.windowStyle(.volumetric)\n.windowResizability(.contentSize) // Default!"
+    },
+    {
+      "title": "Programmatic resize",
+      "language": "swift",
+      "startTimeSeconds": 370,
+      "code": "// Programmatic resize\n\nstruct ExplorationView: View {\n    @State private var levelScale: Double = 1.0\n\n    var body: some View {\n        RealityView { content in\n            // Level code here\n        } update: { content in\n            appState.explorationLevel?.setScale(\n                [levelScale, levelScale, levelScale], relativeTo: nil)\n        }\n        .frame(width: levelSize.value.width * levelScale,\n               height: levelSize.value.height * levelScale)\n        .frame(depth: levelSize.value.depth * levelScale)\n        .overlay { Button(\"Change Size\") { levelScale = levelScale == 1.0 ? 2.0 : 1.0 } }\n    }\n}"
+    },
+    {
+      "title": "Toolbar ornament",
+      "language": "swift",
+      "startTimeSeconds": 459,
+      "code": "// Toolbar ornament\n\nExplorationView()\n.toolbar {\n\t\tToolbarItem {\n      \tButton(\"Next Size\") {\n          \tlevelScale = levelScale == 1.0 ? 2.0 : 1.0\n        }\n    }\n  \tToolbarItemGroup {\n      \tButton(\"Replay\") {\n          \tresetExploration()\n        }\n      \tButton(\"Exit Game\") {\n          \texitExploration()\n          \topenWindow(id: \"RobotCreation\")\n        }\n    }\n}"
+    },
+    {
+      "title": "Ornaments",
+      "language": "swift",
+      "startTimeSeconds": 641,
+      "code": "// Ornaments\n\nWindowGroup(id: \"RobotExploration\") {\n    ExplorationView()\n    .ornament(attachmentAnchor: .scene(.topBack)) {\n        ProgressView()\n    }\n}\n.windowStyle(.volumetric)"
+    },
+    {
+      "title": "Volume viewpoint",
+      "language": "swift",
+      "startTimeSeconds": 728,
+      "code": "// Volume viewpoint\n\nstruct ExplorationView: View {\n    var body: some View {\n        RealityView { content in\n            // Some RealityKit code\n        }\n        .onVolumeViewpointChange { oldValue, newValue in\n            appState.robot?.currentViewpoint = newValue.squareAzimuth\n        }\n    }\n}"
+    },
+    {
+      "title": "Using volume viewpoint",
+      "language": "swift",
+      "startTimeSeconds": 786,
+      "code": "// Volume viewpoint\n\nclass RobotCharacter {\n\n    func handleMovement(deltaTime: Float) {\n        if self.robotState == .idle {\n            characterModel.performRotation(toFace: self.currentViewpoint, duration: 0.5)\n            self.animationState.transition(to: .wave)\n        } else {\n            // Handle normal movement\n        }\n    }\n}"
+    },
+    {
+      "title": "Supported viewpoints",
+      "language": "swift",
+      "startTimeSeconds": 823,
+      "code": "// Supported viewpoints\nstruct ExplorationView: View {\n  \tlet supportedViewpoints: Viewpoint3D.SquareAzimuth.Set = [.front, .left, .right]\n\n  \tvar body: some View {\n      \tRealityView { content in\n        \t\t// Some RealityKit code\n        }\n      \t.supportedVolumeViewpoints(supportedViewpoints)\n      \t.onVolumeViewpointChange { _, newValue in\n        \t\tappState.robot?.currentViewpoint = newValue.squareAzimuth\n        }\n    }\n}"
+    },
+    {
+      "title": "Viewpoint update strategy",
+      "language": "swift",
+      "startTimeSeconds": 870,
+      "code": "// Viewpoint update strategy\n\nstruct ExplorationView: View {\n    let supportedViewpoints: Viewpoint3D.SquareAzimuth.Set = [.front, .left, .right]\n\n    var body: some View {\n        RealityView { content in\n            // Some RealityKit code\n        }\n        .supportedVolumeViewpoints(supportedViewpoints)\n        .onVolumeViewpointChange(updateStrategy: .all) { _, newValue in\n            appState.robot?.currentViewpoint = newValue.squareAzimuth\n            if !supportedViewpoints.contains(newValue) {\n                appState.robot?.animationState.transition(to: .annoyed)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "World alignment",
+      "language": "swift",
+      "startTimeSeconds": 1002,
+      "code": "// World alignment\n\nWindowGroup {\n    ExplorationView()\n    .volumeWorldAlignment(.gravityAligned)\n}\n.windowStyle(.volumetric)"
+    },
+    {
+      "title": "Dynamic scale",
+      "language": "swift",
+      "startTimeSeconds": 1085,
+      "code": "// Dynamic scale\n\nWindowGroup {\n    ContentView()\n}\n.windowStyle(.volumetric)\n.defaultWorldScalingBehavior(.dynamic)"
+    },
+    {
+      "title": "Starting with an empty immersive space",
+      "language": "swift",
+      "startTimeSeconds": 1156,
+      "code": "struct BotanistApp: App {\n    var body: some Scene {\n        // Volume\n        WindowGroup(id: \"Exploration\") {\n            VolumeExplorationView()\n        }\n        .windowStyle(.volumetric)\n\n        // Immersive Space\n        ImmersiveSpace(id: \"Immersive\") {\n            EmptyView()\n        }\n    }\n}"
+    },
+    {
+      "title": "Callout to convert function from volume view",
+      "language": "swift",
+      "startTimeSeconds": 1252,
+      "code": "// Coordinate conversions\n// Convert from RealityKit entity in volume to SwiftUI space\nstruct VolumeExplorationView: View {\n    @Environment(ImmersiveSpaceAppModel.self) var appModel\n\n    var body: some View {\n        RealityView { content in\n            content.add(appModel.volumeRoot)\n            // ...\n        } update: { content in\n            guard appModel.convertingRobotFromVolume else { return }\n\n            // Convert the robot transform from RealityKit scene space for\n            // the volume to SwiftUI immersive space\n            convertRobotFromRealityKitToImmersiveSpace(content: content)\n        }\n    }\n}"
+    },
+    {
+      "title": "Convert robot's transform to SwiftUI immersive space",
+      "language": "swift",
+      "startTimeSeconds": 1268,
+      "code": "// Coordinate conversions\n// Convert from RealityKit entity in volume to SwiftUI space\nfunc convertRobotFromRealityKitToImmersiveSpace(content: RealityViewContent) {\n    // Convert the robot transform from RealityKit scene space for\n    // the volume to SwiftUI immersive space\n    appModel.immersiveSpaceFromRobot =\n        content.transform(from: appModel.robot, to: .immersiveSpace)\n\n    // Reparent robot from volume to immersive space\n    appModel.robot.setParent(appModel.immersiveSpaceRoot)\n\n    // Handoff to immersive space view to continue conversions.\n    appModel.convertingRobotFromVolume = false\n    appModel.convertingRobotToImmersiveSpace = true\n}"
+    },
+    {
+      "title": "Callout to convert function from immersive space view",
+      "language": "swift",
+      "startTimeSeconds": 1302,
+      "code": "// Coordinate conversions\n// Convert from SwiftUI immersive space back to RealityKit local space\nstruct ImmersiveExplorationView: View {\n    @Environment(ImmersiveSpaceAppModel.self) var appModel\n\n    var body: some View {\n        RealityView { content in\n            content.add(appModel.immersiveSpaceRoot)\n        } update: { content in\n            guard appModel.convertingRobotToImmersiveSpace else { return }\n\n            // Convert the robot transform from SwiftUI space for the immersive\n            // space to RealityKit scene space\n            convertRobotFromSwiftUIToRealityKitSpace(content: content)\n        }\n    }\n}"
+    },
+    {
+      "title": "Compute transform to place robot in matching position in immersive space",
+      "language": "swift",
+      "startTimeSeconds": 1308,
+      "code": "// Coordinate conversions\n// Calculate transform from SwiftUI to RealityKit scene space\nfunc convertRobotFromSwiftUIToRealityKitSpace(content: RealityViewContent) {\n    // Calculate transform from SwiftUI immersive space to RealityKit\n    // scene space\n    let realityKitSceneFromImmersiveSpace =\n    content.transform(from: .immersiveSpace, to: .scene)\n\n    // Multiply with the robot's transform in SwiftUI immersive space to build a\n    // transformation which converts from the robot's local\n    // coordinate space in the volume and ends with the robot's local\n    // coordinate space in an immersive space.\n    let realityKitSceneFromRobot =\n    realityKitSceneFromImmersiveSpace * appModel.immersiveSpaceFromRobot\n\n    // Place the robot in the immersive space to match where it\n    // appeared in the volume\n    appModel.robot.transform = Transform(realityKitSceneFromRobot)\n\n    // Start the jump!\n    appModel.startJump()\n}"
+    },
+    {
+      "title": "Customizing immersion",
+      "language": "swift",
+      "startTimeSeconds": 1434,
+      "code": "// Customizing immersion\nstruct BotanistApp: App {\n    // Custom immersion amounts\n    @State private var immersionStyle: ImmersionStyle = .progressive(0.2...1.0, initialAmount: 0.8)\n\n    var body: some Scene {\n        // Immersive Space\n        ImmersiveSpace(id: \"ImmersiveSpace\") {\n            ImmersiveSpaceExplorationView()\n        }\n        .immersionStyle(selection: $immersionStyle, in: .mixed, .progressive, .full)\n    }\n}"
+    },
+    {
+      "title": "Callout to function to handle immersion amount changed",
+      "language": "swift",
+      "startTimeSeconds": 1517,
+      "code": "// Reacting to immersion\nstruct ImmersiveView: View {\n    @State var immersionAmount: Double?\n\n    var body: some View {\n        ImmersiveSpaceExplorationView()\n            .onImmersionChange { context in\n                immersionAmount = context.amount\n            }\n            .onChange(of: immersionAmount) { oldValue, newValue in\n                handleImmersionAmountChanged(newValue: newValue, oldValue: oldValue)\n            }\n    }\n}"
+    },
+    {
+      "title": "Handle function to make robot react to changed immersion amount",
+      "language": "swift",
+      "startTimeSeconds": 1539,
+      "code": "// Reacting to immersion\nfunc handleImmersionAmountChanged(newValue: Double?, oldValue: Double?) {\n    guard let newValue, let oldValue else {\n        return\n    }\n\n    if newValue > oldValue {\n        // Move the robot outward to react to increasing immersion\n        moveRobotOutward()\n    } else if newValue < oldValue {\n        // Move the robot inward to react to decreasing immersion\n        moveRobotInward()\n    }\n}"
+    },
+    {
+      "title": "Create spatial tracking session",
+      "language": "swift",
+      "startTimeSeconds": 1617,
+      "code": "// Create and run spatial tracking session\nstruct ImmersiveExplorationView {\n    @State var spatialTrackingSession: SpatialTrackingSession\n        = SpatialTrackingSession()\n\n    var body: some View {\n        RealityView { content in\n            // ...\n        }\n        .task {\n            await runSpatialTrackingSession()\n        }\n    }\n}"
+    },
+    {
+      "title": "Run spatial tracking session",
+      "language": "swift",
+      "startTimeSeconds": 1631,
+      "code": "// Create and run the spatial tracking session\nfunc runSpatialTrackingSession() async {\n    // Configure the session for plane anchor tracking\n    let configuration =\n        SpatialTrackingSession.Configuration(tracking: [.plane])\n\n    // Run the session to request plane anchor transforms\n    let _ = await spatialTrackingSession.run(configuration)\n}"
+    },
+    {
+      "title": "Create a floor anchor to track",
+      "language": "swift",
+      "startTimeSeconds": 1652,
+      "code": "// Create a floor anchor to track\nstruct ImmersiveExplorationView {\n    @State var spatialTrackingSession: SpatialTrackingSession\n        = SpatialTrackingSession()\n\n    let floorAnchor = AnchorEntity(\n        .plane(.horizontal, classification: .floor, minimumBounds: .init(x: 0.01, y: 0.01))\n    )\n\n    var body: some View {\n        RealityView { content in\n            content.add(floorAnchor)\n        }\n        .task {\n            await runSpatialTrackingSession()\n        }\n    }\n}"
+    },
+    {
+      "title": "Detect taps on entities in immersive space",
+      "language": "swift",
+      "startTimeSeconds": 1674,
+      "code": "// Detect taps on entities in immersive space\nRealityView { content in\n    // ...\n}\n.gesture(\n    SpatialTapGesture(\n        coordinateSpace: .immersiveSpace\n    )\n    .targetedToAnyEntity()\n    .onEnded { value in\n        handleTapOnFloor(value: value)\n    }\n)"
+    },
+    {
+      "title": "Handle tap event to place plant",
+      "language": "swift",
+      "startTimeSeconds": 1689,
+      "code": "// Handle tap event\nfunc handleTapOnFloor(value: EntityTargetValue<SpatialTapGesture.Value>) {\n    let location =\n        value.convert(value.location3D, from: .immersiveSpace, to: floorAnchor)\n\n    plantEntity.position = location\n    floorAnchor.addChild(plantEntity)\n}"
+    },
+    {
+      "title": "Add tint color to custom plant component",
+      "language": "swift",
+      "startTimeSeconds": 1787,
+      "code": "// Add tint color to custom plant component\nstruct PlantComponent: Component {\n    var tintColor: Color {\n        switch plantType {\n        case .coffeeBerry:\n            // Light blue\n            return Color(red: 0.3, green: 0.3, blue: 1.0)\n        case .poppy:\n            // Magenta\n            return Color(red: 1.0, green: 0.0, blue: 1.0)\n        case .yucca:\n            // Light green\n            return Color(red: 0.2, green: 1.0, blue: 0.2)\n        }\n    }\n}"
+    },
+    {
+      "title": "Handle collisions with robot",
+      "language": "swift",
+      "startTimeSeconds": 1809,
+      "code": "// Handle collisions with robot\n//\n// Handle movement of the robot between frames\nfunc handleMovement(deltaTime: Float) {\n    // Move character in the collision world\n    appModel.robot.moveCharacter(by: SIMD3<Float>(...), deltaTime: deltaTime, relativeTo: nil) { collision in\n        handleCollision(collision)\n    }\n}"
+    },
+    {
+      "title": "Set active tint color when colliding with plant",
+      "language": "swift",
+      "startTimeSeconds": 1829,
+      "code": "// Set active tint color when colliding with plant\n//\n// Handle collision between robot and hit entity\nfunc handleCollision(_ collision: CharacterControllerComponent.Collision) {\n    guard let plantComponent = collision.hitEntity.components[PlantComponent.self] else {\n        return\n    }\n\n    // Play the plant growth celebration animation\n    playPlantGrowthAnimation(plantComponent: plantComponent)\n\n    if inImmersiveSpace {\n        appModel.tintColor = plantComponent.tintColor\n    }\n}"
+    },
+    {
+      "title": "Apply effect to tint passthrough",
+      "language": "swift",
+      "startTimeSeconds": 1848,
+      "code": "// Apply effect to tint passthrough\nstruct ImmersiveExplorationView: View {\n    var body: some View {\n        RealityView { content in\n            // ...\n        }\n        .preferredSurroundingsEffect(surroundingsEffect)\n    }\n\n    // The resolved surroundings effect based on tint color\n    var surroundingsEffect: SurroundingsEffect? {\n        if let color = appModel.tintColor {\n            return SurroundingsEffect.colorMultiply(color)\n        } else {\n            return nil\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "BOT-anist",
+      "url": "https://developer.apple.com/documentation/visionOS/BOT-anist",
+      "type": "samplecode",
+      "description": "Build a multiplatform app that uses windows, volumes, and animations to create a robot botanist’s greenhouse.",
+      "sosumiURL": "https://sosumi.ai/documentation/visionOS/BOT-anist",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/visionOS/BOT-anist.json"
+    },
+    {
+      "title": "Forum: UI Frameworks",
+      "url": "https://developer.apple.com/forums/topics/ui-frameworks?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/ui-frameworks?cid=vf-a-0010"
+    }
+  ],
+  "path": "sessions/wwdc2024/10153/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10153/metadata.json",
+    "readme": "sessions/wwdc2024/10153/README.md",
+    "transcript": "sessions/wwdc2024/10153/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10153/transcript.json"
+  }
+}

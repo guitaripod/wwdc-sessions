@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10205",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10205,
+  "title": "What’s new in watchOS 11",
+  "description": "Explore new opportunities on Apple Watch, including bringing Double Tap support to your watchOS app, making your Smart Stack widgets even more relevant and interactive, and displaying your iOS Live Activities in the Smart Stack.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10205",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10205",
+  "type": "Video",
+  "publishedAt": "2024-06-10T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services",
+    "Health & Fitness",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 856,
+  "hasTranscript": true,
+  "transcriptWordCount": 1937,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10205/4/01F99B0C-DA17-41F9-854B-7C36FA9FD965/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10205/4/01F99B0C-DA17-41F9-854B-7C36FA9FD965/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10205/4/01F99B0C-DA17-41F9-854B-7C36FA9FD965/downloads/wwdc2024-10205_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10205/4/01F99B0C-DA17-41F9-854B-7C36FA9FD965/downloads/wwdc2024-10205_hd.mp4",
+    "duration": 856
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Enabling the double-tap gesture on Apple Watch",
+      "url": "https://developer.apple.com/documentation/watchOS-Apps/enabling-double-tap",
+      "type": "documentation",
+      "description": "Customize your app’s response to the double-tap gesture on Apple Watch.",
+      "sosumiURL": "https://sosumi.ai/documentation/watchOS-Apps/enabling-double-tap",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/watchOS-Apps/enabling-double-tap.json"
+    },
+    {
+      "title": "Forum: UI Frameworks",
+      "url": "https://developer.apple.com/forums/topics/ui-frameworks?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/ui-frameworks?cid=vf-a-0010"
+    },
+    {
+      "title": "Human Interface Guidelines: watchOS",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/designing-for-watchos",
+      "type": "documentation",
+      "description": "When people glance at their Apple Watch, they know they can access essential information and perform simple, timely tasks whether they’re stationary or in motion.",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/designing-for-watchos"
+    },
+    {
+      "title": "WidgetKit",
+      "url": "https://developer.apple.com/documentation/WidgetKit",
+      "type": "documentation",
+      "description": "Extend the reach of your app by creating widgets, watch complications, Live Activities, and controls.",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit.json"
+    },
+    {
+      "title": "Human Interface Guidelines: Widgets",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/widgets",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/widgets"
+    }
+  ],
+  "path": "sessions/wwdc2024/10205/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10205/metadata.json",
+    "readme": "sessions/wwdc2024/10205/README.md",
+    "transcript": "sessions/wwdc2024/10205/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10205/transcript.json"
+  }
+}

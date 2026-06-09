@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10094",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10094,
+  "title": "Explore game input in visionOS",
+  "description": "Discover how to design and implement great input for your game in visionOS. Learn how system gestures let you provide frictionless ways for players to interact with your games. And explore best practices for supporting custom gestures and game controllers.\n",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10094",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10094",
+  "type": "Video",
+  "publishedAt": "2024-06-11T08:00:00-07:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [
+    "apple vision pro",
+    "avp",
+    "gestures",
+    "mixed reality",
+    "spatial",
+    "spatial design",
+    "virtual reality"
+  ],
+  "topics": [
+    "Design",
+    "Spatial Computing",
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 982,
+  "hasTranscript": true,
+  "transcriptWordCount": 2634,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10094/8/0A68B37C-75FF-4E8E-BA54-BA0865E665A3/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10094/8/0A68B37C-75FF-4E8E-BA54-BA0865E665A3/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10094/8/0A68B37C-75FF-4E8E-BA54-BA0865E665A3/downloads/wwdc2024-10094_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10094/8/0A68B37C-75FF-4E8E-BA54-BA0865E665A3/downloads/wwdc2024-10094_hd.mp4",
+    "duration": 982
+  },
+  "codeSnippets": [
+    {
+      "title": "Respond to a tap gesture",
+      "language": "swift",
+      "startTimeSeconds": 316,
+      "code": "// Respond to a tap gesture.\n\nstruct ContentView: View {\n  var body: some View {\n    RealityView { content in\n      // For entity targeting to work, entities must have an InputTargetComponent\n      // and a CollisionComponent!\n    }\n    .gesture(TapGesture().targetedToAnyEntity().onEnded { value in\n      print(\"Tapped entity \\(value.entity)!\")\n    })\n  }\n}"
+    },
+    {
+      "title": "Combine dragging, magnification, and 3D rotation gestures",
+      "language": "swift",
+      "startTimeSeconds": 428,
+      "code": "// Gesture combining dragging, magnification, and 3D rotation all at once.\nvar manipulationGesture: some Gesture<AffineTransform3D> {\n  DragGesture()\n    .simultaneously(with: MagnifyGesture())\n    .simultaneously(with: RotateGesture3D())\n    .map {bgesture in\n      let (translation, scale, rotation) = gesture.components()\n\n      return AffineTransform3D(\n        scale: scale,\n        rotation: rotation,\n        translation: translation\n      )\n    }\n}"
+    },
+    {
+      "title": "Create and detect a custom circle gesture",
+      "language": "swift",
+      "startTimeSeconds": 573,
+      "code": "// Create and detect a custom circle gesture.\n\n// Get all required joints and check if they are tracked.\nlet leftHandIndexFingerTip = leftHandAnchor.skeleton.joint(named: .handIndexFingerTip)\n// ...\n// Get the position of all joints in world coordinates.\nlet leftHandIndexFingerTipWorldPosition = matrix_multiply(leftHandAnchor.originFromAnchorTransform, \n                leftHandIndexFingerTip.anchorFromJointTransform).columns.3.xyz\n// ...\n\n// Circle gesture detection is true when the distance between the index finger tips centers\n// and the distance between the thumb tip centers is each less than four centimeters.\nlet isCircleShapeGesture = indexFingersDistance < 0.04 && thumbsDistance < 0.04\nif isCircleShapeGesture {\n  // respond to gesture\n}"
+    },
+    {
+      "title": "Detect a connected game controller",
+      "language": "swift",
+      "startTimeSeconds": 840,
+      "code": "// Detect connected game controller.\n\n// Add handler for when controller connects.\n    NotificationCenter.default.addObserver(\n\t      forName: NSNotification.Name.GCControllerDidConnect,\n  \t    object: nil, queue: nil) {\n    \t      (note) in\n      \t      guard let _controller = note.object? as GCController else { return }\n        \t    // Add controller input change handlers.\n          \t  _controller.physicalInputProfile[GCInputButtonA]?.valueChangedHandler = {\n            \t  //... \n            \t}\n       \t}\n\n// Poll for controller input\n    if controller.physicalInputProfile[GCInputButtonA]?.pressed {... }\n    if controller.physicalInputProfile[GCInputButtonB]?.pressed {... }"
+    },
+    {
+      "title": "Tag a RealityView to handle controller input",
+      "language": "swift",
+      "startTimeSeconds": 864,
+      "code": "// Tag a RealityView to handle controller input.\n\nstruct ContentView: View {\n  var body: some View {\n    RealityView { content in\n      // Tag your RealityView to respond to controller input events.\n    }\n    .handlesGameControllerEvents(matching .gamepad)\n  }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Gestures",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/gestures",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/gestures"
+    },
+    {
+      "title": "Forum: Graphics & Games",
+      "url": "https://developer.apple.com/forums/topics/graphics-and-games?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/graphics-and-games?cid=vf-a-0010"
+    },
+    {
+      "title": "Human Interface Guidelines: Game controls",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/game-controls",
+      "type": "documentation",
+      "description": "HIG Game controls",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/game-controls"
+    },
+    {
+      "title": "Composing SwiftUI gestures",
+      "url": "https://developer.apple.com/documentation/SwiftUI/Composing-SwiftUI-Gestures",
+      "type": "documentation",
+      "description": "Combine gestures to create complex interactions.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/Composing-SwiftUI-Gestures",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/Composing-SwiftUI-Gestures.json"
+    }
+  ],
+  "path": "sessions/wwdc2024/10094/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10094/metadata.json",
+    "readme": "sessions/wwdc2024/10094/README.md",
+    "transcript": "sessions/wwdc2024/10094/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10094/transcript.json"
+  }
+}

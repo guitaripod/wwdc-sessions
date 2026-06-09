@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-110401",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 110401,
+  "title": "Create Swift Package plugins",
+  "description": "Tailor your development workflow and learn how to write your own package plugins in Swift. We'll show you how you can extend Xcode’s functionality by using the PackagePlugin API to generate source code or automate release tasks and share best practices for creating great plugins.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/110401",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/110401",
+  "type": "Video",
+  "publishedAt": "2022-06-10T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 1442,
+  "hasTranscript": true,
+  "transcriptWordCount": 2972,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110401/6/E6B6BDA3-C922-4FC4-AF6B-EB6C290568A7/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110401/6/E6B6BDA3-C922-4FC4-AF6B-EB6C290568A7/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110401/6/E6B6BDA3-C922-4FC4-AF6B-EB6C290568A7/downloads/wwdc2022-110401_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110401/6/E6B6BDA3-C922-4FC4-AF6B-EB6C290568A7/downloads/wwdc2022-110401_hd.mp4",
+    "duration": 1442
+  },
+  "codeSnippets": [
+    {
+      "title": "GenerateContributors plugin target",
+      "language": "swift",
+      "startTimeSeconds": 220,
+      "code": "// MARK: Plugins\n\n.plugin(\n    name: \"GenerateContributors\",\n    capability: .command(\n        intent: .custom(verb: \"regenerate-contributors-list\",\n                        description: \"Generates the CONTRIBUTORS.txt file based on Git logs\"),\n        permissions: [\n            .writeToPackageDirectory(reason: \"This command write the new CONTRIBUTORS.txt to the source root.\")\n        ]\n    )),"
+    },
+    {
+      "title": "GenerateContributors plugin implementation",
+      "language": "swift",
+      "startTimeSeconds": 306,
+      "code": "import PackagePlugin\nimport Foundation\n\n@main\nstruct GenerateContributors: CommandPlugin {\n\n    func performCommand(\n        context: PluginContext,\n        arguments: [String]\n    ) async throws {\n        let process = Process()\n        process.executableURL = URL(fileURLWithPath: \"/usr/bin/git\")\n        process.arguments = [\"log\", \"--pretty=format:- %an <%ae>%n\"]\n\n        let outputPipe = Pipe()\n        process.standardOutput = outputPipe\n        try process.run()\n        process.waitUntilExit()\n\n        let outputData = outputPipe.fileHandleForReading.readDataToEndOfFile()\n        let output = String(decoding: outputData, as: UTF8.self)\n\n        let contributors = Set(output.components(separatedBy: CharacterSet.newlines)).sorted().filter { !$0.isEmpty }\n        try contributors.joined(separator: \"\\n\").write(toFile: \"CONTRIBUTORS.txt\", atomically: true, encoding: .utf8)\n    }\n}"
+    },
+    {
+      "title": "Minimum Deployment Target",
+      "language": "swift",
+      "startTimeSeconds": 628,
+      "code": "platforms: [\n    .macOS(\"10.15\"),\n    .iOS(\"12.0\"),\n    .tvOS(\"12.0\"),\n    .watchOS(\"6.0\"),\n],"
+    },
+    {
+      "title": "Basic SwiftUI view and preview",
+      "language": "swift",
+      "startTimeSeconds": 635,
+      "code": "import SwiftUI\n\nstruct ContentView: View {\n    var body: some View {\n        Image(\"Xcode\", bundle: .module)\n            .resizable()\n            .frame(width: 200.0, height: 200.0)\n    }\n}\n\nstruct ContentView_Previews: PreviewProvider {\n    static var previews: some View {\n        ContentView()\n    }\n}"
+    },
+    {
+      "title": "AssetConstantsExec executable target",
+      "language": "swift",
+      "startTimeSeconds": 896,
+      "code": ".executableTarget(name: \"AssetConstantsExec\"),"
+    },
+    {
+      "title": "AssetConstantsExec implementation",
+      "language": "swift",
+      "startTimeSeconds": 903,
+      "code": "import Foundation\n\nlet arguments = ProcessInfo().arguments\nif arguments.count &lt; 3 {\n    print(\"missing arguments\")\n}\nlet (input, output) = (arguments[1], arguments[2])\n\nstruct Contents: Decodable {\n    let images: [Image]\n}\n\nstruct Image: Decodable {\n    let filename: String?\n}\n\nvar generatedCode = \"\"\"\n    import Foundation\n    import SwiftUI\n\n    \"\"\"\n\ntry FileManager.default.contentsOfDirectory(atPath: input).forEach { dirent in\n    guard dirent.hasSuffix(\"imageset\") else {\n        return\n    }\n\n    let contentsJsonURL = URL(fileURLWithPath: \"\\(input)/\\(dirent)/Contents.json\")\n    let jsonData = try Data(contentsOf: contentsJsonURL)\n    let asset🐱alogContents = try JSONDecoder().decode(Contents.self, from: jsonData)\n    let hasImage = asset🐱alogContents.images.filter { $0.filename != nil }.isEmpty == false\n\n    if hasImage {\n        let basename = contentsJsonURL.deletingLastPathComponent().deletingPathExtension().lastPathComponent\n        generatedCode.append(\"public let \\(basename) = Image(\\\"\\(basename)\\\", bundle: .module)\\n\")\n    }\n}\n\ntry generatedCode.write(to: URL(fileURLWithPath: output), atomically: true, encoding: .utf8)"
+    },
+    {
+      "title": "AssetConstantsExec plugin target",
+      "language": "swift",
+      "startTimeSeconds": 948,
+      "code": ".plugin(name: \"AssetConstants\", capability: .buildTool(), dependencies: [\"AssetConstantsExec\"]),"
+    },
+    {
+      "title": "AssetConstantsExec plugin implementation",
+      "language": "swift",
+      "startTimeSeconds": 972,
+      "code": "guard let target = target as? SourceModuleTarget else {\n            return []\n        }\n\nreturn try target.sourceFiles(withSuffix: \"xcassets\").map { asset🐱alog in\n            let base = asset🐱alog.path.stem\n            let input = asset🐱alog.path\n            let output = context.pluginWorkDirectory.appending([\"\\(base).swift\"])\n\n            return .buildCommand(displayName: \"Generating constants for \\(base)\",\n                                 executable: try context.tool(named: \"AssetConstantsExec\").path,\n                                 arguments: [input.string, output.string],\n                                 inputFiles: [input],\n                                 outputFiles: [output])\n        }"
+    },
+    {
+      "title": "GenstringsPlugin target",
+      "language": "swift",
+      "startTimeSeconds": 1219,
+      "code": ".plugin(name: \"GenstringsPlugin\", capability: .buildTool()),"
+    },
+    {
+      "title": "GenstringsPlugin product",
+      "language": "swift",
+      "startTimeSeconds": 1226,
+      "code": ".plugin(name: \"GenstringsPlugin\", targets: [\"GenstringsPlugin\"]),"
+    },
+    {
+      "title": "GenstringsPlugin implementation",
+      "language": "swift",
+      "startTimeSeconds": 1244,
+      "code": "guard let target = target as? SourceModuleTarget else {\n            return []\n        }\n\nlet resourcesDirectoryPath = context.pluginWorkDirectory\n            .appending(subpath: target.name)\n            .appending(subpath: \"Resources\")\n        let localizationDirectoryPath = resourcesDirectoryPath\n            .appending(subpath: \"Base.lproj\")\n\n        try FileManager.default.createDirectory(atPath: localizationDirectoryPath.string, withIntermediateDirectories: true)\n\nlet swiftSourceFiles = target.sourceFiles(withSuffix: \".swift\")\n        let inputFiles = swiftSourceFiles.map(\\.path)\n\nreturn [\n            .prebuildCommand(\n                displayName: \"Generating localized strings from source files\",\n                executable: .init(\"/usr/bin/xcrun\"),\n                arguments: [\n                    \"genstrings\",\n                    \"-SwiftUI\",\n                    \"-o\", localizationDirectoryPath\n                ] + inputFiles,\n                outputFilesDirectory: localizationDirectoryPath\n            )\n        ]"
+    },
+    {
+      "title": "Localized string API",
+      "language": "swift",
+      "startTimeSeconds": 1270,
+      "code": "import Foundation\n\npublic func GetLocalizedString() -&gt; String {\n    return NSLocalizedString(\"World\", comment: \"A comment about the localizable string\")\n}"
+    },
+    {
+      "title": "Path-based dependency on GenstringsPlugin",
+      "language": "swift",
+      "startTimeSeconds": 1304,
+      "code": ".package(path: \"../GenstringsPlugin\"),"
+    },
+    {
+      "title": "Use of GenstringsPlugin in library target",
+      "language": "swift",
+      "startTimeSeconds": 1312,
+      "code": "plugins: [ .plugin(name: \"GenstringsPlugin\", package: \"GenstringsPlugin\"), ]"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2022/110401/",
+  "files": {
+    "metadata": "sessions/wwdc2022/110401/metadata.json",
+    "readme": "sessions/wwdc2022/110401/README.md",
+    "transcript": "sessions/wwdc2022/110401/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/110401/transcript.json"
+  }
+}

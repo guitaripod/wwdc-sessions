@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10054",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10054,
+  "title": "What’s new in AppKit",
+  "description": "Discover the latest advances in Mac app development. We’ll share improvements to controls and menus and explore the tools that can help you break free from your (view) bounds. Learn how to add motion to your user interface, take advantage of improvements to text input, and integrate your existing code with Swift and SwiftUI.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10054",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10054",
+  "type": "Video",
+  "publishedAt": "2023-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services",
+    "Essentials",
+    "System Services",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1638,
+  "hasTranscript": true,
+  "transcriptWordCount": 3821,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10054/4/80B02B85-8293-43F0-A6B1-210B6B6DD1F7/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10054/4/80B02B85-8293-43F0-A6B1-210B6B6DD1F7/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10054/4/80B02B85-8293-43F0-A6B1-210B6B6DD1F7/downloads/wwdc2023-10054_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10054/4/80B02B85-8293-43F0-A6B1-210B6B6DD1F7/downloads/wwdc2023-10054_hd.mp4",
+    "duration": 1638
+  },
+  "codeSnippets": [
+    {
+      "title": "Configure NSTableView column customization menu",
+      "language": "swift",
+      "startTimeSeconds": 96,
+      "code": "func tableView(_ tableView: NSTableView, \n               userCanChangeVisibilityOf column: NSTableColumn) -> Bool {\n    return column.identifier != \"Name\"\n}"
+    },
+    {
+      "title": "Configuring NSProgressIndicator to sync with Progress",
+      "language": "swift",
+      "startTimeSeconds": 113,
+      "code": "func fetchData() {\n    let url = URL(string: \"https://developer.apple.com/wwdc23/\")!\n    let task = URLSession.shared.dataTask(with: .init(url: url))\n    progressIndicator.observedProgress = task.progress\n\n    task.resume()\n}"
+    },
+    {
+      "title": "Adding an inspector to your app",
+      "language": "swift",
+      "startTimeSeconds": 228,
+      "code": "let inspectorItem = NSSplitViewItem(inspectorWithViewController: inspectorViewController)\nsplitViewController.addSplitViewItem(inspectorItem)\n\nfunc toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {\n    [.toggleSidebar, .sidebarTrackingSeparator, .flexibleSpace, .addPlant, \n     .inspectorTrackingSeparator, .flexibleSpace, .toggleInspector]\n}"
+    },
+    {
+      "title": "Show a NSPopover relative to a NSToolbarItem",
+      "language": "swift",
+      "startTimeSeconds": 278,
+      "code": "func toolbarAction(_ toolbarItem: NSToolbarItem) {\n    let popover = NSPopover()\n    popover.contentViewController = PopoverViewController()\n    popover.show(relativeTo: toolbarItem)\n}"
+    },
+    {
+      "title": "Adding symbol effects to a image view",
+      "language": "swift",
+      "startTimeSeconds": 1110,
+      "code": "wifiImageView.image = NSImage(systemSymbolName: \"wifi\", accessibilityDescription: \"wifi icon\")\nwifiImageView.addSymbolEffect(.variableColor.iterative, options: .repeating)"
+    },
+    {
+      "title": "Using @ViewLoading to remove optionality on properties",
+      "language": "swift",
+      "startTimeSeconds": 1496,
+      "code": "class ViewController: NSViewController {\n    @ViewLoading var datePicker: NSDatePicker\n    var date = Date() {\n        didSet {\n            datePicker.dateValue = date\n        }\n    }\n\n    override func loadView() {\n        super.loadView()\n        datePicker = NSDatePicker()\n        datePicker.dateValue = date\n        view.addSubview(datePicker)\n    }\n}"
+    },
+    {
+      "title": "Preview NSView and NSViewController using the Preview macro",
+      "language": "swift",
+      "startTimeSeconds": 1526,
+      "code": "#Preview(\"Tree Species\") {\n    let treeCellView = TreeCellView()\n    treeCellView.species = .spruce\n    return treeCellView\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2023/10054/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10054/metadata.json",
+    "readme": "sessions/wwdc2023/10054/README.md",
+    "transcript": "sessions/wwdc2023/10054/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10054/transcript.json"
+  }
+}

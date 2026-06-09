@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-317",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 317,
+  "title": "What’s new in visionOS 26",
+  "description": "Explore exciting new features in visionOS 26. Discover enhanced volumetric APIs and learn how you can combine the power of SwiftUI, RealityKit and ARKit. Find out how you can build more engaging apps and games using faster hand tracking and input from spatial accessories. Get a sneak peek at updates to SharePlay, Compositor Services, immersive media, spatial web, Enterprise APIs, and much more.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/317",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/317",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [
+    "arkit",
+    "audio",
+    "audio &amp; video",
+    "business",
+    "businessconnect",
+    "compositorservices",
+    "enterprise",
+    "games",
+    "immersive",
+    "occlusion",
+    "quicklook",
+    "quick look",
+    "realitykit",
+    "realitykit audio",
+    "safari",
+    "safari &amp; web",
+    "shareplay",
+    "spatial",
+    "spatial accessories",
+    "spatial audio",
+    "spatial computing",
+    "swiftui",
+    "tabletopkit",
+    "video",
+    "visionos",
+    "web",
+    "widgetkit"
+  ],
+  "topics": [
+    "Audio & Video",
+    "Business & Education",
+    "Design",
+    "Graphics & Games",
+    "Photos & Camera",
+    "Safari & Web",
+    "SwiftUI & UI Frameworks",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 2327,
+  "hasTranscript": true,
+  "transcriptWordCount": 5044,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/317/4/4700af86-65f4-429a-b0a7-7dd18247c03d/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/317/4/4700af86-65f4-429a-b0a7-7dd18247c03d/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/317/4/4700af86-65f4-429a-b0a7-7dd18247c03d/downloads/wwdc2025-317_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/317/4/4700af86-65f4-429a-b0a7-7dd18247c03d/downloads/wwdc2025-317_hd.mp4",
+    "duration": 2327
+  },
+  "codeSnippets": [
+    {
+      "title": "DepthAlignment",
+      "language": "swift",
+      "startTimeSeconds": 145,
+      "code": "// Layout types back align views by default\n\nstruct LandmarkProfile: View {\n\n    var body: some View {\n       VStackLayout().depthAlignment(.front) {\n            ResizableLandmarkModel()\n            LandmarkNameCard()\n        }\n    }\n}"
+    },
+    {
+      "title": "rotation3DLayout",
+      "language": "swift",
+      "startTimeSeconds": 161,
+      "code": "// Rotate using any axis or angle\n\nstruct PlaneStack: View {\n\n    var body: some View {\n        VStack {\n            ToyPlaneModel()\n            ToyPlaneModel()\n              .rotation3DLayout(angle, axis: .z)\n            ToyPlaneModel()\n        }\n    }\n}"
+    },
+    {
+      "title": "Dynamic Bounds Restrictions",
+      "language": "swift",
+      "startTimeSeconds": 262,
+      "code": "// Dynamic Bounds Restrictions\n\nstruct ContentView: View, Animatable {\n\n    var body: some View {\n        VStackLayout().depthAlignment(.front) {\n            // . . .\n        }\n        .preferredWindowClippingMargins(.all, 400)\n    }\n}"
+    },
+    {
+      "title": "Model3D manipulable view modifier",
+      "language": "swift",
+      "startTimeSeconds": 305,
+      "code": "// Apply the manipulable view modifier to each Model3D block per 3D object\n\nstruct RockView: View {\n    var body: some View {\n        RockLayout {\n            ForEach(rocks) { rock in\n                Model3D(named: rock.name, bundle: realityKitContentBundle) {\n                    model in\n                    model.model?\n                        .resizable()\n                        .scaledToFit3D()\n                }\n                .manipulable()\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "ManipulationComponent",
+      "language": "swift",
+      "startTimeSeconds": 314,
+      "code": "// Add a ManipulationComponent to each entity in your scene\n\nstruct RealityKitObjectManipulation: View {\n    var body: some View {\n        RealityView {ccontent in\n            let rocks = await loadRockEntities()\n            arrangeRocks(rocks)\n            for rock in rocks {\n                ManipulationComponent.configureEntity(rock)\n                content.add(rock)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "QuickLook3DView",
+      "language": "swift",
+      "startTimeSeconds": 318,
+      "code": "// Preview multiple 3D models simultaneously in your space with Quick Look and \n// get object manipulation on each of them by default\n\nstruct QuickLook3DView: View {\n\n    let url: URL\n    var body: some View {\n        VStack {\n            Button(\"View in your space\") {\n                _ = PreviewApplication.open(urls: [url])\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Gestures on entities",
+      "language": "swift",
+      "startTimeSeconds": 396,
+      "code": "// Gestures on entities\nstruct GestureExample: View {\n    @GestureState private var dragMountain: Float = 0\n    @GestureState private var dragTerrain: Float = 0\n\t\tvar body: some View {\n        RealityView { content in\n            let drag1 = GestureComponent(\n                DragGesture().updating($dragMountain) { value, offset, _ in\n                    offset = Float(value.translation.width)\n                })\n            let drag2 = GestureComponent(\n                DragGesture().updating($dragTerrain) {evalue, offset, _ in\n                    offset = Float(value.translation.width)\n                })\n            mountain.components.set(drag1)\n            terrain.components.set(drag2)\n        } update: { content in\n            // . . .\n        }\n    }\n}"
+    },
+    {
+      "title": "Attachments on entities",
+      "language": "swift",
+      "startTimeSeconds": 415,
+      "code": "// Attachments on entities\n\nstruct AttachmentComponentExample: View {\n    var body: some View {\n        RealityView { content in\n            // ... Load the mountain entity\n\n            // Create an AttachmentComponent with any SwiftUI View\n            let attachmentComponent = ViewAttachmentComponent(\n                rootView: NameSign()\n            )\n            mountain.components.set(attachmentComponent)\n        }\n    }\n}"
+    },
+    {
+      "title": "SwiftUI restoration APIs",
+      "language": "swift",
+      "startTimeSeconds": 823,
+      "code": "var body: some Scene {\n    // . . .\n    WindowGroup(id: \"Editor\") {\n        EditorView()\n    }\n\n    Window(\"Inspector\", id: \"Inspector\") {\n        InspectorView()\n    }\n    // Prevent the inspector window from being launched on its own without an\n    // editor window present.\n    .defaultLaunchBehavior(.suppressed)\n    // Prevent the inspector window from being persisted and restored across\n    // different process or boot sessions.\n    .restorationBehavior(.disabled)\n}"
+    },
+    {
+      "title": "Look to scroll",
+      "language": "swift",
+      "startTimeSeconds": 2025,
+      "code": "// SwiftUI\nvar body: some View {\n    ScrollView {\n        HikeDetails()\n    }\n    .scrollInputBehavior(.enabled, for: .look)\n}\n\n\n// UIKit\nlet scrollView: UIScrollView = {\n    let scroll = UIScrollView()\n    scroll.lookToScrollAxes = .vertical\n    return scroll\n}()"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Petite Asteroids: Building a volumetric visionOS game",
+      "url": "https://developer.apple.com/documentation/visionOS/petite-asteroids-building-a-volumetric-visionos-game",
+      "type": "samplecode",
+      "description": "Use the latest RealityKit APIs to create a beautiful video game for visionOS.",
+      "sosumiURL": "https://sosumi.ai/documentation/visionOS/petite-asteroids-building-a-volumetric-visionos-game",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/visionOS/petite-asteroids-building-a-volumetric-visionos-game.json"
+    },
+    {
+      "title": "Canyon Crosser: Building a volumetric hike-planning app",
+      "url": "https://developer.apple.com/documentation/visionOS/canyon-crosser-building-a-volumetric-hike-planning-app",
+      "type": "samplecode",
+      "description": "Create a hike planning app using SwiftUI and RealityKit.",
+      "sosumiURL": "https://sosumi.ai/documentation/visionOS/canyon-crosser-building-a-volumetric-hike-planning-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/visionOS/canyon-crosser-building-a-volumetric-hike-planning-app.json"
+    },
+    {
+      "title": "TabletopKit",
+      "url": "https://developer.apple.com/documentation/TabletopKit",
+      "type": "documentation",
+      "description": "Create multiplayer spatial games on a virtual table surface and use FaceTime to invite players.",
+      "sosumiURL": "https://sosumi.ai/documentation/TabletopKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/TabletopKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/317/",
+  "files": {
+    "metadata": "sessions/wwdc2025/317/metadata.json",
+    "readme": "sessions/wwdc2025/317/README.md",
+    "transcript": "sessions/wwdc2025/317/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/317/transcript.json"
+  }
+}

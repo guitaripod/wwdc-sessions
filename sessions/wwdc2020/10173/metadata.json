@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10173",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10173,
+  "title": "Get the most out of Sign in with Apple",
+  "description": "Sign in with Apple makes it easy for people to sign in to your apps and websites with the Apple ID they already have. Fully integrate Sign in with Apple into your app using secure requests, and by handling state changes and server notifications. We’ll also introduce new APIs that allow you to let existing users switch to Sign in with Apple quickly and easily.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10173",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10173",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "account",
+    "account security",
+    "sign in",
+    "sign in with apple"
+  ],
+  "topics": [
+    "Safari & Web",
+    "System Services",
+    "Privacy & Security"
+  ],
+  "primaryTopic": "Privacy & Security",
+  "duration": 1847,
+  "hasTranscript": true,
+  "transcriptWordCount": 4814,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10173/3/4C9B78F1-0F45-456A-83FF-83624AE95E25/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10173/3/4C9B78F1-0F45-456A-83FF-83624AE95E25/wwdc2020_10173_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10173/3/4C9B78F1-0F45-456A-83FF-83624AE95E25/wwdc2020_10173_hd.mp4",
+    "duration": 1847
+  },
+  "codeSnippets": [
+    {
+      "title": "Create an Authorization Request",
+      "language": "swift",
+      "startTimeSeconds": 122,
+      "code": "// Configure request, setup delegates and perform authorization request\n\n@objc func handleAuthorizationButtonPress() {\n    let request = ASAuthorizationAppleIDProvider().createRequest()\n    request.requestedScopes = [.fullName, .email]\n\n    request.nonce = myNonceString()\n    request.state = myStateString()\n\n    let controller = ASAuthorizationController(authorizationRequests: [request])\n\n    controller.delegate = self\n    controller.presentationContextProvider = self\n\n    controller.performRequests()\n}"
+    },
+    {
+      "title": "Get a credential from an Authorization",
+      "language": "swift",
+      "startTimeSeconds": 337,
+      "code": "// ASAuthorizationControllerDelegate\n\nfunc authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {\n        if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {\n            let userIdentifier = credential.user\n            let fullName = credential.fullName\n            let email = credential.email\n            let realUserStatus = credential.realUserStatus\n\n            let state = credential.state\n            let identityToken = credential.identityToken\n            let authorizationCode = credential.authorizationCode\n\n            // Securely store the userIdentifier locally\n            self.saveUserIdentifier(userIdentifier)\n\n            // Create a session with your server and verify the information\n            self.createSession(identityToken: identityToken, authorizationCode: authorizationCode)\n    }\n}"
+    },
+    {
+      "title": "Verify the state of a credential",
+      "language": "swift",
+      "startTimeSeconds": 531,
+      "code": "// Getting a credential state\n\nlet provider = ASAuthorizationAppleIDProvider()\n\nprovider.getCredentialState(forUserID: getStoredUserIdentifier()) { \n                                                (credentialState, error) in\n    switch(credentialState) {\n    case .authorized:\n        // Sign in with Apple credential Valid\n    case .revoked:\n        // Sign in with Apple credential Revoked, Sign out\n    case .notFound:\n        // Credential was not found, fallback to login screen\n    case .transferred:\n        // Application was recently transferred, refresh User Identifier\n    @unknown default:\n        break\n    }\n}"
+    },
+    {
+      "title": "Migrate a user identifier",
+      "language": "swift",
+      "startTimeSeconds": 660,
+      "code": "// Migrating a user identifier\n\nlet request = ASAuthorizationAppleIDProvider().createRequest()\nrequest.requestedScopes = [.fullName, .email]\n\nrequest.user = getStoredUserIdentifier()\n\nrequest.nonce = myNonceString()\nrequest.state = myStateString()\n\nlet controller = ASAuthorizationController(authorizationRequests: [request])\n\ncontroller.delegate = self\ncontroller.presentationContextProvider = self\n\ncontroller.performRequests()"
+    },
+    {
+      "title": "Create a Sign in with Apple button",
+      "language": "swift",
+      "startTimeSeconds": 834,
+      "code": "// SwiftUI example:\n\nSignInWithAppleButton(.signIn) {\n    onRequest: { (request) in\n        request.requestedScopes = [.fullName, .email]\n        request.nonce = myNonceString()\n        request.state = myStateString()\n    }\n    onCompletion: { (result) in\n        switch result {\n        case .success(let authorization):\n            // Handle Authorization\n        case .failure(let error)\n            // Handle Failure\n        }\n    }\n}.signInWithAppleButtonStyle(.black)"
+    },
+    {
+      "title": "convertAccountToSignInWithAppleWithoutUserInteraction",
+      "language": "swift",
+      "startTimeSeconds": 1515,
+      "code": "enum VerificationResult : Int { case success; case failure; case twoFactorAuthRequired;\n\noverride func convertAccountToSignInWithAppleWithoutUserInteraction(\n    for serviceIdentifier: ASCredentialServiceIdentifier, \n    existingCredential: ASPasswordCredential\n) {\n    verifyCredential(existingCredential) { (result: VerificationResult) in\n        switch result {\n        case .failure:\n            self.extensionContext.cancelRequest(withError: \n                ASExtensionError(.failed))\n        case .success:\n          self.extensionContext.getSignInWithAppleAuthorizationWithState(state: myStateString(),\n                                                                         nonce: myNonceString(),      \n                                                                         {…}        \n        case .twoFactorAuthRequired:\n            self.extensionContext.cancelRequest(withError: \n                ASExtensionError(.userInteractionRequired))\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Sign in with Apple",
+      "url": "https://developer.apple.com/design/Human-Interface-Guidelines/sign-in-with-apple",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/Human-Interface-Guidelines/sign-in-with-apple"
+    },
+    {
+      "title": "Sign In with Apple",
+      "url": "https://developer.apple.com/sign-in-with-apple/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/sign-in-with-apple/"
+    },
+    {
+      "title": "Implementing User Authentication with Sign in with Apple",
+      "url": "https://developer.apple.com/documentation/AuthenticationServices/implementing-user-authentication-with-sign-in-with-apple",
+      "type": "samplecode",
+      "description": "Provide a way for users of your app to set up an account and start using your services.",
+      "sosumiURL": "https://sosumi.ai/documentation/AuthenticationServices/implementing-user-authentication-with-sign-in-with-apple",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AuthenticationServices/implementing-user-authentication-with-sign-in-with-apple.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10173/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10173/metadata.json",
+    "readme": "sessions/wwdc2020/10173/README.md",
+    "transcript": "sessions/wwdc2020/10173/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10173/transcript.json"
+  }
+}

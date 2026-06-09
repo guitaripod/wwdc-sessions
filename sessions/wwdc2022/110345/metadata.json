@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-110345",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 110345,
+  "title": "What’s new in Endpoint Security",
+  "description": "Learn how you can build reliable endpoint security products like anti-virus software, endpoint detection and response, and data leakage prevention solutions for macOS. We'll take you through the latest enhancements to Endpoint Security APIs: Learn how you can support more security events and use advanced muting capabilities in your app. We'll also explore a standalone tool to help you perform introspection from the command line.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/110345",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/110345",
+  "type": "Video",
+  "publishedAt": "2022-06-08T08:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [
+    "authentication",
+    "eslogger",
+    "gatekeeper",
+    "kauth",
+    "kernel",
+    "login",
+    "logout",
+    "malware",
+    "openbsm",
+    "xprotect"
+  ],
+  "topics": [
+    "Business & Education",
+    "Privacy & Security"
+  ],
+  "primaryTopic": "Privacy & Security",
+  "duration": 614,
+  "hasTranscript": true,
+  "transcriptWordCount": 1362,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110345/4/D78059C0-3932-4CAA-8B45-098BEB4ACF45/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110345/4/D78059C0-3932-4CAA-8B45-098BEB4ACF45/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110345/4/D78059C0-3932-4CAA-8B45-098BEB4ACF45/downloads/wwdc2022-110345_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110345/4/D78059C0-3932-4CAA-8B45-098BEB4ACF45/downloads/wwdc2022-110345_hd.mp4",
+    "duration": 614
+  },
+  "codeSnippets": [
+    {
+      "title": "Target path muting",
+      "language": "swift",
+      "startTimeSeconds": 269,
+      "code": "// Mute events operating on /var/log\nes_mute_path(client, \"/private/var/log\", ES_MUTE_PATH_TYPE_TARGET_PREFIX)\n\n// Mute write events to /dev/null\nvar events = [ ES_EVENT_TYPE_NOTIFY_WRITE ]\nes_mute_path_events(client, \"/dev/null\", ES_MUTE_PATH_TYPE_TARGET_LITERAL,\n                    &events, events.count)"
+    },
+    {
+      "title": "Mute inversion",
+      "language": "swift",
+      "startTimeSeconds": 308,
+      "code": "// Invert muting for target paths\nes_invert_muting(client, ES_MUTE_INVERSION_TYPE_TARGET_PATH)\n\n// Select only events pertaining to /Library/LaunchDaemons\nes_unmute_all_target_paths(client)\nes_mute_path(client, \"/Library/LaunchDaemons\", ES_MUTE_PATH_TYPE_TARGET_PREFIX)"
+    },
+    {
+      "title": "Use eslogger to observe ssh login and logout events",
+      "language": "bash",
+      "startTimeSeconds": 488,
+      "code": "sudo eslogger openssh_login openssh_logout >out.jsonl"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Endpoint Security",
+      "url": "https://developer.apple.com/documentation/EndpointSecurity",
+      "type": "documentation",
+      "description": "Develop system extensions that enhance user security.",
+      "sosumiURL": "https://sosumi.ai/documentation/EndpointSecurity",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/EndpointSecurity.json"
+    },
+    {
+      "title": "Monitoring System Events with Endpoint Security",
+      "url": "https://developer.apple.com/documentation/EndpointSecurity/monitoring-system-events-with-endpoint-security",
+      "type": "samplecode",
+      "description": "Receive notifications and authorization requests for sensitive operations by creating an Endpoint Security client for your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/EndpointSecurity/monitoring-system-events-with-endpoint-security",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/EndpointSecurity/monitoring-system-events-with-endpoint-security.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/110345/",
+  "files": {
+    "metadata": "sessions/wwdc2022/110345/metadata.json",
+    "readme": "sessions/wwdc2022/110345/README.md",
+    "transcript": "sessions/wwdc2022/110345/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/110345/transcript.json"
+  }
+}

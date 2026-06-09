@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10171",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10171,
+  "title": "Meet in-app events on the App Store",
+  "description": "Discover how you can promote timely events happening in your apps and games — like a game competition, a movie premiere, and more — directly on the App Store. We’ll show you how in-app events now appear on the App Store and how to create, schedule, and manage them in App Store Connect.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10171",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10171",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "engage",
+    "engagement"
+  ],
+  "topics": [
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 854,
+  "hasTranscript": true,
+  "transcriptWordCount": 2390,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10171/4/70981448-BDD3-40FE-8EE5-7B1F60FCAFB9/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10171/4/70981448-BDD3-40FE-8EE5-7B1F60FCAFB9/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10171/4/70981448-BDD3-40FE-8EE5-7B1F60FCAFB9/downloads/wwdc2021-10171_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10171/4/70981448-BDD3-40FE-8EE5-7B1F60FCAFB9/downloads/wwdc2021-10171_hd.mp4",
+    "duration": 854
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "In-App Events",
+      "url": "https://developer.apple.com/app-store/in-app-events/?cid=developer80",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/app-store/in-app-events/?cid=developer80"
+    },
+    {
+      "title": "App Store Connect",
+      "url": "https://developer.apple.com/app-store-connect/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/app-store-connect/"
+    },
+    {
+      "title": "App Store Connect API",
+      "url": "https://developer.apple.com/documentation/AppStoreConnectAPI",
+      "type": "documentation",
+      "description": "The data structure that represents an app store connect api resource.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppStoreConnectAPI",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppStoreConnectAPI.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10171/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10171/metadata.json",
+    "readme": "sessions/wwdc2021/10171/README.md",
+    "transcript": "sessions/wwdc2021/10171/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10171/transcript.json"
+  }
+}

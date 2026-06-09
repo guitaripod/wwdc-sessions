@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2026-324",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 324,
+  "title": "Meet Core AI",
+  "description": "Discover Core AI, Apple’s new framework for on-device AI model deployment. Tour the ecosystem, from Python libraries for converting, authoring, and optimizing models, to a Swift API for simple plug-and-play inference and advanced use cases with strict latency and memory requirements. Explore the new Core AI models repository with ready-to-run examples for popular architectures. See how deep Xcode integration, including ahead-of-time model compilation, streamlines the workflow so you can deliver smarter, more responsive app experiences.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/324",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/324",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1243,
+  "hasTranscript": true,
+  "transcriptWordCount": 3348,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/324/4/3b67b624-4060-495f-9ba7-659805ee6b88/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/324/4/3b67b624-4060-495f-9ba7-659805ee6b88/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/324/4/3b67b624-4060-495f-9ba7-659805ee6b88/downloads/wwdc2026-324_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/324/4/3b67b624-4060-495f-9ba7-659805ee6b88/downloads/wwdc2026-324_hd.mp4",
+    "duration": 1243
+  },
+  "codeSnippets": [
+    {
+      "title": "Convert a PyTorch model to Core AI",
+      "language": "python",
+      "startTimeSeconds": 308,
+      "code": "import torch\nimport coreai_torch\n# Load trained snake model and sample input for tracing\npt_model = SnakeTransformer().load_checkpoint(\"snake.pt\")\nexample  = torch.randn(1, 5, 16)\n\n# Export the torch program including dynamic shape for input sequence\nseq_len  = torch.export.Dim(\"seq_len\", min=1, max=256)\nexported = torch.export.export(\n    pt_model, args=(example,), \n    dynamic_shapes={\"features\": {1: seq_len}},\n)\nexported = exported.run_decompositions(coreai_torch.get_decomp_table())\n\n# Convert torch graph → Core AI graph\nai_program = coreai_torch.TorchConverter().add_exported_program(\n    exported, input_names=[\"features\"], output_names=[\"logits\"],\n).to_coreai()\n\n# Save as a .aimodel asset the runtime can load\nai_program.save_asset(\"SnakeTransformer.aimodel\")"
+    },
+    {
+      "title": "Verify converted model numerics",
+      "language": "python",
+      "startTimeSeconds": 344,
+      "code": "import torch\nimport numpy as np\nfrom coreai. runtime import AIModel, NDArray\n# Load models\npt_model = SnakeTransformer().load_checkpoint(\"snake.pt\")\nai_model = await AIModel.load(\"SnakeTransformer.aimodel\")\nfunction = ai_model.load_function(\"main\")\n# Assemble input sample - 10 frames of 16-dim game features, shape (1, 10, 16)\nfeatures = np.array(lextract_features(game) for - in range (10)],\ndtype=np.float32)[np.newaxis]\n# PyTorch reference\nwith torch.no_grad():\n\tpytorch_logits = pt_model(torch.from_numpy(features)) . numpy )[0, -1]\n# Core AI inference\nresult = await function({ \"features\": NDArray(data=features)} )\ncoreai_logits = result[\"logits\"]. numpy()[0, -1]\n# Validate\nmax_diff = np.max(np.abs(pytorch_logits - coreai_logits))\n\tassert max_diff < 0.01"
+    },
+    {
+      "title": "Core AI framework core types",
+      "language": "swift",
+      "startTimeSeconds": 461,
+      "code": "// Core types within Core AI\nimport CoreAI\n\n// Load the '.aimodel' file\nlet model = try await AIModel(contentsOf: modelURL)\n\n// Load the main inference function\nlet mainFunction: InferenceFunction = try model.loadFunction(named: \"main\")!\n\n// Construct the n-dimensional input data\nlet inputNDArray: NDArray = nextInput()\n\n// Run inference\nvar outputs = try await mainFunction.run(inputs: [\"input\": inputNDArray])\n\nguard let outputNDArray = outputs.remove(\"output\")?.ndArray else {\n  // Handle unexpected missing output\n}"
+    },
+    {
+      "title": "Initialize ModelPlayer with AIModel",
+      "language": "swift",
+      "startTimeSeconds": 513,
+      "code": "// Initialize the player by loading the AIModel and InferenceFunction\nstruct ModelPlayer {\n  let nextActionFunction: InferenceFunction\n\n  init(modelURL: URL) async throws {\n    let model = try await AIModel(contentsOf: modelURL)\n    self.nextActionFunction = try model.loadFunction(named: \"main\")!\n  }\n}"
+    },
+    {
+      "title": "Run inference with NDArray inputs",
+      "language": "swift",
+      "startTimeSeconds": 529,
+      "code": "extension ModelPlayer: SnakePlayer {\n\n  mutating func chooseAction(game: SnakeGame) async throws -> Direction {\n\n    // Create an NDArray for the next input and write board features into it\n    var inputFeatures = NDArray(shape: [game.stepCount, hiddenDim], scalarType: .float32)\n    writeFeatures(of: game, into: inputFeatures.mutableView())\n\n    // Run inference and extract the expected logits output NDArray\n    var outputs = try await nextActionFunction.run(inputs: [\"features\": inputFeatures])\n    guard let logits = outputs.remove(\"logits\")?.ndArray else {\n      throw ModelError.missingOutput\n    }\n\n    return predictedDirection(from: logits.view())\n  }\n\n  func writeFeatures(of game: SnakeGame, into view: consuming NDArray.MutableView<Float>) { … }\n  func predictedDirection(from logits: NDArray.View<Float>) -> Direction { … }\n}"
+    },
+    {
+      "title": "Input features for the snake model",
+      "language": "swift",
+      "startTimeSeconds": 610,
+      "code": "// Features at each time step\nvar features = [Float]()\n\n// Distance to wall in all directions, normalized between [0, 1]\nfeatures += [dWallUp, dWallDown, dWallLeft, dWallRight]\n\n// Distance to nearest food, normalized between [-1, 1]\nfeatures += [dFoodX, dFoodY]\n\n// Direction encoded as one-hot: [1,0,0,0]=up, [0,1,0,0]=down, etc.\nfeatures += dir.oneHotEncoding\n\n// Distance to the other snake, normalized to [-1, 1]\nfeatures += [dUserX, dUserY]\n\n// Direction of the opponent snake\nfeatures += dirU.oneHotEncoding"
+    },
+    {
+      "title": "Add KV cache buffers to PyTorch module",
+      "language": "python",
+      "startTimeSeconds": 738,
+      "code": "# Update torch module to include key and value caches\n# Use register_buffer to later make the exported torch program treat them as mutable\n\nclass SnakeTransformerStateful(nn.Module):\n    def __init__(self, ...):\n        super().__init__()\n        self.register_buffer(\n            \"k_cache\", torch.zeros(N_LAYERS, 1, MAX_SEQ_LEN, D_MODEL))\n        self.register_buffer(\n            \"v_cache\", torch.zeros(N_LAYERS, 1, MAX_SEQ_LEN, D_MODEL))\n        # …"
+    },
+    {
+      "title": "Update forward pass to read/write KV caches",
+      "language": "python",
+      "startTimeSeconds": 770,
+      "code": "# During forward pass, read/write KV caches\n\nclass SnakeTransformerStateful(nn.Module):\n\n    def forward(self, features, position_ids):\n        new_k, new_v = [], []\n        for i, block in enumerate(self.blocks):\n            # read previous keys/values from caches\n            k_prev = self.k_cache[i]\n            v_prev = self.v_cache[i]\n            # ... compute q/k/v for the new token, attend over valid prefix ...\n            new_k.append(k_updated)\n            new_v.append(v_updated)\n\n        # Update key/value caches\n        self.k_cache.copy_(torch.stack(new_k))\n        self.v_cache.copy_(torch.stack(new_v))\n\n        return self.action_head(self.ln_final(x))"
+    },
+    {
+      "title": "Re-convert model with state names",
+      "language": "python",
+      "startTimeSeconds": 779,
+      "code": "# Updated coreai-torch conversion code using key/value cache states\nimport torch\nimport coreai_torch\n\nexported = torch.export.export(\n    stateful_model,\n    args=(example_features, example_position_ids),\n    dynamic_shapes={\"position_ids\": {1: seq_len}},\n)\nexported = exported.run_decompositions(coreai_torch.get_decomp_table())\n\nai_program = coreai_torch.TorchConverter().add_exported_program(\n    exported,\n    input_names=[\"features\", \"position_ids\"],\n    state_names=[\"keyCache\", \"valueCache\"],\n    output_names=[\"logits\"],\n).to_coreai()\n\nai_program.save_asset(\"SnakeTransformer.aimodel\")"
+    },
+    {
+      "title": "Store KV cache NDArrays in ModelPlayer",
+      "language": "swift",
+      "startTimeSeconds": 797,
+      "code": "// Add stored properties for the key and value caches\nstruct ModelPlayer {\n    let nextActionFunction: InferenceFunction\n\n    var keyCache: NDArray\n    var valueCache: NDArray\n\n    init(modelURL: URL) async throws {\n        let model = try await AIModel(contentsOf: modelURL)\n        self.nextActionFunction = try model.loadFunction(named: \"main\")!\n\n        self.keyCache = NDArray(shape: [layers, maxContext, hiddenDim], scalarType: .float32)\n        self.valueCache = NDArray(shape: [layers, maxContext, hiddenDim], scalarType: .float32)\n    }\n}"
+    },
+    {
+      "title": "Pass state views to inference function",
+      "language": "swift",
+      "startTimeSeconds": 825,
+      "code": "extension ModelPlayer: SnakePlayer {\n    mutating func chooseAction(game: SnakeGame, snakeID: Int) async throws -> Direction {\n        // …\n\n        var stateViews = InferenceFunction.MutableViews()\n        stateViews.insert(&keyCache, for: \"keyCache\")\n        stateViews.insert(&valueCache, for: \"valueCache\")\n\n        // Run inference and extract the expected logits output NDArray\n        var outputs = try await nextActionFunction.run(\n            inputs: [\"features\": inputFeatures],\n            states: stateViews)\n        // …\n    }\n}"
+    },
+    {
+      "title": "Check model cache before loading",
+      "language": "swift",
+      "startTimeSeconds": 982,
+      "code": "// Check if your model can be loaded from the cache\nlet cache = AIModelCache.default\n\nguard let model = try cache.model(for: modelURL, options: .default) else {\n    Task { @MainActor in\n        informUser(\"Preparing AI features. This may take a while…\")\n    }\n}"
+    },
+    {
+      "title": "Request model specialization",
+      "language": "swift",
+      "startTimeSeconds": 1002,
+      "code": "// Explicitly request specialization\ntry await AIModel.specialize(contentsOf: modelURL)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Core AI PyTorch Extensions",
+      "url": "https://apple.github.io/coreai-torch",
+      "type": "documentation",
+      "description": "Bring PyTorch models to Core AI for on-device execution."
+    },
+    {
+      "title": "Core AI Python",
+      "url": "https://apple.github.io/coreai-torch/main/coreai-core",
+      "type": "documentation",
+      "description": "Python package for building and running AI Models on Apple hardware."
+    },
+    {
+      "title": "Core AI Optimization",
+      "url": "https://apple.github.io/coreai-optimization",
+      "type": "documentation",
+      "description": "A library for model compression, quantization and related optimizations."
+    },
+    {
+      "title": "Core AI",
+      "url": "https://developer.apple.com/documentation/CoreAI",
+      "type": "documentation",
+      "description": "Run AI models in your app on Apple silicon.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreAI",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreAI.json"
+    },
+    {
+      "title": "Compiling Core AI models ahead of time",
+      "url": "https://developer.apple.com/documentation/CoreAI/compiling-core-ai-models-ahead-of-time",
+      "type": "documentation",
+      "description": "Reduce on-device specialization time by compiling Core AI models at build time.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreAI/compiling-core-ai-models-ahead-of-time",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreAI/compiling-core-ai-models-ahead-of-time.json"
+    },
+    {
+      "title": "Managing model specialization and caching",
+      "url": "https://developer.apple.com/documentation/CoreAI/managing-model-specialization-and-caching",
+      "type": "documentation",
+      "description": "Configure model specialization, manage cached assets, and reduce your app’s storage footprint.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreAI/managing-model-specialization-and-caching",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreAI/managing-model-specialization-and-caching.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/324/",
+  "files": {
+    "metadata": "sessions/wwdc2026/324/metadata.json",
+    "readme": "sessions/wwdc2026/324/README.md",
+    "transcript": "sessions/wwdc2026/324/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/324/transcript.json"
+  }
+}

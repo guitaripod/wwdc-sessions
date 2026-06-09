@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10184",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10184,
+  "title": "A Swift Tour: Explore Swift’s features and design",
+  "description": "Learn the essential features and design philosophy of the Swift programming language. We’ll explore how to model data, handle errors, use protocols, write concurrent code, and more while building up a Swift package that has a library, an HTTP server, and a command line client. Whether you’re just beginning your Swift journey or have been with us from the start, this talk will help you get the most out of the language.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10184",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10184",
+  "type": "Video",
+  "publishedAt": "2024-06-11T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "Essentials",
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 1656,
+  "hasTranscript": true,
+  "transcriptWordCount": 4497,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10184/4/9805A8C3-1B6A-43C6-AA4B-C8A8FBBECE62/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10184/4/9805A8C3-1B6A-43C6-AA4B-C8A8FBBECE62/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10184/4/9805A8C3-1B6A-43C6-AA4B-C8A8FBBECE62/downloads/wwdc2024-10184_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10184/4/9805A8C3-1B6A-43C6-AA4B-C8A8FBBECE62/downloads/wwdc2024-10184_hd.mp4",
+    "duration": 1656
+  },
+  "codeSnippets": [
+    {
+      "title": "Integer variables",
+      "language": "swift",
+      "startTimeSeconds": 109,
+      "code": "var x: Int = 1\nvar y: Int = x\nx = 42\ny"
+    },
+    {
+      "title": "User struct",
+      "language": "swift",
+      "startTimeSeconds": 184,
+      "code": "struct User {\n    let username: String\n    var isVisible: Bool = true\n    var friends: [String] = []\n}\n\nvar alice = User(username: \"alice\")\nalice.friends = [\"charlie\"]\n\nvar bruno = User(username: \"bruno\")\nbruno.friends = alice.friends\n\nalice.friends.append(\"dash\")\nbruno.friends"
+    },
+    {
+      "title": "User struct error handling",
+      "language": "swift",
+      "startTimeSeconds": 185,
+      "code": "struct User {\n    let username: String\n    var isVisible: Bool = true\n    var friends: [String] = []\n\n    mutating func addFriend(username: String) throws {\n        guard username != self.username else {\n            throw SocialError.befriendingSelf\n        }\n        guard !friends.contains(username) else {\n            throw SocialError.duplicateFriend(username: username)\n        }\n        friends.append(username)\n    }\n}\n\nenum SocialError: Error {\n    case befriendingSelf\n    case duplicateFriend(username: String)\n}\n\nvar alice = User(username: \"alice\")\ndo {\n    try alice.addFriend(username: \"charlie\")\n    try alice.addFriend(username: \"charlie\")\n} catch {\n    error\n}\n\nvar allUsers = [\n    \"alice\": alice\n]\n\nfunc findUser(_ username: String) -> User? {\n    allUsers[username]\n}\n\nif let charlie = findUser(\"charlie\") {\n    print(\"Found \\(charlie)\")\n} else {\n    print(\"charlie not found\")\n}\n\nlet dash = findUser(\"dash\")!"
+    },
+    {
+      "title": "SocialGraph package manifest",
+      "language": "swift",
+      "startTimeSeconds": 661,
+      "code": "// swift-tools-version: 6.0\n\nimport PackageDescription\n\nlet package = Package(\n    name: \"SocialGraph\",\n    products: [\n        .library(\n            name: \"SocialGraph\",\n            targets: [\"SocialGraph\"]),\n    ],\n    dependencies: [\n      .package(url: \"https://github.com/apple/swift-testing.git\", branch: \"main\"),\n    ],\n    targets: [\n        .target(\n            name: \"SocialGraph\"),\n        .testTarget(\n            name: \"SocialGraphTests\",\n            dependencies: [\n                \"SocialGraph\",\n                .product(name: \"Testing\", package: \"swift-testing\"),\n            ]),\n    ]\n)"
+    },
+    {
+      "title": "User struct",
+      "language": "swift",
+      "startTimeSeconds": 672,
+      "code": "/// Represents a user in the social graph.\npublic struct User: Equatable, Hashable {\n    /// The user's username, which must be unique in the service.\n    public let username: String\n\n    /// Whether or not the user should be considered visible\n    /// when performing queries.\n    public var isVisible: Bool\n\n    /// The usernames of the user's friends.\n    public private(set) var friends: [String]\n\n    public init(\n        username: String,\n        isVisible: Bool = true,\n        friends: [String] = []\n    ) {\n        self.username = username\n        self.isVisible = isVisible\n        self.friends = friends\n    }\n\n    /// Adds a username to the user's list of friends. Throws an\n    /// error if the username cannot be added.\n    public mutating func addFriend(username: String) throws {\n        guard username != self.username else {\n            throw SocialError.befriendingSelf\n        }\n        guard !friends.contains(username) else {\n            throw SocialError.alreadyFriend(username: username)\n        }\n        friends.append(username)\n    }\n}"
+    },
+    {
+      "title": "Classes",
+      "language": "swift",
+      "startTimeSeconds": 756,
+      "code": "class Pet {\n    func speak() {}\n}\n\nclass Cat: Pet {\n    override func speak() { print(\"meow\") }\n\n    func purr() { print(\"purr\") }\n}\n\nlet pet: Pet = Cat()\npet.speak()\n\nif let cat = pet as? Cat {\n    cat.purr()\n}"
+    },
+    {
+      "title": "Automatic reference counting",
+      "language": "swift",
+      "startTimeSeconds": 779,
+      "code": "class Pet {\n    var toy: Toy?\n}\n\nclass Toy {}\n\nlet toy = Toy()\nlet pets = [Pet()]\n\n// Give toy to pets\nfor pet in pets {\n    pet.toy = toy\n}\n\n// Take toy from pets\nfor pet in pets {\n    pet.toy = nil\n}"
+    },
+    {
+      "title": "Reference cycles",
+      "language": "swift",
+      "startTimeSeconds": 806,
+      "code": "class Pet {\n    weak var owner: Owner?\n}\n\nclass Owner {\n    var pets: [Pet]\n}"
+    },
+    {
+      "title": "Protocols",
+      "language": "swift",
+      "startTimeSeconds": 860,
+      "code": "protocol StringIdentifiable {\n    var identifier: String { get }\n}\n\nextension User: StringIdentifiable {\n    var identifier: String {\n        username\n    }\n}"
+    },
+    {
+      "title": "Common capabilities of Collections",
+      "language": "swift",
+      "startTimeSeconds": 921,
+      "code": "let string = \"🥚🐣🐥🐓\"\nfor char in string {\n    print(char)\n}\n// => \"🥚\" \"🐣\" \"🐥\" \"🐓\"\n\nprint(string[string.startIndex])\n// => \"🥚\""
+    },
+    {
+      "title": "Collection algorithms",
+      "language": "swift",
+      "startTimeSeconds": 931,
+      "code": "let numbers = [1, 4, 7, 10, 13]\n\nlet numberStrings = numbers.map { number in\n    String(number)\n}\n// => [\"1\", \"4\", \"7\", \"10\", \"13\"]\n\nlet primeNumbers = numbers.filter { number in\n    number.isPrime\n}\n// => [1, 7, 13]\n\nlet sum = numbers.reduce(0) { partial, number in\n    partial + number\n}\n// => 35"
+    },
+    {
+      "title": "Collection algorithms with anonymous parameters",
+      "language": "swift",
+      "startTimeSeconds": 945,
+      "code": "let numbers = [1, 4, 7, 10, 13]\n\nlet numberStrings = numbers.map { String($0) }\n// => [\"1\", \"4\", \"7\", \"10\", \"13\"]\n\n\n\nlet primeNumbers = numbers.filter { $0.isPrime }\n// => [1, 7, 13]\n\n\n\nlet sum = numbers.reduce(0) { $0 + $1 }\n// => 35"
+    },
+    {
+      "title": "Friends of friends algorithm",
+      "language": "swift",
+      "startTimeSeconds": 973,
+      "code": "/// An in-memory store for users of the service.\npublic class UserStore {\n    var allUsers: [String: User] = [:]\n}\n\nextension UserStore {\n    /// If the username maps to a User and that user is visible,\n    /// returns the User. Returns nil otherwise.\n    public func lookUpUser(_ username: String) -> User? {\n        guard let user = allUsers[username],\n              user.isVisible else {\n            return nil\n        }\n        return user\n    }\n\n    /// If the username maps to a User and that user is visible,\n    /// returns the User. Otherwise, throws an error.\n    public func user(for username: String) throws -> User {\n        guard let user = lookUpUser(username) else {\n            throw SocialError.userNotFound(username: username)\n        }\n        return user\n    }\n\n    public func friendsOfFriends(_ username: String) throws -> [String] {\n        let user = try user(for: username)\n        let excluded = Set(user.friends + [username])\n        return user.friends\n            .compactMap { lookUpUser($0) }      // [String] -> [User]\n            .flatMap { $0.friends }             // [User] -> [String]\n            .filter { !excluded.contains($0) }  // drop excluded\n            .uniqued()\n    }\n}\n\nextension Collection where Element: Hashable {\n    func uniqued() -> [Element] {\n        let unique = Set(self)\n        return Array(unique)\n    }\n}"
+    },
+    {
+      "title": "async/await",
+      "language": "swift",
+      "startTimeSeconds": 1163,
+      "code": "/// Makes a network request to download an image.\nfunc fetchUserAvatar(for username: String) async -> Image {\n    // ...\n}\n\nlet avatar = await fetchUserAvatar(for: \"alice\")"
+    },
+    {
+      "title": "Server",
+      "language": "swift",
+      "startTimeSeconds": 1183,
+      "code": "import Hummingbird\nimport SocialGraph\n\nlet router = Router()\n\nextension UserStore {\n    static let shared = UserStore.makeSampleStore()\n}\n\nlet app = Application(\n    router: router,\n    configuration: .init(address: .hostname(\"127.0.0.1\", port: 8080))\n)\n\nprint(\"Starting server...\")\ntry await app.runService()"
+    },
+    {
+      "title": "Data race example",
+      "language": "swift",
+      "startTimeSeconds": 1220,
+      "code": "// Look up user\nlet user = allUsers[username]\n\n// Store new user\nallUsers[username] = user\n\n// UserStore\nvar allUsers: [String: User]"
+    },
+    {
+      "title": "Server with friendsOfFriends route",
+      "language": "swift",
+      "startTimeSeconds": 1344,
+      "code": "import Hummingbird\nimport SocialGraph\n\nlet router = Router()\n\nextension UserStore {\n    static let shared = UserStore.makeSampleStore()\n}\n\nrouter.get(\"friendsOfFriends\") { request, context -> [String] in\n    let username = try request.queryArgument(for: \"username\")\n    return try await UserStore.shared.friendsOfFriends(username)\n}\n\nlet app = Application(\n    router: router,\n    configuration: .init(address: .hostname(\"127.0.0.1\", port: 8080))\n)\n\nprint(\"Starting server...\")\ntry await app.runService()"
+    },
+    {
+      "title": "Property wrappers",
+      "language": "swift",
+      "startTimeSeconds": 1407,
+      "code": "struct FriendsOfFriends: AsyncParsableCommand {\n    @Argument var username: String\n\n    mutating func run() async throws {\n        // ...\n    }\n}"
+    },
+    {
+      "title": "SocialGraph command line client",
+      "language": "swift",
+      "startTimeSeconds": 1437,
+      "code": "import ArgumentParser\nimport SocialGraph\n\n@main\nstruct SocialGraphClient: AsyncParsableCommand {\n    static let configuration = CommandConfiguration(\n        abstract: \"A utility for querying the social graph\",\n        subcommands: [\n            FriendsOfFriends.self,\n        ])\n}\n\nstruct FriendsOfFriends: AsyncParsableCommand {\n    @Argument(help: \"The username to look up friends of friends for\")\n    var username: String\n\n    func run() async throws {\n        var request = Request(command: \"friendsOfFriends\", returning: [String].self)\n        request.arguments = [\"username\" : username]\n        let result = try await request.get()\n        print(result)\n    }\n}"
+    },
+    {
+      "title": "Result builders",
+      "language": "swift",
+      "startTimeSeconds": 1567,
+      "code": "import RegexBuilder\n\nlet dollarValueRegex = Regex {  // Equivalent to \"\\$[0-9]+\\.[0-9][0-9]\"\n    \"$\"\n    OneOrMore(.digit)\n    \".\"\n    Repeat(.digit, count: 2)\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Tools used: Windows",
+      "url": "https://www.microsoft.com/en-us/windows/",
+      "type": "guide",
+      "description": "Learn more about Windows."
+    },
+    {
+      "title": "Tools used: Visual Studio Code",
+      "url": "https://code.visualstudio.com",
+      "type": "guide",
+      "description": "Learn more about Visual Studio Code"
+    },
+    {
+      "title": "Tools used: Ubuntu",
+      "url": "https://ubuntu.com/desktop",
+      "type": "guide",
+      "description": "Learn more about Ubuntu."
+    },
+    {
+      "title": "Wrapping C/C++ Library in Swift",
+      "url": "https://www.swift.org/documentation/articles/wrapping-c-cpp-library-in-swift.html",
+      "type": "documentation",
+      "description": "Swift.org article on wrapping C/C++ libraries in Swift"
+    },
+    {
+      "title": "Value and Reference types",
+      "url": "https://www.swift.org/documentation/articles/value-and-reference-types.html",
+      "type": "documentation",
+      "description": "Swift.org article on value and reference types"
+    },
+    {
+      "title": "Forum: Programming Languages",
+      "url": "https://developer.apple.com/forums/topics/programming-languages-topic?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/programming-languages-topic?cid=vf-a-0010"
+    },
+    {
+      "title": "The Swift Programming Language",
+      "url": "https://docs.swift.org/swift-book/",
+      "type": "guide",
+      "description": "The definitive guide to Swift, Apple’s programming language for building iOS, macOS, watchOS, and tvOS apps."
+    }
+  ],
+  "path": "sessions/wwdc2024/10184/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10184/metadata.json",
+    "readme": "sessions/wwdc2024/10184/README.md",
+    "transcript": "sessions/wwdc2024/10184/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10184/transcript.json"
+  }
+}

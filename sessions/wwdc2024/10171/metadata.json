@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10171",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10171,
+  "title": "Demystify explicitly built modules",
+  "description": "Explore how builds are changing in Xcode 16 with explicitly built modules. Discover how modules are used to build your code, how explicitly built modules improve transparency in compilation tasks, and how you can optimize your build by sharing modules across targets.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10171",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10171",
+  "type": "Video",
+  "publishedAt": "2024-06-12T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 928,
+  "hasTranscript": true,
+  "transcriptWordCount": 2120,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10171/4/7E1A626A-DE4F-4DEB-A2D9-ECCAAD10A34F/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10171/4/7E1A626A-DE4F-4DEB-A2D9-ECCAAD10A34F/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10171/4/7E1A626A-DE4F-4DEB-A2D9-ECCAAD10A34F/downloads/wwdc2024-10171_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10171/4/7E1A626A-DE4F-4DEB-A2D9-ECCAAD10A34F/downloads/wwdc2024-10171_hd.mp4",
+    "duration": 928
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Forum: Developer Tools & Services",
+      "url": "https://developer.apple.com/forums/topics/developer-tools-and-services?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/developer-tools-and-services?cid=vf-a-0010"
+    }
+  ],
+  "path": "sessions/wwdc2024/10171/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10171/metadata.json",
+    "readme": "sessions/wwdc2024/10171/README.md",
+    "transcript": "sessions/wwdc2024/10171/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10171/transcript.json"
+  }
+}

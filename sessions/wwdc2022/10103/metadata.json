@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10103",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10103,
+  "title": "Boost performance with MetalFX Upscaling",
+  "description": "Discover MetalFX, a new API that provides platform optimized graphics effects for Metal applications. With MetalFX Upscaling, your application can now render frames at a lower resolution, reducing rendering time, without compromising rendering quality. We'll also show you how and when to use its two effects: spatial upscaling, which delivers substantial performance gains, and temporal AA and upscaling, which delivers the highest quality rendering.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10103",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10103",
+  "type": "Video",
+  "publishedAt": "2022-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "game dev",
+    "game developer",
+    "games",
+    "metal",
+    "metal 3",
+    "metalfx",
+    "metalfx upscaling",
+    "metal tools",
+    "performance"
+  ],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1331,
+  "hasTranscript": true,
+  "transcriptWordCount": 3167,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10103/7/0DA14AB6-97A2-4E95-A960-E27CBC5E5012/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10103/7/0DA14AB6-97A2-4E95-A960-E27CBC5E5012/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10103/7/0DA14AB6-97A2-4E95-A960-E27CBC5E5012/downloads/wwdc2022-10103_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10103/7/0DA14AB6-97A2-4E95-A960-E27CBC5E5012/downloads/wwdc2022-10103_hd.mp4",
+    "duration": 1331
+  },
+  "codeSnippets": [
+    {
+      "title": "Spatial upscaling (initialization)",
+      "language": "swift",
+      "startTimeSeconds": 219,
+      "code": "// Spatial upscaling (initialization)\n\nlet desc = MTLFXSpatialScalerDescriptor()\ndesc.inputWidth = 1280\ndesc.inputHeight = 720\ndesc.outputWidth = 2560\ndesc.outputHeight = 1440\ndesc.colorTextureFormat = .bgra8Unorm_srgb\ndesc.outputTextureFormat = .bgra8Unorm_srgb\ndesc.colorProcessingMode = .perceptual\n\nspatialScaler = desc.makeSpatialScaler(device: mtlDevice)"
+    },
+    {
+      "title": "Spatial upscaling (per frame)",
+      "language": "swift",
+      "startTimeSeconds": 556,
+      "code": "// Spatial upscaling (per frame)\n\n// Encode Metal commands to draw game frame here...\n\n// Begin setting per frame properties for effect\nspatialScaler.colorTexture = currentFrameColor\nspatialScaler.outputTexture = currentFrameUpscaledColor\n\n// Encode scaling effect into command buffer\nspatialScaler.encode(commandBuffer: cmdBuffer)\n\n// Encode Metal commands for particle/noise effects and game UI drawing for frame here..."
+    },
+    {
+      "title": "Temporal antialiasing and upscaling (initialization)",
+      "language": "swift",
+      "startTimeSeconds": 556,
+      "code": "// Temporal antialiasing and upscaling (initialization)\n\nlet desc = MTLFXTemporalScalerDescriptor()\ndesc.inputWidth = 1280\ndesc.inputHeight = 720\ndesc.outputWidth = 2560\ndesc.outputHeight = 1440\ndesc.colorTextureFormat = .rgba16Float\ndesc.depthTextureFormat = .depth32Float\ndesc.motionTextureFormat = .rg16Float\ndesc.outputTextureFormat = .rgba16Float\n\ntemporalScaler = desc.makeTemporalScaler(device: mtlDevice)\ntemporalScaler.motionVectorScale = CGPoint(x: 1280, y: 720)"
+    },
+    {
+      "title": "Temporal antialiasing and upscaling (per frame)",
+      "language": "swift",
+      "startTimeSeconds": 635,
+      "code": "// Temporal antialiasing and upscaling (per frame)\n\n// Encode Metal commands to draw game frame here...\n\n// Setup per frame effect properties\ntemporalScaler.resetHistory = firstFrameOrSceneCut\ntemporalScaler.colorTexture = currentFrameColor\ntemporalScaler.depthTexture = currentFrameDepth\ntemporalScaler.motionTexture = currentFrameMotion\ntemporalScaler.outputTexture = currentFrameUpscaledColor\ntemporalScaler.reversedDepth = reversedDepth\ntemporalScaler.jitterOffset = currentFrameJitterOffset\n\n// Encode scaling effect into commandBuffer\ntemporalScaler.encode(commandBuffer: cmdBuffer)\n\n// Encode Metal commands for post processing/game UI drawing for frame here..."
+    }
+  ],
+  "resources": [
+    {
+      "title": "Applying temporal antialiasing and upscaling using MetalFX",
+      "url": "https://developer.apple.com/documentation/MetalFX/applying-temporal-antialiasing-and-upscaling-using-metalfx",
+      "type": "samplecode",
+      "description": "Reduce render workloads while increasing image detail with MetalFX.",
+      "sosumiURL": "https://sosumi.ai/documentation/MetalFX/applying-temporal-antialiasing-and-upscaling-using-metalfx",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MetalFX/applying-temporal-antialiasing-and-upscaling-using-metalfx.json"
+    },
+    {
+      "title": "4K Video (WWDC22-10103)",
+      "url": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10103/7/0DA14AB6-97A2-4E95-A960-E27CBC5E5012/downloads/wwdc2022-10103_4k.mp4?dl=1",
+      "type": "download",
+      "description": "Download WWDC22-10103 in 4K."
+    },
+    {
+      "title": "MetalFX",
+      "url": "https://developer.apple.com/documentation/MetalFX",
+      "type": "documentation",
+      "description": "Boost your Metal app’s performance by upscaling lower-resolution content to save GPU time.",
+      "sosumiURL": "https://sosumi.ai/documentation/MetalFX",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MetalFX.json"
+    },
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10103/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10103/metadata.json",
+    "readme": "sessions/wwdc2022/10103/README.md",
+    "transcript": "sessions/wwdc2022/10103/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10103/transcript.json"
+  }
+}

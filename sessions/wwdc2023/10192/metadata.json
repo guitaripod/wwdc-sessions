@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10192",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10192,
+  "title": "Explore enhancements to RoomPlan",
+  "description": "Join us for an exciting update to RoomPlan as we explore MultiRoom support and enhancements to room representations. Learn how you can scan areas with more detail, capture multiple rooms, and merge individual scans into one larger structure. We’ll also share workflows and best practices when working with RoomPlan results that you want to combine into your existing 3D model library.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10192",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10192",
+  "type": "Video",
+  "publishedAt": "2023-06-06T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 1350,
+  "hasTranscript": true,
+  "transcriptWordCount": 2880,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10192/4/0D847FCD-B40B-4324-A284-F22B79E78F4D/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10192/4/0D847FCD-B40B-4324-A284-F22B79E78F4D/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10192/4/0D847FCD-B40B-4324-A284-F22B79E78F4D/downloads/wwdc2023-10192_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10192/4/0D847FCD-B40B-4324-A284-F22B79E78F4D/downloads/wwdc2023-10192_hd.mp4",
+    "duration": 1350
+  },
+  "codeSnippets": [
+    {
+      "title": "RoomPlan with custom ARSession",
+      "language": "swift",
+      "startTimeSeconds": 180,
+      "code": "// RoomCaptureSession\n\npublic class RoomCaptureSession {\n    // Init: ARSession is an optional input for RoomCaptureSession\n    public init(arSession: ARSession? = nil) {\n       ...\n  }\n\n    // Stop: pauseARSession is used for whether to continue ARSession experience\n    public func stop(pauseARSession: Bool = true) {\n       ...\n  }\n}"
+    },
+    {
+      "title": "MultiRoom support with Continuous ARSession",
+      "language": "swift",
+      "startTimeSeconds": 350,
+      "code": "// Continuous ARSession\n\n// start 1st scan\nroomCaptureSession.run(configuration: captureSessionConfig)\n\n// stop 1st scan with continuing ARSession\nroomCaptureSession.stop(pauseARSession: false)\n\n// start 2nd scan\nroomCaptureSession.run(configuration: captureSessionConfig)\n\n// stop 2nd scan (pauseARSession = true by default)\nroomCaptureSession.stop()"
+    },
+    {
+      "title": "MultiRoom capture with loading ARWorldMap",
+      "language": "swift",
+      "startTimeSeconds": 450,
+      "code": "// Capture with loading ARWorldMap\n\n// load ARWorldMap\nlet arWorldMap = try NSKeyedUnarchiver.unarchivedObject(ofClass: ARWorldMap.self, from: data)\n\n// run ARKit relocalization\nlet arWorldTrackingConfig = ARWorldTrackingConfiguration()\narWorldTrackingConfig.initialWorldMap = arWorldMap\nroomCaptureSession.init()\nroomCaptureSession.arSession.run(arWorldTrackingConfig, options: [])\n\n// Wait for relocalization to complete\n// start 2nd scan\nroomCaptureSession.run(configuration: captureSessionConfig)\n\n// stop 2nd scan\nroomCaptureSession.stop()"
+    },
+    {
+      "title": "StructureBuilder",
+      "language": "swift",
+      "startTimeSeconds": 580,
+      "code": "// StructureBuilder\n\n// create structureBuilder instance\nlet structureBuilder = StructureBuilder(option: [.beautifyObjects])\n\n// load multiple capturedRoom results to capturedRoomArray\nvar capturedRoomArray: [CapturedRoom] = []\n\n// run structureBuilder API to get capturedStructure\nlet capturedStructure = try await structureBuilder.capturedStructure(from: capturedRoomArray)\n\n// export capturedStructure to usdz\ntry capturedStructure.export(to: destinationURL)"
+    },
+    {
+      "title": "CapturedStructure",
+      "language": "swift",
+      "startTimeSeconds": 611,
+      "code": "// CapturedStructure\n\npublic struct CapturedStructure: Codable, Sendable {\n    public var rooms: [CapturedRoom]\n\n    public var walls: [Surface]\n    public var doors: [Surface]\n    public var windows: [Surface]\n    public var openings: [Surface]\n    public var objects: [Object]\n    public var floors: [Surface]\n    public var sections: [Section]\n\n    public func export(to url: URL, metadataURL: URL? = nil, modelProvider: ModelProvider? = nil, exportOptions: USDExportOptions = .mesh) throws\n}"
+    },
+    {
+      "title": "Parse attributes and categories to create folder hierarchy",
+      "language": "swift",
+      "startTimeSeconds": 1160,
+      "code": "// Parse attributes and categories to create folder hierarchy\n\nfor category in CapturedRoom.Object.Category.allCases {\n\n    let url = generateFolderURL(category: category, attributes: [])\n    FileManager.default.createDirectory(at: url, withIntermediateDirectories: true)\n\n    for attributes in category.supportedCombinations {\n        let url = generateFolderURL(category: category, attributes: attributes)\n        FileManager.default.createDirectory(at: url, withIntermediateDirectories: true)\n    }\n}"
+    },
+    {
+      "title": "Create a Catalog index",
+      "language": "swift",
+      "startTimeSeconds": 1200,
+      "code": "// Create a Catalog index\n\nstruct RoomPlanCatalog: Codable {\n    let categoryAttributes: [RoomPlanCatalogCategoryAttribute]\n}\n\nstruct RoomPlanCatalogCategoryAttribute: Codable {\n    enum CodingKeys: String, CodingKey {\n        case folderRelativePath\n        case category\n        case attributes\n        case modelFilename\n    }\n    let category: CapturedRoom.Object.Category\n    let attributes: [any CapturedRoomAttribute]\n    let folderRelativePath: String\n    private(set) var modelFilename: String? = nil\n\n    func encode(to encoder: Encoder) throws {\n       …\n    }\n}"
+    },
+    {
+      "title": "Create a Catalog bundle",
+      "language": "swift",
+      "startTimeSeconds": 1215,
+      "code": "//  Create a Catalog bundle\n\nlet catalog = RoomPlanCatalog(categoryAttributes: categoryAttributes)\nlet plistEncoder = PropertyListEncoder()\nlet data = try plistEncoder.encode(catalog)\nlet catalogURL = inputURL.appending(path: \"catalog.plist\")\ntry data.write(to: catalogURL)\nlet fileWrapper = try FileWrapper(url: inputURL)\ntry fileWrapper.write(to: outputURL, options: [.atomic, .withNameUpdating],\n                      originalContentsURL: nil)"
+    },
+    {
+      "title": "Instantiate a Model Provider from a Catalog",
+      "language": "swift",
+      "startTimeSeconds": 1222,
+      "code": "// Instantiate a Model Provider from a Catalog\n\nfor categoryAttribute in catalog.categoryAttributes {\n    guard let modelFilename = categoryAttribute.modelFilename else {\n        continue \n    }\n    let folderRelativePath = categoryAttribute.folderRelativePath\n    let modelURL = url.appending(path: folderRelativePath).appending(path: modelFilename)\n    if categoryAttribute.attributes.isEmpty {\n       try modelProvider.setModelFileURL(modelURL, for: categoryAttribute.category)\n    } else {\n       try modelProvider.setModelFileURL(modelURL, for: categoryAttribute.attributes)\n    }\n}"
+    },
+    {
+      "title": "Exporting a captured room to usdz with models",
+      "language": "swift",
+      "startTimeSeconds": 1247,
+      "code": "// Exporting a captured room to usdz with models\n\ntry capturedRoom.export(to: outputURL, modelProvider: modelProvider, \n                        exportOptions: .model)"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2023/10192/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10192/metadata.json",
+    "readme": "sessions/wwdc2023/10192/README.md",
+    "transcript": "sessions/wwdc2023/10192/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10192/transcript.json"
+  }
+}

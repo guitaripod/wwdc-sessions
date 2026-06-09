@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10147",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10147,
+  "title": "Optimize for variable refresh rate displays",
+  "description": "Discover how to achieve smooth screen updates on all Apple platforms that support dynamic display timing. Learn techniques for pacing full-screen game updates on Adaptive Sync displays in macOS, and find out how Low Power Mode and other system states affect frame rate availability on ProMotion displays. We’ll also share best practices for driving custom drawing using display link APIs.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10147",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10147",
+  "type": "Video",
+  "publishedAt": "2021-06-11T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "display",
+    "display p3",
+    "game dev",
+    "game developer",
+    "metal",
+    "metal shading language",
+    "metal tools",
+    "optimization",
+    "proapps"
+  ],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1400,
+  "hasTranscript": true,
+  "transcriptWordCount": 3629,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10147/5/B362C41F-D567-4137-8333-0B4FF56AD528/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10147/5/B362C41F-D567-4137-8333-0B4FF56AD528/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10147/5/B362C41F-D567-4137-8333-0B4FF56AD528/downloads/wwdc2021-10147_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10147/5/B362C41F-D567-4137-8333-0B4FF56AD528/downloads/wwdc2021-10147_hd.mp4",
+    "duration": 1400
+  },
+  "codeSnippets": [
+    {
+      "title": "Is Adaptive-Sync scheduling enabled",
+      "language": "objectivec",
+      "startTimeSeconds": 351,
+      "code": "// Detecting an Adaptive-Sync display\n\n- (BOOL) isAdaptiveSyncSupported:(NSScreen *)screen {\n    NSTimeInterval minInterval = screen.minimumRefreshInterval;  \n    NSTimeInterval maxInterval = screen.maximumRefreshInterval;  \n    return minInterval != maxInterval;\n}\n\n// Detecting full-screen\n\n- (BOOL) isWindowFullscreen:(NSWindow *)window {\n    return ([window styleMask] &= NSFullScreenWindowMask) == NSFullScreenWindowMask;\n}\n\n// Tying it all together\n\n- (BOOL) isAdaptiveSyncSchedulingEnabled:(NSScreen *)window {\n    NSScreen* windowScreen = [window screen];\n    return [self isWindowFullscreen:window] && [self isAdaptiveSyncSupported:windowScreen];\n}"
+    },
+    {
+      "title": "Leverage Drawable present calls",
+      "language": "objectivec",
+      "startTimeSeconds": 409,
+      "code": "// Drawable present APIs with frame-pacing\n\n[commandBuffer presentDrawable:drawable afterMinimumDuration:interval];\n[commandBuffer presentDrawable:drawable atTime:t];\n\n// Drawable present API without frame-pacing\n\n[commandBuffer presentDrawable:drawable];"
+    },
+    {
+      "title": "A simple example",
+      "language": "objectivec",
+      "startTimeSeconds": 431,
+      "code": "id<CAMetalDrawable> currentDrawable = [metalLayer nextDrawable];\n\n// Your encoder and command buffers here\n\n[commandBuffer presentDrawable:currentDrawable];"
+    },
+    {
+      "title": "Adaptive-Sync in your app 1",
+      "language": "objectivec",
+      "startTimeSeconds": 475,
+      "code": "id<CAMetalDrawable> currentDrawable = [metalLayer nextDrawable];\n\nNSTimeInterval userFramerateCap = 78.0;\nNSTimeInterval userInterval     =  1.0 / userFramerateCap;\n\n// Your encoders and command buffers are still here\n[commandBuffer presentDrawable:currentDrawable afterMinimumDuration:userInterval];"
+    },
+    {
+      "title": "Adaptive-Sync in your app 2",
+      "language": "objectivec",
+      "startTimeSeconds": 523,
+      "code": "id<CAMetalDrawable> currentDrawable = [metalLayer nextDrawable];\n\n// Your encoders and command buffers are still available!\n\nNSTimeInterval averageGPUTime = screen.minimumRefreshInterval;\n\n[commandBuffer presentDrawable:currentDrawable afterMinimumDuration:averageGPUTime];\n\n[commandBuffer addCompletedHandler:^(id<MTLCommandBuffer> buffer) {\n  const NSTimeInterval GPUTime = buffer.GPUEndTime - buffer.GPUStartTime;\n\n  // Use an exponential moving average\n  const double alpha = .25;\n\n  averageGPUTime = (GPUTime * alpha) + (averageGPUTime * (1.0 - alpha));\n}];"
+    },
+    {
+      "title": "Query the display refresh rate at runtime",
+      "language": "objectivec",
+      "startTimeSeconds": 936,
+      "code": "// Maximum frame rate from UIKit\n\nNSInteger maxRate = [[UIScreen mainScreen] maximumFramesPerSecond];\n\n// Current maximum frame rate from CoreAnimation\n\nNSInteger currentMaxRate = round(1 / link.duration);"
+    },
+    {
+      "title": "Use the actual frame rate of the CADisplayLink",
+      "language": "objectivec",
+      "startTimeSeconds": 1026,
+      "code": "CADisplayLink *link = [CADisplayLink displayLinkWithTarget:self \n                                                  selector:@selector(displayLinkCallback:)];\n\n[link setPreferredFramesPerSecond:40];\n[link addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];\n\n- (void)displayLinkCallback:(CADisplayLink *)link {\n    CFTimeInterval interval = link.targetTimestamp - link.timestamp;\n\n    //...\n}"
+    },
+    {
+      "title": "Dynamically compute the time delta 1",
+      "language": "objectivec",
+      "startTimeSeconds": 1307,
+      "code": "- (void)displayLinkCallback:(CADisplayLink *)link {\n    progress += link.targetTimestamp - link.timestamp;\n    [self renderAnimationWithProgress:progress];\n}"
+    },
+    {
+      "title": "Dynamically compute the time delta 2",
+      "language": "objectivec",
+      "startTimeSeconds": 1317,
+      "code": "- (void)displayLinkCallback:(CADisplayLink *)link {\n    progress += link.targetTimestamp - previousTargetTimestamp;\n    previousTargetTimestamp = link.targetTimestamp;\n\n    [self renderAnimationWithProgress:progress];\n}"
+    },
+    {
+      "title": "Dynamically compute the time delta 3",
+      "language": "objectivec",
+      "startTimeSeconds": 1328,
+      "code": "- (void)displayLinkCallback:(CADisplayLink *)link {\n    progress += link.targetTimestamp - previousTargetTimestamp;\n    previousTargetTimestamp = link.targetTimestamp;\n\n    [self renderAnimationWithProgress:progress withDeadline:link.targetTimestamp];\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Metal Feature Set Tables",
+      "url": "https://developer.apple.com/metal/Metal-Feature-Set-Tables.pdf",
+      "type": "guide",
+      "description": "Features, limits, and capabilities of Metal.",
+      "sosumiURL": "https://sosumi.ai/metal/Metal-Feature-Set-Tables.pdf"
+    },
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10147/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10147/metadata.json",
+    "readme": "sessions/wwdc2021/10147/README.md",
+    "transcript": "sessions/wwdc2021/10147/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10147/transcript.json"
+  }
+}

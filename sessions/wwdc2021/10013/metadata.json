@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10013",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10013,
+  "title": "Build light and fast App Clips",
+  "description": "App Clips give people the power to discover and download a small part of your app at a moment’s notice to complete tasks and transactions. Explore tips and best practices to help you create compact App Clips that emphasize modern features and elegant design. Learn how you can build reliable and secure App Clips to ensure that people can always access your experience when scanning a physical App Clip Code or viewing it through your website. And we’ll take you through specific strategies for testing an App Clip before releasing it to the world.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10013",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10013",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "aasa",
+    "advanced experience",
+    "all compatible device variants",
+    "app clip codes",
+    "app clip invocation",
+    "app clips",
+    "app clip size",
+    "app thinning",
+    "archive build",
+    "asset catalogs",
+    "associated domain configuration",
+    "build settings",
+    "bundleid",
+    "compression",
+    "deep link",
+    "domain validation",
+    "embedded framwork",
+    "encode as url",
+    "ephemeral notification",
+    "fruta",
+    "lazy loading",
+    "local experience",
+    "location confirmation",
+    "managing complexity",
+    "maps",
+    "meta tag",
+    "nfc",
+    "physical invocation",
+    "qr code",
+    "rebuild from bitcode",
+    "redirect",
+    "sf symbols",
+    "shared asset catalog",
+    "shared container",
+    "siri suggestions",
+    "size optimization",
+    "size report",
+    "swcutil",
+    "testing",
+    "unique functionality",
+    "vector graphics"
+  ],
+  "topics": [
+    "Essentials",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1776,
+  "hasTranscript": true,
+  "transcriptWordCount": 4823,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10013/5/F623A344-AF7B-44AF-89A0-DF275CE40E7A/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10013/5/F623A344-AF7B-44AF-89A0-DF275CE40E7A/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10013/5/F623A344-AF7B-44AF-89A0-DF275CE40E7A/downloads/wwdc2021-10013_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10013/5/F623A344-AF7B-44AF-89A0-DF275CE40E7A/downloads/wwdc2021-10013_hd.mp4",
+    "duration": 1776
+  },
+  "codeSnippets": [
+    {
+      "title": "SF Symbol and Text",
+      "language": "swift",
+      "startTimeSeconds": 858,
+      "code": "label.text = \"Hello\"\n\n// TextStyle for label and image\nlet textStyle = UIFont.TextStyle.largeTitle\n\n// Use the same TextStyle for label and image\nlabel.font = .preferredFont(forTextStyle: textStyle)\nlet config = UIImage.SymbolConfiguration(textStyle: textStyle)\n\nimageView.image = UIImage(systemName: \"pencil.and.outline\", withConfiguration: config)\n\n// Align baseline of text and symbol image\nimageView.firstBaselineAnchor.constraint(equalTo: label.firstBaselineAnchor).isActive = true"
+    },
+    {
+      "title": "Meta Tag",
+      "language": "xml",
+      "startTimeSeconds": 1088,
+      "code": "<meta name=\"apple-itunes-app\" content=\"app-id=myAppStoreID, app-clip-bundle-id=appClipBundleID, app-clip-display=card\">"
+    },
+    {
+      "title": "Location Confirmation",
+      "language": "swift",
+      "startTimeSeconds": 1661,
+      "code": "if let activationPayload = userActivity?.appClipActivationPayload {\n  activationPayload.confirmAcquired(in: region)\n  { inRegion, error in\n    if let error = error as? APActivationPayloadError {\n      if error.code ==\n      APActivationPayloadError.disallowed {\n        // User denied permission\n        // Or invocation was not from visual code or NFC\n      } else if error.code ==\n      APActivationPayloadError.doesNotMatch {\n        // Activation payload is not the most recent\n        // Catch in testing. Handle as above.\n      }\n    } else if error == nil {\n      // Platform was able to determine location\n      // OK to check inRegion\n    }\n  }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Reducing your app’s size",
+      "url": "https://developer.apple.com/documentation/Xcode/reducing-your-app-s-size",
+      "type": "documentation",
+      "description": "Measure your app’s size, optimize its assets and settings, and adopt technologies",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/reducing-your-app-s-size",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/reducing-your-app-s-size.json"
+    },
+    {
+      "title": "Testing the launch experience of your App Clip",
+      "url": "https://developer.apple.com/documentation/AppClip/testing-the-launch-experience-of-your-app-clip",
+      "type": "documentation",
+      "description": "Debug App Clip invocations, test the launch experience, and verify the configuration of your released App Clip.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppClip/testing-the-launch-experience-of-your-app-clip",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppClip/testing-the-launch-experience-of-your-app-clip.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10013/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10013/metadata.json",
+    "readme": "sessions/wwdc2021/10013/README.md",
+    "transcript": "sessions/wwdc2021/10013/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10013/transcript.json"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-110348",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 110348,
+  "title": "Build your first app in Swift Playgrounds",
+  "description": "Learn how you can easily prototype and build apps with Swift Playgrounds. We’ll show you how to create an app from a blank project, build its interface with SwiftUI, and use Swift Package Manager to add extra functionality from an open source package. We'll also explore how you can debug issues using Previews and the console and take you through submitting an app to App Store Connect for distribution via TestFlight.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/110348",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/110348",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Business & Education",
+    "Developer Tools",
+    "Essentials",
+    "Health & Fitness",
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 948,
+  "hasTranscript": true,
+  "transcriptWordCount": 2103,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110348/5/EF06F7AC-5379-4AFF-A0AB-FD1413B78098/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110348/5/EF06F7AC-5379-4AFF-A0AB-FD1413B78098/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110348/5/EF06F7AC-5379-4AFF-A0AB-FD1413B78098/downloads/wwdc2022-110348_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/110348/5/EF06F7AC-5379-4AFF-A0AB-FD1413B78098/downloads/wwdc2022-110348_hd.mp4",
+    "duration": 948
+  },
+  "codeSnippets": [
+    {
+      "title": "First Tea Item",
+      "language": "swift",
+      "startTimeSeconds": 211,
+      "code": "Text(\"Jasmine Green\")"
+    },
+    {
+      "title": "List Of Teas",
+      "language": "swift",
+      "startTimeSeconds": 219,
+      "code": "Text(\"Jasmine Green\")\nText(\"English Breakfast\")\nText(\"Byte's Oolong\")\nText(\"Golden Tippy Assam\")\nText(\"Matt P's Tea Party\")\nText(\"Darjeeling\")\nText(\"Genmaicha\")\nText(\"Jasmine Green\")\nText(\"Vanilla Rooibos\")"
+    },
+    {
+      "title": "OrderedSet of Teas",
+      "language": "swift",
+      "startTimeSeconds": 285,
+      "code": "let teas: OrderedSet<String> = [\"Byte's Oolong\", \"Golden Tippy Assam\", \"English Breakfast\", \"Matt P's Tea Party\", \"Darjeeling\", \"Genmaicha\", \"Jasmine Green\", \"Vanilla Rooibos\"]"
+    },
+    {
+      "title": "ForEach View",
+      "language": "swift",
+      "startTimeSeconds": 328,
+      "code": "ForEach(teas, id: \\.self) { tea in\n     Text(tea)\n}"
+    },
+    {
+      "title": "Initial Preview Provider",
+      "language": "swift",
+      "startTimeSeconds": 525,
+      "code": "struct TeaWheelView_Previews: PreviewProvider {\n    static let items: [String] = [\"Item 1\", \"Item 2\", \"Item 3\", \"Item 4\", \"Item 5\"]\n    static var previews: some View {\n        Text(\"Hello, world!\")\n    }\n}"
+    },
+    {
+      "title": "Preview Provider with TeaWheelView",
+      "language": "swift",
+      "startTimeSeconds": 562,
+      "code": "struct TeaWheelView_Previews: PreviewProvider {\n    static let items: [String] = [\"Item 1\", \"Item 2\", \"Item 3\", \"Item 4\", \"Item 5\"]\n    static var previews: some View {\n        TeaWheelView(items, id: \\.self)\n            .padding()\n    }\n}"
+    },
+    {
+      "title": "TeaWheelView in Assistant Tab",
+      "language": "swift",
+      "startTimeSeconds": 640,
+      "code": "TeaWheelView(dataSource.teas, action: { tea in\n    lastPickedTea = tea\n    showPickAlert = true\n})"
+    },
+    {
+      "title": "Preview Provider with Print Statement",
+      "language": "swift",
+      "startTimeSeconds": 715,
+      "code": "struct TeaWheelView_Previews: PreviewProvider {\n    static let items: [String] = [\"Item 1\", \"Item 2\", \"Item 3\", \"Item 4\", \"Item 5\"]\n    static var previews: some View {\n        TeaWheelView(items, id: \\.self) {\n            print($0)\n        }\n            .padding()\n    }\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2022/110348/",
+  "files": {
+    "metadata": "sessions/wwdc2022/110348/metadata.json",
+    "readme": "sessions/wwdc2022/110348/README.md",
+    "transcript": "sessions/wwdc2022/110348/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/110348/transcript.json"
+  }
+}

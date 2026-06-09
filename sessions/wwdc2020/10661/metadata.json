@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10661",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10661,
+  "title": "What’s new with in-app purchase",
+  "description": "Create a great in-app purchase experience for your iPhone, iPad, Mac, and Apple Watch apps. Discover how to handle refunds, integrate new App Store server notifications, and find out how to use receipts and server notifications to manage subscriber status. We’ll also walk you through the latest updates in StoreKit, including in-app purchases on Apple Watch, Family Sharing, SKOverlay, SKAdNetwork, and more.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10661",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10661",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "notifications",
+    "receipt",
+    "server",
+    "storekit",
+    "subscription",
+    "subscription business model"
+  ],
+  "topics": [
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 2753,
+  "hasTranscript": true,
+  "transcriptWordCount": 7458,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10661/8/F8CB79D2-B53B-4C5A-A3B2-E298F3ABEE9A/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10661/8/F8CB79D2-B53B-4C5A-A3B2-E298F3ABEE9A/wwdc2020_10661_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10661/8/F8CB79D2-B53B-4C5A-A3B2-E298F3ABEE9A/wwdc2020_10661_hd.mp4",
+    "duration": 2753
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Choosing the right functionality for your App Clip",
+      "url": "https://developer.apple.com/documentation/AppClip/choosing-the-right-functionality-for-your-app-clip",
+      "type": "documentation",
+      "description": "Review frameworks available to App Clips and identify functionality that makes a great App Clip.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppClip/choosing-the-right-functionality-for-your-app-clip",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppClip/choosing-the-right-functionality-for-your-app-clip.json"
+    },
+    {
+      "title": "Handling Subscriptions Billing",
+      "url": "https://developer.apple.com/documentation/StoreKit/handling-subscriptions-billing",
+      "type": "documentation",
+      "description": "Build logic around the date and time constraints of subscription products, while planning for all scenarios where you control access to content.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/handling-subscriptions-billing",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/handling-subscriptions-billing.json"
+    },
+    {
+      "title": "Handling refund notifications",
+      "url": "https://developer.apple.com/documentation/StoreKit/handling-refund-notifications",
+      "type": "documentation",
+      "description": "Respond to notifications about customer refunds for consumable, non-consumable, and non-renewing subscription products.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/handling-refund-notifications",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/handling-refund-notifications.json"
+    },
+    {
+      "title": "Validating Receipts with the App Store",
+      "url": "https://developer.apple.com/documentation/storekit/original_api_for_in-app_purchase/validating_receipts_with_the_app_store",
+      "type": "documentation",
+      "description": "Verify transactions with the App Store on a secure server.",
+      "sosumiURL": "https://sosumi.ai/documentation/storekit/original_api_for_in-app_purchase/validating_receipts_with_the_app_store",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/storekit/original_api_for_in-app_purchase/validating_receipts_with_the_app_store.json"
+    },
+    {
+      "title": "App Store Server Notifications",
+      "url": "https://developer.apple.com/documentation/appstoreservernotifications",
+      "type": "documentation",
+      "description": "Monitor in-app purchase events in real time with server notifications from the App Store.",
+      "sosumiURL": "https://sosumi.ai/documentation/appstoreservernotifications",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/appstoreservernotifications.json"
+    },
+    {
+      "title": "Setting up promotional offers",
+      "url": "https://developer.apple.com/documentation/StoreKit/setting-up-promotional-offers",
+      "type": "documentation",
+      "description": "Generate a key and configure offers for auto-renewable subscriptions in App Store Connect.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/setting-up-promotional-offers",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/setting-up-promotional-offers.json"
+    },
+    {
+      "title": "In-App Purchase",
+      "url": "https://developer.apple.com/documentation/StoreKit/in-app-purchase",
+      "type": "documentation",
+      "description": "Offer content and services in your app across Apple platforms using a Swift-based interface.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/in-app-purchase",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/in-app-purchase.json"
+    },
+    {
+      "title": "Enabling App Store Server Notifications",
+      "url": "https://developer.apple.com/documentation/StoreKit/enabling-app-store-server-notifications",
+      "type": "documentation",
+      "description": "Configure your server and provide an HTTPS URL to receive notifications about in-app purchase events and unreported external purchase tokens.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit/enabling-app-store-server-notifications",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit/enabling-app-store-server-notifications.json"
+    },
+    {
+      "title": "Auto-renewable subscriptions overview",
+      "url": "https://developer.apple.com/app-store/subscriptions/",
+      "type": "documentation",
+      "description": "Auto-Renewable Subscriptions",
+      "sosumiURL": "https://sosumi.ai/app-store/subscriptions/"
+    },
+    {
+      "title": "Learn more about App Store Connect",
+      "url": "https://help.apple.com/app-store-connect/",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "StoreKit",
+      "url": "https://developer.apple.com/documentation/StoreKit",
+      "type": "documentation",
+      "description": "Support In-App Purchases and interactions with the App Store.",
+      "sosumiURL": "https://sosumi.ai/documentation/StoreKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/StoreKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10661/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10661/metadata.json",
+    "readme": "sessions/wwdc2020/10661/README.md",
+    "transcript": "sessions/wwdc2020/10661/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10661/transcript.json"
+  }
+}

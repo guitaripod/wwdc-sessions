@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10639",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10639,
+  "title": "What's new in managing Apple devices",
+  "description": "We've made significant strides in bringing crucial device management features to macOS. Discover how these features can help you manage your all your devices using the same tools and technologies. Get details on changes coming this year and how they will impact your deployment workflows, as well as some new management capabilities you can use to secure iOS and iPadOS devices in your organization.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10639",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10639",
+  "type": "Video",
+  "publishedAt": "2020-06-23T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "configuration",
+    "configurator",
+    "distribution",
+    "enterprise",
+    "management",
+    "mdm",
+    "privacy",
+    "security"
+  ],
+  "topics": [
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 1418,
+  "hasTranscript": true,
+  "transcriptWordCount": 3816,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10639/6/CA966211-6AC2-4D0B-B067-5B260747CD5F/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10639/6/CA966211-6AC2-4D0B-B067-5B260747CD5F/wwdc2020_10639_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10639/6/CA966211-6AC2-4D0B-B067-5B260747CD5F/wwdc2020_10639_hd.mp4",
+    "duration": 1418
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Apple Configurator 2 User Guide",
+      "url": "https://support.apple.com/guide/apple-configurator-2/",
+      "type": "guide",
+      "description": "Apple Configurator 2 User Guide"
+    },
+    {
+      "title": "Device Management",
+      "url": "https://developer.apple.com/documentation/DeviceManagement",
+      "type": "documentation",
+      "description": "Manage your organization’s devices remotely.",
+      "sosumiURL": "https://sosumi.ai/documentation/DeviceManagement",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/DeviceManagement.json"
+    },
+    {
+      "title": "Network Extension",
+      "url": "https://developer.apple.com/documentation/NetworkExtension",
+      "type": "documentation",
+      "description": "Customize and extend core networking features.",
+      "sosumiURL": "https://sosumi.ai/documentation/NetworkExtension",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/NetworkExtension.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10639/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10639/metadata.json",
+    "readme": "sessions/wwdc2020/10639/README.md",
+    "transcript": "sessions/wwdc2020/10639/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10639/transcript.json"
+  }
+}

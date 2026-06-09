@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10207",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10207,
+  "title": "Migrate your TVML app to SwiftUI",
+  "description": "SwiftUI helps you build great apps on all Apple platforms and is the preferred toolkit for bringing your content into the living room with tvOS 18. Learn how to use SwiftUI to create familiar layouts and controls from TVMLKit, and get tips and best practices.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10207",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10207",
+  "type": "Video",
+  "publishedAt": "2024-06-11T08:00:00-07:00",
+  "platforms": [
+    "tvOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Audio & Video",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1050,
+  "hasTranscript": true,
+  "transcriptWordCount": 2839,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10207/4/F0BA61BC-1F1D-4128-A2A3-C92C121EEE6F/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10207/4/F0BA61BC-1F1D-4128-A2A3-C92C121EEE6F/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10207/4/F0BA61BC-1F1D-4128-A2A3-C92C121EEE6F/downloads/wwdc2024-10207_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10207/4/F0BA61BC-1F1D-4128-A2A3-C92C121EEE6F/downloads/wwdc2024-10207_hd.mp4",
+    "duration": 1050
+  },
+  "codeSnippets": [
+    {
+      "title": "Borderless button lockup",
+      "language": "swift",
+      "startTimeSeconds": 258,
+      "code": "Button {} label: {\n    Image(\"discovery_landscape\")\n        .resizable()\n        .frame(width: 250, height: 375)\n    Text(\"Borderless Portrait\")\n}\n.buttonStyle(.borderless)"
+    },
+    {
+      "title": "Standard content shelf",
+      "language": "swift",
+      "startTimeSeconds": 338,
+      "code": "ScrollView(.horizontal) {\n    LazyHStack(spacing: 40) {\n        ForEach(Asset.allCases) { asset in\n            Button {} label: {\n                asset.portraitImage\n                    .resizable()\n                    .aspectRatio(250/375, contentMode: .fit)\n                    .containerRelativeFrame(.horizontal, count: 6, spacing: 40)\n                Text(asset.title)\n            }\n        }\n    }\n}\n.scrollClipDisabled()\n.buttonStyle(.borderless)"
+    },
+    {
+      "title": "Card button",
+      "language": "swift",
+      "startTimeSeconds": 499,
+      "code": "ScrollView(.horizontal) {\n    LazyHStack(spacing: 48) {\n        ForEach(Asset.allCases) { asset in\n            Button {} label: {\n                HStack(alignment: .top, spacing: 10) {\n                    asset.landscapeImage\n                        .resizable()\n                        .aspectRatio(contentMode: .fit)\n                        .clipShape(RoundedRectangle(cornerRadius: 12))\n\n                    VStack(alignment: .leading) {\n                        Text(asset.title)\n                            .font(.body)\n                        Text(\"Subtitle text goes here, limited to two lines\")\n                            .font(.caption2)\n                            .foregroundStyle(.secondary)\n                            .lineLimit(2)\n                        Spacer(minLength: 0)\n                        HStack(spacing: 4) {\n                            ForEach(1..<4) { _ in\n                                Image(systemName: \"ellipsis.rectangle.fill\")\n                            }\n                        }\n                        .foregroundStyle(.secondary)\n                    }\n                }\n                .padding([.leading, .top, .bottom], 12)\n                .padding(.trailing, 20)\n                .frame(maxWidth: .infinity)\n            }\n            .containerRelativeFrame(.horizontal, count: 3, spacing: 48)\n        }\n    }\n}\n.scrollClipDisabled()\n.buttonStyle(.card)"
+    },
+    {
+      "title": "Landing page",
+      "language": "swift",
+      "startTimeSeconds": 519,
+      "code": "ScrollView(.vertical) {\n    LazyVStack(alignment: .leading, spacing: 26) {\n        VStack(alignment: .leading) {\n            Text(\"tvOS with SwiftUI\")\n                .font(.largeTitle).bold()\n\n            Spacer(minLength: 300)\n\n            HStack {\n                Button(\"Show\") {}\n                Button(“More Info…”) {}\n                Spacer()\n            }\n            .padding(.bottom, 100)\n\n            Spacer()\n        }\n        .onScrollVisibilityChange { visible in\n            withAnimation {\n                belowFold = !visible\n            }\n        }\n\n        Section(\"Movie Shelf\") {\n            MovieShelf()\n        }\n\n        Section(\"TV and Music Shelf\") {\n            TVMusicShelf()\n        }\n\n        Section(\"Content Cards\") {\n            CardShelf()\n        }\n    }\n    .scrollTargetLayout()\n}\n.scrollClipDisabled()\n.background(alignment: .top) {\n    if !belowFold {\n        Image(\"beach_landscape\")\n            .resizable()\n            .aspectRatio(contentMode: .fill)\n            .ignoresSafeArea()\n            .mask {\n                LinearGradient(stops: [\n                    .init(color: .black, location: 0.0),\n                    .init(color: .black, location: 0.45),\n                    .init(color: .black.opacity(0), location: 0.8)\n                ], startPoint: .top, endPoint: .bottom)\n            }\n    }\n}\n.scrollTargetBehavior(.viewAligned)"
+    },
+    {
+      "title": "Tab view",
+      "language": "swift",
+      "startTimeSeconds": 673,
+      "code": "TabView {\n    Tab(\"Stack\", systemImage: \"line.3.horizontal\") {\n        StackView()\n    }\n\n    // Other Tabs...\n\n    Tab(\"Search\", systemImage: \"magnifyingglass\") {\n        SearchView()\n    }\n}"
+    },
+    {
+      "title": "Search page",
+      "language": "swift",
+      "startTimeSeconds": 710,
+      "code": "@State var searchTerm: String = \"\"\n\nlet columns: [GridItem] = Array(repeating: .init(.flexible(), spacing: 40), count: 4)\n\nScrollView(.vertical) {\n    LazyVGrid(columns: columns) {\n        ForEach(sortedMatchingAssets) { asset in\n            Button {} label: {\n                asset.landscapeImage\n                    .resizable()\n                    .aspectRatio(16 / 9, contentMode: .fit)\n                Text(asset.title)\n            }\n        }\n    }\n}\n.scrollClipDisabled()\n.buttonStyle(.borderless)\n.searchable(text: $searchTerm)\n.searchSuggestions {\n    ForEach(suggestedSearchTerms, id: \\.self) { suggestion in\n        Text(suggestion)\n    }\n}"
+    },
+    {
+      "title": "Sidebar adaptable tab view style",
+      "language": "swift",
+      "startTimeSeconds": 899,
+      "code": "TabView {\n    Tab(\"Stack\", systemImage: \"line.3.horizontal\") {\n        StackView()\n    }\n\n    // Other Tabs...\n\n    Tab(\"Search\", systemImage: \"magnifyingglass\") {\n        SearchView()\n    }\n}\n.tabViewStyle(.sidebarAdaptable)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Forum: UI Frameworks",
+      "url": "https://developer.apple.com/forums/topics/ui-frameworks?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/ui-frameworks?cid=vf-a-0010"
+    },
+    {
+      "title": "Creating a tvOS media catalog app in SwiftUI",
+      "url": "https://developer.apple.com/documentation/SwiftUI/Creating-a-tvOS-media-catalog-app-in-SwiftUI",
+      "type": "samplecode",
+      "description": "Build standard content lockups and rows of content shelves for your tvOS app.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/Creating-a-tvOS-media-catalog-app-in-SwiftUI",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/Creating-a-tvOS-media-catalog-app-in-SwiftUI.json"
+    }
+  ],
+  "path": "sessions/wwdc2024/10207/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10207/metadata.json",
+    "readme": "sessions/wwdc2024/10207/README.md",
+    "transcript": "sessions/wwdc2024/10207/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10207/transcript.json"
+  }
+}

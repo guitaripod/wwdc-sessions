@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10121",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10121,
+  "title": "Meet Focus filters",
+  "description": "Discover how you can customize app behaviors based on someone's currently enabled Focus. We'll show you how to use App Intents to define your app's Focus filters, act on changes from the system, and present your app's views in different ways. We'll also explore how you can filter notifications and update badge counts.\n\nTo get the most out of this session, we recommend first watching \"Dive into App Intents\" from WWDC22.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10121",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10121",
+  "type": "Video",
+  "publishedAt": "2022-06-07T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 948,
+  "hasTranscript": true,
+  "transcriptWordCount": 2192,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10121/5/E497A884-24B9-4D6C-A35D-6F9BEEB985B6/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10121/5/E497A884-24B9-4D6C-A35D-6F9BEEB985B6/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10121/5/E497A884-24B9-4D6C-A35D-6F9BEEB985B6/downloads/wwdc2022-10121_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10121/5/E497A884-24B9-4D6C-A35D-6F9BEEB985B6/downloads/wwdc2022-10121_hd.mp4",
+    "duration": 948
+  },
+  "codeSnippets": [
+    {
+      "title": "Implementing SetFocusFilterIntent",
+      "language": "swift",
+      "startTimeSeconds": 297,
+      "code": "// Implementing SetFocusFilterIntent\n\nimport AppIntents\n\nstruct ExampleChatAppFocusFilter: SetFocusFilterIntent {\n\n    static var title: LocalizedStringResource = \"Set account, status & look\"\n    static var description: LocalizedStringResource? = \"\"\"\n        Select an account, set your status, and configure\n        the look of Example Chat App.\n    \"\"\"\n}"
+    },
+    {
+      "title": "Defining your Parameters & Entities",
+      "language": "swift",
+      "startTimeSeconds": 422,
+      "code": "// Defining your Parameters & Entities\n\nimport AppIntents\n\nstruct ExampleChatAppFocusFilter: SetFocusFilterIntent {\n\n    @Parameter(title: \"Use Dark Mode\", default: false)\n    var alwaysUseDarkMode: Bool\n\n    @Parameter(title: \"Status Message\")\n    var status: String?\n\n    @Parameter(title: \"Selected Account\")\n    var account: AccountEntity?\n\n    // ...\n}"
+    },
+    {
+      "title": "Display Representation",
+      "language": "swift",
+      "startTimeSeconds": 523,
+      "code": "// Display Representation\n\nstruct ExampleChatAppFocusFilter: SetFocusFilterIntent {\n    // ...\n\n    var localizedDarkModeString: String {\n        return self.alwaysUseDarkMode ? \"Dark\" : \"Dynamic\"\n    }\n\n    var displayRepresentation: DisplayRepresentation {\n        var titleList: [LocalizedStringResource] = [], subtitleList: [String] = []\n        if let account = self.account {\n            titleList.append(\"Account\")\n            subtitleList.append(account.displayName)\n        }\n        if let status = self.status {\n            titleList.append(\"Status\")\n            subtitleList.append(status)\n        }\n        titleList.append(\"Look\")\n        subtitleList.append(self.localizedDarkModeString)\n\n        let title = LocalizedStringResource(\"Set \\(titleList, format: .list(type: .and))\")\n        let subtitle = LocalizedStringResource(\"\\(subtitleList.formatted())\")\n\n        return DisplayRepresentation(title: title, subtitle: subtitle)\n    }\n\n    // ...\n}"
+    },
+    {
+      "title": "Implementing Perform on your Focus filter",
+      "language": "swift",
+      "startTimeSeconds": 684,
+      "code": "// Implementing Perform on your Focus filter\n\nimport AppIntents\n\nstruct ExampleChatAppFocusFilter: SetFocusFilterIntent {\n    // ...\n\n    func perform() async throws -> some IntentResult {\n        let myData = AppData(\n            alwaysUseDarkMode: self.alwaysUseDarkMode,\n            status: self.status,\n            account: self.account\n        )\n        myModel.shared.updateAppWithData(myData)\n        return .result()\n    }\n\n    // ...\n}"
+    },
+    {
+      "title": "Calling Current",
+      "language": "swift",
+      "startTimeSeconds": 707,
+      "code": "// Calling Current\n\nimport AppIntents\n\nfunc updateCurrentFilter() async throws {\n    do {\n        let currentFilter = try await ExampleChatAppFocusFilter.current\n        let myData = AppData(\n            myRequiredBoolValue: currentFilter.myRequiredBoolValue,\n            myOptionalStringValue: currentFilter.myOptionalStringValue,\n            myOptionalAppEnum: currentFilter.myOptionalAppEnum,\n            myAppEntity: currentFilter.myAppEntity\n        )\n        myModel.shared.updateAppWithData(myData)\n    } catch let error {\n        print(\"Error loading current filter: \\(error.localizedDescription)\")\n        throw error\n    }\n}"
+    },
+    {
+      "title": "Set a filterPredicate",
+      "language": "swift",
+      "startTimeSeconds": 807,
+      "code": "// Set filterPredicate on an App context\n\nimport AppIntents\n\nstruct ExampleChatAppFocusFilter: SetFocusFilterIntent {\n\n    var appContext: FocusFilterAppContext {\n        let allowedAccountList = [account.identifier]\n        let predicate = NSPredicate(format: \"SELF IN %@\", allowedAccountList)\n        return FocusFilterAppContext(notificationFilterPredicate: predicate)\n    }\n}"
+    },
+    {
+      "title": "Pass filterCriteria on UNNotificationContent",
+      "language": "swift",
+      "startTimeSeconds": 833,
+      "code": "// Pass filterCriteria on UNNotificationContent\n\nlet content = UNMutableNotificationContent()\ncontent.title = \"Curt Rothert\"\ncontent.subtitle = \"Slide Feedback\"\ncontent.body = \"The run through today was great. I had few comments about slide 22 and 28.\"\ncontent.filterCriteria = \"work-account-identifier\""
+    }
+  ],
+  "resources": [
+    {
+      "title": "Focus",
+      "url": "https://developer.apple.com/documentation/AppIntents/focus",
+      "type": "documentation",
+      "description": "Adjust your app’s behavior and filter incoming notifications when the",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents/focus",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents/focus.json"
+    },
+    {
+      "title": "User Notifications",
+      "url": "https://developer.apple.com/documentation/UserNotifications",
+      "type": "documentation",
+      "description": "Push user-facing notifications to the user’s device from a server, or generate them locally from your app.",
+      "sosumiURL": "https://sosumi.ai/documentation/UserNotifications",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UserNotifications.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10121/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10121/metadata.json",
+    "readme": "sessions/wwdc2022/10121/README.md",
+    "transcript": "sessions/wwdc2022/10121/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10121/transcript.json"
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10049",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10049,
+  "title": "Keep your complications up to date",
+  "description": "Time is of the essence: Discover how your Apple Watch complications can provide relevant information throughout the day and help people get the information they need, when they need it. Learn best practices for capitalizing on your app’s runtime opportunities, incorporating APIs like background app refresh and URLSession, and implementing well-timed push notifications.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10049",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10049",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "watchOS"
+  ],
+  "keywords": [
+    "🪁",
+    "⌚️",
+    "clockkit",
+    "urlsession",
+    "watchkit",
+    "watchos"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 1310,
+  "hasTranscript": true,
+  "transcriptWordCount": 3626,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10049/10/CD3717B4-610A-4738-8C94-A2B995381A44/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10049/10/CD3717B4-610A-4738-8C94-A2B995381A44/wwdc2020_10049_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10049/10/CD3717B4-610A-4738-8C94-A2B995381A44/wwdc2020_10049_hd.mp4",
+    "duration": 1310
+  },
+  "codeSnippets": [
+    {
+      "title": "updateActiveComplications",
+      "language": "swift",
+      "startTimeSeconds": 212,
+      "code": "class ExtensionDelegate: NSObject, WKExtensionDelegate {\n\n    func updateActiveComplications() {\n\n       let complicationServer = CLKComplicationServer.sharedInstance()\n\n        if let activeComplications = complicationServer.activeComplications {\n\n            for complication in activeComplications {\n\n               complicationServer.reloadTimeline(for: complication)\n\n            }\n        } \n    }\n}"
+    },
+    {
+      "title": "getCurrentTimelineEntry",
+      "language": "swift",
+      "startTimeSeconds": 266,
+      "code": "class ComplicationController: NSObject, CLKComplicationDataSource {\n\n    func getCurrentTimelineEntry(for complication: CLKComplication, \n        withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {\n\n        switch (complication.family) {\n\n        case .modularSmall:\n           let template = CLKComplicationTemplateModularLargeTallBody.init(\n                               headerTextProvider: headerTextProvider, \n                               bodyTextProvider: bodyTextProvider)\n\n            entry = CLKComplicationTimelineEntry(date: Date(), \n                        complicationTemplate: template)\n        }\n\n        handler(entry)\n    }\n}"
+    },
+    {
+      "title": "scheduleBar",
+      "language": "swift",
+      "startTimeSeconds": 366,
+      "code": "private func scheduleBAR(_ first: Bool) {\n     let now = Date()\n     let scheduledDate = now.addingTimeInterval(first ? 60 : 15*60)\n\n     let info:NSDictionary = [“submissionDate”:now]\n\n     let wkExt = WKExtension.shared()\n     wkExt.scheduleBackgroundRefresh(withPreferredDate: scheduledDate, userInfo:info)\n     { (error: Error?) in\n         if (error != nil) {\n             print(\"background refresh could not be scheduled \\(error.debugDescription)\")\n         } \n     }\n}"
+    },
+    {
+      "title": "handleBAR",
+      "language": "swift",
+      "startTimeSeconds": 428,
+      "code": "class ExtensionDelegate: NSObject, WKExtensionDelegate {\nfunc handle(_ backgroundTasks: Set<WKRefreshBackgroundTask>) {\n\n    for task in backgroundTasks {\n\n      switch task {\n      case let backgroundTask as WKApplicationRefreshBackgroundTask:\n\n            if let userInfo:NSDictionary = backgroundTask.userInfo as? NSDictionary {\n               if let then:Date = userInfo[\"submissionDate\"] as! Date {\n                  let interval = Date.init().timeIntervalSince(then)\n                  print(\"interval since request was made \\(interval)\")\n               }\n            }\n\n            self.updateActiveComplications()\n\n            self.scheduleBAR(first: false)\n\n            backgroundTask.setTaskCompletedWithSnapshot(false)"
+    },
+    {
+      "title": "handleBAR (DataProvider)",
+      "language": "swift",
+      "startTimeSeconds": 527,
+      "code": "class ExtensionDelegate: NSObject, WKExtensionDelegate {\n\nvar healthDataProvider: HealthDataProvider\n\nfunc handle(_ backgroundTasks: Set<WKRefreshBackgroundTask>) {\n    for task in backgroundTasks {\n        switch task {\n        case let backgroundTask as WKApplicationRefreshBackgroundTask:\n\n            healthDataProvider.refresh() { (update: Bool) -> Void in\n                if update {\n                    self.updateActiveComplications()\n                }\n                self.scheduleBAR(first: false)\n                backgroundTask.setTaskCompletedWithSnapshot(false)\n            }"
+    },
+    {
+      "title": "Instantiate backgroundURLSession",
+      "language": "swift",
+      "startTimeSeconds": 695,
+      "code": "class WeatherDataProvider : NSObject, URLSessionDownloadDelegate {\n\nprivate lazy var backgroundURLSession: URLSession = {\n    let config = URLSessionConfiguration.background(withIdentifier: “BackgroundWeather\")\n    config.isDiscretionary = false\n    config.sessionSendsLaunchEvents = true\n\n    return URLSession(configuration: config, delegate: self, delegateQueue: nil)\n}()"
+    },
+    {
+      "title": "Schedule backgroundURLSessionTask",
+      "language": "swift",
+      "startTimeSeconds": 722,
+      "code": "func schedule(_ first: Bool) {\n\n        if backgroundTask == nil {\n\n            if let url = self.currentWeatherURLForLocation(delegate.currentLocationCoordinate)\n            {\n                let bgTask = backgroundURLSession.downloadTask(with: url)\n\n                bgTask.earliestBeginDate = Date().addingTimeInterval(first ? 60 : 15*60)\n\n                bgTask.countOfBytesClientExpectsToSend = 200\n                bgTask.countOfBytesClientExpectsToReceive = 1024\n\n                bgTask.resume()\n\n                backgroundTask = bgTask\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "handle backgroundURLSession",
+      "language": "swift",
+      "startTimeSeconds": 809,
+      "code": "class ExtensionDelegate: NSObject, WKExtensionDelegate {\n\nvar weatherDataProvider:WeatherDataProvider\n\n func handle(_ backgroundTasks: Set<WKRefreshBackgroundTask>) {\n    for task in backgroundTasks {\n        switch task {\n\n             case let urlSessionTask as WKURLSessionRefreshBackgroundTask:\n\n                 weatherDataProvider.refresh() { (update: Bool) -> Void in\n                     weatherDataProvider.schedule(first: false)\n                     if update {\n                         self.updateActiveComplications()\n                     }\n                     urlSessionTask.setTaskCompletedWithSnapshot(false)\n                 }"
+    },
+    {
+      "title": "handle backgroundURLSession",
+      "language": "swift",
+      "startTimeSeconds": 839,
+      "code": "class WeatherDataProvider : NSObject, URLSessionDownloadDelegate {\n\nvar completionHandler : ((_ update: Bool) -> Void)?\n\nfunc refresh(_ completionHandler: @escaping (_ update: Bool) -> Void) {\n\n    self.completionHandler = completionHandler\n\n}"
+    },
+    {
+      "title": "didFinishDownloadingTo",
+      "language": "swift",
+      "startTimeSeconds": 848,
+      "code": "class WeatherDataProvider : NSObject, URLSessionDownloadDelegate {\n\nfunc urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask,\n                didFinishDownloadingTo location: URL) {\n\n    if location.isFileURL {\n        do {\n\n            let jsonData = try Data(contentsOf: location)\n            if let kiteFlyingWeather = KiteFlyingWeather(jsonData) {\n                // Process weather data here.\n            }\n\n        } catch let error as NSError {\n            print(\"could not read data from \\(location)\")\n        }\n    }\n}"
+    },
+    {
+      "title": "didComplete",
+      "language": "swift",
+      "startTimeSeconds": 863,
+      "code": "func urlSession(_ session: URLSession, task: URLSessionTask, \n                     didCompleteWithError error: Error?) {\n\n        print(\"session didCompleteWithError \\(error.debugDescription)”)\n\n        DispatchQueue.main.async {\n\n           self.completionHandler?(error == nil)\n\n            self.completionHandler = nil\n\n        }\n    }\n}"
+    },
+    {
+      "title": "Complication Pushes",
+      "language": "swift",
+      "startTimeSeconds": 1073,
+      "code": "class PushNotificationProvider : NSObject, PKPushRegistryDelegate {\n\nfunc startPushKit() -> Void {\n    let pushRegistry = PKPushRegistry(queue: .main)\n    pushRegistry.delegate = self\n    pushRegistry.desiredPushTypes = [.complication]\n}\n\nfunc pushRegistry(_ registry: PKPushRegistry, \n                  didUpdate pushCredentials: PKPushCredentials, for type: PKPushType) {\n    // Send credentials to server \n}\n\nfunc pushRegistry(_ registry: PKPushRegistry, \n                    didReceiveIncomingPushWith payload: PKPushPayload, \n                    for type: PKPushType, completion: @escaping () -> Void) {\n    // Process payload\n    delegate.updateActiveComplications()\n    completion()\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Creating and updating a complication’s timeline",
+      "url": "https://developer.apple.com/documentation/ClockKit/creating-and-updating-a-complication-s-timeline",
+      "type": "samplecode",
+      "description": "Create complications that batch-load a timeline of future entries and run periodic background sessions to update the timeline.",
+      "sosumiURL": "https://sosumi.ai/documentation/ClockKit/creating-and-updating-a-complication-s-timeline",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ClockKit/creating-and-updating-a-complication-s-timeline.json"
+    },
+    {
+      "title": "URLSession Programming Guide",
+      "url": "https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/library/content/documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html"
+    },
+    {
+      "title": "WatchKit",
+      "url": "https://developer.apple.com/documentation/WatchKit",
+      "type": "documentation",
+      "description": "Build watchOS apps that use features the app delegate monitors or controls, such as background tasks and extended runtime sessions.",
+      "sosumiURL": "https://sosumi.ai/documentation/WatchKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WatchKit.json"
+    },
+    {
+      "title": "ClockKit",
+      "url": "https://developer.apple.com/documentation/ClockKit",
+      "type": "documentation",
+      "description": "Display app-specific data on the clock face.",
+      "sosumiURL": "https://sosumi.ai/documentation/ClockKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ClockKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10049/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10049/metadata.json",
+    "readme": "sessions/wwdc2020/10049/README.md",
+    "transcript": "sessions/wwdc2020/10049/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10049/transcript.json"
+  }
+}

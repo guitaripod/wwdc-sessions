@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10214",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10214,
+  "title": "Port your Mac app to Apple silicon",
+  "description": "Your porting questions, answered: Learn how to recompile your macOS app for Apple silicon Macs and build universal apps that launch faster, have better performance, and support the future of the platform. We’ll show you how Xcode makes it simple to build a universal macOS binary and go through running, debugging, and testing your app. Learn what changes to low-level code you might need to make, find out how to handle in-process and out-of-process plug-ins, and discover some useful tips for working with universal apps.\n\nWe’ve designed this session for experienced macOS developers who want to get their existing apps running natively on Apple silicon Macs. You can learn more about doing so in the Apple silicon documentation.\n\nFor more information on the transition to Apple silicon, watch \"Explore the new system architecture of Apple silicon Macs\", \"Bring your Metal app to Apple silicon Macs\", and \"Optimize Metal Performance for Apple silicon Macs\". And to learn how to run your iPhone and iPad apps on Mac, check out \"iPad and iPhone apps on Apple silicon Macs\".",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10214",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10214",
+  "type": "Video",
+  "publishedAt": "2020-06-23T10:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 2444,
+  "hasTranscript": true,
+  "transcriptWordCount": 5615,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10214/7/871FAB69-F6A4-470A-80F0-00028CDC0E58/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10214/7/871FAB69-F6A4-470A-80F0-00028CDC0E58/wwdc2020_10214_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10214/7/871FAB69-F6A4-470A-80F0-00028CDC0E58/wwdc2020_10214_hd.mp4",
+    "duration": 2444
+  },
+  "codeSnippets": [
+    {
+      "title": "Don’t assume the time is returned in nanoseconds",
+      "language": "swift",
+      "startTimeSeconds": 1279,
+      "code": "// Don’t assume the time is returned in nanoseconds\n\nfunc monotonicTimestampInSeconds() -> Double {\n  let ticks = mach_absolute_time()\n  let seconds = Double(ticks) / 1_000_000_000\n  return seconds\n}"
+    },
+    {
+      "title": "Use clock_gettime_nsec_np to read timestamp in nanoseconds",
+      "language": "swift",
+      "startTimeSeconds": 1300,
+      "code": "// Use clock_gettime_nsec_np to read timestamp in nanoseconds\n\nfunc monotonicTimestampInSeconds() -> Double {\n  let nanoseconds = clock_gettime_nsec_np(CLOCK_UPTIME_RAW)\n  let seconds = Double(nanoseconds) / 1_000_000_000\n  return seconds\n}"
+    },
+    {
+      "title": "Avoid spinlocks and spinning to check for work",
+      "language": "swift",
+      "startTimeSeconds": 1600,
+      "code": "func performWorkUnderSpinlock() { \n  spinlock_lock()\n  performWork()\n  spinlock_unlock()\n}\n\nfunc retrieveNextWorkTask() -> WorkTask {\n  while true {\n    let task = queue.sync { taskQueue.pop() }\n    if let task = task { return task }\n    else { continue }\n  }\n}"
+    },
+    {
+      "title": "Prefer blocking locks and condition variables",
+      "language": "swift",
+      "startTimeSeconds": 1623,
+      "code": "func performWorkUnderSpinlock() { \n  os_unfair_lock_lock()\n  performWork()\n  os_unfair_lock_unlock()\n}\n\nfunc retrieveNextWorkTask() -> WorkTask {\n  condition.lock()\n  while !taskQueue.hasAnyWork {\n    condition.wait()\n  }\n  let task = taskQueue.pop()\n  condition.unlock()\n  return task\n}"
+    },
+    {
+      "title": "Load a plug-in dynamically",
+      "language": "objectivec",
+      "startTimeSeconds": 2031,
+      "code": "void *plugin_module = dlopen(\"./path/to/plugin.dylib\", RTLD_NOW);\nif (plugin_module == NULL) {\n  fprintf(stderr, \"loading module failed:\\n\");\n  fprintf(stderr, \"%s\\n\", dlerror());\n  return 0;\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Learn more about Apple Silicon",
+      "url": "https://developer.apple.com/documentation/apple-silicon",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/documentation/apple-silicon",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/apple-silicon.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10214/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10214/metadata.json",
+    "readme": "sessions/wwdc2020/10214/README.md",
+    "transcript": "sessions/wwdc2020/10214/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10214/transcript.json"
+  }
+}

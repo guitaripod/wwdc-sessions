@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10058",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10058,
+  "title": "Meet AsyncSequence",
+  "description": "Iterating over a sequence of values over time is now as easy as writing a “for” loop. Find out how the new AsyncSequence protocol enables a natural, simple syntax for iterating over anything from notifications to bytes being streamed from a server. We'll also show you how to adapt existing code to provide asynchronous sequences of your own.\n\nTo get the most out of this session, we recommend first watching “Meet async/await in Swift.”",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10058",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10058",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "asyncstream",
+    "await",
+    "earthquakes",
+    "lines",
+    "quakes",
+    "urlsession"
+  ],
+  "topics": [
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 861,
+  "hasTranscript": true,
+  "transcriptWordCount": 2290,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10058/6/59A23687-3AF9-42AE-A922-079B630ED443/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10058/6/59A23687-3AF9-42AE-A922-079B630ED443/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10058/6/59A23687-3AF9-42AE-A922-079B630ED443/downloads/wwdc2021-10058_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10058/6/59A23687-3AF9-42AE-A922-079B630ED443/downloads/wwdc2021-10058_hd.mp4",
+    "duration": 861
+  },
+  "codeSnippets": [
+    {
+      "title": "QuakesTool",
+      "language": "swift",
+      "startTimeSeconds": 37,
+      "code": "@main\nstruct QuakesTool {\n    static func main() async throws {\n        let endpointURL = URL(string: \"https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv\")!\n\n        // skip the header line and iterate each one \n        // to extract the magnitude, time, latitude and longitude\n        for try await event in endpointURL.lines.dropFirst() {\n            let values = event.split(separator: \",\")\n            let time = values[0]\n            let latitude = values[1]\n            let longitude = values[2]\n            let magnitude = values[4]\n            print(\"Magnitude \\(magnitude) on \\(time) at \\(latitude) \\(longitude)\")\n        }\n    }\n}"
+    },
+    {
+      "title": "Iterating a Sequence",
+      "language": "swift",
+      "startTimeSeconds": 204,
+      "code": "for quake in quakes {\n    if quake.magnitude > 3 {\n        displaySignificantEarthquake(quake)\n    }\n}"
+    },
+    {
+      "title": "How the compiler handles iteration",
+      "language": "swift",
+      "startTimeSeconds": 232,
+      "code": "var iterator = quakes.makeIterator()\nwhile let quake = iterator.next() {\n    if quake.magnitude > 3 {\n        displaySignificantEarthquake(quake)\n    }\n}"
+    },
+    {
+      "title": "How the compiler handles asynchronous iteration",
+      "language": "swift",
+      "startTimeSeconds": 251,
+      "code": "var iterator = quakes.makeAsyncIterator()\nwhile let quake = await iterator.next() {\n    if quake.magnitude > 3 {\n        displaySignificantEarthquake(quake)\n    }\n}"
+    },
+    {
+      "title": "Iterating an AsyncSequence",
+      "language": "swift",
+      "startTimeSeconds": 268,
+      "code": "for await quake in quakes {\n    if quake.magnitude > 3 {\n        displaySignificantEarthquake(quake)\n    }\n}"
+    },
+    {
+      "title": "Terminating iteration early by breaking",
+      "language": "swift",
+      "startTimeSeconds": 336,
+      "code": "for await quake in quakes {\n    if quake.location == nil {\n        break\n    }\n    if quake.magnitude > 3 {\n        displaySignificantEarthquake(quake)\n    }\n}"
+    },
+    {
+      "title": "Skipping values by continuing",
+      "language": "swift",
+      "startTimeSeconds": 351,
+      "code": "for await quake in quakes {\n    if quake.depth > 5 {\n        continue\n    }\n    if quake.magnitude > 3 {\n        displaySignificantEarthquake(quake)\n    }\n}"
+    },
+    {
+      "title": "AsyncSequence might throw",
+      "language": "swift",
+      "startTimeSeconds": 365,
+      "code": "do {\n    for try await quake in quakeDownload {\n        ...\n    }\n} catch {\n    ...\n}"
+    },
+    {
+      "title": "Concurrently iterating inside an async task",
+      "language": "swift",
+      "startTimeSeconds": 435,
+      "code": "let iteration1 = Task {\n    for await quake in quakes {\n        ...\n    }\n}\n\nlet iteration2 = Task {\n    do {\n        for try await quake in quakeDownload {\n            ...\n        }\n    } catch {\n        ...\n    }\n}\n\n//... later on  \niteration1.cancel()\niteration2.cancel()"
+    },
+    {
+      "title": "Reading bytes from a FileHandle",
+      "language": "swift",
+      "startTimeSeconds": 476,
+      "code": "for try await line in FileHandle.standardInput.bytes.lines {\n    ...\n}"
+    },
+    {
+      "title": "Reading lines from a URL",
+      "language": "swift",
+      "startTimeSeconds": 496,
+      "code": "let url = URL(fileURLWithPath: \"/tmp/somefile.txt\")\nfor try await line in url.lines {\n    ...\n}"
+    },
+    {
+      "title": "Reading bytes from a URLSession",
+      "language": "swift",
+      "startTimeSeconds": 529,
+      "code": "let (bytes, response) = try await URLSession.shared.bytes(from: url)\n\nguard let httpResponse = response as? HTTPURLResponse,\n      httpResponse.statusCode == 200 /* OK */\nelse {\n    throw MyNetworkingError.invalidServerResponse\n}\n\nfor try await byte in bytes {\n    ...\n}"
+    },
+    {
+      "title": "Notifications",
+      "language": "swift",
+      "startTimeSeconds": 552,
+      "code": "let center = NotificationCenter.default\nlet notification = await center.notifications(named: .NSPersistentStoreRemoteChange).first {\n    $0.userInfo[NSStoreUUIDKey] == storeUUID\n}"
+    },
+    {
+      "title": "Using an AsyncStream",
+      "language": "swift",
+      "startTimeSeconds": 670,
+      "code": "class QuakeMonitor {\n    var quakeHandler: (Quake) -> Void\n    func startMonitoring()\n    func stopMonitoring()\n}\n\nlet quakes = AsyncStream(Quake.self) { continuation in\n    let monitor = QuakeMonitor()\n    monitor.quakeHandler = { quake in\n        continuation.yield(quake)\n    }\n    continuation.onTermination = { @Sendable _ in\n        monitor.stopMonitoring()\n    }\n    monitor.startMonitoring()\n}\n\nlet significantQuakes = quakes.filter { quake in\n    quake.magnitude > 3\n}\n\nfor await quake in significantQuakes {\n    ...\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "SE-0314: AsyncStream and AsyncThrowingStream",
+      "url": "https://github.com/apple/swift-evolution/blob/main/proposals/0314-async-stream.md",
+      "type": "documentation",
+      "description": "Swift evolution proposal"
+    },
+    {
+      "title": "SE-0298: Async/Await: Sequences",
+      "url": "https://github.com/apple/swift-evolution/blob/main/proposals/0298-asyncsequence.md",
+      "type": "documentation",
+      "description": "Swift evolution proposal"
+    },
+    {
+      "title": "The Swift Programming Language: Concurrency",
+      "url": "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency/",
+      "type": "guide",
+      "description": "The chapter of the Language Guide in The Swift Programming Language that covers asynchronous and parallel code, including asynchronous functions (async/await), asynchronous sequences (AsyncSequence), async let, tasks, task groups, and actors."
+    }
+  ],
+  "path": "sessions/wwdc2021/10058/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10058/metadata.json",
+    "readme": "sessions/wwdc2021/10058/README.md",
+    "transcript": "sessions/wwdc2021/10058/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10058/transcript.json"
+  }
+}

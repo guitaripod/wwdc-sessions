@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10229",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10229,
+  "title": "Discover compilation workflows in Metal",
+  "description": "The Metal shading language is a powerful C++ based language that allows apps to render stunning effects while maintaining a flexible shader development pipeline. Discover how to more easily build and extend your render pipelines using Dynamic Libraries and Function Pointers. We’ll also show you how to accelerate your shader compilation at runtime with Binary Function Archives, Function Linking, and Function Stitching.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10229",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10229",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "compilation",
+    "compiler",
+    "metal",
+    "metal shading language",
+    "metal tools",
+    "performance",
+    "xcode"
+  ],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 1492,
+  "hasTranscript": true,
+  "transcriptWordCount": 3514,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10229/3/B5993DB1-3978-4019-B109-364AE2E6F14A/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10229/3/B5993DB1-3978-4019-B109-364AE2E6F14A/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10229/3/B5993DB1-3978-4019-B109-364AE2E6F14A/downloads/wwdc2021-10229_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10229/3/B5993DB1-3978-4019-B109-364AE2E6F14A/downloads/wwdc2021-10229_hd.mp4",
+    "duration": 1492
+  },
+  "codeSnippets": [
+    {
+      "title": "Shading language",
+      "language": "objectivec",
+      "startTimeSeconds": 338,
+      "code": "// Declare external functions\n\nextern float4 foo(FragmentInput input);\nextern float4 bar(FragmentInput input);\n\n// Use functions in shader\n\nfragment float4 main(FragmentInput input [[stage_in]])\n{\n    switch(condition(input)) \n    {\n        case 0: \n            return foo(input);\n        case 1:\n            return bar(input);\n    }\n}"
+    },
+    {
+      "title": "Declare and instantiate visible functions",
+      "language": "objectivec",
+      "startTimeSeconds": 541,
+      "code": "// Declare a descriptor and set CompileToBinary options\n\nMTLFunctionDescriptor* functionDescriptor = [MTLFunctionDescriptor new];\nfunctionDescriptor.options = MTLFunctionOptionCompileToBinary;\n\n// Backend compile the function\n\nfunctionDescriptor.name = @\"foo\";\nid<MTLFunction> foo = [library newFunctionWithDescriptor:functionDescriptor"
+    },
+    {
+      "title": "Configure pipeline descriptor",
+      "language": "objectivec",
+      "startTimeSeconds": 570,
+      "code": "// Provide a list of functions that the pipeline stage may call\n\n// AIR functions\n\nrenderPipeDesc.fragmentLinkedFunctions.functions = @[foo, bar, baz];\n\n// Binary functions\n\nrenderPipeDesc.fragmentLinkedFunctions.binaryFunctions = @[foo, bar, baz];"
+    },
+    {
+      "title": "Create and populate visible function table",
+      "language": "objectivec",
+      "startTimeSeconds": 647,
+      "code": "// Create visible function table\n\n    [renderPipeline newVisibleFunctionTableWithDescriptor:stage:];\n\n// Create function handles\n\n    [renderPipeline functionHandleWithFunction:stage:];\n\n// Insert handles into table\n\n    [visibleFunctionTable setFunction:atIndex:];"
+    },
+    {
+      "title": "Encoding and calling function pointers",
+      "language": "objectivec",
+      "startTimeSeconds": 681,
+      "code": "// Bind visible function table objects to each stage\n\n    [renderCommandEncoder setFragmentVisibleFunctionTable:atBufferIndex:];\n\n// Usage in shader\n\n   fragment float4 shaderFunc(FragmentData vo[[stage_in]],\n                              visible_function_table<float4(float3)>materials[[buffer(0)]])\n   {\n   \t\t //...\n\n       return materials[materialSelector](coord);\n   }"
+    },
+    {
+      "title": "Incremental pipeline creation",
+      "language": "objectivec",
+      "startTimeSeconds": 740,
+      "code": "// Enable incrementally adding binary functions per stage\n\nrenderPipeDesc.supportAddingFragmentBinaryFunctions = YES;\n\n// Create render pipeline functions descriptor\n\nMTLRenderPipelineFunctionsDescriptor extraDesc;\nextraDesc.fragmentAdditionalBinaryFunctions = @[bat];\n\n// Instantiate render pipeline state\n\nid<MTLRenderPipelineState> renderPipeline2 =\n  [renderPipeline1 newRenderPipelineStateWithAdditionalBinaryFunctions:extraDesc"
+    },
+    {
+      "title": "Stitching process",
+      "language": "objectivec",
+      "startTimeSeconds": 1230,
+      "code": "[[stitchable]] int FunctionA(device int*, int) {…}\n[[stitchable]] int FunctionC(int, int) {…}\n\n[[stitchable]]\nint ResultFunction(device int* Input0,\n                   int Input1, \n                   int Input2)\n{\n  int N0 = FunctionA(Input0, Input1);\n  int N1 = FunctionA(Input0, Input2);\n  int N2 = FunctionC(N0, N1);    \n  return N2;\n}"
+    },
+    {
+      "title": "Creating the graph",
+      "language": "objectivec",
+      "startTimeSeconds": 1292,
+      "code": "// Create input nodes\n\n  inputs[0] = [[MTLFunctionStitchingInputNode alloc] initWithArgumentIndex:0];\n\n// Create function nodes\n\n  n0 = [[MTLFunctionStitchingFunctionNode alloc] initWithName:@\"FunctionA\"\n                                                    arguments:@[inputs[0], inputs[1]]\n                                          controlDependencies:@[]];\n  n1 = [[MTLFunctionStitchingFunctionNode alloc] initWithName:@\"FunctionA\"\n                                                    arguments:@[inputs[0], inputs[2]]\n                                          controlDependencies:@[]];\n  n2 = [[MTLFunctionStitchingFunctionNode alloc] initWithName:@\"FunctionC\"\n                                                    arguments:@[n0, n1]\n                                          controlDependencies:@[]];\n\n// Create graph\n\n  graph = [[MTLFunctionStitchingGraph alloc] initWithFunctionName:@\"ResultFunction\"\n                                                            nodes:@[n0, n1]\n                                                       outputNode:n2\n                                                       attributes:@[]];"
+    },
+    {
+      "title": "Configure stitched library descriptor",
+      "language": "objectivec",
+      "startTimeSeconds": 1338,
+      "code": "// Configure stitched library descriptor\n\n  MTLStitchedLibraryDescriptor* descriptor = [MTLStitchedLibraryDescriptor new];\n\n  descriptor.functions      = @[stitchableFunctions];\n  descriptor.functionGraphs = @[graph];\n\n// Create stitched function\n\n  id<MTLLibrary> lib = [device newLibraryWithDescriptor:descriptor \n                                                  error:&error];\n\n  id<MTLFunction> stitchedFunction = [lib newFunctionWithName:@\"ResultFunction\"];"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Shader libraries",
+      "url": "https://developer.apple.com/documentation/Metal/shader-libraries",
+      "type": "documentation",
+      "description": "Manage and load your app’s Metal shaders.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/shader-libraries",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/shader-libraries.json"
+    },
+    {
+      "title": "Creating a Metal dynamic library",
+      "url": "https://developer.apple.com/documentation/Metal/creating-a-metal-dynamic-library",
+      "type": "samplecode",
+      "description": "Compile a library of shaders and write it to a file as a dynamically linked library.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/creating-a-metal-dynamic-library",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/creating-a-metal-dynamic-library.json"
+    },
+    {
+      "title": "Metal Feature Set Tables",
+      "url": "https://developer.apple.com/metal/Metal-Feature-Set-Tables.pdf",
+      "type": "guide",
+      "description": "Features, limits, and capabilities of Metal.",
+      "sosumiURL": "https://sosumi.ai/metal/Metal-Feature-Set-Tables.pdf"
+    },
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    },
+    {
+      "title": "Metal Shading Language Specification",
+      "url": "https://developer.apple.com/metal/metal-shading-language-specification.pdf",
+      "type": "guide",
+      "description": "The Metal shading language is used to write graphics and compute functions that are executed on the GPU. Version 2.0 of the Metal shading language adds new features such as Raster Order Groups, Indirect Argument Buffers, Arrays of Samplers, Uniform Types, and much more.",
+      "sosumiURL": "https://sosumi.ai/metal/metal-shading-language-specification.pdf"
+    }
+  ],
+  "path": "sessions/wwdc2021/10229/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10229/metadata.json",
+    "readme": "sessions/wwdc2021/10229/README.md",
+    "transcript": "sessions/wwdc2021/10229/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10229/transcript.json"
+  }
+}

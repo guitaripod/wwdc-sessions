@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2026-283",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 283,
+  "title": "Explore enhancements to visionOS object tracking",
+  "description": "Find out how visionOS is advancing object tracking and spatial accessory input. Discover new ways to track moving and handheld objects, allowing you to bridge the physical and digital worlds. Learn about new supported classes of spatial accessories and what is needed to build your own custom accessories to enable unique interaction models in your apps.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/283",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/283",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "3d",
+    "3d content",
+    "anchor entity",
+    "object",
+    "object tracking",
+    "spatial accessories",
+    "spatial computing",
+    "visionos"
+  ],
+  "topics": [
+    "Graphics & Games",
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 845,
+  "hasTranscript": true,
+  "transcriptWordCount": 2405,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/283/4/22b92960-c65b-450f-b42c-6d6bff64a9b4/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/283/4/22b92960-c65b-450f-b42c-6d6bff64a9b4/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/283/4/22b92960-c65b-450f-b42c-6d6bff64a9b4/downloads/wwdc2026-283_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/283/4/22b92960-c65b-450f-b42c-6d6bff64a9b4/downloads/wwdc2026-283_hd.mp4",
+    "duration": 845
+  },
+  "codeSnippets": [
+    {
+      "title": "Enable high frame rate tracking",
+      "language": "swift",
+      "startTimeSeconds": 230,
+      "code": "// Enable high frame rate tracking\n\n// Create reference object configuration\nvar configuration = ReferenceObject.Configuration()\nconfiguration.highFrameRateTrackingEnabled = true\n\n// Load the reference object with ARKit API\nlet refObjURL = Bundle.main.url(forResource: \"flashlight\", withExtension: \".referenceobject\")\nlet refObject = try? await ReferenceObject(from: refObjURL!, configuration: configuration)"
+    },
+    {
+      "title": "Extended training mode via command-line",
+      "language": "bash",
+      "startTimeSeconds": 290,
+      "code": "// Extended training mode on Mac using command-line interface\n\n% xrun createml objecttracker --source flashlight.usdz --output flashlight.referenceobject --training-mode extended --all-angles"
+    },
+    {
+      "title": "Object pose coordinate spaces",
+      "language": "swift",
+      "startTimeSeconds": 325,
+      "code": "// Different object pose spaces\n\n// Obtain anchor transform with display corrections\n\nlet renderingPose = myObjectAnchor.coordinateSpace(correction: .rendered)\n\n// Obtain anchor transform in metric space\n\nlet metricPose = myObjectAnchor.coordinateSpace(correction: .none)"
+    },
+    {
+      "title": "Implement object tracking in iOS",
+      "language": "swift",
+      "startTimeSeconds": 382,
+      "code": "// Implement object tracking in iOS\n\nimport ARKit\nimport RealityKit\n\nclass ObjectTrackingARSessionDelegate: NSObject, ARSessionDelegate {\n        let arView = ARView(frame: .zero)\n        var entities: [UUID: AnchorEntity] = [:]\n\n        func start() throws {\n                let stationaryObject = try ARReferenceObject(archiveURL:\n                        Bundle.main.url(forResource: \"stationary\", withExtension: \"referenceobject\")!)\n                let movingObject = try ARReferenceObject(archiveURL:\n                        Bundle.main.url(forResource: \"moving\", withExtension: \"referenceobject\")!)\n\n                let configuration = ARWorldTrackingConfiguration()\n                configuration.detectionObjects = [stationaryObject]   // Low frame rate\n                configuration.trackingObjects = [movingObject]        // High frame rate\n\n                arView.session.delegate = self\n                arView.session.run(configuration)\n        }\n\n\t\t\t\tfunc session(_ session: ARSession, didAdd anchors: [ARAnchor]) {\n                for case let anchor as ARObjectAnchor in anchors {\n                        let entity = AnchorEntity(anchor: anchor)\n                        entities[anchor.identifier] = entity\n                        arView.scene.addAnchor(entity)\n                }\n        }\n\n        func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {\n                for case let anchor as ARObjectAnchor in anchors {\n                        entities[anchor.identifier]?.isEnabled = anchor.isTracked\n                }\n        }\n\n        func session(_ session: ARSession, didRemove anchors: [ARAnchor]) {\n                for case let anchor as ARObjectAnchor in anchors {\n                        if let entity = entities.removeValue(forKey: anchor.identifier) {\n                                arView.scene.removeAnchor(entity)\n                        }\n                }\n        }\n}"
+    },
+    {
+      "title": "Discover and connect a spatial accessory",
+      "language": "swift",
+      "startTimeSeconds": 746,
+      "code": "import ARKit\nimport GameController\n\n// Generic accessory discovery\n\nif let device = GCSpatialAccessory.spatialAccessories.first {\n\n        // Resolves the .referenceaccessory bundle automatically\n\n        let accessory = try await Accessory(device: device)\n        let provider = AccessoryTrackingProvider(accessories: [accessory])\n        try await arkitSession.run([provider])\n}\n\n// Update tracked accessories without restarting the session                             \n\ntry await provider.updateAccessories([newAccessory])"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Working with generic spatial accessories",
+      "url": "https://developer.apple.com/documentation/visionOS/working-with-generic-spatial-accessories",
+      "type": "documentation",
+      "description": "Use generic spatial accessories to track purpose-built devices in your visionOS app.",
+      "sosumiURL": "https://sosumi.ai/documentation/visionOS/working-with-generic-spatial-accessories",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/visionOS/working-with-generic-spatial-accessories.json"
+    },
+    {
+      "title": "Preparing spatial accessories for tracking in your visionOS app",
+      "url": "https://developer.apple.com/documentation/ARKit/preparing-spatial-accessories-for-tracking-in-your-visionos-app",
+      "type": "documentation",
+      "description": "Prepare a spatial accessory for tracking by training a reference accessory file and integrating it into your visionOS app.",
+      "sosumiURL": "https://sosumi.ai/documentation/ARKit/preparing-spatial-accessories-for-tracking-in-your-visionos-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ARKit/preparing-spatial-accessories-for-tracking-in-your-visionos-app.json"
+    },
+    {
+      "title": "Spatial accessory design guidelines for Apple devices (section 20)",
+      "url": "https://at.apple.com/vzqbpy",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "Exploring object tracking with ARKit",
+      "url": "https://developer.apple.com/documentation/visionOS/exploring_object_tracking_with_arkit",
+      "type": "samplecode",
+      "description": "Find and track real-world objects in visionOS using reference objects you train with Create ML.",
+      "sosumiURL": "https://sosumi.ai/documentation/visionOS/exploring_object_tracking_with_arkit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/visionOS/exploring_object_tracking_with_arkit.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/283/",
+  "files": {
+    "metadata": "sessions/wwdc2026/283/metadata.json",
+    "readme": "sessions/wwdc2026/283/README.md",
+    "transcript": "sessions/wwdc2026/283/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/283/transcript.json"
+  }
+}

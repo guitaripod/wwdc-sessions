@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-248",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 248,
+  "title": "Explore prompt design & safety for on-device foundation models",
+  "description": "Design generative AI experiences that leverage the strengths of the Foundation Models framework. We’ll start by showing how to design prompts for the on-device large language model at the core of Apple Intelligence. Then, we’ll introduce key ideas around AI safety, and offer concrete strategies to make your generative AI features safe, reliable, and delightful.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/248",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/248",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Design",
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 1331,
+  "hasTranscript": true,
+  "transcriptWordCount": 3153,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/248/7/5f4b2840-b27c-42a1-992f-179475029fb9/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/248/7/5f4b2840-b27c-42a1-992f-179475029fb9/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/248/7/5f4b2840-b27c-42a1-992f-179475029fb9/downloads/wwdc2025-248_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/248/7/5f4b2840-b27c-42a1-992f-179475029fb9/downloads/wwdc2025-248_hd.mp4",
+    "duration": 1331
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Adding intelligent app features with generative models",
+      "url": "https://developer.apple.com/documentation/FoundationModels/adding-intelligent-app-features-with-generative-models",
+      "type": "samplecode",
+      "description": "Build robust apps with guided generation and tool calling by adopting the Foundation Models framework.",
+      "sosumiURL": "https://sosumi.ai/documentation/FoundationModels/adding-intelligent-app-features-with-generative-models",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/FoundationModels/adding-intelligent-app-features-with-generative-models.json"
+    },
+    {
+      "title": "Human Interface Guidelines: Generative AI",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/generative-ai",
+      "type": "documentation",
+      "description": "Generative AI empowers you to enhance your app or game with dynamic content and offer intelligent features that unlock new levels of creativity, connection, and productivity.",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/generative-ai"
+    },
+    {
+      "title": "Improving the safety of generative model output",
+      "url": "https://developer.apple.com/documentation/FoundationModels/improving-the-safety-of-generative-model-output",
+      "type": "documentation",
+      "description": "Create generative experiences that appropriately handle sensitive inputs and respect people.",
+      "sosumiURL": "https://sosumi.ai/documentation/FoundationModels/improving-the-safety-of-generative-model-output",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/FoundationModels/improving-the-safety-of-generative-model-output.json"
+    },
+    {
+      "title": "Human Interface Guidelines: Machine learning",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/machine-learning",
+      "type": "documentation",
+      "description": "Machine learning enables apps and games to learn from data and usage patterns, letting you improve existing experiences and create engaging new ones.",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/machine-learning"
+    }
+  ],
+  "path": "sessions/wwdc2025/248/",
+  "files": {
+    "metadata": "sessions/wwdc2025/248/metadata.json",
+    "readme": "sessions/wwdc2025/248/README.md",
+    "transcript": "sessions/wwdc2025/248/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/248/transcript.json"
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10045",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10045,
+  "title": "Advances in diffable data sources",
+  "description": "Diffable data sources dramatically simplify the work involved in managing and updating collection and table views to create dynamic and responsive experiences in your apps. Discover how you can use section snapshots to efficiently build lists and outline collection views for iOS and iPadOS and provide support for implementing the sidebar in an iPad app. We’ll also show you how to simplify cell reordering using UICollectionViewDiffableDataSource to help you streamline your code and build app interfaces more quickly.\n\nThis session builds on 2019’s “Advances in UI Data Sources,” which you may want to check out first.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10045",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10045",
+  "type": "Video",
+  "publishedAt": "2020-06-23T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "uicollectionview",
+    "uitableview"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 715,
+  "hasTranscript": true,
+  "transcriptWordCount": 1742,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10045/2/7473959D-7A47-4AC5-ACC1-1FFD5712F680/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10045/2/7473959D-7A47-4AC5-ACC1-1FFD5712F680/wwdc2020_10045_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10045/2/7473959D-7A47-4AC5-ACC1-1FFD5712F680/wwdc2020_10045_hd.mp4",
+    "duration": 715
+  },
+  "codeSnippets": [
+    {
+      "title": "NSDiffableDataSourceSectionSnapshot",
+      "language": "swift",
+      "startTimeSeconds": 204,
+      "code": "// NSDiffableDataSourceSectionSnapshot\n\npublic struct NSDiffableDataSourceSectionSnapshot<ItemIdentifierType> where ItemIdentifierType : Hashable {\n\n    public init()\n\n    public init(_ snapshot: NSDiffableDataSourceSectionSnapshot<ItemIdentifierType>)\n\n    public mutating func append(_ items: [ItemIdentifierType], to parent: ItemIdentifierType? = nil)\n\n    public mutating func insert(_ items: [ItemIdentifierType], before item: ItemIdentifierType)\n\n    public mutating func insert(_ items: [ItemIdentifierType], after item: ItemIdentifierType)\n\n    public mutating func delete(_ items: [ItemIdentifierType])\n\n    public mutating func deleteAll()\n\n    public mutating func expand(_ items: [ItemIdentifierType])\n\n    public mutating func collapse(_ items: [ItemIdentifierType])\n\n    public mutating func replace(childrenOf parent: ItemIdentifierType, using snapshot: NSDiffableDataSourceSectionSnapshot<ItemIdentifierType>)\n\n    public mutating func insert(_ snapshot: NSDiffableDataSourceSectionSnapshot<ItemIdentifierType>, before item: (ItemIdentifierType))\n\n    public mutating func insert(_ snapshot: NSDiffableDataSourceSectionSnapshot<ItemIdentifierType>, after item: (ItemIdentifierType))\n\n    public func isExpanded(_ item: ItemIdentifierType) -> Bool\n\n    public func isVisible(_ item: ItemIdentifierType) -> Bool\n\n    public func contains(_ item: ItemIdentifierType) -> Bool\n\n    public func level(of item: ItemIdentifierType) -> Int\n\n    public func index(of item: ItemIdentifierType) -> Int?\n\n    public func parent(of child: ItemIdentifierType) -> ItemIdentifierType?\n\n    public func snapshot(of parent: ItemIdentifierType, includingParent: Bool = false) -> NSDiffableDataSourceSectionSnapshot<ItemIdentifierType>\n\n    public var items: [ItemIdentifierType] { get }\n\n    public var rootItems: [ItemIdentifierType] { get }\n\n    public var visibleItems: [ItemIdentifierType] { get }\n}"
+    },
+    {
+      "title": "UICollectionViewDiffableDataSource Additions for Section Snapshots",
+      "language": "swift",
+      "startTimeSeconds": 260,
+      "code": "// UICollectionViewDiffableDataSource additions for iOS 14\n\nextension UICollectionViewDiffableDataSource<Item, Section> {\n\n    func apply(_ snapshot: NSDiffableDataSourceSectionSnapshot<Item>, \n               to section: Section, \n               animatingDifferences: Bool = true, \n               completion: (() -> Void)? = nil)\n\n    func snapshot(for section: Section) ->   \n                  NSDiffableDataSourceSectionSnapshot<Item>\n}"
+    },
+    {
+      "title": "Using Snapshots and Section Snapshots together",
+      "language": "swift",
+      "startTimeSeconds": 283,
+      "code": "// Example of using snapshots and section snapshots together\n\nfunc update(animated: Bool=true) {\n\n   // Add our sections in a specific order\n   let sections: [Section] = [.recent, .top, .suggested]\n   var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()\n   snapshot.appendSections(sections)\n   dataSource.apply(snapshot, animatingDifferences: animated)\n\n   // update each section's data via section snapshots in the existing position\n   for section in sections {\n      let sectionItems = items(for: section)\n      var sectionSnapshot = NSDiffableDataSourceSectionSnapshot<Item>()\n      sectionSnapshot.append(sectionItems)\n      dataSource.apply(sectionSnapshot, to: section, animatingDifferences:animated)\n   }\n}"
+    },
+    {
+      "title": "Creating hierarchical data with NSDiffableDataSourceSectionSnapshot",
+      "language": "swift",
+      "startTimeSeconds": 318,
+      "code": "// Create hierarchical data for our Outline\n\nvar sectionSnapshot = ...\n\nsectionSnapshot.append([\"Smileys\", \"Nature\", \n                        \"Food\", \"Activities\",\n                        \"Travel\", \"Objects\", \"Symbols\"])\n\nsectionSnapshot.append([\"🥃\", \"🍎\", \"🍑\"], to: \"Food\")"
+    },
+    {
+      "title": "Child Section Snapshots",
+      "language": "swift",
+      "startTimeSeconds": 361,
+      "code": "let childSnapshot = sectionSnapshot.snapshot(for: parent, includingParent: false)"
+    },
+    {
+      "title": "Section Snapshot Expand / Collapse API",
+      "language": "swift",
+      "startTimeSeconds": 371,
+      "code": "struct NSDiffableDataSourceSectionSnapshot<Item: Hashable> {\n   func expand(_ items: [Item])\n   func collapse(_ items: [Item])\n   func isExpanded(_ item: Item) -> Bool\n}"
+    },
+    {
+      "title": "Section Snapshot Handlers",
+      "language": "swift",
+      "startTimeSeconds": 441,
+      "code": "// Section Snapshot Handlers: handling user interactions for expand / collapse state changes\n\nextension UICollectionViewDiffableDataSource {\n\n  struct SectionSnapshotHandlers<Item> {\n    var shouldExpandItem: ((Item) -> Bool)?\n    var willExpandItem: ((Item) -> Void)?\n\n    var shouldCollapseItem: ((Item) -> Bool)?\n    var willCollapseItem: ((Item) -> Void)?\n\n    var snapshotForExpandingParent: ((Item, NSDiffableDataSourceSectionSnapshot<Item>) -> NSDiffableDataSourceSectionSnapshot<Item>)?\n  }\n\n  var sectionSnapshotHandlers: SectionSnapshotHandlers<Item>\n\n}"
+    },
+    {
+      "title": "Reordering Handlers",
+      "language": "swift",
+      "startTimeSeconds": 532,
+      "code": "// Diffable Data Source Reordering Handlers\n\nextension UICollectionViewDiffableDataSource {\n\n  struct ReorderingHandlers {\n    var canReorderItem: ((Item) -> Bool)?\n    var willReorder: ((NSDiffableDataSourceTransaction<Section, Item>) -> Void)?\n    var didReorder: ((NSDiffableDataSourceTransaction<Section, Item>) -> Void)?\n  }\n\n  var reorderingHandlers: ReorderingHandlers\n}"
+    },
+    {
+      "title": "Diffable Data Source Transactions",
+      "language": "swift",
+      "startTimeSeconds": 585,
+      "code": "// NSDiffableDataSourceTransaction\n\nstruct NSDiffableDataSourceTransaction<Section, Item> {\n   var initialSnapshot: NSDiffableDataSourceSnapshot<Section, Item> { get }\n   var finalSnapshot: NSDiffableDataSourceSnapshot<Section, Item> { get }\n   var difference: CollectionDifference<Item> { get }\n   var sectionTransactions: [NSDiffableDataSourceSectionTransaction<Section, Item>] { get }\n}\n\nstruct NSDiffableDataSourceSectionTransaction<Section, Item> {\n   var sectionIdentifier: Section { get }\n   var initialSnapshot: NSDiffableDataSourceSectionSnapshot<Item> { get }\n   var finalSnapshot: NSDiffableDataSourceSectionSnapshot<Item> { get }\n   var difference: CollectionDifference<Item> { get }\n}"
+    },
+    {
+      "title": "Diffable Data Source Reordering Example",
+      "language": "swift",
+      "startTimeSeconds": 667,
+      "code": "dataSource.reorderingHandlers.didReorder = { [weak self] transaction in \n   guard let self = self else { return }\n\n   if let updateBackingStore = self.backingStore.applying(transaction.difference) {\n      self.backingStore = updatedBackingStore\n   }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Implementing modern collection views",
+      "url": "https://developer.apple.com/documentation/UIKit/implementing-modern-collection-views",
+      "type": "samplecode",
+      "description": "Bring compositional layouts to your app and simplify updating your user interface with diffable data sources.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/implementing-modern-collection-views",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/implementing-modern-collection-views.json"
+    }
+  ],
+  "path": "sessions/wwdc2020/10045/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10045/metadata.json",
+    "readme": "sessions/wwdc2020/10045/README.md",
+    "transcript": "sessions/wwdc2020/10045/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10045/transcript.json"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10208",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10208,
+  "title": "Explore Digital Crown, Trackpad, and iPad pointer automation",
+  "description": "Learn how you can interact with devices in UI Tests in Xcode 13. Discover newly-automatable input methods including iPadOS pointer, watchOS Digital Crown, and enhanced macOS trackpad scrolling APIs.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10208",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10208",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "digital crown",
+    "interaction",
+    "interaction tests",
+    "pointer",
+    "pointer events",
+    "scroll",
+    "testing",
+    "trackpad",
+    "ui testing",
+    "xcuitest"
+  ],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 556,
+  "hasTranscript": true,
+  "transcriptWordCount": 1154,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10208/7/D03FEAA6-4A84-48E0-BC4B-0B194701D23A/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10208/7/D03FEAA6-4A84-48E0-BC4B-0B194701D23A/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10208/7/D03FEAA6-4A84-48E0-BC4B-0B194701D23A/downloads/wwdc2021-10208_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10208/7/D03FEAA6-4A84-48E0-BC4B-0B194701D23A/downloads/wwdc2021-10208_hd.mp4",
+    "duration": 556
+  },
+  "codeSnippets": [
+    {
+      "title": "New supportsPointerInteraction property on XCUIDevice",
+      "language": "swift",
+      "startTimeSeconds": 88,
+      "code": "extension XCUIDevice {\n\n  public var supportsPointerInteraction: Bool\n\n}"
+    },
+    {
+      "title": "New methods on XCUIElement and XCUICoordinate for pointer interactions on iOS",
+      "language": "swift",
+      "startTimeSeconds": 97,
+      "code": "extension XCUIElement {\n  open func hover()\n\n  open func click()\n\n  open func rightClick()\n\n  open func doubleClick()\n\n  open func scroll(byDeltaX: CGFloat, deltaY: CGFloat)\n\n  open func click(forDuration: TimeInterval, thenDragToElement: XCUIElement)\n\n  open func click(forDuration: TimeInterval, thenDragToElement: XCUIElement,\n                  withVelocity: XCUIGestureVelocity, thenHoldForDuration: TimeInterval)\n\n  open class func perform(withKeyModifiers flags: XCUIElement.KeyModifiers,\n                          block: () -> Void)\n}"
+    },
+    {
+      "title": "Empty UI test class",
+      "language": "swift",
+      "startTimeSeconds": 151,
+      "code": "import XCTest\n\nclass Pointer_UI_Tests: XCTestCase {\n\n\n\n}"
+    },
+    {
+      "title": "UI test for opening the sidebar with a two-finger horizontal trackpad swipe",
+      "language": "swift",
+      "startTimeSeconds": 163,
+      "code": "import XCTest\n\nclass Pointer_UI_Tests: XCTestCase {\n\n  @available(iOS 15.0, *)\n  func testHorizontalScrollRevealsSidebar() throws {\n    let app = XCUIApplication()\n    app.launch()\n\n    let sidebar = app.tables[\"Sidebar\"]\n\n    // Make sure sidebar menu is not present initially.\n    XCTAssertFalse(sidebar.exists, \"Sidebar should not be present initially\")\n\n    // Swipe horizontally to reveal sidebar.\n    app.staticTexts[\"Select a smoothie\"].scroll(byDeltaX: -200, deltaY: 0)\n\n    // Verify sidebar is now present.\n    XCTAssertTrue(sidebar.waitForExistence(timeout: 5),\n                  \"Sidebar did not appear within 5 second timeout\")\n  }\n\n}"
+    },
+    {
+      "title": "Use the new supportsPointerInteraction property to skip the test on devices that don't support pointer interaction",
+      "language": "swift",
+      "startTimeSeconds": 276,
+      "code": "import XCTest\n\nclass Pointer_UI_Tests: XCTestCase {\n\n  @available(iOS 15.0, *)\n  func testHorizontalScrollRevealsSidebar() throws {\n    try XCTSkipUnless(XCUIDevice.shared.supportsPointerInteraction,\n                      \"Device does not support pointer interaction\")\n\n    let app = XCUIApplication()\n    app.launch()\n\n    let sidebar = app.tables[\"Sidebar\"]\n\n    // Make sure sidebar menu is not present initially.\n    XCTAssertFalse(sidebar.exists, \"Sidebar should not be present initially\")\n\n    // Swipe horizontally to reveal sidebar.\n    app.staticTexts[\"Select a smoothie\"].scroll(byDeltaX: -200, deltaY: 0)\n\n    // Verify sidebar is now present.\n    XCTAssertTrue(sidebar.waitForExistence(timeout: 5),\n                  \"Sidebar did not appear within 5 second timeout\")\n  }\n\n}"
+    },
+    {
+      "title": "New method on XCUIDevice for Digital Crown rotation on watchOS",
+      "language": "swift",
+      "startTimeSeconds": 327,
+      "code": "// New rotateDigitalCrown API\n\nextension XCUIDevice {\n\n  open func rotateDigitalCrown(delta: CGFloat, velocity: XCUIGestureVelocity = .default)\n\n}"
+    },
+    {
+      "title": "UI test to verify the app's Digital Crown rotation functionality behaves as expected",
+      "language": "swift",
+      "startTimeSeconds": 382,
+      "code": "// Example use of watchOS Digital Crown API\n\nfunc testForecastScrolling() {\n  let app = XCUIApplication()\n  app.launch()\n\n  let forecastTime = app.staticTexts[\"forecast-time\"]\n\n  XCTAssertEqual(forecastTime.label, \"Current Temperature\")\n\n  // Scroll 1 full rotation forward.\n  XCUIDevice.shared.rotateDigitalCrown(delta: 1.0)\n  XCTAssertEqual(forecastTime.label, \"One hour from now\")\n\n  // Scroll 2 full rotations backward.\n  XCUIDevice.shared.rotateDigitalCrown(delta: -2.0)\n  XCTAssertEqual(forecastTime.label, \"One hour ago\")\n}"
+    },
+    {
+      "title": "Existing API for performing discrete (mouse wheel-like) scrolling on macOS",
+      "language": "swift",
+      "startTimeSeconds": 466,
+      "code": "extension XCUIElement {\n\n  // Use the existing API for discrete (mouse wheel-like) scrolling.\n  open func scroll(byDeltaX: CGFloat, deltaY: CGFloat)\n\n}"
+    },
+    {
+      "title": "New API for performing continuous (trackpad-like) scrolling on macOS",
+      "language": "swift",
+      "startTimeSeconds": 485,
+      "code": "extension XCUIElement {\n\n  // Use the new API for continuous (trackpad-like) scrolling.\n  open func swipeUp(velocity: XCUIGestureVelocity = .default)\n  open func swipeDown(velocity: XCUIGestureVelocity = .default)\n  open func swipeLeft(velocity: XCUIGestureVelocity = .default)\n  open func swipeRight(velocity: XCUIGestureVelocity = .default)\n\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2021/10208/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10208/metadata.json",
+    "readme": "sessions/wwdc2021/10208/README.md",
+    "transcript": "sessions/wwdc2021/10208/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10208/transcript.json"
+  }
+}

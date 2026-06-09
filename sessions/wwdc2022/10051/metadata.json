@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10051",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10051,
+  "title": "Go further with Complications in WidgetKit",
+  "description": "Discover how you can use WidgetKit to create beautiful complications on watch faces. We'll introduce you to the watchOS-specific features found in WidgetKit, and help you migrate from existing ClockKit complications.\n\nFor more on WidgetKit, watch “Complications and Widgets: Reloaded” from WWDC22.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10051",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10051",
+  "type": "Video",
+  "publishedAt": "2022-06-09T08:00:00-07:00",
+  "platforms": [
+    "watchOS"
+  ],
+  "keywords": [
+    "accessory circular family",
+    "accessory corner",
+    "accessory inline",
+    "accessory inline family",
+    "accessory rectangular",
+    "accessorywidgetbackground",
+    "auxiliary content",
+    "circular complication",
+    "clkcomplicationintentmigrationconfiguration",
+    "clkcomplicationwidgetmigrator",
+    "clockkit",
+    "coffeetracker",
+    "coffee tracker",
+    "complication",
+    "complication data source",
+    "configuration",
+    "corner complication",
+    "entries",
+    "extra large watch face",
+    "intent-based",
+    "migration",
+    "rich complications",
+    ".showswidgetlabel",
+    "shows widget label",
+    "static",
+    "swiftui",
+    "templates",
+    "timelines",
+    "views",
+    "watch faces",
+    "watch specific family",
+    "widget extension",
+    "widgetkit",
+    ".widgetlabel",
+    "widget label"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 638,
+  "hasTranscript": true,
+  "transcriptWordCount": 1525,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10051/3/912F72F4-A83D-4923-A276-8B231CB7D837/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10051/3/912F72F4-A83D-4923-A276-8B231CB7D837/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10051/3/912F72F4-A83D-4923-A276-8B231CB7D837/downloads/wwdc2022-10051_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10051/3/912F72F4-A83D-4923-A276-8B231CB7D837/downloads/wwdc2022-10051_hd.mp4",
+    "duration": 638
+  },
+  "codeSnippets": [
+    {
+      "title": "Large Corner",
+      "language": "swift",
+      "startTimeSeconds": 186,
+      "code": "struct CornerView: View {\n    let value: Double\n\n    var body: some View {\n\n        ZStack {\n            AccessoryWidgetBackground()\n            Image(systemName: \"cup.and.saucer.fill\")\n                .font(.title.bold())\n                .widgetAccentable()\n        }\n\n    }\n}"
+    },
+    {
+      "title": "Corner with Gauge",
+      "language": "swift",
+      "startTimeSeconds": 207,
+      "code": "struct CornerView: View {\n    let value: Double\n\n    var body: some View {\n\n        ZStack {\n            AccessoryWidgetBackground()\n            Image(systemName: \"cup.and.saucer.fill\")\n                .font(.title.bold())\n                .widgetAccentable()\n        }\n        .widgetLabel {\n            Gauge(value: value,\n              in: 0...500) {\n                Text(\"MG\")\n            } currentValueLabel: {\n                Text(\"\\(Int(value))\")\n            } minimumValueLabel: {\n                Text(\"0\")\n            } maximumValueLabel: {\n                Text(\"500\")\n            }\n        }\n\n\n    }\n}"
+    },
+    {
+      "title": "Circular Gauge",
+      "language": "swift",
+      "startTimeSeconds": 264,
+      "code": "struct CircularView: View {\n    let value: Double\n\n    var body: some View {\n\n        Gauge(value: value,\n              in: 0...500) {\n            Text(\"MG\")\n        } currentValueLabel: {\n            Text(\"\\(Int(value))\")\n        }\n        .gaugeStyle(.circular)\n\n    }\n}"
+    },
+    {
+      "title": "Circular Gauge with Widget Label",
+      "language": "swift",
+      "startTimeSeconds": 274,
+      "code": "struct CircularView: View {\n    let value: Double\n\n    var body: some View {\n        let mg = value.inMG()\n\n        Gauge(value: value,\n              in: 0...500) {\n            Text(\"MG\")\n        } currentValueLabel: {\n            Text(\"\\(Int(value))\")\n        }\n        .gaugeStyle(.circular)\n        .widgetLabel {\n            Text(\"\\(mg, formatter: mgFormatter) Caffeine\")\n        }\n\n    }\n\n    var mgFormatter: Formatter {\n        let formatter = MeasurementFormatter()\n        formatter.unitOptions = [.providedUnit]\n        return formatter\n    }\n}\n\nextension Double {\n    func inMG() -> Measurement<UnitMass> {\n        Measurement<UnitMass>(value: self, unit: .milligrams)\n    }\n}"
+    },
+    {
+      "title": "Circular Stack with Widget Label",
+      "language": "swift",
+      "startTimeSeconds": 291,
+      "code": "struct CircularView: View {\n    let value: Double\n\n    var body: some View {\n        let mg = value.inMG()\n\n        ZStack {\n            AccessoryWidgetBackground()\n            Image(systemName: \"cup.and.saucer.fill\")\n                .font(.title.bold())\n                .widgetAccentable()\n        }\n        .widgetLabel {\n            Text(\"\\(mg, formatter: mgFormatter) Caffeine\")\n        }\n\n    }\n\n    var mgFormatter: Formatter {\n        let formatter = MeasurementFormatter()\n        formatter.unitOptions = [.providedUnit]\n        return formatter\n    }\n}\n\nextension Double {\n    func inMG() -> Measurement<UnitMass> {\n        Measurement<UnitMass>(value: self, unit: .milligrams)\n    }\n}"
+    },
+    {
+      "title": "Circular Stack or Gauge",
+      "language": "swift",
+      "startTimeSeconds": 312,
+      "code": "struct CircularView: View {\n    let value: Double\n    @Environment(\\.showsWidgetLabel) var showsWidgetLabel\n\n    var body: some View {\n        let mg = value.inMG()\n        if showsWidgetLabel {\n            ZStack {\n                AccessoryWidgetBackground()\n                Image(systemName: \"cup.and.saucer.fill\")\n                    .font(.title.bold())\n                    .widgetAccentable()\n            }\n            .widgetLabel {\n                Text(\"\\(mg, formatter: mgFormatter) Caffeine\")\n            }\n        }\n        else {\n            Gauge(value: value,\n                  in: 0...500) {\n                Text(\"MG\")\n            } currentValueLabel: {\n                Text(\"\\(Int(value))\")\n            }\n            .gaugeStyle(.circular)\n        }\n\n    }\n\n    var mgFormatter: Formatter {\n        let formatter = MeasurementFormatter()\n        formatter.unitOptions = [.providedUnit]\n        return formatter\n    }\n}\n\nextension Double {\n    func inMG() -> Measurement<UnitMass> {\n        Measurement<UnitMass>(value: self, unit: .milligrams)\n    }\n}"
+    },
+    {
+      "title": "Widget Migrator",
+      "language": "swift",
+      "startTimeSeconds": 587,
+      "code": "var widgetMigrator: CLKComplicationWidgetMigrator {\n    self\n}"
+    },
+    {
+      "title": "Static Migration Configuration",
+      "language": "swift",
+      "startTimeSeconds": 596,
+      "code": "func widgetConfiguration(from complicationDescriptor: CLKComplicationDescriptor) async -> CLKComplicationWidgetMigrationConfiguration? {\n    CLKComplicationStaticWidgetMigrationConfiguration(kind: \"CoffeeTracker\", extensionBundleIdentifier: widgetBundle)\n}"
+    },
+    {
+      "title": "Intent Migration Configuration",
+      "language": "swift",
+      "startTimeSeconds": 603,
+      "code": "func widgetConfiguration(from complicationDescriptor: CLKComplicationDescriptor) async -> CLKComplicationWidgetMigrationConfiguration? {\n    CLKComplicationIntentWidgetMigrationConfiguration(kind: \"CoffeeTracker\", extensionBundleIdentifier: widgetBundle, intent: intent, localizedDisplayName: \"Coffee Tracker\")\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Migrating ClockKit complications to WidgetKit",
+      "url": "https://developer.apple.com/documentation/WidgetKit/Converting-A-ClockKit-App",
+      "type": "guide",
+      "description": "Leverage WidgetKit’s API to create watchOS complications using SwiftUI.",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit/Converting-A-ClockKit-App",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit/Converting-A-ClockKit-App.json"
+    },
+    {
+      "title": "Creating accessory widgets and watch complications",
+      "url": "https://developer.apple.com/documentation/WidgetKit/Creating-accessory-widgets-and-watch-complications",
+      "type": "guide",
+      "description": "Support accessory widgets that appear on the Lock Screen and as complications on Apple Watch.",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit/Creating-accessory-widgets-and-watch-complications",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit/Creating-accessory-widgets-and-watch-complications.json"
+    },
+    {
+      "title": "Emoji Rangers: Supporting Live Activities, interactivity, and animations",
+      "url": "https://developer.apple.com/documentation/WidgetKit/emoji-rangers-supporting-live-activities-interactivity-and-animations",
+      "type": "samplecode",
+      "description": "Offer Live Activities, controls, animate data updates, and add interactivity to widgets.",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit/emoji-rangers-supporting-live-activities-interactivity-and-animations",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit/emoji-rangers-supporting-live-activities-interactivity-and-animations.json"
+    },
+    {
+      "title": "WidgetKit",
+      "url": "https://developer.apple.com/documentation/WidgetKit",
+      "type": "documentation",
+      "description": "Extend the reach of your app by creating widgets, watch complications, Live Activities, and controls.",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10051/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10051/metadata.json",
+    "readme": "sessions/wwdc2022/10051/README.md",
+    "transcript": "sessions/wwdc2022/10051/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10051/transcript.json"
+  }
+}

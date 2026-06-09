@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2023-10158",
+  "event": "wwdc2023",
+  "eventName": "WWDC23",
+  "year": 2023,
+  "eventContentId": 10158,
+  "title": "Animate with springs",
+  "description": "Discover how you can bring life to your app with animation! We’ll show you how to create amazing animations when you take advantage of springs and help you learn how to use them in your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2023/10158",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2023/10158",
+  "type": "Video",
+  "publishedAt": "2023-06-09T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1372,
+  "hasTranscript": true,
+  "transcriptWordCount": 3626,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10158/4/0BAD22E7-61F5-4C4C-BA74-61BF66E8A9B1/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10158/4/0BAD22E7-61F5-4C4C-BA74-61BF66E8A9B1/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10158/4/0BAD22E7-61F5-4C4C-BA74-61BF66E8A9B1/downloads/wwdc2023-10158_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2023/10158/4/0BAD22E7-61F5-4C4C-BA74-61BF66E8A9B1/downloads/wwdc2023-10158_hd.mp4",
+    "duration": 1372
+  },
+  "codeSnippets": [
+    {
+      "title": "Spring Preset",
+      "language": "swift",
+      "startTimeSeconds": 1080,
+      "code": "withAnimation(.snappy) {\n  // Changes\n}"
+    },
+    {
+      "title": "Spring Preset with Custom Duration",
+      "language": "swift",
+      "startTimeSeconds": 1095,
+      "code": "withAnimation(.snappy(duration: 0.4)) {\n  // Changes\n}"
+    },
+    {
+      "title": "Spring Preset with Custom Bounce",
+      "language": "swift",
+      "startTimeSeconds": 1101,
+      "code": "withAnimation(.snappy(extraBounce: 0.1)) {\n  // Changes\n}"
+    },
+    {
+      "title": "Custom Spring",
+      "language": "swift",
+      "startTimeSeconds": 1117,
+      "code": "withAnimation(.spring(duration: 0.6, bounce: 0.2)) {\n  // Changes\n}\n\n// UIKit\nUIView.animate(duration: 0.6, bounce: 0.2) {\n  // Changes\n}\n\n// Core Animation\nlet animation = CASpringAnimation(perceptualDuration: 0.6, bounce: 0.2)"
+    },
+    {
+      "title": "Spring Model",
+      "language": "swift",
+      "startTimeSeconds": 1137,
+      "code": "let mySpring = Spring(duration: 0.5, bounce: 0.2)\nlet (mass, stiffness, damping) = (mySpring.mass, mySpring.stiffness, mySpring.damping)"
+    },
+    {
+      "title": "Spring Model Animation",
+      "language": "swift",
+      "startTimeSeconds": 1156,
+      "code": "let otherSpring = Spring(mass: 1, stiffness: 100, damping: 10)\nwithAnimation(.spring(otherSpring)) {\n    // Changes\n}"
+    },
+    {
+      "title": "Spring Parameter Conversion",
+      "language": "markdown",
+      "startTimeSeconds": 1166,
+      "code": "mass = 1\n\nstiffness = (2π ÷ duration)^2\n\ndamping = 1 - 4π × bounce ÷ duration, bounce ≥ 0\n          4π ÷ (duration + 4π × bounce), bounce < 0"
+    },
+    {
+      "title": "Evaluating Spring Model",
+      "language": "swift",
+      "startTimeSeconds": 1175,
+      "code": "let mySpring = Spring(duration: 0.4, bounce: 0.2)\nlet value = mySpring.value(target: 1, time: time)\nlet velocity = mySpring.velocity(target: 1, time: time)"
+    },
+    {
+      "title": "Custom Spring Animation",
+      "language": "swift",
+      "startTimeSeconds": 1215,
+      "code": "func animate<V: VectorArithmetic>(\n    value: V, time: Double, context: inout AnimationContext<V>\n) -> V? {\n    spring.value(\n        target: value, initialVelocity: context.initialVelocity,\n        time: effectiveTime(time: time, context: context))\n}"
+    },
+    {
+      "title": "Spring with No Bounce",
+      "language": "swift",
+      "startTimeSeconds": 1234,
+      "code": "withAnimation(.spring(duration: 0.5)) {\n    isActive.toggle()\n}"
+    },
+    {
+      "title": "Spring with Small Bounce",
+      "language": "swift",
+      "startTimeSeconds": 1267,
+      "code": "withAnimation(.spring(duration: 0.5, bounce: 0.15)) {\n    isActive.toggle()\n}"
+    },
+    {
+      "title": "Spring with Large Bounce",
+      "language": "swift",
+      "startTimeSeconds": 1274,
+      "code": "withAnimation(.spring(duration: 0.5, bounce: 0.3)) {\n    isActive.toggle()\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2023/10158/",
+  "files": {
+    "metadata": "sessions/wwdc2023/10158/metadata.json",
+    "readme": "sessions/wwdc2023/10158/README.md",
+    "transcript": "sessions/wwdc2023/10158/transcript.md",
+    "transcriptJSON": "sessions/wwdc2023/10158/transcript.json"
+  }
+}

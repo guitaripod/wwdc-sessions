@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2024-10125",
+  "event": "wwdc2024",
+  "eventName": "WWDC24",
+  "year": 2024,
+  "eventContentId": 10125,
+  "title": "Streamline sign-in with passkey upgrades and credential managers",
+  "description": "Learn how to automatically upgrade existing, password-based accounts to use passkeys. We’ll share why and how to improve account security and ease of sign-in, information about new features available for credential manager apps, and how to make your app information shine in the new Passwords app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2024/10125",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2024/10125",
+  "type": "Video",
+  "publishedAt": "2024-06-11T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "automatic passkey",
+    "automatic passkeys",
+    "passkey",
+    "passkeys",
+    "password",
+    "password app",
+    "passwords",
+    "verification codes"
+  ],
+  "topics": [
+    "App Services",
+    "System Services",
+    "Privacy & Security"
+  ],
+  "primaryTopic": "Privacy & Security",
+  "duration": 841,
+  "hasTranscript": true,
+  "transcriptWordCount": 1894,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10125/4/11A4C94C-65F3-4AE0-831C-EFE3BF97831C/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10125/4/11A4C94C-65F3-4AE0-831C-EFE3BF97831C/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10125/4/11A4C94C-65F3-4AE0-831C-EFE3BF97831C/downloads/wwdc2024-10125_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2024/10125/4/11A4C94C-65F3-4AE0-831C-EFE3BF97831C/downloads/wwdc2024-10125_hd.mp4",
+    "duration": 841
+  },
+  "codeSnippets": [
+    {
+      "title": "Offering a passkey upsell",
+      "language": "swift",
+      "startTimeSeconds": 1,
+      "code": "// Offering a passkey upsell\n\nfunc signIn() async throws {\n    let userInfo = try await signInWithPassword()\n    guard !userInfo.hasPasskey else { return }\n    let provider = ASAuthorizationPlatformPublicKeyCredentialProvider(\n        relyingPartyIdentifier: \"example.com\")\n\n    guard try offerPasskeyUpsell() else { return }\n    let request = provider.createCredentialRegistrationRequest(\n        challenge: try await fetchChallenge(),\n        name: userInfo.user,\n        userID: userInfo.accountID)\n\n    do {\n        let passkey = try await authorizationController.performRequest(request)\n        // Save new passkey to the backend\n    } catch { … }\n}"
+    },
+    {
+      "title": "Automatic passkey upgrade",
+      "language": "swift",
+      "startTimeSeconds": 2,
+      "code": "// Automatic passkey upgrade\n\nfunc signIn() async throws {\n    let userInfo = try await signInWithPassword()\n    guard !userInfo.hasPasskey else { return }\n    let provider = ASAuthorizationPlatformPublicKeyCredentialProvider(\n        relyingPartyIdentifier: \"example.com\")\n\n    let request = provider.createCredentialRegistrationRequest(\n        challenge: try await fetchChallenge(),\n        name: userInfo.user,\n        userID: userInfo.accountID,\n        requestStyle: .conditional)\n\n    do {\n        let passkey = try await authorizationController.performRequest(request)\n        // Save new passkey to the backend\n    } catch { … }\n}"
+    },
+    {
+      "title": "Modal passkey creation (web)",
+      "language": "javascript",
+      "startTimeSeconds": 3,
+      "code": "// Modal passkey creation\n\nconst options = {\n    \"publicKey\": {\n        \"rp\": { … },\n        \"user\": {\n            \"name\": userInfo.user,\n            …\n        },\n        \"challenge\": …,\n        \"pubKeyCredParams\": [ … ]\n    },\n};\n\nawait navigator.credentials.create(options);"
+    },
+    {
+      "title": "Automatic passkey creation (web)",
+      "language": "javascript",
+      "startTimeSeconds": 4,
+      "code": "// Automatic passkey creation\n\nlet capabilities = await PublicKeyCredential.getClientCapabilities();\nif (!capabilities.conditionalCreate) { return; }\n\nconst options = {\n    \"publicKey\": {\n        \"rp\": { … },\n        \"user\": {\n            \"name\": userInfo.user,\n            …\n        },\n        \"challenge\": …,\n        \"pubKeyCredParams\": [ … ]\n    },\n    \"mediation\": \"conditional\"\n};\n\nawait navigator.credentials.create(options);"
+    },
+    {
+      "title": "New Credential provider Info.plist keys",
+      "language": "xml",
+      "startTimeSeconds": 5,
+      "code": "<dict>\n\t<key>NSExtensionAttributes</key>\n\t<dict>\n\t\t<key>ASCredentialProviderExtensionCapabilities</key>\n\t\t<dict>\n\t\t\t<key>ProvidesPasswords</key>\n\t\t\t<true/>\n\t\t\t<key>ProvidesPasskeys</key>\n\t\t\t<true/>\n\t\t\t<key>SupportsConditionalPasskeyRegistration</key>\n\t\t\t<true/>\n\t\t\t<key>ProvidesOneTimeCodes</key>\n\t\t\t<true/>\n\t\t\t<key>ProvidesTextToInsert</key>\n\t\t\t<true/>\n\t\t</dict>\n\t</dict>\n</dict>"
+    }
+  ],
+  "resources": [
+    {
+      "title": "ASCredentialProviderExtensionCapabilities",
+      "url": "https://developer.apple.com/documentation/BundleResources/Information-Property-List/NSExtension/NSExtensionAttributes/ASCredentialProviderExtensionCapabilities",
+      "type": "documentation",
+      "description": "The credential types supported by a credential provider extension, and whether it presents a user interface.",
+      "sosumiURL": "https://sosumi.ai/documentation/BundleResources/Information-Property-List/NSExtension/NSExtensionAttributes/ASCredentialProviderExtensionCapabilities",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/BundleResources/Information-Property-List/NSExtension/NSExtensionAttributes/ASCredentialProviderExtensionCapabilities.json"
+    },
+    {
+      "title": "Forum: Privacy & Security",
+      "url": "https://developer.apple.com/forums/topics/privacy-and-security?cid=vf-a-0010",
+      "type": "developerForum",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/forums/topics/privacy-and-security?cid=vf-a-0010"
+    },
+    {
+      "title": "Passkeys overview",
+      "url": "https://developer.apple.com/passkeys/",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/passkeys/"
+    },
+    {
+      "title": "About the security of passkeys",
+      "url": "https://support.apple.com/en-us/HT213305",
+      "type": "guide",
+      "description": null
+    },
+    {
+      "title": "Connecting to a service with passkeys",
+      "url": "https://developer.apple.com/documentation/AuthenticationServices/connecting-to-a-service-with-passkeys",
+      "type": "samplecode",
+      "description": "Allow users to sign in to a service without typing a password.",
+      "sosumiURL": "https://sosumi.ai/documentation/AuthenticationServices/connecting-to-a-service-with-passkeys",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AuthenticationServices/connecting-to-a-service-with-passkeys.json"
+    },
+    {
+      "title": "Supporting passkeys",
+      "url": "https://developer.apple.com/documentation/AuthenticationServices/supporting-passkeys",
+      "type": "guide",
+      "description": "Eliminate passwords for your users when they sign in to apps and websites.",
+      "sosumiURL": "https://sosumi.ai/documentation/AuthenticationServices/supporting-passkeys",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AuthenticationServices/supporting-passkeys.json"
+    },
+    {
+      "title": "Public-Private Key Authentication",
+      "url": "https://developer.apple.com/documentation/AuthenticationServices/public-private-key-authentication",
+      "type": "documentation",
+      "description": "Register and authenticate users with passkeys and security keys, without using passwords.",
+      "sosumiURL": "https://sosumi.ai/documentation/AuthenticationServices/public-private-key-authentication",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AuthenticationServices/public-private-key-authentication.json"
+    },
+    {
+      "title": "Authentication Services",
+      "url": "https://developer.apple.com/documentation/AuthenticationServices",
+      "type": "documentation",
+      "description": "Make it easy for users to log into apps and services.",
+      "sosumiURL": "https://sosumi.ai/documentation/AuthenticationServices",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AuthenticationServices.json"
+    }
+  ],
+  "path": "sessions/wwdc2024/10125/",
+  "files": {
+    "metadata": "sessions/wwdc2024/10125/metadata.json",
+    "readme": "sessions/wwdc2024/10125/README.md",
+    "transcript": "sessions/wwdc2024/10125/transcript.md",
+    "transcriptJSON": "sessions/wwdc2024/10125/transcript.json"
+  }
+}

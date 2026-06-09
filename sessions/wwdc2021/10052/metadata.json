@@ -1,0 +1,224 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10052",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10052,
+  "title": "What's new in Mac Catalyst",
+  "description": "Discover the latest updates to Mac Catalyst and find out how you can make your app feel even more at home on macOS. Learn about a variety of new and enhanced UIKit APIs that let you customize your Mac Catalyst app to take advantage of behaviors unique to macOS.\n\nTo get the most out of this session, we recommend a basic familiarity with Mac Catalyst. Check out “Introducing iPad Apps for Mac” from WWDC19 to acquaint yourself. For more on refining your Mac Catalyst app, watch “Optimize the interface of your Mac Catalyst app” from WWDC20.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10052",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10052",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [
+    "apple silicon",
+    "catalyst",
+    "ios",
+    "ipad",
+    "iphone",
+    "m1",
+    "macos",
+    "silicon"
+  ],
+  "topics": [
+    "Essentials",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1593,
+  "hasTranscript": true,
+  "transcriptWordCount": 3717,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10052/3/AEC7031C-E8E6-4F09-B845-F0DE96310C4D/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10052/3/AEC7031C-E8E6-4F09-B845-F0DE96310C4D/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10052/3/AEC7031C-E8E6-4F09-B845-F0DE96310C4D/downloads/wwdc2021-10052_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10052/3/AEC7031C-E8E6-4F09-B845-F0DE96310C4D/downloads/wwdc2021-10052_hd.mp4",
+    "duration": 1593
+  },
+  "codeSnippets": [
+    {
+      "title": "Push Button",
+      "language": "swift",
+      "startTimeSeconds": 146,
+      "code": "let button = UIButton(type: .system)"
+    },
+    {
+      "title": "Toggle Button",
+      "language": "swift",
+      "startTimeSeconds": 149,
+      "code": "let button = UIButton(type: .system)\nbutton.changesSelectionAsPrimaryAction = true"
+    },
+    {
+      "title": "Pull-down Menu",
+      "language": "swift",
+      "startTimeSeconds": 160,
+      "code": "let button = UIButton(type: .system)\nbutton.menu = UIMenu()\nbutton.showsMenuAsPrimaryAction = true"
+    },
+    {
+      "title": "Pop-up Button",
+      "language": "swift",
+      "startTimeSeconds": 168,
+      "code": "let button = UIButton(type: .system)\nbutton.menu = UIMenu()\nbutton.showsMenuAsPrimaryAction = true\nbutton.changesSelectionAsPrimaryAction = true"
+    },
+    {
+      "title": "UIToolTipInteraction",
+      "language": "swift",
+      "startTimeSeconds": 230,
+      "code": "let toolTipInteraction = UIToolTipInteraction(defaultToolTip: string)\nview.addInteraction(tooltipInteraction)"
+    },
+    {
+      "title": "UIControl ToopTip",
+      "language": "swift",
+      "startTimeSeconds": 246,
+      "code": "control.toolTip = \"Enable updates\""
+    },
+    {
+      "title": "ToolTips: UILabel",
+      "language": "swift",
+      "startTimeSeconds": 284,
+      "code": "label.showsExpansionTextWhenTruncated = true"
+    },
+    {
+      "title": "Printing APIs",
+      "language": "xml",
+      "startTimeSeconds": 292,
+      "code": "<key>UIApplicationSupportsPrintCommand</key>\n</true>"
+    },
+    {
+      "title": "Print Support",
+      "language": "swift",
+      "startTimeSeconds": 344,
+      "code": "func printContent(_ sender: Any?) {\n    let printInteractionController = UIPrintInteractionController.shared\n    ...\n}"
+    },
+    {
+      "title": "Window Subtitle",
+      "language": "swift",
+      "startTimeSeconds": 361,
+      "code": "scene.subtitle = \"My subtitle\""
+    },
+    {
+      "title": "Behavioral Style",
+      "language": "swift",
+      "startTimeSeconds": 454,
+      "code": "let button = UIButton(configuration: config)\nbutton.preferredBehavioralStyle = .pad"
+    },
+    {
+      "title": "Window Tab Opt-Out",
+      "language": "xml",
+      "startTimeSeconds": 463,
+      "code": "<key>UIApplicationSceneManifest</key>\n\t<dict>\n\t\t<key>UIApplicationSupportsMultipleScenes</key>\n\t\t<true/>\n\t\t<key>UIApplicationSupportsTabbedSceneCollection</key>\n\t\t<false/>\n\t</dict>"
+    },
+    {
+      "title": "UIPointerShape",
+      "language": "swift",
+      "startTimeSeconds": 503,
+      "code": "UIPointerShape.beam(preferredLength:0 axis: .horizontal)\nUIPointerShape.beam(preferredLength:0 axis: .vertical)"
+    },
+    {
+      "title": "Hidden Cursor",
+      "language": "swift",
+      "startTimeSeconds": 513,
+      "code": "UIPointerStyle.hidden"
+    },
+    {
+      "title": "Scene subtitles",
+      "language": "swift",
+      "startTimeSeconds": 805,
+      "code": "let subtitle: String = \"...\"\nlet scene: UIScene = ...\nscene.subtitle = subtitle"
+    },
+    {
+      "title": "ToolTips",
+      "language": "swift",
+      "startTimeSeconds": 894,
+      "code": "// ToolTip Interaction\nlet imageView: UIImageView = UIImageView(frame: .zero)\nlet interaction = UIToolTipInteraction(defaultToolTip: \"...\")\nimageView.addInteraction(interaction)\n\n// ToolTips - Label Expansion Text\nlet label: UILabel = UILabel()\nlabel.text = \"...\"\nlabel.showsExpansionTextWhenTruncated = true\n\n// ToolTips — On UIControls\nlet switchControl = UISwitch()\nswitchControl.toolTip = \"...\""
+    },
+    {
+      "title": "Primary button",
+      "language": "swift",
+      "startTimeSeconds": 1069,
+      "code": "let submitButton = UIButton(type: .system)\nsubmitButton.role = .primary\nsubmitButton.setTitle(\"Submit\", for: .normal)"
+    },
+    {
+      "title": "Toggle button with menu",
+      "language": "swift",
+      "startTimeSeconds": 1086,
+      "code": "// Toggle button with menu\nlet toggleButton = UIButton(configuration: .filled(), primaryAction: nil)\ntoggleButton.configuration?.title = \"Points Multiplier\"\ntoggleButton.changesSelectionAsPrimaryAction = true\ntoggleButton.menu = ...\n\n// Elsewhere...\ntoggleButton.configuration?.baseBackgroundColor = .systemRed"
+    },
+    {
+      "title": "Plain, destructive button",
+      "language": "swift",
+      "startTimeSeconds": 1149,
+      "code": "let resetButton = UIButton(configuration: .plain(), primaryAction: nil)\nresetButton.configuration?.title = \"Reset\"\nresetButton.role = .destructive\nresetButton.tintColor = .systemRed"
+    },
+    {
+      "title": "Pop-up button",
+      "language": "swift",
+      "startTimeSeconds": 1176,
+      "code": "let popup = UIButton(type: .system)\npopup.changesSelectionAsPrimaryAction = true\npopup.showsMenuAsPrimaryAction = true\npopup.menu = ..."
+    },
+    {
+      "title": "iPad behavioral style toggle",
+      "language": "swift",
+      "startTimeSeconds": 1261,
+      "code": "let button = UIButton(configuration: .filled(), primaryAction: nil)\nbutton.configuration?.image = UIImage(systemName: \"leaf\")\nbutton.preferredBehavioralStyle = .pad\nbutton.configuration?.preferredSymbolConfigurationForImage =   \n    UIImage.SymbolConfiguration(pointSize: 60)\nbutton.changesSelectionAsPrimaryAction = true\nbutton.configurationUpdateHandler = colorUpdateHandler"
+    },
+    {
+      "title": "Printing",
+      "language": "swift",
+      "startTimeSeconds": 1461,
+      "code": "override func printContent(_: Any?) {\n    ...\n}\n\noverride func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {\n    if action == #selector(self.printContent(_:)) {\n        ...\n    } else {\n        return super.canPerformAction(action, withSender: sender)\n    }\n}\n\noverride func target(forAction action: Selector, withSender sender: Any?) -> Any? {\n    switch action {\n    case #selector(UIResponder.printContent(_:)):\n        ...\n    default:\n        return super.target(forAction: action, withSender: sender)\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Building and improving your app with Mac Catalyst",
+      "url": "https://developer.apple.com/documentation/UIKit/building-and-improving-your-app-with-mac-catalyst",
+      "type": "samplecode",
+      "description": "Improve your iPadOS app with Mac Catalyst by supporting native controls, multiple windows, sharing, printing, menus and keyboard shortcuts.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/building-and-improving-your-app-with-mac-catalyst",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/building-and-improving-your-app-with-mac-catalyst.json"
+    },
+    {
+      "title": "Bring an iPad App to the Mac with Mac Catalyst",
+      "url": "https://developer.apple.com/tutorials/Mac-Catalyst",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/tutorials/Mac-Catalyst"
+    },
+    {
+      "title": "Human Interface Guidelines: Mac Catalyst",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/mac-catalyst",
+      "type": "documentation",
+      "description": "When you use Mac Catalyst to create a Mac version of your iPad app, you make your app available to a new audience while giving existing users the opportunity to enjoy it in a new environment.",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/mac-catalyst"
+    },
+    {
+      "title": "Mac Catalyst",
+      "url": "https://developer.apple.com/documentation/UIKit/mac-catalyst",
+      "type": "documentation",
+      "description": "Create a version of your iPad app that users can run on a Mac device.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/mac-catalyst",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/mac-catalyst.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10052/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10052/metadata.json",
+    "readme": "sessions/wwdc2021/10052/README.md",
+    "transcript": "sessions/wwdc2021/10052/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10052/transcript.json"
+  }
+}

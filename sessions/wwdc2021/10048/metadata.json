@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10048",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10048,
+  "title": "Principles of great widgets",
+  "description": "Explore the foundations of great widgets by keeping them relevant and customizable. Learn how to keep widgets up to date with timeline entries and TimelineReloadPolicies. Discover how to adapt your widget to different presentation environments and physical location. And lastly, find out how to create customizable widgets that someone can personalize to their liking.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10048",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10048",
+  "type": "Video",
+  "publishedAt": "2021-06-10T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "afterdate",
+    "atend",
+    "budget",
+    "cllocationmanager",
+    "configurable parameters",
+    "customizable",
+    "customization",
+    "extension",
+    "extra large widget",
+    "full privacy redaction",
+    "intentconfiguration",
+    "intenttimelineprovider",
+    "isauthorizedforwidgetupdates",
+    "keep widget up to date",
+    "location changes",
+    "never",
+    "new ipad widget",
+    "notifications",
+    "nswidgetuseslocation",
+    "partial privacy redaction",
+    "presentation",
+    ".privacysensitive",
+    "relevant",
+    "reload policy",
+    "reloads",
+    "staticconfiguration",
+    "static configuration",
+    "swiftui",
+    ".systemextralarge",
+    "system extra large",
+    "timeline",
+    "timelineprovider",
+    "timelinereloadpolicy",
+    "update",
+    "widgetcenter",
+    "widgetcenter reload api",
+    "widget configuration platter",
+    "widget kind",
+    "widgetkit",
+    "widget lock screen",
+    "widgets",
+    "widget update",
+    "xcode previews"
+  ],
+  "topics": [
+    "Essentials",
+    "SwiftUI & UI Frameworks",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 1612,
+  "hasTranscript": true,
+  "transcriptWordCount": 4269,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10048/6/DE8F1516-0148-4630-A824-44F1BA28F5AA/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10048/6/DE8F1516-0148-4630-A824-44F1BA28F5AA/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10048/6/DE8F1516-0148-4630-A824-44F1BA28F5AA/downloads/wwdc2021-10048_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10048/6/DE8F1516-0148-4630-A824-44F1BA28F5AA/downloads/wwdc2021-10048_hd.mp4",
+    "duration": 1612
+  },
+  "codeSnippets": [
+    {
+      "title": "Xcode Previews for Widget Views with Color Scheme Overrides",
+      "language": "swift",
+      "startTimeSeconds": 946,
+      "code": "struct MyWidgetEntryView : View {\n    var date: Date\n\n    var body: some View {\n        ZStack {\n            Rectangle().fill(BackgroundStyle())\n            VStack {\n                Text(\"Hello\")\n            }\n        }\n    }\n}\n\nstruct MyWidget_Previews: PreviewProvider {\n    static var previews: some View {\n        MyWidgetEntryView(date: Date())\n            .previewContext(WidgetPreviewContext(family: .systemSmall))\n            .environment(\\.colorScheme, .dark)\n    }\n}"
+    },
+    {
+      "title": "Widget Partial Privacy Redactions - Banking Example",
+      "language": "swift",
+      "startTimeSeconds": 994,
+      "code": "struct MyWidgetEntryView : View {\n\n    var body: some View {\n        ZStack {\n            Rectangle().fill(BackgroundStyle())\n            VStack(alignment: .leading) {\n                Text(\"Balance\")\n                    .font(.largeTitle)\n                    .fontWeight(.bold)\n                    .foregroundColor(Color.blue)\n                Text(\"$128.45\")\n                    .privacySensitive()\n                    .font(.title2)\n                    .foregroundColor(Color.gray)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "WidgetBundle Example",
+      "language": "swift",
+      "startTimeSeconds": 1388,
+      "code": "struct IndividualSymbolWidget : Widget {\n    var body: some WidgetConfiguration {\n    …\n}\n}\n\nstruct StocksOverviewWidget : Widget {\n    var body: some WidgetConfiguration {\n    …\n    }\n}\n\n@main\nstruct MyWidgetBundle: WidgetBundle {\n    var body: some Widget {\n        // Order of these widgets defines the order in the Widget Gallery\n        IndividualSymbolWidget()\n        StocksOverviewWidget()\n    }\n}"
+    },
+    {
+      "title": "Static Widget Configuration Example",
+      "language": "swift",
+      "startTimeSeconds": 1543,
+      "code": "@main\npublic struct SampleWidget: Widget {\n    public var body: some WidgetConfiguration {\n        StaticConfiguration(kind: \"com.sample.myStaticSampleWidgetKind\",\n                            provider: Provider()) { entry in\n                                SampleWidgetEntryView(entry: entry)\n                            }\n        .configurationDisplayName(\"My Widget\")\n        .description(\"This is an example widget.\")\n    }\n}\n\npublic struct Provider: TimelineProvider {\n    public func timeline(with context: Context,\n                         completion: @escaping (Timeline<Entry>) -> ()) {\n        let entry = SimpleEntry(date: Date())\n        // TODO: Generate a timeline entry\n        completion(timeline)\n    }\n}"
+    },
+    {
+      "title": "Intent Widget Configuration Example",
+      "language": "swift",
+      "startTimeSeconds": 1555,
+      "code": "@main\npublic struct SampleWidget: Widget {\n    public var body: some WidgetConfiguration {\n        IntentConfiguration(kind: \"com.sample.myIntentSampleWidgetKind\",\n                            intent: SampleConfigurationIntent.self\n                            provider: Provider()) { entry in\n                                SampleWidgetEntryView(entry: entry)\n                            }\n        .configurationDisplayName(\"My Widget\")\n        .description(\"This is an example widget.\")\n    }\n}\n\npublic struct Provider: IntentTimelineProvider {\n    public func timeline(for configuration: SampleConfigurationIntent, with context: Context,\n                         completion: @escaping (Timeline<Entry>) -> ()) {\n        let entry = SimpleEntry(date: Date(), configuration: configuration)\n        // generate a timeline\n        completion(timeline)\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Making a configurable widget",
+      "url": "https://developer.apple.com/documentation/WidgetKit/Making-a-Configurable-Widget",
+      "type": "documentation",
+      "description": "Give people the option to customize their widgets by adding a custom app intent",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit/Making-a-Configurable-Widget",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit/Making-a-Configurable-Widget.json"
+    },
+    {
+      "title": "Keeping a widget up to date",
+      "url": "https://developer.apple.com/documentation/WidgetKit/Keeping-a-Widget-Up-To-Date",
+      "type": "documentation",
+      "description": "Plan your widget’s timeline to show timely, relevant information using",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit/Keeping-a-Widget-Up-To-Date",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit/Keeping-a-Widget-Up-To-Date.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10048/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10048/metadata.json",
+    "readme": "sessions/wwdc2021/10048/README.md",
+    "transcript": "sessions/wwdc2021/10048/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10048/transcript.json"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10167",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10167,
+  "title": "Create your Privacy Nutrition Label ",
+  "description": "Privacy Nutrition Labels help people understand your app's privacy practices. Discover how you can take inventory of your current data habits and learn best practices for creating your app’s Privacy Nutrition Label on your App Store product page.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10167",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10167",
+  "type": "Video",
+  "publishedAt": "2022-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "System Services",
+    "Privacy & Security"
+  ],
+  "primaryTopic": "Privacy & Security",
+  "duration": 734,
+  "hasTranscript": true,
+  "transcriptWordCount": 1870,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10167/5/043ACD7F-3BC9-4AA1-A5BC-7DCCF91098EA/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10167/5/043ACD7F-3BC9-4AA1-A5BC-7DCCF91098EA/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10167/5/043ACD7F-3BC9-4AA1-A5BC-7DCCF91098EA/downloads/wwdc2022-10167_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10167/5/043ACD7F-3BC9-4AA1-A5BC-7DCCF91098EA/downloads/wwdc2022-10167_hd.mp4",
+    "duration": 734
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "App Store Guidelines: User Privacy and Data Use",
+      "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/app-store/user-privacy-and-data-use/"
+    },
+    {
+      "title": "Protecting the User’s Privacy",
+      "url": "https://developer.apple.com/documentation/UIKit/protecting-the-user-s-privacy",
+      "type": "documentation",
+      "description": "Secure personal data, and respect user preferences for how data is used.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/protecting-the-user-s-privacy",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/protecting-the-user-s-privacy.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10167/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10167/metadata.json",
+    "readme": "sessions/wwdc2022/10167/README.md",
+    "transcript": "sessions/wwdc2022/10167/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10167/transcript.json"
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-257",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 257,
+  "title": "Optimize home electricity usage with EnergyKit",
+  "description": "Learn how to support EnergyKit in your app so people can optimize electricity usage at home. This can help people run appliances or charge EVs during times when electricity is cleaner and cheaper. Get details about onboarding, generating a charging schedule, and providing energy usage insights back to people through electricity usage feedback.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/257",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/257",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "apple 2030"
+  ],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 928,
+  "hasTranscript": true,
+  "transcriptWordCount": 1997,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/257/5/af3f4fb6-a561-4208-8035-3f6a77252946/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/257/5/af3f4fb6-a561-4208-8035-3f6a77252946/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/257/5/af3f4fb6-a561-4208-8035-3f6a77252946/downloads/wwdc2025-257_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/257/5/af3f4fb6-a561-4208-8035-3f6a77252946/downloads/wwdc2025-257_hd.mp4",
+    "duration": 928
+  },
+  "codeSnippets": [
+    {
+      "title": "Retrive an EnergyVenue",
+      "language": "swift",
+      "startTimeSeconds": 193,
+      "code": "// Retrieve an EnergyVenue\n\nimport EnergyKit\nimport Foundation\n\n@Observable final class EnergyVenueManager  {\n\n    let venue: EnergyVenue\n\n    init?(venueID: UUID) async {\n        guard let energyVenue = await EnergyVenue.venue(for: venueID) else {\n            return nil\n        }\n        venue = energyVenue\n    }\n}"
+    },
+    {
+      "title": "Fetch Electricity Guidance at a selected EnergyVenue",
+      "language": "swift",
+      "startTimeSeconds": 363,
+      "code": "// Fetch ElectricityGuidance\n\nimport EnergyKit\nimport Foundation\n\n@Observable final class EnergyVenueManager  {\n    // The current active guidance.\n    var guidance: ElectricityGuidance?\n\n    fileprivate func streamGuidance(\n        venueID: UUID,\n        update: (_ guidance: ElectricityGuidance) -> Void\n    ) async throws {\n        let query = ElectricityGuidance.Query(suggestedAction: .shift)\n        for try await currentGuidance in ElectricityGuidance.sharedService.guidance(\n            using: query,\n            at: venueID\n        ) {\n            update(currentGuidance)\n          \tbreak\n        }\n    }\n}"
+    },
+    {
+      "title": "Start monitoring Electricity Guidance",
+      "language": "swift",
+      "startTimeSeconds": 420,
+      "code": "// Fetch ElectricityGuidance\n\nimport EnergyKit\nimport Foundation\n\n@Observable final class EnergyVenueManager  {\n    // The task used to stream guidance.\n    private var streamGuidanceTask: Task<(), Error>?\n\n    ///Start streaming guidance and store the value in the observed property 'guidance'.\n    func startGuidanceMonitoring() {\n       streamGuidanceTask?.cancel()\n        streamGuidanceTask = Task.detached { [weak self] in\n            if let venueID = self?.venue.id {\n                try? await self?.streamGuidance(venueID: venueID) { guidance in\n                    self?.guidance = guidance\n                    if Task.isCancelled {\n                        return\n                    }\n                }\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Update charging measurements",
+      "language": "swift",
+      "startTimeSeconds": 690,
+      "code": "// Update charging measurements\n\nimport EnergyKit\n\n// A controller that handles an electric vehicle\n@Observable class ElectricVehicleController {\n    fileprivate func chargingMeasurement() -> ElectricVehicleLoadEvent.ElectricalMeasurement {\n        let stateOfCharge = Int(configuration.state.stateOfCharge.rounded(.down))\n        let power = Measurement<UnitPower>(\n            value: configuration.properties.chargingPower * 1000000,\n            unit: .milliwatts\n        )\n        let energy = Measurement<UnitEnergy>(\n            value: configuration.state.cummulativeEnergy * 1000000,\n            unit: .EnergyKit.milliwattHours\n        )\n        return ElectricVehicleLoadEvent.ElectricalMeasurement(\n            stateOfCharge: stateOfCharge,\n            direction: .imported,\n            power: power,\n            energy: energy\n        )\n    }\n}"
+    },
+    {
+      "title": "Start a session",
+      "language": "swift",
+      "startTimeSeconds": 710,
+      "code": "// Start a session\n\nimport EnergyKit\n\n// A controller that handles an electric vehicle\n@Observable class ElectricVehicleController {\n    // The session\n    var session: ElectricVehicleLoadEvent.Session?\n\n    // The current guidance stored at the EV\n    var currentGuidance: ElectricityGuidance\n\n    // Whether the EV is following guidance\n    var isFollowingGuidance: Bool = true\n\n    fileprivate func beginSession() {\n        session = ElectricVehicleLoadEvent.Session(\n            id: UUID(),\n            state: .begin,\n            guidanceState: .init(\n                wasFollowingGuidance: isFollowingGuidance,\n                guidanceToken: currentGuidance.guidanceToken\n            )\n        )\n    }\n}"
+    },
+    {
+      "title": "Update a session",
+      "language": "swift",
+      "startTimeSeconds": 745,
+      "code": "// Update a session\n\nimport EnergyKit\n\n// A controller that handles an electric vehicle\n@Observable class ElectricVehicleController {\n    fileprivate func updateSession() {\n        if let session {\n            self.session = ElectricVehicleLoadEvent.Session(\n                id: session.id,\n                state: .active,\n                guidanceState: .init(\n                    wasFollowingGuidance:\n                    isFollowingGuidance,\n                    guidanceToken:\n                    currentGuidance.guidanceToken\n                )\n            )\n        }\n    }\n}"
+    },
+    {
+      "title": "End a session",
+      "language": "swift",
+      "startTimeSeconds": 751,
+      "code": "// End a session\n\nimport EnergyKit\n\n// A controller that handles an electric vehicle.\n@Observable class ElectricVehicleController {\n    fileprivate func endSession() {\n        if let session {\n            self.session = ElectricVehicleLoadEvent.Session(\n                id: session.id,\n                state: .end,\n                guidanceState: .init(\n                    wasFollowingGuidance:\n                    isFollowingGuidance,\n                    guidanceToken:\n                    currentGuidance.guidanceToken\n                )\n            )\n        }\n    }\n}"
+    },
+    {
+      "title": "Create a load event",
+      "language": "swift",
+      "startTimeSeconds": 763,
+      "code": "// Create a ElectricVehicleLoadEvent\n\n@Observable class ElectricVehicleController {\n    fileprivate func createLoadEvent(\n        sessionState: ElectricVehicleLoadEvent.Session.State\n    ) {\n        switch sessionState {\n        case .begin:\n            beginSession()\n        case .active:\n            updateSession()\n        case .end:\n            endSession()\n        @unknown default:\n            fatalError()\n        }\n        if let session {\n            let event = ElectricVehicleLoadEvent(\n                timestamp: configuration.state.timestamp,\n                measurement: chargingMeasurement(),\n                session: session,\n                deviceID: configuration.properties.vehicleID\n            )\n           events.append(event)\n        }\n    }\n}"
+    },
+    {
+      "title": "Submit events",
+      "language": "swift",
+      "startTimeSeconds": 770,
+      "code": "// Submit events\n\nimport EnergyKit\n\n// A controller that handles an electric vehicle\n@Observable class ElectricVehicleController {\n    // EnergyVenue\n    // The venue at which the EV uses energy\n    var currentVenue: EnergyVenue\n\n    // Electric EV Events\n    // The list of generated EV load events\n    var events = [ElectricVehicleLoadEvent]()\n\n    func submitEvents() async throws {\n        try await currentVenue.submitEvents(events)\n    }\n}"
+    },
+    {
+      "title": "Create an insight query",
+      "language": "swift",
+      "startTimeSeconds": 805,
+      "code": "// Create an insight query\n\nimport EnergyKit\n\n@Observable final class EnergyVenueManager  {\n    func createInsightsQuery(on date: Date) -> ElectricityInsightQuery {\n        return ElectricityInsightQuery(\n            options: .cleanliness.union(.tariff),\n            range: self.dayInterval(date: date),\n            granularity: .daily,\n            flowDirection: .imported\n        )\n    }\n}"
+    },
+    {
+      "title": "Request insights",
+      "language": "swift",
+      "startTimeSeconds": 823,
+      "code": "// Request an insights\n\nimport EnergyKit\n\n@Observable final class EnergyVenueManager  {\n    func generateInsights(for vehicleIdentifier: String, on date: Date) async throws ->     ElectricityInsightRecord<Measurement<UnitEnergy>>? {\n        let query = createInsightsQuery(on: date)\n        return try await ElectricityInsightService.shared.energyInsights(\n            forDeviceID: vehicleIdentifier,\n            using: query,\n            atVenue: self.venue.id\n        ).first { record in\n            return record.range.start == query.range.start\n        }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Optimizing home electricity usage",
+      "url": "https://developer.apple.com/documentation/EnergyKit/optimizing-home-electricity-usage",
+      "type": "samplecode",
+      "description": "Shift electric vehicle charging schedules to times when the grid is cleaner and potentially less expensive.",
+      "sosumiURL": "https://sosumi.ai/documentation/EnergyKit/optimizing-home-electricity-usage",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/EnergyKit/optimizing-home-electricity-usage.json"
+    },
+    {
+      "title": "Apple 2030",
+      "url": "https://www.apple.com/environment/",
+      "type": "documentation",
+      "description": "We’re committed to protecting the planet. And designing products you love. Apple 2030 is our plan to do both."
+    }
+  ],
+  "path": "sessions/wwdc2025/257/",
+  "files": {
+    "metadata": "sessions/wwdc2025/257/metadata.json",
+    "readme": "sessions/wwdc2025/257/README.md",
+    "transcript": "sessions/wwdc2025/257/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/257/transcript.json"
+  }
+}

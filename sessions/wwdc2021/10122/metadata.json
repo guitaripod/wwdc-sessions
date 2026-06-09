@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10122",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10122,
+  "title": "Bring accessibility to charts in your app",
+  "description": "Charts are an essential tool for understanding data, and critical to understanding ourselves, our health, our finances, and our world. Find out how you can make charts accessible in your apps to people with vision impairments through audio graphs and sonified data. And we'll show you how to improve your charts for accessibility through universal design principles and system accessibility settings.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10122",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10122",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "accessibilitychartdescriptor",
+    "accessible chart",
+    "audio graph",
+    "audio graphs",
+    "axcategoricalaxisdescriptor",
+    "axchart",
+    "axchartdescriptor",
+    "axdataseriesdescriptor",
+    "axnumbericdataaxisdescriptor",
+    "chart details",
+    "chartview",
+    "chart with sound",
+    "colors",
+    "contrast ratio",
+    "datapoint",
+    "haptic chart feedback",
+    "high contrast",
+    "inclusive charts",
+    "inclusive design",
+    "low vision",
+    "reduce transparency",
+    "sonified chart",
+    "visual accessibility"
+  ],
+  "topics": [
+    "Accessibility & Inclusion"
+  ],
+  "primaryTopic": "Accessibility & Inclusion",
+  "duration": 1183,
+  "hasTranscript": true,
+  "transcriptWordCount": 3377,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10122/6/218A971D-4AB5-4417-96CE-15D01B009082/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10122/6/218A971D-4AB5-4417-96CE-15D01B009082/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10122/6/218A971D-4AB5-4417-96CE-15D01B009082/downloads/wwdc2021-10122_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10122/6/218A971D-4AB5-4417-96CE-15D01B009082/downloads/wwdc2021-10122_hd.mp4",
+    "duration": 1183
+  },
+  "codeSnippets": [
+    {
+      "title": "Chart Model",
+      "language": "swift",
+      "startTimeSeconds": 647,
+      "code": "class ChartView: UIView {\n    let model: ChartModel\n\n    func drawChart() {\n        // ...\n    }\n}\n\nstruct ChartModel {\n    let title: String\n    let dataPoints: [DataPoint]\n\n    struct DataPoint {\n        let name: String\n        let x: Double\n        let y: Double\n    }\n}"
+    },
+    {
+      "title": "ChartView",
+      "language": "swift",
+      "startTimeSeconds": 648,
+      "code": "extension ChartView {\n   public override var accessibilityContainerType: UIAccessibilityContainerType { … }\n   public override var accessibilityLabel: String? { … }\n\n   public override var accessibilityElements: [Any]? {\n       get {\n           return model.dataPoints.map { point in\n               let axElement = UIAccessibilityElement(accessibilityContainer: self)\n               axElement.accessibilityValue = \"\\(point.x) cups, \\(point.y) lines of code\"\n               axElement.accessibilityFrameInContainerSpace = frameRect(for: point)\n               return axElement\n           }\n       }\n       set {}\n   }\n\nprivate func frameRect(for dataPoint: DataPoint) -> CGRect {"
+    },
+    {
+      "title": "Basic chart definition example",
+      "language": "swift",
+      "startTimeSeconds": 863,
+      "code": "struct ChartModel {\n    let title: String\n    let summary: String\n    let xAxis: Axis\n    let yAxis: Axis\n    let data: [DataPoint]\n\n    struct Axis {\n        let title: String\n        let range: ClosedRange<Double>\n    }\n\n    struct DataPoint {\n        let name: String\n        let x: Double\n        let y: Double\n    }\n}"
+    },
+    {
+      "title": "Enabling Audio Graphs",
+      "language": "swift",
+      "startTimeSeconds": 908,
+      "code": "import Accessibility\n\nextension ChartView: AXChart {\n\npublic var accessibilityChartDescriptor: AXChartDescriptor? {\n    get {\n    }\n    set {}\n    }\n}"
+    },
+    {
+      "title": "Chart Descriptor- Basic",
+      "language": "swift",
+      "startTimeSeconds": 935,
+      "code": "public var accessibilityChartDescriptor: AXChartDescriptor? {\n    get {\n        let xAxis = AXNumericDataAxisDescriptor( … ) \n        let yAxis = AXNumericDataAxisDescriptor(title: model.yAxis.title,\n                                                range: model.yAxis.range,\n                                                gridlinePositions:[],\n                                                valueDescriptionProvider: { value in\n            return \"\\(value) lines of code\"\n        })\n    }\n    set {}\n}"
+    },
+    {
+      "title": "Chart Descriptor- Continued",
+      "language": "swift",
+      "startTimeSeconds": 1015,
+      "code": "public var accessibilityChartDescriptor: AXChartDescriptor? {\n    get {\n        let xAxis = AXNumericDataAxisDescriptor( … )\n        let yAxis = AXNumericDataAxisDescriptor( … )\n        let series = AXDataSeriesDescriptor( … )\n        return AXChartDescriptor(title: model.title,\n                                 summary: model.summary,\n                                 xAxis: xAxis,\n                                 yAxis: yAxis,\n                                 additionalAxes: [],\n                                 series: [series])\n    }\n    set {}\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Appearance Effects and Motion",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/accessibility/overview/appearance-effects/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/accessibility/overview/appearance-effects/"
+    },
+    {
+      "title": "Color and Contrast",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/accessibility/overview/color-and-contrast/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/accessibility/overview/color-and-contrast/"
+    },
+    {
+      "title": "isReduceMotionEnabled",
+      "url": "https://developer.apple.com/documentation/UIKit/UIAccessibility/isReduceMotionEnabled",
+      "type": "documentation",
+      "description": "A Boolean value that indicates whether the Reduce Motion setting is in an enabled state.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/UIAccessibility/isReduceMotionEnabled",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/UIAccessibility/isReduceMotionEnabled.json"
+    },
+    {
+      "title": "accessibilityReduceMotion",
+      "url": "https://developer.apple.com/documentation/SwiftUI/EnvironmentValues/accessibilityReduceMotion",
+      "type": "documentation",
+      "description": "Whether the system preference for Reduce Motion is enabled.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/EnvironmentValues/accessibilityReduceMotion",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/EnvironmentValues/accessibilityReduceMotion.json"
+    },
+    {
+      "title": "Audio graphs",
+      "url": "https://developer.apple.com/documentation/Accessibility/audio-graphs",
+      "type": "documentation",
+      "description": "Define an accessible representation of your chart for VoiceOver to generate an audio",
+      "sosumiURL": "https://sosumi.ai/documentation/Accessibility/audio-graphs",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Accessibility/audio-graphs.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10122/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10122/metadata.json",
+    "readme": "sessions/wwdc2021/10122/README.md",
+    "transcript": "sessions/wwdc2021/10122/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10122/transcript.json"
+  }
+}

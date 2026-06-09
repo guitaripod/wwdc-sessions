@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2026-246",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 246,
+  "title": "LLM search using Core Spotlight",
+  "description": "Level up basic search into a retrieval-augmented system using SpotlightSearchTool and LanguageModelSession. Explore Core Spotlight integration, delegate-based hydration patterns, and how metadata quality impacts your search results. Learn how to use custom PipelineStages for tasks like sentiment analysis. Discover best practices for indexing and building flexible, context-rich search experiences in your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/246",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/246",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "ai",
+    "machine learning",
+    "spotlight",
+    "spot light",
+    "spotlight search"
+  ],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "duration": 985,
+  "hasTranscript": true,
+  "transcriptWordCount": 2830,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/246/4/b390ab9d-d231-4cf5-9d1b-e4270ef5012b/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/246/4/b390ab9d-d231-4cf5-9d1b-e4270ef5012b/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/246/4/b390ab9d-d231-4cf5-9d1b-e4270ef5012b/downloads/wwdc2026-246_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/246/4/b390ab9d-d231-4cf5-9d1b-e4270ef5012b/downloads/wwdc2026-246_hd.mp4",
+    "duration": 985
+  },
+  "codeSnippets": [
+    {
+      "title": "Ask the model with a Foundation Models session",
+      "language": "swift",
+      "startTimeSeconds": 59,
+      "code": "let response = try await session.respond(to: \"What are some nice hikes near water?\")"
+    },
+    {
+      "title": "Set up SpotlightSearchTool",
+      "language": "swift",
+      "startTimeSeconds": 260,
+      "code": "// Set up SpotlightSearchTool\nimport CoreSpotlight\nimport FoundationModels\n\n// In one line, the tool is ready to search your app's Core Spotlight index\nlet tool = SpotlightSearchTool()\n\n// Or provide a custom configuration — e.g. search file paths in your app's sandbox\nlet fileTool = SpotlightSearchTool(\n    configuration: .init(\n        sources: [\n            .files\n        ]\n    )\n)"
+    },
+    {
+      "title": "Add SpotlightSearchTool to a session",
+      "language": "swift",
+      "startTimeSeconds": 290,
+      "code": "// Add SpotlightSearchTool to a session\nimport CoreSpotlight\nimport FoundationModels\n\nlet tool = SpotlightSearchTool()\n\nlet session = LanguageModelSession(model: model, tools: [tool], instructions: instructions)\n\nlet response = try await session.respond(to: \"What hikes have I gone on?\")"
+    },
+    {
+      "title": "Implement an index delegate",
+      "language": "swift",
+      "startTimeSeconds": 384,
+      "code": "// Implement an index delegate\nimport CoreSpotlight\n\nclass IndexDelegate: NSObject, CSSearchableIndexDelegate {\n\n    // Called when the index requests searchable items for the provided identifiers\n    func searchableItems(forIdentifiers identifiers: [String]) async -> [CSSearchableItem] {\n        let entries = await mystore.fetchEntries(ids: identifiers)\n        return entries.map { makeSearchableItem(from: $0) }\n    }\n}"
+    },
+    {
+      "title": "Track the query token for refresh",
+      "language": "swift",
+      "startTimeSeconds": 457,
+      "code": "// Track the query token for refresh\nimport CoreSpotlight\nimport FoundationModels\n\nlet tool = SpotlightSearchTool()\n\nfor await reply in tool.searchResults {\n\n    if reply.queryToken != currentToken {\n        // New query — start a new display section\n        currentToken = reply.queryToken\n    }\n\n    switch reply.content {\n    case .items(let searchItems):\n    }\n}"
+    },
+    {
+      "title": "Set a dynamic guidance profile",
+      "language": "swift",
+      "startTimeSeconds": 522,
+      "code": "// Set a dynamic guidance profile\nimport CoreSpotlight\nimport FoundationModels\n\nlet profile = SpotlightSearchTool.GuidanceProfile(\n    textMatch: true,\n    dates: true,\n    people: false,\n    attributes: [.title, .altitude, .completionDate]\n)\n\nlet tool = SpotlightSearchTool(\n    configuration: .init(\n        guide: .init(level: .dynamic(profile))\n    )\n)\n\n// On-device models have smaller context — prefer focused guidance\nlet focusedTool = SpotlightSearchTool(\n    configuration: .init(\n        guide: .init(level: .focused(.items))\n    )\n)"
+    },
+    {
+      "title": "Implement a ContactResolver",
+      "language": "swift",
+      "startTimeSeconds": 572,
+      "code": "// Implement a ContactResolver\nimport CoreSpotlight\nimport FoundationModels\n\nstruct MyContactResolver: ContactResolver {\n\n    func userIdentity() -> ResolvedContact {\n        // Pull from whatever identity source your app has —\n        // account profile, Contacts framework, sign-in session, etc.\n        var contact = ResolvedContact(displayName: \"Jane Doe\")\n        contact.emailAddresses = [\"jane@example.com\", \"jdoe@work.com\"]\n        contact.names = [\"Jane\", \"JD\"]\n        return contact\n    }\n}\n\ntool.contactResolver = MyContactResolver()"
+    },
+    {
+      "title": "Define a custom stage",
+      "language": "swift",
+      "startTimeSeconds": 694,
+      "code": "// Define a custom stage\nimport CoreSpotlight\nimport FoundationModels\n\n@Generable\nstruct HappinessStage: CustomStage {\n    static var name = \"happiness\"\n    static var description = \"Scores hike by how happy the author was\"\n    static var inputTypes: [SearchPipelineDataType] = [.items]\n    static var outputTypes: [SearchPipelineDataType] = [.scoredItems]\n\n    @Guide(description: \"Minimum happiness score (0.0-1.0) to include in results\")\n    var threshold: Double?\n\n    func execute(on input: SearchPipelineData) async throws -> SearchPipelineData {\n        return SearchPipelineData(payload: .scoredItems(sorted))\n    }\n}\n\n// Register the stage by adding it to the tool's configuration\nlet tool = SpotlightSearchTool(configuration: .init(\n    customStages: [.happinessBoost(threshold: 0.5)])\n)"
+    },
+    {
+      "title": "Handle a reply data types",
+      "language": "swift",
+      "startTimeSeconds": 730,
+      "code": "// Handle a reply data types\nimport CoreSpotlight\nimport FoundationModels\n\nfor await reply in tool.searchResults {\n\n    let label = reply.label\n    case .items(let searchItems):\n    case .scoredItems(let scored):\n    case .groupedItems(let groups):\n    case .count(let count):\n    case .table(let table):\n    case .statistic(let statistic):\n    case .text(let text):\n        continue\n    }   \n}"
+    },
+    {
+      "title": "Define an evaluation dataset with ModelSampleProtocol",
+      "language": "swift",
+      "startTimeSeconds": 827,
+      "code": "// Evaluations\nimport Evaluations\n\nstruct TrailRequest: ModelSampleProtocol {\n\n    typealias ExpectedValue = String                    // sample response\n    typealias Expectation   = TrajectoryExpectation     \n\n    var input:  ModelSampleInput\n    var output: ModelSampleOutput<String, TrajectoryExpectation>\n\n    var expectedIdentifiers: [String]\n}"
+    },
+    {
+      "title": "Define the trajectory expectation",
+      "language": "swift",
+      "startTimeSeconds": 906,
+      "code": "// Evaluations\nimport Evaluations\n\nTrajectoryExpectation(\n    unordered: [\n        ToolExpectation(\"searchSpotlight\", arguments: [.keyOnly(argumentName: \"query\")])\n    ]   \n)"
+    },
+    {
+      "title": "Run the evaluation test —",
+      "language": "swift",
+      "startTimeSeconds": 917,
+      "code": "@Test(\"Trail search evaluation meets quality thresholds\")\nfunc trailSearchEval() async throws {\n\n    let items = try Self.loadItems()\n    let samples = try Self.loadSamples()\n\n    try await Self.indexDelegate.indexSearchableItems(items)\n    let tool = Self.makeSearchTool()\n\n    let evaluation = TrailSearchEvaluation(\n        tool: tool,\n        dataset: ArrayLoader(samples: samples)\n    )   \n\n    let result = try await evaluation.run()\n    let coverageMean = result.aggregateValue(.mean(of: Metric(\"ResultCoverage\")))\n    #expect(coverageMean >= 0.5, \"Result coverage should be at least 50% across queries\")\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Spotlight search tool",
+      "url": "https://developer.apple.com/documentation/CoreSpotlight/Spotlight-search-tool",
+      "type": "documentation",
+      "description": "Make your app’s indexed content available to the system’s Foundation models as additional",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreSpotlight/Spotlight-search-tool",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreSpotlight/Spotlight-search-tool.json"
+    },
+    {
+      "title": "Making your indexed content available to Foundation Models",
+      "url": "https://developer.apple.com/documentation/CoreSpotlight/making-your-indexed-content-available-to-foundation-models",
+      "type": "documentation",
+      "description": "Make the content you index for Spotlight available to Foundation models to help",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreSpotlight/making-your-indexed-content-available-to-foundation-models",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreSpotlight/making-your-indexed-content-available-to-foundation-models.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/246/",
+  "files": {
+    "metadata": "sessions/wwdc2026/246/metadata.json",
+    "readme": "sessions/wwdc2026/246/README.md",
+    "transcript": "sessions/wwdc2026/246/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/246/transcript.json"
+  }
+}

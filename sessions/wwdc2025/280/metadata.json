@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-280",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 280,
+  "title": "Code-along: Cook up a rich text experience in SwiftUI with AttributedString",
+  "description": "Learn how to build a rich text experience with SwiftUI’s TextEditor API and AttributedString. Discover how you can enable rich text editing, build custom controls that manipulate the contents of your editor, and customize the formatting options available. Explore advanced capabilities of AttributedString that help you craft the best text editing experiences.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/280",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/280",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Swift",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 2110,
+  "hasTranscript": true,
+  "transcriptWordCount": 4720,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/280/5/3596f3d4-e661-4414-a6ba-79128adcc8e6/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/280/5/3596f3d4-e661-4414-a6ba-79128adcc8e6/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/280/5/3596f3d4-e661-4414-a6ba-79128adcc8e6/downloads/wwdc2025-280_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/280/5/3596f3d4-e661-4414-a6ba-79128adcc8e6/downloads/wwdc2025-280_hd.mp4",
+    "duration": 2110
+  },
+  "codeSnippets": [
+    {
+      "title": "TextEditor and String",
+      "language": "swift",
+      "startTimeSeconds": 75,
+      "code": "import SwiftUI\n\nstruct RecipeEditor: View {\n    @Binding var text: String\n\n    var body: some View {\n        TextEditor(text: $text)\n    }\n}"
+    },
+    {
+      "title": "TextEditor and AttributedString",
+      "language": "swift",
+      "startTimeSeconds": 105,
+      "code": "import SwiftUI\n\nstruct RecipeEditor: View {\n    @Binding var text: AttributedString\n\n    var body: some View {\n        TextEditor(text: $text)\n    }\n}"
+    },
+    {
+      "title": "AttributedString Basics",
+      "language": "swift",
+      "startTimeSeconds": 283,
+      "code": "var text = AttributedString(\n  \"Hello 👋🏻! Who's ready to get \"\n)\n\nvar cooking = AttributedString(\"cooking\")\ncooking.foregroundColor = .orange\ntext += cooking\n\ntext += AttributedString(\"?\")\n\ntext.font = .largeTitle"
+    },
+    {
+      "title": "Build custom controls: Basics (initial attempt)",
+      "language": "swift",
+      "startTimeSeconds": 336,
+      "code": "import SwiftUI\n\nstruct RecipeEditor: View {\n    @Binding var text: AttributedString\n    @State private var selection = AttributedTextSelection()\n\n    var body: some View {\n        TextEditor(text: $text, selection: $selection)\n            .preference(key: NewIngredientPreferenceKey.self, value: newIngredientSuggestion)\n    }\n\n    private var newIngredientSuggestion: IngredientSuggestion {\n        let name = text[selection.indices(in: text)] // build error\n\n        return IngredientSuggestion(\n            suggestedName: AttributedString())\n    }\n}"
+    },
+    {
+      "title": "Slicing AttributedString with a Range",
+      "language": "swift",
+      "startTimeSeconds": 533,
+      "code": "var text = AttributedString(\n  \"Hello 👋🏻! Who's ready to get cooking?\"\n)\n\nguard let cookingRange = text.range(of: \"cooking\") else {\n  fatalError(\"Unable to find range of cooking\")\n}\n\ntext[cookingRange].foregroundColor = .orange"
+    },
+    {
+      "title": "Slicing AttributedString with a RangeSet",
+      "language": "swift",
+      "startTimeSeconds": 650,
+      "code": "var text = AttributedString(\n  \"Hello 👋🏻! Who's ready to get cooking?\"\n)\n\nlet uppercaseRanges = text.characters\n  .indices(where: \\.isUppercase)\n\ntext[uppercaseRanges].foregroundColor = .blue"
+    },
+    {
+      "title": "Build custom controls: Basics (fixed)",
+      "language": "swift",
+      "startTimeSeconds": 700,
+      "code": "import SwiftUI\n\nstruct RecipeEditor: View {\n    @Binding var text: AttributedString\n    @State private var selection = AttributedTextSelection()\n\n    var body: some View {\n        TextEditor(text: $text, selection: $selection)\n            .preference(key: NewIngredientPreferenceKey.self, value: newIngredientSuggestion)\n    }\n\n    private var newIngredientSuggestion: IngredientSuggestion {\n        let name = text[selection]\n\n        return IngredientSuggestion(\n            suggestedName: AttributedString(name))\n    }\n}"
+    },
+    {
+      "title": "Build custom controls: Recipe attribute",
+      "language": "swift",
+      "startTimeSeconds": 752,
+      "code": "import SwiftUI\n\nstruct IngredientAttribute: CodableAttributedStringKey {\n    typealias Value = Ingredient.ID\n\n    static let name = \"SampleRecipeEditor.IngredientAttribute\"\n}\n\nextension AttributeScopes {\n    /// An attribute scope for custom attributes defined by this app.\n    struct CustomAttributes: AttributeScope {\n        /// An attribute for marking text as a reference to an recipe's ingredient.\n        let ingredient: IngredientAttribute\n    }\n}\n\nextension AttributeDynamicLookup {\n    /// The subscript for pulling custom attributes into the dynamic attribute lookup.\n    ///\n    /// This makes them available throughout the code using the name they have in the\n    /// `AttributeScopes.CustomAttributes` scope.\n    subscript<T: AttributedStringKey>(\n        dynamicMember keyPath: KeyPath<AttributeScopes.CustomAttributes, T>\n    ) -> T {\n        self[T.self]\n    }\n}"
+    },
+    {
+      "title": "Build custom controls: Modifying text (initial attempt)",
+      "language": "swift",
+      "startTimeSeconds": 776,
+      "code": "import SwiftUI\n\nstruct RecipeEditor: View {\n    @Binding var text: AttributedString\n    @State private var selection = AttributedTextSelection()\n\n    var body: some View {\n        TextEditor(text: $text, selection: $selection)\n            .preference(key: NewIngredientPreferenceKey.self, value: newIngredientSuggestion)\n    }\n\n    private var newIngredientSuggestion: IngredientSuggestion {\n        let name = text[selection]\n\n        return IngredientSuggestion(\n            suggestedName: AttributedString(name),\n            onApply: { ingredientId in\n                let ranges = text.characters.ranges(of: name.characters)\n\n                for range in ranges {\n                    // modifying `text` without updating `selection` is invalid and resets the cursor \n                    text[range].ingredient = ingredientId\n                }\n            })\n    }\n}"
+    },
+    {
+      "title": "AttributedString Character View",
+      "language": "swift",
+      "startTimeSeconds": 1060,
+      "code": "text.characters[index] // \"👋🏻\""
+    },
+    {
+      "title": "AttributedString Unicode Scalar View",
+      "language": "swift",
+      "startTimeSeconds": 1064,
+      "code": "text.unicodeScalars[index] // \"👋\""
+    },
+    {
+      "title": "AttributedString Runs View",
+      "language": "swift",
+      "startTimeSeconds": 1069,
+      "code": "text.runs[index] // \"Hello 👋🏻! ...\""
+    },
+    {
+      "title": "AttributedString UTF-8 View",
+      "language": "swift",
+      "startTimeSeconds": 1093,
+      "code": "text.utf8[index] // \"240\""
+    },
+    {
+      "title": "AttributedString UTF-16 View",
+      "language": "swift",
+      "startTimeSeconds": 1097,
+      "code": "text.utf16[index] // \"55357\""
+    },
+    {
+      "title": "Updating Indices during AttributedString Mutations",
+      "language": "swift",
+      "startTimeSeconds": 1139,
+      "code": "var text = AttributedString(\n  \"Hello 👋🏻! Who's ready to get cooking?\"\n)\n\nguard var cookingRange = text.range(of: \"cooking\") else {\n  fatalError(\"Unable to find range of cooking\")\n}\n\nlet originalRange = cookingRange\ntext.transform(updating: &cookingRange) { text in\n  text[originalRange].foregroundColor = .orange\n\n  let insertionPoint = text\n    .index(text.startIndex, offsetByCharacters: 6)\n\n  text.characters\n    .insert(contentsOf: \"chef \", at: insertionPoint)\n}\n\nprint(text[cookingRange])"
+    },
+    {
+      "title": "Build custom controls: Modifying text (fixed)",
+      "language": "swift",
+      "startTimeSeconds": 1222,
+      "code": "import SwiftUI\n\nstruct RecipeEditor: View {\n    @Binding var text: AttributedString\n    @State private var selection = AttributedTextSelection()\n\n    var body: some View {\n        TextEditor(text: $text, selection: $selection)\n            .preference(key: NewIngredientPreferenceKey.self, value: newIngredientSuggestion)\n    }\n\n    private var newIngredientSuggestion: IngredientSuggestion {\n        let name = text[selection]\n\n        return IngredientSuggestion(\n            suggestedName: AttributedString(name),\n            onApply: { ingredientId in\n                let ranges = RangeSet(text.characters.ranges(of: name.characters))\n\n                text.transform(updating: &selection) { text in\n                    text[ranges].ingredient = ingredientId\n                }\n            })\n    }\n}"
+    },
+    {
+      "title": "Define your text format: RecipeFormattingDefinition Scope",
+      "language": "swift",
+      "startTimeSeconds": 1323,
+      "code": "struct RecipeFormattingDefinition: AttributedTextFormattingDefinition {\n    struct Scope: AttributeScope {\n        let foregroundColor: AttributeScopes.SwiftUIAttributes.ForegroundColorAttribute\n        let adaptiveImageGlyph: AttributeScopes.SwiftUIAttributes.AdaptiveImageGlyphAttribute\n        let ingredient: IngredientAttribute\n    }\n\n    var body: some AttributedTextFormattingDefinition<Scope> {\n\n    }\n}\n\n// pass the custom formatting definition to the TextEditor in the updated `RecipeEditor.body`:\n\n        TextEditor(text: $text, selection: $selection)\n            .preference(key: NewIngredientPreferenceKey.self, value: newIngredientSuggestion)\n            .attributedTextFormattingDefinition(RecipeFormattingDefinition())"
+    },
+    {
+      "title": "Define your text format: AttributedTextValueConstraints",
+      "language": "swift",
+      "startTimeSeconds": 1430,
+      "code": "struct IngredientsAreGreen: AttributedTextValueConstraint {\n    typealias Scope = RecipeFormattingDefinition.Scope\n    typealias AttributeKey = AttributeScopes.SwiftUIAttributes.ForegroundColorAttribute\n\n    func constrain(_ container: inout Attributes) {\n        if container.ingredient != nil {\n            container.foregroundColor = .green\n        } else {\n            container.foregroundColor = nil\n        }\n    }\n}\n\n// list the value constraint in the recipe formatting definition's body:\n    var body: some AttributedTextFormattingDefinition<Scope> {\n        IngredientsAreGreen()\n    }"
+    },
+    {
+      "title": "AttributedStringKey Constraint: Inherited by Added Text",
+      "language": "swift",
+      "startTimeSeconds": 1768,
+      "code": "static let inheritedByAddedText = false"
+    },
+    {
+      "title": "AttributedStringKey Constraint: Invalidation Conditions",
+      "language": "swift",
+      "startTimeSeconds": 1812,
+      "code": "static let invalidationConditions:\nSet<AttributedString.AttributeInvalidationCondition>? =\n[.textChanged]"
+    },
+    {
+      "title": "AttributedStringKey Constraint: Run Boundaries",
+      "language": "swift",
+      "startTimeSeconds": 1885,
+      "code": "static let runBoundaries:\nAttributedString.AttributeRunBoundaries? =\n.paragraph"
+    },
+    {
+      "title": "Define your text format: AttributedStringKey Constraints",
+      "language": "swift",
+      "startTimeSeconds": 1966,
+      "code": "struct IngredientAttribute: CodableAttributedStringKey {\n    typealias Value = Ingredient.ID\n\n    static let name = \"SampleRecipeEditor.IngredientAttribute\"\n\n    static let inheritedByAddedText: Bool = false\n\n    static let invalidationConditions: Set<AttributedString.AttributeInvalidationCondition>? = [.textChanged]\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Character",
+      "url": "https://developer.apple.com/documentation/Swift/Character",
+      "type": "documentation",
+      "description": "A single extended grapheme cluster that approximates a user-perceived",
+      "sosumiURL": "https://sosumi.ai/documentation/Swift/Character",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Swift/Character.json"
+    },
+    {
+      "title": "AttributedTextSelection",
+      "url": "https://developer.apple.com/documentation/SwiftUI/AttributedTextSelection",
+      "type": "documentation",
+      "description": "Represents a selection of attributed text.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/AttributedTextSelection",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/AttributedTextSelection.json"
+    },
+    {
+      "title": "AttributedTextFormatting",
+      "url": "https://developer.apple.com/documentation/SwiftUI/AttributedTextFormatting",
+      "type": "documentation",
+      "description": "A namespace for types related to attributed text formatting definitions.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/AttributedTextFormatting",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/AttributedTextFormatting.json"
+    },
+    {
+      "title": "Building rich SwiftUI text experiences",
+      "url": "https://developer.apple.com/documentation/SwiftUI/building-rich-swiftui-text-experiences",
+      "type": "samplecode",
+      "description": "Build an editor for formatted text using SwiftUI text editor views and attributed strings.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/building-rich-swiftui-text-experiences",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/building-rich-swiftui-text-experiences.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/280/",
+  "files": {
+    "metadata": "sessions/wwdc2025/280/metadata.json",
+    "readme": "sessions/wwdc2025/280/README.md",
+    "transcript": "sessions/wwdc2025/280/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/280/transcript.json"
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10210",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10210,
+  "title": "Explore advanced project configuration in Xcode",
+  "description": "Working with more complex Xcode projects? You’ve come to the right place. Discover how you can configure your project to build for multiple Apple platforms, filter content per-platform, create custom build rules and file dependencies, and more. We’ll take you through multi-platform framework targets, detail how to optimize your project and scheme configuration, and show you how to make effective use of configuration settings files. \n\nWe’ll explore configuring schemes for parallel builds and implicit dependencies, script phases, custom build rules, setting up input and output file dependencies, build phase file lists, and deduplicating work via aggregate targets. Lastly, find out more about the build settings editor, how levels work, and configuration settings file syntax.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10210",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10210",
+  "type": "Video",
+  "publishedAt": "2021-06-11T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "build",
+    "build phase",
+    "build settings",
+    "multiplatform",
+    "project",
+    "scheme",
+    "script phase",
+    "xcconfig"
+  ],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 1537,
+  "hasTranscript": true,
+  "transcriptWordCount": 3678,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10210/4/391A6CFB-228A-4349-AE24-4809307D58F5/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10210/4/391A6CFB-228A-4349-AE24-4809307D58F5/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10210/4/391A6CFB-228A-4349-AE24-4809307D58F5/downloads/wwdc2021-10210_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10210/4/391A6CFB-228A-4349-AE24-4809307D58F5/downloads/wwdc2021-10210_hd.mp4",
+    "duration": 1537
+  },
+  "codeSnippets": [
+    {
+      "title": "Shell Script - Output Files",
+      "language": "bash",
+      "startTimeSeconds": 458,
+      "code": "$(DERIVED_FILE_DIR)/$(INPUT_FILE_BASE).compiledrecipe"
+    },
+    {
+      "title": "Build Rule - code",
+      "language": "bash",
+      "startTimeSeconds": 502,
+      "code": "\"$SRCROOT/Scripts/gen-code.sh\" \"$SCRIPT_INPUT_FILE\" \"$SCRIPT_OUTPUT_FILE_0\""
+    },
+    {
+      "title": "Shell Script - code",
+      "language": "bash",
+      "startTimeSeconds": 615,
+      "code": "# Package up the recipes.\n\necho \"packaging...\"\n\nfor i in $(seq 0 $(expr ${SCRIPT_INPUT_FILE_LIST_COUNT} - 1)) ; do\n    infile_=\"SCRIPT_INPUT_FILE_LIST_$i\"\n    eval infile=\\$$infile_\n\n    while IFS= read -r file; do\n        cat \"$file\" >> \"$SCRIPT_OUTPUT_FILE_0\"\n    done < \"$infile\"\ndone"
+    },
+    {
+      "title": "XCFileList",
+      "language": "bash",
+      "startTimeSeconds": 694,
+      "code": "$(SRCROOT)/Recipes/Instructions/berry-blue.md\n$(SRCROOT)/Recipes/Instructions/carrot-chops.md\n$(SRCROOT)/Recipes/Instructions/hulking-lemonade.md\n$(SRCROOT)/Recipes/Instructions/kiwi-cutie.md\n$(SRCROOT)/Recipes/Instructions/lemonberry.md\n$(SRCROOT)/Recipes/Instructions/love-you-berry-much.md\n$(SRCROOT)/Recipes/Instructions/mango-jambo.md\n$(SRCROOT)/Recipes/Instructions/one-in-a-melon.md\n$(SRCROOT)/Recipes/Instructions/papas-papaya.md\n$(SRCROOT)/Recipes/Instructions/pina-y-coco.md"
+    },
+    {
+      "title": "Shell Script - Input File Lists",
+      "language": "bash",
+      "startTimeSeconds": 717,
+      "code": "$(SRCROOT)/FileList.xcfilelist"
+    },
+    {
+      "title": "Shell Script - Output Files",
+      "language": "bash",
+      "startTimeSeconds": 731,
+      "code": "$(PROJECT_TEMP_DIR)/instructions.mdarchive"
+    },
+    {
+      "title": "Environment Variables - Script Phases",
+      "language": "bash",
+      "startTimeSeconds": 770,
+      "code": "// These environment variables are available in script phases:\n\nSCRIPT_INPUT_FILE_COUNT // This specifies the number of paths from the Input Files table.\nSCRIPT_INPUT_FILE_n // This specifies the absolute path of the nth file from the Input Files table, with build settings expanded.\n\nSCRIPT_INPUT_FILE_LIST_COUNT // This specifies the number of input file lists.\nSCRIPT_INPUT_FILE_LIST_n // This specifies the absolute path of the nth \"resolved\" input file list with contained paths made absolute, build settings expanded, and comments removed.\n\nSCRIPT_OUTPUT_FILE_COUNT // This specifies the number of paths from the Output Files table.\nSCRIPT_OUTPUT_FILE_n // This specifies the absolute path of the nth file from the Output Files table, with build settings expanded.\n\nSCRIPT_OUTPUT_FILE_LIST_COUNT // This specifies the number of output file lists.\nSCRIPT_OUTPUT_FILE_LIST_n // This specifies the absolute path of the nth \"resolved\" output file list with contained paths made absolute, build settings expanded, and comments removed.\n\n* n in the above examples refers to a 0-based index."
+    },
+    {
+      "title": "Environment Variables - Build Rules",
+      "language": "bash",
+      "startTimeSeconds": 780,
+      "code": "// These environment variables are available in build rules:\n\nSCRIPT_INPUT_FILE // This specifies the absolute path of the main input file being processed by the rule.\n\nOTHER_INPUT_FILE_FLAGS // This specifies custom command line flags defined for the input file in the Compile Sources build phase.\n\nSCRIPT_INPUT_FILE_COUNT // This specifies the number of paths from the Input Files table.\nSCRIPT_INPUT_FILE_n // This specifies the absolute path of the nth file from the Input Files table, with build settings expanded.\n\nSCRIPT_OUTPUT_FILE_COUNT // This specifies the number of paths from the Output Files table.\nSCRIPT_OUTPUT_FILE_n // This specifies the absolute path of the nth file from the Output Files table, with build settings expanded.\n\nSCRIPT_HEADER_VISIBILITY // This is set to \"public\" or \"private\" if the input file being processed is a header file in a Headers build phase, and its Header Visibility is set to one of those values.\n\nHEADER_OUTPUT_DIR // This specifies the output directory to which the input file should be copied, if the input file being processed is a header file in a Headers build phase.\n\n* n in the above examples refers to a 0-based index."
+    },
+    {
+      "title": "Build setting definition",
+      "language": "bash",
+      "startTimeSeconds": 1097,
+      "code": "MY_BUILD_SETTING_NAME = \"A build setting value\""
+    },
+    {
+      "title": "Build setting definition with conditions",
+      "language": "bash",
+      "startTimeSeconds": 1110,
+      "code": "MY_BUILD_SETTING_NAME = \"A build setting value\"\nMY_BUILD_SETTING_NAME[config=Debug] = -debug_flag\nMY_BUILD_SETTING_NAME[arch=arm64] = -arm64_only\nMY_BUILD_SETTING_NAME[sdk=iphone*] = -ios_only"
+    },
+    {
+      "title": "Build setting composition",
+      "language": "bash",
+      "startTimeSeconds": 1190,
+      "code": "IS_BUILD_SETTING_ENABLED = NO\nMY_BUILD_SETTING_NO = -use_this_one\nMY_BUILD_SETTING_YES = -use_this_instead\nMY_BUILD_SETTING = $(MY_BUILD_SETTING_$(IS_BUILD_SETTING_ENABLED))"
+    },
+    {
+      "title": "Build setting evaluation operators (paths)",
+      "language": "bash",
+      "startTimeSeconds": 1268,
+      "code": "$(MY_PATH:dir)\n$(MY_PATH:file)\n$(MY_PATH:base)\n$(MY_PATH:suffix)\n$(MY_PATH:standardizepath)"
+    },
+    {
+      "title": "Build setting evaluation operators (replacement)",
+      "language": "bash",
+      "startTimeSeconds": 1281,
+      "code": "$(MY_PATH:dir=/tmp)\n$(MY_PATH:file=/better.swift)\n$(MY_PATH:base=another)\n$(MY_PATH:suffix=m)\n$(MY_PATH:default=YES)"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2021/10210/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10210/metadata.json",
+    "readme": "sessions/wwdc2021/10210/README.md",
+    "transcript": "sessions/wwdc2021/10210/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10210/transcript.json"
+  }
+}

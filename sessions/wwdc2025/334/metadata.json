@@ -1,0 +1,180 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2025-334",
+  "event": "wwdc2025",
+  "eventName": "WWDC25",
+  "year": 2025,
+  "eventContentId": 334,
+  "title": "What’s new in watchOS 26",
+  "description": "Discover the new features in watchOS 26 and learn how to integrate them into your watchOS and iOS apps. Explore the ARM64 architecture, and dive into the new design system. We’ll also share updates for widgets and insights on how to bring controls to Apple Watch.",
+  "url": "https://developer.apple.com/videos/play/wwdc2025/334",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2025/334",
+  "type": "Video",
+  "publishedAt": "2025-06-09T14:00:00-07:00",
+  "platforms": [
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Health & Fitness",
+    "Maps & Location",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1256,
+  "hasTranscript": true,
+  "transcriptWordCount": 2757,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/334/6/578bf261-7e37-4689-a465-bd1300c0f908/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/334/6/578bf261-7e37-4689-a465-bd1300c0f908/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/334/6/578bf261-7e37-4689-a465-bd1300c0f908/downloads/wwdc2025-334_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2025/334/6/578bf261-7e37-4689-a465-bd1300c0f908/downloads/wwdc2025-334_hd.mp4",
+    "duration": 1256
+  },
+  "codeSnippets": [
+    {
+      "title": "Make a widget configurable",
+      "language": "swift",
+      "startTimeSeconds": 413,
+      "code": "// In the AppIntentTimelineProvider\nfunc recommendations() -> [AppIntentRecommendation<BeachConfigurationIntent>] {\n  return []\n}"
+    },
+    {
+      "title": "Support earlier versions of watchOS with a configurable widget",
+      "language": "swift",
+      "startTimeSeconds": 426,
+      "code": "// In the AppIntentTimelineProvider\nfunc recommendations() -> [AppIntentRecommendation<BeachConfigurationIntent>] {\n  if #available(watchOS 26, *) {\n    // Return an empty array to allow configuration of the widget in watchOS 12+\n    return []\n  } else {\n    // Return array of recommendations for preconfigured widgets before watchOS 12\n    return recommendedBeaches\n  }\n}"
+    },
+    {
+      "title": "Use AppIntentControlConfiguration to make a control configurable",
+      "language": "swift",
+      "startTimeSeconds": 466,
+      "code": "struct ConfigurableMeditationControl: ControlWidget {\n  var body: some ControlWidgetConfiguration {\n    AppIntentControlConfiguration(\n      kind: WidgetKinds.configurableMeditationControl,\n      provider: Provider()\n    ) { value in\n      // Provide the control's content\n    }\n    .displayName(\"Ocean Meditation\")\n    .description(\"Meditation with optional ocean sounds.\")\n    .promptsForUserConfiguration()\n  }\n}"
+    },
+    {
+      "title": "Use AppIntentControlValueProvider for a configurable control",
+      "language": "swift",
+      "startTimeSeconds": 476,
+      "code": "extension ConfigurableMeditationControl {\n  struct Provider: AppIntentControlValueProvider {\n    func previewValue(configuration: TimerConfiguration) -> Value {\n      // Return the value to show in the add sheet\n    }\n\n    func currentValue(configuration: TimerConfiguration) async throws -> Value {\n      // Return the control's value\n    }\n  }\n}"
+    },
+    {
+      "title": "Relevance for a point-of-interest category",
+      "language": "swift",
+      "startTimeSeconds": 653,
+      "code": "func relevance() async -> WidgetRelevance<Void> {\n  guard let context = RelevantContext.location(category: .beach) else {\n    return WidgetRelevance<Void>([])\n  }\n  return WidgetRelevance([WidgetRelevanceAttribute(context: context)])\n}"
+    },
+    {
+      "title": "Implement the relevance method in the RelevanceEntriesProvider",
+      "language": "swift",
+      "startTimeSeconds": 877,
+      "code": "struct BeachEventRelevanceProvider: RelevanceEntriesProvider {\n  let store: BeachEventStore\n\n  func relevance() async -> WidgetRelevance<BeachEventConfigurationIntent> {\n    // Associate configuration intents with RelevantContexts\n    let attributes = events.map { event in\n      WidgetRelevanceAttribute(\n        configuration: BeachEventConfigurationIntent(event: event),\n        context: .date(interval: event.date, kind: .default)\n      )\n    }\n\n    return WidgetRelevance(attributes)\n  }\n}"
+    },
+    {
+      "title": "Create a RelevanceEntry when the widget is relevant",
+      "language": "swift",
+      "startTimeSeconds": 909,
+      "code": "struct BeachEventRelevanceProvider: RelevanceEntriesProvider {\n  func relevance() async -> WidgetRelevance<BeachEventConfigurationIntent> {\n    // Return relevance information for the widget\n  }\n\n  func entry(\n    configuration: BeachEventConfigurationIntent,\n    context: Context\n  ) async throws -> BeachEventRelevanceEntry {\n    if context.isPreview {\n      return .previewEntry\n    }\n    return BeachEventRelevanceEntry(\n      event: configuration.event\n    )\n  }\n}"
+    },
+    {
+      "title": "Create a placeholder entry to display when the widget is loading",
+      "language": "swift",
+      "startTimeSeconds": 955,
+      "code": "struct BeachEventRelevanceProvider: RelevanceEntriesProvider {\n  func relevance() async -> WidgetRelevance<BeachEventConfigurationIntent> {\n    // Return relevance information for the widget\n  }\n\n  func entry(\n    configuration: BeachEventConfigurationIntent,\n    context: Context\n  ) async throws -> BeachEventRelevanceEntry {\n    // Return the entry for the configuration\n  }\n\n  func placeholder(context: Context) -> BeachEventRelevanceEntry {\n    BeachEventRelevanceEntry.placeholderEntry\n  }\n}"
+    },
+    {
+      "title": "Use a RelevanceConfiguration to create a relevant widget",
+      "language": "swift",
+      "startTimeSeconds": 987,
+      "code": "struct BeachEventWidget: Widget {\n  private let model = BeachEventStore.shared\n\n  var body: some WidgetConfiguration {\n    RelevanceConfiguration\n      kind: \"BeachWidget\n      provider: BeachEventRelevanceProvider(store: model)\n    ) { entry in\n      BeachWidgetView(entry: entry)\n    }\n    .configurationDisplayName(\"Beach Events\")\n    .description(\"Events at the beach\")\n  }\n}"
+    },
+    {
+      "title": "Use associatedKind to relate the relevant widget to the timeline widget",
+      "language": "swift",
+      "startTimeSeconds": 1051,
+      "code": "struct BeachEventWidget: Widget {\n  private let model = BeachEventStore.shared\n\n  var body: some WidgetConfiguration {\n    RelevanceConfiguration\n      kind: \"BeachWidget\n      provider: BeachEventRelevanceProvider(store: model)\n    ) { entry in\n      BeachWidgetView(entry: entry)\n    }\n    .configurationDisplayName(\"Beach Events\")\n    .description(\"Events at the beach\")\n    .associatedKind(WidgetKinds.beachEventsTimeline)\n  }\n}"
+    },
+    {
+      "title": "Create a Preview with relevanceEntries",
+      "language": "swift",
+      "startTimeSeconds": 1086,
+      "code": "#Preview(\"Entries\") {\n  BeachEventWidget()\n} relevanceEntries: {\n  BeachEventRelevanceEntry.previewShorebirds\n  BeachEventRelevanceEntry.previewMeditation\n}"
+    },
+    {
+      "title": "Create a Preview with relevance",
+      "language": "swift",
+      "startTimeSeconds": 1106,
+      "code": "#Preview(\"Provider and Relevance\") {\n  BeachEventWidget()\n} relevanceProvider: {\n  BeachEventRelevanceProvider(store: .preview)\n} relevance: {\n  let configurations: [BeachEventConfigurationIntent] = [\n    .previewSurfing,\n    .previewMeditation,\n    .previewWalk\n  ]\n  let attributes = configurations.map {\n    WidgetRelevanceAttribute(\n      configuration: $0,\n      context: .date($0.event.startDate, kind: .default)\n    )\n  }\n  return WidgetRelevance(attributes)\n}"
+    },
+    {
+      "title": "Create a Preview with a relevanceProvider",
+      "language": "swift",
+      "startTimeSeconds": 1127,
+      "code": "#Preview(\"Provider\") {\n  BeachEventWidget()\n} relevanceProvider: {\n  BeachEventRelevanceProvider(store: .preview)\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Workouts and activity rings",
+      "url": "https://developer.apple.com/documentation/HealthKit/workouts-and-activity-rings",
+      "type": "documentation",
+      "description": "Manage workouts, workout sessions, and activity summaries.",
+      "sosumiURL": "https://sosumi.ai/documentation/HealthKit/workouts-and-activity-rings",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HealthKit/workouts-and-activity-rings.json"
+    },
+    {
+      "title": "Creating controls to perform actions across the system",
+      "url": "https://developer.apple.com/documentation/WidgetKit/Creating-controls-to-perform-actions-across-the-system",
+      "type": "documentation",
+      "description": "Perform your app’s actions from Control Center, the Lock Screen, and the Action button.",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit/Creating-controls-to-perform-actions-across-the-system",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit/Creating-controls-to-perform-actions-across-the-system.json"
+    },
+    {
+      "title": "Migrating ClockKit complications to WidgetKit",
+      "url": "https://developer.apple.com/documentation/WidgetKit/Converting-A-ClockKit-App",
+      "type": "guide",
+      "description": "Leverage WidgetKit’s API to create watchOS complications using SwiftUI.",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit/Converting-A-ClockKit-App",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit/Converting-A-ClockKit-App.json"
+    },
+    {
+      "title": "Increasing the visibility of widgets in Smart Stacks",
+      "url": "https://developer.apple.com/documentation/WidgetKit/Widget-Suggestions-In-Smart-Stacks",
+      "type": "documentation",
+      "description": "Provide contextual information and donate intents to the system to make sure your widget appears prominently in Smart Stacks.",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit/Widget-Suggestions-In-Smart-Stacks",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit/Widget-Suggestions-In-Smart-Stacks.json"
+    },
+    {
+      "title": "Making a configurable widget",
+      "url": "https://developer.apple.com/documentation/WidgetKit/Making-a-Configurable-Widget",
+      "type": "documentation",
+      "description": "Give people the option to customize their widgets by adding a custom app intent",
+      "sosumiURL": "https://sosumi.ai/documentation/WidgetKit/Making-a-Configurable-Widget",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/WidgetKit/Making-a-Configurable-Widget.json"
+    },
+    {
+      "title": "MapKit",
+      "url": "https://developer.apple.com/documentation/MapKit",
+      "type": "documentation",
+      "description": "Display map or satellite imagery within your app, call out points of interest, and determine placemark information for map coordinates.",
+      "sosumiURL": "https://sosumi.ai/documentation/MapKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MapKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2025/334/",
+  "files": {
+    "metadata": "sessions/wwdc2025/334/metadata.json",
+    "readme": "sessions/wwdc2025/334/README.md",
+    "transcript": "sessions/wwdc2025/334/transcript.md",
+    "transcriptJSON": "sessions/wwdc2025/334/transcript.json"
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10057",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10057,
+  "title": "Identify trends with the Power and Performance API",
+  "description": "Track your app’s performance metrics in custom team dashboards, bug reporting systems, and other custom workflows with the Power and Performance Metrics and Diagnostics API. Explore how you can access the same data that drives the Power and Performance analysis tools in Xcode to quickly identify trends and regressions. Learn how to leverage diagnostic signatures and logs — including call stack trees — to prioritize and debug issues. And discover how you can integrate this API with your development team’s existing tools to troubleshoot issues quickly, offering better overall performance for people who use your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10057",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10057",
+  "type": "Video",
+  "publishedAt": "2020-06-26T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "analytics",
+    "app store connect",
+    "automation",
+    "diagnostics",
+    "insights",
+    "json",
+    "metrics",
+    "web api"
+  ],
+  "topics": [
+    "Developer Tools",
+    "App Store, Distribution & Marketing"
+  ],
+  "primaryTopic": "App Store, Distribution & Marketing",
+  "duration": 912,
+  "hasTranscript": true,
+  "transcriptWordCount": 2004,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10057/3/138E68BD-E9B2-4980-8CF7-738D58F9959D/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10057/3/138E68BD-E9B2-4980-8CF7-738D58F9959D/wwdc2020_10057_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10057/3/138E68BD-E9B2-4980-8CF7-738D58F9959D/wwdc2020_10057_hd.mp4",
+    "duration": 912
+  },
+  "codeSnippets": [
+    {
+      "title": "Get metrics and insights for most recent app versions",
+      "language": "swift",
+      "startTimeSeconds": 288,
+      "code": "GET /v1/apps/{id}/perfPowerMetrics"
+    },
+    {
+      "title": "Get top diagnostic signatures for released app versions",
+      "language": "swift",
+      "startTimeSeconds": 499,
+      "code": "GET /v1/builds/{id}/diagnosticSignatures"
+    },
+    {
+      "title": "Get logs for a diagnostic signature",
+      "language": "swift",
+      "startTimeSeconds": 582,
+      "code": "GET /v1/diagnosticSignatures/{id}/logs"
+    },
+    {
+      "title": "Access perfPowerMetrics for an app",
+      "language": "bash",
+      "startTimeSeconds": 679,
+      "code": "curl -X GET -H \"Authorization: Bearer ${JWT}\" -H \"Accept: application/vnd.apple.xcode-metrics+json,application/json\" https://api.appstoreconnect.apple.com/v1/apps/${id}/perfPowerMetrics"
+    },
+    {
+      "title": "Access diagnosticSignatures for an app build",
+      "language": "bash",
+      "startTimeSeconds": 743,
+      "code": "curl -X GET -H \"Authorization: Bearer ${JWT}\" -H \"Accept: application/vnd.apple.xcode-metrics+json,application/json\" https://api.appstoreconnect.apple.com/v1/builds/${id}/diagnosticSignatures"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2020/10057/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10057/metadata.json",
+    "readme": "sessions/wwdc2020/10057/README.md",
+    "transcript": "sessions/wwdc2020/10057/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10057/transcript.json"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10220",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10220,
+  "title": "Handle interruptions and alerts in UI tests",
+  "description": "Learn how to anticipate potential interruptions to your app’s interface and build smart tests to identify them. UI interruptions often appear indeterminately, typically during onboarding or first launch, which can make them hard to track down. Learn how to understand interruptions, write stronger tests with UI interruption handlers, and manage expected alerts.\n\nTo learn more about the latest improvements for testing your app in Xcode, check out “XCTSkip your tests”, “Get your test results faster”, and “Triage test failures with XCTIssue”.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10220",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10220",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "alerts",
+    "protected resources",
+    "testing",
+    "ui interruptions",
+    "ui testing",
+    "xcode"
+  ],
+  "topics": [
+    "Swift",
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 703,
+  "hasTranscript": true,
+  "transcriptWordCount": 1907,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10220/3/3529A3B2-1763-4B11-989D-D5B6B986EFE6/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10220/3/3529A3B2-1763-4B11-989D-D5B6B986EFE6/wwdc2020_10220_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10220/3/3529A3B2-1763-4B11-989D-D5B6B986EFE6/wwdc2020_10220_hd.mp4",
+    "duration": 703
+  },
+  "codeSnippets": [
+    {
+      "title": "Interruption Handler Skeleton",
+      "language": "swift",
+      "startTimeSeconds": 304,
+      "code": "addUIInterruptionMonitor(withDescription: \"Handle recipe update failures\") { element -> Bool in\n    // TODO: Use this handler to retry the update action\n    return false\n}"
+    },
+    {
+      "title": "UI Test Method Body",
+      "language": "swift",
+      "startTimeSeconds": 316,
+      "code": "func testRecipeDetailsNavigation() throws {\n\n    let app = XCUIApplication()\n    app.launch()\n\n    let pancakeRecipe = app.cells.staticTexts[\"Fluffy Pancakes\"].firstMatch\n    pancakeRecipe.tap()\n\n    // In the detail view\n    let detailTitle = app.navigationBars.staticTexts[\"Fluffy Pancakes\"].firstMatch\n    XCTAssert(detailTitle.waitForExistence(timeout: 30))\n\n    let expectedImage = app.images[\"Fluffy Pancakes Image\"].firstMatch\n    XCTAssert(expectedImage.exists)\n\n    let ingredientsTitle = app.staticTexts[\"Ingredients Title\"].firstMatch\n    XCTAssert(ingredientsTitle.exists)\n\n    let ingredientsContent = app.textViews[\"Ingredients Content\"].firstMatch\n    XCTAssert(ingredientsContent.exists)\n    XCTAssert((ingredientsContent.value as! String).count > 0)\n\n    let instructionsTitle = app.staticTexts[\"Instructions Title\"].firstMatch\n    XCTAssert(instructionsTitle.exists)\n\n    let instructionsTextView = app.textViews[\"Instructions Content\"].firstMatch\n    XCTAssert(instructionsTextView.exists)\n    XCTAssert((instructionsTextView.value as! String).count > 0)\n\n    // Make sure we received the latest instructions:\n    let expectedInstructions = \"\"\"\n                               1. Mix the flour, sugar, baking powder and salt.\n\n                               2. Pour the milk, melted butter and egg into a well in the center and mix.\n\n                               3. Heat a frying pan (don't forget to add a little bit of oil, grandson!), and fry until they're golden.\n\n                               4. Optionally add maple syrup and/or fruits (they're healthy!).\n                               \"\"\"\n    XCTAssertEqual((instructionsTextView.value as! String), expectedInstructions)\n\n    // Go back to the list of recipes\n    let backButton = app.navigationBars.buttons[\"Grandma's Recipes\"].firstMatch\n    backButton.tap()\n\n    XCTAssert(pancakeRecipe.waitForExistence(timeout: 30))\n}"
+    },
+    {
+      "title": "Modified Interruption Handler",
+      "language": "swift",
+      "startTimeSeconds": 380,
+      "code": "addUIInterruptionMonitor(withDescription: \"Handle recipe update failures\") { element -> Bool in\n    let retryButton = element.buttons[\"Retry\"].firstMatch\n    if element.elementType == .alert && retryButton.exists {\n        retryButton.tap()\n        return true\n    } else {\n        return false\n    }\n}"
+    },
+    {
+      "title": "Handle Expected Alerts",
+      "language": "swift",
+      "startTimeSeconds": 457,
+      "code": "func testDeleteRecipe() throws {\n    let breadCell = cell(recipeName: \"Banana Bread\")\n    deleteCell(breadCell)\n\n    let alert = app.alerts[\"Delete Recipe\"].firstMatch\n    let alertExists = alert.waitForExistence(timeout: 30)\n    XCTAssert(alertExists, \"Expected alert to show up\")\n\n    let description = \"\"\"\n                      Are you sure you want to \\\n                      delete this recipe?\n                      \"\"\"\n\n    let alertDescription = alert.staticTexts[description]\n    XCTAssert(alertDescription.exists)\n\n    alert.buttons[\"Delete\"].tap()\n    XCTAssertFalse(breadCell.exists)\n}"
+    },
+    {
+      "title": "Reset the Authorization Status of Protected Resources",
+      "language": "swift",
+      "startTimeSeconds": 629,
+      "code": "func testAddingPhotosFirstTime() throws {\n    let app = XCUIApplication()\n    app.resetAuthorizationStatus(for: .photos)\n\n    app.launch()\n\n    // Test code…\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2020/10220/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10220/metadata.json",
+    "readme": "sessions/wwdc2020/10220/README.md",
+    "transcript": "sessions/wwdc2020/10220/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10220/transcript.json"
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10062",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10062,
+  "title": "Meet Transferable",
+  "description": "Meet Transferable: a model-layer protocol that allows for effortless support for sharing, drag and drop, copy/paste, and other features in your app.\n\nWe'll explore how you can use the API for common use cases, and take advantage of advanced features to customize the behavior. We'll also share how you can optimize for memory efficiency when dealing with large amounts of data. Whether you're extending your models to share with other applications as strings or images or creating custom declared data types, Transferable can help you facilitate a great experience in your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10062",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10062",
+  "type": "Video",
+  "publishedAt": "2022-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Essentials",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 842,
+  "hasTranscript": true,
+  "transcriptWordCount": 1758,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10062/4/004375E4-2295-45FB-9D6D-20F1B8C3834C/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10062/4/004375E4-2295-45FB-9D6D-20F1B8C3834C/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10062/4/004375E4-2295-45FB-9D6D-20F1B8C3834C/downloads/wwdc2022-10062_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10062/4/004375E4-2295-45FB-9D6D-20F1B8C3834C/downloads/wwdc2022-10062_hd.mp4",
+    "duration": 842
+  },
+  "codeSnippets": [
+    {
+      "title": "Declaring a custom content type",
+      "language": "swift",
+      "startTimeSeconds": 276,
+      "code": "import UniformTypeIdentifiers\n\n// also declare the content type in the Info.plist\nextension UTType {\n    static var profile: UTType = UTType(exportedAs: \"com.example.profile\")\n}"
+    },
+    {
+      "title": "PasteButton interface",
+      "language": "swift",
+      "startTimeSeconds": 310,
+      "code": "import SwiftUI\n\nstruct Profile {\n    private var funFacts: [String] = []\n    mutating func addFunFacts(_ newFunFacts: [String]) {\n        funFacts.append(newFunFacts)\n    }\n}\n\nstruct PasteButtonView: View {\n    @State var profile = Profile()\n    var body: some View {\n        PasteButton(payloadType: String.self) { funFacts in\n            profile.addFunFacts(funFacts)\n        }\n    }\n}"
+    },
+    {
+      "title": "Drag and Drop",
+      "language": "swift",
+      "startTimeSeconds": 319,
+      "code": "import SwiftUI\n\nstruct PortraitView: View {\n    @State var portrait: Image\n    var body: some View {\n        portrait\n            .cornerRadius(8)\n            .draggable(portrait)\n            .dropDestination(payloadType: Image.self) { (images: [Image], _) in\n                if let image = images.first {\n                    portrait = image\n                    return true\n                }\n                return false\n            }\n    }\n}"
+    },
+    {
+      "title": "Sharing",
+      "language": "swift",
+      "startTimeSeconds": 327,
+      "code": "import SwiftUI\n\nstruct Profile {\n    var name: String\n}\n\nstruct ProfileView: View {\n    @State private var portrait: Image\n    var model: Profile\n\n    var body: some View {\n        VStack {\n            portrait\n            Text(model.name)\n        }\n        .toolbar {\n            ShareLink(item: portrait, preview: SharePreview(model.name))\n        }\n    }\n}"
+    },
+    {
+      "title": "Profile structure",
+      "language": "swift",
+      "startTimeSeconds": 394,
+      "code": "import Foundation\n\nstruct Profile: Codable {\n    var id: UUID\n    var name: String\n    var bio: String\n    var funFacts: [String]\n    var video: URL?\n    var portrait: URL?\n}"
+    },
+    {
+      "title": "CodableRepresentation",
+      "language": "swift",
+      "startTimeSeconds": 451,
+      "code": "import CoreTransferable\nimport UniformTypeIdentifiers\n\nstruct Profile: Codable {\n    var id: UUID\n    var name: String\n    var bio: String\n    var funFacts: [String]\n    var video: URL?\n    var portrait: URL?\n}\n\nextension Profile: Codable, Transferable {\n    static var transferRepresentation: some TransferRepresentation {\n        CodableRepresentation(contentType: .profile)\n    }\n}\n\n// also declare the content type in the Info.plist\nextension UTType {\n    static var profile: UTType = UTType(exportedAs: \"com.example.profile\")\n}"
+    },
+    {
+      "title": "DataRepresentation",
+      "language": "swift",
+      "startTimeSeconds": 510,
+      "code": "import CoreTransferable\nimport UniformTypeIdentifiers\n\nstruct ProfilesArchive {\n    init(csvData: Data) throws { }\n    func convertToCSV() throws -> Data { Data() }\n}\n\nextension ProfilesArchive: Transferable {\n    static var transferRepresentation: some TransferRepresentation {\n        DataRepresentation(contentType: .commaSeparatedText) { archive in\n            try archive.convertToCSV()\n        } importing: { data in\n            try ProfilesArchive(csvData: data)\n        }\n    }\n}"
+    },
+    {
+      "title": "FileRepresentation",
+      "language": "swift",
+      "startTimeSeconds": 554,
+      "code": "import CoreTransferable\n\nstruct Video: Transferable {\n    let file: URL\n    static var transferRepresentation: some TransferRepresentation {\n        FileRepresentation(contentType: .mpeg4Movie) { \n            SentTransferredFile($0.file)\n        } importing: { received in\n            let destination = try Self.copyVideoFile(source: received.file)\n            return Self.init(file: destination)\n        }\n    }\n\n    static func copyVideoFile(source: URL) throws -> URL {\n        let moviesDirectory = try FileManager.default.url(\n            for: .moviesDirectory, in: .userDomainMask,\n            appropriateFor: nil, create: true\n        )\n        var destination = moviesDirectory.appendingPathComponent(\n            source.lastPathComponent, isDirectory: false)\n        if FileManager.default.fileExists(atPath: destination.path) {\n            let pathExtension = destination.pathExtension\n            var fileName = destination.deletingPathExtension().lastPathComponent\n            fileName += \"_\\(UUID().uuidString)\"\n            destination = destination\n                .deletingLastPathComponent()\n                .appendingPathComponent(fileName)\n                .appendingPathExtension(pathExtension)\n        }\n        try FileManager.default.copyItem(at: source, to: destination)\n        return destination\n    }\n}"
+    },
+    {
+      "title": "ProxyRepresentation",
+      "language": "swift",
+      "startTimeSeconds": 605,
+      "code": "import CoreTransferable\nimport UniformTypeIdentifiers\n\nstruct Profile: Codable {\n    var id: UUID\n    var name: String\n    var bio: String\n    var funFacts: [String]\n    var video: URL?\n    var portrait: URL?\n}\n\nextension Profile: Transferable {\n    static var transferRepresentation: some TransferRepresentation {\n        CodableRepresentation(contentType: .profile)\n        ProxyRepresentation(exporting: \\.name)\n    }\n}\n\n// also declare the content type in the Info.plist\nextension UTType {\n    static var profile: UTType = UTType(exportedAs: \"com.example.profile\")\n}"
+    },
+    {
+      "title": "Proxy and file representations",
+      "language": "swift",
+      "startTimeSeconds": 694,
+      "code": "import CoreTransferable\n\nstruct Video: Transferable {\n    let file: URL\n    static var transferRepresentation: some TransferRepresentation {\n        FileRepresentation(contentType: .mpeg4Movie) { SentTransferredFile($0.file) }\n           importing: { received in\n               let copy = try Self.copyVideoFile(source: received.file)\n               return Self.init(file: copy) }\n        ProxyRepresentation(exporting: \\.file)\n  }\n\n    static func copyVideoFile(source: URL) throws -> URL {\n        let moviesDirectory = try FileManager.default.url(\n            for: .moviesDirectory, in: .userDomainMask,\n            appropriateFor: nil, create: true\n        )\n        var destination = moviesDirectory.appendingPathComponent(\n            source.lastPathComponent, isDirectory: false)\n        if FileManager.default.fileExists(atPath: destination.path) {\n            let pathExtension = destination.pathExtension\n            var fileName = destination.deletingPathExtension().lastPathComponent\n            fileName += \"_\\(UUID().uuidString)\"\n            destination = destination\n                .deletingLastPathComponent()\n                .appendingPathComponent(fileName)\n                .appendingPathExtension(pathExtension)\n        }\n        try FileManager.default.copyItem(at: source, to: destination)\n        return destination\n    }\n}"
+    },
+    {
+      "title": "Exporting condition",
+      "language": "swift",
+      "startTimeSeconds": 777,
+      "code": "import CoreTransferable\nimport UniformTypeIdentifiers\n\nstruct ProfilesArchive {\n    var supportsCSV: Bool { true }\n    init(csvData: Data) throws {  }\n    func convertToCSV() throws -> Data { Data() }\n}\n\nextension ProfilesArchive: Transferable {\n    static var transferRepresentation: some TransferRepresentation {\n        DataRepresentation(contentType: .commaSeparatedText) { archive in\n            try archive.convertToCSV()\n        } importing: { data in\n            try Self(csvData: data)\n        }\n        .exportingCondition { $0.supportsCSV }\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "ShareLink",
+      "url": "https://developer.apple.com/documentation/SwiftUI/ShareLink",
+      "type": "documentation",
+      "description": "A view that controls a sharing presentation.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/ShareLink",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/ShareLink.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10062/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10062/metadata.json",
+    "readme": "sessions/wwdc2022/10062/README.md",
+    "transcript": "sessions/wwdc2022/10062/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10062/transcript.json"
+  }
+}

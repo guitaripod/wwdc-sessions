@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10010",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10010,
+  "title": "Export HDR media in your app with AVFoundation",
+  "description": "Discover how to author and export high dynamic range (HDR) content in your app using AVFoundation. Learn about high dynamic range and how you can take advantage of it in your app. We’ll show you how to implement feature sets that allow people to export HDR content, go over supported HDR formats, review current restrictions, and explore the Apple platforms that support HDR export.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10010",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10010",
+  "type": "Video",
+  "publishedAt": "2020-06-24T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Developer Tools",
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 1395,
+  "hasTranscript": true,
+  "transcriptWordCount": 2557,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10010/4/BA038DF7-160D-47A0-B92D-DA6F71360CCA/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10010/4/BA038DF7-160D-47A0-B92D-DA6F71360CCA/wwdc2020_10010_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10010/4/BA038DF7-160D-47A0-B92D-DA6F71360CCA/wwdc2020_10010_hd.mp4",
+    "duration": 1395
+  },
+  "codeSnippets": [
+    {
+      "title": "AVAssetExportSession Intro",
+      "language": "swift",
+      "startTimeSeconds": 542,
+      "code": "// AVAssetExportSession code snippet\n\nguard let exportSession = AVAssetExportSession(asset: sourceAsset,\n                      presetName: AVAssetExportPresetHEVCHighestQuality) else {\n\t// Handle error\n}\n\nexportSession.outputURL = outputURL \nexportSession.outputFileType = AVFileTypeQuickTimeMovie \n\nexportSession.exportAsynchronouslyWithCompletionHandler {\n\t// Handle completion \n}"
+    },
+    {
+      "title": "AVAssetWriter with sourceFormatHint",
+      "language": "swift",
+      "startTimeSeconds": 804,
+      "code": "// AVAssetWriter with sourceFormatHint\n\nlet assetWriter = try AVAssetWriter(url: outputURL, fileType: AVFileTypeQuickTimeMovie)\n\nlet outputSettings: [String: AnyObject] = [\n\t\t\tAVVideoCodecKey: AVVideoCodecTypeHEVC\n\t\t]\n\nlet assetWriterInput = AVAssetWriterInput(mediaType: AVMediaTypeVideo,\n                                     outputSettings: outputSettings\n                                   sourceFormatHint: videoFormatDescription)\n\nassetWriter.add(assetWriterInput)\n\nguard assetWriter.startWriting() else {\n\tthrow assetWriter.error!\n}"
+    },
+    {
+      "title": "AVAssetWriter with AVOutputSettingsAssistant",
+      "language": "swift",
+      "startTimeSeconds": 853,
+      "code": "// AVAssetWriter with AVOutputSettingsAssistant\n\nlet assetWriter = try AVAssetWriter(url: outputURL, fileType: AVFileTypeQuickTimeMovie)\n\nlet settingsAssistant = AVOutputSettingsAssistant(\n                                     preset: AVOutputSettingsPreset.hevc1920x1080)\n\nsettingsAssistant.sourceVideoFormat = videoFormatDescription\n\nlet newVideoSettings = settingsAssistant.videoSettings\n\n// Modify a few fields in newVideoSettings here\n\nlet assetWriterInput = AVAssetWriterInput(mediaType: AVMediaTypeVideo,\n                                     outputSettings: newVideoSettings)\n\nassetWriter.add(assetWriterInput)\nguard assetWriter.startWriting() else {\n\tthrow assetWriter.error!\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Core Media",
+      "url": "https://developer.apple.com/documentation/CoreMedia",
+      "type": "documentation",
+      "description": "Represent time-based audio-visual assets with essential data types.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreMedia",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreMedia.json"
+    },
+    {
+      "title": "Learn more about AVFoundation",
+      "url": "https://developer.apple.com/av-foundation/",
+      "type": "guide",
+      "description": "Full featured framework for working with time-based audiovisual media on iOS, macOS, watchOS and tvOS.",
+      "sosumiURL": "https://sosumi.ai/av-foundation/"
+    }
+  ],
+  "path": "sessions/wwdc2020/10010/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10010/metadata.json",
+    "readme": "sessions/wwdc2020/10010/README.md",
+    "transcript": "sessions/wwdc2020/10010/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10010/transcript.json"
+  }
+}

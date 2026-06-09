@@ -1,0 +1,28 @@
+---
+id: "wwdc2020-10683"
+event: "wwdc2020"
+title: "Swan's Quest, Chapter 3: The notable scroll"
+url: "https://developer.apple.com/videos/play/wwdc2020/10683"
+language: "eng"
+words: 923
+---
+
+# Swan's Quest, Chapter 3: The notable scroll — Transcript
+
+[Session page](https://developer.apple.com/videos/play/wwdc2020/10683) · [Metadata](metadata.json) · [Structured JSON](transcript.json)
+
+**[0:03]** Hello, and welcome to WWDC. Hello, WWDC. This is Swan's Quest. I'm Rob, your host as we take an inside look at an exciting Swift Playgrounds challenge our crack team has built for you. Are you ready? In this episode, we're going to build upon our knowledge of Timer and ToneOutput. In this third episode, you again start back in the lizard's hut to uncover the mystery of another scroll from the Swan. I don't want to spoil it for you, but I can tell you, to pass this challenge you need to understand tempo and how to play notes of different length. We're going to start with a crash course on music theory. You're going to learn about the difference between quarter notes and half notes.
+
+**[0:49]** The second challenge only used a single note length, so we'll revisit our timer, and talk about how to create variable durations. And finally, we're going to wrap up with another exciting side quest. Let's talk about rhythm. We've already discussed in prior episodes how to play notes of different pitch. But as you can see in the Swan's scroll, we need to learn how to play notes of different length. Since everyone can't read music, let's discuss three different lengths of notes as an example. Here we see the quarter note, the half note, and the dotted half note. Most tempos are defined by the quarter note, so we'll use that as our baseline. A half note is twice as long, and a dotted half note is three times as long as a quarter note.
+
+**[1:34]** The tempo for the song the Swan wants to hear is 120 beats per minute. That means there are 120 quarter notes in a minute. From there, we calculate the interval for our timer so we can play each length of note in the scroll. In Music.swift, we've included protocols for you to implement. The first is Pitches, to capture the frequency for the ToneOutput. An example could look like this. You'll want to add additional cases for each pitch in the Swan's scroll. Next, we need to represent a note as a tone of a certain length. The length should be provided as a multiple of a quarter note. For example, a half note would return 2.0
+
+**[2:19]** and an eighth note would return 0.5. An example could look like this. Again, you'll need to add cases to the enum for each length of note in the scroll. Next we need to update our timer code. So let's check in with Stephen. As Rob mentioned, we need to update our timer code to allow for variable-length notes. Before we get into our approach, let's update our code to use the types that Rob just showed you. First, let's update our sample to use the pitch and note types we just defined. Unfortunately, this isn't going to work out of the box because the TimeInterval for the timer does not respect our note length. Remember that the ToneOutput emits a continuous tone
+
+**[3:05]** until it is told to stop. Our approach to updating the timer can take advantage of this. First, we need to set the timer's interval to the duration of the shortest note's length. To do that, we'll update our NoteProtocol to add a property, shortestSupportedNoteLength. Then we update our note implementation. Since the quarter note is the shortest note in the Swan's scroll, we'll choose the quarter note to keep things simple. Finally, we update our timer's interval to the shortest note length multiplied by our tempo. This example assumes 120 beats per minute, which means the length of a quarter note is 500 milliseconds. Next, we need to subdivide our larger notes
+
+**[3:50]** into a flattened array of pitches. We need to send the ToneOutput a set of pitch instructions for each timer interval. Since our smallest supported note is the quarter note, we only send one instruction. Likewise, half notes send two instructions. Dotted half notes would send three instructions, and so on. To subdivide your notes, you'll need to implement another method in your NoteProtocol implementation. "Subdivide" returns an array of pitches that can be collected and sent to the ToneOutput. Now, in our timer loop, we first create the subdivided array of pitches. Then we update our timer loop
+
+**[4:36]** to iterate over the pitches, instead of the notes array. This completed example demonstrates all of the API you need to complete the challenge. Rob, do you have another side quest for our audience? I sure do, Stephen. But before we get to that, I need to warn you. This side quest will contain spoilers for this chapter's challenge. If you want to complete the challenge first, hit pause on this video and come back after you've completed the challenge. Good luck! Okay, are you ready? The Swan's challenge was to play "Ode to Joy," and the scroll provided all of the notes for you. Let's see if you can upgrade that code to play bass chords underneath it. I just have one hint for you.
+
+**[5:21]** You can layer tones on top of one another by using multiple timers. During this episode we gave you tips for completing the third challenge in Swan's Quest. We talked about rhythm and how tempo is defined. Then we discussed how to use a single, fixed-duration timer with subdivided pitches to play notes of different length. Good luck, have fun, and join us in the forums to share your solutions for the side quests. We'd love to hear how you did.

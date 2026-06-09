@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10211",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10211,
+  "title": "Symbolication: Beyond the basics",
+  "description": "Discover how you can achieve maximum performance and insightful debugging with your app. Symbolication is at the center of tools such as Instruments and LLDB to help bridge the layers between your application’s runtime and your source code. Learn how this process works and the steps you can take to gain the most insight into your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10211",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10211",
+  "type": "Video",
+  "publishedAt": "2021-06-09T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "atos",
+    "dsym",
+    "dwarf",
+    "instruments",
+    "lldb",
+    "otool",
+    "symbolication"
+  ],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 2240,
+  "hasTranscript": true,
+  "transcriptWordCount": 5955,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10211/3/3450A29E-DC2D-49D5-9D68-5E053CC5EC9D/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10211/3/3450A29E-DC2D-49D5-9D68-5E053CC5EC9D/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10211/3/3450A29E-DC2D-49D5-9D68-5E053CC5EC9D/downloads/wwdc2021-10211_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10211/3/3450A29E-DC2D-49D5-9D68-5E053CC5EC9D/downloads/wwdc2021-10211_hd.mp4",
+    "duration": 2240
+  },
+  "codeSnippets": [
+    {
+      "title": "MagicNumbers",
+      "language": "swift",
+      "startTimeSeconds": 71,
+      "code": "func selectMagicNumber(choices: [Int]) -> Int {\n    return choices[MAGIC_CHOICE]\n}\n\nfunc randomValue() -> Int {\n    return Int.random(in: 1...100)\n}\n\nfunc numberChoices() -> [Int] {\n    var choices = [Int]()\n    for _ in 1...10 {\n        choices.append(randomValue())\n    }\n    return choices\n}\n\nfunc generateMagicNumber() -> Int {\n    let numbers = numberChoices()\n    let magic = selectMagicNumber(choices: numbers)\n    return magic\n}\n\nprint(\"The magic number is: \\(generateMagicNumber())\")"
+    },
+    {
+      "title": "atos symbolication",
+      "language": "bash",
+      "startTimeSeconds": 171,
+      "code": "atos -o MagicNumbers.dSYM/Contents/Resources/DWARF/MagicNumbers -arch arm64 -l 0x10045c000 -i 0x10045fb70"
+    },
+    {
+      "title": "Load commands",
+      "language": "bash",
+      "startTimeSeconds": 454,
+      "code": "otool -l MagicNumbers | grep LC_SEGMENT -A8"
+    },
+    {
+      "title": "Disassembly",
+      "language": "bash",
+      "startTimeSeconds": 631,
+      "code": "otool -tV MagicNumbers -arch arm64"
+    },
+    {
+      "title": "vmmap",
+      "language": "bash",
+      "startTimeSeconds": 692,
+      "code": "vmmap MagicNumbers | grep __TEXT"
+    },
+    {
+      "title": "Function starts",
+      "language": "bash",
+      "startTimeSeconds": 909,
+      "code": "symbols -onlyFuncStartsData -arch arm64 MagicNumbers"
+    },
+    {
+      "title": "nlist_64",
+      "language": "objectivec",
+      "startTimeSeconds": 1026,
+      "code": "struct nlist_64 {\n    union {\n        uint32_t  n_strx;\n    } n_un;\n    uint8_t n_type;\n    uint8_t n_sect;\n    uint16_t n_desc;\n    uint64_t n_value; \n};"
+    },
+    {
+      "title": "Direct symbols with nm",
+      "language": "bash",
+      "startTimeSeconds": 1079,
+      "code": "nm -arch arm64 —defined-only --numeric-sort MagicNumbers"
+    },
+    {
+      "title": "Demangled direct symbols with nm",
+      "language": "bash",
+      "startTimeSeconds": 1110,
+      "code": "nm -arch arm64 —defined-only --numeric-sort MagicNumbers | xcrun swift-demangle"
+    },
+    {
+      "title": "Demangled direct symbols with the symbols tool",
+      "language": "bash",
+      "startTimeSeconds": 1123,
+      "code": "symbols -arch arm64 -onlyNListData MagicNumbers"
+    },
+    {
+      "title": "Indirect symbols with nm",
+      "language": "bash",
+      "startTimeSeconds": 1386,
+      "code": "nm -m —arch arm64 --undefined-only --numeric-sort MagicNumbers"
+    },
+    {
+      "title": "Examining dSYMs with dwarfdump",
+      "language": "bash",
+      "startTimeSeconds": 1636,
+      "code": "dwarfdump -v -debug-info -arch arm64 MagicNumbers.dSYM"
+    },
+    {
+      "title": "atos symbolication without inlined functions",
+      "language": "bash",
+      "startTimeSeconds": 1765,
+      "code": "atos -o MagicNumbers.dSYM/Contents/Resources/DWARF/MagicNumbers -arch arm64 —l 0x10045c000 0x10045fb70"
+    },
+    {
+      "title": "Examining debugging symbols",
+      "language": "bash",
+      "startTimeSeconds": 1949,
+      "code": "dsymutil --dump-debug-map -arch arm64 MagicNumbers"
+    },
+    {
+      "title": "Examining dSYM UUIDs",
+      "language": "bash",
+      "startTimeSeconds": 2039,
+      "code": "symbols -uuid MagicNumbers.dSYM"
+    },
+    {
+      "title": "Verifying DWARF",
+      "language": "bash",
+      "startTimeSeconds": 2043,
+      "code": "dwarfdump —verify MagicNumbers.dSYM"
+    },
+    {
+      "title": "Verifying entitlements and codesigning",
+      "language": "bash",
+      "startTimeSeconds": 2109,
+      "code": "codesign --display -v  --entitlements :- MagicApp.app"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2021/10211/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10211/metadata.json",
+    "readme": "sessions/wwdc2021/10211/README.md",
+    "transcript": "sessions/wwdc2021/10211/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10211/transcript.json"
+  }
+}

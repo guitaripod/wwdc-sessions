@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2020-10060",
+  "event": "wwdc2020",
+  "eventName": "WWDC20",
+  "year": 2020,
+  "eventContentId": 10060,
+  "title": "Design high quality Siri media interactions",
+  "description": "Demystify the art of designing Siri experiences for your music and audio apps: We’ll show you how to think about crafting great interactions and how you can provide custom vocabulary so that Siri can respond with more accuracy and personality. We’ll also explain how you can debug common errors and test your intents using the same methods Apple’s own Siri team employs.",
+  "url": "https://developer.apple.com/videos/play/wwdc2020/10060",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2020/10060",
+  "type": "Video",
+  "publishedAt": "2020-06-25T10:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "conversational interaction",
+    "intents",
+    "media",
+    "siri",
+    "sirikit",
+    "sirikit media intents",
+    "voice"
+  ],
+  "topics": [
+    "App Services",
+    "Developer Tools",
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 1364,
+  "hasTranscript": true,
+  "transcriptWordCount": 3436,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10060/9/B52BD896-A151-4C63-B521-62611009D046/master.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10060/9/B52BD896-A151-4C63-B521-62611009D046/wwdc2020_10060_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2020/10060/9/B52BD896-A151-4C63-B521-62611009D046/wwdc2020_10060_hd.mp4",
+    "duration": 1364
+  },
+  "codeSnippets": [
+    {
+      "title": "resolveMediaItems method",
+      "language": "swift",
+      "startTimeSeconds": 346,
+      "code": "func resolveMediaItems(for intent: INPlayMediaIntent, with completion: @escaping ([INPlayMediaMediaItemResolutionResult]) -> Void) {\n    let mediaSearch = intent.mediaSearch\n    resolveMediaItems(for: mediaSearch) { optionalMediaItems in\n        guard let mediaItems = optionalMediaItems else {\n            return\n        }\n        completion(INPlayMediaMediaItemResolutionResult.successes(with: mediaItems))\n    }\n}"
+    },
+    {
+      "title": "User vocabulary",
+      "language": "swift",
+      "startTimeSeconds": 621,
+      "code": "let vocabulary = INVocabulary.shared()\nlet playlistNames = NSOrderedSet(objects: \"70s punk classics\")\nvocabulary.setVocabularyStrings(playlistNames, of: .mediaPlaylistTitle)"
+    },
+    {
+      "title": "Global vocabulary example",
+      "language": "xml",
+      "startTimeSeconds": 688,
+      "code": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n<plist version=\"1.0\">\n<dict>\n\t<key>ParameterVocabularies</key>\n\t<array>\n\t\t<dict>\n\t\t\t<key>ParameterNames</key>\n\t\t\t<array>\n\t\t\t\t<string>INPlayMediaIntent.playlistTitle</string>\n\t\t\t</array>\n\t\t\t<key>ParameterVocabulary</key>\n\t\t\t<array>\n\t\t\t\t<dict>\n\t\t\t\t\t<key>VocabularyItemSynonyms</key>\n\t\t\t\t\t<array>\n\t\t\t\t\t\t<dict>\n\t\t\t\t\t\t\t<key>VocabularyItemPhrase</key>\n\t\t\t\t\t\t\t<string>70s punk anthems</string>\n\t\t\t\t\t\t</dict>\n\t\t\t\t\t</array>          \n\t\t\t\t\t<key>VocabularyItemIdentifier</key>\n\t\t\t\t\t<string>70s punk anthems</string>\n\t\t\t\t</dict>\n\t\t\t</array>\n\t\t</dict>\n\t</array>\n</dict>\n</plist>"
+    },
+    {
+      "title": "Resolve media items method",
+      "language": "swift",
+      "startTimeSeconds": 787,
+      "code": "func resolveMediaItems(for intent: INPlayMediaIntent, with completion: @escaping ([INPlayMediaMediaItemResolutionResult]) -> Void) {\n    let mediaSearch = intent.mediaSearch\n    resolveMediaItems(for: mediaSearch) { optionalMediaItems in\n        guard let mediaItems = optionalMediaItems else {\n            return\n        }\n        completion(INPlayMediaMediaItemResolutionResult.successes(with: mediaItems))\n    }\n}"
+    },
+    {
+      "title": "User vocabulary syncing",
+      "language": "swift",
+      "startTimeSeconds": 811,
+      "code": "// Set our playlist title in user vocabulary so we get the proper Siri intent\nlet vocabulary = INVocabulary.shared()\nlet playlistNames = NSOrderedSet(objects: \"70s punk classics\")\nvocabulary.setVocabularyStrings(playlistNames, of: .mediaPlaylistTitle)"
+    },
+    {
+      "title": "Global vocabulary example",
+      "language": "xml",
+      "startTimeSeconds": 897,
+      "code": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n<plist version=\"1.0\">\n<dict>\n\t<key>ParameterVocabularies</key>\n\t<array>\n\t\t<dict>\n\t\t\t<key>ParameterNames</key>\n\t\t\t<array>\n\t\t\t\t<string>INPlayMediaIntent.playlistTitle</string>\n\t\t\t</array>\n\t\t\t<key>ParameterVocabulary</key>\n\t\t\t<array>\n\t\t\t\t<dict>\n\t\t\t\t\t<key>VocabularyItemSynonyms</key>\n\t\t\t\t\t<array>\n\t\t\t\t\t\t<dict>\n\t\t\t\t\t\t\t<key>VocabularyItemPhrase</key>\n\t\t\t\t\t\t\t<string>70s punk anthems</string>\n\t\t\t\t\t\t</dict>\n\t\t\t\t\t</array>          \n\t\t\t\t\t<key>VocabularyItemIdentifier</key>\n\t\t\t\t\t<string>70s punk anthems</string>\n\t\t\t\t</dict>\n\t\t\t</array>\n\t\t</dict>\n\t</array>\n</dict>\n</plist>"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/wwdc2020/10060/",
+  "files": {
+    "metadata": "sessions/wwdc2020/10060/metadata.json",
+    "readme": "sessions/wwdc2020/10060/README.md",
+    "transcript": "sessions/wwdc2020/10060/transcript.md",
+    "transcriptJSON": "sessions/wwdc2020/10060/transcript.json"
+  }
+}

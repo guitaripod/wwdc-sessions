@@ -1,0 +1,30 @@
+---
+id: "wwdc2020-10164"
+event: "wwdc2020"
+title: "XCTSkip your tests"
+url: "https://developer.apple.com/videos/play/wwdc2020/10164"
+language: "eng"
+words: 999
+---
+
+# XCTSkip your tests — Transcript
+
+[Session page](https://developer.apple.com/videos/play/wwdc2020/10164) · [Metadata](metadata.json) · [Structured JSON](transcript.json)
+
+**[0:03]** Hello and welcome to WWDC. Hi. My name is Wil, and I work on testing and automation in Xcode. In this session, we're going to learn about XCTSkip, a new API for managing test execution based on runtime conditions. Some tests, particularly integration tests, have requirements or dependencies that cannot easily be mocked out. For example, an app might have iPad-specific functionality that can't be tested with an iPhone. In other cases, the test may exercise an API that's not available in devices running older versions of the OS. Or a test might require a server that's periodically off-line for maintenance. All of these are examples of conditions that can only be determined at runtime. To handle cases where the environment doesn't meet the requirements of the test,
+
+**[0:51]** what's needed is a way to make test execution conditional. Otherwise, the test author is left with a choice. Return early, passing the test, or report a failure. There are downsides to both approaches. Passing the test suggests code is working when it's not actually been validated. But failing the test raises a problem where none has been found, and may consume triage resources. Fortunately, you can now use XCTSkip when you have tests that require conditional execution. This API, introduced in Xcode 11.4, produces a new test result. Tests can pass or fail, or with XCTSkip, be marked with an explicit "skip" result. Xcode uses this icon to highlight tests which were skipped,
+
+**[1:36]** giving you a much clearer picture of what your test suites actually validated. Let's get a better understanding of how this works in practice. I have here a little project called Play Garden that I've been working on with my 3-year-old daughter. Play Garden helps us keep track of all the plants, toys and furniture in our backyard. We recently decided to add support for pointer interactions, since we love that feature and mostly use the app on our iPad. Now, even at age three, my daughter has fully embraced test-driven development. So it was a given that we'd be adding some unit tests for this new feature. You can see one of these tests here on the screen now. As it happens, this test has two conditions under which it wouldn't make sense for it to execute. First, since pointer interaction was introduced in iOS 13.4,
+
+**[2:24]** we can't run this test on older versions of the OS. So I'll add an availability guard that uses XCTSkip for older iOS versions. Second, the app only enables pointer interactions on iPads. So if we're running on some other kind of device, we don't need to execute this test. I'll use "XCTSkipIf" to handle this condition. First, let's run this test with a destination where it can execute normally. I'll use an iPad running iOS 14. As you can see, it runs and passes just as we would expect. Now let's run this on an older device, an iPhone running iOS 13.0.
+
+**[3:10]** I'm going to use my favorite keyboard shortcut to run the test this time, "control-option-command-G," which just repeats the previous test action. This time we can see that the green "pass" icon has been replaced with the gray "skip" icon, and an annotation in the source editor shows where and why the test was skipped. Let's check out the other places in Xcode where the UI services the skip result. First, the Test Navigator. Here we can see the skip indicated next to the test. In addition, you can filter the displayed list to show only skipped tests using this button at the bottom of the navigator. Now let's take a look at the test report.
+
+**[3:56]** Here's the run with the skip. As I expand the test details, we see the file and line where the skip occurred, along with a reason explaining why. As I hover over this, perhaps you've noticed two buttons at the end of the line. The first is the "jump" button, which navigates to the location and source where the skip occurred. I'll go back so we can explore the second button. New in Xcode 12, the "assistant" button will open a secondary editor showing the reference source location for the skip. This lets us view the test report and the source code side by side. Finally, let's take a look at how skip appears in continuous integration.
+
+**[4:41]** I have here the result from my CI system which ran my test on three different devices. I'm going to use the "skipped" filter so we can focus on just this test. When I expand the test, we see a result for each device the test ran on. A pass for the first iPad, and a skip for the other devices. Expanding the device results shows the location and reason for each skip putting all of this information right at my fingertips. So that's it. We've seen just how easy it is to use XCTSkip in your tests for a variety of conditions and how Xcode highlights the difference between tests that were skipped, versus those that passed or failed normally. Now let's take a closer look at the APIs. As you saw in the demo, there are a few different ways to use XCTSkip.
+
+**[5:29]** There are two throwing functions: XCTSkipIf and XCTSkipUnless. Both functions take the same parameters. XCTSkipIf skips when the expression is true. XCTSkipUnless skips when the expression is false. The example here shows how a test might skip when running on any device other than iPad. Tests can also throw the XCTSkip struct directly. This is convenient in combination with guard, as shown here with an availability check for iOS 13.4. So to wrap up, some tests, particularly integration tests, may be unable to execute under certain conditions. You can use XCTSkip to respond to those conditions in a way that most accurately models the outcome of the test run.
+
+**[6:17]** This, in turn, ensures clearer overall results, particularly when your test suites execute in continuous integration systems. Thanks for watching.

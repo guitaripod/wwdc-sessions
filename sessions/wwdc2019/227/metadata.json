@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2019-227",
+  "event": "wwdc2019",
+  "eventName": "WWDC19",
+  "year": 2019,
+  "eventContentId": 227,
+  "title": "Font Management and Text Scaling",
+  "description": "Starting with iOS 13, your iOS app can contribute fonts for systemwide use. Understand how fonts are managed on iOS, and learn how to install and access fonts. Get details on the font picker interface that allows users to choose fonts, and the System UI fonts that are now available for use in your app. Review best practices for text scaling that works regardless of device.",
+  "url": "https://developer.apple.com/videos/play/wwdc2019/227",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2019/227",
+  "type": "Session",
+  "publishedAt": "2019-06-06T09:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "nsattributedstring",
+    "rounded",
+    "serif"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 2385,
+  "hasTranscript": true,
+  "transcriptWordCount": 6658,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/227a5yni0swztyj0/227/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/227a5yni0swztyj0/227/227_sd_font_management_and_text_scaling.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2019/227a5yni0swztyj0/227/227_hd_font_management_and_text_scaling.mp4",
+    "duration": 2385
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2019/227/",
+  "files": {
+    "metadata": "sessions/wwdc2019/227/metadata.json",
+    "readme": "sessions/wwdc2019/227/README.md",
+    "transcript": "sessions/wwdc2019/227/transcript.md",
+    "transcriptJSON": "sessions/wwdc2019/227/transcript.json"
+  }
+}

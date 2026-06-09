@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2021-10290",
+  "event": "wwdc2021",
+  "eventName": "WWDC21",
+  "year": 2021,
+  "eventContentId": 10290,
+  "title": "What's new in AVKit",
+  "description": "Learn about enhancements to Picture in Picture and full screen improvements on macOS. Explore the new content source API, and learn how AVPictureInPictureController supports AVSampleBufferDisplayLayer, as well as recommended steps for an app to provide a seamless full screen experience on macOS or in a Mac Catalyst app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2021/10290",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2021/10290",
+  "type": "Video",
+  "publishedAt": "2021-06-08T06:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "avkit",
+    "picture in picture",
+    "pip"
+  ],
+  "topics": [
+    "Essentials",
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 485,
+  "hasTranscript": true,
+  "transcriptWordCount": 1294,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10290/7/3B2EE1D3-46DD-48DC-8B8A-FDF061067D68/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10290/7/3B2EE1D3-46DD-48DC-8B8A-FDF061067D68/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10290/7/3B2EE1D3-46DD-48DC-8B8A-FDF061067D68/downloads/wwdc2021-10290_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2021/10290/7/3B2EE1D3-46DD-48DC-8B8A-FDF061067D68/downloads/wwdc2021-10290_hd.mp4",
+    "duration": 485
+  },
+  "codeSnippets": [
+    {
+      "title": "New canStartPictureInPictureAutomaticallyFromInline property",
+      "language": "swift",
+      "startTimeSeconds": 76,
+      "code": "// New property on AVPlayerViewController / AVPictureInPictureController.\nvar canStartPictureInPictureAutomaticallyFromInline: Bool { get set }"
+    },
+    {
+      "title": "Setting up AVPictureInPictureController with an AVPlayerLayer",
+      "language": "swift",
+      "startTimeSeconds": 100,
+      "code": "func setupPictureInPicture() {\n    // Ensure PiP is supported by current device.\n    if AVPictureInPictureController.isPictureInPictureSupported() {\n        // Create a new controller, passing the reference to the AVPlayerLayer.\n        pictureInPictureController = AVPictureInPictureController(playerLayer: playerLayer)\n        pictureInPictureController.delegate = self\n\n        // Observe AVPictureInPictureController.isPictureInPicturePossible to update the PiP\n        // button’s enabled state.\n    } else {\n        // PiP isn't supported by the current device. Disable the PiP button.\n        pictureInPictureButton.isEnabled = false\n    }\n}"
+    },
+    {
+      "title": "Starting and stopping picture in picture",
+      "language": "swift",
+      "startTimeSeconds": 131,
+      "code": "@IBAction func togglePictureInPictureMode(_ sender: UIButton) {\n    if pictureInPictureController.isPictureInPictureActive {\n        pictureInPictureController.stopPictureInPicture()\n    } else {\n        pictureInPictureController.startPictureInPicture()\n    }\n}"
+    },
+    {
+      "title": "AVPictureInPictureSampleBufferPlaybackDelegate",
+      "language": "swift",
+      "startTimeSeconds": 176,
+      "code": "public protocol AVPictureInPictureSampleBufferPlaybackDelegate: NSObjectProtocol{\n\n    // Delegate is responsible for:\n    //\n    // - Supplying playback state information for PiP UI.\n    // - Responding to user input from PiP UI.\n\n}"
+    },
+    {
+      "title": "Toggle playback of the video and seek back / ahead 15 seconds",
+      "language": "swift",
+      "startTimeSeconds": 197,
+      "code": "func pictureInPictureController(_ pictureInPictureController: AVPictureInPictureController, setPlaying playing: Bool)\n\nfunc pictureInPictureController(_ pictureInPictureController: AVPictureInPictureController, skipByInterval skipInterval: CMTime, completion completionHandler: @escaping () -› Void)"
+    },
+    {
+      "title": "Provide elapsed time information",
+      "language": "swift",
+      "startTimeSeconds": 211,
+      "code": "func pictureInPictureControllerTimeRangeForPlayback(_ pictureInPictureController: AVPictureInPictureController) -> CMTimeRange"
+    },
+    {
+      "title": "Choose appropriate media variant for render size",
+      "language": "swift",
+      "startTimeSeconds": 231,
+      "code": "func pictureInPictureController(_ pictureInPictureController: AVPictureInPictureController, didTransitionToRenderSize newRenderSize: CMVideoDimensions)"
+    },
+    {
+      "title": "Update playback state",
+      "language": "swift",
+      "startTimeSeconds": 246,
+      "code": "func pictureInPictureControllerIsPlaybackPaused(pictureInPictureController: AVPictureInPictureController) -> Bool"
+    },
+    {
+      "title": "iOS / MacCatalyst - Persist full screen playback",
+      "language": "swift",
+      "startTimeSeconds": 365,
+      "code": "func playerViewController(_ playerViewController: AVPlayerViewController, willBeginFullScreenPresentationWithAnimationCoordinator coordinator: UIViewControllerTransitionCoordinator) {\n    coordinator.animate(alongsideTransition: nil) { context in\n        // Keep a strong reference to the playerViewController while in full screen.\n        self.detachedPlayerViewController = playerViewController\n    }\n}"
+    },
+    {
+      "title": "iOS / MacCatalyst - Release the playerViewController",
+      "language": "swift",
+      "startTimeSeconds": 398,
+      "code": "func playerViewController(_ playerViewController: AVPlayerViewController, willEndFullScreenPresentationWithAnimationCoordinator coordinator: UIViewControllerTransitionCoordinator){\n    coordinator.animate(alongsideTransition: nil) { context in\n        // Stop keeping the playerViewController alive when transition completes,\n        self.detachedPlayerViewController = nil\n    }\n}"
+    },
+    {
+      "title": "Persist full screen playback on macOS",
+      "language": "swift",
+      "startTimeSeconds": 406,
+      "code": "func playerViewWillEnterFullScreen(_ playerView: AVPlayerView) {\n    // Start keeping the player view alive while it is not in the view hierarchy.\n    self.detachedPlayerView = playerView\n}\n\nfunc playerViewWillExitFullScreen(_ playerView: AVPlayerView) {\n    // Stop keeping the player view alive.\n    self.detachedPlayerView = nil\n}"
+    },
+    {
+      "title": "Restoring UI when exiting full screen",
+      "language": "swift",
+      "startTimeSeconds": 415,
+      "code": "// Restoring UI when exiting full screen\n\n// iOS / MacCatalyst\nfunc playerViewControllerRestoreUserInterfaceForFullScreenExit(_ playerViewController: AVPlayerViewController) async -> Bool {\n\t// Custom UI restoration logic\n\treturn true\n}\n\n// macOS\nfunc playerViewRestoreUserInterfaceForFullScreenExit(_ playerView: AVPlayerView) async -> Bool {\n\t// custom UI restore logic here\t\t\n\treturn true\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "AVKit",
+      "url": "https://developer.apple.com/documentation/AVKit",
+      "type": "documentation",
+      "description": "Create user interfaces for media playback, complete with transport controls, chapter navigation, picture-in-picture support, and display of subtitles and closed captions.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVKit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVKit.json"
+    }
+  ],
+  "path": "sessions/wwdc2021/10290/",
+  "files": {
+    "metadata": "sessions/wwdc2021/10290/metadata.json",
+    "readme": "sessions/wwdc2021/10290/README.md",
+    "transcript": "sessions/wwdc2021/10290/transcript.md",
+    "transcriptJSON": "sessions/wwdc2021/10290/transcript.json"
+  }
+}

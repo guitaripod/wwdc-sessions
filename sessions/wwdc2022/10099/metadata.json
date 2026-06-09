@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "id": "wwdc2022-10099",
+  "event": "wwdc2022",
+  "eventName": "WWDC22",
+  "year": 2022,
+  "eventContentId": 10099,
+  "title": "What’s new in Safari Web Extensions",
+  "description": "Learn how you can use the latest improvements to Safari Web Extensions to create even better experiences for people browsing the web. We'll show you how to upgrade to manifest version 3, adopt the latest APIs for Web Extensions, and sync extensions across devices.",
+  "url": "https://developer.apple.com/videos/play/wwdc2022/10099",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2022/10099",
+  "type": "Video",
+  "publishedAt": "2022-06-08T08:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Safari & Web"
+  ],
+  "primaryTopic": "Safari & Web",
+  "duration": 1387,
+  "hasTranscript": true,
+  "transcriptWordCount": 3291,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10099/5/AE8329C9-B427-49CF-95BE-71C9B5F49627/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10099/5/AE8329C9-B427-49CF-95BE-71C9B5F49627/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10099/5/AE8329C9-B427-49CF-95BE-71C9B5F49627/downloads/wwdc2022-10099_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2022/10099/5/AE8329C9-B427-49CF-95BE-71C9B5F49627/downloads/wwdc2022-10099_hd.mp4",
+    "duration": 1387
+  },
+  "codeSnippets": [
+    {
+      "title": "Executing script on webpages",
+      "language": "json",
+      "startTimeSeconds": 163,
+      "code": "// Manifest version 2\nbrowser.tabs.executeScript(1, {\n  frameId: 1,\n  code: \"document.body.style.background = 'blue';\"\n});"
+    },
+    {
+      "title": "scripting.executeScript API",
+      "language": "javascript",
+      "startTimeSeconds": 180,
+      "code": "// Manifest version 3\nfunction changeBackgroundColor(color) {\n  document.body.style.background = color;\n};\n\nbrowser.scripting.executeScript({\n  target: { tabId: 1, frameIds: [ 1 ] },\n  func: changeBackgroundColor,\n  args: [ \"blue\" ]\n});"
+    },
+    {
+      "title": "tabs.executeScript file",
+      "language": "javascript",
+      "startTimeSeconds": 242,
+      "code": "// Manifest version 2\nbrowser.tabs.executeScript({ 1,\n  file: \"file.js\"\n});"
+    },
+    {
+      "title": "scripting.executeScript API files",
+      "language": "javascript",
+      "startTimeSeconds": 249,
+      "code": "// Manifest version 3\nbrowser.scripting.executeScript({\n  target: { tabId: 1 },\n  files: [ \"file.js\", \"file2.js\" ]\n});"
+    },
+    {
+      "title": "scripting.insertCSS",
+      "language": "javascript",
+      "startTimeSeconds": 255,
+      "code": "// Add styling\nbrowser.scripting.insertCSS({\n  target: { tabId: 1, frameIds: [ 1, 2, 3 ] },\n  files: [ \"file.css\", \"file2.css\" ]\n});"
+    },
+    {
+      "title": "scripting.removeCSS",
+      "language": "javascript",
+      "startTimeSeconds": 261,
+      "code": "// Remove styling\nbrowser.scripting.removeCSS({\n  target: { tabId: 1, frameIds: [ 1, 2, 3 ] },\n  files: [ \"file.css\", \"file2.css\" ]\n});"
+    },
+    {
+      "title": "Manifest version 3 web_accessible_resources",
+      "language": "json",
+      "startTimeSeconds": 308,
+      "code": "// Manifest version 3\n\"web_accessible_resources\": [\n    {\n      \"resources\": [ \"pie.png\" ],\n      \"matches\": [ \"*://*.apple.com/*\" ]\n    },\n    {\n      \"resources\": [ \"cookie.png\" ],\n      \"matches\": [ \"*://*.webkit.org/*\" ]\n    }\n]"
+    },
+    {
+      "title": "Manifest version 3 action",
+      "language": "json",
+      "startTimeSeconds": 342,
+      "code": "// Manifest version 3\n\"action\": {\n  \"default_icon\": {\n    \"16\": \"Images/icon16.png\"\n  },\n  \"default_title\": \"defaultTitle\"\n}"
+    },
+    {
+      "title": "Manifest version 2 content_security_policy",
+      "language": "json",
+      "startTimeSeconds": 357,
+      "code": "// Manifest version 2\n\n\"content_security_policy\" : \"script-src 'unsafe-eval' https://*apple.com 'self'\""
+    },
+    {
+      "title": "Manifest version 3 content_security_policy",
+      "language": "json",
+      "startTimeSeconds": 368,
+      "code": "// Manifest version 3\n\n\"content_security_policy\" : { \"extension_pages\" : \"script-src 'unsafe-eval' 'self'\" }"
+    },
+    {
+      "title": "Specifying a ruleset",
+      "language": "json",
+      "startTimeSeconds": 631,
+      "code": "// manifest.json\n\n\"permissions\": [ \"declarativeNetRequest\" ],\n\n\"declarative_net_request\": {\n  \"rule_resources\": [\n    {\n      \"id\": \"my_ruleset\",\n      \"enabled\": true,\n      \"path\": \"rules.json\"\n    }\n  ]\n}"
+    },
+    {
+      "title": "updateSessionRules",
+      "language": "javascript",
+      "startTimeSeconds": 704,
+      "code": "// Rules that won't persist\n\nbrowser.declarativeNetRequest.updateSessionRules({ addRules: [ rule ] });\n\n// Rules that will persist\n\nbrowser.declarativeNetRequest.updateDynamicRules({ addRules: [ rule ] });"
+    },
+    {
+      "title": "externally connectable",
+      "language": "javascript",
+      "startTimeSeconds": 873,
+      "code": "// In the webpage\nlet extensionID = \"com.apple.Sea-Creator.Extension (GJT7Q2TVD9)\";\n\nbrowser.runtime.sendMessage(extensionID, { greeting: \"Hello!\" },\n function(response) {\n    console.log(\"Received response from the background page:\");\n    console.log(response.farewell);\n});"
+    },
+    {
+      "title": "Message from webpage to extension (in the webpage)",
+      "language": "javascript",
+      "startTimeSeconds": 900,
+      "code": "// In the webpage\nlet extensionID = \"com.apple.Sea-Creator.Extension (GJT7Q2TVD9)\";\n\nbrowser.runtime.sendMessage(extensionID, { greeting: \"Hello!\" },\n function(response) {\n    console.log(\"Received response from the background page:\");\n    console.log(response.farewell);\n});"
+    },
+    {
+      "title": "Message from webpage to extension (in the background page)",
+      "language": "swift",
+      "startTimeSeconds": 933,
+      "code": "// In the background page\nbrowser.runtime.onMessageExternal.addListener(function(message, sender, sendResponse) {\n    console.log(\"Received message from the sender:\");\n    console.log(message.greeting);\n    sendResponse({ farewell: \"Goodbye!\" });\n});"
+    },
+    {
+      "title": "Determining the correct identifier",
+      "language": "swift",
+      "startTimeSeconds": 977,
+      "code": "// Determining the correct identifier\n\nfunction determineExtensionID(extensionID) {\n  return new Promise((resolve) => {\n    try {\n      browser.runtime.sendMessage(extensionID, { action: 'determineID' }, function(response) {\n        if (response)\n          resolve({ extensionID: extensionID, isInstalled: true, response: response });\n        else \n          resolve({ extensionID: extensionID, isInstalled: false });\n      });\n    }\n  });\n};"
+    },
+    {
+      "title": "background.js",
+      "language": "javascript",
+      "startTimeSeconds": 1029,
+      "code": "// background.js\n\nbrowser.runtime.onMessageExternal.addListener(function(message, sender, sendResponse) {\n  if (message.action == \"determineID\") {\n    sendResponse({ \"Installed\" });\n  }\n});"
+    },
+    {
+      "title": "Unlimited storage",
+      "language": "json",
+      "startTimeSeconds": 1087,
+      "code": "// manifest.json\n\n\"permissions\": [ \"storage\", \"unlimitedStorage\" ]"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Modernizing Safari Web Extensions",
+      "url": "https://developer.apple.com/documentation/SafariServices/modernizing-safari-web-extensions",
+      "type": "documentation",
+      "description": "Learn about enhancements to Safari Web Extensions.",
+      "sosumiURL": "https://sosumi.ai/documentation/SafariServices/modernizing-safari-web-extensions",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SafariServices/modernizing-safari-web-extensions.json"
+    },
+    {
+      "title": "Messaging a Web Extension’s Native App",
+      "url": "https://developer.apple.com/documentation/SafariServices/messaging-a-web-extension-s-native-app",
+      "type": "samplecode",
+      "description": "Communicate between your Safari web extension and its containing app.",
+      "sosumiURL": "https://sosumi.ai/documentation/SafariServices/messaging-a-web-extension-s-native-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SafariServices/messaging-a-web-extension-s-native-app.json"
+    },
+    {
+      "title": "Developing a Safari Web Extension",
+      "url": "https://developer.apple.com/documentation/SafariServices/developing-a-safari-web-extension",
+      "type": "samplecode",
+      "description": "Customize and enhance web pages by building a Safari web extension.",
+      "sosumiURL": "https://sosumi.ai/documentation/SafariServices/developing-a-safari-web-extension",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SafariServices/developing-a-safari-web-extension.json"
+    },
+    {
+      "title": "Learn more about bug reporting",
+      "url": "https://developer.apple.com/bug-reporting/",
+      "type": "guide",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/bug-reporting/"
+    },
+    {
+      "title": "MDN Web Docs - Web Extensions API",
+      "url": "https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API",
+      "type": "documentation",
+      "description": "JavaScript APIs for web extensions."
+    },
+    {
+      "title": "Safari web extensions",
+      "url": "https://developer.apple.com/documentation/SafariServices/safari-web-extensions",
+      "type": "documentation",
+      "description": "Create web extensions that work in Safari and other browsers.",
+      "sosumiURL": "https://sosumi.ai/documentation/SafariServices/safari-web-extensions",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SafariServices/safari-web-extensions.json"
+    }
+  ],
+  "path": "sessions/wwdc2022/10099/",
+  "files": {
+    "metadata": "sessions/wwdc2022/10099/metadata.json",
+    "readme": "sessions/wwdc2022/10099/README.md",
+    "transcript": "sessions/wwdc2022/10099/transcript.md",
+    "transcriptJSON": "sessions/wwdc2022/10099/transcript.json"
+  }
+}
