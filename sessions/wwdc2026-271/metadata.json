@@ -1,0 +1,101 @@
+{
+  "id": "wwdc2026-271",
+  "eventContentId": 271,
+  "title": "Code-along: Build powerful drag and drop in SwiftUI",
+  "description": "Follow along as we build a game of Solitaire to explore the latest drag-and-drop capabilities in SwiftUI. We’ll show you how to use the new reordering API to let people arrange content, implement drag containers to move multiple items at once, and customize the drag-and-drop lifecycle to fit your app’s rules. To get the most out of this session, watch “Meet Transferable” from WWDC22.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/271",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/271",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "screenshots"
+  ],
+  "topics": [
+    "App Services",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/271/5/07f08d32-e28e-476f-8ebe-a3600b2e917c/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/271/5/07f08d32-e28e-476f-8ebe-a3600b2e917c/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/271/5/07f08d32-e28e-476f-8ebe-a3600b2e917c/downloads/wwdc2026-271_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/271/5/07f08d32-e28e-476f-8ebe-a3600b2e917c/downloads/wwdc2026-271_hd.mp4",
+    "duration": 921
+  },
+  "codeSnippets": [
+    {
+      "title": "Add reorderable to the preview",
+      "language": "swift",
+      "startTimeSeconds": 220,
+      "code": "#Preview {\n    @Previewable @State var cards = [\n        CardValue(rank: .ace, suit: .clubs),\n        CardValue(rank: .ace, suit: .diamonds),\n        CardValue(rank: .ace, suit: .hearts),\n        CardValue(rank: .ace, suit: .spades)\n    ]\n\n    HStack {\n        ForEach(cards) { card in\n            CardFaceView(card: card)\n        }\n        .reorderable()\n    }\n    .frame(maxWidth: .infinity, maxHeight: .infinity)\n    .reorderContainer(for: CardValue.self) { difference in\n        cards.apply(difference: difference)\n    }\n    .padding()\n    .background(.green.gradient)\n}"
+    },
+    {
+      "title": "Add reorder container to the GameView",
+      "language": "swift",
+      "startTimeSeconds": 280,
+      "code": "struct GameView: View {\n    var game: Game\n\n    var body: some View {\n        GeometryReader { proxy in\n            let spacing: CGFloat = 10\n            let cardWidth = (proxy.size.width - 6 * spacing) / 7\n            VStack {\n                HStack(alignment: .top, spacing: spacing) {\n                    Group {\n                        RemainderView(game: game)\n                        CardBackView()\n                            .hidden()\n                        ForEach(CardValue.Suit.allCases) { suit in\n                            DestinationView(game: game, suit: suit)\n                        }\n                    }\n                    .frame(width: cardWidth)\n                }\n                .padding(.bottom, 20)\n                HStack(alignment: .top, spacing: spacing) {\n                    ForEach(0..<7) { index in\n                        PileView(game: game, index: index)\n                            .frame(width: cardWidth)\n                    }\n                }\n                .frame(maxHeight: .infinity, alignment: .top)\n              \t// Add the reorder container modifier.\n                .reorderContainer(for: CardValue.self, in: Card.Group.self) { difference in\n                    game.moveCards(difference: difference)\n                }\n            }\n        }\n        .padding()\n    }\n}"
+    },
+    {
+      "title": "Add reorderable to PileView",
+      "language": "swift",
+      "startTimeSeconds": 358,
+      "code": "struct PileView: View {\n    var game: Game\n    var index: Int\n    @Query var cards: [Card]\n\n    var body: some View {\n        ZStack(alignment: .topLeading) {\n            CardPlaceholderView()\n            PileLayout {\n                let index = firstFaceUpIndex\n              \t// Iterates over the face down cards.\n                ForEach(cards[..<index]) { card in\n                    CardView(card: card)\n                }\n                // Iterates over the face up cards.\n                ForEach(cards[index...], id: \\.value) { card in\n                    CardView(card: card)\n                }\n                .reorderable(collectionID: Card.Group.pile(index))\n            }\n        }\n    }\n\n    var firstFaceUpIndex: Int {\n        cards.firstIndex { !$0.isFaceDown } ?? cards.endIndex\n    }\n}"
+    },
+    {
+      "title": "Add dragContainer to customize the reorderContainer modifier.",
+      "language": "swift",
+      "startTimeSeconds": 470,
+      "code": "struct GameView: View {\n    var game: Game\n\n    var body: some View {\n        GeometryReader { proxy in\n            let spacing: CGFloat = 10\n            let cardWidth = (proxy.size.width - 6 * spacing) / 7\n            VStack {\n                HStack(alignment: .top, spacing: spacing) {\n                    Group {\n                        RemainderView(game: game)\n                        CardBackView()\n                            .hidden()\n                        ForEach(CardValue.Suit.allCases) { suit in\n                            DestinationView(game: game, suit: suit)\n                        }\n                    }\n                    .frame(width: cardWidth)\n                }\n                .padding(.bottom, 20)\n                HStack(alignment: .top, spacing: spacing) {\n                    ForEach(0..<7) { index in\n                        PileView(game: game, index: index)\n                            .frame(width: cardWidth)\n                    }\n                }\n                .frame(maxHeight: .infinity, alignment: .top)\n                .reorderContainer(for: CardValue.self, in: Card.Group.self) { difference in\n                    game.moveCards(difference: difference)\n                }\n                // Add dragContainer to customize reorderContainer.\n                .dragContainer(for: CardValue.self) { cardID in\n                    game.cardStack(startingAt: cardID)\n                }\n            }\n        }\n        .padding()\n    }\n}"
+    },
+    {
+      "title": "Add dragPreviewsFormation to customize how the dragged cards appear",
+      "language": "swift",
+      "startTimeSeconds": 525,
+      "code": "struct GameView: View {\n    var game: Game\n\n    var body: some View {\n        GeometryReader { proxy in\n            let spacing: CGFloat = 10\n            let cardWidth = (proxy.size.width - 6 * spacing) / 7\n            VStack {\n                HStack(alignment: .top, spacing: spacing) {\n                    Group {\n                        RemainderView(game: game)\n                        CardBackView()\n                            .hidden()\n                        ForEach(CardValue.Suit.allCases) { suit in\n                            DestinationView(game: game, suit: suit)\n                        }\n                    }\n                    .frame(width: cardWidth)\n                }\n                .padding(.bottom, 20)\n                HStack(alignment: .top, spacing: spacing) {\n                    ForEach(0..<7) { index in\n                        PileView(game: game, index: index)\n                            .frame(width: cardWidth)\n                    }\n                }\n                .frame(maxHeight: .infinity, alignment: .top)\n                .reorderContainer(for: CardValue.self, in: Card.Group.self) { difference in\n                    game.moveCards(difference: difference)\n                }\n                .dragContainer(for: CardValue.self) { cardID in\n                    game.cardStack(startingAt: cardID)\n                }\n              \t// Have dragged cards appear as a stack.\n                .dragPreviewsFormation(.stack)\n            }\n        }\n        .padding()\n    }\n}"
+    },
+    {
+      "title": "Add dropPreviewsFormation to customize how dragged cards appear over a destination",
+      "language": "swift",
+      "startTimeSeconds": 554,
+      "code": "struct GameView: View {\n    var game: Game\n\n    var body: some View {\n        GeometryReader { proxy in\n            let spacing: CGFloat = 10\n            let cardWidth = (proxy.size.width - 6 * spacing) / 7\n            VStack {\n                HStack(alignment: .top, spacing: spacing) {\n                    Group {\n                        RemainderView(game: game)\n                        CardBackView()\n                            .hidden()\n                        ForEach(CardValue.Suit.allCases) { suit in\n                            DestinationView(game: game, suit: suit)\n                        }\n                    }\n                    .frame(width: cardWidth)\n                }\n                .padding(.bottom, 20)\n                HStack(alignment: .top, spacing: spacing) {\n                    ForEach(0..<7) { index in\n                        PileView(game: game, index: index)\n                            .frame(width: cardWidth)\n                    }\n                }\n                .frame(maxHeight: .infinity, alignment: .top)\n                .reorderContainer(for: CardValue.self, in: Card.Group.self) { difference in\n                    game.moveCards(difference: difference)\n                }\n                .dragContainer(for: CardValue.self) { cardID in\n                    game.cardStack(startingAt: cardID)\n                }\n                .dragPreviewsFormation(.stack)\n            }\n            // Have a consistent appearance over drop destinations.\n            .dropPreviewsFormation(.stack)\n        }\n        .padding()\n    }\n}"
+    },
+    {
+      "title": "Add a drag configuration to allow move.",
+      "language": "swift",
+      "startTimeSeconds": 700,
+      "code": "struct RemainderView: View {\n    @Query var cards: [Card]\n    var game: Game\n\n    var body: some View {\n        Button {\n            incrementCardIndex()\n        } label: {\n            ZStack {\n                CardPlaceholderView()\n                CardBackView()\n                    .opacity(cards.isEmpty ? 0 : 1)\n            }\n        }\n        .buttonStyle(.plain)\n        .disabled(cards.isEmpty)\n        ZStack {\n            CardPlaceholderView()\n            if let currentCard {\n                CardFaceView(card: currentCard.value)\n                    .draggable(containerItemID: currentCard.value)\n                    .opacity(currentCard.value == hiddenCard ? 0 : 1)\n            }\n        }\n        .dragContainer(for: CardValue.self) { cardID in\n            [cardID]\n        }\n        // Add the drag configuration to allow me.\n        .dragConfiguration(DragConfiguration(allowMove: true))\n    }\n}"
+    },
+    {
+      "title": "Add a drop destination modifier and configure it",
+      "language": "swift",
+      "startTimeSeconds": 725,
+      "code": "struct GameView: View {\n    var game: Game\n\n    var body: some View {\n        GeometryReader { proxy in\n            let spacing: CGFloat = 10\n            let cardWidth = (proxy.size.width - 6 * spacing) / 7\n            VStack {\n                HStack(alignment: .top, spacing: spacing) {\n                    Group {\n                        RemainderView(game: game)\n                        CardBackView()\n                            .hidden()\n                        ForEach(CardValue.Suit.allCases) { suit in\n                            DestinationView(game: game, suit: suit)\n                        }\n                    }\n                    .frame(width: cardWidth)\n                }\n                .padding(.bottom, 20)\n                HStack(alignment: .top, spacing: spacing) {\n                    ForEach(0..<7) { index in\n                        PileView(game: game, index: index)\n                            .frame(width: cardWidth)\n                    }\n                }\n                .frame(maxHeight: .infinity, alignment: .top)\n                .reorderContainer(for: CardValue.self, in: Card.Group.self) { difference in\n                    game.moveCards(difference: difference)\n                }\n                .dragContainer(for: CardValue.self) { cardID in\n                    game.cardStack(startingAt: cardID)\n                }\n                .dragPreviewsFormation(.stack)\n                .dragConfiguration(DragConfiguration(allowMove: true))\n                // Add a drop destination to accept inserts\n                .dropDestination(for: CardValue.self) { newCards, session in\n                    if let destination = session.reorderDestination(\n                        for: CardValue.self, in: Card.Group.self) {\n                        game.insertCards(newCards, to: destination)\n                    }\n                }\n                // Configure where cards will go when reordering,\n                // and accept them by move.\n                .dropConfiguration { session in\n                    // Calculate which pile is being dragged over.\n                    let alignedX = session.location.x - 0.5 * spacing\n                    let pile = Int(alignedX / (cardWidth + spacing))\n                    let destination = ReorderDifference<CardValue, Card.Group>\n                        .Destination(position: .end, collectionID: .pile(pile))\n                    // Check if the move is allowed.\n                    let allowed = session.suggestedOperations.contains(.move)\n                    && game.validateMove(session: session, destination: destination)\n                    let operation: DropOperation = allowed ? .move : .forbidden\n                    return DropConfiguration(operation: operation, destination: destination)\n                }\n            }\n            .dropPreviewsFormation(.stack)\n        }\n        .padding()\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Making a card game with drag, drop, and reordering in SwiftUI",
+      "url": "https://developer.apple.com/documentation/SwiftUI/Making-a-card-game-with-drag-drop-and-reordering-in-swiftui",
+      "type": "samplecode",
+      "description": "Move cards between positions in a card game using drag, drop, and reordering modifiers.",
+      "sosumiURL": "https://sosumi.ai/documentation/SwiftUI/Making-a-card-game-with-drag-drop-and-reordering-in-swiftui",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SwiftUI/Making-a-card-game-with-drag-drop-and-reordering-in-swiftui.json"
+    },
+    {
+      "title": "Drag and drop",
+      "url": "https://developer.apple.com/documentation/UIKit/drag-and-drop",
+      "type": "documentation",
+      "description": "Bring drag and drop to your app by using interaction APIs with your views.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/drag-and-drop",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/drag-and-drop.json"
+    }
+  ],
+  "hasTranscript": true,
+  "transcript": "transcript.md"
+}

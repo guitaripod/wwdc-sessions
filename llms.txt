@@ -1,0 +1,252 @@
+# WWDC26 Sessions
+
+> Agent-native knowledge base of Apple WWDC26 developer sessions: clean transcripts, structured metadata, code snippets, and links to official documentation. Generated from Apple's public WWDC feeds.
+
+116 sessions · 112 with transcripts. Start with catalog.json for the full machine-readable index. Each session lives at sessions/<id>/ with metadata.json, README.md, and transcript.md.
+
+## Index
+- [Full catalog (JSON)](catalog.json): every session with metadata, topics, and paths
+- [Topics manifest (JSON)](topics.json): sessions grouped by topic
+- [Agent guide](AGENTS.md): how to consume this repository
+
+## AI & Machine Learning
+- [Best practices for integrating visual intelligence in your app](sessions/wwdc2026-297/README.md): Gain insight on how visual intelligence can transform content discovery in your app
+- [Bring an LLM provider to the Foundation Models framework](sessions/wwdc2026-339/README.md): Extend the Foundation Models framework by implementing a LanguageModelExecutor for new models
+- [Bringing Cyberpunk 2077 to Mac](sessions/wwdc2026-356/README.md): Go behind the scenes and learn from CD PROJEKT RED how Cyberpunk 2077 came to Mac, setting a new standard for AAA gaming on macOS
+- [Build AI-powered scripts with the fm CLI and Python SDK](sessions/wwdc2026-334/README.md): Explore all the new ways to leverage Apple Foundation Models on macOS
+- [Build agentic app experiences with the Foundation Models framework](sessions/wwdc2026-242/README.md): Learn how to take your intelligence features further with Foundation Models framework primitives for dynamic context and agentic workflows
+- [Build intelligent Siri experiences with App Schemas](sessions/wwdc2026-240/README.md): Bring your app’s content and actions to Siri with App Intents
+- [Build real-time neural rendering pipelines with Metal](sessions/wwdc2026-359/README.md): Discover how to integrate machine learning into your real-time rendering pipeline using Metal 4
+- [Build with the new Apple Foundation Model on Private Cloud Compute](sessions/wwdc2026-319/README.md): Private Cloud Compute lets you access powerful, frontier-class models while protecting user privacy
+- [Code-along: Make your app available to Siri](sessions/wwdc2026-344/README.md): Dive deep into an Xcode project showing how you can make your app available to Siri
+- [Create UI prototypes using agents in Xcode](sessions/wwdc2026-227/README.md): Learn how to prototype your app using agents in Xcode
+- [Create high quality images using Image Playground](sessions/wwdc2026-375/README.md): Enable high-quality image creation in your app using Image Playground
+- [Create robust evaluations for agentic apps](sessions/wwdc2026-299/README.md): Learn how to leverage advanced features of the Evaluations framework to build robust evaluations for your app
+- [Debug and profile agentic app experiences with Instruments](sessions/wwdc2026-243/README.md): Explore the enhanced FoundationModels instrument in Xcode to inspect behavior and optimize the performance of agentic flows
+- [Design immersive environments for visionOS apps and the spatial web](sessions/wwdc2026-234/README.md): Learn how you can create photoreal visionOS environments for your apps, websites, and SharePlay experiences
+- [Discover new capabilities in the App Intents framework](sessions/wwdc2026-345/README.md): Level up your App Intents adoption with advanced features to make it faster, more flexible, and more relevant
+- [Dive into Core AI model authoring and optimization](sessions/wwdc2026-325/README.md): Dive into the complete custom model deployment workflow for Apple silicon with the new Core AI framework
+- [Explore advanced App Intents features for Siri and Apple Intelligence](sessions/wwdc2026-343/README.md): Polish how your app works with Siri using advanced App Intents APIs
+- [Explore distributed inference and training with MLX](sessions/wwdc2026-233/README.md): Scale your machine learning workloads across multiple Macs using MLX
+- [Explore numerical computing in Swift with MLX](sessions/wwdc2026-328/README.md): Bring NumPy-style computing natively to Swift with MLX Swift
+- [Improve your prompts by hill-climbing with Evaluations](sessions/wwdc2026-335/README.md): Learn comparative evaluation techniques to guide your prompt engineering and select the right model for your app
+- [Integrate on-device AI models into your app using Core AI](sessions/wwdc2026-326/README.md): Discover a curated collection of popular open-source models — including Qwen, Mistral, SAM3, and more — optimized for Apple silicon using th
+- [LLM search using Core Spotlight](sessions/wwdc2026-246/README.md): Level up basic search into a retrieval-augmented system using SpotlightSearchTool and LanguageModelSession
+- [Meet Core AI](sessions/wwdc2026-324/README.md): Discover Core AI, Apple’s new framework for on-device AI model deployment
+- [Meet the Evaluations framework](sessions/wwdc2026-298/README.md): Learn how to evaluate model-driven experiences using the Evaluations framework
+- [Meet the Music Understanding framework](sessions/wwdc2026-253/README.md): Discover Music Understanding, a new framework that lets your app analyze audio across six dimensions, on device: key, rhythm, structure, pac
+- [Optimize custom machine learning operations with Metal tensors](sessions/wwdc2026-330/README.md): Unlock powerful machine learning performance with the Metal Tensor API and Metal Performance Primitives (MPP) Tensor Ops library
+- [Run local agentic AI on the Mac using MLX](sessions/wwdc2026-232/README.md): Run AI agents locally with privacy, low latency, and offline access
+- [Secure your app: mitigate risks to agentic features](sessions/wwdc2026-347/README.md): Explore how to evaluate threats from indirect prompt injection, such as data exfiltration and unintended actions
+- [Speedrun your game port with agentic coding](sessions/wwdc2026-357/README.md): Kickstart your game’s journey to Apple platforms with new agentic skills in Game Porting Toolkit 4 that can dramatically accelerate the proc
+- [Translate your app using agents in Xcode](sessions/wwdc2026-213/README.md): Find out how Xcode and coding agents help you translate String Catalogs using the context of your app
+- [Validate your App Intents adoption with AppIntentsTesting](sessions/wwdc2026-295/README.md): Meet AppIntentsTesting, a new framework for validating your App Intents through the same infrastructure used by Siri, Shortcuts, and Spotlig
+- [What’s new in Shortcuts](sessions/wwdc2026-310/README.md): Explore techniques to build powerful shortcuts using your app’s content
+- [What’s new in image understanding](sessions/wwdc2026-237/README.md): Unlock powerful image understanding with the latest Vision framework and Foundation Models framework updates
+- [What’s new in the Foundation Models framework](sessions/wwdc2026-241/README.md): Explore what’s new in the Foundation Models framework
+
+## Accessibility & Inclusion
+- [Discover generated subtitles and subtitle styles](sessions/wwdc2026-256/README.md): Make your video content more accessible with generated subtitles — a powerful new feature that can transcribe spoken audio or translate subt
+- [Enhance the accessibility of your reading app](sessions/wwdc2026-219/README.md): Learn how to create robust reading experiences for VoiceOver, Speak Screen, and more
+- [Prepare your tvOS apps for Dynamic Type](sessions/wwdc2026-221/README.md): Dynamic Type empowers people to comfortably read and interact with your app by letting them choose the text size that works best for them
+- [Principles of great design](sessions/wwdc2026-250/README.md): Dive deep into fundamental design principles for Apple platforms.
+- [Refine accessibility for custom controls](sessions/wwdc2026-220/README.md): Unlock the full potential of your app’s interactive elements by making them accessible to everyone
+
+## App Services
+- [Best practices for integrating visual intelligence in your app](sessions/wwdc2026-297/README.md): Gain insight on how visual intelligence can transform content discovery in your app
+- [Build intelligent Siri experiences with App Schemas](sessions/wwdc2026-240/README.md): Bring your app’s content and actions to Siri with App Intents
+- [Code-along: Add persistence with SwiftData](sessions/wwdc2026-275/README.md): Experience SwiftData in action as we add persistence to an existing app
+- [Code-along: Build powerful drag and drop in SwiftUI](sessions/wwdc2026-271/README.md): Follow along as we build a game of Solitaire to explore the latest drag-and-drop capabilities in SwiftUI
+- [Code-along: Make your app available to Siri](sessions/wwdc2026-344/README.md): Dive deep into an Xcode project showing how you can make your app available to Siri
+- [Create live communication experiences ](sessions/wwdc2026-226/README.md): LiveCommunicationKit transforms your real-time communication apps into integrated experiences
+- [Discover new capabilities in the App Intents framework](sessions/wwdc2026-345/README.md): Level up your App Intents adoption with advanced features to make it faster, more flexible, and more relevant
+- [Elevate your app’s text experience with TextKit](sessions/wwdc2026-370/README.md): Discover how to combine the convenience of built-in text views with the control of TextKit
+- [Enhance your presence on the App Store](sessions/wwdc2026-205/README.md): Reimagine how you market your apps and games on the App Store by using your images and videos in new places
+- [Explore Retention Messaging in App Store Connect](sessions/wwdc2026-309/README.md): Discover how you can use the power of Retention Messaging to reach subscribers before they cancel
+- [Explore advanced App Intents features for Siri and Apple Intelligence](sessions/wwdc2026-343/README.md): Polish how your app works with Siri using advanced App Intents APIs
+- [Live Activities essentials](sessions/wwdc2026-223/README.md): Elevate your app experience with Live Activities
+- [Read between the strokes with PencilKit](sessions/wwdc2026-203/README.md): Unlock handwriting recognition in your apps using the same powerful technology behind Apple apps like Freeform and Notes
+- [Secure your apps with App Attest](sessions/wwdc2026-201/README.md): Harness App Attest to protect your app from unauthorized modification and fraud
+- [Unlock in-game content with StoreKit and Background Assets](sessions/wwdc2026-378/README.md): Unlock native Apple In-App Purchases for your Unity game with the new StoreKit plug-in
+- [Unwrap PaperKit](sessions/wwdc2026-372/README.md): Craft a canvas-based application with PaperKit
+- [Use SwiftUI with AppKit and UIKit](sessions/wwdc2026-272/README.md): Discover how to incrementally adopt SwiftUI in your existing AppKit or UIKit app
+- [What’s new in Apple In-App Purchase](sessions/wwdc2026-210/README.md): Discover how monthly subscriptions with a 12-month commitment give people a more affordable option to pay for your subscription and secure a
+- [What’s new in SwiftData](sessions/wwdc2026-274/README.md): Discover the latest enhancements to SwiftData
+- [What’s new in SwiftUI](sessions/wwdc2026-269/README.md): Explore the latest additions to SwiftUI and discover how they can improve your apps
+- [What’s new in Wallet](sessions/wwdc2026-209/README.md): Explore the newest design updates and developer tools for Apple Wallet passes
+- [What’s new in assessment on macOS](sessions/wwdc2026-230/README.md): Explore the Automatic Assessment Configuration framework on macOS to deliver secure tests for education apps
+- [What’s new in image understanding](sessions/wwdc2026-237/README.md): Unlock powerful image understanding with the latest Vision framework and Foundation Models framework updates
+
+## App Store, Distribution & Marketing
+- [Create web extensions for Safari](sessions/wwdc2026-216/README.md): Get started with Safari web extensions by building and testing one from the ground up — no Xcode required
+- [Enhance your presence on the App Store](sessions/wwdc2026-205/README.md): Reimagine how you market your apps and games on the App Store by using your images and videos in new places
+- [Explore Retention Messaging in App Store Connect](sessions/wwdc2026-309/README.md): Discover how you can use the power of Retention Messaging to reach subscribers before they cancel
+- [Offer subscriptions to groups and organizations](sessions/wwdc2026-391/README.md): Discover how to reach more customers by offering subscriptions to groups and organizations
+- [Secure your apps with App Attest](sessions/wwdc2026-201/README.md): Harness App Attest to protect your app from unauthorized modification and fraud
+- [Unlock in-game content with StoreKit and Background Assets](sessions/wwdc2026-378/README.md): Unlock native Apple In-App Purchases for your Unity game with the new StoreKit plug-in
+- [What’s new in Apple In-App Purchase](sessions/wwdc2026-210/README.md): Discover how monthly subscriptions with a 12-month commitment give people a more affordable option to pay for your subscription and secure a
+- [What’s new in managing Apple devices](sessions/wwdc2026-206/README.md): Discover the latest updates to declarative device management, Apple Business, and Apple School Manager
+
+## Audio & Video
+- [Build a responsive camera app that launches quickly](sessions/wwdc2026-303/README.md): Discover how to build a camera app that launches instantly so people never miss the perfect shot
+- [Build live production tools for Apple Immersive Video](sessions/wwdc2026-338/README.md): Go behind the scenes of live Apple Immersive Video production
+- [Discover generated subtitles and subtitle styles](sessions/wwdc2026-256/README.md): Make your video content more accessible with generated subtitles — a powerful new feature that can transcribe spoken audio or translate subt
+- [Integrate MusicKit into your app](sessions/wwdc2026-254/README.md): Bring the power of Apple Music into your app using MusicKit
+- [Meet the Music Understanding framework](sessions/wwdc2026-253/README.md): Discover Music Understanding, a new framework that lets your app analyze audio across six dimensions, on device: key, rhythm, structure, pac
+- [Meet the Now Playing framework](sessions/wwdc2026-312/README.md): Get a first look at Now Playing — a Swift framework that connects your app’s media playback to system surfaces like the Lock Screen, Control
+- [Prepare your tvOS apps for Dynamic Type](sessions/wwdc2026-221/README.md): Dynamic Type empowers people to comfortably read and interact with your app by letting them choose the text size that works best for them
+
+## Business & Education
+- [Meet Trust Insights](sessions/wwdc2026-379/README.md): Uncover how Trust Insights can help protect people from social scams and coercion
+- [Offer subscriptions to groups and organizations](sessions/wwdc2026-391/README.md): Discover how to reach more customers by offering subscriptions to groups and organizations
+- [Secure your apps with App Attest](sessions/wwdc2026-201/README.md): Harness App Attest to protect your app from unauthorized modification and fraud
+- [What’s new in assessment on macOS](sessions/wwdc2026-230/README.md): Explore the Automatic Assessment Configuration framework on macOS to deliver secure tests for education apps
+- [What’s new in managing Apple devices](sessions/wwdc2026-206/README.md): Discover the latest updates to declarative device management, Apple Business, and Apple School Manager
+
+## Design
+- [Communicate your brand identity on iOS](sessions/wwdc2026-251/README.md): Explore practical approaches to branding using typography, color, components, and interactions that balance the familiar with the unique.
+- [Compose advanced graphics effects with SwiftUI](sessions/wwdc2026-322/README.md): Discover how to craft rich, custom experiences by creatively composing SwiftUI layout and graphics APIs
+- [Craft clear names for features and labels in your app](sessions/wwdc2026-290/README.md): The names of your products, features, and labels can determine how people understand and navigate your app
+- [Create UI prototypes using agents in Xcode](sessions/wwdc2026-227/README.md): Learn how to prototype your app using agents in Xcode
+- [Design immersive environments for visionOS apps and the spatial web](sessions/wwdc2026-234/README.md): Learn how you can create photoreal visionOS environments for your apps, websites, and SharePlay experiences
+- [Design intuitive search experiences](sessions/wwdc2026-292/README.md): Explore new patterns and best practices when implementing search in your app
+- [Design no-code games with Reality Composer Pro 3](sessions/wwdc2026-252/README.md): Discover how you can use ScriptGraph in Reality Composer Pro 3 to create no-code 3D content for your apps and games
+- [Dive into lazy stacks and scrolling with SwiftUI](sessions/wwdc2026-321/README.md): Discover the inner workings of lazy stacks in SwiftUI
+- [Learn CSS Grid Lanes](sessions/wwdc2026-314/README.md): Build adaptive web layouts that embrace content of all shapes and sizes
+- [Principles of great design](sessions/wwdc2026-250/README.md): Dive deep into fundamental design principles for Apple platforms.
+- [Rediscover the HTML select element](sessions/wwdc2026-315/README.md): Learn how to unlock full control of styling select menus on the web
+- [What’s new in SwiftUI](sessions/wwdc2026-269/README.md): Explore the latest additions to SwiftUI and discover how they can improve your apps
+
+## Developer Tools
+- [Build real-time apps and services with gRPC and Swift](sessions/wwdc2026-265/README.md): Build engaging live experiences with gRPC in your Swift app and backend
+- [Build, deliver, and automate with Xcode Cloud](sessions/wwdc2026-261/README.md): Discover the latest updates to Xcode Cloud that quickly get you started building and delivering your apps
+- [Create UI prototypes using agents in Xcode](sessions/wwdc2026-227/README.md): Learn how to prototype your app using agents in Xcode
+- [Design no-code games with Reality Composer Pro 3](sessions/wwdc2026-252/README.md): Discover how you can use ScriptGraph in Reality Composer Pro 3 to create no-code 3D content for your apps and games
+- [Discover container machines](sessions/wwdc2026-389/README.md): Meet container machines, a new tool included in Container that offers a lightweight persistent Linux environment on Mac
+- [Enhance your presence on the App Store](sessions/wwdc2026-205/README.md): Reimagine how you market your apps and games on the App Store by using your images and videos in new places
+- [Find and fix performance issues in your Metal games](sessions/wwdc2026-388/README.md): Track down hard-to-find game performance issues with powerful Metal tools
+- [Get the most out of Device Hub](sessions/wwdc2026-260/README.md): Learn how Device Hub can accelerate your development workflows
+- [Meet the new MetricKit](sessions/wwdc2026-222/README.md): Find and fix performance problems faster than ever
+- [Migrate to Swift Testing](sessions/wwdc2026-267/README.md): Learn how to fearlessly adopt Swift Testing alongside your XCTests using test framework interoperability
+- [Profile, fix, and verify: Improve app responsiveness with Instruments](sessions/wwdc2026-268/README.md): Tackle app responsiveness issues with a clear workflow
+- [Translate your app using agents in Xcode](sessions/wwdc2026-213/README.md): Find out how Xcode and coding agents help you translate String Catalogs using the context of your app
+- [What’s new in Swift](sessions/wwdc2026-262/README.md): Join us for an update on Swift
+- [What’s new in Xcode 27](sessions/wwdc2026-258/README.md): Discover the latest productivity enhancements in Xcode 27
+- [Xcode, agents, and you](sessions/wwdc2026-259/README.md): Learn how you can use coding agents in Xcode in your development process
+
+## Essentials
+- [Announcing Apple’s next big step for Siri and iPhone](sessions/wwdc2026-121/README.md): Introducing Siri AI in iOS 27, with more power than ever
+- [Design intuitive search experiences](sessions/wwdc2026-292/README.md): Explore new patterns and best practices when implementing search in your app
+- [Get ready for WWDC26](sessions/wwdc2026-394/README.md): Get the inside track on everything Apple has to offer — and make the most of every session, lab, and moment.
+- [Keynote](sessions/wwdc2026-101/README.md): Don’t miss the exciting reveal of the latest Apple software and technologies.
+- [Keynote (ASL)](sessions/wwdc2026-111/README.md): Don’t miss the exciting reveal of the latest Apple software and technologies.
+- [Platforms State of the Union](sessions/wwdc2026-102/README.md): Discover the newest advancements on Apple platforms.
+- [Platforms State of the Union (ASL)](sessions/wwdc2026-112/README.md): Discover the newest advancements on Apple platforms.
+- [Stream the WWDC26 Keynote](sessions/wwdc2026-403/README.md): Catch the reveal of the latest Apple software and technologies.
+- [Stream the WWDC26 Platforms State of the Union](sessions/wwdc2026-1102/README.md): Dive deeper into the newest advancements for your apps and games.
+- [WWDC26 Platforms State of the Union Recap](sessions/wwdc2026-122/README.md): Catch up quickly on the newest advancements for your apps and games — all in five minutes.
+
+## Graphics & Games
+- [Bringing Cyberpunk 2077 to Mac](sessions/wwdc2026-356/README.md): Go behind the scenes and learn from CD PROJEKT RED how Cyberpunk 2077 came to Mac, setting a new standard for AAA gaming on macOS
+- [Build next-generation experiences with visionOS 27](sessions/wwdc2026-287/README.md): Build next-generation apps, games, and spatial experiences using new capabilities in visionOS 27
+- [Build real-time neural rendering pipelines with Metal](sessions/wwdc2026-359/README.md): Discover how to integrate machine learning into your real-time rendering pipeline using Metal 4
+- [Collaborate on structured 3D models in visionOS](sessions/wwdc2026-284/README.md): Learn how to bring structured 3D models to life in visionOS
+- [Design immersive environments for visionOS apps and the spatial web](sessions/wwdc2026-234/README.md): Learn how you can create photoreal visionOS environments for your apps, websites, and SharePlay experiences
+- [Design no-code games with Reality Composer Pro 3](sessions/wwdc2026-252/README.md): Discover how you can use ScriptGraph in Reality Composer Pro 3 to create no-code 3D content for your apps and games
+- [Discover USDKit and what’s new in OpenUSD](sessions/wwdc2026-285/README.md): Dive into the latest advances in Universal Scene Description (USD) support on Apple platforms, including Swift-based USDKit, the new spatial
+- [Discover the Spatial Preview framework](sessions/wwdc2026-282/README.md): Check out how the new Spatial Preview framework brings content from your Mac directly into visionOS
+- [Explore advances in RealityKit](sessions/wwdc2026-279/README.md): Discover the latest advancements in RealityKit designed to make your apps and games more immersive and realistic than ever
+- [Explore enhancements to visionOS object tracking](sessions/wwdc2026-283/README.md): Find out how visionOS is advancing object tracking and spatial accessory input
+- [Extend Reality Composer Pro 3 functionality with Xcode](sessions/wwdc2026-281/README.md): Discover how Reality Composer Pro 3 empowers you to build bigger, more ambitious spatial projects
+- [Find and fix performance issues in your Metal games](sessions/wwdc2026-388/README.md): Track down hard-to-find game performance issues with powerful Metal tools
+- [Iterate your spatial scenes faster with Reality Composer Pro 3](sessions/wwdc2026-280/README.md): Unlock powerful new features in Reality Composer Pro 3 for building spatial experiences
+- [Make your game great with touch](sessions/wwdc2026-358/README.md): Dive deeper into the techniques you can use to create compelling touch experiences for your games
+- [Optimize custom machine learning operations with Metal tensors](sessions/wwdc2026-330/README.md): Unlock powerful machine learning performance with the Metal Tensor API and Metal Performance Primitives (MPP) Tensor Ops library
+- [Speedrun your game port with agentic coding](sessions/wwdc2026-357/README.md): Kickstart your game’s journey to Apple platforms with new agentic skills in Game Porting Toolkit 4 that can dramatically accelerate the proc
+- [Supercharge your spatial workflows with Reality Composer Pro 3](sessions/wwdc2026-393/README.md): Discover how to build rich interactivity and stunning visual effects entirely within Reality Composer Pro using its powerful suite of graph-
+- [Use foveated streaming to bring immersive content to visionOS](sessions/wwdc2026-286/README.md): Find out how foveated streaming delivers remotely rendered scenes to Apple Vision Pro in full fidelity
+
+## Health & Fitness
+- [Deliver workout insights with HealthKit workout zones](sessions/wwdc2026-207/README.md): HealthKit makes it easier to provide workout insights — like heart rate and cycling power zones — in your app
+
+## Photos & Camera
+- [Build a responsive camera app that launches quickly](sessions/wwdc2026-303/README.md): Discover how to build a camera app that launches instantly so people never miss the perfect shot
+- [Enhance RAW image processing with Core Image](sessions/wwdc2026-305/README.md): Harness the power of version 9 of the Core Image RAW processing APIs to dramatically improve image quality in your apps, with improved sharp
+- [Implement high resolution photo capture](sessions/wwdc2026-304/README.md): Capture super high resolution photos in your app using AVFoundation
+- [Support the Center Stage front camera in your iOS app](sessions/wwdc2026-341/README.md): Supercharge your iOS camera app with Center Stage using AVCapture APIs with the front camera on iPhone 17, iPhone 17 Pro and iPhone Air
+
+## Privacy & Security
+- [Meet Trust Insights](sessions/wwdc2026-379/README.md): Uncover how Trust Insights can help protect people from social scams and coercion
+- [Secure your app: mitigate risks to agentic features](sessions/wwdc2026-347/README.md): Explore how to evaluate threats from indirect prompt injection, such as data exfiltration and unintended actions
+- [Secure your apps with App Attest](sessions/wwdc2026-201/README.md): Harness App Attest to protect your app from unauthorized modification and fraud
+
+## Safari & Web
+- [Create web extensions for Safari](sessions/wwdc2026-216/README.md): Get started with Safari web extensions by building and testing one from the ground up — no Xcode required
+- [Explore immersive website environments in visionOS](sessions/wwdc2026-320/README.md): Transport your website’s visitors into virtual environments in Apple Vision Pro using the new Immersive API in JavaScript
+- [Get started with the HTML Model Element](sessions/wwdc2026-215/README.md): Learn how the model element brings interactive 3D content to your websites — now on iOS, iPadOS, macOS, and visionOS
+- [Learn CSS Grid Lanes](sessions/wwdc2026-314/README.md): Build adaptive web layouts that embrace content of all shapes and sizes
+- [Rediscover the HTML select element](sessions/wwdc2026-315/README.md): Learn how to unlock full control of styling select menus on the web
+- [What’s new in WebKit for Safari 27](sessions/wwdc2026-204/README.md): Explore what’s new in WebKit — from Grid Lanes and Customizable Select, to HTML Model and Immersive Environments, and the latest for Web Ext
+
+## Spatial Computing
+- [Build live production tools for Apple Immersive Video](sessions/wwdc2026-338/README.md): Go behind the scenes of live Apple Immersive Video production
+- [Build next-generation experiences with visionOS 27](sessions/wwdc2026-287/README.md): Build next-generation apps, games, and spatial experiences using new capabilities in visionOS 27
+- [Collaborate on structured 3D models in visionOS](sessions/wwdc2026-284/README.md): Learn how to bring structured 3D models to life in visionOS
+- [Design immersive environments for visionOS apps and the spatial web](sessions/wwdc2026-234/README.md): Learn how you can create photoreal visionOS environments for your apps, websites, and SharePlay experiences
+- [Design no-code games with Reality Composer Pro 3](sessions/wwdc2026-252/README.md): Discover how you can use ScriptGraph in Reality Composer Pro 3 to create no-code 3D content for your apps and games
+- [Discover USDKit and what’s new in OpenUSD](sessions/wwdc2026-285/README.md): Dive into the latest advances in Universal Scene Description (USD) support on Apple platforms, including Swift-based USDKit, the new spatial
+- [Discover the Spatial Preview framework](sessions/wwdc2026-282/README.md): Check out how the new Spatial Preview framework brings content from your Mac directly into visionOS
+- [Explore advances in RealityKit](sessions/wwdc2026-279/README.md): Discover the latest advancements in RealityKit designed to make your apps and games more immersive and realistic than ever
+- [Explore enhancements to visionOS object tracking](sessions/wwdc2026-283/README.md): Find out how visionOS is advancing object tracking and spatial accessory input
+- [Explore immersive website environments in visionOS](sessions/wwdc2026-320/README.md): Transport your website’s visitors into virtual environments in Apple Vision Pro using the new Immersive API in JavaScript
+- [Extend Reality Composer Pro 3 functionality with Xcode](sessions/wwdc2026-281/README.md): Discover how Reality Composer Pro 3 empowers you to build bigger, more ambitious spatial projects
+- [Get started with the HTML Model Element](sessions/wwdc2026-215/README.md): Learn how the model element brings interactive 3D content to your websites — now on iOS, iPadOS, macOS, and visionOS
+- [Iterate your spatial scenes faster with Reality Composer Pro 3](sessions/wwdc2026-280/README.md): Unlock powerful new features in Reality Composer Pro 3 for building spatial experiences
+- [Supercharge your spatial workflows with Reality Composer Pro 3](sessions/wwdc2026-393/README.md): Discover how to build rich interactivity and stunning visual effects entirely within Reality Composer Pro using its powerful suite of graph-
+- [Use foveated streaming to bring immersive content to visionOS](sessions/wwdc2026-286/README.md): Find out how foveated streaming delivers remotely rendered scenes to Apple Vision Pro in full fidelity
+
+## Swift
+- [Build real-time apps and services with gRPC and Swift](sessions/wwdc2026-265/README.md): Build engaging live experiences with gRPC in your Swift app and backend
+- [Build, deliver, and automate with Xcode Cloud](sessions/wwdc2026-261/README.md): Discover the latest updates to Xcode Cloud that quickly get you started building and delivering your apps
+- [Code-along: Add persistence with SwiftData](sessions/wwdc2026-275/README.md): Experience SwiftData in action as we add persistence to an existing app
+- [Discover container machines](sessions/wwdc2026-389/README.md): Meet container machines, a new tool included in Container that offers a lightweight persistent Linux environment on Mac
+- [Explore numerical computing in Swift with MLX](sessions/wwdc2026-328/README.md): Bring NumPy-style computing natively to Swift with MLX Swift
+- [Get the most out of Device Hub](sessions/wwdc2026-260/README.md): Learn how Device Hub can accelerate your development workflows
+- [Integrate MusicKit into your app](sessions/wwdc2026-254/README.md): Bring the power of Apple Music into your app using MusicKit
+- [Migrate to Swift Testing](sessions/wwdc2026-267/README.md): Learn how to fearlessly adopt Swift Testing alongside your XCTests using test framework interoperability
+- [Profile, fix, and verify: Improve app responsiveness with Instruments](sessions/wwdc2026-268/README.md): Tackle app responsiveness issues with a clear workflow
+- [What’s new in Swift](sessions/wwdc2026-262/README.md): Join us for an update on Swift
+- [What’s new in SwiftData](sessions/wwdc2026-274/README.md): Discover the latest enhancements to SwiftData
+- [What’s new in Xcode 27](sessions/wwdc2026-258/README.md): Discover the latest productivity enhancements in Xcode 27
+- [Xcode, agents, and you](sessions/wwdc2026-259/README.md): Learn how you can use coding agents in Xcode in your development process
+
+## SwiftUI & UI Frameworks
+- [Code-along: Add persistence with SwiftData](sessions/wwdc2026-275/README.md): Experience SwiftData in action as we add persistence to an existing app
+- [Code-along: Build powerful drag and drop in SwiftUI](sessions/wwdc2026-271/README.md): Follow along as we build a game of Solitaire to explore the latest drag-and-drop capabilities in SwiftUI
+- [Compose advanced graphics effects with SwiftUI](sessions/wwdc2026-322/README.md): Discover how to craft rich, custom experiences by creatively composing SwiftUI layout and graphics APIs
+- [Deliver workout insights with HealthKit workout zones](sessions/wwdc2026-207/README.md): HealthKit makes it easier to provide workout insights — like heart rate and cycling power zones — in your app
+- [Dive into lazy stacks and scrolling with SwiftUI](sessions/wwdc2026-321/README.md): Discover the inner workings of lazy stacks in SwiftUI
+- [Elevate your app’s text experience with TextKit](sessions/wwdc2026-370/README.md): Discover how to combine the convenience of built-in text views with the control of TextKit
+- [Enhance the accessibility of your reading app](sessions/wwdc2026-219/README.md): Learn how to create robust reading experiences for VoiceOver, Speak Screen, and more
+- [Live Activities essentials](sessions/wwdc2026-223/README.md): Elevate your app experience with Live Activities
+- [Modernize your AppKit app](sessions/wwdc2026-289/README.md): Bring your AppKit app up to date with modern macOS conventions
+- [Modernize your UIKit app](sessions/wwdc2026-278/README.md): Discover the latest updates to UIKit
+- [Read between the strokes with PencilKit](sessions/wwdc2026-203/README.md): Unlock handwriting recognition in your apps using the same powerful technology behind Apple apps like Freeform and Notes
+- [Refine accessibility for custom controls](sessions/wwdc2026-220/README.md): Unlock the full potential of your app’s interactive elements by making them accessible to everyone
+- [Unwrap PaperKit](sessions/wwdc2026-372/README.md): Craft a canvas-based application with PaperKit
+- [Use SwiftUI with AppKit and UIKit](sessions/wwdc2026-272/README.md): Discover how to incrementally adopt SwiftUI in your existing AppKit or UIKit app
+- [What’s new in SwiftData](sessions/wwdc2026-274/README.md): Discover the latest enhancements to SwiftData
+- [What’s new in SwiftUI](sessions/wwdc2026-269/README.md): Explore the latest additions to SwiftUI and discover how they can improve your apps
+- [What’s new in WebKit for Safari 27](sessions/wwdc2026-204/README.md): Explore what’s new in WebKit — from Grid Lanes and Customizable Select, to HTML Model and Immersive Environments, and the latest for Web Ext
+- [WidgetKit foundations](sessions/wwdc2026-277/README.md): Widgets highlight your app’s most important content across the system, providing people with another opportunity to engage
+
+## System Services
+- [Build with the new Apple Foundation Model on Private Cloud Compute](sessions/wwdc2026-319/README.md): Private Cloud Compute lets you access powerful, frontier-class models while protecting user privacy
+- [Create live communication experiences ](sessions/wwdc2026-226/README.md): LiveCommunicationKit transforms your real-time communication apps into integrated experiences
+- [Discover container machines](sessions/wwdc2026-389/README.md): Meet container machines, a new tool included in Container that offers a lightweight persistent Linux environment on Mac
+- [Expand the capabilities of your Virtualization app](sessions/wwdc2026-224/README.md): Bring powerful new capabilities in macOS 27 to your Virtualization app
+- [Find your accessory with Bluetooth Channel Sounding](sessions/wwdc2026-369/README.md): Get started with Channel Sounding to bring distance and direction awareness to your Bluetooth accessories
+- [Meet the new MetricKit](sessions/wwdc2026-222/README.md): Find and fix performance problems faster than ever
+- [Rev up your CarPlay app](sessions/wwdc2026-212/README.md): Explore new features for your CarPlay audio, navigation, voice-based conversational apps, and more
+- [What’s new in Shortcuts](sessions/wwdc2026-310/README.md): Explore techniques to build powerful shortcuts using your app’s content
+- [What’s new in Wallet](sessions/wwdc2026-209/README.md): Explore the newest design updates and developer tools for Apple Wallet passes

@@ -1,0 +1,107 @@
+{
+  "id": "wwdc2026-254",
+  "eventContentId": 254,
+  "title": "Integrate MusicKit into your app",
+  "description": "Bring the power of Apple Music into your app using MusicKit. We’ll cover authorization, subscription-status checks, music selection, playback control, and cross-storefront song sharing. Learn how to use the new Music Picker to let people browse the Apple Music catalog and their personal libraries. We’ll also break down the differences between SystemMusicPlayer and ApplicationMusicPlayer, and show you how to observe playback state. ",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/254",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/254",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Swift",
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/254/5/d4b2c60a-8a2a-41d1-a55a-0fd60d927798/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/254/5/d4b2c60a-8a2a-41d1-a55a-0fd60d927798/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/254/5/d4b2c60a-8a2a-41d1-a55a-0fd60d927798/downloads/wwdc2026-254_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/254/5/d4b2c60a-8a2a-41d1-a55a-0fd60d927798/downloads/wwdc2026-254_hd.mp4",
+    "duration": 1266
+  },
+  "codeSnippets": [
+    {
+      "title": "Presents the Apple Music subscription offer",
+      "language": "swift",
+      "startTimeSeconds": 287,
+      "code": "@State var showSubscriptionOffer = false\n\nlet options = MusicSubscriptionOffer.Options(\n    messageIdentifier: .playMusic\n)\n\n@ViewBuilder\nvar musicSubsriptionButton: some View {\n    Button(\"Subscribe to Apple Music\", systemImage: \"music.note\") {\n        showSubscriptionOffer = true\n    }\n    .musicSubscriptionOffer(isPresented: $showSubscriptionOffer, options: options)\n}"
+    },
+    {
+      "title": "Adds subscription button to main view",
+      "language": "swift",
+      "startTimeSeconds": 359,
+      "code": "@State var subscription: MusicSubscription?\n\nvar body: some View {\n  \tVStack {\n        // ...\n        if let subscription, subscription.canBecomeSubscriber {\n            musicSubscriptionButton\n        }\n    }\n    .task(id: isAuthorized) {\n\t      self.subscription = try? await MusicSubscription.current\n        for await subscription in MusicSubscription.subscriptionUpdates {\n            self.subscription = subscription\n        }\n    }\n}"
+    },
+    {
+      "title": "Add .musicPicker() modifier",
+      "language": "swift",
+      "startTimeSeconds": 528,
+      "code": "@State var showMusicPicker = false\n@State var selectedSong: Song? = nil\n\n@ViewBuilder\nvar musicPickerButton: some View {\n    Button(\"Pick some Music\", systemImage: \"music.note.list\") {\n        showMusicPicker = true\n    }\n    .musicPicker(isPresented: $showMusicPicker, selection: $selectedSong)\n}\n\nvar body: some View {\n    VStack {\n        if let subscription, subscription.canBecomeSubscriber {\n            musicSubscriptionButton\n        }\n        musicPickerButton\n    }\n}"
+    },
+    {
+      "title": "Artwork",
+      "language": "swift",
+      "startTimeSeconds": 889,
+      "code": "@State var queue = ApplicationMusicPlayer.shared.queue\n\nvar body: some View {\n    VStack {\n        if let artwork = queue.currentEntry?.artwork {\n            ArtworkImage(artwork, width: 200, height: 200)\n        } else {\n            // Placeholder artwork\n            RoundedRectangle(cornerRadius: 16)\n                .fill(.quaternary)\n                .frame(width: 200, height: 200)\n        }\n    }\n}"
+    },
+    {
+      "title": "Current entry info",
+      "language": "swift",
+      "startTimeSeconds": 906,
+      "code": "@State var queue = ApplicationMusicPlayer.shared.queue\n\nvar body: some View {\n    VStack {\n        // ...\n        if let currentSong = queue.currentEntry {\n            Text(currentSong.title)\n                .font(.title3.bold())\n\n            if let subtitle = currentSong.subtitle {\n                Text(subtitle)\n                    .font(.subheadline)\n                    .foregroundStyle(.secondary)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Playback controls (play, pause)",
+      "language": "swift",
+      "startTimeSeconds": 914,
+      "code": "let player = ApplicationMusicPlayer.shared\n@State var state = ApplicationMusicPlayer.shared.state\n\nvar isPlaying: Bool {\n    state.playbackStatus == .playing\n}\n\nvar playPause: some View {\n    Button (\n        isPlaying ? \"Pause\": \"Play\",\n        systemImage: isplaying ? \"pause.fill\" : \"play.fill\"\n    ) {\n        if isPlaying {\n            player.pause()\n        } else {\n            Task {\n                try await player.play()\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Playback controls (next, previous)",
+      "language": "swift",
+      "startTimeSeconds": 938,
+      "code": "let player = ApplicationMusicPlayer.shared\n\nvar controls: some View {\n    HStack {\n        Button(\"Back\", systemImage: \"backward.fill\") {\n            Task {\n                try await player.skipToPreviousEntry()\n            }\n        }\n        // ...\n        Button(\"Next\", systemImage: \"forward.fill\") {\n            Task {\n                try await player.skipToNextEntry()\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Music catalog resource request",
+      "language": "swift",
+      "startTimeSeconds": 1138,
+      "code": "func fetchSongs(songIDs: [MusicItemID]) async throws -> (featured: Song?, other: [Song]) {\n    var request = MusicCatalogResourceRequest‹Song>(matching: \\.id, memberOf: songIDs)\n    request.options = [.findEquivalents]\n\n    let response = try await request.response()\n\n    let featuredSongID = songIDs[0]\n    let featuredSong = response.item(for: featuredSongID)\n\n    let others: [Song] = songIDs[1...].compactMap { songID in\n        return response.item(for: songID)\n    }\n\n    return (featuredSong, others)\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Integrating MusicKit into your app",
+      "url": "https://developer.apple.com/documentation/MusicKit/integrating-musickit-into-your-app",
+      "type": "samplecode",
+      "description": "Enhance your workouts with Apple Music playback.",
+      "sosumiURL": "https://sosumi.ai/documentation/MusicKit/integrating-musickit-into-your-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/MusicKit/integrating-musickit-into-your-app.json"
+    },
+    {
+      "title": "Apple Services Performance Partner Program",
+      "url": "https://performance-partners.apple.com/home",
+      "type": "documentation",
+      "description": null
+    },
+    {
+      "title": "MusicKit",
+      "url": "https://developer.apple.com/documentation/musickit",
+      "type": "documentation",
+      "description": "Integrate your app with Apple Music.",
+      "sosumiURL": "https://sosumi.ai/documentation/musickit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/musickit.json"
+    }
+  ],
+  "hasTranscript": true,
+  "transcript": "transcript.md"
+}

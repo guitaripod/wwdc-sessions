@@ -1,0 +1,93 @@
+{
+  "id": "wwdc2026-207",
+  "eventContentId": 207,
+  "title": "Deliver workout insights with HealthKit workout zones",
+  "description": "HealthKit makes it easier to provide workout insights — like heart rate and cycling power zones — in your app. Learn to leverage the built-in, personalized zones or create custom ones. Discover how to use the current zone and time spent in each zone to provide meaningful guidance during and after workouts.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/207",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/207",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "Health & Fitness"
+  ],
+  "primaryTopic": "Health & Fitness",
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/207/5/8627c1d4-7a34-46f2-8491-f0d1c138edd1/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/207/5/8627c1d4-7a34-46f2-8491-f0d1c138edd1/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/207/5/8627c1d4-7a34-46f2-8491-f0d1c138edd1/downloads/wwdc2026-207_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/207/5/8627c1d4-7a34-46f2-8491-f0d1c138edd1/downloads/wwdc2026-207_hd.mp4",
+    "duration": 735
+  },
+  "codeSnippets": [
+    {
+      "title": "Reading Heart Rate Zones from a completed workout",
+      "language": "swift",
+      "startTimeSeconds": 234,
+      "code": "// Read heart rate zones from the completed workout​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​\n\nif let heartRateZoneGroup = workout.zoneGroupsByType?[HKQuantityType(.heartRate)] {​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​\nlet zones = ZoneDisplayData(​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​\n    zoneCount: heartRateZoneGroup.configuration.zones.count,​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​\n    currentZoneIndex: nil,​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​\n    durations: heartRateZoneGroup.zoneDurations.map(\\.duration)​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​\n)"
+    },
+    {
+      "title": "Handling Live Zone Updates",
+      "language": "swift",
+      "startTimeSeconds": 477,
+      "code": "func workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder,​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​\n                    didUpdateWorkoutZone zoneUpdate: HKLiveWorkoutZoneUpdate) {​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​\n    guard let zoneGroup = zoneUpdate.zoneGroup else {​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​\n        return​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​\n    }​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​\n    if let currentIndex = zoneUpdate.currentZoneDuration?.zone.index {​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​\n        let data = ZoneDisplayData(​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​\n            zoneCount: zoneGroup.configuration.zones.count,​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​\n            currentZoneIndex: currentIndex,​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​\n            durations: zoneGroup.zoneDurations.map(\\.duration)​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​\n        )​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​\n        Task { @MainActor in​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​\n            self.heartRateZones = data​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​\n        }​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​\n    }​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​\n}"
+    },
+    {
+      "title": "Check if Preferred Zone has been set",
+      "language": "swift",
+      "startTimeSeconds": 559,
+      "code": "if try await builder.zoneConfiguration(for: HKQuantityType(.heartRate)) == nil {"
+    },
+    {
+      "title": "Create Zone Boundaries",
+      "language": "swift",
+      "startTimeSeconds": 564,
+      "code": "let defaultHeartRateZoneThresholds = [91.0, 114.0, 136.0, 158.0]​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​\nlet bpmUnit = HKUnit.count().unitDivided(by: HKUnit.minute())​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​\nlet boundaries = defaultHeartRateZoneThresholds.map(​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​\n    {HKQuantity(unit: bpmUnit, doubleValue:$0)}\n)"
+    },
+    {
+      "title": "Create Default Workout Zone Configuration",
+      "language": "swift",
+      "startTimeSeconds": 573,
+      "code": "let heartRate = HKQuantityType(.heartRate)​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​\nlet defaultConfiguration = try HKWorkoutZoneConfiguration(quantityType: heartRate,​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​\n                                                          zoneBoundaries: boundaries)"
+    },
+    {
+      "title": "Set Custom Zone Configuration",
+      "language": "swift",
+      "startTimeSeconds": 598,
+      "code": "try await builder.setCustomZoneConfiguration(defaultConfiguration,​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​\n                                                 for: heartRate)​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​\n}"
+    },
+    {
+      "title": "Begin Data Collection",
+      "language": "swift",
+      "startTimeSeconds": 603,
+      "code": "// Begin data collection\nlet startDate = Date()​​​​​​​​​​​​​​\ntry await builder.beginCollection(at: startDate)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Tracking heart rate zones for workouts",
+      "url": "https://developer.apple.com/documentation/HealthKit/tracking-heart-rate-zones-for-workouts",
+      "type": "samplecode",
+      "description": "Start a workout on iOS or watchOS and track and display heart rate zones.",
+      "sosumiURL": "https://sosumi.ai/documentation/HealthKit/tracking-heart-rate-zones-for-workouts",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HealthKit/tracking-heart-rate-zones-for-workouts.json"
+    },
+    {
+      "title": "Accessing workout zone data",
+      "url": "https://developer.apple.com/documentation/HealthKit/accessing-workout-zone-data",
+      "type": "documentation",
+      "description": "Provide training insights to people on your app using workout zone data.",
+      "sosumiURL": "https://sosumi.ai/documentation/HealthKit/accessing-workout-zone-data",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/HealthKit/accessing-workout-zone-data.json"
+    }
+  ],
+  "hasTranscript": true,
+  "transcript": "transcript.md"
+}

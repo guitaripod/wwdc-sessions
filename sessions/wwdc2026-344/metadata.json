@@ -1,0 +1,111 @@
+{
+  "id": "wwdc2026-344",
+  "eventContentId": 344,
+  "title": "Code-along: Make your app available to Siri",
+  "description": "Dive deep into an Xcode project showing how you can make your app available to Siri. Learn how to adopt App Schemas to let people ask questions about calendar events and take natural language actions like scheduling. Discover best practices for making content available in the Spotlight semantic index and providing context for on-screen awareness. ",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/344",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/344",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "ai",
+    "app intents",
+    "machine learning",
+    "siri",
+    "xcode"
+  ],
+  "topics": [
+    "App Services",
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/344/4/ee45cb19-e252-41f4-a2e0-e9b59238c7aa/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/344/4/ee45cb19-e252-41f4-a2e0-e9b59238c7aa/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/344/4/ee45cb19-e252-41f4-a2e0-e9b59238c7aa/downloads/wwdc2026-344_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/344/4/ee45cb19-e252-41f4-a2e0-e9b59238c7aa/downloads/wwdc2026-344_hd.mp4",
+    "duration": 1460
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Integrating your calendar app with Apple Intelligence",
+      "url": "https://developer.apple.com/documentation/AppIntents/integrating-your-calendar-app-with-apple-intelligence",
+      "type": "documentation",
+      "description": "Adopt calendar schemas so people can create, find, and manage events with Siri.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents/integrating-your-calendar-app-with-apple-intelligence",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents/integrating-your-calendar-app-with-apple-intelligence.json"
+    },
+    {
+      "title": "Donating your app’s data and actions to the system",
+      "url": "https://developer.apple.com/documentation/AppIntents/donating-your-apps-data-and-actions-to-the-system",
+      "type": "documentation",
+      "description": "Improve how people interact with your app through Apple Intelligence and Siri",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents/donating-your-apps-data-and-actions-to-the-system",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents/donating-your-apps-data-and-actions-to-the-system.json"
+    },
+    {
+      "title": "Donations and discovery",
+      "url": "https://developer.apple.com/documentation/AppIntents/donations-and-discovery",
+      "type": "documentation",
+      "description": "Donate your app’s intents and entities to the system to help it identify trends and predict",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents/donations-and-discovery",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents/donations-and-discovery.json"
+    },
+    {
+      "title": "Making app entities available in Spotlight",
+      "url": "https://developer.apple.com/documentation/AppIntents/making-app-entities-available-in-spotlight",
+      "type": "documentation",
+      "description": "Update your app entity types to support Spotlight indexing, and donate entities to",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents/making-app-entities-available-in-spotlight",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents/making-app-entities-available-in-spotlight.json"
+    },
+    {
+      "title": "Making actions and content discoverable by Apple Intelligence",
+      "url": "https://developer.apple.com/documentation/AppIntents/making-actions-and-content-discoverable-by-apple-intelligence",
+      "type": "documentation",
+      "description": "Equip the system so that Siri can work with your app by adding specific schemas from relevant domains.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents/making-actions-and-content-discoverable-by-apple-intelligence",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents/making-actions-and-content-discoverable-by-apple-intelligence.json"
+    },
+    {
+      "title": "Providing contextual cues to Apple Intelligence and Siri",
+      "url": "https://developer.apple.com/documentation/AppIntents/providing-contextual-cues-to-apple-intelligence-and-siri",
+      "type": "documentation",
+      "description": "Annotate your interface with app entities to offer contextual information about your app’s",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents/providing-contextual-cues-to-apple-intelligence-and-siri",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents/providing-contextual-cues-to-apple-intelligence-and-siri.json"
+    },
+    {
+      "title": "Apple Intelligence and Siri AI",
+      "url": "https://developer.apple.com/documentation/AppIntents/apple-intelligence-and-siri-ai",
+      "type": "documentation",
+      "description": "Integrate your app with Apple Intelligence and bring it to Siri AI.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents/apple-intelligence-and-siri-ai",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents/apple-intelligence-and-siri-ai.json"
+    },
+    {
+      "title": "Calendar",
+      "url": "https://developer.apple.com/documentation/AppIntents/app-schema-domain-calendar",
+      "type": "documentation",
+      "description": "Make your calendar app’s actions available to Apple Intelligence and Siri by adopting schemas for common calendar actions.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents/app-schema-domain-calendar",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents/app-schema-domain-calendar.json"
+    },
+    {
+      "title": "App schema domains",
+      "url": "https://developer.apple.com/documentation/AppIntents/app-schema-domains",
+      "type": "documentation",
+      "description": "Declare support for well-known actions and content by applying system-defined schemas to",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents/app-schema-domains",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents/app-schema-domains.json"
+    }
+  ],
+  "hasTranscript": true,
+  "transcript": "transcript.md"
+}

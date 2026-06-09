@@ -1,0 +1,62 @@
+{
+  "id": "wwdc2026-310",
+  "eventContentId": 310,
+  "title": "What’s new in Shortcuts",
+  "description": "Explore techniques to build powerful shortcuts using your app’s content. New automations unlock additional ways to integrate your app with the system. Refine how your App Entity is presented to LLMs using the new “Use Model” transcript feature. Store rich information from your app inside shortcuts that is synced across devices. Learn how to combine these features to create intelligent, powerful automations that integrate seamlessly with content and features from your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/310",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/310",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "AI & Machine Learning",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/310/4/50ce70ab-88da-49ff-8c57-d9136d231e76/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/310/4/50ce70ab-88da-49ff-8c57-d9136d231e76/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/310/4/50ce70ab-88da-49ff-8c57-d9136d231e76/downloads/wwdc2026-310_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/310/4/50ce70ab-88da-49ff-8c57-d9136d231e76/downloads/wwdc2026-310_hd.mp4",
+    "duration": 662
+  },
+  "codeSnippets": [
+    {
+      "title": "Soup Entity Example",
+      "language": "swift",
+      "startTimeSeconds": 372,
+      "code": "// MARK: - Soup Entity\n\nimport AppIntents\n\nstruct SoupEntity: AppEntity, Identifiable {\n    static var typeDisplayRepresentation = TypeDisplayRepresentation(\n        name: \"Soup\",\n        numericFormat: \"\\(placeholder: .int) soups\"\n    )\n    static var defaultQuery = SoupEntityQuery()\n\n    var id: Soup.ID\n\n    @Property var name: String\n\n    @Property(title: \"Available Today\")\n    var isAvailableToday: Bool\n\n    @Property(title: \"Ingredients\")\n    var ingredients: String\n\n    var displayRepresentation: DisplayRepresentation {\n        DisplayRepresentation(title: \"\\(name)\", subtitle: SoupStore.description(for: id))\n    }\n}"
+    },
+    {
+      "title": "Soup Entity Example",
+      "language": "swift",
+      "startTimeSeconds": 605,
+      "code": "// MARK: - Soup Entity\n\nimport AppIntents\n\nstruct SoupEntity: AppEntity, Identifiable {\n    static var typeDisplayRepresentation = TypeDisplayRepresentation(\n        name: \"Soup\",\n        numericFormat: \"\\(placeholder: .int) soups\"\n    )\n    static var defaultQuery = SoupEntityQuery()\n\n    var id: Soup.ID\n\n    @Property var name: String\n\n    @Property(title: \"Available Today\")\n    var isAvailableToday: Bool\n\n    @Property(title: \"Ingredients\")\n    var ingredients: String\n\n    var displayRepresentation: DisplayRepresentation {\n        DisplayRepresentation(title: \"\\(name)\", subtitle: SoupStore.description(for: id))\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Shortcuts",
+      "url": "https://developer.apple.com/shortcuts/",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/shortcuts/"
+    },
+    {
+      "title": "Notifications",
+      "url": "https://developer.apple.com/design/Human-Interface-Guidelines/notifications",
+      "type": "documentation",
+      "description": "A notification gives people timely, high-value information they can understand at a glance.",
+      "sosumiURL": "https://sosumi.ai/design/Human-Interface-Guidelines/notifications"
+    }
+  ],
+  "hasTranscript": true,
+  "transcript": "transcript.md"
+}

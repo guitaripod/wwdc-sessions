@@ -1,0 +1,98 @@
+{
+  "id": "wwdc2026-345",
+  "eventContentId": 345,
+  "title": "Discover new capabilities in the App Intents framework",
+  "description": "Level up your App Intents adoption with advanced features to make it faster, more flexible, and more relevant. Find out how ValueRepresentation and RelevantEntities make your content more discoverable and allow it to travel across apps, EntityCollection improves performance, and SyncableEntity let you scale across devices. Explore richer parameter types including union values and long-running intents that handle cancellation gracefully. ",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/345",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/345",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "ai",
+    "app intents",
+    "machine learning",
+    "siri",
+    "xcode"
+  ],
+  "topics": [
+    "App Services",
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/345/4/bc719e14-772a-4737-aceb-6e54cda6b511/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/345/4/bc719e14-772a-4737-aceb-6e54cda6b511/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/345/4/bc719e14-772a-4737-aceb-6e54cda6b511/downloads/wwdc2026-345_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/345/4/bc719e14-772a-4737-aceb-6e54cda6b511/downloads/wwdc2026-345_hd.mp4",
+    "duration": 1082
+  },
+  "codeSnippets": [
+    {
+      "title": "Share structured entities with ValueRepresentation",
+      "language": "swift",
+      "startTimeSeconds": 1,
+      "code": "struct LandmarkEntity: AppEntity, Transferable {\n    var id: Int\n    var landmark: Landmark  // contains CLLocationCoordinate2D\n\n    static var transferRepresentation: some TransferRepresentation {\n        ValueRepresentation(\n            exporting: { entity in\n                PlaceDescriptor(\n                    representations: [.coordinate(entity.landmark.locationCoordinate)],\n                    commonName: entity.landmark.name\n                )\n            }\n        )\n    }\n}\n\n// If the entity already has a PlaceDescriptor property, use a key-path — much less code:\nstruct LandmarkEntity: AppEntity, Transferable {\n    var id: Int\n    @Property var placeDescriptor: PlaceDescriptor\n\n    static var transferRepresentation: some TransferRepresentation {\n        ValueRepresentation(exporting: \\.placeDescriptor)\n    }\n}"
+    },
+    {
+      "title": "Register relevant entities with RelevantEntities",
+      "language": "swift",
+      "startTimeSeconds": 318,
+      "code": "// Suggest playlists for the workout session\nlet playlistEntities = [dailyRun, runningMix]\nlet workoutContext = AppEntityContext.audio(.workout(activityType: .running))\n\ntry await RelevantEntities.shared.updateEntities(\n    playlistEntities, for: workoutContext\n)\n\n// Clear all entities for a context\ntry await RelevantEntities.shared.removeAllEntities(for: workoutContext)\n\n// Remove specific entities from a context\ntry await RelevantEntities.shared.removeEntities(playlistEntities, from: workoutContext)\n\n// Or remove all entities across all contexts\ntry await RelevantEntities.shared.removeAllEntities()"
+    },
+    {
+      "title": "Handle large entity sets with EntityCollection",
+      "language": "swift",
+      "startTimeSeconds": 435,
+      "code": "struct TagPhotosIntent: AppIntent {\n    static let title: LocalizedStringResource = \"Tag Travel Photos\"\n\n    @Parameter var photos: EntityCollection<PhotoEntity>   // was: [PhotoEntity]\n    @Parameter var tag: String\n\n    func perform() async throws -> some IntentResult {\n        modelData.tagPhotos(ids: photos.identifiers, tag: tag)   // was: tagPhotos(photos, tag: tag)\n        return .result()\n    }\n}"
+    },
+    {
+      "title": "Make entity IDs stable with SyncableEntity",
+      "language": "swift",
+      "startTimeSeconds": 614,
+      "code": "// If your ID is already stable across devices (server UUID, CloudKit record ID):\nstruct PhotoEntity: AppEntity, SyncableEntity {\n    var id: Int  // Already stable across devices — that's it\n}\n\n// If you use local IDs, pair a local and a stable ID:\nstruct PhotoEntity: AppEntity, SyncableEntity {\n    var id: SyncableEntityIdentifier<String, String>\n\n    init(localID: String, stableID: String) {\n        self.id = SyncableEntityIdentifier(local: localID, stable: stableID)\n    }\n}"
+    },
+    {
+      "title": "Accept multiple types with @UnionValue",
+      "language": "swift",
+      "startTimeSeconds": 718,
+      "code": "@UnionValue\nenum TravelGalleryContent {\n    case landmarkCollection(LandmarkCollectionEntity)\n    case photoAlbum(PhotoAlbumEntity)\n\n    static let typeDisplayRepresentation: TypeDisplayRepresentation = \"Travel Gallery\"\n    static let caseDisplayRepresentations: [Cases: DisplayRepresentation] = [\n        .landmarkCollection: \"Landmark Collection\",\n        .photoAlbum: \"Photo Album\"\n    ]\n}"
+    },
+    {
+      "title": "Run beyond 30 s with LongRunningIntent + CancellableIntent",
+      "language": "swift",
+      "startTimeSeconds": 821,
+      "code": "struct UploadPhotoIntent: LongRunningIntent, CancellableIntent {\n    static let title: LocalizedStringResource = \"Upload Photo\"\n\n    @Parameter var photo: IntentFile\n\n    func perform() async throws -> some IntentResult & ProvidesDialog {\n        let result = try await performBackgroundTask {\n            let chunks = calculateChunks(for: photo)\n            progress.totalUnitCount = Int64(chunks)\n\n            for chunk in 1...chunks {\n                try Task.checkCancellation()\n                try await uploadChunk(chunk)\n                progress.completedUnitCount = Int64(chunk)\n            }\n            return \"Upload complete!\"\n        } onCancel: { reason in\n            cleanup(for: reason)\n        }\n        return .result(dialog: \"\\(result)\")\n    }\n}"
+    },
+    {
+      "title": "Control which process runs your intent with ExecutionTargets",
+      "language": "swift",
+      "startTimeSeconds": 1014,
+      "code": "// Write operation — needs the main app\nstruct UpdateFavoriteIntent: AppIntent {\n    static var allowedExecutionTargets: ExecutionTargets { .main }\n}\n\n// Standalone download — runs in the extension\nstruct DownloadPhotoIntent: AppIntent {\n    static var allowedExecutionTargets: ExecutionTargets { .appIntentsExtension }\n}\n\n// Display-only — runs in the widget extension\nstruct GetLandmarkStatusIntent: AppIntent {\n    static var allowedExecutionTargets: ExecutionTargets { .widgetKitExtension }\n}\n\n// Works in either — lets the system choose\nstruct TagPhotosIntent: AppIntent {\n    static var allowedExecutionTargets: ExecutionTargets { [.main, .appIntentsExtension] }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Adopting App Intents to support system experiences",
+      "url": "https://developer.apple.com/documentation/AppIntents/adopting-app-intents-to-support-system-experiences",
+      "type": "samplecode",
+      "description": "Create app intents and entities so people can use your app’s content and actions across system experiences.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents/adopting-app-intents-to-support-system-experiences",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents/adopting-app-intents-to-support-system-experiences.json"
+    },
+    {
+      "title": "App Intents",
+      "url": "https://developer.apple.com/documentation/AppIntents",
+      "type": "documentation",
+      "description": "Make content and actions discoverable by Apple Intelligence and support system experiences like Siri, Spotlight, Shortcuts, and widgets.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents.json"
+    }
+  ],
+  "hasTranscript": true,
+  "transcript": "transcript.md"
+}

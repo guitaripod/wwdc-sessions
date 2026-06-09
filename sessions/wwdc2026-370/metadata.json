@@ -1,0 +1,115 @@
+{
+  "id": "wwdc2026-370",
+  "eventContentId": 370,
+  "title": "Elevate your app’s text experience with TextKit",
+  "description": "Discover how to combine the convenience of built-in text views with the control of TextKit. We’ll show you how new APIs make it easy to extend UITextView and NSTextView with custom behaviors like line numbers and collapsible sections. We’ll also explore the TextKit architecture and walk through new caching and reuse policies for text attachments. To get the most out of this session, watch “Meet TextKit 2” from WWDC21 and “What’s New in TextKit and text views” from WWDC22.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/370",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/370",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "screenshots"
+  ],
+  "topics": [
+    "App Services",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/370/5/f61dbe38-7302-451a-b3ab-9851d5746315/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/370/5/f61dbe38-7302-451a-b3ab-9851d5746315/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/370/5/f61dbe38-7302-451a-b3ab-9851d5746315/downloads/wwdc2026-370_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/370/5/f61dbe38-7302-451a-b3ab-9851d5746315/downloads/wwdc2026-370_hd.mp4",
+    "duration": 1426
+  },
+  "codeSnippets": [
+    {
+      "title": "NSTextViewportRenderingSurface conformance",
+      "language": "swift",
+      "startTimeSeconds": 587,
+      "code": "class MyView: UIView, NSTextViewportRenderingSurface {}"
+    },
+    {
+      "title": "NSTextViewportRenderingSurfaceKey and NSMapTable",
+      "language": "swift",
+      "startTimeSeconds": 625,
+      "code": "class MyView: UIView, NSTextViewportRenderingSurface {}\n\nvar cache: NSMapTable<NSTextLayoutFragment, MyView>"
+    },
+    {
+      "title": "UITextView/NSTextView in SwiftUI via ViewRepresentable",
+      "language": "swift",
+      "startTimeSeconds": 759,
+      "code": "// Using a TextView in SwiftUI\n\nimport SwiftUI\n\nstruct MyTextView: View {\n    var body: some View { TextViewRepresentable() }\n}\n\n#if os(macOS)\nstruct TextViewRepresentable: NSViewRepresentable {\n    func makeNSView(context: Context) -> NSTextView { \n      NSTextView() \n    }\n    func updateNSView(_ nsView: NSTextView, context: Context) {\n    }\n}\n#else\nstruct TextViewRepresentable: UIViewRepresentable {\n    func makeUIView(context: Context) -> UITextView {\n        UITextView() \n    }\n    func updateUIView(_ uiView: UITextView, context: Context) {\n    }\n}\n#endif"
+    },
+    {
+      "title": "ContainerView with TextView and line number view",
+      "language": "swift",
+      "startTimeSeconds": 813,
+      "code": "// Create a text view subclass for a code editor\n\nimport UIKit\n\nclass TextView: UITextView {}\n\nclass ContainerView: UIView {\n    let textView = TextView()\n    let lineNumberView = UIView()\n\n    textView.font = UIFont.monospacedSystemFont\n}"
+    },
+    {
+      "title": "Three NSTextViewportLayoutControllerDelegate overrides",
+      "language": "swift",
+      "startTimeSeconds": 882,
+      "code": "// Override viewport controller delegate methods\n\nclass TextView: UITextView {\n    // Set up\n\t\toverride func textViewportLayoutControllerWillLayout(_ textViewportLayoutController: NSTextViewportLayoutController) {\n    \tsuper.textViewportLayoutControllerWillLayout(textViewportLayoutController)\n      //...\n    }\n\n    // Get paragraph bounds\n    override func textViewportLayoutController (_ textViewportLayoutController: NSTextViewportLayoutController, configureRenderingSurfaceFor textLayoutFragment: NSTextLayoutFragment) {\n\t\t\tsuper.textViewportLayoutController(textViewportLayoutController, configureRenderingSurfaceFor: textLayoutFragment)\n      //...\n    }\n\n    // Share accumulated info back to ContainerView\n\t\toverride func textViewportLayoutControllerDidLayout (_ textViewportLayoutController: NSTextViewportLayoutController) {\n\t\t  super.textViewportLayoutControllerDidLayout(textViewportLayoutController)\n      //...\n    }\n}"
+    },
+    {
+      "title": "startingLineNumber(for:) using enumerateTextElements",
+      "language": "swift",
+      "startTimeSeconds": 959,
+      "code": "func startingLineNumber(for viewportRange: NSTextRange?) -> Int {\n    guard let viewportRange,\n          let storage = textLayoutManager?.textContentManager\n              as? NSTextContentStorage else { return 0 }\n    let startLocation = storage.documentRange.location\n    var count = 1\n    storage.enumerateTextElements(from: startLocation) { element in\n        guard let range = element.elementRange else { return true }\n        if range.location.compare(viewportRange.location)\n            != .orderedAscending { return false }\n        count += 1\n        return true\n    }\n    return count\n}"
+    },
+    {
+      "title": "DidLayout: convert frames to viewport coordinates",
+      "language": "swift",
+      "startTimeSeconds": 1022,
+      "code": "// Override viewport controller delegate methods\n\nclass TextView: UITextView {\n    private var lines: [CGRect] = []\n    private var startingLineNumber = 0\n    var onDidLayout: ((Int, [CGRect]) -> Void)?\n\n    // Share accumulated info back to ContainerView\n\t\toverride func textViewportLayoutControllerDidLayout (_ textViewportLayoutController: NSTextViewportLayoutController) {\n        super.textViewportLayoutControllerDidLayout(controller)\n        let origin = controller.viewportBounds.origin\n        onDidLayout?(startingLineNumber, lines.map {$0.offsetBy(dx: 0, dy: -origin.y) })\n    }\n}"
+    },
+    {
+      "title": "Draw line numbers in ContainerView closure",
+      "language": "swift",
+      "startTimeSeconds": 1036,
+      "code": "// Draw line numbers in the ContainerView\n\nclass ContainerView: UIView {\n    let textView = TextView()\n    let lineNumberView = UIView()\n    func setup() {\n        textView.onDidLayout = {startingLineNumber, lines in\n            let attributes: [NSAttributedString.Key: Any] = [\n                .font: UIFont.monospacedSystemFont(ofSize: 11, weight: .regular),\n                .foregroundColor: UIColor.secondaryLabel\n            ]\n            for (i, frame) in lines.enumerated() {\n                let number = \"\\(startingLineNumber + i)\" as NSString\n                number.draw(at: CGPoint(x: 8, y: frame.minY),\n                    withAttributes: attributes)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Collapsible sections: full TextView class",
+      "language": "swift",
+      "startTimeSeconds": 1162,
+      "code": "// Add collapsible sections to your text view\n\nclass TextView: UITextView, NSTextContentStorageDelegate {\n    var collapsedSections: Set<Int> = []\n\n    // Set up\n\t\toverride func textViewportLayoutControllerWillLayout(_ textViewportLayoutController: NSTextViewportLayoutController) {\n    \tsuper.textViewportLayoutControllerWillLayout(textViewportLayoutController)\n      //...\n    }\n\n    // Get paragraph bounds\n    override func textViewportLayoutController (_ textViewportLayoutController: NSTextViewportLayoutController, configureRenderingSurfaceFor textLayoutFragment: NSTextLayoutFragment) {\n\t\t\tsuper.textViewportLayoutController(textViewportLayoutController, configureRenderingSurfaceFor: textLayoutFragment)\n      //...\n    }\n\n    // Share accumulated info back to ContainerView\n\t\toverride func textViewportLayoutControllerDidLayout (_ textViewportLayoutController: NSTextViewportLayoutController) {\n\t\t  super.textViewportLayoutControllerDidLayout(textViewportLayoutController)\n      //...\n    }\n\n    // Skip layout for paragraphs marked as collapsed\n    func textContentManager(shouldEnumerate textElement: NSTextElement, options: NSTextContentManager.EnumerationOptions) -> Bool {\n      //...\n    }\n\n    // Handle section collapse toggling\n    func toggleSection(headerOffset: Int) {\n        if collapsedSections.contains(headerOffset) {\n            collapsedSections.remove(headerOffset)\n        } else {\n            collapsedSections.insert(headerOffset)\n        }\n        guard let textLayoutManager = textLayoutManager else { return }\n\n        let textViewportLayoutController = textLayoutManager.textViewportLayoutController\n        textViewportLayoutController.delegate?.textViewportLayoutControllerReceivedSetNeedsLayout?(textViewportLayoutController)\n    }\n}"
+    },
+    {
+      "title": "Text attachment view provider reuse policy",
+      "language": "swift",
+      "startTimeSeconds": 1326,
+      "code": "// Cache text attachment view providers\n\nimport UIKit\n\nclass ViewController: UIViewController {\n\n    var textView: UITextView\n\n    func setupTextView() {\n        textView = UITextView()\n        textView.register(\n            [.onEditingInlineParagraphs],\n            forTextAttachmentViewProviderType: AnimatedAttachmentViewProvider.self\n        )\n    }\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Enriching your text in text views",
+      "url": "https://developer.apple.com/documentation/UIKit/enriching-your-text-in-text-views",
+      "type": "documentation",
+      "description": "Support line numbering, section collapsing, inline attachment caching, exclusion paths, text attachments, and text lists in a text view.",
+      "sosumiURL": "https://sosumi.ai/documentation/UIKit/enriching-your-text-in-text-views",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/UIKit/enriching-your-text-in-text-views.json"
+    },
+    {
+      "title": "TextKit",
+      "url": "https://developer.apple.com/documentation/AppKit/textkit",
+      "type": "documentation",
+      "description": "Manage text storage and perform custom layout of text-based content in your app’s views.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppKit/textkit",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppKit/textkit.json"
+    }
+  ],
+  "hasTranscript": true,
+  "transcript": "transcript.md"
+}

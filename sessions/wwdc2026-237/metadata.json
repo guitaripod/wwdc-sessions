@@ -1,0 +1,85 @@
+{
+  "id": "wwdc2026-237",
+  "eventContentId": 237,
+  "title": "What’s new in image understanding",
+  "description": "Unlock powerful image understanding with the latest Vision framework and Foundation Models framework updates. The new tap-to-segment request lets you segment images in new ways, and Vision now supports watchOS. Combine the new image support in Apple Foundation Model together with OCR, barcode scanning and your own tools to deliver LLM-powered visual understanding in your app.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/237",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/237",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "ai",
+    "machine learning &amp; vision"
+  ],
+  "topics": [
+    "App Services",
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/237/6/a3bdea1e-5c1d-44bc-8c21-9e1958774bd3/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/237/6/a3bdea1e-5c1d-44bc-8c21-9e1958774bd3/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/237/6/a3bdea1e-5c1d-44bc-8c21-9e1958774bd3/downloads/wwdc2026-237_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/237/6/a3bdea1e-5c1d-44bc-8c21-9e1958774bd3/downloads/wwdc2026-237_hd.mp4",
+    "duration": 946
+  },
+  "codeSnippets": [
+    {
+      "title": "Segment images (tap-to-segment)",
+      "language": "swift",
+      "startTimeSeconds": 255,
+      "code": "// Generate a segmentation mask of an object with a seed point\nlet handler = ImageRequestHandler(image)\nlet request = GenerateIterativeSegmentationRequest(seed: point)\nlet observation = try await handler.perform(request)\nlet mask = observation?.pixelBuffer\n\n// Refine the mask with a new point\nrequest.addIncludedPoint(newPoint)\nlet refinedObservation = try await handler.perform(request)"
+    },
+    {
+      "title": "Generate an image caption with Foundation Models",
+      "language": "swift",
+      "startTimeSeconds": 401,
+      "code": "// Generate an image caption with Foundation Models\nimport FoundationModels\n\nlet prompt = Prompt {\n    \"Generate a caption for this image\"\n    Attachment(image)\n}\nlet response = try await session.respond(to: prompt)\nlet caption = response.content"
+    },
+    {
+      "title": "Create an image-based tool",
+      "language": "swift",
+      "startTimeSeconds": 595,
+      "code": "// Create an image-based tool\nstruct PlantIdentifierTool: Tool {\n    @SessionProperty(\\.history) var history\n\n    @Generable\n    struct Arguments {\n        var image: ImageReference\n    }\n\n    func call(arguments: Arguments) async throws -> String {\n        let imageReference = arguments.image\n        let transcript = Transcript(history)\n        guard let imageAttachment = imageReference.resolve(in: transcript) else {\n            throw AppError.imageNotFound\n        }\n        let image = try imageAttachment.pixelBuffer()\n        return classifyPlant(image)\n    }\n}"
+    },
+    {
+      "title": "Use Vision tools",
+      "language": "swift",
+      "startTimeSeconds": 729,
+      "code": "// Use Vision tools\nimport FoundationModels\nimport Vision\n\nlet session = LanguageModelSession(model: model, tools: [BarcodeReaderTool()])\nlet response = try await session.respond(generating: EventInfo.self) {\n    \"Get the date, location, and website from this flyer\"\n    Attachment(image)\n        .label(\"flyer\")\n}"
+    },
+    {
+      "title": "Create a crop that highlights a prominent subject (watchOS / saliency)",
+      "language": "swift",
+      "startTimeSeconds": 834,
+      "code": "// Create a crop that highlights a prominent subject\nfunc generateImageCrop(in image: CGImage) async throws -> NormalizedRect? {\n    let request = GenerateObjectnessBasedSaliencyImageRequest()\n    let observation = try await request.perform(on: image)\n    let prominentObjects = observation.salientObjects\n    return prominentObjects.first\n}"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Segmenting objects using taps, scribbles or rectangles",
+      "url": "https://developer.apple.com/documentation/Vision/segmenting-objects-using-taps-scribbles-or-rectangles",
+      "type": "documentation",
+      "description": "Select objects or regions in a photo using taps, scribbles, or rectangle selection, and generate a segmentation mask using the iterative segmentation API.",
+      "sosumiURL": "https://sosumi.ai/documentation/Vision/segmenting-objects-using-taps-scribbles-or-rectangles",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Vision/segmenting-objects-using-taps-scribbles-or-rectangles.json"
+    },
+    {
+      "title": "Implementing saliency-based image cropping in iOS and watchOS",
+      "url": "https://developer.apple.com/documentation/Vision/implementing-saliency-based-image-cropping-in-iOS-and-watchOS",
+      "type": "samplecode",
+      "description": "Crop regions most likely drawing people’s attention from an image in your iOS or watchOS app.",
+      "sosumiURL": "https://sosumi.ai/documentation/Vision/implementing-saliency-based-image-cropping-in-iOS-and-watchOS",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Vision/implementing-saliency-based-image-cropping-in-iOS-and-watchOS.json"
+    }
+  ],
+  "hasTranscript": true,
+  "transcript": "transcript.md"
+}

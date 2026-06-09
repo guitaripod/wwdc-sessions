@@ -1,0 +1,58 @@
+{
+  "id": "wwdc2026-277",
+  "eventContentId": 277,
+  "title": "WidgetKit foundations",
+  "description": "Widgets highlight your app’s most important content across the system, providing people with another opportunity to engage. Discover the different types of widgets and explore the qualities that make them memorable. Learn how to create widgets, keep them up to date, and offer ways for people to customize them through App Intents and dynamic styling.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/277",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/277",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/277/4/e9dd0c7d-3a2e-4cf3-9e65-c9cba19d3616/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/277/4/e9dd0c7d-3a2e-4cf3-9e65-c9cba19d3616/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/277/4/e9dd0c7d-3a2e-4cf3-9e65-c9cba19d3616/downloads/wwdc2026-277_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/277/4/e9dd0c7d-3a2e-4cf3-9e65-c9cba19d3616/downloads/wwdc2026-277_hd.mp4",
+    "duration": 1220
+  },
+  "codeSnippets": [
+    {
+      "title": "DailyReadingGoalWidget",
+      "language": "swift",
+      "startTimeSeconds": 230,
+      "code": "struct DailyReadingGoalWidget: Widget {\n    let kind = \"DailyReadingGoalWidget\"\n\n    var body: some WidgetConfiguration {\n        StaticConfiguration(\n            kind: kind,\n            provider: DailyReadingGoalProvider()\n        ) { entry in\n            DailyReadingGoalView(book: entry.book,\n                                 message: entry.message,\n                                 timeOfDay: entry.timeOfDay)\n            .environment(\\.colorScheme, .dark)\n            .containerBackground(for: .widget) {\n                Background()\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Supported Families",
+      "language": "swift",
+      "startTimeSeconds": 745,
+      "code": "struct DailyReadingGoalWidget: Widget {\n    let kind = \"DailyReadingGoalWidget\"\n\n    var body: some WidgetConfiguration {\n        StaticConfiguration(\n            kind: kind,\n            provider: DailyReadingGoalProvider()\n        ) { entry in\n            DailyReadingGoalView(book: entry.book,\n                                 message: entry.message,\n                                 timeOfDay: entry.timeOfDay)\n            .environment(\\.colorScheme, .dark)\n            .containerBackground(for: .widget) {\n                Background()\n            }\n        }\n        .supportedFamilies([.systemMedium])\n    }\n}"
+    },
+    {
+      "title": "Adding deep links",
+      "language": "swift",
+      "startTimeSeconds": 843,
+      "code": "struct DailyReadingGoalWidget: Widget {\n    let kind = \"DailyReadingGoalWidget\"\n\n    var body: some WidgetConfiguration {\n        StaticConfiguration(\n            kind: kind,\n            provider: DailyReadingGoalProvider()\n        ) { entry in\n            DailyReadingGoalView(book: entry.book,\n                                 message: entry.message,\n                                 timeOfDay: entry.timeOfDay)\n            .environment(\\.colorScheme, .dark)\n            .containerBackground(for: .widget) {\n                Background()\n            }\n            .widgetURL(URL(string: \"bookclub://reading/\\(book.bookID)\"))\n        }\n        .supportedFamilies([.systemMedium])\n    }\n}"
+    },
+    {
+      "title": "Accented rendering mode",
+      "language": "swift",
+      "startTimeSeconds": 1097,
+      "code": "struct BookCoverImage: View {\n    let imageName: String\n\n    var body: some View {\n        Image(imageName: bundle: .main)\n            .widgetAccentedRenderingMode(.fullColor)\n    }\n}"
+    }
+  ],
+  "resources": [],
+  "hasTranscript": true,
+  "transcript": "transcript.md"
+}

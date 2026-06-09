@@ -1,0 +1,93 @@
+{
+  "id": "wwdc2026-389",
+  "eventContentId": 389,
+  "title": "Discover container machines",
+  "description": "Meet container machines, a new tool included in Container that offers a lightweight persistent Linux environment on Mac. Explore how container machines work and how the design of Containerization allows for a performant and seamless experience when developing for Linux on macOS.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/389",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/389",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Swift",
+    "System Services",
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/389/4/8dd035e7-0481-4028-b4bd-e91ba3634198/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/389/4/8dd035e7-0481-4028-b4bd-e91ba3634198/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/389/4/8dd035e7-0481-4028-b4bd-e91ba3634198/downloads/wwdc2026-389_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/389/4/8dd035e7-0481-4028-b4bd-e91ba3634198/downloads/wwdc2026-389_hd.mp4",
+    "duration": 667
+  },
+  "codeSnippets": [
+    {
+      "title": "Viewing container machine commands",
+      "language": "bash",
+      "startTimeSeconds": 281,
+      "code": "container machine"
+    },
+    {
+      "title": "Creating a new container machine",
+      "language": "bash",
+      "startTimeSeconds": 300,
+      "code": "container machine create --name demo --set-default alpine"
+    },
+    {
+      "title": "Echo hi",
+      "language": "bash",
+      "startTimeSeconds": 339,
+      "code": "container machine run echo hi"
+    },
+    {
+      "title": "Running uname",
+      "language": "bash",
+      "startTimeSeconds": 357,
+      "code": "container machine run uname"
+    },
+    {
+      "title": "Start interactive shell",
+      "language": "bash",
+      "startTimeSeconds": 388,
+      "code": "container machine run"
+    },
+    {
+      "title": "List container machines",
+      "language": "bash",
+      "startTimeSeconds": 481,
+      "code": "container machine list"
+    },
+    {
+      "title": "Start interactive shell",
+      "language": "bash",
+      "startTimeSeconds": 502,
+      "code": "container machine run"
+    },
+    {
+      "title": "Run the application",
+      "language": "bash",
+      "startTimeSeconds": 553,
+      "code": "swift run"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Container",
+      "url": "https://github.com/apple/container",
+      "type": "guide",
+      "description": "Details on the container command line tooling, utilizing the Containerization library."
+    },
+    {
+      "title": "Containerization",
+      "url": "https://github.com/apple/containerization",
+      "type": "guide",
+      "description": "Open-source project for the Containerization library."
+    }
+  ],
+  "hasTranscript": true,
+  "transcript": "transcript.md"
+}

@@ -1,0 +1,45 @@
+{
+  "id": "wwdc2026-243",
+  "eventContentId": 243,
+  "title": "Debug and profile agentic app experiences with Instruments",
+  "description": "Explore the enhanced FoundationModels instrument in Xcode to inspect behavior and optimize the performance of agentic flows. Learn how to inspect prompts, analyze latency, and trace control flow in advanced use cases that leverage multiple LanguageModelSessions and profiles.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/243",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/243",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [
+    "ai",
+    "debug",
+    "machine learning",
+    "xcode"
+  ],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/243/4/127c397a-8124-4f3d-ad18-ac2a1d275803/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/243/4/127c397a-8124-4f3d-ad18-ac2a1d275803/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/243/4/127c397a-8124-4f3d-ad18-ac2a1d275803/downloads/wwdc2026-243_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/243/4/127c397a-8124-4f3d-ad18-ac2a1d275803/downloads/wwdc2026-243_hd.mp4",
+    "duration": 860
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Analyzing the runtime performance of your Foundation Models app",
+      "url": "https://developer.apple.com/documentation/FoundationModels/analyzing-the-runtime-performance-of-your-foundation-models-app",
+      "type": "documentation",
+      "description": "Measure how prompts, responses, and tool calls affect token consumption and",
+      "sosumiURL": "https://sosumi.ai/documentation/FoundationModels/analyzing-the-runtime-performance-of-your-foundation-models-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/FoundationModels/analyzing-the-runtime-performance-of-your-foundation-models-app.json"
+    }
+  ],
+  "hasTranscript": true,
+  "transcript": "transcript.md"
+}

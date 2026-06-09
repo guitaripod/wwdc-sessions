@@ -1,0 +1,144 @@
+{
+  "id": "wwdc2026-299",
+  "eventContentId": 299,
+  "title": "Create robust evaluations for agentic apps",
+  "description": "Learn how to leverage advanced features of the Evaluations framework to build robust evaluations for your app. Explore evaluating flows with tool calling and dynamic conditions, and how to define what correct behavior means for your use case. Discover how to generate synthetic data, use judges effectively, and validate your datasets for reliable results.\n",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/299",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/299",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS"
+  ],
+  "keywords": [
+    "ai",
+    "machine learning",
+    "testing",
+    "xcode",
+    "xctest"
+  ],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/299/4/ef9fbc06-fc78-4896-9848-0f0fe2e75fb9/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/299/4/ef9fbc06-fc78-4896-9848-0f0fe2e75fb9/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/299/4/ef9fbc06-fc78-4896-9848-0f0fe2e75fb9/downloads/wwdc2026-299_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/299/4/ef9fbc06-fc78-4896-9848-0f0fe2e75fb9/downloads/wwdc2026-299_hd.mp4",
+    "duration": 1288
+  },
+  "codeSnippets": [
+    {
+      "title": "Generate synthetic data with makeSamples",
+      "language": "swift",
+      "startTimeSeconds": 316,
+      "code": "// Synthetic data\nlet prompt = Prompt(\"\"\"\n    Generate diverse range of book reviews and corresponding tags.\n    Cover a wide range of genres, time periods, cultures, and\n    reader personas. Do not repeat books already in the dataset.\n    \"\"\")\n\nlet dataset = Book.sampleBooks.map { book in\n    ModelSample(prompt: book.review, expected: BookTags(tags: book.tags))\n}\n\nlet targetCount = 100\nvar expandedDataset = dataset\n\nfor try await sample in dataset.makeSamples(prompt, targetCount: targetCount) {\n    expandedDataset.append(sample)\n    print(\"Generated \\(expandedDataset.count) samples so far.\")\n}\n\n2. Configure a custom SampleGenerator — slides 30–43\n\n// Define your own configuration\nlet generator = SampleGenerator<ModelSample<BookTags>>(\n    prompt,\n    samples: dataset,\n    targetCount: targetCount,\n    sessionProvider: {\n        LanguageModelSession( \n            model: PrivateCloudComputeLanguageModel(),\n            instructions: \"\"\"\n                You are a synthetic data generator for a book-tracking app's evaluation suite.\n                Your job is to produce realistic, diverse book entries that will stress-test\n                a tagging system.\n\n                Rules:\n                - Review must be at least 100 characters long.\n                - Review should cover a mix of genre, mood/tone, and themes.\n                - Reviews should vary in length.\n                - Create between 3 and 8 tags.\n                - Tags must be lowercase.\n                \"\"\" \n        )\n    }\n)"
+    },
+    {
+      "title": "Configure a custom SampleGenerator",
+      "language": "swift",
+      "startTimeSeconds": 353,
+      "code": "// Define your own configuration\nlet generator = SampleGenerator<ModelSample<BookTags>>(\n    prompt,\n    samples: dataset,\n    targetCount: targetCount,\n    sessionProvider: {\n        LanguageModelSession( \n            model: PrivateCloudComputeLanguageModel(),\n            instructions: \"\"\"\n                You are a synthetic data generator for a book-tracking app's evaluation suite.\n                Your job is to produce realistic, diverse book entries that will stress-test\n                a tagging system.\n\n                Rules:\n                - Review must be at least 100 characters long.\n                - Review should cover a mix of genre, mood/tone, and themes.\n                - Reviews should vary in length.\n                - Create between 3 and 8 tags.\n                - Tags must be lowercase.\n                \"\"\" \n        )\n    }\n)"
+    },
+    {
+      "title": "Validate generated samples",
+      "language": "swift",
+      "startTimeSeconds": 637,
+      "code": "// Define validation metrics\nvalidator: { sample in\n    guard let book = sample.expected else { return false }\n\n    // Review must be at least 100 characters\n    guard sample.promptDescription.count >= 100 else { return false }\n\n    // Must have between 3 and 8 tags\n    guard (3...8).contains(book.tags.count) else { return false }\n\n    // All tags must be lowercase\n    guard book.tags.allSatisfy({ $0 == $0.lowercased() }) else { return false }\n\n    return true\n}"
+    },
+    {
+      "title": "Access valid and invalid results",
+      "language": "swift",
+      "startTimeSeconds": 658,
+      "code": "// Accessing results\nfor try await sample in generator.run() {\n    // During iteration\n    expandedDataset.append(sample)\n}\n\n// After iteration\nlet allSamples = await generator.samples\nlet invalidSamples = await generator.invalidSamples\n\nprint(\"Generated \\(allSamples.count) new samples. Total: \\(expandedDataset.count)\")"
+    },
+    {
+      "title": "Define a tool's Generable argument",
+      "language": "swift",
+      "startTimeSeconds": 930,
+      "code": "@Generable\nstruct SearchBooksArguments {\n    @Guide(description: \"A freeform search term to match against titles, reviews, or tags\")\n    var query: String?\n\n    @Guide(description: \"Filter results to books with this specific tag\")\n    var tag: String?\n\n    @Guide(description: \"Filter results by mood\")\n    var mood: String?\n\n    @Guide(description: \"Filter results by genre\")\n    var genre: String?\n\n    @Guide(description: \"Maximum number of results to return. Defaults to 5.\")\n    var limit: Int? \n}"
+    },
+    {
+      "title": "A basic trajectory expectation",
+      "language": "swift",
+      "startTimeSeconds": 997,
+      "code": "// \"Find books tagged gothic\"\nTrajectoryExpectation(\n    unordered: [\n        ToolExpectation(\n            \"searchBooks\",\n            arguments: [\n                .exact(argumentName: \"tag\", value: .string(\"gothic\"))\n            ]\n        )\n    ]\n)"
+    },
+    {
+      "title": "Match arguments by intent (naturalLanguage)",
+      "language": "swift",
+      "startTimeSeconds": 1027,
+      "code": "// \"Find something cheerful\"\nTrajectoryExpectation(\n    \"searchBooks\",\n    arguments: [\n        .naturalLanguage(\n            argumentName: \"mood\",\n            criteria: \"Should relate to uplifting, hopeful, or positive feelings\"\n        )\n    ]\n)\nOther matchers available: .contains, .oneOf, .pattern, .range, and more."
+    },
+    {
+      "title": "Expect tool calls in order",
+      "language": "swift",
+      "startTimeSeconds": 1054,
+      "code": "// \"Find gothic books and show details on the first\"\nTrajectoryExpectation(\n    ordered: [\n        ToolExpectation(\n            \"searchBooks\",\n            arguments: [\n                .exact(argumentName: \"tag\", value: .string(\"gothic\"))\n            ]\n        ),\n        ToolExpectation(\n            \"getBookDetails\",\n            arguments: [\n                .keyOnly(argumentName: \"bookId\")\n            ]\n        )\n    ]\n)"
+    },
+    {
+      "title": "Disallow specific tool calls",
+      "language": "swift",
+      "startTimeSeconds": 1075,
+      "code": "// \"Show only sci-fi books. Don't look for similar ones.\"\nTrajectoryExpectation(\n    unordered: [\n        ToolExpectation(\n            \"searchBooks\",\n            arguments: [\n                .naturalLanguage(\n                    argumentName: \"genre\",\n                    criteria: \"Should refer to science fiction\")\n            ]\n        )\n    ],\n    disallowed: [\n        ToolExpectation(\"findSimilarBooks\")\n    ]\n)"
+    },
+    {
+      "title": "Build a tool call evaluation",
+      "language": "swift",
+      "startTimeSeconds": 1094,
+      "code": "// Tool call evaluations\nlet samples = SampleArrayLoader(samples: [\n    ModelSample(\n        prompt: \"Find all the books tagged with 'gothic'.\",\n        instructions: \"Help the user explore their book collection.\",\n        expectations: TrajectoryExpectation(  )\n    )\n])\n\nstruct BookLibraryToolCallEval: Evaluation {\n    var dataset = samples\n\n    let pass = Metric(\"All Passed\")\n    let percent = Metric(\"Percentage Passed\")\n\n    var evaluators: Evaluators { \n        ToolCallEvaluator(allPass: pass, percentagePass: percent)\n    }\n}"
+    },
+    {
+      "title": "Synthesize tool-evaluation samples",
+      "language": "swift",
+      "startTimeSeconds": 1160,
+      "code": "// Tool call evaluations\nlet prompt = Prompt(\"\"\"\n    Generate diverse user queries for a personal book library assistant.\n    Each sample needs a prompt (what the user says), and a trajectory\n    expectation describing which tools should be called and in what order.\n    \"\"\")\n\nlet instructions = \"\"\"\n    AVAILABLE TOOLS:\n    - searchBooks(query?, tag?, mood?, genre?, limit?): search the library\n    - getBookDetails(bookId): full details for one book\n    - findSimilarBooks(bookId, maxResults?): find books sharing tags\n    ORDER REQUIREMENTS:\n    - searchBooks must comes before getBookDetails or findSimilarBooks\n    - Use TrajectoryExpectation(ordered:) when sequence matters, else (unordered:)\n    USE THESE ARGUMENT MATCHERS:\n    - .exact for precise values, .naturalLanguage for fuzzy matching\n    - .keyOnly when any value is acceptable, .range for numeric constraints\n    - .contains/.hasPrefix/.hasSuffix for partial string matching\n    \"\"\""
+    },
+    {
+      "title": "Validate tool-evaluation samples",
+      "language": "swift",
+      "startTimeSeconds": 1191,
+      "code": "// Tool call evaluations\nvalidator: { sample in\n    // Must have expectations defined\n    guard sample.output.expectations != nil else { return false }\n\n    let expectations = sample.output.expectations!\n\n    // Must reference at least one tool\n    let totalExpectations = expectations.ordered.count + expectations.unordered.count\n    guard totalExpectations > 0 else { return false }\n\n    // All tool names must be from the valid set\n    let validTools: Set<String> = [\"searchBooks\", \"getBookDetails\", \"findSimilarBooks\"]\n    let allExpectations = expectations.ordered + expectations.unordered + expectations.disallowed\n    for expectation in allExpectations {\n        guard validTools.contains(expectation.name) else { return false }\n    }\n\n    return true\n}\n\n---"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Book Tracker: Using Evaluations to evaluate an intelligent feature",
+      "url": "https://developer.apple.com/documentation/Evaluations/book-tracker-using-evaluations-to-evaluate-an-intelligent-feature",
+      "type": "samplecode",
+      "description": "Measure and improve the quality of your app’s intelligence-powered features using the Evaluations framework.",
+      "sosumiURL": "https://sosumi.ai/documentation/Evaluations/book-tracker-using-evaluations-to-evaluate-an-intelligent-feature",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Evaluations/book-tracker-using-evaluations-to-evaluate-an-intelligent-feature.json"
+    },
+    {
+      "title": "Generating synthetic datasets",
+      "url": "https://developer.apple.com/documentation/Evaluations/generating-synthetic-evaluation-datasets",
+      "type": "documentation",
+      "description": "Expand a small set of manually written evaluation samples into a larger dataset.",
+      "sosumiURL": "https://sosumi.ai/documentation/Evaluations/generating-synthetic-evaluation-datasets",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Evaluations/generating-synthetic-evaluation-datasets.json"
+    },
+    {
+      "title": "Evaluating tool-calling behavior",
+      "url": "https://developer.apple.com/documentation/Evaluations/evaluating-tool-calling-behavior",
+      "type": "documentation",
+      "description": "Analyze your model’s tool calls against expected trajectories, argument values, and call ordering.",
+      "sosumiURL": "https://sosumi.ai/documentation/Evaluations/evaluating-tool-calling-behavior",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Evaluations/evaluating-tool-calling-behavior.json"
+    },
+    {
+      "title": "Scoring with model-as-judge evaluators",
+      "url": "https://developer.apple.com/documentation/Evaluations/scoring-with-model-as-judge-evaluators",
+      "type": "documentation",
+      "description": "Score subjective qualities like tone, accuracy, and relevance that programmatic checks cannot measure.",
+      "sosumiURL": "https://sosumi.ai/documentation/Evaluations/scoring-with-model-as-judge-evaluators",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Evaluations/scoring-with-model-as-judge-evaluators.json"
+    }
+  ],
+  "hasTranscript": true,
+  "transcript": "transcript.md"
+}

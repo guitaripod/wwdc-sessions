@@ -1,0 +1,7 @@
+# Get ready for WWDC26 — Transcript
+
+[Session page](https://developer.apple.com/videos/play/wwdc2026/394) · [Metadata](metadata.json)
+
+**[0:00]** Hello developers. WWDC26 is almost here. It’s a full week of technology, creativity, and community, all online and free. Here’s how you can get ready right now. Download the Apple Developer app. It’s a great place to experience the entire conference. Plus, it’s got great new stickers, including our favorite dogcow Clarus. Make sure you have a free Apple Developer account to get personalized recommendations for activities and more than 100 sessions on developer.apple.com. Set reminders. Monday, June 8th, Keynote at 10 a.m. Pacific, and Platforms State of the Union follows at one. Next, sign up for Group Labs to check out live streaming Q&A’s hosted by the Apple engineers and designers who build the technologies you use every day.
+
+**[0:45]** Get answers on the Apple Developer Forums now and during WWDC. Find your community. WWDC is for all developers and activities are happening all week online and around the world. And say hello to this year’s WWDC playlist made by our friends at Apple Music. Check out the 2026 Apple Design Award finalists. The best apps and games in the world. Get the WWDC26 wallpaper. New wallpaper, new you. And practice using the Alien sticker in all of your threads. WWDC26 takes place June 8th through the 12th. See you there.

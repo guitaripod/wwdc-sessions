@@ -1,0 +1,168 @@
+{
+  "id": "wwdc2026-315",
+  "eventContentId": 315,
+  "title": "Rediscover the HTML select element",
+  "description": "Learn how to unlock full control of styling select menus on the web. The HTML select element is getting a major upgrade with a new CSS appearance value, and new pseudo-elements. Discover how the select options can contain rich content with new possibilities in HTML. Build selects that match your design system, while keeping all the accessibility and robustness of the default element.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/315",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/315",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Design",
+    "Safari & Web"
+  ],
+  "primaryTopic": "Safari & Web",
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/315/4/f3bd9835-9ced-4f6a-a0f1-655000972674/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/315/4/f3bd9835-9ced-4f6a-a0f1-655000972674/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/315/4/f3bd9835-9ced-4f6a-a0f1-655000972674/downloads/wwdc2026-315_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/315/4/f3bd9835-9ced-4f6a-a0f1-655000972674/downloads/wwdc2026-315_hd.mp4",
+    "duration": 570
+  },
+  "codeSnippets": [
+    {
+      "title": "Basic markup",
+      "language": "xml",
+      "startTimeSeconds": 71,
+      "code": "<label for=\"sort-select\">Sort by</label>\n<select id=\"sort-select\">\n    <option>Newest</option>\n    <option>Oldest</option>\n</select>"
+    },
+    {
+      "title": "Native form control",
+      "language": "yaml",
+      "startTimeSeconds": 157,
+      "code": "select {\n\n}"
+    },
+    {
+      "title": "appearance: base-select",
+      "language": "yaml",
+      "startTimeSeconds": 170,
+      "code": "body {\n    font-family: Gill Sans, sans-serif;\n}\n\nselect {\n    appearance: base-select;\n}"
+    },
+    {
+      "title": "Style the select button",
+      "language": "yaml",
+      "startTimeSeconds": 187,
+      "code": "select {\n    appearance: base-select;\n    background-color: var(--green-10);\n    border: none;\n    padding: 0.6em 1em;\n}"
+    },
+    {
+      "title": "Picker icon",
+      "language": "yaml",
+      "startTimeSeconds": 188,
+      "code": "select:open {\n    background-color: var(--green-100);\n    color: white;\n}"
+    },
+    {
+      "title": "Picker icon open state",
+      "language": "yaml",
+      "startTimeSeconds": 209,
+      "code": "select:open {\n    background-color: var(--green-100);\n    color: white;\n}\n\nselect:open::picker-icon {\n    content: url(icons/arrow-white.svg);\n}"
+    },
+    {
+      "title": "Picker select",
+      "language": "yaml",
+      "startTimeSeconds": 248,
+      "code": "::picker(select) {\n\n}"
+    },
+    {
+      "title": "Picker select spacing",
+      "language": "yaml",
+      "startTimeSeconds": 261,
+      "code": "::picker(select) {\n    appearance: base-select;\n    padding: 4px;\n    margin-top: 0.5em;\n}"
+    },
+    {
+      "title": "Picker select border and shadow",
+      "language": "yaml",
+      "startTimeSeconds": 268,
+      "code": "::picker(select) {\n    appearance: base-select;\n    padding: 4px;\n    margin-top: 0.5em;\n    border: 1px solid rgba(0,0,0,0.2);\n    border-radius: 9px;\n    box-shadow: 0 4px 20px rgba(0,0,0,0.2);\n}"
+    },
+    {
+      "title": "Custom option styles",
+      "language": "yaml",
+      "startTimeSeconds": 276,
+      "code": "option:checked {\n    font-weight: 600;\n}\n\noption:not(:checked) {\n    color: #777;\n}"
+    },
+    {
+      "title": "Picker option checkmark",
+      "language": "yaml",
+      "startTimeSeconds": 282,
+      "code": "option::checkmark {\n    content: url(checkmark.svg);\n    width: 0.65em;\n}"
+    },
+    {
+      "title": "Images in option",
+      "language": "xml",
+      "startTimeSeconds": 331,
+      "code": "<option value=\"flower\">\n    <img src=\"flowers.svg\" alt=\"\">\n    <span class=\"text\">Flowers</span>\n</option>"
+    },
+    {
+      "title": "Custom option highlight",
+      "language": "yaml",
+      "startTimeSeconds": 352,
+      "code": "option::checkmark {\n    display: none;\n}\n\noption:checked {\n    background: #00857e;\n    color: white;\n}"
+    },
+    {
+      "title": "Grid layout in drop downs",
+      "language": "yaml",
+      "startTimeSeconds": 380,
+      "code": "::picker(select) {\n    display: grid;\n    grid-template: \n       1fr 1fr / 1fr 1fr 1fr;\n    gap: 1rem;\n}"
+    },
+    {
+      "title": "Select with image options",
+      "language": "xml",
+      "startTimeSeconds": 403,
+      "code": "<select>\n    <option value=\"anywhere\">\n        <img src=\"icons/all.svg\" alt=\"\">\n        <span class=\"text\">Everything</span>\n    </option>\n    <option value=\"buildings\">\n        <img src=\"icons/buildings.svg\" alt=\"\">\n        <span class=\"text\">Buildings</span>\n    </option>\n    <option value=\"flowers\">\n        <img src=\"icons/flower.svg\" alt=\"\">\n        <span class=\"text\">Flowers</span>\n    </option>\n\n</select>"
+    },
+    {
+      "title": "Select menu",
+      "language": "xml",
+      "startTimeSeconds": 431,
+      "code": "<select>\n\n\n\n    <option>    </option>\n    <option>    </option>\n    <option>    </option>\n</select>"
+    },
+    {
+      "title": "Select menu button",
+      "language": "xml",
+      "startTimeSeconds": 433,
+      "code": "<select>\n    <button>\n\n    </button>\n    <option>    </option>\n    <option>    </option>\n    <option>    </option>\n</select>"
+    },
+    {
+      "title": "SelectedContent Element",
+      "language": "xml",
+      "startTimeSeconds": 449,
+      "code": "<select>\n    <button>\n        <selectedcontent></selectedcontent>\n    </button>\n    <option>     </option>\n    <option>     </option>\n    <option>     </option>\n</select>"
+    }
+  ],
+  "resources": [
+    {
+      "title": "WebKit.org - Example website demonstrating Customizable Select",
+      "url": "https://webkit.org/demos/customizable-select/",
+      "type": "documentation",
+      "description": "An example website demonstrating several customizable select menus. Use Web Inspector to explore the source code to see the markup and CSS style sheets that bring these menus to life."
+    },
+    {
+      "title": "WebKit.org - CSS Grid Lanes Field Guide",
+      "url": "https://gridlanes.webkit.org",
+      "type": "documentation",
+      "description": "The field guide to CSS Grid Lanes — masonry layouts in pure CSS, no JavaScript required. Syntax reference, property guide, and interactive demos."
+    },
+    {
+      "title": "WebKit.org – Report issues to the WebKit open-source project",
+      "url": "https://bugs.webkit.org",
+      "type": "documentation",
+      "description": "Bug tracking for WebKit open source project"
+    },
+    {
+      "title": "Submit feedback",
+      "url": "http://feedbackassistant.apple.com",
+      "type": "documentation",
+      "description": null
+    }
+  ],
+  "hasTranscript": true,
+  "transcript": "transcript.md"
+}

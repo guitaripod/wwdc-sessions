@@ -1,0 +1,77 @@
+{
+  "id": "wwdc2026-304",
+  "eventContentId": 304,
+  "title": "Implement high resolution photo capture",
+  "description": "Capture super high resolution photos in your app using AVFoundation. Learn when to use the three different options to capture images — RAW, exposure-bracketed, and fully processed. Walk through configuring photo capture for 24MP and 48MP images across the Main, Tele, and Ultra Wide cameras. And discover how deferred photo processing keeps your app responsive as more photos are taken.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/304",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/304",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Photos & Camera"
+  ],
+  "primaryTopic": "Photos & Camera",
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/304/4/7a18d6ee-a63d-4402-bfb6-85a21dfac7dd/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/304/4/7a18d6ee-a63d-4402-bfb6-85a21dfac7dd/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/304/4/7a18d6ee-a63d-4402-bfb6-85a21dfac7dd/downloads/wwdc2026-304_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/304/4/7a18d6ee-a63d-4402-bfb6-85a21dfac7dd/downloads/wwdc2026-304_hd.mp4",
+    "duration": 1078
+  },
+  "codeSnippets": [
+    {
+      "title": "Configure the AVCaptureSession",
+      "language": "swift",
+      "startTimeSeconds": 326,
+      "code": "import AVFoundation\n\nprivate let session = AVCaptureSession()\nprivate func configureSession() {\n    session.beginConfiguration()\n    session.sessionPreset = .photo\n}"
+    },
+    {
+      "title": "Configure AVCapturePhotoOutput",
+      "language": "swift",
+      "startTimeSeconds": 371,
+      "code": "import AVFoundation\n\nprivate let photoOutput = AVCapturePhotoOutput()\nprivate let configurePhotoOutput: () -> Void = {\n    photoOutput.maxPhotoQualityPrioritization = .quality // or .balanced\n}"
+    },
+    {
+      "title": "Add maxPhotoDimensions to AVCapturePhotoOutput",
+      "language": "swift",
+      "startTimeSeconds": 398,
+      "code": "import AVFoundation\n\nlet supportedMaxPhotoDimensions = device?.activeFormat.supportedMaxPhotoDimensions ?? []\nif let largestDimension = supportedMaxPhotoDimensions.max(by: { lhs, rhs in\n    Int(lhs.width) * Int(lhs.height) < Int(rhs.width) * Int(rhs.height)\n} ) {\n    photoOutput?.maxPhotoDimensions = largestDimension\n}\n\nsession?.commitConfiguration()\nsession?.startRunning()"
+    },
+    {
+      "title": "Update AVCapturePhotoSettings",
+      "language": "swift",
+      "startTimeSeconds": 441,
+      "code": "import AVFoundation\n\nlet settings = AVCapturePhotoSettings()\nsettings.maxPhotoDimensions = dimension.cmVideoDimensionsValue\nsettings.photoQualityPrioritization = .quality\n\nvar delegate: AVCapturePhotoCaptureDelegate?\n\n// Configure photo request delegate\n\nif let delegate {\n photoOutput?.capturePhoto(with: settings, delegate: delegate)\n}"
+    },
+    {
+      "title": "Prepare resources for the capture",
+      "language": "swift",
+      "startTimeSeconds": 539,
+      "code": "import AVFoundation\n\nlet prepareSettings = AVCapturePhotoSettings()\nprepareSettings.maxPhotoDimensions = photoOutput.maxPhotoDimensions\nprepareSettings.photoQualityPrioritization = .quality\n\nphotoOutput.setPreparedPhotoSettingsArray([prepareSettings]) { prepared, error in\n  if let error = error {\n    print(\"Failed to prepare: \\(error)\")\n      return\n  }\n  print(\"Pipeline prepared: \\(prepared)\")\n}\n\n// Later, when ready to capture — create NEW settings\nlet captureSettings = AVCapturePhotoSettings()\ncaptureSettings.maxPhotoDimensions = photoOutput.maxPhotoDimensions\ncaptureSettings.photoQualityPrioritization = quality\nphotoOutput.capturePhoto(with: captureSettings, delegate: self)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Capturing photos in RAW and Apple ProRAW formats",
+      "url": "https://developer.apple.com/documentation/AVFoundation/capturing-photos-in-raw-and-apple-proraw-formats",
+      "type": "documentation",
+      "description": "Support professional photography workflows by enabling minimally processed image capture in your camera app.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/capturing-photos-in-raw-and-apple-proraw-formats",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/capturing-photos-in-raw-and-apple-proraw-formats.json"
+    },
+    {
+      "title": "AVCam: Building a camera app",
+      "url": "https://developer.apple.com/documentation/AVFoundation/avcam-building-a-camera-app",
+      "type": "samplecode",
+      "description": "Capture photos and record video using the front and rear iPhone and iPad cameras.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/avcam-building-a-camera-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/avcam-building-a-camera-app.json"
+    }
+  ],
+  "hasTranscript": true,
+  "transcript": "transcript.md"
+}

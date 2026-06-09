@@ -1,0 +1,100 @@
+{
+  "id": "wwdc2026-325",
+  "eventContentId": 325,
+  "title": "Dive into Core AI model authoring and optimization",
+  "description": "Dive into the complete custom model deployment workflow for Apple silicon with the new Core AI framework. Discover powerful techniques for authoring models using custom Metal kernels, alongside platform-aware compression strategies. The new Core AI Debugger offers deep intrinsic analysis, and AI-assisted workflows guide you from initial concept to optimized on-device execution.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/325",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/325",
+  "type": "Video",
+  "publishedAt": "2026-06-08T14:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "AI & Machine Learning"
+  ],
+  "primaryTopic": "AI & Machine Learning",
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/325/5/8d08c9d4-3c64-49e1-8590-8b76bd9ad4cb/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/325/5/8d08c9d4-3c64-49e1-8590-8b76bd9ad4cb/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/325/5/8d08c9d4-3c64-49e1-8590-8b76bd9ad4cb/downloads/wwdc2026-325_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/325/5/8d08c9d4-3c64-49e1-8590-8b76bd9ad4cb/downloads/wwdc2026-325_hd.mp4",
+    "duration": 1761
+  },
+  "codeSnippets": [
+    {
+      "title": "Define and export a PyTorch model",
+      "language": "python",
+      "startTimeSeconds": 207,
+      "code": "import torch\nimport torch.nn as nn\n\n# Define a simple model\nclass MLP(nn.Module):\n    def __init__(self):\n        super().__init__()\n        self.fc1 = nn.Linear(256, 512)\n        self.fc2 = nn.Linear(512, 10)\n\n    def forward(self, x):\n        return self.fc2(torch.relu(self.fc1(x)))\n\n# Export with torch.export\nmodel = MLP().eval()\nexample_input = (torch.randn(1, 256),)\nexported_program = torch.export.export(model, example_input)"
+    },
+    {
+      "title": "Convert, optimize and run inference with Core AI",
+      "language": "python",
+      "startTimeSeconds": 242,
+      "code": "import coreai\nimport coreai_torch\nfrom coreai.runtime import NDArray\n\n# Convert to Core AI\nconverter = coreai_torch.TorchConverter()\nconverter.add_exported_program(\n    exported_program,\n    input_names=[\"features\"], output_names=[\"logits\"])\ncore_ai_program = converter.to_coreai()\n\n# Optimize and save to .aimodel\ncore_ai_program.optimize()\nasset = core_ai_program.save_asset(\"mlp.aimodel\")\n\n# Run inference\nspecialized_model = await AIModel.load(\"mlp.aimodel\")\nspecialized_function = specialized_model.load_function(\"main\")\nresult = await specialized_function({\"features\": NDArray(example[0].numpy())})"
+    },
+    {
+      "title": "Define a SiLU Metal kernel with PyTorch reference",
+      "language": "python",
+      "startTimeSeconds": 1272,
+      "code": "import torch\nfrom coreai_torch.dsl import TorchMetalKernel, MetalParameter\n\ndef silu_torch(x):\n    return x * torch.sigmoid(x)\n\nSILU_MSL = \"\"\"\nfloat val = float(x[gid]);\nfloat sig = 1.0f / (1.0f + exp(-val));\ny[gid] = TYPE(val * sig);\n\"\"\"\n\nsilu_kernel = TorchMetalKernel(\n    name=\"fused_silu\",\n    input_names=[\"x\"],\n    result_names=[\"y\"],\n    src=SILU_MSL,\n    torch_defn=silu_torch,\n    metal_params=[MetalParameter(\"gid\", \"uint\", \"thread_position_in_grid\")],\n    template_dtypes={\"x\": \"TYPE\"},\n)"
+    },
+    {
+      "title": "Use a custom Metal kernel and convert with TorchConverter",
+      "language": "python",
+      "startTimeSeconds": 1329,
+      "code": "class MyModel(torch.nn.Module):\n    def __init__(self):\n        super().__init__()\n        self.linear = torch.nn.Linear(256, 256)\n\n    def forward(self, x):\n        h = self.linear(x)\n        n = h.numel()\n        return silu_kernel(\n            h,\n            threads_per_grid_size=(n, 1, 1),\n            threads_per_thread_group=(min(n, 256), 1, 1),\n            result_shapes=[h.shape],\n        )\n\nexported_program = torch.export.export(MyModel(), (torch.randn(1, 256),))\n\nconverter = coreai_torch.TorchConverter()\nconverter.register_custom_kernels([silu_kernel])\nconverter.add_exported_program(exported_program,\n                               input_names=[\"x\"], output_names=[\"y\"])\ndeployable = converter.to_coreai()  # MSL integrated into asset"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Core AI PyTorch Extensions",
+      "url": "https://apple.github.io/coreai-torch",
+      "type": "documentation",
+      "description": "Bring PyTorch models to Core AI for on-device execution."
+    },
+    {
+      "title": "Core AI Python",
+      "url": "https://apple.github.io/coreai-torch/main/coreai-core",
+      "type": "documentation",
+      "description": "Python package for building and running AI Models on Apple hardware."
+    },
+    {
+      "title": "Core AI Optimization",
+      "url": "https://apple.github.io/coreai-optimization",
+      "type": "documentation",
+      "description": "A library for model compression, quantization and related optimizations."
+    },
+    {
+      "title": "Inspecting, debugging, and profiling Core AI models",
+      "url": "https://developer.apple.com/documentation/CoreAI/inspecting-debugging-and-profiling-core-ai-models",
+      "type": "documentation",
+      "description": "Investigate model behavior, monitor activity, and profile performance using the Core AI tools across Xcode and the Core AI Debugger app.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreAI/inspecting-debugging-and-profiling-core-ai-models",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreAI/inspecting-debugging-and-profiling-core-ai-models.json"
+    },
+    {
+      "title": "Inspecting Core AI models with Core AI Debugger",
+      "url": "https://developer.apple.com/documentation/CoreAI/inspecting-core-ai-models-with-core-ai-debugger",
+      "type": "documentation",
+      "description": "Verify model correctness by inspecting the operations and comparing tensor outputs.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreAI/inspecting-core-ai-models-with-core-ai-debugger",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreAI/inspecting-core-ai-models-with-core-ai-debugger.json"
+    },
+    {
+      "title": "Core AI",
+      "url": "https://developer.apple.com/documentation/CoreAI",
+      "type": "documentation",
+      "description": "Run AI models in your app on Apple silicon.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreAI",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreAI.json"
+    }
+  ],
+  "hasTranscript": true,
+  "transcript": "transcript.md"
+}
