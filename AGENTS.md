@@ -47,7 +47,7 @@ bulk-crawl it.
 ## Raw fetch base
 
 Files are fetchable raw at:
-`https://raw.githubusercontent.com/guitaripod/wwdc26-sessions/main/<path>` — e.g. `https://raw.githubusercontent.com/guitaripod/wwdc26-sessions/main/catalog.json`.
+`https://raw.githubusercontent.com/guitaripod/wwdc26-sessions/master/<path>` — e.g. `https://raw.githubusercontent.com/guitaripod/wwdc26-sessions/master/catalog.json`.
 
 ## Provenance
 

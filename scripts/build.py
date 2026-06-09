@@ -20,7 +20,7 @@ EVENT_ID = "wwdc2026"
 EVENT_LABEL = "WWDC26"
 INCLUDE_TYPES = {"Video", "Special Event", "Article"}
 ROOT = Path(__file__).resolve().parent.parent
-RAW_BASE = "https://raw.githubusercontent.com/guitaripod/wwdc26-sessions/main"
+RAW_BASE = "https://raw.githubusercontent.com/guitaripod/wwdc26-sessions/master"
 
 
 def fetch(url, attempts=4):
