@@ -1,6 +1,6 @@
 # WWDC21 Sessions
 
-218 sessions · 199 with transcripts.
+210 sessions · 199 with transcripts.
 
 ## AI & Machine Learning
 
@@ -335,7 +335,6 @@
 
 - [ARC in Swift: Basics and beyond](../../sessions/wwdc2021/10216-arc-in-swift-basics-and-beyond/README.md) · 📝
 - [Bring Core Data concurrency to Swift and SwiftUI](../../sessions/wwdc2021/10017-bring-core-data-concurrency-to-swift-and-swiftui/README.md) · 📝
-- [Challenge: Sense the world around you in Swift Playgrounds](../../sessions/wwdc2021/10338-challenge-sense-the-world-around-you-in-swift-playgrounds/README.md)
 - [Discover and curate Swift Packages using Collections](../../sessions/wwdc2021/10197-discover-and-curate-swift-packages-using-collections/README.md) · 📝
 - [Discover concurrency in SwiftUI](../../sessions/wwdc2021/10019-discover-concurrency-in-swiftui/README.md) · 📝
 - [Explore structured concurrency in Swift](../../sessions/wwdc2021/10134-explore-structured-concurrency-in-swift/README.md) · 📝
@@ -420,15 +419,8 @@
 
 ## Uncategorized
 
-- [Challenge: Achievement Unlocked — Series Finale](../../sessions/wwdc2021/10577-challenge-achievement-unlocked-series-finale/README.md)
-- [Challenge: Create amazing documentation](../../sessions/wwdc2021/10350-challenge-create-amazing-documentation/README.md)
 - [Challenge: Create an engaging tutorial](../../sessions/wwdc2021/10342-challenge-create-an-engaging-tutorial/README.md)
-- [Challenge: Create fun visual effects in Swift Playgrounds](../../sessions/wwdc2021/10337-challenge-create-fun-visual-effects-in-swift-playgrounds/README.md)
 - [Challenge: Explore spatial audio soundscapes](../../sessions/wwdc2021/10326-challenge-explore-spatial-audio-soundscapes/README.md)
-- [Challenge: Focus on Focus APIs in SwiftUI](../../sessions/wwdc2021/10329-challenge-focus-on-focus-apis-in-swiftui/README.md)
-- [Challenge: Framework Freestyle](../../sessions/wwdc2021/10456-challenge-framework-freestyle/README.md)
-- [Challenge: Memgraph Capture the Flag](../../sessions/wwdc2021/10341-challenge-memgraph-capture-the-flag/README.md)
-- [Challenge: Voice Control Synonyms](../../sessions/wwdc2021/10333-challenge-voice-control-synonyms/README.md)
 - [Coding & Design Challenges](../../sessions/wwdc2021/101044-coding-design-challenges/README.md)
 - [Fine-tune your App Transport Security settings](../../sessions/wwdc2021/10281-fine-tune-your-app-transport-security-settings/README.md)
 - [Rewatch the Keynote](../../sessions/wwdc2021/110127-rewatch-the-keynote/README.md)

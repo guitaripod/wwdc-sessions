@@ -27,7 +27,7 @@ Build engaging live experiences with gRPC in your Swift app and backend. gRPC is
 - [gRPC Swift Extras](https://github.com/grpc/grpc-swift-extras) _guide_
 - [gRPC Swift Protobuf](https://github.com/grpc/grpc-swift-protobuf) _guide_
 - [gRPC Swift NIO Transport](https://github.com/grpc/grpc-swift-nio-transport) _guide_
-- [gRPC Swift](https://github.com/grpc/grpc-swift) _guide_
+- [gRPC Swift](https://github.com/grpc/grpc-swift-2) _guide_
 - [Swift on Server](https://www.swift.org/server/) _guide_
 
 ## Code Snippets

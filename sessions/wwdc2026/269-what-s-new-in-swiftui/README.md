@@ -25,6 +25,9 @@ Explore the latest additions to SwiftUI and discover how they can improve your a
 
 ## Documentation & Resources
 
+- [TN3211: Resolving SwiftUI source incompatibilities for State and ContentBuilder](https://developer.apple.com/documentation/Technotes/tn3211-resolving-swiftUI-source-incompatibilities-for-state-and-contentbuilder) _documentation_
+  - Markdown (sosumi.ai): https://sosumi.ai/documentation/Technotes/tn3211-resolving-swiftUI-source-incompatibilities-for-state-and-contentbuilder
+  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/Technotes/tn3211-resolving-swiftUI-source-incompatibilities-for-state-and-contentbuilder.json
 - [State()](https://developer.apple.com/documentation/SwiftUI/State()) _documentation_
   - Markdown (sosumi.ai): https://sosumi.ai/documentation/SwiftUI/State()
   - DocC JSON: https://developer.apple.com/tutorials/data/documentation/SwiftUI/State().json

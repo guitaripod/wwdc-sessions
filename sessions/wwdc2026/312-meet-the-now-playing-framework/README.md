@@ -16,6 +16,8 @@ hasTranscript: true
 
 Get a first look at Now Playing — a Swift framework that connects your app’s media playback to system surfaces like the Lock Screen, Control Center, Dynamic Island, and CarPlay. Discover how to publish playback state and respond to commands using its observable API. Explore remote playback sessions, a new capability that lets your app represent media playing on external devices and bring full playback controls to those same system surfaces.
 
+**Keywords:** `🧀`
+
 ## Transcript
 
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)

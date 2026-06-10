@@ -23,6 +23,15 @@ Discover how to incrementally adopt SwiftUI in your existing AppKit or UIKit app
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
 (1,893 words)
 
+## Documentation & Resources
+
+- [Updating views automatically with observation tracking](https://developer.apple.com/documentation/UIKit/updating-views-automatically-with-observation-tracking) _documentation_
+  - Markdown (sosumi.ai): https://sosumi.ai/documentation/UIKit/updating-views-automatically-with-observation-tracking
+  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/UIKit/updating-views-automatically-with-observation-tracking.json
+- [Updating views automatically with observation tracking](https://developer.apple.com/documentation/AppKit/updating-views-automatically-with-observation-tracking) _documentation_
+  - Markdown (sosumi.ai): https://sosumi.ai/documentation/AppKit/updating-views-automatically-with-observation-tracking
+  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/AppKit/updating-views-automatically-with-observation-tracking.json
+
 ## Code Snippets
 
 ### Observation in AppKit — [3:39]

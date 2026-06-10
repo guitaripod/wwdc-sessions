@@ -89,15 +89,15 @@ import SwiftData
 // Use observation to update map bounds
 
 @Observable @MainActor final class MapCameraController {
-    private let modelResultsObserver: ModelResultsObserver<Trip>
+    private let resultsObserver: ResultsObserver<Trip, Never>
     var bounds: MapCameraBounds?
     private var token: ObservationTracking.Token?
 
     init(modelContext: ModelContext) throws {
-        modelResultsObserver = try ModelResultsObserver<Trip>(modelContext: modelContext)
+        resultsObserver = try ResultsObserver<Trip, Never>(modelContext: modelContext)
 
         token = withContinuousObservation(options: [.didSet]) {[weak self], event in
-            self?.bounds = self?.calculateBounds(trips: modelResultsObserver.results)
+            self?.bounds = self?.calculateBounds(trips: resultsObserver.results)
        }
     }
 

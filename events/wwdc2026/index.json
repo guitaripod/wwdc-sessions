@@ -2,7 +2,7 @@
   "event": "wwdc2026",
   "name": "WWDC26",
   "year": 2026,
-  "sessionCount": 117,
+  "sessionCount": 118,
   "sessions": [
     {
       "id": "wwdc2026-101",
@@ -2122,7 +2122,7 @@
         "spa",
         "zho"
       ],
-      "resourceCount": 3,
+      "resourceCount": 4,
       "codeSnippetCount": 33,
       "path": "sessions/wwdc2026/269-what-s-new-in-swiftui/",
       "description": "Explore the latest additions to SwiftUI and discover how they can improve your apps. We’ll introduce a new Document protocol with direct disk access and snapshot-based diffing for building high-performance apps; new APIs for reordering content in lists, grids, and sections; and toolbar enhancements including visibility priority and auto-minimizing behavior. We’ll also cover expanded presentation APIs — including swipe actions on any view — plus AsyncImage caching improvements and lazy state initialization for Observable types."
@@ -2203,7 +2203,7 @@
         "spa",
         "zho"
       ],
-      "resourceCount": 0,
+      "resourceCount": 2,
       "codeSnippetCount": 6,
       "path": "sessions/wwdc2026/272-use-swiftui-with-appkit-and-uikit/",
       "description": "Discover how to incrementally adopt SwiftUI in your existing AppKit or UIKit app. We’ll show you how to use the Observation framework to automatically update your views, integrate SwiftUI components into an existing view hierarchy, and bring gesture recognizers into SwiftUI. We’ll also explore how to add complete SwiftUI scenes to your app without changing your overall architecture."
@@ -3155,7 +3155,7 @@
         "spa",
         "zho"
       ],
-      "resourceCount": 2,
+      "resourceCount": 3,
       "codeSnippetCount": 8,
       "path": "sessions/wwdc2026/303-build-a-responsive-camera-app-that-launches-quickly/",
       "description": "Discover how to build a camera app that launches instantly so people never miss the perfect shot. Explore how to optimize the entire camera launch sequence — from app startup to first preview frame. Ensure your app has a polished camera experience by learning about new API’s that deliver faster launches, and best practices for smooth preview rendering and maintaining sustainable performance."
@@ -3334,7 +3334,9 @@
       "topics": [
         "Audio & Video"
       ],
-      "keywords": [],
+      "keywords": [
+        "🧀"
+      ],
       "hasTranscript": true,
       "transcriptWordCount": 1735,
       "availableLanguages": [
@@ -4796,6 +4798,39 @@
       "codeSnippetCount": 0,
       "path": "sessions/wwdc2026/397-dub-dub-daily-day-2/",
       "description": "The biggest announcements of WWDC26, all in one place. Catch up on everything revealed, go deeper on the themes shaping this year’s conference, and hear from a special guest joining us to break it all down."
+    },
+    {
+      "id": "wwdc2026-398",
+      "event": "wwdc2026",
+      "year": 2026,
+      "eventContentId": 398,
+      "title": "Dub Dub Daily: Day 3",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2026/398",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/398",
+      "duration": 367,
+      "publishedAt": "2026-06-10T07:00:00-07:00",
+      "platforms": [],
+      "primaryTopic": "Essentials",
+      "topics": [
+        "Essentials"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1121,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2026/398-dub-dub-daily-day-3/",
+      "description": "Apple Intelligence is evolving — fast. Today we dig into the latest AI announcements, what they mean for your apps, and what’s possible now that wasn’t before. Plus, a special guest joins to explore where it’s all heading."
     },
     {
       "id": "wwdc2026-403",

@@ -23,6 +23,9 @@ Discover how to build a camera app that launches instantly so people never miss 
 
 ## Documentation & Resources
 
+- [Build a responsive camera app that launches quickly](https://developer.apple.com/documentation/AVFoundation/build-a-responsive-camera-app-that-launches-quickly) _samplecode_
+  - Markdown (sosumi.ai): https://sosumi.ai/documentation/AVFoundation/build-a-responsive-camera-app-that-launches-quickly
+  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/AVFoundation/build-a-responsive-camera-app-that-launches-quickly.json
 - [Performance and metrics](https://developer.apple.com/documentation/Xcode/performance-and-metrics) _documentation_
   - Markdown (sosumi.ai): https://sosumi.ai/documentation/Xcode/performance-and-metrics
   - DocC JSON: https://developer.apple.com/tutorials/data/documentation/Xcode/performance-and-metrics.json

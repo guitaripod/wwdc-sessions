@@ -65,7 +65,7 @@
       "title": "// Use observation to update map bounds",
       "language": "swift",
       "startTimeSeconds": 500,
-      "code": "// Use observation to update map bounds\n\n@Observable @MainActor final class MapCameraController {\n    private let modelResultsObserver: ModelResultsObserver<Trip>\n    var bounds: MapCameraBounds?\n    private var token: ObservationTracking.Token?\n\n    init(modelContext: ModelContext) throws {\n        modelResultsObserver = try ModelResultsObserver<Trip>(modelContext: modelContext)\n\n        token = withContinuousObservation(options: [.didSet]) {[weak self], event in\n            self?.bounds = self?.calculateBounds(trips: modelResultsObserver.results)\n       }\n    }\n\n    private func calculateBounds(trips: [Trip]) -> MapCameraBounds? { / * */ }\n}"
+      "code": "// Use observation to update map bounds\n\n@Observable @MainActor final class MapCameraController {\n    private let resultsObserver: ResultsObserver<Trip, Never>\n    var bounds: MapCameraBounds?\n    private var token: ObservationTracking.Token?\n\n    init(modelContext: ModelContext) throws {\n        resultsObserver = try ResultsObserver<Trip, Never>(modelContext: modelContext)\n\n        token = withContinuousObservation(options: [.didSet]) {[weak self], event in\n            self?.bounds = self?.calculateBounds(trips: resultsObserver.results)\n       }\n    }\n\n    private func calculateBounds(trips: [Trip]) -> MapCameraBounds? { / * */ }\n}"
     },
     {
       "title": "// Using HistoryObserver to sync with a server",

@@ -1,6 +1,6 @@
 # Swift
 
-150 sessions across all events.
+149 sessions across all events.
 
 
 ### Meet with Apple
@@ -114,7 +114,6 @@
 
 - [ARC in Swift: Basics and beyond](../sessions/wwdc2021/10216-arc-in-swift-basics-and-beyond/README.md)
 - [Bring Core Data concurrency to Swift and SwiftUI](../sessions/wwdc2021/10017-bring-core-data-concurrency-to-swift-and-swiftui/README.md)
-- [Challenge: Sense the world around you in Swift Playgrounds](../sessions/wwdc2021/10338-challenge-sense-the-world-around-you-in-swift-playgrounds/README.md)
 - [Discover and curate Swift Packages using Collections](../sessions/wwdc2021/10197-discover-and-curate-swift-packages-using-collections/README.md)
 - [Discover concurrency in SwiftUI](../sessions/wwdc2021/10019-discover-concurrency-in-swiftui/README.md)
 - [Explore structured concurrency in Swift](../sessions/wwdc2021/10134-explore-structured-concurrency-in-swift/README.md)

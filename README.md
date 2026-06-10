@@ -5,7 +5,7 @@ with Apple): clean transcripts, structured metadata, inline code snippets, and l
 documentation each session references. Built so AI agents (and humans) can consume WWDC content
 without scraping JavaScript-rendered pages.
 
-- **1625** sessions across **15** events · **1526** with full transcripts
+- **1618** sessions across **15** events · **1527** with full transcripts
 - Machine entrypoint: [`catalog.json`](catalog.json) · also [`events.json`](events.json) · [`topics.json`](topics.json) · [`llms.txt`](llms.txt)
 - JSON Schemas: [`schema/`](schema/) · Agent guide: [`AGENTS.md`](AGENTS.md)
 - Per session: `metadata.json`, `README.md`, `transcript.md`, `transcript.json`
@@ -21,8 +21,6 @@ GET <rawBase>/<path>metadata.json                  # structured + resource links
 
 Each linked Apple doc includes a `sosumiURL` (clean Markdown) so an agent can fetch documentation
 on demand. See [`AGENTS.md`](AGENTS.md) for path/locator conventions.
-
-**Claude Code users:** a `/wwdc` workflow for querying this KB is available in [guitaripod/claudeconfig](https://github.com/guitaripod/claudeconfig/blob/master/workflows/wwdc.js).
 
 ## Regenerate & validate
 
