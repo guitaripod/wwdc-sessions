@@ -22,6 +22,8 @@ GET <rawBase>/<path>metadata.json                  # structured + resource links
 Each linked Apple doc includes a `sosumiURL` (clean Markdown) so an agent can fetch documentation
 on demand. See [`AGENTS.md`](AGENTS.md) for path/locator conventions.
 
+**Claude Code users:** a `/wwdc` workflow for querying this KB is available in [guitaripod/claudeconfig](https://github.com/guitaripod/claudeconfig/blob/master/workflows/wwdc.js).
+
 ## Regenerate & validate
 
 ```
