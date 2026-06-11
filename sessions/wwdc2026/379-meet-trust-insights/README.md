@@ -25,7 +25,7 @@ Uncover how Trust Insights can help protect people from social scams and coercio
 
 ## Documentation & Resources
 
-- [TrustInsights](https://developer.apple.com/documentation/TrustInsights) _documentation_
+- [Trust Insights](https://developer.apple.com/documentation/TrustInsights) _documentation_
   - Markdown (sosumi.ai): https://sosumi.ai/documentation/TrustInsights
   - DocC JSON: https://developer.apple.com/tutorials/data/documentation/TrustInsights.json
 

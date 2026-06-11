@@ -20,7 +20,7 @@
 - [Build with the new Apple Foundation Model on Private Cloud Compute](../sessions/wwdc2026/319-build-with-the-new-apple-foundation-model-on-private-cloud-c/README.md)
 - [Code-along: Make your app available to Siri](../sessions/wwdc2026/344-code-along-make-your-app-available-to-siri/README.md)
 - [Create UI prototypes using agents in Xcode](../sessions/wwdc2026/227-create-ui-prototypes-using-agents-in-xcode/README.md)
-- [Create high quality images using Image Playground](../sessions/wwdc2026/375-create-high-quality-images-using-image-playground/README.md)
+- [Create high-quality images using Image Playground](../sessions/wwdc2026/375-create-high-quality-images-using-image-playground/README.md)
 - [Create robust evaluations for agentic apps](../sessions/wwdc2026/299-create-robust-evaluations-for-agentic-apps/README.md)
 - [Debug and profile agentic app experiences with Instruments](../sessions/wwdc2026/243-debug-and-profile-agentic-app-experiences-with-instruments/README.md)
 - [Design immersive environments for visionOS apps and the spatial web](../sessions/wwdc2026/234-design-immersive-environments-for-visionos-apps-and-the-spat/README.md)

@@ -57,7 +57,7 @@
       "title": "Mandelbrot set in MLX Swift (array)",
       "language": "swift",
       "startTimeSeconds": 327,
-      "code": "// Compute the Mandelbrot set on a grid of complex numbers\nimport MLX\n\nlet x = linspace(-2.0, 0.5, count: w)\nlet y = linspace(-1.25, 1.25, count: h).reshaped(h, 1)\nlet c = x + y.asImaginary()\n\nvar z = MLXArray.zeros(like: c)\nvar counts = MLXArray.zeros(c.shape, dtype: .int16)\n\nfor _ in 0 ..< maxIterations {\n    z = z * z + c                       // iterate z ← z² + c\n    counts = counts + (abs(z) .< 2)     // count bounded iterations\n}"
+      "code": "// Compute the Mandelbrot set on a grid of complex numbers\nimport MLX\n\nlet x = linspace(Float(-2.0), 0.5, count: w)\nlet y = linspace(Float(-1.25), 1.25, count: h).reshaped(h, 1)\nlet c = x + y.asImaginary()\n\nvar z = MLXArray.zeros(like: c)\nvar counts = MLXArray.zeros(c.shape, dtype: .int16)\n\nfor _ in 0 ..< maxIterations {\n    z = z * z + c                       // iterate z ← z² + c\n    counts = counts + (abs(z) .< 2)     // count bounded iterations\n}"
     },
     {
       "title": "Jacobi iteration with conv2d",

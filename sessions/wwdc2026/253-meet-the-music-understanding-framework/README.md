@@ -26,7 +26,7 @@ Discover Music Understanding, a new framework that lets your app analyze audio a
 - [Creating visuals with Music Understanding analysis results](https://developer.apple.com/documentation/MusicUnderstanding/create-visuals-using-musicunderstanding-analysis-results) _samplecode_
   - Markdown (sosumi.ai): https://sosumi.ai/documentation/MusicUnderstanding/create-visuals-using-musicunderstanding-analysis-results
   - DocC JSON: https://developer.apple.com/tutorials/data/documentation/MusicUnderstanding/create-visuals-using-musicunderstanding-analysis-results.json
-- [MusicUnderstanding](https://developer.apple.com/documentation/MusicUnderstanding) _documentation_
+- [Music Understanding](https://developer.apple.com/documentation/MusicUnderstanding) _documentation_
   - Markdown (sosumi.ai): https://sosumi.ai/documentation/MusicUnderstanding
   - DocC JSON: https://developer.apple.com/tutorials/data/documentation/MusicUnderstanding.json
 

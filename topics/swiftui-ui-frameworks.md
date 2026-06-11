@@ -1,6 +1,6 @@
 # SwiftUI & UI Frameworks
 
-332 sessions across all events.
+331 sessions across all events.
 
 
 ### Meet with Apple
@@ -194,7 +194,6 @@
 - [Bring Core Data concurrency to Swift and SwiftUI](../sessions/wwdc2021/10017-bring-core-data-concurrency-to-swift-and-swiftui/README.md)
 - [Build a workout app for Apple Watch](../sessions/wwdc2021/10009-build-a-workout-app-for-apple-watch/README.md)
 - [Build apps that share data through CloudKit and Core Data](../sessions/wwdc2021/10015-build-apps-that-share-data-through-cloudkit-and-core-data/README.md)
-- [Challenge: Prototype with SwiftUI](../sessions/wwdc2021/110120-challenge-prototype-with-swiftui/README.md)
 - [Craft search experiences in SwiftUI](../sessions/wwdc2021/10176-craft-search-experiences-in-swiftui/README.md)
 - [Create accessible experiences for watchOS](../sessions/wwdc2021/10223-create-accessible-experiences-for-watchos/README.md)
 - [Customize and resize sheets in UIKit](../sessions/wwdc2021/10063-customize-and-resize-sheets-in-uikit/README.md)

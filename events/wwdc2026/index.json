@@ -2,7 +2,7 @@
   "event": "wwdc2026",
   "name": "WWDC26",
   "year": 2026,
-  "sessionCount": 118,
+  "sessionCount": 119,
   "sessions": [
     {
       "id": "wwdc2026-101",
@@ -2250,7 +2250,7 @@
       "resourceCount": 2,
       "codeSnippetCount": 4,
       "path": "sessions/wwdc2026/274-what-s-new-in-swiftdata/",
-      "description": "Discover the latest enhancements to SwiftData. We’ll show you how to persist custom and third-party types using Codable, and group fetched data into sections in your SwiftUI app. We’ll also explore how to observe data store changes anywhere else using ModelResultsObserver and HistoryObserver, giving you the flexibility to drive powerful state objects, integrate with delegate-based architectures, and react precisely to model updates."
+      "description": "Discover the latest enhancements to SwiftData. We’ll show you how to persist custom and third-party types using Codable, and group fetched data into sections in your SwiftUI app. We’ll also explore how to observe data store changes anywhere else using ResultsObserver and HistoryObserver, giving you the flexibility to drive powerful state objects and react precisely to model updates."
     },
     {
       "id": "wwdc2026-275",
@@ -4225,7 +4225,7 @@
         "spa",
         "zho"
       ],
-      "resourceCount": 0,
+      "resourceCount": 2,
       "codeSnippetCount": 5,
       "path": "sessions/wwdc2026/357-speedrun-your-game-port-with-agentic-coding/",
       "description": "Kickstart your game’s journey to Apple platforms with new agentic skills in Game Porting Toolkit 4 that can dramatically accelerate the process of porting your game. Explore how to work alongside your AI coding assistant to adopt Metal 4, integrate MetalFX, and tune your game for Apple hardware. Find out how agents can autonomously troubleshoot GPU rendering issues using Metal debugging tools, empowering you to focus on what matters most."
@@ -4336,7 +4336,7 @@
         "spa",
         "zho"
       ],
-      "resourceCount": 3,
+      "resourceCount": 4,
       "codeSnippetCount": 4,
       "path": "sessions/wwdc2026/369-find-your-accessory-with-bluetooth-channel-sounding/",
       "description": "Get started with Channel Sounding to bring distance and direction awareness to your Bluetooth accessories. Dive into the new Nearby Interaction and Core Bluetooth APIs, and walk through the accessory-side changes you’ll need. Optimize power consumption while ensuring a smooth, responsive experience."
@@ -4431,7 +4431,7 @@
       "event": "wwdc2026",
       "year": 2026,
       "eventContentId": 375,
-      "title": "Create high quality images using Image Playground",
+      "title": "Create high-quality images using Image Playground",
       "type": "Video",
       "url": "https://developer.apple.com/videos/play/wwdc2026/375",
       "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/375",
@@ -4831,6 +4831,39 @@
       "codeSnippetCount": 0,
       "path": "sessions/wwdc2026/398-dub-dub-daily-day-3/",
       "description": "Apple Intelligence is evolving — fast. Today we dig into the latest AI announcements, what they mean for your apps, and what’s possible now that wasn’t before. Plus, a special guest joins to explore where it’s all heading."
+    },
+    {
+      "id": "wwdc2026-399",
+      "event": "wwdc2026",
+      "year": 2026,
+      "eventContentId": 399,
+      "title": "Dub Dub Daily: Day 4",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2026/399",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/399",
+      "duration": 397,
+      "publishedAt": "2026-06-11T07:00:00-07:00",
+      "platforms": [],
+      "primaryTopic": "Essentials",
+      "topics": [
+        "Essentials"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1251,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2026/399-dub-dub-daily-day-4/",
+      "description": "Your tools just got a serious upgrade. We’re covering Xcode and the developer toolchain designed to help you build faster and smarter — with a special guest who knows what it takes to make developers more productive."
     },
     {
       "id": "wwdc2026-403",

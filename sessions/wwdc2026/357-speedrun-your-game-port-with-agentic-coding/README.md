@@ -21,6 +21,12 @@ Kickstart your game’s journey to Apple platforms with new agentic skills in Ga
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
 (3,353 words)
 
+## Documentation & Resources
+
+- [Game Porting Toolkit on GitHub](https://github.com/apple/game-porting-toolkit/) _download_
+- [Download the Game Porting Toolkit](https://developer.apple.com/games/game-porting-toolkit/) _documentation_
+  - Markdown (sosumi.ai): https://sosumi.ai/games/game-porting-toolkit/
+
 ## Code Snippets
 
 ### Install Game Porting Toolkit skills — [3:31]

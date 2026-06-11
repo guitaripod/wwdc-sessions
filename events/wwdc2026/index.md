@@ -1,6 +1,6 @@
 # WWDC26 Sessions
 
-118 sessions · 114 with transcripts.
+119 sessions · 115 with transcripts.
 
 ## AI & Machine Learning
 
@@ -14,7 +14,7 @@
 - [Build with the new Apple Foundation Model on Private Cloud Compute](../../sessions/wwdc2026/319-build-with-the-new-apple-foundation-model-on-private-cloud-c/README.md) · 📝
 - [Code-along: Make your app available to Siri](../../sessions/wwdc2026/344-code-along-make-your-app-available-to-siri/README.md) · 📝
 - [Create UI prototypes using agents in Xcode](../../sessions/wwdc2026/227-create-ui-prototypes-using-agents-in-xcode/README.md) · 📝
-- [Create high quality images using Image Playground](../../sessions/wwdc2026/375-create-high-quality-images-using-image-playground/README.md) · 📝
+- [Create high-quality images using Image Playground](../../sessions/wwdc2026/375-create-high-quality-images-using-image-playground/README.md) · 📝
 - [Create robust evaluations for agentic apps](../../sessions/wwdc2026/299-create-robust-evaluations-for-agentic-apps/README.md) · 📝
 - [Debug and profile agentic app experiences with Instruments](../../sessions/wwdc2026/243-debug-and-profile-agentic-app-experiences-with-instruments/README.md) · 📝
 - [Design immersive environments for visionOS apps and the spatial web](../../sessions/wwdc2026/234-design-immersive-environments-for-visionos-apps-and-the-spat/README.md) · 📝
@@ -141,6 +141,7 @@
 - [Design intuitive search experiences](../../sessions/wwdc2026/292-design-intuitive-search-experiences/README.md) · 📝
 - [Dub Dub Daily: Day 2](../../sessions/wwdc2026/397-dub-dub-daily-day-2/README.md) · 📝
 - [Dub Dub Daily: Day 3](../../sessions/wwdc2026/398-dub-dub-daily-day-3/README.md) · 📝
+- [Dub Dub Daily: Day 4](../../sessions/wwdc2026/399-dub-dub-daily-day-4/README.md) · 📝
 - [Get ready for WWDC26](../../sessions/wwdc2026/394-get-ready-for-wwdc26/README.md) · 📝
 - [Keynote](../../sessions/wwdc2026/101-keynote/README.md)
 - [Keynote (ASL)](../../sessions/wwdc2026/111-keynote-asl/README.md)

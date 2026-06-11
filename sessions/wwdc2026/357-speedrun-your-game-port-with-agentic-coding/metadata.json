@@ -74,7 +74,21 @@
       "code": "// With skill\nIRShaderReflection* refl = IRShaderReflectionCreate();\nIRObjectGetReflection(compiledObj, IRShaderStageCompute, refl);\n// ...\ns_RootSignature.Reset(4, 2); // Reflection reveals: 4 params\n\n// Without skill\ns_RootSignature.Reset(5, 2);"
     }
   ],
-  "resources": [],
+  "resources": [
+    {
+      "title": "Game Porting Toolkit on GitHub",
+      "url": "https://github.com/apple/game-porting-toolkit/",
+      "type": "download",
+      "description": "This repository includes a collection of agent skills to assist porting games to Apple platforms so you can produce higher-quality ports and ship on Apple platforms faster."
+    },
+    {
+      "title": "Download the Game Porting Toolkit",
+      "url": "https://developer.apple.com/games/game-porting-toolkit/",
+      "type": "documentation",
+      "description": "The Game Porting Toolkit includes an updated set of tools that can help you accelerate porting your advanced games to Mac, and to get them up and running on iPad and iPhone.",
+      "sosumiURL": "https://sosumi.ai/games/game-porting-toolkit/"
+    }
+  ],
   "path": "sessions/wwdc2026/357-speedrun-your-game-port-with-agentic-coding/",
   "files": {
     "metadata": "sessions/wwdc2026/357-speedrun-your-game-port-with-agentic-coding/metadata.json",

@@ -1,6 +1,6 @@
 # Accessibility & Inclusion
 
-70 sessions across all events.
+69 sessions across all events.
 
 
 ### Tech Talks
@@ -55,7 +55,6 @@
 - [Accessibility by design: An Apple Watch for everyone](../sessions/wwdc2021/10308-accessibility-by-design-an-apple-watch-for-everyone/README.md)
 - [Accessibility by design: An Apple Watch for everyone (ASL)](../sessions/wwdc2021/110142-accessibility-by-design-an-apple-watch-for-everyone-asl/README.md)
 - [Bring accessibility to charts in your app](../sessions/wwdc2021/10122-bring-accessibility-to-charts-in-your-app/README.md)
-- [Challenge: VoiceOver Maze](../sessions/wwdc2021/10334-challenge-voiceover-maze/README.md)
 - [Create accessible experiences for watchOS](../sessions/wwdc2021/10223-create-accessible-experiences-for-watchos/README.md)
 - [Developer spotlight: Accessibility](../sessions/wwdc2021/10318-developer-spotlight-accessibility/README.md)
 - [Localize your SwiftUI app](../sessions/wwdc2021/10220-localize-your-swiftui-app/README.md)

@@ -14,7 +14,7 @@ hasTranscript: true
 
 **Event:** WWDC26 · **Topic:** App Services · **Platforms:** iOS, iPadOS, macOS, tvOS, visionOS, watchOS · **Published:** 2026-06-08 · **Session:** [wwdc2026-274](https://developer.apple.com/videos/play/wwdc2026/274)
 
-Discover the latest enhancements to SwiftData. We’ll show you how to persist custom and third-party types using Codable, and group fetched data into sections in your SwiftUI app. We’ll also explore how to observe data store changes anywhere else using ModelResultsObserver and HistoryObserver, giving you the flexibility to drive powerful state objects, integrate with delegate-based architectures, and react precisely to model updates.
+Discover the latest enhancements to SwiftData. We’ll show you how to persist custom and third-party types using Codable, and group fetched data into sections in your SwiftUI app. We’ll also explore how to observe data store changes anywhere else using ResultsObserver and HistoryObserver, giving you the flexibility to drive powerful state objects and react precisely to model updates.
 
 **Keywords:** `screenshots`
 

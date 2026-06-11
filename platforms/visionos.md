@@ -21,7 +21,7 @@
 - [Collaborate on structured 3D models in visionOS](../sessions/wwdc2026/284-collaborate-on-structured-3d-models-in-visionos/README.md) — WWDC26
 - [Compose advanced graphics effects with SwiftUI](../sessions/wwdc2026/322-compose-advanced-graphics-effects-with-swiftui/README.md) — WWDC26
 - [Craft clear names for features and labels in your app](../sessions/wwdc2026/290-craft-clear-names-for-features-and-labels-in-your-app/README.md) — WWDC26
-- [Create high quality images using Image Playground](../sessions/wwdc2026/375-create-high-quality-images-using-image-playground/README.md) — WWDC26
+- [Create high-quality images using Image Playground](../sessions/wwdc2026/375-create-high-quality-images-using-image-playground/README.md) — WWDC26
 - [Create live communication experiences](../sessions/wwdc2026/226-create-live-communication-experiences/README.md) — WWDC26
 - [Create robust evaluations for agentic apps](../sessions/wwdc2026/299-create-robust-evaluations-for-agentic-apps/README.md) — WWDC26
 - [Create web extensions for Safari](../sessions/wwdc2026/216-create-web-extensions-for-safari/README.md) — WWDC26

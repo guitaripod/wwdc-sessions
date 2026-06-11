@@ -2,15 +2,15 @@
   "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/catalog.schema.json",
   "schemaVersion": 1,
   "builderVersion": 2,
-  "generatedAt": "2026-06-10T19:51:50+00:00",
-  "sourceUpdated": "2026-06-10T10:47:31-07:00",
+  "generatedAt": "2026-06-11T19:54:16+00:00",
+  "sourceUpdated": "2026-06-11T12:24:09-07:00",
   "source": "Apple WWDC developer-video feeds (resolved via api2024.wwdc.io)",
   "rawBase": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master",
   "license": "Content © Apple Inc. Tooling under MIT (see LICENSE/NOTICE).",
   "counts": {
     "events": 15,
-    "sessions": 1618,
-    "transcripts": 1527
+    "sessions": 1616,
+    "transcripts": 1528
   },
   "links": {
     "events": "events.json",
@@ -28,8 +28,8 @@
       "name": "WWDC26",
       "year": 2026,
       "startTime": "2026-06-08T10:00:00-07:00",
-      "sessionCount": 118,
-      "transcriptCount": 114,
+      "sessionCount": 119,
+      "transcriptCount": 115,
       "index": "events/wwdc2026/index.md",
       "indexJSON": "events/wwdc2026/index.json"
     },
@@ -88,7 +88,7 @@
       "name": "WWDC21",
       "year": 2021,
       "startTime": "2021-06-07T10:00:00-07:00",
-      "sessionCount": 210,
+      "sessionCount": 207,
       "transcriptCount": 199,
       "index": "events/wwdc2021/index.md",
       "indexJSON": "events/wwdc2021/index.json"
@@ -2697,7 +2697,7 @@
       "resourceCount": 2,
       "codeSnippetCount": 4,
       "path": "sessions/wwdc2026/274-what-s-new-in-swiftdata/",
-      "description": "Discover the latest enhancements to SwiftData. We’ll show you how to persist custom and third-party types using Codable, and group fetched data into sections in your SwiftUI app. We’ll also explore how to observe data store changes anywhere else using ModelResultsObserver and HistoryObserver, giving you the flexibility to drive powerful state objects, integrate with delegate-based architectures, and react precisely to model updates."
+      "description": "Discover the latest enhancements to SwiftData. We’ll show you how to persist custom and third-party types using Codable, and group fetched data into sections in your SwiftUI app. We’ll also explore how to observe data store changes anywhere else using ResultsObserver and HistoryObserver, giving you the flexibility to drive powerful state objects and react precisely to model updates."
     },
     {
       "id": "wwdc2026-275",
@@ -4672,7 +4672,7 @@
         "spa",
         "zho"
       ],
-      "resourceCount": 0,
+      "resourceCount": 2,
       "codeSnippetCount": 5,
       "path": "sessions/wwdc2026/357-speedrun-your-game-port-with-agentic-coding/",
       "description": "Kickstart your game’s journey to Apple platforms with new agentic skills in Game Porting Toolkit 4 that can dramatically accelerate the process of porting your game. Explore how to work alongside your AI coding assistant to adopt Metal 4, integrate MetalFX, and tune your game for Apple hardware. Find out how agents can autonomously troubleshoot GPU rendering issues using Metal debugging tools, empowering you to focus on what matters most."
@@ -4783,7 +4783,7 @@
         "spa",
         "zho"
       ],
-      "resourceCount": 3,
+      "resourceCount": 4,
       "codeSnippetCount": 4,
       "path": "sessions/wwdc2026/369-find-your-accessory-with-bluetooth-channel-sounding/",
       "description": "Get started with Channel Sounding to bring distance and direction awareness to your Bluetooth accessories. Dive into the new Nearby Interaction and Core Bluetooth APIs, and walk through the accessory-side changes you’ll need. Optimize power consumption while ensuring a smooth, responsive experience."
@@ -4878,7 +4878,7 @@
       "event": "wwdc2026",
       "year": 2026,
       "eventContentId": 375,
-      "title": "Create high quality images using Image Playground",
+      "title": "Create high-quality images using Image Playground",
       "type": "Video",
       "url": "https://developer.apple.com/videos/play/wwdc2026/375",
       "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/375",
@@ -5278,6 +5278,39 @@
       "codeSnippetCount": 0,
       "path": "sessions/wwdc2026/398-dub-dub-daily-day-3/",
       "description": "Apple Intelligence is evolving — fast. Today we dig into the latest AI announcements, what they mean for your apps, and what’s possible now that wasn’t before. Plus, a special guest joins to explore where it’s all heading."
+    },
+    {
+      "id": "wwdc2026-399",
+      "event": "wwdc2026",
+      "year": 2026,
+      "eventContentId": 399,
+      "title": "Dub Dub Daily: Day 4",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2026/399",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/399",
+      "duration": 397,
+      "publishedAt": "2026-06-11T07:00:00-07:00",
+      "platforms": [],
+      "primaryTopic": "Essentials",
+      "topics": [
+        "Essentials"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1251,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2026/399-dub-dub-daily-day-4/",
+      "description": "Your tools just got a serious upgrade. We’re covering Xcode and the developer toolchain designed to help you build faster and smarter — with a special guest who knows what it takes to make developers more productive."
     },
     {
       "id": "wwdc2026-403",
@@ -44437,61 +44470,6 @@
       "description": "How do you approach creating apps for everyone? Learn from developers who are blind or deaf themselves as they discuss the process of making technology accessible. Discover how their unique perspectives have sparked innovation at their companies and helped make their apps even more inclusive."
     },
     {
-      "id": "wwdc2021-10326",
-      "event": "wwdc2021",
-      "year": 2021,
-      "eventContentId": 10326,
-      "title": "Challenge: Explore spatial audio soundscapes",
-      "type": "Article",
-      "url": "https://developer.apple.com/news/?id=ivsjgxq1",
-      "sosumiURL": "https://sosumi.ai/news/?id=ivsjgxq1",
-      "duration": null,
-      "publishedAt": "2021-06-10T18:00:09-07:00",
-      "platforms": [],
-      "primaryTopic": null,
-      "topics": [],
-      "keywords": [
-        "challenges-content"
-      ],
-      "hasTranscript": false,
-      "transcriptWordCount": 0,
-      "availableLanguages": [],
-      "resourceCount": 0,
-      "codeSnippetCount": 0,
-      "path": "sessions/wwdc2021/10326-challenge-explore-spatial-audio-soundscapes/",
-      "description": "Use spatial audio to tell more immersive stories in your app and explore the demo used in the “Immerse your app in spatial audio” session."
-    },
-    {
-      "id": "wwdc2021-10334",
-      "event": "wwdc2021",
-      "year": 2021,
-      "eventContentId": 10334,
-      "title": "Challenge: VoiceOver Maze",
-      "type": "Article",
-      "url": "https://developer.apple.com/news/?id=s0tca9uk",
-      "sosumiURL": "https://sosumi.ai/news/?id=s0tca9uk",
-      "duration": null,
-      "publishedAt": "2021-06-10T18:00:24-07:00",
-      "platforms": [],
-      "primaryTopic": "Accessibility & Inclusion",
-      "topics": [
-        "Accessibility & Inclusion"
-      ],
-      "keywords": [
-        "accessibility",
-        "challenge",
-        "friday",
-        "wwdc21"
-      ],
-      "hasTranscript": false,
-      "transcriptWordCount": 0,
-      "availableLanguages": [],
-      "resourceCount": 0,
-      "codeSnippetCount": 0,
-      "path": "sessions/wwdc2021/10334-challenge-voiceover-maze/",
-      "description": "Navigate to the end of a dark maze using VoiceOver as your guide."
-    },
-    {
       "id": "wwdc2021-10342",
       "event": "wwdc2021",
       "year": 2021,
@@ -44559,31 +44537,6 @@
       "codeSnippetCount": 12,
       "path": "sessions/wwdc2021/10349-sf-symbols-in-swiftui/",
       "description": "Discover how you can incorporate SF Symbols into your SwiftUI app. We’ll explore basic techniques for presenting symbols, customizing their size, and showing different variants. We’ll also take you through the latest updates to symbol colorization and help you pick the right tool for your app’s needs."
-    },
-    {
-      "id": "wwdc2021-110120",
-      "event": "wwdc2021",
-      "year": 2021,
-      "eventContentId": 110120,
-      "title": "Challenge: Prototype with SwiftUI",
-      "type": "Article",
-      "url": "https://developer.apple.com/news/?id=zgtznbbc",
-      "sosumiURL": "https://sosumi.ai/news/?id=zgtznbbc",
-      "duration": null,
-      "publishedAt": "2021-06-10T18:00:18-07:00",
-      "platforms": [],
-      "primaryTopic": "SwiftUI & UI Frameworks",
-      "topics": [
-        "SwiftUI & UI Frameworks"
-      ],
-      "keywords": [],
-      "hasTranscript": false,
-      "transcriptWordCount": 0,
-      "availableLanguages": [],
-      "resourceCount": 0,
-      "codeSnippetCount": 0,
-      "path": "sessions/wwdc2021/110120-challenge-prototype-with-swiftui/",
-      "description": "While SwiftUI is a powerful framework, one of its key features is its simplicity. Designers with very little knowledge of code can easily create prototypes with human-readable syntax and interactive Xcode Previews. In this Challenge, we invite you to say “hello, world” with a brilliant SwiftUI-based prototype."
     },
     {
       "id": "wwdc2021-110127",

@@ -23,6 +23,9 @@ Get started with Channel Sounding to bring distance and direction awareness to y
 
 ## Documentation & Resources
 
+- [Measuring distance between devices using Channel Sounding](https://developer.apple.com/documentation/CoreBluetooth/measuring-distance-between-devices-using-channel-sounding) _samplecode_
+  - Markdown (sosumi.ai): https://sosumi.ai/documentation/CoreBluetooth/measuring-distance-between-devices-using-channel-sounding
+  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/CoreBluetooth/measuring-distance-between-devices-using-channel-sounding.json
 - [AccessorySetupKit](https://developer.apple.com/documentation/AccessorySetupKit) _documentation_
   - Markdown (sosumi.ai): https://sosumi.ai/documentation/AccessorySetupKit
   - DocC JSON: https://developer.apple.com/tutorials/data/documentation/AccessorySetupKit.json

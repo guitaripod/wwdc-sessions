@@ -1,13 +1,13 @@
 ---
 id: "wwdc2026-375"
 event: "wwdc2026"
-title: "Create high quality images using Image Playground"
+title: "Create high-quality images using Image Playground"
 url: "https://developer.apple.com/videos/play/wwdc2026/375"
 language: "eng"
 words: 1729
 ---
 
-# Create high quality images using Image Playground — Transcript
+# Create high-quality images using Image Playground — Transcript
 
 [Session page](https://developer.apple.com/videos/play/wwdc2026/375) · [Metadata](metadata.json) · [Structured JSON](transcript.json)
 

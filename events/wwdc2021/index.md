@@ -1,6 +1,6 @@
 # WWDC21 Sessions
 
-210 sessions · 199 with transcripts.
+207 sessions · 199 with transcripts.
 
 ## AI & Machine Learning
 
@@ -20,7 +20,6 @@
 - [Accessibility by design: An Apple Watch for everyone](../../sessions/wwdc2021/10308-accessibility-by-design-an-apple-watch-for-everyone/README.md) · 📝
 - [Accessibility by design: An Apple Watch for everyone (ASL)](../../sessions/wwdc2021/110142-accessibility-by-design-an-apple-watch-for-everyone-asl/README.md) · 📝
 - [Bring accessibility to charts in your app](../../sessions/wwdc2021/10122-bring-accessibility-to-charts-in-your-app/README.md) · 📝
-- [Challenge: VoiceOver Maze](../../sessions/wwdc2021/10334-challenge-voiceover-maze/README.md)
 - [Create accessible experiences for watchOS](../../sessions/wwdc2021/10223-create-accessible-experiences-for-watchos/README.md) · 📝
 - [Developer spotlight: Accessibility](../../sessions/wwdc2021/10318-developer-spotlight-accessibility/README.md) · 📝
 - [Localize your SwiftUI app](../../sessions/wwdc2021/10220-localize-your-swiftui-app/README.md) · 📝
@@ -356,7 +355,6 @@
 - [Bring Core Data concurrency to Swift and SwiftUI](../../sessions/wwdc2021/10017-bring-core-data-concurrency-to-swift-and-swiftui/README.md) · 📝
 - [Build a workout app for Apple Watch](../../sessions/wwdc2021/10009-build-a-workout-app-for-apple-watch/README.md) · 📝
 - [Build apps that share data through CloudKit and Core Data](../../sessions/wwdc2021/10015-build-apps-that-share-data-through-cloudkit-and-core-data/README.md) · 📝
-- [Challenge: Prototype with SwiftUI](../../sessions/wwdc2021/110120-challenge-prototype-with-swiftui/README.md)
 - [Craft search experiences in SwiftUI](../../sessions/wwdc2021/10176-craft-search-experiences-in-swiftui/README.md) · 📝
 - [Create accessible experiences for watchOS](../../sessions/wwdc2021/10223-create-accessible-experiences-for-watchos/README.md) · 📝
 - [Customize and resize sheets in UIKit](../../sessions/wwdc2021/10063-customize-and-resize-sheets-in-uikit/README.md) · 📝
@@ -420,7 +418,6 @@
 ## Uncategorized
 
 - [Challenge: Create an engaging tutorial](../../sessions/wwdc2021/10342-challenge-create-an-engaging-tutorial/README.md)
-- [Challenge: Explore spatial audio soundscapes](../../sessions/wwdc2021/10326-challenge-explore-spatial-audio-soundscapes/README.md)
 - [Coding & Design Challenges](../../sessions/wwdc2021/101044-coding-design-challenges/README.md)
 - [Fine-tune your App Transport Security settings](../../sessions/wwdc2021/10281-fine-tune-your-app-transport-security-settings/README.md)
 - [Rewatch the Keynote](../../sessions/wwdc2021/110127-rewatch-the-keynote/README.md)

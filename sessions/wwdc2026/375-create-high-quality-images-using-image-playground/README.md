@@ -2,7 +2,7 @@
 id: "wwdc2026-375"
 event: "wwdc2026"
 year: 2026
-title: "Create high quality images using Image Playground"
+title: "Create high-quality images using Image Playground"
 type: "Video"
 url: "https://developer.apple.com/videos/play/wwdc2026/375"
 topics: ["AI & Machine Learning"]
@@ -10,7 +10,7 @@ platforms: ["iOS", "iPadOS", "macOS", "visionOS"]
 hasTranscript: true
 ---
 
-# Create high quality images using Image Playground
+# Create high-quality images using Image Playground
 
 **Event:** WWDC26 · **Topic:** AI & Machine Learning · **Platforms:** iOS, iPadOS, macOS, visionOS · **Published:** 2026-06-08 · **Session:** [wwdc2026-375](https://developer.apple.com/videos/play/wwdc2026/375)
 

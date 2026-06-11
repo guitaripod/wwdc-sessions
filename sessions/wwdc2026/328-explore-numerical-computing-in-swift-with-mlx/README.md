@@ -90,8 +90,8 @@ for y in 0 ..< h {
 // Compute the Mandelbrot set on a grid of complex numbers
 import MLX
 
-let x = linspace(-2.0, 0.5, count: w)
-let y = linspace(-1.25, 1.25, count: h).reshaped(h, 1)
+let x = linspace(Float(-2.0), 0.5, count: w)
+let y = linspace(Float(-1.25), 1.25, count: h).reshaped(h, 1)
 let c = x + y.asImaginary()
 
 var z = MLXArray.zeros(like: c)

@@ -2,7 +2,7 @@
 
 > Agent-native knowledge base of Apple WWDC developer sessions (2014-2026, plus Tech Talks and Meet with Apple): clean transcripts, structured metadata, code snippets, and links to official documentation. Generated from Apple's public developer-video feeds.
 
-1618 sessions across 15 events · 1527 with full transcripts. The machine entrypoint is catalog.json: one record per session, each carrying an exact `path` (e.g. sessions/wwdc2026/298-meet-the-evaluations-framework/). Read `path` + filename to fetch a session's metadata.json, README.md, transcript.md, or transcript.json — do not derive paths from the id.
+1616 sessions across 15 events · 1528 with full transcripts. The machine entrypoint is catalog.json: one record per session, each carrying an exact `path` (e.g. sessions/wwdc2026/298-meet-the-evaluations-framework/). Read `path` + filename to fetch a session's metadata.json, README.md, transcript.md, or transcript.json — do not derive paths from the id.
 
 ## Start here
 - [Master catalog (JSON)](catalog.json): every session, with provenance, counts, and `rawBase`
@@ -12,13 +12,13 @@
 - [Schemas](schema/): catalog, session, events, topics, transcript
 
 ## Events
-- [WWDC26](events/wwdc2026/index.md): 118 sessions, 114 transcripts
+- [WWDC26](events/wwdc2026/index.md): 119 sessions, 115 transcripts
 - [WWDC25](events/wwdc2025/index.md): 122 sessions, 120 transcripts
 - [Meet with Apple](events/meet-with-apple/index.md): 51 sessions, 45 transcripts
 - [WWDC24](events/wwdc2024/index.md): 123 sessions, 123 transcripts
 - [WWDC23](events/wwdc2023/index.md): 181 sessions, 181 transcripts
 - [WWDC22](events/wwdc2022/index.md): 205 sessions, 184 transcripts
-- [WWDC21](events/wwdc2021/index.md): 210 sessions, 199 transcripts
+- [WWDC21](events/wwdc2021/index.md): 207 sessions, 199 transcripts
 - [WWDC20](events/wwdc2020/index.md): 244 sessions, 206 transcripts
 - [WWDC19](events/wwdc2019/index.md): 159 sessions, 152 transcripts
 - [WWDC18](events/wwdc2018/index.md): 38 sessions, 38 transcripts
