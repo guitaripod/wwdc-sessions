@@ -26,9 +26,17 @@
   ],
   "primaryTopic": "Essentials",
   "duration": 4574,
-  "hasTranscript": false,
-  "transcriptWordCount": 0,
-  "availableLanguages": [],
+  "hasTranscript": true,
+  "transcriptWordCount": 11299,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
   "media": {
     "hls": "https://events-delivery.apple.com/0601eknundukyswuegvjcidvurtztakr/vod_main_vdhwwrygnmzydhppixlrqwduiqffztdw/vod_main_vdhwwrygnmzydhppixlrqwduiqffztdw.m3u8",
     "duration": 4574
@@ -38,6 +46,8 @@
   "path": "sessions/wwdc2026/101-keynote/",
   "files": {
     "metadata": "sessions/wwdc2026/101-keynote/metadata.json",
-    "readme": "sessions/wwdc2026/101-keynote/README.md"
+    "readme": "sessions/wwdc2026/101-keynote/README.md",
+    "transcript": "sessions/wwdc2026/101-keynote/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/101-keynote/transcript.json"
   }
 }

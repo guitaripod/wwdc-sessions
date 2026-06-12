@@ -2,15 +2,15 @@
   "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/catalog.schema.json",
   "schemaVersion": 1,
   "builderVersion": 2,
-  "generatedAt": "2026-06-11T19:54:16+00:00",
-  "sourceUpdated": "2026-06-11T12:24:09-07:00",
+  "generatedAt": "2026-06-12T08:35:28+00:00",
+  "sourceUpdated": "2026-06-11T19:24:05-07:00",
   "source": "Apple WWDC developer-video feeds (resolved via api2024.wwdc.io)",
   "rawBase": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master",
   "license": "Content © Apple Inc. Tooling under MIT (see LICENSE/NOTICE).",
   "counts": {
     "events": 15,
     "sessions": 1616,
-    "transcripts": 1528
+    "transcripts": 1529
   },
   "links": {
     "events": "events.json",
@@ -29,7 +29,7 @@
       "year": 2026,
       "startTime": "2026-06-08T10:00:00-07:00",
       "sessionCount": 119,
-      "transcriptCount": 115,
+      "transcriptCount": 116,
       "index": "events/wwdc2026/index.md",
       "indexJSON": "events/wwdc2026/index.json"
     },
@@ -475,9 +475,17 @@
         "Essentials"
       ],
       "keywords": [],
-      "hasTranscript": false,
-      "transcriptWordCount": 0,
-      "availableLanguages": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 11299,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
       "resourceCount": 0,
       "codeSnippetCount": 0,
       "path": "sessions/wwdc2026/101-keynote/",

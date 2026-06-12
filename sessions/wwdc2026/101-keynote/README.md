@@ -7,7 +7,7 @@ type: "Special Event"
 url: "https://developer.apple.com/videos/play/wwdc2026/101"
 topics: ["Essentials"]
 platforms: ["iOS", "iPadOS", "macOS", "tvOS", "visionOS", "watchOS"]
-hasTranscript: false
+hasTranscript: true
 ---
 
 # Keynote
@@ -15,6 +15,11 @@ hasTranscript: false
 **Event:** WWDC26 · **Topic:** Essentials · **Platforms:** iOS, iPadOS, macOS, tvOS, visionOS, watchOS · **Published:** 2026-06-08 · **Session:** [wwdc2026-101](https://developer.apple.com/videos/play/wwdc2026/101)
 
 Don’t miss the exciting reveal of the latest Apple software and technologies.
+
+## Transcript
+
+[Read the transcript](transcript.md) · [Structured JSON](transcript.json)
+(11,299 words)
 
 ## Video
 

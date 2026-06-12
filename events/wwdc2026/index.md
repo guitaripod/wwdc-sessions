@@ -1,6 +1,6 @@
 # WWDC26 Sessions
 
-119 sessions · 115 with transcripts.
+119 sessions · 116 with transcripts.
 
 ## AI & Machine Learning
 
@@ -143,7 +143,7 @@
 - [Dub Dub Daily: Day 3](../../sessions/wwdc2026/398-dub-dub-daily-day-3/README.md) · 📝
 - [Dub Dub Daily: Day 4](../../sessions/wwdc2026/399-dub-dub-daily-day-4/README.md) · 📝
 - [Get ready for WWDC26](../../sessions/wwdc2026/394-get-ready-for-wwdc26/README.md) · 📝
-- [Keynote](../../sessions/wwdc2026/101-keynote/README.md)
+- [Keynote](../../sessions/wwdc2026/101-keynote/README.md) · 📝
 - [Keynote (ASL)](../../sessions/wwdc2026/111-keynote-asl/README.md)
 - [Platforms State of the Union](../../sessions/wwdc2026/102-platforms-state-of-the-union/README.md) · 📝
 - [Platforms State of the Union (ASL)](../../sessions/wwdc2026/112-platforms-state-of-the-union-asl/README.md) · 📝
