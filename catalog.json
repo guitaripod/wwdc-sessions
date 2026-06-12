@@ -2,15 +2,15 @@
   "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/catalog.schema.json",
   "schemaVersion": 1,
   "builderVersion": 2,
-  "generatedAt": "2026-06-12T08:35:28+00:00",
-  "sourceUpdated": "2026-06-11T19:24:05-07:00",
+  "generatedAt": "2026-06-12T19:45:05+00:00",
+  "sourceUpdated": "2026-06-12T07:31:03-07:00",
   "source": "Apple WWDC developer-video feeds (resolved via api2024.wwdc.io)",
   "rawBase": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master",
   "license": "Content © Apple Inc. Tooling under MIT (see LICENSE/NOTICE).",
   "counts": {
     "events": 15,
-    "sessions": 1616,
-    "transcripts": 1529
+    "sessions": 1617,
+    "transcripts": 1530
   },
   "links": {
     "events": "events.json",
@@ -28,8 +28,8 @@
       "name": "WWDC26",
       "year": 2026,
       "startTime": "2026-06-08T10:00:00-07:00",
-      "sessionCount": 119,
-      "transcriptCount": 116,
+      "sessionCount": 120,
+      "transcriptCount": 117,
       "index": "events/wwdc2026/index.md",
       "indexJSON": "events/wwdc2026/index.json"
     },
@@ -5319,6 +5319,39 @@
       "codeSnippetCount": 0,
       "path": "sessions/wwdc2026/399-dub-dub-daily-day-4/",
       "description": "Your tools just got a serious upgrade. We’re covering Xcode and the developer toolchain designed to help you build faster and smarter — with a special guest who knows what it takes to make developers more productive."
+    },
+    {
+      "id": "wwdc2026-400",
+      "event": "wwdc2026",
+      "year": 2026,
+      "eventContentId": 400,
+      "title": "Dub Dub Daily: Day 5",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2026/400",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/400",
+      "duration": 460,
+      "publishedAt": "2026-06-12T07:00:00-07:00",
+      "platforms": [],
+      "primaryTopic": "Essentials",
+      "topics": [
+        "Essentials"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1429,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2026/400-dub-dub-daily-day-5/",
+      "description": "Swift keeps getting better. Today we explore the latest language updates, what they unlock for your code, and why this is an exciting moment to be a Swift developer — with a special guest to help us go deeper."
     },
     {
       "id": "wwdc2026-403",
