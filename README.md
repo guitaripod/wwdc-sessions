@@ -5,7 +5,7 @@ with Apple): clean transcripts, structured metadata, inline code snippets, and l
 documentation each session references. Built so AI agents (and humans) can consume WWDC content
 without scraping JavaScript-rendered pages.
 
-- **1617** sessions across **15** events · **1530** with full transcripts
+- **1616** sessions across **15** events · **1529** with full transcripts
 - Machine entrypoint: [`catalog.json`](catalog.json) · also [`events.json`](events.json) · [`topics.json`](topics.json) · [`llms.txt`](llms.txt)
 - JSON Schemas: [`schema/`](schema/) · Agent guide: [`AGENTS.md`](AGENTS.md)
 - Per session: `metadata.json`, `README.md`, `transcript.md`, `transcript.json`
