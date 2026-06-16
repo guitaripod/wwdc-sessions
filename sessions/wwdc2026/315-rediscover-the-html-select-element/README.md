@@ -23,6 +23,7 @@ Learn how to unlock full control of styling select menus on the web. The HTML se
 
 ## Documentation & Resources
 
+- [WebKit.org - The golden rule of Customizable Select](https://webkit.org/blog/18117/the-golden-rule-of-customizable-select/) _documentation_
 - [WebKit.org - Example website demonstrating Customizable Select](https://webkit.org/demos/customizable-select/) _documentation_
 - [WebKit.org - CSS Grid Lanes Field Guide](https://gridlanes.webkit.org) _documentation_
 - [WebKit.org – Report issues to the WebKit open-source project](https://bugs.webkit.org) _documentation_
