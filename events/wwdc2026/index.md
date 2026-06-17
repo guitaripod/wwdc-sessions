@@ -1,6 +1,6 @@
 # WWDC26 Sessions
 
-120 sessions · 117 with transcripts.
+121 sessions · 118 with transcripts.
 
 ## AI & Machine Learning
 
@@ -24,6 +24,7 @@
 - [Explore distributed inference and training with MLX](../../sessions/wwdc2026/233-explore-distributed-inference-and-training-with-mlx/README.md) · 📝
 - [Explore numerical computing in Swift with MLX](../../sessions/wwdc2026/328-explore-numerical-computing-in-swift-with-mlx/README.md) · 📝
 - [Improve your prompts by hill-climbing with Evaluations](../../sessions/wwdc2026/335-improve-your-prompts-by-hill-climbing-with-evaluations/README.md) · 📝
+- [Inside Apple Intelligence and Xcode: Special Presentation](../../sessions/wwdc2026/382-inside-apple-intelligence-and-xcode-special-presentation/README.md) · 📝
 - [Integrate on-device AI models into your app using Core AI](../../sessions/wwdc2026/326-integrate-on-device-ai-models-into-your-app-using-core-ai/README.md) · 📝
 - [LLM search using Core Spotlight](../../sessions/wwdc2026/246-llm-search-using-core-spotlight/README.md) · 📝
 - [Meet Core AI](../../sessions/wwdc2026/324-meet-core-ai/README.md) · 📝
@@ -127,6 +128,7 @@
 - [Enhance your presence on the App Store](../../sessions/wwdc2026/205-enhance-your-presence-on-the-app-store/README.md) · 📝
 - [Find and fix performance issues in your Metal games](../../sessions/wwdc2026/388-find-and-fix-performance-issues-in-your-metal-games/README.md) · 📝
 - [Get the most out of Device Hub](../../sessions/wwdc2026/260-get-the-most-out-of-device-hub/README.md) · 📝
+- [Inside Apple Intelligence and Xcode: Special Presentation](../../sessions/wwdc2026/382-inside-apple-intelligence-and-xcode-special-presentation/README.md) · 📝
 - [Meet the new MetricKit](../../sessions/wwdc2026/222-meet-the-new-metrickit/README.md) · 📝
 - [Migrate to Swift Testing](../../sessions/wwdc2026/267-migrate-to-swift-testing/README.md) · 📝
 - [Profile, fix, and verify: Improve app responsiveness with Instruments](../../sessions/wwdc2026/268-profile-fix-and-verify-improve-app-responsiveness-with-instr/README.md) · 📝
@@ -144,6 +146,7 @@
 - [Dub Dub Daily: Day 4](../../sessions/wwdc2026/399-dub-dub-daily-day-4/README.md) · 📝
 - [Dub Dub Daily: Day 5](../../sessions/wwdc2026/400-dub-dub-daily-day-5/README.md) · 📝
 - [Get ready for WWDC26](../../sessions/wwdc2026/394-get-ready-for-wwdc26/README.md) · 📝
+- [Inside Apple Intelligence and Xcode: Special Presentation](../../sessions/wwdc2026/382-inside-apple-intelligence-and-xcode-special-presentation/README.md) · 📝
 - [Keynote](../../sessions/wwdc2026/101-keynote/README.md) · 📝
 - [Keynote (ASL)](../../sessions/wwdc2026/111-keynote-asl/README.md)
 - [Platforms State of the Union](../../sessions/wwdc2026/102-platforms-state-of-the-union/README.md) · 📝

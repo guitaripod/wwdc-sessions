@@ -1,6 +1,6 @@
 # Developer Tools
 
-248 sessions across all events.
+249 sessions across all events.
 
 
 ### Meet with Apple
@@ -21,6 +21,7 @@
 - [Enhance your presence on the App Store](../sessions/wwdc2026/205-enhance-your-presence-on-the-app-store/README.md)
 - [Find and fix performance issues in your Metal games](../sessions/wwdc2026/388-find-and-fix-performance-issues-in-your-metal-games/README.md)
 - [Get the most out of Device Hub](../sessions/wwdc2026/260-get-the-most-out-of-device-hub/README.md)
+- [Inside Apple Intelligence and Xcode: Special Presentation](../sessions/wwdc2026/382-inside-apple-intelligence-and-xcode-special-presentation/README.md)
 - [Meet the new MetricKit](../sessions/wwdc2026/222-meet-the-new-metrickit/README.md)
 - [Migrate to Swift Testing](../sessions/wwdc2026/267-migrate-to-swift-testing/README.md)
 - [Profile, fix, and verify: Improve app responsiveness with Instruments](../sessions/wwdc2026/268-profile-fix-and-verify-improve-app-responsiveness-with-instr/README.md)

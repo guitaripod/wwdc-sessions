@@ -1,6 +1,6 @@
 # iPadOS Sessions
 
-1327 sessions.
+1328 sessions.
 
 - [Get ready for the Swift Student Challenge](../sessions/meet-with-apple/263-get-ready-for-the-swift-student-challenge/README.md) — Meet with Apple
 - [Q&A: Swift concurrency](../sessions/meet-with-apple/276-q-a-swift-concurrency/README.md) — Meet with Apple
@@ -51,6 +51,7 @@
 - [Get started with the HTML Model Element](../sessions/wwdc2026/215-get-started-with-the-html-model-element/README.md) — WWDC26
 - [Get the most out of Device Hub](../sessions/wwdc2026/260-get-the-most-out-of-device-hub/README.md) — WWDC26
 - [Improve your prompts by hill-climbing with Evaluations](../sessions/wwdc2026/335-improve-your-prompts-by-hill-climbing-with-evaluations/README.md) — WWDC26
+- [Inside Apple Intelligence and Xcode: Special Presentation](../sessions/wwdc2026/382-inside-apple-intelligence-and-xcode-special-presentation/README.md) — WWDC26
 - [Integrate MusicKit into your app](../sessions/wwdc2026/254-integrate-musickit-into-your-app/README.md) — WWDC26
 - [Integrate on-device AI models into your app using Core AI](../sessions/wwdc2026/326-integrate-on-device-ai-models-into-your-app-using-core-ai/README.md) — WWDC26
 - [Iterate your spatial scenes faster with Reality Composer Pro 3](../sessions/wwdc2026/280-iterate-your-spatial-scenes-faster-with-reality-composer-pro/README.md) — WWDC26

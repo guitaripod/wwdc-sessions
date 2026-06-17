@@ -2,15 +2,15 @@
   "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/catalog.schema.json",
   "schemaVersion": 1,
   "builderVersion": 2,
-  "generatedAt": "2026-06-17T08:48:34+00:00",
-  "sourceUpdated": "2026-06-16T20:59:27-07:00",
+  "generatedAt": "2026-06-17T19:47:04+00:00",
+  "sourceUpdated": "2026-06-17T10:42:27-07:00",
   "source": "Apple WWDC developer-video feeds (resolved via api2024.wwdc.io)",
   "rawBase": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master",
   "license": "Content © Apple Inc. Tooling under MIT (see LICENSE/NOTICE).",
   "counts": {
     "events": 15,
-    "sessions": 1616,
-    "transcripts": 1529
+    "sessions": 1617,
+    "transcripts": 1530
   },
   "links": {
     "events": "events.json",
@@ -28,8 +28,8 @@
       "name": "WWDC26",
       "year": 2026,
       "startTime": "2026-06-08T10:00:00-07:00",
-      "sessionCount": 120,
-      "transcriptCount": 117,
+      "sessionCount": 121,
+      "transcriptCount": 118,
       "index": "events/wwdc2026/index.md",
       "indexJSON": "events/wwdc2026/index.json"
     },
@@ -5000,6 +5000,48 @@
       "codeSnippetCount": 3,
       "path": "sessions/wwdc2026/379-meet-trust-insights/",
       "description": "Uncover how Trust Insights can help protect people from social scams and coercion. Explore how this new framework uses privacy-preserving machine learning to detect when someone may be coached into risky actions. Find out how to integrate Trust Insights into your app, interpret its signals, and design thoughtful interventions that safeguard people while respecting their privacy."
+    },
+    {
+      "id": "wwdc2026-382",
+      "event": "wwdc2026",
+      "year": 2026,
+      "eventContentId": 382,
+      "title": "Inside Apple Intelligence and Xcode: Special Presentation",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2026/382",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/382",
+      "duration": 5272,
+      "publishedAt": "2026-06-17T09:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Essentials",
+      "topics": [
+        "AI & Machine Learning",
+        "Developer Tools",
+        "Essentials"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 12677,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 6,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2026/382-inside-apple-intelligence-and-xcode-special-presentation/",
+      "description": "Step inside Steve Jobs Theater to discover the latest Apple Intelligence and Xcode advancements. Learn how to accelerate your development with new agentic coding workflows in Xcode 27, and discover how App Intents enable Siri to understand context and take action inside your app. Find out how to ship intelligent features using the Foundation Models framework, deploy custom on-device models with Core AI, and scale your machine learning research and training using MLX."
     },
     {
       "id": "wwdc2026-388",

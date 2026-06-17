@@ -1,0 +1,105 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-382",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 382,
+  "title": "Inside Apple Intelligence and Xcode: Special Presentation",
+  "description": "Step inside Steve Jobs Theater to discover the latest Apple Intelligence and Xcode advancements. Learn how to accelerate your development with new agentic coding workflows in Xcode 27, and discover how App Intents enable Siri to understand context and take action inside your app. Find out how to ship intelligent features using the Foundation Models framework, deploy custom on-device models with Core AI, and scale your machine learning research and training using MLX.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/382",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/382",
+  "type": "Video",
+  "publishedAt": "2026-06-17T09:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "AI & Machine Learning",
+    "Developer Tools",
+    "Essentials"
+  ],
+  "primaryTopic": "Essentials",
+  "duration": 5272,
+  "hasTranscript": true,
+  "transcriptWordCount": 12677,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/382/1/a1dfe905-059c-45b1-b109-e68230f76399/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/382/1/a1dfe905-059c-45b1-b109-e68230f76399/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/382/1/a1dfe905-059c-45b1-b109-e68230f76399/downloads/wwdc2026-382_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/382/1/a1dfe905-059c-45b1-b109-e68230f76399/downloads/wwdc2026-382_hd.mp4",
+    "duration": 5272
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Xcode",
+      "url": "https://developer.apple.com/documentation/Xcode",
+      "type": "documentation",
+      "description": "Build, test, and submit your app with Apple’s integrated development environment.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode.json"
+    },
+    {
+      "title": "Evaluations",
+      "url": "https://developer.apple.com/documentation/Evaluations",
+      "type": "documentation",
+      "description": "Measure the quality of your app’s intelligence-powered features.",
+      "sosumiURL": "https://sosumi.ai/documentation/Evaluations",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Evaluations.json"
+    },
+    {
+      "title": "Core AI",
+      "url": "https://developer.apple.com/documentation/CoreAI",
+      "type": "documentation",
+      "description": "Run AI models in your app on Apple silicon.",
+      "sosumiURL": "https://sosumi.ai/documentation/CoreAI",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/CoreAI.json"
+    },
+    {
+      "title": "Foundation Models",
+      "url": "https://developer.apple.com/documentation/FoundationModels",
+      "type": "documentation",
+      "description": "Perform tasks with models that specialize in language understanding, structured output, and tool calling.",
+      "sosumiURL": "https://sosumi.ai/documentation/FoundationModels",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/FoundationModels.json"
+    },
+    {
+      "title": "MLX",
+      "url": "https://ml-explore.github.io/mlx/",
+      "type": "documentation",
+      "description": "MLX is an array framework for machine learning on Apple silicon, brought to you by Apple machine learning research."
+    },
+    {
+      "title": "App Intents",
+      "url": "https://developer.apple.com/documentation/AppIntents",
+      "type": "documentation",
+      "description": "Make content and actions discoverable by Apple Intelligence and support system experiences like Siri, Spotlight, Shortcuts, and widgets.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppIntents",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppIntents.json"
+    }
+  ],
+  "path": "sessions/wwdc2026/382-inside-apple-intelligence-and-xcode-special-presentation/",
+  "files": {
+    "metadata": "sessions/wwdc2026/382-inside-apple-intelligence-and-xcode-special-presentation/metadata.json",
+    "readme": "sessions/wwdc2026/382-inside-apple-intelligence-and-xcode-special-presentation/README.md",
+    "transcript": "sessions/wwdc2026/382-inside-apple-intelligence-and-xcode-special-presentation/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/382-inside-apple-intelligence-and-xcode-special-presentation/transcript.json"
+  }
+}

@@ -1,6 +1,6 @@
 # AI & Machine Learning
 
-133 sessions across all events.
+134 sessions across all events.
 
 
 ### Tech Talks
@@ -30,6 +30,7 @@
 - [Explore distributed inference and training with MLX](../sessions/wwdc2026/233-explore-distributed-inference-and-training-with-mlx/README.md)
 - [Explore numerical computing in Swift with MLX](../sessions/wwdc2026/328-explore-numerical-computing-in-swift-with-mlx/README.md)
 - [Improve your prompts by hill-climbing with Evaluations](../sessions/wwdc2026/335-improve-your-prompts-by-hill-climbing-with-evaluations/README.md)
+- [Inside Apple Intelligence and Xcode: Special Presentation](../sessions/wwdc2026/382-inside-apple-intelligence-and-xcode-special-presentation/README.md)
 - [Integrate on-device AI models into your app using Core AI](../sessions/wwdc2026/326-integrate-on-device-ai-models-into-your-app-using-core-ai/README.md)
 - [LLM search using Core Spotlight](../sessions/wwdc2026/246-llm-search-using-core-spotlight/README.md)
 - [Meet Core AI](../sessions/wwdc2026/324-meet-core-ai/README.md)

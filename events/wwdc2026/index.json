@@ -2,7 +2,7 @@
   "event": "wwdc2026",
   "name": "WWDC26",
   "year": 2026,
-  "sessionCount": 120,
+  "sessionCount": 121,
   "sessions": [
     {
       "id": "wwdc2026-101",
@@ -4553,6 +4553,48 @@
       "codeSnippetCount": 3,
       "path": "sessions/wwdc2026/379-meet-trust-insights/",
       "description": "Uncover how Trust Insights can help protect people from social scams and coercion. Explore how this new framework uses privacy-preserving machine learning to detect when someone may be coached into risky actions. Find out how to integrate Trust Insights into your app, interpret its signals, and design thoughtful interventions that safeguard people while respecting their privacy."
+    },
+    {
+      "id": "wwdc2026-382",
+      "event": "wwdc2026",
+      "year": 2026,
+      "eventContentId": 382,
+      "title": "Inside Apple Intelligence and Xcode: Special Presentation",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2026/382",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/382",
+      "duration": 5272,
+      "publishedAt": "2026-06-17T09:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Essentials",
+      "topics": [
+        "AI & Machine Learning",
+        "Developer Tools",
+        "Essentials"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 12677,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 6,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2026/382-inside-apple-intelligence-and-xcode-special-presentation/",
+      "description": "Step inside Steve Jobs Theater to discover the latest Apple Intelligence and Xcode advancements. Learn how to accelerate your development with new agentic coding workflows in Xcode 27, and discover how App Intents enable Siri to understand context and take action inside your app. Find out how to ship intelligent features using the Foundation Models framework, deploy custom on-device models with Core AI, and scale your machine learning research and training using MLX."
     },
     {
       "id": "wwdc2026-388",

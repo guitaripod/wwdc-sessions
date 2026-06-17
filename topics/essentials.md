@@ -1,6 +1,6 @@
 # Essentials
 
-187 sessions across all events.
+188 sessions across all events.
 
 
 ### Meet with Apple
@@ -16,6 +16,7 @@
 - [Dub Dub Daily: Day 4](../sessions/wwdc2026/399-dub-dub-daily-day-4/README.md)
 - [Dub Dub Daily: Day 5](../sessions/wwdc2026/400-dub-dub-daily-day-5/README.md)
 - [Get ready for WWDC26](../sessions/wwdc2026/394-get-ready-for-wwdc26/README.md)
+- [Inside Apple Intelligence and Xcode: Special Presentation](../sessions/wwdc2026/382-inside-apple-intelligence-and-xcode-special-presentation/README.md)
 - [Keynote](../sessions/wwdc2026/101-keynote/README.md)
 - [Keynote (ASL)](../sessions/wwdc2026/111-keynote-asl/README.md)
 - [Platforms State of the Union](../sessions/wwdc2026/102-platforms-state-of-the-union/README.md)
