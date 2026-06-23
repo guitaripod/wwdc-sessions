@@ -25,12 +25,12 @@ Discover how to incrementally adopt SwiftUI in your existing AppKit or UIKit app
 
 ## Documentation & Resources
 
-- [Updating views automatically with observation tracking](https://developer.apple.com/documentation/UIKit/updating-views-automatically-with-observation-tracking) _documentation_
-  - Markdown (sosumi.ai): https://sosumi.ai/documentation/UIKit/updating-views-automatically-with-observation-tracking
-  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/UIKit/updating-views-automatically-with-observation-tracking.json
-- [Updating views automatically with observation tracking](https://developer.apple.com/documentation/AppKit/updating-views-automatically-with-observation-tracking) _documentation_
-  - Markdown (sosumi.ai): https://sosumi.ai/documentation/AppKit/updating-views-automatically-with-observation-tracking
-  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/AppKit/updating-views-automatically-with-observation-tracking.json
+- [Updating views automatically with observation tracking in AppKit](https://developer.apple.com/documentation/AppKit/updating-views-automatically-with-observation-tracking-in-appkit) _documentation_
+  - Markdown (sosumi.ai): https://sosumi.ai/documentation/AppKit/updating-views-automatically-with-observation-tracking-in-appkit
+  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/AppKit/updating-views-automatically-with-observation-tracking-in-appkit.json
+- [Updating views automatically with observation tracking in UIKit](https://developer.apple.com/documentation/UIKit/updating-views-automatically-with-observation-tracking-in-uikit) _documentation_
+  - Markdown (sosumi.ai): https://sosumi.ai/documentation/UIKit/updating-views-automatically-with-observation-tracking-in-uikit
+  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/UIKit/updating-views-automatically-with-observation-tracking-in-uikit.json
 
 ## Code Snippets
 

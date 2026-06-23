@@ -25,9 +25,9 @@ Discover how you can enhance and personalize your app using MusicKit. We’ll ta
 
 ## Documentation & Resources
 
-- [Explore more content with MusicKit](https://developer.apple.com/documentation/musickit/explore_more_content_with_musickit) _samplecode_
-  - Markdown (sosumi.ai): https://sosumi.ai/documentation/musickit/explore_more_content_with_musickit
-  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/musickit/explore_more_content_with_musickit.json
+- [Explore more content with MusicKit](https://developer.apple.com/documentation/MusicKit/explore-more-content-with-musickit) _samplecode_
+  - Markdown (sosumi.ai): https://sosumi.ai/documentation/MusicKit/explore-more-content-with-musickit
+  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/MusicKit/explore-more-content-with-musickit.json
 - [MusicKit](https://developer.apple.com/documentation/musickit) _documentation_
   - Markdown (sosumi.ai): https://sosumi.ai/documentation/musickit
   - DocC JSON: https://developer.apple.com/tutorials/data/documentation/musickit.json
