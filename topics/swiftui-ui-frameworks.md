@@ -1,6 +1,6 @@
 # SwiftUI & UI Frameworks
 
-331 sessions across all events.
+335 sessions across all events.
 
 
 ### Meet with Apple
@@ -22,12 +22,16 @@
 - [Modernize your UIKit app](../sessions/wwdc2026/278-modernize-your-uikit-app/README.md)
 - [Read between the strokes with PencilKit](../sessions/wwdc2026/203-read-between-the-strokes-with-pencilkit/README.md)
 - [Refine accessibility for custom controls](../sessions/wwdc2026/220-refine-accessibility-for-custom-controls/README.md)
+- [SwiftUI Group Lab](../sessions/wwdc2026/8006-swiftui-group-lab/README.md)
+- [SwiftUI Group Lab](../sessions/wwdc2026/8120-swiftui-group-lab/README.md)
+- [SwiftUI for Beginners Group Lab](../sessions/wwdc2026/8002-swiftui-for-beginners-group-lab/README.md)
 - [Unwrap PaperKit](../sessions/wwdc2026/372-unwrap-paperkit/README.md)
 - [Use SwiftUI with AppKit and UIKit](../sessions/wwdc2026/272-use-swiftui-with-appkit-and-uikit/README.md)
 - [What’s new in SwiftData](../sessions/wwdc2026/274-what-s-new-in-swiftdata/README.md)
 - [What’s new in SwiftUI](../sessions/wwdc2026/269-what-s-new-in-swiftui/README.md)
 - [What’s new in WebKit for Safari 27](../sessions/wwdc2026/204-what-s-new-in-webkit-for-safari-27/README.md)
 - [WidgetKit foundations](../sessions/wwdc2026/277-widgetkit-foundations/README.md)
+- [watchOS Group Lab](../sessions/wwdc2026/8014-watchos-group-lab/README.md)
 
 ### Meet with Apple
 

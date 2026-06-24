@@ -1,6 +1,6 @@
 # iPadOS Sessions
 
-1328 sessions.
+1332 sessions.
 
 - [Get ready for the Swift Student Challenge](../sessions/meet-with-apple/263-get-ready-for-the-swift-student-challenge/README.md) — Meet with Apple
 - [Q&A: Swift concurrency](../sessions/meet-with-apple/276-q-a-swift-concurrency/README.md) — Meet with Apple
@@ -8,6 +8,7 @@
 - [Discover the Apple Design Resources](../sessions/tech-talks/111427-discover-the-apple-design-resources/README.md) — Tech Talks
 - [Meet agentic coding in Xcode](../sessions/tech-talks/111428-meet-agentic-coding-in-xcode/README.md) — Tech Talks
 - [Prepare your app for Accessibility Nutrition Labels](../sessions/tech-talks/111433-prepare-your-app-for-accessibility-nutrition-labels/README.md) — Tech Talks
+- [Accessibility Technologies Group Lab](../sessions/wwdc2026/8005-accessibility-technologies-group-lab/README.md) — WWDC26
 - [Announcing Apple’s next big step for Siri and iPhone](../sessions/wwdc2026/121-announcing-apple-s-next-big-step-for-siri-and-iphone/README.md) — WWDC26
 - [Best practices for integrating visual intelligence in your app](../sessions/wwdc2026/297-best-practices-for-integrating-visual-intelligence-in-your-a/README.md) — WWDC26
 - [Bring an LLM provider to the Foundation Models framework](../sessions/wwdc2026/339-bring-an-llm-provider-to-the-foundation-models-framework/README.md) — WWDC26
@@ -73,6 +74,7 @@
 - [Optimize custom machine learning operations with Metal tensors](../sessions/wwdc2026/330-optimize-custom-machine-learning-operations-with-metal-tenso/README.md) — WWDC26
 - [Platforms State of the Union](../sessions/wwdc2026/102-platforms-state-of-the-union/README.md) — WWDC26
 - [Platforms State of the Union (ASL)](../sessions/wwdc2026/112-platforms-state-of-the-union-asl/README.md) — WWDC26
+- [Power and Performance Group Lab](../sessions/wwdc2026/8003-power-and-performance-group-lab/README.md) — WWDC26
 - [Principles of great design](../sessions/wwdc2026/250-principles-of-great-design/README.md) — WWDC26
 - [Profile, fix, and verify: Improve app responsiveness with Instruments](../sessions/wwdc2026/268-profile-fix-and-verify-improve-app-responsiveness-with-instr/README.md) — WWDC26
 - [Read between the strokes with PencilKit](../sessions/wwdc2026/203-read-between-the-strokes-with-pencilkit/README.md) — WWDC26
@@ -83,6 +85,8 @@
 - [Speedrun your game port with agentic coding](../sessions/wwdc2026/357-speedrun-your-game-port-with-agentic-coding/README.md) — WWDC26
 - [Stream the WWDC26 Keynote](../sessions/wwdc2026/403-stream-the-wwdc26-keynote/README.md) — WWDC26
 - [Supercharge your spatial workflows with Reality Composer Pro 3](../sessions/wwdc2026/393-supercharge-your-spatial-workflows-with-reality-composer-pro/README.md) — WWDC26
+- [Swift Group Lab](../sessions/wwdc2026/8001-swift-group-lab/README.md) — WWDC26
+- [SwiftUI for Beginners Group Lab](../sessions/wwdc2026/8002-swiftui-for-beginners-group-lab/README.md) — WWDC26
 - [Translate your app using agents in Xcode](../sessions/wwdc2026/213-translate-your-app-using-agents-in-xcode/README.md) — WWDC26
 - [Unlock in-game content with StoreKit and Background Assets](../sessions/wwdc2026/378-unlock-in-game-content-with-storekit-and-background-assets/README.md) — WWDC26
 - [Unwrap PaperKit](../sessions/wwdc2026/372-unwrap-paperkit/README.md) — WWDC26

@@ -1,11 +1,12 @@
 # Privacy & Security
 
-80 sessions across all events.
+81 sessions across all events.
 
 
 ### WWDC26
 
 - [Meet Trust Insights](../sessions/wwdc2026/379-meet-trust-insights/README.md)
+- [Privacy and Security Group Lab](../sessions/wwdc2026/8009-privacy-and-security-group-lab/README.md)
 - [Secure your app: mitigate risks to agentic features](../sessions/wwdc2026/347-secure-your-app-mitigate-risks-to-agentic-features/README.md)
 - [Secure your apps with App Attest](../sessions/wwdc2026/201-secure-your-apps-with-app-attest/README.md)
 

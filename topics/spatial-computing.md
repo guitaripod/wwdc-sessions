@@ -1,6 +1,6 @@
 # Spatial Computing
 
-162 sessions across all events.
+163 sessions across all events.
 
 
 ### WWDC26
@@ -20,6 +20,7 @@
 - [Iterate your spatial scenes faster with Reality Composer Pro 3](../sessions/wwdc2026/280-iterate-your-spatial-scenes-faster-with-reality-composer-pro/README.md)
 - [Supercharge your spatial workflows with Reality Composer Pro 3](../sessions/wwdc2026/393-supercharge-your-spatial-workflows-with-reality-composer-pro/README.md)
 - [Use foveated streaming to bring immersive content to visionOS](../sessions/wwdc2026/286-use-foveated-streaming-to-bring-immersive-content-to-visiono/README.md)
+- [visionOS Group Lab](../sessions/wwdc2026/8004-visionos-group-lab/README.md)
 
 ### Meet with Apple
 

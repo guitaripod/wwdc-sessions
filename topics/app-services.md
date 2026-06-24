@@ -1,6 +1,6 @@
 # App Services
 
-209 sessions across all events.
+211 sessions across all events.
 
 
 ### WWDC26
@@ -19,6 +19,7 @@
 - [Live Activities essentials](../sessions/wwdc2026/223-live-activities-essentials/README.md)
 - [Read between the strokes with PencilKit](../sessions/wwdc2026/203-read-between-the-strokes-with-pencilkit/README.md)
 - [Secure your apps with App Attest](../sessions/wwdc2026/201-secure-your-apps-with-app-attest/README.md)
+- [SwiftData Group Lab](../sessions/wwdc2026/8017-swiftdata-group-lab/README.md)
 - [Unlock in-game content with StoreKit and Background Assets](../sessions/wwdc2026/378-unlock-in-game-content-with-storekit-and-background-assets/README.md)
 - [Unwrap PaperKit](../sessions/wwdc2026/372-unwrap-paperkit/README.md)
 - [Use SwiftUI with AppKit and UIKit](../sessions/wwdc2026/272-use-swiftui-with-appkit-and-uikit/README.md)
@@ -28,6 +29,7 @@
 - [What’s new in Wallet](../sessions/wwdc2026/209-what-s-new-in-wallet/README.md)
 - [What’s new in assessment on macOS](../sessions/wwdc2026/230-what-s-new-in-assessment-on-macos/README.md)
 - [What’s new in image understanding](../sessions/wwdc2026/237-what-s-new-in-image-understanding/README.md)
+- [watchOS Group Lab](../sessions/wwdc2026/8014-watchos-group-lab/README.md)
 
 ### WWDC25
 

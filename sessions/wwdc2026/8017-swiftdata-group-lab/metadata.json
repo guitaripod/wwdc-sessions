@@ -1,0 +1,49 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-8017",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 8017,
+  "title": "SwiftData Group Lab",
+  "description": "Join us online for a deep dive into WWDC26 with Apple engineers and designers to ask questions, get advice, and follow the discussion about the week’s biggest SwiftData announcements. Conducted in English.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/8017",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/8017",
+  "type": "Get-Together",
+  "publishedAt": "2026-05-17T20:00:00-07:00",
+  "platforms": [],
+  "keywords": [],
+  "topics": [
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 3690,
+  "hasTranscript": true,
+  "transcriptWordCount": 10455,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/8017/1/f1631a09-429b-4879-ac57-7f076af1e7f0/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/8017/1/f1631a09-429b-4879-ac57-7f076af1e7f0/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/8017/1/f1631a09-429b-4879-ac57-7f076af1e7f0/downloads/wwdc2026-8017_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/8017/1/f1631a09-429b-4879-ac57-7f076af1e7f0/downloads/wwdc2026-8017_hd.mp4",
+    "duration": 3690
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2026/8017-swiftdata-group-lab/",
+  "files": {
+    "metadata": "sessions/wwdc2026/8017-swiftdata-group-lab/metadata.json",
+    "readme": "sessions/wwdc2026/8017-swiftdata-group-lab/README.md",
+    "transcript": "sessions/wwdc2026/8017-swiftdata-group-lab/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/8017-swiftdata-group-lab/transcript.json"
+  }
+}

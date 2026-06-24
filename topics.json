@@ -5,7 +5,7 @@
     {
       "topic": "AI & Machine Learning",
       "slug": "ai-machine-learning",
-      "sessionCount": 134,
+      "sessionCount": 137,
       "sessions": [
         {
           "id": "tech-talks-111432",
@@ -19,6 +19,13 @@
           "path": "sessions/tech-talks/111431-boost-your-graphics-performance-with-the-m5-and-a19-gpus/",
           "title": "Boost your graphics performance with the M5 and A19 GPUs",
           "event": "tech-talks",
+          "hasTranscript": true
+        },
+        {
+          "id": "wwdc2026-8011",
+          "path": "sessions/wwdc2026/8011-apple-intelligence-group-lab/",
+          "title": "Apple Intelligence Group Lab",
+          "event": "wwdc2026",
           "hasTranscript": true
         },
         {
@@ -81,6 +88,13 @@
           "id": "wwdc2026-344",
           "path": "sessions/wwdc2026/344-code-along-make-your-app-available-to-siri/",
           "title": "Code-along: Make your app available to Siri",
+          "event": "wwdc2026",
+          "hasTranscript": true
+        },
+        {
+          "id": "wwdc2026-8121",
+          "path": "sessions/wwdc2026/8121-coding-intelligence-machine-learning-ai-group-lab/",
+          "title": "Coding Intelligence, Machine Learning & AI Group Lab",
           "event": "wwdc2026",
           "hasTranscript": true
         },
@@ -179,6 +193,13 @@
           "id": "wwdc2026-246",
           "path": "sessions/wwdc2026/246-llm-search-using-core-spotlight/",
           "title": "LLM search using Core Spotlight",
+          "event": "wwdc2026",
+          "hasTranscript": true
+        },
+        {
+          "id": "wwdc2026-8016",
+          "path": "sessions/wwdc2026/8016-machine-learning-ai-group-lab/",
+          "title": "Machine Learning & AI Group Lab",
           "event": "wwdc2026",
           "hasTranscript": true
         },
@@ -950,13 +971,20 @@
     {
       "topic": "Accessibility & Inclusion",
       "slug": "accessibility-inclusion",
-      "sessionCount": 69,
+      "sessionCount": 70,
       "sessions": [
         {
           "id": "tech-talks-111433",
           "path": "sessions/tech-talks/111433-prepare-your-app-for-accessibility-nutrition-labels/",
           "title": "Prepare your app for Accessibility Nutrition Labels",
           "event": "tech-talks",
+          "hasTranscript": true
+        },
+        {
+          "id": "wwdc2026-8005",
+          "path": "sessions/wwdc2026/8005-accessibility-technologies-group-lab/",
+          "title": "Accessibility Technologies Group Lab",
+          "event": "wwdc2026",
           "hasTranscript": true
         },
         {
@@ -1440,7 +1468,7 @@
     {
       "topic": "App Services",
       "slug": "app-services",
-      "sessionCount": 209,
+      "sessionCount": 211,
       "sessions": [
         {
           "id": "wwdc2026-297",
@@ -1541,6 +1569,13 @@
           "hasTranscript": true
         },
         {
+          "id": "wwdc2026-8017",
+          "path": "sessions/wwdc2026/8017-swiftdata-group-lab/",
+          "title": "SwiftData Group Lab",
+          "event": "wwdc2026",
+          "hasTranscript": true
+        },
+        {
           "id": "wwdc2026-378",
           "path": "sessions/wwdc2026/378-unlock-in-game-content-with-storekit-and-background-assets/",
           "title": "Unlock in-game content with StoreKit and Background Assets",
@@ -1600,6 +1635,13 @@
           "id": "wwdc2026-237",
           "path": "sessions/wwdc2026/237-what-s-new-in-image-understanding/",
           "title": "What’s new in image understanding",
+          "event": "wwdc2026",
+          "hasTranscript": true
+        },
+        {
+          "id": "wwdc2026-8014",
+          "path": "sessions/wwdc2026/8014-watchos-group-lab/",
+          "title": "watchOS Group Lab",
           "event": "wwdc2026",
           "hasTranscript": true
         },
@@ -2910,8 +2952,15 @@
     {
       "topic": "App Store, Distribution & Marketing",
       "slug": "app-store-distribution-marketing",
-      "sessionCount": 106,
+      "sessionCount": 107,
       "sessions": [
+        {
+          "id": "wwdc2026-8010",
+          "path": "sessions/wwdc2026/8010-app-store-connect-group-lab/",
+          "title": "App Store Connect Group Lab",
+          "event": "wwdc2026",
+          "hasTranscript": true
+        },
         {
           "id": "wwdc2026-216",
           "path": "sessions/wwdc2026/216-create-web-extensions-for-safari/",
@@ -5206,7 +5255,7 @@
     {
       "topic": "Design",
       "slug": "design",
-      "sessionCount": 174,
+      "sessionCount": 175,
       "sessions": [
         {
           "id": "tech-talks-111427",
@@ -5268,6 +5317,13 @@
           "id": "wwdc2026-321",
           "path": "sessions/wwdc2026/321-dive-into-lazy-stacks-and-scrolling-with-swiftui/",
           "title": "Dive into lazy stacks and scrolling with SwiftUI",
+          "event": "wwdc2026",
+          "hasTranscript": true
+        },
+        {
+          "id": "wwdc2026-8012",
+          "path": "sessions/wwdc2026/8012-icon-composer-for-beginners-group-lab/",
+          "title": "Icon Composer for Beginners Group Lab",
           "event": "wwdc2026",
           "hasTranscript": true
         },
@@ -6431,7 +6487,7 @@
     {
       "topic": "Developer Tools",
       "slug": "developer-tools",
-      "sessionCount": 249,
+      "sessionCount": 251,
       "sessions": [
         {
           "id": "meet-with-apple-276",
@@ -6458,6 +6514,13 @@
           "id": "wwdc2026-261",
           "path": "sessions/wwdc2026/261-build-deliver-and-automate-with-xcode-cloud/",
           "title": "Build, deliver, and automate with Xcode Cloud",
+          "event": "wwdc2026",
+          "hasTranscript": true
+        },
+        {
+          "id": "wwdc2026-8007",
+          "path": "sessions/wwdc2026/8007-coding-intelligence-for-beginners-group-lab/",
+          "title": "Coding Intelligence for Beginners Group Lab",
           "event": "wwdc2026",
           "hasTranscript": true
         },
@@ -6549,6 +6612,13 @@
           "id": "wwdc2026-258",
           "path": "sessions/wwdc2026/258-what-s-new-in-xcode-27/",
           "title": "What’s new in Xcode 27",
+          "event": "wwdc2026",
+          "hasTranscript": true
+        },
+        {
+          "id": "wwdc2026-8013",
+          "path": "sessions/wwdc2026/8013-xcode-tips-and-tricks-group-lab/",
+          "title": "Xcode Tips and Tricks Group Lab",
           "event": "wwdc2026",
           "hasTranscript": true
         },
@@ -11023,12 +11093,19 @@
     {
       "topic": "Health & Fitness",
       "slug": "health-fitness",
-      "sessionCount": 48,
+      "sessionCount": 49,
       "sessions": [
         {
           "id": "wwdc2026-207",
           "path": "sessions/wwdc2026/207-deliver-workout-insights-with-healthkit-workout-zones/",
           "title": "Deliver workout insights with HealthKit workout zones",
+          "event": "wwdc2026",
+          "hasTranscript": true
+        },
+        {
+          "id": "wwdc2026-8014",
+          "path": "sessions/wwdc2026/8014-watchos-group-lab/",
+          "title": "watchOS Group Lab",
           "event": "wwdc2026",
           "hasTranscript": true
         },
@@ -11569,12 +11646,19 @@
     {
       "topic": "Photos & Camera",
       "slug": "photos-camera",
-      "sessionCount": 63,
+      "sessionCount": 64,
       "sessions": [
         {
           "id": "wwdc2026-303",
           "path": "sessions/wwdc2026/303-build-a-responsive-camera-app-that-launches-quickly/",
           "title": "Build a responsive camera app that launches quickly",
+          "event": "wwdc2026",
+          "hasTranscript": true
+        },
+        {
+          "id": "wwdc2026-8018",
+          "path": "sessions/wwdc2026/8018-camera-and-photo-technologies-group-lab/",
+          "title": "Camera and Photo Technologies Group Lab",
           "event": "wwdc2026",
           "hasTranscript": true
         },
@@ -12017,12 +12101,19 @@
     {
       "topic": "Privacy & Security",
       "slug": "privacy-security",
-      "sessionCount": 80,
+      "sessionCount": 81,
       "sessions": [
         {
           "id": "wwdc2026-379",
           "path": "sessions/wwdc2026/379-meet-trust-insights/",
           "title": "Meet Trust Insights",
+          "event": "wwdc2026",
+          "hasTranscript": true
+        },
+        {
+          "id": "wwdc2026-8009",
+          "path": "sessions/wwdc2026/8009-privacy-and-security-group-lab/",
+          "title": "Privacy and Security Group Lab",
           "event": "wwdc2026",
           "hasTranscript": true
         },
@@ -12584,7 +12675,7 @@
     {
       "topic": "Safari & Web",
       "slug": "safari-web",
-      "sessionCount": 81,
+      "sessionCount": 82,
       "sessions": [
         {
           "id": "wwdc2026-216",
@@ -12618,6 +12709,13 @@
           "id": "wwdc2026-315",
           "path": "sessions/wwdc2026/315-rediscover-the-html-select-element/",
           "title": "Rediscover the HTML select element",
+          "event": "wwdc2026",
+          "hasTranscript": true
+        },
+        {
+          "id": "wwdc2026-8015",
+          "path": "sessions/wwdc2026/8015-safari-and-web-technologies-group-lab/",
+          "title": "Safari and Web Technologies Group Lab",
           "event": "wwdc2026",
           "hasTranscript": true
         },
@@ -13158,7 +13256,7 @@
     {
       "topic": "Spatial Computing",
       "slug": "spatial-computing",
-      "sessionCount": 162,
+      "sessionCount": 163,
       "sessions": [
         {
           "id": "wwdc2026-338",
@@ -13262,6 +13360,13 @@
           "id": "wwdc2026-286",
           "path": "sessions/wwdc2026/286-use-foveated-streaming-to-bring-immersive-content-to-visiono/",
           "title": "Use foveated streaming to bring immersive content to visionOS",
+          "event": "wwdc2026",
+          "hasTranscript": true
+        },
+        {
+          "id": "wwdc2026-8004",
+          "path": "sessions/wwdc2026/8004-visionos-group-lab/",
+          "title": "visionOS Group Lab",
           "event": "wwdc2026",
           "hasTranscript": true
         },
@@ -14299,7 +14404,7 @@
     {
       "topic": "Swift",
       "slug": "swift",
-      "sessionCount": 149,
+      "sessionCount": 150,
       "sessions": [
         {
           "id": "meet-with-apple-263",
@@ -14375,6 +14480,13 @@
           "id": "wwdc2026-268",
           "path": "sessions/wwdc2026/268-profile-fix-and-verify-improve-app-responsiveness-with-instr/",
           "title": "Profile, fix, and verify: Improve app responsiveness with Instruments",
+          "event": "wwdc2026",
+          "hasTranscript": true
+        },
+        {
+          "id": "wwdc2026-8001",
+          "path": "sessions/wwdc2026/8001-swift-group-lab/",
+          "title": "Swift Group Lab",
           "event": "wwdc2026",
           "hasTranscript": true
         },
@@ -15349,7 +15461,7 @@
     {
       "topic": "SwiftUI & UI Frameworks",
       "slug": "swiftui-ui-frameworks",
-      "sessionCount": 331,
+      "sessionCount": 335,
       "sessions": [
         {
           "id": "meet-with-apple-263",
@@ -15450,6 +15562,27 @@
           "hasTranscript": true
         },
         {
+          "id": "wwdc2026-8006",
+          "path": "sessions/wwdc2026/8006-swiftui-group-lab/",
+          "title": "SwiftUI Group Lab",
+          "event": "wwdc2026",
+          "hasTranscript": true
+        },
+        {
+          "id": "wwdc2026-8120",
+          "path": "sessions/wwdc2026/8120-swiftui-group-lab/",
+          "title": "SwiftUI Group Lab",
+          "event": "wwdc2026",
+          "hasTranscript": true
+        },
+        {
+          "id": "wwdc2026-8002",
+          "path": "sessions/wwdc2026/8002-swiftui-for-beginners-group-lab/",
+          "title": "SwiftUI for Beginners Group Lab",
+          "event": "wwdc2026",
+          "hasTranscript": true
+        },
+        {
           "id": "wwdc2026-372",
           "path": "sessions/wwdc2026/372-unwrap-paperkit/",
           "title": "Unwrap PaperKit",
@@ -15488,6 +15621,13 @@
           "id": "wwdc2026-277",
           "path": "sessions/wwdc2026/277-widgetkit-foundations/",
           "title": "WidgetKit foundations",
+          "event": "wwdc2026",
+          "hasTranscript": true
+        },
+        {
+          "id": "wwdc2026-8014",
+          "path": "sessions/wwdc2026/8014-watchos-group-lab/",
+          "title": "watchOS Group Lab",
           "event": "wwdc2026",
           "hasTranscript": true
         },
@@ -17673,7 +17813,7 @@
     {
       "topic": "System Services",
       "slug": "system-services",
-      "sessionCount": 143,
+      "sessionCount": 144,
       "sessions": [
         {
           "id": "wwdc2026-319",
@@ -17714,6 +17854,13 @@
           "id": "wwdc2026-222",
           "path": "sessions/wwdc2026/222-meet-the-new-metrickit/",
           "title": "Meet the new MetricKit",
+          "event": "wwdc2026",
+          "hasTranscript": true
+        },
+        {
+          "id": "wwdc2026-8003",
+          "path": "sessions/wwdc2026/8003-power-and-performance-group-lab/",
+          "title": "Power and Performance Group Lab",
           "event": "wwdc2026",
           "hasTranscript": true
         },

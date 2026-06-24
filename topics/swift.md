@@ -1,6 +1,6 @@
 # Swift
 
-149 sessions across all events.
+150 sessions across all events.
 
 
 ### Meet with Apple
@@ -19,6 +19,7 @@
 - [Integrate MusicKit into your app](../sessions/wwdc2026/254-integrate-musickit-into-your-app/README.md)
 - [Migrate to Swift Testing](../sessions/wwdc2026/267-migrate-to-swift-testing/README.md)
 - [Profile, fix, and verify: Improve app responsiveness with Instruments](../sessions/wwdc2026/268-profile-fix-and-verify-improve-app-responsiveness-with-instr/README.md)
+- [Swift Group Lab](../sessions/wwdc2026/8001-swift-group-lab/README.md)
 - [What’s new in Swift](../sessions/wwdc2026/262-what-s-new-in-swift/README.md)
 - [What’s new in SwiftData](../sessions/wwdc2026/274-what-s-new-in-swiftdata/README.md)
 - [What’s new in Xcode 27](../sessions/wwdc2026/258-what-s-new-in-xcode-27/README.md)

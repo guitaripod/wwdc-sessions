@@ -1,6 +1,6 @@
 # Safari & Web
 
-81 sessions across all events.
+82 sessions across all events.
 
 
 ### WWDC26
@@ -10,6 +10,7 @@
 - [Get started with the HTML Model Element](../sessions/wwdc2026/215-get-started-with-the-html-model-element/README.md)
 - [Learn CSS Grid Lanes](../sessions/wwdc2026/314-learn-css-grid-lanes/README.md)
 - [Rediscover the HTML select element](../sessions/wwdc2026/315-rediscover-the-html-select-element/README.md)
+- [Safari and Web Technologies Group Lab](../sessions/wwdc2026/8015-safari-and-web-technologies-group-lab/README.md)
 - [What’s new in WebKit for Safari 27](../sessions/wwdc2026/204-what-s-new-in-webkit-for-safari-27/README.md)
 
 ### WWDC25

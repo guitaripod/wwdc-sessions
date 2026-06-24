@@ -1,6 +1,6 @@
 # AI & Machine Learning
 
-134 sessions across all events.
+137 sessions across all events.
 
 
 ### Tech Talks
@@ -10,6 +10,7 @@
 
 ### WWDC26
 
+- [Apple Intelligence Group Lab](../sessions/wwdc2026/8011-apple-intelligence-group-lab/README.md)
 - [Best practices for integrating visual intelligence in your app](../sessions/wwdc2026/297-best-practices-for-integrating-visual-intelligence-in-your-a/README.md)
 - [Bring an LLM provider to the Foundation Models framework](../sessions/wwdc2026/339-bring-an-llm-provider-to-the-foundation-models-framework/README.md)
 - [Bringing Cyberpunk 2077 to Mac](../sessions/wwdc2026/356-bringing-cyberpunk-2077-to-mac/README.md)
@@ -19,6 +20,7 @@
 - [Build real-time neural rendering pipelines with Metal](../sessions/wwdc2026/359-build-real-time-neural-rendering-pipelines-with-metal/README.md)
 - [Build with the new Apple Foundation Model on Private Cloud Compute](../sessions/wwdc2026/319-build-with-the-new-apple-foundation-model-on-private-cloud-c/README.md)
 - [Code-along: Make your app available to Siri](../sessions/wwdc2026/344-code-along-make-your-app-available-to-siri/README.md)
+- [Coding Intelligence, Machine Learning & AI Group Lab](../sessions/wwdc2026/8121-coding-intelligence-machine-learning-ai-group-lab/README.md)
 - [Create UI prototypes using agents in Xcode](../sessions/wwdc2026/227-create-ui-prototypes-using-agents-in-xcode/README.md)
 - [Create high-quality images using Image Playground](../sessions/wwdc2026/375-create-high-quality-images-using-image-playground/README.md)
 - [Create robust evaluations for agentic apps](../sessions/wwdc2026/299-create-robust-evaluations-for-agentic-apps/README.md)
@@ -33,6 +35,7 @@
 - [Inside Apple Intelligence and Xcode: Special Presentation](../sessions/wwdc2026/382-inside-apple-intelligence-and-xcode-special-presentation/README.md)
 - [Integrate on-device AI models into your app using Core AI](../sessions/wwdc2026/326-integrate-on-device-ai-models-into-your-app-using-core-ai/README.md)
 - [LLM search using Core Spotlight](../sessions/wwdc2026/246-llm-search-using-core-spotlight/README.md)
+- [Machine Learning & AI Group Lab](../sessions/wwdc2026/8016-machine-learning-ai-group-lab/README.md)
 - [Meet Core AI](../sessions/wwdc2026/324-meet-core-ai/README.md)
 - [Meet the Evaluations framework](../sessions/wwdc2026/298-meet-the-evaluations-framework/README.md)
 - [Meet the Music Understanding framework](../sessions/wwdc2026/253-meet-the-music-understanding-framework/README.md)

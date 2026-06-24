@@ -1,6 +1,6 @@
 # Accessibility & Inclusion
 
-69 sessions across all events.
+70 sessions across all events.
 
 
 ### Tech Talks
@@ -9,6 +9,7 @@
 
 ### WWDC26
 
+- [Accessibility Technologies Group Lab](../sessions/wwdc2026/8005-accessibility-technologies-group-lab/README.md)
 - [Discover generated subtitles and subtitle styles](../sessions/wwdc2026/256-discover-generated-subtitles-and-subtitle-styles/README.md)
 - [Enhance the accessibility of your reading app](../sessions/wwdc2026/219-enhance-the-accessibility-of-your-reading-app/README.md)
 - [Prepare your tvOS apps for Dynamic Type](../sessions/wwdc2026/221-prepare-your-tvos-apps-for-dynamic-type/README.md)

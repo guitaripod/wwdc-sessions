@@ -1,6 +1,6 @@
 # Developer Tools
 
-249 sessions across all events.
+251 sessions across all events.
 
 
 ### Meet with Apple
@@ -15,6 +15,7 @@
 
 - [Build real-time apps and services with gRPC and Swift](../sessions/wwdc2026/265-build-real-time-apps-and-services-with-grpc-and-swift/README.md)
 - [Build, deliver, and automate with Xcode Cloud](../sessions/wwdc2026/261-build-deliver-and-automate-with-xcode-cloud/README.md)
+- [Coding Intelligence for Beginners Group Lab](../sessions/wwdc2026/8007-coding-intelligence-for-beginners-group-lab/README.md)
 - [Create UI prototypes using agents in Xcode](../sessions/wwdc2026/227-create-ui-prototypes-using-agents-in-xcode/README.md)
 - [Design no-code games with Reality Composer Pro 3](../sessions/wwdc2026/252-design-no-code-games-with-reality-composer-pro-3/README.md)
 - [Discover container machines](../sessions/wwdc2026/389-discover-container-machines/README.md)
@@ -28,6 +29,7 @@
 - [Translate your app using agents in Xcode](../sessions/wwdc2026/213-translate-your-app-using-agents-in-xcode/README.md)
 - [What’s new in Swift](../sessions/wwdc2026/262-what-s-new-in-swift/README.md)
 - [What’s new in Xcode 27](../sessions/wwdc2026/258-what-s-new-in-xcode-27/README.md)
+- [Xcode Tips and Tricks Group Lab](../sessions/wwdc2026/8013-xcode-tips-and-tricks-group-lab/README.md)
 - [Xcode, agents, and you](../sessions/wwdc2026/259-xcode-agents-and-you/README.md)
 
 ### Meet with Apple

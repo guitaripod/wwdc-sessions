@@ -1,0 +1,56 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-8005",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 8005,
+  "title": "Accessibility Technologies Group Lab",
+  "description": "Join us online for a deep dive into WWDC26 with Apple engineers and designers to ask questions, get advice, and follow the discussion about the week’s biggest accessibility technologies announcements. Conducted in English.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/8005",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/8005",
+  "type": "Get-Together",
+  "publishedAt": "2026-05-17T20:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Accessibility & Inclusion"
+  ],
+  "primaryTopic": "Accessibility & Inclusion",
+  "duration": 3641,
+  "hasTranscript": true,
+  "transcriptWordCount": 10842,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/8005/1/88a5239b-516e-46f5-ad8b-2c1bc613d3b3/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/8005/1/88a5239b-516e-46f5-ad8b-2c1bc613d3b3/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/8005/1/88a5239b-516e-46f5-ad8b-2c1bc613d3b3/downloads/wwdc2026-8005_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/8005/1/88a5239b-516e-46f5-ad8b-2c1bc613d3b3/downloads/wwdc2026-8005_hd.mp4",
+    "duration": 3641
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2026/8005-accessibility-technologies-group-lab/",
+  "files": {
+    "metadata": "sessions/wwdc2026/8005-accessibility-technologies-group-lab/metadata.json",
+    "readme": "sessions/wwdc2026/8005-accessibility-technologies-group-lab/README.md",
+    "transcript": "sessions/wwdc2026/8005-accessibility-technologies-group-lab/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/8005-accessibility-technologies-group-lab/transcript.json"
+  }
+}

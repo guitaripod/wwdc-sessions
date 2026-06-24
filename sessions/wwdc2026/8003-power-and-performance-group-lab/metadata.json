@@ -1,0 +1,56 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-8003",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 8003,
+  "title": "Power and Performance Group Lab",
+  "description": "Join us online for a deep dive into WWDC26 with Apple engineers and designers to ask questions, get advice, and follow the discussion about the week’s biggest power and performance announcements. Conducted in English.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/8003",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/8003",
+  "type": "Get-Together",
+  "publishedAt": "2026-05-17T20:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 3665,
+  "hasTranscript": true,
+  "transcriptWordCount": 11568,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/8003/1/3e92bdbb-e289-4fca-a1b7-50dd13e870a1/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/8003/1/3e92bdbb-e289-4fca-a1b7-50dd13e870a1/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/8003/1/3e92bdbb-e289-4fca-a1b7-50dd13e870a1/downloads/wwdc2026-8003_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/8003/1/3e92bdbb-e289-4fca-a1b7-50dd13e870a1/downloads/wwdc2026-8003_hd.mp4",
+    "duration": 3665
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2026/8003-power-and-performance-group-lab/",
+  "files": {
+    "metadata": "sessions/wwdc2026/8003-power-and-performance-group-lab/metadata.json",
+    "readme": "sessions/wwdc2026/8003-power-and-performance-group-lab/README.md",
+    "transcript": "sessions/wwdc2026/8003-power-and-performance-group-lab/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/8003-power-and-performance-group-lab/transcript.json"
+  }
+}

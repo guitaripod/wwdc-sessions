@@ -1,6 +1,6 @@
 # System Services
 
-143 sessions across all events.
+144 sessions across all events.
 
 
 ### WWDC26
@@ -11,6 +11,7 @@
 - [Expand the capabilities of your Virtualization app](../sessions/wwdc2026/224-expand-the-capabilities-of-your-virtualization-app/README.md)
 - [Find your accessory with Bluetooth Channel Sounding](../sessions/wwdc2026/369-find-your-accessory-with-bluetooth-channel-sounding/README.md)
 - [Meet the new MetricKit](../sessions/wwdc2026/222-meet-the-new-metrickit/README.md)
+- [Power and Performance Group Lab](../sessions/wwdc2026/8003-power-and-performance-group-lab/README.md)
 - [Rev up your CarPlay app](../sessions/wwdc2026/212-rev-up-your-carplay-app/README.md)
 - [What’s new in Shortcuts](../sessions/wwdc2026/310-what-s-new-in-shortcuts/README.md)
 - [What’s new in Wallet](../sessions/wwdc2026/209-what-s-new-in-wallet/README.md)

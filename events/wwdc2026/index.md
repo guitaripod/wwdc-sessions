@@ -1,9 +1,10 @@
 # WWDC26 Sessions
 
-121 sessions · 118 with transcripts.
+140 sessions · 137 with transcripts.
 
 ## AI & Machine Learning
 
+- [Apple Intelligence Group Lab](../../sessions/wwdc2026/8011-apple-intelligence-group-lab/README.md) · 📝
 - [Best practices for integrating visual intelligence in your app](../../sessions/wwdc2026/297-best-practices-for-integrating-visual-intelligence-in-your-a/README.md) · 📝
 - [Bring an LLM provider to the Foundation Models framework](../../sessions/wwdc2026/339-bring-an-llm-provider-to-the-foundation-models-framework/README.md) · 📝
 - [Bringing Cyberpunk 2077 to Mac](../../sessions/wwdc2026/356-bringing-cyberpunk-2077-to-mac/README.md) · 📝
@@ -13,6 +14,7 @@
 - [Build real-time neural rendering pipelines with Metal](../../sessions/wwdc2026/359-build-real-time-neural-rendering-pipelines-with-metal/README.md) · 📝
 - [Build with the new Apple Foundation Model on Private Cloud Compute](../../sessions/wwdc2026/319-build-with-the-new-apple-foundation-model-on-private-cloud-c/README.md) · 📝
 - [Code-along: Make your app available to Siri](../../sessions/wwdc2026/344-code-along-make-your-app-available-to-siri/README.md) · 📝
+- [Coding Intelligence, Machine Learning & AI Group Lab](../../sessions/wwdc2026/8121-coding-intelligence-machine-learning-ai-group-lab/README.md) · 📝
 - [Create UI prototypes using agents in Xcode](../../sessions/wwdc2026/227-create-ui-prototypes-using-agents-in-xcode/README.md) · 📝
 - [Create high-quality images using Image Playground](../../sessions/wwdc2026/375-create-high-quality-images-using-image-playground/README.md) · 📝
 - [Create robust evaluations for agentic apps](../../sessions/wwdc2026/299-create-robust-evaluations-for-agentic-apps/README.md) · 📝
@@ -27,6 +29,7 @@
 - [Inside Apple Intelligence and Xcode: Special Presentation](../../sessions/wwdc2026/382-inside-apple-intelligence-and-xcode-special-presentation/README.md) · 📝
 - [Integrate on-device AI models into your app using Core AI](../../sessions/wwdc2026/326-integrate-on-device-ai-models-into-your-app-using-core-ai/README.md) · 📝
 - [LLM search using Core Spotlight](../../sessions/wwdc2026/246-llm-search-using-core-spotlight/README.md) · 📝
+- [Machine Learning & AI Group Lab](../../sessions/wwdc2026/8016-machine-learning-ai-group-lab/README.md) · 📝
 - [Meet Core AI](../../sessions/wwdc2026/324-meet-core-ai/README.md) · 📝
 - [Meet the Evaluations framework](../../sessions/wwdc2026/298-meet-the-evaluations-framework/README.md) · 📝
 - [Meet the Music Understanding framework](../../sessions/wwdc2026/253-meet-the-music-understanding-framework/README.md) · 📝
@@ -42,6 +45,7 @@
 
 ## Accessibility & Inclusion
 
+- [Accessibility Technologies Group Lab](../../sessions/wwdc2026/8005-accessibility-technologies-group-lab/README.md) · 📝
 - [Discover generated subtitles and subtitle styles](../../sessions/wwdc2026/256-discover-generated-subtitles-and-subtitle-styles/README.md) · 📝
 - [Enhance the accessibility of your reading app](../../sessions/wwdc2026/219-enhance-the-accessibility-of-your-reading-app/README.md) · 📝
 - [Prepare your tvOS apps for Dynamic Type](../../sessions/wwdc2026/221-prepare-your-tvos-apps-for-dynamic-type/README.md) · 📝
@@ -64,6 +68,7 @@
 - [Live Activities essentials](../../sessions/wwdc2026/223-live-activities-essentials/README.md) · 📝
 - [Read between the strokes with PencilKit](../../sessions/wwdc2026/203-read-between-the-strokes-with-pencilkit/README.md) · 📝
 - [Secure your apps with App Attest](../../sessions/wwdc2026/201-secure-your-apps-with-app-attest/README.md) · 📝
+- [SwiftData Group Lab](../../sessions/wwdc2026/8017-swiftdata-group-lab/README.md) · 📝
 - [Unlock in-game content with StoreKit and Background Assets](../../sessions/wwdc2026/378-unlock-in-game-content-with-storekit-and-background-assets/README.md) · 📝
 - [Unwrap PaperKit](../../sessions/wwdc2026/372-unwrap-paperkit/README.md) · 📝
 - [Use SwiftUI with AppKit and UIKit](../../sessions/wwdc2026/272-use-swiftui-with-appkit-and-uikit/README.md) · 📝
@@ -73,9 +78,11 @@
 - [What’s new in Wallet](../../sessions/wwdc2026/209-what-s-new-in-wallet/README.md) · 📝
 - [What’s new in assessment on macOS](../../sessions/wwdc2026/230-what-s-new-in-assessment-on-macos/README.md) · 📝
 - [What’s new in image understanding](../../sessions/wwdc2026/237-what-s-new-in-image-understanding/README.md) · 📝
+- [watchOS Group Lab](../../sessions/wwdc2026/8014-watchos-group-lab/README.md) · 📝
 
 ## App Store, Distribution & Marketing
 
+- [App Store Connect Group Lab](../../sessions/wwdc2026/8010-app-store-connect-group-lab/README.md) · 📝
 - [Create web extensions for Safari](../../sessions/wwdc2026/216-create-web-extensions-for-safari/README.md) · 📝
 - [Enhance your presence on the App Store](../../sessions/wwdc2026/205-enhance-your-presence-on-the-app-store/README.md) · 📝
 - [Explore Retention Messaging in App Store Connect](../../sessions/wwdc2026/309-explore-retention-messaging-in-app-store-connect/README.md) · 📝
@@ -113,6 +120,7 @@
 - [Design intuitive search experiences](../../sessions/wwdc2026/292-design-intuitive-search-experiences/README.md) · 📝
 - [Design no-code games with Reality Composer Pro 3](../../sessions/wwdc2026/252-design-no-code-games-with-reality-composer-pro-3/README.md) · 📝
 - [Dive into lazy stacks and scrolling with SwiftUI](../../sessions/wwdc2026/321-dive-into-lazy-stacks-and-scrolling-with-swiftui/README.md) · 📝
+- [Icon Composer for Beginners Group Lab](../../sessions/wwdc2026/8012-icon-composer-for-beginners-group-lab/README.md) · 📝
 - [Learn CSS Grid Lanes](../../sessions/wwdc2026/314-learn-css-grid-lanes/README.md) · 📝
 - [Principles of great design](../../sessions/wwdc2026/250-principles-of-great-design/README.md) · 📝
 - [Rediscover the HTML select element](../../sessions/wwdc2026/315-rediscover-the-html-select-element/README.md) · 📝
@@ -122,6 +130,7 @@
 
 - [Build real-time apps and services with gRPC and Swift](../../sessions/wwdc2026/265-build-real-time-apps-and-services-with-grpc-and-swift/README.md) · 📝
 - [Build, deliver, and automate with Xcode Cloud](../../sessions/wwdc2026/261-build-deliver-and-automate-with-xcode-cloud/README.md) · 📝
+- [Coding Intelligence for Beginners Group Lab](../../sessions/wwdc2026/8007-coding-intelligence-for-beginners-group-lab/README.md) · 📝
 - [Create UI prototypes using agents in Xcode](../../sessions/wwdc2026/227-create-ui-prototypes-using-agents-in-xcode/README.md) · 📝
 - [Design no-code games with Reality Composer Pro 3](../../sessions/wwdc2026/252-design-no-code-games-with-reality-composer-pro-3/README.md) · 📝
 - [Discover container machines](../../sessions/wwdc2026/389-discover-container-machines/README.md) · 📝
@@ -135,6 +144,7 @@
 - [Translate your app using agents in Xcode](../../sessions/wwdc2026/213-translate-your-app-using-agents-in-xcode/README.md) · 📝
 - [What’s new in Swift](../../sessions/wwdc2026/262-what-s-new-in-swift/README.md) · 📝
 - [What’s new in Xcode 27](../../sessions/wwdc2026/258-what-s-new-in-xcode-27/README.md) · 📝
+- [Xcode Tips and Tricks Group Lab](../../sessions/wwdc2026/8013-xcode-tips-and-tricks-group-lab/README.md) · 📝
 - [Xcode, agents, and you](../../sessions/wwdc2026/259-xcode-agents-and-you/README.md) · 📝
 
 ## Essentials
@@ -179,10 +189,12 @@
 ## Health & Fitness
 
 - [Deliver workout insights with HealthKit workout zones](../../sessions/wwdc2026/207-deliver-workout-insights-with-healthkit-workout-zones/README.md) · 📝
+- [watchOS Group Lab](../../sessions/wwdc2026/8014-watchos-group-lab/README.md) · 📝
 
 ## Photos & Camera
 
 - [Build a responsive camera app that launches quickly](../../sessions/wwdc2026/303-build-a-responsive-camera-app-that-launches-quickly/README.md) · 📝
+- [Camera and Photo Technologies Group Lab](../../sessions/wwdc2026/8018-camera-and-photo-technologies-group-lab/README.md) · 📝
 - [Enhance RAW image processing with Core Image](../../sessions/wwdc2026/305-enhance-raw-image-processing-with-core-image/README.md) · 📝
 - [Implement high resolution photo capture](../../sessions/wwdc2026/304-implement-high-resolution-photo-capture/README.md) · 📝
 - [Support the Center Stage front camera in your iOS app](../../sessions/wwdc2026/341-support-the-center-stage-front-camera-in-your-ios-app/README.md) · 📝
@@ -190,6 +202,7 @@
 ## Privacy & Security
 
 - [Meet Trust Insights](../../sessions/wwdc2026/379-meet-trust-insights/README.md) · 📝
+- [Privacy and Security Group Lab](../../sessions/wwdc2026/8009-privacy-and-security-group-lab/README.md) · 📝
 - [Secure your app: mitigate risks to agentic features](../../sessions/wwdc2026/347-secure-your-app-mitigate-risks-to-agentic-features/README.md) · 📝
 - [Secure your apps with App Attest](../../sessions/wwdc2026/201-secure-your-apps-with-app-attest/README.md) · 📝
 
@@ -200,6 +213,7 @@
 - [Get started with the HTML Model Element](../../sessions/wwdc2026/215-get-started-with-the-html-model-element/README.md) · 📝
 - [Learn CSS Grid Lanes](../../sessions/wwdc2026/314-learn-css-grid-lanes/README.md) · 📝
 - [Rediscover the HTML select element](../../sessions/wwdc2026/315-rediscover-the-html-select-element/README.md) · 📝
+- [Safari and Web Technologies Group Lab](../../sessions/wwdc2026/8015-safari-and-web-technologies-group-lab/README.md) · 📝
 - [What’s new in WebKit for Safari 27](../../sessions/wwdc2026/204-what-s-new-in-webkit-for-safari-27/README.md) · 📝
 
 ## Spatial Computing
@@ -219,6 +233,7 @@
 - [Iterate your spatial scenes faster with Reality Composer Pro 3](../../sessions/wwdc2026/280-iterate-your-spatial-scenes-faster-with-reality-composer-pro/README.md) · 📝
 - [Supercharge your spatial workflows with Reality Composer Pro 3](../../sessions/wwdc2026/393-supercharge-your-spatial-workflows-with-reality-composer-pro/README.md) · 📝
 - [Use foveated streaming to bring immersive content to visionOS](../../sessions/wwdc2026/286-use-foveated-streaming-to-bring-immersive-content-to-visiono/README.md) · 📝
+- [visionOS Group Lab](../../sessions/wwdc2026/8004-visionos-group-lab/README.md) · 📝
 
 ## Swift
 
@@ -231,6 +246,7 @@
 - [Integrate MusicKit into your app](../../sessions/wwdc2026/254-integrate-musickit-into-your-app/README.md) · 📝
 - [Migrate to Swift Testing](../../sessions/wwdc2026/267-migrate-to-swift-testing/README.md) · 📝
 - [Profile, fix, and verify: Improve app responsiveness with Instruments](../../sessions/wwdc2026/268-profile-fix-and-verify-improve-app-responsiveness-with-instr/README.md) · 📝
+- [Swift Group Lab](../../sessions/wwdc2026/8001-swift-group-lab/README.md) · 📝
 - [What’s new in Swift](../../sessions/wwdc2026/262-what-s-new-in-swift/README.md) · 📝
 - [What’s new in SwiftData](../../sessions/wwdc2026/274-what-s-new-in-swiftdata/README.md) · 📝
 - [What’s new in Xcode 27](../../sessions/wwdc2026/258-what-s-new-in-xcode-27/README.md) · 📝
@@ -250,12 +266,16 @@
 - [Modernize your UIKit app](../../sessions/wwdc2026/278-modernize-your-uikit-app/README.md) · 📝
 - [Read between the strokes with PencilKit](../../sessions/wwdc2026/203-read-between-the-strokes-with-pencilkit/README.md) · 📝
 - [Refine accessibility for custom controls](../../sessions/wwdc2026/220-refine-accessibility-for-custom-controls/README.md) · 📝
+- [SwiftUI Group Lab](../../sessions/wwdc2026/8006-swiftui-group-lab/README.md) · 📝
+- [SwiftUI Group Lab](../../sessions/wwdc2026/8120-swiftui-group-lab/README.md) · 📝
+- [SwiftUI for Beginners Group Lab](../../sessions/wwdc2026/8002-swiftui-for-beginners-group-lab/README.md) · 📝
 - [Unwrap PaperKit](../../sessions/wwdc2026/372-unwrap-paperkit/README.md) · 📝
 - [Use SwiftUI with AppKit and UIKit](../../sessions/wwdc2026/272-use-swiftui-with-appkit-and-uikit/README.md) · 📝
 - [What’s new in SwiftData](../../sessions/wwdc2026/274-what-s-new-in-swiftdata/README.md) · 📝
 - [What’s new in SwiftUI](../../sessions/wwdc2026/269-what-s-new-in-swiftui/README.md) · 📝
 - [What’s new in WebKit for Safari 27](../../sessions/wwdc2026/204-what-s-new-in-webkit-for-safari-27/README.md) · 📝
 - [WidgetKit foundations](../../sessions/wwdc2026/277-widgetkit-foundations/README.md) · 📝
+- [watchOS Group Lab](../../sessions/wwdc2026/8014-watchos-group-lab/README.md) · 📝
 
 ## System Services
 
@@ -265,6 +285,7 @@
 - [Expand the capabilities of your Virtualization app](../../sessions/wwdc2026/224-expand-the-capabilities-of-your-virtualization-app/README.md) · 📝
 - [Find your accessory with Bluetooth Channel Sounding](../../sessions/wwdc2026/369-find-your-accessory-with-bluetooth-channel-sounding/README.md) · 📝
 - [Meet the new MetricKit](../../sessions/wwdc2026/222-meet-the-new-metrickit/README.md) · 📝
+- [Power and Performance Group Lab](../../sessions/wwdc2026/8003-power-and-performance-group-lab/README.md) · 📝
 - [Rev up your CarPlay app](../../sessions/wwdc2026/212-rev-up-your-carplay-app/README.md) · 📝
 - [What’s new in Shortcuts](../../sessions/wwdc2026/310-what-s-new-in-shortcuts/README.md) · 📝
 - [What’s new in Wallet](../../sessions/wwdc2026/209-what-s-new-in-wallet/README.md) · 📝

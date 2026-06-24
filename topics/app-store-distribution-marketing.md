@@ -1,10 +1,11 @@
 # App Store, Distribution & Marketing
 
-106 sessions across all events.
+107 sessions across all events.
 
 
 ### WWDC26
 
+- [App Store Connect Group Lab](../sessions/wwdc2026/8010-app-store-connect-group-lab/README.md)
 - [Create web extensions for Safari](../sessions/wwdc2026/216-create-web-extensions-for-safari/README.md)
 - [Enhance your presence on the App Store](../sessions/wwdc2026/205-enhance-your-presence-on-the-app-store/README.md)
 - [Explore Retention Messaging in App Store Connect](../sessions/wwdc2026/309-explore-retention-messaging-in-app-store-connect/README.md)

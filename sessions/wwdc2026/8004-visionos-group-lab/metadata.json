@@ -1,0 +1,51 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-8004",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 8004,
+  "title": "visionOS Group Lab",
+  "description": "Join us online for a deep dive into WWDC26 with Apple engineers and designers to ask questions, get advice, and follow the discussion about the week’s biggest visionOS announcements. Conducted in English.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/8004",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/8004",
+  "type": "Get-Together",
+  "publishedAt": "2026-05-17T20:00:00-07:00",
+  "platforms": [
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Spatial Computing"
+  ],
+  "primaryTopic": "Spatial Computing",
+  "duration": 3806,
+  "hasTranscript": true,
+  "transcriptWordCount": 11742,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/8004/1/52426afe-f1d2-41a2-9862-e0a34d23e575/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/8004/1/52426afe-f1d2-41a2-9862-e0a34d23e575/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/8004/1/52426afe-f1d2-41a2-9862-e0a34d23e575/downloads/wwdc2026-8004_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/8004/1/52426afe-f1d2-41a2-9862-e0a34d23e575/downloads/wwdc2026-8004_hd.mp4",
+    "duration": 3806
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2026/8004-visionos-group-lab/",
+  "files": {
+    "metadata": "sessions/wwdc2026/8004-visionos-group-lab/metadata.json",
+    "readme": "sessions/wwdc2026/8004-visionos-group-lab/README.md",
+    "transcript": "sessions/wwdc2026/8004-visionos-group-lab/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/8004-visionos-group-lab/transcript.json"
+  }
+}

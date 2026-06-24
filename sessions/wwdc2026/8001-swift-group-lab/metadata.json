@@ -1,0 +1,56 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2026-8001",
+  "event": "wwdc2026",
+  "eventName": "WWDC26",
+  "year": 2026,
+  "eventContentId": 8001,
+  "title": "Swift Group Lab",
+  "description": "Join us online for a deep dive into WWDC26 with Apple engineers and designers to ask questions, get advice, and follow the discussion about the week’s biggest Swift announcements. Conducted in English.",
+  "url": "https://developer.apple.com/videos/play/wwdc2026/8001",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2026/8001",
+  "type": "Get-Together",
+  "publishedAt": "2026-05-17T20:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 3677,
+  "hasTranscript": true,
+  "transcriptWordCount": 11420,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/8001/1/6ee7f28d-d198-4690-af7e-ac35f4173c3c/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/8001/1/6ee7f28d-d198-4690-af7e-ac35f4173c3c/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/8001/1/6ee7f28d-d198-4690-af7e-ac35f4173c3c/downloads/wwdc2026-8001_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2026/8001/1/6ee7f28d-d198-4690-af7e-ac35f4173c3c/downloads/wwdc2026-8001_hd.mp4",
+    "duration": 3677
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2026/8001-swift-group-lab/",
+  "files": {
+    "metadata": "sessions/wwdc2026/8001-swift-group-lab/metadata.json",
+    "readme": "sessions/wwdc2026/8001-swift-group-lab/README.md",
+    "transcript": "sessions/wwdc2026/8001-swift-group-lab/transcript.md",
+    "transcriptJSON": "sessions/wwdc2026/8001-swift-group-lab/transcript.json"
+  }
+}

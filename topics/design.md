@@ -1,6 +1,6 @@
 # Design
 
-174 sessions across all events.
+175 sessions across all events.
 
 
 ### Tech Talks
@@ -17,6 +17,7 @@
 - [Design intuitive search experiences](../sessions/wwdc2026/292-design-intuitive-search-experiences/README.md)
 - [Design no-code games with Reality Composer Pro 3](../sessions/wwdc2026/252-design-no-code-games-with-reality-composer-pro-3/README.md)
 - [Dive into lazy stacks and scrolling with SwiftUI](../sessions/wwdc2026/321-dive-into-lazy-stacks-and-scrolling-with-swiftui/README.md)
+- [Icon Composer for Beginners Group Lab](../sessions/wwdc2026/8012-icon-composer-for-beginners-group-lab/README.md)
 - [Learn CSS Grid Lanes](../sessions/wwdc2026/314-learn-css-grid-lanes/README.md)
 - [Principles of great design](../sessions/wwdc2026/250-principles-of-great-design/README.md)
 - [Rediscover the HTML select element](../sessions/wwdc2026/315-rediscover-the-html-select-element/README.md)

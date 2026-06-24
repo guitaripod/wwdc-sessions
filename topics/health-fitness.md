@@ -1,11 +1,12 @@
 # Health & Fitness
 
-48 sessions across all events.
+49 sessions across all events.
 
 
 ### WWDC26
 
 - [Deliver workout insights with HealthKit workout zones](../sessions/wwdc2026/207-deliver-workout-insights-with-healthkit-workout-zones/README.md)
+- [watchOS Group Lab](../sessions/wwdc2026/8014-watchos-group-lab/README.md)
 
 ### WWDC25
 

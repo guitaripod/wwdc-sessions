@@ -1,11 +1,12 @@
 # Photos & Camera
 
-63 sessions across all events.
+64 sessions across all events.
 
 
 ### WWDC26
 
 - [Build a responsive camera app that launches quickly](../sessions/wwdc2026/303-build-a-responsive-camera-app-that-launches-quickly/README.md)
+- [Camera and Photo Technologies Group Lab](../sessions/wwdc2026/8018-camera-and-photo-technologies-group-lab/README.md)
 - [Enhance RAW image processing with Core Image](../sessions/wwdc2026/305-enhance-raw-image-processing-with-core-image/README.md)
 - [Implement high resolution photo capture](../sessions/wwdc2026/304-implement-high-resolution-photo-capture/README.md)
 - [Support the Center Stage front camera in your iOS app](../sessions/wwdc2026/341-support-the-center-stage-front-camera-in-your-ios-app/README.md)
