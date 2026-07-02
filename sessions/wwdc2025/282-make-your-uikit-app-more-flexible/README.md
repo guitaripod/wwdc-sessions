@@ -25,9 +25,9 @@ Find out how your UIKit app can become more flexible on iPhone, iPad, Mac, and A
 
 ## Documentation & Resources
 
-- [TN3187: Migrating to the UIKit scene-based life cycle](https://developer.apple.com/documentation/Technotes/tn3187-Migrating-to-the-UIKit-scene-based-life-cycle) _documentation_
-  - Markdown (sosumi.ai): https://sosumi.ai/documentation/Technotes/tn3187-Migrating-to-the-UIKit-scene-based-life-cycle
-  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/Technotes/tn3187-Migrating-to-the-UIKit-scene-based-life-cycle.json
+- [TN3187: Migrating to the UIKit scene-based life cycle](https://developer.apple.com/documentation/UIKit/transitioning-to-the-uikit-scene-based-life-cycle) _documentation_
+  - Markdown (sosumi.ai): https://sosumi.ai/documentation/UIKit/transitioning-to-the-uikit-scene-based-life-cycle
+  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/UIKit/transitioning-to-the-uikit-scene-based-life-cycle.json
 - [UIKit updates](https://developer.apple.com/documentation/Updates/UIKit) _documentation_
   - Markdown (sosumi.ai): https://sosumi.ai/documentation/Updates/UIKit
   - DocC JSON: https://developer.apple.com/tutorials/data/documentation/Updates/UIKit.json
