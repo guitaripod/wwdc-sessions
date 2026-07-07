@@ -19,7 +19,7 @@ Discover how to build a camera app that launches instantly so people never miss 
 ## Transcript
 
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
-(2,965 words)
+(2,754 words)
 
 ## Documentation & Resources
 

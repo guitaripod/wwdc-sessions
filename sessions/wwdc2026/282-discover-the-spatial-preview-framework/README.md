@@ -21,7 +21,7 @@ Check out how the new Spatial Preview framework brings content from your Mac dir
 ## Transcript
 
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
-(2,409 words)
+(2,346 words)
 
 ## Documentation & Resources
 

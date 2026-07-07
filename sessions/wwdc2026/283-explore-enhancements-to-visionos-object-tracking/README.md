@@ -21,7 +21,7 @@ Find out how visionOS is advancing object tracking and spatial accessory input. 
 ## Transcript
 
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
-(2,405 words)
+(2,406 words)
 
 ## Documentation & Resources
 
