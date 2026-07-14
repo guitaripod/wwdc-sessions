@@ -4,14 +4,14 @@ event: "wwdc2026"
 title: "Explore distributed inference and training with MLX"
 url: "https://developer.apple.com/videos/play/wwdc2026/233"
 language: "eng"
-words: 2975
+words: 2973
 ---
 
 # Explore distributed inference and training with MLX — Transcript
 
 [Session page](https://developer.apple.com/videos/play/wwdc2026/233) · [Metadata](metadata.json) · [Structured JSON](transcript.json)
 
-**[0:07]** Hi, I'm Tatiana, research scientist at MLX team. It's been a remarkable time for local LLMs: models keep getting larger and gaining new amazing capabilities -- becoming smarter and handling harder problems. And as they improve, we use them for more: longer contexts, harder tasks, more complex workflows. Eventually, memory, compute, or bandwidth on a single machine becomes a limitation. In our WWDC 26 video "Run local agentic AI on the Mac using MLX" it is shown how to run AI agents locally. But when you have multiple devices, you can take local AI even further, running larger LLMs or accelerating them through distributed inference and training.
+**[0:07]** Hi, I'm Tatiana, research scientist at MLX team. It's been a remarkable time for local LLMs: models keep getting larger and gaining new amazing capabilities -- becoming smarter and handling harder problems. And as they improve, we use them for more: longer contexts, harder tasks, more complex workflows. Eventually, memory, compute, or bandwidth on a single machine becomes a limitation. In our video "Run local agentic AI on the Mac using MLX" it is shown how to run AI agents locally. But when you have multiple devices, you can take local AI even further, running larger LLMs or accelerating them through distributed inference and training.
 
 **[0:53]** Today, we'll take a deep dive into scaling across multiple Macs with MLX, using the hardware right on your desk. We'll start with the command line interface to get models running on your machines, move to the Python API for experimentation, and finish with Swift for embedding these workflows directly into your apps. Let's start! First, we'll look at the full hardware and software stacks to make distributed workloads on Apple Silicon possible. Then we'll put everything together: turn four M3 Ultras into a cluster. We'll walk through every step: choosing the right topology to connect machines, enabling fast communication, and launching distributed jobs.
 

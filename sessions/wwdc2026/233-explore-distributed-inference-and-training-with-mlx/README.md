@@ -19,7 +19,7 @@ Scale your machine learning workloads across multiple Macs using MLX. Learn how 
 ## Transcript
 
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
-(2,975 words)
+(2,973 words)
 
 ## Documentation & Resources
 
