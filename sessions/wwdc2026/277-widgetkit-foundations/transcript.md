@@ -4,7 +4,7 @@ event: "wwdc2026"
 title: "WidgetKit foundations"
 url: "https://developer.apple.com/videos/play/wwdc2026/277"
 language: "eng"
-words: 3271
+words: 3270
 ---
 
 # WidgetKit foundations — Transcript
@@ -23,7 +23,7 @@ words: 3271
 
 **[4:00]** Starting with a body providing a WidgetConfiguration. There are two types of configurations for widgets: AppIntentConfigurations and StaticConfigurations. AppIntentConfigurations are used when your widget can be configured by the user. My widget will be automatically configured using the current book I am reading, so I am using the static configuration which is the most simple. The static configuration needs a few parameters. The kind, which is a unique identifier for this specific type of widget. A timeline provider that produces timeline entries for the widget. And a closure that takes a timeline entry and returns a View. From the closure you return a SwiftUI view for the provided timeline entry.
 
-**[4:47]** Because my book club app is built in SwiftUI, I already have a view, the DailyReadingGoalView, that is exactly what I need for my widget. To specify the background, I am using the containerBackground modifier. This modifier identifies which view is the background of my widget. When people using my widget customize their devices with a colored or clear tint, this allows the system to replace the background view specified with a glass material view. The view portion of the Reading Goal widget is implemented. Let's have a closer look at what is expected of the timeline provider and how timelines keep widgets relevant. The timeline provider supplies entries to represent three separate states for my widget:
+**[4:47]** Because my book club app is built in SwiftUI, I already have a view, the DailyReadingGoalView, that is exactly what I need for my widget. To specify the background, I am using the containerBackground modifier. This modifier identifies which view is the background of my widget. When people using my widget customize their devices with a colored or clear tint, this allows the system to replace the background view specified with a glass material view. The view portion of the Reading Goal widget is implemented. Let's have a closer look at what is expected of the timeline provider and how timelines keep widgets relevant. The TimelineProvider supplies entries to represent three separate states for my widget:
 
 **[5:32]** Snapshots, Placeholder, and Timeline. A snapshot is a realistic preview of a widget. It's what people see in the widget gallery. This is an opportunity for my widget to make a strong first impression. My app has no data before someone starts using it, so I feature a popular book, Atomic Habits, with a default message. So people can imagine my widget at its best before they ever add it to their Home Screen. A placeholder is a stand-in view the system shows when your widget doesn't have content to display yet, like the very first time it's loading your timeline. Because it needs to show up instantly, fetching a placeholder has to be synchronous. So provide a placeholder that does not need data from disk or over the network.
 

@@ -19,7 +19,7 @@ Widgets highlight your app’s most important content across the system, providi
 ## Transcript
 
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
-(3,271 words)
+(3,270 words)
 
 ## Code Snippets
 

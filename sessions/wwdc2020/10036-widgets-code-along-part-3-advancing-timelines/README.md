@@ -25,9 +25,9 @@ Take your widget to the next level as we embark upon the third and final stage o
 
 ## Documentation & Resources
 
-- [Building Widgets Using WidgetKit and SwiftUI](https://developer.apple.com/documentation/widgetkit/building_widgets_using_widgetkit_and_swiftui) _samplecode_
-  - Markdown (sosumi.ai): https://sosumi.ai/documentation/widgetkit/building_widgets_using_widgetkit_and_swiftui
-  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/widgetkit/building_widgets_using_widgetkit_and_swiftui.json
+- [Building Widgets Using WidgetKit and SwiftUI](https://developer.apple.com/documentation/WidgetKit/building-widgets-using-widgetkit-and-swiftui) _samplecode_
+  - Markdown (sosumi.ai): https://sosumi.ai/documentation/WidgetKit/building-widgets-using-widgetkit-and-swiftui
+  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/WidgetKit/building-widgets-using-widgetkit-and-swiftui.json
 
 ## Video
 

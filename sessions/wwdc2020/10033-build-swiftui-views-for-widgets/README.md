@@ -38,9 +38,9 @@ Widgets are bite-sized pieces of information from your app that someone can choo
   - Markdown (sosumi.ai): https://sosumi.ai/widgets/
 - [Human Interface Guidelines: Widgets](https://developer.apple.com/design/human-interface-guidelines/widgets) _documentation_
   - Markdown (sosumi.ai): https://sosumi.ai/design/human-interface-guidelines/widgets
-- [Building Widgets Using WidgetKit and SwiftUI](https://developer.apple.com/documentation/widgetkit/building_widgets_using_widgetkit_and_swiftui) _samplecode_
-  - Markdown (sosumi.ai): https://sosumi.ai/documentation/widgetkit/building_widgets_using_widgetkit_and_swiftui
-  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/widgetkit/building_widgets_using_widgetkit_and_swiftui.json
+- [Building Widgets Using WidgetKit and SwiftUI](https://developer.apple.com/documentation/WidgetKit/building-widgets-using-widgetkit-and-swiftui) _samplecode_
+  - Markdown (sosumi.ai): https://sosumi.ai/documentation/WidgetKit/building-widgets-using-widgetkit-and-swiftui
+  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/WidgetKit/building-widgets-using-widgetkit-and-swiftui.json
 
 ## Code Snippets
 
