@@ -2,7 +2,7 @@
   "event": "meet-with-apple",
   "name": "Meet with Apple",
   "year": 2025,
-  "sessionCount": 51,
+  "sessionCount": 52,
   "sessions": [
     {
       "id": "meet-with-apple-201",
@@ -1872,6 +1872,38 @@
       "codeSnippetCount": 0,
       "path": "sessions/meet-with-apple/276-q-a-swift-concurrency/",
       "description": "Join us online for a live deep dive into Swift concurrency with Apple engineers. Ask questions, gain insights from teams within Apple who have adopted concurrency in their own APIs, and learn best practices for migrating to or adopting Swift concurrency in your apps and libraries. Please note that you‘ll need a free Apple Developer Forums account to participate in the Q&A. Format: Online Length: One hour Conducted in: English"
+    },
+    {
+      "id": "meet-with-apple-277",
+      "event": "meet-with-apple",
+      "year": 2026,
+      "eventContentId": 277,
+      "title": "Discover what’s next: The biggest updates from WWDC26",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/277",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/277",
+      "duration": null,
+      "publishedAt": "2026-07-21T12:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Essentials",
+      "topics": [
+        "Essentials"
+      ],
+      "keywords": [],
+      "hasTranscript": false,
+      "transcriptWordCount": 0,
+      "availableLanguages": [],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/277-discover-what-s-next-the-biggest-updates-from-wwdc26/",
+      "description": "Join us online as we highlight the latest updates across Apple platforms — and explore the benefits for your apps. We’ll focus on the why over the how, mapping new technologies to real-world use cases. This session is for designers, product managers, and engineering leads who drive roadmap decisions and want to learn what’s possible as their teams begin building."
     }
   ]
 }

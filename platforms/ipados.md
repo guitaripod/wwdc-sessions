@@ -1,7 +1,8 @@
 # iPadOS Sessions
 
-1332 sessions.
+1333 sessions.
 
+- [Discover what’s next: The biggest updates from WWDC26](../sessions/meet-with-apple/277-discover-what-s-next-the-biggest-updates-from-wwdc26/README.md) — Meet with Apple
 - [Get ready for the Swift Student Challenge](../sessions/meet-with-apple/263-get-ready-for-the-swift-student-challenge/README.md) — Meet with Apple
 - [Q&A: Swift concurrency](../sessions/meet-with-apple/276-q-a-swift-concurrency/README.md) — Meet with Apple
 - [Boost your graphics performance with the M5 and A19 GPUs](../sessions/tech-talks/111431-boost-your-graphics-performance-with-the-m5-and-a19-gpus/README.md) — Tech Talks
