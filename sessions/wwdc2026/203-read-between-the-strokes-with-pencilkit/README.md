@@ -25,6 +25,9 @@ Unlock handwriting recognition in your apps using the same powerful technology b
 
 ## Documentation & Resources
 
+- [Importing Bézier path data into PencilKit](https://developer.apple.com/documentation/PencilKit/importing-external-drawing-data-into-pencilkit) _documentation_
+  - Markdown (sosumi.ai): https://sosumi.ai/documentation/PencilKit/importing-external-drawing-data-into-pencilkit
+  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/PencilKit/importing-external-drawing-data-into-pencilkit.json
 - [Controlling stroke rendering for animation and editing](https://developer.apple.com/documentation/PencilKit/controlling-stroke-rendering-for-animation-and-editing) _documentation_
   - Markdown (sosumi.ai): https://sosumi.ai/documentation/PencilKit/controlling-stroke-rendering-for-animation-and-editing
   - DocC JSON: https://developer.apple.com/tutorials/data/documentation/PencilKit/controlling-stroke-rendering-for-animation-and-editing.json
