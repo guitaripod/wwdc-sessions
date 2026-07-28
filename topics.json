@@ -8258,7 +8258,7 @@
           "path": "sessions/meet-with-apple/277-discover-what-s-next-the-biggest-updates-from-wwdc26/",
           "title": "Discover what’s next: The biggest updates from WWDC26",
           "event": "meet-with-apple",
-          "hasTranscript": false
+          "hasTranscript": true
         },
         {
           "id": "meet-with-apple-263",
@@ -17820,7 +17820,7 @@
     {
       "topic": "System Services",
       "slug": "system-services",
-      "sessionCount": 144,
+      "sessionCount": 145,
       "sessions": [
         {
           "id": "wwdc2026-319",
@@ -18828,6 +18828,13 @@
           "path": "sessions/wwdc2016/724-what-s-new-in-the-apple-push-notification-service/",
           "title": "What's New in the Apple Push Notification Service",
           "event": "wwdc2016",
+          "hasTranscript": true
+        },
+        {
+          "id": "wwdc2015-719",
+          "path": "sessions/wwdc2015/719-your-app-and-next-generation-networks/",
+          "title": "Your App and Next Generation Networks",
+          "event": "wwdc2015",
           "hasTranscript": true
         }
       ]

@@ -2,15 +2,15 @@
   "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/catalog.schema.json",
   "schemaVersion": 1,
   "builderVersion": 2,
-  "generatedAt": "2026-07-23T20:16:51+00:00",
-  "sourceUpdated": "2026-07-23T09:14:36-07:00",
+  "generatedAt": "2026-07-28T20:18:33+00:00",
+  "sourceUpdated": "2026-07-28T11:39:12-07:00",
   "source": "Apple WWDC developer-video feeds (resolved via api2024.wwdc.io)",
   "rawBase": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master",
   "license": "Content © Apple Inc. Tooling under MIT (see LICENSE/NOTICE).",
   "counts": {
     "events": 15,
-    "sessions": 1637,
-    "transcripts": 1549
+    "sessions": 1638,
+    "transcripts": 1551
   },
   "links": {
     "events": "events.json",
@@ -49,7 +49,7 @@
       "year": 2025,
       "startTime": "2025-07-10T10:00:00-07:00",
       "sessionCount": 52,
-      "transcriptCount": 45,
+      "transcriptCount": 46,
       "index": "events/meet-with-apple/index.md",
       "indexJSON": "events/meet-with-apple/index.json"
     },
@@ -158,8 +158,8 @@
       "name": "WWDC15",
       "year": 2015,
       "startTime": "2015-06-08T10:00:00-07:00",
-      "sessionCount": 11,
-      "transcriptCount": 11,
+      "sessionCount": 12,
+      "transcriptCount": 12,
       "index": "events/wwdc2015/index.md",
       "indexJSON": "events/wwdc2015/index.json"
     },
@@ -261,7 +261,7 @@
       "type": "Video",
       "url": "https://developer.apple.com/videos/play/meet-with-apple/277",
       "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/277",
-      "duration": null,
+      "duration": 4313,
       "publishedAt": "2026-07-21T12:00:00-07:00",
       "platforms": [
         "iOS",
@@ -276,9 +276,17 @@
         "Essentials"
       ],
       "keywords": [],
-      "hasTranscript": false,
-      "transcriptWordCount": 0,
-      "availableLanguages": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 10788,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
       "resourceCount": 0,
       "codeSnippetCount": 0,
       "path": "sessions/meet-with-apple/277-discover-what-s-next-the-biggest-updates-from-wwdc26/",
@@ -2401,7 +2409,7 @@
         "spa",
         "zho"
       ],
-      "resourceCount": 0,
+      "resourceCount": 2,
       "codeSnippetCount": 0,
       "path": "sessions/wwdc2026/261-build-deliver-and-automate-with-xcode-cloud/",
       "description": "Discover the latest updates to Xcode Cloud that quickly get you started building and delivering your apps. Learn essential Xcode Cloud concepts, set up cloud build and tests simply by connecting your source repository, and configure for app distribution when you’re ready to ship. Find out how webhooks and management tools extends Xcode Cloud’s capabilities, supporting your most advanced workflows."
@@ -2609,7 +2617,7 @@
         "spa",
         "zho"
       ],
-      "resourceCount": 4,
+      "resourceCount": 7,
       "codeSnippetCount": 33,
       "path": "sessions/wwdc2026/269-what-s-new-in-swiftui/",
       "description": "Explore the latest additions to SwiftUI and discover how they can improve your apps. We’ll introduce a new Document protocol with direct disk access and snapshot-based diffing for building high-performance apps; new APIs for reordering content in lists, grids, and sections; and toolbar enhancements including visibility priority and auto-minimizing behavior. We’ll also cover expanded presentation APIs — including swipe actions on any view — plus AsyncImage caching improvements and lazy state initialization for Observable types."
@@ -69623,6 +69631,46 @@
       "codeSnippetCount": 0,
       "path": "sessions/wwdc2015/705-what-s-new-in-core-motion/",
       "description": "See what's new in Core Motion. Learn how your application can take advantage of the motion sensors on iOS devices. Walk through new features of the pedometer and learn how to use the altimeter to take your app to the next level. Get personal with motion APIs and sensor data on the Apple Watch. Run through a demo that uses motion-context awareness to make an application feel smarter!"
+    },
+    {
+      "id": "wwdc2015-719",
+      "event": "wwdc2015",
+      "year": 2015,
+      "eventContentId": 719,
+      "title": "Your App and Next Generation Networks",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2015/719",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2015/719",
+      "duration": 3161,
+      "publishedAt": "2015-06-12T11:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ],
+      "primaryTopic": "System Services",
+      "topics": [
+        "System Services"
+      ],
+      "keywords": [
+        "ipv6",
+        "tcp"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 7384,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2015/719-your-app-and-next-generation-networks/",
+      "description": "IPv6 is growing exponentially and carriers worldwide are moving to pure IPv6 APNs. Learn about new tools to test your apps for compatibility and get expert advice on making sure your apps work in all network environments. iOS 9 and OS X 10.11 now support the latest TCP standards. Hear from the experts on TCP Fast Open and Explicit Congestion Notification, and find out how it benefits your apps."
     },
     {
       "id": "wwdc2015-802",

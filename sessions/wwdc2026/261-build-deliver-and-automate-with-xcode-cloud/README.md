@@ -21,6 +21,15 @@ Discover the latest updates to Xcode Cloud that quickly get you started building
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
 (1,778 words)
 
+## Documentation & Resources
+
+- [Distributing your Xcode Cloud builds through TestFlight](https://developer.apple.com/documentation/Xcode/distributing-your-xcode-cloud-builds-through-testflight) _documentation_
+  - Markdown (sosumi.ai): https://sosumi.ai/documentation/Xcode/distributing-your-xcode-cloud-builds-through-testflight
+  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/Xcode/distributing-your-xcode-cloud-builds-through-testflight.json
+- [Getting started with Xcode Cloud](https://developer.apple.com/documentation/Xcode/getting-started-with-xcode-cloud) _documentation_
+  - Markdown (sosumi.ai): https://sosumi.ai/documentation/Xcode/getting-started-with-xcode-cloud
+  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/Xcode/getting-started-with-xcode-cloud.json
+
 ## Video
 
 - HLS stream: https://devstreaming-cdn.apple.com/videos/wwdc/2026/261/7/35c49f2b-3f0a-4956-826b-d54d9fed678e/cmaf.m3u8

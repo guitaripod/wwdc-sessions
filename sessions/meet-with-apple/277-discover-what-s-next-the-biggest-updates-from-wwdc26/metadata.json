@@ -25,16 +25,32 @@
     "Essentials"
   ],
   "primaryTopic": "Essentials",
-  "duration": null,
-  "hasTranscript": false,
-  "transcriptWordCount": 0,
-  "availableLanguages": [],
-  "media": {},
+  "duration": 4313,
+  "hasTranscript": true,
+  "transcriptWordCount": 10788,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/277/2/63aba3b1-4a0f-4e04-ad22-7921c895dfae/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/277/2/63aba3b1-4a0f-4e04-ad22-7921c895dfae/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/277/2/63aba3b1-4a0f-4e04-ad22-7921c895dfae/downloads/meet-with-apple-277_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/277/2/63aba3b1-4a0f-4e04-ad22-7921c895dfae/downloads/meet-with-apple-277_hd.mp4",
+    "duration": 4313
+  },
   "codeSnippets": [],
   "resources": [],
   "path": "sessions/meet-with-apple/277-discover-what-s-next-the-biggest-updates-from-wwdc26/",
   "files": {
     "metadata": "sessions/meet-with-apple/277-discover-what-s-next-the-biggest-updates-from-wwdc26/metadata.json",
-    "readme": "sessions/meet-with-apple/277-discover-what-s-next-the-biggest-updates-from-wwdc26/README.md"
+    "readme": "sessions/meet-with-apple/277-discover-what-s-next-the-biggest-updates-from-wwdc26/README.md",
+    "transcript": "sessions/meet-with-apple/277-discover-what-s-next-the-biggest-updates-from-wwdc26/transcript.md",
+    "transcriptJSON": "sessions/meet-with-apple/277-discover-what-s-next-the-biggest-updates-from-wwdc26/transcript.json"
   }
 }

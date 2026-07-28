@@ -46,7 +46,24 @@
     "duration": 829
   },
   "codeSnippets": [],
-  "resources": [],
+  "resources": [
+    {
+      "title": "Distributing your Xcode Cloud builds through TestFlight",
+      "url": "https://developer.apple.com/documentation/Xcode/distributing-your-xcode-cloud-builds-through-testflight",
+      "type": "documentation",
+      "description": "Create a TestFlight distribution workflow for internal testers.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/distributing-your-xcode-cloud-builds-through-testflight",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/distributing-your-xcode-cloud-builds-through-testflight.json"
+    },
+    {
+      "title": "Getting started with Xcode Cloud",
+      "url": "https://developer.apple.com/documentation/Xcode/getting-started-with-xcode-cloud",
+      "type": "documentation",
+      "description": "Use Xcode Cloud to build and test your app in the cloud during development.",
+      "sosumiURL": "https://sosumi.ai/documentation/Xcode/getting-started-with-xcode-cloud",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Xcode/getting-started-with-xcode-cloud.json"
+    }
+  ],
   "path": "sessions/wwdc2026/261-build-deliver-and-automate-with-xcode-cloud/",
   "files": {
     "metadata": "sessions/wwdc2026/261-build-deliver-and-automate-with-xcode-cloud/metadata.json",

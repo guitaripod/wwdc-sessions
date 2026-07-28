@@ -1,6 +1,6 @@
 # iPadOS Sessions
 
-1333 sessions.
+1334 sessions.
 
 - [Discover what’s next: The biggest updates from WWDC26](../sessions/meet-with-apple/277-discover-what-s-next-the-biggest-updates-from-wwdc26/README.md) — Meet with Apple
 - [Get ready for the Swift Student Challenge](../sessions/meet-with-apple/263-get-ready-for-the-swift-student-challenge/README.md) — Meet with Apple
@@ -1329,6 +1329,7 @@
 - [What's New in Core Motion](../sessions/wwdc2015/705-what-s-new-in-core-motion/README.md) — WWDC15
 - [What's New in LLDB](../sessions/wwdc2015/402-what-s-new-in-lldb/README.md) — WWDC15
 - [What's New in MapKit](../sessions/wwdc2015/206-what-s-new-in-mapkit/README.md) — WWDC15
+- [Your App and Next Generation Networks](../sessions/wwdc2015/719-your-app-and-next-generation-networks/README.md) — WWDC15
 - [Direct Access to Video Encoding and Decoding](../sessions/wwdc2014/513-direct-access-to-video-encoding-and-decoding/README.md) — WWDC14
 - [Ingredients of Great Games](../sessions/wwdc2014/602-ingredients-of-great-games/README.md) — WWDC14
 - [Prototyping: Fake It Till You Make It](../sessions/wwdc2014/223-prototyping-fake-it-till-you-make-it/README.md) — WWDC14

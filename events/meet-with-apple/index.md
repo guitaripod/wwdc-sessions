@@ -1,6 +1,6 @@
 # Meet with Apple Sessions
 
-52 sessions · 45 with transcripts.
+52 sessions · 46 with transcripts.
 
 ## AI & Machine Learning
 
@@ -37,7 +37,7 @@
 ## Essentials
 
 - [Code-along: Start building with Swift and SwiftUI](../../sessions/meet-with-apple/237-code-along-start-building-with-swift-and-swiftui/README.md) · 📝
-- [Discover what’s next: The biggest updates from WWDC26](../../sessions/meet-with-apple/277-discover-what-s-next-the-biggest-updates-from-wwdc26/README.md)
+- [Discover what’s next: The biggest updates from WWDC26](../../sessions/meet-with-apple/277-discover-what-s-next-the-biggest-updates-from-wwdc26/README.md) · 📝
 - [Explore the biggest updates from WWDC25](../../sessions/meet-with-apple/201-explore-the-biggest-updates-from-wwdc25/README.md) · 📝
 - [Get ready for the Swift Student Challenge](../../sessions/meet-with-apple/263-get-ready-for-the-swift-student-challenge/README.md) · 📝
 
