@@ -25,9 +25,9 @@ Go beyond basic streaming and interaction and discover how you can build advance
 
 ## Documentation & Resources
 
-- [Drawing content in a group session](https://developer.apple.com/documentation/groupactivities/drawing_content_in_a_group_session) _documentation_
-  - Markdown (sosumi.ai): https://sosumi.ai/documentation/groupactivities/drawing_content_in_a_group_session
-  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/groupactivities/drawing_content_in_a_group_session.json
+- [Drawing content in a group session](https://developer.apple.com/documentation/GroupActivities/drawing-content-in-a-group-session) _documentation_
+  - Markdown (sosumi.ai): https://sosumi.ai/documentation/GroupActivities/drawing-content-in-a-group-session
+  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/GroupActivities/drawing-content-in-a-group-session.json
 - [Supporting coordinated media playback](https://developer.apple.com/documentation/AVFoundation/supporting-coordinated-media-playback) _documentation_
   - Markdown (sosumi.ai): https://sosumi.ai/documentation/AVFoundation/supporting-coordinated-media-playback
   - DocC JSON: https://developer.apple.com/tutorials/data/documentation/AVFoundation/supporting-coordinated-media-playback.json
