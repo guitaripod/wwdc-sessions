@@ -124,10 +124,10 @@
   ],
   "resources": [
     {
-      "title": "Bridging an application’s custom USD runtime to Spatial Preview",
+      "title": "Bridging an external USD runtime to Spatial Preview",
       "url": "https://developer.apple.com/documentation/SpatialPreview/bridging-an-external-usd-runtime-to-spatial-preview",
       "type": "documentation",
-      "description": "Sync edits between an application with its own OpenUSD runtime and a Spatial Preview session using a shared",
+      "description": "Sync edits between an app with its own OpenUSD runtime and a Spatial Preview session using a shared layer as the exchange mechanism.",
       "sosumiURL": "https://sosumi.ai/documentation/SpatialPreview/bridging-an-external-usd-runtime-to-spatial-preview",
       "doccJSON": "https://developer.apple.com/tutorials/data/documentation/SpatialPreview/bridging-an-external-usd-runtime-to-spatial-preview.json"
     },
