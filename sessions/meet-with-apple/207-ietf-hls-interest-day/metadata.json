@@ -1,0 +1,45 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "meet-with-apple-207",
+  "event": "meet-with-apple",
+  "eventName": "Meet with Apple",
+  "year": 2025,
+  "eventContentId": 207,
+  "title": "IETF HLS Interest Day",
+  "description": "This event features sessions, community discussions, and a live Q&A with members of the Apple Streaming Media engineering team. Learn about the latest updates to HTTP Live Streaming (HLS) across all platforms, as well as HLS.js, the AVFoundation framework, Immersive Video, and Spatial Audio.",
+  "url": "https://developer.apple.com/videos/play/meet-with-apple/207",
+  "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/207",
+  "type": "Video",
+  "publishedAt": "2025-10-23T00:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "visionOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Audio & Video"
+  ],
+  "primaryTopic": "Audio & Video",
+  "duration": 12695,
+  "hasTranscript": false,
+  "transcriptWordCount": 0,
+  "availableLanguages": [],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/207/1/d5a8aed2-00f3-4eac-a917-096fc5b56775/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/207/1/d5a8aed2-00f3-4eac-a917-096fc5b56775/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/207/1/d5a8aed2-00f3-4eac-a917-096fc5b56775/downloads/meet-with-apple-207_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/207/1/d5a8aed2-00f3-4eac-a917-096fc5b56775/downloads/meet-with-apple-207_hd.mp4",
+    "duration": 12695
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/meet-with-apple/207-ietf-hls-interest-day/",
+  "files": {
+    "metadata": "sessions/meet-with-apple/207-ietf-hls-interest-day/metadata.json",
+    "readme": "sessions/meet-with-apple/207-ietf-hls-interest-day/README.md"
+  }
+}

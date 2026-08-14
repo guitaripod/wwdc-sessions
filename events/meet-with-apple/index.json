@@ -2,7 +2,7 @@
   "event": "meet-with-apple",
   "name": "Meet with Apple",
   "year": 2025,
-  "sessionCount": 52,
+  "sessionCount": 53,
   "sessions": [
     {
       "id": "meet-with-apple-201",
@@ -132,6 +132,37 @@
       "codeSnippetCount": 0,
       "path": "sessions/meet-with-apple/206-secure-your-app-with-memory-integrity-enforcement/",
       "description": "Discover Memory Integrity Enforcement (MIE), a new security technology where hardware, the operating system, and the compiler work together to prevent access to invalid memory, safely aborting program execution before vulnerabilities can be exploited. Find out how MIE makes it far more difficult for attackers to take advantage of memory corruption bugs. Learn how to adopt MIE in your app to protect people and their data, while also rooting out hard-to-find memory issues in your code base."
+    },
+    {
+      "id": "meet-with-apple-207",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 207,
+      "title": "IETF HLS Interest Day",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/207",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/207",
+      "duration": 12695,
+      "publishedAt": "2025-10-23T00:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS"
+      ],
+      "primaryTopic": "Audio & Video",
+      "topics": [
+        "Audio & Video"
+      ],
+      "keywords": [],
+      "hasTranscript": false,
+      "transcriptWordCount": 0,
+      "availableLanguages": [],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/207-ietf-hls-interest-day/",
+      "description": "This event features sessions, community discussions, and a live Q&A with members of the Apple Streaming Media engineering team. Learn about the latest updates to HTTP Live Streaming (HLS) across all platforms, as well as HLS.js, the AVFoundation framework, Immersive Video, and Spatial Audio."
     },
     {
       "id": "meet-with-apple-208",

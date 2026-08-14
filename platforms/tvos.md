@@ -1,6 +1,6 @@
 # tvOS Sessions
 
-724 sessions.
+725 sessions.
 
 - [Discover what’s next: The biggest updates from WWDC26](../sessions/meet-with-apple/277-discover-what-s-next-the-biggest-updates-from-wwdc26/README.md) — Meet with Apple
 - [Get ready for the Swift Student Challenge](../sessions/meet-with-apple/263-get-ready-for-the-swift-student-challenge/README.md) — Meet with Apple
@@ -66,6 +66,7 @@
 - [Explore game curation and featuring on the App Store](../sessions/meet-with-apple/249-explore-game-curation-and-featuring-on-the-app-store/README.md) — Meet with Apple
 - [Explore power, performance, and scale for games on iPhone and iPad](../sessions/meet-with-apple/242-explore-power-performance-and-scale-for-games-on-iphone-and/README.md) — Meet with Apple
 - [Explore the biggest updates from WWDC25](../sessions/meet-with-apple/201-explore-the-biggest-updates-from-wwdc25/README.md) — Meet with Apple
+- [IETF HLS Interest Day](../sessions/meet-with-apple/207-ietf-hls-interest-day/README.md) — Meet with Apple
 - [Level up with Apple game technologies](../sessions/meet-with-apple/240-level-up-with-apple-game-technologies/README.md) — Meet with Apple
 - [Optimize your app’s speed and efficiency](../sessions/meet-with-apple/212-optimize-your-app-s-speed-and-efficiency/README.md) — Meet with Apple
 - [Press Start: Game development on Apple platforms](../sessions/meet-with-apple/214-press-start-game-development-on-apple-platforms/README.md) — Meet with Apple

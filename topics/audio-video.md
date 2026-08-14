@@ -1,6 +1,6 @@
 # Audio & Video
 
-151 sessions across all events.
+152 sessions across all events.
 
 
 ### WWDC26
@@ -17,6 +17,7 @@
 
 - [Apple Immersive Video-enabled workflows | Blackmagic Design](../sessions/meet-with-apple/226-apple-immersive-video-enabled-workflows-blackmagic-design/README.md)
 - [Dailies and mastering for Apple Immersive Video | Colorfront](../sessions/meet-with-apple/227-dailies-and-mastering-for-apple-immersive-video-colorfront/README.md)
+- [IETF HLS Interest Day](../sessions/meet-with-apple/207-ietf-hls-interest-day/README.md)
 - [Meet Apple Spatial Audio Format and APAC](../sessions/meet-with-apple/223-meet-apple-spatial-audio-format-and-apac/README.md)
 - [Spatial Audio workflows for Apple Immersive Video](../sessions/meet-with-apple/225-spatial-audio-workflows-for-apple-immersive-video/README.md)
 

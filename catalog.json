@@ -2,14 +2,14 @@
   "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/catalog.schema.json",
   "schemaVersion": 1,
   "builderVersion": 2,
-  "generatedAt": "2026-08-13T08:23:52+00:00",
-  "sourceUpdated": "2026-08-12T14:55:50-07:00",
+  "generatedAt": "2026-08-14T08:18:54+00:00",
+  "sourceUpdated": "2026-08-13T16:49:46-07:00",
   "source": "Apple WWDC developer-video feeds (resolved via api2024.wwdc.io)",
   "rawBase": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master",
   "license": "Content © Apple Inc. Tooling under MIT (see LICENSE/NOTICE).",
   "counts": {
     "events": 15,
-    "sessions": 1638,
+    "sessions": 1639,
     "transcripts": 1551
   },
   "links": {
@@ -48,7 +48,7 @@
       "name": "Meet with Apple",
       "year": 2025,
       "startTime": "2025-07-10T10:00:00-07:00",
-      "sessionCount": 52,
+      "sessionCount": 53,
       "transcriptCount": 46,
       "index": "events/meet-with-apple/index.md",
       "indexJSON": "events/meet-with-apple/index.json"
@@ -6260,6 +6260,37 @@
       "codeSnippetCount": 0,
       "path": "sessions/meet-with-apple/206-secure-your-app-with-memory-integrity-enforcement/",
       "description": "Discover Memory Integrity Enforcement (MIE), a new security technology where hardware, the operating system, and the compiler work together to prevent access to invalid memory, safely aborting program execution before vulnerabilities can be exploited. Find out how MIE makes it far more difficult for attackers to take advantage of memory corruption bugs. Learn how to adopt MIE in your app to protect people and their data, while also rooting out hard-to-find memory issues in your code base."
+    },
+    {
+      "id": "meet-with-apple-207",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 207,
+      "title": "IETF HLS Interest Day",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/207",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/207",
+      "duration": 12695,
+      "publishedAt": "2025-10-23T00:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS"
+      ],
+      "primaryTopic": "Audio & Video",
+      "topics": [
+        "Audio & Video"
+      ],
+      "keywords": [],
+      "hasTranscript": false,
+      "transcriptWordCount": 0,
+      "availableLanguages": [],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/207-ietf-hls-interest-day/",
+      "description": "This event features sessions, community discussions, and a live Q&A with members of the Apple Streaming Media engineering team. Learn about the latest updates to HTTP Live Streaming (HLS) across all platforms, as well as HLS.js, the AVFoundation framework, Immersive Video, and Spatial Audio."
     },
     {
       "id": "meet-with-apple-208",

@@ -1,6 +1,6 @@
 # visionOS Sessions
 
-361 sessions.
+362 sessions.
 
 - [Discover what’s next: The biggest updates from WWDC26](../sessions/meet-with-apple/277-discover-what-s-next-the-biggest-updates-from-wwdc26/README.md) — Meet with Apple
 - [Get ready for the Swift Student Challenge](../sessions/meet-with-apple/263-get-ready-for-the-swift-student-challenge/README.md) — Meet with Apple
@@ -115,6 +115,7 @@
 - [Hands-on experience with editing for Apple Immersive Video](../sessions/meet-with-apple/234-hands-on-experience-with-editing-for-apple-immersive-video/README.md) — Meet with Apple
 - [Hands-on experience with visual effects for Apple Immersive Video](../sessions/meet-with-apple/235-hands-on-experience-with-visual-effects-for-apple-immersive/README.md) — Meet with Apple
 - [Hosting and distributing Apple Immersive Video | SpatialGen](../sessions/meet-with-apple/228-hosting-and-distributing-apple-immersive-video-spatialgen/README.md) — Meet with Apple
+- [IETF HLS Interest Day](../sessions/meet-with-apple/207-ietf-hls-interest-day/README.md) — Meet with Apple
 - [Level up with Apple game technologies](../sessions/meet-with-apple/240-level-up-with-apple-game-technologies/README.md) — Meet with Apple
 - [Meet Apple Spatial Audio Format and APAC](../sessions/meet-with-apple/223-meet-apple-spatial-audio-format-and-apac/README.md) — Meet with Apple
 - [Meet the Apple Immersive Video format](../sessions/meet-with-apple/222-meet-the-apple-immersive-video-format/README.md) — Meet with Apple
