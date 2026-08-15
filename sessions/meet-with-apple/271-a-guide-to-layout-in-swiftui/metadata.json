@@ -1,0 +1,49 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "meet-with-apple-271",
+  "event": "meet-with-apple",
+  "eventName": "Meet with Apple",
+  "year": 2026,
+  "eventContentId": 271,
+  "title": "A guide to layout in SwiftUI",
+  "description": "Explore the core concepts of layout in SwiftUI. Find out how to build flexible, dynamic views that work seamlessly with the system, and discover essential debugging techniques to streamline your workflow. This session was originally presented as part of the Meet with Apple activity \"SwiftUI foundations: Build great apps with SwiftUI”. Watch the full video for more insights and related sessions.",
+  "url": "https://developer.apple.com/videos/play/meet-with-apple/271",
+  "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/271",
+  "type": "Video",
+  "publishedAt": "2026-02-10T00:00:00-08:00",
+  "platforms": [],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1392,
+  "hasTranscript": true,
+  "transcriptWordCount": 2661,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/271/1/65817d04-6e9d-43f6-87bc-ede2c6789d12/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/271/1/65817d04-6e9d-43f6-87bc-ede2c6789d12/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/271/1/65817d04-6e9d-43f6-87bc-ede2c6789d12/downloads/meet-with-apple-271_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/271/1/65817d04-6e9d-43f6-87bc-ede2c6789d12/downloads/meet-with-apple-271_hd.mp4",
+    "duration": 1392
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/meet-with-apple/271-a-guide-to-layout-in-swiftui/",
+  "files": {
+    "metadata": "sessions/meet-with-apple/271-a-guide-to-layout-in-swiftui/metadata.json",
+    "readme": "sessions/meet-with-apple/271-a-guide-to-layout-in-swiftui/README.md",
+    "transcript": "sessions/meet-with-apple/271-a-guide-to-layout-in-swiftui/transcript.md",
+    "transcriptJSON": "sessions/meet-with-apple/271-a-guide-to-layout-in-swiftui/transcript.json"
+  }
+}

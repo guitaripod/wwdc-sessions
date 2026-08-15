@@ -5,6 +5,7 @@
 - [Discover what’s next: The biggest updates from WWDC26](../sessions/meet-with-apple/277-discover-what-s-next-the-biggest-updates-from-wwdc26/README.md) — Meet with Apple
 - [Get ready for the Swift Student Challenge](../sessions/meet-with-apple/263-get-ready-for-the-swift-student-challenge/README.md) — Meet with Apple
 - [Q&A: Swift concurrency](../sessions/meet-with-apple/276-q-a-swift-concurrency/README.md) — Meet with Apple
+- [SwiftUI foundations: Build great apps with SwiftUI](../sessions/meet-with-apple/267-swiftui-foundations-build-great-apps-with-swiftui/README.md) — Meet with Apple
 - [Discover the Apple Design Resources](../sessions/tech-talks/111427-discover-the-apple-design-resources/README.md) — Tech Talks
 - [Meet agentic coding in Xcode](../sessions/tech-talks/111428-meet-agentic-coding-in-xcode/README.md) — Tech Talks
 - [Prepare your app for Accessibility Nutrition Labels](../sessions/tech-talks/111433-prepare-your-app-for-accessibility-nutrition-labels/README.md) — Tech Talks
@@ -126,7 +127,6 @@
 - [Production expectations for Apple Immersive Video: Learnings from “Submerged”](../sessions/meet-with-apple/230-production-expectations-for-apple-immersive-video-learnings/README.md) — Meet with Apple
 - [Secure your app with Memory Integrity Enforcement](../sessions/meet-with-apple/206-secure-your-app-with-memory-integrity-enforcement/README.md) — Meet with Apple
 - [Spatial Audio workflows for Apple Immersive Video](../sessions/meet-with-apple/225-spatial-audio-workflows-for-apple-immersive-video/README.md) — Meet with Apple
-- [SwiftUI foundations: Build great apps with SwiftUI](../sessions/meet-with-apple/267-swiftui-foundations-build-great-apps-with-swiftui/README.md) — Meet with Apple
 - [The power of simplicity: Lessons from unscripted Apple Immersive titles](../sessions/meet-with-apple/232-the-power-of-simplicity-lessons-from-unscripted-apple-immers/README.md) — Meet with Apple
 - [Transform your game with Apple Vision Pro](../sessions/meet-with-apple/245-transform-your-game-with-apple-vision-pro/README.md) — Meet with Apple
 - [Unlock success with premium games on the App Store](../sessions/meet-with-apple/246-unlock-success-with-premium-games-on-the-app-store/README.md) — Meet with Apple

@@ -5,6 +5,7 @@
 - [Discover what’s next: The biggest updates from WWDC26](../sessions/meet-with-apple/277-discover-what-s-next-the-biggest-updates-from-wwdc26/README.md) — Meet with Apple
 - [Get ready for the Swift Student Challenge](../sessions/meet-with-apple/263-get-ready-for-the-swift-student-challenge/README.md) — Meet with Apple
 - [Q&A: Swift concurrency](../sessions/meet-with-apple/276-q-a-swift-concurrency/README.md) — Meet with Apple
+- [SwiftUI foundations: Build great apps with SwiftUI](../sessions/meet-with-apple/267-swiftui-foundations-build-great-apps-with-swiftui/README.md) — Meet with Apple
 - [Accelerate your machine learning workloads with the M5 and A19 GPUs](../sessions/tech-talks/111432-accelerate-your-machine-learning-workloads-with-the-m5-and-a/README.md) — Tech Talks
 - [Boost your graphics performance with the M5 and A19 GPUs](../sessions/tech-talks/111431-boost-your-graphics-performance-with-the-m5-and-a19-gpus/README.md) — Tech Talks
 - [Discover the Apple Design Resources](../sessions/tech-talks/111427-discover-the-apple-design-resources/README.md) — Tech Talks
@@ -126,7 +127,6 @@
 - [Press Start: Game development on Apple platforms](../sessions/meet-with-apple/214-press-start-game-development-on-apple-platforms/README.md) — Meet with Apple
 - [Secure your app with Memory Integrity Enforcement](../sessions/meet-with-apple/206-secure-your-app-with-memory-integrity-enforcement/README.md) — Meet with Apple
 - [Showcase: Learn how apps are integrating the new design and Liquid Glass](../sessions/meet-with-apple/208-showcase-learn-how-apps-are-integrating-the-new-design-and-l/README.md) — Meet with Apple
-- [SwiftUI foundations: Build great apps with SwiftUI](../sessions/meet-with-apple/267-swiftui-foundations-build-great-apps-with-swiftui/README.md) — Meet with Apple
 - [Unlock success with premium games on the App Store](../sessions/meet-with-apple/246-unlock-success-with-premium-games-on-the-app-store/README.md) — Meet with Apple
 - [Automate your development process with the App Store Connect API](../sessions/wwdc2025/324-automate-your-development-process-with-the-app-store-connect/README.md) — WWDC25
 - [Better together: SwiftUI and RealityKit](../sessions/wwdc2025/274-better-together-swiftui-and-realitykit/README.md) — WWDC25

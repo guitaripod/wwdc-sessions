@@ -1,12 +1,18 @@
 # SwiftUI & UI Frameworks
 
-335 sessions across all events.
+341 sessions across all events.
 
 
 ### Meet with Apple
 
+- [A guide to layout in SwiftUI](../sessions/meet-with-apple/271-a-guide-to-layout-in-swiftui/README.md)
+- [AllTrails: Momentum without a rewrite](../sessions/meet-with-apple/274-alltrails-momentum-without-a-rewrite/README.md)
+- [Design with SwiftUI](../sessions/meet-with-apple/270-design-with-swiftui/README.md)
+- [Flow data through SwiftUI](../sessions/meet-with-apple/273-flow-data-through-swiftui/README.md)
 - [Get ready for the Swift Student Challenge](../sessions/meet-with-apple/263-get-ready-for-the-swift-student-challenge/README.md)
 - [Q&A: Swift concurrency](../sessions/meet-with-apple/276-q-a-swift-concurrency/README.md)
+- [SwiftUI essentials](../sessions/meet-with-apple/269-swiftui-essentials/README.md)
+- [SwiftUI in motion](../sessions/meet-with-apple/272-swiftui-in-motion/README.md)
 
 ### WWDC26
 

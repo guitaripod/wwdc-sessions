@@ -1,0 +1,49 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "meet-with-apple-273",
+  "event": "meet-with-apple",
+  "eventName": "Meet with Apple",
+  "year": 2026,
+  "eventContentId": 273,
+  "title": "Flow data through SwiftUI",
+  "description": "Learn the tools and techniques for managing data flow in SwiftUI. Discover how to model your data with property wrappers, leverage the power of @Observable, and implement persistence in your app. This session was originally presented as part of the Meet with Apple activity \"SwiftUI foundations: Build great apps with SwiftUI”. Watch the full video for more insights and related sessions.",
+  "url": "https://developer.apple.com/videos/play/meet-with-apple/273",
+  "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/273",
+  "type": "Video",
+  "publishedAt": "2026-02-10T00:00:00-08:00",
+  "platforms": [],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1745,
+  "hasTranscript": true,
+  "transcriptWordCount": 4243,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/273/1/2f8c8e42-0659-49de-be10-5532668956e9/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/273/1/2f8c8e42-0659-49de-be10-5532668956e9/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/273/1/2f8c8e42-0659-49de-be10-5532668956e9/downloads/meet-with-apple-273_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/273/1/2f8c8e42-0659-49de-be10-5532668956e9/downloads/meet-with-apple-273_hd.mp4",
+    "duration": 1745
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/meet-with-apple/273-flow-data-through-swiftui/",
+  "files": {
+    "metadata": "sessions/meet-with-apple/273-flow-data-through-swiftui/metadata.json",
+    "readme": "sessions/meet-with-apple/273-flow-data-through-swiftui/README.md",
+    "transcript": "sessions/meet-with-apple/273-flow-data-through-swiftui/transcript.md",
+    "transcriptJSON": "sessions/meet-with-apple/273-flow-data-through-swiftui/transcript.json"
+  }
+}

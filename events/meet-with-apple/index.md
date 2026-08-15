@@ -1,6 +1,6 @@
 # Meet with Apple Sessions
 
-53 sessions · 46 with transcripts.
+59 sessions · 53 with transcripts.
 
 ## AI & Machine Learning
 
@@ -21,6 +21,8 @@
 
 ## Design
 
+- [AllTrails: Momentum without a rewrite](../../sessions/meet-with-apple/274-alltrails-momentum-without-a-rewrite/README.md) · 📝
+- [Design with SwiftUI](../../sessions/meet-with-apple/270-design-with-swiftui/README.md) · 📝
 - [Liquid Glass showcase: CNN](../../sessions/meet-with-apple/256-liquid-glass-showcase-cnn/README.md) · 📝
 - [Liquid Glass showcase: LTK](../../sessions/meet-with-apple/254-liquid-glass-showcase-ltk/README.md) · 📝
 - [Liquid Glass showcase: Slack](../../sessions/meet-with-apple/255-liquid-glass-showcase-slack/README.md) · 📝
@@ -33,7 +35,7 @@
 - [Optimize your app’s speed and efficiency](../../sessions/meet-with-apple/212-optimize-your-app-s-speed-and-efficiency/README.md)
 - [Q&A: Swift concurrency](../../sessions/meet-with-apple/276-q-a-swift-concurrency/README.md)
 - [Secure your app with Memory Integrity Enforcement](../../sessions/meet-with-apple/206-secure-your-app-with-memory-integrity-enforcement/README.md) · 📝
-- [SwiftUI foundations: Build great apps with SwiftUI](../../sessions/meet-with-apple/267-swiftui-foundations-build-great-apps-with-swiftui/README.md)
+- [SwiftUI foundations: Build great apps with SwiftUI](../../sessions/meet-with-apple/267-swiftui-foundations-build-great-apps-with-swiftui/README.md) · 📝
 
 ## Essentials
 
@@ -98,14 +100,20 @@
 - [Get ready for the Swift Student Challenge](../../sessions/meet-with-apple/263-get-ready-for-the-swift-student-challenge/README.md) · 📝
 - [Q&A: Swift concurrency](../../sessions/meet-with-apple/276-q-a-swift-concurrency/README.md)
 - [Secure your app with Memory Integrity Enforcement](../../sessions/meet-with-apple/206-secure-your-app-with-memory-integrity-enforcement/README.md) · 📝
-- [SwiftUI foundations: Build great apps with SwiftUI](../../sessions/meet-with-apple/267-swiftui-foundations-build-great-apps-with-swiftui/README.md)
+- [SwiftUI foundations: Build great apps with SwiftUI](../../sessions/meet-with-apple/267-swiftui-foundations-build-great-apps-with-swiftui/README.md) · 📝
 
 ## SwiftUI & UI Frameworks
 
+- [A guide to layout in SwiftUI](../../sessions/meet-with-apple/271-a-guide-to-layout-in-swiftui/README.md) · 📝
+- [AllTrails: Momentum without a rewrite](../../sessions/meet-with-apple/274-alltrails-momentum-without-a-rewrite/README.md) · 📝
 - [Code-along: Start building with Swift and SwiftUI](../../sessions/meet-with-apple/237-code-along-start-building-with-swift-and-swiftui/README.md) · 📝
+- [Design with SwiftUI](../../sessions/meet-with-apple/270-design-with-swiftui/README.md) · 📝
+- [Flow data through SwiftUI](../../sessions/meet-with-apple/273-flow-data-through-swiftui/README.md) · 📝
 - [Get ready for the Swift Student Challenge](../../sessions/meet-with-apple/263-get-ready-for-the-swift-student-challenge/README.md) · 📝
 - [Q&A: Swift concurrency](../../sessions/meet-with-apple/276-q-a-swift-concurrency/README.md)
 - [Showcase: Learn how apps are integrating the new design and Liquid Glass](../../sessions/meet-with-apple/208-showcase-learn-how-apps-are-integrating-the-new-design-and-l/README.md) · 📝
+- [SwiftUI essentials](../../sessions/meet-with-apple/269-swiftui-essentials/README.md) · 📝
+- [SwiftUI in motion](../../sessions/meet-with-apple/272-swiftui-in-motion/README.md) · 📝
 
 ## System Services
 

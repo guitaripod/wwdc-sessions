@@ -4,14 +4,14 @@
   "id": "meet-with-apple-267",
   "event": "meet-with-apple",
   "eventName": "Meet with Apple",
-  "year": 2025,
+  "year": 2026,
   "eventContentId": 267,
   "title": "SwiftUI foundations: Build great apps with SwiftUI",
   "description": "Learn to build great apps with SwiftUI in this special all-day activity streaming from the Apple Developer Center Cupertino. Whether you’re just starting out or have experience creating with SwiftUI, this series of foundational sessions will help you sharpen your understanding of core concepts and write strong, performant code. Learn from James Graham, CTO of AllTrails, about how his company took advantage of SwiftUI's capabilities. And dive deeper in a Q&A with members of the SwiftUI engineering team.",
   "url": "https://developer.apple.com/videos/play/meet-with-apple/267",
   "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/267",
   "type": "Video",
-  "publishedAt": null,
+  "publishedAt": "2026-02-10T00:00:00-08:00",
   "platforms": [
     "iOS",
     "iPadOS",
@@ -25,16 +25,32 @@
     "Developer Tools"
   ],
   "primaryTopic": "Developer Tools",
-  "duration": null,
-  "hasTranscript": false,
-  "transcriptWordCount": 0,
-  "availableLanguages": [],
-  "media": {},
+  "duration": 11880,
+  "hasTranscript": true,
+  "transcriptWordCount": 28515,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/267/1/db3667bc-43ba-4264-8a74-cd4f67f9819c/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/267/1/db3667bc-43ba-4264-8a74-cd4f67f9819c/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/267/1/db3667bc-43ba-4264-8a74-cd4f67f9819c/downloads/meet-with-apple-267_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/267/1/db3667bc-43ba-4264-8a74-cd4f67f9819c/downloads/meet-with-apple-267_hd.mp4",
+    "duration": 11880
+  },
   "codeSnippets": [],
   "resources": [],
   "path": "sessions/meet-with-apple/267-swiftui-foundations-build-great-apps-with-swiftui/",
   "files": {
     "metadata": "sessions/meet-with-apple/267-swiftui-foundations-build-great-apps-with-swiftui/metadata.json",
-    "readme": "sessions/meet-with-apple/267-swiftui-foundations-build-great-apps-with-swiftui/README.md"
+    "readme": "sessions/meet-with-apple/267-swiftui-foundations-build-great-apps-with-swiftui/README.md",
+    "transcript": "sessions/meet-with-apple/267-swiftui-foundations-build-great-apps-with-swiftui/transcript.md",
+    "transcriptJSON": "sessions/meet-with-apple/267-swiftui-foundations-build-great-apps-with-swiftui/transcript.json"
   }
 }

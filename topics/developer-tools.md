@@ -6,6 +6,7 @@
 ### Meet with Apple
 
 - [Q&A: Swift concurrency](../sessions/meet-with-apple/276-q-a-swift-concurrency/README.md)
+- [SwiftUI foundations: Build great apps with SwiftUI](../sessions/meet-with-apple/267-swiftui-foundations-build-great-apps-with-swiftui/README.md)
 
 ### Tech Talks
 
@@ -37,7 +38,6 @@
 - [Fortify your app: Essential strategies to strengthen security](../sessions/meet-with-apple/265-fortify-your-app-essential-strategies-to-strengthen-security/README.md)
 - [Optimize your app’s speed and efficiency](../sessions/meet-with-apple/212-optimize-your-app-s-speed-and-efficiency/README.md)
 - [Secure your app with Memory Integrity Enforcement](../sessions/meet-with-apple/206-secure-your-app-with-memory-integrity-enforcement/README.md)
-- [SwiftUI foundations: Build great apps with SwiftUI](../sessions/meet-with-apple/267-swiftui-foundations-build-great-apps-with-swiftui/README.md)
 
 ### WWDC25
 

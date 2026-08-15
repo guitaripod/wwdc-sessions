@@ -1,0 +1,49 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "meet-with-apple-269",
+  "event": "meet-with-apple",
+  "eventName": "Meet with Apple",
+  "year": 2026,
+  "eventContentId": 269,
+  "title": "SwiftUI essentials",
+  "description": "Explore essential SwiftUI concepts in this video recorded live in Cupertino. Learn the different contextual meanings of “View” and how to think about them in your app. Discover the advantages of built-in views and how to customize your own. And understand how to structure your code with dependencies to work seamlessly with the system. This session was originally presented as part of the Meet with Apple activity \"SwiftUI foundations: Build great apps with SwiftUI”. Watch the full video for more insights and related sessions.",
+  "url": "https://developer.apple.com/videos/play/meet-with-apple/269",
+  "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/269",
+  "type": "Video",
+  "publishedAt": "2026-02-10T00:00:00-08:00",
+  "platforms": [],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1630,
+  "hasTranscript": true,
+  "transcriptWordCount": 3568,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/269/1/82396296-5bc5-458e-8af4-277c5fc823e1/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/269/1/82396296-5bc5-458e-8af4-277c5fc823e1/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/269/1/82396296-5bc5-458e-8af4-277c5fc823e1/downloads/meet-with-apple-269_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/269/1/82396296-5bc5-458e-8af4-277c5fc823e1/downloads/meet-with-apple-269_hd.mp4",
+    "duration": 1630
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/meet-with-apple/269-swiftui-essentials/",
+  "files": {
+    "metadata": "sessions/meet-with-apple/269-swiftui-essentials/metadata.json",
+    "readme": "sessions/meet-with-apple/269-swiftui-essentials/README.md",
+    "transcript": "sessions/meet-with-apple/269-swiftui-essentials/transcript.md",
+    "transcriptJSON": "sessions/meet-with-apple/269-swiftui-essentials/transcript.json"
+  }
+}

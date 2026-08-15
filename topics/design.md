@@ -1,7 +1,12 @@
 # Design
 
-175 sessions across all events.
+177 sessions across all events.
 
+
+### Meet with Apple
+
+- [AllTrails: Momentum without a rewrite](../sessions/meet-with-apple/274-alltrails-momentum-without-a-rewrite/README.md)
+- [Design with SwiftUI](../sessions/meet-with-apple/270-design-with-swiftui/README.md)
 
 ### Tech Talks
 

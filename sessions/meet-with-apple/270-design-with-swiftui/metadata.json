@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "meet-with-apple-270",
+  "event": "meet-with-apple",
+  "eventName": "Meet with Apple",
+  "year": 2026,
+  "eventContentId": 270,
+  "title": "Design with SwiftUI",
+  "description": "Explore the foundational concepts of design with SwiftUI. Find out how system components can make your app shine on all platforms while expressing your personality. This session was originally presented as part of the Meet with Apple activity \"SwiftUI foundations: Build great apps with SwiftUI”. Watch the full video for more insights and related sessions.",
+  "url": "https://developer.apple.com/videos/play/meet-with-apple/270",
+  "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/270",
+  "type": "Video",
+  "publishedAt": "2026-02-10T00:00:00-08:00",
+  "platforms": [],
+  "keywords": [],
+  "topics": [
+    "Design",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 1513,
+  "hasTranscript": true,
+  "transcriptWordCount": 3551,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/270/1/51bc2dba-d635-4dbb-a92b-acc8258c6ffa/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/270/1/51bc2dba-d635-4dbb-a92b-acc8258c6ffa/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/270/1/51bc2dba-d635-4dbb-a92b-acc8258c6ffa/downloads/meet-with-apple-270_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/270/1/51bc2dba-d635-4dbb-a92b-acc8258c6ffa/downloads/meet-with-apple-270_hd.mp4",
+    "duration": 1513
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/meet-with-apple/270-design-with-swiftui/",
+  "files": {
+    "metadata": "sessions/meet-with-apple/270-design-with-swiftui/metadata.json",
+    "readme": "sessions/meet-with-apple/270-design-with-swiftui/README.md",
+    "transcript": "sessions/meet-with-apple/270-design-with-swiftui/transcript.md",
+    "transcriptJSON": "sessions/meet-with-apple/270-design-with-swiftui/transcript.json"
+  }
+}

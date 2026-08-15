@@ -2,7 +2,7 @@
   "event": "meet-with-apple",
   "name": "Meet with Apple",
   "year": 2025,
-  "sessionCount": 53,
+  "sessionCount": 59,
   "sessions": [
     {
       "id": "meet-with-apple-201",
@@ -1812,14 +1812,14 @@
     {
       "id": "meet-with-apple-267",
       "event": "meet-with-apple",
-      "year": 2025,
+      "year": 2026,
       "eventContentId": 267,
       "title": "SwiftUI foundations: Build great apps with SwiftUI",
       "type": "Video",
       "url": "https://developer.apple.com/videos/play/meet-with-apple/267",
       "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/267",
-      "duration": null,
-      "publishedAt": null,
+      "duration": 11880,
+      "publishedAt": "2026-02-10T00:00:00-08:00",
       "platforms": [
         "iOS",
         "iPadOS",
@@ -1833,9 +1833,17 @@
         "Developer Tools"
       ],
       "keywords": [],
-      "hasTranscript": false,
-      "transcriptWordCount": 0,
-      "availableLanguages": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 28515,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
       "resourceCount": 0,
       "codeSnippetCount": 0,
       "path": "sessions/meet-with-apple/267-swiftui-foundations-build-great-apps-with-swiftui/",
@@ -1869,6 +1877,209 @@
       "codeSnippetCount": 0,
       "path": "sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/",
       "description": "In this online code-along session, you’ll learn how the coding intelligence features in Xcode 26 — such as coding assistant and Coding Tools — can help you write code, generate tests and documentation, fix errors, and navigate codebases. To code along, you’ll need a Mac with Apple silicon running the latest release of macOS 26 and Xcode 26. The session will be conducted in English."
+    },
+    {
+      "id": "meet-with-apple-269",
+      "event": "meet-with-apple",
+      "year": 2026,
+      "eventContentId": 269,
+      "title": "SwiftUI essentials",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/269",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/269",
+      "duration": 1630,
+      "publishedAt": "2026-02-10T00:00:00-08:00",
+      "platforms": [],
+      "primaryTopic": "SwiftUI & UI Frameworks",
+      "topics": [
+        "SwiftUI & UI Frameworks"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 3568,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/269-swiftui-essentials/",
+      "description": "Explore essential SwiftUI concepts in this video recorded live in Cupertino. Learn the different contextual meanings of “View” and how to think about them in your app. Discover the advantages of built-in views and how to customize your own. And understand how to structure your code with dependencies to work seamlessly with the system. This session was originally presented as part of the Meet with Apple activity \"SwiftUI foundations: Build great apps with SwiftUI”. Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-270",
+      "event": "meet-with-apple",
+      "year": 2026,
+      "eventContentId": 270,
+      "title": "Design with SwiftUI",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/270",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/270",
+      "duration": 1513,
+      "publishedAt": "2026-02-10T00:00:00-08:00",
+      "platforms": [],
+      "primaryTopic": "SwiftUI & UI Frameworks",
+      "topics": [
+        "Design",
+        "SwiftUI & UI Frameworks"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 3551,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/270-design-with-swiftui/",
+      "description": "Explore the foundational concepts of design with SwiftUI. Find out how system components can make your app shine on all platforms while expressing your personality. This session was originally presented as part of the Meet with Apple activity \"SwiftUI foundations: Build great apps with SwiftUI”. Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-271",
+      "event": "meet-with-apple",
+      "year": 2026,
+      "eventContentId": 271,
+      "title": "A guide to layout in SwiftUI",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/271",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/271",
+      "duration": 1392,
+      "publishedAt": "2026-02-10T00:00:00-08:00",
+      "platforms": [],
+      "primaryTopic": "SwiftUI & UI Frameworks",
+      "topics": [
+        "SwiftUI & UI Frameworks"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2661,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/271-a-guide-to-layout-in-swiftui/",
+      "description": "Explore the core concepts of layout in SwiftUI. Find out how to build flexible, dynamic views that work seamlessly with the system, and discover essential debugging techniques to streamline your workflow. This session was originally presented as part of the Meet with Apple activity \"SwiftUI foundations: Build great apps with SwiftUI”. Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-272",
+      "event": "meet-with-apple",
+      "year": 2026,
+      "eventContentId": 272,
+      "title": "SwiftUI in motion",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/272",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/272",
+      "duration": 1813,
+      "publishedAt": "2026-02-10T00:00:00-08:00",
+      "platforms": [],
+      "primaryTopic": "SwiftUI & UI Frameworks",
+      "topics": [
+        "SwiftUI & UI Frameworks"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 4111,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/272-swiftui-in-motion/",
+      "description": "Explore the foundational concepts of motion in SwiftUI, such as built-in transitions, special effects, and custom phase animations. Discover how to express your app’s unique personality. This session was originally presented as part of the Meet with Apple activity \"SwiftUI foundations: Build great apps with SwiftUI”. Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-273",
+      "event": "meet-with-apple",
+      "year": 2026,
+      "eventContentId": 273,
+      "title": "Flow data through SwiftUI",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/273",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/273",
+      "duration": 1745,
+      "publishedAt": "2026-02-10T00:00:00-08:00",
+      "platforms": [],
+      "primaryTopic": "SwiftUI & UI Frameworks",
+      "topics": [
+        "SwiftUI & UI Frameworks"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 4243,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/273-flow-data-through-swiftui/",
+      "description": "Learn the tools and techniques for managing data flow in SwiftUI. Discover how to model your data with property wrappers, leverage the power of @Observable, and implement persistence in your app. This session was originally presented as part of the Meet with Apple activity \"SwiftUI foundations: Build great apps with SwiftUI”. Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-274",
+      "event": "meet-with-apple",
+      "year": 2026,
+      "eventContentId": 274,
+      "title": "AllTrails: Momentum without a rewrite",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/274",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/274",
+      "duration": 854,
+      "publishedAt": "2026-02-12T00:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "watchOS"
+      ],
+      "primaryTopic": "SwiftUI & UI Frameworks",
+      "topics": [
+        "Design",
+        "SwiftUI & UI Frameworks"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1737,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/274-alltrails-momentum-without-a-rewrite/",
+      "description": "Go behind the scenes with AllTrails CTO James Graham to learn how his team brought SwiftUI into their UIKit app. Explore strategies for incremental adoption that let you build new features faster while maintaining your existing codebase. And find out how SwiftUI’s full interoperability with UIKit makes it a practical choice for your app. This session was originally presented as part of the Meet with Apple activity “SwiftUI foundations: Build great apps with SwiftUI”. Watch the full video for more insights and related sessions."
     },
     {
       "id": "meet-with-apple-276",

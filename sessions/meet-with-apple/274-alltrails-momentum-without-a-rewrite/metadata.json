@@ -1,0 +1,53 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "meet-with-apple-274",
+  "event": "meet-with-apple",
+  "eventName": "Meet with Apple",
+  "year": 2026,
+  "eventContentId": 274,
+  "title": "AllTrails: Momentum without a rewrite",
+  "description": "Go behind the scenes with AllTrails CTO James Graham to learn how his team brought SwiftUI into their UIKit app. Explore strategies for incremental adoption that let you build new features faster while maintaining your existing codebase. And find out how SwiftUI’s full interoperability with UIKit makes it a practical choice for your app. This session was originally presented as part of the Meet with Apple activity “SwiftUI foundations: Build great apps with SwiftUI”. Watch the full video for more insights and related sessions.",
+  "url": "https://developer.apple.com/videos/play/meet-with-apple/274",
+  "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/274",
+  "type": "Video",
+  "publishedAt": "2026-02-12T00:00:00-08:00",
+  "platforms": [
+    "iOS",
+    "watchOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Design",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 854,
+  "hasTranscript": true,
+  "transcriptWordCount": 1737,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/274/1/88e971b6-f4e6-4b4d-a97d-c183fa75f5e5/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/274/1/88e971b6-f4e6-4b4d-a97d-c183fa75f5e5/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/274/1/88e971b6-f4e6-4b4d-a97d-c183fa75f5e5/downloads/meet-with-apple-274_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/274/1/88e971b6-f4e6-4b4d-a97d-c183fa75f5e5/downloads/meet-with-apple-274_hd.mp4",
+    "duration": 854
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/meet-with-apple/274-alltrails-momentum-without-a-rewrite/",
+  "files": {
+    "metadata": "sessions/meet-with-apple/274-alltrails-momentum-without-a-rewrite/metadata.json",
+    "readme": "sessions/meet-with-apple/274-alltrails-momentum-without-a-rewrite/README.md",
+    "transcript": "sessions/meet-with-apple/274-alltrails-momentum-without-a-rewrite/transcript.md",
+    "transcriptJSON": "sessions/meet-with-apple/274-alltrails-momentum-without-a-rewrite/transcript.json"
+  }
+}
