@@ -3,6 +3,10 @@
 137 sessions across all events.
 
 
+### Meet with Apple
+
+- [Code-along: Experiment with coding intelligence in Xcode 26](../sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/README.md)
+
 ### Tech Talks
 
 - [Accelerate your machine learning workloads with the M5 and A19 GPUs](../sessions/tech-talks/111432-accelerate-your-machine-learning-workloads-with-the-m5-and-a/README.md)
@@ -52,7 +56,6 @@
 ### Meet with Apple
 
 - [Code along with the Foundation Models framework](../sessions/meet-with-apple/205-code-along-with-the-foundation-models-framework/README.md)
-- [Code-along: Experiment with coding intelligence in Xcode 26](../sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/README.md)
 
 ### WWDC25
 

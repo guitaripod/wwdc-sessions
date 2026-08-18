@@ -4,14 +4,14 @@
   "id": "meet-with-apple-268",
   "event": "meet-with-apple",
   "eventName": "Meet with Apple",
-  "year": 2025,
+  "year": 2026,
   "eventContentId": 268,
   "title": "Code-along: Experiment with coding intelligence in Xcode 26",
   "description": "In this online code-along session, you’ll learn how the coding intelligence features in Xcode 26 — such as coding assistant and Coding Tools — can help you write code, generate tests and documentation, fix errors, and navigate codebases. To code along, you’ll need a Mac with Apple silicon running the latest release of macOS 26 and Xcode 26. The session will be conducted in English.",
   "url": "https://developer.apple.com/videos/play/meet-with-apple/268",
   "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/268",
   "type": "Video",
-  "publishedAt": null,
+  "publishedAt": "2026-02-05T00:00:00-08:00",
   "platforms": [
     "iOS",
     "macOS"
@@ -22,11 +22,25 @@
     "AI & Machine Learning"
   ],
   "primaryTopic": "AI & Machine Learning",
-  "duration": null,
-  "hasTranscript": false,
-  "transcriptWordCount": 0,
-  "availableLanguages": [],
-  "media": {},
+  "duration": 842,
+  "hasTranscript": true,
+  "transcriptWordCount": 2063,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/268/1/27f4eab2-a29b-4286-8748-13c8882c801c/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/268/1/27f4eab2-a29b-4286-8748-13c8882c801c/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/268/1/27f4eab2-a29b-4286-8748-13c8882c801c/downloads/meet-with-apple-268_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/268/1/27f4eab2-a29b-4286-8748-13c8882c801c/downloads/meet-with-apple-268_hd.mp4",
+    "duration": 842
+  },
   "codeSnippets": [],
   "resources": [
     {
@@ -40,6 +54,8 @@
   "path": "sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/",
   "files": {
     "metadata": "sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/metadata.json",
-    "readme": "sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/README.md"
+    "readme": "sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/README.md",
+    "transcript": "sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/transcript.md",
+    "transcriptJSON": "sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/transcript.json"
   }
 }

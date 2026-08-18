@@ -2,15 +2,15 @@
   "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/catalog.schema.json",
   "schemaVersion": 1,
   "builderVersion": 2,
-  "generatedAt": "2026-08-15T07:34:01+00:00",
-  "sourceUpdated": "2026-08-14T14:38:24-07:00",
+  "generatedAt": "2026-08-18T19:30:42+00:00",
+  "sourceUpdated": "2026-08-18T09:51:19-07:00",
   "source": "Apple WWDC developer-video feeds (resolved via api2024.wwdc.io)",
   "rawBase": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master",
   "license": "Content © Apple Inc. Tooling under MIT (see LICENSE/NOTICE).",
   "counts": {
     "events": 15,
     "sessions": 1645,
-    "transcripts": 1558
+    "transcripts": 1559
   },
   "links": {
     "events": "events.json",
@@ -49,7 +49,7 @@
       "year": 2025,
       "startTime": "2025-07-10T10:00:00-07:00",
       "sessionCount": 59,
-      "transcriptCount": 53,
+      "transcriptCount": 54,
       "index": "events/meet-with-apple/index.md",
       "indexJSON": "events/meet-with-apple/index.json"
     },
@@ -257,6 +257,43 @@
       "codeSnippetCount": 0,
       "path": "sessions/meet-with-apple/267-swiftui-foundations-build-great-apps-with-swiftui/",
       "description": "Learn to build great apps with SwiftUI in this special all-day activity streaming from the Apple Developer Center Cupertino. Whether you’re just starting out or have experience creating with SwiftUI, this series of foundational sessions will help you sharpen your understanding of core concepts and write strong, performant code. Learn from James Graham, CTO of AllTrails, about how his company took advantage of SwiftUI's capabilities. And dive deeper in a Q&A with members of the SwiftUI engineering team."
+    },
+    {
+      "id": "meet-with-apple-268",
+      "event": "meet-with-apple",
+      "year": 2026,
+      "eventContentId": 268,
+      "title": "Code-along: Experiment with coding intelligence in Xcode 26",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/268",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/268",
+      "duration": 842,
+      "publishedAt": "2026-02-05T00:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "macOS"
+      ],
+      "primaryTopic": "AI & Machine Learning",
+      "topics": [
+        "Swift",
+        "AI & Machine Learning"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2063,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 1,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/",
+      "description": "In this online code-along session, you’ll learn how the coding intelligence features in Xcode 26 — such as coding assistant and Coding Tools — can help you write code, generate tests and documentation, fix errors, and navigate codebases. To code along, you’ll need a Mac with Apple silicon running the latest release of macOS 26 and Xcode 26. The session will be conducted in English."
     },
     {
       "id": "meet-with-apple-269",
@@ -8136,35 +8173,6 @@
       "codeSnippetCount": 0,
       "path": "sessions/meet-with-apple/265-fortify-your-app-essential-strategies-to-strengthen-security/",
       "description": "Join us to bolster your app’s security and help protect user data in this all-day activity at the Apple Developer Center Cupertino. Whether you’re hardening an existing app or starting a new project, you’ll learn directly from Apple engineers about how to reinforce your app from the ground up. Learn about the security challenges facing modern apps, and explore a comprehensive suite of tools and technologies designed to help safeguard user data. Discover how you can protect your C and C++ codebases with powerful features like Memory Integrity Enforcement, pointer authentication, and memory bounds safety. Find out how to adopt Swift for your most security-sensitive components, taking advantage of its inherent safety and modern abstractions to write secure, high-performance code. And get guidance on how to build a clear security roadmap for new and existing projects, from high-level strategy to hands-on implementation."
-    },
-    {
-      "id": "meet-with-apple-268",
-      "event": "meet-with-apple",
-      "year": 2025,
-      "eventContentId": 268,
-      "title": "Code-along: Experiment with coding intelligence in Xcode 26",
-      "type": "Video",
-      "url": "https://developer.apple.com/videos/play/meet-with-apple/268",
-      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/268",
-      "duration": null,
-      "publishedAt": null,
-      "platforms": [
-        "iOS",
-        "macOS"
-      ],
-      "primaryTopic": "AI & Machine Learning",
-      "topics": [
-        "Swift",
-        "AI & Machine Learning"
-      ],
-      "keywords": [],
-      "hasTranscript": false,
-      "transcriptWordCount": 0,
-      "availableLanguages": [],
-      "resourceCount": 1,
-      "codeSnippetCount": 0,
-      "path": "sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/",
-      "description": "In this online code-along session, you’ll learn how the coding intelligence features in Xcode 26 — such as coding assistant and Coding Tools — can help you write code, generate tests and documentation, fix errors, and navigate codebases. To code along, you’ll need a Mac with Apple silicon running the latest release of macOS 26 and Xcode 26. The session will be conducted in English."
     },
     {
       "id": "wwdc2025-101",

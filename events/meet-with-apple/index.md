@@ -1,11 +1,11 @@
 # Meet with Apple Sessions
 
-59 sessions · 53 with transcripts.
+59 sessions · 54 with transcripts.
 
 ## AI & Machine Learning
 
 - [Code along with the Foundation Models framework](../../sessions/meet-with-apple/205-code-along-with-the-foundation-models-framework/README.md) · 📝
-- [Code-along: Experiment with coding intelligence in Xcode 26](../../sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/README.md)
+- [Code-along: Experiment with coding intelligence in Xcode 26](../../sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/README.md) · 📝
 
 ## Audio & Video
 
@@ -94,7 +94,7 @@
 ## Swift
 
 - [Code along with the Foundation Models framework](../../sessions/meet-with-apple/205-code-along-with-the-foundation-models-framework/README.md) · 📝
-- [Code-along: Experiment with coding intelligence in Xcode 26](../../sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/README.md)
+- [Code-along: Experiment with coding intelligence in Xcode 26](../../sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/README.md) · 📝
 - [Code-along: Start building with Swift and SwiftUI](../../sessions/meet-with-apple/237-code-along-start-building-with-swift-and-swiftui/README.md) · 📝
 - [Fortify your app: Essential strategies to strengthen security](../../sessions/meet-with-apple/265-fortify-your-app-essential-strategies-to-strengthen-security/README.md)
 - [Get ready for the Swift Student Challenge](../../sessions/meet-with-apple/263-get-ready-for-the-swift-student-challenge/README.md) · 📝

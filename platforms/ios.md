@@ -3,6 +3,7 @@
 1360 sessions.
 
 - [AllTrails: Momentum without a rewrite](../sessions/meet-with-apple/274-alltrails-momentum-without-a-rewrite/README.md) — Meet with Apple
+- [Code-along: Experiment with coding intelligence in Xcode 26](../sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/README.md) — Meet with Apple
 - [Discover what’s next: The biggest updates from WWDC26](../sessions/meet-with-apple/277-discover-what-s-next-the-biggest-updates-from-wwdc26/README.md) — Meet with Apple
 - [Get ready for the Swift Student Challenge](../sessions/meet-with-apple/263-get-ready-for-the-swift-student-challenge/README.md) — Meet with Apple
 - [Q&A: Swift concurrency](../sessions/meet-with-apple/276-q-a-swift-concurrency/README.md) — Meet with Apple
@@ -119,7 +120,6 @@
 - [Bring your PC and console games to Mac](../sessions/meet-with-apple/241-bring-your-pc-and-console-games-to-mac/README.md) — Meet with Apple
 - [Chart your game's course to Apple platforms](../sessions/meet-with-apple/239-chart-your-game-s-course-to-apple-platforms/README.md) — Meet with Apple
 - [Code along with the Foundation Models framework](../sessions/meet-with-apple/205-code-along-with-the-foundation-models-framework/README.md) — Meet with Apple
-- [Code-along: Experiment with coding intelligence in Xcode 26](../sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/README.md) — Meet with Apple
 - [Code-along: Start building with Swift and SwiftUI](../sessions/meet-with-apple/237-code-along-start-building-with-swift-and-swiftui/README.md) — Meet with Apple
 - [Design great interfaces for handheld games](../sessions/meet-with-apple/243-design-great-interfaces-for-handheld-games/README.md) — Meet with Apple
 - [Discover game development on Apple platforms](../sessions/meet-with-apple/238-discover-game-development-on-apple-platforms/README.md) — Meet with Apple
