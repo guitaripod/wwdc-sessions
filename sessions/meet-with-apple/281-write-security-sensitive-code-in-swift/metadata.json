@@ -1,0 +1,49 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "meet-with-apple-281",
+  "event": "meet-with-apple",
+  "eventName": "Meet with Apple",
+  "year": 2026,
+  "eventContentId": 281,
+  "title": "Write security-sensitive code in Swift",
+  "description": "Learn how to build memory-safe software and eliminate vulnerability classes by writing security-critical code in Swift. Explore how Swift guarantees safety across bounds, lifetimes, types, initialization, and concurrency. Discover high-performance primitives like Span and non-copyable types, find out how to audit unsafe constructs with Strict Memory Safety, and walk through incrementally migrating existing C modules. This session was originally presented as part of the Meet with Apple event “Fortify your app: Essential strategies to strengthen security.” Watch the full video for more insights and related sessions.",
+  "url": "https://developer.apple.com/videos/play/meet-with-apple/281",
+  "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/281",
+  "type": "Video",
+  "publishedAt": "2026-03-06T10:00:00-08:00",
+  "platforms": [],
+  "keywords": [],
+  "topics": [
+    "Privacy & Security"
+  ],
+  "primaryTopic": "Privacy & Security",
+  "duration": 2491,
+  "hasTranscript": true,
+  "transcriptWordCount": 6336,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/281/1/ca9eaf3a-c470-4fc4-acb3-b41df1efc564/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/281/1/ca9eaf3a-c470-4fc4-acb3-b41df1efc564/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/281/1/ca9eaf3a-c470-4fc4-acb3-b41df1efc564/downloads/meet-with-apple-281_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/281/1/ca9eaf3a-c470-4fc4-acb3-b41df1efc564/downloads/meet-with-apple-281_hd.mp4",
+    "duration": 2491
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/meet-with-apple/281-write-security-sensitive-code-in-swift/",
+  "files": {
+    "metadata": "sessions/meet-with-apple/281-write-security-sensitive-code-in-swift/metadata.json",
+    "readme": "sessions/meet-with-apple/281-write-security-sensitive-code-in-swift/README.md",
+    "transcript": "sessions/meet-with-apple/281-write-security-sensitive-code-in-swift/transcript.md",
+    "transcriptJSON": "sessions/meet-with-apple/281-write-security-sensitive-code-in-swift/transcript.json"
+  }
+}

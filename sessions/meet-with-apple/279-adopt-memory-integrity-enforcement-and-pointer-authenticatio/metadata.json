@@ -1,0 +1,49 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "meet-with-apple-279",
+  "event": "meet-with-apple",
+  "eventName": "Meet with Apple",
+  "year": 2026,
+  "eventContentId": 279,
+  "title": "Adopt Memory Integrity Enforcement and Pointer Authentication",
+  "description": "Learn how Memory Integrity Enforcement and Pointer Authentication work together to defend your app against memory corruption. Find out how the type-aware secure allocator leverages Memory Tagging Extensions to prevent exploitation, and how to adapt allocator wrappers and object pools to preserve hardware protections. Plus, explore how to enable Pointer Authentication in Xcode with arm64e to maintain control flow integrity. This session was originally presented as part of the Meet with Apple event “Fortify your app: Essential strategies to strengthen security.” Watch the full video for more insights and related sessions.",
+  "url": "https://developer.apple.com/videos/play/meet-with-apple/279",
+  "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/279",
+  "type": "Video",
+  "publishedAt": "2026-03-06T10:00:00-08:00",
+  "platforms": [],
+  "keywords": [],
+  "topics": [
+    "Privacy & Security"
+  ],
+  "primaryTopic": "Privacy & Security",
+  "duration": 2899,
+  "hasTranscript": true,
+  "transcriptWordCount": 7030,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/279/1/502c1b1a-a921-4b8a-93dc-82ecd3b69c8d/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/279/1/502c1b1a-a921-4b8a-93dc-82ecd3b69c8d/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/279/1/502c1b1a-a921-4b8a-93dc-82ecd3b69c8d/downloads/meet-with-apple-279_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/279/1/502c1b1a-a921-4b8a-93dc-82ecd3b69c8d/downloads/meet-with-apple-279_hd.mp4",
+    "duration": 2899
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/meet-with-apple/279-adopt-memory-integrity-enforcement-and-pointer-authenticatio/",
+  "files": {
+    "metadata": "sessions/meet-with-apple/279-adopt-memory-integrity-enforcement-and-pointer-authenticatio/metadata.json",
+    "readme": "sessions/meet-with-apple/279-adopt-memory-integrity-enforcement-and-pointer-authenticatio/README.md",
+    "transcript": "sessions/meet-with-apple/279-adopt-memory-integrity-enforcement-and-pointer-authenticatio/transcript.md",
+    "transcriptJSON": "sessions/meet-with-apple/279-adopt-memory-integrity-enforcement-and-pointer-authenticatio/transcript.json"
+  }
+}

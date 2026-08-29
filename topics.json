@@ -6511,6 +6511,13 @@
       "sessionCount": 251,
       "sessions": [
         {
+          "id": "meet-with-apple-265",
+          "path": "sessions/meet-with-apple/265-fortify-your-app-essential-strategies-to-strengthen-security/",
+          "title": "Fortify your app: Essential strategies to strengthen security",
+          "event": "meet-with-apple",
+          "hasTranscript": true
+        },
+        {
           "id": "meet-with-apple-276",
           "path": "sessions/meet-with-apple/276-q-a-swift-concurrency/",
           "title": "Q&A: Swift concurrency",
@@ -6656,13 +6663,6 @@
           "title": "Xcode, agents, and you",
           "event": "wwdc2026",
           "hasTranscript": true
-        },
-        {
-          "id": "meet-with-apple-265",
-          "path": "sessions/meet-with-apple/265-fortify-your-app-essential-strategies-to-strengthen-security/",
-          "title": "Fortify your app: Essential strategies to strengthen security",
-          "event": "meet-with-apple",
-          "hasTranscript": false
         },
         {
           "id": "meet-with-apple-212",
@@ -12129,8 +12129,50 @@
     {
       "topic": "Privacy & Security",
       "slug": "privacy-security",
-      "sessionCount": 81,
+      "sessionCount": 86,
       "sessions": [
+        {
+          "id": "meet-with-apple-279",
+          "path": "sessions/meet-with-apple/279-adopt-memory-integrity-enforcement-and-pointer-authenticatio/",
+          "title": "Adopt Memory Integrity Enforcement and Pointer Authentication",
+          "event": "meet-with-apple",
+          "hasTranscript": true
+        },
+        {
+          "id": "meet-with-apple-280",
+          "path": "sessions/meet-with-apple/280-eliminate-bounds-safety-vulnerabilities-in-c-and-c/",
+          "title": "Eliminate bounds safety vulnerabilities in C and C++",
+          "event": "meet-with-apple",
+          "hasTranscript": true
+        },
+        {
+          "id": "meet-with-apple-282",
+          "path": "sessions/meet-with-apple/282-find-security-bugs-with-sanitizers/",
+          "title": "Find security bugs with Sanitizers",
+          "event": "meet-with-apple",
+          "hasTranscript": true
+        },
+        {
+          "id": "meet-with-apple-265",
+          "path": "sessions/meet-with-apple/265-fortify-your-app-essential-strategies-to-strengthen-security/",
+          "title": "Fortify your app: Essential strategies to strengthen security",
+          "event": "meet-with-apple",
+          "hasTranscript": true
+        },
+        {
+          "id": "meet-with-apple-278",
+          "path": "sessions/meet-with-apple/278-protect-your-app-with-enhanced-security/",
+          "title": "Protect your app with Enhanced Security",
+          "event": "meet-with-apple",
+          "hasTranscript": true
+        },
+        {
+          "id": "meet-with-apple-281",
+          "path": "sessions/meet-with-apple/281-write-security-sensitive-code-in-swift/",
+          "title": "Write security-sensitive code in Swift",
+          "event": "meet-with-apple",
+          "hasTranscript": true
+        },
         {
           "id": "wwdc2026-379",
           "path": "sessions/wwdc2026/379-meet-trust-insights/",
@@ -12158,13 +12200,6 @@
           "title": "Secure your apps with App Attest",
           "event": "wwdc2026",
           "hasTranscript": true
-        },
-        {
-          "id": "meet-with-apple-265",
-          "path": "sessions/meet-with-apple/265-fortify-your-app-essential-strategies-to-strengthen-security/",
-          "title": "Fortify your app: Essential strategies to strengthen security",
-          "event": "meet-with-apple",
-          "hasTranscript": false
         },
         {
           "id": "meet-with-apple-206",
@@ -14442,6 +14477,13 @@
           "hasTranscript": true
         },
         {
+          "id": "meet-with-apple-265",
+          "path": "sessions/meet-with-apple/265-fortify-your-app-essential-strategies-to-strengthen-security/",
+          "title": "Fortify your app: Essential strategies to strengthen security",
+          "event": "meet-with-apple",
+          "hasTranscript": true
+        },
+        {
           "id": "meet-with-apple-263",
           "path": "sessions/meet-with-apple/263-get-ready-for-the-swift-student-challenge/",
           "title": "Get ready for the Swift Student Challenge",
@@ -14573,13 +14615,6 @@
           "title": "Code-along: Start building with Swift and SwiftUI",
           "event": "meet-with-apple",
           "hasTranscript": true
-        },
-        {
-          "id": "meet-with-apple-265",
-          "path": "sessions/meet-with-apple/265-fortify-your-app-essential-strategies-to-strengthen-security/",
-          "title": "Fortify your app: Essential strategies to strengthen security",
-          "event": "meet-with-apple",
-          "hasTranscript": false
         },
         {
           "id": "meet-with-apple-206",

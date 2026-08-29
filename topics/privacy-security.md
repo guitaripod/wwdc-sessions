@@ -1,7 +1,16 @@
 # Privacy & Security
 
-81 sessions across all events.
+86 sessions across all events.
 
+
+### Meet with Apple
+
+- [Adopt Memory Integrity Enforcement and Pointer Authentication](../sessions/meet-with-apple/279-adopt-memory-integrity-enforcement-and-pointer-authenticatio/README.md)
+- [Eliminate bounds safety vulnerabilities in C and C++](../sessions/meet-with-apple/280-eliminate-bounds-safety-vulnerabilities-in-c-and-c/README.md)
+- [Find security bugs with Sanitizers](../sessions/meet-with-apple/282-find-security-bugs-with-sanitizers/README.md)
+- [Fortify your app: Essential strategies to strengthen security](../sessions/meet-with-apple/265-fortify-your-app-essential-strategies-to-strengthen-security/README.md)
+- [Protect your app with Enhanced Security](../sessions/meet-with-apple/278-protect-your-app-with-enhanced-security/README.md)
+- [Write security-sensitive code in Swift](../sessions/meet-with-apple/281-write-security-sensitive-code-in-swift/README.md)
 
 ### WWDC26
 
@@ -12,7 +21,6 @@
 
 ### Meet with Apple
 
-- [Fortify your app: Essential strategies to strengthen security](../sessions/meet-with-apple/265-fortify-your-app-essential-strategies-to-strengthen-security/README.md)
 - [Secure your app with Memory Integrity Enforcement](../sessions/meet-with-apple/206-secure-your-app-with-memory-integrity-enforcement/README.md)
 
 ### WWDC25

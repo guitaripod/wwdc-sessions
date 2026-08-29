@@ -1,0 +1,49 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "meet-with-apple-280",
+  "event": "meet-with-apple",
+  "eventName": "Meet with Apple",
+  "year": 2026,
+  "eventContentId": 280,
+  "title": "Eliminate bounds safety vulnerabilities in C and C++",
+  "description": "Discover how bounds safety technologies in Xcode eliminate entire classes of out-of-bounds vulnerabilities in your existing C and C++ codebases. Learn how to use the C bounds safety extension with annotations like __counted_by to enforce bounds checking without breaking ABI compatibility. And explore how to enable C++ Safe Buffers and the hardened C++ Standard Library to protect production apps with minimal performance overhead. This session was originally presented as part of the Meet with Apple event “Fortify your app: Essential strategies to strengthen security.” Watch the full video for more insights and related sessions.",
+  "url": "https://developer.apple.com/videos/play/meet-with-apple/280",
+  "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/280",
+  "type": "Video",
+  "publishedAt": "2026-03-06T10:00:00-08:00",
+  "platforms": [],
+  "keywords": [],
+  "topics": [
+    "Privacy & Security"
+  ],
+  "primaryTopic": "Privacy & Security",
+  "duration": 2592,
+  "hasTranscript": true,
+  "transcriptWordCount": 4622,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/280/1/9a3695fa-ec84-452f-a5d5-948b638b8068/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/280/1/9a3695fa-ec84-452f-a5d5-948b638b8068/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/280/1/9a3695fa-ec84-452f-a5d5-948b638b8068/downloads/meet-with-apple-280_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/280/1/9a3695fa-ec84-452f-a5d5-948b638b8068/downloads/meet-with-apple-280_hd.mp4",
+    "duration": 2592
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/meet-with-apple/280-eliminate-bounds-safety-vulnerabilities-in-c-and-c/",
+  "files": {
+    "metadata": "sessions/meet-with-apple/280-eliminate-bounds-safety-vulnerabilities-in-c-and-c/metadata.json",
+    "readme": "sessions/meet-with-apple/280-eliminate-bounds-safety-vulnerabilities-in-c-and-c/README.md",
+    "transcript": "sessions/meet-with-apple/280-eliminate-bounds-safety-vulnerabilities-in-c-and-c/transcript.md",
+    "transcriptJSON": "sessions/meet-with-apple/280-eliminate-bounds-safety-vulnerabilities-in-c-and-c/transcript.json"
+  }
+}

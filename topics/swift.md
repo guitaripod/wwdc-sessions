@@ -6,6 +6,7 @@
 ### Meet with Apple
 
 - [Code-along: Experiment with coding intelligence in Xcode 26](../sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/README.md)
+- [Fortify your app: Essential strategies to strengthen security](../sessions/meet-with-apple/265-fortify-your-app-essential-strategies-to-strengthen-security/README.md)
 - [Get ready for the Swift Student Challenge](../sessions/meet-with-apple/263-get-ready-for-the-swift-student-challenge/README.md)
 - [Q&A: Swift concurrency](../sessions/meet-with-apple/276-q-a-swift-concurrency/README.md)
 - [SwiftUI foundations: Build great apps with SwiftUI](../sessions/meet-with-apple/267-swiftui-foundations-build-great-apps-with-swiftui/README.md)
@@ -31,7 +32,6 @@
 
 - [Code along with the Foundation Models framework](../sessions/meet-with-apple/205-code-along-with-the-foundation-models-framework/README.md)
 - [Code-along: Start building with Swift and SwiftUI](../sessions/meet-with-apple/237-code-along-start-building-with-swift-and-swiftui/README.md)
-- [Fortify your app: Essential strategies to strengthen security](../sessions/meet-with-apple/265-fortify-your-app-essential-strategies-to-strengthen-security/README.md)
 - [Secure your app with Memory Integrity Enforcement](../sessions/meet-with-apple/206-secure-your-app-with-memory-integrity-enforcement/README.md)
 
 ### WWDC25

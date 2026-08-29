@@ -1,0 +1,49 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "meet-with-apple-278",
+  "event": "meet-with-apple",
+  "eventName": "Meet with Apple",
+  "year": 2026,
+  "eventContentId": 278,
+  "title": "Protect your app with Enhanced Security",
+  "description": "Learn how Enhanced Security in Xcode provides powerful tools to protect your apps from memory safety vulnerabilities. Explore how Apple applies defensive strategies across our platforms, including attack surface reduction, hardware mitigations, and containment with Enhanced Security Extensions. Discover how to enable these capabilities in your Xcode projects and establish an effective security engineering strategy. This session was originally presented as part of the Meet with Apple event “Fortify your app: Essential strategies to strengthen security.” Watch the full video for more insights and related sessions.",
+  "url": "https://developer.apple.com/videos/play/meet-with-apple/278",
+  "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/278",
+  "type": "Video",
+  "publishedAt": "2026-03-06T10:00:00-08:00",
+  "platforms": [],
+  "keywords": [],
+  "topics": [
+    "Privacy & Security"
+  ],
+  "primaryTopic": "Privacy & Security",
+  "duration": 2921,
+  "hasTranscript": true,
+  "transcriptWordCount": 6574,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/278/1/583f7f1a-6310-4cd4-b9bf-14e487c77e1d/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/278/1/583f7f1a-6310-4cd4-b9bf-14e487c77e1d/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/278/1/583f7f1a-6310-4cd4-b9bf-14e487c77e1d/downloads/meet-with-apple-278_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/278/1/583f7f1a-6310-4cd4-b9bf-14e487c77e1d/downloads/meet-with-apple-278_hd.mp4",
+    "duration": 2921
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/meet-with-apple/278-protect-your-app-with-enhanced-security/",
+  "files": {
+    "metadata": "sessions/meet-with-apple/278-protect-your-app-with-enhanced-security/metadata.json",
+    "readme": "sessions/meet-with-apple/278-protect-your-app-with-enhanced-security/README.md",
+    "transcript": "sessions/meet-with-apple/278-protect-your-app-with-enhanced-security/transcript.md",
+    "transcriptJSON": "sessions/meet-with-apple/278-protect-your-app-with-enhanced-security/transcript.json"
+  }
+}

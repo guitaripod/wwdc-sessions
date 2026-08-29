@@ -2,15 +2,15 @@
   "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/catalog.schema.json",
   "schemaVersion": 1,
   "builderVersion": 2,
-  "generatedAt": "2026-08-28T02:27:17+00:00",
-  "sourceUpdated": "2026-08-27T15:53:54-07:00",
+  "generatedAt": "2026-08-29T13:03:59+00:00",
+  "sourceUpdated": "2026-08-28T14:32:12-07:00",
   "source": "Apple WWDC developer-video feeds (resolved via api2024.wwdc.io)",
   "rawBase": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master",
   "license": "Content © Apple Inc. Tooling under MIT (see LICENSE/NOTICE).",
   "counts": {
     "events": 15,
-    "sessions": 1645,
-    "transcripts": 1559
+    "sessions": 1650,
+    "transcripts": 1565
   },
   "links": {
     "events": "events.json",
@@ -48,8 +48,8 @@
       "name": "Meet with Apple",
       "year": 2025,
       "startTime": "2025-07-10T10:00:00-07:00",
-      "sessionCount": 59,
-      "transcriptCount": 54,
+      "sessionCount": 64,
+      "transcriptCount": 60,
       "index": "events/meet-with-apple/index.md",
       "indexJSON": "events/meet-with-apple/index.json"
     },
@@ -217,6 +217,47 @@
       "codeSnippetCount": 0,
       "path": "sessions/meet-with-apple/263-get-ready-for-the-swift-student-challenge/",
       "description": "Submissions for the Swift Student Challenge will be open February 6-28. Get ready with this online session, where you’ll explore app development resources with an Apple expert, get inspiration from previous winners, and spark ideas for building your own app playground. This session is conducted in English and intended for students and educators."
+    },
+    {
+      "id": "meet-with-apple-265",
+      "event": "meet-with-apple",
+      "year": 2026,
+      "eventContentId": 265,
+      "title": "Fortify your app: Essential strategies to strengthen security",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/265",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/265",
+      "duration": 12511,
+      "publishedAt": "2026-03-05T10:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Developer Tools",
+      "topics": [
+        "Privacy & Security",
+        "Swift",
+        "Developer Tools"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 28189,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/265-fortify-your-app-essential-strategies-to-strengthen-security/",
+      "description": "Join us to bolster your app’s security and help protect user data in this all-day activity at the Apple Developer Center Cupertino. Whether you’re hardening an existing app or starting a new project, you’ll learn directly from Apple engineers about how to reinforce your app from the ground up. Learn about the security challenges facing modern apps, and explore a comprehensive suite of tools and technologies designed to help safeguard user data. Discover how you can protect your C and C++ codebases with powerful features like Memory Integrity Enforcement, pointer authentication, and memory bounds safety. Find out how to adopt Swift for your most security-sensitive components, taking advantage of its inherent safety and modern abstractions to write secure, high-performance code. And get guidance on how to build a clear security roadmap for new and existing projects, from high-level strategy to hands-on implementation."
     },
     {
       "id": "meet-with-apple-267",
@@ -571,6 +612,171 @@
       "codeSnippetCount": 0,
       "path": "sessions/meet-with-apple/277-discover-what-s-next-the-biggest-updates-from-wwdc26/",
       "description": "Join us online as we highlight the latest updates across Apple platforms — and explore the benefits for your apps. We’ll focus on the why over the how, mapping new technologies to real-world use cases. This session is for designers, product managers, and engineering leads who drive roadmap decisions and want to learn what’s possible as their teams begin building."
+    },
+    {
+      "id": "meet-with-apple-278",
+      "event": "meet-with-apple",
+      "year": 2026,
+      "eventContentId": 278,
+      "title": "Protect your app with Enhanced Security",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/278",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/278",
+      "duration": 2921,
+      "publishedAt": "2026-03-06T10:00:00-08:00",
+      "platforms": [],
+      "primaryTopic": "Privacy & Security",
+      "topics": [
+        "Privacy & Security"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 6574,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/278-protect-your-app-with-enhanced-security/",
+      "description": "Learn how Enhanced Security in Xcode provides powerful tools to protect your apps from memory safety vulnerabilities. Explore how Apple applies defensive strategies across our platforms, including attack surface reduction, hardware mitigations, and containment with Enhanced Security Extensions. Discover how to enable these capabilities in your Xcode projects and establish an effective security engineering strategy. This session was originally presented as part of the Meet with Apple event “Fortify your app: Essential strategies to strengthen security.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-279",
+      "event": "meet-with-apple",
+      "year": 2026,
+      "eventContentId": 279,
+      "title": "Adopt Memory Integrity Enforcement and Pointer Authentication",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/279",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/279",
+      "duration": 2899,
+      "publishedAt": "2026-03-06T10:00:00-08:00",
+      "platforms": [],
+      "primaryTopic": "Privacy & Security",
+      "topics": [
+        "Privacy & Security"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 7030,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/279-adopt-memory-integrity-enforcement-and-pointer-authenticatio/",
+      "description": "Learn how Memory Integrity Enforcement and Pointer Authentication work together to defend your app against memory corruption. Find out how the type-aware secure allocator leverages Memory Tagging Extensions to prevent exploitation, and how to adapt allocator wrappers and object pools to preserve hardware protections. Plus, explore how to enable Pointer Authentication in Xcode with arm64e to maintain control flow integrity. This session was originally presented as part of the Meet with Apple event “Fortify your app: Essential strategies to strengthen security.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-280",
+      "event": "meet-with-apple",
+      "year": 2026,
+      "eventContentId": 280,
+      "title": "Eliminate bounds safety vulnerabilities in C and C++",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/280",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/280",
+      "duration": 2592,
+      "publishedAt": "2026-03-06T10:00:00-08:00",
+      "platforms": [],
+      "primaryTopic": "Privacy & Security",
+      "topics": [
+        "Privacy & Security"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 4622,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/280-eliminate-bounds-safety-vulnerabilities-in-c-and-c/",
+      "description": "Discover how bounds safety technologies in Xcode eliminate entire classes of out-of-bounds vulnerabilities in your existing C and C++ codebases. Learn how to use the C bounds safety extension with annotations like __counted_by to enforce bounds checking without breaking ABI compatibility. And explore how to enable C++ Safe Buffers and the hardened C++ Standard Library to protect production apps with minimal performance overhead. This session was originally presented as part of the Meet with Apple event “Fortify your app: Essential strategies to strengthen security.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-281",
+      "event": "meet-with-apple",
+      "year": 2026,
+      "eventContentId": 281,
+      "title": "Write security-sensitive code in Swift",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/281",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/281",
+      "duration": 2491,
+      "publishedAt": "2026-03-06T10:00:00-08:00",
+      "platforms": [],
+      "primaryTopic": "Privacy & Security",
+      "topics": [
+        "Privacy & Security"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 6336,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/281-write-security-sensitive-code-in-swift/",
+      "description": "Learn how to build memory-safe software and eliminate vulnerability classes by writing security-critical code in Swift. Explore how Swift guarantees safety across bounds, lifetimes, types, initialization, and concurrency. Discover high-performance primitives like Span and non-copyable types, find out how to audit unsafe constructs with Strict Memory Safety, and walk through incrementally migrating existing C modules. This session was originally presented as part of the Meet with Apple event “Fortify your app: Essential strategies to strengthen security.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-282",
+      "event": "meet-with-apple",
+      "year": 2026,
+      "eventContentId": 282,
+      "title": "Find security bugs with Sanitizers",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/282",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/282",
+      "duration": 824,
+      "publishedAt": "2026-03-06T10:00:00-08:00",
+      "platforms": [],
+      "primaryTopic": "Privacy & Security",
+      "topics": [
+        "Privacy & Security"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1786,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/282-find-security-bugs-with-sanitizers/",
+      "description": "Discover how Address Sanitizer and Thread Sanitizer can help you catch hidden memory corruption and concurrency issues. Learn how Address Sanitizer detects buffer overflows and use-after-free errors across Swift, C, C++, and Objective-C with byte-level precision. Explore how Thread Sanitizer uncovers elusive data races, and how to configure both tools in your automated test plans. This session was originally presented as part of the Meet with Apple event “Fortify your app: Essential strategies to strengthen security.” Watch the full video for more insights and related sessions."
     },
     {
       "id": "tech-talks-111427",
@@ -8140,39 +8346,6 @@
       "codeSnippetCount": 0,
       "path": "sessions/meet-with-apple/257-liquid-glass-showcase-tide-guide/",
       "description": "In this session, you'll learn how indie developer Tucker MacDonald updated his tide and marine weather app for the new design system and extended his designs and custom elements across iOS, iPadOS, watchOS, and macOS. This session was originally presented as part of the Meet with Apple activity “Showcase: Learn how apps are integrating the new design and Liquid Glass” Watch the full video for more insights and related sessions."
-    },
-    {
-      "id": "meet-with-apple-265",
-      "event": "meet-with-apple",
-      "year": 2025,
-      "eventContentId": 265,
-      "title": "Fortify your app: Essential strategies to strengthen security",
-      "type": "Video",
-      "url": "https://developer.apple.com/videos/play/meet-with-apple/265",
-      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/265",
-      "duration": null,
-      "publishedAt": null,
-      "platforms": [
-        "iOS",
-        "iPadOS",
-        "macOS",
-        "visionOS",
-        "watchOS"
-      ],
-      "primaryTopic": "Developer Tools",
-      "topics": [
-        "Privacy & Security",
-        "Swift",
-        "Developer Tools"
-      ],
-      "keywords": [],
-      "hasTranscript": false,
-      "transcriptWordCount": 0,
-      "availableLanguages": [],
-      "resourceCount": 0,
-      "codeSnippetCount": 0,
-      "path": "sessions/meet-with-apple/265-fortify-your-app-essential-strategies-to-strengthen-security/",
-      "description": "Join us to bolster your app’s security and help protect user data in this all-day activity at the Apple Developer Center Cupertino. Whether you’re hardening an existing app or starting a new project, you’ll learn directly from Apple engineers about how to reinforce your app from the ground up. Learn about the security challenges facing modern apps, and explore a comprehensive suite of tools and technologies designed to help safeguard user data. Discover how you can protect your C and C++ codebases with powerful features like Memory Integrity Enforcement, pointer authentication, and memory bounds safety. Find out how to adopt Swift for your most security-sensitive components, taking advantage of its inherent safety and modern abstractions to write secure, high-performance code. And get guidance on how to build a clear security roadmap for new and existing projects, from high-level strategy to hands-on implementation."
     },
     {
       "id": "wwdc2025-101",

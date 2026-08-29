@@ -4,6 +4,7 @@
 
 - [AllTrails: Momentum without a rewrite](../sessions/meet-with-apple/274-alltrails-momentum-without-a-rewrite/README.md) — Meet with Apple
 - [Discover what’s next: The biggest updates from WWDC26](../sessions/meet-with-apple/277-discover-what-s-next-the-biggest-updates-from-wwdc26/README.md) — Meet with Apple
+- [Fortify your app: Essential strategies to strengthen security](../sessions/meet-with-apple/265-fortify-your-app-essential-strategies-to-strengthen-security/README.md) — Meet with Apple
 - [Get ready for the Swift Student Challenge](../sessions/meet-with-apple/263-get-ready-for-the-swift-student-challenge/README.md) — Meet with Apple
 - [Q&A: Swift concurrency](../sessions/meet-with-apple/276-q-a-swift-concurrency/README.md) — Meet with Apple
 - [Discover the Apple Design Resources](../sessions/tech-talks/111427-discover-the-apple-design-resources/README.md) — Tech Talks
@@ -65,7 +66,6 @@
 - [watchOS Group Lab](../sessions/wwdc2026/8014-watchos-group-lab/README.md) — WWDC26
 - [Code-along: Start building with Swift and SwiftUI](../sessions/meet-with-apple/237-code-along-start-building-with-swift-and-swiftui/README.md) — Meet with Apple
 - [Explore the biggest updates from WWDC25](../sessions/meet-with-apple/201-explore-the-biggest-updates-from-wwdc25/README.md) — Meet with Apple
-- [Fortify your app: Essential strategies to strengthen security](../sessions/meet-with-apple/265-fortify-your-app-essential-strategies-to-strengthen-security/README.md) — Meet with Apple
 - [Optimize your app’s speed and efficiency](../sessions/meet-with-apple/212-optimize-your-app-s-speed-and-efficiency/README.md) — Meet with Apple
 - [Press Start: Game development on Apple platforms](../sessions/meet-with-apple/214-press-start-game-development-on-apple-platforms/README.md) — Meet with Apple
 - [Secure your app with Memory Integrity Enforcement](../sessions/meet-with-apple/206-secure-your-app-with-memory-integrity-enforcement/README.md) — Meet with Apple
