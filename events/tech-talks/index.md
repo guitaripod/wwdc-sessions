@@ -1,6 +1,6 @@
 # Tech Talks Sessions
 
-96 sessions · 95 with transcripts.
+98 sessions · 97 with transcripts.
 
 ## AI & Machine Learning
 
@@ -27,6 +27,7 @@
 
 - [Designing for Subscription Success](../../sessions/tech-talks/803-designing-for-subscription-success/README.md) · 📝
 - [Do more with less data](../../sessions/tech-talks/110352-do-more-with-less-data/README.md) · 📝
+- [Enhance your acquisition strategy with App Store Connect Analytics](../../sessions/tech-talks/111459-enhance-your-acquisition-strategy-with-app-store-connect-ana/README.md) · 📝
 - [Explore App Store pricing upgrades](../../sessions/tech-talks/110364-explore-app-store-pricing-upgrades/README.md) · 📝
 - [Explore Family Sharing for In-App Purchases](../../sessions/tech-talks/110345-explore-family-sharing-for-in-app-purchases/README.md) · 📝
 - [Explore unlisted app distribution](../../sessions/tech-talks/10892-explore-unlisted-app-distribution/README.md) · 📝
@@ -40,6 +41,7 @@
 - [Make the most of custom product pages](../../sessions/tech-talks/110361-make-the-most-of-custom-product-pages/README.md) · 📝
 - [Make the most of product page optimization](../../sessions/tech-talks/110349-make-the-most-of-product-page-optimization/README.md) · 📝
 - [Manage auto-renewable subscription pricing in App Store Connect](../../sessions/tech-talks/110350-manage-auto-renewable-subscription-pricing-in-app-store-conn/README.md) · 📝
+- [Maximize your monetization efforts with App Store Connect Analytics](../../sessions/tech-talks/111460-maximize-your-monetization-efforts-with-app-store-connect-an/README.md) · 📝
 - [Measure and improve acquisition with App Analytics](../../sessions/tech-talks/110365-measure-and-improve-acquisition-with-app-analytics/README.md) · 📝
 - [Optimize subscriptions for success: acquisition](../../sessions/tech-talks/110151-optimize-subscriptions-for-success-acquisition/README.md) · 📝
 - [Subscription offer codes](../../sessions/tech-talks/10868-subscription-offer-codes/README.md) · 📝

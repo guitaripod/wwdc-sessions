@@ -143,7 +143,7 @@ func testNewEventIndexedInSpotlight() async throws {
 ### Test view annotations — [22:33]
 
 ```swift
-/ Testing view annotations
+// Testing view annotations
 func testEventViewAnnotation() async throws {
     try await openEventDefinition.makeIntent(target: "Morning Launch Briefing").run()
 

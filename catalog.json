@@ -2,15 +2,15 @@
   "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/catalog.schema.json",
   "schemaVersion": 1,
   "builderVersion": 2,
-  "generatedAt": "2026-09-01T21:39:37+00:00",
-  "sourceUpdated": "2026-09-01T11:13:26-07:00",
+  "generatedAt": "2026-09-02T21:39:01+00:00",
+  "sourceUpdated": "2026-09-02T10:48:32-07:00",
   "source": "Apple WWDC developer-video feeds (resolved via api2024.wwdc.io)",
   "rawBase": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master",
   "license": "Content © Apple Inc. Tooling under MIT (see LICENSE/NOTICE).",
   "counts": {
     "events": 15,
-    "sessions": 1650,
-    "transcripts": 1565
+    "sessions": 1652,
+    "transcripts": 1567
   },
   "links": {
     "events": "events.json",
@@ -138,8 +138,8 @@
       "name": "Tech Talks",
       "year": 2017,
       "startTime": "2017-07-01T00:00:00-07:00",
-      "sessionCount": 96,
-      "transcriptCount": 95,
+      "sessionCount": 98,
+      "transcriptCount": 97,
       "index": "events/tech-talks/index.md",
       "indexJSON": "events/tech-talks/index.json"
     },
@@ -976,6 +976,72 @@
       "codeSnippetCount": 19,
       "path": "sessions/tech-talks/111433-prepare-your-app-for-accessibility-nutrition-labels/",
       "description": "Learn how to prepare your app for Accessibility Nutrition Labels by supporting essential accessibility features. Discover how you can enhance interaction methods like VoiceOver and Voice Control by properly configuring accessibility labels, traits, and values for custom controls and gestures. Find out how you can support larger text sizes using Dynamic Type, and prevent content truncation with flexible layouts. And learn how to make your app design more inclusive by adopting Dark Mode, responding to preferences like Differentiate Without Color, and ensuring sufficient contrast."
+    },
+    {
+      "id": "tech-talks-111459",
+      "event": "tech-talks",
+      "year": 2026,
+      "eventContentId": 111459,
+      "title": "Enhance your acquisition strategy with App Store Connect Analytics",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/111459",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111459",
+      "duration": 1241,
+      "publishedAt": "2026-09-02T07:00:00-07:00",
+      "platforms": [],
+      "primaryTopic": "App Store, Distribution & Marketing",
+      "topics": [
+        "App Store, Distribution & Marketing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 3071,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/111459-enhance-your-acquisition-strategy-with-app-store-connect-ana/",
+      "description": "Learn how to use Analytics in App Store Connect to step up your app or game’s acquisition efforts. Explore strategies to improve performance, discover features that can boost downloads, and dive deeper into the key metrics that matter most."
+    },
+    {
+      "id": "tech-talks-111460",
+      "event": "tech-talks",
+      "year": 2026,
+      "eventContentId": 111460,
+      "title": "Maximize your monetization efforts with App Store Connect Analytics",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/111460",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111460",
+      "duration": 798,
+      "publishedAt": "2026-09-02T07:00:00-07:00",
+      "platforms": [],
+      "primaryTopic": "App Store, Distribution & Marketing",
+      "topics": [
+        "App Store, Distribution & Marketing"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1879,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/111460-maximize-your-monetization-efforts-with-app-store-connect-an/",
+      "description": "Learn how you can drive growth using App Store Connect Analytics. You'll explore key metrics and find out how to leverage monetization features to optimize your revenue strategy."
     },
     {
       "id": "wwdc2026-101",

@@ -1,7 +1,12 @@
 # App Store, Distribution & Marketing
 
-107 sessions across all events.
+109 sessions across all events.
 
+
+### Tech Talks
+
+- [Enhance your acquisition strategy with App Store Connect Analytics](../sessions/tech-talks/111459-enhance-your-acquisition-strategy-with-app-store-connect-ana/README.md)
+- [Maximize your monetization efforts with App Store Connect Analytics](../sessions/tech-talks/111460-maximize-your-monetization-efforts-with-app-store-connect-an/README.md)
 
 ### WWDC26
 
