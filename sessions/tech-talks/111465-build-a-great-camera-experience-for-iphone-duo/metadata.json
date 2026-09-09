@@ -1,0 +1,83 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-111465",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2026,
+  "eventContentId": 111465,
+  "title": "Build a great camera experience for iPhone Duo",
+  "description": "Discover how to leverage the outer and inner cameras on iPhone Duo. Explore the Virtual Front Camera, and find out how to use the direction coordinator to switch between cameras and update your UI as people open and close iPhone Duo. Learn best practices for handling preview aspect ratios, positioning, and rotation to deliver a seamless capture experience.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/111465",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111465",
+  "type": "Video",
+  "publishedAt": "2026-09-09T10:00:00-07:00",
+  "platforms": [
+    "iOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "Photos & Camera"
+  ],
+  "primaryTopic": "Photos & Camera",
+  "duration": 567,
+  "hasTranscript": true,
+  "transcriptWordCount": 1408,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/111465/1/8972028b-c66c-469e-a410-df980b33271c/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/tech-talks/111465/1/8972028b-c66c-469e-a410-df980b33271c/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/111465/1/8972028b-c66c-469e-a410-df980b33271c/downloads/tech-talks-111465_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/111465/1/8972028b-c66c-469e-a410-df980b33271c/downloads/tech-talks-111465_hd.mp4",
+    "duration": 567
+  },
+  "codeSnippets": [
+    {
+      "title": "Understand AVCaptureDevicePosition",
+      "language": "swift",
+      "startTimeSeconds": 180,
+      "code": "enum AVCaptureDevicePosition: Int {\n    case unspecified\n    case back\n    case front\n}\n\nextension AVCaptureDevice {\n    // ...\n    var position: AVCaptureDevicePosition { get }\n}"
+    },
+    {
+      "title": "Initialize a direction coordinator",
+      "language": "swift",
+      "startTimeSeconds": 246,
+      "code": "directionCoordinator = AVCaptureDeviceDirectionCoordinator(\n    view: view,\n    deviceTypes: [\n        .builtInOuterUltraWideCamera,\n        .builtInInnerUltraWideCamera,\n        .builtInDualWideCamera,\n    ],\n    changeHandler: { [weak self] map in\n        self?.updateCameraSession(map)\n    }\n)"
+    },
+    {
+      "title": "Configure the video preview layer",
+      "language": "swift",
+      "startTimeSeconds": 450,
+      "code": "class AVCaptureVideoPreviewLayer {\n    // ...\n\n    var videoGravity: AVLayerVideoGravity { get set }\n}"
+    },
+    {
+      "title": "Select a dynamic aspect ratio",
+      "language": "swift",
+      "startTimeSeconds": 471,
+      "code": "class AVCaptureDevice {\n    // ...\n\n    var dynamicAspectRatio: AVCaptureDevice.AspectRatio? { get }\n}"
+    },
+    {
+      "title": "Disable sensor orientation compensation",
+      "language": "swift",
+      "startTimeSeconds": 514,
+      "code": "// Disable for improved performance\nclass AVCapturePhotoOutput: AVCaptureOutput {\n    // ...\n\n    var isCameraSensorOrientationCompensationEnabled: Bool { get set }\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/tech-talks/111465-build-a-great-camera-experience-for-iphone-duo/",
+  "files": {
+    "metadata": "sessions/tech-talks/111465-build-a-great-camera-experience-for-iphone-duo/metadata.json",
+    "readme": "sessions/tech-talks/111465-build-a-great-camera-experience-for-iphone-duo/README.md",
+    "transcript": "sessions/tech-talks/111465-build-a-great-camera-experience-for-iphone-duo/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/111465-build-a-great-camera-experience-for-iphone-duo/transcript.json"
+  }
+}

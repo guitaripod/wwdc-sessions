@@ -1,6 +1,6 @@
 # Tech Talks Sessions
 
-98 sessions · 97 with transcripts.
+104 sessions · 103 with transcripts.
 
 ## AI & Machine Learning
 
@@ -80,11 +80,15 @@
 
 ## Design
 
+- [Design for iPhone Duo](../../sessions/tech-talks/111466-design-for-iphone-duo/README.md) · 📝
 - [Designing for Apple Watch Series 4](../../sessions/tech-talks/802-designing-for-apple-watch-series-4/README.md) · 📝
 - [Designing for Subscription Success](../../sessions/tech-talks/803-designing-for-subscription-success/README.md) · 📝
 - [Designing for iPhone X](../../sessions/tech-talks/801-designing-for-iphone-x/README.md) · 📝
 - [Discover the Apple Design Resources](../../sessions/tech-talks/111427-discover-the-apple-design-resources/README.md) · 📝
 - [Meet Apple Watch Series 7](../../sessions/tech-talks/10884-meet-apple-watch-series-7/README.md) · 📝
+- [Prepare your app for iPhone Duo](../../sessions/tech-talks/111461-prepare-your-app-for-iphone-duo/README.md) · 📝
+- [Raise the bar with iPhone Duo](../../sessions/tech-talks/111462-raise-the-bar-with-iphone-duo/README.md) · 📝
+- [Strike a pose with adaptive layouts on iPhone Duo](../../sessions/tech-talks/111463-strike-a-pose-with-adaptive-layouts-on-iphone-duo/README.md) · 📝
 
 ## Developer Tools
 
@@ -105,6 +109,10 @@
 - [Using Web Inspector with tvOS Apps](../../sessions/tech-talks/402-using-web-inspector-with-tvos-apps/README.md) · 📝
 - [Web Inspector Walkthrough](../../sessions/tech-talks/401-web-inspector-walkthrough/README.md) · 📝
 - [What can you do on an Apple silicon Mac?](../../sessions/tech-talks/10865-what-can-you-do-on-an-apple-silicon-mac/README.md) · 📝
+
+## Essentials
+
+- [Design for iPhone Duo](../../sessions/tech-talks/111466-design-for-iphone-duo/README.md) · 📝
 
 ## Graphics & Games
 
@@ -142,8 +150,10 @@
 
 ## Photos & Camera
 
+- [Build a great camera experience for iPhone Duo](../../sessions/tech-talks/111465-build-a-great-camera-experience-for-iphone-duo/README.md) · 📝
 - [Discover Reference Mode](../../sessions/tech-talks/110337-discover-reference-mode/README.md) · 📝
 - [Discover the Journaling Suggestions API](../../sessions/tech-talks/111384-discover-the-journaling-suggestions-api/README.md) · 📝
+- [Leverage multiple displays and scenes on iPhone Duo](../../sessions/tech-talks/111464-leverage-multiple-displays-and-scenes-on-iphone-duo/README.md) · 📝
 - [QR Code Recognition on iOS 11](../../sessions/tech-talks/206-qr-code-recognition-on-ios-11/README.md) · 📝
 
 ## Privacy & Security
@@ -173,11 +183,16 @@
 ## SwiftUI & UI Frameworks
 
 - [Bringing Your Apps to the New iPad Pro](../../sessions/tech-talks/209-bringing-your-apps-to-the-new-ipad-pro/README.md) · 📝
+- [Build a great camera experience for iPhone Duo](../../sessions/tech-talks/111465-build-a-great-camera-experience-for-iphone-duo/README.md) · 📝
 - [Building Apps for iPhone X](../../sessions/tech-talks/201-building-apps-for-iphone-x/README.md) · 📝
 - [Building Apps for iPhone XS, iPhone XS Max, and iPhone XR](../../sessions/tech-talks/207-building-apps-for-iphone-xs-iphone-xs-max-and-iphone-xr/README.md) · 📝
 - [Designing for iPhone X](../../sessions/tech-talks/801-designing-for-iphone-x/README.md) · 📝
 - [Developing Complications for Apple Watch Series 4](../../sessions/tech-talks/208-developing-complications-for-apple-watch-series-4/README.md) · 📝
+- [Leverage multiple displays and scenes on iPhone Duo](../../sessions/tech-talks/111464-leverage-multiple-displays-and-scenes-on-iphone-duo/README.md) · 📝
 - [Meet Apple Watch Series 7](../../sessions/tech-talks/10884-meet-apple-watch-series-7/README.md) · 📝
+- [Prepare your app for iPhone Duo](../../sessions/tech-talks/111461-prepare-your-app-for-iphone-duo/README.md) · 📝
+- [Raise the bar with iPhone Duo](../../sessions/tech-talks/111462-raise-the-bar-with-iphone-duo/README.md) · 📝
+- [Strike a pose with adaptive layouts on iPhone Duo](../../sessions/tech-talks/111463-strike-a-pose-with-adaptive-layouts-on-iphone-duo/README.md) · 📝
 - [Updating Your App for Apple TV 4K](../../sessions/tech-talks/202-updating-your-app-for-apple-tv-4k/README.md) · 📝
 - [Using Web Inspector with tvOS Apps](../../sessions/tech-talks/402-using-web-inspector-with-tvos-apps/README.md) · 📝
 - [What's New in Sharing](../../sessions/tech-talks/210-what-s-new-in-sharing/README.md) · 📝
@@ -189,6 +204,7 @@
 - [GDPR & CloudKit](../../sessions/tech-talks/703-gdpr-cloudkit/README.md) · 📝
 - [Get the most out of CloudKit Sharing](../../sessions/tech-talks/10874-get-the-most-out-of-cloudkit-sharing/README.md) · 📝
 - [Introducing Extensible Enterprise SSO](../../sessions/tech-talks/301-introducing-extensible-enterprise-sso/README.md) · 📝
+- [Leverage multiple displays and scenes on iPhone Duo](../../sessions/tech-talks/111464-leverage-multiple-displays-and-scenes-on-iphone-duo/README.md) · 📝
 - [Uniform Type Identifiers — a reintroduction](../../sessions/tech-talks/10696-uniform-type-identifiers-a-reintroduction/README.md) · 📝
 - [Updating for Apple Watch Series 3](../../sessions/tech-talks/203-updating-for-apple-watch-series-3/README.md) · 📝
 - [iOS Storage Best Practices](../../sessions/tech-talks/204-ios-storage-best-practices/README.md) · 📝

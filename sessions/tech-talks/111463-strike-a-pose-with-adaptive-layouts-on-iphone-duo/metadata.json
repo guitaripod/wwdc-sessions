@@ -1,0 +1,125 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-111463",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2026,
+  "eventContentId": 111463,
+  "title": "Strike a pose with adaptive layouts on iPhone Duo",
+  "description": "Learn how to create responsive, flexible layouts that work great on iPhone Duo. Explore displacement design patterns that keep content visible and reachable as people open and close their iPhone Duo. Discover how to use arrangement views in SwiftUI and UIKit to build split and overlay presentations, and find out how to query reserved regions to tailor layouts around the hinge and cameras.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/111463",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111463",
+  "type": "Video",
+  "publishedAt": "2026-09-09T10:02:00-07:00",
+  "platforms": [
+    "iOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 1081,
+  "hasTranscript": true,
+  "transcriptWordCount": 2764,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/111463/1/dcd8d7bb-94d3-4f48-bd2b-e3a6e10fec1e/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/tech-talks/111463/1/dcd8d7bb-94d3-4f48-bd2b-e3a6e10fec1e/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/111463/1/dcd8d7bb-94d3-4f48-bd2b-e3a6e10fec1e/downloads/tech-talks-111463_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/111463/1/dcd8d7bb-94d3-4f48-bd2b-e3a6e10fec1e/downloads/tech-talks-111463_hd.mp4",
+    "duration": 1081
+  },
+  "codeSnippets": [
+    {
+      "title": "Query reserved regions in SwiftUI",
+      "language": "swift",
+      "startTimeSeconds": 406,
+      "code": "// SwiftUI\nGeometryReader { proxy in\n  let regions = proxy.reservedRegions(\n    kind: .division)\n}"
+    },
+    {
+      "title": "Query reserved regions in UIKit",
+      "language": "swift",
+      "startTimeSeconds": 423,
+      "code": "// UIKit\nlet regions = view.reservedRegions(\n  kind: .division)\n\n// Query the frame to incorporate it into your own layout\nlet frames = regions.map(\\.frame)"
+    },
+    {
+      "title": "Include inactive regions",
+      "language": "swift",
+      "startTimeSeconds": 442,
+      "code": "// SwiftUI\nGeometryReader { proxy in\n  let regions = proxy.reservedRegions(\n    kind: .division, options: .includeInactive)\n\n  let frames = regions.map(\\.frame)\n  // ...\n}"
+    },
+    {
+      "title": "Query occlusion regions",
+      "language": "swift",
+      "startTimeSeconds": 487,
+      "code": "// SwiftUI\nGeometryReader { proxy in\n  let regions = proxy.reservedRegions(\n    kind: .occlusion)\n\n  let frames = regions.map(\\.frame)\n  // ...\n}"
+    },
+    {
+      "title": "Add an ArrangementView",
+      "language": "swift",
+      "startTimeSeconds": 683,
+      "code": "// SwiftUI\nvar body: some View {\n  NavigationStack {\n    ArrangementView {\n      PlayerView()\n    } secondary: {\n      UpNextView()\n    }\n  }\n}"
+    },
+    {
+      "title": "Add a UIArrangementViewController",
+      "language": "swift",
+      "startTimeSeconds": 686,
+      "code": "// UIKit\nlet arrangementVC = UIArrangementViewController()\nlet navController = UINavigationController(rootViewController: arrangementVC)\n\nlet playerVC = PlayerViewController()\narrangementVC.setViewController(playerVC, for: .primary)\n\nlet upNextVC = UpNextViewController()\narrangementVC.setViewController(upNextVC, for: .secondary)"
+    },
+    {
+      "title": "Specify the split arrangement style",
+      "language": "swift",
+      "startTimeSeconds": 720,
+      "code": "// SwiftUI\nvar body: some View {\n  NavigationStack {\n    ArrangementView {\n      PlayerView()\n    } secondary: {\n      UpNextView()\n    }\n    .arrangementViewStyle(.split)\n  }\n}"
+    },
+    {
+      "title": "Restrict the split to one axis",
+      "language": "swift",
+      "startTimeSeconds": 761,
+      "code": "// SwiftUI\nvar body: some View {\n  NavigationStack {\n    ArrangementView {\n      PlayerView()\n    } secondary: {\n      UpNextView()\n    }\n    .arrangementViewStyle(\n      .split.axes(.horizontal))\n  }\n}"
+    },
+    {
+      "title": "Update the arrangement in UIKit",
+      "language": "swift",
+      "startTimeSeconds": 787,
+      "code": "// UIKit\nlet arrangementVC = UIArrangementViewController()\n\n// ...\n\narrangementVC.updateArrangement(.split.axes(.horizontal))"
+    },
+    {
+      "title": "Switch to the overlay arrangement",
+      "language": "swift",
+      "startTimeSeconds": 806,
+      "code": "// SwiftUI\nvar body: some View {\n  NavigationStack {\n    ArrangementView {\n      UpNextView()\n    } secondary: {\n      PlayerView()\n    }\n    .arrangementViewStyle(.overlay)\n  }\n}"
+    },
+    {
+      "title": "Respond to the overlay Z index",
+      "language": "swift",
+      "startTimeSeconds": 847,
+      "code": "// SwiftUI\nenum UpNextMinimization {\n  case collapsed; case expanded\n}\n\nstruct UpNextView: View {\n  @Environment(\\.overlayArrangementZIndex)\n  private var zIndex: Int\n\n  var body: some View {\n    UpNextList(minimization: minimization)\n  }\n\n  var minimization: UpNextMinimization {\n    zIndex > 0 ? .collapsed : .expanded\n  }\n}"
+    },
+    {
+      "title": "Read the Z index in UIKit",
+      "language": "swift",
+      "startTimeSeconds": 861,
+      "code": "// UIKit\nlet arrangementVC = UIArrangementViewController()\n\n// ...\n\nlet primaryState = arrangementVC.state(for: .primary)\nmyModel.minimization = (primaryState?.zIndex ?? 0) > 0\n  ? .collapsed : .expanded"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/tech-talks/111463-strike-a-pose-with-adaptive-layouts-on-iphone-duo/",
+  "files": {
+    "metadata": "sessions/tech-talks/111463-strike-a-pose-with-adaptive-layouts-on-iphone-duo/metadata.json",
+    "readme": "sessions/tech-talks/111463-strike-a-pose-with-adaptive-layouts-on-iphone-duo/README.md",
+    "transcript": "sessions/tech-talks/111463-strike-a-pose-with-adaptive-layouts-on-iphone-duo/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/111463-strike-a-pose-with-adaptive-layouts-on-iphone-duo/transcript.json"
+  }
+}

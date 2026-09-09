@@ -1,6 +1,6 @@
 # Design
 
-177 sessions across all events.
+181 sessions across all events.
 
 
 ### Meet with Apple
@@ -10,7 +10,11 @@
 
 ### Tech Talks
 
+- [Design for iPhone Duo](../sessions/tech-talks/111466-design-for-iphone-duo/README.md)
 - [Discover the Apple Design Resources](../sessions/tech-talks/111427-discover-the-apple-design-resources/README.md)
+- [Prepare your app for iPhone Duo](../sessions/tech-talks/111461-prepare-your-app-for-iphone-duo/README.md)
+- [Raise the bar with iPhone Duo](../sessions/tech-talks/111462-raise-the-bar-with-iphone-duo/README.md)
+- [Strike a pose with adaptive layouts on iPhone Duo](../sessions/tech-talks/111463-strike-a-pose-with-adaptive-layouts-on-iphone-duo/README.md)
 
 ### WWDC26
 

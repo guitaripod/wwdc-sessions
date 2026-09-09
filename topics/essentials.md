@@ -1,12 +1,16 @@
 # Essentials
 
-189 sessions across all events.
+190 sessions across all events.
 
 
 ### Meet with Apple
 
 - [Discover what’s next: The biggest updates from WWDC26](../sessions/meet-with-apple/277-discover-what-s-next-the-biggest-updates-from-wwdc26/README.md)
 - [Get ready for the Swift Student Challenge](../sessions/meet-with-apple/263-get-ready-for-the-swift-student-challenge/README.md)
+
+### Tech Talks
+
+- [Design for iPhone Duo](../sessions/tech-talks/111466-design-for-iphone-duo/README.md)
 
 ### WWDC26
 

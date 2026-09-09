@@ -1,0 +1,131 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-111462",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2026,
+  "eventContentId": 111462,
+  "title": "Raise the bar with iPhone Duo",
+  "description": "Discover how to adapt your navigation, toolbars, and tab bars for the unique displays of iPhone Duo. Explore the design principles behind the new bar layout, and learn how to configure custom view representations and manage overflow to build powerful, responsive apps.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/111462",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111462",
+  "type": "Video",
+  "publishedAt": "2026-09-09T10:03:00-07:00",
+  "platforms": [
+    "iOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 943,
+  "hasTranscript": true,
+  "transcriptWordCount": 2436,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/111462/1/9a60db88-d15d-4892-8b56-18e11523d8e4/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/tech-talks/111462/1/9a60db88-d15d-4892-8b56-18e11523d8e4/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/111462/1/9a60db88-d15d-4892-8b56-18e11523d8e4/downloads/tech-talks-111462_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/111462/1/9a60db88-d15d-4892-8b56-18e11523d8e4/downloads/tech-talks-111462_hd.mp4",
+    "duration": 943
+  },
+  "codeSnippets": [
+    {
+      "title": "Use system container toolbars",
+      "language": "swift",
+      "startTimeSeconds": 144,
+      "code": "// SwiftUI\nvar body: some View {\n    NavigationStack {\n        ContentView()\n            .toolbar {\n                ToolbarItem(placement: .bottomBar) {\n                    ...\n                }\n            }\n    }\n}"
+    },
+    {
+      "title": "Prefer navigation controllers over custom bars",
+      "language": "swift",
+      "startTimeSeconds": 159,
+      "code": "// UIKit — content from a custom UIToolbar won't be considered.\n// Prefer UINavigationController and UITabBarController,\n// which manage their own bars.\nlet toolbar = UIToolbar()\ntoolbar.items = [...]"
+    },
+    {
+      "title": "Place a back or close button",
+      "language": "swift",
+      "startTimeSeconds": 300,
+      "code": "// SwiftUI\n.toolbar {\n    ToolbarItem(placement: .cancellationAction) {\n        ...\n    }\n}\n\n// UIKit\nnavigationItem.leftItemsSupplementBackButton = false\nnavigationItem.leadingItemGroups\n    = [UIBarButtonItemGroup(...)]"
+    },
+    {
+      "title": "Pin prominent actions to the trailing edge",
+      "language": "swift",
+      "startTimeSeconds": 324,
+      "code": "// SwiftUI\n.toolbar {\n    ToolbarItem(placement: .topBarPinnedTrailing) {\n        ...\n    }\n}\n\n// UIKit\nnavigationItem.pinnedTrailingGroup\n    = UIBarButtonItemGroup(...)"
+    },
+    {
+      "title": "Set a preferred axis for a custom view",
+      "language": "swift",
+      "startTimeSeconds": 488,
+      "code": "// SwiftUI\nvar body: some View {\n    ContentView()\n        .toolbar {\n            ToolbarItem {\n                ProfileView()\n            }\n            .axisBehavior(.verticalPreferred)\n        }\n}\n\n// UIKit\nlet item = UIBarButtonItem(customView: ProfileView())\nitem.axisBehavior = .verticalPreferred"
+    },
+    {
+      "title": "Keep an item on the horizontal axis",
+      "language": "swift",
+      "startTimeSeconds": 516,
+      "code": "// SwiftUI\nvar body: some View {\n    ContentView()\n        .toolbar {\n            ToolbarItem {\n                SelectOrDoneButton()\n            }\n            .axisBehavior(.horizontalOnly)\n        }\n}\n\n// UIKit\nitem.axisBehavior = .horizontalOnly"
+    },
+    {
+      "title": "Allow a custom view to go vertical",
+      "language": "swift",
+      "startTimeSeconds": 532,
+      "code": "// SwiftUI\nvar body: some View {\n    ContentView()\n        .toolbar {\n            ToolbarItem {\n                CompassView()\n            }\n            .axisBehavior(.verticalPreferred)\n        }\n}\n\n// UIKit\nlet item = UIBarButtonItem(customView: CompassView())\nitem.axisBehavior = .verticalPreferred"
+    },
+    {
+      "title": "Use a badge instead of inline text",
+      "language": "swift",
+      "startTimeSeconds": 567,
+      "code": "// SwiftUI\nvar body: some View {\n    ContentView()\n        .toolbar {\n            ToolbarItem(...) {\n                InboxButton()\n                    .badge(7)\n            }\n        }\n}\n\n// UIKit\nlet item = UIBarButtonItem(...)\nitem.badge = .count(7)"
+    },
+    {
+      "title": "Read the vertical bar edge",
+      "language": "swift",
+      "startTimeSeconds": 636,
+      "code": "// SwiftUI\nstruct ContentView: View {\n    @Environment(\\.toolbarVerticalEdge) var edge\n\n    var body: some View {\n        switch edge {\n            ...\n        }\n    }\n}\n\n// UIKit\nswitch traitCollection.verticalBarEdge {\n    ...\n}"
+    },
+    {
+      "title": "Configure toolbar compression behavior",
+      "language": "swift",
+      "startTimeSeconds": 743,
+      "code": "// SwiftUI\nvar body: some View {\n    TabView {\n        Tab(\"Recents\", systemImage: \"clock\") {\n            ContentView()\n                .toolbarVerticalCompressionBehavior(.prefersToolbarItems)\n        }\n    }\n}\n\n// UIKit\nnavigationItem.verticalBarCompressionBehavior = .prefersBarItems"
+    },
+    {
+      "title": "Consolidate actions into the overflow menu",
+      "language": "swift",
+      "startTimeSeconds": 763,
+      "code": "// SwiftUI\nvar body: some View {\n    ContentView()\n        .toolbar {\n            ToolbarOverflowMenu {\n                Button(\"Scan\") { ... }\n                Button(\"Connect\") { ... }\n            }\n        }\n}\n\n// UIKit\nnavigationItem.additionalOverflowItems = UIDeferredMenuElement({ provider in\n    provider(self.persistentOverflowItems())\n})"
+    },
+    {
+      "title": "Set item visibility priority",
+      "language": "swift",
+      "startTimeSeconds": 801,
+      "code": "// SwiftUI\nvar body: some View {\n    ContentView()\n        .toolbar {\n            ToolbarItem {\n                Button(...) { ... }\n            }\n            .visibilityPriority(.high)\n        }\n}\n\n// UIKit\nlet item = UIBarButtonItem(...)\nitem.visibilityPriority = .high"
+    },
+    {
+      "title": "Disable the vertical bar",
+      "language": "swift",
+      "startTimeSeconds": 887,
+      "code": "// SwiftUI\nvar body: some View {\n    NavigationStack {\n        ContentView()\n            .toolbarVerticalBehavior(.disabled)\n    }\n}\n\n// UIKit\nclass MyViewController: UIViewController {\n    override var preferredVerticalBarBehavior: UIVerticalBarBehavior {\n        .disabled\n    }\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/tech-talks/111462-raise-the-bar-with-iphone-duo/",
+  "files": {
+    "metadata": "sessions/tech-talks/111462-raise-the-bar-with-iphone-duo/metadata.json",
+    "readme": "sessions/tech-talks/111462-raise-the-bar-with-iphone-duo/README.md",
+    "transcript": "sessions/tech-talks/111462-raise-the-bar-with-iphone-duo/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/111462-raise-the-bar-with-iphone-duo/transcript.json"
+  }
+}

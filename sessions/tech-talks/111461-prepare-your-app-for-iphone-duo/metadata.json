@@ -1,0 +1,101 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-111461",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2026,
+  "eventContentId": 111461,
+  "title": "Prepare your app for iPhone Duo",
+  "description": "Learn how to update and optimize your app for the foldable display of iPhone Duo. Discover how to opt in to the full-screen experience, adopt flexible layout best practices, and simulate poses in Device Hub with Xcode. Find out how to use size classes instead of interface orientation, handle asymmetric safe areas, and test Split View multitasking to ensure your app shines in all the ways people use it.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/111461",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111461",
+  "type": "Video",
+  "publishedAt": "2026-09-09T10:04:00-07:00",
+  "platforms": [
+    "iOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Design",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 610,
+  "hasTranscript": true,
+  "transcriptWordCount": 1580,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/111461/1/e852bda6-e8c0-400d-8c6d-a37cb19ae254/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/tech-talks/111461/1/e852bda6-e8c0-400d-8c6d-a37cb19ae254/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/111461/1/e852bda6-e8c0-400d-8c6d-a37cb19ae254/downloads/tech-talks-111461_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/111461/1/e852bda6-e8c0-400d-8c6d-a37cb19ae254/downloads/tech-talks-111461_hd.mp4",
+    "duration": 610
+  },
+  "codeSnippets": [
+    {
+      "title": "Read size classes",
+      "language": "swift",
+      "startTimeSeconds": 179,
+      "code": "// SwiftUI\n@Environment(\\.horizontalSizeClass)\nprivate var horizontalSizeClass\n\n@Environment(\\.verticalSizeClass)\nprivate var verticalSizeClass\n\n// UIKit\ntraitCollection.horizontalSizeClass\ntraitCollection.verticalSizeClass"
+    },
+    {
+      "title": "Access the screen from the window scene",
+      "language": "swift",
+      "startTimeSeconds": 256,
+      "code": "// Avoid referencing the main screen on a two-display device.\n// Access the screen dynamically from the window scene instead.\nlet screen = window?.windowScene?.screen"
+    },
+    {
+      "title": "Match the screen corners with Concentricity",
+      "language": "swift",
+      "startTimeSeconds": 270,
+      "code": "// SwiftUI\nConcentricRectangle()\n    .fill(Color.green)\n    .padding(8.0)\n    .ignoresSafeArea()\n\n// UIKit\n// UICornerConfiguration"
+    },
+    {
+      "title": "Show a sidebar on the inner display",
+      "language": "swift",
+      "startTimeSeconds": 344,
+      "code": "// SwiftUI\nTabView { … }\n    .defaultTabBarPlacement(.sidebar)\n\n// UIKit\ntabBarController.sidebar.preferredPlacement = .sidebar"
+    },
+    {
+      "title": "Align foreground content to the safe area",
+      "language": "swift",
+      "startTimeSeconds": 412,
+      "code": "// UIKit\nforeground.frame = view.bounds.inset(by: view.safeAreaInsets)"
+    },
+    {
+      "title": "Let background content extend past the safe area",
+      "language": "swift",
+      "startTimeSeconds": 427,
+      "code": "// SwiftUI\n.ignoresSafeArea()\n\n// UIKit\nbackgroundView.frame = view.bounds"
+    },
+    {
+      "title": "Handle asymmetric safe area insets",
+      "language": "swift",
+      "startTimeSeconds": 450,
+      "code": "// Avoid assuming insets on opposite sides are equal\nlet width = view.bounds.width - view.safeAreaInsets.left * 2\n\n// Handle each side independently\nlet width = view.bounds.inset(by: view.safeAreaInsets).width"
+    },
+    {
+      "title": "Replace main screen references",
+      "language": "swift",
+      "startTimeSeconds": 565,
+      "code": "func updateThumbnail(from image: UIImage) {\n    // Before\n    let screenScale = UIScreen.main.scale\n\n    // After\n    let screenScale = traitCollection.displayScale\n    // ...\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/tech-talks/111461-prepare-your-app-for-iphone-duo/",
+  "files": {
+    "metadata": "sessions/tech-talks/111461-prepare-your-app-for-iphone-duo/metadata.json",
+    "readme": "sessions/tech-talks/111461-prepare-your-app-for-iphone-duo/README.md",
+    "transcript": "sessions/tech-talks/111461-prepare-your-app-for-iphone-duo/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/111461-prepare-your-app-for-iphone-duo/transcript.json"
+  }
+}

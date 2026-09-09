@@ -1,6 +1,6 @@
 # SwiftUI & UI Frameworks
 
-341 sessions across all events.
+346 sessions across all events.
 
 
 ### Meet with Apple
@@ -13,6 +13,14 @@
 - [Q&A: Swift concurrency](../sessions/meet-with-apple/276-q-a-swift-concurrency/README.md)
 - [SwiftUI essentials](../sessions/meet-with-apple/269-swiftui-essentials/README.md)
 - [SwiftUI in motion](../sessions/meet-with-apple/272-swiftui-in-motion/README.md)
+
+### Tech Talks
+
+- [Build a great camera experience for iPhone Duo](../sessions/tech-talks/111465-build-a-great-camera-experience-for-iphone-duo/README.md)
+- [Leverage multiple displays and scenes on iPhone Duo](../sessions/tech-talks/111464-leverage-multiple-displays-and-scenes-on-iphone-duo/README.md)
+- [Prepare your app for iPhone Duo](../sessions/tech-talks/111461-prepare-your-app-for-iphone-duo/README.md)
+- [Raise the bar with iPhone Duo](../sessions/tech-talks/111462-raise-the-bar-with-iphone-duo/README.md)
+- [Strike a pose with adaptive layouts on iPhone Duo](../sessions/tech-talks/111463-strike-a-pose-with-adaptive-layouts-on-iphone-duo/README.md)
 
 ### WWDC26
 

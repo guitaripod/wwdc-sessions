@@ -2,7 +2,7 @@
   "event": "tech-talks",
   "name": "Tech Talks",
   "year": 2017,
-  "sessionCount": 98,
+  "sessionCount": 104,
   "sessions": [
     {
       "id": "tech-talks-10001",
@@ -2436,7 +2436,7 @@
       ],
       "keywords": [],
       "hasTranscript": true,
-      "transcriptWordCount": 3071,
+      "transcriptWordCount": 3070,
       "availableLanguages": [
         "eng",
         "fra",
@@ -2483,6 +2483,229 @@
       "codeSnippetCount": 0,
       "path": "sessions/tech-talks/111460-maximize-your-monetization-efforts-with-app-store-connect-an/",
       "description": "Learn how you can drive growth using App Store Connect Analytics. You'll explore key metrics and find out how to leverage monetization features to optimize your revenue strategy."
+    },
+    {
+      "id": "tech-talks-111461",
+      "event": "tech-talks",
+      "year": 2026,
+      "eventContentId": 111461,
+      "title": "Prepare your app for iPhone Duo",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/111461",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111461",
+      "duration": 610,
+      "publishedAt": "2026-09-09T10:04:00-07:00",
+      "platforms": [
+        "iOS"
+      ],
+      "primaryTopic": "SwiftUI & UI Frameworks",
+      "topics": [
+        "Design",
+        "SwiftUI & UI Frameworks"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1580,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 8,
+      "path": "sessions/tech-talks/111461-prepare-your-app-for-iphone-duo/",
+      "description": "Learn how to update and optimize your app for the foldable display of iPhone Duo. Discover how to opt in to the full-screen experience, adopt flexible layout best practices, and simulate poses in Device Hub with Xcode. Find out how to use size classes instead of interface orientation, handle asymmetric safe areas, and test Split View multitasking to ensure your app shines in all the ways people use it."
+    },
+    {
+      "id": "tech-talks-111462",
+      "event": "tech-talks",
+      "year": 2026,
+      "eventContentId": 111462,
+      "title": "Raise the bar with iPhone Duo",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/111462",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111462",
+      "duration": 943,
+      "publishedAt": "2026-09-09T10:03:00-07:00",
+      "platforms": [
+        "iOS"
+      ],
+      "primaryTopic": "Design",
+      "topics": [
+        "SwiftUI & UI Frameworks",
+        "Design"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2436,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 13,
+      "path": "sessions/tech-talks/111462-raise-the-bar-with-iphone-duo/",
+      "description": "Discover how to adapt your navigation, toolbars, and tab bars for the unique displays of iPhone Duo. Explore the design principles behind the new bar layout, and learn how to configure custom view representations and manage overflow to build powerful, responsive apps."
+    },
+    {
+      "id": "tech-talks-111463",
+      "event": "tech-talks",
+      "year": 2026,
+      "eventContentId": 111463,
+      "title": "Strike a pose with adaptive layouts on iPhone Duo",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/111463",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111463",
+      "duration": 1081,
+      "publishedAt": "2026-09-09T10:02:00-07:00",
+      "platforms": [
+        "iOS"
+      ],
+      "primaryTopic": "Design",
+      "topics": [
+        "SwiftUI & UI Frameworks",
+        "Design"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2764,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 12,
+      "path": "sessions/tech-talks/111463-strike-a-pose-with-adaptive-layouts-on-iphone-duo/",
+      "description": "Learn how to create responsive, flexible layouts that work great on iPhone Duo. Explore displacement design patterns that keep content visible and reachable as people open and close their iPhone Duo. Discover how to use arrangement views in SwiftUI and UIKit to build split and overlay presentations, and find out how to query reserved regions to tailor layouts around the hinge and cameras."
+    },
+    {
+      "id": "tech-talks-111464",
+      "event": "tech-talks",
+      "year": 2026,
+      "eventContentId": 111464,
+      "title": "Leverage multiple displays and scenes on iPhone Duo",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/111464",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111464",
+      "duration": 437,
+      "publishedAt": "2026-09-09T10:01:00-07:00",
+      "platforms": [
+        "iOS"
+      ],
+      "primaryTopic": "SwiftUI & UI Frameworks",
+      "topics": [
+        "Photos & Camera",
+        "System Services",
+        "SwiftUI & UI Frameworks"
+      ],
+      "keywords": [
+        "duo preview",
+        "kid cue"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 1117,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 8,
+      "path": "sessions/tech-talks/111464-leverage-multiple-displays-and-scenes-on-iphone-duo/",
+      "description": "Discover how to build rich multiwindow and multidisplay experiences for iPhone Duo. Explore how to handle dynamic window sizes and request new scenes in side-by-side multitasking. Learn how to observe hinge angle changes in SwiftUI and UIKit to create interactive effects. And find out how to use scene accessories to present supplementary content across both displays simultaneously."
+    },
+    {
+      "id": "tech-talks-111465",
+      "event": "tech-talks",
+      "year": 2026,
+      "eventContentId": 111465,
+      "title": "Build a great camera experience for iPhone Duo",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/111465",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111465",
+      "duration": 567,
+      "publishedAt": "2026-09-09T10:00:00-07:00",
+      "platforms": [
+        "iOS"
+      ],
+      "primaryTopic": "Photos & Camera",
+      "topics": [
+        "SwiftUI & UI Frameworks",
+        "Photos & Camera"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 1408,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 5,
+      "path": "sessions/tech-talks/111465-build-a-great-camera-experience-for-iphone-duo/",
+      "description": "Discover how to leverage the outer and inner cameras on iPhone Duo. Explore the Virtual Front Camera, and find out how to use the direction coordinator to switch between cameras and update your UI as people open and close iPhone Duo. Learn best practices for handling preview aspect ratios, positioning, and rotation to deliver a seamless capture experience."
+    },
+    {
+      "id": "tech-talks-111466",
+      "event": "tech-talks",
+      "year": 2026,
+      "eventContentId": 111466,
+      "title": "Design for iPhone Duo",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/111466",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111466",
+      "duration": 645,
+      "publishedAt": "2026-09-09T10:05:00-07:00",
+      "platforms": [
+        "iOS"
+      ],
+      "primaryTopic": "Design",
+      "topics": [
+        "Essentials",
+        "Design"
+      ],
+      "keywords": [
+        "fold",
+        "hinge"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 1702,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/111466-design-for-iphone-duo/",
+      "description": "iPhone Duo is the first folding iPhone and comes with a reimagined iOS. Get to know the design principles behind the updated software, explore how controls move between different poses, and learn where your layout needs to adapt and why."
     },
     {
       "id": "tech-talks-201",

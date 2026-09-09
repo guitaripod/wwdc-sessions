@@ -1,0 +1,105 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-111464",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2026,
+  "eventContentId": 111464,
+  "title": "Leverage multiple displays and scenes on iPhone Duo",
+  "description": "Discover how to build rich multiwindow and multidisplay experiences for iPhone Duo. Explore how to handle dynamic window sizes and request new scenes in side-by-side multitasking. Learn how to observe hinge angle changes in SwiftUI and UIKit to create interactive effects. And find out how to use scene accessories to present supplementary content across both displays simultaneously.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/111464",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111464",
+  "type": "Video",
+  "publishedAt": "2026-09-09T10:01:00-07:00",
+  "platforms": [
+    "iOS"
+  ],
+  "keywords": [
+    "duo preview",
+    "kid cue"
+  ],
+  "topics": [
+    "Photos & Camera",
+    "System Services",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 437,
+  "hasTranscript": true,
+  "transcriptWordCount": 1117,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/111464/1/b6d9b8a0-71ba-4f7a-acfc-4fb339dae7ff/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/tech-talks/111464/1/b6d9b8a0-71ba-4f7a-acfc-4fb339dae7ff/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/111464/1/b6d9b8a0-71ba-4f7a-acfc-4fb339dae7ff/downloads/tech-talks-111464_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/111464/1/b6d9b8a0-71ba-4f7a-acfc-4fb339dae7ff/downloads/tech-talks-111464_hd.mp4",
+    "duration": 437
+  },
+  "codeSnippets": [
+    {
+      "title": "Hold pitch bend as state",
+      "language": "swift",
+      "startTimeSeconds": 93,
+      "code": "struct InstrumentView: View {\n    /// Normalized bend, 0 is no bend, 1 is deepest bend\n    @State private var pitchBend: Double = 0\n\n    var body: some View {\n        GuitarView(pitchBend: pitchBend)\n    }\n}"
+    },
+    {
+      "title": "Add the onHingeChange modifier",
+      "language": "swift",
+      "startTimeSeconds": 104,
+      "code": "struct InstrumentView: View {\n    /// Normalized bend, 0 is no bend, 1 is deepest bend\n    @State private var pitchBend: Double = 0\n\n    var body: some View {\n        GuitarView(pitchBend: pitchBend)\n            .onHingeChange { _, context in\n\n            }\n    }\n}"
+    },
+    {
+      "title": "Check for a hinge and the partially open state",
+      "language": "swift",
+      "startTimeSeconds": 117,
+      "code": "var body: some View {\n    GuitarView(pitchBend: pitchBend)\n        .onHingeChange { _, context in\n            // A null hinge means the device doesn't have one\n            if let hinge = context.hinge, hinge.status == .partiallyOpen {\n\n            }\n        }\n}"
+    },
+    {
+      "title": "Reset the pitch bend",
+      "language": "swift",
+      "startTimeSeconds": 130,
+      "code": "var body: some View {\n    GuitarView(pitchBend: pitchBend)\n        .onHingeChange { _, context in\n            if let hinge = context.hinge, hinge.status == .partiallyOpen {\n\n            }\n            else {\n                pitchBend = 0\n            }\n        }\n}"
+    },
+    {
+      "title": "Calculate the pitch bend from the hinge angle",
+      "language": "swift",
+      "startTimeSeconds": 137,
+      "code": "struct InstrumentView: View {\n    /// Normalized bend, 0 is no bend, 1 is deepest bend\n    @State private var pitchBend: Double = 0\n\n    var body: some View {\n        GuitarView(pitchBend: pitchBend)\n            .onHingeChange { _, context in\n                if let hinge = context.hinge, hinge.status == .partiallyOpen {\n                    pitchBend = calculatePitchBend(angle: hinge.angle)\n                }\n                else {\n                    pitchBend = 0\n                }\n            }\n    }\n\n    private func calculatePitchBend(angle: Angle) -> Double { ... }\n}"
+    },
+    {
+      "title": "Register a camera capture accessory",
+      "language": "swift",
+      "startTimeSeconds": 343,
+      "code": "struct CameraRootView: View {\n    @State private var model = TeleprompterModel()\n\n    var body: some View {\n        CameraView(model: model)\n            .sceneAccessory {\n                CameraCaptureAccessory {\n                    TeleprompterView(model: model)\n                }\n            }\n    }\n}"
+    },
+    {
+      "title": "Add a toolbar toggle",
+      "language": "swift",
+      "startTimeSeconds": 374,
+      "code": "struct CameraRootView: View {\n    @State private var model = TeleprompterModel()\n\n    var body: some View {\n        CameraView(model: model)\n            .sceneAccessory {\n                CameraCaptureAccessory(isEnabled: $model.isEnabled) {\n                    TeleprompterView(model: model)\n                }\n            }\n            .toolbar {\n                TeleprompterToggle(isEnabled: $model.isEnabled)\n            }\n    }\n}"
+    },
+    {
+      "title": "Observe accessory availability",
+      "language": "swift",
+      "startTimeSeconds": 385,
+      "code": "struct CameraRootView: View {\n    @State private var model = TeleprompterModel()\n\n    var body: some View {\n        CameraView(model: model)\n            .sceneAccessory {\n                CameraCaptureAccessory(isEnabled: $model.isEnabled) {\n                    TeleprompterView(model: model)\n                }\n                .onAvailabilityChange { newValue in\n                    model.isAvailable = newValue\n                }\n            }\n            .toolbar {\n                TeleprompterToggle(isEnabled: $model.isEnabled)\n                    .disabled(!model.isAvailable)\n            }\n    }\n}"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/tech-talks/111464-leverage-multiple-displays-and-scenes-on-iphone-duo/",
+  "files": {
+    "metadata": "sessions/tech-talks/111464-leverage-multiple-displays-and-scenes-on-iphone-duo/metadata.json",
+    "readme": "sessions/tech-talks/111464-leverage-multiple-displays-and-scenes-on-iphone-duo/README.md",
+    "transcript": "sessions/tech-talks/111464-leverage-multiple-displays-and-scenes-on-iphone-duo/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/111464-leverage-multiple-displays-and-scenes-on-iphone-duo/transcript.json"
+  }
+}

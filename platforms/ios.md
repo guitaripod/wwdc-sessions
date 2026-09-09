@@ -1,6 +1,6 @@
 # iOS Sessions
 
-1360 sessions.
+1366 sessions.
 
 - [AllTrails: Momentum without a rewrite](../sessions/meet-with-apple/274-alltrails-momentum-without-a-rewrite/README.md) — Meet with Apple
 - [Code-along: Experiment with coding intelligence in Xcode 26](../sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/README.md) — Meet with Apple
@@ -11,9 +11,15 @@
 - [SwiftUI foundations: Build great apps with SwiftUI](../sessions/meet-with-apple/267-swiftui-foundations-build-great-apps-with-swiftui/README.md) — Meet with Apple
 - [Accelerate your machine learning workloads with the M5 and A19 GPUs](../sessions/tech-talks/111432-accelerate-your-machine-learning-workloads-with-the-m5-and-a/README.md) — Tech Talks
 - [Boost your graphics performance with the M5 and A19 GPUs](../sessions/tech-talks/111431-boost-your-graphics-performance-with-the-m5-and-a19-gpus/README.md) — Tech Talks
+- [Build a great camera experience for iPhone Duo](../sessions/tech-talks/111465-build-a-great-camera-experience-for-iphone-duo/README.md) — Tech Talks
+- [Design for iPhone Duo](../sessions/tech-talks/111466-design-for-iphone-duo/README.md) — Tech Talks
 - [Discover the Apple Design Resources](../sessions/tech-talks/111427-discover-the-apple-design-resources/README.md) — Tech Talks
+- [Leverage multiple displays and scenes on iPhone Duo](../sessions/tech-talks/111464-leverage-multiple-displays-and-scenes-on-iphone-duo/README.md) — Tech Talks
 - [Meet agentic coding in Xcode](../sessions/tech-talks/111428-meet-agentic-coding-in-xcode/README.md) — Tech Talks
 - [Prepare your app for Accessibility Nutrition Labels](../sessions/tech-talks/111433-prepare-your-app-for-accessibility-nutrition-labels/README.md) — Tech Talks
+- [Prepare your app for iPhone Duo](../sessions/tech-talks/111461-prepare-your-app-for-iphone-duo/README.md) — Tech Talks
+- [Raise the bar with iPhone Duo](../sessions/tech-talks/111462-raise-the-bar-with-iphone-duo/README.md) — Tech Talks
+- [Strike a pose with adaptive layouts on iPhone Duo](../sessions/tech-talks/111463-strike-a-pose-with-adaptive-layouts-on-iphone-duo/README.md) — Tech Talks
 - [Accessibility Technologies Group Lab](../sessions/wwdc2026/8005-accessibility-technologies-group-lab/README.md) — WWDC26
 - [Announcing Apple’s next big step for Siri and iPhone](../sessions/wwdc2026/121-announcing-apple-s-next-big-step-for-siri-and-iphone/README.md) — WWDC26
 - [Best practices for integrating visual intelligence in your app](../sessions/wwdc2026/297-best-practices-for-integrating-visual-intelligence-in-your-a/README.md) — WWDC26

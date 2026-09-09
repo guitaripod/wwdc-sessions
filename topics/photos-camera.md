@@ -1,7 +1,12 @@
 # Photos & Camera
 
-64 sessions across all events.
+66 sessions across all events.
 
+
+### Tech Talks
+
+- [Build a great camera experience for iPhone Duo](../sessions/tech-talks/111465-build-a-great-camera-experience-for-iphone-duo/README.md)
+- [Leverage multiple displays and scenes on iPhone Duo](../sessions/tech-talks/111464-leverage-multiple-displays-and-scenes-on-iphone-duo/README.md)
 
 ### WWDC26
 

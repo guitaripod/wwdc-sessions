@@ -18,7 +18,7 @@ Learn how to use Analytics in App Store Connect to step up your app or game’s 
 ## Transcript
 
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
-(3,071 words)
+(3,070 words)
 
 ## Video
 
