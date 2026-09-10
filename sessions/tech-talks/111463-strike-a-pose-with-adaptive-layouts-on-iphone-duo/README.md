@@ -19,7 +19,7 @@ Learn how to create responsive, flexible layouts that work great on iPhone Duo. 
 ## Transcript
 
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
-(2,764 words)
+(2,759 words)
 
 ## Code Snippets
 

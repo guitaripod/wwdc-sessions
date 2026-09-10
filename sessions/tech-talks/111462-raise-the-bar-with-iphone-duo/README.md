@@ -19,7 +19,7 @@ Discover how to adapt your navigation, toolbars, and tab bars for the unique dis
 ## Transcript
 
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
-(2,436 words)
+(2,394 words)
 
 ## Code Snippets
 

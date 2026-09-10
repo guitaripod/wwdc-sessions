@@ -21,7 +21,7 @@ Discover how to build rich multiwindow and multidisplay experiences for iPhone D
 ## Transcript
 
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
-(1,117 words)
+(1,116 words)
 
 ## Code Snippets
 

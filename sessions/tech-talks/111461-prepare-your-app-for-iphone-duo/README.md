@@ -19,7 +19,7 @@ Learn how to update and optimize your app for the foldable display of iPhone Duo
 ## Transcript
 
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
-(1,580 words)
+(1,574 words)
 
 ## Code Snippets
 

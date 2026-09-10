@@ -21,7 +21,7 @@ iPhone Duo is the first folding iPhone and comes with a reimagined iOS. Get to k
 ## Transcript
 
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
-(1,702 words)
+(1,698 words)
 
 ## Video
 

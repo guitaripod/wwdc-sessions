@@ -19,7 +19,7 @@ Discover how to leverage the outer and inner cameras on iPhone Duo. Explore the 
 ## Transcript
 
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
-(1,408 words)
+(1,384 words)
 
 ## Code Snippets
 
