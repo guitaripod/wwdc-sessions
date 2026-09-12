@@ -23,10 +23,9 @@ Discover how to adapt your navigation, toolbars, and tab bars for the unique dis
 
 ## Code Snippets
 
-### Use system container toolbars — [2:24]
+### Use system containers for vertical bar in SwiftUI — [2:24]
 
 ```swift
-// SwiftUI
 var body: some View {
     NavigationStack {
         ContentView()
@@ -39,12 +38,12 @@ var body: some View {
 }
 ```
 
-### Prefer navigation controllers over custom bars — [2:39]
+### Use navigation containers for vertical bar in UIKit — [2:39]
 
 ```swift
-// UIKit — content from a custom UIToolbar won't be considered.
-// Prefer UINavigationController and UITabBarController,
-// which manage their own bars.
+// Content from a custom bars (UINavigationBar, UITabBar, UIToolbar)
+// won't be considered. Prefer UINavigationController 
+// and UITabBarController, which manage their own bars.
 let toolbar = UIToolbar()
 toolbar.items = [...]
 ```
@@ -65,7 +64,7 @@ navigationItem.leadingItemGroups
     = [UIBarButtonItemGroup(...)]
 ```
 
-### Pin prominent actions to the trailing edge — [5:24]
+### Place prominent actions — [5:24]
 
 ```swift
 // SwiftUI
@@ -99,7 +98,7 @@ let item = UIBarButtonItem(customView: ProfileView())
 item.axisBehavior = .verticalPreferred
 ```
 
-### Keep an item on the horizontal axis — [8:36]
+### Keep an item in the horizontal bar — [8:36]
 
 ```swift
 // SwiftUI
@@ -117,7 +116,7 @@ var body: some View {
 item.axisBehavior = .horizontalOnly
 ```
 
-### Allow a custom view to go vertical — [8:52]
+### Allow a custom view go in vertical bar — [8:52]
 
 ```swift
 // SwiftUI
@@ -136,7 +135,7 @@ let item = UIBarButtonItem(customView: CompassView())
 item.axisBehavior = .verticalPreferred
 ```
 
-### Use a badge instead of inline text — [9:27]
+### Use badges — [9:27]
 
 ```swift
 // SwiftUI
@@ -192,7 +191,7 @@ var body: some View {
 navigationItem.verticalBarCompressionBehavior = .prefersBarItems
 ```
 
-### Consolidate actions into the overflow menu — [12:43]
+### Use system overflow menu — [12:43]
 
 ```swift
 // SwiftUI

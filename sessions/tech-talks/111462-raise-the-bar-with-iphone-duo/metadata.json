@@ -42,16 +42,16 @@
   },
   "codeSnippets": [
     {
-      "title": "Use system container toolbars",
+      "title": "Use system containers for vertical bar in SwiftUI",
       "language": "swift",
       "startTimeSeconds": 144,
-      "code": "// SwiftUI\nvar body: some View {\n    NavigationStack {\n        ContentView()\n            .toolbar {\n                ToolbarItem(placement: .bottomBar) {\n                    ...\n                }\n            }\n    }\n}"
+      "code": "var body: some View {\n    NavigationStack {\n        ContentView()\n            .toolbar {\n                ToolbarItem(placement: .bottomBar) {\n                    ...\n                }\n            }\n    }\n}"
     },
     {
-      "title": "Prefer navigation controllers over custom bars",
+      "title": "Use navigation containers for vertical bar in UIKit",
       "language": "swift",
       "startTimeSeconds": 159,
-      "code": "// UIKit — content from a custom UIToolbar won't be considered.\n// Prefer UINavigationController and UITabBarController,\n// which manage their own bars.\nlet toolbar = UIToolbar()\ntoolbar.items = [...]"
+      "code": "// Content from a custom bars (UINavigationBar, UITabBar, UIToolbar)\n// won't be considered. Prefer UINavigationController \n// and UITabBarController, which manage their own bars.\nlet toolbar = UIToolbar()\ntoolbar.items = [...]"
     },
     {
       "title": "Place a back or close button",
@@ -60,7 +60,7 @@
       "code": "// SwiftUI\n.toolbar {\n    ToolbarItem(placement: .cancellationAction) {\n        ...\n    }\n}\n\n// UIKit\nnavigationItem.leftItemsSupplementBackButton = false\nnavigationItem.leadingItemGroups\n    = [UIBarButtonItemGroup(...)]"
     },
     {
-      "title": "Pin prominent actions to the trailing edge",
+      "title": "Place prominent actions",
       "language": "swift",
       "startTimeSeconds": 324,
       "code": "// SwiftUI\n.toolbar {\n    ToolbarItem(placement: .topBarPinnedTrailing) {\n        ...\n    }\n}\n\n// UIKit\nnavigationItem.pinnedTrailingGroup\n    = UIBarButtonItemGroup(...)"
@@ -72,19 +72,19 @@
       "code": "// SwiftUI\nvar body: some View {\n    ContentView()\n        .toolbar {\n            ToolbarItem {\n                ProfileView()\n            }\n            .axisBehavior(.verticalPreferred)\n        }\n}\n\n// UIKit\nlet item = UIBarButtonItem(customView: ProfileView())\nitem.axisBehavior = .verticalPreferred"
     },
     {
-      "title": "Keep an item on the horizontal axis",
+      "title": "Keep an item in the horizontal bar",
       "language": "swift",
       "startTimeSeconds": 516,
       "code": "// SwiftUI\nvar body: some View {\n    ContentView()\n        .toolbar {\n            ToolbarItem {\n                SelectOrDoneButton()\n            }\n            .axisBehavior(.horizontalOnly)\n        }\n}\n\n// UIKit\nitem.axisBehavior = .horizontalOnly"
     },
     {
-      "title": "Allow a custom view to go vertical",
+      "title": "Allow a custom view go in vertical bar",
       "language": "swift",
       "startTimeSeconds": 532,
       "code": "// SwiftUI\nvar body: some View {\n    ContentView()\n        .toolbar {\n            ToolbarItem {\n                CompassView()\n            }\n            .axisBehavior(.verticalPreferred)\n        }\n}\n\n// UIKit\nlet item = UIBarButtonItem(customView: CompassView())\nitem.axisBehavior = .verticalPreferred"
     },
     {
-      "title": "Use a badge instead of inline text",
+      "title": "Use badges",
       "language": "swift",
       "startTimeSeconds": 567,
       "code": "// SwiftUI\nvar body: some View {\n    ContentView()\n        .toolbar {\n            ToolbarItem(...) {\n                InboxButton()\n                    .badge(7)\n            }\n        }\n}\n\n// UIKit\nlet item = UIBarButtonItem(...)\nitem.badge = .count(7)"
@@ -102,7 +102,7 @@
       "code": "// SwiftUI\nvar body: some View {\n    TabView {\n        Tab(\"Recents\", systemImage: \"clock\") {\n            ContentView()\n                .toolbarVerticalCompressionBehavior(.prefersToolbarItems)\n        }\n    }\n}\n\n// UIKit\nnavigationItem.verticalBarCompressionBehavior = .prefersBarItems"
     },
     {
-      "title": "Consolidate actions into the overflow menu",
+      "title": "Use system overflow menu",
       "language": "swift",
       "startTimeSeconds": 763,
       "code": "// SwiftUI\nvar body: some View {\n    ContentView()\n        .toolbar {\n            ToolbarOverflowMenu {\n                Button(\"Scan\") { ... }\n                Button(\"Connect\") { ... }\n            }\n        }\n}\n\n// UIKit\nnavigationItem.additionalOverflowItems = UIDeferredMenuElement({ provider in\n    provider(self.persistentOverflowItems())\n})"
