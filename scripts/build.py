@@ -16,6 +16,7 @@ import sys
 import textwrap
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
@@ -676,16 +677,38 @@ authorized, or endorsed by Apple Inc.
     (ROOT / "AGENTS.md").write_text(content)
 
 
-def write_readme(catalog):
-    counts = catalog["counts"]
+def count_badge(label, field, color):
+    """Shields badge that reads a live count out of catalog.json, so the README never goes stale."""
+    catalog = urllib.parse.quote(f"{RAW_BASE}/catalog.json", safe="")
+    query = urllib.parse.quote(f"$.counts.{field}", safe="")
+    return (
+        f"[![{label}](https://img.shields.io/badge/dynamic/json"
+        f"?url={catalog}&query={query}&label={label}&color={color}&style=flat-square)](catalog.json)"
+    )
+
+
+def write_readme():
+    badges = " ".join(
+        (
+            count_badge("sessions", "sessions", "007aff"),
+            count_badge("transcripts", "transcripts", "34c759"),
+            count_badge("events", "events", "5856d6"),
+            f"[![updated](https://img.shields.io/github/last-commit/{REPO}/master"
+            f"?label=updated&color=8e8e93&style=flat-square)](https://github.com/{REPO}/commits/master)",
+        )
+    )
     content = f"""# WWDC Sessions — Agent-Native Knowledge Base
 
-An **agent-native** index of Apple **WWDC** developer sessions (2014-2026, plus Tech Talks and Meet
-with Apple): clean transcripts, structured metadata, inline code snippets, and links to the
+{badges}
+
+An **agent-native** index of Apple **WWDC** developer sessions (2014 onward, plus Tech Talks and
+Meet with Apple): clean transcripts, structured metadata, inline code snippets, and links to the
 documentation each session references. Built so AI agents (and humans) can consume WWDC content
 without scraping JavaScript-rendered pages.
 
-- **{counts['sessions']}** sessions across **{counts['events']}** events · **{counts['transcripts']}** with full transcripts
+- Every session Apple publishes, all the way back to WWDC14, almost all of them with a full
+  transcript. A scheduled build picks up new events as Apple posts them; per-event coverage lives
+  in [`AGENTS.md`](AGENTS.md).
 - Machine entrypoint: [`catalog.json`](catalog.json) · also [`events.json`](events.json) · [`topics.json`](topics.json) · [`llms.txt`](llms.txt)
 - JSON Schemas: [`schema/`](schema/) · Agent guide: [`AGENTS.md`](AGENTS.md)
 - Per session: `metadata.json`, `README.md`, `transcript.md`, `transcript.json`
@@ -830,7 +853,7 @@ def main():
     write_platform_indexes(sessions)
     write_llms_txt(catalog)
     write_agents_md(catalog)
-    write_readme(catalog)
+    write_readme()
 
     print("\nDONE")
     print(f"  events: {catalog['counts']['events']}")

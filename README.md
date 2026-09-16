@@ -1,11 +1,15 @@
 # WWDC Sessions — Agent-Native Knowledge Base
 
-An **agent-native** index of Apple **WWDC** developer sessions (2014-2026, plus Tech Talks and Meet
-with Apple): clean transcripts, structured metadata, inline code snippets, and links to the
+[![sessions](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fguitaripod%2Fwwdc-sessions%2Fmaster%2Fcatalog.json&query=%24.counts.sessions&label=sessions&color=007aff&style=flat-square)](catalog.json) [![transcripts](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fguitaripod%2Fwwdc-sessions%2Fmaster%2Fcatalog.json&query=%24.counts.transcripts&label=transcripts&color=34c759&style=flat-square)](catalog.json) [![events](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fguitaripod%2Fwwdc-sessions%2Fmaster%2Fcatalog.json&query=%24.counts.events&label=events&color=5856d6&style=flat-square)](catalog.json) [![updated](https://img.shields.io/github/last-commit/guitaripod/wwdc-sessions/master?label=updated&color=8e8e93&style=flat-square)](https://github.com/guitaripod/wwdc-sessions/commits/master)
+
+An **agent-native** index of Apple **WWDC** developer sessions (2014 onward, plus Tech Talks and
+Meet with Apple): clean transcripts, structured metadata, inline code snippets, and links to the
 documentation each session references. Built so AI agents (and humans) can consume WWDC content
 without scraping JavaScript-rendered pages.
 
-- **1658** sessions across **15** events · **1573** with full transcripts
+- Every session Apple publishes, all the way back to WWDC14, almost all of them with a full
+  transcript. A scheduled build picks up new events as Apple posts them; per-event coverage lives
+  in [`AGENTS.md`](AGENTS.md).
 - Machine entrypoint: [`catalog.json`](catalog.json) · also [`events.json`](events.json) · [`topics.json`](topics.json) · [`llms.txt`](llms.txt)
 - JSON Schemas: [`schema/`](schema/) · Agent guide: [`AGENTS.md`](AGENTS.md)
 - Per session: `metadata.json`, `README.md`, `transcript.md`, `transcript.json`
