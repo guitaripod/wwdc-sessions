@@ -156,8 +156,8 @@ override init(
 ) {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 
-    navigationItem.barMinimizationBehavior = .always
-    navigationItem.barMinimizationSafeAreaAdjustment = .never
+    navigationItem.navigationBarMinimization.minimizationBehavior = .onScrollDown
+    navigationItem.navigationBarMinimization.safeAreaAdjustment = .disabled
 }
 ```
 

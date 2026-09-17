@@ -104,7 +104,7 @@
       "title": "Customize bar minimization behavior",
       "language": "swift",
       "startTimeSeconds": 690,
-      "code": "// Customize bar minimization behavior\noverride init(\n    nibName nibNameOrNil: String?,\n    bundle nibBundleOrNil: Bundle?\n) {\n    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)\n\n    navigationItem.barMinimizationBehavior = .always\n    navigationItem.barMinimizationSafeAreaAdjustment = .never\n}"
+      "code": "// Customize bar minimization behavior\noverride init(\n    nibName nibNameOrNil: String?,\n    bundle nibBundleOrNil: Bundle?\n) {\n    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)\n\n    navigationItem.navigationBarMinimization.minimizationBehavior = .onScrollDown\n    navigationItem.navigationBarMinimization.safeAreaAdjustment = .disabled\n}"
     },
     {
       "title": "Export Xcode skills for use in other tools",
