@@ -29,8 +29,8 @@ on demand. See [`AGENTS.md`](AGENTS.md) for path/locator conventions.
 ## Regenerate & validate
 
 ```
-python3 scripts/build.py        # resolves Apple's rotating feeds dynamically; skips if unchanged (--force to override)
 pip install -r requirements.txt
+python3 scripts/build.py        # resolves Apple's rotating feeds dynamically; skips if unchanged (--force to override)
 python3 scripts/validate.py     # catalog <-> filesystem integrity + JSON Schema validation
 ```
 
