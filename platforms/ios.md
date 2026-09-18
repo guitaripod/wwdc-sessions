@@ -1,6 +1,6 @@
 # iOS Sessions
 
-1366 sessions.
+1368 sessions.
 
 - [AllTrails: Momentum without a rewrite](../sessions/meet-with-apple/274-alltrails-momentum-without-a-rewrite/README.md) — Meet with Apple
 - [Code-along: Experiment with coding intelligence in Xcode 26](../sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/README.md) — Meet with Apple
@@ -9,6 +9,8 @@
 - [Get ready for the Swift Student Challenge](../sessions/meet-with-apple/263-get-ready-for-the-swift-student-challenge/README.md) — Meet with Apple
 - [Q&A: Swift concurrency](../sessions/meet-with-apple/276-q-a-swift-concurrency/README.md) — Meet with Apple
 - [SwiftUI foundations: Build great apps with SwiftUI](../sessions/meet-with-apple/267-swiftui-foundations-build-great-apps-with-swiftui/README.md) — Meet with Apple
+- [iPhone Duo Group Lab](../sessions/meet-with-apple/286-iphone-duo-group-lab/README.md) — Meet with Apple
+- [iPhone Duo Group Lab](../sessions/meet-with-apple/285-iphone-duo-group-lab/README.md) — Meet with Apple
 - [Accelerate your machine learning workloads with the M5 and A19 GPUs](../sessions/tech-talks/111432-accelerate-your-machine-learning-workloads-with-the-m5-and-a/README.md) — Tech Talks
 - [Boost your graphics performance with the M5 and A19 GPUs](../sessions/tech-talks/111431-boost-your-graphics-performance-with-the-m5-and-a19-gpus/README.md) — Tech Talks
 - [Build a great camera experience for iPhone Duo](../sessions/tech-talks/111465-build-a-great-camera-experience-for-iphone-duo/README.md) — Tech Talks

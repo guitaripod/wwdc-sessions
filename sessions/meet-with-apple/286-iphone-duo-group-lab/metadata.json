@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "meet-with-apple-286",
+  "event": "meet-with-apple",
+  "eventName": "Meet with Apple",
+  "year": 2026,
+  "eventContentId": 286,
+  "title": "iPhone Duo Group Lab",
+  "description": "Connect with Apple engineers and designers online to ask questions, get advice, and follow the discussion about creating and updating apps for iPhone Duo. In this one-hour event, you’ll learn how to adapt your layouts across displays and poses, work with the hinge, support Split View multitasking, and build great camera experiences.",
+  "url": "https://developer.apple.com/videos/play/meet-with-apple/286",
+  "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/286",
+  "type": "Get-Together",
+  "publishedAt": "2026-09-17T00:00:00-07:00",
+  "platforms": [
+    "iOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Design",
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 3689,
+  "hasTranscript": true,
+  "transcriptWordCount": 10998,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/286/1/52b673d3-155a-4dde-a391-958ea2858597/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/286/1/52b673d3-155a-4dde-a391-958ea2858597/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/286/1/52b673d3-155a-4dde-a391-958ea2858597/downloads/meet-with-apple-286_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/286/1/52b673d3-155a-4dde-a391-958ea2858597/downloads/meet-with-apple-286_hd.mp4",
+    "duration": 3689
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/meet-with-apple/286-iphone-duo-group-lab/",
+  "files": {
+    "metadata": "sessions/meet-with-apple/286-iphone-duo-group-lab/metadata.json",
+    "readme": "sessions/meet-with-apple/286-iphone-duo-group-lab/README.md",
+    "transcript": "sessions/meet-with-apple/286-iphone-duo-group-lab/transcript.md",
+    "transcriptJSON": "sessions/meet-with-apple/286-iphone-duo-group-lab/transcript.json"
+  }
+}

@@ -1,6 +1,6 @@
 # Meet with Apple Sessions
 
-64 sessions · 60 with transcripts.
+66 sessions · 62 with transcripts.
 
 ## AI & Machine Learning
 
@@ -28,6 +28,8 @@
 - [Liquid Glass showcase: Slack](../../sessions/meet-with-apple/255-liquid-glass-showcase-slack/README.md) · 📝
 - [Liquid Glass showcase: Tide Guide](../../sessions/meet-with-apple/257-liquid-glass-showcase-tide-guide/README.md) · 📝
 - [Showcase: Learn how apps are integrating the new design and Liquid Glass](../../sessions/meet-with-apple/208-showcase-learn-how-apps-are-integrating-the-new-design-and-l/README.md) · 📝
+- [iPhone Duo Group Lab](../../sessions/meet-with-apple/286-iphone-duo-group-lab/README.md) · 📝
+- [iPhone Duo Group Lab](../../sessions/meet-with-apple/285-iphone-duo-group-lab/README.md) · 📝
 
 ## Developer Tools
 
@@ -119,6 +121,8 @@
 - [Showcase: Learn how apps are integrating the new design and Liquid Glass](../../sessions/meet-with-apple/208-showcase-learn-how-apps-are-integrating-the-new-design-and-l/README.md) · 📝
 - [SwiftUI essentials](../../sessions/meet-with-apple/269-swiftui-essentials/README.md) · 📝
 - [SwiftUI in motion](../../sessions/meet-with-apple/272-swiftui-in-motion/README.md) · 📝
+- [iPhone Duo Group Lab](../../sessions/meet-with-apple/286-iphone-duo-group-lab/README.md) · 📝
+- [iPhone Duo Group Lab](../../sessions/meet-with-apple/285-iphone-duo-group-lab/README.md) · 📝
 
 ## System Services
 

@@ -23,6 +23,13 @@ iPhone Duo is the first folding iPhone and comes with a reimagined iOS. Get to k
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
 (1,698 words)
 
+## Documentation & Resources
+
+- [Designing for iPhone Duo](https://developer.apple.com/design/human-interface-guidelines/designing-for-iphone-duo) _documentation_
+  - Markdown (sosumi.ai): https://sosumi.ai/design/human-interface-guidelines/designing-for-iphone-duo
+- [Apple Design Resources](https://developer.apple.com/design/resources/) _download_
+  - Markdown (sosumi.ai): https://sosumi.ai/design/resources/
+
 ## Video
 
 - HLS stream: https://devstreaming-cdn.apple.com/videos/tech-talks/111466/1/980a0539-ceb6-4452-b0e8-e47ae3347068/cmaf.m3u8

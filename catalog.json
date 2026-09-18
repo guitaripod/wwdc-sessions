@@ -2,15 +2,15 @@
   "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/catalog.schema.json",
   "schemaVersion": 1,
   "builderVersion": 2,
-  "generatedAt": "2026-09-17T21:59:20+00:00",
-  "sourceUpdated": "2026-09-17T08:42:02-07:00",
+  "generatedAt": "2026-09-18T12:08:41+00:00",
+  "sourceUpdated": "2026-09-17T21:21:41-07:00",
   "source": "Apple WWDC developer-video feeds (resolved via api2024.wwdc.io)",
   "rawBase": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master",
   "license": "Content © Apple Inc. Tooling under MIT (see LICENSE/NOTICE).",
   "counts": {
     "events": 15,
-    "sessions": 1658,
-    "transcripts": 1573
+    "sessions": 1660,
+    "transcripts": 1575
   },
   "links": {
     "events": "events.json",
@@ -48,8 +48,8 @@
       "name": "Meet with Apple",
       "year": 2025,
       "startTime": "2025-07-10T10:00:00-07:00",
-      "sessionCount": 64,
-      "transcriptCount": 60,
+      "sessionCount": 66,
+      "transcriptCount": 62,
       "index": "events/meet-with-apple/index.md",
       "indexJSON": "events/meet-with-apple/index.json"
     },
@@ -779,6 +779,78 @@
       "description": "Discover how Address Sanitizer and Thread Sanitizer can help you catch hidden memory corruption and concurrency issues. Learn how Address Sanitizer detects buffer overflows and use-after-free errors across Swift, C, C++, and Objective-C with byte-level precision. Explore how Thread Sanitizer uncovers elusive data races, and how to configure both tools in your automated test plans. This session was originally presented as part of the Meet with Apple event “Fortify your app: Essential strategies to strengthen security.” Watch the full video for more insights and related sessions."
     },
     {
+      "id": "meet-with-apple-285",
+      "event": "meet-with-apple",
+      "year": 2026,
+      "eventContentId": 285,
+      "title": "iPhone Duo Group Lab",
+      "type": "Get-Together",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/285",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/285",
+      "duration": 3568,
+      "publishedAt": "2026-09-17T00:00:00-07:00",
+      "platforms": [
+        "iOS"
+      ],
+      "primaryTopic": "SwiftUI & UI Frameworks",
+      "topics": [
+        "Design",
+        "SwiftUI & UI Frameworks"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 9857,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/285-iphone-duo-group-lab/",
+      "description": "Connect with Apple engineers and designers online to ask questions, get advice, and follow the discussion about creating and updating apps for iPhone Duo. In this one-hour event, you’ll learn how to adapt your layouts across displays and poses, work with the hinge, support Split View multitasking, and build great camera experiences."
+    },
+    {
+      "id": "meet-with-apple-286",
+      "event": "meet-with-apple",
+      "year": 2026,
+      "eventContentId": 286,
+      "title": "iPhone Duo Group Lab",
+      "type": "Get-Together",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/286",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/286",
+      "duration": 3689,
+      "publishedAt": "2026-09-17T00:00:00-07:00",
+      "platforms": [
+        "iOS"
+      ],
+      "primaryTopic": "SwiftUI & UI Frameworks",
+      "topics": [
+        "Design",
+        "SwiftUI & UI Frameworks"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 10998,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/286-iphone-duo-group-lab/",
+      "description": "Connect with Apple engineers and designers online to ask questions, get advice, and follow the discussion about creating and updating apps for iPhone Duo. In this one-hour event, you’ll learn how to adapt your layouts across displays and poses, work with the hinge, support Split View multitasking, and build great camera experiences."
+    },
+    {
       "id": "tech-talks-111427",
       "event": "tech-talks",
       "year": 2026,
@@ -1261,7 +1333,7 @@
         "spa",
         "zho"
       ],
-      "resourceCount": 0,
+      "resourceCount": 2,
       "codeSnippetCount": 0,
       "path": "sessions/tech-talks/111466-design-for-iphone-duo/",
       "description": "iPhone Duo is the first folding iPhone and comes with a reimagined iOS. Get to know the design principles behind the updated software, explore how controls move between different poses, and learn where your layout needs to adapt and why."
