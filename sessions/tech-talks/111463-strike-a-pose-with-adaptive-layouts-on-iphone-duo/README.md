@@ -21,6 +21,11 @@ Learn how to create responsive, flexible layouts that work great on iPhone Duo. 
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
 (2,759 words)
 
+## Documentation & Resources
+
+- [Designing for iPhone Duo](https://developer.apple.com/design/human-interface-guidelines/designing-for-iphone-duo) _documentation_
+  - Markdown (sosumi.ai): https://sosumi.ai/design/human-interface-guidelines/designing-for-iphone-duo
+
 ## Code Snippets
 
 ### Query reserved regions in SwiftUI — [6:46]

@@ -114,7 +114,15 @@
       "code": "// UIKit\nlet arrangementVC = UIArrangementViewController()\n\n// ...\n\nlet primaryState = arrangementVC.state(for: .primary)\nmyModel.minimization = (primaryState?.zIndex ?? 0) > 0\n  ? .collapsed : .expanded"
     }
   ],
-  "resources": [],
+  "resources": [
+    {
+      "title": "Designing for iPhone Duo",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/designing-for-iphone-duo",
+      "type": "documentation",
+      "description": "An app designed for iPhone Duo adapts seamlessly to both displays, providing a continuous experience as the device opens and closes.",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/designing-for-iphone-duo"
+    }
+  ],
   "path": "sessions/tech-talks/111463-strike-a-pose-with-adaptive-layouts-on-iphone-duo/",
   "files": {
     "metadata": "sessions/tech-talks/111463-strike-a-pose-with-adaptive-layouts-on-iphone-duo/metadata.json",

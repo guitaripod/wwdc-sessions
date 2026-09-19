@@ -3,7 +3,7 @@ id: "meet-with-apple-286"
 event: "meet-with-apple"
 year: 2026
 title: "iPhone Duo Group Lab"
-type: "Get-Together"
+type: "Video"
 url: "https://developer.apple.com/videos/play/meet-with-apple/286"
 topics: ["Design", "SwiftUI & UI Frameworks"]
 platforms: ["iOS"]
@@ -19,7 +19,7 @@ Connect with Apple engineers and designers online to ask questions, get advice, 
 ## Transcript
 
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
-(10,998 words)
+(10,850 words)
 
 ## Video
 
