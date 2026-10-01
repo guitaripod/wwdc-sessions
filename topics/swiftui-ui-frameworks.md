@@ -13,8 +13,8 @@
 - [Q&A: Swift concurrency](../sessions/meet-with-apple/276-q-a-swift-concurrency/README.md)
 - [SwiftUI essentials](../sessions/meet-with-apple/269-swiftui-essentials/README.md)
 - [SwiftUI in motion](../sessions/meet-with-apple/272-swiftui-in-motion/README.md)
-- [iPhone Duo Group Lab](../sessions/meet-with-apple/286-iphone-duo-group-lab/README.md)
 - [iPhone Duo Group Lab](../sessions/meet-with-apple/285-iphone-duo-group-lab/README.md)
+- [iPhone Duo Group Lab](../sessions/meet-with-apple/286-iphone-duo-group-lab/README.md)
 
 ### Tech Talks
 
