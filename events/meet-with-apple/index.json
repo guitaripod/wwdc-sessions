@@ -2,7 +2,7 @@
   "event": "meet-with-apple",
   "name": "Meet with Apple",
   "year": 2025,
-  "sessionCount": 66,
+  "sessionCount": 67,
   "sessions": [
     {
       "id": "meet-with-apple-201",
@@ -2335,6 +2335,37 @@
       "codeSnippetCount": 0,
       "path": "sessions/meet-with-apple/282-find-security-bugs-with-sanitizers/",
       "description": "Discover how Address Sanitizer and Thread Sanitizer can help you catch hidden memory corruption and concurrency issues. Learn how Address Sanitizer detects buffer overflows and use-after-free errors across Swift, C, C++, and Objective-C with byte-level precision. Explore how Thread Sanitizer uncovers elusive data races, and how to configure both tools in your automated test plans. This session was originally presented as part of the Meet with Apple event “Fortify your app: Essential strategies to strengthen security.” Watch the full video for more insights and related sessions."
+    },
+    {
+      "id": "meet-with-apple-283",
+      "event": "meet-with-apple",
+      "year": 2026,
+      "eventContentId": 283,
+      "title": "IETF HLS Interest Day",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/283",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/283",
+      "duration": null,
+      "publishedAt": "2026-10-07T00:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS"
+      ],
+      "primaryTopic": "Audio & Video",
+      "topics": [
+        "Audio & Video"
+      ],
+      "keywords": [],
+      "hasTranscript": false,
+      "transcriptWordCount": 0,
+      "availableLanguages": [],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/283-ietf-hls-interest-day/",
+      "description": "Join us for an online broadcast designed for engineers and professionals working with HTTP Live Streaming (HLS) technologies. The event will feature presentations by Apple and other members of the HLS community, as well as a live Q&A with Apple engineers. Conducted in English."
     },
     {
       "id": "meet-with-apple-285",

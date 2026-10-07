@@ -1,7 +1,11 @@
 # Audio & Video
 
-152 sessions across all events.
+153 sessions across all events.
 
+
+### Meet with Apple
+
+- [IETF HLS Interest Day](../sessions/meet-with-apple/283-ietf-hls-interest-day/README.md)
 
 ### WWDC26
 
