@@ -16,6 +16,11 @@ hasTranscript: false
 
 Join us for an online broadcast designed for engineers and professionals working with HTTP Live Streaming (HLS) technologies. The event will feature presentations by Apple and other members of the HLS community, as well as a live Q&A with Apple engineers. Conducted in English.
 
+## Video
+
+- HLS stream: https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/283/1/1cbbf9e0-e5f5-4697-a15b-8dcd0f0378e3/cmaf.m3u8
+- Download: https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/283/1/1cbbf9e0-e5f5-4697-a15b-8dcd0f0378e3/cmaf-download.m3u8
+
 ---
 
 _Source: [Apple Inc.](https://developer.apple.com/videos/play/meet-with-apple/283) — developer.apple.com. Indexed for agent consumption._
