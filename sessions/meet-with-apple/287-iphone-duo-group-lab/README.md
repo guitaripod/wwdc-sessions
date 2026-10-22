@@ -19,7 +19,7 @@ Connect with Apple engineers and designers online to ask questions, get advice, 
 ## Transcript
 
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
-(11,629 words)
+(10,980 words)
 
 ## Video
 
