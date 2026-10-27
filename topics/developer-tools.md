@@ -1,6 +1,6 @@
 # Developer Tools
 
-251 sessions across all events.
+252 sessions across all events.
 
 
 ### Meet with Apple
@@ -36,6 +36,7 @@
 
 ### Meet with Apple
 
+- [Boost your app’s speed and efficiency](../sessions/meet-with-apple/284-boost-your-app-s-speed-and-efficiency/README.md)
 - [Optimize your app’s speed and efficiency](../sessions/meet-with-apple/212-optimize-your-app-s-speed-and-efficiency/README.md)
 - [Secure your app with Memory Integrity Enforcement](../sessions/meet-with-apple/206-secure-your-app-with-memory-integrity-enforcement/README.md)
 

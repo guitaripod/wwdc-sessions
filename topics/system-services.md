@@ -1,6 +1,6 @@
 # System Services
 
-146 sessions across all events.
+147 sessions across all events.
 
 
 ### Tech Talks
@@ -22,6 +22,7 @@
 
 ### Meet with Apple
 
+- [Boost your app’s speed and efficiency](../sessions/meet-with-apple/284-boost-your-app-s-speed-and-efficiency/README.md)
 - [Optimize your app’s speed and efficiency](../sessions/meet-with-apple/212-optimize-your-app-s-speed-and-efficiency/README.md)
 
 ### WWDC25

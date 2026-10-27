@@ -1,6 +1,6 @@
 # iOS Sessions
 
-1371 sessions.
+1372 sessions.
 
 - [AllTrails: Momentum without a rewrite](../sessions/meet-with-apple/274-alltrails-momentum-without-a-rewrite/README.md) — Meet with Apple
 - [Code-along: Experiment with coding intelligence in Xcode 26](../sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/README.md) — Meet with Apple
@@ -129,6 +129,7 @@
 - [Xcode, agents, and you](../sessions/wwdc2026/259-xcode-agents-and-you/README.md) — WWDC26
 - [Apple Arcade: From concept to catalog](../sessions/meet-with-apple/244-apple-arcade-from-concept-to-catalog/README.md) — Meet with Apple
 - [Boost discoverability and engagement with the Apple Games app](../sessions/meet-with-apple/248-boost-discoverability-and-engagement-with-the-apple-games-ap/README.md) — Meet with Apple
+- [Boost your app’s speed and efficiency](../sessions/meet-with-apple/284-boost-your-app-s-speed-and-efficiency/README.md) — Meet with Apple
 - [Bring your PC and console games to Mac](../sessions/meet-with-apple/241-bring-your-pc-and-console-games-to-mac/README.md) — Meet with Apple
 - [Chart your game's course to Apple platforms](../sessions/meet-with-apple/239-chart-your-game-s-course-to-apple-platforms/README.md) — Meet with Apple
 - [Code along with the Foundation Models framework](../sessions/meet-with-apple/205-code-along-with-the-foundation-models-framework/README.md) — Meet with Apple
