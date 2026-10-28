@@ -1,6 +1,6 @@
 # Tech Talks Sessions
 
-104 sessions · 103 with transcripts.
+107 sessions · 106 with transcripts.
 
 ## AI & Machine Learning
 
@@ -81,6 +81,7 @@
 ## Design
 
 - [Design for iPhone Duo](../../sessions/tech-talks/111466-design-for-iphone-duo/README.md) · 📝
+- [Design for touch on Mac](../../sessions/tech-talks/111456-design-for-touch-on-mac/README.md) · 📝
 - [Designing for Apple Watch Series 4](../../sessions/tech-talks/802-designing-for-apple-watch-series-4/README.md) · 📝
 - [Designing for Subscription Success](../../sessions/tech-talks/803-designing-for-subscription-success/README.md) · 📝
 - [Designing for iPhone X](../../sessions/tech-talks/801-designing-for-iphone-x/README.md) · 📝
@@ -182,6 +183,8 @@
 
 ## SwiftUI & UI Frameworks
 
+- [Bring Live Activities to Mac](../../sessions/tech-talks/111467-bring-live-activities-to-mac/README.md) · 📝
+- [Bring Touch to your Mac app](../../sessions/tech-talks/111468-bring-touch-to-your-mac-app/README.md) · 📝
 - [Bringing Your Apps to the New iPad Pro](../../sessions/tech-talks/209-bringing-your-apps-to-the-new-ipad-pro/README.md) · 📝
 - [Build a great camera experience for iPhone Duo](../../sessions/tech-talks/111465-build-a-great-camera-experience-for-iphone-duo/README.md) · 📝
 - [Building Apps for iPhone X](../../sessions/tech-talks/201-building-apps-for-iphone-x/README.md) · 📝
@@ -200,6 +203,7 @@
 ## System Services
 
 - [Adapt to changing network conditions](../../sessions/tech-talks/111378-adapt-to-changing-network-conditions/README.md) · 📝
+- [Bring Live Activities to Mac](../../sessions/tech-talks/111467-bring-live-activities-to-mac/README.md) · 📝
 - [Bring desktop class sync to iOS with FileProvider](../../sessions/tech-talks/10067-bring-desktop-class-sync-to-ios-with-fileprovider/README.md) · 📝
 - [GDPR & CloudKit](../../sessions/tech-talks/703-gdpr-cloudkit/README.md) · 📝
 - [Get the most out of CloudKit Sharing](../../sessions/tech-talks/10874-get-the-most-out-of-cloudkit-sharing/README.md) · 📝

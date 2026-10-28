@@ -1,10 +1,11 @@
 # System Services
 
-147 sessions across all events.
+148 sessions across all events.
 
 
 ### Tech Talks
 
+- [Bring Live Activities to Mac](../sessions/tech-talks/111467-bring-live-activities-to-mac/README.md)
 - [Leverage multiple displays and scenes on iPhone Duo](../sessions/tech-talks/111464-leverage-multiple-displays-and-scenes-on-iphone-duo/README.md)
 
 ### WWDC26

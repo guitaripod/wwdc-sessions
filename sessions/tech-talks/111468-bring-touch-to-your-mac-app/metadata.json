@@ -1,0 +1,118 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-111468",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2026,
+  "eventContentId": 111468,
+  "title": "Bring Touch to your Mac app",
+  "description": "Discover how to add touch capabilities to your Mac app. Explore how to transition from classic mouse tracking APIs to modern gesture recognizers and touch-native controls. Find out how to optimize hit targets, implement multi-touch interactions, and manage system gestures to deliver an incredible touch experience. To get the most out of this session, watch Design for Touch on Mac.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/111468",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111468",
+  "type": "Video",
+  "publishedAt": "2026-10-28T10:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 799,
+  "hasTranscript": true,
+  "transcriptWordCount": 2137,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/111468/1/9a1f840e-293f-4007-a9a7-39544c36176c/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/tech-talks/111468/1/9a1f840e-293f-4007-a9a7-39544c36176c/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/111468/1/9a1f840e-293f-4007-a9a7-39544c36176c/downloads/tech-talks-111468_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/111468/1/9a1f840e-293f-4007-a9a7-39544c36176c/downloads/tech-talks-111468_hd.mp4",
+    "duration": 799
+  },
+  "codeSnippets": [
+    {
+      "title": "Custom button that overrides mouseDown",
+      "language": "swift",
+      "startTimeSeconds": 128,
+      "code": "// Custom button to detect start and end of tracking\nclass IgnitionButton: NSButton {\n    var delegate: IgnitionButtonDelegate?\n\n    override func mouseDown(with event: NSEvent) {\n        delegate?.buttonDidStartTracking()\n        super.mouseDown(with: event)\n        delegate?.buttonDidEndTracking()\n    }\n}"
+    },
+    {
+      "title": "Use NSControl events to detect tracking",
+      "language": "swift",
+      "startTimeSeconds": 144,
+      "code": "// Use NSControl events to detect start and end of tracking\nignitionButton.addTarget(\n    self,\n    action: #selector(buttonDidStartTracking),\n    for: [.trackingBegan, .trackingEntered]\n)\n\nignitionButton.addTarget(\n    self,\n    action: #selector(buttonDidEndTracking),\n    for: [.trackingExited, .trackingEndedInside]\n)\n\nignitionButton.addTarget(\n    self,\n    action: #selector(buttonCancelledTracking),\n    for: .trackingCancelled\n)"
+    },
+    {
+      "title": "Mouse tracking loop",
+      "language": "swift",
+      "startTimeSeconds": 193,
+      "code": "let eventMask: NSEvent.EventTypeMask = [.leftMouseDragged, .leftMouseUp]\nwhile true {\n    let nextEvent = NSApp.nextEvent(\n        matching: eventMask,\n        until: .distantFuture,\n        inMode: .eventTracking,\n        dequeue: true)\n    if let nextEvent, nextEvent.type == .leftMouseUp {\n        break\n    }\n}"
+    },
+    {
+      "title": "Refactored tracking functions",
+      "language": "swift",
+      "startTimeSeconds": 251,
+      "code": "// Refactored tracking functions\nfunc startTracking(at viewLocation: NSPoint) { /* ... */ }\n\nfunc continueTracking(at viewLocation: NSPoint) { /* ... */ }\n\nfunc endTracking(at viewLocation: NSPoint) { /* ... */ }\n\nfunc cancelTracking() { /* ... */ }"
+    },
+    {
+      "title": "Add a touch-only pan gesture recognizer",
+      "language": "swift",
+      "startTimeSeconds": 264,
+      "code": "// Add touch-only pan gesture recognizer\nlet touchRecognizer = NSPanGestureRecognizer(\n    target: self,\n    action: #selector(touchPan)\n)\n\ntouchRecognizer.buttonMask = 0x0\ntouchRecognizer.allowedTouchTypes = .direct\n\nwiringPanelView.addGestureRecognizer(touchRecognizer)"
+    },
+    {
+      "title": "Pan gesture recognizer action",
+      "language": "swift",
+      "startTimeSeconds": 292,
+      "code": "// Pan gesture recognizer action function\n@objc func touchPan(_ recognizer: NSPanGestureRecognizer) {\n    switch recognizer.state {\n    case .began:\n        startTracking(at: recognizer.location(in: wiringPanelView))\n    case .changed:\n        continueTracking(at: recognizer.location(in: wiringPanelView))\n    case .ended:\n        endTracking(at: recognizer.location(in: wiringPanelView))\n    case .cancelled:\n        cancelTracking()\n    default:\n        break\n    }\n}"
+    },
+    {
+      "title": "Expand hit targets for touch",
+      "language": "swift",
+      "startTimeSeconds": 337,
+      "code": "// Refactored tracking functions with expanded hit targets\nfunc startTracking(at viewLocation: NSPoint, expandHitRect: Bool = false) {\n    for node in nodes {\n        if point(viewLocation, in: node.frame, expandForTouch: expandHitRect) {\n            trackingNode = node\n            trackingLocation = viewLocation\n            return\n        }\n    }\n}\n\nfunc point(_ point: NSPoint, in rect: NSRect, expandForTouch: Bool = false) -> Bool {\n    if expandForTouch {\n        // Expand to minimum size of 36 points on each axis\n    } else {\n        // Nothing to do for mouse\n    }\n    return NSPointInRect(point, rect)\n}\n\n@objc func touchPan(_ recognizer: NSPanGestureRecognizer) {\n    switch recognizer.state {\n    case .began:\n        startTracking(at: recognizer.location(in: wiringPanelView), expandHitRect: true)\n    // ...\n    default:\n        break\n    }\n}"
+    },
+    {
+      "title": "Require two touches for scrolling",
+      "language": "swift",
+      "startTimeSeconds": 400,
+      "code": "// Modify touch scrolling properties\ndecoratingView.enclosingScrollView?.minimumNumberOfTouchesForScrolling = 2"
+    },
+    {
+      "title": "Allow simultaneous slider interaction",
+      "language": "swift",
+      "startTimeSeconds": 468,
+      "code": "// Simultaneous sliders\nstoveControlsView.exclusiveGestureBehavior = .notExclusive"
+    },
+    {
+      "title": "Disable system gestures",
+      "language": "swift",
+      "startTimeSeconds": 505,
+      "code": "// Disabling system gestures\nstoveControlsView.window?.disablesDirectTouchSystemGestures = true\n\n// Mac Catalyst API\nextension UIViewController {\n    var prefersDirectTouchSystemGesturesDisabled: Bool { get }\n}\n\n// SwiftUI API\nView.directTouchSystemGesturesDisabled()"
+    },
+    {
+      "title": "Declare touch-native support in Info.plist",
+      "language": "xml",
+      "startTimeSeconds": 707,
+      "code": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n<plist version=\"1.0\">\n<dict>\n    <!-- ... -->\n    <key>NSIsTouchNative</key>\n    <true/>\n    <!-- ... -->\n</dict>\n</plist>"
+    }
+  ],
+  "resources": [],
+  "path": "sessions/tech-talks/111468-bring-touch-to-your-mac-app/",
+  "files": {
+    "metadata": "sessions/tech-talks/111468-bring-touch-to-your-mac-app/metadata.json",
+    "readme": "sessions/tech-talks/111468-bring-touch-to-your-mac-app/README.md",
+    "transcript": "sessions/tech-talks/111468-bring-touch-to-your-mac-app/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/111468-bring-touch-to-your-mac-app/transcript.json"
+  }
+}

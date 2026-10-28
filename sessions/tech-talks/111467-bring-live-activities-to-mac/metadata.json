@@ -1,0 +1,108 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-111467",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2026,
+  "eventContentId": 111467,
+  "title": "Bring Live Activities to Mac",
+  "description": "Discover how to drive Live Activities from your Mac app. Explore how Live Activities appear in the menu bar and Dynamic Island. Learn how to define your data model, create compact and expanded views with SwiftUI, and drive interactive updates using App Intents.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/111467",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111467",
+  "type": "Video",
+  "publishedAt": "2026-10-28T10:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [
+    "dynamic island"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 460,
+  "hasTranscript": true,
+  "transcriptWordCount": 1327,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/111467/1/29eb0348-372b-4b4b-8b26-1aef42d0456a/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/tech-talks/111467/1/29eb0348-372b-4b4b-8b26-1aef42d0456a/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/111467/1/29eb0348-372b-4b4b-8b26-1aef42d0456a/downloads/tech-talks-111467_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/111467/1/29eb0348-372b-4b4b-8b26-1aef42d0456a/downloads/tech-talks-111467_hd.mp4",
+    "duration": 460
+  },
+  "codeSnippets": [
+    {
+      "title": "Define the Live Activity data model",
+      "language": "swift",
+      "startTimeSeconds": 156,
+      "code": "import ActivityKit\n\nstruct CurtainActivityAttributes: ActivityAttributes {\n    let scenesPerAct: [Int]\n    let showTitle: String\n\n    struct ContentState: Codable, Hashable {\n        var isPlaying: Bool\n        var curtainOpen: Bool\n        var actIndex: Int\n        var sceneIndexInAct: Int\n    }\n}"
+    },
+    {
+      "title": "Configure compact, minimal, and expanded views",
+      "language": "swift",
+      "startTimeSeconds": 200,
+      "code": "import SwiftUI\nimport WidgetKit\n\nstruct CurtainActivityWidget: Widget {\n    var body: some WidgetConfiguration {\n        ActivityConfiguration(\n            for: CurtainActivityAttributes.self\n        ) { context in\n            CurtainActivityMenuBarExpandedContent(\n                state: context.state,\n                showTitle: context.attributes.showTitle)\n        } dynamicIsland: { context in\n            DynamicIsland {\n                DynamicIslandExpandedRegion(.leading) {\n                    CurtainLabel(state: context.state)\n                }\n                DynamicIslandExpandedRegion(.trailing) {\n                    ActLabel(state: context.state)\n                }\n                DynamicIslandExpandedRegion(.center) {\n                    SceneLabel(state: context.state)\n                }\n                DynamicIslandExpandedRegion(.bottom) {\n                    ExpandedBottom(state: context.state)\n                }\n            } compactLeading: {\n                StatusGlyph(state: context.state)\n            } compactTrailing: {\n                CompactTrailing(state: context.state)\n            } minimal: {\n                StatusGlyph(state: context.state)\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Update a running Live Activity",
+      "language": "swift",
+      "startTimeSeconds": 323,
+      "code": "contentState.curtainOpen = false\nlet content = ActivityContent(\n    state: self.currentContentState, staleDate: nil\n)\nawait activity.update(\n    content, alertConfiguration: alertConfiguration\n)"
+    },
+    {
+      "title": "Define an App Intent action",
+      "language": "swift",
+      "startTimeSeconds": 362,
+      "code": "struct SetPlacesReadyIntent: AppIntent {\n    // ...\n    func perform() async throws -> some IntentResult {\n        // ...\n        var state = activity.content.state\n        state.placesReady = self.ready\n        let content = ActivityContent(state: state, staleDate: nil)\n        await activity.update(\n            content,\n            alertConfiguration: .announcement(self.ready ? \"Ready\" : \"Not Ready\")\n        )\n        return .result()\n    }\n}"
+    },
+    {
+      "title": "Trigger the intent from buttons",
+      "language": "swift",
+      "startTimeSeconds": 376,
+      "code": "private struct PlacesReadyButtons: View {\n    var body: some View {\n        HStack {\n            Button(intent: SetPlacesReadyIntent(ready: false)) {\n                Text(\"Not Ready\")\n            }\n            .tint(.red)\n            Button(intent: SetPlacesReadyIntent(ready: true)) {\n                Text(\"Ready\")\n            }\n            .tint(.green)\n        }\n    }\n}"
+    },
+    {
+      "title": "End a Live Activity",
+      "language": "swift",
+      "startTimeSeconds": 392,
+      "code": "// End a Live Activity\nawait activity.end(nil, dismissalPolicy: .immediate)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Starting and updating Live Activities with ActivityKit push notifications",
+      "url": "https://developer.apple.com/documentation/ActivityKit/starting-and-updating-live-activities-with-activitykit-push-notifications",
+      "type": "documentation",
+      "description": "Use ActivityKit to receive push tokens and to remotely start, update, and end your Live Activity with ActivityKit notifications.",
+      "sosumiURL": "https://sosumi.ai/documentation/ActivityKit/starting-and-updating-live-activities-with-activitykit-push-notifications",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ActivityKit/starting-and-updating-live-activities-with-activitykit-push-notifications.json"
+    },
+    {
+      "title": "Displaying live data with Live Activities",
+      "url": "https://developer.apple.com/documentation/ActivityKit/displaying-live-data-with-live-activities",
+      "type": "documentation",
+      "description": "Display up-to-date data and offer quick interactions in the Dynamic Island, on the Lock Screen, in CarPlay, and on a paired Mac or Apple Watch.",
+      "sosumiURL": "https://sosumi.ai/documentation/ActivityKit/displaying-live-data-with-live-activities",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/ActivityKit/displaying-live-data-with-live-activities.json"
+    }
+  ],
+  "path": "sessions/tech-talks/111467-bring-live-activities-to-mac/",
+  "files": {
+    "metadata": "sessions/tech-talks/111467-bring-live-activities-to-mac/metadata.json",
+    "readme": "sessions/tech-talks/111467-bring-live-activities-to-mac/README.md",
+    "transcript": "sessions/tech-talks/111467-bring-live-activities-to-mac/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/111467-bring-live-activities-to-mac/transcript.json"
+  }
+}

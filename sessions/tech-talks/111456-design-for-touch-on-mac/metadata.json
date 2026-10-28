@@ -1,0 +1,73 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "tech-talks-111456",
+  "event": "tech-talks",
+  "eventName": "Tech Talks",
+  "year": 2026,
+  "eventContentId": 111456,
+  "title": "Design for touch on Mac",
+  "description": "Discover the key design considerations for updating your app for touch on macOS. We’ll explore the touch gestures now available on Mac, how system gestures work, how to size controls and touch targets while keeping your app great with a pointer and keyboard, and how to adapt hover interactions. Finally, we’ll dive into the expansion behaviors of native controls like steppers, dials, and sliders, and what that means for your app.",
+  "url": "https://developer.apple.com/videos/play/tech-talks/111456",
+  "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111456",
+  "type": "Video",
+  "publishedAt": "2026-10-28T10:00:00-07:00",
+  "platforms": [
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "Design"
+  ],
+  "primaryTopic": "Design",
+  "duration": 1012,
+  "hasTranscript": true,
+  "transcriptWordCount": 2638,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/tech-talks/111456/1/e7c060ff-d7ad-4dd0-a12f-6f918d7a008d/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/tech-talks/111456/1/e7c060ff-d7ad-4dd0-a12f-6f918d7a008d/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/tech-talks/111456/1/e7c060ff-d7ad-4dd0-a12f-6f918d7a008d/downloads/tech-talks-111456_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/tech-talks/111456/1/e7c060ff-d7ad-4dd0-a12f-6f918d7a008d/downloads/tech-talks-111456_hd.mp4",
+    "duration": 1012
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Human Interface Guidelines: Gestures",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/gestures",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/gestures"
+    },
+    {
+      "title": "Human Interface Guidelines: Pointing devices",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/pointing-devices",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/human-interface-guidelines/pointing-devices"
+    },
+    {
+      "title": "Human Interface Guidelines: Designing for macOS",
+      "url": "https://developer.apple.com/design/Human-Interface-Guidelines/designing-for-macos",
+      "type": "documentation",
+      "description": "HIG",
+      "sosumiURL": "https://sosumi.ai/design/Human-Interface-Guidelines/designing-for-macos"
+    }
+  ],
+  "path": "sessions/tech-talks/111456-design-for-touch-on-mac/",
+  "files": {
+    "metadata": "sessions/tech-talks/111456-design-for-touch-on-mac/metadata.json",
+    "readme": "sessions/tech-talks/111456-design-for-touch-on-mac/README.md",
+    "transcript": "sessions/tech-talks/111456-design-for-touch-on-mac/transcript.md",
+    "transcriptJSON": "sessions/tech-talks/111456-design-for-touch-on-mac/transcript.json"
+  }
+}

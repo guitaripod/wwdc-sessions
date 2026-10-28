@@ -19,7 +19,7 @@ Join us for an online broadcast designed for engineers and professionals working
 ## Transcript
 
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
-(28,197 words)
+(28,123 words)
 
 ## Video
 

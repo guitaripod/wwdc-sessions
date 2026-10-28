@@ -2,15 +2,15 @@
   "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/catalog.schema.json",
   "schemaVersion": 1,
   "builderVersion": 2,
-  "generatedAt": "2026-10-27T22:52:59+00:00",
-  "sourceUpdated": "2026-10-27T14:24:41-07:00",
+  "generatedAt": "2026-10-28T23:00:21+00:00",
+  "sourceUpdated": "2026-10-28T13:21:16-07:00",
   "source": "Apple WWDC developer-video feeds (resolved via api2024.wwdc.io)",
   "rawBase": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master",
   "license": "Content © Apple Inc. Tooling under MIT (see LICENSE/NOTICE).",
   "counts": {
     "events": 15,
-    "sessions": 1664,
-    "transcripts": 1578
+    "sessions": 1667,
+    "transcripts": 1581
   },
   "links": {
     "events": "events.json",
@@ -138,8 +138,8 @@
       "name": "Tech Talks",
       "year": 2017,
       "startTime": "2017-07-01T00:00:00-07:00",
-      "sessionCount": 104,
-      "transcriptCount": 103,
+      "sessionCount": 107,
+      "transcriptCount": 106,
       "index": "events/tech-talks/index.md",
       "indexJSON": "events/tech-talks/index.json"
     },
@@ -802,7 +802,7 @@
       ],
       "keywords": [],
       "hasTranscript": true,
-      "transcriptWordCount": 28197,
+      "transcriptWordCount": 28123,
       "availableLanguages": [
         "eng",
         "fra",
@@ -1161,6 +1161,41 @@
       "description": "Learn how to prepare your app for Accessibility Nutrition Labels by supporting essential accessibility features. Discover how you can enhance interaction methods like VoiceOver and Voice Control by properly configuring accessibility labels, traits, and values for custom controls and gestures. Find out how you can support larger text sizes using Dynamic Type, and prevent content truncation with flexible layouts. And learn how to make your app design more inclusive by adopting Dark Mode, responding to preferences like Differentiate Without Color, and ensuring sufficient contrast."
     },
     {
+      "id": "tech-talks-111456",
+      "event": "tech-talks",
+      "year": 2026,
+      "eventContentId": 111456,
+      "title": "Design for touch on Mac",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/111456",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111456",
+      "duration": 1012,
+      "publishedAt": "2026-10-28T10:00:00-07:00",
+      "platforms": [
+        "macOS"
+      ],
+      "primaryTopic": "Design",
+      "topics": [
+        "Design"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2638,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 3,
+      "codeSnippetCount": 0,
+      "path": "sessions/tech-talks/111456-design-for-touch-on-mac/",
+      "description": "Discover the key design considerations for updating your app for touch on macOS. We’ll explore the touch gestures now available on Mac, how system gestures work, how to size controls and touch targets while keeping your app great with a pointer and keyboard, and how to adapt hover interactions. Finally, we’ll dive into the expansion behaviors of native controls like steppers, dials, and sliders, and what that means for your app."
+    },
+    {
       "id": "tech-talks-111459",
       "event": "tech-talks",
       "year": 2026,
@@ -1448,6 +1483,79 @@
       "codeSnippetCount": 0,
       "path": "sessions/tech-talks/111466-design-for-iphone-duo/",
       "description": "iPhone Duo is the first folding iPhone and comes with a reimagined iOS. Get to know the design principles behind the updated software, explore how controls move between different poses, and learn where your layout needs to adapt and why."
+    },
+    {
+      "id": "tech-talks-111467",
+      "event": "tech-talks",
+      "year": 2026,
+      "eventContentId": 111467,
+      "title": "Bring Live Activities to Mac",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/111467",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111467",
+      "duration": 460,
+      "publishedAt": "2026-10-28T10:00:00-07:00",
+      "platforms": [
+        "macOS"
+      ],
+      "primaryTopic": "System Services",
+      "topics": [
+        "SwiftUI & UI Frameworks",
+        "System Services"
+      ],
+      "keywords": [
+        "dynamic island"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 1327,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 2,
+      "codeSnippetCount": 6,
+      "path": "sessions/tech-talks/111467-bring-live-activities-to-mac/",
+      "description": "Discover how to drive Live Activities from your Mac app. Explore how Live Activities appear in the menu bar and Dynamic Island. Learn how to define your data model, create compact and expanded views with SwiftUI, and drive interactive updates using App Intents."
+    },
+    {
+      "id": "tech-talks-111468",
+      "event": "tech-talks",
+      "year": 2026,
+      "eventContentId": 111468,
+      "title": "Bring Touch to your Mac app",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/tech-talks/111468",
+      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/111468",
+      "duration": 799,
+      "publishedAt": "2026-10-28T10:00:00-07:00",
+      "platforms": [
+        "macOS"
+      ],
+      "primaryTopic": "SwiftUI & UI Frameworks",
+      "topics": [
+        "SwiftUI & UI Frameworks"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 2137,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 11,
+      "path": "sessions/tech-talks/111468-bring-touch-to-your-mac-app/",
+      "description": "Discover how to add touch capabilities to your Mac app. Explore how to transition from classic mouse tracking APIs to modern gesture recognizers and touch-native controls. Find out how to optimize hit targets, implement multi-touch interactions, and manage system gestures to deliver an incredible touch experience. To get the most out of this session, watch Design for Touch on Mac."
     },
     {
       "id": "wwdc2026-101",
@@ -6910,7 +7018,7 @@
       ],
       "keywords": [],
       "hasTranscript": true,
-      "transcriptWordCount": 10665,
+      "transcriptWordCount": 10666,
       "availableLanguages": [
         "eng",
         "fra",

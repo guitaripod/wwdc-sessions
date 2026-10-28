@@ -1,6 +1,6 @@
 # SwiftUI & UI Frameworks
 
-350 sessions across all events.
+352 sessions across all events.
 
 
 ### Meet with Apple
@@ -20,6 +20,8 @@
 
 ### Tech Talks
 
+- [Bring Live Activities to Mac](../sessions/tech-talks/111467-bring-live-activities-to-mac/README.md)
+- [Bring Touch to your Mac app](../sessions/tech-talks/111468-bring-touch-to-your-mac-app/README.md)
 - [Build a great camera experience for iPhone Duo](../sessions/tech-talks/111465-build-a-great-camera-experience-for-iphone-duo/README.md)
 - [Leverage multiple displays and scenes on iPhone Duo](../sessions/tech-talks/111464-leverage-multiple-displays-and-scenes-on-iphone-duo/README.md)
 - [Prepare your app for iPhone Duo](../sessions/tech-talks/111461-prepare-your-app-for-iphone-duo/README.md)

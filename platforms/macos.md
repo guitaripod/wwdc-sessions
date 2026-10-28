@@ -1,6 +1,6 @@
 # macOS Sessions
 
-1162 sessions.
+1165 sessions.
 
 - [Code-along: Experiment with coding intelligence in Xcode 26](../sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/README.md) — Meet with Apple
 - [Discover what’s next: The biggest updates from WWDC26](../sessions/meet-with-apple/277-discover-what-s-next-the-biggest-updates-from-wwdc26/README.md) — Meet with Apple
@@ -11,6 +11,9 @@
 - [SwiftUI foundations: Build great apps with SwiftUI](../sessions/meet-with-apple/267-swiftui-foundations-build-great-apps-with-swiftui/README.md) — Meet with Apple
 - [Accelerate your machine learning workloads with the M5 and A19 GPUs](../sessions/tech-talks/111432-accelerate-your-machine-learning-workloads-with-the-m5-and-a/README.md) — Tech Talks
 - [Boost your graphics performance with the M5 and A19 GPUs](../sessions/tech-talks/111431-boost-your-graphics-performance-with-the-m5-and-a19-gpus/README.md) — Tech Talks
+- [Bring Live Activities to Mac](../sessions/tech-talks/111467-bring-live-activities-to-mac/README.md) — Tech Talks
+- [Bring Touch to your Mac app](../sessions/tech-talks/111468-bring-touch-to-your-mac-app/README.md) — Tech Talks
+- [Design for touch on Mac](../sessions/tech-talks/111456-design-for-touch-on-mac/README.md) — Tech Talks
 - [Discover the Apple Design Resources](../sessions/tech-talks/111427-discover-the-apple-design-resources/README.md) — Tech Talks
 - [Meet agentic coding in Xcode](../sessions/tech-talks/111428-meet-agentic-coding-in-xcode/README.md) — Tech Talks
 - [Prepare your app for Accessibility Nutrition Labels](../sessions/tech-talks/111433-prepare-your-app-for-accessibility-nutrition-labels/README.md) — Tech Talks

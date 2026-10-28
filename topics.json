@@ -5283,7 +5283,7 @@
     {
       "topic": "Design",
       "slug": "design",
-      "sessionCount": 185,
+      "sessionCount": 186,
       "sessions": [
         {
           "id": "meet-with-apple-274",
@@ -5331,6 +5331,13 @@
           "id": "tech-talks-111466",
           "path": "sessions/tech-talks/111466-design-for-iphone-duo/",
           "title": "Design for iPhone Duo",
+          "event": "tech-talks",
+          "hasTranscript": true
+        },
+        {
+          "id": "tech-talks-111456",
+          "path": "sessions/tech-talks/111456-design-for-touch-on-mac/",
+          "title": "Design for touch on Mac",
           "event": "tech-talks",
           "hasTranscript": true
         },
@@ -15629,7 +15636,7 @@
     {
       "topic": "SwiftUI & UI Frameworks",
       "slug": "swiftui-ui-frameworks",
-      "sessionCount": 350,
+      "sessionCount": 352,
       "sessions": [
         {
           "id": "meet-with-apple-271",
@@ -15713,6 +15720,20 @@
           "path": "sessions/meet-with-apple/286-iphone-duo-group-lab/",
           "title": "iPhone Duo Group Lab",
           "event": "meet-with-apple",
+          "hasTranscript": true
+        },
+        {
+          "id": "tech-talks-111467",
+          "path": "sessions/tech-talks/111467-bring-live-activities-to-mac/",
+          "title": "Bring Live Activities to Mac",
+          "event": "tech-talks",
+          "hasTranscript": true
+        },
+        {
+          "id": "tech-talks-111468",
+          "path": "sessions/tech-talks/111468-bring-touch-to-your-mac-app/",
+          "title": "Bring Touch to your Mac app",
+          "event": "tech-talks",
           "hasTranscript": true
         },
         {
@@ -18086,8 +18107,15 @@
     {
       "topic": "System Services",
       "slug": "system-services",
-      "sessionCount": 147,
+      "sessionCount": 148,
       "sessions": [
+        {
+          "id": "tech-talks-111467",
+          "path": "sessions/tech-talks/111467-bring-live-activities-to-mac/",
+          "title": "Bring Live Activities to Mac",
+          "event": "tech-talks",
+          "hasTranscript": true
+        },
         {
           "id": "tech-talks-111464",
           "path": "sessions/tech-talks/111464-leverage-multiple-displays-and-scenes-on-iphone-duo/",
