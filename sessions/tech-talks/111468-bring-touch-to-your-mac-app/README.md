@@ -21,6 +21,18 @@ Discover how to add touch capabilities to your Mac app. Explore how to transitio
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
 (2,137 words)
 
+## Documentation & Resources
+
+- [Adopting gesture recognizers in your app](https://developer.apple.com/documentation/appkit/adopting-gesture-recognizers-in-your-app) _documentation_
+  - Markdown (sosumi.ai): https://sosumi.ai/documentation/appkit/adopting-gesture-recognizers-in-your-app
+  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/appkit/adopting-gesture-recognizers-in-your-app.json
+- [Supporting Drag and Drop Through File Promises](https://developer.apple.com/documentation/AppKit/supporting-drag-and-drop-through-file-promises) _documentation_
+  - Markdown (sosumi.ai): https://sosumi.ai/documentation/AppKit/supporting-drag-and-drop-through-file-promises
+  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/AppKit/supporting-drag-and-drop-through-file-promises.json
+- [Handling AppKit gestures](https://developer.apple.com/documentation/appkit/handling-appkit-gestures) _documentation_
+  - Markdown (sosumi.ai): https://sosumi.ai/documentation/appkit/handling-appkit-gestures
+  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/appkit/handling-appkit-gestures.json
+
 ## Code Snippets
 
 ### Custom button that overrides mouseDown — [2:08]

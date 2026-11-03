@@ -72,7 +72,32 @@
       "code": "// Disable for improved performance\nclass AVCapturePhotoOutput: AVCaptureOutput {\n    // ...\n\n    var isCameraSensorOrientationCompensationEnabled: Bool { get set }\n}"
     }
   ],
-  "resources": [],
+  "resources": [
+    {
+      "title": "Registering a camera capture accessory on iPhone Duo",
+      "url": "https://developer.apple.com/documentation/avfoundation/registering-a-camera-capture-accessory-on-iphone-duo",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/documentation/avfoundation/registering-a-camera-capture-accessory-on-iphone-duo",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/avfoundation/registering-a-camera-capture-accessory-on-iphone-duo.json"
+    },
+    {
+      "title": "Supporting device rotation in your camera app",
+      "url": "https://developer.apple.com/documentation/AVFoundation/supporting-device-rotation-in-your-camera-app",
+      "type": "documentation",
+      "description": "Keep your camera preview and captured photos and video upright by applying the angles a rotation coordinator reports.",
+      "sosumiURL": "https://sosumi.ai/documentation/AVFoundation/supporting-device-rotation-in-your-camera-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AVFoundation/supporting-device-rotation-in-your-camera-app.json"
+    },
+    {
+      "title": "Choosing a camera by the direction it faces",
+      "url": "https://developer.apple.com/documentation/avkit/choosing-a-camera-by-the-direction-it-faces",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/documentation/avkit/choosing-a-camera-by-the-direction-it-faces",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/avkit/choosing-a-camera-by-the-direction-it-faces.json"
+    }
+  ],
   "path": "sessions/tech-talks/111465-build-a-great-camera-experience-for-iphone-duo/",
   "files": {
     "metadata": "sessions/tech-talks/111465-build-a-great-camera-experience-for-iphone-duo/metadata.json",

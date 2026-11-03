@@ -107,7 +107,32 @@
       "code": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n<plist version=\"1.0\">\n<dict>\n    <!-- ... -->\n    <key>NSIsTouchNative</key>\n    <true/>\n    <!-- ... -->\n</dict>\n</plist>"
     }
   ],
-  "resources": [],
+  "resources": [
+    {
+      "title": "Adopting gesture recognizers in your app",
+      "url": "https://developer.apple.com/documentation/appkit/adopting-gesture-recognizers-in-your-app",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/documentation/appkit/adopting-gesture-recognizers-in-your-app",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/appkit/adopting-gesture-recognizers-in-your-app.json"
+    },
+    {
+      "title": "Supporting Drag and Drop Through File Promises",
+      "url": "https://developer.apple.com/documentation/AppKit/supporting-drag-and-drop-through-file-promises",
+      "type": "documentation",
+      "description": "Receive and provide file promises to support dragged app files and pasteboard operations.",
+      "sosumiURL": "https://sosumi.ai/documentation/AppKit/supporting-drag-and-drop-through-file-promises",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/AppKit/supporting-drag-and-drop-through-file-promises.json"
+    },
+    {
+      "title": "Handling AppKit gestures",
+      "url": "https://developer.apple.com/documentation/appkit/handling-appkit-gestures",
+      "type": "documentation",
+      "description": null,
+      "sosumiURL": "https://sosumi.ai/documentation/appkit/handling-appkit-gestures",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/appkit/handling-appkit-gestures.json"
+    }
+  ],
   "path": "sessions/tech-talks/111468-bring-touch-to-your-mac-app/",
   "files": {
     "metadata": "sessions/tech-talks/111468-bring-touch-to-your-mac-app/metadata.json",

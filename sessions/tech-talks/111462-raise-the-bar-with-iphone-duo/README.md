@@ -21,6 +21,12 @@ Discover how to adapt your navigation, toolbars, and tab bars for the unique dis
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
 (2,393 words)
 
+## Documentation & Resources
+
+- [Preparing your app for iPhone Duo](https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo) _documentation_
+  - Markdown (sosumi.ai): https://sosumi.ai/documentation/technologyoverviews/preparing-your-app-for-iphone-duo
+  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/technologyoverviews/preparing-your-app-for-iphone-duo.json
+
 ## Code Snippets
 
 ### Use system containers for vertical bar in SwiftUI — [2:24]

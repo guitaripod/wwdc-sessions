@@ -25,6 +25,9 @@ Discover how to drive Live Activities from your Mac app. Explore how Live Activi
 
 ## Documentation & Resources
 
+- [Creating custom views for Live Activities](https://developer.apple.com/documentation/activitykit/creating-custom-views-for-live-activities) _documentation_
+  - Markdown (sosumi.ai): https://sosumi.ai/documentation/activitykit/creating-custom-views-for-live-activities
+  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/activitykit/creating-custom-views-for-live-activities.json
 - [Starting and updating Live Activities with ActivityKit push notifications](https://developer.apple.com/documentation/ActivityKit/starting-and-updating-live-activities-with-activitykit-push-notifications) _documentation_
   - Markdown (sosumi.ai): https://sosumi.ai/documentation/ActivityKit/starting-and-updating-live-activities-with-activitykit-push-notifications
   - DocC JSON: https://developer.apple.com/tutorials/data/documentation/ActivityKit/starting-and-updating-live-activities-with-activitykit-push-notifications.json

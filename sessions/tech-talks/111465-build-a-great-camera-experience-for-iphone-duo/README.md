@@ -21,6 +21,18 @@ Discover how to leverage the outer and inner cameras on iPhone Duo. Explore the 
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
 (1,384 words)
 
+## Documentation & Resources
+
+- [Registering a camera capture accessory on iPhone Duo](https://developer.apple.com/documentation/avfoundation/registering-a-camera-capture-accessory-on-iphone-duo) _documentation_
+  - Markdown (sosumi.ai): https://sosumi.ai/documentation/avfoundation/registering-a-camera-capture-accessory-on-iphone-duo
+  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/avfoundation/registering-a-camera-capture-accessory-on-iphone-duo.json
+- [Supporting device rotation in your camera app](https://developer.apple.com/documentation/AVFoundation/supporting-device-rotation-in-your-camera-app) _documentation_
+  - Markdown (sosumi.ai): https://sosumi.ai/documentation/AVFoundation/supporting-device-rotation-in-your-camera-app
+  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/AVFoundation/supporting-device-rotation-in-your-camera-app.json
+- [Choosing a camera by the direction it faces](https://developer.apple.com/documentation/avkit/choosing-a-camera-by-the-direction-it-faces) _documentation_
+  - Markdown (sosumi.ai): https://sosumi.ai/documentation/avkit/choosing-a-camera-by-the-direction-it-faces
+  - DocC JSON: https://developer.apple.com/tutorials/data/documentation/avkit/choosing-a-camera-by-the-direction-it-faces.json
+
 ## Code Snippets
 
 ### Understand AVCaptureDevicePosition — [3:00]

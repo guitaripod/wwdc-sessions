@@ -94,7 +94,16 @@
       "code": "struct CameraRootView: View {\n    @State private var model = TeleprompterModel()\n\n    var body: some View {\n        CameraView(model: model)\n            .sceneAccessory {\n                CameraCaptureAccessory(isEnabled: $model.isEnabled) {\n                    TeleprompterView(model: model)\n                }\n                .onAvailabilityChange { newValue in\n                    model.isAvailable = newValue\n                }\n            }\n            .toolbar {\n                TeleprompterToggle(isEnabled: $model.isEnabled)\n                    .disabled(!model.isAvailable)\n            }\n    }\n}"
     }
   ],
-  "resources": [],
+  "resources": [
+    {
+      "title": "Preparing your app for iPhone Duo",
+      "url": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo",
+      "type": "documentation",
+      "description": "Update your iOS app to dynamically resize for inner and outer displays, adjust your layout for the folding display, and adapt bars for vertical layout.",
+      "sosumiURL": "https://sosumi.ai/documentation/technologyoverviews/preparing-your-app-for-iphone-duo",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/technologyoverviews/preparing-your-app-for-iphone-duo.json"
+    }
+  ],
   "path": "sessions/tech-talks/111464-leverage-multiple-displays-and-scenes-on-iphone-duo/",
   "files": {
     "metadata": "sessions/tech-talks/111464-leverage-multiple-displays-and-scenes-on-iphone-duo/metadata.json",

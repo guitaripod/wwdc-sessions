@@ -2,8 +2,8 @@
   "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/catalog.schema.json",
   "schemaVersion": 1,
   "builderVersion": 2,
-  "generatedAt": "2026-10-29T23:08:37+00:00",
-  "sourceUpdated": "2026-10-29T10:05:14-07:00",
+  "generatedAt": "2026-11-03T01:28:45+00:00",
+  "sourceUpdated": "2026-11-02T14:04:12-08:00",
   "source": "Apple WWDC developer-video feeds (resolved via api2024.wwdc.io)",
   "rawBase": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master",
   "license": "Content © Apple Inc. Tooling under MIT (see LICENSE/NOTICE).",
@@ -1292,7 +1292,7 @@
         "spa",
         "zho"
       ],
-      "resourceCount": 0,
+      "resourceCount": 1,
       "codeSnippetCount": 8,
       "path": "sessions/tech-talks/111461-prepare-your-app-for-iphone-duo/",
       "description": "Learn how to update and optimize your app for the foldable display of iPhone Duo. Discover how to opt in to the full-screen experience, adopt flexible layout best practices, and simulate poses in Device Hub with Xcode. Find out how to use size classes instead of interface orientation, handle asymmetric safe areas, and test Split View multitasking to ensure your app shines in all the ways people use it."
@@ -1328,7 +1328,7 @@
         "spa",
         "zho"
       ],
-      "resourceCount": 0,
+      "resourceCount": 1,
       "codeSnippetCount": 13,
       "path": "sessions/tech-talks/111462-raise-the-bar-with-iphone-duo/",
       "description": "Discover how to adapt your navigation, toolbars, and tab bars for the unique displays of iPhone Duo. Explore the design principles behind the new bar layout, and learn how to configure custom view representations and manage overflow to build powerful, responsive apps."
@@ -1364,7 +1364,7 @@
         "spa",
         "zho"
       ],
-      "resourceCount": 1,
+      "resourceCount": 2,
       "codeSnippetCount": 12,
       "path": "sessions/tech-talks/111463-strike-a-pose-with-adaptive-layouts-on-iphone-duo/",
       "description": "Learn how to create responsive, flexible layouts that work great on iPhone Duo. Explore displacement design patterns that keep content visible and reachable as people open and close their iPhone Duo. Discover how to use arrangement views in SwiftUI and UIKit to build split and overlay presentations, and find out how to query reserved regions to tailor layouts around the hinge and cameras."
@@ -1404,7 +1404,7 @@
         "spa",
         "zho"
       ],
-      "resourceCount": 0,
+      "resourceCount": 1,
       "codeSnippetCount": 8,
       "path": "sessions/tech-talks/111464-leverage-multiple-displays-and-scenes-on-iphone-duo/",
       "description": "Discover how to build rich multiwindow and multidisplay experiences for iPhone Duo. Explore how to handle dynamic window sizes and request new scenes in side-by-side multitasking. Learn how to observe hinge angle changes in SwiftUI and UIKit to create interactive effects. And find out how to use scene accessories to present supplementary content across both displays simultaneously."
@@ -1440,7 +1440,7 @@
         "spa",
         "zho"
       ],
-      "resourceCount": 0,
+      "resourceCount": 3,
       "codeSnippetCount": 5,
       "path": "sessions/tech-talks/111465-build-a-great-camera-experience-for-iphone-duo/",
       "description": "Discover how to leverage the outer and inner cameras on iPhone Duo. Explore the Virtual Front Camera, and find out how to use the direction coordinator to switch between cameras and update your UI as people open and close iPhone Duo. Learn best practices for handling preview aspect ratios, positioning, and rotation to deliver a seamless capture experience."
@@ -1517,7 +1517,7 @@
         "spa",
         "zho"
       ],
-      "resourceCount": 2,
+      "resourceCount": 3,
       "codeSnippetCount": 6,
       "path": "sessions/tech-talks/111467-bring-live-activities-to-mac/",
       "description": "Discover how to drive Live Activities from your Mac app. Explore how Live Activities appear in the menu bar and Dynamic Island. Learn how to define your data model, create compact and expanded views with SwiftUI, and drive interactive updates using App Intents."
@@ -1552,7 +1552,7 @@
         "spa",
         "zho"
       ],
-      "resourceCount": 0,
+      "resourceCount": 3,
       "codeSnippetCount": 11,
       "path": "sessions/tech-talks/111468-bring-touch-to-your-mac-app/",
       "description": "Discover how to add touch capabilities to your Mac app. Explore how to transition from classic mouse tracking APIs to modern gesture recognizers and touch-native controls. Find out how to optimize hit targets, implement multi-touch interactions, and manage system gestures to deliver an incredible touch experience. To get the most out of this session, watch Design for Touch on Mac."
