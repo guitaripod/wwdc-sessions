@@ -1,6 +1,6 @@
 # AI & Machine Learning
 
-137 sessions across all events.
+139 sessions across all events.
 
 
 ### Meet with Apple
@@ -55,6 +55,8 @@
 
 ### Meet with Apple
 
+- [Apple Intelligence Group Lab](../sessions/meet-with-apple/291-apple-intelligence-group-lab/README.md)
+- [Apple Intelligence Group Lab](../sessions/meet-with-apple/290-apple-intelligence-group-lab/README.md)
 - [Code along with the Foundation Models framework](../sessions/meet-with-apple/205-code-along-with-the-foundation-models-framework/README.md)
 
 ### WWDC25

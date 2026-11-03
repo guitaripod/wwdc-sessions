@@ -1,7 +1,8 @@
 # visionOS Sessions
 
-364 sessions.
+366 sessions.
 
+- [Boost your app’s speed and efficiency](../sessions/meet-with-apple/284-boost-your-app-s-speed-and-efficiency/README.md) — Meet with Apple
 - [Discover what’s next: The biggest updates from WWDC26](../sessions/meet-with-apple/277-discover-what-s-next-the-biggest-updates-from-wwdc26/README.md) — Meet with Apple
 - [Fortify your app: Essential strategies to strengthen security](../sessions/meet-with-apple/265-fortify-your-app-essential-strategies-to-strengthen-security/README.md) — Meet with Apple
 - [Get ready for the Swift Student Challenge](../sessions/meet-with-apple/263-get-ready-for-the-swift-student-challenge/README.md) — Meet with Apple
@@ -98,7 +99,8 @@
 - [An introduction to capturing Apple Immersive Video](../sessions/meet-with-apple/224-an-introduction-to-capturing-apple-immersive-video/README.md) — Meet with Apple
 - [Apple Arcade: From concept to catalog](../sessions/meet-with-apple/244-apple-arcade-from-concept-to-catalog/README.md) — Meet with Apple
 - [Apple Immersive Video-enabled workflows | Blackmagic Design](../sessions/meet-with-apple/226-apple-immersive-video-enabled-workflows-blackmagic-design/README.md) — Meet with Apple
-- [Boost your app’s speed and efficiency](../sessions/meet-with-apple/284-boost-your-app-s-speed-and-efficiency/README.md) — Meet with Apple
+- [Apple Intelligence Group Lab](../sessions/meet-with-apple/291-apple-intelligence-group-lab/README.md) — Meet with Apple
+- [Apple Intelligence Group Lab](../sessions/meet-with-apple/290-apple-intelligence-group-lab/README.md) — Meet with Apple
 - [Bring your PC and console games to Mac](../sessions/meet-with-apple/241-bring-your-pc-and-console-games-to-mac/README.md) — Meet with Apple
 - [Build shared experiences for visionOS](../sessions/meet-with-apple/221-build-shared-experiences-for-visionos/README.md) — Meet with Apple
 - [Build spatial experiences with RealityKit](../sessions/meet-with-apple/220-build-spatial-experiences-with-realitykit/README.md) — Meet with Apple

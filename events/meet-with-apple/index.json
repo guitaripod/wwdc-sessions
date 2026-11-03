@@ -2,7 +2,7 @@
   "event": "meet-with-apple",
   "name": "Meet with Apple",
   "year": 2025,
-  "sessionCount": 70,
+  "sessionCount": 72,
   "sessions": [
     {
       "id": "meet-with-apple-201",
@@ -2378,14 +2378,14 @@
     {
       "id": "meet-with-apple-284",
       "event": "meet-with-apple",
-      "year": 2025,
+      "year": 2026,
       "eventContentId": 284,
       "title": "Boost your app’s speed and efficiency",
       "type": "Video",
       "url": "https://developer.apple.com/videos/play/meet-with-apple/284",
       "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/284",
-      "duration": null,
-      "publishedAt": null,
+      "duration": 10368,
+      "publishedAt": "2026-11-03T09:00:00-08:00",
       "platforms": [
         "iOS",
         "iPadOS",
@@ -2400,9 +2400,17 @@
         "Developer Tools"
       ],
       "keywords": [],
-      "hasTranscript": false,
-      "transcriptWordCount": 0,
-      "availableLanguages": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 26146,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
       "resourceCount": 0,
       "codeSnippetCount": 0,
       "path": "sessions/meet-with-apple/284-boost-your-app-s-speed-and-efficiency/",
@@ -2551,6 +2559,70 @@
       "codeSnippetCount": 0,
       "path": "sessions/meet-with-apple/288-iphone-duo-group-lab/",
       "description": "Connect with Apple engineers and designers online to ask questions, get advice, and follow the discussion about creating and updating apps for iPhone Duo. In this one-hour event, you’ll learn how to adapt your layouts across displays and poses, work with the hinge, support Split View multitasking, and build great camera experiences."
+    },
+    {
+      "id": "meet-with-apple-290",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 290,
+      "title": "Apple Intelligence Group Lab",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/290",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/290",
+      "duration": null,
+      "publishedAt": null,
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "primaryTopic": "AI & Machine Learning",
+      "topics": [
+        "AI & Machine Learning"
+      ],
+      "keywords": [],
+      "hasTranscript": false,
+      "transcriptWordCount": 0,
+      "availableLanguages": [],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/290-apple-intelligence-group-lab/",
+      "description": "Connect with Apple engineers online to ask questions, get advice, and follow the discussion about App Intents and Siri AI, the Foundation Models framework, and more."
+    },
+    {
+      "id": "meet-with-apple-291",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 291,
+      "title": "Apple Intelligence Group Lab",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/291",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/291",
+      "duration": null,
+      "publishedAt": null,
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "primaryTopic": "AI & Machine Learning",
+      "topics": [
+        "AI & Machine Learning"
+      ],
+      "keywords": [],
+      "hasTranscript": false,
+      "transcriptWordCount": 0,
+      "availableLanguages": [],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/291-apple-intelligence-group-lab/",
+      "description": "Connect with Apple engineers online to ask questions, get advice, and follow the discussion about App Intents and Siri AI, the Foundation Models framework, and more."
     }
   ]
 }

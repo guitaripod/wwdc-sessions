@@ -1,9 +1,11 @@
 # Meet with Apple Sessions
 
-70 sessions · 65 with transcripts.
+72 sessions · 66 with transcripts.
 
 ## AI & Machine Learning
 
+- [Apple Intelligence Group Lab](../../sessions/meet-with-apple/291-apple-intelligence-group-lab/README.md)
+- [Apple Intelligence Group Lab](../../sessions/meet-with-apple/290-apple-intelligence-group-lab/README.md)
 - [Code along with the Foundation Models framework](../../sessions/meet-with-apple/205-code-along-with-the-foundation-models-framework/README.md) · 📝
 - [Code-along: Experiment with coding intelligence in Xcode 26](../../sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/README.md) · 📝
 
@@ -36,7 +38,7 @@
 
 ## Developer Tools
 
-- [Boost your app’s speed and efficiency](../../sessions/meet-with-apple/284-boost-your-app-s-speed-and-efficiency/README.md)
+- [Boost your app’s speed and efficiency](../../sessions/meet-with-apple/284-boost-your-app-s-speed-and-efficiency/README.md) · 📝
 - [Fortify your app: Essential strategies to strengthen security](../../sessions/meet-with-apple/265-fortify-your-app-essential-strategies-to-strengthen-security/README.md) · 📝
 - [Optimize your app’s speed and efficiency](../../sessions/meet-with-apple/212-optimize-your-app-s-speed-and-efficiency/README.md)
 - [Q&A: Swift concurrency](../../sessions/meet-with-apple/276-q-a-swift-concurrency/README.md)
@@ -132,6 +134,6 @@
 
 ## System Services
 
-- [Boost your app’s speed and efficiency](../../sessions/meet-with-apple/284-boost-your-app-s-speed-and-efficiency/README.md)
+- [Boost your app’s speed and efficiency](../../sessions/meet-with-apple/284-boost-your-app-s-speed-and-efficiency/README.md) · 📝
 - [Optimize your app’s speed and efficiency](../../sessions/meet-with-apple/212-optimize-your-app-s-speed-and-efficiency/README.md)
 

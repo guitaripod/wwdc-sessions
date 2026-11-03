@@ -3,6 +3,10 @@
 148 sessions across all events.
 
 
+### Meet with Apple
+
+- [Boost your app’s speed and efficiency](../sessions/meet-with-apple/284-boost-your-app-s-speed-and-efficiency/README.md)
+
 ### Tech Talks
 
 - [Bring Live Activities to Mac](../sessions/tech-talks/111467-bring-live-activities-to-mac/README.md)
@@ -23,7 +27,6 @@
 
 ### Meet with Apple
 
-- [Boost your app’s speed and efficiency](../sessions/meet-with-apple/284-boost-your-app-s-speed-and-efficiency/README.md)
 - [Optimize your app’s speed and efficiency](../sessions/meet-with-apple/212-optimize-your-app-s-speed-and-efficiency/README.md)
 
 ### WWDC25

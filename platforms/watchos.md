@@ -1,8 +1,9 @@
 # watchOS Sessions
 
-674 sessions.
+676 sessions.
 
 - [AllTrails: Momentum without a rewrite](../sessions/meet-with-apple/274-alltrails-momentum-without-a-rewrite/README.md) — Meet with Apple
+- [Boost your app’s speed and efficiency](../sessions/meet-with-apple/284-boost-your-app-s-speed-and-efficiency/README.md) — Meet with Apple
 - [Discover what’s next: The biggest updates from WWDC26](../sessions/meet-with-apple/277-discover-what-s-next-the-biggest-updates-from-wwdc26/README.md) — Meet with Apple
 - [Fortify your app: Essential strategies to strengthen security](../sessions/meet-with-apple/265-fortify-your-app-essential-strategies-to-strengthen-security/README.md) — Meet with Apple
 - [Get ready for the Swift Student Challenge](../sessions/meet-with-apple/263-get-ready-for-the-swift-student-challenge/README.md) — Meet with Apple
@@ -64,7 +65,8 @@
 - [WidgetKit foundations](../sessions/wwdc2026/277-widgetkit-foundations/README.md) — WWDC26
 - [Xcode, agents, and you](../sessions/wwdc2026/259-xcode-agents-and-you/README.md) — WWDC26
 - [watchOS Group Lab](../sessions/wwdc2026/8014-watchos-group-lab/README.md) — WWDC26
-- [Boost your app’s speed and efficiency](../sessions/meet-with-apple/284-boost-your-app-s-speed-and-efficiency/README.md) — Meet with Apple
+- [Apple Intelligence Group Lab](../sessions/meet-with-apple/291-apple-intelligence-group-lab/README.md) — Meet with Apple
+- [Apple Intelligence Group Lab](../sessions/meet-with-apple/290-apple-intelligence-group-lab/README.md) — Meet with Apple
 - [Code-along: Start building with Swift and SwiftUI](../sessions/meet-with-apple/237-code-along-start-building-with-swift-and-swiftui/README.md) — Meet with Apple
 - [Explore the biggest updates from WWDC25](../sessions/meet-with-apple/201-explore-the-biggest-updates-from-wwdc25/README.md) — Meet with Apple
 - [Optimize your app’s speed and efficiency](../sessions/meet-with-apple/212-optimize-your-app-s-speed-and-efficiency/README.md) — Meet with Apple
