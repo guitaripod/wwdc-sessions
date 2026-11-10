@@ -19,7 +19,7 @@ Join us online to ask questions, get advice, and follow the discussion about get
 ## Transcript
 
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
-(10,722 words)
+(10,718 words)
 
 ## Video
 

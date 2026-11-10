@@ -4,7 +4,7 @@ event: "wwdc2026"
 title: "SwiftUI for Beginners Group Lab"
 url: "https://developer.apple.com/videos/play/wwdc2026/8002"
 language: "eng"
-words: 10722
+words: 10718
 ---
 
 # SwiftUI for Beginners Group Lab — Transcript
@@ -81,7 +81,7 @@ words: 10722
 
 **[26:23]** which is a little bit different than sort of a compile and run architecture that most native languages have. Check out previews in Xcode so you can see the dynamic updates. Now with Device Hub in in Xcode 27, you also have options for showing the simulator right there or actually pulling a mirror of your device on, on screen. And so there, there are tools for getting those instantaneous previews, but I think, I think that is one of the, the road bumps that people hit. And so make sure you check out previews and use that to, to see how to sort of preview what you're working on. Trevor. I think I'll throw this one to you to start here. This question comes from classic Flame.
 
-**[27:08]** My question where should I start? Especially in SwiftUI. There's so many tutorials even on the Apple developer side, and it's a little bit confusing what to do first. Where should I begin? I'm a Java developer and want to begin with iOS programing. Thank you. Yeah. Like I mentioned earlier, those initial tutorials I don't like if. Can we link those somewhere? Yeah, I think I think we have a mechanism for doing that. I'll ask I'll ask our folks in the back room if they could respond in the thread with links. Knowing the folks in the back room, they may have already done that. I think those tutorials, there's a series of tutorials that will walk you through everything from like, here is a view body to state to animations, right?
+**[27:08]** My question where should I start? Especially in SwiftUI. There's so many tutorials even on the Apple developer side, and it's a little bit confusing what to do first. Where should I begin? I'm a Java developer and want to begin with iOS programing. Thank you. Yeah. Like I mentioned earlier, those initial tutorials Can we link those somewhere? Yeah, I think I think we have a mechanism for doing that. I'll ask I'll ask our folks in the back room if they could respond in the thread with links. Knowing the folks in the back room, they may have already done that. I think those tutorials, there's a series of tutorials that will walk you through everything from like, here is a view body to state to animations, right?
 
 **[27:56]** And here's how to how data flows in SwiftUI. It will give you a really, really solid foundation to start with. And I think that is probably the best initial set of resources Personally, I think when I started learning SwiftUI, I worked through Paul Hudson's 100 days of SwiftUI. So yeah, which I think lots of people have found that that super helpful. And that's a great little very bite sized chunks of content that are great. Yeah. To add to that, I like going back to the community resources. There are lots of books people have written about iOS development, lots of articles available online from other authors we have in the community.
 
