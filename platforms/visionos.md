@@ -1,7 +1,9 @@
 # visionOS Sessions
 
-366 sessions.
+367 sessions.
 
+- [Apple Intelligence Group Lab](../sessions/meet-with-apple/291-apple-intelligence-group-lab/README.md) — Meet with Apple
+- [Apple Intelligence Group Lab](../sessions/meet-with-apple/290-apple-intelligence-group-lab/README.md) — Meet with Apple
 - [Boost your app’s speed and efficiency](../sessions/meet-with-apple/284-boost-your-app-s-speed-and-efficiency/README.md) — Meet with Apple
 - [Discover what’s next: The biggest updates from WWDC26](../sessions/meet-with-apple/277-discover-what-s-next-the-biggest-updates-from-wwdc26/README.md) — Meet with Apple
 - [Fortify your app: Essential strategies to strengthen security](../sessions/meet-with-apple/265-fortify-your-app-essential-strategies-to-strengthen-security/README.md) — Meet with Apple
@@ -99,14 +101,13 @@
 - [An introduction to capturing Apple Immersive Video](../sessions/meet-with-apple/224-an-introduction-to-capturing-apple-immersive-video/README.md) — Meet with Apple
 - [Apple Arcade: From concept to catalog](../sessions/meet-with-apple/244-apple-arcade-from-concept-to-catalog/README.md) — Meet with Apple
 - [Apple Immersive Video-enabled workflows | Blackmagic Design](../sessions/meet-with-apple/226-apple-immersive-video-enabled-workflows-blackmagic-design/README.md) — Meet with Apple
-- [Apple Intelligence Group Lab](../sessions/meet-with-apple/291-apple-intelligence-group-lab/README.md) — Meet with Apple
-- [Apple Intelligence Group Lab](../sessions/meet-with-apple/290-apple-intelligence-group-lab/README.md) — Meet with Apple
 - [Bring your PC and console games to Mac](../sessions/meet-with-apple/241-bring-your-pc-and-console-games-to-mac/README.md) — Meet with Apple
 - [Build shared experiences for visionOS](../sessions/meet-with-apple/221-build-shared-experiences-for-visionos/README.md) — Meet with Apple
 - [Build spatial experiences with RealityKit](../sessions/meet-with-apple/220-build-spatial-experiences-with-realitykit/README.md) — Meet with Apple
 - [Capturing live events for Apple Immersive Video: Learnings from "Metallica"](../sessions/meet-with-apple/231-capturing-live-events-for-apple-immersive-video-learnings-fr/README.md) — Meet with Apple
 - [Chart your game's course to Apple platforms](../sessions/meet-with-apple/239-chart-your-game-s-course-to-apple-platforms/README.md) — Meet with Apple
 - [Code-along: Start building with Swift and SwiftUI](../sessions/meet-with-apple/237-code-along-start-building-with-swift-and-swiftui/README.md) — Meet with Apple
+- [Create immersive media experiences for spatial computing](../sessions/meet-with-apple/294-create-immersive-media-experiences-for-spatial-computing/README.md) — Meet with Apple
 - [Create immersive media experiences for visionOS - Day 1](../sessions/meet-with-apple/209-create-immersive-media-experiences-for-visionos-day-1/README.md) — Meet with Apple
 - [Create immersive media experiences for visionOS - Day 2](../sessions/meet-with-apple/210-create-immersive-media-experiences-for-visionos-day-2/README.md) — Meet with Apple
 - [Create stories with immersive video and audio](../sessions/meet-with-apple/218-create-stories-with-immersive-video-and-audio/README.md) — Meet with Apple

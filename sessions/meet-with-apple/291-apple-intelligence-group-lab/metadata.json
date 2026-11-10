@@ -4,14 +4,14 @@
   "id": "meet-with-apple-291",
   "event": "meet-with-apple",
   "eventName": "Meet with Apple",
-  "year": 2025,
+  "year": 2026,
   "eventContentId": 291,
   "title": "Apple Intelligence Group Lab",
   "description": "Connect with Apple engineers online to ask questions, get advice, and follow the discussion about App Intents and Siri AI, the Foundation Models framework, and more.",
   "url": "https://developer.apple.com/videos/play/meet-with-apple/291",
   "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/291",
   "type": "Video",
-  "publishedAt": null,
+  "publishedAt": "2026-11-10T00:00:00-08:00",
   "platforms": [
     "iOS",
     "iPadOS",
@@ -25,16 +25,32 @@
     "AI & Machine Learning"
   ],
   "primaryTopic": "AI & Machine Learning",
-  "duration": null,
-  "hasTranscript": false,
-  "transcriptWordCount": 0,
-  "availableLanguages": [],
-  "media": {},
+  "duration": 3701,
+  "hasTranscript": true,
+  "transcriptWordCount": 10778,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/291/1/87c56cc9-4510-46ba-b510-f150491357b7/cmaf.m3u8",
+    "downloadHLS": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/291/1/87c56cc9-4510-46ba-b510-f150491357b7/cmaf-download.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/291/1/87c56cc9-4510-46ba-b510-f150491357b7/downloads/meet-with-apple-291_sd.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/meet-with-apple/2025/291/1/87c56cc9-4510-46ba-b510-f150491357b7/downloads/meet-with-apple-291_hd.mp4",
+    "duration": 3701
+  },
   "codeSnippets": [],
   "resources": [],
   "path": "sessions/meet-with-apple/291-apple-intelligence-group-lab/",
   "files": {
     "metadata": "sessions/meet-with-apple/291-apple-intelligence-group-lab/metadata.json",
-    "readme": "sessions/meet-with-apple/291-apple-intelligence-group-lab/README.md"
+    "readme": "sessions/meet-with-apple/291-apple-intelligence-group-lab/README.md",
+    "transcript": "sessions/meet-with-apple/291-apple-intelligence-group-lab/transcript.md",
+    "transcriptJSON": "sessions/meet-with-apple/291-apple-intelligence-group-lab/transcript.json"
   }
 }

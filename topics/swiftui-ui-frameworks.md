@@ -14,9 +14,9 @@
 - [SwiftUI essentials](../sessions/meet-with-apple/269-swiftui-essentials/README.md)
 - [SwiftUI in motion](../sessions/meet-with-apple/272-swiftui-in-motion/README.md)
 - [iPhone Duo Group Lab](../sessions/meet-with-apple/287-iphone-duo-group-lab/README.md)
-- [iPhone Duo Group Lab](../sessions/meet-with-apple/288-iphone-duo-group-lab/README.md)
-- [iPhone Duo Group Lab](../sessions/meet-with-apple/285-iphone-duo-group-lab/README.md)
 - [iPhone Duo Group Lab](../sessions/meet-with-apple/286-iphone-duo-group-lab/README.md)
+- [iPhone Duo Group Lab](../sessions/meet-with-apple/285-iphone-duo-group-lab/README.md)
+- [iPhone Duo Group Lab](../sessions/meet-with-apple/288-iphone-duo-group-lab/README.md)
 
 ### Tech Talks
 
@@ -42,8 +42,8 @@
 - [Modernize your UIKit app](../sessions/wwdc2026/278-modernize-your-uikit-app/README.md)
 - [Read between the strokes with PencilKit](../sessions/wwdc2026/203-read-between-the-strokes-with-pencilkit/README.md)
 - [Refine accessibility for custom controls](../sessions/wwdc2026/220-refine-accessibility-for-custom-controls/README.md)
-- [SwiftUI Group Lab](../sessions/wwdc2026/8006-swiftui-group-lab/README.md)
 - [SwiftUI Group Lab](../sessions/wwdc2026/8120-swiftui-group-lab/README.md)
+- [SwiftUI Group Lab](../sessions/wwdc2026/8006-swiftui-group-lab/README.md)
 - [SwiftUI for Beginners Group Lab](../sessions/wwdc2026/8002-swiftui-for-beginners-group-lab/README.md)
 - [Unwrap PaperKit](../sessions/wwdc2026/372-unwrap-paperkit/README.md)
 - [Use SwiftUI with AppKit and UIKit](../sessions/wwdc2026/272-use-swiftui-with-appkit-and-uikit/README.md)

@@ -3,6 +3,8 @@
 1374 sessions.
 
 - [AllTrails: Momentum without a rewrite](../sessions/meet-with-apple/274-alltrails-momentum-without-a-rewrite/README.md) — Meet with Apple
+- [Apple Intelligence Group Lab](../sessions/meet-with-apple/291-apple-intelligence-group-lab/README.md) — Meet with Apple
+- [Apple Intelligence Group Lab](../sessions/meet-with-apple/290-apple-intelligence-group-lab/README.md) — Meet with Apple
 - [Boost your app’s speed and efficiency](../sessions/meet-with-apple/284-boost-your-app-s-speed-and-efficiency/README.md) — Meet with Apple
 - [Code-along: Experiment with coding intelligence in Xcode 26](../sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/README.md) — Meet with Apple
 - [Discover what’s next: The biggest updates from WWDC26](../sessions/meet-with-apple/277-discover-what-s-next-the-biggest-updates-from-wwdc26/README.md) — Meet with Apple
@@ -12,9 +14,9 @@
 - [Q&A: Swift concurrency](../sessions/meet-with-apple/276-q-a-swift-concurrency/README.md) — Meet with Apple
 - [SwiftUI foundations: Build great apps with SwiftUI](../sessions/meet-with-apple/267-swiftui-foundations-build-great-apps-with-swiftui/README.md) — Meet with Apple
 - [iPhone Duo Group Lab](../sessions/meet-with-apple/287-iphone-duo-group-lab/README.md) — Meet with Apple
-- [iPhone Duo Group Lab](../sessions/meet-with-apple/288-iphone-duo-group-lab/README.md) — Meet with Apple
-- [iPhone Duo Group Lab](../sessions/meet-with-apple/285-iphone-duo-group-lab/README.md) — Meet with Apple
 - [iPhone Duo Group Lab](../sessions/meet-with-apple/286-iphone-duo-group-lab/README.md) — Meet with Apple
+- [iPhone Duo Group Lab](../sessions/meet-with-apple/285-iphone-duo-group-lab/README.md) — Meet with Apple
+- [iPhone Duo Group Lab](../sessions/meet-with-apple/288-iphone-duo-group-lab/README.md) — Meet with Apple
 - [Accelerate your machine learning workloads with the M5 and A19 GPUs](../sessions/tech-talks/111432-accelerate-your-machine-learning-workloads-with-the-m5-and-a/README.md) — Tech Talks
 - [Boost your graphics performance with the M5 and A19 GPUs](../sessions/tech-talks/111431-boost-your-graphics-performance-with-the-m5-and-a19-gpus/README.md) — Tech Talks
 - [Build a great camera experience for iPhone Duo](../sessions/tech-talks/111465-build-a-great-camera-experience-for-iphone-duo/README.md) — Tech Talks
@@ -129,8 +131,6 @@
 - [WidgetKit foundations](../sessions/wwdc2026/277-widgetkit-foundations/README.md) — WWDC26
 - [Xcode, agents, and you](../sessions/wwdc2026/259-xcode-agents-and-you/README.md) — WWDC26
 - [Apple Arcade: From concept to catalog](../sessions/meet-with-apple/244-apple-arcade-from-concept-to-catalog/README.md) — Meet with Apple
-- [Apple Intelligence Group Lab](../sessions/meet-with-apple/291-apple-intelligence-group-lab/README.md) — Meet with Apple
-- [Apple Intelligence Group Lab](../sessions/meet-with-apple/290-apple-intelligence-group-lab/README.md) — Meet with Apple
 - [Boost discoverability and engagement with the Apple Games app](../sessions/meet-with-apple/248-boost-discoverability-and-engagement-with-the-apple-games-ap/README.md) — Meet with Apple
 - [Bring your PC and console games to Mac](../sessions/meet-with-apple/241-bring-your-pc-and-console-games-to-mac/README.md) — Meet with Apple
 - [Chart your game's course to Apple platforms](../sessions/meet-with-apple/239-chart-your-game-s-course-to-apple-platforms/README.md) — Meet with Apple

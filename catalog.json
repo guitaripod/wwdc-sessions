@@ -2,15 +2,15 @@
   "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/catalog.schema.json",
   "schemaVersion": 1,
   "builderVersion": 2,
-  "generatedAt": "2026-11-10T01:55:16+00:00",
-  "sourceUpdated": "2026-11-09T10:20:06-08:00",
+  "generatedAt": "2026-11-10T23:57:39+00:00",
+  "sourceUpdated": "2026-11-10T15:46:16-08:00",
   "source": "Apple WWDC developer-video feeds (resolved via api2024.wwdc.io)",
   "rawBase": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master",
   "license": "Content © Apple Inc. Tooling under MIT (see LICENSE/NOTICE).",
   "counts": {
     "events": 15,
-    "sessions": 1669,
-    "transcripts": 1582
+    "sessions": 1670,
+    "transcripts": 1584
   },
   "links": {
     "events": "events.json",
@@ -48,8 +48,8 @@
       "name": "Meet with Apple",
       "year": 2025,
       "startTime": "2025-07-10T10:00:00-07:00",
-      "sessionCount": 72,
-      "transcriptCount": 66,
+      "sessionCount": 73,
+      "transcriptCount": 68,
       "index": "events/meet-with-apple/index.md",
       "indexJSON": "events/meet-with-apple/index.json"
     },
@@ -1001,6 +1001,86 @@
       "codeSnippetCount": 0,
       "path": "sessions/meet-with-apple/288-iphone-duo-group-lab/",
       "description": "Connect with Apple engineers and designers online to ask questions, get advice, and follow the discussion about creating and updating apps for iPhone Duo. In this one-hour event, you’ll learn how to adapt your layouts across displays and poses, work with the hinge, support Split View multitasking, and build great camera experiences."
+    },
+    {
+      "id": "meet-with-apple-290",
+      "event": "meet-with-apple",
+      "year": 2026,
+      "eventContentId": 290,
+      "title": "Apple Intelligence Group Lab",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/290",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/290",
+      "duration": 3653,
+      "publishedAt": "2026-11-10T00:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "primaryTopic": "AI & Machine Learning",
+      "topics": [
+        "AI & Machine Learning"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 10612,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/290-apple-intelligence-group-lab/",
+      "description": "Connect with Apple engineers online to ask questions, get advice, and follow the discussion about App Intents and Siri AI, the Foundation Models framework, and more."
+    },
+    {
+      "id": "meet-with-apple-291",
+      "event": "meet-with-apple",
+      "year": 2026,
+      "eventContentId": 291,
+      "title": "Apple Intelligence Group Lab",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/291",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/291",
+      "duration": 3701,
+      "publishedAt": "2026-11-10T00:00:00-08:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "visionOS",
+        "watchOS"
+      ],
+      "primaryTopic": "AI & Machine Learning",
+      "topics": [
+        "AI & Machine Learning"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 10778,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/291-apple-intelligence-group-lab/",
+      "description": "Connect with Apple engineers online to ask questions, get advice, and follow the discussion about App Intents and Siri AI, the Foundation Models framework, and more."
     },
     {
       "id": "tech-talks-111427",
@@ -8969,27 +9049,22 @@
       "description": "In this session, you'll learn how indie developer Tucker MacDonald updated his tide and marine weather app for the new design system and extended his designs and custom elements across iOS, iPadOS, watchOS, and macOS. This session was originally presented as part of the Meet with Apple activity “Showcase: Learn how apps are integrating the new design and Liquid Glass” Watch the full video for more insights and related sessions."
     },
     {
-      "id": "meet-with-apple-290",
+      "id": "meet-with-apple-294",
       "event": "meet-with-apple",
       "year": 2025,
-      "eventContentId": 290,
-      "title": "Apple Intelligence Group Lab",
+      "eventContentId": 294,
+      "title": "Create immersive media experiences for spatial computing",
       "type": "Video",
-      "url": "https://developer.apple.com/videos/play/meet-with-apple/290",
-      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/290",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/294",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/294",
       "duration": null,
       "publishedAt": null,
       "platforms": [
-        "iOS",
-        "iPadOS",
-        "macOS",
-        "tvOS",
-        "visionOS",
-        "watchOS"
+        "visionOS"
       ],
-      "primaryTopic": "AI & Machine Learning",
+      "primaryTopic": "Spatial Computing",
       "topics": [
-        "AI & Machine Learning"
+        "Spatial Computing"
       ],
       "keywords": [],
       "hasTranscript": false,
@@ -8997,40 +9072,8 @@
       "availableLanguages": [],
       "resourceCount": 0,
       "codeSnippetCount": 0,
-      "path": "sessions/meet-with-apple/290-apple-intelligence-group-lab/",
-      "description": "Connect with Apple engineers online to ask questions, get advice, and follow the discussion about App Intents and Siri AI, the Foundation Models framework, and more."
-    },
-    {
-      "id": "meet-with-apple-291",
-      "event": "meet-with-apple",
-      "year": 2025,
-      "eventContentId": 291,
-      "title": "Apple Intelligence Group Lab",
-      "type": "Video",
-      "url": "https://developer.apple.com/videos/play/meet-with-apple/291",
-      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/291",
-      "duration": null,
-      "publishedAt": null,
-      "platforms": [
-        "iOS",
-        "iPadOS",
-        "macOS",
-        "tvOS",
-        "visionOS",
-        "watchOS"
-      ],
-      "primaryTopic": "AI & Machine Learning",
-      "topics": [
-        "AI & Machine Learning"
-      ],
-      "keywords": [],
-      "hasTranscript": false,
-      "transcriptWordCount": 0,
-      "availableLanguages": [],
-      "resourceCount": 0,
-      "codeSnippetCount": 0,
-      "path": "sessions/meet-with-apple/291-apple-intelligence-group-lab/",
-      "description": "Connect with Apple engineers online to ask questions, get advice, and follow the discussion about App Intents and Siri AI, the Foundation Models framework, and more."
+      "path": "sessions/meet-with-apple/294-create-immersive-media-experiences-for-spatial-computing/",
+      "description": "Join us online to discover how Apple’s immersive and spatial formats are transforming storytelling across entertainment, marketing, enterprise, and live experiences. In this all-day event, you’ll connect with fellow creators, explore the latest tools and platform updates, and get a preview of how to produce live events in Apple Immersive. Whether you’re already producing immersive video or just starting out, you’ll leave inspired to build your next project."
     },
     {
       "id": "wwdc2025-101",

@@ -1,11 +1,11 @@
 # Meet with Apple Sessions
 
-72 sessions · 66 with transcripts.
+73 sessions · 68 with transcripts.
 
 ## AI & Machine Learning
 
-- [Apple Intelligence Group Lab](../../sessions/meet-with-apple/291-apple-intelligence-group-lab/README.md)
-- [Apple Intelligence Group Lab](../../sessions/meet-with-apple/290-apple-intelligence-group-lab/README.md)
+- [Apple Intelligence Group Lab](../../sessions/meet-with-apple/291-apple-intelligence-group-lab/README.md) · 📝
+- [Apple Intelligence Group Lab](../../sessions/meet-with-apple/290-apple-intelligence-group-lab/README.md) · 📝
 - [Code along with the Foundation Models framework](../../sessions/meet-with-apple/205-code-along-with-the-foundation-models-framework/README.md) · 📝
 - [Code-along: Experiment with coding intelligence in Xcode 26](../../sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/README.md) · 📝
 
@@ -13,8 +13,8 @@
 
 - [Apple Immersive Video-enabled workflows | Blackmagic Design](../../sessions/meet-with-apple/226-apple-immersive-video-enabled-workflows-blackmagic-design/README.md) · 📝
 - [Dailies and mastering for Apple Immersive Video | Colorfront](../../sessions/meet-with-apple/227-dailies-and-mastering-for-apple-immersive-video-colorfront/README.md) · 📝
-- [IETF HLS Interest Day](../../sessions/meet-with-apple/207-ietf-hls-interest-day/README.md)
 - [IETF HLS Interest Day](../../sessions/meet-with-apple/283-ietf-hls-interest-day/README.md) · 📝
+- [IETF HLS Interest Day](../../sessions/meet-with-apple/207-ietf-hls-interest-day/README.md)
 - [Meet Apple Spatial Audio Format and APAC](../../sessions/meet-with-apple/223-meet-apple-spatial-audio-format-and-apac/README.md) · 📝
 - [Spatial Audio workflows for Apple Immersive Video](../../sessions/meet-with-apple/225-spatial-audio-workflows-for-apple-immersive-video/README.md) · 📝
 
@@ -32,9 +32,9 @@
 - [Liquid Glass showcase: Tide Guide](../../sessions/meet-with-apple/257-liquid-glass-showcase-tide-guide/README.md) · 📝
 - [Showcase: Learn how apps are integrating the new design and Liquid Glass](../../sessions/meet-with-apple/208-showcase-learn-how-apps-are-integrating-the-new-design-and-l/README.md) · 📝
 - [iPhone Duo Group Lab](../../sessions/meet-with-apple/287-iphone-duo-group-lab/README.md) · 📝
-- [iPhone Duo Group Lab](../../sessions/meet-with-apple/288-iphone-duo-group-lab/README.md) · 📝
-- [iPhone Duo Group Lab](../../sessions/meet-with-apple/285-iphone-duo-group-lab/README.md) · 📝
 - [iPhone Duo Group Lab](../../sessions/meet-with-apple/286-iphone-duo-group-lab/README.md) · 📝
+- [iPhone Duo Group Lab](../../sessions/meet-with-apple/285-iphone-duo-group-lab/README.md) · 📝
+- [iPhone Duo Group Lab](../../sessions/meet-with-apple/288-iphone-duo-group-lab/README.md) · 📝
 
 ## Developer Tools
 
@@ -85,6 +85,7 @@
 - [Build shared experiences for visionOS](../../sessions/meet-with-apple/221-build-shared-experiences-for-visionos/README.md) · 📝
 - [Build spatial experiences with RealityKit](../../sessions/meet-with-apple/220-build-spatial-experiences-with-realitykit/README.md) · 📝
 - [Capturing live events for Apple Immersive Video: Learnings from "Metallica"](../../sessions/meet-with-apple/231-capturing-live-events-for-apple-immersive-video-learnings-fr/README.md) · 📝
+- [Create immersive media experiences for spatial computing](../../sessions/meet-with-apple/294-create-immersive-media-experiences-for-spatial-computing/README.md)
 - [Create immersive media experiences for visionOS - Day 1](../../sessions/meet-with-apple/209-create-immersive-media-experiences-for-visionos-day-1/README.md) · 📝
 - [Create immersive media experiences for visionOS - Day 2](../../sessions/meet-with-apple/210-create-immersive-media-experiences-for-visionos-day-2/README.md) · 📝
 - [Create stories with immersive video and audio](../../sessions/meet-with-apple/218-create-stories-with-immersive-video-and-audio/README.md) · 📝
@@ -128,9 +129,9 @@
 - [SwiftUI essentials](../../sessions/meet-with-apple/269-swiftui-essentials/README.md) · 📝
 - [SwiftUI in motion](../../sessions/meet-with-apple/272-swiftui-in-motion/README.md) · 📝
 - [iPhone Duo Group Lab](../../sessions/meet-with-apple/287-iphone-duo-group-lab/README.md) · 📝
-- [iPhone Duo Group Lab](../../sessions/meet-with-apple/288-iphone-duo-group-lab/README.md) · 📝
-- [iPhone Duo Group Lab](../../sessions/meet-with-apple/285-iphone-duo-group-lab/README.md) · 📝
 - [iPhone Duo Group Lab](../../sessions/meet-with-apple/286-iphone-duo-group-lab/README.md) · 📝
+- [iPhone Duo Group Lab](../../sessions/meet-with-apple/285-iphone-duo-group-lab/README.md) · 📝
+- [iPhone Duo Group Lab](../../sessions/meet-with-apple/288-iphone-duo-group-lab/README.md) · 📝
 
 ## System Services
 

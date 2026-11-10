@@ -2,7 +2,7 @@
   "event": "meet-with-apple",
   "name": "Meet with Apple",
   "year": 2025,
-  "sessionCount": 72,
+  "sessionCount": 73,
   "sessions": [
     {
       "id": "meet-with-apple-201",
@@ -2563,14 +2563,14 @@
     {
       "id": "meet-with-apple-290",
       "event": "meet-with-apple",
-      "year": 2025,
+      "year": 2026,
       "eventContentId": 290,
       "title": "Apple Intelligence Group Lab",
       "type": "Video",
       "url": "https://developer.apple.com/videos/play/meet-with-apple/290",
       "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/290",
-      "duration": null,
-      "publishedAt": null,
+      "duration": 3653,
+      "publishedAt": "2026-11-10T00:00:00-08:00",
       "platforms": [
         "iOS",
         "iPadOS",
@@ -2584,9 +2584,17 @@
         "AI & Machine Learning"
       ],
       "keywords": [],
-      "hasTranscript": false,
-      "transcriptWordCount": 0,
-      "availableLanguages": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 10612,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
       "resourceCount": 0,
       "codeSnippetCount": 0,
       "path": "sessions/meet-with-apple/290-apple-intelligence-group-lab/",
@@ -2595,14 +2603,14 @@
     {
       "id": "meet-with-apple-291",
       "event": "meet-with-apple",
-      "year": 2025,
+      "year": 2026,
       "eventContentId": 291,
       "title": "Apple Intelligence Group Lab",
       "type": "Video",
       "url": "https://developer.apple.com/videos/play/meet-with-apple/291",
       "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/291",
-      "duration": null,
-      "publishedAt": null,
+      "duration": 3701,
+      "publishedAt": "2026-11-10T00:00:00-08:00",
       "platforms": [
         "iOS",
         "iPadOS",
@@ -2616,13 +2624,48 @@
         "AI & Machine Learning"
       ],
       "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 10778,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/291-apple-intelligence-group-lab/",
+      "description": "Connect with Apple engineers online to ask questions, get advice, and follow the discussion about App Intents and Siri AI, the Foundation Models framework, and more."
+    },
+    {
+      "id": "meet-with-apple-294",
+      "event": "meet-with-apple",
+      "year": 2025,
+      "eventContentId": 294,
+      "title": "Create immersive media experiences for spatial computing",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/294",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/294",
+      "duration": null,
+      "publishedAt": null,
+      "platforms": [
+        "visionOS"
+      ],
+      "primaryTopic": "Spatial Computing",
+      "topics": [
+        "Spatial Computing"
+      ],
+      "keywords": [],
       "hasTranscript": false,
       "transcriptWordCount": 0,
       "availableLanguages": [],
       "resourceCount": 0,
       "codeSnippetCount": 0,
-      "path": "sessions/meet-with-apple/291-apple-intelligence-group-lab/",
-      "description": "Connect with Apple engineers online to ask questions, get advice, and follow the discussion about App Intents and Siri AI, the Foundation Models framework, and more."
+      "path": "sessions/meet-with-apple/294-create-immersive-media-experiences-for-spatial-computing/",
+      "description": "Join us online to discover how Apple’s immersive and spatial formats are transforming storytelling across entertainment, marketing, enterprise, and live experiences. In this all-day event, you’ll connect with fellow creators, explore the latest tools and platform updates, and get a preview of how to produce live events in Apple Immersive. Whether you’re already producing immersive video or just starting out, you’ll leave inspired to build your next project."
     }
   ]
 }

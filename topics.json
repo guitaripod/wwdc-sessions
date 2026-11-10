@@ -8,6 +8,20 @@
       "sessionCount": 139,
       "sessions": [
         {
+          "id": "meet-with-apple-291",
+          "path": "sessions/meet-with-apple/291-apple-intelligence-group-lab/",
+          "title": "Apple Intelligence Group Lab",
+          "event": "meet-with-apple",
+          "hasTranscript": true
+        },
+        {
+          "id": "meet-with-apple-290",
+          "path": "sessions/meet-with-apple/290-apple-intelligence-group-lab/",
+          "title": "Apple Intelligence Group Lab",
+          "event": "meet-with-apple",
+          "hasTranscript": true
+        },
+        {
           "id": "meet-with-apple-268",
           "path": "sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/",
           "title": "Code-along: Experiment with coding intelligence in Xcode 26",
@@ -293,20 +307,6 @@
           "title": "What’s new in the Foundation Models framework",
           "event": "wwdc2026",
           "hasTranscript": true
-        },
-        {
-          "id": "meet-with-apple-291",
-          "path": "sessions/meet-with-apple/291-apple-intelligence-group-lab/",
-          "title": "Apple Intelligence Group Lab",
-          "event": "meet-with-apple",
-          "hasTranscript": false
-        },
-        {
-          "id": "meet-with-apple-290",
-          "path": "sessions/meet-with-apple/290-apple-intelligence-group-lab/",
-          "title": "Apple Intelligence Group Lab",
-          "event": "meet-with-apple",
-          "hasTranscript": false
         },
         {
           "id": "meet-with-apple-205",
@@ -5321,8 +5321,8 @@
           "hasTranscript": true
         },
         {
-          "id": "meet-with-apple-288",
-          "path": "sessions/meet-with-apple/288-iphone-duo-group-lab/",
+          "id": "meet-with-apple-286",
+          "path": "sessions/meet-with-apple/286-iphone-duo-group-lab/",
           "title": "iPhone Duo Group Lab",
           "event": "meet-with-apple",
           "hasTranscript": true
@@ -5335,8 +5335,8 @@
           "hasTranscript": true
         },
         {
-          "id": "meet-with-apple-286",
-          "path": "sessions/meet-with-apple/286-iphone-duo-group-lab/",
+          "id": "meet-with-apple-288",
+          "path": "sessions/meet-with-apple/288-iphone-duo-group-lab/",
           "title": "iPhone Duo Group Lab",
           "event": "meet-with-apple",
           "hasTranscript": true
@@ -13445,7 +13445,7 @@
     {
       "topic": "Spatial Computing",
       "slug": "spatial-computing",
-      "sessionCount": 163,
+      "sessionCount": 164,
       "sessions": [
         {
           "id": "wwdc2026-338",
@@ -13593,6 +13593,13 @@
           "title": "Capturing live events for Apple Immersive Video: Learnings from \"Metallica\"",
           "event": "meet-with-apple",
           "hasTranscript": true
+        },
+        {
+          "id": "meet-with-apple-294",
+          "path": "sessions/meet-with-apple/294-create-immersive-media-experiences-for-spatial-computing/",
+          "title": "Create immersive media experiences for spatial computing",
+          "event": "meet-with-apple",
+          "hasTranscript": false
         },
         {
           "id": "meet-with-apple-209",
@@ -15716,8 +15723,8 @@
           "hasTranscript": true
         },
         {
-          "id": "meet-with-apple-288",
-          "path": "sessions/meet-with-apple/288-iphone-duo-group-lab/",
+          "id": "meet-with-apple-286",
+          "path": "sessions/meet-with-apple/286-iphone-duo-group-lab/",
           "title": "iPhone Duo Group Lab",
           "event": "meet-with-apple",
           "hasTranscript": true
@@ -15730,8 +15737,8 @@
           "hasTranscript": true
         },
         {
-          "id": "meet-with-apple-286",
-          "path": "sessions/meet-with-apple/286-iphone-duo-group-lab/",
+          "id": "meet-with-apple-288",
+          "path": "sessions/meet-with-apple/288-iphone-duo-group-lab/",
           "title": "iPhone Duo Group Lab",
           "event": "meet-with-apple",
           "hasTranscript": true
@@ -15870,15 +15877,15 @@
           "hasTranscript": true
         },
         {
-          "id": "wwdc2026-8006",
-          "path": "sessions/wwdc2026/8006-swiftui-group-lab/",
+          "id": "wwdc2026-8120",
+          "path": "sessions/wwdc2026/8120-swiftui-group-lab/",
           "title": "SwiftUI Group Lab",
           "event": "wwdc2026",
           "hasTranscript": true
         },
         {
-          "id": "wwdc2026-8120",
-          "path": "sessions/wwdc2026/8120-swiftui-group-lab/",
+          "id": "wwdc2026-8006",
+          "path": "sessions/wwdc2026/8006-swiftui-group-lab/",
           "title": "SwiftUI Group Lab",
           "event": "wwdc2026",
           "hasTranscript": true

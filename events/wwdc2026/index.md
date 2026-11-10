@@ -266,8 +266,8 @@
 - [Modernize your UIKit app](../../sessions/wwdc2026/278-modernize-your-uikit-app/README.md) · 📝
 - [Read between the strokes with PencilKit](../../sessions/wwdc2026/203-read-between-the-strokes-with-pencilkit/README.md) · 📝
 - [Refine accessibility for custom controls](../../sessions/wwdc2026/220-refine-accessibility-for-custom-controls/README.md) · 📝
-- [SwiftUI Group Lab](../../sessions/wwdc2026/8006-swiftui-group-lab/README.md) · 📝
 - [SwiftUI Group Lab](../../sessions/wwdc2026/8120-swiftui-group-lab/README.md) · 📝
+- [SwiftUI Group Lab](../../sessions/wwdc2026/8006-swiftui-group-lab/README.md) · 📝
 - [SwiftUI for Beginners Group Lab](../../sessions/wwdc2026/8002-swiftui-for-beginners-group-lab/README.md) · 📝
 - [Unwrap PaperKit](../../sessions/wwdc2026/372-unwrap-paperkit/README.md) · 📝
 - [Use SwiftUI with AppKit and UIKit](../../sessions/wwdc2026/272-use-swiftui-with-appkit-and-uikit/README.md) · 📝
