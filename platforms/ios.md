@@ -3,8 +3,8 @@
 1374 sessions.
 
 - [AllTrails: Momentum without a rewrite](../sessions/meet-with-apple/274-alltrails-momentum-without-a-rewrite/README.md) — Meet with Apple
-- [Apple Intelligence Group Lab](../sessions/meet-with-apple/291-apple-intelligence-group-lab/README.md) — Meet with Apple
 - [Apple Intelligence Group Lab](../sessions/meet-with-apple/290-apple-intelligence-group-lab/README.md) — Meet with Apple
+- [Apple Intelligence Group Lab](../sessions/meet-with-apple/291-apple-intelligence-group-lab/README.md) — Meet with Apple
 - [Boost your app’s speed and efficiency](../sessions/meet-with-apple/284-boost-your-app-s-speed-and-efficiency/README.md) — Meet with Apple
 - [Code-along: Experiment with coding intelligence in Xcode 26](../sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/README.md) — Meet with Apple
 - [Discover what’s next: The biggest updates from WWDC26](../sessions/meet-with-apple/277-discover-what-s-next-the-biggest-updates-from-wwdc26/README.md) — Meet with Apple

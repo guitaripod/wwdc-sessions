@@ -4,8 +4,8 @@
 
 ## AI & Machine Learning
 
-- [Apple Intelligence Group Lab](../../sessions/meet-with-apple/291-apple-intelligence-group-lab/README.md) · 📝
 - [Apple Intelligence Group Lab](../../sessions/meet-with-apple/290-apple-intelligence-group-lab/README.md) · 📝
+- [Apple Intelligence Group Lab](../../sessions/meet-with-apple/291-apple-intelligence-group-lab/README.md) · 📝
 - [Code along with the Foundation Models framework](../../sessions/meet-with-apple/205-code-along-with-the-foundation-models-framework/README.md) · 📝
 - [Code-along: Experiment with coding intelligence in Xcode 26](../../sessions/meet-with-apple/268-code-along-experiment-with-coding-intelligence-in-xcode-26/README.md) · 📝
 

@@ -2,8 +2,8 @@
 
 367 sessions.
 
-- [Apple Intelligence Group Lab](../sessions/meet-with-apple/291-apple-intelligence-group-lab/README.md) — Meet with Apple
 - [Apple Intelligence Group Lab](../sessions/meet-with-apple/290-apple-intelligence-group-lab/README.md) — Meet with Apple
+- [Apple Intelligence Group Lab](../sessions/meet-with-apple/291-apple-intelligence-group-lab/README.md) — Meet with Apple
 - [Boost your app’s speed and efficiency](../sessions/meet-with-apple/284-boost-your-app-s-speed-and-efficiency/README.md) — Meet with Apple
 - [Discover what’s next: The biggest updates from WWDC26](../sessions/meet-with-apple/277-discover-what-s-next-the-biggest-updates-from-wwdc26/README.md) — Meet with Apple
 - [Fortify your app: Essential strategies to strengthen security](../sessions/meet-with-apple/265-fortify-your-app-essential-strategies-to-strengthen-security/README.md) — Meet with Apple
