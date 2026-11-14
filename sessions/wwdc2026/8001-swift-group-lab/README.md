@@ -19,7 +19,7 @@ Join us online for a deep dive into WWDC26 with Apple engineers and designers to
 ## Transcript
 
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
-(11,420 words)
+(11,136 words)
 
 ## Video
 
