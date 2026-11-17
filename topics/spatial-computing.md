@@ -3,6 +3,10 @@
 164 sessions across all events.
 
 
+### Meet with Apple
+
+- [Create immersive media experiences for spatial computing](../sessions/meet-with-apple/294-create-immersive-media-experiences-for-spatial-computing/README.md)
+
 ### WWDC26
 
 - [Build live production tools for Apple Immersive Video](../sessions/wwdc2026/338-build-live-production-tools-for-apple-immersive-video/README.md)
@@ -29,7 +33,6 @@
 - [Build shared experiences for visionOS](../sessions/meet-with-apple/221-build-shared-experiences-for-visionos/README.md)
 - [Build spatial experiences with RealityKit](../sessions/meet-with-apple/220-build-spatial-experiences-with-realitykit/README.md)
 - [Capturing live events for Apple Immersive Video: Learnings from "Metallica"](../sessions/meet-with-apple/231-capturing-live-events-for-apple-immersive-video-learnings-fr/README.md)
-- [Create immersive media experiences for spatial computing](../sessions/meet-with-apple/294-create-immersive-media-experiences-for-spatial-computing/README.md)
 - [Create immersive media experiences for visionOS - Day 1](../sessions/meet-with-apple/209-create-immersive-media-experiences-for-visionos-day-1/README.md)
 - [Create immersive media experiences for visionOS - Day 2](../sessions/meet-with-apple/210-create-immersive-media-experiences-for-visionos-day-2/README.md)
 - [Create stories with immersive video and audio](../sessions/meet-with-apple/218-create-stories-with-immersive-video-and-audio/README.md)
