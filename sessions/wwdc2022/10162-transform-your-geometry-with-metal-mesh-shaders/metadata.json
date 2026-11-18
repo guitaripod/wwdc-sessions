@@ -56,7 +56,7 @@
   "codeSnippets": [
     {
       "title": "Object shader (MSL)",
-      "language": "cpp",
+      "language": "metal",
       "startTimeSeconds": 493,
       "code": "[[object]] \nvoid objectShader(object_data CurvePayload *payloadOutput [[payload]],\n                             const device void *inputData [[buffer(0)]], \n                             uint hairID [[thread_index_in_threadgroup]],\n                             uint triangleID [[threadgroup_position_in_grid]],\n                             mesh_grid_properties mgp)\n{\n    if (hairID < kHairsPerBlock)\n       payloadOutput[hairID] = generateCurveData(inputData, hairID, triangleID);\n    if (hairID == 0)\n       mgp.set_threadgroups_per_grid(uint3(kHairPerBlockX, kHairPerBlockY, 1));\n}"
     },
@@ -68,13 +68,13 @@
     },
     {
       "title": "Defining a Metal Mesh",
-      "language": "cpp",
+      "language": "metal",
       "startTimeSeconds": 566,
       "code": "struct VertexData    { float4 position [[position]]; };\nstruct PrimitiveData { float4 color; };\n\nusing triangle_mesh_t = metal::mesh<\n                                    VertexData,               // Vertex type\n                                    PrimitiveData,            // Primitive type\n                                    10,                       // Maximum vertices\n                                    6,                        // Maximum primitives\n                                    metal::topology::triangle // Topology\n>;\n\n[[mesh]] \nvoid myMeshShader(triangle_mesh_t outputMesh, ...);"
     },
     {
       "title": "Mesh Shader (MSL)",
-      "language": "cpp",
+      "language": "metal",
       "startTimeSeconds": 676,
       "code": "[[mesh]] void myMeshShader(triangle_mesh_t outputMesh,\n                         uint tid [[thread_index_in_threadgroup]])\n{\n\n    if (tid < kVertexCount) \n        outputMesh.set_vertex(tid, calculateVertex(tid));\n\n    if (tid < kIndexCount) \n        outputMesh.set_index(tid, calculateIndex(tid));\n\n    if (tid < kPrimitiveCount)\n        outputMesh.set_primitive(tid, calculatePrimitive(tid));\n\nif (tid == 0)\n    outputMesh.set_primitive_count(kPrimitiveCount);\n\n}"
     },

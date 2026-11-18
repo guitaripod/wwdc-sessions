@@ -1,0 +1,62 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2018-237",
+  "event": "wwdc2018",
+  "eventName": "WWDC18",
+  "year": 2018,
+  "eventContentId": 237,
+  "title": "Quick Look Previews from the Ground Up",
+  "description": "Quicklook Previews are an easy way preview documents in your app. Hear about the basics as well as some advanced implementations. Learn to present a variety of types of documents from within your app without reinventing the wheel, and make sure your custom file format works great with the built-in support offered by iOS.",
+  "url": "https://developer.apple.com/videos/play/wwdc2018/237",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2018/237",
+  "type": "Video",
+  "publishedAt": "2018-06-05T17:26:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 2543,
+  "hasTranscript": true,
+  "transcriptWordCount": 5468,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/237fjfpla4kbr1m/237/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/237fjfpla4kbr1m/237/237_sd_quick_look_previews_from_the_ground_up.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/237fjfpla4kbr1m/237/237_hd_quick_look_previews_from_the_ground_up.mp4",
+    "duration": 2543
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Building a Document Browser App for Custom File Formats",
+      "url": "https://developer.apple.com/documentation/uikit/view_controllers/building_a_document_browser_app_for_custom_file_formats",
+      "type": "samplecode",
+      "description": "Implement a custom document file format to manage user interactions with files on different cloud storage providers.",
+      "sosumiURL": "https://sosumi.ai/documentation/uikit/view_controllers/building_a_document_browser_app_for_custom_file_formats",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/uikit/view_controllers/building_a_document_browser_app_for_custom_file_formats.json"
+    }
+  ],
+  "path": "sessions/wwdc2018/237-quick-look-previews-from-the-ground-up/",
+  "files": {
+    "metadata": "sessions/wwdc2018/237-quick-look-previews-from-the-ground-up/metadata.json",
+    "readme": "sessions/wwdc2018/237-quick-look-previews-from-the-ground-up/README.md",
+    "transcript": "sessions/wwdc2018/237-quick-look-previews-from-the-ground-up/transcript.md",
+    "transcriptJSON": "sessions/wwdc2018/237-quick-look-previews-from-the-ground-up/transcript.json"
+  }
+}

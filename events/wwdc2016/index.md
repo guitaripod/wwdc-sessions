@@ -1,6 +1,6 @@
 # WWDC16 Sessions
 
-17 sessions · 16 with transcripts.
+19 sessions · 18 with transcripts.
 
 ## App Services
 
@@ -23,10 +23,12 @@
 - [Advanced Metal Shader Optimization](../../sessions/wwdc2016/606-advanced-metal-shader-optimization/README.md) · 📝
 - [Concurrent Programming With GCD in Swift 3](../../sessions/wwdc2016/720-concurrent-programming-with-gcd-in-swift-3/README.md) · 📝
 - [System Trace in Depth](../../sessions/wwdc2016/411-system-trace-in-depth/README.md) · 📝
+- [Using Time Profiler in Instruments](../../sessions/wwdc2016/418-using-time-profiler-in-instruments/README.md) · 📝
 
 ## Graphics & Games
 
 - [Advanced Metal Shader Optimization](../../sessions/wwdc2016/606-advanced-metal-shader-optimization/README.md) · 📝
+- [Advances in SceneKit Rendering](../../sessions/wwdc2016/609-advances-in-scenekit-rendering/README.md) · 📝
 
 ## Maps & Location
 

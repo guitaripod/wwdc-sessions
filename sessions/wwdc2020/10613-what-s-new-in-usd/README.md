@@ -19,7 +19,7 @@ Discover proposed schema and structure updates to the Universal Scene Descriptio
 ## Transcript
 
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
-(4,081 words)
+(4,101 words)
 
 ## Code Snippets
 

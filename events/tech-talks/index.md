@@ -1,6 +1,6 @@
 # Tech Talks Sessions
 
-107 sessions · 106 with transcripts.
+106 sessions · 105 with transcripts.
 
 ## AI & Machine Learning
 
@@ -18,7 +18,6 @@
 - [Discover the Journaling Suggestions API](../../sessions/tech-talks/111384-discover-the-journaling-suggestions-api/README.md) · 📝
 - [Get started with Apple Pay on the Web](../../sessions/tech-talks/111381-get-started-with-apple-pay-on-the-web/README.md) · 📝
 - [Implement Apple Pay and order management](../../sessions/tech-talks/110336-implement-apple-pay-and-order-management/README.md) · 📝
-- [Integrate SiriKit Media Intents with HomePod](../../sessions/tech-talks/10854-integrate-sirikit-media-intents-with-homepod/README.md) · 📝
 - [Migrate custom intents to App Intents](../../sessions/tech-talks/10168-migrate-custom-intents-to-app-intents/README.md) · 📝
 - [What's New in Core NFC](../../sessions/tech-talks/702-what-s-new-in-core-nfc/README.md) · 📝
 - [What's New in Sharing](../../sessions/tech-talks/210-what-s-new-in-sharing/README.md) · 📝

@@ -36,7 +36,7 @@ Meet Metal mesh shaders — a modern and flexible pipeline in Metal for GPU-driv
 
 ### Object shader (MSL) — [8:13]
 
-```cpp
+```metal
 [[object]] 
 void objectShader(object_data CurvePayload *payloadOutput [[payload]],
                              const device void *inputData [[buffer(0)]], 
@@ -62,7 +62,7 @@ meshPipelineDescriptor.maxTotalThreadsPerObjectThreadgroup = hairsPerBlock
 
 ### Defining a Metal Mesh — [9:26]
 
-```cpp
+```metal
 struct VertexData    { float4 position [[position]]; };
 struct PrimitiveData { float4 color; };
 
@@ -80,7 +80,7 @@ void myMeshShader(triangle_mesh_t outputMesh, ...);
 
 ### Mesh Shader (MSL) — [11:16]
 
-```cpp
+```metal
 [[mesh]] void myMeshShader(triangle_mesh_t outputMesh,
                          uint tid [[thread_index_in_threadgroup]])
 {

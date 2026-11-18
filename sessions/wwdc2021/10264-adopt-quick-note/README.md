@@ -31,7 +31,7 @@ Learn how you can link your app to Quick Note and help people quickly connect yo
 
 ## Code Snippets
 
-### How to adopt NSUserActivity to support Quick Note — [16:57]
+### How to adopt NSUserActivity to support Quick Note — [6:13]
 
 ```swift
 // Create the NSUserActivity and describe the content or user activity
@@ -51,7 +51,7 @@ activity.userInfo = ["myKey": …]
 viewController.userActivity = activity
 ```
 
-### Handle NSUserActivity continuation in your window scene delegate or app delegate - iOS — [17:02]
+### Handle NSUserActivity continuation in your window scene delegate or app delegate - iOS — [7:16]
 
 ```swift
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -72,7 +72,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 }
 ```
 
-### Handle NSUserActivity continuation in your window scene delegate or app delegate - macOS — [17:06]
+### Handle NSUserActivity continuation in your window scene delegate or app delegate - macOS — [8:04]
 
 ```swift
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -95,7 +95,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 }
 ```
 
-### Improve performance with needsSave — [17:26]
+### Attach to responders — [11:48]
+
+```swift
+viewController.userActivity = activity
+// or
+view.userActivity = activity
+```
+
+### becomeCurrent()/resignCurrent() — [12:02]
+
+```swift
+activity.becomeCurrent()
+activity.resignCurrent()
+```
+
+### Improve performance with needsSave — [12:44]
 
 ```swift
 activity.needsSave = true

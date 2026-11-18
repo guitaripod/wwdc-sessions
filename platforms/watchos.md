@@ -1,6 +1,6 @@
 # watchOS Sessions
 
-676 sessions.
+681 sessions.
 
 - [AllTrails: Momentum without a rewrite](../sessions/meet-with-apple/274-alltrails-momentum-without-a-rewrite/README.md) — Meet with Apple
 - [Apple Intelligence Group Lab](../sessions/meet-with-apple/290-apple-intelligence-group-lab/README.md) — Meet with Apple
@@ -656,6 +656,7 @@
 - [Updating for Apple Watch Series 3](../sessions/tech-talks/203-updating-for-apple-watch-series-3/README.md) — Tech Talks
 - [60-Second Prototyping](../sessions/wwdc2017/818-60-second-prototyping/README.md) — WWDC17
 - [App Icon Design](../sessions/wwdc2017/822-app-icon-design/README.md) — WWDC17
+- [App Startup Time: Past, Present, and Future](../sessions/wwdc2017/413-app-startup-time-past-present-and-future/README.md) — WWDC17
 - [Communication Between Designers and Engineers](../sessions/wwdc2017/809-communication-between-designers-and-engineers/README.md) — WWDC17
 - [Convenience for You is Independence for Me](../sessions/wwdc2017/110-convenience-for-you-is-independence-for-me/README.md) — WWDC17
 - [Designing Sound](../sessions/wwdc2017/803-designing-sound/README.md) — WWDC17
@@ -666,12 +667,16 @@
 - [Modernizing Grand Central Dispatch Usage](../sessions/wwdc2017/706-modernizing-grand-central-dispatch-usage/README.md) — WWDC17
 - [Rich Notifications](../sessions/wwdc2017/817-rich-notifications/README.md) — WWDC17
 - [SceneKit: What's New](../sessions/wwdc2017/604-scenekit-what-s-new/README.md) — WWDC17
+- [What’s New in Core Bluetooth](../sessions/wwdc2017/712-what-s-new-in-core-bluetooth/README.md) — WWDC17
+- [Advances in SceneKit Rendering](../sessions/wwdc2016/609-advances-in-scenekit-rendering/README.md) — WWDC16
 - [Concurrent Programming With GCD in Swift 3](../sessions/wwdc2016/720-concurrent-programming-with-gcd-in-swift-3/README.md) — WWDC16
 - [Protocol and Value Oriented Programming in UIKit Apps](../sessions/wwdc2016/419-protocol-and-value-oriented-programming-in-uikit-apps/README.md) — WWDC16
 - [System Trace in Depth](../sessions/wwdc2016/411-system-trace-in-depth/README.md) — WWDC16
 - [Understanding Swift Performance](../sessions/wwdc2016/416-understanding-swift-performance/README.md) — WWDC16
+- [Using Time Profiler in Instruments](../sessions/wwdc2016/418-using-time-profiler-in-instruments/README.md) — WWDC16
 - [Advanced Debugging and the Address Sanitizer](../sessions/wwdc2015/413-advanced-debugging-and-the-address-sanitizer/README.md) — WWDC15
 - [Apple Watch Design Tips and Tricks](../sessions/wwdc2015/805-apple-watch-design-tips-and-tricks/README.md) — WWDC15
+- [Building Better Apps with Value Types in Swift](../sessions/wwdc2015/414-building-better-apps-with-value-types-in-swift/README.md) — WWDC15
 - [Designing for Apple Watch](../sessions/wwdc2015/802-designing-for-apple-watch/README.md) — WWDC15
 - [Privacy and Your App](../sessions/wwdc2015/703-privacy-and-your-app/README.md) — WWDC15
 - [Protocol-Oriented Programming in Swift](../sessions/wwdc2015/408-protocol-oriented-programming-in-swift/README.md) — WWDC15

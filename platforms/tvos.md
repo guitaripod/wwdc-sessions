@@ -1,6 +1,6 @@
 # tvOS Sessions
 
-729 sessions.
+735 sessions.
 
 - [Apple Intelligence Group Lab](../sessions/meet-with-apple/290-apple-intelligence-group-lab/README.md) — Meet with Apple
 - [Apple Intelligence Group Lab](../sessions/meet-with-apple/291-apple-intelligence-group-lab/README.md) — Meet with Apple
@@ -705,6 +705,7 @@
 - [60-Second Prototyping](../sessions/wwdc2017/818-60-second-prototyping/README.md) — WWDC17
 - [Advances in HTTP Live Streaming](../sessions/wwdc2017/504-advances-in-http-live-streaming/README.md) — WWDC17
 - [App Icon Design](../sessions/wwdc2017/822-app-icon-design/README.md) — WWDC17
+- [App Startup Time: Past, Present, and Future](../sessions/wwdc2017/413-app-startup-time-past-present-and-future/README.md) — WWDC17
 - [Communication Between Designers and Engineers](../sessions/wwdc2017/809-communication-between-designers-and-engineers/README.md) — WWDC17
 - [Convenience for You is Independence for Me](../sessions/wwdc2017/110-convenience-for-you-is-independence-for-me/README.md) — WWDC17
 - [Deep Linking on tvOS](../sessions/wwdc2017/246-deep-linking-on-tvos/README.md) — WWDC17
@@ -718,16 +719,21 @@
 - [HLS Authoring Update](../sessions/wwdc2017/515-hls-authoring-update/README.md) — WWDC17
 - [High Efficiency Image File Format](../sessions/wwdc2017/513-high-efficiency-image-file-format/README.md) — WWDC17
 - [How to Pick a Custom Font](../sessions/wwdc2017/815-how-to-pick-a-custom-font/README.md) — WWDC17
+- [Introducing Metal 2](../sessions/wwdc2017/601-introducing-metal-2/README.md) — WWDC17
 - [Localization Best Practices on tvOS](../sessions/wwdc2017/248-localization-best-practices-on-tvos/README.md) — WWDC17
 - [Love at First Launch](../sessions/wwdc2017/816-love-at-first-launch/README.md) — WWDC17
 - [Modernizing Grand Central Dispatch Usage](../sessions/wwdc2017/706-modernizing-grand-central-dispatch-usage/README.md) — WWDC17
 - [Now Playing and Remote Commands on tvOS](../sessions/wwdc2017/251-now-playing-and-remote-commands-on-tvos/README.md) — WWDC17
 - [SceneKit: What's New](../sessions/wwdc2017/604-scenekit-what-s-new/README.md) — WWDC17
+- [The Keys to a Better Text Input Experience](../sessions/wwdc2017/242-the-keys-to-a-better-text-input-experience/README.md) — WWDC17
+- [What’s New in Core Bluetooth](../sessions/wwdc2017/712-what-s-new-in-core-bluetooth/README.md) — WWDC17
 - [Writing Great Alerts](../sessions/wwdc2017/813-writing-great-alerts/README.md) — WWDC17
 - [Advanced Metal Shader Optimization](../sessions/wwdc2016/606-advanced-metal-shader-optimization/README.md) — WWDC16
+- [Advances in SceneKit Rendering](../sessions/wwdc2016/609-advances-in-scenekit-rendering/README.md) — WWDC16
 - [Concurrent Programming With GCD in Swift 3](../sessions/wwdc2016/720-concurrent-programming-with-gcd-in-swift-3/README.md) — WWDC16
 - [Protocol and Value Oriented Programming in UIKit Apps](../sessions/wwdc2016/419-protocol-and-value-oriented-programming-in-uikit-apps/README.md) — WWDC16
 - [System Trace in Depth](../sessions/wwdc2016/411-system-trace-in-depth/README.md) — WWDC16
 - [Understanding Swift Performance](../sessions/wwdc2016/416-understanding-swift-performance/README.md) — WWDC16
+- [Using Time Profiler in Instruments](../sessions/wwdc2016/418-using-time-profiler-in-instruments/README.md) — WWDC16
 - [Validating HTTP Live Streams](../sessions/wwdc2016/510-validating-http-live-streams/README.md) — WWDC16
 - [What's New in the Apple Push Notification Service](../sessions/wwdc2016/724-what-s-new-in-the-apple-push-notification-service/README.md) — WWDC16

@@ -2,7 +2,7 @@
   "event": "wwdc2015",
   "name": "WWDC15",
   "year": 2015,
-  "sessionCount": 12,
+  "sessionCount": 13,
   "sessions": [
     {
       "id": "wwdc2015-206",
@@ -265,6 +265,55 @@
       "codeSnippetCount": 0,
       "path": "sessions/wwdc2015/413-advanced-debugging-and-the-address-sanitizer/",
       "description": "Discover UI debugging and how to use advanced breakpoint actions to quickly explore and fix your app. Learn how the new Address Sanitizer feature finds buffer overflows, use-after-free errors, and other memory corruption bugs at run time."
+    },
+    {
+      "id": "wwdc2015-414",
+      "event": "wwdc2015",
+      "year": 2015,
+      "eventContentId": 414,
+      "title": "Building Better Apps with Value Types in Swift",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2015/414",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2015/414",
+      "duration": 2383,
+      "publishedAt": "2015-06-12T14:30:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Swift",
+      "topics": [
+        "Swift"
+      ],
+      "keywords": [
+        "architecture",
+        "copy on write",
+        "design patterns",
+        "extensions",
+        "foundation",
+        "protocols",
+        "reference types",
+        "uikit",
+        "value semantics",
+        "value types"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 6649,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2015/414-building-better-apps-with-value-types-in-swift/",
+      "description": "Swift supports rich first-class value types in the form of powerful structs, which provide new ways to architect your apps. Learn about the differences between reference and value types, how value types help you elegantly solve common problems around mutability and thread safety, and discover how Swift’s unique capabilities might change the way you think about abstraction."
     },
     {
       "id": "wwdc2015-504",

@@ -1,0 +1,64 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2015-414",
+  "event": "wwdc2015",
+  "eventName": "WWDC15",
+  "year": 2015,
+  "eventContentId": 414,
+  "title": "Building Better Apps with Value Types in Swift",
+  "description": "Swift supports rich first-class value types in the form of powerful structs, which provide new ways to architect your apps. Learn about the differences between reference and value types, how value types help you elegantly solve common problems around mutability and thread safety, and discover how Swift’s unique capabilities might change the way you think about abstraction.",
+  "url": "https://developer.apple.com/videos/play/wwdc2015/414",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2015/414",
+  "type": "Video",
+  "publishedAt": "2015-06-12T14:30:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "architecture",
+    "copy on write",
+    "design patterns",
+    "extensions",
+    "foundation",
+    "protocols",
+    "reference types",
+    "uikit",
+    "value semantics",
+    "value types"
+  ],
+  "topics": [
+    "Swift"
+  ],
+  "primaryTopic": "Swift",
+  "duration": 2383,
+  "hasTranscript": true,
+  "transcriptWordCount": 6649,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2015/414sklk5h2k3ki3/414/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2015/414sklk5h2k3ki3/414/414_sd_building_better_apps_with_value_types_in_swift.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2015/414sklk5h2k3ki3/414/414_hd_building_better_apps_with_value_types_in_swift.mp4",
+    "duration": 2383
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2015/414-building-better-apps-with-value-types-in-swift/",
+  "files": {
+    "metadata": "sessions/wwdc2015/414-building-better-apps-with-value-types-in-swift/metadata.json",
+    "readme": "sessions/wwdc2015/414-building-better-apps-with-value-types-in-swift/README.md",
+    "transcript": "sessions/wwdc2015/414-building-better-apps-with-value-types-in-swift/transcript.md",
+    "transcriptJSON": "sessions/wwdc2015/414-building-better-apps-with-value-types-in-swift/transcript.json"
+  }
+}

@@ -1,6 +1,6 @@
 # iPadOS Sessions
 
-1339 sessions.
+1348 sessions.
 
 - [Apple Intelligence Group Lab](../sessions/meet-with-apple/290-apple-intelligence-group-lab/README.md) — Meet with Apple
 - [Apple Intelligence Group Lab](../sessions/meet-with-apple/291-apple-intelligence-group-lab/README.md) — Meet with Apple
@@ -859,7 +859,6 @@
 - [Explore Live GPU Profiling with Metal Counters](../sessions/tech-talks/10001-explore-live-gpu-profiling-with-metal-counters/README.md) — Tech Talks
 - [Explore UI animation hitches and the render loop](../sessions/tech-talks/10855-explore-ui-animation-hitches-and-the-render-loop/README.md) — Tech Talks
 - [Find and fix hitches in the commit phase](../sessions/tech-talks/10856-find-and-fix-hitches-in-the-commit-phase/README.md) — Tech Talks
-- [Integrate SiriKit Media Intents with HomePod](../sessions/tech-talks/10854-integrate-sirikit-media-intents-with-homepod/README.md) — Tech Talks
 - [Uniform Type Identifiers — a reintroduction](../sessions/tech-talks/10696-uniform-type-identifiers-a-reintroduction/README.md) — Tech Talks
 - [A conversation with Lisa Jackson and former Attorney General Eric Holder](../sessions/wwdc2020/10970-a-conversation-with-lisa-jackson-and-former-attorney-general/README.md) — WWDC20
 - [A conversation with the cast and creators of Mythic Quest: Raven’s Banquet](../sessions/wwdc2020/10969-a-conversation-with-the-cast-and-creators-of-mythic-quest-ra/README.md) — WWDC20
@@ -1252,11 +1251,13 @@
 - [Optimizing Your App for Today’s Internet](../sessions/wwdc2018/714-optimizing-your-app-for-today-s-internet/README.md) — WWDC18
 - [Practical Approaches to Great App Performance](../sessions/wwdc2018/407-practical-approaches-to-great-app-performance/README.md) — WWDC18
 - [Presenting Design Work](../sessions/wwdc2018/811-presenting-design-work/README.md) — WWDC18
+- [Quick Look Previews from the Ground Up](../sessions/wwdc2018/237-quick-look-previews-from-the-ground-up/README.md) — WWDC18
 - [Swift Generics (Expanded)](../sessions/wwdc2018/406-swift-generics-expanded/README.md) — WWDC18
 - [Testing Tips & Tricks](../sessions/wwdc2018/417-testing-tips-tricks/README.md) — WWDC18
 - [TextKit Best Practices](../sessions/wwdc2018/221-textkit-best-practices/README.md) — WWDC18
 - [The Life of a Button](../sessions/wwdc2018/804-the-life-of-a-button/README.md) — WWDC18
 - [The Qualities of Great Design](../sessions/wwdc2018/801-the-qualities-of-great-design/README.md) — WWDC18
+- [UIKit: Apps for Every Size and Shape](../sessions/wwdc2018/235-uikit-apps-for-every-size-and-shape/README.md) — WWDC18
 - [Understanding Crashes and Crash Logs](../sessions/wwdc2018/414-understanding-crashes-and-crash-logs/README.md) — WWDC18
 - [Using Accelerate and simd](../sessions/wwdc2018/701-using-accelerate-and-simd/README.md) — WWDC18
 - [Using Grouped Notifications](../sessions/wwdc2018/711-using-grouped-notifications/README.md) — WWDC18
@@ -1280,6 +1281,7 @@
 - [60-Second Prototyping](../sessions/wwdc2017/818-60-second-prototyping/README.md) — WWDC17
 - [Advances in HTTP Live Streaming](../sessions/wwdc2017/504-advances-in-http-live-streaming/README.md) — WWDC17
 - [App Icon Design](../sessions/wwdc2017/822-app-icon-design/README.md) — WWDC17
+- [App Startup Time: Past, Present, and Future](../sessions/wwdc2017/413-app-startup-time-past-present-and-future/README.md) — WWDC17
 - [Capturing Depth in iPhone Photography](../sessions/wwdc2017/507-capturing-depth-in-iphone-photography/README.md) — WWDC17
 - [Communication Between Designers and Engineers](../sessions/wwdc2017/809-communication-between-designers-and-engineers/README.md) — WWDC17
 - [Convenience for You is Independence for Me](../sessions/wwdc2017/110-convenience-for-you-is-independence-for-me/README.md) — WWDC17
@@ -1301,17 +1303,22 @@
 - [High Efficiency Image File Format](../sessions/wwdc2017/513-high-efficiency-image-file-format/README.md) — WWDC17
 - [How to Pick a Custom Font](../sessions/wwdc2017/815-how-to-pick-a-custom-font/README.md) — WWDC17
 - [Introducing Core NFC](../sessions/wwdc2017/718-introducing-core-nfc/README.md) — WWDC17
+- [Introducing Metal 2](../sessions/wwdc2017/601-introducing-metal-2/README.md) — WWDC17
 - [Love at First Launch](../sessions/wwdc2017/816-love-at-first-launch/README.md) — WWDC17
 - [Modernizing Grand Central Dispatch Usage](../sessions/wwdc2017/706-modernizing-grand-central-dispatch-usage/README.md) — WWDC17
 - [Rich Notifications](../sessions/wwdc2017/817-rich-notifications/README.md) — WWDC17
 - [SceneKit in Swift Playgrounds](../sessions/wwdc2017/605-scenekit-in-swift-playgrounds/README.md) — WWDC17
 - [SceneKit: What's New](../sessions/wwdc2017/604-scenekit-what-s-new/README.md) — WWDC17
 - [Size Classes and Core Components](../sessions/wwdc2017/812-size-classes-and-core-components/README.md) — WWDC17
+- [The Keys to a Better Text Input Experience](../sessions/wwdc2017/242-the-keys-to-a-better-text-input-experience/README.md) — WWDC17
+- [What’s New in Core Bluetooth](../sessions/wwdc2017/712-what-s-new-in-core-bluetooth/README.md) — WWDC17
+- [What’s New in Core Spotlight for iOS and macOS](../sessions/wwdc2017/231-what-s-new-in-core-spotlight-for-ios-and-macos/README.md) — WWDC17
 - [What’s New in iOS 11](../sessions/wwdc2017/810-what-s-new-in-ios-11/README.md) — WWDC17
 - [Writing Great Alerts](../sessions/wwdc2017/813-writing-great-alerts/README.md) — WWDC17
 - [iOS Configuration and APIs for Kiosk and Assessment Apps](../sessions/wwdc2017/716-ios-configuration-and-apis-for-kiosk-and-assessment-apps/README.md) — WWDC17
 - [AVCapturePhotoOutput - Beyond the Basics](../sessions/wwdc2016/511-avcapturephotooutput-beyond-the-basics/README.md) — WWDC16
 - [Advanced Metal Shader Optimization](../sessions/wwdc2016/606-advanced-metal-shader-optimization/README.md) — WWDC16
+- [Advances in SceneKit Rendering](../sessions/wwdc2016/609-advances-in-scenekit-rendering/README.md) — WWDC16
 - [Advances in iOS Photography](../sessions/wwdc2016/501-advances-in-ios-photography/README.md) — WWDC16
 - [Concurrent Programming With GCD in Swift 3](../sessions/wwdc2016/720-concurrent-programming-with-gcd-in-swift-3/README.md) — WWDC16
 - [Deploying AirPrint in Enterprise](../sessions/wwdc2016/725-deploying-airprint-in-enterprise/README.md) — WWDC16
@@ -1323,9 +1330,11 @@
 - [Speech Recognition API](../sessions/wwdc2016/509-speech-recognition-api/README.md) — WWDC16
 - [System Trace in Depth](../sessions/wwdc2016/411-system-trace-in-depth/README.md) — WWDC16
 - [Understanding Swift Performance](../sessions/wwdc2016/416-understanding-swift-performance/README.md) — WWDC16
+- [Using Time Profiler in Instruments](../sessions/wwdc2016/418-using-time-profiler-in-instruments/README.md) — WWDC16
 - [Validating HTTP Live Streams](../sessions/wwdc2016/510-validating-http-live-streams/README.md) — WWDC16
 - [What's New in the Apple Push Notification Service](../sessions/wwdc2016/724-what-s-new-in-the-apple-push-notification-service/README.md) — WWDC16
 - [Advanced Debugging and the Address Sanitizer](../sessions/wwdc2015/413-advanced-debugging-and-the-address-sanitizer/README.md) — WWDC15
+- [Building Better Apps with Value Types in Swift](../sessions/wwdc2015/414-building-better-apps-with-value-types-in-swift/README.md) — WWDC15
 - [Introducing Safari View Controller](../sessions/wwdc2015/504-introducing-safari-view-controller/README.md) — WWDC15
 - [Managing 3D Assets with Model I/O](../sessions/wwdc2015/602-managing-3d-assets-with-model-i-o/README.md) — WWDC15
 - [Privacy and Your App](../sessions/wwdc2015/703-privacy-and-your-app/README.md) — WWDC15

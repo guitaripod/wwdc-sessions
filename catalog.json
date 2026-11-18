@@ -2,15 +2,15 @@
   "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/catalog.schema.json",
   "schemaVersion": 1,
   "builderVersion": 2,
-  "generatedAt": "2026-11-18T01:32:03+00:00",
-  "sourceUpdated": "2026-11-17T17:10:44-08:00",
+  "generatedAt": "2026-11-18T16:17:40+00:00",
+  "sourceUpdated": "2026-11-18T07:10:18-08:00",
   "source": "Apple WWDC developer-video feeds (resolved via api2024.wwdc.io)",
   "rawBase": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master",
   "license": "Content © Apple Inc. Tooling under MIT (see LICENSE/NOTICE).",
   "counts": {
     "events": 15,
-    "sessions": 1670,
-    "transcripts": 1585
+    "sessions": 1679,
+    "transcripts": 1594
   },
   "links": {
     "events": "events.json",
@@ -118,8 +118,8 @@
       "name": "WWDC18",
       "year": 2018,
       "startTime": "2018-06-04T10:00:00-07:00",
-      "sessionCount": 38,
-      "transcriptCount": 38,
+      "sessionCount": 40,
+      "transcriptCount": 40,
       "index": "events/wwdc2018/index.md",
       "indexJSON": "events/wwdc2018/index.json"
     },
@@ -128,8 +128,8 @@
       "name": "WWDC17",
       "year": 2017,
       "startTime": "2017-06-05T10:00:00-07:00",
-      "sessionCount": 36,
-      "transcriptCount": 36,
+      "sessionCount": 41,
+      "transcriptCount": 41,
       "index": "events/wwdc2017/index.md",
       "indexJSON": "events/wwdc2017/index.json"
     },
@@ -138,8 +138,8 @@
       "name": "Tech Talks",
       "year": 2017,
       "startTime": "2017-07-01T00:00:00-07:00",
-      "sessionCount": 107,
-      "transcriptCount": 106,
+      "sessionCount": 106,
+      "transcriptCount": 105,
       "index": "events/tech-talks/index.md",
       "indexJSON": "events/tech-talks/index.json"
     },
@@ -148,8 +148,8 @@
       "name": "WWDC16",
       "year": 2016,
       "startTime": "2016-06-13T10:00:00-07:00",
-      "sessionCount": 17,
-      "transcriptCount": 16,
+      "sessionCount": 19,
+      "transcriptCount": 18,
       "index": "events/wwdc2016/index.md",
       "indexJSON": "events/wwdc2016/index.json"
     },
@@ -158,8 +158,8 @@
       "name": "WWDC15",
       "year": 2015,
       "startTime": "2015-06-08T10:00:00-07:00",
-      "sessionCount": 12,
-      "transcriptCount": 12,
+      "sessionCount": 13,
+      "transcriptCount": 13,
       "index": "events/wwdc2015/index.md",
       "indexJSON": "events/wwdc2015/index.json"
     },
@@ -1220,7 +1220,7 @@
       ],
       "keywords": [],
       "hasTranscript": true,
-      "transcriptWordCount": 4720,
+      "transcriptWordCount": 4722,
       "availableLanguages": [
         "eng",
         "fra",
@@ -45200,7 +45200,7 @@
         "zho"
       ],
       "resourceCount": 1,
-      "codeSnippetCount": 4,
+      "codeSnippetCount": 6,
       "path": "sessions/wwdc2021/10264-adopt-quick-note/",
       "description": "Learn how you can link your app to Quick Note and help people quickly connect your content to their notes — and their notes to your content. Discover how Quick Note recognizes and links to app content through NSUserActivity, and find out how you can adopt this API in your app. We’ll take you through the requirements, benefits, and features of supporting Quick Note. We'll also provide guidance and best practices for NSUserActivity to help your app get all of its benefits."
     },
@@ -46783,47 +46783,6 @@
       "codeSnippetCount": 0,
       "path": "sessions/tech-talks/10696-uniform-type-identifiers-a-reintroduction/",
       "description": "Ever wonder how the system decides what app should open a given file? Explore the Uniform Type Identifiers framework, which helps you simplify the process for supporting standard or proprietary file formats in your app. You’ll learn how to use the new framework and Xcode to declare the types your app supports, discover how to boost performance when you adopt UTTypes, and review the latest platform APIs that support UTTypes."
-    },
-    {
-      "id": "tech-talks-10854",
-      "event": "tech-talks",
-      "year": 2020,
-      "eventContentId": 10854,
-      "title": "Integrate SiriKit Media Intents with HomePod",
-      "type": "Video",
-      "url": "https://developer.apple.com/videos/play/tech-talks/10854",
-      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10854",
-      "duration": 2369,
-      "publishedAt": "2020-10-21T10:00:00-07:00",
-      "platforms": [
-        "iOS",
-        "iPadOS"
-      ],
-      "primaryTopic": "App Services",
-      "topics": [
-        "App Services"
-      ],
-      "keywords": [
-        "homepod",
-        "siri",
-        "sirikit",
-        "sirikit media intents"
-      ],
-      "hasTranscript": true,
-      "transcriptWordCount": 6442,
-      "availableLanguages": [
-        "eng",
-        "fra",
-        "jpn",
-        "kor",
-        "por",
-        "spa",
-        "zho"
-      ],
-      "resourceCount": 2,
-      "codeSnippetCount": 0,
-      "path": "sessions/tech-talks/10854-integrate-sirikit-media-intents-with-homepod/",
-      "description": "Bring your music service to HomePod and help users enjoy your content hands-free throughout their home. Discover how to build a great integration from start to finish. We'll take you through how Media Intents work, configuring your app as a preferred music service on HomePod and integrating directly with your cloud backend, providing a personalized playback experience for individual accounts with the help of voice recognition (where available), and more. To learn more about Media Intents, check out \"Expand your SiriKit Media Intents to more platforms\" from WWDC20."
     },
     {
       "id": "tech-talks-10855",
@@ -54258,7 +54217,7 @@
       ],
       "keywords": [],
       "hasTranscript": true,
-      "transcriptWordCount": 4081,
+      "transcriptWordCount": 4101,
       "availableLanguages": [
         "eng",
         "fra",
@@ -65863,6 +65822,86 @@
       "description": "Safari and WebKit are continually evolving with new features, APIs, and cutting edge web standards. Learn about this year’s biggest feature highlights, designed to help you create richer experiences with better performance and security — whether you are developing content for a browser or developing an app with embedded web content."
     },
     {
+      "id": "wwdc2018-235",
+      "event": "wwdc2018",
+      "year": 2018,
+      "eventContentId": 235,
+      "title": "UIKit: Apps for Every Size and Shape",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2018/235",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2018/235",
+      "duration": 2417,
+      "publishedAt": "2018-06-08T15:20:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "SwiftUI & UI Frameworks",
+      "topics": [
+        "SwiftUI & UI Frameworks"
+      ],
+      "keywords": [
+        "iphone x",
+        "layoutmargins",
+        "layout margins",
+        "safe area",
+        "safeareainsets"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 6825,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2018/235-uikit-apps-for-every-size-and-shape/",
+      "description": "Ground-up coverage of how to make an app that can fit on devices of every size and shape. Make your app fit beautifully on Apple’s full range of devices with the minimum amount of effort, future-proofing your user experience along the way."
+    },
+    {
+      "id": "wwdc2018-237",
+      "event": "wwdc2018",
+      "year": 2018,
+      "eventContentId": 237,
+      "title": "Quick Look Previews from the Ground Up",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2018/237",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2018/237",
+      "duration": 2543,
+      "publishedAt": "2018-06-05T17:26:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ],
+      "primaryTopic": "System Services",
+      "topics": [
+        "SwiftUI & UI Frameworks",
+        "System Services"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 5468,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 1,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2018/237-quick-look-previews-from-the-ground-up/",
+      "description": "Quicklook Previews are an easy way preview documents in your app. Hear about the basics as well as some advanced implementations. Learn to present a variety of types of documents from within your app without reinventing the wheel, and make sure your custom file format works great with the built-in support offered by iOS."
+    },
+    {
       "id": "wwdc2018-401",
       "event": "wwdc2018",
       "year": 2018,
@@ -67930,6 +67969,88 @@
       "description": "Why design apps with accessibility? Meet Todd Stabelfeldt, founder of C4 Consulting, who has lived with quadriplegia since the age of 8. Over his decades-long struggle for increased independence in both his personal and professional lives, Todd has become a noted expert in technologies for persons with disabilities, which he has found can offer not only a level of autonomy but also empowerment and dignity to the mobility impaired. Leading by example, Todd runs a successful business but his real passion lies elsewhere. Hear how apps designed well with accessibility in mind have changed his life as a husband, father and as owner of the “Quadthedral“, his family’s HomeKit-enabled smart home."
     },
     {
+      "id": "wwdc2017-231",
+      "event": "wwdc2017",
+      "year": 2017,
+      "eventContentId": 231,
+      "title": "What’s New in Core Spotlight for iOS and macOS",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2017/231",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2017/231",
+      "duration": 2315,
+      "publishedAt": "2017-06-08T16:10:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ],
+      "primaryTopic": "System Services",
+      "topics": [
+        "SwiftUI & UI Frameworks",
+        "System Services"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 5661,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 1,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2017/231-what-s-new-in-core-spotlight-for-ios-and-macos/",
+      "description": "Fundamental to the iOS Search Experience, Core Spotlight is now available on macOS. Using the same APIs that are available for iOS, Core Spotlight lets you index your app’s contents without requiring on-disk files. Learn how to provide rich custom Quick Look previews on both macOS and iOS so your users can see the content right in their search results. Get details about how your Core Spotlight items on iOS can participate in the new Drag and Drop feature."
+    },
+    {
+      "id": "wwdc2017-242",
+      "event": "wwdc2017",
+      "year": 2017,
+      "eventContentId": 242,
+      "title": "The Keys to a Better Text Input Experience",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2017/242",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2017/242",
+      "duration": 2777,
+      "publishedAt": "2017-06-09T11:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "tvOS"
+      ],
+      "primaryTopic": "App Services",
+      "topics": [
+        "SwiftUI & UI Frameworks",
+        "App Services"
+      ],
+      "keywords": [
+        "⌨️",
+        "uiinputview",
+        "uikeycommand",
+        "uitextinputcontextidentifier",
+        "uitextinputmode"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 7606,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 1,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2017/242-the-keys-to-a-better-text-input-experience/",
+      "description": "Go beyond the basics and provide a first class text input experience in your app. Learn best practices and how to expand your app by supporting text input traits and QuickType. Get tips on how to optimize your UI when incorporating the system keyboard into your layout. Discover how to create a custom keyboard and upgrade it to a system-wide keyboard extension."
+    },
+    {
       "id": "wwdc2017-246",
       "event": "wwdc2017",
       "year": 2017,
@@ -68164,6 +68285,54 @@
       "description": "Consistent and intuitive control of media playback is key to many apps on tvOS, and proper use and configuration of MPNowPlayingInfoCenter and MPRemoteCommandCenter are critical to delivering a great user experience. Dive deeper into these frameworks and learn how to ensure a seamless experience whether your app is being controlled using Siri, the Siri Remote, or the iOS Remote app."
     },
     {
+      "id": "wwdc2017-413",
+      "event": "wwdc2017",
+      "year": 2017,
+      "eventContentId": 413,
+      "title": "App Startup Time: Past, Present, and Future",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2017/413",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2017/413",
+      "duration": 1976,
+      "publishedAt": "2017-06-09T10:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Developer Tools",
+      "topics": [
+        "Developer Tools"
+      ],
+      "keywords": [
+        "dlclose",
+        "dlopen",
+        "dlsym",
+        "dyld3",
+        "macho",
+        "mach-o",
+        "nextstep",
+        "performance"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 5535,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2017/413-app-startup-time-past-present-and-future/",
+      "description": "Learn about the dyld dynamic linker used on Apple platforms, how it’s changed over the years, and where it’s headed next. Find out how improved tooling makes it easier to optimize your app’s launch time, and see how new changes coming in dyld will bring even further launch time improvements."
+    },
+    {
       "id": "wwdc2017-504",
       "event": "wwdc2017",
       "year": 2017,
@@ -68372,6 +68541,70 @@
       "codeSnippetCount": 0,
       "path": "sessions/wwdc2017/515-hls-authoring-update/",
       "description": "HTTP Live Streaming (HLS) reliably delivers video to audiences around the world. Key to this reliability is a comprehensive set of tools to help you author, deliver, and validate the HLS streams you create. See what's new in these tools, learn the latest authoring recommendations, and how they apply to advances in HLS such as support for HEVC and IMSC1."
+    },
+    {
+      "id": "wwdc2017-601",
+      "event": "wwdc2017",
+      "year": 2017,
+      "eventContentId": 601,
+      "title": "Introducing Metal 2",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2017/601",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2017/601",
+      "duration": 3303,
+      "publishedAt": "2017-06-06T13:50:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [
+        "3d",
+        "3d graphics",
+        "argument buffer",
+        "compute",
+        "direct to display",
+        "frame debugger",
+        "gpgpu",
+        "gpu",
+        "iab",
+        "metl",
+        "mtl",
+        "mtlbuffer",
+        "mtlcommandbuffer",
+        "mtldevice",
+        "opengl",
+        "opengl es",
+        "promotion",
+        "pro motion",
+        "render",
+        "schreyer",
+        "shader",
+        "simd",
+        "valient",
+        "virtual reality",
+        "vr"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 9267,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 9,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2017/601-introducing-metal-2/",
+      "description": "Metal 2 provides near-direct access to the graphics processor (GPU), enabling your apps and games to realize their full graphics and compute potential. Dive into the breakthrough features of Metal 2 that empower the GPU to take control over key aspects of the rendering pipeline. Check out how Metal 2 enables essential tasks to be specified on-the-fly by the GPU, opening up new efficiencies for advanced rendering."
     },
     {
       "id": "wwdc2017-604",
@@ -68605,6 +68838,77 @@
       "codeSnippetCount": 0,
       "path": "sessions/wwdc2017/706-modernizing-grand-central-dispatch-usage/",
       "description": "macOS 10.13 and iOS 11 have reinvented how Grand Central Dispatch and the Darwin kernel collaborate, enabling your applications to run concurrent workloads more efficiently. Learn how to modernize your code to take advantage of these improvements and make optimal use of hardware resources."
+    },
+    {
+      "id": "wwdc2017-712",
+      "event": "wwdc2017",
+      "year": 2017,
+      "eventContentId": 712,
+      "title": "What’s New in Core Bluetooth",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2017/712",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2017/712",
+      "duration": 2415,
+      "publishedAt": "2017-06-08T11:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "watchOS"
+      ],
+      "primaryTopic": "System Services",
+      "topics": [
+        "System Services"
+      ],
+      "keywords": [
+        "accessories",
+        "accessory",
+        "ancs",
+        "beacon",
+        "beacons",
+        "ble",
+        "bleutooth",
+        "bluetooth",
+        "bluetooth 4.0",
+        "bluetooth 4.2",
+        "bluetooth low energy",
+        "bt",
+        "btle",
+        "cbcentral",
+        "cbperipheral",
+        "central",
+        "characteristic",
+        "corebluetooth",
+        "core bluetooth",
+        "edl",
+        "gatt",
+        "ibeacon",
+        "ibeacon for printers",
+        "ibeacon for printing",
+        "ibeacons",
+        "l2cap",
+        "mfi",
+        "peripheral",
+        "service",
+        "throughput",
+        "wireless"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 6123,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 1,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2017/712-what-s-new-in-core-bluetooth/",
+      "description": "Discover how watchOS 4 makes it possible for a watchOS app to communicate with Bluetooth Low Energy accessories. Learn about changes to Core Bluetooth that improve reliability and enable high performance streaming connections with Bluetooth Low Energy Accessories. Understand the best practices in Bluetooth Low Energy accessory design."
     },
     {
       "id": "wwdc2017-716",
@@ -69648,7 +69952,7 @@
       "resourceCount": 0,
       "codeSnippetCount": 0,
       "path": "sessions/wwdc2016/230-enhancing-voip-apps-with-callkit/",
-      "description": "CallKit is a new framework that lets your VoIP app integrate tightly with the native Phone UI. Learn how you can have your incoming calls displayed fully on the lock screen. Get details on how people can choose to use your app when making calls from the native Phone app's contacts, favorites, and recents. See how adopting CallKit lets your app coexist seamlessly with other active calls, and allow your calls to interact with CarPlay and Bluetooth accessories."
+      "description": "CallKit is a new framework that lets your VoIP app integrate tightly with the native Phone UI. Learn how you can have your incoming calls displayed fully on the lock screen. Get details on how people can choose to use your app when making calls from the native Phone app’s contacts, favorites, and recents. See how adopting CallKit lets your app coexist seamlessly with other active calls, and allow your calls to interact with CarPlay and Bluetooth accessories."
     },
     {
       "id": "wwdc2016-241",
@@ -69740,7 +70044,7 @@
       "resourceCount": 0,
       "codeSnippetCount": 0,
       "path": "sessions/wwdc2016/411-system-trace-in-depth/",
-      "description": "Join engineers from the Instruments team for another focused look at the System Trace Instruments profiling template and how to get the most out of it. Discover how threads, virtual memory, and locking interact to affect performance. Dive deep for a practical look at how you can improve your app's responsiveness and keep your users engaged."
+      "description": "Join engineers from the Instruments team for another focused look at the System Trace Instruments profiling template and how to get the most out of it. Discover how threads, virtual memory, and locking interact to affect performance. Dive deep for a practical look at how you can improve your app’s responsiveness and keep your users engaged."
     },
     {
       "id": "wwdc2016-416",
@@ -69780,6 +70084,54 @@
       "codeSnippetCount": 0,
       "path": "sessions/wwdc2016/416-understanding-swift-performance/",
       "description": "In this advanced session, find out how structs, classes, protocols, and generics are implemented in Swift. Learn about their relative costs in different dimensions of performance. See how to apply this information to speed up your code."
+    },
+    {
+      "id": "wwdc2016-418",
+      "event": "wwdc2016",
+      "year": 2016,
+      "eventContentId": 418,
+      "title": "Using Time Profiler in Instruments",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2016/418",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2016/418",
+      "duration": 1973,
+      "publishedAt": "2016-06-17T15:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Developer Tools",
+      "topics": [
+        "Developer Tools"
+      ],
+      "keywords": [
+        "instruments",
+        "introductory",
+        "measure",
+        "performance",
+        "profile",
+        "profiling",
+        "speed",
+        "time"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 5521,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2016/418-using-time-profiler-in-instruments/",
+      "description": "Learn how to make your apps faster and more efficient in this introduction to Time Profiler in Instruments. Walk through how to use Time Profiler to measure your app’s performance. Learn how Time Profiler works and can be used to identify problems and verify your fixes. Discover how easy it is to improve your app’s power usage and performance by using Instruments throughout your development process."
     },
     {
       "id": "wwdc2016-419",
@@ -70055,6 +70407,65 @@
       "codeSnippetCount": 0,
       "path": "sessions/wwdc2016/606-advanced-metal-shader-optimization/",
       "description": "The Metal shading language is an easy-to-use programming language for writing graphics and compute functions which execute on the GPU. Dive deeper into understanding the design patterns, memory access models, and detailed shader coding best practices which reduce bottlenecks and hide latency. Intended for experienced shader authors with a solid understanding of GPU architecture and hoping to extract every possible cycle."
+    },
+    {
+      "id": "wwdc2016-609",
+      "event": "wwdc2016",
+      "year": 2016,
+      "eventContentId": 609,
+      "title": "Advances in SceneKit Rendering",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2016/609",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2016/609",
+      "duration": 3154,
+      "publishedAt": "2016-06-16T11:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [
+        "3d",
+        "collada",
+        "dae",
+        "graph",
+        "graphics",
+        "inverse kinematics",
+        "opengl",
+        "opensubdiv",
+        "pbr",
+        "physically based renderer",
+        "physics",
+        "pixar",
+        "renderer",
+        "rendering",
+        "scene",
+        "scnlayer",
+        "scnnode",
+        "scnview",
+        "usd"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 7470,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2016/609-advances-in-scenekit-rendering/",
+      "description": "SceneKit is a fully featured high-level graphics framework enabling your apps and games to create 3D animated scenes and effects. Witness the biggest leap forward in SceneKit yet with the introduction of its new Physically-Based Renderer (PBR). Dive into new APIs for accurate materials, physically-based lights, HDR effects, and enhancements in Model I/O. Walk through an example game using PBR and see how to integrate its workflow into your development."
     },
     {
       "id": "wwdc2016-717",
@@ -70591,6 +71002,55 @@
       "codeSnippetCount": 0,
       "path": "sessions/wwdc2015/413-advanced-debugging-and-the-address-sanitizer/",
       "description": "Discover UI debugging and how to use advanced breakpoint actions to quickly explore and fix your app. Learn how the new Address Sanitizer feature finds buffer overflows, use-after-free errors, and other memory corruption bugs at run time."
+    },
+    {
+      "id": "wwdc2015-414",
+      "event": "wwdc2015",
+      "year": 2015,
+      "eventContentId": 414,
+      "title": "Building Better Apps with Value Types in Swift",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2015/414",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2015/414",
+      "duration": 2383,
+      "publishedAt": "2015-06-12T14:30:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Swift",
+      "topics": [
+        "Swift"
+      ],
+      "keywords": [
+        "architecture",
+        "copy on write",
+        "design patterns",
+        "extensions",
+        "foundation",
+        "protocols",
+        "reference types",
+        "uikit",
+        "value semantics",
+        "value types"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 6649,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2015/414-building-better-apps-with-value-types-in-swift/",
+      "description": "Swift supports rich first-class value types in the form of powerful structs, which provide new ways to architect your apps. Learn about the differences between reference and value types, how value types help you elegantly solve common problems around mutability and thread safety, and discover how Swift’s unique capabilities might change the way you think about abstraction."
     },
     {
       "id": "wwdc2015-504",

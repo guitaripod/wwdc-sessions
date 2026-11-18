@@ -188,10 +188,6 @@
 - [What's new in Wallet and Apple Pay](../sessions/wwdc2021/10092-what-s-new-in-wallet-and-apple-pay/README.md)
 - [What’s new in Game Center: Widgets, friends, and multiplayer improvements](../sessions/wwdc2021/10066-what-s-new-in-game-center-widgets-friends-and-multiplayer-im/README.md)
 
-### Tech Talks
-
-- [Integrate SiriKit Media Intents with HomePod](../sessions/tech-talks/10854-integrate-sirikit-media-intents-with-homepod/README.md)
-
 ### WWDC20
 
 - [Accelerate your app with CarPlay](../sessions/wwdc2020/10635-accelerate-your-app-with-carplay/README.md)
@@ -254,6 +250,7 @@
 - [Developing Wireless CarPlay Systems](../sessions/wwdc2017/717-developing-wireless-carplay-systems/README.md)
 - [Express Yourself!](../sessions/wwdc2017/820-express-yourself/README.md)
 - [Extend Your App's Presence With Sharing](../sessions/wwdc2017/247-extend-your-app-s-presence-with-sharing/README.md)
+- [The Keys to a Better Text Input Experience](../sessions/wwdc2017/242-the-keys-to-a-better-text-input-experience/README.md)
 
 ### WWDC16
 

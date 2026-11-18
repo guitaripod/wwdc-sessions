@@ -14,7 +14,7 @@ hasTranscript: true
 
 **Event:** WWDC16 · **Topic:** SwiftUI & UI Frameworks · **Platforms:** iOS, iPadOS · **Published:** 2016-06-16 · **Session:** [wwdc2016-230](https://developer.apple.com/videos/play/wwdc2016/230)
 
-CallKit is a new framework that lets your VoIP app integrate tightly with the native Phone UI. Learn how you can have your incoming calls displayed fully on the lock screen. Get details on how people can choose to use your app when making calls from the native Phone app's contacts, favorites, and recents. See how adopting CallKit lets your app coexist seamlessly with other active calls, and allow your calls to interact with CarPlay and Bluetooth accessories.
+CallKit is a new framework that lets your VoIP app integrate tightly with the native Phone UI. Learn how you can have your incoming calls displayed fully on the lock screen. Get details on how people can choose to use your app when making calls from the native Phone app’s contacts, favorites, and recents. See how adopting CallKit lets your app coexist seamlessly with other active calls, and allow your calls to interact with CarPlay and Bluetooth accessories.
 
 **Keywords:** `apns`, `ckcall`, `ckprovider`, `pushkit`
 

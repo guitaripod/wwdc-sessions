@@ -2,7 +2,7 @@
   "event": "wwdc2017",
   "name": "WWDC17",
   "year": 2017,
-  "sessionCount": 36,
+  "sessionCount": 41,
   "sessions": [
     {
       "id": "wwdc2017-110",
@@ -42,6 +42,88 @@
       "codeSnippetCount": 0,
       "path": "sessions/wwdc2017/110-convenience-for-you-is-independence-for-me/",
       "description": "Why design apps with accessibility? Meet Todd Stabelfeldt, founder of C4 Consulting, who has lived with quadriplegia since the age of 8. Over his decades-long struggle for increased independence in both his personal and professional lives, Todd has become a noted expert in technologies for persons with disabilities, which he has found can offer not only a level of autonomy but also empowerment and dignity to the mobility impaired. Leading by example, Todd runs a successful business but his real passion lies elsewhere. Hear how apps designed well with accessibility in mind have changed his life as a husband, father and as owner of the “Quadthedral“, his family’s HomeKit-enabled smart home."
+    },
+    {
+      "id": "wwdc2017-231",
+      "event": "wwdc2017",
+      "year": 2017,
+      "eventContentId": 231,
+      "title": "What’s New in Core Spotlight for iOS and macOS",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2017/231",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2017/231",
+      "duration": 2315,
+      "publishedAt": "2017-06-08T16:10:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ],
+      "primaryTopic": "System Services",
+      "topics": [
+        "SwiftUI & UI Frameworks",
+        "System Services"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 5661,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 1,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2017/231-what-s-new-in-core-spotlight-for-ios-and-macos/",
+      "description": "Fundamental to the iOS Search Experience, Core Spotlight is now available on macOS. Using the same APIs that are available for iOS, Core Spotlight lets you index your app’s contents without requiring on-disk files. Learn how to provide rich custom Quick Look previews on both macOS and iOS so your users can see the content right in their search results. Get details about how your Core Spotlight items on iOS can participate in the new Drag and Drop feature."
+    },
+    {
+      "id": "wwdc2017-242",
+      "event": "wwdc2017",
+      "year": 2017,
+      "eventContentId": 242,
+      "title": "The Keys to a Better Text Input Experience",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2017/242",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2017/242",
+      "duration": 2777,
+      "publishedAt": "2017-06-09T11:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "tvOS"
+      ],
+      "primaryTopic": "App Services",
+      "topics": [
+        "SwiftUI & UI Frameworks",
+        "App Services"
+      ],
+      "keywords": [
+        "⌨️",
+        "uiinputview",
+        "uikeycommand",
+        "uitextinputcontextidentifier",
+        "uitextinputmode"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 7606,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 1,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2017/242-the-keys-to-a-better-text-input-experience/",
+      "description": "Go beyond the basics and provide a first class text input experience in your app. Learn best practices and how to expand your app by supporting text input traits and QuickType. Get tips on how to optimize your UI when incorporating the system keyboard into your layout. Discover how to create a custom keyboard and upgrade it to a system-wide keyboard extension."
     },
     {
       "id": "wwdc2017-246",
@@ -278,6 +360,54 @@
       "description": "Consistent and intuitive control of media playback is key to many apps on tvOS, and proper use and configuration of MPNowPlayingInfoCenter and MPRemoteCommandCenter are critical to delivering a great user experience. Dive deeper into these frameworks and learn how to ensure a seamless experience whether your app is being controlled using Siri, the Siri Remote, or the iOS Remote app."
     },
     {
+      "id": "wwdc2017-413",
+      "event": "wwdc2017",
+      "year": 2017,
+      "eventContentId": 413,
+      "title": "App Startup Time: Past, Present, and Future",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2017/413",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2017/413",
+      "duration": 1976,
+      "publishedAt": "2017-06-09T10:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Developer Tools",
+      "topics": [
+        "Developer Tools"
+      ],
+      "keywords": [
+        "dlclose",
+        "dlopen",
+        "dlsym",
+        "dyld3",
+        "macho",
+        "mach-o",
+        "nextstep",
+        "performance"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 5535,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2017/413-app-startup-time-past-present-and-future/",
+      "description": "Learn about the dyld dynamic linker used on Apple platforms, how it’s changed over the years, and where it’s headed next. Find out how improved tooling makes it easier to optimize your app’s launch time, and see how new changes coming in dyld will bring even further launch time improvements."
+    },
+    {
       "id": "wwdc2017-504",
       "event": "wwdc2017",
       "year": 2017,
@@ -486,6 +616,70 @@
       "codeSnippetCount": 0,
       "path": "sessions/wwdc2017/515-hls-authoring-update/",
       "description": "HTTP Live Streaming (HLS) reliably delivers video to audiences around the world. Key to this reliability is a comprehensive set of tools to help you author, deliver, and validate the HLS streams you create. See what's new in these tools, learn the latest authoring recommendations, and how they apply to advances in HLS such as support for HEVC and IMSC1."
+    },
+    {
+      "id": "wwdc2017-601",
+      "event": "wwdc2017",
+      "year": 2017,
+      "eventContentId": 601,
+      "title": "Introducing Metal 2",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2017/601",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2017/601",
+      "duration": 3303,
+      "publishedAt": "2017-06-06T13:50:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [
+        "3d",
+        "3d graphics",
+        "argument buffer",
+        "compute",
+        "direct to display",
+        "frame debugger",
+        "gpgpu",
+        "gpu",
+        "iab",
+        "metl",
+        "mtl",
+        "mtlbuffer",
+        "mtlcommandbuffer",
+        "mtldevice",
+        "opengl",
+        "opengl es",
+        "promotion",
+        "pro motion",
+        "render",
+        "schreyer",
+        "shader",
+        "simd",
+        "valient",
+        "virtual reality",
+        "vr"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 9267,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 9,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2017/601-introducing-metal-2/",
+      "description": "Metal 2 provides near-direct access to the graphics processor (GPU), enabling your apps and games to realize their full graphics and compute potential. Dive into the breakthrough features of Metal 2 that empower the GPU to take control over key aspects of the rendering pipeline. Check out how Metal 2 enables essential tasks to be specified on-the-fly by the GPU, opening up new efficiencies for advanced rendering."
     },
     {
       "id": "wwdc2017-604",
@@ -719,6 +913,77 @@
       "codeSnippetCount": 0,
       "path": "sessions/wwdc2017/706-modernizing-grand-central-dispatch-usage/",
       "description": "macOS 10.13 and iOS 11 have reinvented how Grand Central Dispatch and the Darwin kernel collaborate, enabling your applications to run concurrent workloads more efficiently. Learn how to modernize your code to take advantage of these improvements and make optimal use of hardware resources."
+    },
+    {
+      "id": "wwdc2017-712",
+      "event": "wwdc2017",
+      "year": 2017,
+      "eventContentId": 712,
+      "title": "What’s New in Core Bluetooth",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2017/712",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2017/712",
+      "duration": 2415,
+      "publishedAt": "2017-06-08T11:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "watchOS"
+      ],
+      "primaryTopic": "System Services",
+      "topics": [
+        "System Services"
+      ],
+      "keywords": [
+        "accessories",
+        "accessory",
+        "ancs",
+        "beacon",
+        "beacons",
+        "ble",
+        "bleutooth",
+        "bluetooth",
+        "bluetooth 4.0",
+        "bluetooth 4.2",
+        "bluetooth low energy",
+        "bt",
+        "btle",
+        "cbcentral",
+        "cbperipheral",
+        "central",
+        "characteristic",
+        "corebluetooth",
+        "core bluetooth",
+        "edl",
+        "gatt",
+        "ibeacon",
+        "ibeacon for printers",
+        "ibeacon for printing",
+        "ibeacons",
+        "l2cap",
+        "mfi",
+        "peripheral",
+        "service",
+        "throughput",
+        "wireless"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 6123,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 1,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2017/712-what-s-new-in-core-bluetooth/",
+      "description": "Discover how watchOS 4 makes it possible for a watchOS app to communicate with Bluetooth Low Energy accessories. Learn about changes to Core Bluetooth that improve reliability and enable high performance streaming connections with Bluetooth Low Energy Accessories. Understand the best practices in Bluetooth Low Energy accessory design."
     },
     {
       "id": "wwdc2017-716",

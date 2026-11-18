@@ -1,6 +1,6 @@
 # Graphics & Games
 
-216 sessions across all events.
+218 sessions across all events.
 
 
 ### Tech Talks
@@ -263,12 +263,14 @@
 - [Get Started with Display P3](../sessions/wwdc2017/821-get-started-with-display-p3/README.md)
 - [Going Beyond 2D with SpriteKit](../sessions/wwdc2017/609-going-beyond-2d-with-spritekit/README.md)
 - [High Efficiency Image File Format](../sessions/wwdc2017/513-high-efficiency-image-file-format/README.md)
+- [Introducing Metal 2](../sessions/wwdc2017/601-introducing-metal-2/README.md)
 - [SceneKit in Swift Playgrounds](../sessions/wwdc2017/605-scenekit-in-swift-playgrounds/README.md)
 - [SceneKit: What's New](../sessions/wwdc2017/604-scenekit-what-s-new/README.md)
 
 ### WWDC16
 
 - [Advanced Metal Shader Optimization](../sessions/wwdc2016/606-advanced-metal-shader-optimization/README.md)
+- [Advances in SceneKit Rendering](../sessions/wwdc2016/609-advances-in-scenekit-rendering/README.md)
 
 ### WWDC15
 

@@ -1,0 +1,63 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2016-418",
+  "event": "wwdc2016",
+  "eventName": "WWDC16",
+  "year": 2016,
+  "eventContentId": 418,
+  "title": "Using Time Profiler in Instruments",
+  "description": "Learn how to make your apps faster and more efficient in this introduction to Time Profiler in Instruments. Walk through how to use Time Profiler to measure your app’s performance. Learn how Time Profiler works and can be used to identify problems and verify your fixes. Discover how easy it is to improve your app’s power usage and performance by using Instruments throughout your development process.",
+  "url": "https://developer.apple.com/videos/play/wwdc2016/418",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2016/418",
+  "type": "Video",
+  "publishedAt": "2016-06-17T15:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "instruments",
+    "introductory",
+    "measure",
+    "performance",
+    "profile",
+    "profiling",
+    "speed",
+    "time"
+  ],
+  "topics": [
+    "Developer Tools"
+  ],
+  "primaryTopic": "Developer Tools",
+  "duration": 1973,
+  "hasTranscript": true,
+  "transcriptWordCount": 5521,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2016/418kmcxcwg4psxzsjuy/418/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2016/418kmcxcwg4psxzsjuy/418/418_sd_using_time_profiler_in_instruments.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2016/418kmcxcwg4psxzsjuy/418/418_hd_using_time_profiler_in_instruments.mp4",
+    "duration": 1973
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2016/418-using-time-profiler-in-instruments/",
+  "files": {
+    "metadata": "sessions/wwdc2016/418-using-time-profiler-in-instruments/metadata.json",
+    "readme": "sessions/wwdc2016/418-using-time-profiler-in-instruments/README.md",
+    "transcript": "sessions/wwdc2016/418-using-time-profiler-in-instruments/transcript.md",
+    "transcriptJSON": "sessions/wwdc2016/418-using-time-profiler-in-instruments/transcript.json"
+  }
+}

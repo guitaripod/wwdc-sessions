@@ -14,7 +14,7 @@ hasTranscript: true
 
 **Event:** WWDC16 · **Topic:** Developer Tools · **Platforms:** iOS, iPadOS, macOS, tvOS, watchOS · **Published:** 2016-06-16 · **Session:** [wwdc2016-411](https://developer.apple.com/videos/play/wwdc2016/411)
 
-Join engineers from the Instruments team for another focused look at the System Trace Instruments profiling template and how to get the most out of it. Discover how threads, virtual memory, and locking interact to affect performance. Dive deep for a practical look at how you can improve your app's responsiveness and keep your users engaged.
+Join engineers from the Instruments team for another focused look at the System Trace Instruments profiling template and how to get the most out of it. Discover how threads, virtual memory, and locking interact to affect performance. Dive deep for a practical look at how you can improve your app’s responsiveness and keep your users engaged.
 
 **Keywords:** `debug`, `instruments`, `lock`, `locking`, `locks`, `memory`, `performance`, `profile`, `profiling`, `system`, `template`, `thread`, `threads`, `trace`, `virtual memory`
 

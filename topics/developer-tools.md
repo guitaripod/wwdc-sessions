@@ -1,6 +1,6 @@
 # Developer Tools
 
-252 sessions across all events.
+254 sessions across all events.
 
 
 ### Meet with Apple
@@ -302,6 +302,7 @@
 
 ### WWDC17
 
+- [App Startup Time: Past, Present, and Future](../sessions/wwdc2017/413-app-startup-time-past-present-and-future/README.md)
 - [Modernizing Grand Central Dispatch Usage](../sessions/wwdc2017/706-modernizing-grand-central-dispatch-usage/README.md)
 - [SceneKit: What's New](../sessions/wwdc2017/604-scenekit-what-s-new/README.md)
 
@@ -310,6 +311,7 @@
 - [Advanced Metal Shader Optimization](../sessions/wwdc2016/606-advanced-metal-shader-optimization/README.md)
 - [Concurrent Programming With GCD in Swift 3](../sessions/wwdc2016/720-concurrent-programming-with-gcd-in-swift-3/README.md)
 - [System Trace in Depth](../sessions/wwdc2016/411-system-trace-in-depth/README.md)
+- [Using Time Profiler in Instruments](../sessions/wwdc2016/418-using-time-profiler-in-instruments/README.md)
 
 ### WWDC15
 

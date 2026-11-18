@@ -1,6 +1,6 @@
 # WWDC18 Sessions
 
-38 sessions · 38 with transcripts.
+40 sessions · 40 with transcripts.
 
 ## Accessibility & Inclusion
 
@@ -74,7 +74,9 @@
 - [CarPlay Audio and Navigation Apps](../../sessions/wwdc2018/213-carplay-audio-and-navigation-apps/README.md) · 📝
 - [Introduction to Siri Shortcuts](../../sessions/wwdc2018/211-introduction-to-siri-shortcuts/README.md) · 📝
 - [Optimizing App Assets](../../sessions/wwdc2018/227-optimizing-app-assets/README.md) · 📝
+- [Quick Look Previews from the Ground Up](../../sessions/wwdc2018/237-quick-look-previews-from-the-ground-up/README.md) · 📝
 - [TextKit Best Practices](../../sessions/wwdc2018/221-textkit-best-practices/README.md) · 📝
+- [UIKit: Apps for Every Size and Shape](../../sessions/wwdc2018/235-uikit-apps-for-every-size-and-shape/README.md) · 📝
 - [Using Grouped Notifications](../../sessions/wwdc2018/711-using-grouped-notifications/README.md) · 📝
 - [What's New in Cocoa for macOS](../../sessions/wwdc2018/209-what-s-new-in-cocoa-for-macos/README.md) · 📝
 
@@ -83,6 +85,7 @@
 - [Core Data Best Practices](../../sessions/wwdc2018/224-core-data-best-practices/README.md) · 📝
 - [Introducing Network.framework: A modern alternative to Sockets](../../sessions/wwdc2018/715-introducing-network-framework-a-modern-alternative-to-socket/README.md) · 📝
 - [Optimizing Your App for Today’s Internet](../../sessions/wwdc2018/714-optimizing-your-app-for-today-s-internet/README.md) · 📝
+- [Quick Look Previews from the Ground Up](../../sessions/wwdc2018/237-quick-look-previews-from-the-ground-up/README.md) · 📝
 - [Using Accelerate and simd](../../sessions/wwdc2018/701-using-accelerate-and-simd/README.md) · 📝
 - [What's New in Cocoa for macOS](../../sessions/wwdc2018/209-what-s-new-in-cocoa-for-macos/README.md) · 📝
 

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2016-609",
+  "event": "wwdc2016",
+  "eventName": "WWDC16",
+  "year": 2016,
+  "eventContentId": 609,
+  "title": "Advances in SceneKit Rendering",
+  "description": "SceneKit is a fully featured high-level graphics framework enabling your apps and games to create 3D animated scenes and effects. Witness the biggest leap forward in SceneKit yet with the introduction of its new Physically-Based Renderer (PBR). Dive into new APIs for accurate materials, physically-based lights, HDR effects, and enhancements in Model I/O. Walk through an example game using PBR and see how to integrate its workflow into your development.",
+  "url": "https://developer.apple.com/videos/play/wwdc2016/609",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2016/609",
+  "type": "Video",
+  "publishedAt": "2016-06-16T11:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS",
+    "watchOS"
+  ],
+  "keywords": [
+    "3d",
+    "collada",
+    "dae",
+    "graph",
+    "graphics",
+    "inverse kinematics",
+    "opengl",
+    "opensubdiv",
+    "pbr",
+    "physically based renderer",
+    "physics",
+    "pixar",
+    "renderer",
+    "rendering",
+    "scene",
+    "scnlayer",
+    "scnnode",
+    "scnview",
+    "usd"
+  ],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 3154,
+  "hasTranscript": true,
+  "transcriptWordCount": 7470,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2016/609pxdzx9vsps1l0qdh/609/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2016/609pxdzx9vsps1l0qdh/609/609_sd_advances_in_scenekit_rendering.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2016/609pxdzx9vsps1l0qdh/609/609_hd_advances_in_scenekit_rendering.mp4",
+    "duration": 3154
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2016/609-advances-in-scenekit-rendering/",
+  "files": {
+    "metadata": "sessions/wwdc2016/609-advances-in-scenekit-rendering/metadata.json",
+    "readme": "sessions/wwdc2016/609-advances-in-scenekit-rendering/README.md",
+    "transcript": "sessions/wwdc2016/609-advances-in-scenekit-rendering/transcript.md",
+    "transcriptJSON": "sessions/wwdc2016/609-advances-in-scenekit-rendering/transcript.json"
+  }
+}

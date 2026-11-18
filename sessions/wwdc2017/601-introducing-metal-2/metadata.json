@@ -1,0 +1,150 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2017-601",
+  "event": "wwdc2017",
+  "eventName": "WWDC17",
+  "year": 2017,
+  "eventContentId": 601,
+  "title": "Introducing Metal 2",
+  "description": "Metal 2 provides near-direct access to the graphics processor (GPU), enabling your apps and games to realize their full graphics and compute potential. Dive into the breakthrough features of Metal 2 that empower the GPU to take control over key aspects of the rendering pipeline. Check out how Metal 2 enables essential tasks to be specified on-the-fly by the GPU, opening up new efficiencies for advanced rendering.",
+  "url": "https://developer.apple.com/videos/play/wwdc2017/601",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2017/601",
+  "type": "Video",
+  "publishedAt": "2017-06-06T13:50:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "3d",
+    "3d graphics",
+    "argument buffer",
+    "compute",
+    "direct to display",
+    "frame debugger",
+    "gpgpu",
+    "gpu",
+    "iab",
+    "metl",
+    "mtl",
+    "mtlbuffer",
+    "mtlcommandbuffer",
+    "mtldevice",
+    "opengl",
+    "opengl es",
+    "promotion",
+    "pro motion",
+    "render",
+    "schreyer",
+    "shader",
+    "simd",
+    "valient",
+    "virtual reality",
+    "vr"
+  ],
+  "topics": [
+    "Graphics & Games"
+  ],
+  "primaryTopic": "Graphics & Games",
+  "duration": 3303,
+  "hasTranscript": true,
+  "transcriptWordCount": 9267,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/601nzg4idodih222/601/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/601nzg4idodih222/601/601_sd_introducing_metal_2.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/601nzg4idodih222/601/601_hd_introducing_metal_2.mp4",
+    "duration": 3303
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "SIMDCulling Sample",
+      "url": "https://developer.apple.com/sample-code/wwdc/2017/SIMDCullingSample.zip",
+      "type": "samplecode",
+      "description": "Demonstrates usage of simd metal shading language functions to perform stream compaction during frustum culling process.",
+      "sosumiURL": "https://sosumi.ai/sample-code/wwdc/2017/SIMDCullingSample.zip"
+    },
+    {
+      "title": "Managing groups of resources with argument buffers",
+      "url": "https://developer.apple.com/documentation/metal/buffers/managing_groups_of_resources_with_argument_buffers",
+      "type": "samplecode",
+      "description": "Create argument buffers to organize related resources.",
+      "sosumiURL": "https://sosumi.ai/documentation/metal/buffers/managing_groups_of_resources_with_argument_buffers",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/metal/buffers/managing_groups_of_resources_with_argument_buffers.json"
+    },
+    {
+      "title": "dispatchThreads(_:threadsPerThreadgroup:)",
+      "url": "https://developer.apple.com/documentation/Metal/MTLComputeCommandEncoder/dispatchThreads(_:threadsPerThreadgroup:)",
+      "type": "documentation",
+      "description": "Encodes a compute command using an arbitrarily sized grid.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/MTLComputeCommandEncoder/dispatchThreads(_:threadsPerThreadgroup:)",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/MTLComputeCommandEncoder/dispatchThreads(_:threadsPerThreadgroup:).json"
+    },
+    {
+      "title": "MTLPixelFormat.bgr10a2Unorm",
+      "url": "https://developer.apple.com/documentation/Metal/MTLPixelFormat/bgr10a2Unorm",
+      "type": "documentation",
+      "description": "A 32-bit packed pixel format with four normalized unsigned integer components: 10-bit blue, 10-bit green, 10-bit red, and 2-bit alpha.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/MTLPixelFormat/bgr10a2Unorm",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/MTLPixelFormat/bgr10a2Unorm.json"
+    },
+    {
+      "title": "Metal",
+      "url": "https://developer.apple.com/documentation/Metal",
+      "type": "documentation",
+      "description": "Render advanced 3D graphics and compute data in parallel with graphics processors.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal.json"
+    },
+    {
+      "title": "MTLDrawable",
+      "url": "https://developer.apple.com/documentation/Metal/MTLDrawable",
+      "type": "documentation",
+      "description": "A displayable resource that can be rendered or written to.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/MTLDrawable",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/MTLDrawable.json"
+    },
+    {
+      "title": "Positioning samples programmatically",
+      "url": "https://developer.apple.com/documentation/Metal/positioning-samples-programmatically",
+      "type": "documentation",
+      "description": "Configure the position of samples when rendering to a multisampled render target.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/positioning-samples-programmatically",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/positioning-samples-programmatically.json"
+    },
+    {
+      "title": "Improving CPU performance by using argument buffers",
+      "url": "https://developer.apple.com/documentation/Metal/improving-cpu-performance-by-using-argument-buffers",
+      "type": "documentation",
+      "description": "Optimize your app’s performance by grouping your resources into argument buffers.",
+      "sosumiURL": "https://sosumi.ai/documentation/Metal/improving-cpu-performance-by-using-argument-buffers",
+      "doccJSON": "https://developer.apple.com/tutorials/data/documentation/Metal/improving-cpu-performance-by-using-argument-buffers.json"
+    },
+    {
+      "title": "Metal Shading Language Specification",
+      "url": "https://developer.apple.com/metal/metal-shading-language-specification.pdf",
+      "type": "guide",
+      "description": "The Metal shading language is used to write graphics and compute functions that are executed on the GPU. Version 2.0 of the Metal shading language adds new features such as Raster Order Groups, Indirect Argument Buffers, Arrays of Samplers, Uniform Types, and much more.",
+      "sosumiURL": "https://sosumi.ai/metal/metal-shading-language-specification.pdf"
+    }
+  ],
+  "path": "sessions/wwdc2017/601-introducing-metal-2/",
+  "files": {
+    "metadata": "sessions/wwdc2017/601-introducing-metal-2/metadata.json",
+    "readme": "sessions/wwdc2017/601-introducing-metal-2/README.md",
+    "transcript": "sessions/wwdc2017/601-introducing-metal-2/transcript.md",
+    "transcriptJSON": "sessions/wwdc2017/601-introducing-metal-2/transcript.json"
+  }
+}

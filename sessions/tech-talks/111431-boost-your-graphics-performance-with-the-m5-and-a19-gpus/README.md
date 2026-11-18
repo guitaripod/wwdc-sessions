@@ -19,7 +19,7 @@ Take a deep dive into the advanced graphics features of the M5 and A19 GPUs. Lea
 ## Transcript
 
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
-(4,720 words)
+(4,722 words)
 
 ## Video
 

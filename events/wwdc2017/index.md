@@ -1,6 +1,6 @@
 # WWDC17 Sessions
 
-36 sessions · 36 with transcripts.
+41 sessions · 41 with transcripts.
 
 ## Accessibility & Inclusion
 
@@ -13,6 +13,7 @@
 - [Developing Wireless CarPlay Systems](../../sessions/wwdc2017/717-developing-wireless-carplay-systems/README.md) · 📝
 - [Express Yourself!](../../sessions/wwdc2017/820-express-yourself/README.md) · 📝
 - [Extend Your App's Presence With Sharing](../../sessions/wwdc2017/247-extend-your-app-s-presence-with-sharing/README.md) · 📝
+- [The Keys to a Better Text Input Experience](../../sessions/wwdc2017/242-the-keys-to-a-better-text-input-experience/README.md) · 📝
 
 ## App Store, Distribution & Marketing
 
@@ -51,6 +52,7 @@
 
 ## Developer Tools
 
+- [App Startup Time: Past, Present, and Future](../../sessions/wwdc2017/413-app-startup-time-past-present-and-future/README.md) · 📝
 - [Modernizing Grand Central Dispatch Usage](../../sessions/wwdc2017/706-modernizing-grand-central-dispatch-usage/README.md) · 📝
 - [SceneKit: What's New](../../sessions/wwdc2017/604-scenekit-what-s-new/README.md) · 📝
 
@@ -60,6 +62,7 @@
 - [Get Started with Display P3](../../sessions/wwdc2017/821-get-started-with-display-p3/README.md) · 📝
 - [Going Beyond 2D with SpriteKit](../../sessions/wwdc2017/609-going-beyond-2d-with-spritekit/README.md) · 📝
 - [High Efficiency Image File Format](../../sessions/wwdc2017/513-high-efficiency-image-file-format/README.md) · 📝
+- [Introducing Metal 2](../../sessions/wwdc2017/601-introducing-metal-2/README.md) · 📝
 - [SceneKit in Swift Playgrounds](../../sessions/wwdc2017/605-scenekit-in-swift-playgrounds/README.md) · 📝
 - [SceneKit: What's New](../../sessions/wwdc2017/604-scenekit-what-s-new/README.md) · 📝
 
@@ -93,6 +96,8 @@
 - [Now Playing and Remote Commands on tvOS](../../sessions/wwdc2017/251-now-playing-and-remote-commands-on-tvos/README.md) · 📝
 - [Rich Notifications](../../sessions/wwdc2017/817-rich-notifications/README.md) · 📝
 - [Size Classes and Core Components](../../sessions/wwdc2017/812-size-classes-and-core-components/README.md) · 📝
+- [The Keys to a Better Text Input Experience](../../sessions/wwdc2017/242-the-keys-to-a-better-text-input-experience/README.md) · 📝
+- [What’s New in Core Spotlight for iOS and macOS](../../sessions/wwdc2017/231-what-s-new-in-core-spotlight-for-ios-and-macos/README.md) · 📝
 - [What’s New in iOS 11](../../sessions/wwdc2017/810-what-s-new-in-ios-11/README.md) · 📝
 
 ## System Services
@@ -101,4 +106,6 @@
 - [Enabling Your App for CarPlay](../../sessions/wwdc2017/719-enabling-your-app-for-carplay/README.md) · 📝
 - [High Efficiency Image File Format](../../sessions/wwdc2017/513-high-efficiency-image-file-format/README.md) · 📝
 - [Introducing Core NFC](../../sessions/wwdc2017/718-introducing-core-nfc/README.md) · 📝
+- [What’s New in Core Bluetooth](../../sessions/wwdc2017/712-what-s-new-in-core-bluetooth/README.md) · 📝
+- [What’s New in Core Spotlight for iOS and macOS](../../sessions/wwdc2017/231-what-s-new-in-core-spotlight-for-ios-and-macos/README.md) · 📝
 

@@ -2,7 +2,7 @@
   "event": "wwdc2018",
   "name": "WWDC18",
   "year": 2018,
-  "sessionCount": 38,
+  "sessionCount": 40,
   "sessions": [
     {
       "id": "wwdc2018-204",
@@ -509,6 +509,86 @@
       "codeSnippetCount": 0,
       "path": "sessions/wwdc2018/234-what-s-new-in-safari-and-webkit/",
       "description": "Safari and WebKit are continually evolving with new features, APIs, and cutting edge web standards. Learn about this year’s biggest feature highlights, designed to help you create richer experiences with better performance and security — whether you are developing content for a browser or developing an app with embedded web content."
+    },
+    {
+      "id": "wwdc2018-235",
+      "event": "wwdc2018",
+      "year": 2018,
+      "eventContentId": 235,
+      "title": "UIKit: Apps for Every Size and Shape",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2018/235",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2018/235",
+      "duration": 2417,
+      "publishedAt": "2018-06-08T15:20:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "primaryTopic": "SwiftUI & UI Frameworks",
+      "topics": [
+        "SwiftUI & UI Frameworks"
+      ],
+      "keywords": [
+        "iphone x",
+        "layoutmargins",
+        "layout margins",
+        "safe area",
+        "safeareainsets"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 6825,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2018/235-uikit-apps-for-every-size-and-shape/",
+      "description": "Ground-up coverage of how to make an app that can fit on devices of every size and shape. Make your app fit beautifully on Apple’s full range of devices with the minimum amount of effort, future-proofing your user experience along the way."
+    },
+    {
+      "id": "wwdc2018-237",
+      "event": "wwdc2018",
+      "year": 2018,
+      "eventContentId": 237,
+      "title": "Quick Look Previews from the Ground Up",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2018/237",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2018/237",
+      "duration": 2543,
+      "publishedAt": "2018-06-05T17:26:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS"
+      ],
+      "primaryTopic": "System Services",
+      "topics": [
+        "SwiftUI & UI Frameworks",
+        "System Services"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 5468,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 1,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2018/237-quick-look-previews-from-the-ground-up/",
+      "description": "Quicklook Previews are an easy way preview documents in your app. Hear about the basics as well as some advanced implementations. Learn to present a variety of types of documents from within your app without reinventing the wheel, and make sure your custom file format works great with the built-in support offered by iOS."
     },
     {
       "id": "wwdc2018-401",

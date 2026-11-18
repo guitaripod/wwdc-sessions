@@ -1,6 +1,6 @@
 # WWDC15 Sessions
 
-12 sessions · 12 with transcripts.
+13 sessions · 13 with transcripts.
 
 ## Design
 
@@ -36,6 +36,7 @@
 
 ## Swift
 
+- [Building Better Apps with Value Types in Swift](../../sessions/wwdc2015/414-building-better-apps-with-value-types-in-swift/README.md) · 📝
 - [Protocol-Oriented Programming in Swift](../../sessions/wwdc2015/408-protocol-oriented-programming-in-swift/README.md) · 📝
 - [Swift and Objective-C Interoperability](../../sessions/wwdc2015/401-swift-and-objective-c-interoperability/README.md) · 📝
 

@@ -1,6 +1,6 @@
 # SwiftUI & UI Frameworks
 
-352 sessions across all events.
+356 sessions across all events.
 
 
 ### Meet with Apple
@@ -376,7 +376,9 @@
 - [CarPlay Audio and Navigation Apps](../sessions/wwdc2018/213-carplay-audio-and-navigation-apps/README.md)
 - [Introduction to Siri Shortcuts](../sessions/wwdc2018/211-introduction-to-siri-shortcuts/README.md)
 - [Optimizing App Assets](../sessions/wwdc2018/227-optimizing-app-assets/README.md)
+- [Quick Look Previews from the Ground Up](../sessions/wwdc2018/237-quick-look-previews-from-the-ground-up/README.md)
 - [TextKit Best Practices](../sessions/wwdc2018/221-textkit-best-practices/README.md)
+- [UIKit: Apps for Every Size and Shape](../sessions/wwdc2018/235-uikit-apps-for-every-size-and-shape/README.md)
 - [Using Grouped Notifications](../sessions/wwdc2018/711-using-grouped-notifications/README.md)
 - [What's New in Cocoa for macOS](../sessions/wwdc2018/209-what-s-new-in-cocoa-for-macos/README.md)
 
@@ -400,6 +402,8 @@
 - [Now Playing and Remote Commands on tvOS](../sessions/wwdc2017/251-now-playing-and-remote-commands-on-tvos/README.md)
 - [Rich Notifications](../sessions/wwdc2017/817-rich-notifications/README.md)
 - [Size Classes and Core Components](../sessions/wwdc2017/812-size-classes-and-core-components/README.md)
+- [The Keys to a Better Text Input Experience](../sessions/wwdc2017/242-the-keys-to-a-better-text-input-experience/README.md)
+- [What’s New in Core Spotlight for iOS and macOS](../sessions/wwdc2017/231-what-s-new-in-core-spotlight-for-ios-and-macos/README.md)
 - [What’s New in iOS 11](../sessions/wwdc2017/810-what-s-new-in-ios-11/README.md)
 
 ### WWDC16

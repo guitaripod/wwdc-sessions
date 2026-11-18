@@ -4,7 +4,7 @@ A knowledge base of **Apple WWDC developer sessions** (WWDC 2014-2026, plus Tech
 with Apple), structured for direct consumption by AI agents. Free, non-commercial, and
 complementary to Apple's official material — every session links back to developer.apple.com.
 
-**1670 sessions · 1585 transcripts · 15 events ·
+**1679 sessions · 1594 transcripts · 15 events ·
 19 topics.**
 
 ## Layout
@@ -83,11 +83,11 @@ the session's `sosumiURL` or Apple's feed.
 | WWDC21 | wwdc2021 | 207 | 199 |
 | WWDC20 | wwdc2020 | 244 | 206 |
 | WWDC19 | wwdc2019 | 159 | 152 |
-| WWDC18 | wwdc2018 | 38 | 38 |
-| WWDC17 | wwdc2017 | 36 | 36 |
-| Tech Talks | tech-talks | 107 | 106 |
-| WWDC16 | wwdc2016 | 17 | 16 |
-| WWDC15 | wwdc2015 | 12 | 12 |
+| WWDC18 | wwdc2018 | 40 | 40 |
+| WWDC17 | wwdc2017 | 41 | 41 |
+| Tech Talks | tech-talks | 106 | 105 |
+| WWDC16 | wwdc2016 | 19 | 18 |
+| WWDC15 | wwdc2015 | 13 | 13 |
 | WWDC14 | wwdc2014 | 6 | 6 |
 
 ## Raw fetch base

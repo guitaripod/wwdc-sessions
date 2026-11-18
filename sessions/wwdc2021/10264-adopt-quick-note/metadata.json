@@ -48,25 +48,37 @@
     {
       "title": "How to adopt NSUserActivity to support Quick Note",
       "language": "swift",
-      "startTimeSeconds": 1017,
+      "startTimeSeconds": 373,
       "code": "// Create the NSUserActivity and describe the content or user activity\nlet activity = NSUserActivity(activityType: \"com.myapp.MyActivityType\")\nactivity.title = document.title\n\n// Set one or more of:\n//   .targetContentIdentifier\n//   .persistentIdentifier\n//   .webpageURL\nactivity.targetContentIdentifier = \"uniqueGlobalStableIdentifier\"\n\n// Set userInfo to save app-specific state information \nactivity.userInfo = [\"myKey\": …]\n\n// Attach it to a view controller, window, or other responder; let the system make it current when needed\nviewController.userActivity = activity"
     },
     {
       "title": "Handle NSUserActivity continuation in your window scene delegate or app delegate - iOS",
       "language": "swift",
-      "startTimeSeconds": 1022,
+      "startTimeSeconds": 436,
       "code": "class SceneDelegate: UIResponder, UIWindowSceneDelegate {\n\n    func scene(_ scene: UIScene, willContinueUserActivityWithType userActivityType: String) {\n        // show user feedback while waiting for the NSUserActivity to arrive\n    }\n\n    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {\n        // set up view controllers and views to continue the activity\n    }\n\n    func scene(_ scene: UIScene, didFailToContinueUserActivityWithType userActivityType: String, error: Error) {\n        // show error about failing to continue an activity\n    }\n\n    …\n}"
     },
     {
       "title": "Handle NSUserActivity continuation in your window scene delegate or app delegate - macOS",
       "language": "swift",
-      "startTimeSeconds": 1026,
+      "startTimeSeconds": 484,
       "code": "class AppDelegate: NSObject, NSApplicationDelegate {\n\n    func application(_ application: NSApplication, willContinueUserActivityWithType userActivityType: String) -> Bool {\n        // show user feedback while waiting for the NSUserActivity to arrive\n        return true\n    }\n\n    func application(_ application: NSApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([NSUserActivityRestoring]) -> Void) -> Bool {\n        // set up view controllers or documents to continue the activity\n        return true\n    }\n\n    func application(_ application: NSApplication, didFailToContinueUserActivityWithType userActivityType: String, error: Error) {\n        // show error about failing to continue an activity, if appropriate\n    }\n\n    …\n}"
+    },
+    {
+      "title": "Attach to responders",
+      "language": "swift",
+      "startTimeSeconds": 708,
+      "code": "viewController.userActivity = activity\n// or\nview.userActivity = activity"
+    },
+    {
+      "title": "becomeCurrent()/resignCurrent()",
+      "language": "swift",
+      "startTimeSeconds": 722,
+      "code": "activity.becomeCurrent()\nactivity.resignCurrent()"
     },
     {
       "title": "Improve performance with needsSave",
       "language": "swift",
-      "startTimeSeconds": 1046,
+      "startTimeSeconds": 764,
       "code": "activity.needsSave = true\n\n…\n\nfunc userActivityWillSave(_ userActivity: NSUserActivity) {\n    userActivity.userInfo = [\n        \"center\" : visibleFrame.middle\n        \"zoomScale\" : scrollView.zoomScale\n    ]\n}"
     }
   ],

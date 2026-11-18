@@ -2,7 +2,7 @@
   "event": "wwdc2016",
   "name": "WWDC16",
   "year": 2016,
-  "sessionCount": 17,
+  "sessionCount": 19,
   "sessions": [
     {
       "id": "wwdc2016-230",
@@ -43,7 +43,7 @@
       "resourceCount": 0,
       "codeSnippetCount": 0,
       "path": "sessions/wwdc2016/230-enhancing-voip-apps-with-callkit/",
-      "description": "CallKit is a new framework that lets your VoIP app integrate tightly with the native Phone UI. Learn how you can have your incoming calls displayed fully on the lock screen. Get details on how people can choose to use your app when making calls from the native Phone app's contacts, favorites, and recents. See how adopting CallKit lets your app coexist seamlessly with other active calls, and allow your calls to interact with CarPlay and Bluetooth accessories."
+      "description": "CallKit is a new framework that lets your VoIP app integrate tightly with the native Phone UI. Learn how you can have your incoming calls displayed fully on the lock screen. Get details on how people can choose to use your app when making calls from the native Phone app’s contacts, favorites, and recents. See how adopting CallKit lets your app coexist seamlessly with other active calls, and allow your calls to interact with CarPlay and Bluetooth accessories."
     },
     {
       "id": "wwdc2016-241",
@@ -135,7 +135,7 @@
       "resourceCount": 0,
       "codeSnippetCount": 0,
       "path": "sessions/wwdc2016/411-system-trace-in-depth/",
-      "description": "Join engineers from the Instruments team for another focused look at the System Trace Instruments profiling template and how to get the most out of it. Discover how threads, virtual memory, and locking interact to affect performance. Dive deep for a practical look at how you can improve your app's responsiveness and keep your users engaged."
+      "description": "Join engineers from the Instruments team for another focused look at the System Trace Instruments profiling template and how to get the most out of it. Discover how threads, virtual memory, and locking interact to affect performance. Dive deep for a practical look at how you can improve your app’s responsiveness and keep your users engaged."
     },
     {
       "id": "wwdc2016-416",
@@ -175,6 +175,54 @@
       "codeSnippetCount": 0,
       "path": "sessions/wwdc2016/416-understanding-swift-performance/",
       "description": "In this advanced session, find out how structs, classes, protocols, and generics are implemented in Swift. Learn about their relative costs in different dimensions of performance. See how to apply this information to speed up your code."
+    },
+    {
+      "id": "wwdc2016-418",
+      "event": "wwdc2016",
+      "year": 2016,
+      "eventContentId": 418,
+      "title": "Using Time Profiler in Instruments",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2016/418",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2016/418",
+      "duration": 1973,
+      "publishedAt": "2016-06-17T15:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Developer Tools",
+      "topics": [
+        "Developer Tools"
+      ],
+      "keywords": [
+        "instruments",
+        "introductory",
+        "measure",
+        "performance",
+        "profile",
+        "profiling",
+        "speed",
+        "time"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 5521,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2016/418-using-time-profiler-in-instruments/",
+      "description": "Learn how to make your apps faster and more efficient in this introduction to Time Profiler in Instruments. Walk through how to use Time Profiler to measure your app’s performance. Learn how Time Profiler works and can be used to identify problems and verify your fixes. Discover how easy it is to improve your app’s power usage and performance by using Instruments throughout your development process."
     },
     {
       "id": "wwdc2016-419",
@@ -450,6 +498,65 @@
       "codeSnippetCount": 0,
       "path": "sessions/wwdc2016/606-advanced-metal-shader-optimization/",
       "description": "The Metal shading language is an easy-to-use programming language for writing graphics and compute functions which execute on the GPU. Dive deeper into understanding the design patterns, memory access models, and detailed shader coding best practices which reduce bottlenecks and hide latency. Intended for experienced shader authors with a solid understanding of GPU architecture and hoping to extract every possible cycle."
+    },
+    {
+      "id": "wwdc2016-609",
+      "event": "wwdc2016",
+      "year": 2016,
+      "eventContentId": 609,
+      "title": "Advances in SceneKit Rendering",
+      "type": "Video",
+      "url": "https://developer.apple.com/videos/play/wwdc2016/609",
+      "sosumiURL": "https://sosumi.ai/videos/play/wwdc2016/609",
+      "duration": 3154,
+      "publishedAt": "2016-06-16T11:00:00-07:00",
+      "platforms": [
+        "iOS",
+        "iPadOS",
+        "macOS",
+        "tvOS",
+        "watchOS"
+      ],
+      "primaryTopic": "Graphics & Games",
+      "topics": [
+        "Graphics & Games"
+      ],
+      "keywords": [
+        "3d",
+        "collada",
+        "dae",
+        "graph",
+        "graphics",
+        "inverse kinematics",
+        "opengl",
+        "opensubdiv",
+        "pbr",
+        "physically based renderer",
+        "physics",
+        "pixar",
+        "renderer",
+        "rendering",
+        "scene",
+        "scnlayer",
+        "scnnode",
+        "scnview",
+        "usd"
+      ],
+      "hasTranscript": true,
+      "transcriptWordCount": 7470,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/wwdc2016/609-advances-in-scenekit-rendering/",
+      "description": "SceneKit is a fully featured high-level graphics framework enabling your apps and games to create 3D animated scenes and effects. Witness the biggest leap forward in SceneKit yet with the introduction of its new Physically-Based Renderer (PBR). Dive into new APIs for accurate materials, physically-based lights, HDR effects, and enhancements in Model I/O. Walk through an example game using PBR and see how to integrate its workflow into your development."
     },
     {
       "id": "wwdc2016-717",

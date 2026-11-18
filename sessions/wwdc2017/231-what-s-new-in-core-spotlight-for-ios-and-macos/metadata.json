@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2017-231",
+  "event": "wwdc2017",
+  "eventName": "WWDC17",
+  "year": 2017,
+  "eventContentId": 231,
+  "title": "What’s New in Core Spotlight for iOS and macOS",
+  "description": "Fundamental to the iOS Search Experience, Core Spotlight is now available on macOS. Using the same APIs that are available for iOS, Core Spotlight lets you index your app’s contents without requiring on-disk files. Learn how to provide rich custom Quick Look previews on both macOS and iOS so your users can see the content right in their search results. Get details about how your Core Spotlight items on iOS can participate in the new Drag and Drop feature.",
+  "url": "https://developer.apple.com/videos/play/wwdc2017/231",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2017/231",
+  "type": "Video",
+  "publishedAt": "2017-06-08T16:10:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "macOS"
+  ],
+  "keywords": [],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "System Services"
+  ],
+  "primaryTopic": "System Services",
+  "duration": 2315,
+  "hasTranscript": true,
+  "transcriptWordCount": 5661,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/231wmbuvx0t3sci6ua/231/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/231wmbuvx0t3sci6ua/231/231_sd_whats_new_in_core_spotlight_for_ios_and_macos.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/231wmbuvx0t3sci6ua/231/231_hd_whats_new_in_core_spotlight_for_ios_and_macos.mp4",
+    "duration": 2315
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Core Spotlight Drag and Drop",
+      "url": "https://developer.apple.com/sample-code/wwdc/2017/Core-Spotlight-Drag-and-Drop.zip",
+      "type": "samplecode",
+      "description": "Demonstrates how to implement Core Spotlight extensions, and how to support previews and drag and drop for them.",
+      "sosumiURL": "https://sosumi.ai/sample-code/wwdc/2017/Core-Spotlight-Drag-and-Drop.zip"
+    }
+  ],
+  "path": "sessions/wwdc2017/231-what-s-new-in-core-spotlight-for-ios-and-macos/",
+  "files": {
+    "metadata": "sessions/wwdc2017/231-what-s-new-in-core-spotlight-for-ios-and-macos/metadata.json",
+    "readme": "sessions/wwdc2017/231-what-s-new-in-core-spotlight-for-ios-and-macos/README.md",
+    "transcript": "sessions/wwdc2017/231-what-s-new-in-core-spotlight-for-ios-and-macos/transcript.md",
+    "transcriptJSON": "sessions/wwdc2017/231-what-s-new-in-core-spotlight-for-ios-and-macos/transcript.json"
+  }
+}

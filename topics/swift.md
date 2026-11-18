@@ -1,6 +1,6 @@
 # Swift
 
-150 sessions across all events.
+151 sessions across all events.
 
 
 ### Meet with Apple
@@ -198,5 +198,6 @@
 
 ### WWDC15
 
+- [Building Better Apps with Value Types in Swift](../sessions/wwdc2015/414-building-better-apps-with-value-types-in-swift/README.md)
 - [Protocol-Oriented Programming in Swift](../sessions/wwdc2015/408-protocol-oriented-programming-in-swift/README.md)
 - [Swift and Objective-C Interoperability](../sessions/wwdc2015/401-swift-and-objective-c-interoperability/README.md)

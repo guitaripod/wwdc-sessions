@@ -2612,13 +2612,6 @@
           "hasTranscript": true
         },
         {
-          "id": "tech-talks-10854",
-          "path": "sessions/tech-talks/10854-integrate-sirikit-media-intents-with-homepod/",
-          "title": "Integrate SiriKit Media Intents with HomePod",
-          "event": "tech-talks",
-          "hasTranscript": true
-        },
-        {
           "id": "wwdc2020-10635",
           "path": "sessions/wwdc2020/10635-accelerate-your-app-with-carplay/",
           "title": "Accelerate your app with CarPlay",
@@ -2930,6 +2923,13 @@
           "id": "wwdc2017-247",
           "path": "sessions/wwdc2017/247-extend-your-app-s-presence-with-sharing/",
           "title": "Extend Your App's Presence With Sharing",
+          "event": "wwdc2017",
+          "hasTranscript": true
+        },
+        {
+          "id": "wwdc2017-242",
+          "path": "sessions/wwdc2017/242-the-keys-to-a-better-text-input-experience/",
+          "title": "The Keys to a Better Text Input Experience",
           "event": "wwdc2017",
           "hasTranscript": true
         },
@@ -6606,7 +6606,7 @@
     {
       "topic": "Developer Tools",
       "slug": "developer-tools",
-      "sessionCount": 252,
+      "sessionCount": 254,
       "sessions": [
         {
           "id": "meet-with-apple-284",
@@ -8310,6 +8310,13 @@
           "hasTranscript": true
         },
         {
+          "id": "wwdc2017-413",
+          "path": "sessions/wwdc2017/413-app-startup-time-past-present-and-future/",
+          "title": "App Startup Time: Past, Present, and Future",
+          "event": "wwdc2017",
+          "hasTranscript": true
+        },
+        {
           "id": "wwdc2017-706",
           "path": "sessions/wwdc2017/706-modernizing-grand-central-dispatch-usage/",
           "title": "Modernizing Grand Central Dispatch Usage",
@@ -8341,6 +8348,13 @@
           "id": "wwdc2016-411",
           "path": "sessions/wwdc2016/411-system-trace-in-depth/",
           "title": "System Trace in Depth",
+          "event": "wwdc2016",
+          "hasTranscript": true
+        },
+        {
+          "id": "wwdc2016-418",
+          "path": "sessions/wwdc2016/418-using-time-profiler-in-instruments/",
+          "title": "Using Time Profiler in Instruments",
           "event": "wwdc2016",
           "hasTranscript": true
         },
@@ -9714,7 +9728,7 @@
     {
       "topic": "Graphics & Games",
       "slug": "graphics-games",
-      "sessionCount": 216,
+      "sessionCount": 218,
       "sessions": [
         {
           "id": "tech-talks-111432",
@@ -11166,6 +11180,13 @@
           "hasTranscript": true
         },
         {
+          "id": "wwdc2017-601",
+          "path": "sessions/wwdc2017/601-introducing-metal-2/",
+          "title": "Introducing Metal 2",
+          "event": "wwdc2017",
+          "hasTranscript": true
+        },
+        {
           "id": "wwdc2017-605",
           "path": "sessions/wwdc2017/605-scenekit-in-swift-playgrounds/",
           "title": "SceneKit in Swift Playgrounds",
@@ -11183,6 +11204,13 @@
           "id": "wwdc2016-606",
           "path": "sessions/wwdc2016/606-advanced-metal-shader-optimization/",
           "title": "Advanced Metal Shader Optimization",
+          "event": "wwdc2016",
+          "hasTranscript": true
+        },
+        {
+          "id": "wwdc2016-609",
+          "path": "sessions/wwdc2016/609-advances-in-scenekit-rendering/",
+          "title": "Advances in SceneKit Rendering",
           "event": "wwdc2016",
           "hasTranscript": true
         },
@@ -14600,7 +14628,7 @@
     {
       "topic": "Swift",
       "slug": "swift",
-      "sessionCount": 150,
+      "sessionCount": 151,
       "sessions": [
         {
           "id": "meet-with-apple-268",
@@ -15639,6 +15667,13 @@
           "hasTranscript": true
         },
         {
+          "id": "wwdc2015-414",
+          "path": "sessions/wwdc2015/414-building-better-apps-with-value-types-in-swift/",
+          "title": "Building Better Apps with Value Types in Swift",
+          "event": "wwdc2015",
+          "hasTranscript": true
+        },
+        {
           "id": "wwdc2015-408",
           "path": "sessions/wwdc2015/408-protocol-oriented-programming-in-swift/",
           "title": "Protocol-Oriented Programming in Swift",
@@ -15657,7 +15692,7 @@
     {
       "topic": "SwiftUI & UI Frameworks",
       "slug": "swiftui-ui-frameworks",
-      "sessionCount": 352,
+      "sessionCount": 356,
       "sessions": [
         {
           "id": "meet-with-apple-271",
@@ -17963,9 +17998,23 @@
           "hasTranscript": true
         },
         {
+          "id": "wwdc2018-237",
+          "path": "sessions/wwdc2018/237-quick-look-previews-from-the-ground-up/",
+          "title": "Quick Look Previews from the Ground Up",
+          "event": "wwdc2018",
+          "hasTranscript": true
+        },
+        {
           "id": "wwdc2018-221",
           "path": "sessions/wwdc2018/221-textkit-best-practices/",
           "title": "TextKit Best Practices",
+          "event": "wwdc2018",
+          "hasTranscript": true
+        },
+        {
+          "id": "wwdc2018-235",
+          "path": "sessions/wwdc2018/235-uikit-apps-for-every-size-and-shape/",
+          "title": "UIKit: Apps for Every Size and Shape",
           "event": "wwdc2018",
           "hasTranscript": true
         },
@@ -18089,6 +18138,20 @@
           "hasTranscript": true
         },
         {
+          "id": "wwdc2017-242",
+          "path": "sessions/wwdc2017/242-the-keys-to-a-better-text-input-experience/",
+          "title": "The Keys to a Better Text Input Experience",
+          "event": "wwdc2017",
+          "hasTranscript": true
+        },
+        {
+          "id": "wwdc2017-231",
+          "path": "sessions/wwdc2017/231-what-s-new-in-core-spotlight-for-ios-and-macos/",
+          "title": "What’s New in Core Spotlight for iOS and macOS",
+          "event": "wwdc2017",
+          "hasTranscript": true
+        },
+        {
           "id": "wwdc2017-810",
           "path": "sessions/wwdc2017/810-what-s-new-in-ios-11/",
           "title": "What’s New in iOS 11",
@@ -18128,7 +18191,7 @@
     {
       "topic": "System Services",
       "slug": "system-services",
-      "sessionCount": 148,
+      "sessionCount": 151,
       "sessions": [
         {
           "id": "meet-with-apple-284",
@@ -19090,6 +19153,13 @@
           "hasTranscript": true
         },
         {
+          "id": "wwdc2018-237",
+          "path": "sessions/wwdc2018/237-quick-look-previews-from-the-ground-up/",
+          "title": "Quick Look Previews from the Ground Up",
+          "event": "wwdc2018",
+          "hasTranscript": true
+        },
+        {
           "id": "wwdc2018-701",
           "path": "sessions/wwdc2018/701-using-accelerate-and-simd/",
           "title": "Using Accelerate and simd",
@@ -19142,6 +19212,20 @@
           "id": "wwdc2017-718",
           "path": "sessions/wwdc2017/718-introducing-core-nfc/",
           "title": "Introducing Core NFC",
+          "event": "wwdc2017",
+          "hasTranscript": true
+        },
+        {
+          "id": "wwdc2017-712",
+          "path": "sessions/wwdc2017/712-what-s-new-in-core-bluetooth/",
+          "title": "What’s New in Core Bluetooth",
+          "event": "wwdc2017",
+          "hasTranscript": true
+        },
+        {
+          "id": "wwdc2017-231",
+          "path": "sessions/wwdc2017/231-what-s-new-in-core-spotlight-for-ios-and-macos/",
+          "title": "What’s New in Core Spotlight for iOS and macOS",
           "event": "wwdc2017",
           "hasTranscript": true
         },

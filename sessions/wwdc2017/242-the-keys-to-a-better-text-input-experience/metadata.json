@@ -1,0 +1,67 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2017-242",
+  "event": "wwdc2017",
+  "eventName": "WWDC17",
+  "year": 2017,
+  "eventContentId": 242,
+  "title": "The Keys to a Better Text Input Experience",
+  "description": "Go beyond the basics and provide a first class text input experience in your app. Learn best practices and how to expand your app by supporting text input traits and QuickType. Get tips on how to optimize your UI when incorporating the system keyboard into your layout. Discover how to create a custom keyboard and upgrade it to a system-wide keyboard extension.",
+  "url": "https://developer.apple.com/videos/play/wwdc2017/242",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2017/242",
+  "type": "Video",
+  "publishedAt": "2017-06-09T11:00:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS",
+    "tvOS"
+  ],
+  "keywords": [
+    "⌨️",
+    "uiinputview",
+    "uikeycommand",
+    "uitextinputcontextidentifier",
+    "uitextinputmode"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks",
+    "App Services"
+  ],
+  "primaryTopic": "App Services",
+  "duration": 2777,
+  "hasTranscript": true,
+  "transcriptWordCount": 7606,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/242vuobd1jbmqgaxcq/242/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/242vuobd1jbmqgaxcq/242/242_sd_the_keys_to_a_better_text_input_experience.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2017/242vuobd1jbmqgaxcq/242/242_hd_the_keys_to_a_better_text_input_experience.mp4",
+    "duration": 2777
+  },
+  "codeSnippets": [],
+  "resources": [
+    {
+      "title": "Implementing Advanced Text Input Features",
+      "url": "https://developer.apple.com/sample-code/wwdc/2017/Implementing-Advanced-Text-Input-Features.zip",
+      "type": "samplecode",
+      "description": "Demonstrates how to implement many common user interface patterns surrounding the iOS keyboard, as well as how to create a custom keyboard extension.",
+      "sosumiURL": "https://sosumi.ai/sample-code/wwdc/2017/Implementing-Advanced-Text-Input-Features.zip"
+    }
+  ],
+  "path": "sessions/wwdc2017/242-the-keys-to-a-better-text-input-experience/",
+  "files": {
+    "metadata": "sessions/wwdc2017/242-the-keys-to-a-better-text-input-experience/metadata.json",
+    "readme": "sessions/wwdc2017/242-the-keys-to-a-better-text-input-experience/README.md",
+    "transcript": "sessions/wwdc2017/242-the-keys-to-a-better-text-input-experience/transcript.md",
+    "transcriptJSON": "sessions/wwdc2017/242-the-keys-to-a-better-text-input-experience/transcript.json"
+  }
+}

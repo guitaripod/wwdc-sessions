@@ -2,7 +2,7 @@
   "event": "tech-talks",
   "name": "Tech Talks",
   "year": 2017,
-  "sessionCount": 107,
+  "sessionCount": 106,
   "sessions": [
     {
       "id": "tech-talks-10001",
@@ -283,47 +283,6 @@
       "codeSnippetCount": 0,
       "path": "sessions/tech-talks/10696-uniform-type-identifiers-a-reintroduction/",
       "description": "Ever wonder how the system decides what app should open a given file? Explore the Uniform Type Identifiers framework, which helps you simplify the process for supporting standard or proprietary file formats in your app. You’ll learn how to use the new framework and Xcode to declare the types your app supports, discover how to boost performance when you adopt UTTypes, and review the latest platform APIs that support UTTypes."
-    },
-    {
-      "id": "tech-talks-10854",
-      "event": "tech-talks",
-      "year": 2020,
-      "eventContentId": 10854,
-      "title": "Integrate SiriKit Media Intents with HomePod",
-      "type": "Video",
-      "url": "https://developer.apple.com/videos/play/tech-talks/10854",
-      "sosumiURL": "https://sosumi.ai/videos/play/tech-talks/10854",
-      "duration": 2369,
-      "publishedAt": "2020-10-21T10:00:00-07:00",
-      "platforms": [
-        "iOS",
-        "iPadOS"
-      ],
-      "primaryTopic": "App Services",
-      "topics": [
-        "App Services"
-      ],
-      "keywords": [
-        "homepod",
-        "siri",
-        "sirikit",
-        "sirikit media intents"
-      ],
-      "hasTranscript": true,
-      "transcriptWordCount": 6442,
-      "availableLanguages": [
-        "eng",
-        "fra",
-        "jpn",
-        "kor",
-        "por",
-        "spa",
-        "zho"
-      ],
-      "resourceCount": 2,
-      "codeSnippetCount": 0,
-      "path": "sessions/tech-talks/10854-integrate-sirikit-media-intents-with-homepod/",
-      "description": "Bring your music service to HomePod and help users enjoy your content hands-free throughout their home. Discover how to build a great integration from start to finish. We'll take you through how Media Intents work, configuring your app as a preferred music service on HomePod and integrating directly with your cloud backend, providing a personalized playback experience for individual accounts with the help of voice recognition (where available), and more. To learn more about Media Intents, check out \"Expand your SiriKit Media Intents to more platforms\" from WWDC20."
     },
     {
       "id": "tech-talks-10855",
@@ -2322,7 +2281,7 @@
       ],
       "keywords": [],
       "hasTranscript": true,
-      "transcriptWordCount": 4720,
+      "transcriptWordCount": 4722,
       "availableLanguages": [
         "eng",
         "fra",

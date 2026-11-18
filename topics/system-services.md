@@ -1,6 +1,6 @@
 # System Services
 
-148 sessions across all events.
+151 sessions across all events.
 
 
 ### Meet with Apple
@@ -193,6 +193,7 @@
 - [Core Data Best Practices](../sessions/wwdc2018/224-core-data-best-practices/README.md)
 - [Introducing Network.framework: A modern alternative to Sockets](../sessions/wwdc2018/715-introducing-network-framework-a-modern-alternative-to-socket/README.md)
 - [Optimizing Your App for Today’s Internet](../sessions/wwdc2018/714-optimizing-your-app-for-today-s-internet/README.md)
+- [Quick Look Previews from the Ground Up](../sessions/wwdc2018/237-quick-look-previews-from-the-ground-up/README.md)
 - [Using Accelerate and simd](../sessions/wwdc2018/701-using-accelerate-and-simd/README.md)
 - [What's New in Cocoa for macOS](../sessions/wwdc2018/209-what-s-new-in-cocoa-for-macos/README.md)
 
@@ -207,6 +208,8 @@
 - [Enabling Your App for CarPlay](../sessions/wwdc2017/719-enabling-your-app-for-carplay/README.md)
 - [High Efficiency Image File Format](../sessions/wwdc2017/513-high-efficiency-image-file-format/README.md)
 - [Introducing Core NFC](../sessions/wwdc2017/718-introducing-core-nfc/README.md)
+- [What’s New in Core Bluetooth](../sessions/wwdc2017/712-what-s-new-in-core-bluetooth/README.md)
+- [What’s New in Core Spotlight for iOS and macOS](../sessions/wwdc2017/231-what-s-new-in-core-spotlight-for-ios-and-macos/README.md)
 
 ### WWDC16
 

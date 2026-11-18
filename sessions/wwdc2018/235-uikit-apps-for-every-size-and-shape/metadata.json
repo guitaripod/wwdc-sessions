@@ -1,0 +1,57 @@
+{
+  "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/session.schema.json",
+  "schemaVersion": 1,
+  "id": "wwdc2018-235",
+  "event": "wwdc2018",
+  "eventName": "WWDC18",
+  "year": 2018,
+  "eventContentId": 235,
+  "title": "UIKit: Apps for Every Size and Shape",
+  "description": "Ground-up coverage of how to make an app that can fit on devices of every size and shape. Make your app fit beautifully on Apple’s full range of devices with the minimum amount of effort, future-proofing your user experience along the way.",
+  "url": "https://developer.apple.com/videos/play/wwdc2018/235",
+  "sosumiURL": "https://sosumi.ai/videos/play/wwdc2018/235",
+  "type": "Video",
+  "publishedAt": "2018-06-08T15:20:00-07:00",
+  "platforms": [
+    "iOS",
+    "iPadOS"
+  ],
+  "keywords": [
+    "iphone x",
+    "layoutmargins",
+    "layout margins",
+    "safe area",
+    "safeareainsets"
+  ],
+  "topics": [
+    "SwiftUI & UI Frameworks"
+  ],
+  "primaryTopic": "SwiftUI & UI Frameworks",
+  "duration": 2417,
+  "hasTranscript": true,
+  "transcriptWordCount": 6825,
+  "availableLanguages": [
+    "eng",
+    "fra",
+    "jpn",
+    "kor",
+    "por",
+    "spa",
+    "zho"
+  ],
+  "media": {
+    "hls": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/235gkyrtsva0gy/235/hls_vod_mvp.m3u8",
+    "downloadSD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/235gkyrtsva0gy/235/235_sd_uikit_apps_for_every_size_and_shape.mp4",
+    "downloadHD": "https://devstreaming-cdn.apple.com/videos/wwdc/2018/235gkyrtsva0gy/235/235_hd_uikit_apps_for_every_size_and_shape.mp4",
+    "duration": 2417
+  },
+  "codeSnippets": [],
+  "resources": [],
+  "path": "sessions/wwdc2018/235-uikit-apps-for-every-size-and-shape/",
+  "files": {
+    "metadata": "sessions/wwdc2018/235-uikit-apps-for-every-size-and-shape/metadata.json",
+    "readme": "sessions/wwdc2018/235-uikit-apps-for-every-size-and-shape/README.md",
+    "transcript": "sessions/wwdc2018/235-uikit-apps-for-every-size-and-shape/transcript.md",
+    "transcriptJSON": "sessions/wwdc2018/235-uikit-apps-for-every-size-and-shape/transcript.json"
+  }
+}
