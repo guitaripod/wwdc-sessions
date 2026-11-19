@@ -2,8 +2,8 @@
   "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/catalog.schema.json",
   "schemaVersion": 1,
   "builderVersion": 2,
-  "generatedAt": "2026-11-18T16:17:40+00:00",
-  "sourceUpdated": "2026-11-18T07:10:18-08:00",
+  "generatedAt": "2026-11-19T16:26:23+00:00",
+  "sourceUpdated": "2026-11-18T22:58:09-08:00",
   "source": "Apple WWDC developer-video feeds (resolved via api2024.wwdc.io)",
   "rawBase": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master",
   "license": "Content © Apple Inc. Tooling under MIT (see LICENSE/NOTICE).",
@@ -12402,7 +12402,7 @@
         "spa",
         "zho"
       ],
-      "resourceCount": 8,
+      "resourceCount": 9,
       "codeSnippetCount": 6,
       "path": "sessions/wwdc2025/297-learn-about-the-apple-projected-media-profile/",
       "description": "Dive into the Apple Projected Media Profile (APMP) and see how APMP enables 180º/360º and Wide FoV projections in QuickTime and MP4 files using Video Extended Usage signaling. We’ll provide guidance on using OS-provided frameworks and tools to convert, read/write, edit, and encode media containing APMP. And we’ll review Apple Positional Audio Codec’s (APAC) capabilities for creating and delivering spatial audio content for the most immersive experiences."

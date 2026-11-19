@@ -33,6 +33,8 @@ Dive into the Apple Projected Media Profile (APMP) and see how APMP enables 180Â
 - [Using Appleâ€™s HTTP Live Streaming (HLS) Tools](https://developer.apple.com/documentation/HTTP-Live-Streaming/using-apple-s-http-live-streaming-hls-tools) _documentation_
   - Markdown (sosumi.ai): https://sosumi.ai/documentation/HTTP-Live-Streaming/using-apple-s-http-live-streaming-hls-tools
   - DocC JSON: https://developer.apple.com/tutorials/data/documentation/HTTP-Live-Streaming/using-apple-s-http-live-streaming-hls-tools.json
+- [Advanced Video Quality Tool](https://developer.apple.com/download/all/?q=avqt) _download_
+  - Markdown (sosumi.ai): https://sosumi.ai/download/all/?q=avqt
 - [Core Media](https://developer.apple.com/documentation/CoreMedia) _documentation_
   - Markdown (sosumi.ai): https://sosumi.ai/documentation/CoreMedia
   - DocC JSON: https://developer.apple.com/tutorials/data/documentation/CoreMedia.json

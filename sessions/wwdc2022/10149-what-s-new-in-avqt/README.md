@@ -25,8 +25,8 @@ Discover the latest updates and improvements to the Advanced Video Quality Tool 
 
 ## Documentation & Resources
 
-- [Advanced Video Quality Tool](http://developer.apple.com/services-account/download?path=/Developer_Tools/Advanced_Video_Quality_Tool/AdvancedVideoQualityTool.dmg) _download_
-  - Markdown (sosumi.ai): https://sosumi.ai/services-account/download?path=/Developer_Tools/Advanced_Video_Quality_Tool/AdvancedVideoQualityTool.dmg
+- [Advanced Video Quality Tool](https://developer.apple.com/download/all/?q=avqt) _download_
+  - Markdown (sosumi.ai): https://sosumi.ai/download/all/?q=avqt
 
 ## Video
 
