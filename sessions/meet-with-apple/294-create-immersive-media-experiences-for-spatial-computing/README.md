@@ -19,7 +19,7 @@ Join us online to discover how Apple’s immersive and spatial formats are trans
 ## Transcript
 
 [Read the transcript](transcript.md) · [Structured JSON](transcript.json)
-(35,842 words)
+(35,843 words)
 
 ## Video
 

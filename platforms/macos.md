@@ -1,6 +1,6 @@
 # macOS Sessions
 
-1175 sessions.
+1176 sessions.
 
 - [Apple Intelligence Group Lab](../sessions/meet-with-apple/290-apple-intelligence-group-lab/README.md) — Meet with Apple
 - [Apple Intelligence Group Lab](../sessions/meet-with-apple/291-apple-intelligence-group-lab/README.md) — Meet with Apple
@@ -12,6 +12,7 @@
 - [IETF HLS Interest Day](../sessions/meet-with-apple/283-ietf-hls-interest-day/README.md) — Meet with Apple
 - [Q&A: Swift concurrency](../sessions/meet-with-apple/276-q-a-swift-concurrency/README.md) — Meet with Apple
 - [SwiftUI foundations: Build great apps with SwiftUI](../sessions/meet-with-apple/267-swiftui-foundations-build-great-apps-with-swiftui/README.md) — Meet with Apple
+- [Touch on Mac Group Lab](../sessions/meet-with-apple/292-touch-on-mac-group-lab/README.md) — Meet with Apple
 - [Accelerate your machine learning workloads with the M5 and A19 GPUs](../sessions/tech-talks/111432-accelerate-your-machine-learning-workloads-with-the-m5-and-a/README.md) — Tech Talks
 - [Boost your graphics performance with the M5 and A19 GPUs](../sessions/tech-talks/111431-boost-your-graphics-performance-with-the-m5-and-a19-gpus/README.md) — Tech Talks
 - [Bring Live Activities to Mac](../sessions/tech-talks/111467-bring-live-activities-to-mac/README.md) — Tech Talks
