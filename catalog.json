@@ -2,15 +2,15 @@
   "$schema": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master/schema/catalog.schema.json",
   "schemaVersion": 1,
   "builderVersion": 2,
-  "generatedAt": "2026-11-21T00:40:43+00:00",
-  "sourceUpdated": "2026-11-20T15:15:33-08:00",
+  "generatedAt": "2026-11-21T15:11:00+00:00",
+  "sourceUpdated": "2026-11-20T17:49:02-08:00",
   "source": "Apple WWDC developer-video feeds (resolved via api2024.wwdc.io)",
   "rawBase": "https://raw.githubusercontent.com/guitaripod/wwdc-sessions/master",
   "license": "Content © Apple Inc. Tooling under MIT (see LICENSE/NOTICE).",
   "counts": {
     "events": 15,
-    "sessions": 1680,
-    "transcripts": 1595
+    "sessions": 1681,
+    "transcripts": 1596
   },
   "links": {
     "events": "events.json",
@@ -48,8 +48,8 @@
       "name": "Meet with Apple",
       "year": 2025,
       "startTime": "2025-07-10T10:00:00-07:00",
-      "sessionCount": 74,
-      "transcriptCount": 70,
+      "sessionCount": 75,
+      "transcriptCount": 71,
       "index": "events/meet-with-apple/index.md",
       "indexJSON": "events/meet-with-apple/index.json"
     },
@@ -1116,6 +1116,42 @@
       "resourceCount": 0,
       "codeSnippetCount": 0,
       "path": "sessions/meet-with-apple/292-touch-on-mac-group-lab/",
+      "description": "Connect with Apple engineers and designers online to ask questions, get advice, and follow the discussion about Touch on Mac."
+    },
+    {
+      "id": "meet-with-apple-293",
+      "event": "meet-with-apple",
+      "year": 2026,
+      "eventContentId": 293,
+      "title": "Touch on Mac Group Lab",
+      "type": "Get-Together",
+      "url": "https://developer.apple.com/videos/play/meet-with-apple/293",
+      "sosumiURL": "https://sosumi.ai/videos/play/meet-with-apple/293",
+      "duration": 3734,
+      "publishedAt": "2026-11-20T00:00:00-08:00",
+      "platforms": [
+        "macOS"
+      ],
+      "primaryTopic": "SwiftUI & UI Frameworks",
+      "topics": [
+        "Design",
+        "SwiftUI & UI Frameworks"
+      ],
+      "keywords": [],
+      "hasTranscript": true,
+      "transcriptWordCount": 11139,
+      "availableLanguages": [
+        "eng",
+        "fra",
+        "jpn",
+        "kor",
+        "por",
+        "spa",
+        "zho"
+      ],
+      "resourceCount": 0,
+      "codeSnippetCount": 0,
+      "path": "sessions/meet-with-apple/293-touch-on-mac-group-lab/",
       "description": "Connect with Apple engineers and designers online to ask questions, get advice, and follow the discussion about Touch on Mac."
     },
     {

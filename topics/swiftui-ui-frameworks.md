@@ -1,6 +1,6 @@
 # SwiftUI & UI Frameworks
 
-357 sessions across all events.
+358 sessions across all events.
 
 
 ### Meet with Apple
@@ -14,6 +14,7 @@
 - [SwiftUI essentials](../sessions/meet-with-apple/269-swiftui-essentials/README.md)
 - [SwiftUI in motion](../sessions/meet-with-apple/272-swiftui-in-motion/README.md)
 - [Touch on Mac Group Lab](../sessions/meet-with-apple/292-touch-on-mac-group-lab/README.md)
+- [Touch on Mac Group Lab](../sessions/meet-with-apple/293-touch-on-mac-group-lab/README.md)
 - [iPhone Duo Group Lab](../sessions/meet-with-apple/287-iphone-duo-group-lab/README.md)
 - [iPhone Duo Group Lab](../sessions/meet-with-apple/286-iphone-duo-group-lab/README.md)
 - [iPhone Duo Group Lab](../sessions/meet-with-apple/285-iphone-duo-group-lab/README.md)
